@@ -63,7 +63,7 @@ an association occurs or not. To confirm if an association was found
 based on the provided details, call \code{ListDiscoveredResources}.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$put_resource_attributes(
+\preformatted{svc$put_resource_attributes(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   ResourceAttributeList = list(

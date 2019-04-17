@@ -45,7 +45,7 @@ Creates a new Facet in a schema. Facet creation is allowed only in
 development or applied schemas.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$create_facet(
+\preformatted{svc$create_facet(
   SchemaArn = "string",
   Name = "string",
   Attributes = list(

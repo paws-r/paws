@@ -33,7 +33,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceArn = "string",
 #'   TagList = list(
 #'     list(
@@ -90,7 +90,7 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$create_hapg(
+#' svc$create_hapg(
 #'   Label = "string"
 #' )
 #' ```
@@ -164,7 +164,7 @@ cloudhsm_create_hapg <- function(Label) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$create_hsm(
+#' svc$create_hsm(
 #'   SubnetId = "string",
 #'   SshKey = "string",
 #'   EniIp = "string",
@@ -222,7 +222,7 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$create_luna_client(
+#' svc$create_luna_client(
 #'   Label = "string",
 #'   Certificate = "string"
 #' )
@@ -272,7 +272,7 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$delete_hapg(
+#' svc$delete_hapg(
 #'   HapgArn = "string"
 #' )
 #' ```
@@ -322,7 +322,7 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$delete_hsm(
+#' svc$delete_hsm(
 #'   HsmArn = "string"
 #' )
 #' ```
@@ -371,7 +371,7 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$delete_luna_client(
+#' svc$delete_luna_client(
 #'   ClientArn = "string"
 #' )
 #' ```
@@ -420,7 +420,7 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$describe_hapg(
+#' svc$describe_hapg(
 #'   HapgArn = "string"
 #' )
 #' ```
@@ -473,7 +473,7 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$describe_hsm(
+#' svc$describe_hsm(
 #'   HsmArn = "string",
 #'   HsmSerialNumber = "string"
 #' )
@@ -524,7 +524,7 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$describe_luna_client(
+#' svc$describe_luna_client(
 #'   ClientArn = "string",
 #'   CertificateFingerprint = "string"
 #' )
@@ -578,7 +578,7 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$get_config(
+#' svc$get_config(
 #'   ClientArn = "string",
 #'   ClientVersion = "5.1"|"5.3",
 #'   HapgList = list(
@@ -629,7 +629,7 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$list_available_zones()
+#' svc$list_available_zones()
 #' ```
 #'
 #' @keywords internal
@@ -682,7 +682,7 @@ cloudhsm_list_available_zones <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$list_hapgs(
+#' svc$list_hapgs(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -738,7 +738,7 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$list_hsms(
+#' svc$list_hsms(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -793,7 +793,7 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$list_luna_clients(
+#' svc$list_luna_clients(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -842,7 +842,7 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -894,7 +894,7 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$modify_hapg(
+#' svc$modify_hapg(
 #'   HapgArn = "string",
 #'   Label = "string",
 #'   PartitionSerialList = list(
@@ -966,7 +966,7 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$modify_hsm(
+#' svc$modify_hsm(
 #'   HsmArn = "string",
 #'   SubnetId = "string",
 #'   EniIp = "string",
@@ -1024,7 +1024,7 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$modify_luna_client(
+#' svc$modify_luna_client(
 #'   ClientArn = "string",
 #'   Certificate = "string"
 #' )
@@ -1081,7 +1081,7 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsm$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceArn = "string",
 #'   TagKeyList = list(
 #'     "string"

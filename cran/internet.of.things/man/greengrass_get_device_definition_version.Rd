@@ -18,7 +18,7 @@ greengrass_get_device_definition_version(DeviceDefinitionId,
 Retrieves information about a device definition version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_device_definition_version(
+\preformatted{svc$get_device_definition_version(
   DeviceDefinitionId = "string",
   DeviceDefinitionVersionId = "string",
   NextToken = "string"

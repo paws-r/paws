@@ -19,7 +19,7 @@ iot_list_attached_policies(target, recursive, marker, pageSize)
 Lists the policies attached to the specified thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$list_attached_policies(
+\preformatted{svc$list_attached_policies(
   target = "string",
   recursive = TRUE|FALSE,
   marker = "string",

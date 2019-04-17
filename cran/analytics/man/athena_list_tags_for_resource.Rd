@@ -20,7 +20,7 @@ tags for the workgroup resource.}
 Lists the tags associated with this workgroup.
 }
 \section{Request syntax}{
-\preformatted{athena$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string",
   NextToken = "string",
   MaxResults = 123

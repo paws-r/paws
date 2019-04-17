@@ -13,7 +13,7 @@ mediapackage_delete_origin_endpoint(Id)
 Deletes an existing OriginEndpoint.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$delete_origin_endpoint(
+\preformatted{svc$delete_origin_endpoint(
   Id = "string"
 )
 }

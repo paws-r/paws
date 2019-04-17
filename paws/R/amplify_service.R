@@ -8,11 +8,10 @@ NULL
 #' Amplify is a fully managed continuous deployment and hosting service for
 #' modern web apps.
 #'
-#' @section Example:
-#' ```
-#' amplify <- paws::amplify()
-#' amplify$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_app(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

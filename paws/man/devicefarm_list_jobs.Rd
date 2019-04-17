@@ -17,7 +17,7 @@ list.}
 Gets information about jobs for a given test run.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_jobs(
+\preformatted{svc$list_jobs(
   arn = "string",
   nextToken = "string"
 )
@@ -27,7 +27,7 @@ Gets information about jobs for a given test run.
 \examples{
 # The following example returns information about jobs in a specific
 # project.
-\donttest{devicefarm$list_jobs(
+\donttest{svc$list_jobs(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 )}
 

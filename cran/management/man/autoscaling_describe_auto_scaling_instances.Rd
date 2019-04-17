@@ -22,7 +22,7 @@ from a previous call.)}
 Describes one or more Auto Scaling instances.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_auto_scaling_instances(
+\preformatted{svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "string"
   ),
@@ -34,7 +34,7 @@ Describes one or more Auto Scaling instances.
 
 \examples{
 # This example describes the specified Auto Scaling instance.
-\donttest{autoscaling$describe_auto_scaling_instances(
+\donttest{svc$describe_auto_scaling_instances(
   InstanceIds = list(
     "i-4ba0837f"
   )

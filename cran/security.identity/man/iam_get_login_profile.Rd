@@ -20,7 +20,7 @@ user. If the user has not been assigned a password, the operation
 returns a 404 (\code{NoSuchEntity}) error.
 }
 \section{Request syntax}{
-\preformatted{iam$get_login_profile(
+\preformatted{svc$get_login_profile(
   UserName = "string"
 )
 }
@@ -29,7 +29,7 @@ returns a 404 (\code{NoSuchEntity}) error.
 \examples{
 # The following command gets information about the password for the IAM
 # user named Anika.
-\donttest{iam$get_login_profile(
+\donttest{svc$get_login_profile(
   UserName = "Anika"
 )}
 

@@ -18,7 +18,7 @@ located. If none is supplied, the AWS account ID is used by default.}
 Retrieves a specified function definition from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_user_defined_function(
+\preformatted{svc$get_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string"

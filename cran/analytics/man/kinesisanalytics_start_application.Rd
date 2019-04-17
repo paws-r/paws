@@ -34,7 +34,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:StartApplication} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$start_application(
+\preformatted{svc$start_application(
   ApplicationName = "string",
   InputConfigurations = list(
     list(

@@ -24,7 +24,7 @@ Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_listeners(
+\preformatted{svc$describe_listeners(
   LoadBalancerArn = "string",
   ListenerArns = list(
     "string"
@@ -37,7 +37,7 @@ either a load balancer or one or more listeners.
 
 \examples{
 # This example describes the specified listener.
-\donttest{elbv2$describe_listeners(
+\donttest{svc$describe_listeners(
   ListenerArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6..."
   )

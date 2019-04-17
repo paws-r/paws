@@ -15,7 +15,7 @@ Any results obtained before the job is stopped are placed in the Amazon
 S3 output bucket.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$stop_labeling_job(
+\preformatted{svc$stop_labeling_job(
   LabelingJobName = "string"
 )
 }

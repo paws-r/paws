@@ -54,7 +54,7 @@ returned for each repeated request.}
 Creates a self-service action.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_service_action(
+\preformatted{svc$create_service_action(
   Name = "string",
   DefinitionType = "SSM_AUTOMATION",
   Definition = list(

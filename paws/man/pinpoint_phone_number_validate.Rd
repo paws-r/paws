@@ -13,7 +13,7 @@ pinpoint_phone_number_validate(NumberValidateRequest)
 Returns information about the specified phone number.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$phone_number_validate(
+\preformatted{svc$phone_number_validate(
   NumberValidateRequest = list(
     IsoCountryCode = "string",
     PhoneNumber = "string"

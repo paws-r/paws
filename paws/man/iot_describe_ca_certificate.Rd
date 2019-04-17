@@ -13,7 +13,7 @@ iot_describe_ca_certificate(certificateId)
 Describes a registered CA certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_ca_certificate(
+\preformatted{svc$describe_ca_certificate(
   certificateId = "string"
 )
 }

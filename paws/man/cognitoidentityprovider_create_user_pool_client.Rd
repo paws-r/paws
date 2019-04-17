@@ -93,7 +93,7 @@ this user pool.}
 Creates the user pool client.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_user_pool_client(
+\preformatted{svc$create_user_pool_client(
   UserPoolId = "string",
   ClientName = "string",
   GenerateSecret = TRUE|FALSE,

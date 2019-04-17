@@ -23,7 +23,7 @@ categories and source types in the
 topic in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(

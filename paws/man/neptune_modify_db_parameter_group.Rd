@@ -49,7 +49,7 @@ the \emph{Parameter Groups} option of the Amazon Neptune console or the
 has been created or modified.
 }
 \section{Request syntax}{
-\preformatted{neptune$modify_db_parameter_group(
+\preformatted{svc$modify_db_parameter_group(
   DBParameterGroupName = "string",
   Parameters = list(
     list(

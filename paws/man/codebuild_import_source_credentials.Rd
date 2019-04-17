@@ -30,7 +30,7 @@ that has its source code stored in a GitHub, GitHub Enterprise, or
 Bitbucket repository.
 }
 \section{Request syntax}{
-\preformatted{codebuild$import_source_credentials(
+\preformatted{svc$import_source_credentials(
   username = "string",
   token = "string",
   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",

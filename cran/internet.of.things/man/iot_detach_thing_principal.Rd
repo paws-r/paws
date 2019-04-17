@@ -23,7 +23,7 @@ This call is asynchronous. It might take several seconds for the
 detachment to propagate.
 }
 \section{Request syntax}{
-\preformatted{iot$detach_thing_principal(
+\preformatted{svc$detach_thing_principal(
   thingName = "string",
   principal = "string"
 )

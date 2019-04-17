@@ -31,7 +31,7 @@ This operation can only be called for servers in \code{HEALTHY} or
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$update_server_engine_attributes(
+\preformatted{svc$update_server_engine_attributes(
   ServerName = "string",
   AttributeName = "string",
   AttributeValue = "string"

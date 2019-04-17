@@ -10,7 +10,7 @@ securityhub_enable_security_hub()
 Enables the AWS Security Hub service.
 }
 \section{Request syntax}{
-\preformatted{securityhub$enable_security_hub()
+\preformatted{svc$enable_security_hub()
 }
 }
 

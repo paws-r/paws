@@ -25,12 +25,6 @@ see \href{https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html}{A
 For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
-\section{Example}{
-\preformatted{athena <- paws::athena()
-athena$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ athena$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_get_named_query(
+  Foo = 123
+)}
+
+}

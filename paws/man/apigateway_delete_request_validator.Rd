@@ -15,7 +15,7 @@ apigateway_delete_request_validator(restApiId, requestValidatorId)
 Deletes a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_request_validator(
+\preformatted{svc$delete_request_validator(
   restApiId = "string",
   requestValidatorId = "string"
 )

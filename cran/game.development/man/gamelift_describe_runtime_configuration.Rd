@@ -43,7 +43,7 @@ processes on instances in the fleet.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_runtime_configuration(
+\preformatted{svc$describe_runtime_configuration(
   FleetId = "string"
 )
 }

@@ -63,7 +63,7 @@ certificates are returned regardless of whether they have tag keys or
 values associated with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_hsm_client_certificates(
+\preformatted{svc$describe_hsm_client_certificates(
   HsmClientCertificateIdentifier = "string",
   MaxRecords = 123,
   Marker = "string",

@@ -13,7 +13,7 @@ resourcegroups_get_group(GroupName)
 Returns information about a specified resource group.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$get_group(
+\preformatted{svc$get_group(
   GroupName = "string"
 )
 }

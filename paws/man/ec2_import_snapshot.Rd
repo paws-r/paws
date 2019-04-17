@@ -62,7 +62,7 @@ copied to.}
 Imports a disk into an EBS snapshot.
 }
 \section{Request syntax}{
-\preformatted{ec2$import_snapshot(
+\preformatted{svc$import_snapshot(
   ClientData = list(
     Comment = "string",
     UploadEnd = as.POSIXct(

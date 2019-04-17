@@ -21,7 +21,7 @@ Describes the specified attribute of the specified VPC. You can specify
 only one attribute at a time.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_attribute(
+\preformatted{svc$describe_vpc_attribute(
   Attribute = "enableDnsSupport"|"enableDnsHostnames",
   VpcId = "string",
   DryRun = TRUE|FALSE
@@ -34,7 +34,7 @@ only one attribute at a time.
 # indicates whether DNS resolution is enabled for the VPC. If this
 # attribute is true, the Amazon DNS server resolves DNS hostnames for your
 # instances to their corresponding IP addresses; otherwise, it does not.
-\donttest{ec2$describe_vpc_attribute(
+\donttest{svc$describe_vpc_attribute(
   Attribute = "enableDnsSupport",
   VpcId = "vpc-a01106c2"
 )}
@@ -43,7 +43,7 @@ only one attribute at a time.
 # indicates whether the instances launched in the VPC get DNS hostnames.
 # If this attribute is true, instances in the VPC get DNS hostnames;
 # otherwise, they do not.
-\donttest{ec2$describe_vpc_attribute(
+\donttest{svc$describe_vpc_attribute(
   Attribute = "enableDnsHostnames",
   VpcId = "vpc-a01106c2"
 )}

@@ -13,7 +13,7 @@ greengrass_delete_core_definition(CoreDefinitionId)
 Deletes a core definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_core_definition(
+\preformatted{svc$delete_core_definition(
   CoreDefinitionId = "string"
 )
 }

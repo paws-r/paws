@@ -13,7 +13,7 @@ cloudfront_get_streaming_distribution_config(Id)
 Get the configuration information about a streaming distribution.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_streaming_distribution_config(
+\preformatted{svc$get_streaming_distribution_config(
   Id = "string"
 )
 }

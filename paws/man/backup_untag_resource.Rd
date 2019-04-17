@@ -19,7 +19,7 @@ Removes a set of key-value pairs from a recovery point, backup plan, or
 backup vault identified by an Amazon Resource Name (ARN)
 }
 \section{Request syntax}{
-\preformatted{backup$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeyList = list(
     "string"

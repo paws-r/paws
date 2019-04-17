@@ -13,7 +13,7 @@ worklink_describe_device_policy_configuration(FleetArn)
 Describes the device policy configuration for the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_device_policy_configuration(
+\preformatted{svc$describe_device_policy_configuration(
   FleetArn = "string"
 )
 }

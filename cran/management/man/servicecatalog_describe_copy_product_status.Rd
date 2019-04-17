@@ -22,7 +22,7 @@ CopyProduct.}
 Gets the status of the specified copy product operation.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_copy_product_status(
+\preformatted{svc$describe_copy_product_status(
   AcceptLanguage = "string",
   CopyProductToken = "string"
 )

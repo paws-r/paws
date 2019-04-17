@@ -61,7 +61,7 @@ For more information about tags, see \href{http://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ssm$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
   ResourceId = "string",
   Tags = list(

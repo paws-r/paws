@@ -14,7 +14,7 @@ the LoggingConfiguration.}
 Returns the LoggingConfiguration for the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{waf$get_logging_configuration(
+\preformatted{svc$get_logging_configuration(
   ResourceArn = "string"
 )
 }

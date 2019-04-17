@@ -55,7 +55,7 @@ You must manually set up the following on the restored table:
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$restore_table_to_point_in_time(
+\preformatted{svc$restore_table_to_point_in_time(
   SourceTableName = "string",
   TargetTableName = "string",
   UseLatestRestorableTime = TRUE|FALSE,

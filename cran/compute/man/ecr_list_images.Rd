@@ -47,7 +47,7 @@ filter your results to return only \code{TAGGED} images to list all of the
 tags in your repository.
 }
 \section{Request syntax}{
-\preformatted{ecr$list_images(
+\preformatted{svc$list_images(
   registryId = "string",
   repositoryName = "string",
   nextToken = "string",
@@ -62,7 +62,7 @@ tags in your repository.
 \examples{
 # This example lists all of the images in the repository named ubuntu in
 # the default registry in the current account.
-\donttest{ecr$list_images(
+\donttest{svc$list_images(
   repositoryName = "ubuntu"
 )}
 

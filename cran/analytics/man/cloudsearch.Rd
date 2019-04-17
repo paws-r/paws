@@ -20,12 +20,6 @@ cloudsearch.\emph{region}.amazonaws.com. For example,
 cloudsearch.us-east-1.amazonaws.com. For a current list of supported
 regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region}{Regions and Endpoints}.
 }
-\section{Example}{
-\preformatted{cloudsearch <- paws::cloudsearch()
-cloudsearch$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ cloudsearch$operation()
 }
 }
 
+\examples{
+\donttest{svc$build_suggesters(
+  Foo = 123
+)}
+
+}

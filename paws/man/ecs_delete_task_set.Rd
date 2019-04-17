@@ -26,7 +26,7 @@ information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguid
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$delete_task_set(
+\preformatted{svc$delete_task_set(
   cluster = "string",
   service = "string",
   taskSet = "string",

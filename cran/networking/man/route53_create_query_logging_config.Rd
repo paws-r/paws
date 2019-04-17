@@ -139,7 +139,7 @@ delete the query logging configuration. For more information, see
 DeleteQueryLoggingConfig.
 }
 \section{Request syntax}{
-\preformatted{route53$create_query_logging_config(
+\preformatted{svc$create_query_logging_config(
   HostedZoneId = "string",
   CloudWatchLogsLogGroupArn = "string"
 )

@@ -19,7 +19,7 @@ You cannot delete a cache security group if it is associated with any
 clusters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_cache_security_group(
+\preformatted{svc$delete_cache_security_group(
   CacheSecurityGroupName = "string"
 )
 }

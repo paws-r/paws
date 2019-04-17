@@ -50,7 +50,7 @@ For more information about developing and using AWS Config rules, see
 in the \emph{AWS Config Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_config_rule(
+\preformatted{svc$put_config_rule(
   ConfigRule = list(
     ConfigRuleName = "string",
     ConfigRuleArn = "string",

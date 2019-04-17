@@ -35,7 +35,7 @@ build ID.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$request_upload_credentials(
+\preformatted{svc$request_upload_credentials(
   BuildId = "string"
 )
 }

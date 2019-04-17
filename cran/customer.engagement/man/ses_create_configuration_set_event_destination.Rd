@@ -29,7 +29,7 @@ information about using configuration sets, see the \href{http://docs.aws.amazon
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$create_configuration_set_event_destination(
+\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     Name = "string",

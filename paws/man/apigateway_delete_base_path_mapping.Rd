@@ -16,7 +16,7 @@ delete.}
 Deletes the BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_base_path_mapping(
+\preformatted{svc$delete_base_path_mapping(
   domainName = "string",
   basePath = "string"
 )

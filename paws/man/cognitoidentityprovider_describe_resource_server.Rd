@@ -15,7 +15,7 @@ cognitoidentityprovider_describe_resource_server(UserPoolId, Identifier)
 Describes a resource server.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_resource_server(
+\preformatted{svc$describe_resource_server(
   UserPoolId = "string",
   Identifier = "string"
 )

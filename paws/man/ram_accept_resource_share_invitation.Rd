@@ -17,7 +17,7 @@ idempotency of the request.}
 Accepts an invitation to a resource share from another AWS account.
 }
 \section{Request syntax}{
-\preformatted{ram$accept_resource_share_invitation(
+\preformatted{svc$accept_resource_share_invitation(
   resourceShareInvitationArn = "string",
   clientToken = "string"
 )

@@ -45,7 +45,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{ec2$request_spot_fleet(
+\preformatted{svc$request_spot_fleet(
   DryRun = TRUE|FALSE,
   SpotFleetRequestConfig = list(
     AllocationStrategy = "lowestPrice"|"diversified",
@@ -204,7 +204,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # instances are launched in a nondefault VPC, they do not receive a public
 # IP address by default. Note that you can't specify different subnets
 # from the same Availability Zone in a Spot fleet request.
-\donttest{ec2$request_spot_fleet(
+\donttest{svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -235,7 +235,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # instances in the default subnet of the Availability Zone. If your
 # account supports EC2-Classic, Amazon EC2 launches the instances in
 # EC2-Classic in the Availability Zone.
-\donttest{ec2$request_spot_fleet(
+\donttest{svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -264,7 +264,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # This example assigns public addresses to instances launched in a
 # nondefault VPC. Note that when you specify a network interface, you must
 # include the subnet ID and security group ID using the network interface.
-\donttest{ec2$request_spot_fleet(
+\donttest{svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
     LaunchSpecifications = list(
@@ -296,7 +296,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # using the diversified allocation strategy. The launch specifications
 # differ by instance type. The Spot fleet distributes the instances across
 # the launch specifications such that there are 10 instances of each type.
-\donttest{ec2$request_spot_fleet(
+\donttest{svc$request_spot_fleet(
   SpotFleetRequestConfig = list(
     AllocationStrategy = "diversified",
     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",

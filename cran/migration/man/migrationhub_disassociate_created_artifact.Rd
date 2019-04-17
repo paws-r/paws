@@ -39,7 +39,7 @@ AMI's, EC2 instance, or RDS instance, etc.
 }
 }
 \section{Request syntax}{
-\preformatted{migrationhub$disassociate_created_artifact(
+\preformatted{svc$disassociate_created_artifact(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   CreatedArtifactName = "string",

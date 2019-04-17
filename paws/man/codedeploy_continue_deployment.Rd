@@ -27,7 +27,7 @@ in the replacement environment with the load balancer, can start as soon
 as all instances have a status of Ready.)
 }
 \section{Request syntax}{
-\preformatted{codedeploy$continue_deployment(
+\preformatted{svc$continue_deployment(
   deploymentId = "string",
   deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
 )

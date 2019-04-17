@@ -45,7 +45,7 @@ configured for high availability, and consider executing this operation
 during a maintenance window.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$modify_hsm(
+\preformatted{svc$modify_hsm(
   HsmArn = "string",
   SubnetId = "string",
   EniIp = "string",

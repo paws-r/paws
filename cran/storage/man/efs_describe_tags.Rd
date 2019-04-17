@@ -27,7 +27,7 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeTags} action.
 }
 \section{Request syntax}{
-\preformatted{efs$describe_tags(
+\preformatted{svc$describe_tags(
   MaxItems = 123,
   Marker = "string",
   FileSystemId = "string"
@@ -37,7 +37,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation describes all of a file system's tags.
-\donttest{efs$describe_tags(
+\donttest{svc$describe_tags(
   FileSystemId = "fs-01234567"
 )}
 

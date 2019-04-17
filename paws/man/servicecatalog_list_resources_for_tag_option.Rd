@@ -25,7 +25,7 @@ results, use null.}
 Lists the resources associated with the specified TagOption.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_resources_for_tag_option(
+\preformatted{svc$list_resources_for_tag_option(
   TagOptionId = "string",
   ResourceType = "string",
   PageSize = 123,

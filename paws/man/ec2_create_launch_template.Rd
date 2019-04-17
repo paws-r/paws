@@ -31,7 +31,7 @@ can specify a launch template instead of providing the launch parameters
 in the request.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_launch_template(
+\preformatted{svc$create_launch_template(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   LaunchTemplateName = "string",
@@ -173,7 +173,7 @@ in the request.
 # This example creates a launch template that specifies the subnet in
 # which to launch the instance, assigns a public IP address and an IPv6
 # address to the instance, and creates a tag for the instance.
-\donttest{ec2$create_launch_template(
+\donttest{svc$create_launch_template(
   LaunchTemplateData = list(
     ImageId = "ami-8c1be5f6",
     InstanceType = "t2.small",

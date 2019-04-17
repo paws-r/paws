@@ -31,7 +31,7 @@ Returns information about the endpoints for your account in the current
 region.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_endpoints(
+\preformatted{svc$describe_endpoints(
   Filters = list(
     list(
       Name = "string",
@@ -49,7 +49,7 @@ region.
 \examples{
 # Returns information about the endpoints for your account in the current
 # region.
-\donttest{databasemigrationservice$describe_endpoints(
+\donttest{svc$describe_endpoints(
   Filters = list(
     list(
       Name = "string",

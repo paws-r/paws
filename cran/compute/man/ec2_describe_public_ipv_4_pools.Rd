@@ -19,7 +19,7 @@ value.}
 Describes the specified IPv4 address pools.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_public_ipv_4_pools(
+\preformatted{svc$describe_public_ipv_4_pools(
   PoolIds = list(
     "string"
   ),

@@ -28,7 +28,7 @@ that contains information about all of the certificates issued and
 revoked by your private CA.
 }
 \section{Request syntax}{
-\preformatted{acmpca$get_certificate(
+\preformatted{svc$get_certificate(
   CertificateAuthorityArn = "string",
   CertificateArn = "string"
 )

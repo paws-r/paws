@@ -25,7 +25,7 @@ Default value is data-reload.}
 Reloads the target database table with the source data.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$reload_tables(
+\preformatted{svc$reload_tables(
   ReplicationTaskArn = "string",
   TablesToReload = list(
     list(

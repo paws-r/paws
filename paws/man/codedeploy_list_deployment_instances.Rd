@@ -42,7 +42,7 @@ Lists the instance for a deployment associated with the IAM user or AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_deployment_instances(
+\preformatted{svc$list_deployment_instances(
   deploymentId = "string",
   nextToken = "string",
   instanceStatusFilter = list(

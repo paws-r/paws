@@ -177,7 +177,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$create_queue(
+\preformatted{svc$create_queue(
   QueueName = "string",
   Attributes = list(
     "string"

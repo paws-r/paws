@@ -18,7 +18,7 @@ Returns selection metadata and a document in JSON format that specifies
 a list of resources that are associated with a backup plan.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_selection(
+\preformatted{svc$get_backup_selection(
   BackupPlanId = "string",
   SelectionId = "string"
 )

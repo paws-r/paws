@@ -11,7 +11,7 @@ Start the continuous flow of agent's discovered data into Amazon
 Athena.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$start_continuous_export()
+\preformatted{svc$start_continuous_export()
 }
 }
 

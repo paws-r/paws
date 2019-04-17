@@ -16,7 +16,7 @@ into.}
 Starts the user import.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$start_user_import_job(
+\preformatted{svc$start_user_import_job(
   UserPoolId = "string",
   JobId = "string"
 )

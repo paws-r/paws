@@ -16,7 +16,7 @@ iotanalytics_cancel_pipeline_reprocessing(pipelineName, reprocessingId)
 Cancels the reprocessing of data through the pipeline.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$cancel_pipeline_reprocessing(
+\preformatted{svc$cancel_pipeline_reprocessing(
   pipelineName = "string",
   reprocessingId = "string"
 )

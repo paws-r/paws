@@ -17,7 +17,7 @@ You cannot delete an IP access control group that is associated with a
 directory.
 }
 \section{Request syntax}{
-\preformatted{workspaces$delete_ip_group(
+\preformatted{svc$delete_ip_group(
   GroupId = "string"
 )
 }

@@ -42,7 +42,7 @@ Returns the detailed parameter list for a particular DB cluster
 parameter group.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_cluster_parameters(
+\preformatted{svc$describe_db_cluster_parameters(
   DBClusterParameterGroupName = "string",
   Source = "string",
   Filters = list(

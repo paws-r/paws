@@ -56,7 +56,7 @@ You can filter out task definition families that do not contain any
 parameter.
 }
 \section{Request syntax}{
-\preformatted{ecs$list_task_definition_families(
+\preformatted{svc$list_task_definition_families(
   familyPrefix = "string",
   status = "ACTIVE"|"INACTIVE"|"ALL",
   nextToken = "string",
@@ -67,10 +67,10 @@ parameter.
 
 \examples{
 # This example lists all of your registered task definition families.
-\donttest{ecs$list_task_definition_families()}
+\donttest{svc$list_task_definition_families()}
 
 # This example lists the task definition revisions that start with "hpcc".
-\donttest{ecs$list_task_definition_families(
+\donttest{svc$list_task_definition_families(
   familyPrefix = "hpcc"
 )}
 

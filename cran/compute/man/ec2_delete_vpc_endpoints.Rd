@@ -21,7 +21,7 @@ associated with the endpoint. Deleting an interface endpoint deletes the
 endpoint network interfaces.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpc_endpoints(
+\preformatted{svc$delete_vpc_endpoints(
   DryRun = TRUE|FALSE,
   VpcEndpointIds = list(
     "string"

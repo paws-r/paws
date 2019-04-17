@@ -21,7 +21,7 @@ from a previous call.)}
 Retrieves the Maintenance Windows in an AWS account.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_windows(
+\preformatted{svc$describe_maintenance_windows(
   Filters = list(
     list(
       Key = "string",

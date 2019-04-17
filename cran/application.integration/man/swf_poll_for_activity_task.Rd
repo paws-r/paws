@@ -60,7 +60,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$poll_for_activity_task(
+\preformatted{svc$poll_for_activity_task(
   domain = "string",
   taskList = list(
     name = "string"

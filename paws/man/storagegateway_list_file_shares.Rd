@@ -25,7 +25,7 @@ of file shares that belong to the calling user account. This operation
 is only supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_file_shares(
+\preformatted{svc$list_file_shares(
   GatewayARN = "string",
   Limit = 123,
   Marker = "string"

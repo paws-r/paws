@@ -16,7 +16,7 @@ Retrieves information about a specified reusable delegation set,
 including the four name servers that are assigned to the delegation set.
 }
 \section{Request syntax}{
-\preformatted{route53$get_reusable_delegation_set(
+\preformatted{svc$get_reusable_delegation_set(
   Id = "string"
 )
 }

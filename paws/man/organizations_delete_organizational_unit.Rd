@@ -27,7 +27,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$delete_organizational_unit(
+\preformatted{svc$delete_organizational_unit(
   OrganizationalUnitId = "string"
 )
 }
@@ -38,7 +38,7 @@ account.
 # that you previously removed all accounts and other OUs from the OU:
 # 
 # 
-\donttest{organizations$delete_organizational_unit(
+\donttest{svc$delete_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 )}
 

@@ -94,12 +94,6 @@ which are numbers that you can use to specify the proportion of
 traffic to route to each one. This can be useful, for example, to do
 performance testing within a Region.
 }
-\section{Example}{
-\preformatted{globalaccelerator <- paws::globalaccelerator()
-globalaccelerator$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -123,3 +117,9 @@ globalaccelerator$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_accelerator(
+  Foo = 123
+)}
+
+}

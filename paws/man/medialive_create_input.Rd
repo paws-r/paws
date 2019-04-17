@@ -37,7 +37,7 @@ Only specify sources for PULL type Inputs. Leave Destinations empty.}
 Create an input
 }
 \section{Request syntax}{
-\preformatted{medialive$create_input(
+\preformatted{svc$create_input(
   Destinations = list(
     list(
       StreamName = "string"

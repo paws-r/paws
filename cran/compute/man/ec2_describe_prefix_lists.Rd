@@ -38,7 +38,7 @@ an AWS service through a gateway VPC endpoint. Currently, the services
 that support this action are Amazon S3 and Amazon DynamoDB.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_prefix_lists(
+\preformatted{svc$describe_prefix_lists(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(

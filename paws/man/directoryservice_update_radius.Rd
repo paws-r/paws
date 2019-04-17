@@ -19,7 +19,7 @@ Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector or Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$update_radius(
+\preformatted{svc$update_radius(
   DirectoryId = "string",
   RadiusSettings = list(
     RadiusServers = list(

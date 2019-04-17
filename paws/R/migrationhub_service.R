@@ -9,11 +9,10 @@ NULL
 #' migration status and integrate your resource-specific migration tool by
 #' providing a programmatic interface to Migration Hub.
 #'
-#' @section Example:
-#' ```
-#' migrationhub <- paws::migrationhub()
-#' migrationhub$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_created_artifact(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

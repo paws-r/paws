@@ -40,7 +40,7 @@ To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, in \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_snapshot_from_volume_recovery_point(
+\preformatted{svc$create_snapshot_from_volume_recovery_point(
   VolumeARN = "string",
   SnapshotDescription = "string"
 )
@@ -49,7 +49,7 @@ information, in \emph{Amazon Elastic Compute Cloud API Reference}.
 
 \examples{
 # Initiates a snapshot of a gateway from a volume recovery point.
-\donttest{storagegateway$create_snapshot_from_volume_recovery_point(
+\donttest{svc$create_snapshot_from_volume_recovery_point(
   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}

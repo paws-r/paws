@@ -15,7 +15,7 @@ Gets a description of a Server Message Block (SMB) file share settings
 from a file gateway. This operation is only supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_smb_settings(
+\preformatted{svc$describe_smb_settings(
   GatewayARN = "string"
 )
 }

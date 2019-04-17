@@ -24,7 +24,7 @@ Lists the principals associated with the specified policy.
 instead.
 }
 \section{Request syntax}{
-\preformatted{iot$list_policy_principals(
+\preformatted{svc$list_policy_principals(
   policyName = "string",
   marker = "string",
   pageSize = 123,

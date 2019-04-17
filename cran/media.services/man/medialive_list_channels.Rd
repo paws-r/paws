@@ -15,7 +15,7 @@ medialive_list_channels(MaxResults, NextToken)
 Produces list of channels that have been created
 }
 \section{Request syntax}{
-\preformatted{medialive$list_channels(
+\preformatted{svc$list_channels(
   MaxResults = 123,
   NextToken = "string"
 )

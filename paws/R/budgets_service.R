@@ -51,11 +51,10 @@ NULL
 #' API, see [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
-#' @section Example:
-#' ```
-#' budgets <- paws::budgets()
-#' budgets$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_budget(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

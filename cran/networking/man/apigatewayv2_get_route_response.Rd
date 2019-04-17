@@ -17,7 +17,7 @@ apigatewayv2_get_route_response(ApiId, RouteId, RouteResponseId)
 Gets a RouteResponse.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_route_response(
+\preformatted{svc$get_route_response(
   ApiId = "string",
   RouteId = "string",
   RouteResponseId = "string"

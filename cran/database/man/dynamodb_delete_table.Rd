@@ -33,7 +33,7 @@ the stream is automatically deleted after 24 hours.
 Use the \code{DescribeTable} action to check the status of the table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$delete_table(
+\preformatted{svc$delete_table(
   TableName = "string"
 )
 }
@@ -41,7 +41,7 @@ Use the \code{DescribeTable} action to check the status of the table.
 
 \examples{
 # This example deletes the Music table.
-\donttest{dynamodb$delete_table(
+\donttest{svc$delete_table(
   TableName = "Music"
 )}
 

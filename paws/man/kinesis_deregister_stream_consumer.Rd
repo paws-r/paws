@@ -33,7 +33,7 @@ The description of a consumer contains its name and ARN.
 This operation has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$deregister_stream_consumer(
+\preformatted{svc$deregister_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string",
   ConsumerARN = "string"

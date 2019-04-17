@@ -12,7 +12,7 @@ Retrieves the configured values for the user enrollment invitation email
 template.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_invitation_configuration()
+\preformatted{svc$get_invitation_configuration()
 }
 }
 

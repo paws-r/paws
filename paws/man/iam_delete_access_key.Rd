@@ -30,7 +30,7 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_access_key(
+\preformatted{svc$delete_access_key(
   UserName = "string",
   AccessKeyId = "string"
 )
@@ -40,7 +40,7 @@ if the AWS account has no associated users.
 \examples{
 # The following command deletes one access key (access key ID and secret
 # access key) assigned to the IAM user named Bob.
-\donttest{iam$delete_access_key(
+\donttest{svc$delete_access_key(
   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
   UserName = "Bob"
 )}

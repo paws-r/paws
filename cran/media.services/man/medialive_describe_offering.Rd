@@ -13,7 +13,7 @@ medialive_describe_offering(OfferingId)
 Get details for an offering.
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_offering(
+\preformatted{svc$describe_offering(
   OfferingId = "string"
 )
 }

@@ -36,7 +36,7 @@ This action is not applicable for Linux/Unix instances or Windows
 instances that are backed by Amazon EBS.
 }
 \section{Request syntax}{
-\preformatted{ec2$bundle_instance(
+\preformatted{svc$bundle_instance(
   InstanceId = "string",
   Storage = list(
     S3 = list(

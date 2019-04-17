@@ -32,7 +32,7 @@ ListReviewableHITs and ListHITs.
 }
 }
 \section{Request syntax}{
-\preformatted{mturk$delete_hit(
+\preformatted{svc$delete_hit(
   HITId = "string"
 )
 }

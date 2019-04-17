@@ -39,7 +39,7 @@ Registers the user in the specified user pool and creates a user name,
 password, and user attributes.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$sign_up(
+\preformatted{svc$sign_up(
   ClientId = "string",
   SecretHash = "string",
   Username = "string",

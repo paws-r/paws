@@ -26,7 +26,7 @@ configuration and exclude pending changes. For more information, see
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_analysis_schemes(
+\preformatted{svc$describe_analysis_schemes(
   DomainName = "string",
   AnalysisSchemeNames = list(
     "string"

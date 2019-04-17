@@ -22,12 +22,6 @@ To use the Lightsail API or the CLI, you will need to use AWS Identity
 and Access Management (IAM) to generate access keys. For details about
 how to set this up, see the \href{http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli}{Lightsail Dev Guide}.
 }
-\section{Example}{
-\preformatted{lightsail <- paws::lightsail()
-lightsail$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -135,3 +129,9 @@ lightsail$operation()
 }
 }
 
+\examples{
+\donttest{svc$allocate_static_ip(
+  Foo = 123
+)}
+
+}

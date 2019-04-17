@@ -18,7 +18,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iotdataplane$delete_thing_shadow(
+#' svc$delete_thing_shadow(
 #'   thingName = "string"
 #' )
 #' ```
@@ -57,7 +57,7 @@ iotdataplane_delete_thing_shadow <- function(thingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotdataplane$get_thing_shadow(
+#' svc$get_thing_shadow(
 #'   thingName = "string"
 #' )
 #' ```
@@ -98,7 +98,7 @@ iotdataplane_get_thing_shadow <- function(thingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotdataplane$publish(
+#' svc$publish(
 #'   topic = "string",
 #'   qos = 123,
 #'   payload = raw
@@ -140,7 +140,7 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotdataplane$update_thing_shadow(
+#' svc$update_thing_shadow(
 #'   thingName = "string",
 #'   payload = raw
 #' )

@@ -17,7 +17,7 @@ address.}
 Put dedicated ip warmup attributes
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_dedicated_ip_warmup_attributes(
+\preformatted{svc$put_dedicated_ip_warmup_attributes(
   Ip = "string",
   WarmupPercentage = 123
 )

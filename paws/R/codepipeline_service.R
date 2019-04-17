@@ -137,11 +137,10 @@ NULL
 #' -   PutThirdPartyJobSuccessResult, which provides details of a job
 #'     success.
 #'
-#' @section Example:
-#' ```
-#' codepipeline <- paws::codepipeline()
-#' codepipeline$operation()
-#' ```
+#' @examples
+#' \donttest{svc$acknowledge_job(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -57,7 +57,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$respond_activity_task_completed(
+\preformatted{svc$respond_activity_task_completed(
   taskToken = "string",
   result = "string"
 )

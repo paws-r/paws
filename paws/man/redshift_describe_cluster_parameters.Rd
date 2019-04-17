@@ -53,7 +53,7 @@ For more information about parameters and parameter groups, go to
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_parameters(
+\preformatted{svc$describe_cluster_parameters(
   ParameterGroupName = "string",
   Source = "string",
   MaxRecords = 123,

@@ -18,7 +18,7 @@ the issued public key.
 certificate, so it is important to keep it in a secure location.
 }
 \section{Request syntax}{
-\preformatted{iot$create_keys_and_certificate(
+\preformatted{svc$create_keys_and_certificate(
   setAsActive = TRUE|FALSE
 )
 }

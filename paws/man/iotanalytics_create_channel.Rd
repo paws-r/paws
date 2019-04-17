@@ -19,7 +19,7 @@ archives the raw, unprocessed messages before publishing the data to a
 pipeline.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$create_channel(
+\preformatted{svc$create_channel(
   channelName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,

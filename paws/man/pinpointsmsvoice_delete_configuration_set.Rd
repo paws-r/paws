@@ -13,7 +13,7 @@ pinpointsmsvoice_delete_configuration_set(ConfigurationSetName)
 Deletes an existing configuration set.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$delete_configuration_set(
+\preformatted{svc$delete_configuration_set(
   ConfigurationSetName = "string"
 )
 }

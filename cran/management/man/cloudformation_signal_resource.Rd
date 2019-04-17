@@ -34,7 +34,7 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$signal_resource(
+\preformatted{svc$signal_resource(
   StackName = "string",
   LogicalResourceId = "string",
   UniqueId = "string",

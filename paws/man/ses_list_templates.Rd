@@ -24,7 +24,7 @@ current AWS Region.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_templates(
+\preformatted{svc$list_templates(
   NextToken = "string",
   MaxItems = 123
 )

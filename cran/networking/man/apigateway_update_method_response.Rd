@@ -23,7 +23,7 @@ in the order specified in this list.}
 Updates an existing MethodResponse resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_method_response(
+\preformatted{svc$update_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

@@ -21,7 +21,7 @@ Example: \code{my-cluster-replica1}}
 Promotes a Read Replica DB cluster to a standalone DB cluster.
 }
 \section{Request syntax}{
-\preformatted{neptune$promote_read_replica_db_cluster(
+\preformatted{svc$promote_read_replica_db_cluster(
   DBClusterIdentifier = "string"
 )
 }

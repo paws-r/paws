@@ -19,7 +19,7 @@ value.}
 Returns a detailed list of resources.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_resource_inventory(
+\preformatted{svc$list_resource_inventory(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(

@@ -40,7 +40,7 @@ you might be able to recover it. For more information, see
 AllocateAddress.
 }
 \section{Request syntax}{
-\preformatted{ec2$release_address(
+\preformatted{svc$release_address(
   AllocationId = "string",
   PublicIp = "string",
   DryRun = TRUE|FALSE
@@ -51,13 +51,13 @@ AllocateAddress.
 \examples{
 # This example releases an Elastic IP address for use with instances in a
 # VPC.
-\donttest{ec2$release_address(
+\donttest{svc$release_address(
   AllocationId = "eipalloc-64d5890a"
 )}
 
 # This example releases an Elastic IP address for use with instances in
 # EC2-Classic.
-\donttest{ec2$release_address(
+\donttest{svc$release_address(
   PublicIp = "198.51.100.0"
 )}
 

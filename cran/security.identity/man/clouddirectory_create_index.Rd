@@ -25,7 +25,7 @@ Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/la
 for more information.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$create_index(
+\preformatted{svc$create_index(
   DirectoryArn = "string",
   OrderedIndexedAttributeList = list(
     list(

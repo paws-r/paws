@@ -15,7 +15,7 @@ apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
 Deletes an API mapping.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_api_mapping(
+\preformatted{svc$delete_api_mapping(
   ApiMappingId = "string",
   DomainName = "string"
 )

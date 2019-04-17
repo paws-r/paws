@@ -21,7 +21,7 @@ Retrieves the \code{Table} definition in a Data Catalog for a specified
 table.
 }
 \section{Request syntax}{
-\preformatted{glue$get_table(
+\preformatted{svc$get_table(
   CatalogId = "string",
   DatabaseName = "string",
   Name = "string"

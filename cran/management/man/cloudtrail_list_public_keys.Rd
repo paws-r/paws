@@ -31,7 +31,7 @@ Therefore, when you validate a digest file from a particular region, you
 must look in the same region for its corresponding public key.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$list_public_keys(
+\preformatted{svc$list_public_keys(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

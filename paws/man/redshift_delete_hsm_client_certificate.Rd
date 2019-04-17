@@ -13,7 +13,7 @@ redshift_delete_hsm_client_certificate(HsmClientCertificateIdentifier)
 Deletes the specified HSM client certificate.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_hsm_client_certificate(
+\preformatted{svc$delete_hsm_client_certificate(
   HsmClientCertificateIdentifier = "string"
 )
 }

@@ -67,7 +67,7 @@ each time the Elastic IP address is remapped to the same instance. For
 more information, see the \emph{Elastic IP Addresses} section of \href{http://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_address(
+\preformatted{svc$associate_address(
   AllocationId = "string",
   InstanceId = "string",
   PublicIp = "string",
@@ -82,21 +82,21 @@ more information, see the \emph{Elastic IP Addresses} section of \href{http://aw
 \examples{
 # This example associates the specified Elastic IP address with the
 # specified instance in a VPC.
-\donttest{ec2$associate_address(
+\donttest{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   InstanceId = "i-0b263919b6498b123"
 )}
 
 # This example associates the specified Elastic IP address with the
 # specified network interface.
-\donttest{ec2$associate_address(
+\donttest{svc$associate_address(
   AllocationId = "eipalloc-64d5890a",
   NetworkInterfaceId = "eni-1a2b3c4d"
 )}
 
 # This example associates an Elastic IP address with an instance in
 # EC2-Classic.
-\donttest{ec2$associate_address(
+\donttest{svc$associate_address(
   InstanceId = "i-07ffe74c7330ebf53",
   PublicIp = "198.51.100.0"
 )}

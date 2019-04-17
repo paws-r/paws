@@ -27,7 +27,7 @@ unprocessed resources, the operation returns an empty
 }
 }
 \section{Request syntax}{
-\preformatted{configservice$batch_get_aggregate_resource_config(
+\preformatted{svc$batch_get_aggregate_resource_config(
   ConfigurationAggregatorName = "string",
   ResourceIdentifiers = list(
     list(

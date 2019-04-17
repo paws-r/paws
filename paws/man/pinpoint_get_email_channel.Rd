@@ -13,7 +13,7 @@ pinpoint_get_email_channel(ApplicationId)
 Get an email channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_email_channel(
+\preformatted{svc$get_email_channel(
   ApplicationId = "string"
 )
 }

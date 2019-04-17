@@ -15,7 +15,7 @@ Detaches a static IP from the Amazon Lightsail instance to which it is
 attached.
 }
 \section{Request syntax}{
-\preformatted{lightsail$detach_static_ip(
+\preformatted{svc$detach_static_ip(
   staticIpName = "string"
 )
 }

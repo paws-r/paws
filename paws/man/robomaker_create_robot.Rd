@@ -20,7 +20,7 @@ robot.}
 Creates a robot.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_robot(
+\preformatted{svc$create_robot(
   name = "string",
   architecture = "X86_64"|"ARM64"|"ARMHF",
   greengrassGroupId = "string",

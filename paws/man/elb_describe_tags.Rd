@@ -13,7 +13,7 @@ elb_describe_tags(LoadBalancerNames)
 Describes the tags associated with the specified load balancers.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_tags(
+\preformatted{svc$describe_tags(
   LoadBalancerNames = list(
     "string"
   )
@@ -23,7 +23,7 @@ Describes the tags associated with the specified load balancers.
 
 \examples{
 # This example describes the tags for the specified load balancer.
-\donttest{elb$describe_tags(
+\donttest{svc$describe_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   )

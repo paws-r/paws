@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Cancels an in-process import virtual machine or import snapshot task.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_import_task(
+\preformatted{svc$cancel_import_task(
   CancelReason = "string",
   DryRun = TRUE|FALSE,
   ImportTaskId = "string"

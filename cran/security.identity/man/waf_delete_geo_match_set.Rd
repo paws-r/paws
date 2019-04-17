@@ -32,7 +32,7 @@ information, see UpdateGeoMatchSet.
 }
 }
 \section{Request syntax}{
-\preformatted{waf$delete_geo_match_set(
+\preformatted{svc$delete_geo_match_set(
   GeoMatchSetId = "string",
   ChangeToken = "string"
 )

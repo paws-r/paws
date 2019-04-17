@@ -42,7 +42,7 @@ For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.co
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{athena$start_query_execution(
+\preformatted{svc$start_query_execution(
   QueryString = "string",
   ClientRequestToken = "string",
   QueryExecutionContext = list(

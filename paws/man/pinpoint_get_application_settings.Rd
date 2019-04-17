@@ -13,7 +13,7 @@ pinpoint_get_application_settings(ApplicationId)
 Used to request the settings for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_application_settings(
+\preformatted{svc$get_application_settings(
   ApplicationId = "string"
 )
 }

@@ -24,7 +24,7 @@ hosted connection's connectivity to AWS as it is being migrated.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$associate_hosted_connection(
+\preformatted{svc$associate_hosted_connection(
   connectionId = "string",
   parentConnectionId = "string"
 )

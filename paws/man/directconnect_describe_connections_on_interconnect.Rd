@@ -19,7 +19,7 @@ interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_connections_on_interconnect(
+\preformatted{svc$describe_connections_on_interconnect(
   interconnectId = "string"
 )
 }

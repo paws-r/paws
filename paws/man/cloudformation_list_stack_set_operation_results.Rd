@@ -29,7 +29,7 @@ parameter to get the next set of results.}
 Returns summary information about the results of a stack set operation.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_stack_set_operation_results(
+\preformatted{svc$list_stack_set_operation_results(
   StackSetName = "string",
   OperationId = "string",
   NextToken = "string",

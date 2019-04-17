@@ -16,7 +16,7 @@ Stops recording configurations of the AWS resources you have selected to
 record in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{configservice$stop_configuration_recorder(
+\preformatted{svc$stop_configuration_recorder(
   ConfigurationRecorderName = "string"
 )
 }

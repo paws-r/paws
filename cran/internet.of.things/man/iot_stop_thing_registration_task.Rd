@@ -13,7 +13,7 @@ iot_stop_thing_registration_task(taskId)
 Cancels a bulk thing provisioning task.
 }
 \section{Request syntax}{
-\preformatted{iot$stop_thing_registration_task(
+\preformatted{svc$stop_thing_registration_task(
   taskId = "string"
 )
 }

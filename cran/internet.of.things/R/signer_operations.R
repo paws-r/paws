@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' signer$cancel_signing_profile(
+#' svc$cancel_signing_profile(
 #'   profileName = "string"
 #' )
 #' ```
@@ -54,7 +54,7 @@ signer_cancel_signing_profile <- function(profileName) {
 #'
 #' @section Request syntax:
 #' ```
-#' signer$describe_signing_job(
+#' svc$describe_signing_job(
 #'   jobId = "string"
 #' )
 #' ```
@@ -89,7 +89,7 @@ signer_describe_signing_job <- function(jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' signer$get_signing_platform(
+#' svc$get_signing_platform(
 #'   platformId = "string"
 #' )
 #' ```
@@ -124,7 +124,7 @@ signer_get_signing_platform <- function(platformId) {
 #'
 #' @section Request syntax:
 #' ```
-#' signer$get_signing_profile(
+#' svc$get_signing_profile(
 #'   profileName = "string"
 #' )
 #' ```
@@ -179,7 +179,7 @@ signer_get_signing_profile <- function(profileName) {
 #'
 #' @section Request syntax:
 #' ```
-#' signer$list_signing_jobs(
+#' svc$list_signing_jobs(
 #'   status = "InProgress"|"Failed"|"Succeeded",
 #'   platformId = "string",
 #'   requestedBy = "string",
@@ -233,7 +233,7 @@ signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requested
 #'
 #' @section Request syntax:
 #' ```
-#' signer$list_signing_platforms(
+#' svc$list_signing_platforms(
 #'   category = "string",
 #'   partner = "string",
 #'   target = "string",
@@ -284,7 +284,7 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #'
 #' @section Request syntax:
 #' ```
-#' signer$list_signing_profiles(
+#' svc$list_signing_profiles(
 #'   includeCanceled = TRUE|FALSE,
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -333,7 +333,7 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' signer$put_signing_profile(
+#' svc$put_signing_profile(
 #'   profileName = "string",
 #'   signingMaterial = list(
 #'     certificateArn = "string"
@@ -412,7 +412,7 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 #'
 #' @section Request syntax:
 #' ```
-#' signer$start_signing_job(
+#' svc$start_signing_job(
 #'   source = list(
 #'     s3 = list(
 #'       bucketName = "string",

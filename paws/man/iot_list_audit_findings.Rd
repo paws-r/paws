@@ -34,7 +34,7 @@ performed during a specified time period. (Findings are retained for 180
 days.)
 }
 \section{Request syntax}{
-\preformatted{iot$list_audit_findings(
+\preformatted{svc$list_audit_findings(
   taskId = "string",
   checkName = "string",
   resourceIdentifier = list(

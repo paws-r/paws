@@ -33,7 +33,7 @@ The response results are sorted by the frequency percentage, starting
 with the highest percentage.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$get_log_group_fields(
+\preformatted{svc$get_log_group_fields(
   logGroupName = "string",
   time = 123
 )

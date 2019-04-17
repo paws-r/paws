@@ -15,12 +15,6 @@ Amazon DLM supports Amazon EBS volumes and snapshots. For information
 about using Amazon DLM with Amazon EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Automating the Amazon EBS Snapshot Lifecycle}
 in the \emph{Amazon EC2 User Guide}.
 }
-\section{Example}{
-\preformatted{dlm <- paws::dlm()
-dlm$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -32,3 +26,9 @@ dlm$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_lifecycle_policy(
+  Foo = 123
+)}
+
+}

@@ -43,7 +43,7 @@ with a new engine version.
 Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_snapshot(
+\preformatted{svc$modify_db_snapshot(
   DBSnapshotIdentifier = "string",
   EngineVersion = "string",
   OptionGroupName = "string"

@@ -26,7 +26,7 @@ Creates a configuration record in Device Farm for your Amazon Virtual
 Private Cloud (VPC) endpoint.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$create_vpce_configuration(
+\preformatted{svc$create_vpce_configuration(
   vpceConfigurationName = "string",
   vpceServiceName = "string",
   serviceDnsName = "string",

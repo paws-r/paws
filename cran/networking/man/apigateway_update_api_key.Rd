@@ -16,7 +16,7 @@ in the order specified in this list.}
 Changes information about an ApiKey resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_api_key(
+\preformatted{svc$update_api_key(
   apiKey = "string",
   patchOperations = list(
     list(

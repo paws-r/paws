@@ -44,7 +44,7 @@ For more information about reserved node offerings, go to \href{http://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_reserved_node_offerings(
+\preformatted{svc$describe_reserved_node_offerings(
   ReservedNodeOfferingId = "string",
   MaxRecords = 123,
   Marker = "string"

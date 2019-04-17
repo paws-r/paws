@@ -17,7 +17,7 @@ Deletes an inventory configuration (identified by the inventory ID) from
 the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_inventory_configuration(
+\preformatted{svc$delete_bucket_inventory_configuration(
   Bucket = "string",
   Id = "string"
 )

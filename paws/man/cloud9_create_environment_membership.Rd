@@ -25,7 +25,7 @@ this environment member. Available values include:
 Adds an environment member to an AWS Cloud9 development environment.
 }
 \section{Request syntax}{
-\preformatted{cloud9$create_environment_membership(
+\preformatted{svc$create_environment_membership(
   environmentId = "string",
   userArn = "string",
   permissions = "read-write"|"read-only"
@@ -35,7 +35,7 @@ Adds an environment member to an AWS Cloud9 development environment.
 
 \examples{
 # 
-\donttest{cloud9$create_environment_membership(
+\donttest{svc$create_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   permissions = "read-write",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"

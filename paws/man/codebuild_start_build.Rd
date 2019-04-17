@@ -136,7 +136,7 @@ you must use CODEBUILD credentials.}
 Starts running a build.
 }
 \section{Request syntax}{
-\preformatted{codebuild$start_build(
+\preformatted{svc$start_build(
   projectName = "string",
   secondarySourcesOverride = list(
     list(

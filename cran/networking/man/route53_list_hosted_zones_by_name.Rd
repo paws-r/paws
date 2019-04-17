@@ -90,7 +90,7 @@ respectively.
 }
 }
 \section{Request syntax}{
-\preformatted{route53$list_hosted_zones_by_name(
+\preformatted{svc$list_hosted_zones_by_name(
   DNSName = "string",
   HostedZoneId = "string",
   MaxItems = "string"

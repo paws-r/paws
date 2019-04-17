@@ -21,7 +21,7 @@ request parameters, they aren't changed. When a resource is deleted,
 the tags associated with that resource are also deleted.
 }
 \section{Request syntax}{
-\preformatted{appmesh$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(

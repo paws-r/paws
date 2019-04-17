@@ -28,7 +28,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Returns information about the schema for the specified endpoint.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_schemas(
+\preformatted{svc$describe_schemas(
   EndpointArn = "string",
   MaxRecords = 123,
   Marker = "string"
@@ -38,7 +38,7 @@ Returns information about the schema for the specified endpoint.
 
 \examples{
 # Returns information about the schema for the specified endpoint.
-\donttest{databasemigrationservice$describe_schemas(
+\donttest{svc$describe_schemas(
   EndpointArn = "",
   Marker = "",
   MaxRecords = 123L

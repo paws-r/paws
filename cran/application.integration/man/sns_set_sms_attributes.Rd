@@ -90,7 +90,7 @@ For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/sms_pub
 in the \emph{Amazon SNS Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sns$set_sms_attributes(
+\preformatted{svc$set_sms_attributes(
   attributes = list(
     "string"
   )

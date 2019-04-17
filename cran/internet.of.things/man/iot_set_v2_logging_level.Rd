@@ -15,7 +15,7 @@ iot_set_v2_logging_level(logTarget, logLevel)
 Sets the logging level.
 }
 \section{Request syntax}{
-\preformatted{iot$set_v2_logging_level(
+\preformatted{svc$set_v2_logging_level(
   logTarget = list(
     targetType = "DEFAULT"|"THING_GROUP",
     targetName = "string"

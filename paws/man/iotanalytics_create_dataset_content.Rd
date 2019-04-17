@@ -15,7 +15,7 @@ Creates the content of a data set by applying a "queryAction" (a SQL
 query) or a "containerAction" (executing a containerized application).
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$create_dataset_content(
+\preformatted{svc$create_dataset_content(
   datasetName = "string"
 )
 }

@@ -19,7 +19,7 @@ stack names are provided. Otherwise, all stacks in the account are
 described.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_stacks(
+\preformatted{svc$describe_stacks(
   Names = list(
     "string"
   ),

@@ -14,7 +14,7 @@ This operation returns the AuthCode for the domain. To transfer a domain
 to another registrar, you provide this value to the new registrar.
 }
 \section{Request syntax}{
-\preformatted{route53domains$retrieve_domain_auth_code(
+\preformatted{svc$retrieve_domain_auth_code(
   DomainName = "string"
 )
 }

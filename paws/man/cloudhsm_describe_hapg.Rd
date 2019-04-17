@@ -21,7 +21,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Retrieves information about a high-availability partition group.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$describe_hapg(
+\preformatted{svc$describe_hapg(
   HapgArn = "string"
 )
 }

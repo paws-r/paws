@@ -29,7 +29,7 @@ specified, the query version defaults to this value.}
 Updates a dynamic thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$update_dynamic_thing_group(
+\preformatted{svc$update_dynamic_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",

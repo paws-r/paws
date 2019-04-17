@@ -42,7 +42,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_groups(
+\preformatted{svc$list_groups(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123
@@ -52,7 +52,7 @@ parameters.
 
 \examples{
 # The following command lists the IAM groups in the current account:
-\donttest{iam$list_groups()}
+\donttest{svc$list_groups()}
 
 }
 \keyword{internal}

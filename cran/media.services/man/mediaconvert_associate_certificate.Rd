@@ -14,7 +14,7 @@ mediaconvert_associate_certificate(Arn)
 Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$associate_certificate(
+\preformatted{svc$associate_certificate(
   Arn = "string"
 )
 }

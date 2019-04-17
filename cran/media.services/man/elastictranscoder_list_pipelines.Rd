@@ -21,7 +21,7 @@ The ListPipelines operation gets a list of the pipelines associated with
 the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$list_pipelines(
+\preformatted{svc$list_pipelines(
   Ascending = "string",
   PageToken = "string"
 )

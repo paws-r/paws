@@ -236,7 +236,7 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora, use RestoreDBClusterToPointInTime.
 }
 \section{Request syntax}{
-\preformatted{rds$restore_db_instance_to_point_in_time(
+\preformatted{svc$restore_db_instance_to_point_in_time(
   SourceDBInstanceIdentifier = "string",
   TargetDBInstanceIdentifier = "string",
   RestoreTime = as.POSIXct(

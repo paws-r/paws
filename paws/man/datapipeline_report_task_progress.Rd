@@ -30,7 +30,7 @@ reassigns the task in a subsequent response to PollForTask. Task runners
 should call \code{ReportTaskProgress} every 60 seconds.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$report_task_progress(
+\preformatted{svc$report_task_progress(
   taskId = "string",
   fields = list(
     list(

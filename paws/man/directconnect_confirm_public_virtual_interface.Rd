@@ -19,7 +19,7 @@ After the virtual interface owner makes this call, the specified virtual
 interface is created and made available to handle traffic.
 }
 \section{Request syntax}{
-\preformatted{directconnect$confirm_public_virtual_interface(
+\preformatted{svc$confirm_public_virtual_interface(
   virtualInterfaceId = "string"
 )
 }

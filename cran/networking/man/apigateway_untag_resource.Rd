@@ -16,7 +16,7 @@ must be URL-encoded. At present, Stage is the only taggable resource.}
 Removes a tag from a given resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

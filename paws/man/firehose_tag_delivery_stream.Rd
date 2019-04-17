@@ -27,7 +27,7 @@ Each delivery stream can have up to 50 tags.
 This operation has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{firehose$tag_delivery_stream(
+\preformatted{svc$tag_delivery_stream(
   DeliveryStreamName = "string",
   Tags = list(
     list(

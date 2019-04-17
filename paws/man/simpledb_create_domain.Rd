@@ -25,7 +25,7 @@ If the client requires additional domains, go to
 \url{http://aws.amazon.com/contact-us/simpledb-limit-request/}.
 }
 \section{Request syntax}{
-\preformatted{simpledb$create_domain(
+\preformatted{svc$create_domain(
   DomainName = "string"
 )
 }

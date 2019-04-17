@@ -44,7 +44,7 @@ In the AWS CodeBuild console, clear the Webhook box. For more
 information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console}{Change a Build Project's Settings}.
 }
 \section{Request syntax}{
-\preformatted{codebuild$create_webhook(
+\preformatted{svc$create_webhook(
   projectName = "string",
   branchFilter = "string",
   filterGroups = list(

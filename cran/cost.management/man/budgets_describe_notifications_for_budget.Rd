@@ -23,7 +23,7 @@ next set of results that you want to retrieve.}
 Lists the notifications that are associated with a budget.
 }
 \section{Request syntax}{
-\preformatted{budgets$describe_notifications_for_budget(
+\preformatted{svc$describe_notifications_for_budget(
   AccountId = "string",
   BudgetName = "string",
   MaxResults = 123,

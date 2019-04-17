@@ -16,7 +16,7 @@ use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 Starts the specified image builder.
 }
 \section{Request syntax}{
-\preformatted{appstream$start_image_builder(
+\preformatted{svc$start_image_builder(
   Name = "string",
   AppstreamAgentVersion = "string"
 )

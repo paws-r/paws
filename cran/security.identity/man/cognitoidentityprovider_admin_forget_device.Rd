@@ -21,7 +21,7 @@ Forgets the device, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_forget_device(
+\preformatted{svc$admin_forget_device(
   UserPoolId = "string",
   Username = "string",
   DeviceKey = "string"

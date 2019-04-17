@@ -45,7 +45,7 @@ will spend over the forecast time period that you select, based on your
 past costs.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_cost_forecast(
+\preformatted{svc$get_cost_forecast(
   TimePeriod = list(
     Start = "string",
     End = "string"

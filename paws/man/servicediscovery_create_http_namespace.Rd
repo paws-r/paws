@@ -28,7 +28,7 @@ using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/lates
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$create_http_namespace(
+\preformatted{svc$create_http_namespace(
   Name = "string",
   CreatorRequestId = "string",
   Description = "string"

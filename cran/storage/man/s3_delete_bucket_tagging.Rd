@@ -13,7 +13,7 @@ s3_delete_bucket_tagging(Bucket)
 Deletes the tags from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_tagging(
+\preformatted{svc$delete_bucket_tagging(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the tags from the bucket.
 
 \examples{
 # The following example deletes bucket tags.
-\donttest{s3$delete_bucket_tagging(
+\donttest{svc$delete_bucket_tagging(
   Bucket = "examplebucket"
 )}
 

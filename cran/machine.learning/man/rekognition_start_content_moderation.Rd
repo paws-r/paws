@@ -54,7 +54,7 @@ For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_content_moderation(
+\preformatted{svc$start_content_moderation(
   Video = list(
     S3Object = list(
       Bucket = "string",

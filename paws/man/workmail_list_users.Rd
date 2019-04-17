@@ -18,7 +18,7 @@ does not contain any tokens.}
 Returns summaries of the organization's users.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_users(
+\preformatted{svc$list_users(
   OrganizationId = "string",
   NextToken = "string",
   MaxResults = 123

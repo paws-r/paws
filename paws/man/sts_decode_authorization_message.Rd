@@ -43,7 +43,7 @@ in the \emph{IAM User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{sts$decode_authorization_message(
+\preformatted{svc$decode_authorization_message(
   EncodedMessage = "string"
 )
 }
@@ -51,7 +51,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # 
-\donttest{sts$decode_authorization_message(
+\donttest{svc$decode_authorization_message(
   EncodedMessage = "<encoded-message>"
 )}
 

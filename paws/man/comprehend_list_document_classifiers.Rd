@@ -20,7 +20,7 @@ one filter at a time.}
 Gets a list of the document classifiers that you have created.
 }
 \section{Request syntax}{
-\preformatted{comprehend$list_document_classifiers(
+\preformatted{svc$list_document_classifiers(
   Filter = list(
     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
     SubmitTimeBefore = as.POSIXct(

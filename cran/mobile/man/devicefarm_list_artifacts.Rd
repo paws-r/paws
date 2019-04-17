@@ -26,7 +26,7 @@ list.}
 Gets information about artifacts.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_artifacts(
+\preformatted{svc$list_artifacts(
   arn = "string",
   type = "SCREENSHOT"|"FILE"|"LOG",
   nextToken = "string"
@@ -36,7 +36,7 @@ Gets information about artifacts.
 
 \examples{
 # The following example lists screenshot artifacts for a specific run.
-\donttest{devicefarm$list_artifacts(
+\donttest{svc$list_artifacts(
   type = "SCREENSHOT",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 )}

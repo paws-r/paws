@@ -13,7 +13,7 @@ fms_get_policy(PolicyId)
 Returns information about the specified AWS Firewall Manager policy.
 }
 \section{Request syntax}{
-\preformatted{fms$get_policy(
+\preformatted{svc$get_policy(
   PolicyId = "string"
 )
 }

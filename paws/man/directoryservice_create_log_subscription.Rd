@@ -21,7 +21,7 @@ controller security logs to the specified CloudWatch log group in your
 AWS account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_log_subscription(
+\preformatted{svc$create_log_subscription(
   DirectoryId = "string",
   LogGroupName = "string"
 )

@@ -21,11 +21,10 @@ NULL
 #' see the [AWS Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 #'
-#' @section Example:
-#' ```
-#' autoscalingplans <- paws::autoscalingplans()
-#' autoscalingplans$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_scaling_plan(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -33,7 +33,7 @@ cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_cluster_endpoint(
+\preformatted{svc$create_db_cluster_endpoint(
   DBClusterIdentifier = "string",
   DBClusterEndpointIdentifier = "string",
   EndpointType = "string",

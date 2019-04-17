@@ -46,7 +46,7 @@ value.}
 Describes one or more of your internet gateways.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_internet_gateways(
+\preformatted{svc$describe_internet_gateways(
   Filters = list(
     list(
       Name = "string",
@@ -67,7 +67,7 @@ Describes one or more of your internet gateways.
 
 \examples{
 # This example describes the Internet gateway for the specified VPC.
-\donttest{ec2$describe_internet_gateways(
+\donttest{svc$describe_internet_gateways(
   Filters = list(
     list(
       Name = "attachment.vpc-id",

@@ -21,7 +21,7 @@ element of the collection.}
 Gets the IntegrationResponses for an Integration.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_integration_responses(
+\preformatted{svc$get_integration_responses(
   ApiId = "string",
   IntegrationId = "string",
   MaxResults = "string",

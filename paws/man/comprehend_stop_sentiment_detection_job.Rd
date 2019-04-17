@@ -26,7 +26,7 @@ When a job is stopped, any documents already processed are written to
 the output location.
 }
 \section{Request syntax}{
-\preformatted{comprehend$stop_sentiment_detection_job(
+\preformatted{svc$stop_sentiment_detection_job(
   JobId = "string"
 )
 }

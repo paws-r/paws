@@ -13,7 +13,7 @@ sagemaker_describe_model(ModelName)
 Describes a model that you created using the \code{CreateModel} API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_model(
+\preformatted{svc$describe_model(
   ModelName = "string"
 )
 }

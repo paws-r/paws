@@ -14,7 +14,7 @@ stop.}
 Ends a specified remote access session.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$stop_remote_access_session(
+\preformatted{svc$stop_remote_access_session(
   arn = "string"
 )
 }

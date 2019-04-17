@@ -13,7 +13,7 @@ iot_describe_authorizer(authorizerName)
 Describes an authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_authorizer(
+\preformatted{svc$describe_authorizer(
   authorizerName = "string"
 )
 }

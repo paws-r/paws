@@ -15,7 +15,7 @@ Removes a specified crawler from the Data Catalog, unless the crawler
 state is \code{RUNNING}.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_crawler(
+\preformatted{svc$delete_crawler(
   Name = "string"
 )
 }

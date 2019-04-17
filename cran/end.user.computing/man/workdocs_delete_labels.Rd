@@ -22,7 +22,7 @@ credentials.}
 Deletes the specified list of labels from a resource.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_labels(
+\preformatted{svc$delete_labels(
   ResourceId = "string",
   AuthenticationToken = "string",
   Labels = list(

@@ -18,7 +18,7 @@ Chime account. Returns the User object with the updated personal meeting
 PIN.
 }
 \section{Request syntax}{
-\preformatted{chime$reset_personal_pin(
+\preformatted{svc$reset_personal_pin(
   AccountId = "string",
   UserId = "string"
 )

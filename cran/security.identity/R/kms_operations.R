@@ -39,14 +39,14 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kms$cancel_key_deletion(
+#' svc$cancel_key_deletion(
 #'   KeyId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example cancels deletion of the specified CMK.
-#' \donttest{kms$cancel_key_deletion(
+#' \donttest{svc$cancel_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -124,7 +124,7 @@ kms_cancel_key_deletion <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$connect_custom_key_store(
+#' svc$connect_custom_key_store(
 #'   CustomKeyStoreId = "string"
 #' )
 #' ```
@@ -203,7 +203,7 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$create_alias(
+#' svc$create_alias(
 #'   AliasName = "string",
 #'   TargetKeyId = "string"
 #' )
@@ -212,7 +212,7 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' @examples
 #' # The following example creates an alias for the specified customer master
 #' # key (CMK).
-#' \donttest{kms$create_alias(
+#' \donttest{svc$create_alias(
 #'   AliasName = "alias/ExampleAlias",
 #'   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
@@ -344,7 +344,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$create_custom_key_store(
+#' svc$create_custom_key_store(
 #'   CustomKeyStoreName = "string",
 #'   CloudHsmClusterId = "string",
 #'   TrustAnchorCertificate = "string",
@@ -456,7 +456,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #'
 #' @section Request syntax:
 #' ```
-#' kms$create_grant(
+#' svc$create_grant(
 #'   KeyId = "string",
 #'   GranteePrincipal = "string",
 #'   RetiringPrincipal = "string",
@@ -481,7 +481,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 #' @examples
 #' # The following example creates a grant that allows the specified IAM role
 #' # to encrypt data with the specified customer master key (CMK).
-#' \donttest{kms$create_grant(
+#' \donttest{svc$create_grant(
 #'   GranteePrincipal = "arn:aws:iam::111122223333:role/ExampleRole",
 #'   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   Operations = list(
@@ -642,7 +642,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' kms$create_key(
+#' svc$create_key(
 #'   Policy = "string",
 #'   Description = "string",
 #'   KeyUsage = "ENCRYPT_DECRYPT",
@@ -660,7 +660,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'
 #' @examples
 #' # The following example creates a CMK.
-#' \donttest{kms$create_key(
+#' \donttest{svc$create_key(
 #'   Tags = list(
 #'     list(
 #'       TagKey = "CreatedBy",
@@ -729,7 +729,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, O
 #'
 #' @section Request syntax:
 #' ```
-#' kms$decrypt(
+#' svc$decrypt(
 #'   CiphertextBlob = raw,
 #'   EncryptionContext = list(
 #'     "string"
@@ -743,7 +743,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, O
 #' @examples
 #' # The following example decrypts data that was encrypted with a customer
 #' # master key (CMK) in AWS KMS.
-#' \donttest{kms$decrypt(
+#' \donttest{svc$decrypt(
 #'   CiphertextBlob = "<binary data>"
 #' )}
 #'
@@ -790,14 +790,14 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #'
 #' @section Request syntax:
 #' ```
-#' kms$delete_alias(
+#' svc$delete_alias(
 #'   AliasName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes the specified alias.
-#' \donttest{kms$delete_alias(
+#' \donttest{svc$delete_alias(
 #'   AliasName = "alias/ExampleAlias"
 #' )}
 #'
@@ -867,7 +867,7 @@ kms_delete_alias <- function(AliasName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$delete_custom_key_store(
+#' svc$delete_custom_key_store(
 #'   CustomKeyStoreId = "string"
 #' )
 #' ```
@@ -931,7 +931,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$delete_imported_key_material(
+#' svc$delete_imported_key_material(
 #'   KeyId = "string"
 #' )
 #' ```
@@ -939,7 +939,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' @examples
 #' # The following example deletes the imported key material from the
 #' # specified customer master key (CMK).
-#' \donttest{kms$delete_imported_key_material(
+#' \donttest{svc$delete_imported_key_material(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1023,7 +1023,7 @@ kms_delete_imported_key_material <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$describe_custom_key_stores(
+#' svc$describe_custom_key_stores(
 #'   CustomKeyStoreId = "string",
 #'   CustomKeyStoreName = "string",
 #'   Limit = 123,
@@ -1100,7 +1100,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #'
 #' @section Request syntax:
 #' ```
-#' kms$describe_key(
+#' svc$describe_key(
 #'   KeyId = "string",
 #'   GrantTokens = list(
 #'     "string"
@@ -1111,7 +1111,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' @examples
 #' # The following example returns information (metadata) about the specified
 #' # CMK.
-#' \donttest{kms$describe_key(
+#' \donttest{svc$describe_key(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1169,14 +1169,14 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$disable_key(
+#' svc$disable_key(
 #'   KeyId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example disables the specified CMK.
-#' \donttest{kms$disable_key(
+#' \donttest{svc$disable_key(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1230,7 +1230,7 @@ kms_disable_key <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$disable_key_rotation(
+#' svc$disable_key_rotation(
 #'   KeyId = "string"
 #' )
 #' ```
@@ -1238,7 +1238,7 @@ kms_disable_key <- function(KeyId) {
 #' @examples
 #' # The following example disables automatic annual rotation of the key
 #' # material for the specified CMK.
-#' \donttest{kms$disable_key_rotation(
+#' \donttest{svc$disable_key_rotation(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1296,7 +1296,7 @@ kms_disable_key_rotation <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$disconnect_custom_key_store(
+#' svc$disconnect_custom_key_store(
 #'   CustomKeyStoreId = "string"
 #' )
 #' ```
@@ -1349,14 +1349,14 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$enable_key(
+#' svc$enable_key(
 #'   KeyId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example enables the specified CMK.
-#' \donttest{kms$enable_key(
+#' \donttest{svc$enable_key(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1414,7 +1414,7 @@ kms_enable_key <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$enable_key_rotation(
+#' svc$enable_key_rotation(
 #'   KeyId = "string"
 #' )
 #' ```
@@ -1422,7 +1422,7 @@ kms_enable_key <- function(KeyId) {
 #' @examples
 #' # The following example enables automatic annual rotation of the key
 #' # material for the specified CMK.
-#' \donttest{kms$enable_key_rotation(
+#' \donttest{svc$enable_key_rotation(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -1516,7 +1516,7 @@ kms_enable_key_rotation <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$encrypt(
+#' svc$encrypt(
 #'   KeyId = "string",
 #'   Plaintext = raw,
 #'   EncryptionContext = list(
@@ -1531,7 +1531,7 @@ kms_enable_key_rotation <- function(KeyId) {
 #' @examples
 #' # The following example encrypts data with the specified customer master
 #' # key (CMK).
-#' \donttest{kms$encrypt(
+#' \donttest{svc$encrypt(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   Plaintext = "<binary data>"
 #' )}
@@ -1656,7 +1656,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'
 #' @section Request syntax:
 #' ```
-#' kms$generate_data_key(
+#' svc$generate_data_key(
 #'   KeyId = "string",
 #'   EncryptionContext = list(
 #'     "string"
@@ -1674,7 +1674,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' # (data key) in two formats. One is the unencrypted (plainext) data key,
 #' # and the other is the data key encrypted with the specified customer
 #' # master key (CMK).
-#' \donttest{kms$generate_data_key(
+#' \donttest{svc$generate_data_key(
 #'   KeyId = "alias/ExampleAlias",
 #'   KeySpec = "AES_256"
 #' )}
@@ -1771,7 +1771,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'
 #' @section Request syntax:
 #' ```
-#' kms$generate_data_key_without_plaintext(
+#' svc$generate_data_key_without_plaintext(
 #'   KeyId = "string",
 #'   EncryptionContext = list(
 #'     "string"
@@ -1788,7 +1788,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' # The following example generates an encrypted copy of a 256-bit symmetric
 #' # data encryption key (data key). The data key is encrypted with the
 #' # specified customer master key (CMK).
-#' \donttest{kms$generate_data_key_without_plaintext(
+#' \donttest{svc$generate_data_key_without_plaintext(
 #'   KeyId = "alias/ExampleAlias",
 #'   KeySpec = "AES_256"
 #' )}
@@ -1839,7 +1839,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #'
 #' @section Request syntax:
 #' ```
-#' kms$generate_random(
+#' svc$generate_random(
 #'   NumberOfBytes = 123,
 #'   CustomKeyStoreId = "string"
 #' )
@@ -1847,7 +1847,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #'
 #' @examples
 #' # The following example uses AWS KMS to generate 32 bytes of random data.
-#' \donttest{kms$generate_random(
+#' \donttest{svc$generate_random(
 #'   NumberOfBytes = 32L
 #' )}
 #'
@@ -1895,7 +1895,7 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$get_key_policy(
+#' svc$get_key_policy(
 #'   KeyId = "string",
 #'   PolicyName = "string"
 #' )
@@ -1904,7 +1904,7 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 #' @examples
 #' # The following example retrieves the key policy for the specified
 #' # customer master key (CMK).
-#' \donttest{kms$get_key_policy(
+#' \donttest{svc$get_key_policy(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   PolicyName = "default"
 #' )}
@@ -1972,7 +1972,7 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$get_key_rotation_status(
+#' svc$get_key_rotation_status(
 #'   KeyId = "string"
 #' )
 #' ```
@@ -1980,7 +1980,7 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' @examples
 #' # The following example retrieves the status of automatic annual rotation
 #' # of the key material for the specified CMK.
-#' \donttest{kms$get_key_rotation_status(
+#' \donttest{svc$get_key_rotation_status(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -2056,7 +2056,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$get_parameters_for_import(
+#' svc$get_parameters_for_import(
 #'   KeyId = "string",
 #'   WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
 #'   WrappingKeySpec = "RSA_2048"
@@ -2066,7 +2066,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' @examples
 #' # The following example retrieves the public key and import token for the
 #' # specified CMK.
-#' \donttest{kms$get_parameters_for_import(
+#' \donttest{svc$get_parameters_for_import(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
 #'   WrappingKeySpec = "RSA_2048"
@@ -2177,7 +2177,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #'
 #' @section Request syntax:
 #' ```
-#' kms$import_key_material(
+#' svc$import_key_material(
 #'   KeyId = "string",
 #'   ImportToken = raw,
 #'   EncryptedKeyMaterial = raw,
@@ -2190,7 +2190,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #'
 #' @examples
 #' # The following example imports key material into the specified CMK.
-#' \donttest{kms$import_key_material(
+#' \donttest{svc$import_key_material(
 #'   EncryptedKeyMaterial = "<binary data>",
 #'   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
 #'   ImportToken = "<binary data>",
@@ -2255,7 +2255,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_aliases(
+#' svc$list_aliases(
 #'   KeyId = "string",
 #'   Limit = 123,
 #'   Marker = "string"
@@ -2264,7 +2264,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #'
 #' @examples
 #' # The following example lists aliases.
-#' \donttest{kms$list_aliases()}
+#' \donttest{svc$list_aliases()}
 #'
 #' @keywords internal
 #'
@@ -2320,7 +2320,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_grants(
+#' svc$list_grants(
 #'   Limit = 123,
 #'   Marker = "string",
 #'   KeyId = "string"
@@ -2329,7 +2329,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #'
 #' @examples
 #' # The following example lists grants for the specified CMK.
-#' \donttest{kms$list_grants(
+#' \donttest{svc$list_grants(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -2390,7 +2390,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_key_policies(
+#' svc$list_key_policies(
 #'   KeyId = "string",
 #'   Limit = 123,
 #'   Marker = "string"
@@ -2399,7 +2399,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #'
 #' @examples
 #' # The following example lists key policies for the specified CMK.
-#' \donttest{kms$list_key_policies(
+#' \donttest{svc$list_key_policies(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -2443,7 +2443,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_keys(
+#' svc$list_keys(
 #'   Limit = 123,
 #'   Marker = "string"
 #' )
@@ -2451,7 +2451,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #'
 #' @examples
 #' # The following example lists CMKs.
-#' \donttest{kms$list_keys()}
+#' \donttest{svc$list_keys()}
 #'
 #' @keywords internal
 #'
@@ -2508,7 +2508,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_resource_tags(
+#' svc$list_resource_tags(
 #'   KeyId = "string",
 #'   Limit = 123,
 #'   Marker = "string"
@@ -2517,7 +2517,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #'
 #' @examples
 #' # The following example lists tags for a CMK.
-#' \donttest{kms$list_resource_tags(
+#' \donttest{svc$list_resource_tags(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'
@@ -2575,7 +2575,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$list_retirable_grants(
+#' svc$list_retirable_grants(
 #'   Limit = 123,
 #'   Marker = "string",
 #'   RetiringPrincipal = "string"
@@ -2585,7 +2585,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @examples
 #' # The following example lists the grants that the specified principal
 #' # (identity) can retire.
-#' \donttest{kms$list_retirable_grants(
+#' \donttest{svc$list_retirable_grants(
 #'   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
 #' )}
 #'
@@ -2675,7 +2675,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'
 #' @section Request syntax:
 #' ```
-#' kms$put_key_policy(
+#' svc$put_key_policy(
 #'   KeyId = "string",
 #'   PolicyName = "string",
 #'   Policy = "string",
@@ -2685,7 +2685,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #'
 #' @examples
 #' # The following example attaches a key policy to the specified CMK.
-#' \donttest{kms$put_key_policy(
+#' \donttest{svc$put_key_policy(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   Policy = "{\n    \"Version\": \"2012-10-17\",\n    \"Id\": \"custom-policy-2016-12-07\",\n...",
 #'   PolicyName = "default"
@@ -2772,7 +2772,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #'
 #' @section Request syntax:
 #' ```
-#' kms$re_encrypt(
+#' svc$re_encrypt(
 #'   CiphertextBlob = raw,
 #'   SourceEncryptionContext = list(
 #'     "string"
@@ -2789,7 +2789,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #'
 #' @examples
 #' # The following example reencrypts data with the specified CMK.
-#' \donttest{kms$re_encrypt(
+#' \donttest{svc$re_encrypt(
 #'   CiphertextBlob = "<binary data>",
 #'   DestinationKeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
 #' )}
@@ -2849,7 +2849,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Desti
 #'
 #' @section Request syntax:
 #' ```
-#' kms$retire_grant(
+#' svc$retire_grant(
 #'   GrantToken = "string",
 #'   KeyId = "string",
 #'   GrantId = "string"
@@ -2858,7 +2858,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Desti
 #'
 #' @examples
 #' # The following example retires a grant.
-#' \donttest{kms$retire_grant(
+#' \donttest{svc$retire_grant(
 #'   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
 #'   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
@@ -2911,7 +2911,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$revoke_grant(
+#' svc$revoke_grant(
 #'   KeyId = "string",
 #'   GrantId = "string"
 #' )
@@ -2919,7 +2919,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #'
 #' @examples
 #' # The following example revokes a grant.
-#' \donttest{kms$revoke_grant(
+#' \donttest{svc$revoke_grant(
 #'   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
@@ -3003,7 +3003,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$schedule_key_deletion(
+#' svc$schedule_key_deletion(
 #'   KeyId = "string",
 #'   PendingWindowInDays = 123
 #' )
@@ -3011,7 +3011,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #'
 #' @examples
 #' # The following example schedules the specified CMK for deletion.
-#' \donttest{kms$schedule_key_deletion(
+#' \donttest{svc$schedule_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   PendingWindowInDays = 7L
 #' )}
@@ -3075,7 +3075,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$tag_resource(
+#' svc$tag_resource(
 #'   KeyId = "string",
 #'   Tags = list(
 #'     list(
@@ -3088,7 +3088,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'
 #' @examples
 #' # The following example tags a CMK.
-#' \donttest{kms$tag_resource(
+#' \donttest{svc$tag_resource(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   Tags = list(
 #'     list(
@@ -3149,7 +3149,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$untag_resource(
+#' svc$untag_resource(
 #'   KeyId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3159,7 +3159,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #'
 #' @examples
 #' # The following example removes tags from a CMK.
-#' \donttest{kms$untag_resource(
+#' \donttest{svc$untag_resource(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   TagKeys = list(
 #'     "Purpose",
@@ -3237,7 +3237,7 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$update_alias(
+#' svc$update_alias(
 #'   AliasName = "string",
 #'   TargetKeyId = "string"
 #' )
@@ -3246,7 +3246,7 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' @examples
 #' # The following example updates the specified alias to refer to the
 #' # specified customer master key (CMK).
-#' \donttest{kms$update_alias(
+#' \donttest{svc$update_alias(
 #'   AliasName = "alias/ExampleAlias",
 #'   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
@@ -3359,7 +3359,7 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kms$update_custom_key_store(
+#' svc$update_custom_key_store(
 #'   CustomKeyStoreId = "string",
 #'   NewCustomKeyStoreName = "string",
 #'   KeyStorePassword = "string",
@@ -3417,7 +3417,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #'
 #' @section Request syntax:
 #' ```
-#' kms$update_key_description(
+#' svc$update_key_description(
 #'   KeyId = "string",
 #'   Description = "string"
 #' )
@@ -3425,7 +3425,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #'
 #' @examples
 #' # The following example updates the description of the specified CMK.
-#' \donttest{kms$update_key_description(
+#' \donttest{svc$update_key_description(
 #'   Description = "Example description that indicates the intended use of this CMK.",
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}

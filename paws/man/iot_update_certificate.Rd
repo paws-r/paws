@@ -32,7 +32,7 @@ The ACTIVE state is required to authenticate devices connecting to AWS
 IoT using a certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$update_certificate(
+\preformatted{svc$update_certificate(
   certificateId = "string",
   newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
 )

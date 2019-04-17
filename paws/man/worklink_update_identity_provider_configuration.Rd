@@ -19,7 +19,7 @@ The existing IdentityProviderSamlMetadata is unset if null is passed.}
 Updates the identity provider configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$update_identity_provider_configuration(
+\preformatted{svc$update_identity_provider_configuration(
   FleetArn = "string",
   IdentityProviderType = "SAML",
   IdentityProviderSamlMetadata = "string"

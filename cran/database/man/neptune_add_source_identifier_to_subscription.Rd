@@ -29,7 +29,7 @@ be supplied.
 Adds a source identifier to an existing event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{neptune$add_source_identifier_to_subscription(
+\preformatted{svc$add_source_identifier_to_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )

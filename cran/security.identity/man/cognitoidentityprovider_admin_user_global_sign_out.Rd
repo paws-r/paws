@@ -18,7 +18,7 @@ Signs out users from all devices, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_user_global_sign_out(
+\preformatted{svc$admin_user_global_sign_out(
   UserPoolId = "string",
   Username = "string"
 )

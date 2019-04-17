@@ -26,7 +26,7 @@ see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$enable_vpc_classic_link(
+\preformatted{svc$enable_vpc_classic_link(
   DryRun = TRUE|FALSE,
   VpcId = "string"
 )

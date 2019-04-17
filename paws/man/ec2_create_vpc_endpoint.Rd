@@ -77,7 +77,7 @@ groups to associate with the endpoint network interface.
 Use DescribeVpcEndpointServices to get a list of supported services.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpc_endpoint(
+\preformatted{svc$create_vpc_endpoint(
   DryRun = TRUE|FALSE,
   VpcEndpointType = "Interface"|"Gateway",
   VpcId = "string",

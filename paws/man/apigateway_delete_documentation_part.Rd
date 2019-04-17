@@ -15,7 +15,7 @@ apigateway_delete_documentation_part(restApiId, documentationPartId)
 Delete documentation part
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_documentation_part(
+\preformatted{svc$delete_documentation_part(
   restApiId = "string",
   documentationPartId = "string"
 )

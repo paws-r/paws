@@ -24,7 +24,7 @@ Retrieves detailed information about the health of instances in your AWS
 Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_instances_health(
+\preformatted{svc$describe_instances_health(
   EnvironmentName = "string",
   EnvironmentId = "string",
   AttributeNames = list(
@@ -38,7 +38,7 @@ Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/ela
 \examples{
 # The following operation retrieves health information for instances in an
 # environment named my-env:
-\donttest{elasticbeanstalk$describe_instances_health(
+\donttest{svc$describe_instances_health(
   AttributeNames = list(
     "All"
   ),

@@ -13,7 +13,7 @@ greengrass_get_group_certificate_configuration(GroupId)
 Retrieves the current configuration for the CA used by the group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_group_certificate_configuration(
+\preformatted{svc$get_group_certificate_configuration(
   GroupId = "string"
 )
 }

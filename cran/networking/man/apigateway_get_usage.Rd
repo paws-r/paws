@@ -25,7 +25,7 @@ and the maximum value is 500.}
 Gets the usage data of a usage plan in a specified time interval.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_usage(
+\preformatted{svc$get_usage(
   usagePlanId = "string",
   keyId = "string",
   startDate = "string",

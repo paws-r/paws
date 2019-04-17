@@ -29,7 +29,7 @@ information, see
 \url{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
 }
 \section{Request syntax}{
-\preformatted{signer$put_signing_profile(
+\preformatted{svc$put_signing_profile(
   profileName = "string",
   signingMaterial = list(
     certificateArn = "string"

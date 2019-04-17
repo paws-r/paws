@@ -27,7 +27,7 @@ apigatewayv2_create_api(ApiKeySelectionExpression, Description,
 Creates an Api resource.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_api(
+\preformatted{svc$create_api(
   ApiKeySelectionExpression = "string",
   Description = "string",
   DisableSchemaValidation = TRUE|FALSE,

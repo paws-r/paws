@@ -33,7 +33,7 @@ using sending authorization, see the \href{http://docs.aws.amazon.com/ses/latest
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_identity_policy(
+\preformatted{svc$delete_identity_policy(
   Identity = "string",
   PolicyName = "string"
 )
@@ -43,7 +43,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example deletes a sending authorization policy for an
 # identity:
-\donttest{ses$delete_identity_policy(
+\donttest{svc$delete_identity_policy(
   Identity = "user@example.com",
   PolicyName = "MyPolicy"
 )}

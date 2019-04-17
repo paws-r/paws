@@ -48,7 +48,7 @@ is supported for geolocation:
 \code{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> }
 }
 \section{Request syntax}{
-\preformatted{route53$get_geo_location(
+\preformatted{svc$get_geo_location(
   ContinentCode = "string",
   CountryCode = "string",
   SubdivisionCode = "string"

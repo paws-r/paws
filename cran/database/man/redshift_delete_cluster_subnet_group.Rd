@@ -13,7 +13,7 @@ redshift_delete_cluster_subnet_group(ClusterSubnetGroupName)
 Deletes the specified cluster subnet group.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_cluster_subnet_group(
+\preformatted{svc$delete_cluster_subnet_group(
   ClusterSubnetGroupName = "string"
 )
 }

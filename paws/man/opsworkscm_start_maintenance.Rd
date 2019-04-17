@@ -26,7 +26,7 @@ states. Otherwise, an \code{InvalidStateException} is thrown. A
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$start_maintenance(
+\preformatted{svc$start_maintenance(
   ServerName = "string",
   EngineAttributes = list(
     list(

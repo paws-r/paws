@@ -16,7 +16,7 @@ Returns information about all of your database snapshots in Amazon
 Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_snapshots(
+\preformatted{svc$get_relational_database_snapshots(
   pageToken = "string"
 )
 }

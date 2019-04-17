@@ -17,7 +17,7 @@ title.}
 Replaces the title of a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_pull_request_title(
+\preformatted{svc$update_pull_request_title(
   pullRequestId = "string",
   title = "string"
 )

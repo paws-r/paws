@@ -15,7 +15,7 @@ The \code{GetQualificationType}operation retrieves information about a
 Qualification type using its ID.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_qualification_type(
+\preformatted{svc$get_qualification_type(
   QualificationTypeId = "string"
 )
 }

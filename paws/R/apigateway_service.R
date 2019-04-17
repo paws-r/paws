@@ -11,11 +11,10 @@ NULL
 #' Lambda, Amazon EC2, or other publicly addressable web services that are
 #' hosted outside of AWS.
 #'
-#' @section Example:
-#' ```
-#' apigateway <- paws::apigateway()
-#' apigateway$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_api_key(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

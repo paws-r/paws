@@ -21,7 +21,7 @@ instance launch onto a specific host. If no host ID is provided, the
 instance is launched onto a suitable host with auto-placement enabled.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_hosts(
+\preformatted{svc$modify_hosts(
   AutoPlacement = "on"|"off",
   HostIds = list(
     "string"

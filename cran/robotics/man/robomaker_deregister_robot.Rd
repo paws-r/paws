@@ -15,7 +15,7 @@ robomaker_deregister_robot(fleet, robot)
 Deregisters a robot.
 }
 \section{Request syntax}{
-\preformatted{robomaker$deregister_robot(
+\preformatted{svc$deregister_robot(
   fleet = "string",
   robot = "string"
 )

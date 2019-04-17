@@ -21,7 +21,7 @@ are specified by the ARNs of the findings where an attribute with the
 specified key exists.
 }
 \section{Request syntax}{
-\preformatted{inspector$remove_attributes_from_findings(
+\preformatted{svc$remove_attributes_from_findings(
   findingArns = list(
     "string"
   ),
@@ -36,7 +36,7 @@ specified key exists.
 # Removes entire attributes (key and value pairs) from the findings that
 # are specified by the ARNs of the findings where an attribute with the
 # specified key exists.
-\donttest{inspector$remove_attributes_from_findings(
+\donttest{svc$remove_attributes_from_findings(
   attributeKeys = list(
     "key=Example,value=example"
   ),

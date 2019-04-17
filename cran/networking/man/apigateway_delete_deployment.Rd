@@ -16,7 +16,7 @@ Deletes a Deployment resource. Deleting a deployment will only succeed
 if there are no Stage resources associated with it.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_deployment(
+\preformatted{svc$delete_deployment(
   restApiId = "string",
   deploymentId = "string"
 )

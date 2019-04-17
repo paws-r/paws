@@ -15,7 +15,7 @@ greengrass_update_core_definition(CoreDefinitionId, Name)
 Updates a core definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_core_definition(
+\preformatted{svc$update_core_definition(
   CoreDefinitionId = "string",
   Name = "string"
 )

@@ -23,7 +23,7 @@ Chime account a user belongs to, you can filter by the user's email
 address, which returns one account result.
 }
 \section{Request syntax}{
-\preformatted{chime$list_accounts(
+\preformatted{svc$list_accounts(
   Name = "string",
   UserEmail = "string",
   NextToken = "string",

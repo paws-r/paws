@@ -36,7 +36,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$create_vocabulary(
+#' svc$create_vocabulary(
 #'   VocabularyName = "string",
 #'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   Phrases = list(
@@ -78,7 +78,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$delete_transcription_job(
+#' svc$delete_transcription_job(
 #'   TranscriptionJobName = "string"
 #' )
 #' ```
@@ -113,7 +113,7 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$delete_vocabulary(
+#' svc$delete_vocabulary(
 #'   VocabularyName = "string"
 #' )
 #' ```
@@ -151,7 +151,7 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$get_transcription_job(
+#' svc$get_transcription_job(
 #'   TranscriptionJobName = "string"
 #' )
 #' ```
@@ -187,7 +187,7 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$get_vocabulary(
+#' svc$get_vocabulary(
 #'   VocabularyName = "string"
 #' )
 #' ```
@@ -232,7 +232,7 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$list_transcription_jobs(
+#' svc$list_transcription_jobs(
 #'   Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'   JobNameContains = "string",
 #'   NextToken = "string",
@@ -282,7 +282,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$list_vocabularies(
+#' svc$list_vocabularies(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   StateEquals = "PENDING"|"READY"|"FAILED",
@@ -348,7 +348,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$start_transcription_job(
+#' svc$start_transcription_job(
 #'   TranscriptionJobName = "string",
 #'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   MediaSampleRateHertz = 123,
@@ -417,7 +417,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #'
 #' @section Request syntax:
 #' ```
-#' transcribeservice$update_vocabulary(
+#' svc$update_vocabulary(
 #'   VocabularyName = "string",
 #'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
 #'   Phrases = list(

@@ -36,7 +36,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$disable_key(
+\preformatted{svc$disable_key(
   KeyId = "string"
 )
 }
@@ -44,7 +44,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \examples{
 # The following example disables the specified CMK.
-\donttest{kms$disable_key(
+\donttest{svc$disable_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

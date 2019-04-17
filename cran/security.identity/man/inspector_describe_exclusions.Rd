@@ -16,7 +16,7 @@ description, and recommendation.}
 Describes the exclusions that are specified by the exclusions' ARNs.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_exclusions(
+\preformatted{svc$describe_exclusions(
   exclusionArns = list(
     "string"
   ),

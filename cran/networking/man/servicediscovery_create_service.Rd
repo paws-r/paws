@@ -71,7 +71,7 @@ using the same namespace and using the same service, see \href{http://docs.aws.a
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$create_service(
+\preformatted{svc$create_service(
   Name = "string",
   NamespaceId = "string",
   CreatorRequestId = "string",

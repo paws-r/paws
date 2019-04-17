@@ -25,7 +25,7 @@ For information about setting up receipt rules, see the \href{http://docs.aws.am
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$create_receipt_rule(
+\preformatted{svc$create_receipt_rule(
   RuleSetName = "string",
   After = "string",
   Rule = list(
@@ -81,7 +81,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example creates a new receipt rule:
-\donttest{ses$create_receipt_rule(
+\donttest{svc$create_receipt_rule(
   After = "",
   Rule = list(
     Actions = list(

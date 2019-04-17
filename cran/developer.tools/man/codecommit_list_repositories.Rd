@@ -20,7 +20,7 @@ When the client sends the token back to AWS CodeCommit, another page of
 Gets information about one or more repositories.
 }
 \section{Request syntax}{
-\preformatted{codecommit$list_repositories(
+\preformatted{svc$list_repositories(
   nextToken = "string",
   sortBy = "repositoryName"|"lastModifiedDate",
   order = "ascending"|"descending"

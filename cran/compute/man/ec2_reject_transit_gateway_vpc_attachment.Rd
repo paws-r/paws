@@ -25,7 +25,7 @@ requests. Use AcceptTransitGatewayVpcAttachment to accept a VPC
 attachment request.
 }
 \section{Request syntax}{
-\preformatted{ec2$reject_transit_gateway_vpc_attachment(
+\preformatted{svc$reject_transit_gateway_vpc_attachment(
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )

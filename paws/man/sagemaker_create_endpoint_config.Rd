@@ -48,7 +48,7 @@ distributes two-thirds of the traffic to Model A, and one-third to model
 B.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_endpoint_config(
+\preformatted{svc$create_endpoint_config(
   EndpointConfigName = "string",
   ProductionVariants = list(
     list(

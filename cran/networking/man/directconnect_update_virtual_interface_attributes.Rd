@@ -28,7 +28,7 @@ frames, call DescribeConnections. To check whether your virtual
 interface supports jumbo frames, call DescribeVirtualInterfaces.
 }
 \section{Request syntax}{
-\preformatted{directconnect$update_virtual_interface_attributes(
+\preformatted{svc$update_virtual_interface_attributes(
   virtualInterfaceId = "string",
   mtu = 123
 )

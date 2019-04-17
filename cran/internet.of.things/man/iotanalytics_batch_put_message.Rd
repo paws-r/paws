@@ -34,7 +34,7 @@ invalid in message payloads.}
 Sends messages to a channel.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$batch_put_message(
+\preformatted{svc$batch_put_message(
   channelName = "string",
   messages = list(
     list(

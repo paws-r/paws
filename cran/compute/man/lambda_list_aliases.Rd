@@ -34,7 +34,7 @@ Returns a list of
 for a Lambda function.
 }
 \section{Request syntax}{
-\preformatted{lambda$list_aliases(
+\preformatted{svc$list_aliases(
   FunctionName = "string",
   FunctionVersion = "string",
   Marker = "string",
@@ -45,7 +45,7 @@ for a Lambda function.
 
 \examples{
 # This operation retrieves a Lambda function's aliases
-\donttest{lambda$list_aliases(
+\donttest{svc$list_aliases(
   FunctionName = "myFunction",
   FunctionVersion = "1",
   Marker = "",

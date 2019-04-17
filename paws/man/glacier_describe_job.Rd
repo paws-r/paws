@@ -46,7 +46,7 @@ for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/lates
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$describe_job(
+\preformatted{svc$describe_job(
   accountId = "string",
   vaultName = "string",
   jobId = "string"
@@ -57,7 +57,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example returns information about the previously initiated job
 # specified by the job ID.
-\donttest{glacier$describe_job(
+\donttest{svc$describe_job(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
   vaultName = "my-vault"

@@ -72,7 +72,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_entities_for_policy(
+\preformatted{svc$list_entities_for_policy(
   PolicyArn = "string",
   EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
   PathPrefix = "string",

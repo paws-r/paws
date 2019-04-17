@@ -18,7 +18,7 @@ AttachmentDetails objects that are returned by the
 DescribeCommunications operation.
 }
 \section{Request syntax}{
-\preformatted{support$describe_attachment(
+\preformatted{svc$describe_attachment(
   attachmentId = "string"
 )
 }

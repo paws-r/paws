@@ -31,7 +31,7 @@ instances continue to run until they are interrupted or you terminate
 them manually.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_spot_fleet_requests(
+\preformatted{svc$cancel_spot_fleet_requests(
   DryRun = TRUE|FALSE,
   SpotFleetRequestIds = list(
     "string"
@@ -44,7 +44,7 @@ them manually.
 \examples{
 # This example cancels the specified Spot fleet request and terminates its
 # associated Spot Instances.
-\donttest{ec2$cancel_spot_fleet_requests(
+\donttest{svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),
@@ -53,7 +53,7 @@ them manually.
 
 # This example cancels the specified Spot fleet request without
 # terminating its associated Spot Instances.
-\donttest{ec2$cancel_spot_fleet_requests(
+\donttest{svc$cancel_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   ),

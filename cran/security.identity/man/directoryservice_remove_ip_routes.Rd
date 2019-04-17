@@ -16,7 +16,7 @@ addresses.}
 Removes IP address blocks from a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$remove_ip_routes(
+\preformatted{svc$remove_ip_routes(
   DirectoryId = "string",
   CidrIps = list(
     "string"

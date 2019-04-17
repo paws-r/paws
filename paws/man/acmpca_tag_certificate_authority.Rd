@@ -27,7 +27,7 @@ UntagCertificateAuthority operation. Call the ListTags operation to see
 what tags are associated with your CA.
 }
 \section{Request syntax}{
-\preformatted{acmpca$tag_certificate_authority(
+\preformatted{svc$tag_certificate_authority(
   CertificateAuthorityArn = "string",
   Tags = list(
     list(

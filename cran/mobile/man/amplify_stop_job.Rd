@@ -19,7 +19,7 @@ Stop a job that is in progress, for an Amplify branch, part of Amplify
 App.
 }
 \section{Request syntax}{
-\preformatted{amplify$stop_job(
+\preformatted{svc$stop_job(
   appId = "string",
   branchName = "string",
   jobId = "string"

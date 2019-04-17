@@ -13,7 +13,7 @@ cloudfront_get_public_key(Id)
 Get the public key information.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_public_key(
+\preformatted{svc$get_public_key(
   Id = "string"
 )
 }

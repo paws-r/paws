@@ -24,7 +24,7 @@ which you want to add cache, and one or more disk IDs that you want to
 configure as cache.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$add_cache(
+\preformatted{svc$add_cache(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -36,7 +36,7 @@ configure as cache.
 \examples{
 # The following example shows a request that activates a gateway-stored
 # volume.
-\donttest{storagegateway$add_cache(
+\donttest{svc$add_cache(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"

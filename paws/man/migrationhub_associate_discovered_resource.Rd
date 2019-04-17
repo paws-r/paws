@@ -23,7 +23,7 @@ Associates a discovered resource ID from Application Discovery Service
 (ADS) with a migration task.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$associate_discovered_resource(
+\preformatted{svc$associate_discovered_resource(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   DiscoveredResource = list(

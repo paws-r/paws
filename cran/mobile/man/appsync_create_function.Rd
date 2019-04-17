@@ -32,7 +32,7 @@ A function is a reusable entity. Multiple functions can be used to
 compose the resolver logic.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_function(
+\preformatted{svc$create_function(
   apiId = "string",
   name = "string",
   description = "string",

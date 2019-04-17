@@ -16,7 +16,7 @@ recommendation, and the short description that identifies the finding.}
 Describes the findings that are specified by the ARNs of the findings.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_findings(
+\preformatted{svc$describe_findings(
   findingArns = list(
     "string"
   ),
@@ -27,7 +27,7 @@ Describes the findings that are specified by the ARNs of the findings.
 
 \examples{
 # Describes the findings that are specified by the ARNs of the findings.
-\donttest{inspector$describe_findings(
+\donttest{svc$describe_findings(
   findingArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MK..."
   )

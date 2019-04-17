@@ -68,7 +68,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_clusters(
+\preformatted{svc$describe_clusters(
   ClusterIdentifier = "string",
   MaxRecords = 123,
   Marker = "string",

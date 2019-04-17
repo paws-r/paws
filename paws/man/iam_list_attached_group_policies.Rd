@@ -56,7 +56,7 @@ no policies attached to the specified group (or none that match the
 specified path prefix), the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{iam$list_attached_group_policies(
+\preformatted{svc$list_attached_group_policies(
   GroupName = "string",
   PathPrefix = "string",
   Marker = "string",

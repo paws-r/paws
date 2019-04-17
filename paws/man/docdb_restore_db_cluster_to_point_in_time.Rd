@@ -107,7 +107,7 @@ cluster, except that the new DB cluster is created with the default DB
 security group.
 }
 \section{Request syntax}{
-\preformatted{docdb$restore_db_cluster_to_point_in_time(
+\preformatted{svc$restore_db_cluster_to_point_in_time(
   DBClusterIdentifier = "string",
   SourceDBClusterIdentifier = "string",
   RestoreToTime = as.POSIXct(

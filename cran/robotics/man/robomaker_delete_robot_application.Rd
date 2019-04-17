@@ -15,7 +15,7 @@ robomaker_delete_robot_application(application, applicationVersion)
 Deletes a robot application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$delete_robot_application(
+\preformatted{svc$delete_robot_application(
   application = "string",
   applicationVersion = "string"
 )

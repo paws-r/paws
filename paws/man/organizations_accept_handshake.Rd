@@ -47,7 +47,7 @@ After you accept a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 }
 \section{Request syntax}{
-\preformatted{organizations$accept_handshake(
+\preformatted{svc$accept_handshake(
   HandshakeId = "string"
 )
 }
@@ -58,7 +58,7 @@ relevant APIs for only 30 days. After that it is deleted.
 # (222222222222) to join his organization. The following example shows
 # Juan's account accepting the handshake and thus agreeing to the
 # invitation.
-\donttest{organizations$accept_handshake(
+\donttest{svc$accept_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

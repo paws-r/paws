@@ -35,7 +35,7 @@ DBSubnetGroup.
 For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_subnet_groups(
+\preformatted{svc$describe_db_subnet_groups(
   DBSubnetGroupName = "string",
   Filters = list(
     list(

@@ -13,7 +13,7 @@ medialive_describe_channel(ChannelId)
 Gets details about a channel
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_channel(
+\preformatted{svc$describe_channel(
   ChannelId = "string"
 )
 }

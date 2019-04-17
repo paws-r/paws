@@ -37,7 +37,7 @@ for use in a translation due to cache policies with the DataPlane
 service that performs the translations.
 }
 \section{Request syntax}{
-\preformatted{translate$import_terminology(
+\preformatted{svc$import_terminology(
   Name = "string",
   MergeStrategy = "OVERWRITE",
   Description = "string",

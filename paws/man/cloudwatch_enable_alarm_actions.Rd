@@ -13,7 +13,7 @@ cloudwatch_enable_alarm_actions(AlarmNames)
 Enables the actions for the specified alarms.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$enable_alarm_actions(
+\preformatted{svc$enable_alarm_actions(
   AlarmNames = list(
     "string"
   )

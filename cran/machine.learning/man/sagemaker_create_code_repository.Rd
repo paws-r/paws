@@ -27,7 +27,7 @@ The repository can be hosted either in \href{http://docs.aws.amazon.com/codecomm
 or in any other Git repository.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_code_repository(
+\preformatted{svc$create_code_repository(
   CodeRepositoryName = "string",
   GitConfig = list(
     RepositoryUrl = "string",

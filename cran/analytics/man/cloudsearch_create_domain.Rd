@@ -17,7 +17,7 @@ Creates a new search domain. For more information, see \href{http://docs.aws.ama
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$create_domain(
+\preformatted{svc$create_domain(
   DomainName = "string"
 )
 }

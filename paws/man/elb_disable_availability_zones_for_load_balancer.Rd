@@ -32,7 +32,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$disable_availability_zones_for_load_balancer(
+\preformatted{svc$disable_availability_zones_for_load_balancer(
   LoadBalancerName = "string",
   AvailabilityZones = list(
     "string"
@@ -44,7 +44,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example removes the specified Availability Zone from the set of
 # Availability Zones for the specified load balancer.
-\donttest{elb$disable_availability_zones_for_load_balancer(
+\donttest{svc$disable_availability_zones_for_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),

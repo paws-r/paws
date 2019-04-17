@@ -15,7 +15,7 @@ guardduty_get_filter(DetectorId, FilterName)
 Returns the details of the filter specified by the filter name.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_filter(
+\preformatted{svc$get_filter(
   DetectorId = "string",
   FilterName = "string"
 )

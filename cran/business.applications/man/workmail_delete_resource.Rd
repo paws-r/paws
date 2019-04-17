@@ -16,7 +16,7 @@ is deleted.}
 Deletes the specified resource.
 }
 \section{Request syntax}{
-\preformatted{workmail$delete_resource(
+\preformatted{svc$delete_resource(
   OrganizationId = "string",
   ResourceId = "string"
 )

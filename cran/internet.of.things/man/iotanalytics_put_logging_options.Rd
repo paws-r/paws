@@ -20,7 +20,7 @@ field (for example, to correct an invalid policy) it takes up to 5
 minutes for that change to take effect.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$put_logging_options(
+\preformatted{svc$put_logging_options(
   loggingOptions = list(
     roleArn = "string",
     level = "ERROR",

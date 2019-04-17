@@ -12,7 +12,7 @@ Gets the number of traffic policy instances that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53$get_traffic_policy_instance_count()
+\preformatted{svc$get_traffic_policy_instance_count()
 }
 }
 

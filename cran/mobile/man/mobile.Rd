@@ -12,12 +12,6 @@ capabilities required to configure AWS resources and bootstrap their
 developer desktop projects with the necessary SDKs, constants, tools and
 samples to make use of those resources.
 }
-\section{Example}{
-\preformatted{mobile <- paws::mobile()
-mobile$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -33,3 +27,9 @@ mobile$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_project(
+  Foo = 123
+)}
+
+}

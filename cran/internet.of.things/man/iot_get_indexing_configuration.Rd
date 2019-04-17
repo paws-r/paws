@@ -10,7 +10,7 @@ iot_get_indexing_configuration()
 Gets the search configuration.
 }
 \section{Request syntax}{
-\preformatted{iot$get_indexing_configuration()
+\preformatted{svc$get_indexing_configuration()
 }
 }
 

@@ -23,7 +23,7 @@ DescribeDomainControllers. Pass null if this is the first call.}
 Provides information about any domain controllers in your directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_domain_controllers(
+\preformatted{svc$describe_domain_controllers(
   DirectoryId = "string",
   DomainControllerIds = list(
     "string"

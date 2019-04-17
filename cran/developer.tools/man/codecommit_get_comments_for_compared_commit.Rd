@@ -28,7 +28,7 @@ Returns information about comments made on the comparison between two
 commits.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_comments_for_compared_commit(
+\preformatted{svc$get_comments_for_compared_commit(
   repositoryName = "string",
   beforeCommitId = "string",
   afterCommitId = "string",

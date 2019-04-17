@@ -17,7 +17,7 @@ Updates the trust that has been set up between your AWS Managed
 Microsoft AD directory and an on-premises Active Directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$update_trust(
+\preformatted{svc$update_trust(
   TrustId = "string",
   SelectiveAuth = "Enabled"|"Disabled"
 )

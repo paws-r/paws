@@ -29,7 +29,7 @@ categories.}
 Modifies an existing AWS DMS event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

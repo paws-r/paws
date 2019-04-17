@@ -17,7 +17,7 @@ in the order specified in this list.}
 Updates an existing VpcLink of a specified identifier.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_vpc_link(
+\preformatted{svc$update_vpc_link(
   vpcLinkId = "string",
   patchOperations = list(
     list(

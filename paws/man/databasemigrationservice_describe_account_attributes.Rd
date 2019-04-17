@@ -17,7 +17,7 @@ value.
 This command does not take any parameters.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_account_attributes()
+\preformatted{svc$describe_account_attributes()
 }
 }
 
@@ -27,7 +27,7 @@ This command does not take any parameters.
 # replication instances allowed. The description for a quota includes the
 # quota name, current usage toward that quota, and the quota's maximum
 # value. This operation does not take any parameters.
-\donttest{databasemigrationservice$describe_account_attributes()}
+\donttest{svc$describe_account_attributes()}
 
 }
 \keyword{internal}

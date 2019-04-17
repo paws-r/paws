@@ -18,7 +18,7 @@ had been previously and had granted the DRT access to your account, you
 can submit a \code{DisassociateDRTRole} request to remove this access.
 }
 \section{Request syntax}{
-\preformatted{shield$disassociate_drt_role()
+\preformatted{svc$disassociate_drt_role()
 }
 }
 

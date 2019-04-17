@@ -13,7 +13,7 @@ cognitoidentityprovider_describe_user_pool_domain(Domain)
 Gets information about a domain.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_user_pool_domain(
+\preformatted{svc$describe_user_pool_domain(
   Domain = "string"
 )
 }

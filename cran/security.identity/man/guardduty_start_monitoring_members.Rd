@@ -16,7 +16,7 @@ guardduty_start_monitoring_members(AccountIds, DetectorId)
 Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A master GuardDuty account can run this command after disabling GuardDuty from monitoring these members' findings by running StopMonitoringMembers.
 }
 \section{Request syntax}{
-\preformatted{guardduty$start_monitoring_members(
+\preformatted{svc$start_monitoring_members(
   AccountIds = list(
     "string"
   ),

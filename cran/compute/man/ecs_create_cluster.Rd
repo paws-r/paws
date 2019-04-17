@@ -32,7 +32,7 @@ the service-linked role, it is not created. For more information, see
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$create_cluster(
+\preformatted{svc$create_cluster(
   clusterName = "string",
   tags = list(
     list(
@@ -46,7 +46,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 \examples{
 # This example creates a cluster in your default region.
-\donttest{ecs$create_cluster(
+\donttest{svc$create_cluster(
   clusterName = "my_cluster"
 )}
 

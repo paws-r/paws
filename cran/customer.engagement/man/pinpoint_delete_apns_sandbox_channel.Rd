@@ -13,7 +13,7 @@ pinpoint_delete_apns_sandbox_channel(ApplicationId)
 Delete an APNS sandbox channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_apns_sandbox_channel(
+\preformatted{svc$delete_apns_sandbox_channel(
   ApplicationId = "string"
 )
 }

@@ -172,7 +172,7 @@ is ready to host a game session.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_fleet(
+\preformatted{svc$create_fleet(
   Name = "string",
   Description = "string",
   BuildId = "string",

@@ -47,7 +47,7 @@ You should also provision equal replicated write capacity units to
 matching secondary indexes across your global table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$create_global_table(
+\preformatted{svc$create_global_table(
   GlobalTableName = "string",
   ReplicationGroup = list(
     list(

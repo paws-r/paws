@@ -17,7 +17,7 @@ list.}
 Gets information about test suites for a given job.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_suites(
+\preformatted{svc$list_suites(
   arn = "string",
   nextToken = "string"
 )
@@ -27,7 +27,7 @@ Gets information about test suites for a given job.
 \examples{
 # The following example returns information about suites, given a specific
 # Device Farm project.
-\donttest{devicefarm$list_suites(
+\donttest{svc$list_suites(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}

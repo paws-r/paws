@@ -39,7 +39,7 @@ FLEET\_PERCENT and a value of 95.}
 Creates a deployment configuration.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$create_deployment_config(
+\preformatted{svc$create_deployment_config(
   deploymentConfigName = "string",
   minimumHealthyHosts = list(
     value = 123,

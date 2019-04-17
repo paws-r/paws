@@ -21,7 +21,7 @@ from a previous call.)}
 All associations for the instance(s).
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_effective_instance_associations(
+\preformatted{svc$describe_effective_instance_associations(
   InstanceId = "string",
   MaxResults = 123,
   NextToken = "string"

@@ -19,7 +19,7 @@ the comment for.}
 Updates the comment for a specified traffic policy version.
 }
 \section{Request syntax}{
-\preformatted{route53$update_traffic_policy_comment(
+\preformatted{svc$update_traffic_policy_comment(
   Id = "string",
   Version = 123,
   Comment = "string"

@@ -24,7 +24,7 @@ Resets an attribute of an AMI to its default value.
 The productCodes attribute can't be reset.
 }
 \section{Request syntax}{
-\preformatted{ec2$reset_image_attribute(
+\preformatted{svc$reset_image_attribute(
   Attribute = "launchPermission",
   ImageId = "string",
   DryRun = TRUE|FALSE
@@ -35,7 +35,7 @@ The productCodes attribute can't be reset.
 \examples{
 # This example resets the launchPermission attribute for the specified
 # AMI. By default, AMIs are private.
-\donttest{ec2$reset_image_attribute(
+\donttest{svc$reset_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
 )}

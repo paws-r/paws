@@ -37,7 +37,7 @@ portfolio. This API can only be called by the master account in the
 organization.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_organization_portfolio_access(
+\preformatted{svc$list_organization_portfolio_access(
   AcceptLanguage = "string",
   PortfolioId = "string",
   OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",

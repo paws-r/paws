@@ -19,7 +19,7 @@ Marketplace. Buyers can subscribe to model packages listed on AWS
 Marketplace to create models in Amazon SageMaker.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_model_package(
+\preformatted{svc$delete_model_package(
   ModelPackageName = "string"
 )
 }

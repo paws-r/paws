@@ -16,7 +16,7 @@ notification services, such as APNS and GCM. For more information, see
 \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
-\preformatted{sns$delete_platform_application(
+\preformatted{svc$delete_platform_application(
   PlatformApplicationArn = "string"
 )
 }

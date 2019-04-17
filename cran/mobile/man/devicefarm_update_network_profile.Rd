@@ -50,7 +50,7 @@ percent.}
 Updates the network profile with specific settings.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_network_profile(
+\preformatted{svc$update_network_profile(
   arn = "string",
   name = "string",
   description = "string",

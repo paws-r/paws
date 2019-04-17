@@ -21,7 +21,7 @@ the image builder names are provided. Otherwise, all image builders in
 the account are described.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_image_builders(
+\preformatted{svc$describe_image_builders(
   Names = list(
     "string"
   ),

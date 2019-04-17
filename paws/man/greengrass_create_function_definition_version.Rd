@@ -21,7 +21,7 @@ greengrass_create_function_definition_version(AmznClientToken,
 Creates a version of a Lambda function definition that has already been defined.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_function_definition_version(
+\preformatted{svc$create_function_definition_version(
   AmznClientToken = "string",
   DefaultConfig = list(
     Execution = list(

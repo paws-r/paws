@@ -15,7 +15,7 @@ cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 Create a new invalidation.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_invalidation(
+\preformatted{svc$create_invalidation(
   DistributionId = "string",
   InvalidationBatch = list(
     Paths = list(

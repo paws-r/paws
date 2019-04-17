@@ -34,7 +34,7 @@ Gets information about the associations for the specified transit
 gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_transit_gateway_route_table_associations(
+\preformatted{svc$get_transit_gateway_route_table_associations(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(

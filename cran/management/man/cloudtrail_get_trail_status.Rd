@@ -22,7 +22,7 @@ returns trail status from a single region. To return trail status from
 all regions, you must call the operation on each region.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$get_trail_status(
+\preformatted{svc$get_trail_status(
   Name = "string"
 )
 }

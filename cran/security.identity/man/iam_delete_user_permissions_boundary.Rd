@@ -19,7 +19,7 @@ permissions by allowing the user to perform all the actions granted in
 its permissions policies.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_user_permissions_boundary(
+\preformatted{svc$delete_user_permissions_boundary(
   UserName = "string"
 )
 }

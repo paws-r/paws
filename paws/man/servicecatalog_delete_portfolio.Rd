@@ -24,7 +24,7 @@ You cannot delete a portfolio if it was shared with you or if it has
 associated products, users, constraints, or shared accounts.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_portfolio(
+\preformatted{svc$delete_portfolio(
   AcceptLanguage = "string",
   Id = "string"
 )

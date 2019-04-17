@@ -91,7 +91,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$import_key_material(
+\preformatted{svc$import_key_material(
   KeyId = "string",
   ImportToken = raw,
   EncryptedKeyMaterial = raw,
@@ -105,7 +105,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \examples{
 # The following example imports key material into the specified CMK.
-\donttest{kms$import_key_material(
+\donttest{svc$import_key_material(
   EncryptedKeyMaterial = "<binary data>",
   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
   ImportToken = "<binary data>",

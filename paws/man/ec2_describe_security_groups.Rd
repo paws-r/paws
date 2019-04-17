@@ -98,7 +98,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_security_groups(
+\preformatted{svc$describe_security_groups(
   Filters = list(
     list(
       Name = "string",
@@ -122,7 +122,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example describes the specified security group.
-\donttest{ec2$describe_security_groups(
+\donttest{svc$describe_security_groups(
   GroupIds = list(
     "sg-903004f8"
   )
@@ -130,7 +130,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 # This example describes the security groups that include the specified
 # tag (Purpose=test).
-\donttest{ec2$describe_security_groups(
+\donttest{svc$describe_security_groups(
   Filters = list(
     list(
       Name = "tag:Purpose",

@@ -13,7 +13,7 @@ sagemaker_describe_labeling_job(LabelingJobName)
 Gets information about a labeling job.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_labeling_job(
+\preformatted{svc$describe_labeling_job(
   LabelingJobName = "string"
 )
 }

@@ -17,7 +17,7 @@ to AppStream 2.0 and open applications from the stacks to which they are
 assigned.
 }
 \section{Request syntax}{
-\preformatted{appstream$enable_user(
+\preformatted{svc$enable_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )

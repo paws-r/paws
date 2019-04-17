@@ -33,7 +33,7 @@ of your organization
 Lists all portfolios for which sharing was accepted by this account.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_accepted_portfolio_shares(
+\preformatted{svc$list_accepted_portfolio_shares(
   AcceptLanguage = "string",
   PageToken = "string",
   PageSize = 123,

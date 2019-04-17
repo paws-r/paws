@@ -31,7 +31,7 @@ You must manually set up the following on the restored table:
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$restore_table_from_backup(
+\preformatted{svc$restore_table_from_backup(
   TargetTableName = "string",
   BackupArn = "string"
 )

@@ -30,7 +30,7 @@ Creates a profile that can be applied to one or more private fleet
 device instances.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$create_instance_profile(
+\preformatted{svc$create_instance_profile(
   name = "string",
   description = "string",
   packageCleanup = TRUE|FALSE,

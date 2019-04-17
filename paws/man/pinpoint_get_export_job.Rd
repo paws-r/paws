@@ -15,7 +15,7 @@ pinpoint_get_export_job(ApplicationId, JobId)
 Returns information about an export job.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_export_job(
+\preformatted{svc$get_export_job(
   ApplicationId = "string",
   JobId = "string"
 )

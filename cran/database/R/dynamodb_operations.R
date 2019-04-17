@@ -145,7 +145,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$batch_get_item(
+#' svc$batch_get_item(
 #'   RequestItems = list(
 #'     list(
 #'       Keys = list(
@@ -191,7 +191,7 @@ NULL
 #' @examples
 #' # This example reads multiple items from the Music table using a batch of
 #' # three GetItem requests.  Only the AlbumTitle attribute is returned.
-#' \donttest{dynamodb$batch_get_item(
+#' \donttest{svc$batch_get_item(
 #'   RequestItems = list(
 #'     Music = list(
 #'       Keys = list(
@@ -367,7 +367,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$batch_write_item(
+#' svc$batch_write_item(
 #'   RequestItems = list(
 #'     list(
 #'       list(
@@ -434,7 +434,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' @examples
 #' # This example adds three new items to the Music table using a batch of
 #' # three PutItem requests.
-#' \donttest{dynamodb$batch_write_item(
+#' \donttest{svc$batch_write_item(
 #'   RequestItems = list(
 #'     Music = list(
 #'       list(
@@ -548,7 +548,7 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$create_backup(
+#' svc$create_backup(
 #'   TableName = "string",
 #'   BackupName = "string"
 #' )
@@ -618,7 +618,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$create_global_table(
+#' svc$create_global_table(
 #'   GlobalTableName = "string",
 #'   ReplicationGroup = list(
 #'     list(
@@ -830,7 +830,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$create_table(
+#' svc$create_table(
 #'   AttributeDefinitions = list(
 #'     list(
 #'       AttributeName = "string",
@@ -901,7 +901,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'
 #' @examples
 #' # This example creates a table named Music.
-#' \donttest{dynamodb$create_table(
+#' \donttest{svc$create_table(
 #'   AttributeDefinitions = list(
 #'     list(
 #'       AttributeName = "Artist",
@@ -961,7 +961,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$delete_backup(
+#' svc$delete_backup(
 #'   BackupArn = "string"
 #' )
 #' ```
@@ -1120,7 +1120,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$delete_item(
+#' svc$delete_item(
 #'   TableName = "string",
 #'   Key = list(
 #'     list(
@@ -1235,7 +1235,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'
 #' @examples
 #' # This example deletes an item from the Music table.
-#' \donttest{dynamodb$delete_item(
+#' \donttest{svc$delete_item(
 #'   Key = list(
 #'     Artist = list(
 #'       S = "No One You Know"
@@ -1296,14 +1296,14 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$delete_table(
+#' svc$delete_table(
 #'   TableName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This example deletes the Music table.
-#' \donttest{dynamodb$delete_table(
+#' \donttest{svc$delete_table(
 #'   TableName = "Music"
 #' )}
 #'
@@ -1339,7 +1339,7 @@ dynamodb_delete_table <- function(TableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_backup(
+#' svc$describe_backup(
 #'   BackupArn = "string"
 #' )
 #' ```
@@ -1390,7 +1390,7 @@ dynamodb_describe_backup <- function(BackupArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_continuous_backups(
+#' svc$describe_continuous_backups(
 #'   TableName = "string"
 #' )
 #' ```
@@ -1423,7 +1423,7 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_endpoints()
+#' svc$describe_endpoints()
 #' ```
 #'
 #' @keywords internal
@@ -1456,7 +1456,7 @@ dynamodb_describe_endpoints <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_global_table(
+#' svc$describe_global_table(
 #'   GlobalTableName = "string"
 #' )
 #' ```
@@ -1491,7 +1491,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_global_table_settings(
+#' svc$describe_global_table_settings(
 #'   GlobalTableName = "string"
 #' )
 #' ```
@@ -1587,13 +1587,13 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_limits()
+#' svc$describe_limits()
 #' ```
 #'
 #' @examples
 #' # The following example returns the maximum read and write capacity units
 #' # per table, and for the AWS account, in the current AWS region.
-#' \donttest{dynamodb$describe_limits()}
+#' \donttest{svc$describe_limits()}
 #'
 #' @keywords internal
 #'
@@ -1635,14 +1635,14 @@ dynamodb_describe_limits <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_table(
+#' svc$describe_table(
 #'   TableName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This example describes the Music table.
-#' \donttest{dynamodb$describe_table(
+#' \donttest{svc$describe_table(
 #'   TableName = "Music"
 #' )}
 #'
@@ -1678,7 +1678,7 @@ dynamodb_describe_table <- function(TableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$describe_time_to_live(
+#' svc$describe_time_to_live(
 #'   TableName = "string"
 #' )
 #' ```
@@ -1785,7 +1785,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$get_item(
+#' svc$get_item(
 #'   TableName = "string",
 #'   Key = list(
 #'     list(
@@ -1827,7 +1827,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' # This example retrieves an item from the Music table. The table has a
 #' # partition key and a sort key (Artist and SongTitle), so you must specify
 #' # both of these attributes.
-#' \donttest{dynamodb$get_item(
+#' \donttest{svc$get_item(
 #'   Key = list(
 #'     Artist = list(
 #'       S = "Acme Band"
@@ -1898,7 +1898,7 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$list_backups(
+#' svc$list_backups(
 #'   TableName = "string",
 #'   Limit = 123,
 #'   TimeRangeLowerBound = as.POSIXct(
@@ -1945,7 +1945,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$list_global_tables(
+#' svc$list_global_tables(
 #'   ExclusiveStartGlobalTableName = "string",
 #'   Limit = 123,
 #'   RegionName = "string"
@@ -1989,7 +1989,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$list_tables(
+#' svc$list_tables(
 #'   ExclusiveStartTableName = "string",
 #'   Limit = 123
 #' )
@@ -1998,7 +1998,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' @examples
 #' # This example lists all of the tables associated with the current AWS
 #' # account and endpoint.
-#' \donttest{dynamodb$list_tables()}
+#' \donttest{svc$list_tables()}
 #'
 #' @keywords internal
 #'
@@ -2039,7 +2039,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$list_tags_of_resource(
+#' svc$list_tags_of_resource(
 #'   ResourceArn = "string",
 #'   NextToken = "string"
 #' )
@@ -2252,7 +2252,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$put_item(
+#' svc$put_item(
 #'   TableName = "string",
 #'   Item = list(
 #'     list(
@@ -2367,7 +2367,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'
 #' @examples
 #' # This example adds a new item to the Music table.
-#' \donttest{dynamodb$put_item(
+#' \donttest{svc$put_item(
 #'   Item = list(
 #'     AlbumTitle = list(
 #'       S = "Somewhat Famous"
@@ -2732,7 +2732,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$query(
+#' svc$query(
 #'   TableName = "string",
 #'   IndexName = "string",
 #'   Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
@@ -2864,7 +2864,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' # key and sort key (Artist and SongTitle), but this query only specifies
 #' # the partition key value. It returns song titles by the artist named "No
 #' # One You Know".
-#' \donttest{dynamodb$query(
+#' \donttest{svc$query(
 #'   ExpressionAttributeValues = list(
 #'     `:v1` = list(
 #'       S = "No One You Know"
@@ -2925,7 +2925,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$restore_table_from_backup(
+#' svc$restore_table_from_backup(
 #'   TargetTableName = "string",
 #'   BackupArn = "string"
 #' )
@@ -3006,7 +3006,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$restore_table_to_point_in_time(
+#' svc$restore_table_to_point_in_time(
 #'   SourceTableName = "string",
 #'   TargetTableName = "string",
 #'   UseLatestRestorableTime = TRUE|FALSE,
@@ -3287,7 +3287,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$scan(
+#' svc$scan(
 #'   TableName = "string",
 #'   IndexName = "string",
 #'   AttributesToGet = list(
@@ -3389,7 +3389,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' # This example scans the entire Music table, and then narrows the results
 #' # to songs by the artist "No One You Know". For each item, only the album
 #' # title and song title are returned.
-#' \donttest{dynamodb$scan(
+#' \donttest{svc$scan(
 #'   ExpressionAttributeNames = list(
 #'     AT = "AlbumTitle",
 #'     ST = "SongTitle"
@@ -3443,7 +3443,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -3507,7 +3507,7 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$transact_get_items(
+#' svc$transact_get_items(
 #'   TransactItems = list(
 #'     list(
 #'       Get = list(
@@ -3661,7 +3661,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$transact_write_items(
+#' svc$transact_write_items(
 #'   TransactItems = list(
 #'     list(
 #'       ConditionCheck = list(
@@ -3935,7 +3935,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3988,7 +3988,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_continuous_backups(
+#' svc$update_continuous_backups(
 #'   TableName = "string",
 #'   PointInTimeRecoverySpecification = list(
 #'     PointInTimeRecoveryEnabled = TRUE|FALSE
@@ -4046,7 +4046,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_global_table(
+#' svc$update_global_table(
 #'   GlobalTableName = "string",
 #'   ReplicaUpdates = list(
 #'     list(
@@ -4105,7 +4105,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_global_table_settings(
+#' svc$update_global_table_settings(
 #'   GlobalTableName = "string",
 #'   GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
 #'   GlobalTableProvisionedWriteCapacityUnits = 123,
@@ -4438,7 +4438,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_item(
+#' svc$update_item(
 #'   TableName = "string",
 #'   Key = list(
 #'     list(
@@ -4583,7 +4583,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' # This example updates an item in the Music table. It adds a new attribute
 #' # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 #' # the item, as they appear after the update, are returned in the response.
-#' \donttest{dynamodb$update_item(
+#' \donttest{svc$update_item(
 #'   ExpressionAttributeNames = list(
 #'     `#AT` = "AlbumTitle",
 #'     `#Y` = "Year"
@@ -4697,7 +4697,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_table(
+#' svc$update_table(
 #'   AttributeDefinitions = list(
 #'     list(
 #'       AttributeName = "string",
@@ -4758,7 +4758,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @examples
 #' # This example increases the provisioned read and write capacity on the
 #' # Music table.
-#' \donttest{dynamodb$update_table(
+#' \donttest{svc$update_table(
 #'   ProvisionedThroughput = list(
 #'     ReadCapacityUnits = 10L,
 #'     WriteCapacityUnits = 10L
@@ -4827,7 +4827,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'
 #' @section Request syntax:
 #' ```
-#' dynamodb$update_time_to_live(
+#' svc$update_time_to_live(
 #'   TableName = "string",
 #'   TimeToLiveSpecification = list(
 #'     Enabled = TRUE|FALSE,

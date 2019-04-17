@@ -23,7 +23,7 @@ in the \emph{Amazon Aurora User Guide}.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$remove_role_from_db_cluster(
+\preformatted{svc$remove_role_from_db_cluster(
   DBClusterIdentifier = "string",
   RoleArn = "string"
 )

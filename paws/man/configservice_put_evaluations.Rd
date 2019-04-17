@@ -29,7 +29,7 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_evaluations(
+\preformatted{svc$put_evaluations(
   Evaluations = list(
     list(
       ComplianceResourceType = "string",

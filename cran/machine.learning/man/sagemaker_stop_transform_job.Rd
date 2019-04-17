@@ -20,7 +20,7 @@ is completed, Amazon SageMaker doesn't store the job's output in
 Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$stop_transform_job(
+\preformatted{svc$stop_transform_job(
   TransformJobName = "string"
 )
 }

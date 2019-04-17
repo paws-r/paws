@@ -30,7 +30,7 @@ also retained for any metric specified here.}
 Creates a Device Defender security profile.
 }
 \section{Request syntax}{
-\preformatted{iot$create_security_profile(
+\preformatted{svc$create_security_profile(
   securityProfileName = "string",
   securityProfileDescription = "string",
   behaviors = list(

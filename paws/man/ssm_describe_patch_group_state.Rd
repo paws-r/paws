@@ -13,7 +13,7 @@ ssm_describe_patch_group_state(PatchGroup)
 Returns high-level aggregated patch compliance state for a patch group.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_patch_group_state(
+\preformatted{svc$describe_patch_group_state(
   PatchGroup = "string"
 )
 }

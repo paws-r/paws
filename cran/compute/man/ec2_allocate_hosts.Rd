@@ -35,7 +35,7 @@ instance size type, Availability Zone, and quantity of hosts to
 allocate.
 }
 \section{Request syntax}{
-\preformatted{ec2$allocate_hosts(
+\preformatted{svc$allocate_hosts(
   AutoPlacement = "on"|"off",
   AvailabilityZone = "string",
   ClientToken = "string",

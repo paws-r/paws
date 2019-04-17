@@ -18,7 +18,7 @@ Lists the pipeline identifiers for all active pipelines that you have
 permission to access.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$list_pipelines(
+\preformatted{svc$list_pipelines(
   marker = "string"
 )
 }

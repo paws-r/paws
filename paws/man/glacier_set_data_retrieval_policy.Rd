@@ -29,7 +29,7 @@ progress before the policy was enacted. For more information about data
 retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 }
 \section{Request syntax}{
-\preformatted{glacier$set_data_retrieval_policy(
+\preformatted{svc$set_data_retrieval_policy(
   accountId = "string",
   Policy = list(
     Rules = list(
@@ -45,7 +45,7 @@ retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/de
 
 \examples{
 # The example sets and then enacts a data retrieval policy.
-\donttest{glacier$set_data_retrieval_policy(
+\donttest{svc$set_data_retrieval_policy(
   Policy = list(
     Rules = list(
       list(

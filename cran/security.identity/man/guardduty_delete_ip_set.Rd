@@ -15,7 +15,7 @@ guardduty_delete_ip_set(DetectorId, IpSetId)
 Deletes the IPSet specified by the IPSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_ip_set(
+\preformatted{svc$delete_ip_set(
   DetectorId = "string",
   IpSetId = "string"
 )

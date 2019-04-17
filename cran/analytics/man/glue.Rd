@@ -9,12 +9,6 @@ glue()
 \description{
 Defines the public endpoint for the AWS Glue service.
 }
-\section{Example}{
-\preformatted{glue <- paws::glue()
-glue$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -119,3 +113,9 @@ glue$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_create_partition(
+  Foo = 123
+)}
+
+}

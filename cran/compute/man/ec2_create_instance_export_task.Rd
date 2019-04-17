@@ -27,7 +27,7 @@ and known limitations for the types of instances you can export, see
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_instance_export_task(
+\preformatted{svc$create_instance_export_task(
   Description = "string",
   ExportToS3Task = list(
     ContainerFormat = "ova",

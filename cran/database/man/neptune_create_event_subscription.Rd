@@ -77,7 +77,7 @@ notified of events generated from all Neptune sources belonging to your
 customer account.
 }
 \section{Request syntax}{
-\preformatted{neptune$create_event_subscription(
+\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

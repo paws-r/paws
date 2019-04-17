@@ -19,7 +19,7 @@ Modifies a snapshot schedule. Any schedule associated with a cluster is
 modified asynchronously.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_snapshot_schedule(
+\preformatted{svc$modify_snapshot_schedule(
   ScheduleIdentifier = "string",
   ScheduleDefinitions = list(
     "string"

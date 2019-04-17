@@ -74,7 +74,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroupstaggingapi$get_resources(
+#' svc$get_resources(
 #'   PaginationToken = "string",
 #'   TagFilters = list(
 #'     list(
@@ -125,7 +125,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroupstaggingapi$get_tag_keys(
+#' svc$get_tag_keys(
 #'   PaginationToken = "string"
 #' )
 #' ```
@@ -167,7 +167,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroupstaggingapi$get_tag_values(
+#' svc$get_tag_values(
 #'   PaginationToken = "string",
 #'   Key = "string"
 #' )
@@ -228,7 +228,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroupstaggingapi$tag_resources(
+#' svc$tag_resources(
 #'   ResourceARNList = list(
 #'     "string"
 #'   ),
@@ -288,7 +288,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroupstaggingapi$untag_resources(
+#' svc$untag_resources(
 #'   ResourceARNList = list(
 #'     "string"
 #'   ),

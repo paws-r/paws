@@ -20,7 +20,7 @@ get another batch of clusters, provide this token in your next request.}
 Returns a list of the broker nodes in the cluster.
 }
 \section{Request syntax}{
-\preformatted{kafka$list_nodes(
+\preformatted{svc$list_nodes(
   ClusterArn = "string",
   MaxResults = 123,
   NextToken = "string"

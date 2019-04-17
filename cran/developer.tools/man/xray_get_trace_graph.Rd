@@ -15,7 +15,7 @@ xray_get_trace_graph(TraceIds, NextToken)
 Retrieves a service graph for one or more specific trace IDs.
 }
 \section{Request syntax}{
-\preformatted{xray$get_trace_graph(
+\preformatted{svc$get_trace_graph(
   TraceIds = list(
     "string"
   ),

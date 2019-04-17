@@ -20,7 +20,7 @@ To resume sending messages, you can opt in the number by using the
 \code{OptInPhoneNumber} action.
 }
 \section{Request syntax}{
-\preformatted{sns$check_if_phone_number_is_opted_out(
+\preformatted{svc$check_if_phone_number_is_opted_out(
   phoneNumber = "string"
 )
 }

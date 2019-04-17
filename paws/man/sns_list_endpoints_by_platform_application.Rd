@@ -31,7 +31,7 @@ information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.ht
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$list_endpoints_by_platform_application(
+\preformatted{svc$list_endpoints_by_platform_application(
   PlatformApplicationArn = "string",
   NextToken = "string"
 )

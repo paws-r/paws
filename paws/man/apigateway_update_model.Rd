@@ -18,7 +18,7 @@ in the order specified in this list.}
 Changes information about a model.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_model(
+\preformatted{svc$update_model(
   restApiId = "string",
   modelName = "string",
   patchOperations = list(

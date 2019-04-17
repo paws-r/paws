@@ -20,7 +20,7 @@ which can then be modified and used to update the pipeline structure
 with UpdatePipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$get_pipeline(
+\preformatted{svc$get_pipeline(
   name = "string",
   version = 123
 )

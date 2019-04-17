@@ -31,7 +31,7 @@ Applies a pending maintenance action to a resource (for example, to a
 replication instance).
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$apply_pending_maintenance_action(
+\preformatted{svc$apply_pending_maintenance_action(
   ReplicationInstanceArn = "string",
   ApplyAction = "string",
   OptInType = "string"

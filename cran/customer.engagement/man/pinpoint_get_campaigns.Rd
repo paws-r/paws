@@ -17,7 +17,7 @@ pinpoint_get_campaigns(ApplicationId, PageSize, Token)
 Returns information about your campaigns.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_campaigns(
+\preformatted{svc$get_campaigns(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"

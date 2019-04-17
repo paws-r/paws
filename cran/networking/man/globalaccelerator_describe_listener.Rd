@@ -13,7 +13,7 @@ globalaccelerator_describe_listener(ListenerArn)
 Describe a listener.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$describe_listener(
+\preformatted{svc$describe_listener(
   ListenerArn = "string"
 )
 }

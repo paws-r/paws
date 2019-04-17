@@ -22,12 +22,6 @@ tracking their progress and maintaining their state.
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the \emph{\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
 }
-\section{Example}{
-\preformatted{swf <- paws::swf()
-swf$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -65,3 +59,9 @@ swf$operation()
 }
 }
 
+\examples{
+\donttest{svc$count_closed_workflow_executions(
+  Foo = 123
+)}
+
+}

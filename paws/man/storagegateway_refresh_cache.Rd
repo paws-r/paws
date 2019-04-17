@@ -32,7 +32,7 @@ your RefreshCache operation completes. For more information, see
 \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting Notified About File Operations}.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$refresh_cache(
+\preformatted{svc$refresh_cache(
   FileShareARN = "string",
   FolderList = list(
     "string"

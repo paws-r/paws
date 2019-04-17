@@ -54,7 +54,7 @@ modification.}
 Represents a put integration.
 }
 \section{Request syntax}{
-\preformatted{apigateway$put_integration_response(
+\preformatted{svc$put_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

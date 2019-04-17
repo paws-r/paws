@@ -20,7 +20,7 @@ detached.}
 Detaches a policy from an object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$detach_policy(
+\preformatted{svc$detach_policy(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"

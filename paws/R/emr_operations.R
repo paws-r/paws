@@ -18,7 +18,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' emr$add_instance_fleet(
+#' svc$add_instance_fleet(
 #'   ClusterId = "string",
 #'   InstanceFleet = list(
 #'     Name = "string",
@@ -97,7 +97,7 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$add_instance_groups(
+#' svc$add_instance_groups(
 #'   InstanceGroups = list(
 #'     list(
 #'       Name = "string",
@@ -228,7 +228,7 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$add_job_flow_steps(
+#' svc$add_job_flow_steps(
 #'   JobFlowId = "string",
 #'   Steps = list(
 #'     list(
@@ -290,7 +290,7 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$add_tags(
+#' svc$add_tags(
 #'   ResourceId = "string",
 #'   Tags = list(
 #'     list(
@@ -339,7 +339,7 @@ emr_add_tags <- function(ResourceId, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$cancel_steps(
+#' svc$cancel_steps(
 #'   ClusterId = "string",
 #'   StepIds = list(
 #'     "string"
@@ -383,7 +383,7 @@ emr_cancel_steps <- function(ClusterId = NULL, StepIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$create_security_configuration(
+#' svc$create_security_configuration(
 #'   Name = "string",
 #'   SecurityConfiguration = "string"
 #' )
@@ -419,7 +419,7 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$delete_security_configuration(
+#' svc$delete_security_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -456,7 +456,7 @@ emr_delete_security_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$describe_cluster(
+#' svc$describe_cluster(
 #'   ClusterId = "string"
 #' )
 #' ```
@@ -514,7 +514,7 @@ emr_describe_cluster <- function(ClusterId) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$describe_job_flows(
+#' svc$describe_job_flows(
 #'   CreatedAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -562,7 +562,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
 #'
 #' @section Request syntax:
 #' ```
-#' emr$describe_security_configuration(
+#' svc$describe_security_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -598,7 +598,7 @@ emr_describe_security_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$describe_step(
+#' svc$describe_step(
 #'   ClusterId = "string",
 #'   StepId = "string"
 #' )
@@ -637,7 +637,7 @@ emr_describe_step <- function(ClusterId, StepId) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_bootstrap_actions(
+#' svc$list_bootstrap_actions(
 #'   ClusterId = "string",
 #'   Marker = "string"
 #' )
@@ -680,7 +680,7 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_clusters(
+#' svc$list_clusters(
 #'   CreatedAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -728,7 +728,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_instance_fleets(
+#' svc$list_instance_fleets(
 #'   ClusterId = "string",
 #'   Marker = "string"
 #' )
@@ -765,7 +765,7 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_instance_groups(
+#' svc$list_instance_groups(
 #'   ClusterId = "string",
 #'   Marker = "string"
 #' )
@@ -813,7 +813,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_instances(
+#' svc$list_instances(
 #'   ClusterId = "string",
 #'   InstanceGroupId = "string",
 #'   InstanceGroupTypes = list(
@@ -863,7 +863,7 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_security_configurations(
+#' svc$list_security_configurations(
 #'   Marker = "string"
 #' )
 #' ```
@@ -903,7 +903,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$list_steps(
+#' svc$list_steps(
 #'   ClusterId = "string",
 #'   StepStates = list(
 #'     "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED"
@@ -953,7 +953,7 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 #'
 #' @section Request syntax:
 #' ```
-#' emr$modify_instance_fleet(
+#' svc$modify_instance_fleet(
 #'   ClusterId = "string",
 #'   InstanceFleet = list(
 #'     InstanceFleetId = "string",
@@ -998,7 +998,7 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$modify_instance_groups(
+#' svc$modify_instance_groups(
 #'   ClusterId = "string",
 #'   InstanceGroups = list(
 #'     list(
@@ -1063,7 +1063,7 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' emr$put_auto_scaling_policy(
+#' svc$put_auto_scaling_policy(
 #'   ClusterId = "string",
 #'   InstanceGroupId = "string",
 #'   AutoScalingPolicy = list(
@@ -1142,7 +1142,7 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #'
 #' @section Request syntax:
 #' ```
-#' emr$remove_auto_scaling_policy(
+#' svc$remove_auto_scaling_policy(
 #'   ClusterId = "string",
 #'   InstanceGroupId = "string"
 #' )
@@ -1187,7 +1187,7 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$remove_tags(
+#' svc$remove_tags(
 #'   ResourceId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1387,7 +1387,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$run_job_flow(
+#' svc$run_job_flow(
 #'   Name = "string",
 #'   LogUri = "string",
 #'   AdditionalInfo = "string",
@@ -1679,7 +1679,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, AdditionalInfo = NULL, AmiVers
 #'
 #' @section Request syntax:
 #' ```
-#' emr$set_termination_protection(
+#' svc$set_termination_protection(
 #'   JobFlowIds = list(
 #'     "string"
 #'   ),
@@ -1728,7 +1728,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$set_visible_to_all_users(
+#' svc$set_visible_to_all_users(
 #'   JobFlowIds = list(
 #'     "string"
 #'   ),
@@ -1775,7 +1775,7 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
 #'
 #' @section Request syntax:
 #' ```
-#' emr$terminate_job_flows(
+#' svc$terminate_job_flows(
 #'   JobFlowIds = list(
 #'     "string"
 #'   )

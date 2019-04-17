@@ -17,7 +17,7 @@ Gets a metrics configuration (specified by the metrics configuration ID)
 from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_metrics_configuration(
+\preformatted{svc$get_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string"
 )

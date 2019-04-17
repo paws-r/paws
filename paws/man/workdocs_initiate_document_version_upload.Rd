@@ -40,7 +40,7 @@ UpdateDocumentVersion.
 To cancel the document upload, call AbortDocumentVersionUpload.
 }
 \section{Request syntax}{
-\preformatted{workdocs$initiate_document_version_upload(
+\preformatted{svc$initiate_document_version_upload(
   AuthenticationToken = "string",
   Id = "string",
   Name = "string",

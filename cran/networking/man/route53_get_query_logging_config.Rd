@@ -18,7 +18,7 @@ For more information about DNS query logs, see CreateQueryLoggingConfig
 and \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
 }
 \section{Request syntax}{
-\preformatted{route53$get_query_logging_config(
+\preformatted{svc$get_query_logging_config(
   Id = "string"
 )
 }

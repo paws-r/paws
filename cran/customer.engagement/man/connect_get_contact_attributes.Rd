@@ -17,7 +17,7 @@ attributes to update.}
 Retrieves the contact attributes associated with a contact.
 }
 \section{Request syntax}{
-\preformatted{connect$get_contact_attributes(
+\preformatted{svc$get_contact_attributes(
   InstanceId = "string",
   InitialContactId = "string"
 )

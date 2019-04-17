@@ -33,7 +33,7 @@ If no filter criteria are specified, all events are returned. Results
 are sorted by \code{lastModifiedTime}, starting with the most recent.
 }
 \section{Request syntax}{
-\preformatted{health$describe_events(
+\preformatted{svc$describe_events(
   filter = list(
     eventArns = list(
       "string"

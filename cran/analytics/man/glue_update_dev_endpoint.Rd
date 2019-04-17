@@ -32,7 +32,7 @@ DevEndpoint.}
 Updates a specified DevEndpoint.
 }
 \section{Request syntax}{
-\preformatted{glue$update_dev_endpoint(
+\preformatted{svc$update_dev_endpoint(
   EndpointName = "string",
   PublicKey = "string",
   AddPublicKeys = list(

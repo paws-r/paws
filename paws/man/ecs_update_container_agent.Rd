@@ -30,7 +30,7 @@ updating the Amazon ECS container agent on other operating systems, see
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$update_container_agent(
+\preformatted{svc$update_container_agent(
   cluster = "string",
   containerInstance = "string"
 )

@@ -13,7 +13,7 @@ ssm_register_default_patch_baseline(BaselineId)
 Defines the default patch baseline.
 }
 \section{Request syntax}{
-\preformatted{ssm$register_default_patch_baseline(
+\preformatted{svc$register_default_patch_baseline(
   BaselineId = "string"
 )
 }

@@ -36,7 +36,7 @@ environments.}
 Updates an AWS Batch compute environment.
 }
 \section{Request syntax}{
-\preformatted{batch$update_compute_environment(
+\preformatted{svc$update_compute_environment(
   computeEnvironment = "string",
   state = "ENABLED"|"DISABLED",
   computeResources = list(
@@ -52,7 +52,7 @@ Updates an AWS Batch compute environment.
 \examples{
 # This example disables the P2OnDemand compute environment so it can be
 # deleted.
-\donttest{batch$update_compute_environment(
+\donttest{svc$update_compute_environment(
   computeEnvironment = "P2OnDemand",
   state = "DISABLED"
 )}

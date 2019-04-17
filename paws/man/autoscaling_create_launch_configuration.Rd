@@ -153,7 +153,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$create_launch_configuration(
+\preformatted{svc$create_launch_configuration(
   LaunchConfigurationName = "string",
   ImageId = "string",
   KeyName = "string",
@@ -198,7 +198,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example creates a launch configuration.
-\donttest{autoscaling$create_launch_configuration(
+\donttest{svc$create_launch_configuration(
   IamInstanceProfile = "my-iam-role",
   ImageId = "ami-12345678",
   InstanceType = "m3.medium",

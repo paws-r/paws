@@ -11,12 +11,6 @@ Amazon Textract detects and analyzes text in documents and converts it
 into machine-readable text. This is the API reference documentation for
 Amazon Textract.
 }
-\section{Example}{
-\preformatted{textract <- paws::textract()
-textract$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -29,3 +23,9 @@ textract$operation()
 }
 }
 
+\examples{
+\donttest{svc$analyze_document(
+  Foo = 123
+)}
+
+}

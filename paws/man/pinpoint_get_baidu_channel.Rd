@@ -13,7 +13,7 @@ pinpoint_get_baidu_channel(ApplicationId)
 Get a BAIDU GCM channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_baidu_channel(
+\preformatted{svc$get_baidu_channel(
   ApplicationId = "string"
 )
 }

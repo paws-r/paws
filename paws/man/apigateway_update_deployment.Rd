@@ -19,7 +19,7 @@ in the order specified in this list.}
 Changes information about a Deployment resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_deployment(
+\preformatted{svc$update_deployment(
   restApiId = "string",
   deploymentId = "string",
   patchOperations = list(

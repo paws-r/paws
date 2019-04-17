@@ -32,7 +32,7 @@ exist or the CMK is disabled, you will receive an
 \code{InvalidParameterException} error.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$associate_kms_key(
+\preformatted{svc$associate_kms_key(
   logGroupName = "string",
   kmsKeyId = "string"
 )

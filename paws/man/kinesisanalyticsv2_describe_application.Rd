@@ -23,7 +23,7 @@ If you want to retrieve a list of all applications in your account, use
 the ListApplications operation.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$describe_application(
+\preformatted{svc$describe_application(
   ApplicationName = "string",
   IncludeAdditionalDetails = TRUE|FALSE
 )

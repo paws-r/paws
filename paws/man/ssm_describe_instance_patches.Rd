@@ -28,7 +28,7 @@ Retrieves information about the patches on the specified instance and
 their state relative to the patch baseline being used for the instance.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_instance_patches(
+\preformatted{svc$describe_instance_patches(
   InstanceId = "string",
   Filters = list(
     list(

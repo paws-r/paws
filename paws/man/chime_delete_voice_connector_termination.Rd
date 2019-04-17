@@ -15,7 +15,7 @@ Deletes the termination settings for the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$delete_voice_connector_termination(
+\preformatted{svc$delete_voice_connector_termination(
   VoiceConnectorId = "string"
 )
 }

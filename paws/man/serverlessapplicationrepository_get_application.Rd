@@ -16,7 +16,7 @@ serverlessapplicationrepository_get_application(ApplicationId,
 Gets the specified application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$get_application(
+\preformatted{svc$get_application(
   ApplicationId = "string",
   SemanticVersion = "string"
 )

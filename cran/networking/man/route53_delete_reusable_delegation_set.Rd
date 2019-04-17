@@ -21,7 +21,7 @@ hosted zones, submit a GetReusableDelegationSet request and specify the
 ID of the reusable delegation set that you want to delete.
 }
 \section{Request syntax}{
-\preformatted{route53$delete_reusable_delegation_set(
+\preformatted{svc$delete_reusable_delegation_set(
   Id = "string"
 )
 }

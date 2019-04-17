@@ -21,7 +21,7 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$describe_identity_usage(
+\preformatted{svc$describe_identity_usage(
   IdentityPoolId = "string",
   IdentityId = "string"
 )

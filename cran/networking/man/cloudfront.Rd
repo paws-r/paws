@@ -12,12 +12,6 @@ developers who need detailed information about CloudFront API actions,
 data types, and errors. For detailed information about CloudFront
 features, see the \emph{Amazon CloudFront Developer Guide}.
 }
-\section{Example}{
-\preformatted{cloudfront <- paws::cloudfront()
-cloudfront$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -69,3 +63,9 @@ cloudfront$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_cloud_front_origin_access_identity(
+  Foo = 123
+)}
+
+}

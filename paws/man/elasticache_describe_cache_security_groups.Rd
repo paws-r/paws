@@ -29,7 +29,7 @@ group name is specified, the list contains only the description of that
 group.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_security_groups(
+\preformatted{svc$describe_cache_security_groups(
   CacheSecurityGroupName = "string",
   MaxRecords = 123,
   Marker = "string"

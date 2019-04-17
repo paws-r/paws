@@ -13,7 +13,7 @@ SuspendProcesses.
 }
 \examples{
 # This example describes the Auto Scaling process types.
-\donttest{autoscaling$describe_scaling_process_types()}
+\donttest{svc$describe_scaling_process_types()}
 
 }
 \keyword{internal}

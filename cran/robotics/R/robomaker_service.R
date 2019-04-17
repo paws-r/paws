@@ -8,11 +8,10 @@ NULL
 #' This section provides documentation for the AWS RoboMaker API
 #' operations.
 #'
-#' @section Example:
-#' ```
-#' robomaker <- paws::robomaker()
-#' robomaker$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_describe_simulation_job(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

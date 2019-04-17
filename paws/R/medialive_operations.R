@@ -16,7 +16,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$batch_update_schedule(
+#' svc$batch_update_schedule(
 #'   ChannelId = "string",
 #'   Creates = list(
 #'     ScheduleActions = list(
@@ -152,7 +152,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$create_channel(
+#' svc$create_channel(
 #'   Destinations = list(
 #'     list(
 #'       Id = "string",
@@ -921,7 +921,7 @@ medialive_create_channel <- function(Destinations = NULL, EncoderSettings = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$create_input(
+#' svc$create_input(
 #'   Destinations = list(
 #'     list(
 #'       StreamName = "string"
@@ -991,7 +991,7 @@ medialive_create_input <- function(Destinations = NULL, InputSecurityGroups = NU
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$create_input_security_group(
+#' svc$create_input_security_group(
 #'   Tags = list(
 #'     "string"
 #'   ),
@@ -1034,7 +1034,7 @@ medialive_create_input_security_group <- function(Tags = NULL, WhitelistRules = 
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$create_tags(
+#' svc$create_tags(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -1072,7 +1072,7 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$delete_channel(
+#' svc$delete_channel(
 #'   ChannelId = "string"
 #' )
 #' ```
@@ -1107,7 +1107,7 @@ medialive_delete_channel <- function(ChannelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$delete_input(
+#' svc$delete_input(
 #'   InputId = "string"
 #' )
 #' ```
@@ -1142,7 +1142,7 @@ medialive_delete_input <- function(InputId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$delete_input_security_group(
+#' svc$delete_input_security_group(
 #'   InputSecurityGroupId = "string"
 #' )
 #' ```
@@ -1177,7 +1177,7 @@ medialive_delete_input_security_group <- function(InputSecurityGroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$delete_reservation(
+#' svc$delete_reservation(
 #'   ReservationId = "string"
 #' )
 #' ```
@@ -1213,7 +1213,7 @@ medialive_delete_reservation <- function(ReservationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$delete_tags(
+#' svc$delete_tags(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1251,7 +1251,7 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_channel(
+#' svc$describe_channel(
 #'   ChannelId = "string"
 #' )
 #' ```
@@ -1286,7 +1286,7 @@ medialive_describe_channel <- function(ChannelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_input(
+#' svc$describe_input(
 #'   InputId = "string"
 #' )
 #' ```
@@ -1321,7 +1321,7 @@ medialive_describe_input <- function(InputId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_input_security_group(
+#' svc$describe_input_security_group(
 #'   InputSecurityGroupId = "string"
 #' )
 #' ```
@@ -1356,7 +1356,7 @@ medialive_describe_input_security_group <- function(InputSecurityGroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_offering(
+#' svc$describe_offering(
 #'   OfferingId = "string"
 #' )
 #' ```
@@ -1391,7 +1391,7 @@ medialive_describe_offering <- function(OfferingId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_reservation(
+#' svc$describe_reservation(
 #'   ReservationId = "string"
 #' )
 #' ```
@@ -1428,7 +1428,7 @@ medialive_describe_reservation <- function(ReservationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$describe_schedule(
+#' svc$describe_schedule(
 #'   ChannelId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1466,7 +1466,7 @@ medialive_describe_schedule <- function(ChannelId, MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_channels(
+#' svc$list_channels(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1503,7 +1503,7 @@ medialive_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_input_security_groups(
+#' svc$list_input_security_groups(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1540,7 +1540,7 @@ medialive_list_input_security_groups <- function(MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_inputs(
+#' svc$list_inputs(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1587,7 +1587,7 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_offerings(
+#' svc$list_offerings(
 #'   ChannelConfiguration = "string",
 #'   Codec = "string",
 #'   MaxResults = 123,
@@ -1641,7 +1641,7 @@ medialive_list_offerings <- function(ChannelConfiguration = NULL, Codec = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_reservations(
+#' svc$list_reservations(
 #'   Codec = "string",
 #'   MaxResults = 123,
 #'   MaximumBitrate = "string",
@@ -1684,7 +1684,7 @@ medialive_list_reservations <- function(Codec = NULL, MaxResults = NULL, Maximum
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -1723,7 +1723,7 @@ medialive_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$purchase_offering(
+#' svc$purchase_offering(
 #'   Count = 123,
 #'   Name = "string",
 #'   OfferingId = "string",
@@ -1762,7 +1762,7 @@ medialive_purchase_offering <- function(Count, Name = NULL, OfferingId, RequestI
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$start_channel(
+#' svc$start_channel(
 #'   ChannelId = "string"
 #' )
 #' ```
@@ -1797,7 +1797,7 @@ medialive_start_channel <- function(ChannelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$stop_channel(
+#' svc$stop_channel(
 #'   ChannelId = "string"
 #' )
 #' ```
@@ -1840,7 +1840,7 @@ medialive_stop_channel <- function(ChannelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$update_channel(
+#' svc$update_channel(
 #'   ChannelId = "string",
 #'   Destinations = list(
 #'     list(
@@ -2601,7 +2601,7 @@ medialive_update_channel <- function(ChannelId, Destinations = NULL, EncoderSett
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$update_input(
+#' svc$update_input(
 #'   Destinations = list(
 #'     list(
 #'       StreamName = "string"
@@ -2661,7 +2661,7 @@ medialive_update_input <- function(Destinations = NULL, InputId, InputSecurityGr
 #'
 #' @section Request syntax:
 #' ```
-#' medialive$update_input_security_group(
+#' svc$update_input_security_group(
 #'   InputSecurityGroupId = "string",
 #'   Tags = list(
 #'     "string"

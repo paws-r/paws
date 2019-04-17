@@ -33,7 +33,7 @@ Sensitive data, such as passport numbers, should not be included the
 name of a backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$create_backup_vault(
+\preformatted{svc$create_backup_vault(
   BackupVaultName = "string",
   BackupVaultTags = list(
     "string"

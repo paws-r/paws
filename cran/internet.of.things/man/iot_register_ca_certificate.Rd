@@ -29,7 +29,7 @@ certificate registered, make sure you pass the CA certificate when you
 register your device certificates with the RegisterCertificate API.
 }
 \section{Request syntax}{
-\preformatted{iot$register_ca_certificate(
+\preformatted{svc$register_ca_certificate(
   caCertificate = "string",
   verificationCertificate = "string",
   setAsActive = TRUE|FALSE,

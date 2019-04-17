@@ -16,7 +16,7 @@ guardduty_get_members(AccountIds, DetectorId)
 Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_members(
+\preformatted{svc$get_members(
   AccountIds = list(
     "string"
   ),

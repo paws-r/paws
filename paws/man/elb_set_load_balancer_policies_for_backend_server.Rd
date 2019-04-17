@@ -38,7 +38,7 @@ Protocol, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/class
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$set_load_balancer_policies_for_backend_server(
+\preformatted{svc$set_load_balancer_policies_for_backend_server(
   LoadBalancerName = "string",
   InstancePort = 123,
   PolicyNames = list(
@@ -51,7 +51,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example replaces the policies that are currently associated with
 # the specified port.
-\donttest{elb$set_load_balancer_policies_for_backend_server(
+\donttest{svc$set_load_balancer_policies_for_backend_server(
   InstancePort = 80L,
   LoadBalancerName = "my-load-balancer",
   PolicyNames = list(

@@ -26,7 +26,7 @@ Updates settings for a server.
 This operation is synchronous.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$update_server(
+\preformatted{svc$update_server(
   DisableAutomatedBackup = TRUE|FALSE,
   BackupRetentionCount = 123,
   ServerName = "string",

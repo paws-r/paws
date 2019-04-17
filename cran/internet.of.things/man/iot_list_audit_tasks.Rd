@@ -31,7 +31,7 @@ Lists the Device Defender audits that have been performed during a given
 time period.
 }
 \section{Request syntax}{
-\preformatted{iot$list_audit_tasks(
+\preformatted{svc$list_audit_tasks(
   startTime = as.POSIXct(
     "2015-01-01"
   ),

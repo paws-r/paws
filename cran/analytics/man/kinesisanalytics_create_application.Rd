@@ -101,7 +101,7 @@ For introductory exercises to create an Amazon Kinesis Analytics
 application, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html}{Getting Started}.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$create_application(
+\preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
   Inputs = list(

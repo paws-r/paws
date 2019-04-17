@@ -19,7 +19,7 @@ CloudFormation uses to launch the application.}
 Creates a launch configuration for an application.
 }
 \section{Request syntax}{
-\preformatted{sms$put_app_launch_configuration(
+\preformatted{svc$put_app_launch_configuration(
   appId = "string",
   roleName = "string",
   serverGroupLaunchConfigurations = list(

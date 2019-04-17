@@ -17,7 +17,7 @@ glue_get_mapping(Source, Sinks, Location)
 Creates mappings.
 }
 \section{Request syntax}{
-\preformatted{glue$get_mapping(
+\preformatted{svc$get_mapping(
   Source = list(
     DatabaseName = "string",
     TableName = "string"

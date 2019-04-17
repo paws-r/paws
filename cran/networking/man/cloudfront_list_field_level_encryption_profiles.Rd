@@ -22,7 +22,7 @@ Request a list of field-level encryption profiles that have been created
 in CloudFront for this account.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_field_level_encryption_profiles(
+\preformatted{svc$list_field_level_encryption_profiles(
   Marker = "string",
   MaxItems = "string"
 )

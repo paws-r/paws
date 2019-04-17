@@ -16,7 +16,7 @@ you receive a successful response from this action, DAX immediately
 begins deleting the cluster; you cannot cancel or revert this action.
 }
 \section{Request syntax}{
-\preformatted{dax$delete_cluster(
+\preformatted{svc$delete_cluster(
   ClusterName = "string"
 )
 }

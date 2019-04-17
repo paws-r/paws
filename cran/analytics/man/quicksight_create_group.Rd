@@ -30,7 +30,7 @@ The response is a group object.
 \code{aws quicksight create-group --aws-account-id=111122223333 --namespace=default --group-name="Sales-Management" --description="Sales Management - Forecasting" }
 }
 \section{Request syntax}{
-\preformatted{quicksight$create_group(
+\preformatted{svc$create_group(
   GroupName = "string",
   Description = "string",
   AwsAccountId = "string",

@@ -17,7 +17,7 @@ Log events do not expire if they belong to log groups without a
 retention policy.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$delete_retention_policy(
+\preformatted{svc$delete_retention_policy(
   logGroupName = "string"
 )
 }

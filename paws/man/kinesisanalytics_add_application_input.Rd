@@ -34,7 +34,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationInput} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$add_application_input(
+\preformatted{svc$add_application_input(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Input = list(

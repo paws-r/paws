@@ -17,7 +17,7 @@ The \code{ListWorkersBlocks} operation retrieves a list of Workers who are
 blocked from working on your HITs.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_worker_blocks(
+\preformatted{svc$list_worker_blocks(
   NextToken = "string",
   MaxResults = 123
 )

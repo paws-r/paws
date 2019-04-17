@@ -48,7 +48,7 @@ This operation is performed asynchronously. To track the progress of the
 operation, use DescribeCopyProductStatus.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$copy_product(
+\preformatted{svc$copy_product(
   AcceptLanguage = "string",
   SourceProductArn = "string",
   TargetProductId = "string",

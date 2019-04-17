@@ -15,7 +15,7 @@ Describes the configuration for delivering audit streams to the customer
 account.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_audit_stream_configuration(
+\preformatted{svc$describe_audit_stream_configuration(
   FleetArn = "string"
 )
 }

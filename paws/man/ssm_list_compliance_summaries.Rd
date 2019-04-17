@@ -25,7 +25,7 @@ associations, patches, or custom compliance types according to the
 filter criteria that you specify.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_compliance_summaries(
+\preformatted{svc$list_compliance_summaries(
   Filters = list(
     list(
       Key = "string",

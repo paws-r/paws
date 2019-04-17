@@ -27,7 +27,7 @@ apigatewayv2_update_route_response(ApiId, ModelSelectionExpression,
 Updates a RouteResponse.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_route_response(
+\preformatted{svc$update_route_response(
   ApiId = "string",
   ModelSelectionExpression = "string",
   ResponseModels = list(

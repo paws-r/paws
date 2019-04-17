@@ -27,7 +27,7 @@ the queue. For more information about shared queue access, see
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$get_queue_url(
+\preformatted{svc$get_queue_url(
   QueueName = "string",
   QueueOwnerAWSAccountId = "string"
 )

@@ -38,7 +38,7 @@ Traffic policy versions are listed in numerical order by
 \code{VersionNumber}.
 }
 \section{Request syntax}{
-\preformatted{route53$list_traffic_policy_versions(
+\preformatted{svc$list_traffic_policy_versions(
   Id = "string",
   TrafficPolicyVersionMarker = "string",
   MaxItems = "string"

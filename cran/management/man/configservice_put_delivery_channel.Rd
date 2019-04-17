@@ -30,7 +30,7 @@ existing value for the parameter that is not changed.
 You can have only one delivery channel per region in your account.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_delivery_channel(
+\preformatted{svc$put_delivery_channel(
   DeliveryChannel = list(
     name = "string",
     s3BucketName = "string",

@@ -13,7 +13,7 @@ mediaconnect_describe_flow(FlowArn)
 Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$describe_flow(
+\preformatted{svc$describe_flow(
   FlowArn = "string"
 )
 }

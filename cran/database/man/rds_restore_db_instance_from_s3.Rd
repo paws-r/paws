@@ -273,7 +273,7 @@ running MySQL. For more information, see \href{https://docs.aws.amazon.com/Amazo
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$restore_db_instance_from_s3(
+\preformatted{svc$restore_db_instance_from_s3(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,

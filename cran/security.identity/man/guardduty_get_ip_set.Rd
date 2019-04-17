@@ -15,7 +15,7 @@ guardduty_get_ip_set(DetectorId, IpSetId)
 Retrieves the IPSet specified by the IPSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_ip_set(
+\preformatted{svc$get_ip_set(
   DetectorId = "string",
   IpSetId = "string"
 )

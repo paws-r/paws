@@ -25,7 +25,7 @@ To remove an IP address from an endpoint, see
 DisassociateResolverEndpointIpAddress.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$associate_resolver_endpoint_ip_address(
+\preformatted{svc$associate_resolver_endpoint_ip_address(
   ResolverEndpointId = "string",
   IpAddress = list(
     IpId = "string",

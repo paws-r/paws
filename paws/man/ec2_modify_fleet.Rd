@@ -28,7 +28,7 @@ Modifies the specified EC2 Fleet.
 While the EC2 Fleet is being modified, it is in the \code{modifying} state.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_fleet(
+\preformatted{svc$modify_fleet(
   DryRun = TRUE|FALSE,
   ExcessCapacityTerminationPolicy = "no-termination"|"termination",
   FleetId = "string",

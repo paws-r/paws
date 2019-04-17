@@ -24,7 +24,7 @@ To list the current tags for your resources, use DescribeTags. To remove
 tags from your resources, use RemoveTags.
 }
 \section{Request syntax}{
-\preformatted{elbv2$add_tags(
+\preformatted{svc$add_tags(
   ResourceArns = list(
     "string"
   ),
@@ -40,7 +40,7 @@ tags from your resources, use RemoveTags.
 
 \examples{
 # This example adds the specified tags to the specified load balancer.
-\donttest{elbv2$add_tags(
+\donttest{svc$add_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   ),

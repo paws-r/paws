@@ -13,7 +13,7 @@ appstream_delete_fleet(Name)
 Deletes the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_fleet(
+\preformatted{svc$delete_fleet(
   Name = "string"
 )
 }

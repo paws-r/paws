@@ -13,7 +13,7 @@ pinpoint_get_sms_channel(ApplicationId)
 Get an SMS channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_sms_channel(
+\preformatted{svc$get_sms_channel(
   ApplicationId = "string"
 )
 }

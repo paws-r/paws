@@ -23,7 +23,7 @@ Creates a new server-side encryption configuration (or replaces an
 existing one, if present).
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_encryption(
+\preformatted{svc$put_bucket_encryption(
   Bucket = "string",
   ContentMD5 = "string",
   ServerSideEncryptionConfiguration = list(

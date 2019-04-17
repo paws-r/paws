@@ -13,7 +13,7 @@ medialive_delete_input(InputId)
 Deletes the input end point
 }
 \section{Request syntax}{
-\preformatted{medialive$delete_input(
+\preformatted{svc$delete_input(
   InputId = "string"
 )
 }

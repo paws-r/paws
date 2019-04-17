@@ -27,7 +27,7 @@ List all Elasticsearch instance types that are supported for given
 ElasticsearchVersion
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$list_elasticsearch_instance_types(
+\preformatted{svc$list_elasticsearch_instance_types(
   ElasticsearchVersion = "string",
   DomainName = "string",
   MaxResults = 123,

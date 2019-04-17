@@ -15,7 +15,7 @@ iotanalytics_update_channel(channelName, retentionPeriod)
 Updates the settings of a channel.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$update_channel(
+\preformatted{svc$update_channel(
   channelName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,

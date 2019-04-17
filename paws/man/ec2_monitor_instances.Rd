@@ -23,7 +23,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 To disable detailed monitoring, see .
 }
 \section{Request syntax}{
-\preformatted{ec2$monitor_instances(
+\preformatted{svc$monitor_instances(
   InstanceIds = list(
     "string"
   ),

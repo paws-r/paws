@@ -82,7 +82,7 @@ they are added to a stream. You can use IncreaseStreamRetentionPeriod or
 DecreaseStreamRetentionPeriod to modify this retention period.
 }
 \section{Request syntax}{
-\preformatted{kinesis$put_record(
+\preformatted{svc$put_record(
   StreamName = "string",
   Data = raw,
   PartitionKey = "string",

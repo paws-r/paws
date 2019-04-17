@@ -16,7 +16,7 @@ Retrieves your account's AWS CloudFormation limits, such as the maximum
 number of stacks that you can create in your account.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_account_limits(
+\preformatted{svc$describe_account_limits(
   NextToken = "string"
 )
 }

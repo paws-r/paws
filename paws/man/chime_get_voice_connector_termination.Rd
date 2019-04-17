@@ -15,7 +15,7 @@ Retrieves termination setting details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$get_voice_connector_termination(
+\preformatted{svc$get_voice_connector_termination(
   VoiceConnectorId = "string"
 )
 }

@@ -26,7 +26,7 @@ between 1 and 50. The default value is 50.}
 Describes one or more of your scaling plans.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$describe_scaling_plans(
+\preformatted{svc$describe_scaling_plans(
   ScalingPlanNames = list(
     "string"
   ),

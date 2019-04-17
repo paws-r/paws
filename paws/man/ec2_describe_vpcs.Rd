@@ -59,7 +59,7 @@ value.}
 Describes one or more of your VPCs.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpcs(
+\preformatted{svc$describe_vpcs(
   Filters = list(
     list(
       Name = "string",
@@ -80,7 +80,7 @@ Describes one or more of your VPCs.
 
 \examples{
 # This example describes the specified VPC.
-\donttest{ec2$describe_vpcs(
+\donttest{svc$describe_vpcs(
   VpcIds = list(
     "vpc-a01106c2"
   )

@@ -17,7 +17,7 @@ Returns information about a version of an \href{https://docs.aws.amazon.com/lamb
 with a link to download the layer archive that's valid for 10 minutes.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_layer_version(
+\preformatted{svc$get_layer_version(
   LayerName = "string",
   VersionNumber = 123
 )

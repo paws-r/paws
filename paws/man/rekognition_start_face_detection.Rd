@@ -48,7 +48,7 @@ For more information, see Detecting Faces in a Stored Video in the
 Amazon Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_face_detection(
+\preformatted{svc$start_face_detection(
   Video = list(
     S3Object = list(
       Bucket = "string",

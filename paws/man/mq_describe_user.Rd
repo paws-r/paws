@@ -15,7 +15,7 @@ mq_describe_user(BrokerId, Username)
 Returns information about an ActiveMQ user.
 }
 \section{Request syntax}{
-\preformatted{mq$describe_user(
+\preformatted{svc$describe_user(
   BrokerId = "string",
   Username = "string"
 )

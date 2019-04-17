@@ -71,7 +71,7 @@ For example, if the inference code access any other AWS resources, you
 grant necessary permissions via this role.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_model(
+\preformatted{svc$create_model(
   ModelName = "string",
   PrimaryContainer = list(
     ContainerHostname = "string",

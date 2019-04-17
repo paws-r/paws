@@ -23,7 +23,7 @@ Lists devices, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_list_devices(
+\preformatted{svc$admin_list_devices(
   UserPoolId = "string",
   Username = "string",
   Limit = 123,

@@ -21,7 +21,7 @@ Removes the specified policy from the specified certificate.
 \strong{Note:} This API is deprecated. Please use DetachPolicy instead.
 }
 \section{Request syntax}{
-\preformatted{iot$detach_principal_policy(
+\preformatted{svc$detach_principal_policy(
   policyName = "string",
   principal = "string"
 )

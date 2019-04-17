@@ -16,7 +16,7 @@ worklink_disassociate_website_certificate_authority(FleetArn,
 Removes a certificate authority (CA).
 }
 \section{Request syntax}{
-\preformatted{worklink$disassociate_website_certificate_authority(
+\preformatted{svc$disassociate_website_certificate_authority(
   FleetArn = "string",
   WebsiteCaId = "string"
 )

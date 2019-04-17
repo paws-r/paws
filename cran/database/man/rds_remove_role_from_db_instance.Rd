@@ -23,7 +23,7 @@ Disassociates an AWS Identity and Access Management (IAM) role from a DB
 instance.
 }
 \section{Request syntax}{
-\preformatted{rds$remove_role_from_db_instance(
+\preformatted{svc$remove_role_from_db_instance(
   DBInstanceIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"

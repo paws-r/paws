@@ -15,7 +15,7 @@ mediaconnect_untag_resource(ResourceArn, TagKeys)
 Deletes the specified tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

@@ -15,7 +15,7 @@ guardduty_archive_findings(DetectorId, FindingIds)
 Archives Amazon GuardDuty findings specified by the list of finding IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$archive_findings(
+\preformatted{svc$archive_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"

@@ -18,7 +18,7 @@ NextToken from the previous response to continue listing data.}
 Lists all Security Hub-integrated third-party findings providers.
 }
 \section{Request syntax}{
-\preformatted{securityhub$list_enabled_products_for_import(
+\preformatted{svc$list_enabled_products_for_import(
   NextToken = "string",
   MaxResults = 123
 )

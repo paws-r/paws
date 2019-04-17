@@ -44,7 +44,7 @@ A feature of the API Gateway control service for creating a new API from
 an external API definition file.
 }
 \section{Request syntax}{
-\preformatted{apigateway$import_rest_api(
+\preformatted{svc$import_rest_api(
   failOnWarnings = TRUE|FALSE,
   parameters = list(
     "string"

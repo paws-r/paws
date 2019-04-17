@@ -19,7 +19,7 @@ Deletes one or more scheduled actions for the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$batch_delete_scheduled_action(
+\preformatted{svc$batch_delete_scheduled_action(
   AutoScalingGroupName = "string",
   ScheduledActionNames = list(
     "string"

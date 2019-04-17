@@ -10,11 +10,10 @@ NULL
 #' migration, restoration, and deletion of backups, while also providing
 #' reporting and auditing.
 #'
-#' @section Example:
-#' ```
-#' backup <- paws::backup()
-#' backup$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_backup_plan(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -38,7 +38,7 @@ exist. A \code{ValidationException} is raised when parameters of the request
 are not valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$restore_server(
+\preformatted{svc$restore_server(
   BackupId = "string",
   ServerName = "string",
   InstanceType = "string",

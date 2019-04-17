@@ -24,7 +24,7 @@ the ticket is stopped, and the ticket status is changed to \code{CANCELLED}.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$stop_matchmaking(
+\preformatted{svc$stop_matchmaking(
   TicketId = "string"
 )
 }

@@ -18,7 +18,7 @@ activate these user-defined tags so that they appear on the Billing and
 Cost Management console for cost allocation tracking.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

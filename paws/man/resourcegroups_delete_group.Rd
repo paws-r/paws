@@ -15,7 +15,7 @@ delete resources that are members of the group; it only deletes the
 group structure.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string"
 )
 }

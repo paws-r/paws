@@ -32,7 +32,7 @@ Lists parent objects that are associated with a given object in
 pagination fashion.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_object_parents(
+\preformatted{svc$list_object_parents(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

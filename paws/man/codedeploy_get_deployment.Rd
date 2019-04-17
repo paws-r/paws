@@ -20,7 +20,7 @@ property of the returned \code{appSpecContent} object to get the content of
 the deployment's AppSpec file.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_deployment(
+\preformatted{svc$get_deployment(
   deploymentId = "string"
 )
 }

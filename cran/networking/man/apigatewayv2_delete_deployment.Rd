@@ -15,7 +15,7 @@ apigatewayv2_delete_deployment(ApiId, DeploymentId)
 Deletes a Deployment.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_deployment(
+\preformatted{svc$delete_deployment(
   ApiId = "string",
   DeploymentId = "string"
 )

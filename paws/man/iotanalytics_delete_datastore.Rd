@@ -13,7 +13,7 @@ iotanalytics_delete_datastore(datastoreName)
 Deletes the specified data store.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$delete_datastore(
+\preformatted{svc$delete_datastore(
   datastoreName = "string"
 )
 }

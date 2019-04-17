@@ -28,7 +28,7 @@ Returns a list of vocabularies that match the specified criteria. If no
 criteria are specified, returns the entire list of vocabularies.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$list_vocabularies(
+\preformatted{svc$list_vocabularies(
   NextToken = "string",
   MaxResults = 123,
   StateEquals = "PENDING"|"READY"|"FAILED",

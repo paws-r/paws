@@ -39,7 +39,7 @@ Describes a list of job definitions. You can specify a \code{status} (such as
 \code{ACTIVE}) to only return job definitions that match that status.
 }
 \section{Request syntax}{
-\preformatted{batch$describe_job_definitions(
+\preformatted{svc$describe_job_definitions(
   jobDefinitions = list(
     "string"
   ),
@@ -53,7 +53,7 @@ Describes a list of job definitions. You can specify a \code{status} (such as
 
 \examples{
 # This example describes all of your active job definitions.
-\donttest{batch$describe_job_definitions(
+\donttest{svc$describe_job_definitions(
   status = "ACTIVE"
 )}
 

@@ -29,7 +29,7 @@ group.}
 Modifies an existing option group.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_option_group(
+\preformatted{svc$modify_option_group(
   OptionGroupName = "string",
   OptionsToInclude = list(
     list(

@@ -21,7 +21,7 @@ value.}
 Returns the license configuration for a resource.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_license_specifications_for_resource(
+\preformatted{svc$list_license_specifications_for_resource(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"

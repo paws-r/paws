@@ -37,7 +37,7 @@ in the ElastiCache User Guide.
 }
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_cache_parameter_group(
+\preformatted{svc$create_cache_parameter_group(
   CacheParameterGroupName = "string",
   CacheParameterGroupFamily = "string",
   Description = "string"

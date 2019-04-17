@@ -19,7 +19,7 @@ You can use a blueprint ID to create a new database that runs a specific
 database engine.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_blueprints(
+\preformatted{svc$get_relational_database_blueprints(
   pageToken = "string"
 )
 }

@@ -18,7 +18,7 @@ the user when the authentication method for the file share is set to
 \code{GuestAccess}.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$set_smb_guest_password(
+\preformatted{svc$set_smb_guest_password(
   GatewayARN = "string",
   Password = "string"
 )

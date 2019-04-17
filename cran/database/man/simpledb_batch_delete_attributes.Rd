@@ -43,7 +43,7 @@ The following limitations are enforced for this operation:
 }
 }
 \section{Request syntax}{
-\preformatted{simpledb$batch_delete_attributes(
+\preformatted{svc$batch_delete_attributes(
   DomainName = "string",
   Items = list(
     list(

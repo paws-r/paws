@@ -15,7 +15,7 @@ importexport_cancel_job(JobId, APIVersion)
 This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
 }
 \section{Request syntax}{
-\preformatted{importexport$cancel_job(
+\preformatted{svc$cancel_job(
   JobId = "string",
   APIVersion = "string"
 )

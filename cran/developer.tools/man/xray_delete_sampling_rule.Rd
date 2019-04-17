@@ -17,7 +17,7 @@ not both.}
 Deletes a sampling rule.
 }
 \section{Request syntax}{
-\preformatted{xray$delete_sampling_rule(
+\preformatted{svc$delete_sampling_rule(
   RuleName = "string",
   RuleARN = "string"
 )

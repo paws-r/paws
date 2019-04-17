@@ -37,7 +37,7 @@ will need to clean up and re-establish any existing connections that use
 those endpoint addresses when the failover is complete.
 }
 \section{Request syntax}{
-\preformatted{neptune$failover_db_cluster(
+\preformatted{svc$failover_db_cluster(
   DBClusterIdentifier = "string",
   TargetDBInstanceIdentifier = "string"
 )

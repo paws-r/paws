@@ -22,7 +22,7 @@ Replaces a policy on a bucket. If the bucket already has a policy, the
 one in this request completely replaces it.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_policy(
+\preformatted{svc$put_bucket_policy(
   Bucket = "string",
   ContentMD5 = "string",
   ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
@@ -33,7 +33,7 @@ one in this request completely replaces it.
 
 \examples{
 # The following example sets a permission policy on a bucket.
-\donttest{s3$put_bucket_policy(
+\donttest{svc$put_bucket_policy(
   Bucket = "examplebucket",
   Policy = "{\\"Version\\": \\"2012-10-17\\", \\"Statement\\": [{ \\"Sid\\": \\"id-1\\",\\"Effect\\": ..."
 )}

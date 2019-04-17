@@ -17,7 +17,7 @@ alexaforbusiness_update_address_book(AddressBookArn, Name, Description)
 Updates address book details by the address book ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_address_book(
+\preformatted{svc$update_address_book(
   AddressBookArn = "string",
   Name = "string",
   Description = "string"

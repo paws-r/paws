@@ -14,7 +14,7 @@ delete remote access.}
 Deletes a completed remote access session and its results.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_remote_access_session(
+\preformatted{svc$delete_remote_access_session(
   arn = "string"
 )
 }
@@ -22,7 +22,7 @@ Deletes a completed remote access session and its results.
 
 \examples{
 # The following example deletes a specific remote access session.
-\donttest{devicefarm$delete_remote_access_session(
+\donttest{svc$delete_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 )}
 

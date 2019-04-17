@@ -23,7 +23,7 @@ Returns a paginated list of all attribute definitions for a particular
 TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_typed_link_facet_attributes(
+\preformatted{svc$list_typed_link_facet_attributes(
   SchemaArn = "string",
   Name = "string",
   NextToken = "string",

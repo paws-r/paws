@@ -13,7 +13,7 @@ codebuild_batch_delete_builds(ids)
 Deletes one or more builds.
 }
 \section{Request syntax}{
-\preformatted{codebuild$batch_delete_builds(
+\preformatted{svc$batch_delete_builds(
   ids = list(
     "string"
   )

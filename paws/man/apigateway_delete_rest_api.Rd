@@ -13,7 +13,7 @@ apigateway_delete_rest_api(restApiId)
 Deletes the specified API.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_rest_api(
+\preformatted{svc$delete_rest_api(
   restApiId = "string"
 )
 }

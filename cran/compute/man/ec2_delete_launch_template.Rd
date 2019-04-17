@@ -23,7 +23,7 @@ Deletes a launch template. Deleting a launch template deletes all of its
 versions.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_launch_template(
+\preformatted{svc$delete_launch_template(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string"
@@ -33,7 +33,7 @@ versions.
 
 \examples{
 # This example deletes the specified launch template.
-\donttest{ec2$delete_launch_template(
+\donttest{svc$delete_launch_template(
   LaunchTemplateId = "lt-0abcd290751193123"
 )}
 

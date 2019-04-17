@@ -37,7 +37,7 @@ routes for your virtual router that direct incoming requests to
 different virtual nodes.
 }
 \section{Request syntax}{
-\preformatted{appmesh$create_virtual_router(
+\preformatted{svc$create_virtual_router(
   clientToken = "string",
   meshName = "string",
   spec = list(

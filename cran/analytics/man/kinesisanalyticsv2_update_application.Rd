@@ -39,7 +39,7 @@ SQL is not enabled for this private beta. Using SQL parameters (such as
 SqlApplicationConfigurationUpdate) will result in an error.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$update_application(
+\preformatted{svc$update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationConfigurationUpdate = list(

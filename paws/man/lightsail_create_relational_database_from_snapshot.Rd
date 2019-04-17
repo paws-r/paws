@@ -90,7 +90,7 @@ the resource identified by relationalDatabaseSnapshotName. For more
 information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$create_relational_database_from_snapshot(
+\preformatted{svc$create_relational_database_from_snapshot(
   relationalDatabaseName = "string",
   availabilityZone = "string",
   publiclyAccessible = TRUE|FALSE,

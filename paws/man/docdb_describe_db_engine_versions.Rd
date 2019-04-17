@@ -52,7 +52,7 @@ list of supported time zones for each engine version.}
 Returns a list of the available DB engines.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_engine_versions(
+\preformatted{svc$describe_db_engine_versions(
   Engine = "string",
   EngineVersion = "string",
   DBParameterGroupFamily = "string",

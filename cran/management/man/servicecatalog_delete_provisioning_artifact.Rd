@@ -31,7 +31,7 @@ for a product, because a product must have at least one provisioning
 artifact.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_provisioning_artifact(
+\preformatted{svc$delete_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string"

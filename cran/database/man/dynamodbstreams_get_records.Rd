@@ -29,7 +29,7 @@ calls to get to a portion of the shard that contains stream records.
 records, whichever comes first.
 }
 \section{Request syntax}{
-\preformatted{dynamodbstreams$get_records(
+\preformatted{svc$get_records(
   ShardIterator = "string",
   Limit = 123
 )
@@ -38,7 +38,7 @@ records, whichever comes first.
 
 \examples{
 # The following example retrieves all the stream records from a shard.
-\donttest{dynamodbstreams$get_records(
+\donttest{svc$get_records(
   ShardIterator = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:..."
 )}
 

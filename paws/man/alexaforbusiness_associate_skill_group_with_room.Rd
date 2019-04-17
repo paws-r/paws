@@ -16,7 +16,7 @@ Associates a skill group with a given room. This enables all skills in
 the associated skill group on all devices in the room.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$associate_skill_group_with_room(
+\preformatted{svc$associate_skill_group_with_room(
   SkillGroupArn = "string",
   RoomArn = "string"
 )

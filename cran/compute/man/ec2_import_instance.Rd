@@ -32,7 +32,7 @@ For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }
 \section{Request syntax}{
-\preformatted{ec2$import_instance(
+\preformatted{svc$import_instance(
   Description = "string",
   DiskImages = list(
     list(

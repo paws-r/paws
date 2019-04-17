@@ -13,7 +13,7 @@ lightsail_get_active_names(pageToken)
 Returns the names of all active (not deleted) resources.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_active_names(
+\preformatted{svc$get_active_names(
   pageToken = "string"
 )
 }

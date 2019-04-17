@@ -41,7 +41,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' acm$add_tags_to_certificate(
+#' svc$add_tags_to_certificate(
 #'   CertificateArn = "string",
 #'   Tags = list(
 #'     list(
@@ -97,7 +97,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$delete_certificate(
+#' svc$delete_certificate(
 #'   CertificateArn = "string"
 #' )
 #' ```
@@ -139,7 +139,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$describe_certificate(
+#' svc$describe_certificate(
 #'   CertificateArn = "string"
 #' )
 #' ```
@@ -191,7 +191,7 @@ acm_describe_certificate <- function(CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$export_certificate(
+#' svc$export_certificate(
 #'   CertificateArn = "string",
 #'   Passphrase = raw
 #' )
@@ -238,7 +238,7 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$get_certificate(
+#' svc$get_certificate(
 #'   CertificateArn = "string"
 #' )
 #' ```
@@ -337,7 +337,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$import_certificate(
+#' svc$import_certificate(
 #'   CertificateArn = "string",
 #'   Certificate = raw,
 #'   PrivateKey = raw,
@@ -388,7 +388,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'
 #' @section Request syntax:
 #' ```
-#' acm$list_certificates(
+#' svc$list_certificates(
 #'   CertificateStatuses = list(
 #'     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
 #'   ),
@@ -448,7 +448,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' acm$list_tags_for_certificate(
+#' svc$list_tags_for_certificate(
 #'   CertificateArn = "string"
 #' )
 #' ```
@@ -499,7 +499,7 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$remove_tags_from_certificate(
+#' svc$remove_tags_from_certificate(
 #'   CertificateArn = "string",
 #'   Tags = list(
 #'     list(
@@ -554,7 +554,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$renew_certificate(
+#' svc$renew_certificate(
 #'   CertificateArn = "string"
 #' )
 #' ```
@@ -668,7 +668,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acm$request_certificate(
+#' svc$request_certificate(
 #'   DomainName = "string",
 #'   ValidationMethod = "EMAIL"|"DNS",
 #'   SubjectAlternativeNames = list(
@@ -754,7 +754,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #'
 #' @section Request syntax:
 #' ```
-#' acm$resend_validation_email(
+#' svc$resend_validation_email(
 #'   CertificateArn = "string",
 #'   Domain = "string",
 #'   ValidationDomain = "string"
@@ -803,7 +803,7 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #'
 #' @section Request syntax:
 #' ```
-#' acm$update_certificate_options(
+#' svc$update_certificate_options(
 #'   CertificateArn = "string",
 #'   Options = list(
 #'     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"

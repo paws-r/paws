@@ -21,7 +21,7 @@ greengrass_create_function_definition(AmznClientToken, InitialVersion,
 Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_function_definition(
+\preformatted{svc$create_function_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     DefaultConfig = list(

@@ -30,7 +30,7 @@ TagCertificateAuthority operation to add one or more tags to your CA.
 Call the UntagCertificateAuthority operation to remove tags.
 }
 \section{Request syntax}{
-\preformatted{acmpca$list_tags(
+\preformatted{svc$list_tags(
   CertificateAuthorityArn = "string",
   NextToken = "string",
   MaxResults = 123

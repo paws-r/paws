@@ -15,7 +15,7 @@ Takes an \code{AddressId} and returns specific details about that address in
 the form of an \code{Address} object.
 }
 \section{Request syntax}{
-\preformatted{snowball$describe_address(
+\preformatted{svc$describe_address(
   AddressId = "string"
 )
 }
@@ -23,7 +23,7 @@ the form of an \code{Address} object.
 
 \examples{
 # This operation describes an address for a job.
-\donttest{snowball$describe_address(
+\donttest{svc$describe_address(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b"
 )}
 

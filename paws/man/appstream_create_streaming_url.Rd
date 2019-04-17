@@ -29,7 +29,7 @@ the specified user. A streaming URL enables application streaming to be
 tested without user setup.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_streaming_url(
+\preformatted{svc$create_streaming_url(
   StackName = "string",
   FleetName = "string",
   UserId = "string",

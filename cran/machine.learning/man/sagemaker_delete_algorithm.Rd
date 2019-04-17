@@ -13,7 +13,7 @@ sagemaker_delete_algorithm(AlgorithmName)
 Removes the specified algorithm from your account.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_algorithm(
+\preformatted{svc$delete_algorithm(
   AlgorithmName = "string"
 )
 }

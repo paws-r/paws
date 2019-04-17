@@ -16,7 +16,7 @@ in the order specified in this list.}
 Changes information about the DomainName resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_domain_name(
+\preformatted{svc$update_domain_name(
   domainName = "string",
   patchOperations = list(
     list(

@@ -15,7 +15,7 @@ Sets the conference preferences on a specific conference provider at the
 account level.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$put_conference_preference(
+\preformatted{svc$put_conference_preference(
   ConferencePreference = list(
     DefaultConferenceProviderArn = "string"
   )

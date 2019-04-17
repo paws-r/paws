@@ -34,7 +34,7 @@ Create an ApiKey resource.
 :::
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_api_key(
+\preformatted{svc$create_api_key(
   name = "string",
   description = "string",
   enabled = TRUE|FALSE,

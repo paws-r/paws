@@ -13,7 +13,7 @@ pinpoint_get_event_stream(ApplicationId)
 Returns the event stream for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_event_stream(
+\preformatted{svc$get_event_stream(
   ApplicationId = "string"
 )
 }

@@ -13,7 +13,7 @@ robomaker_describe_simulation_job(job)
 Describes a simulation job.
 }
 \section{Request syntax}{
-\preformatted{robomaker$describe_simulation_job(
+\preformatted{svc$describe_simulation_job(
   job = "string"
 )
 }

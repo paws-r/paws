@@ -29,7 +29,7 @@ delete marker, which becomes the latest version of the object. If there
 isn't a null version, Amazon S3 does not remove any objects.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_object(
+\preformatted{svc$delete_object(
   Bucket = "string",
   Key = "string",
   MFA = "string",
@@ -42,13 +42,13 @@ isn't a null version, Amazon S3 does not remove any objects.
 
 \examples{
 # The following example deletes an object from a non-versioned bucket.
-\donttest{s3$delete_object(
+\donttest{svc$delete_object(
   Bucket = "ExampleBucket",
   Key = "HappyFace.jpg"
 )}
 
 # The following example deletes an object from an S3 bucket.
-\donttest{s3$delete_object(
+\donttest{svc$delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
 )}

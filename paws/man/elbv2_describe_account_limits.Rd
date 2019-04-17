@@ -23,7 +23,7 @@ in the \emph{Application Load Balancer Guide} or \href{https://docs.aws.amazon.c
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_account_limits(
+\preformatted{svc$describe_account_limits(
   Marker = "string",
   PageSize = 123
 )

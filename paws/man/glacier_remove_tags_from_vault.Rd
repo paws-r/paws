@@ -25,7 +25,7 @@ This operation is idempotent. The operation will be successful, even if
 there are no tags attached to the vault.
 }
 \section{Request syntax}{
-\preformatted{glacier$remove_tags_from_vault(
+\preformatted{svc$remove_tags_from_vault(
   accountId = "string",
   vaultName = "string",
   TagKeys = list(
@@ -37,7 +37,7 @@ there are no tags attached to the vault.
 
 \examples{
 # The example removes two tags from the vault named examplevault.
-\donttest{glacier$remove_tags_from_vault(
+\donttest{svc$remove_tags_from_vault(
   TagKeys = list(
     "examplekey1",
     "examplekey2"

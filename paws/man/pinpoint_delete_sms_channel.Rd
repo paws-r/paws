@@ -13,7 +13,7 @@ pinpoint_delete_sms_channel(ApplicationId)
 Delete an SMS channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_sms_channel(
+\preformatted{svc$delete_sms_channel(
   ApplicationId = "string"
 )
 }

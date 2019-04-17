@@ -16,7 +16,7 @@ job, check the \code{TranscriptionJobStatus} field. If the status is
 location specified in the \code{TranscriptionFileUri} field.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$get_transcription_job(
+\preformatted{svc$get_transcription_job(
   TranscriptionJobName = "string"
 )
 }

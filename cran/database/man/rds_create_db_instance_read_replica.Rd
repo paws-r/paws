@@ -279,7 +279,7 @@ specified following.
 Your source DB instance must have backup retention enabled.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_instance_read_replica(
+\preformatted{svc$create_db_instance_read_replica(
   DBInstanceIdentifier = "string",
   SourceDBInstanceIdentifier = "string",
   DBInstanceClass = "string",

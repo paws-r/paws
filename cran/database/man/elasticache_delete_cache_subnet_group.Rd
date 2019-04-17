@@ -20,7 +20,7 @@ You cannot delete a cache subnet group if it is associated with any
 clusters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_cache_subnet_group(
+\preformatted{svc$delete_cache_subnet_group(
   CacheSubnetGroupName = "string"
 )
 }

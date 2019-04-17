@@ -14,7 +14,7 @@ Deletes an existing license configuration. This action fails if the
 configuration is in use.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$delete_license_configuration(
+\preformatted{svc$delete_license_configuration(
   LicenseConfigurationArn = "string"
 )
 }

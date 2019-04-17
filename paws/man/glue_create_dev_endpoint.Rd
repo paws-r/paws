@@ -61,7 +61,7 @@ the developer guide.}
 Creates a new DevEndpoint.
 }
 \section{Request syntax}{
-\preformatted{glue$create_dev_endpoint(
+\preformatted{svc$create_dev_endpoint(
   EndpointName = "string",
   RoleArn = "string",
   SecurityGroupIds = list(

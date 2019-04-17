@@ -32,7 +32,7 @@ Updates the webhook associated with an AWS CodeBuild build project.
 If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 }
 \section{Request syntax}{
-\preformatted{codebuild$update_webhook(
+\preformatted{svc$update_webhook(
   projectName = "string",
   branchFilter = "string",
   rotateSecret = TRUE|FALSE,

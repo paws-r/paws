@@ -16,7 +16,7 @@ and the maximum value is 500.}
 Gets a collection of ClientCertificate resources.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_client_certificates(
+\preformatted{svc$get_client_certificates(
   position = "string",
   limit = 123
 )

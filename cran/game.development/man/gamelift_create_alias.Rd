@@ -46,7 +46,7 @@ game session. You can reassign an alias to another fleet by calling
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_alias(
+\preformatted{svc$create_alias(
   Name = "string",
   Description = "string",
   RoutingStrategy = list(

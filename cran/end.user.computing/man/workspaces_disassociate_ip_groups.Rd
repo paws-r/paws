@@ -17,7 +17,7 @@ Disassociates the specified IP access control group from the specified
 directory.
 }
 \section{Request syntax}{
-\preformatted{workspaces$disassociate_ip_groups(
+\preformatted{svc$disassociate_ip_groups(
   DirectoryId = "string",
   GroupIds = list(
     "string"

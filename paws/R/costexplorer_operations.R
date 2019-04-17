@@ -69,7 +69,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_cost_and_usage(
+#' svc$get_cost_and_usage(
 #'   TimePeriod = list(
 #'     Start = "string",
 #'     End = "string"
@@ -172,7 +172,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_cost_forecast(
+#' svc$get_cost_forecast(
 #'   TimePeriod = list(
 #'     Start = "string",
 #'     End = "string"
@@ -330,7 +330,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_dimension_values(
+#' svc$get_dimension_values(
 #'   SearchString = "string",
 #'   TimePeriod = list(
 #'     Start = "string",
@@ -482,7 +482,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_reservation_coverage(
+#' svc$get_reservation_coverage(
 #'   TimePeriod = list(
 #'     Start = "string",
 #'     End = "string"
@@ -591,7 +591,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_reservation_purchase_recommendation(
+#' svc$get_reservation_purchase_recommendation(
 #'   AccountId = "string",
 #'   Service = "string",
 #'   AccountScope = "PAYER"|"LINKED",
@@ -690,7 +690,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_reservation_utilization(
+#' svc$get_reservation_utilization(
 #'   TimePeriod = list(
 #'     Start = "string",
 #'     End = "string"
@@ -767,7 +767,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' costexplorer$get_tags(
+#' svc$get_tags(
 #'   SearchString = "string",
 #'   TimePeriod = list(
 #'     Start = "string",

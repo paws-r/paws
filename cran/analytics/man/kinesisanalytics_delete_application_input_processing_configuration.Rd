@@ -20,7 +20,7 @@ application by using the DescribeApplication operation.}
 Deletes an InputProcessingConfiguration from an input.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$delete_application_input_processing_configuration(
+\preformatted{svc$delete_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string"

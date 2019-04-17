@@ -31,7 +31,7 @@ The \code{ListQualificationTypes} operation returns a list of Qualification
 types, filtered by an optional search term.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_qualification_types(
+\preformatted{svc$list_qualification_types(
   Query = "string",
   MustBeRequestable = TRUE|FALSE,
   MustBeOwnedByCaller = TRUE|FALSE,

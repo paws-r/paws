@@ -56,7 +56,7 @@ Responds to an authentication challenge, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_respond_to_auth_challenge(
+\preformatted{svc$admin_respond_to_auth_challenge(
   UserPoolId = "string",
   ClientId = "string",
   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",

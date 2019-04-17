@@ -185,7 +185,7 @@ started to process are affected in addition to jobs that you submit
 after you change settings.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$update_pipeline(
+\preformatted{svc$update_pipeline(
   Id = "string",
   Name = "string",
   InputBucket = "string",

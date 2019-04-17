@@ -17,7 +17,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$describe_execution(
+\preformatted{svc$describe_execution(
   executionArn = "string"
 )
 }

@@ -33,7 +33,7 @@ Lists the associations that were created between resolver rules and VPCs
 using the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$list_resolver_rule_associations(
+\preformatted{svc$list_resolver_rule_associations(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(

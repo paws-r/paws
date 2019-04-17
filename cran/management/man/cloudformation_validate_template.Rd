@@ -30,7 +30,7 @@ template is valid YAML. If both these checks fail, AWS CloudFormation
 returns a template validation error.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$validate_template(
+\preformatted{svc$validate_template(
   TemplateBody = "string",
   TemplateURL = "string"
 )

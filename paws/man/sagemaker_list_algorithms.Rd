@@ -32,7 +32,7 @@ algorithms, use the token in the next request.}
 Lists the machine learning algorithms that have been created.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_algorithms(
+\preformatted{svc$list_algorithms(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),

@@ -15,7 +15,7 @@ Gets the properties associated with an entities detection job. Use this
 operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_entities_detection_job(
+\preformatted{svc$describe_entities_detection_job(
   JobId = "string"
 )
 }

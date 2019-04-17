@@ -18,7 +18,7 @@ Updates user details within the UpdateUserRequestItem object for up to
 \code{LicenseType} updates are supported for this action.
 }
 \section{Request syntax}{
-\preformatted{chime$batch_update_user(
+\preformatted{svc$batch_update_user(
   AccountId = "string",
   UpdateUserRequestItems = list(
     list(

@@ -23,7 +23,7 @@ value that you can use to get another batch of \code{GeoMatchSet} objects.}
 Returns an array of GeoMatchSetSummary objects in the response.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_geo_match_sets(
+\preformatted{svc$list_geo_match_sets(
   NextMarker = "string",
   Limit = 123
 )

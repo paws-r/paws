@@ -20,7 +20,7 @@ lexmodelbuildingservice_get_export(name, version, resourceType,
 Exports the contents of a Amazon Lex resource in a specified format.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_export(
+\preformatted{svc$get_export(
   name = "string",
   version = "string",
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",

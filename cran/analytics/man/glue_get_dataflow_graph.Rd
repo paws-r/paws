@@ -13,7 +13,7 @@ glue_get_dataflow_graph(PythonScript)
 Transforms a Python script into a directed acyclic graph (DAG).
 }
 \section{Request syntax}{
-\preformatted{glue$get_dataflow_graph(
+\preformatted{svc$get_dataflow_graph(
   PythonScript = "string"
 )
 }

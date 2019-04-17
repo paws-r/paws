@@ -16,12 +16,6 @@ microcontrollers. You can use ACM to import third-party certificates to
 be used by AWS Signer. For general information about using AWS Signer,
 see the \href{http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html}{Code Signing for Amazon FreeRTOS Developer Guide}.
 }
-\section{Example}{
-\preformatted{signer <- paws::signer()
-signer$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -37,3 +31,9 @@ signer$operation()
 }
 }
 
+\examples{
+\donttest{svc$cancel_signing_profile(
+  Foo = 123
+)}
+
+}

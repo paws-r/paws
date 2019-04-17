@@ -16,7 +16,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$claim_devices_by_claim_code(
+#' svc$claim_devices_by_claim_code(
 #'   ClaimCode = "string"
 #' )
 #' ```
@@ -53,7 +53,7 @@ iot1clickdevicesservice_claim_devices_by_claim_code <- function(ClaimCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$describe_device(
+#' svc$describe_device(
 #'   DeviceId = "string"
 #' )
 #' ```
@@ -94,7 +94,7 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$finalize_device_claim(
+#' svc$finalize_device_claim(
 #'   DeviceId = "string",
 #'   Tags = list(
 #'     "string"
@@ -134,7 +134,7 @@ iot1clickdevicesservice_finalize_device_claim <- function(DeviceId, Tags = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$get_device_methods(
+#' svc$get_device_methods(
 #'   DeviceId = "string"
 #' )
 #' ```
@@ -173,7 +173,7 @@ iot1clickdevicesservice_get_device_methods <- function(DeviceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$initiate_device_claim(
+#' svc$initiate_device_claim(
 #'   DeviceId = "string"
 #' )
 #' ```
@@ -213,7 +213,7 @@ iot1clickdevicesservice_initiate_device_claim <- function(DeviceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$invoke_device_method(
+#' svc$invoke_device_method(
 #'   DeviceId = "string",
 #'   DeviceMethod = list(
 #'     DeviceType = "string",
@@ -263,7 +263,7 @@ iot1clickdevicesservice_invoke_device_method <- function(DeviceId, DeviceMethod 
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$list_device_events(
+#' svc$list_device_events(
 #'   DeviceId = "string",
 #'   FromTimeStamp = as.POSIXct(
 #'     "2015-01-01"
@@ -309,7 +309,7 @@ iot1clickdevicesservice_list_device_events <- function(DeviceId, FromTimeStamp, 
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$list_devices(
+#' svc$list_devices(
 #'   DeviceType = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -347,7 +347,7 @@ iot1clickdevicesservice_list_devices <- function(DeviceType = NULL, MaxResults =
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -386,7 +386,7 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -424,7 +424,7 @@ iot1clickdevicesservice_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$unclaim_device(
+#' svc$unclaim_device(
 #'   DeviceId = "string"
 #' )
 #' ```
@@ -462,7 +462,7 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -503,7 +503,7 @@ iot1clickdevicesservice_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickdevicesservice$update_device_state(
+#' svc$update_device_state(
 #'   DeviceId = "string",
 #'   Enabled = TRUE|FALSE
 #' )

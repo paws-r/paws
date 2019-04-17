@@ -15,7 +15,7 @@ greengrass_update_connector_definition(ConnectorDefinitionId, Name)
 Updates a connector definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_connector_definition(
+\preformatted{svc$update_connector_definition(
   ConnectorDefinitionId = "string",
   Name = "string"
 )

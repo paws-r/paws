@@ -23,7 +23,7 @@ these numbers for each resource type. The maximum number returned is
 100.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_compliance_summary_by_resource_type(
+\preformatted{svc$get_compliance_summary_by_resource_type(
   ResourceTypes = list(
     "string"
   )

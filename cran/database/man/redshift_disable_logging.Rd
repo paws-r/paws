@@ -17,7 +17,7 @@ Stops logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$disable_logging(
+\preformatted{svc$disable_logging(
   ClusterIdentifier = "string"
 )
 }

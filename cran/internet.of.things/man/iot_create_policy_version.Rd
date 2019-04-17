@@ -31,7 +31,7 @@ version that is in effect for the certificates to which the policy is
 attached).
 }
 \section{Request syntax}{
-\preformatted{iot$create_policy_version(
+\preformatted{svc$create_policy_version(
   policyName = "string",
   policyDocument = "string",
   setAsDefault = TRUE|FALSE

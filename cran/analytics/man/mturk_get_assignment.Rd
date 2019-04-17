@@ -15,7 +15,7 @@ The \code{GetAssignment} operation retrieves the details of the specified
 Assignment.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_assignment(
+\preformatted{svc$get_assignment(
   AssignmentId = "string"
 )
 }

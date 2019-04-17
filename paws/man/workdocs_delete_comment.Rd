@@ -22,7 +22,7 @@ credentials.}
 Deletes the specified comment from the document version.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_comment(
+\preformatted{svc$delete_comment(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",

@@ -12,7 +12,7 @@ Retrieves a list that describes the configuration of bring your own
 license (BYOL) for the specified account.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_account()
+\preformatted{svc$describe_account()
 }
 }
 

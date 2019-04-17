@@ -21,7 +21,7 @@ Lists all Amazon Macie member accounts for the current Amazon Macie
 master account.
 }
 \section{Request syntax}{
-\preformatted{macie$list_member_accounts(
+\preformatted{svc$list_member_accounts(
   nextToken = "string",
   maxResults = 123
 )

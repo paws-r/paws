@@ -19,7 +19,7 @@ granted it permission with \code{PutPermission}. You can find the
 \code{StatementId} by using DescribeEventBus.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$remove_permission(
+\preformatted{svc$remove_permission(
   StatementId = "string"
 )
 }

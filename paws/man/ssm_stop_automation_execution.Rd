@@ -16,7 +16,7 @@ Complete. The default type is Cancel.}
 Stop an Automation that is currently executing.
 }
 \section{Request syntax}{
-\preformatted{ssm$stop_automation_execution(
+\preformatted{svc$stop_automation_execution(
   AutomationExecutionId = "string",
   Type = "Complete"|"Cancel"
 )

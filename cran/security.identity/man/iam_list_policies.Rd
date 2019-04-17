@@ -78,7 +78,7 @@ For more information about managed policies, see \href{http://docs.aws.amazon.co
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$list_policies(
+\preformatted{svc$list_policies(
   Scope = "All"|"AWS"|"Local",
   OnlyAttached = TRUE|FALSE,
   PathPrefix = "string",

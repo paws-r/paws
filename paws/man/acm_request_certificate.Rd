@@ -92,7 +92,7 @@ We recommend that you use DNS validation. ACM issues public certificates
 after receiving approval from the domain owner.
 }
 \section{Request syntax}{
-\preformatted{acm$request_certificate(
+\preformatted{svc$request_certificate(
   DomainName = "string",
   ValidationMethod = "EMAIL"|"DNS",
   SubjectAlternativeNames = list(

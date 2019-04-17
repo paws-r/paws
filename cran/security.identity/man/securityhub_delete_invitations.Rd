@@ -16,7 +16,7 @@ Deletes invitations that are sent to this AWS account (invitee) by the
 AWS accounts (inviters) that are specified by their account IDs.
 }
 \section{Request syntax}{
-\preformatted{securityhub$delete_invitations(
+\preformatted{svc$delete_invitations(
   AccountIds = list(
     "string"
   )

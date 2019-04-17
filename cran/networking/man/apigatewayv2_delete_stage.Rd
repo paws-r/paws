@@ -15,7 +15,7 @@ apigatewayv2_delete_stage(ApiId, StageName)
 Deletes a Stage.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_stage(
+\preformatted{svc$delete_stage(
   ApiId = "string",
   StageName = "string"
 )

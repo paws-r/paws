@@ -62,7 +62,7 @@ use DeleteResourcePolicy.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$put_resource_policy(
+\preformatted{svc$put_resource_policy(
   SecretId = "string",
   ResourcePolicy = "string"
 )
@@ -72,7 +72,7 @@ use DeleteResourcePolicy.
 \examples{
 # The following example shows how to add a resource-based policy to a
 # secret.
-\donttest{secretsmanager$put_resource_policy(
+\donttest{svc$put_resource_policy(
   ResourcePolicy = "{\\n\\"Version\\":\\"2012-10-17\\",\\n\\"Statement\\":[{\\n\\"Effect\\":\\"Allow\\",...",
   SecretId = "MyTestDatabaseSecret"
 )}

@@ -40,7 +40,7 @@ affecting the Qualification the Worker already has, reject the request
 with the \code{RejectQualificationRequest} operation.
 }
 \section{Request syntax}{
-\preformatted{mturk$associate_qualification_with_worker(
+\preformatted{svc$associate_qualification_with_worker(
   QualificationTypeId = "string",
   WorkerId = "string",
   IntegerValue = 123,

@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$abort_environment_update(
+#' svc$abort_environment_update(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string"
 #' )
@@ -29,7 +29,7 @@ NULL
 #' @examples
 #' # The following code aborts a running application version deployment for
 #' # an environment named my-env:
-#' \donttest{elasticbeanstalk$abort_environment_update(
+#' \donttest{svc$abort_environment_update(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -68,7 +68,7 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$apply_environment_managed_action(
+#' svc$apply_environment_managed_action(
 #'   EnvironmentName = "string",
 #'   EnvironmentId = "string",
 #'   ActionId = "string"
@@ -105,7 +105,7 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$check_dns_availability(
+#' svc$check_dns_availability(
 #'   CNAMEPrefix = "string"
 #' )
 #' ```
@@ -113,7 +113,7 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' @examples
 #' # The following operation checks the availability of the subdomain
 #' # my-cname:
-#' \donttest{elasticbeanstalk$check_dns_availability(
+#' \donttest{svc$check_dns_availability(
 #'   CNAMEPrefix = "my-cname"
 #' )}
 #'
@@ -168,7 +168,7 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$compose_environments(
+#' svc$compose_environments(
 #'   ApplicationName = "string",
 #'   GroupName = "string",
 #'   VersionLabels = list(
@@ -221,7 +221,7 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$create_application(
+#' svc$create_application(
 #'   ApplicationName = "string",
 #'   Description = "string",
 #'   ResourceLifecycleConfig = list(
@@ -250,7 +250,7 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #'
 #' @examples
 #' # The following operation creates a new application named my-app:
-#' \donttest{elasticbeanstalk$create_application(
+#' \donttest{svc$create_application(
 #'   ApplicationName = "my-app",
 #'   Description = "my application"
 #' )}
@@ -344,7 +344,7 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$create_application_version(
+#' svc$create_application_version(
 #'   ApplicationName = "string",
 #'   VersionLabel = "string",
 #'   Description = "string",
@@ -378,7 +378,7 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' @examples
 #' # The following operation creates a new version (v1) of an application
 #' # named my-app:
-#' \donttest{elasticbeanstalk$create_application_version(
+#' \donttest{svc$create_application_version(
 #'   ApplicationName = "my-app",
 #'   AutoCreateApplication = TRUE,
 #'   Description = "my-app-v1",
@@ -479,7 +479,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$create_configuration_template(
+#' svc$create_configuration_template(
 #'   ApplicationName = "string",
 #'   TemplateName = "string",
 #'   SolutionStackName = "string",
@@ -510,7 +510,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @examples
 #' # The following operation creates a configuration template named my-app-v1
 #' # from the settings applied to an environment with the id e-rpqsewtp2j:
-#' \donttest{elasticbeanstalk$create_configuration_template(
+#' \donttest{svc$create_configuration_template(
 #'   ApplicationName = "my-app",
 #'   EnvironmentId = "e-rpqsewtp2j",
 #'   TemplateName = "my-app-v1"
@@ -602,7 +602,7 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$create_environment(
+#' svc$create_environment(
 #'   ApplicationName = "string",
 #'   EnvironmentName = "string",
 #'   GroupName = "string",
@@ -644,7 +644,7 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' @examples
 #' # The following operation creates a new environment for version v1 of a
 #' # java application named my-app:
-#' \donttest{elasticbeanstalk$create_environment(
+#' \donttest{svc$create_environment(
 #'   ApplicationName = "my-app",
 #'   CNAMEPrefix = "my-app",
 #'   EnvironmentName = "my-env",
@@ -692,7 +692,7 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$create_platform_version(
+#' svc$create_platform_version(
 #'   PlatformName = "string",
 #'   PlatformVersion = "string",
 #'   PlatformDefinitionBundle = list(
@@ -756,7 +756,7 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 #' @examples
 #' # The following operation creates a new environment for version v1 of a
 #' # java application named my-app:
-#' \donttest{elasticbeanstalk$create_storage_location()}
+#' \donttest{svc$create_storage_location()}
 #'
 #' @keywords internal
 #'
@@ -796,7 +796,7 @@ elasticbeanstalk_create_storage_location <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$delete_application(
+#' svc$delete_application(
 #'   ApplicationName = "string",
 #'   TerminateEnvByForce = TRUE|FALSE
 #' )
@@ -804,7 +804,7 @@ elasticbeanstalk_create_storage_location <- function() {
 #'
 #' @examples
 #' # The following operation deletes an application named my-app:
-#' \donttest{elasticbeanstalk$delete_application(
+#' \donttest{svc$delete_application(
 #'   ApplicationName = "my-app"
 #' )}
 #'
@@ -846,7 +846,7 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$delete_application_version(
+#' svc$delete_application_version(
 #'   ApplicationName = "string",
 #'   VersionLabel = "string",
 #'   DeleteSourceBundle = TRUE|FALSE
@@ -856,7 +856,7 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #' @examples
 #' # The following operation deletes an application version named
 #' # 22a0-stage-150819_182129 for an application named my-app:
-#' \donttest{elasticbeanstalk$delete_application_version(
+#' \donttest{svc$delete_application_version(
 #'   ApplicationName = "my-app",
 #'   DeleteSourceBundle = TRUE,
 #'   VersionLabel = "22a0-stage-150819_182129"
@@ -899,7 +899,7 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$delete_configuration_template(
+#' svc$delete_configuration_template(
 #'   ApplicationName = "string",
 #'   TemplateName = "string"
 #' )
@@ -908,7 +908,7 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #' @examples
 #' # The following operation deletes a configuration template named
 #' # my-template for an application named my-app:
-#' \donttest{elasticbeanstalk$delete_configuration_template(
+#' \donttest{svc$delete_configuration_template(
 #'   ApplicationName = "my-app",
 #'   TemplateName = "my-template"
 #' )}
@@ -952,7 +952,7 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$delete_environment_configuration(
+#' svc$delete_environment_configuration(
 #'   ApplicationName = "string",
 #'   EnvironmentName = "string"
 #' )
@@ -961,7 +961,7 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #' @examples
 #' # The following operation deletes a draft configuration for an environment
 #' # named my-env:
-#' \donttest{elasticbeanstalk$delete_environment_configuration(
+#' \donttest{svc$delete_environment_configuration(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
 #' )}
@@ -996,7 +996,7 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$delete_platform_version(
+#' svc$delete_platform_version(
 #'   PlatformArn = "string"
 #' )
 #' ```
@@ -1078,7 +1078,7 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_application_versions(
+#' svc$describe_application_versions(
 #'   ApplicationName = "string",
 #'   VersionLabels = list(
 #'     "string"
@@ -1091,7 +1091,7 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' @examples
 #' # The following operation retrieves information about an application
 #' # version labeled v2:
-#' \donttest{elasticbeanstalk$describe_application_versions(
+#' \donttest{svc$describe_application_versions(
 #'   ApplicationName = "my-app",
 #'   VersionLabels = list(
 #'     "v2"
@@ -1129,7 +1129,7 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_applications(
+#' svc$describe_applications(
 #'   ApplicationNames = list(
 #'     "string"
 #'   )
@@ -1139,7 +1139,7 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #' @examples
 #' # The following operation retrieves information about applications in the
 #' # current region:
-#' \donttest{elasticbeanstalk$describe_applications()}
+#' \donttest{svc$describe_applications()}
 #'
 #' @keywords internal
 #'
@@ -1189,7 +1189,7 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_configuration_options(
+#' svc$describe_configuration_options(
 #'   ApplicationName = "string",
 #'   TemplateName = "string",
 #'   EnvironmentName = "string",
@@ -1208,7 +1208,7 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' @examples
 #' # The following operation retrieves descriptions of all available
 #' # configuration options for an environment named my-env:
-#' \donttest{elasticbeanstalk$describe_configuration_options(
+#' \donttest{svc$describe_configuration_options(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
 #' )}
@@ -1271,7 +1271,7 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_configuration_settings(
+#' svc$describe_configuration_settings(
 #'   ApplicationName = "string",
 #'   TemplateName = "string",
 #'   EnvironmentName = "string"
@@ -1281,7 +1281,7 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' @examples
 #' # The following operation retrieves configuration settings for an
 #' # environment named my-env:
-#' \donttest{elasticbeanstalk$describe_configuration_settings(
+#' \donttest{svc$describe_configuration_settings(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env"
 #' )}
@@ -1328,7 +1328,7 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_environment_health(
+#' svc$describe_environment_health(
 #'   EnvironmentName = "string",
 #'   EnvironmentId = "string",
 #'   AttributeNames = list(
@@ -1340,7 +1340,7 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' @examples
 #' # The following operation retrieves overall health information for an
 #' # environment named my-env:
-#' \donttest{elasticbeanstalk$describe_environment_health(
+#' \donttest{svc$describe_environment_health(
 #'   AttributeNames = list(
 #'     "All"
 #'   ),
@@ -1381,7 +1381,7 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_environment_managed_action_history(
+#' svc$describe_environment_managed_action_history(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
 #'   NextToken = "string",
@@ -1422,7 +1422,7 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_environment_managed_actions(
+#' svc$describe_environment_managed_actions(
 #'   EnvironmentName = "string",
 #'   EnvironmentId = "string",
 #'   Status = "Scheduled"|"Pending"|"Running"|"Unknown"
@@ -1469,7 +1469,7 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_environment_resources(
+#' svc$describe_environment_resources(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string"
 #' )
@@ -1478,7 +1478,7 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' @examples
 #' # The following operation retrieves information about resources in an
 #' # environment named my-env:
-#' \donttest{elasticbeanstalk$describe_environment_resources(
+#' \donttest{svc$describe_environment_resources(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -1539,7 +1539,7 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_environments(
+#' svc$describe_environments(
 #'   ApplicationName = "string",
 #'   VersionLabel = "string",
 #'   EnvironmentIds = list(
@@ -1560,7 +1560,7 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' @examples
 #' # The following operation retrieves information about an environment named
 #' # my-env:
-#' \donttest{elasticbeanstalk$describe_environments(
+#' \donttest{svc$describe_environments(
 #'   EnvironmentNames = list(
 #'     "my-env"
 #'   )
@@ -1625,7 +1625,7 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_events(
+#' svc$describe_events(
 #'   ApplicationName = "string",
 #'   VersionLabel = "string",
 #'   TemplateName = "string",
@@ -1648,7 +1648,7 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' @examples
 #' # The following operation retrieves events for an environment named
 #' # my-env:
-#' \donttest{elasticbeanstalk$describe_events(
+#' \donttest{svc$describe_events(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -1691,7 +1691,7 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_instances_health(
+#' svc$describe_instances_health(
 #'   EnvironmentName = "string",
 #'   EnvironmentId = "string",
 #'   AttributeNames = list(
@@ -1704,7 +1704,7 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' @examples
 #' # The following operation retrieves health information for instances in an
 #' # environment named my-env:
-#' \donttest{elasticbeanstalk$describe_instances_health(
+#' \donttest{svc$describe_instances_health(
 #'   AttributeNames = list(
 #'     "All"
 #'   ),
@@ -1741,7 +1741,7 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$describe_platform_version(
+#' svc$describe_platform_version(
 #'   PlatformArn = "string"
 #' )
 #' ```
@@ -1782,7 +1782,7 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 #' # The following operation lists solution stacks for all currently
 #' # available platform configurations and any that you have used in the
 #' # past:
-#' \donttest{elasticbeanstalk$list_available_solution_stacks()}
+#' \donttest{svc$list_available_solution_stacks()}
 #'
 #' @keywords internal
 #'
@@ -1818,7 +1818,7 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$list_platform_versions(
+#' svc$list_platform_versions(
 #'   Filters = list(
 #'     list(
 #'       Type = "string",
@@ -1872,7 +1872,7 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -1919,7 +1919,7 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$rebuild_environment(
+#' svc$rebuild_environment(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string"
 #' )
@@ -1928,7 +1928,7 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' @examples
 #' # The following operation terminates and recreates the resources in an
 #' # environment named my-env:
-#' \donttest{elasticbeanstalk$rebuild_environment(
+#' \donttest{svc$rebuild_environment(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -1995,7 +1995,7 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$request_environment_info(
+#' svc$request_environment_info(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
 #'   InfoType = "tail"|"bundle"
@@ -2004,7 +2004,7 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #'
 #' @examples
 #' # The following operation requests logs from an environment named my-env:
-#' \donttest{elasticbeanstalk$request_environment_info(
+#' \donttest{svc$request_environment_info(
 #'   EnvironmentName = "my-env",
 #'   InfoType = "tail"
 #' )}
@@ -2050,7 +2050,7 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$restart_app_server(
+#' svc$restart_app_server(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string"
 #' )
@@ -2059,7 +2059,7 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' @examples
 #' # The following operation restarts application servers on all instances in
 #' # an environment named my-env:
-#' \donttest{elasticbeanstalk$restart_app_server(
+#' \donttest{svc$restart_app_server(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -2115,7 +2115,7 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$retrieve_environment_info(
+#' svc$retrieve_environment_info(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
 #'   InfoType = "tail"|"bundle"
@@ -2125,7 +2125,7 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' @examples
 #' # The following operation retrieves a link to logs from an environment
 #' # named my-env:
-#' \donttest{elasticbeanstalk$retrieve_environment_info(
+#' \donttest{svc$retrieve_environment_info(
 #'   EnvironmentName = "my-env",
 #'   InfoType = "tail"
 #' )}
@@ -2183,7 +2183,7 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$swap_environment_cnam_es(
+#' svc$swap_environment_cnam_es(
 #'   SourceEnvironmentId = "string",
 #'   SourceEnvironmentName = "string",
 #'   DestinationEnvironmentId = "string",
@@ -2194,7 +2194,7 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' @examples
 #' # The following operation swaps the assigned subdomains of two
 #' # environments:
-#' \donttest{elasticbeanstalk$swap_environment_cnam_es(
+#' \donttest{svc$swap_environment_cnam_es(
 #'   DestinationEnvironmentName = "my-env-green",
 #'   SourceEnvironmentName = "my-env-blue"
 #' )}
@@ -2257,7 +2257,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$terminate_environment(
+#' svc$terminate_environment(
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
 #'   TerminateResources = TRUE|FALSE,
@@ -2268,7 +2268,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' @examples
 #' # The following operation terminates an Elastic Beanstalk environment
 #' # named my-env:
-#' \donttest{elasticbeanstalk$terminate_environment(
+#' \donttest{svc$terminate_environment(
 #'   EnvironmentName = "my-env"
 #' )}
 #'
@@ -2310,7 +2310,7 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_application(
+#' svc$update_application(
 #'   ApplicationName = "string",
 #'   Description = "string"
 #' )
@@ -2319,7 +2319,7 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' @examples
 #' # The following operation updates the description of an application named
 #' # my-app:
-#' \donttest{elasticbeanstalk$update_application(
+#' \donttest{svc$update_application(
 #'   ApplicationName = "my-app",
 #'   Description = "my Elastic Beanstalk application"
 #' )}
@@ -2356,7 +2356,7 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_application_resource_lifecycle(
+#' svc$update_application_resource_lifecycle(
 #'   ApplicationName = "string",
 #'   ResourceLifecycleConfig = list(
 #'     ServiceRole = "string",
@@ -2420,7 +2420,7 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_application_version(
+#' svc$update_application_version(
 #'   ApplicationName = "string",
 #'   VersionLabel = "string",
 #'   Description = "string"
@@ -2430,7 +2430,7 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' @examples
 #' # The following operation updates the description of an application
 #' # version named 22a0-stage-150819_185942:
-#' \donttest{elasticbeanstalk$update_application_version(
+#' \donttest{svc$update_application_version(
 #'   ApplicationName = "my-app",
 #'   Description = "new description",
 #'   VersionLabel = "22a0-stage-150819_185942"
@@ -2491,7 +2491,7 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_configuration_template(
+#' svc$update_configuration_template(
 #'   ApplicationName = "string",
 #'   TemplateName = "string",
 #'   Description = "string",
@@ -2517,7 +2517,7 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' # The following operation removes the configured CloudWatch custom health
 #' # metrics configuration ConfigDocument from a saved configuration template
 #' # named my-template:
-#' \donttest{elasticbeanstalk$update_configuration_template(
+#' \donttest{svc$update_configuration_template(
 #'   ApplicationName = "my-app",
 #'   OptionsToRemove = list(
 #'     list(
@@ -2617,7 +2617,7 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_environment(
+#' svc$update_environment(
 #'   ApplicationName = "string",
 #'   EnvironmentId = "string",
 #'   EnvironmentName = "string",
@@ -2653,14 +2653,14 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' @examples
 #' # The following operation updates an environment named "my-env" to version
 #' # "v2" of the application to which it belongs:
-#' \donttest{elasticbeanstalk$update_environment(
+#' \donttest{svc$update_environment(
 #'   EnvironmentName = "my-env",
 #'   VersionLabel = "v2"
 #' )}
 #' 
 #' # The following operation configures several options in the
 #' # aws:elb:loadbalancer namespace:
-#' \donttest{elasticbeanstalk$update_environment(
+#' \donttest{svc$update_environment(
 #'   EnvironmentName = "my-env",
 #'   OptionSettings = list(
 #'     list(
@@ -2750,7 +2750,7 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$update_tags_for_resource(
+#' svc$update_tags_for_resource(
 #'   ResourceArn = "string",
 #'   TagsToAdd = list(
 #'     list(
@@ -2809,7 +2809,7 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #'
 #' @section Request syntax:
 #' ```
-#' elasticbeanstalk$validate_configuration_settings(
+#' svc$validate_configuration_settings(
 #'   ApplicationName = "string",
 #'   TemplateName = "string",
 #'   EnvironmentName = "string",
@@ -2827,7 +2827,7 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' @examples
 #' # The following operation validates a CloudWatch custom metrics config
 #' # document:
-#' \donttest{elasticbeanstalk$validate_configuration_settings(
+#' \donttest{svc$validate_configuration_settings(
 #'   ApplicationName = "my-app",
 #'   EnvironmentName = "my-env",
 #'   OptionSettings = list(

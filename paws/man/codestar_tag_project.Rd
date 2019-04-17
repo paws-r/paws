@@ -15,7 +15,7 @@ codestar_tag_project(id, tags)
 Adds tags to a project.
 }
 \section{Request syntax}{
-\preformatted{codestar$tag_project(
+\preformatted{svc$tag_project(
   id = "string",
   tags = list(
     "string"

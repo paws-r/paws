@@ -42,7 +42,7 @@ QuickSight, Amazon QuickSight role, and Amazon Resource Name (ARN).
 \code{aws quicksight update-user --user-name=Pat --role=ADMIN --email=new_address@amazon.com --aws-account-id=111122223333 --namespace=default --region=us-east-1 }
 }
 \section{Request syntax}{
-\preformatted{quicksight$update_user(
+\preformatted{svc$update_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string",

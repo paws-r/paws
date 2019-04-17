@@ -22,7 +22,7 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_receipt_rule_set(
+\preformatted{svc$delete_receipt_rule_set(
   RuleSetName = "string"
 )
 }
@@ -30,7 +30,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example deletes a receipt rule set:
-\donttest{ses$delete_receipt_rule_set(
+\donttest{svc$delete_receipt_rule_set(
   RuleSetName = "MyRuleSet"
 )}
 

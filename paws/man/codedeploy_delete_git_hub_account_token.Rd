@@ -13,7 +13,7 @@ codedeploy_delete_git_hub_account_token(tokenName)
 Deletes a GitHub account connection.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$delete_git_hub_account_token(
+\preformatted{svc$delete_git_hub_account_token(
   tokenName = "string"
 )
 }

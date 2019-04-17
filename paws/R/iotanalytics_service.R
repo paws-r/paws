@@ -32,11 +32,10 @@ NULL
 #' about to fail or which customers are at risk of abandoning their
 #' wearable devices.
 #'
-#' @section Example:
-#' ```
-#' iotanalytics <- paws::iotanalytics()
-#' iotanalytics$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_put_message(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -53,7 +53,7 @@ For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/lat
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$tag_user(
+\preformatted{svc$tag_user(
   UserName = "string",
   Tags = list(
     list(
@@ -67,7 +67,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to add tags to an existing user.
-\donttest{iam$tag_user(
+\donttest{svc$tag_user(
   Tags = list(
     list(
       Key = "Dept",

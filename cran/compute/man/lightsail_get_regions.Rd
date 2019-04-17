@@ -22,7 +22,7 @@ Returns a list of all valid regions for Amazon Lightsail. Use the
 Zones in a region.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_regions(
+\preformatted{svc$get_regions(
   includeAvailabilityZones = TRUE|FALSE,
   includeRelationalDatabaseAvailabilityZones = TRUE|FALSE
 )

@@ -13,7 +13,7 @@ medialive_start_channel(ChannelId)
 Starts an existing channel
 }
 \section{Request syntax}{
-\preformatted{medialive$start_channel(
+\preformatted{svc$start_channel(
   ChannelId = "string"
 )
 }

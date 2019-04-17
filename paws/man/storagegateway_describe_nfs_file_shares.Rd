@@ -16,7 +16,7 @@ Gets a description for one or more Network File System (NFS) file shares
 from a file gateway. This operation is only supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_nfs_file_shares(
+\preformatted{svc$describe_nfs_file_shares(
   FileShareARNList = list(
     "string"
   )

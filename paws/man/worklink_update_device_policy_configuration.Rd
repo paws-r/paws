@@ -17,7 +17,7 @@ certificate authority certificate used to issue device certificates.}
 Updates the device policy configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$update_device_policy_configuration(
+\preformatted{svc$update_device_policy_configuration(
   FleetArn = "string",
   DeviceCaCertificate = "string"
 )

@@ -25,7 +25,7 @@ Lists the groups that the user belongs to.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_list_groups_for_user(
+\preformatted{svc$admin_list_groups_for_user(
   Username = "string",
   UserPoolId = "string",
   Limit = 123,

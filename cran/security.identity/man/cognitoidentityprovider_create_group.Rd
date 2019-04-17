@@ -41,7 +41,7 @@ Creates a new group in the specified user pool.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_group(
+\preformatted{svc$create_group(
   GroupName = "string",
   UserPoolId = "string",
   Description = "string",

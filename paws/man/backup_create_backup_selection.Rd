@@ -58,7 +58,7 @@ logically 'put together using the OR operator. In other words, all
 patterns that match are selected for backup.
 }
 \section{Request syntax}{
-\preformatted{backup$create_backup_selection(
+\preformatted{svc$create_backup_selection(
   BackupPlanId = "string",
   BackupSelection = list(
     SelectionName = "string",

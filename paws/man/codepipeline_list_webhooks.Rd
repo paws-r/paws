@@ -20,7 +20,7 @@ output lists all webhooks and includes the webhook URL and ARN, as well
 the configuration for each webhook.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$list_webhooks(
+\preformatted{svc$list_webhooks(
   NextToken = "string",
   MaxResults = 123
 )

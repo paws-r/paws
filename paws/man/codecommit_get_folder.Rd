@@ -24,7 +24,7 @@ directory (/) of a repository.}
 Returns the contents of a specified folder in a repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_folder(
+\preformatted{svc$get_folder(
   repositoryName = "string",
   commitSpecifier = "string",
   folderPath = "string"

@@ -19,7 +19,7 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 Creates an API mapping.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_api_mapping(
+\preformatted{svc$create_api_mapping(
   ApiId = "string",
   ApiMappingKey = "string",
   DomainName = "string",

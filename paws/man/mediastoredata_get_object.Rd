@@ -41,7 +41,7 @@ omit an extension.}
 Downloads the object at the specified path.
 }
 \section{Request syntax}{
-\preformatted{mediastoredata$get_object(
+\preformatted{svc$get_object(
   Path = "string",
   Range = "string"
 )

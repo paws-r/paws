@@ -38,7 +38,7 @@ This operation is throttled at one request per second and can only get
 verification attributes for up to 100 identities at a time.
 }
 \section{Request syntax}{
-\preformatted{ses$get_identity_verification_attributes(
+\preformatted{svc$get_identity_verification_attributes(
   Identities = list(
     "string"
   )
@@ -49,7 +49,7 @@ verification attributes for up to 100 identities at a time.
 \examples{
 # The following example returns the verification status and the
 # verification token for a domain identity:
-\donttest{ses$get_identity_verification_attributes(
+\donttest{svc$get_identity_verification_attributes(
   Identities = list(
     "example.com"
   )

@@ -37,7 +37,7 @@ For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/lat
 For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-\preformatted{iam$add_role_to_instance_profile(
+\preformatted{svc$add_role_to_instance_profile(
   InstanceProfileName = "string",
   RoleName = "string"
 )
@@ -47,7 +47,7 @@ For more information about instance profiles, go to \href{http://docs.aws.amazon
 \examples{
 # The following command adds the role named S3Access to the instance
 # profile named Webserver:
-\donttest{iam$add_role_to_instance_profile(
+\donttest{svc$add_role_to_instance_profile(
   InstanceProfileName = "Webserver",
   RoleName = "S3Access"
 )}

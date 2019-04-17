@@ -36,7 +36,7 @@ At least one event ARN is required. Results are sorted by the
 \code{lastUpdatedTime} of the entity, starting with the most recent.
 }
 \section{Request syntax}{
-\preformatted{health$describe_affected_entities(
+\preformatted{svc$describe_affected_entities(
   filter = list(
     eventArns = list(
       "string"

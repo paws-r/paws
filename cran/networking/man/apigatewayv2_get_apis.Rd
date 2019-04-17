@@ -16,7 +16,7 @@ element of the collection.}
 Gets a collection of Api resources.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_apis(
+\preformatted{svc$get_apis(
   MaxResults = "string",
   NextToken = "string"
 )

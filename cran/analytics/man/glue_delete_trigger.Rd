@@ -14,7 +14,7 @@ Deletes a specified trigger. If the trigger is not found, no exception
 is thrown.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_trigger(
+\preformatted{svc$delete_trigger(
   Name = "string"
 )
 }

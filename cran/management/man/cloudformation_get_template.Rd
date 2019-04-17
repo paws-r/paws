@@ -41,7 +41,7 @@ after the stack has been deleted.
 If the template does not exist, a \code{ValidationError} is returned.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$get_template(
+\preformatted{svc$get_template(
   StackName = "string",
   ChangeSetName = "string",
   TemplateStage = "Original"|"Processed"

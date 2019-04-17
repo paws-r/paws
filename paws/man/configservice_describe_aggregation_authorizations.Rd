@@ -19,7 +19,7 @@ Returns a list of authorizations granted to various aggregator accounts
 and regions.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_aggregation_authorizations(
+\preformatted{svc$describe_aggregation_authorizations(
   Limit = 123,
   NextToken = "string"
 )

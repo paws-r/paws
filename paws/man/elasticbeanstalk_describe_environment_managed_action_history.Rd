@@ -20,7 +20,7 @@ elasticbeanstalk_describe_environment_managed_action_history(
 Lists an environment's completed and failed managed actions.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_environment_managed_action_history(
+\preformatted{svc$describe_environment_managed_action_history(
   EnvironmentId = "string",
   EnvironmentName = "string",
   NextToken = "string",

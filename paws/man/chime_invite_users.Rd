@@ -18,7 +18,7 @@ specified Amazon Chime \code{Team} account. Only \code{Team} account types are
 currently supported for this action.
 }
 \section{Request syntax}{
-\preformatted{chime$invite_users(
+\preformatted{svc$invite_users(
   AccountId = "string",
   UserEmailList = list(
     "string"

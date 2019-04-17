@@ -35,7 +35,7 @@ cannot cancel or revert this operation.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_replication_group(
+\preformatted{svc$delete_replication_group(
   ReplicationGroupId = "string",
   RetainPrimaryCluster = TRUE|FALSE,
   FinalSnapshotIdentifier = "string"

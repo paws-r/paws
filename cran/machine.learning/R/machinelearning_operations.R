@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$add_tags(
+#' svc$add_tags(
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -93,7 +93,7 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_batch_prediction(
+#' svc$create_batch_prediction(
 #'   BatchPredictionId = "string",
 #'   BatchPredictionName = "string",
 #'   MLModelId = "string",
@@ -207,7 +207,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_data_source_from_rds(
+#' svc$create_data_source_from_rds(
 #'   DataSourceId = "string",
 #'   DataSourceName = "string",
 #'   RDSData = list(
@@ -348,7 +348,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_data_source_from_redshift(
+#' svc$create_data_source_from_redshift(
 #'   DataSourceId = "string",
 #'   DataSourceName = "string",
 #'   DataSpec = list(
@@ -453,7 +453,7 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_data_source_from_s3(
+#' svc$create_data_source_from_s3(
 #'   DataSourceId = "string",
 #'   DataSourceName = "string",
 #'   DataSpec = list(
@@ -521,7 +521,7 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_evaluation(
+#' svc$create_evaluation(
 #'   EvaluationId = "string",
 #'   EvaluationName = "string",
 #'   MLModelId = "string",
@@ -640,7 +640,7 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_ml_model(
+#' svc$create_ml_model(
 #'   MLModelId = "string",
 #'   MLModelName = "string",
 #'   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
@@ -685,7 +685,7 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$create_realtime_endpoint(
+#' svc$create_realtime_endpoint(
 #'   MLModelId = "string"
 #' )
 #' ```
@@ -728,7 +728,7 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_batch_prediction(
+#' svc$delete_batch_prediction(
 #'   BatchPredictionId = "string"
 #' )
 #' ```
@@ -770,7 +770,7 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_data_source(
+#' svc$delete_data_source(
 #'   DataSourceId = "string"
 #' )
 #' ```
@@ -813,7 +813,7 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_evaluation(
+#' svc$delete_evaluation(
 #'   EvaluationId = "string"
 #' )
 #' ```
@@ -854,7 +854,7 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_ml_model(
+#' svc$delete_ml_model(
 #'   MLModelId = "string"
 #' )
 #' ```
@@ -889,7 +889,7 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_realtime_endpoint(
+#' svc$delete_realtime_endpoint(
 #'   MLModelId = "string"
 #' )
 #' ```
@@ -929,7 +929,7 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$delete_tags(
+#' svc$delete_tags(
 #'   TagKeys = list(
 #'     "string"
 #'   ),
@@ -1027,7 +1027,7 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$describe_batch_predictions(
+#' svc$describe_batch_predictions(
 #'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
 #'   EQ = "string",
 #'   GT = "string",
@@ -1125,7 +1125,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$describe_data_sources(
+#' svc$describe_data_sources(
 #'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"DataLocationS3"|"IAMUser",
 #'   EQ = "string",
 #'   GT = "string",
@@ -1228,7 +1228,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$describe_evaluations(
+#' svc$describe_evaluations(
 #'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
 #'   EQ = "string",
 #'   GT = "string",
@@ -1331,7 +1331,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$describe_ml_models(
+#' svc$describe_ml_models(
 #'   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
 #'   EQ = "string",
 #'   GT = "string",
@@ -1377,7 +1377,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$describe_tags(
+#' svc$describe_tags(
 #'   ResourceId = "string",
 #'   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 #' )
@@ -1415,7 +1415,7 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$get_batch_prediction(
+#' svc$get_batch_prediction(
 #'   BatchPredictionId = "string"
 #' )
 #' ```
@@ -1462,7 +1462,7 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$get_data_source(
+#' svc$get_data_source(
 #'   DataSourceId = "string",
 #'   Verbose = TRUE|FALSE
 #' )
@@ -1502,7 +1502,7 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$get_evaluation(
+#' svc$get_evaluation(
 #'   EvaluationId = "string"
 #' )
 #' ```
@@ -1546,7 +1546,7 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$get_ml_model(
+#' svc$get_ml_model(
 #'   MLModelId = "string",
 #'   Verbose = TRUE|FALSE
 #' )
@@ -1590,7 +1590,7 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$predict(
+#' svc$predict(
 #'   MLModelId = "string",
 #'   Record = list(
 #'     "string"
@@ -1634,7 +1634,7 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$update_batch_prediction(
+#' svc$update_batch_prediction(
 #'   BatchPredictionId = "string",
 #'   BatchPredictionName = "string"
 #' )
@@ -1675,7 +1675,7 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$update_data_source(
+#' svc$update_data_source(
 #'   DataSourceId = "string",
 #'   DataSourceName = "string"
 #' )
@@ -1716,7 +1716,7 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$update_evaluation(
+#' svc$update_evaluation(
 #'   EvaluationId = "string",
 #'   EvaluationName = "string"
 #' )
@@ -1763,7 +1763,7 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #'
 #' @section Request syntax:
 #' ```
-#' machinelearning$update_ml_model(
+#' svc$update_ml_model(
 #'   MLModelId = "string",
 #'   MLModelName = "string",
 #'   ScoreThreshold = 123.0

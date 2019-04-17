@@ -19,7 +19,7 @@ greengrass_create_group(AmznClientToken, InitialVersion, Name, tags)
 Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_group(
+\preformatted{svc$create_group(
   AmznClientToken = "string",
   InitialVersion = list(
     ConnectorDefinitionVersionArn = "string",

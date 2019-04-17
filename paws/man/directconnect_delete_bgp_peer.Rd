@@ -26,7 +26,7 @@ the specified customer address and ASN.
 You cannot delete the last BGP peer from a virtual interface.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_bgp_peer(
+\preformatted{svc$delete_bgp_peer(
   virtualInterfaceId = "string",
   asn = 123,
   customerAddress = "string",

@@ -51,7 +51,7 @@ successful, the fleet ID for the updated fleet is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_fleet_port_settings(
+\preformatted{svc$update_fleet_port_settings(
   FleetId = "string",
   InboundPermissionAuthorizations = list(
     list(

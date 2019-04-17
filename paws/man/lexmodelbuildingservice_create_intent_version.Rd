@@ -39,7 +39,7 @@ This operation requires permissions to perform the
 \code{lex:CreateIntentVersion} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$create_intent_version(
+\preformatted{svc$create_intent_version(
   name = "string",
   checksum = "string"
 )

@@ -15,7 +15,7 @@ Describes the resource groups that are specified by the ARNs of the
 resource groups.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_resource_groups(
+\preformatted{svc$describe_resource_groups(
   resourceGroupArns = list(
     "string"
   )
@@ -26,7 +26,7 @@ resource groups.
 \examples{
 # Describes the resource groups that are specified by the ARNs of the
 # resource groups.
-\donttest{inspector$describe_resource_groups(
+\donttest{svc$describe_resource_groups(
   resourceGroupArns = list(
     "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-PyGXopAI"
   )

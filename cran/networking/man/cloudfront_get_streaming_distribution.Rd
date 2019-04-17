@@ -15,7 +15,7 @@ Gets information about a specified RTMP distribution, including the
 distribution configuration.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_streaming_distribution(
+\preformatted{svc$get_streaming_distribution(
   Id = "string"
 )
 }

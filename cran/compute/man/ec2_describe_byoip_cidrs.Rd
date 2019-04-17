@@ -28,7 +28,7 @@ To describe the address pools that were created when you provisioned the
 address ranges, use DescribePublicIpv4Pools.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_byoip_cidrs(
+\preformatted{svc$describe_byoip_cidrs(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string"

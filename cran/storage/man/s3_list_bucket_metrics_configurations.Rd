@@ -19,7 +19,7 @@ is an opaque value that Amazon S3 understands.}
 Lists the metrics configurations for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$list_bucket_metrics_configurations(
+\preformatted{svc$list_bucket_metrics_configurations(
   Bucket = "string",
   ContinuationToken = "string"
 )

@@ -22,7 +22,7 @@ Remove one or more specified aliases from a set of aliases for a given
 user.
 }
 \section{Request syntax}{
-\preformatted{workmail$delete_alias(
+\preformatted{svc$delete_alias(
   OrganizationId = "string",
   EntityId = "string",
   Alias = "string"

@@ -55,7 +55,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Lists available reserved DB instance offerings.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_reserved_db_instances_offerings(
+\preformatted{svc$describe_reserved_db_instances_offerings(
   ReservedDBInstancesOfferingId = "string",
   DBInstanceClass = "string",
   Duration = "string",

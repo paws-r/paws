@@ -9,12 +9,6 @@ iot1clickprojects()
 \description{
 The AWS IoT 1-Click Projects API Reference
 }
-\section{Example}{
-\preformatted{iot1clickprojects <- paws::iot1clickprojects()
-iot1clickprojects$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -37,3 +31,9 @@ iot1clickprojects$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_device_with_placement(
+  Foo = 123
+)}
+
+}

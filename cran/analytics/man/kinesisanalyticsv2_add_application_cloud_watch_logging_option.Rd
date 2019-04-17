@@ -21,7 +21,7 @@ Adds an Amazon CloudWatch log stream to monitor application
 configuration errors.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$add_application_cloud_watch_logging_option(
+\preformatted{svc$add_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOption = list(

@@ -66,7 +66,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$count_open_workflow_executions(
+\preformatted{svc$count_open_workflow_executions(
   domain = "string",
   startTimeFilter = list(
     oldestDate = as.POSIXct(

@@ -15,7 +15,7 @@ iot1clickprojects_untag_resource(resourceArn, tagKeys)
 Removes one or more tags (metadata key/value pairs) from a resource.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

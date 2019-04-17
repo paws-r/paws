@@ -29,7 +29,7 @@ view all of the tags that have been applied to a specific ACM
 certificate, use the ListTagsForCertificate action.
 }
 \section{Request syntax}{
-\preformatted{acm$remove_tags_from_certificate(
+\preformatted{svc$remove_tags_from_certificate(
   CertificateArn = "string",
   Tags = list(
     list(

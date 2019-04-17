@@ -55,7 +55,7 @@ specified \code{IdentityPoolId}.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$get_open_id_token_for_developer_identity(
+\preformatted{svc$get_open_id_token_for_developer_identity(
   IdentityPoolId = "string",
   IdentityId = "string",
   Logins = list(

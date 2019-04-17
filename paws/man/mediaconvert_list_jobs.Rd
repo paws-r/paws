@@ -21,7 +21,7 @@ mediaconvert_list_jobs(MaxResults, NextToken, Order, Queue, Status)
 Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$list_jobs(
+\preformatted{svc$list_jobs(
   MaxResults = 123,
   NextToken = "string",
   Order = "ASCENDING"|"DESCENDING",

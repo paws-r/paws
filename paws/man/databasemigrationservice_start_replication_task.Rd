@@ -49,7 +49,7 @@ For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$start_replication_task(
+\preformatted{svc$start_replication_task(
   ReplicationTaskArn = "string",
   StartReplicationTaskType = "start-replication"|"resume-processing"|"reload-target",
   CdcStartTime = as.POSIXct(
@@ -63,7 +63,7 @@ in the \emph{AWS Database Migration Service User Guide.}
 
 \examples{
 # Starts the replication task.
-\donttest{databasemigrationservice$start_replication_task(
+\donttest{svc$start_replication_task(
   CdcStartTime = "2016-12-14T13:33:20Z",
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
   StartReplicationTaskType = "start-replication"

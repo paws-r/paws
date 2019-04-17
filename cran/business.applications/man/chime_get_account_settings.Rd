@@ -17,7 +17,7 @@ these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/policies.h
 \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{chime$get_account_settings(
+\preformatted{svc$get_account_settings(
   AccountId = "string"
 )
 }

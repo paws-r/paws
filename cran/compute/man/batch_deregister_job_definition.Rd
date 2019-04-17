@@ -14,7 +14,7 @@ batch_deregister_job_definition(jobDefinition)
 Deregisters an AWS Batch job definition.
 }
 \section{Request syntax}{
-\preformatted{batch$deregister_job_definition(
+\preformatted{svc$deregister_job_definition(
   jobDefinition = "string"
 )
 }
@@ -22,7 +22,7 @@ Deregisters an AWS Batch job definition.
 
 \examples{
 # This example deregisters a job definition called sleep10.
-\donttest{batch$deregister_job_definition(
+\donttest{svc$deregister_job_definition(
   jobDefinition = "sleep10"
 )}
 

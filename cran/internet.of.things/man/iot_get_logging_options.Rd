@@ -14,7 +14,7 @@ NOTE: use of this command is not recommended. Use \code{GetV2LoggingOptions}
 instead.
 }
 \section{Request syntax}{
-\preformatted{iot$get_logging_options()
+\preformatted{svc$get_logging_options()
 }
 }
 

@@ -56,11 +56,10 @@ NULL
 #'     Query
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
 #'
-#' @section Example:
-#' ```
-#' rds <- paws::rds()
-#' rds$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_role_to_db_cluster(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

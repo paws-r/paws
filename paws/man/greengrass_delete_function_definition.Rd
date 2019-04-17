@@ -13,7 +13,7 @@ greengrass_delete_function_definition(FunctionDefinitionId)
 Deletes a Lambda function definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_function_definition(
+\preformatted{svc$delete_function_definition(
   FunctionDefinitionId = "string"
 )
 }

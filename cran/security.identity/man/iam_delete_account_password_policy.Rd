@@ -13,7 +13,7 @@ parameters.
 \examples{
 # The following command removes the password policy from the current AWS
 # account:
-\donttest{iam$delete_account_password_policy()}
+\donttest{svc$delete_account_password_policy()}
 
 }
 \keyword{internal}

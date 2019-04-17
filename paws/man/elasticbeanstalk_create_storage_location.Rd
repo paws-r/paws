@@ -18,7 +18,7 @@ create a new bucket.
 \examples{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-\donttest{elasticbeanstalk$create_storage_location()}
+\donttest{svc$create_storage_location()}
 
 }
 \keyword{internal}

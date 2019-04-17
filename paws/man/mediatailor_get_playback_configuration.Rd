@@ -13,7 +13,7 @@ mediatailor_get_playback_configuration(Name)
 Returns the playback configuration for the specified name.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$get_playback_configuration(
+\preformatted{svc$get_playback_configuration(
   Name = "string"
 )
 }

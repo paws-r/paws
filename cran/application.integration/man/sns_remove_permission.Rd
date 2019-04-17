@@ -15,7 +15,7 @@ sns_remove_permission(TopicArn, Label)
 Removes a statement from a topic's access control policy.
 }
 \section{Request syntax}{
-\preformatted{sns$remove_permission(
+\preformatted{svc$remove_permission(
   TopicArn = "string",
   Label = "string"
 )

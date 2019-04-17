@@ -23,7 +23,7 @@ In the Route 53 console, traffic policy instances are known as policy
 records.
 }
 \section{Request syntax}{
-\preformatted{route53$delete_traffic_policy_instance(
+\preformatted{svc$delete_traffic_policy_instance(
   Id = "string"
 )
 }

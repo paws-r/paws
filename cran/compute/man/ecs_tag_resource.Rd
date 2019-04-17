@@ -23,7 +23,7 @@ request parameters, they are not changed. When a resource is deleted,
 the tags associated with that resource are deleted as well.
 }
 \section{Request syntax}{
-\preformatted{ecs$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(
@@ -37,7 +37,7 @@ the tags associated with that resource are deleted as well.
 
 \examples{
 # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-\donttest{ecs$tag_resource(
+\donttest{svc$tag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tags = list(
     list(

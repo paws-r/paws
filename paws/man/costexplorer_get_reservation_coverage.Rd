@@ -102,7 +102,7 @@ To determine valid values for a dimension, use the \code{GetDimensionValues}
 operation.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_reservation_coverage(
+\preformatted{svc$get_reservation_coverage(
   TimePeriod = list(
     Start = "string",
     End = "string"

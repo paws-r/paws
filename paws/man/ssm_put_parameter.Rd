@@ -93,7 +93,7 @@ AddTagsToResource action.}
 Add a parameter to the system.
 }
 \section{Request syntax}{
-\preformatted{ssm$put_parameter(
+\preformatted{svc$put_parameter(
   Name = "string",
   Description = "string",
   Value = "string",

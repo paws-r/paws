@@ -67,7 +67,7 @@ in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$create_listener(
+\preformatted{svc$create_listener(
   LoadBalancerArn = "string",
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   Port = 123,
@@ -133,7 +133,7 @@ in the \emph{Network Load Balancers Guide}.
 \examples{
 # This example creates an HTTP listener for the specified load balancer
 # that forwards requests to the specified target group.
-\donttest{elbv2$create_listener(
+\donttest{svc$create_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
@@ -152,7 +152,7 @@ in the \emph{Network Load Balancers Guide}.
 # you can create a certificate using SSL/TLS tools, get the certificate
 # signed by a certificate authority (CA), and upload the certificate to
 # AWS Identity and Access Management (IAM).
-\donttest{elbv2$create_listener(
+\donttest{svc$create_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-server-cert"

@@ -73,7 +73,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 }
 \section{Request syntax}{
-\preformatted{ec2$revoke_security_group_ingress(
+\preformatted{svc$revoke_security_group_ingress(
   CidrIp = "string",
   FromPort = 123,
   GroupId = "string",

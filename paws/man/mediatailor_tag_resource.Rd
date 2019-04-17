@@ -18,7 +18,7 @@ Adds tags to the specified playback configuration resource. You can
 specify one or more tags to add.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

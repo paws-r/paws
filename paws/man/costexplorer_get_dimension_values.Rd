@@ -94,7 +94,7 @@ period of time. You can search the dimension values for an arbitrary
 string.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_dimension_values(
+\preformatted{svc$get_dimension_values(
   SearchString = "string",
   TimePeriod = list(
     Start = "string",

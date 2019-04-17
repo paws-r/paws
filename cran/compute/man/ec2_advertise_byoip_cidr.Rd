@@ -37,7 +37,7 @@ starts routing to AWS because of BGP propagation delays.
 To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 }
 \section{Request syntax}{
-\preformatted{ec2$advertise_byoip_cidr(
+\preformatted{svc$advertise_byoip_cidr(
   Cidr = "string",
   DryRun = TRUE|FALSE
 )

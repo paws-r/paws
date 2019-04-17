@@ -21,7 +21,7 @@ Removes a source identifier from an existing event notification
 subscription.
 }
 \section{Request syntax}{
-\preformatted{neptune$remove_source_identifier_from_subscription(
+\preformatted{svc$remove_source_identifier_from_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )

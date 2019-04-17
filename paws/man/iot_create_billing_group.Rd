@@ -17,7 +17,7 @@ iot_create_billing_group(billingGroupName, billingGroupProperties, tags)
 Creates a billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$create_billing_group(
+\preformatted{svc$create_billing_group(
   billingGroupName = "string",
   billingGroupProperties = list(
     billingGroupDescription = "string"

@@ -22,11 +22,10 @@ NULL
 #' For a list of available SDKs, go to [Tools for Amazon Web
 #' Services](http://aws.amazon.com/tools/).
 #'
-#' @section Example:
-#' ```
-#' sns <- paws::sns()
-#' sns$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_permission(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

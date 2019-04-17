@@ -18,7 +18,7 @@ Deletes the authorization granted to the specified configuration
 aggregator account in a specified region.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_aggregation_authorization(
+\preformatted{svc$delete_aggregation_authorization(
   AuthorizedAccountId = "string",
   AuthorizedAwsRegion = "string"
 )

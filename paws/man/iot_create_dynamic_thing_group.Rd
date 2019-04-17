@@ -32,7 +32,7 @@ specified, the query version defaults to this value.}
 Creates a dynamic thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$create_dynamic_thing_group(
+\preformatted{svc$create_dynamic_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",

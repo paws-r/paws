@@ -27,7 +27,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Returns information about the replication subnet groups.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_replication_subnet_groups(
+\preformatted{svc$describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",
@@ -44,7 +44,7 @@ Returns information about the replication subnet groups.
 
 \examples{
 # Returns information about the replication subnet groups.
-\donttest{databasemigrationservice$describe_replication_subnet_groups(
+\donttest{svc$describe_replication_subnet_groups(
   Filters = list(
     list(
       Name = "string",

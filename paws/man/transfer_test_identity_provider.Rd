@@ -24,7 +24,7 @@ the API Gateway integration to ensure that your users can successfully
 use the service.
 }
 \section{Request syntax}{
-\preformatted{transfer$test_identity_provider(
+\preformatted{svc$test_identity_provider(
   ServerId = "string",
   UserName = "string",
   UserPassword = "string"

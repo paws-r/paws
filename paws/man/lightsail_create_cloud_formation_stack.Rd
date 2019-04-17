@@ -27,7 +27,7 @@ the \code{create cloud formation stack} operation again with the same export
 snapshot record.
 }
 \section{Request syntax}{
-\preformatted{lightsail$create_cloud_formation_stack(
+\preformatted{svc$create_cloud_formation_stack(
   instances = list(
     list(
       sourceName = "string",

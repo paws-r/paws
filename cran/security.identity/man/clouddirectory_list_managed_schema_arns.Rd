@@ -21,7 +21,7 @@ version ARN is provided as SchemaArn, the minor version revisions in
 that family are listed instead.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_managed_schema_arns(
+\preformatted{svc$list_managed_schema_arns(
   SchemaArn = "string",
   NextToken = "string",
   MaxResults = 123

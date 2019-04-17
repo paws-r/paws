@@ -348,7 +348,7 @@ service \code{DescribeDomains} action. A domain's endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 }
 \section{Request syntax}{
-\preformatted{cloudsearchdomain$search(
+\preformatted{svc$search(
   cursor = "string",
   expr = "string",
   facet = "string",

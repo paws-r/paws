@@ -38,7 +38,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$create_organizational_unit(
+\preformatted{svc$create_organizational_unit(
   ParentId = "string",
   Name = "string"
 )
@@ -50,7 +50,7 @@ account.
 # AccountingOU. The new OU is directly under the root.:
 # 
 # 
-\donttest{organizations$create_organizational_unit(
+\donttest{svc$create_organizational_unit(
   Name = "AccountingOU",
   ParentId = "r-examplerootid111"
 )}

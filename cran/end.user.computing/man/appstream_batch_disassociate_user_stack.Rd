@@ -13,7 +13,7 @@ appstream_batch_disassociate_user_stack(UserStackAssociations)
 Disassociates the specified users from the specified stacks.
 }
 \section{Request syntax}{
-\preformatted{appstream$batch_disassociate_user_stack(
+\preformatted{svc$batch_disassociate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",

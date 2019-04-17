@@ -31,7 +31,7 @@ function in addition to the unpublished version. To get more information
 about a function or version, use GetFunction.
 }
 \section{Request syntax}{
-\preformatted{lambda$list_functions(
+\preformatted{svc$list_functions(
   MasterRegion = "string",
   FunctionVersion = "ALL",
   Marker = "string",
@@ -42,7 +42,7 @@ about a function or version, use GetFunction.
 
 \examples{
 # This operation retrieves a Lambda functions
-\donttest{lambda$list_functions(
+\donttest{svc$list_functions(
   Marker = "",
   MaxItems = 123L
 )}

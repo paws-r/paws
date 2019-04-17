@@ -30,7 +30,7 @@ application's SQL code executes. Currently, the only input processor
 available is \href{https://aws.amazon.com/documentation/lambda/}{AWS Lambda}.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$add_application_input_processing_configuration(
+\preformatted{svc$add_application_input_processing_configuration(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   InputId = "string",

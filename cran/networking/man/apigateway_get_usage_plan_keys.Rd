@@ -25,7 +25,7 @@ Gets all the usage plan keys representing the API keys added to a
 specified usage plan.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_usage_plan_keys(
+\preformatted{svc$get_usage_plan_keys(
   usagePlanId = "string",
   position = "string",
   limit = 123,

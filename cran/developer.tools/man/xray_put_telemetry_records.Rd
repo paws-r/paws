@@ -20,7 +20,7 @@ xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
 Used by the AWS X-Ray daemon to upload telemetry.
 }
 \section{Request syntax}{
-\preformatted{xray$put_telemetry_records(
+\preformatted{svc$put_telemetry_records(
   TelemetryRecords = list(
     list(
       Timestamp = as.POSIXct(

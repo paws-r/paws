@@ -50,7 +50,7 @@ Downloads all or a portion of the specified log file, up to 1 MB in
 size.
 }
 \section{Request syntax}{
-\preformatted{rds$download_db_log_file_portion(
+\preformatted{svc$download_db_log_file_portion(
   DBInstanceIdentifier = "string",
   LogFileName = "string",
   Marker = "string",

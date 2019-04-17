@@ -27,7 +27,7 @@ command fails and returns an exception.
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_conversion_task(
+\preformatted{svc$cancel_conversion_task(
   ConversionTaskId = "string",
   DryRun = TRUE|FALSE,
   ReasonMessage = "string"

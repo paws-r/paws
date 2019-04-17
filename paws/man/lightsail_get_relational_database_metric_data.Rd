@@ -46,7 +46,7 @@ Returns the data points of the specified metric for a database in Amazon
 Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_metric_data(
+\preformatted{svc$get_relational_database_metric_data(
   relationalDatabaseName = "string",
   metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
   period = 123,

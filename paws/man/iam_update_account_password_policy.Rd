@@ -94,7 +94,7 @@ For more information about using a password policy, see \href{http://docs.aws.am
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_account_password_policy(
+\preformatted{svc$update_account_password_policy(
   MinimumPasswordLength = 123,
   RequireSymbols = TRUE|FALSE,
   RequireNumbers = TRUE|FALSE,
@@ -112,7 +112,7 @@ in the \emph{IAM User Guide}.
 # The following command sets the password policy to require a minimum
 # length of eight characters and to require one or more numbers in the
 # password:
-\donttest{iam$update_account_password_policy(
+\donttest{svc$update_account_password_policy(
   MinimumPasswordLength = 8L,
   RequireNumbers = TRUE
 )}

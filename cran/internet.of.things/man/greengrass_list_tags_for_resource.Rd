@@ -13,7 +13,7 @@ greengrass_list_tags_for_resource(ResourceArn)
 Retrieves the tags for a resource.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

@@ -21,7 +21,7 @@ There is a limit on the number of on-demand replications runs you can
 request in a 24-hour period.
 }
 \section{Request syntax}{
-\preformatted{sms$start_on_demand_replication_run(
+\preformatted{svc$start_on_demand_replication_run(
   replicationJobId = "string",
   description = "string"
 )

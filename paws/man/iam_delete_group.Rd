@@ -18,7 +18,7 @@ Deletes the specified IAM group. The group must not contain any users or
 have any attached policies.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string"
 )
 }

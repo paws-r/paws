@@ -19,7 +19,7 @@ iot_list_topic_rules(topic, maxResults, nextToken, ruleDisabled)
 Lists the rules for the specific topic.
 }
 \section{Request syntax}{
-\preformatted{iot$list_topic_rules(
+\preformatted{svc$list_topic_rules(
   topic = "string",
   maxResults = 123,
   nextToken = "string",

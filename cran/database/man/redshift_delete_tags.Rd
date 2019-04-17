@@ -17,7 +17,7 @@ Deletes a tag or tags from a resource. You must provide the ARN of the
 resource from which you want to delete the tag or tags.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceName = "string",
   TagKeys = list(
     "string"

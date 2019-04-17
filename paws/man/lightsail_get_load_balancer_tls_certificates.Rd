@@ -23,7 +23,7 @@ You can have a maximum of 2 certificates associated with a Lightsail
 load balancer. One is active and the other is inactive.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_load_balancer_tls_certificates(
+\preformatted{svc$get_load_balancer_tls_certificates(
   loadBalancerName = "string"
 )
 }

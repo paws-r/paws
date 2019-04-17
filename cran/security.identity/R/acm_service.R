@@ -12,11 +12,10 @@ NULL
 #' the [*AWS Certificate Manager User
 #' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
-#' @section Example:
-#' ```
-#' acm <- paws::acm()
-#' acm$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_certificate(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

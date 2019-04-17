@@ -18,7 +18,7 @@ traces.}
 Updates a group resource.
 }
 \section{Request syntax}{
-\preformatted{xray$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   GroupARN = "string",
   FilterExpression = "string"

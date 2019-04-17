@@ -15,7 +15,7 @@ Returns a function's
 can also view tags with GetFunction.
 }
 \section{Request syntax}{
-\preformatted{lambda$list_tags(
+\preformatted{svc$list_tags(
   Resource = "string"
 )
 }

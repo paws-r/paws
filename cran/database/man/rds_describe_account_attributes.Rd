@@ -16,7 +16,7 @@ current usage toward that quota, and the quota's maximum value.
 This command doesn't take any parameters.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_account_attributes()
+\preformatted{svc$describe_account_attributes()
 }
 }
 

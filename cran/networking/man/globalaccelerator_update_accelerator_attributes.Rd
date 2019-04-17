@@ -32,7 +32,7 @@ Update the attributes for an accelerator. To see an AWS CLI example of
 updating an accelerator to enable flow logs, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$update_accelerator_attributes(
+\preformatted{svc$update_accelerator_attributes(
   AcceleratorArn = "string",
   FlowLogsEnabled = TRUE|FALSE,
   FlowLogsS3Bucket = "string",

@@ -19,7 +19,7 @@ from a previous call.)}
 Retrieves the high-level patch state of one or more instances.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_instance_patch_states(
+\preformatted{svc$describe_instance_patch_states(
   InstanceIds = list(
     "string"
   ),

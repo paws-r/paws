@@ -25,7 +25,7 @@ values are DEFAULT, PER\_BROKER, and PER\_TOPIC\_PER\_BROKER.}
 Creates a new MSK cluster.
 }
 \section{Request syntax}{
-\preformatted{kafka$create_cluster(
+\preformatted{svc$create_cluster(
   BrokerNodeGroupInfo = list(
     BrokerAZDistribution = "DEFAULT",
     ClientSubnets = list(

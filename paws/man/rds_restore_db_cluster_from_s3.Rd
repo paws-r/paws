@@ -217,7 +217,7 @@ in the \emph{Amazon Aurora User Guide}.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$restore_db_cluster_from_s3(
+\preformatted{svc$restore_db_cluster_from_s3(
   AvailabilityZones = list(
     "string"
   ),

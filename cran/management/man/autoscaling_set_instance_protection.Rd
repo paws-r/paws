@@ -24,7 +24,7 @@ Scaling group from terminating on scale in, see \href{https://docs.aws.amazon.co
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$set_instance_protection(
+\preformatted{svc$set_instance_protection(
   InstanceIds = list(
     "string"
   ),
@@ -36,7 +36,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example enables instance protection for the specified instance.
-\donttest{autoscaling$set_instance_protection(
+\donttest{svc$set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"
@@ -45,7 +45,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 )}
 
 # This example disables instance protection for the specified instance.
-\donttest{autoscaling$set_instance_protection(
+\donttest{svc$set_instance_protection(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"

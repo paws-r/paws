@@ -28,7 +28,7 @@ using WithdrawByoipCidr and you must not have any IP addresses allocated
 from its address range.
 }
 \section{Request syntax}{
-\preformatted{ec2$deprovision_byoip_cidr(
+\preformatted{svc$deprovision_byoip_cidr(
   Cidr = "string",
   DryRun = TRUE|FALSE
 )

@@ -9,12 +9,6 @@ iot1clickdevicesservice()
 \description{
 Stub description
 }
-\section{Example}{
-\preformatted{iot1clickdevicesservice <- paws::iot1clickdevicesservice()
-iot1clickdevicesservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -34,3 +28,9 @@ iot1clickdevicesservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$claim_devices_by_claim_code(
+  Foo = 123
+)}
+
+}

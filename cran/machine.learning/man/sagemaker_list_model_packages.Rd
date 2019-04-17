@@ -32,7 +32,7 @@ packages, use the token in the next request.}
 Lists the model packages that have been created.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_model_packages(
+\preformatted{svc$list_model_packages(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),

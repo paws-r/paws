@@ -13,7 +13,7 @@ machinelearning_delete_realtime_endpoint(MLModelId)
 Deletes a real time endpoint of an \code{MLModel}.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_realtime_endpoint(
+\preformatted{svc$delete_realtime_endpoint(
   MLModelId = "string"
 )
 }

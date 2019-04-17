@@ -26,7 +26,7 @@ results in the list, this response contains only the actual results.}
 Lists transcription jobs with the specified status.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$list_transcription_jobs(
+\preformatted{svc$list_transcription_jobs(
   Status = "IN_PROGRESS"|"FAILED"|"COMPLETED",
   JobNameContains = "string",
   NextToken = "string",

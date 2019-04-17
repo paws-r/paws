@@ -23,7 +23,7 @@ details for all the configuration aggregators associated with the
 account.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_configuration_aggregators(
+\preformatted{svc$describe_configuration_aggregators(
   ConfigurationAggregatorNames = list(
     "string"
   ),

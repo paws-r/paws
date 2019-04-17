@@ -27,7 +27,7 @@ The data in a deleted backup is also deleted and can't be recovered by
 any means.
 }
 \section{Request syntax}{
-\preformatted{fsx$delete_backup(
+\preformatted{svc$delete_backup(
   BackupId = "string",
   ClientRequestToken = "string"
 )
@@ -36,7 +36,7 @@ any means.
 
 \examples{
 # This operation deletes an Amazon FSx file system backup.
-\donttest{fsx$delete_backup(
+\donttest{svc$delete_backup(
   BackupId = "backup-03e3c82e0183b7b6b"
 )}
 

@@ -13,7 +13,7 @@ mediaconnect_list_tags_for_resource(ResourceArn)
 Lists all tags associated with the resource.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

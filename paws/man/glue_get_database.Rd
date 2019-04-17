@@ -17,7 +17,7 @@ should be all lowercase.}
 Retrieves the definition of a specified database.
 }
 \section{Request syntax}{
-\preformatted{glue$get_database(
+\preformatted{svc$get_database(
   CatalogId = "string",
   Name = "string"
 )

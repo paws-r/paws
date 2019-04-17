@@ -19,7 +19,7 @@ be canceled during any of the following states; \code{Initializing},
 \code{CreatingSnapshot}, and \code{UpdatingSchema}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$cancel_schema_extension(
+\preformatted{svc$cancel_schema_extension(
   DirectoryId = "string",
   SchemaExtensionId = "string"
 )

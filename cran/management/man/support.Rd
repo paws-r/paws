@@ -58,12 +58,6 @@ the \emph{AWS Support User Guide} for information about how to use this
 service to create and manage your support cases, and how to call Trusted
 Advisor for results of checks on your resources.
 }
-\section{Example}{
-\preformatted{support <- paws::support()
-support$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -84,3 +78,9 @@ support$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_attachments_to_set(
+  Foo = 123
+)}
+
+}

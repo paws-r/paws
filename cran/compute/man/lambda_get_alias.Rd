@@ -27,7 +27,7 @@ Returns details about a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_alias(
+\preformatted{svc$get_alias(
   FunctionName = "string",
   Name = "string"
 )
@@ -36,7 +36,7 @@ Returns details about a Lambda function
 
 \examples{
 # This operation retrieves a Lambda function alias
-\donttest{lambda$get_alias(
+\donttest{svc$get_alias(
   FunctionName = "myFunction",
   Name = "myFunctionAlias"
 )}

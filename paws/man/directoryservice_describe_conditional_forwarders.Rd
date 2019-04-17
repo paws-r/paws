@@ -23,7 +23,7 @@ If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_conditional_forwarders(
+\preformatted{svc$describe_conditional_forwarders(
   DirectoryId = "string",
   RemoteDomainNames = list(
     "string"

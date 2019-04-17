@@ -152,7 +152,7 @@ in the ElastiCache API Reference
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$modify_replication_group(
+\preformatted{svc$modify_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
   PrimaryClusterId = "string",

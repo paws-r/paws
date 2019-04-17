@@ -26,7 +26,7 @@ For more information about the hosted domain and custom domains, see
 Creates a new domain for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_user_pool_domain(
+\preformatted{svc$create_user_pool_domain(
   Domain = "string",
   UserPoolId = "string",
   CustomDomainConfig = list(

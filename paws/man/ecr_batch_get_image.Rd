@@ -31,7 +31,7 @@ repository. Images are specified with either \code{imageTag} or
 \code{imageDigest}.
 }
 \section{Request syntax}{
-\preformatted{ecr$batch_get_image(
+\preformatted{svc$batch_get_image(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -50,7 +50,7 @@ repository. Images are specified with either \code{imageTag} or
 \examples{
 # This example obtains information for an image with a specified image
 # digest ID from the repository named ubuntu in the current account.
-\donttest{ecr$batch_get_image(
+\donttest{svc$batch_get_image(
   imageIds = list(
     list(
       imageTag = "precise"

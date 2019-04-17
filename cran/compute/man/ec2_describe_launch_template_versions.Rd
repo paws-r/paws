@@ -51,7 +51,7 @@ Describes one or more versions of a specified launch template. You can
 describe all versions, individual versions, or a range of versions.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_launch_template_versions(
+\preformatted{svc$describe_launch_template_versions(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string",
@@ -76,7 +76,7 @@ describe all versions, individual versions, or a range of versions.
 
 \examples{
 # This example describes the versions for the specified launch template.
-\donttest{ec2$describe_launch_template_versions(
+\donttest{svc$describe_launch_template_versions(
   LaunchTemplateId = "068f72b72934aff71"
 )}
 

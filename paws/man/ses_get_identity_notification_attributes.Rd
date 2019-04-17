@@ -25,7 +25,7 @@ For more information about using notifications with Amazon SES, see the
 \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$get_identity_notification_attributes(
+\preformatted{svc$get_identity_notification_attributes(
   Identities = list(
     "string"
   )
@@ -36,7 +36,7 @@ For more information about using notifications with Amazon SES, see the
 \examples{
 # The following example returns the notification attributes for an
 # identity:
-\donttest{ses$get_identity_notification_attributes(
+\donttest{svc$get_identity_notification_attributes(
   Identities = list(
     "example.com"
   )

@@ -25,7 +25,7 @@ simulation application.}
 Creates a simulation application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_simulation_application(
+\preformatted{svc$create_simulation_application(
   name = "string",
   sources = list(
     list(

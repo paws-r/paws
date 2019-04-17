@@ -18,7 +18,7 @@ don't plan to use Run Command on the server, we suggest uninstalling
 SSM Agent first.
 }
 \section{Request syntax}{
-\preformatted{ssm$deregister_managed_instance(
+\preformatted{svc$deregister_managed_instance(
   InstanceId = "string"
 )
 }

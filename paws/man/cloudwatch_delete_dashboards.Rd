@@ -15,7 +15,7 @@ dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$delete_dashboards(
+\preformatted{svc$delete_dashboards(
   DashboardNames = list(
     "string"
   )

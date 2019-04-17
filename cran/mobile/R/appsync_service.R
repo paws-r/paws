@@ -8,11 +8,10 @@ NULL
 #' AWS AppSync provides API actions for creating and interacting with data
 #' sources using GraphQL from your application.
 #'
-#' @section Example:
-#' ```
-#' appsync <- paws::appsync()
-#' appsync$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_api_key(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

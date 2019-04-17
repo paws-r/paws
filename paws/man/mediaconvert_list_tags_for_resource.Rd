@@ -13,7 +13,7 @@ mediaconvert_list_tags_for_resource(Arn)
 Retrieve the tags for a MediaConvert resource.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   Arn = "string"
 )
 }

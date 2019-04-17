@@ -20,7 +20,7 @@ For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/de
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$define_suggester(
+\preformatted{svc$define_suggester(
   DomainName = "string",
   Suggester = list(
     SuggesterName = "string",

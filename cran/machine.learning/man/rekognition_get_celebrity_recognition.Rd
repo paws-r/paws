@@ -76,7 +76,7 @@ with the token value returned from the previous call to
 \code{GetCelebrityRecognition}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_celebrity_recognition(
+\preformatted{svc$get_celebrity_recognition(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",

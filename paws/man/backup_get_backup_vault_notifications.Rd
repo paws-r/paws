@@ -16,7 +16,7 @@ lowercase letters, numbers, and hyphens.}
 Returns event notifications for the specified backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_vault_notifications(
+\preformatted{svc$get_backup_vault_notifications(
   BackupVaultName = "string"
 )
 }

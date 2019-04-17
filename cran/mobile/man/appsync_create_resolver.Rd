@@ -45,7 +45,7 @@ A resolver converts incoming requests into a format that a data source
 can understand and converts the data source's responses into GraphQL.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_resolver(
+\preformatted{svc$create_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string",

@@ -18,7 +18,7 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$get_bulk_publish_details(
+\preformatted{svc$get_bulk_publish_details(
   IdentityPoolId = "string"
 )
 }

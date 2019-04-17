@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Operations and objects for transcribing speech to text.
 #'
-#' @section Example:
-#' ```
-#' transcribeservice <- paws::transcribeservice()
-#' transcribeservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_vocabulary(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

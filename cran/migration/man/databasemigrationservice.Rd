@@ -18,12 +18,6 @@ such as Oracle to MySQL or SQL Server to PostgreSQL.
 For more information about AWS DMS, see \href{https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html}{What Is AWS Database Migration Service?}
 in the \emph{AWS Database Migration User Guide.}
 }
-\section{Example}{
-\preformatted{databasemigrationservice <- paws::databasemigrationservice()
-databasemigrationservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +70,20 @@ databasemigrationservice$operation()
 }
 }
 
+\examples{
+# Adds metadata tags to an AWS DMS resource, including replication
+# instance, endpoint, security group, and migration task. These tags can
+# also be used with cost allocation reporting to track cost associated
+# with AWS DMS resources, or used in a Condition statement in an IAM
+# policy for AWS DMS.
+\donttest{svc$add_tags_to_resource(
+  ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
+  Tags = list(
+    list(
+      Key = "Acount",
+      Value = "1633456"
+    )
+  )
+)}
+
+}

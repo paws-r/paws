@@ -9,12 +9,6 @@ kinesisanalytics()
 \description{
 Amazon Kinesis Analytics
 }
-\section{Example}{
-\preformatted{kinesisanalytics <- paws::kinesisanalytics()
-kinesisanalytics$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,9 @@ kinesisanalytics$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_application_cloud_watch_logging_option(
+  Foo = 123
+)}
+
+}

@@ -98,7 +98,7 @@ RegisterScalableTarget. If you are no longer using a scalable target,
 you can deregister it using DeregisterScalableTarget.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$describe_scalable_targets(
+\preformatted{svc$describe_scalable_targets(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceIds = list(
     "string"
@@ -113,7 +113,7 @@ you can deregister it using DeregisterScalableTarget.
 \examples{
 # This example describes the scalable targets for the ecs service
 # namespace.
-\donttest{applicationautoscaling$describe_scalable_targets(
+\donttest{svc$describe_scalable_targets(
   ServiceNamespace = "ecs"
 )}
 

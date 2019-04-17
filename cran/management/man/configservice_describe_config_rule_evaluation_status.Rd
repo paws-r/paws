@@ -30,7 +30,7 @@ the rule, the last time AWS Config failed to invoke the rule, and the
 related error for the last failure.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_config_rule_evaluation_status(
+\preformatted{svc$describe_config_rule_evaluation_status(
   ConfigRuleNames = list(
     "string"
   ),

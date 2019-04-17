@@ -32,7 +32,7 @@ defined by the AWS service team.
 Update the service setting for the account.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_service_setting(
+\preformatted{svc$update_service_setting(
   SettingId = "string",
   SettingValue = "string"
 )

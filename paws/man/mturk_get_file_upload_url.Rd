@@ -27,7 +27,7 @@ structure. Instead, we recommend that Requesters who want to create HITs
 asking Workers to upload files to use Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_file_upload_url(
+\preformatted{svc$get_file_upload_url(
   AssignmentId = "string",
   QuestionIdentifier = "string"
 )

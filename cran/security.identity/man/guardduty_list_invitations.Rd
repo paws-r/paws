@@ -16,7 +16,7 @@ guardduty_list_invitations(MaxResults, NextToken)
 Lists all GuardDuty membership invitations that were sent to the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_invitations(
+\preformatted{svc$list_invitations(
   MaxResults = 123,
   NextToken = "string"
 )

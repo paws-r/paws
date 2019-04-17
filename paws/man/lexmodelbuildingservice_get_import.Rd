@@ -15,7 +15,7 @@ Gets information about an import job started with the \code{StartImport}
 operation.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_import(
+\preformatted{svc$get_import(
   importId = "string"
 )
 }

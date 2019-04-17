@@ -25,7 +25,7 @@ Only the owner of a Qualification type can query the value of a
 Worker's Qualification of that type.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_qualification_score(
+\preformatted{svc$get_qualification_score(
   QualificationTypeId = "string",
   WorkerId = "string"
 )

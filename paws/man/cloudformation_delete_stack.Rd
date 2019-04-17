@@ -54,7 +54,7 @@ deletion starts. Deleted stacks do not show up in the DescribeStacks API
 if the deletion has been completed successfully.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$delete_stack(
+\preformatted{svc$delete_stack(
   StackName = "string",
   RetainResources = list(
     "string"

@@ -19,7 +19,7 @@ extension information.}
 Lists all schema extensions applied to a Microsoft AD Directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$list_schema_extensions(
+\preformatted{svc$list_schema_extensions(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123

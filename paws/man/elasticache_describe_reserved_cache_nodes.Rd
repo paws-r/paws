@@ -117,7 +117,7 @@ Returns information about reserved cache nodes for this account, or
 about a specified reserved cache node.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_reserved_cache_nodes(
+\preformatted{svc$describe_reserved_cache_nodes(
   ReservedCacheNodeId = "string",
   ReservedCacheNodesOfferingId = "string",
   CacheNodeType = "string",

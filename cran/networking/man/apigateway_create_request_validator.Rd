@@ -22,7 +22,7 @@ the configured model schema for the method (\code{true}) or not (\code{false}).}
 Creates a ReqeustValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_request_validator(
+\preformatted{svc$create_request_validator(
   restApiId = "string",
   name = "string",
   validateRequestBody = TRUE|FALSE,

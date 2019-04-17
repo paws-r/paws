@@ -13,7 +13,7 @@ lightsail_allocate_static_ip(staticIpName)
 Allocates a static IP address.
 }
 \section{Request syntax}{
-\preformatted{lightsail$allocate_static_ip(
+\preformatted{svc$allocate_static_ip(
   staticIpName = "string"
 )
 }

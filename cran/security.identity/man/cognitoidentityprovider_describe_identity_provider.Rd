@@ -16,7 +16,7 @@ cognitoidentityprovider_describe_identity_provider(UserPoolId,
 Gets information about a specific identity provider.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_identity_provider(
+\preformatted{svc$describe_identity_provider(
   UserPoolId = "string",
   ProviderName = "string"
 )

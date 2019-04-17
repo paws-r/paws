@@ -18,7 +18,7 @@ or latest successfully completed data set. If not specified,
 Deletes the content of the specified data set.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$delete_dataset_content(
+\preformatted{svc$delete_dataset_content(
   datasetName = "string",
   versionId = "string"
 )

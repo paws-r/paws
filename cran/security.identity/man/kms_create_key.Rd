@@ -131,7 +131,7 @@ You cannot use this operation to create a CMK in a different AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{kms$create_key(
+\preformatted{svc$create_key(
   Policy = "string",
   Description = "string",
   KeyUsage = "ENCRYPT_DECRYPT",
@@ -150,7 +150,7 @@ account.
 
 \examples{
 # The following example creates a CMK.
-\donttest{kms$create_key(
+\donttest{svc$create_key(
   Tags = list(
     list(
       TagKey = "CreatedBy",

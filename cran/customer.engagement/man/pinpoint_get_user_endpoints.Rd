@@ -16,7 +16,7 @@ pinpoint_get_user_endpoints(ApplicationId, UserId)
 Returns information about the endpoints that are associated with a User ID.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_user_endpoints(
+\preformatted{svc$get_user_endpoints(
   ApplicationId = "string",
   UserId = "string"
 )

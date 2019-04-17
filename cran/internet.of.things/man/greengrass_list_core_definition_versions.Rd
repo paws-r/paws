@@ -18,7 +18,7 @@ greengrass_list_core_definition_versions(CoreDefinitionId, MaxResults,
 Lists the versions of a core definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_core_definition_versions(
+\preformatted{svc$list_core_definition_versions(
   CoreDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"

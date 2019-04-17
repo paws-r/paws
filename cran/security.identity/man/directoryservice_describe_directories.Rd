@@ -38,7 +38,7 @@ You can also specify a maximum number of return results with the \code{Limit}
 parameter.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_directories(
+\preformatted{svc$describe_directories(
   DirectoryIds = list(
     "string"
   ),

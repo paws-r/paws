@@ -70,7 +70,7 @@ snapshot, or DB parameter group by providing the name as a parameter. By
 default, the events of the past hour are returned.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
   StartTime = as.POSIXct(

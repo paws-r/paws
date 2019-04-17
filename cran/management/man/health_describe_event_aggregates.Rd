@@ -28,7 +28,7 @@ change, and account notification). If no filter is specified, the counts
 of all events in each category are returned.
 }
 \section{Request syntax}{
-\preformatted{health$describe_event_aggregates(
+\preformatted{svc$describe_event_aggregates(
   filter = list(
     eventArns = list(
       "string"

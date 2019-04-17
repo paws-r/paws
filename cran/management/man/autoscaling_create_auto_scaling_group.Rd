@@ -152,7 +152,7 @@ information about updating this limit, see \href{https://docs.aws.amazon.com/aut
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$create_auto_scaling_group(
+\preformatted{svc$create_auto_scaling_group(
   AutoScalingGroupName = "string",
   LaunchConfigurationName = "string",
   LaunchTemplate = list(
@@ -231,7 +231,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example creates an Auto Scaling group.
-\donttest{autoscaling$create_auto_scaling_group(
+\donttest{svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "my-launch-config",
   MaxSize = 3L,
@@ -241,7 +241,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 # This example creates an Auto Scaling group and attaches the specified
 # Classic Load Balancer.
-\donttest{autoscaling$create_auto_scaling_group(
+\donttest{svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   AvailabilityZones = list(
     "us-west-2c"
@@ -258,7 +258,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 # This example creates an Auto Scaling group and attaches the specified
 # target group.
-\donttest{autoscaling$create_auto_scaling_group(
+\donttest{svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   HealthCheckGracePeriod = 120L,
   HealthCheckType = "ELB",

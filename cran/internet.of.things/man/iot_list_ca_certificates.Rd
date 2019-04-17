@@ -21,7 +21,7 @@ The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 }
 \section{Request syntax}{
-\preformatted{iot$list_ca_certificates(
+\preformatted{svc$list_ca_certificates(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE

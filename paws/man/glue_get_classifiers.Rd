@@ -15,7 +15,7 @@ glue_get_classifiers(MaxResults, NextToken)
 Lists all classifier objects in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_classifiers(
+\preformatted{svc$get_classifiers(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -24,7 +24,7 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_spot_datafeed_subscription(
+\preformatted{svc$create_spot_datafeed_subscription(
   Bucket = "string",
   DryRun = TRUE|FALSE,
   Prefix = "string"
@@ -34,7 +34,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 \examples{
 # This example creates a Spot Instance data feed for your AWS account.
-\donttest{ec2$create_spot_datafeed_subscription(
+\donttest{svc$create_spot_datafeed_subscription(
   Bucket = "my-s3-bucket",
   Prefix = "spotdata"
 )}

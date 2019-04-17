@@ -46,7 +46,7 @@ secret, use GetResourcePolicy.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$delete_resource_policy(
+\preformatted{svc$delete_resource_policy(
   SecretId = "string"
 )
 }
@@ -55,7 +55,7 @@ secret, use GetResourcePolicy.
 \examples{
 # The following example shows how to delete the resource-based policy that
 # is attached to a secret.
-\donttest{secretsmanager$delete_resource_policy(
+\donttest{svc$delete_resource_policy(
   SecretId = "MyTestDatabaseSecret"
 )}
 

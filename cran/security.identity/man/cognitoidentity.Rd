@@ -27,12 +27,6 @@ Developer Guide see \href{https://docs.aws.amazon.com/cognito/latest/developergu
 
 For more information see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html}{Amazon Cognito Federated Identities}.
 }
-\section{Example}{
-\preformatted{cognitoidentity <- paws::cognitoidentity()
-cognitoidentity$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -60,3 +54,9 @@ cognitoidentity$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_identity_pool(
+  Foo = 123
+)}
+
+}

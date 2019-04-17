@@ -15,7 +15,7 @@ Deletes the access policy that is associated with the specified
 container.
 }
 \section{Request syntax}{
-\preformatted{mediastore$delete_container_policy(
+\preformatted{svc$delete_container_policy(
   ContainerName = "string"
 )
 }

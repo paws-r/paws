@@ -18,7 +18,7 @@ was generated. This is not a valid action for SigV4 (administrative API)
 clients.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_current_user(
+\preformatted{svc$get_current_user(
   AuthenticationToken = "string"
 )
 }

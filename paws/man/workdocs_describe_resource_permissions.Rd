@@ -25,7 +25,7 @@ previous call)}
 Describes the permissions of a specified resource.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_resource_permissions(
+\preformatted{svc$describe_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string",
   PrincipalId = "string",

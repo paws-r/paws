@@ -18,7 +18,7 @@ Returns information about a repository branch, including its name and
 the last commit ID.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_branch(
+\preformatted{svc$get_branch(
   repositoryName = "string",
   branchName = "string"
 )

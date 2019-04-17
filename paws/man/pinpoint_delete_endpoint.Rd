@@ -15,7 +15,7 @@ pinpoint_delete_endpoint(ApplicationId, EndpointId)
 Deletes an endpoint.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   ApplicationId = "string",
   EndpointId = "string"
 )

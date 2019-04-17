@@ -14,7 +14,7 @@ lightsail_get_relational_databases(pageToken)
 Returns information about all of your databases in Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_databases(
+\preformatted{svc$get_relational_databases(
   pageToken = "string"
 )
 }

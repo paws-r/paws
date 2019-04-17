@@ -21,7 +21,7 @@ attributes and metrics per custom event, and any number of attribute or
 metric values.
 }
 \section{Request syntax}{
-\preformatted{mobileanalytics$put_events(
+\preformatted{svc$put_events(
   events = list(
     list(
       eventType = "string",

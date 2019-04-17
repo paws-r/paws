@@ -22,7 +22,7 @@ iot_update_authorizer(authorizerName, authorizerFunctionArn,
 Updates an authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$update_authorizer(
+\preformatted{svc$update_authorizer(
   authorizerName = "string",
   authorizerFunctionArn = "string",
   tokenKeyName = "string",

@@ -39,12 +39,6 @@ search results
 \item Searching AWS resources based on a resource query
 }
 }
-\section{Example}{
-\preformatted{resourcegroups <- paws::resourcegroups()
-resourcegroups$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -63,3 +57,9 @@ resourcegroups$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_group(
+  Foo = 123
+)}
+
+}

@@ -33,7 +33,7 @@ appsync_update_data_source(apiId, name, description, type,
 Updates a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_data_source(
+\preformatted{svc$update_data_source(
   apiId = "string",
   name = "string",
   description = "string",

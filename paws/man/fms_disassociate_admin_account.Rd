@@ -13,7 +13,7 @@ administrator account. To set a different account as the administrator
 account, you must submit an \code{AssociateAdminAccount} request .
 }
 \section{Request syntax}{
-\preformatted{fms$disassociate_admin_account()
+\preformatted{svc$disassociate_admin_account()
 }
 }
 

@@ -30,7 +30,7 @@ you specify the limit and the next token, you receive a paginated
 response.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_remediation_execution_status(
+\preformatted{svc$describe_remediation_execution_status(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(

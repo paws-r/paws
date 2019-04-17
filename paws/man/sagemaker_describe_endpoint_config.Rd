@@ -15,7 +15,7 @@ Returns the description of an endpoint configuration created using the
 \code{CreateEndpointConfig} API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_endpoint_config(
+\preformatted{svc$describe_endpoint_config(
   EndpointConfigName = "string"
 )
 }

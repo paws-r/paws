@@ -39,11 +39,10 @@ NULL
 #'     them available to other developers, and publish new versions of
 #'     applications.
 #'
-#' @section Example:
-#' ```
-#' serverlessapplicationrepository <- paws::serverlessapplicationrepository()
-#' serverlessapplicationrepository$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_application(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -13,7 +13,7 @@ s3_delete_bucket_lifecycle(Bucket)
 Deletes the lifecycle configuration from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_lifecycle(
+\preformatted{svc$delete_bucket_lifecycle(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the lifecycle configuration from the bucket.
 
 \examples{
 # The following example deletes lifecycle configuration on a bucket.
-\donttest{s3$delete_bucket_lifecycle(
+\donttest{svc$delete_bucket_lifecycle(
   Bucket = "examplebucket"
 )}
 

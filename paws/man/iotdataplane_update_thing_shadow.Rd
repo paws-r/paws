@@ -20,7 +20,7 @@ For more information, see
 in the \emph{AWS IoT Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{iotdataplane$update_thing_shadow(
+\preformatted{svc$update_thing_shadow(
   thingName = "string",
   payload = raw
 )

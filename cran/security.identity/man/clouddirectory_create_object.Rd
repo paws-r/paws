@@ -30,7 +30,7 @@ to create a policy object, if the facet from which you create the object
 is a policy facet.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$create_object(
+\preformatted{svc$create_object(
   DirectoryArn = "string",
   SchemaFacets = list(
     list(

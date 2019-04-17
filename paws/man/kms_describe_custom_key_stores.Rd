@@ -65,7 +65,7 @@ For help repairing your custom key store, see the Troubleshooting Custom
 Key Stores topic in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$describe_custom_key_stores(
+\preformatted{svc$describe_custom_key_stores(
   CustomKeyStoreId = "string",
   CustomKeyStoreName = "string",
   Limit = 123,

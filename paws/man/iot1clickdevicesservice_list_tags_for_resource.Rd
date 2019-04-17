@@ -14,7 +14,7 @@ Amazon Resource Name (ARN).}
 List all tags on an AWS IoT 1-Click resource.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

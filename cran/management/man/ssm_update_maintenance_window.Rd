@@ -51,7 +51,7 @@ Updates an existing Maintenance Window. Only specified parameters are
 modified.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_maintenance_window(
+\preformatted{svc$update_maintenance_window(
   WindowId = "string",
   Name = "string",
   Description = "string",

@@ -27,7 +27,7 @@ For more information, see \href{https://docs.aws.amazon.com/workdocs/latest/deve
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{workdocs$create_notification_subscription(
+\preformatted{svc$create_notification_subscription(
   OrganizationId = "string",
   Endpoint = "string",
   Protocol = "HTTPS",

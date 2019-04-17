@@ -28,7 +28,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 Copies the specified Amazon FPGA Image (AFI) to the current region.
 }
 \section{Request syntax}{
-\preformatted{ec2$copy_fpga_image(
+\preformatted{svc$copy_fpga_image(
   DryRun = TRUE|FALSE,
   SourceFpgaImageId = "string",
   Description = "string",

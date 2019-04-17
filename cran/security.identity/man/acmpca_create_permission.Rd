@@ -38,7 +38,7 @@ DeletePermission operation and listed with the ListPermissions
 operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$create_permission(
+\preformatted{svc$create_permission(
   CertificateAuthorityArn = "string",
   Principal = "string",
   SourceAccount = "string",

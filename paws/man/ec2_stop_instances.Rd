@@ -77,7 +77,7 @@ computer. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$stop_instances(
+\preformatted{svc$stop_instances(
   InstanceIds = list(
     "string"
   ),
@@ -90,7 +90,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example stops the specified EC2 instance.
-\donttest{ec2$stop_instances(
+\donttest{svc$stop_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )

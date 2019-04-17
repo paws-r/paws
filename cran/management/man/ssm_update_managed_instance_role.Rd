@@ -17,7 +17,7 @@ Assigns or changes an Amazon Identity and Access Management (IAM) role
 to the managed instance.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_managed_instance_role(
+\preformatted{svc$update_managed_instance_role(
   InstanceId = "string",
   IamRole = "string"
 )

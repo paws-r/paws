@@ -16,7 +16,7 @@ elasticbeanstalk_update_application_resource_lifecycle(ApplicationName,
 Modifies lifecycle settings for an application.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$update_application_resource_lifecycle(
+\preformatted{svc$update_application_resource_lifecycle(
   ApplicationName = "string",
   ResourceLifecycleConfig = list(
     ServiceRole = "string",

@@ -26,7 +26,7 @@ troubleshooting.
 The returned content is Base64-encoded.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_console_screenshot(
+\preformatted{svc$get_console_screenshot(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   WakeUp = TRUE|FALSE

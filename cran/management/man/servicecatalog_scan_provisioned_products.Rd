@@ -29,7 +29,7 @@ Lists the provisioned products that are available (not terminated).
 To use additional filtering, see SearchProvisionedProducts.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$scan_provisioned_products(
+\preformatted{svc$scan_provisioned_products(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",

@@ -17,7 +17,7 @@ that is already deleted. If a deleted webhook is re-created by calling
 PutWebhook with the same name, it will have a different URL.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$delete_webhook(
+\preformatted{svc$delete_webhook(
   name = "string"
 )
 }

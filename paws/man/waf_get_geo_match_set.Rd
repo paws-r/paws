@@ -15,7 +15,7 @@ ListGeoMatchSets.}
 Returns the GeoMatchSet that is specified by \code{GeoMatchSetId}.
 }
 \section{Request syntax}{
-\preformatted{waf$get_geo_match_set(
+\preformatted{svc$get_geo_match_set(
   GeoMatchSetId = "string"
 )
 }

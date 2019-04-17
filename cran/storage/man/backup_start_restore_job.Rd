@@ -45,7 +45,7 @@ backup of that resource is recovered. If the ARN of a recovery point is
 supplied, then that recovery point is restored.
 }
 \section{Request syntax}{
-\preformatted{backup$start_restore_job(
+\preformatted{svc$start_restore_job(
   RecoveryPointArn = "string",
   Metadata = list(
     "string"

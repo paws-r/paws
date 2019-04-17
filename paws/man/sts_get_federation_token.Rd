@@ -142,7 +142,7 @@ For information about using \code{GetFederationToken} to create temporary
 security credentials, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken---Federation Through a Custom Identity Broker}.
 }
 \section{Request syntax}{
-\preformatted{sts$get_federation_token(
+\preformatted{svc$get_federation_token(
   Name = "string",
   Policy = "string",
   DurationSeconds = 123
@@ -152,7 +152,7 @@ security credentials, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 \examples{
 # 
-\donttest{sts$get_federation_token(
+\donttest{svc$get_federation_token(
   DurationSeconds = 3600L,
   Name = "Bob",
   Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":..."

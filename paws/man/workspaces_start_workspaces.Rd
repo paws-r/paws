@@ -17,7 +17,7 @@ You cannot start a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{STOPPED}.
 }
 \section{Request syntax}{
-\preformatted{workspaces$start_workspaces(
+\preformatted{svc$start_workspaces(
   StartWorkspaceRequests = list(
     list(
       WorkspaceId = "string"

@@ -29,11 +29,10 @@ NULL
 #' task runner reports the final success or failure of the task to the web
 #' service.
 #'
-#' @section Example:
-#' ```
-#' datapipeline <- paws::datapipeline()
-#' datapipeline$operation()
-#' ```
+#' @examples
+#' \donttest{svc$activate_pipeline(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

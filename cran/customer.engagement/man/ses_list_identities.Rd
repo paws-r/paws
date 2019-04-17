@@ -27,7 +27,7 @@ verification status.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_identities(
+\preformatted{svc$list_identities(
   IdentityType = "EmailAddress"|"Domain",
   NextToken = "string",
   MaxItems = 123
@@ -38,7 +38,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example lists the email address identities that have been
 # submitted for verification with Amazon SES:
-\donttest{ses$list_identities(
+\donttest{svc$list_identities(
   IdentityType = "EmailAddress",
   MaxItems = 123L,
   NextToken = ""

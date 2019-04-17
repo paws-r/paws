@@ -18,7 +18,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Lists the Availability Zones that have available AWS CloudHSM capacity.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$list_available_zones()
+\preformatted{svc$list_available_zones()
 }
 }
 

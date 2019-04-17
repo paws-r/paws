@@ -13,7 +13,7 @@ sagemaker_describe_endpoint(EndpointName)
 Returns the description of an endpoint.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_endpoint(
+\preformatted{svc$describe_endpoint(
   EndpointName = "string"
 )
 }

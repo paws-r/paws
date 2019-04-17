@@ -31,7 +31,7 @@ Lists all the resolver endpoints that were created using the current AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$list_resolver_endpoints(
+\preformatted{svc$list_resolver_endpoints(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(

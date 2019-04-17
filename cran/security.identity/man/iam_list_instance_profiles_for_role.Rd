@@ -38,7 +38,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_instance_profiles_for_role(
+\preformatted{svc$list_instance_profiles_for_role(
   RoleName = "string",
   Marker = "string",
   MaxItems = 123

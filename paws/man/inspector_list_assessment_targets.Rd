@@ -28,7 +28,7 @@ Lists the ARNs of the assessment targets within this AWS account. For
 more information about assessment targets, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
 \section{Request syntax}{
-\preformatted{inspector$list_assessment_targets(
+\preformatted{svc$list_assessment_targets(
   filter = list(
     assessmentTargetNamePattern = "string"
   ),
@@ -40,7 +40,7 @@ more information about assessment targets, see \href{http://docs.aws.amazon.com/
 
 \examples{
 # Lists the ARNs of the assessment targets within this AWS account.
-\donttest{inspector$list_assessment_targets(
+\donttest{svc$list_assessment_targets(
   maxResults = 123L
 )}
 

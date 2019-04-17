@@ -17,7 +17,7 @@ directoryservice_list_tags_for_resource(ResourceId, NextToken, Limit)
 Lists all tags on a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceId = "string",
   NextToken = "string",
   Limit = 123

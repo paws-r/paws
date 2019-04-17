@@ -364,7 +364,7 @@ in the \emph{ElastiCache User Guide}.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_replication_group(
+\preformatted{svc$create_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
   PrimaryClusterId = "string",

@@ -59,7 +59,7 @@ in an object's metadata. To use HEAD, you must have READ access to the
 object.
 }
 \section{Request syntax}{
-\preformatted{s3$head_object(
+\preformatted{svc$head_object(
   Bucket = "string",
   IfMatch = "string",
   IfModifiedSince = as.POSIXct(
@@ -83,7 +83,7 @@ object.
 
 \examples{
 # The following example retrieves an object metadata.
-\donttest{s3$head_object(
+\donttest{svc$head_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

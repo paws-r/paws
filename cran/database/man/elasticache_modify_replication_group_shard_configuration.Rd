@@ -51,7 +51,7 @@ add shards, remove shards, or rebalance the keyspaces among exisiting
 shards.
 }
 \section{Request syntax}{
-\preformatted{elasticache$modify_replication_group_shard_configuration(
+\preformatted{svc$modify_replication_group_shard_configuration(
   ReplicationGroupId = "string",
   NodeGroupCount = 123,
   ApplyImmediately = TRUE|FALSE,

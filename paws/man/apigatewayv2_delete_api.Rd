@@ -13,7 +13,7 @@ apigatewayv2_delete_api(ApiId)
 Deletes an Api resource.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_api(
+\preformatted{svc$delete_api(
   ApiId = "string"
 )
 }

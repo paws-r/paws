@@ -27,7 +27,7 @@ may be empty if no work team satisfies the filter specified in the
 \code{NameContains} parameter.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_workteams(
+\preformatted{svc$list_workteams(
   SortBy = "Name"|"CreateDate",
   SortOrder = "Ascending"|"Descending",
   NameContains = "string",

@@ -29,7 +29,7 @@ Registers an Alexa-enabled device built by an Original Equipment
 Manufacturer (OEM) using Alexa Voice Service (AVS).
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$register_avs_device(
+\preformatted{svc$register_avs_device(
   ClientId = "string",
   UserCode = "string",
   ProductId = "string",

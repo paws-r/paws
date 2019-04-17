@@ -35,7 +35,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$add_tags(
+#' svc$add_tags(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -118,7 +118,7 @@ sagemaker_add_tags <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_algorithm(
+#' svc$create_algorithm(
 #'   AlgorithmName = "string",
 #'   AlgorithmDescription = "string",
 #'   TrainingSpecification = list(
@@ -331,7 +331,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_code_repository(
+#' svc$create_code_repository(
 #'   CodeRepositoryName = "string",
 #'   GitConfig = list(
 #'     RepositoryUrl = "string",
@@ -423,7 +423,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_compilation_job(
+#' svc$create_compilation_job(
 #'   CompilationJobName = "string",
 #'   RoleArn = "string",
 #'   InputConfig = list(
@@ -514,7 +514,7 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_endpoint(
+#' svc$create_endpoint(
 #'   EndpointName = "string",
 #'   EndpointConfigName = "string",
 #'   Tags = list(
@@ -589,7 +589,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_endpoint_config(
+#' svc$create_endpoint_config(
 #'   EndpointConfigName = "string",
 #'   ProductionVariants = list(
 #'     list(
@@ -683,7 +683,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_hyper_parameter_tuning_job(
+#' svc$create_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string",
 #'   HyperParameterTuningJobConfig = list(
 #'     Strategy = "Bayesian"|"Random",
@@ -925,7 +925,7 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_labeling_job(
+#' svc$create_labeling_job(
 #'   LabelingJobName = "string",
 #'   LabelAttributeName = "string",
 #'   InputConfig = list(
@@ -1081,7 +1081,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_model(
+#' svc$create_model(
 #'   ModelName = "string",
 #'   PrimaryContainer = list(
 #'     ContainerHostname = "string",
@@ -1181,7 +1181,7 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_model_package(
+#' svc$create_model_package(
 #'   ModelPackageName = "string",
 #'   ModelPackageDescription = "string",
 #'   InferenceSpecification = list(
@@ -1399,7 +1399,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_notebook_instance(
+#' svc$create_notebook_instance(
 #'   NotebookInstanceName = "string",
 #'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
 #'   SubnetId = "string",
@@ -1484,7 +1484,7 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_notebook_instance_lifecycle_config(
+#' svc$create_notebook_instance_lifecycle_config(
 #'   NotebookInstanceLifecycleConfigName = "string",
 #'   OnCreate = list(
 #'     list(
@@ -1547,7 +1547,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_presigned_notebook_instance_url(
+#' svc$create_presigned_notebook_instance_url(
 #'   NotebookInstanceName = "string",
 #'   SessionExpirationDurationInSeconds = 123
 #' )
@@ -1715,7 +1715,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_training_job(
+#' svc$create_training_job(
 #'   TrainingJobName = "string",
 #'   HyperParameters = list(
 #'     "string"
@@ -1891,7 +1891,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_transform_job(
+#' svc$create_transform_job(
 #'   TransformJobName = "string",
 #'   ModelName = "string",
 #'   MaxConcurrentTransforms = 123,
@@ -1975,7 +1975,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$create_workteam(
+#' svc$create_workteam(
 #'   WorkteamName = "string",
 #'   MemberDefinitions = list(
 #'     list(
@@ -2026,7 +2026,7 @@ sagemaker_create_workteam <- function(WorkteamName, MemberDefinitions, Descripti
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_algorithm(
+#' svc$delete_algorithm(
 #'   AlgorithmName = "string"
 #' )
 #' ```
@@ -2061,7 +2061,7 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_code_repository(
+#' svc$delete_code_repository(
 #'   CodeRepositoryName = "string"
 #' )
 #' ```
@@ -2102,7 +2102,7 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_endpoint(
+#' svc$delete_endpoint(
 #'   EndpointName = "string"
 #' )
 #' ```
@@ -2139,7 +2139,7 @@ sagemaker_delete_endpoint <- function(EndpointName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_endpoint_config(
+#' svc$delete_endpoint_config(
 #'   EndpointConfigName = "string"
 #' )
 #' ```
@@ -2178,7 +2178,7 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_model(
+#' svc$delete_model(
 #'   ModelName = "string"
 #' )
 #' ```
@@ -2218,7 +2218,7 @@ sagemaker_delete_model <- function(ModelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_model_package(
+#' svc$delete_model_package(
 #'   ModelPackageName = "string"
 #' )
 #' ```
@@ -2258,7 +2258,7 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_notebook_instance(
+#' svc$delete_notebook_instance(
 #'   NotebookInstanceName = "string"
 #' )
 #' ```
@@ -2294,7 +2294,7 @@ sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_notebook_instance_lifecycle_config(
+#' svc$delete_notebook_instance_lifecycle_config(
 #'   NotebookInstanceLifecycleConfigName = "string"
 #' )
 #' ```
@@ -2337,7 +2337,7 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_tags(
+#' svc$delete_tags(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -2375,7 +2375,7 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$delete_workteam(
+#' svc$delete_workteam(
 #'   WorkteamName = "string"
 #' )
 #' ```
@@ -2411,7 +2411,7 @@ sagemaker_delete_workteam <- function(WorkteamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_algorithm(
+#' svc$describe_algorithm(
 #'   AlgorithmName = "string"
 #' )
 #' ```
@@ -2446,7 +2446,7 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_code_repository(
+#' svc$describe_code_repository(
 #'   CodeRepositoryName = "string"
 #' )
 #' ```
@@ -2485,7 +2485,7 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_compilation_job(
+#' svc$describe_compilation_job(
 #'   CompilationJobName = "string"
 #' )
 #' ```
@@ -2520,7 +2520,7 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_endpoint(
+#' svc$describe_endpoint(
 #'   EndpointName = "string"
 #' )
 #' ```
@@ -2557,7 +2557,7 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_endpoint_config(
+#' svc$describe_endpoint_config(
 #'   EndpointConfigName = "string"
 #' )
 #' ```
@@ -2593,7 +2593,7 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_hyper_parameter_tuning_job(
+#' svc$describe_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string"
 #' )
 #' ```
@@ -2628,7 +2628,7 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_labeling_job(
+#' svc$describe_labeling_job(
 #'   LabelingJobName = "string"
 #' )
 #' ```
@@ -2663,7 +2663,7 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_model(
+#' svc$describe_model(
 #'   ModelName = "string"
 #' )
 #' ```
@@ -2703,7 +2703,7 @@ sagemaker_describe_model <- function(ModelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_model_package(
+#' svc$describe_model_package(
 #'   ModelPackageName = "string"
 #' )
 #' ```
@@ -2738,7 +2738,7 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_notebook_instance(
+#' svc$describe_notebook_instance(
 #'   NotebookInstanceName = "string"
 #' )
 #' ```
@@ -2778,7 +2778,7 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_notebook_instance_lifecycle_config(
+#' svc$describe_notebook_instance_lifecycle_config(
 #'   NotebookInstanceLifecycleConfigName = "string"
 #' )
 #' ```
@@ -2814,7 +2814,7 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_subscribed_workteam(
+#' svc$describe_subscribed_workteam(
 #'   WorkteamArn = "string"
 #' )
 #' ```
@@ -2849,7 +2849,7 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_training_job(
+#' svc$describe_training_job(
 #'   TrainingJobName = "string"
 #' )
 #' ```
@@ -2884,7 +2884,7 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_transform_job(
+#' svc$describe_transform_job(
 #'   TransformJobName = "string"
 #' )
 #' ```
@@ -2921,7 +2921,7 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$describe_workteam(
+#' svc$describe_workteam(
 #'   WorkteamName = "string"
 #' )
 #' ```
@@ -2962,7 +2962,7 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$get_search_suggestions(
+#' svc$get_search_suggestions(
 #'   Resource = "TrainingJob",
 #'   SuggestionQuery = list(
 #'     PropertyNameQuery = list(
@@ -3015,7 +3015,7 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_algorithms(
+#' svc$list_algorithms(
 #'   CreationTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3077,7 +3077,7 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_code_repositories(
+#' svc$list_code_repositories(
 #'   CreationTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3151,7 +3151,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_compilation_jobs(
+#' svc$list_compilation_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   CreationTimeAfter = as.POSIXct(
@@ -3215,7 +3215,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_endpoint_configs(
+#' svc$list_endpoint_configs(
 #'   SortBy = "Name"|"CreationTime",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NextToken = "string",
@@ -3278,7 +3278,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_endpoints(
+#' svc$list_endpoints(
 #'   SortBy = "Name"|"CreationTime"|"Status",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NextToken = "string",
@@ -3350,7 +3350,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_hyper_parameter_tuning_jobs(
+#' svc$list_hyper_parameter_tuning_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   SortBy = "Name"|"Status"|"CreationTime",
@@ -3421,7 +3421,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_labeling_jobs(
+#' svc$list_labeling_jobs(
 #'   CreationTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3489,7 +3489,7 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_labeling_jobs_for_workteam(
+#' svc$list_labeling_jobs_for_workteam(
 #'   WorkteamArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -3548,7 +3548,7 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_model_packages(
+#' svc$list_model_packages(
 #'   CreationTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3607,7 +3607,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_models(
+#' svc$list_models(
 #'   SortBy = "Name"|"CreationTime",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NextToken = "string",
@@ -3672,7 +3672,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_notebook_instance_lifecycle_configs(
+#' svc$list_notebook_instance_lifecycle_configs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   SortBy = "Name"|"CreationTime"|"LastModifiedTime",
@@ -3760,7 +3760,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_notebook_instances(
+#' svc$list_notebook_instances(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   SortBy = "Name"|"CreationTime"|"Status",
@@ -3823,7 +3823,7 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_subscribed_workteams(
+#' svc$list_subscribed_workteams(
 #'   NameContains = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -3865,7 +3865,7 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_tags(
+#' svc$list_tags(
 #'   ResourceArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -3920,7 +3920,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_training_jobs(
+#' svc$list_training_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   CreationTimeAfter = as.POSIXct(
@@ -3987,7 +3987,7 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_training_jobs_for_hyper_parameter_tuning_job(
+#' svc$list_training_jobs_for_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -4046,7 +4046,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_transform_jobs(
+#' svc$list_transform_jobs(
 #'   CreationTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4108,7 +4108,7 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$list_workteams(
+#' svc$list_workteams(
 #'   SortBy = "Name"|"CreateDate",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NameContains = "string",
@@ -4151,7 +4151,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$render_ui_template(
+#' svc$render_ui_template(
 #'   UiTemplate = list(
 #'     Content = "string"
 #'   ),
@@ -4215,7 +4215,7 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$search(
+#' svc$search(
 #'   Resource = "TrainingJob",
 #'   SearchExpression = list(
 #'     Filters = list(
@@ -4284,7 +4284,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$start_notebook_instance(
+#' svc$start_notebook_instance(
 #'   NotebookInstanceName = "string"
 #' )
 #' ```
@@ -4328,7 +4328,7 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_compilation_job(
+#' svc$stop_compilation_job(
 #'   CompilationJobName = "string"
 #' )
 #' ```
@@ -4371,7 +4371,7 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_hyper_parameter_tuning_job(
+#' svc$stop_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string"
 #' )
 #' ```
@@ -4408,7 +4408,7 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_labeling_job(
+#' svc$stop_labeling_job(
 #'   LabelingJobName = "string"
 #' )
 #' ```
@@ -4451,7 +4451,7 @@ sagemaker_stop_labeling_job <- function(LabelingJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_notebook_instance(
+#' svc$stop_notebook_instance(
 #'   NotebookInstanceName = "string"
 #' )
 #' ```
@@ -4493,7 +4493,7 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_training_job(
+#' svc$stop_training_job(
 #'   TrainingJobName = "string"
 #' )
 #' ```
@@ -4534,7 +4534,7 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$stop_transform_job(
+#' svc$stop_transform_job(
 #'   TransformJobName = "string"
 #' )
 #' ```
@@ -4576,7 +4576,7 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_code_repository(
+#' svc$update_code_repository(
 #'   CodeRepositoryName = "string",
 #'   GitConfig = list(
 #'     SecretArn = "string"
@@ -4630,7 +4630,7 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_endpoint(
+#' svc$update_endpoint(
 #'   EndpointName = "string",
 #'   EndpointConfigName = "string"
 #' )
@@ -4676,7 +4676,7 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_endpoint_weights_and_capacities(
+#' svc$update_endpoint_weights_and_capacities(
 #'   EndpointName = "string",
 #'   DesiredWeightsAndCapacities = list(
 #'     list(
@@ -4778,7 +4778,7 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_notebook_instance(
+#' svc$update_notebook_instance(
 #'   NotebookInstanceName = "string",
 #'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
 #'   RoleArn = "string",
@@ -4836,7 +4836,7 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_notebook_instance_lifecycle_config(
+#' svc$update_notebook_instance_lifecycle_config(
 #'   NotebookInstanceLifecycleConfigName = "string",
 #'   OnCreate = list(
 #'     list(
@@ -4885,7 +4885,7 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' @section Request syntax:
 #' ```
-#' sagemaker$update_workteam(
+#' svc$update_workteam(
 #'   WorkteamName = "string",
 #'   MemberDefinitions = list(
 #'     list(

@@ -37,7 +37,7 @@ output.
 }
 }
 \section{Request syntax}{
-\preformatted{acmpca$describe_certificate_authority(
+\preformatted{svc$describe_certificate_authority(
   CertificateAuthorityArn = "string"
 )
 }

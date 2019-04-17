@@ -35,7 +35,7 @@ The condition key is \code{quicksight:UserName}.
 \code{aws quicksight delete-group-membership --aws-account-id=111122223333 --namespace=default --group-name=Sales-Management --member-name=Charlie }
 }
 \section{Request syntax}{
-\preformatted{quicksight$delete_group_membership(
+\preformatted{svc$delete_group_membership(
   MemberName = "string",
   GroupName = "string",
   AwsAccountId = "string",

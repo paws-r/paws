@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes one or more VPC endpoint connection notifications.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpc_endpoint_connection_notifications(
+\preformatted{svc$delete_vpc_endpoint_connection_notifications(
   DryRun = TRUE|FALSE,
   ConnectionNotificationIds = list(
     "string"

@@ -22,7 +22,7 @@ Lists a history of user activity and any risks detected as part of
 Amazon Cognito advanced security.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_list_user_auth_events(
+\preformatted{svc$admin_list_user_auth_events(
   UserPoolId = "string",
   Username = "string",
   MaxResults = 123,

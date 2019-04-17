@@ -25,7 +25,7 @@ index during a request. For more information, see \href{http://docs.aws.amazon.c
 Lists objects attached to the specified index.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_index(
+\preformatted{svc$list_index(
   DirectoryArn = "string",
   RangesOnIndexedValues = list(
     list(

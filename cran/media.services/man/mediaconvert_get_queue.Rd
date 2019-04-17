@@ -13,7 +13,7 @@ mediaconvert_get_queue(Name)
 Retrieve the JSON for a specific queue.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$get_queue(
+\preformatted{svc$get_queue(
   Name = "string"
 )
 }

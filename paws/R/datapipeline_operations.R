@@ -25,7 +25,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$activate_pipeline(
+#' svc$activate_pipeline(
 #'   pipelineId = "string",
 #'   parameterValues = list(
 #'     list(
@@ -70,7 +70,7 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$add_tags(
+#' svc$add_tags(
 #'   pipelineId = "string",
 #'   tags = list(
 #'     list(
@@ -132,7 +132,7 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$create_pipeline(
+#' svc$create_pipeline(
 #'   name = "string",
 #'   uniqueId = "string",
 #'   description = "string",
@@ -183,7 +183,7 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$deactivate_pipeline(
+#' svc$deactivate_pipeline(
 #'   pipelineId = "string",
 #'   cancelActive = TRUE|FALSE
 #' )
@@ -226,7 +226,7 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$delete_pipeline(
+#' svc$delete_pipeline(
 #'   pipelineId = "string"
 #' )
 #' ```
@@ -274,7 +274,7 @@ datapipeline_delete_pipeline <- function(pipelineId) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$describe_objects(
+#' svc$describe_objects(
 #'   pipelineId = "string",
 #'   objectIds = list(
 #'     "string"
@@ -325,7 +325,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$describe_pipelines(
+#' svc$describe_pipelines(
 #'   pipelineIds = list(
 #'     "string"
 #'   )
@@ -367,7 +367,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$evaluate_expression(
+#' svc$evaluate_expression(
 #'   pipelineId = "string",
 #'   objectId = "string",
 #'   expression = "string"
@@ -409,7 +409,7 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$get_pipeline_definition(
+#' svc$get_pipeline_definition(
 #'   pipelineId = "string",
 #'   version = "string"
 #' )
@@ -450,7 +450,7 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$list_pipelines(
+#' svc$list_pipelines(
 #'   marker = "string"
 #' )
 #' ```
@@ -514,7 +514,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$poll_for_task(
+#' svc$poll_for_task(
 #'   workerGroup = "string",
 #'   hostname = "string",
 #'   instanceIdentity = list(
@@ -573,7 +573,7 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$put_pipeline_definition(
+#' svc$put_pipeline_definition(
 #'   pipelineId = "string",
 #'   pipelineObjects = list(
 #'     list(
@@ -652,7 +652,7 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$query_objects(
+#' svc$query_objects(
 #'   pipelineId = "string",
 #'   query = list(
 #'     selectors = list(
@@ -704,7 +704,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$remove_tags(
+#' svc$remove_tags(
 #'   pipelineId = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -757,7 +757,7 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$report_task_progress(
+#' svc$report_task_progress(
 #'   taskId = "string",
 #'   fields = list(
 #'     list(
@@ -816,7 +816,7 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$report_task_runner_heartbeat(
+#' svc$report_task_runner_heartbeat(
 #'   taskrunnerId = "string",
 #'   workerGroup = "string",
 #'   hostname = "string"
@@ -864,7 +864,7 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$set_status(
+#' svc$set_status(
 #'   pipelineId = "string",
 #'   objectIds = list(
 #'     "string"
@@ -924,7 +924,7 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$set_task_status(
+#' svc$set_task_status(
 #'   taskId = "string",
 #'   taskStatus = "FINISHED"|"FAILED"|"FALSE",
 #'   errorId = "string",
@@ -970,7 +970,7 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
 #'
 #' @section Request syntax:
 #' ```
-#' datapipeline$validate_pipeline_definition(
+#' svc$validate_pipeline_definition(
 #'   pipelineId = "string",
 #'   pipelineObjects = list(
 #'     list(

@@ -71,7 +71,7 @@ the encryption key was transmitted without error.}
 Uploads a part by copying data from an existing object as data source.
 }
 \section{Request syntax}{
-\preformatted{s3$upload_part_copy(
+\preformatted{svc$upload_part_copy(
   Bucket = "string",
   CopySource = "string",
   CopySourceIfMatch = "string",
@@ -100,7 +100,7 @@ Uploads a part by copying data from an existing object as data source.
 \examples{
 # The following example uploads a part of a multipart upload by copying a
 # specified byte range from an existing object as data source.
-\donttest{s3$upload_part_copy(
+\donttest{svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   CopySourceRange = "bytes=1-100000",
@@ -111,7 +111,7 @@ Uploads a part by copying data from an existing object as data source.
 
 # The following example uploads a part of a multipart upload by copying
 # data from an existing object as data source.
-\donttest{s3$upload_part_copy(
+\donttest{svc$upload_part_copy(
   Bucket = "examplebucket",
   CopySource = "/bucketname/sourceobjectkey",
   Key = "examplelargeobject",

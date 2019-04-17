@@ -49,7 +49,7 @@ port, port range, or list of port ranges that you specify. To see an AWS
 CLI example of creating a listener, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$create_listener(
+\preformatted{svc$create_listener(
   AcceleratorArn = "string",
   PortRanges = list(
     list(

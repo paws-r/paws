@@ -28,7 +28,7 @@ Currently, AWS Config supports only one retention configuration per
 region in your account.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_retention_configurations(
+\preformatted{svc$describe_retention_configurations(
   RetentionConfigurationNames = list(
     "string"
   ),

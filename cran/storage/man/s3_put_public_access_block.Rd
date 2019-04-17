@@ -25,7 +25,7 @@ Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
 S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_public_access_block(
+\preformatted{svc$put_public_access_block(
   Bucket = "string",
   ContentMD5 = "string",
   PublicAccessBlockConfiguration = list(

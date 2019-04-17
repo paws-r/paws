@@ -42,7 +42,7 @@ For more information, see Recognizing Celebrities in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_celebrity_recognition(
+\preformatted{svc$start_celebrity_recognition(
   Video = list(
     S3Object = list(
       Bucket = "string",

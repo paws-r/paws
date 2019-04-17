@@ -33,7 +33,7 @@ until the check is eligible for refresh.
 }
 }
 \section{Request syntax}{
-\preformatted{support$refresh_trusted_advisor_check(
+\preformatted{svc$refresh_trusted_advisor_check(
   checkId = "string"
 )
 }

@@ -14,7 +14,7 @@ static IPs request.}
 Returns information about all static IPs in the user's account.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_static_ips(
+\preformatted{svc$get_static_ips(
   pageToken = "string"
 )
 }

@@ -26,7 +26,7 @@ Currently, AWS Config supports only one retention configuration per
 region in your account.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_retention_configuration(
+\preformatted{svc$put_retention_configuration(
   RetentionPeriodInDays = 123
 )
 }

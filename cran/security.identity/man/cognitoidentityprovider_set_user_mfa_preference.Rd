@@ -18,7 +18,7 @@ cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
 Set the user's multi-factor authentication (MFA) method preference.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$set_user_mfa_preference(
+\preformatted{svc$set_user_mfa_preference(
   SMSMfaSettings = list(
     Enabled = TRUE|FALSE,
     PreferredMfa = TRUE|FALSE

@@ -37,7 +37,7 @@ system ID that you specify in \code{FileSystemId}, or on the file system of
 the mount target that you specify in \code{MountTargetId}.
 }
 \section{Request syntax}{
-\preformatted{efs$describe_mount_targets(
+\preformatted{svc$describe_mount_targets(
   MaxItems = 123,
   Marker = "string",
   FileSystemId = "string",
@@ -48,7 +48,7 @@ the mount target that you specify in \code{MountTargetId}.
 
 \examples{
 # This operation describes all of a file system's mount targets.
-\donttest{efs$describe_mount_targets(
+\donttest{svc$describe_mount_targets(
   FileSystemId = "fs-01234567"
 )}
 

@@ -34,7 +34,7 @@ policies.
 To get complete information about a policy, use GetLifecyclePolicy.
 }
 \section{Request syntax}{
-\preformatted{dlm$get_lifecycle_policies(
+\preformatted{svc$get_lifecycle_policies(
   PolicyIds = list(
     "string"
   ),

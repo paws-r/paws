@@ -19,7 +19,7 @@ securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 Updates the AWS Security Hub insight specified by the insight ARN.
 }
 \section{Request syntax}{
-\preformatted{securityhub$update_insight(
+\preformatted{svc$update_insight(
   InsightArn = "string",
   Name = "string",
   Filters = list(

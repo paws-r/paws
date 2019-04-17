@@ -34,7 +34,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplicationOutput} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$delete_application_output(
+\preformatted{svc$delete_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   OutputId = "string"

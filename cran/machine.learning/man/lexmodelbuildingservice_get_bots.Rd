@@ -36,7 +36,7 @@ returns information about the \code{$LATEST} version of all of your bots.
 This operation requires permission for the \code{lex:GetBots} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bots(
+\preformatted{svc$get_bots(
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
@@ -46,7 +46,7 @@ This operation requires permission for the \code{lex:GetBots} action.
 
 \examples{
 # This example shows how to get a list of all of the bots in your account.
-\donttest{lexmodelbuildingservice$get_bots(
+\donttest{svc$get_bots(
   maxResults = 5L,
   nextToken = ""
 )}

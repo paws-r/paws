@@ -24,7 +24,7 @@ the status to \code{InService}. To check the status of an endpoint, use the
 API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$update_endpoint_weights_and_capacities(
+\preformatted{svc$update_endpoint_weights_and_capacities(
   EndpointName = "string",
   DesiredWeightsAndCapacities = list(
     list(

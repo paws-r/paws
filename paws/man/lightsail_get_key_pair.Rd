@@ -13,7 +13,7 @@ lightsail_get_key_pair(keyPairName)
 Returns information about a specific key pair.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_key_pair(
+\preformatted{svc$get_key_pair(
   keyPairName = "string"
 )
 }

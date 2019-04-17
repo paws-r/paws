@@ -19,7 +19,7 @@ Updates an existing work team with new member definitions or
 description.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$update_workteam(
+\preformatted{svc$update_workteam(
   WorkteamName = "string",
   MemberDefinitions = list(
     list(

@@ -13,7 +13,7 @@ amplify_get_app(appId)
 Retrieves an existing Amplify App by appId.
 }
 \section{Request syntax}{
-\preformatted{amplify$get_app(
+\preformatted{svc$get_app(
   appId = "string"
 )
 }

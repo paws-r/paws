@@ -65,7 +65,7 @@ metrics and alarms by using the CloudWatch console, see the \href{http://docs.aw
 }
 }
 \section{Request syntax}{
-\preformatted{route53$create_health_check(
+\preformatted{svc$create_health_check(
   CallerReference = "string",
   HealthCheckConfig = list(
     IPAddress = "string",

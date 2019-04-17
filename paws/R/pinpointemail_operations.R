@@ -32,7 +32,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$create_configuration_set(
+#' svc$create_configuration_set(
 #'   ConfigurationSetName = "string",
 #'   TrackingOptions = list(
 #'     CustomRedirectDomain = "string"
@@ -101,7 +101,7 @@ pinpointemail_create_configuration_set <- function(ConfigurationSetName = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$create_configuration_set_event_destination(
+#' svc$create_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestinationName = "string",
 #'   EventDestination = list(
@@ -168,7 +168,7 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$create_dedicated_ip_pool(
+#' svc$create_dedicated_ip_pool(
 #'   PoolName = "string",
 #'   Tags = list(
 #'     list(
@@ -225,7 +225,7 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$create_deliverability_test_report(
+#' svc$create_deliverability_test_report(
 #'   ReportName = "string",
 #'   FromEmailAddress = "string",
 #'   Content = list(
@@ -306,7 +306,7 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$create_email_identity(
+#' svc$create_email_identity(
 #'   EmailIdentity = "string",
 #'   Tags = list(
 #'     list(
@@ -353,7 +353,7 @@ pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$delete_configuration_set(
+#' svc$delete_configuration_set(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -398,7 +398,7 @@ pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$delete_configuration_set_event_destination(
+#' svc$delete_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestinationName = "string"
 #' )
@@ -434,7 +434,7 @@ pinpointemail_delete_configuration_set_event_destination <- function(Configurati
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$delete_dedicated_ip_pool(
+#' svc$delete_dedicated_ip_pool(
 #'   PoolName = "string"
 #' )
 #' ```
@@ -473,7 +473,7 @@ pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$delete_email_identity(
+#' svc$delete_email_identity(
 #'   EmailIdentity = "string"
 #' )
 #' ```
@@ -508,7 +508,7 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_account()
+#' svc$get_account()
 #' ```
 #'
 #' @keywords internal
@@ -545,7 +545,7 @@ pinpointemail_get_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_blacklist_reports(
+#' svc$get_blacklist_reports(
 #'   BlacklistItemNames = list(
 #'     "string"
 #'   )
@@ -593,7 +593,7 @@ pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_configuration_set(
+#' svc$get_configuration_set(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -638,7 +638,7 @@ pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_configuration_set_event_destinations(
+#' svc$get_configuration_set_event_destinations(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -679,7 +679,7 @@ pinpointemail_get_configuration_set_event_destinations <- function(Configuration
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_dedicated_ip(
+#' svc$get_dedicated_ip(
 #'   Ip = "string"
 #' )
 #' ```
@@ -723,7 +723,7 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_dedicated_ips(
+#' svc$get_dedicated_ips(
 #'   PoolName = "string",
 #'   NextToken = "string",
 #'   PageSize = 123
@@ -767,7 +767,7 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_deliverability_dashboard_options()
+#' svc$get_deliverability_dashboard_options()
 #' ```
 #'
 #' @keywords internal
@@ -800,7 +800,7 @@ pinpointemail_get_deliverability_dashboard_options <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_deliverability_test_report(
+#' svc$get_deliverability_test_report(
 #'   ReportId = "string"
 #' )
 #' ```
@@ -842,7 +842,7 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_domain_statistics_report(
+#' svc$get_domain_statistics_report(
 #'   Domain = "string",
 #'   StartDate = as.POSIXct(
 #'     "2015-01-01"
@@ -887,7 +887,7 @@ pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDat
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$get_email_identity(
+#' svc$get_email_identity(
 #'   EmailIdentity = "string"
 #' )
 #' ```
@@ -935,7 +935,7 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$list_configuration_sets(
+#' svc$list_configuration_sets(
 #'   NextToken = "string",
 #'   PageSize = 123
 #' )
@@ -978,7 +978,7 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$list_dedicated_ip_pools(
+#' svc$list_dedicated_ip_pools(
 #'   NextToken = "string",
 #'   PageSize = 123
 #' )
@@ -1027,7 +1027,7 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$list_deliverability_test_reports(
+#' svc$list_deliverability_test_reports(
 #'   NextToken = "string",
 #'   PageSize = 123
 #' )
@@ -1075,7 +1075,7 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$list_email_identities(
+#' svc$list_email_identities(
 #'   NextToken = "string",
 #'   PageSize = 123
 #' )
@@ -1118,7 +1118,7 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -1159,7 +1159,7 @@ pinpointemail_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_account_dedicated_ip_warmup_attributes(
+#' svc$put_account_dedicated_ip_warmup_attributes(
 #'   AutoWarmupEnabled = TRUE|FALSE
 #' )
 #' ```
@@ -1198,7 +1198,7 @@ pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupE
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_account_sending_attributes(
+#' svc$put_account_sending_attributes(
 #'   SendingEnabled = TRUE|FALSE
 #' )
 #' ```
@@ -1239,7 +1239,7 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_configuration_set_delivery_options(
+#' svc$put_configuration_set_delivery_options(
 #'   ConfigurationSetName = "string",
 #'   SendingPoolName = "string"
 #' )
@@ -1282,7 +1282,7 @@ pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSe
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_configuration_set_reputation_options(
+#' svc$put_configuration_set_reputation_options(
 #'   ConfigurationSetName = "string",
 #'   ReputationMetricsEnabled = TRUE|FALSE
 #' )
@@ -1324,7 +1324,7 @@ pinpointemail_put_configuration_set_reputation_options <- function(Configuration
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_configuration_set_sending_options(
+#' svc$put_configuration_set_sending_options(
 #'   ConfigurationSetName = "string",
 #'   SendingEnabled = TRUE|FALSE
 #' )
@@ -1365,7 +1365,7 @@ pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSet
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_configuration_set_tracking_options(
+#' svc$put_configuration_set_tracking_options(
 #'   ConfigurationSetName = "string",
 #'   CustomRedirectDomain = "string"
 #' )
@@ -1411,7 +1411,7 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_dedicated_ip_in_pool(
+#' svc$put_dedicated_ip_in_pool(
 #'   Ip = "string",
 #'   DestinationPoolName = "string"
 #' )
@@ -1450,7 +1450,7 @@ pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_dedicated_ip_warmup_attributes(
+#' svc$put_dedicated_ip_warmup_attributes(
 #'   Ip = "string",
 #'   WarmupPercentage = 123
 #' )
@@ -1496,7 +1496,7 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_deliverability_dashboard_option(
+#' svc$put_deliverability_dashboard_option(
 #'   DashboardEnabled = TRUE|FALSE
 #' )
 #' ```
@@ -1538,7 +1538,7 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled) 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_email_identity_dkim_attributes(
+#' svc$put_email_identity_dkim_attributes(
 #'   EmailIdentity = "string",
 #'   SigningEnabled = TRUE|FALSE
 #' )
@@ -1604,7 +1604,7 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_email_identity_feedback_attributes(
+#' svc$put_email_identity_feedback_attributes(
 #'   EmailIdentity = "string",
 #'   EmailForwardingEnabled = TRUE|FALSE
 #' )
@@ -1662,7 +1662,7 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$put_email_identity_mail_from_attributes(
+#' svc$put_email_identity_mail_from_attributes(
 #'   EmailIdentity = "string",
 #'   MailFromDomain = "string",
 #'   BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
@@ -1726,7 +1726,7 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$send_email(
+#' svc$send_email(
 #'   FromEmailAddress = "string",
 #'   Destination = list(
 #'     ToAddresses = list(
@@ -1819,7 +1819,7 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -1869,7 +1869,7 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1919,7 +1919,7 @@ pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointemail$update_configuration_set_event_destination(
+#' svc$update_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestinationName = "string",
 #'   EventDestination = list(

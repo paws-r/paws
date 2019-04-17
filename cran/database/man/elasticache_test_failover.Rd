@@ -63,7 +63,7 @@ Also see, \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoF
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{
-\preformatted{elasticache$test_failover(
+\preformatted{svc$test_failover(
   ReplicationGroupId = "string",
   NodeGroupId = "string"
 )

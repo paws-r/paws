@@ -17,7 +17,7 @@ be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 identities or federated identities.
 }
 \section{Request syntax}{
-\preformatted{iot$attach_thing_principal(
+\preformatted{svc$attach_thing_principal(
   thingName = "string",
   principal = "string"
 )

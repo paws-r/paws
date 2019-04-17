@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Pinpoint SMS and Voice Messaging public facing APIs
 #'
-#' @section Example:
-#' ```
-#' pinpointsmsvoice <- paws::pinpointsmsvoice()
-#' pinpointsmsvoice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_configuration_set(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

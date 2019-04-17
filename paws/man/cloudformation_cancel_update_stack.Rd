@@ -24,7 +24,7 @@ previous stack configuration.
 You can cancel only stacks that are in the UPDATE\_IN\_PROGRESS state.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$cancel_update_stack(
+\preformatted{svc$cancel_update_stack(
   StackName = "string",
   ClientRequestToken = "string"
 )

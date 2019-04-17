@@ -53,7 +53,7 @@ Build records are not listed in any particular order.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$list_builds(
+\preformatted{svc$list_builds(
   Status = "INITIALIZED"|"READY"|"FAILED",
   Limit = 123,
   NextToken = "string"

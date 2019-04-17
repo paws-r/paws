@@ -16,7 +16,7 @@ more information about different account types, see \href{https://docs.aws.amazo
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{chime$create_account(
+\preformatted{svc$create_account(
   Name = "string"
 )
 }

@@ -17,7 +17,7 @@ of this list will be removed from the AWS IoT 1-Click resource.}
 Removes the association of tags from an AWS IoT 1-Click resource.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

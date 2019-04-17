@@ -23,7 +23,7 @@ you can use to get another batch of \code{WebACL} objects.}
 Returns an array of WebACLSummary objects in the response.
 }
 \section{Request syntax}{
-\preformatted{waf$list_web_ac_ls(
+\preformatted{svc$list_web_ac_ls(
   NextMarker = "string",
   Limit = 123
 )
@@ -32,7 +32,7 @@ Returns an array of WebACLSummary objects in the response.
 
 \examples{
 # The following example returns an array of up to 100 web ACLs.
-\donttest{waf$list_web_ac_ls(
+\donttest{svc$list_web_ac_ls(
   Limit = 100L
 )}
 

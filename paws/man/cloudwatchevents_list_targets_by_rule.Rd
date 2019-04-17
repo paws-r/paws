@@ -18,7 +18,7 @@ results.}
 Lists the targets assigned to the specified rule.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$list_targets_by_rule(
+\preformatted{svc$list_targets_by_rule(
   Rule = "string",
   NextToken = "string",
   Limit = 123

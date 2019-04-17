@@ -28,7 +28,7 @@ Describes one or more scaling activities for the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_scaling_activities(
+\preformatted{svc$describe_scaling_activities(
   ActivityIds = list(
     "string"
   ),
@@ -42,7 +42,7 @@ group.
 \examples{
 # This example describes the scaling activities for the specified Auto
 # Scaling group.
-\donttest{autoscaling$describe_scaling_activities(
+\donttest{svc$describe_scaling_activities(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

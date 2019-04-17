@@ -32,7 +32,7 @@ This practice ensures that you always have the most recent set of
 service and category codes.
 }
 \section{Request syntax}{
-\preformatted{support$describe_services(
+\preformatted{svc$describe_services(
   serviceCodeList = list(
     "string"
   ),

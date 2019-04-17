@@ -13,7 +13,7 @@ sns_get_subscription_attributes(SubscriptionArn)
 Returns all of the properties of a subscription.
 }
 \section{Request syntax}{
-\preformatted{sns$get_subscription_attributes(
+\preformatted{svc$get_subscription_attributes(
   SubscriptionArn = "string"
 )
 }

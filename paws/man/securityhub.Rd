@@ -14,12 +14,6 @@ across AWS accounts, services, and supported third-party partners and
 helps you analyze your security trends and identify the highest priority
 security issues. For more information, see \url{AWS Security Hub UserGuide}.
 }
-\section{Example}{
-\preformatted{securityhub <- paws::securityhub()
-securityhub$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -55,3 +49,9 @@ securityhub$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_invitation(
+  Foo = 123
+)}
+
+}

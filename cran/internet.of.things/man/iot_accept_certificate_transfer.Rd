@@ -21,7 +21,7 @@ To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 }
 \section{Request syntax}{
-\preformatted{iot$accept_certificate_transfer(
+\preformatted{svc$accept_certificate_transfer(
   certificateId = "string",
   setAsActive = TRUE|FALSE
 )

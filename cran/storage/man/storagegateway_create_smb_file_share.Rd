@@ -91,7 +91,7 @@ File gateways don't support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_smb_file_share(
+\preformatted{svc$create_smb_file_share(
   ClientToken = "string",
   GatewayARN = "string",
   KMSEncrypted = TRUE|FALSE,

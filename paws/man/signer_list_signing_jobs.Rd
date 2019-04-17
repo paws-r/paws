@@ -37,7 +37,7 @@ in the \code{nextToken} parameter until all of your signing jobs have been
 returned.
 }
 \section{Request syntax}{
-\preformatted{signer$list_signing_jobs(
+\preformatted{svc$list_signing_jobs(
   status = "InProgress"|"Failed"|"Succeeded",
   platformId = "string",
   requestedBy = "string",

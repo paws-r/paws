@@ -26,7 +26,7 @@ results, use null.}
 Lists all portfolios that the specified product is associated with.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_portfolios_for_product(
+\preformatted{svc$list_portfolios_for_product(
   AcceptLanguage = "string",
   ProductId = "string",
   PageToken = "string",

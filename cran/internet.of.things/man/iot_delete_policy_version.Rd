@@ -18,7 +18,7 @@ version of a policy, use DeletePolicy. To find out which version of a
 policy is marked as the default version, use ListPolicyVersions.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_policy_version(
+\preformatted{svc$delete_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )

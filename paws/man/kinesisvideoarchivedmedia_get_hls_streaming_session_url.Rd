@@ -157,9 +157,8 @@ encoded audio. Specifically, the codec id of track 1 should be
 \code{A_AAC}.
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
-the Advanced Video Coding (AVC) for H.264 format (MPEG-4
-specification ISO/IEC 14496-15). For information about adapting
-stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+the Advanced Video Coding (AVC) for H.264 format (\href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}). For information
+about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}).
 }
@@ -287,7 +286,7 @@ and outgoing AWS data apply.
 For more information about HLS, see \href{https://developer.apple.com/streaming/}{HTTP Live Streaming} on the \href{https://developer.apple.com}{Apple Developer site}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideoarchivedmedia$get_hls_streaming_session_url(
+\preformatted{svc$get_hls_streaming_session_url(
   StreamName = "string",
   StreamARN = "string",
   PlaybackMode = "LIVE"|"ON_DEMAND",

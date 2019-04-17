@@ -36,7 +36,7 @@ Returns all the domain-related billing records for the current AWS
 account for a specified period
 }
 \section{Request syntax}{
-\preformatted{route53domains$view_billing(
+\preformatted{svc$view_billing(
   Start = as.POSIXct(
     "2015-01-01"
   ),

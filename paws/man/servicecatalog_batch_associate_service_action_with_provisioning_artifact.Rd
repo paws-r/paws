@@ -22,7 +22,7 @@ ID, and the Provisioning Artifact ID.}
 Associates multiple self-service actions with provisioning artifacts.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$batch_associate_service_action_with_provisioning_artifact(
+\preformatted{svc$batch_associate_service_action_with_provisioning_artifact(
   ServiceActionAssociations = list(
     list(
       ServiceActionId = "string",

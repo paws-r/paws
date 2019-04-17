@@ -25,7 +25,7 @@ RunJobFlow. The SetVisibleToAllUsers action can be called only by an IAM
 user who created the cluster or the AWS account that owns the cluster.
 }
 \section{Request syntax}{
-\preformatted{emr$set_visible_to_all_users(
+\preformatted{svc$set_visible_to_all_users(
   JobFlowIds = list(
     "string"
   ),

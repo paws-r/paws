@@ -59,7 +59,7 @@ delete) in an AWS account. For more information, see \href{https://docs.aws.amaz
 in the \emph{AWS Application Discovery Service User Guide}.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$start_import_task(
+\preformatted{svc$start_import_task(
   clientRequestToken = "string",
   name = "string",
   importUrl = "string"

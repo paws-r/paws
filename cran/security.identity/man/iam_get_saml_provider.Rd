@@ -22,7 +22,7 @@ SAML provider resource object was created or updated.
 This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-\preformatted{iam$get_saml_provider(
+\preformatted{svc$get_saml_provider(
   SAMLProviderArn = "string"
 )
 }

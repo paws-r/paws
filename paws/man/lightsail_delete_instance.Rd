@@ -20,7 +20,7 @@ resource tags applied to the resource identified by instanceName. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_instance(
+\preformatted{svc$delete_instance(
   instanceName = "string"
 )
 }

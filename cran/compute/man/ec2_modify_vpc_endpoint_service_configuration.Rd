@@ -32,7 +32,7 @@ specify whether acceptance is required for requests to connect to your
 endpoint service through an interface VPC endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_vpc_endpoint_service_configuration(
+\preformatted{svc$modify_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   AcceptanceRequired = TRUE|FALSE,

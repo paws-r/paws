@@ -54,7 +54,7 @@ optional schedule. At least one crawl target must be specified, in the
 field.
 }
 \section{Request syntax}{
-\preformatted{glue$create_crawler(
+\preformatted{svc$create_crawler(
   Name = "string",
   Role = "string",
   DatabaseName = "string",

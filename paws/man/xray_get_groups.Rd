@@ -13,7 +13,7 @@ xray_get_groups(NextToken)
 Retrieves all active group details.
 }
 \section{Request syntax}{
-\preformatted{xray$get_groups(
+\preformatted{svc$get_groups(
   NextToken = "string"
 )
 }

@@ -22,7 +22,7 @@ state) for the specified patch baseline. Note that this API applies only
 to Windows patch baselines.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_effective_patches_for_patch_baseline(
+\preformatted{svc$describe_effective_patches_for_patch_baseline(
   BaselineId = "string",
   MaxResults = 123,
   NextToken = "string"

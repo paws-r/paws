@@ -28,7 +28,7 @@ This operation requires permissions to perform the
 \code{rekognition:CreateCollection} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$create_collection(
+\preformatted{svc$create_collection(
   CollectionId = "string"
 )
 }
@@ -36,7 +36,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation creates a Rekognition collection for storing image data.
-\donttest{rekognition$create_collection(
+\donttest{svc$create_collection(
   CollectionId = "myphotos"
 )}
 

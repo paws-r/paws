@@ -21,7 +21,7 @@ status.}
 Lists the job executions for the specified thing.
 }
 \section{Request syntax}{
-\preformatted{iot$list_job_executions_for_thing(
+\preformatted{svc$list_job_executions_for_thing(
   thingName = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
   maxResults = 123,

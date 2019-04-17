@@ -64,7 +64,7 @@ run.}
 Starts a job run using a job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$start_job_run(
+\preformatted{svc$start_job_run(
   JobName = "string",
   JobRunId = "string",
   Arguments = list(

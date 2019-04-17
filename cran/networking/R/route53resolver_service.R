@@ -39,11 +39,10 @@ NULL
 #' 
 #' `delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]`
 #'
-#' @section Example:
-#' ```
-#' route53resolver <- paws::route53resolver()
-#' route53resolver$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_resolver_endpoint_ip_address(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

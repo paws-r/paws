@@ -13,7 +13,7 @@ servicediscovery_get_namespace(Id)
 Gets information about a namespace.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$get_namespace(
+\preformatted{svc$get_namespace(
   Id = "string"
 )
 }

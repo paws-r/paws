@@ -19,7 +19,7 @@ Replaces the body of a saved backup plan identified by its
 is uniquely identified by a \code{VersionId}.
 }
 \section{Request syntax}{
-\preformatted{backup$update_backup_plan(
+\preformatted{svc$update_backup_plan(
   BackupPlanId = "string",
   BackupPlan = list(
     BackupPlanName = "string",

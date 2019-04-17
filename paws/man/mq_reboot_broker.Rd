@@ -13,7 +13,7 @@ mq_reboot_broker(BrokerId)
 Reboots a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-\preformatted{mq$reboot_broker(
+\preformatted{svc$reboot_broker(
   BrokerId = "string"
 )
 }

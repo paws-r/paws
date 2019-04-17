@@ -31,7 +31,7 @@ Describes the target networks associated with the specified Client VPN
 endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_client_vpn_target_networks(
+\preformatted{svc$describe_client_vpn_target_networks(
   ClientVpnEndpointId = "string",
   AssociationIds = list(
     "string"

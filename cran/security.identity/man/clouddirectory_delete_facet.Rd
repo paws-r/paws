@@ -18,7 +18,7 @@ the facet will be deleted. Only development schema facets are allowed
 deletion.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$delete_facet(
+\preformatted{svc$delete_facet(
   SchemaArn = "string",
   Name = "string"
 )

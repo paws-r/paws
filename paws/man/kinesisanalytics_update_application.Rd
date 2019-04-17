@@ -28,7 +28,7 @@ This operation requires permission for the
 \code{kinesisanalytics:UpdateApplication} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$update_application(
+\preformatted{svc$update_application(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ApplicationUpdate = list(

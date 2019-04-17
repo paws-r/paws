@@ -21,7 +21,7 @@ Creates or updates a lifecycle policy. For information about lifecycle
 policy syntax, see \href{http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
 }
 \section{Request syntax}{
-\preformatted{ecr$put_lifecycle_policy(
+\preformatted{svc$put_lifecycle_policy(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string"

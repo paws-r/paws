@@ -22,7 +22,7 @@ connection that are referencing the security groups you've specified in
 this request.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_security_group_references(
+\preformatted{svc$describe_security_group_references(
   DryRun = TRUE|FALSE,
   GroupId = list(
     "string"
@@ -34,7 +34,7 @@ this request.
 \examples{
 # This example describes the security group references for the specified
 # security group.
-\donttest{ec2$describe_security_group_references(
+\donttest{svc$describe_security_group_references(
   GroupId = list(
     "sg-903004f8"
   )

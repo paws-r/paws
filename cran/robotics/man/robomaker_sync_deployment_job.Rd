@@ -17,7 +17,7 @@ Syncrhonizes robots in a fleet to the latest deployment. This is helpful
 if robots were added after a deployment.
 }
 \section{Request syntax}{
-\preformatted{robomaker$sync_deployment_job(
+\preformatted{svc$sync_deployment_job(
   clientRequestToken = "string",
   fleet = "string"
 )

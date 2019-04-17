@@ -18,7 +18,7 @@ pinpoint_update_campaign(ApplicationId, CampaignId,
 Use to update a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_campaign(
+\preformatted{svc$update_campaign(
   ApplicationId = "string",
   CampaignId = "string",
   WriteCampaignRequest = list(

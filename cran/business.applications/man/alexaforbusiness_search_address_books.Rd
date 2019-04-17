@@ -29,7 +29,7 @@ Searches address books and lists the ones that meet a set of filter and
 sort criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_address_books(
+\preformatted{svc$search_address_books(
   Filters = list(
     list(
       Key = "string",

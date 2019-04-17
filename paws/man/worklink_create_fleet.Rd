@@ -22,7 +22,7 @@ that delivers associated websites to authorized users who download and
 set up the Amazon WorkLink app.
 }
 \section{Request syntax}{
-\preformatted{worklink$create_fleet(
+\preformatted{svc$create_fleet(
   FleetName = "string",
   DisplayName = "string",
   OptimizeForEndUserLocation = TRUE|FALSE

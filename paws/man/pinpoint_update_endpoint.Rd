@@ -17,7 +17,7 @@ pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
 Creates or updates an endpoint.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_endpoint(
+\preformatted{svc$update_endpoint(
   ApplicationId = "string",
   EndpointId = "string",
   EndpointRequest = list(

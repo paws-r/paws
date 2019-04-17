@@ -29,7 +29,7 @@ contains a marker that you can specify in your next request to fetch the
 next page of agents.
 }
 \section{Request syntax}{
-\preformatted{datasync$list_agents(
+\preformatted{svc$list_agents(
   MaxResults = 123,
   NextToken = "string"
 )

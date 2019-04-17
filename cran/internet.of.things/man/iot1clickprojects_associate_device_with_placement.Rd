@@ -23,7 +23,7 @@ all \code{deviceId} values.}
 Associates a physical device with a placement.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$associate_device_with_placement(
+\preformatted{svc$associate_device_with_placement(
   projectName = "string",
   placementName = "string",
   deviceId = "string",

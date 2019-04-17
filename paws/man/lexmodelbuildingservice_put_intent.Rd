@@ -167,7 +167,7 @@ For more information, see how-it-works.
 This operation requires permissions for the \code{lex:PutIntent} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$put_intent(
+\preformatted{svc$put_intent(
   name = "string",
   description = "string",
   slots = list(
@@ -272,7 +272,7 @@ This operation requires permissions for the \code{lex:PutIntent} action.
 
 \examples{
 # This example shows how to create an intent for ordering pizzas.
-\donttest{lexmodelbuildingservice$put_intent(
+\donttest{svc$put_intent(
   name = "DocOrderPizza",
   conclusionStatement = list(
     messages = list(

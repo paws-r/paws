@@ -20,7 +20,7 @@ credentials.}
 Retrieves the metadata of the specified folder.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_folder(
+\preformatted{svc$get_folder(
   AuthenticationToken = "string",
   FolderId = "string",
   IncludeCustomMetadata = TRUE|FALSE

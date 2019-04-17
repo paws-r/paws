@@ -15,7 +15,7 @@ use. After you delete an image, you cannot provision new capacity using
 the image.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_image(
+\preformatted{svc$delete_image(
   Name = "string"
 )
 }

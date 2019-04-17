@@ -13,7 +13,7 @@ transcribeservice_delete_vocabulary(VocabularyName)
 Deletes a vocabulary from Amazon Transcribe.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$delete_vocabulary(
+\preformatted{svc$delete_vocabulary(
   VocabularyName = "string"
 )
 }

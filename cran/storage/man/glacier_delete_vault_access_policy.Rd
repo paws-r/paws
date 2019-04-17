@@ -29,7 +29,7 @@ if there is no policy associated with the vault. For more information
 about vault access policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 }
 \section{Request syntax}{
-\preformatted{glacier$delete_vault_access_policy(
+\preformatted{svc$delete_vault_access_policy(
   accountId = "string",
   vaultName = "string"
 )
@@ -39,7 +39,7 @@ about vault access policies, see \href{http://docs.aws.amazon.com/amazonglacier/
 \examples{
 # The example deletes the access policy associated with the vault named
 # examplevault.
-\donttest{glacier$delete_vault_access_policy(
+\donttest{svc$delete_vault_access_policy(
   accountId = "-",
   vaultName = "examplevault"
 )}

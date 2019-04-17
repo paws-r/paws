@@ -19,7 +19,7 @@ Gets the definition of the specified pipeline. You can call
 provided using PutPipelineDefinition.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$get_pipeline_definition(
+\preformatted{svc$get_pipeline_definition(
   pipelineId = "string",
   version = "string"
 )

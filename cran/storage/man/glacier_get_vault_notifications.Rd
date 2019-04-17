@@ -36,7 +36,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifica
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$get_vault_notifications(
+\preformatted{svc$get_vault_notifications(
   accountId = "string",
   vaultName = "string"
 )
@@ -46,7 +46,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example retrieves the notification-configuration for the vault named
 # my-vault.
-\donttest{glacier$get_vault_notifications(
+\donttest{svc$get_vault_notifications(
   accountId = "-",
   vaultName = "my-vault"
 )}

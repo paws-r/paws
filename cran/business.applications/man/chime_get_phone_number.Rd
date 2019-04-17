@@ -15,7 +15,7 @@ Retrieves details for the specified phone number ID, such as
 associations, capabilities, and product type.
 }
 \section{Request syntax}{
-\preformatted{chime$get_phone_number(
+\preformatted{svc$get_phone_number(
   PhoneNumberId = "string"
 )
 }

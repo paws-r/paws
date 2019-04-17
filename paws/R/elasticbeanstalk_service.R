@@ -25,11 +25,12 @@ NULL
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 #' in the *Amazon Web Services Glossary*.
 #'
-#' @section Example:
-#' ```
-#' elasticbeanstalk <- paws::elasticbeanstalk()
-#' elasticbeanstalk$operation()
-#' ```
+#' @examples
+#' # The following code aborts a running application version deployment for
+#' # an environment named my-env:
+#' \donttest{svc$abort_environment_update(
+#'   EnvironmentName = "my-env"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -37,7 +37,7 @@ raised while running tasks for these targets in this Maintenance Window.}
 Registers a target with a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$register_target_with_maintenance_window(
+\preformatted{svc$register_target_with_maintenance_window(
   WindowId = "string",
   ResourceType = "INSTANCE",
   Targets = list(

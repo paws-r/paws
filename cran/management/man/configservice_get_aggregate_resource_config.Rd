@@ -18,7 +18,7 @@ Returns configuration item that is aggregated for your specific resource
 in a specific source account and region.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_aggregate_resource_config(
+\preformatted{svc$get_aggregate_resource_config(
   ConfigurationAggregatorName = "string",
   ResourceIdentifier = list(
     SourceAccountId = "string",

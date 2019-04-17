@@ -15,7 +15,7 @@ codedeploy_get_deployment_target(deploymentId, targetId)
 Returns information about a deployment target.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_deployment_target(
+\preformatted{svc$get_deployment_target(
   deploymentId = "string",
   targetId = "string"
 )

@@ -13,11 +13,10 @@ NULL
 #' often faster than Internet transfer and more cost effective than
 #' upgrading your connectivity.
 #'
-#' @section Example:
-#' ```
-#' importexport <- paws::importexport()
-#' importexport$operation()
-#' ```
+#' @examples
+#' \donttest{svc$cancel_job(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -28,7 +28,7 @@ After you decline a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 }
 \section{Request syntax}{
-\preformatted{organizations$decline_handshake(
+\preformatted{svc$decline_handshake(
   HandshakeId = "string"
 )
 }
@@ -38,7 +38,7 @@ relevant APIs for only 30 days. After that it is deleted.
 # The following example shows Susan declining an invitation to join Bill's
 # organization. The DeclineHandshake operation returns a handshake object,
 # showing that the state is now DECLINED:
-\donttest{organizations$decline_handshake(
+\donttest{svc$decline_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

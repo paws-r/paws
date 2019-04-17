@@ -122,7 +122,7 @@ Returns information about health metrics for your Lightsail load
 balancer.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_load_balancer_metric_data(
+\preformatted{svc$get_load_balancer_metric_data(
   loadBalancerName = "string",
   metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
   period = 123,

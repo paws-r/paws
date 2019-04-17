@@ -56,7 +56,7 @@ virtual tapes. Use the AddCache operation to add cache storage to a
 gateway.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_tapes(
+\preformatted{svc$create_tapes(
   GatewayARN = "string",
   TapeSizeInBytes = 123,
   ClientToken = "string",
@@ -71,7 +71,7 @@ gateway.
 
 \examples{
 # Creates one or more virtual tapes.
-\donttest{storagegateway$create_tapes(
+\donttest{svc$create_tapes(
   ClientToken = "77777",
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   NumTapesToCreate = 3L,

@@ -22,7 +22,7 @@ address that was originally allocated for use in EC2-VPC. The Elastic IP
 address must not be associated with an instance or network interface.
 }
 \section{Request syntax}{
-\preformatted{ec2$restore_address_to_classic(
+\preformatted{svc$restore_address_to_classic(
   DryRun = TRUE|FALSE,
   PublicIp = "string"
 )
@@ -32,7 +32,7 @@ address must not be associated with an instance or network interface.
 \examples{
 # This example restores the specified Elastic IP address to the
 # EC2-Classic platform.
-\donttest{ec2$restore_address_to_classic(
+\donttest{svc$restore_address_to_classic(
   PublicIp = "198.51.100.0"
 )}
 

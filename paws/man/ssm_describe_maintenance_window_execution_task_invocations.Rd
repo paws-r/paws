@@ -30,7 +30,7 @@ Retrieves the individual task executions (one per target) for a
 particular task executed as part of a Maintenance Window execution.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_window_execution_task_invocations(
+\preformatted{svc$describe_maintenance_window_execution_task_invocations(
   WindowExecutionId = "string",
   TaskId = "string",
   Filters = list(

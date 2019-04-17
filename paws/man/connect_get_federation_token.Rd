@@ -19,7 +19,7 @@ instance ARN, after instance/, such as
 Retrieves a token for federation.
 }
 \section{Request syntax}{
-\preformatted{connect$get_federation_token(
+\preformatted{svc$get_federation_token(
   InstanceId = "string"
 )
 }

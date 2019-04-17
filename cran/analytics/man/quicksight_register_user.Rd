@@ -67,7 +67,7 @@ The condition keys are \code{quicksight:IamArn} and \code{quicksight:SessionName
 \code{aws quicksight register-user -\\-aws-account-id=111122223333 -\\-namespace=default -\\-email=pat@example.com -\\-identity-type=IAM -\\-user-role=AUTHOR -\\-iam-arn=arn:aws:iam::111122223333:user/Pat }
 }
 \section{Request syntax}{
-\preformatted{quicksight$register_user(
+\preformatted{svc$register_user(
   IdentityType = "IAM"|"QUICKSIGHT",
   Email = "string",
   UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",

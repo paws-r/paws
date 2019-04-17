@@ -13,7 +13,7 @@ s3_get_bucket_acl(Bucket)
 Gets the access control policy for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_acl(
+\preformatted{svc$get_bucket_acl(
   Bucket = "string"
 )
 }

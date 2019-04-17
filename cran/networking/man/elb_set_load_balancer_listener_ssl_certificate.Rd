@@ -25,7 +25,7 @@ For more information about updating your SSL certificate, see \href{http://docs.
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$set_load_balancer_listener_ssl_certificate(
+\preformatted{svc$set_load_balancer_listener_ssl_certificate(
   LoadBalancerName = "string",
   LoadBalancerPort = 123,
   SSLCertificateId = "string"
@@ -36,7 +36,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example replaces the existing SSL certificate for the specified
 # HTTPS listener.
-\donttest{elb$set_load_balancer_listener_ssl_certificate(
+\donttest{svc$set_load_balancer_listener_ssl_certificate(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPort = 443L,
   SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/new-server-cert"

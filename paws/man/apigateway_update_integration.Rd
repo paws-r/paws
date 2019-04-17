@@ -22,7 +22,7 @@ in the order specified in this list.}
 Represents an update integration.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_integration(
+\preformatted{svc$update_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

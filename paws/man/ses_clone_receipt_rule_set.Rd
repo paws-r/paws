@@ -28,7 +28,7 @@ For information about setting up rule sets, see the \href{http://docs.aws.amazon
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$clone_receipt_rule_set(
+\preformatted{svc$clone_receipt_rule_set(
   RuleSetName = "string",
   OriginalRuleSetName = "string"
 )
@@ -38,7 +38,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example creates a receipt rule set by cloning an existing
 # one:
-\donttest{ses$clone_receipt_rule_set(
+\donttest{svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
 )}

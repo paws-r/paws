@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' dlm$create_lifecycle_policy(
+#' svc$create_lifecycle_policy(
 #'   ExecutionRoleArn = "string",
 #'   Description = "string",
 #'   State = "ENABLED"|"DISABLED",
@@ -95,7 +95,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #'
 #' @section Request syntax:
 #' ```
-#' dlm$delete_lifecycle_policy(
+#' svc$delete_lifecycle_policy(
 #'   PolicyId = "string"
 #' )
 #' ```
@@ -146,7 +146,7 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' dlm$get_lifecycle_policies(
+#' svc$get_lifecycle_policies(
 #'   PolicyIds = list(
 #'     "string"
 #'   ),
@@ -193,7 +193,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'
 #' @section Request syntax:
 #' ```
-#' dlm$get_lifecycle_policy(
+#' svc$get_lifecycle_policy(
 #'   PolicyId = "string"
 #' )
 #' ```
@@ -236,7 +236,7 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' dlm$update_lifecycle_policy(
+#' svc$update_lifecycle_policy(
 #'   PolicyId = "string",
 #'   ExecutionRoleArn = "string",
 #'   State = "ENABLED"|"DISABLED",

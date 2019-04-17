@@ -13,7 +13,7 @@ iotanalytics_delete_channel(channelName)
 Deletes the specified channel.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$delete_channel(
+\preformatted{svc$delete_channel(
   channelName = "string"
 )
 }

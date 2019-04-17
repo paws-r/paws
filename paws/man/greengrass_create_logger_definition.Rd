@@ -20,7 +20,7 @@ greengrass_create_logger_definition(AmznClientToken, InitialVersion,
 Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_logger_definition(
+\preformatted{svc$create_logger_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Loggers = list(

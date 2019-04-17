@@ -42,7 +42,7 @@ user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_ecs_clusters(
+\preformatted{svc$describe_ecs_clusters(
   EcsClusterArns = list(
     "string"
   ),

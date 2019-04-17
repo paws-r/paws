@@ -23,7 +23,7 @@ the internet and the VPC. The VPC must not contain any running instances
 with Elastic IP addresses or public IPv4 addresses.
 }
 \section{Request syntax}{
-\preformatted{ec2$detach_internet_gateway(
+\preformatted{svc$detach_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string",
   VpcId = "string"
@@ -34,7 +34,7 @@ with Elastic IP addresses or public IPv4 addresses.
 \examples{
 # This example detaches the specified Internet gateway from the specified
 # VPC.
-\donttest{ec2$detach_internet_gateway(
+\donttest{svc$detach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
 )}

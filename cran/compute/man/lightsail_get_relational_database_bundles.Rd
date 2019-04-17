@@ -19,7 +19,7 @@ You can use a bundle ID to create a new database with explicit
 performance specifications.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_bundles(
+\preformatted{svc$get_relational_database_bundles(
   pageToken = "string"
 )
 }

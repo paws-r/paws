@@ -19,7 +19,7 @@ After a repository is deleted, all future push calls to the deleted
 repository will fail.
 }
 \section{Request syntax}{
-\preformatted{codecommit$delete_repository(
+\preformatted{svc$delete_repository(
   repositoryName = "string"
 )
 }

@@ -51,7 +51,7 @@ by calling the DescribeBackups operation, which returns the backup state
 along with other information.
 }
 \section{Request syntax}{
-\preformatted{fsx$create_backup(
+\preformatted{svc$create_backup(
   FileSystemId = "string",
   ClientRequestToken = "string",
   Tags = list(
@@ -66,7 +66,7 @@ along with other information.
 
 \examples{
 # This operation creates a new backup.
-\donttest{fsx$create_backup(
+\donttest{svc$create_backup(
   FileSystemId = "fs-0498eed5fe91001ec",
   Tags = list(
     list(

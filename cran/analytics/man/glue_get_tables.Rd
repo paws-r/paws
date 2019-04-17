@@ -27,7 +27,7 @@ Retrieves the definitions of some or all of the tables in a given
 \code{Database}.
 }
 \section{Request syntax}{
-\preformatted{glue$get_tables(
+\preformatted{svc$get_tables(
   CatalogId = "string",
   DatabaseName = "string",
   Expression = "string",

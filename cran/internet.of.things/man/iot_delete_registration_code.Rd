@@ -10,7 +10,7 @@ iot_delete_registration_code()
 Deletes a CA certificate registration code.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_registration_code()
+\preformatted{svc$delete_registration_code()
 }
 }
 

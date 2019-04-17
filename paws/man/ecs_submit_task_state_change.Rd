@@ -36,7 +36,7 @@ for use outside of the agent.
 Sent to acknowledge that a task changed states.
 }
 \section{Request syntax}{
-\preformatted{ecs$submit_task_state_change(
+\preformatted{svc$submit_task_state_change(
   cluster = "string",
   task = "string",
   status = "string",

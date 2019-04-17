@@ -28,7 +28,7 @@ directories.
 }
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$create_schema(
+\preformatted{svc$create_schema(
   Name = "string"
 )
 }

@@ -21,7 +21,7 @@ Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_usage(
+\preformatted{svc$update_usage(
   usagePlanId = "string",
   keyId = "string",
   patchOperations = list(

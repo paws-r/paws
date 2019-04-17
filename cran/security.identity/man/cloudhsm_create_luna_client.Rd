@@ -24,7 +24,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Creates an HSM client.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$create_luna_client(
+\preformatted{svc$create_luna_client(
   Label = "string",
   Certificate = "string"
 )

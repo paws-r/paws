@@ -21,7 +21,7 @@ next set of results.}
 Describes a specific delete inventory operation.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_inventory_deletions(
+\preformatted{svc$describe_inventory_deletions(
   DeletionId = "string",
   NextToken = "string",
   MaxResults = 123

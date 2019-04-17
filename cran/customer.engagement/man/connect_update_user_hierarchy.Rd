@@ -23,7 +23,7 @@ instance ARN, after instance/, such as
 Assigns the specified hierarchy group to the user.
 }
 \section{Request syntax}{
-\preformatted{connect$update_user_hierarchy(
+\preformatted{svc$update_user_hierarchy(
   HierarchyGroupId = "string",
   UserId = "string",
   InstanceId = "string"

@@ -29,7 +29,7 @@ idempotency of the request.}
 Creates a resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$create_resource_share(
+\preformatted{svc$create_resource_share(
   name = "string",
   resourceArns = list(
     "string"

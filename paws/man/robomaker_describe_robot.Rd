@@ -13,7 +13,7 @@ robomaker_describe_robot(robot)
 Describes a robot.
 }
 \section{Request syntax}{
-\preformatted{robomaker$describe_robot(
+\preformatted{svc$describe_robot(
   robot = "string"
 )
 }

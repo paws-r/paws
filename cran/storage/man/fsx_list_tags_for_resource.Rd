@@ -47,7 +47,7 @@ responses of a multi-call iteration is unspecified.
 }
 }
 \section{Request syntax}{
-\preformatted{fsx$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string",
   MaxResults = 123,
   NextToken = "string"
@@ -57,7 +57,7 @@ responses of a multi-call iteration is unspecified.
 
 \examples{
 # This operation lists tags for an Amazon FSx resource.
-\donttest{fsx$list_tags_for_resource(
+\donttest{svc$list_tags_for_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec"
 )}
 

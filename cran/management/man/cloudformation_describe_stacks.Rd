@@ -30,7 +30,7 @@ If the stack does not exist, an \code{AmazonCloudFormationException} is
 returned.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stacks(
+\preformatted{svc$describe_stacks(
   StackName = "string",
   NextToken = "string"
 )

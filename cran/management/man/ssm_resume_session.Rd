@@ -20,7 +20,7 @@ reconnect during intermittent network issues. It is not intended for any
 other use.
 }
 \section{Request syntax}{
-\preformatted{ssm$resume_session(
+\preformatted{svc$resume_session(
   SessionId = "string"
 )
 }

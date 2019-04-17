@@ -17,7 +17,7 @@ glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
 Retrieves metrics about specified crawlers.
 }
 \section{Request syntax}{
-\preformatted{glue$get_crawler_metrics(
+\preformatted{svc$get_crawler_metrics(
   CrawlerNameList = list(
     "string"
   ),

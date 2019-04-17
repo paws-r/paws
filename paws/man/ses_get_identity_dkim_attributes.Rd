@@ -35,7 +35,7 @@ For more information about creating DNS records using DKIM tokens, go to
 the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$get_identity_dkim_attributes(
+\preformatted{svc$get_identity_dkim_attributes(
   Identities = list(
     "string"
   )
@@ -46,7 +46,7 @@ the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-rec
 \examples{
 # The following example retrieves the Amazon SES Easy DKIM attributes for
 # a list of identities:
-\donttest{ses$get_identity_dkim_attributes(
+\donttest{svc$get_identity_dkim_attributes(
   Identities = list(
     "example.com",
     "user@example.com"

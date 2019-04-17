@@ -27,7 +27,7 @@ see the \emph{UserName} parameter.}
 Enables single sign-on for a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$enable_sso(
+\preformatted{svc$enable_sso(
   DirectoryId = "string",
   UserName = "string",
   Password = "string"

@@ -20,7 +20,7 @@ You can use the \code{GetEvaluation} operation to view the contents of the
 updated data element.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$update_evaluation(
+\preformatted{svc$update_evaluation(
   EvaluationId = "string",
   EvaluationName = "string"
 )

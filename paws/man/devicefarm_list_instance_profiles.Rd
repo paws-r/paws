@@ -18,7 +18,7 @@ list.}
 Returns information about all the instance profiles in an AWS account.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_instance_profiles(
+\preformatted{svc$list_instance_profiles(
   maxResults = 123,
   nextToken = "string"
 )

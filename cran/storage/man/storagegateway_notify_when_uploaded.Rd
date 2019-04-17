@@ -30,7 +30,7 @@ Storage Gateway User Guide
 (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html\#get-upload-notification).
 }
 \section{Request syntax}{
-\preformatted{storagegateway$notify_when_uploaded(
+\preformatted{svc$notify_when_uploaded(
   FileShareARN = "string"
 )
 }

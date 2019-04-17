@@ -13,7 +13,7 @@ ssm_get_patch_baseline(BaselineId)
 Retrieves information about a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_patch_baseline(
+\preformatted{svc$get_patch_baseline(
   BaselineId = "string"
 )
 }

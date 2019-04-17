@@ -15,7 +15,7 @@ pinpoint_delete_segment(ApplicationId, SegmentId)
 Deletes a segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_segment(
+\preformatted{svc$delete_segment(
   ApplicationId = "string",
   SegmentId = "string"
 )

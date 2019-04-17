@@ -13,7 +13,7 @@ pinpoint_get_app(ApplicationId)
 Returns information about an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_app(
+\preformatted{svc$get_app(
   ApplicationId = "string"
 )
 }

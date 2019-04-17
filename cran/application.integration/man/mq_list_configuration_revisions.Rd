@@ -17,7 +17,7 @@ mq_list_configuration_revisions(ConfigurationId, MaxResults, NextToken)
 Returns a list of all revisions for the specified configuration.
 }
 \section{Request syntax}{
-\preformatted{mq$list_configuration_revisions(
+\preformatted{svc$list_configuration_revisions(
   ConfigurationId = "string",
   MaxResults = 123,
   NextToken = "string"

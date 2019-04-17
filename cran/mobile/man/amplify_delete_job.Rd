@@ -17,7 +17,7 @@ amplify_delete_job(appId, branchName, jobId)
 Delete a job, for an Amplify branch, part of Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$delete_job(
+\preformatted{svc$delete_job(
   appId = "string",
   branchName = "string",
   jobId = "string"

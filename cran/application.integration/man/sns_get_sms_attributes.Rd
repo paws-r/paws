@@ -22,7 +22,7 @@ Returns the settings for sending SMS messages from your account.
 These settings are set with the \code{SetSMSAttributes} action.
 }
 \section{Request syntax}{
-\preformatted{sns$get_sms_attributes(
+\preformatted{svc$get_sms_attributes(
   attributes = list(
     "string"
   )

@@ -10,7 +10,7 @@ ram_enable_sharing_with_aws_organization()
 Enables resource sharing within your organization.
 }
 \section{Request syntax}{
-\preformatted{ram$enable_sharing_with_aws_organization()
+\preformatted{svc$enable_sharing_with_aws_organization()
 }
 }
 

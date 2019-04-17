@@ -22,7 +22,7 @@ your Amazon SES account in a given AWS Region when reputation metrics
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$update_account_sending_enabled(
+\preformatted{svc$update_account_sending_enabled(
   Enabled = TRUE|FALSE
 )
 }
@@ -30,7 +30,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example updated the sending status for this account.
-\donttest{ses$update_account_sending_enabled(
+\donttest{svc$update_account_sending_enabled(
   Enabled = TRUE
 )}
 

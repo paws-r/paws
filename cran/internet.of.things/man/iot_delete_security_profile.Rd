@@ -18,7 +18,7 @@ thrown.}
 Deletes a Device Defender security profile.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_security_profile(
+\preformatted{svc$delete_security_profile(
   securityProfileName = "string",
   expectedVersion = 123
 )

@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Definition of the public APIs exposed by Amazon Machine Learning
 #'
-#' @section Example:
-#' ```
-#' machinelearning <- paws::machinelearning()
-#' machinelearning$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

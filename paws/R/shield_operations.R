@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' shield$associate_drt_log_bucket(
+#' svc$associate_drt_log_bucket(
 #'   LogBucket = "string"
 #' )
 #' ```
@@ -98,7 +98,7 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$associate_drt_role(
+#' svc$associate_drt_role(
 #'   RoleArn = "string"
 #' )
 #' ```
@@ -166,7 +166,7 @@ shield_associate_drt_role <- function(RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$create_protection(
+#' svc$create_protection(
 #'   Name = "string",
 #'   ResourceArn = "string"
 #' )
@@ -210,7 +210,7 @@ shield_create_protection <- function(Name, ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$create_subscription()
+#' svc$create_subscription()
 #' ```
 #'
 #' @keywords internal
@@ -243,7 +243,7 @@ shield_create_subscription <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$delete_protection(
+#' svc$delete_protection(
 #'   ProtectionId = "string"
 #' )
 #' ```
@@ -278,7 +278,7 @@ shield_delete_protection <- function(ProtectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$delete_subscription()
+#' svc$delete_subscription()
 #' ```
 #'
 #' @keywords internal
@@ -311,7 +311,7 @@ shield_delete_subscription <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$describe_attack(
+#' svc$describe_attack(
 #'   AttackId = "string"
 #' )
 #' ```
@@ -348,7 +348,7 @@ shield_describe_attack <- function(AttackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$describe_drt_access()
+#' svc$describe_drt_access()
 #' ```
 #'
 #' @keywords internal
@@ -381,7 +381,7 @@ shield_describe_drt_access <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$describe_emergency_contact_settings()
+#' svc$describe_emergency_contact_settings()
 #' ```
 #'
 #' @keywords internal
@@ -420,7 +420,7 @@ shield_describe_emergency_contact_settings <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$describe_protection(
+#' svc$describe_protection(
 #'   ProtectionId = "string",
 #'   ResourceArn = "string"
 #' )
@@ -456,7 +456,7 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' shield$describe_subscription()
+#' svc$describe_subscription()
 #' ```
 #'
 #' @keywords internal
@@ -485,9 +485,7 @@ shield_describe_subscription <- function() {
 #' S3 bucket containing your flow logs.
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
-#' the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
-#' [Enterprise Support
+#' the Business Support plan or the [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
 #' However, if you are not subscribed to one of these support plans, but
 #' had been previously and had granted the DRT access to your account, you
@@ -500,7 +498,7 @@ shield_describe_subscription <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$disassociate_drt_log_bucket(
+#' svc$disassociate_drt_log_bucket(
 #'   LogBucket = "string"
 #' )
 #' ```
@@ -542,7 +540,7 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$disassociate_drt_role()
+#' svc$disassociate_drt_role()
 #' ```
 #'
 #' @keywords internal
@@ -573,7 +571,7 @@ shield_disassociate_drt_role <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$get_subscription_state()
+#' svc$get_subscription_state()
 #' ```
 #'
 #' @keywords internal
@@ -632,7 +630,7 @@ shield_get_subscription_state <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$list_attacks(
+#' svc$list_attacks(
 #'   ResourceArns = list(
 #'     "string"
 #'   ),
@@ -696,7 +694,7 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #'
 #' @section Request syntax:
 #' ```
-#' shield$list_protections(
+#' svc$list_protections(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -735,7 +733,7 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' shield$update_emergency_contact_settings(
+#' svc$update_emergency_contact_settings(
 #'   EmergencyContactList = list(
 #'     list(
 #'       EmailAddress = "string"
@@ -780,7 +778,7 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' shield$update_subscription(
+#' svc$update_subscription(
 #'   AutoRenew = "ENABLED"|"DISABLED"
 #' )
 #' ```

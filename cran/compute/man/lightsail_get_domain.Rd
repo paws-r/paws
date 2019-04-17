@@ -13,7 +13,7 @@ lightsail_get_domain(domainName)
 Returns information about a specific domain recordset.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_domain(
+\preformatted{svc$get_domain(
   domainName = "string"
 )
 }

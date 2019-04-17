@@ -29,7 +29,7 @@ Prevents artifacts in a pipeline from transitioning to the next stage in
 the pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$disable_stage_transition(
+\preformatted{svc$disable_stage_transition(
   pipelineName = "string",
   stageName = "string",
   transitionType = "Inbound"|"Outbound",

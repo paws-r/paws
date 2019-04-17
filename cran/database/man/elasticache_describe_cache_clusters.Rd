@@ -62,7 +62,7 @@ If cache nodes are currently being removed from the cluster, no endpoint
 information for the removed nodes is displayed.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_clusters(
+\preformatted{svc$describe_cache_clusters(
   CacheClusterId = "string",
   MaxRecords = 123,
   Marker = "string",

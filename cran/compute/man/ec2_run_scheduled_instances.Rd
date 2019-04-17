@@ -40,7 +40,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$run_scheduled_instances(
+\preformatted{svc$run_scheduled_instances(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   InstanceCount = 123,
@@ -117,7 +117,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example launches the specified Scheduled Instance in a VPC.
-\donttest{ec2$run_scheduled_instances(
+\donttest{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -141,7 +141,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 )}
 
 # This example launches the specified Scheduled Instance in EC2-Classic.
-\donttest{ec2$run_scheduled_instances(
+\donttest{svc$run_scheduled_instances(
   InstanceCount = 1L,
   LaunchSpecification = list(
     IamInstanceProfile = list(

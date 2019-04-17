@@ -16,7 +16,7 @@ Starts the replication task assessment for unsupported data types in the
 source database.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$start_replication_task_assessment(
+\preformatted{svc$start_replication_task_assessment(
   ReplicationTaskArn = "string"
 )
 }

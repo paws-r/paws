@@ -98,7 +98,7 @@ out, you can resubmit the request or retry it with a different queue.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$start_game_session_placement(
+\preformatted{svc$start_game_session_placement(
   PlacementId = "string",
   GameSessionQueueName = "string",
   GameProperties = list(

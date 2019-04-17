@@ -120,12 +120,6 @@ failure, and
 success.
 }
 }
-\section{Example}{
-\preformatted{codepipeline <- paws::codepipeline()
-codepipeline$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -165,3 +159,9 @@ codepipeline$operation()
 }
 }
 
+\examples{
+\donttest{svc$acknowledge_job(
+  Foo = 123
+)}
+
+}

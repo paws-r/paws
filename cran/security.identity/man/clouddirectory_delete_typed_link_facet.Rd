@@ -16,7 +16,7 @@ more information, see arns.}
 Deletes a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$delete_typed_link_facet(
+\preformatted{svc$delete_typed_link_facet(
   SchemaArn = "string",
   Name = "string"
 )

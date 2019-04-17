@@ -19,7 +19,7 @@ To create models in Amazon SageMaker, buyers can subscribe to model
 packages listed on AWS Marketplace.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_model_package(
+\preformatted{svc$describe_model_package(
   ModelPackageName = "string"
 )
 }

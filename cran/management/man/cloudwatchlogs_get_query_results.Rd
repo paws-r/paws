@@ -19,7 +19,7 @@ the fields requested in the query are returned.
 .
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$get_query_results(
+\preformatted{svc$get_query_results(
   queryId = "string"
 )
 }

@@ -15,7 +15,7 @@ greengrass_list_groups(MaxResults, NextToken)
 Retrieves a list of groups.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_groups(
+\preformatted{svc$list_groups(
   MaxResults = "string",
   NextToken = "string"
 )

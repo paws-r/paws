@@ -22,7 +22,7 @@ apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
 The API mapping.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_api_mapping(
+\preformatted{svc$update_api_mapping(
   ApiId = "string",
   ApiMappingId = "string",
   ApiMappingKey = "string",

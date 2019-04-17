@@ -41,7 +41,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_cluster_snapshot(
+\preformatted{svc$create_db_cluster_snapshot(
   DBClusterSnapshotIdentifier = "string",
   DBClusterIdentifier = "string",
   Tags = list(

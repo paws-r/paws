@@ -15,7 +15,7 @@ applicationdiscoveryservice_create_application(name, description)
 Creates an application with the given name and description.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$create_application(
+\preformatted{svc$create_application(
   name = "string",
   description = "string"
 )

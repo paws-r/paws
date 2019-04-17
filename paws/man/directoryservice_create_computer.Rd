@@ -27,7 +27,7 @@ Creates a computer account in the specified directory, and joins the
 computer to the directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_computer(
+\preformatted{svc$create_computer(
   DirectoryId = "string",
   ComputerName = "string",
   Password = "string",

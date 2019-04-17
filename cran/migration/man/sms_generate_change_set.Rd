@@ -17,7 +17,7 @@ Generates a target change set for a currently launched stack and writes
 it to an Amazon S3 object in the customer's Amazon S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{sms$generate_change_set(
+\preformatted{svc$generate_change_set(
   appId = "string",
   changesetFormat = "JSON"|"YAML"
 )

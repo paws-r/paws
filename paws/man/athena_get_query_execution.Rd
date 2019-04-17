@@ -17,7 +17,7 @@ executes, information about the query execution is saved with a unique
 ID.
 }
 \section{Request syntax}{
-\preformatted{athena$get_query_execution(
+\preformatted{svc$get_query_execution(
   QueryExecutionId = "string"
 )
 }

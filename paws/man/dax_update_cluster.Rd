@@ -34,7 +34,7 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 }
 \section{Request syntax}{
-\preformatted{dax$update_cluster(
+\preformatted{svc$update_cluster(
   ClusterName = "string",
   Description = "string",
   PreferredMaintenanceWindow = "string",

@@ -42,7 +42,7 @@ HSM client certificate. For more information, go to \href{http://docs.aws.amazon
 in the Amazon Redshift Cluster Management Guide.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_hsm_configuration(
+\preformatted{svc$create_hsm_configuration(
   HsmConfigurationIdentifier = "string",
   Description = "string",
   HsmIpAddress = "string",

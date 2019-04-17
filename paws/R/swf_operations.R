@@ -83,7 +83,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' swf$count_closed_workflow_executions(
+#' svc$count_closed_workflow_executions(
 #'   domain = "string",
 #'   startTimeFilter = list(
 #'     oldestDate = as.POSIXct(
@@ -200,7 +200,7 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' swf$count_open_workflow_executions(
+#' svc$count_open_workflow_executions(
 #'   domain = "string",
 #'   startTimeFilter = list(
 #'     oldestDate = as.POSIXct(
@@ -281,7 +281,7 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #'
 #' @section Request syntax:
 #' ```
-#' swf$count_pending_activity_tasks(
+#' svc$count_pending_activity_tasks(
 #'   domain = "string",
 #'   taskList = list(
 #'     name = "string"
@@ -347,7 +347,7 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$count_pending_decision_tasks(
+#' svc$count_pending_decision_tasks(
 #'   domain = "string",
 #'   taskList = list(
 #'     name = "string"
@@ -420,7 +420,7 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$deprecate_activity_type(
+#' svc$deprecate_activity_type(
 #'   domain = "string",
 #'   activityType = list(
 #'     name = "string",
@@ -488,7 +488,7 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$deprecate_domain(
+#' svc$deprecate_domain(
 #'   name = "string"
 #' )
 #' ```
@@ -559,7 +559,7 @@ swf_deprecate_domain <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$deprecate_workflow_type(
+#' svc$deprecate_workflow_type(
 #'   domain = "string",
 #'   workflowType = list(
 #'     name = "string",
@@ -631,7 +631,7 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$describe_activity_type(
+#' svc$describe_activity_type(
 #'   domain = "string",
 #'   activityType = list(
 #'     name = "string",
@@ -693,7 +693,7 @@ swf_describe_activity_type <- function(domain, activityType) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$describe_domain(
+#' svc$describe_domain(
 #'   name = "string"
 #' )
 #' ```
@@ -755,7 +755,7 @@ swf_describe_domain <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$describe_workflow_execution(
+#' svc$describe_workflow_execution(
 #'   domain = "string",
 #'   execution = list(
 #'     workflowId = "string",
@@ -825,7 +825,7 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$describe_workflow_type(
+#' svc$describe_workflow_type(
 #'   domain = "string",
 #'   workflowType = list(
 #'     name = "string",
@@ -909,7 +909,7 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$get_workflow_execution_history(
+#' svc$get_workflow_execution_history(
 #'   domain = "string",
 #'   execution = list(
 #'     workflowId = "string",
@@ -998,7 +998,7 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #'
 #' @section Request syntax:
 #' ```
-#' swf$list_activity_types(
+#' svc$list_activity_types(
 #'   domain = "string",
 #'   name = "string",
 #'   registrationStatus = "REGISTERED"|"DEPRECATED",
@@ -1129,7 +1129,7 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #'
 #' @section Request syntax:
 #' ```
-#' swf$list_closed_workflow_executions(
+#' svc$list_closed_workflow_executions(
 #'   domain = "string",
 #'   startTimeFilter = list(
 #'     oldestDate = as.POSIXct(
@@ -1242,7 +1242,7 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' swf$list_domains(
+#' svc$list_domains(
 #'   nextPageToken = "string",
 #'   registrationStatus = "REGISTERED"|"DEPRECATED",
 #'   maximumPageSize = 123,
@@ -1353,7 +1353,7 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #'
 #' @section Request syntax:
 #' ```
-#' swf$list_open_workflow_executions(
+#' svc$list_open_workflow_executions(
 #'   domain = "string",
 #'   startTimeFilter = list(
 #'     oldestDate = as.POSIXct(
@@ -1452,7 +1452,7 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #'
 #' @section Request syntax:
 #' ```
-#' swf$list_workflow_types(
+#' svc$list_workflow_types(
 #'   domain = "string",
 #'   name = "string",
 #'   registrationStatus = "REGISTERED"|"DEPRECATED",
@@ -1538,7 +1538,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #'
 #' @section Request syntax:
 #' ```
-#' swf$poll_for_activity_task(
+#' svc$poll_for_activity_task(
 #'   domain = "string",
 #'   taskList = list(
 #'     name = "string"
@@ -1657,7 +1657,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$poll_for_decision_task(
+#' svc$poll_for_decision_task(
 #'   domain = "string",
 #'   taskList = list(
 #'     name = "string"
@@ -1756,7 +1756,7 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #'
 #' @section Request syntax:
 #' ```
-#' swf$record_activity_task_heartbeat(
+#' svc$record_activity_task_heartbeat(
 #'   taskToken = "string",
 #'   details = "string"
 #' )
@@ -1889,7 +1889,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$register_activity_type(
+#' svc$register_activity_type(
 #'   domain = "string",
 #'   name = "string",
 #'   version = "string",
@@ -1978,7 +1978,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' swf$register_domain(
+#' svc$register_domain(
 #'   name = "string",
 #'   description = "string",
 #'   workflowExecutionRetentionPeriodInDays = "string"
@@ -2129,7 +2129,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #'
 #' @section Request syntax:
 #' ```
-#' swf$register_workflow_type(
+#' svc$register_workflow_type(
 #'   domain = "string",
 #'   name = "string",
 #'   version = "string",
@@ -2212,7 +2212,7 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' swf$request_cancel_workflow_execution(
+#' svc$request_cancel_workflow_execution(
 #'   domain = "string",
 #'   workflowId = "string",
 #'   runId = "string"
@@ -2293,7 +2293,7 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' swf$respond_activity_task_canceled(
+#' svc$respond_activity_task_canceled(
 #'   taskToken = "string",
 #'   details = "string"
 #' )
@@ -2374,7 +2374,7 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$respond_activity_task_completed(
+#' svc$respond_activity_task_completed(
 #'   taskToken = "string",
 #'   result = "string"
 #' )
@@ -2449,7 +2449,7 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' swf$respond_activity_task_failed(
+#' svc$respond_activity_task_failed(
 #'   taskToken = "string",
 #'   reason = "string",
 #'   details = "string"
@@ -2516,7 +2516,7 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #'
 #' @section Request syntax:
 #' ```
-#' swf$respond_decision_task_completed(
+#' svc$respond_decision_task_completed(
 #'   taskToken = "string",
 #'   decisions = list(
 #'     list(
@@ -2694,7 +2694,7 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #'
 #' @section Request syntax:
 #' ```
-#' swf$signal_workflow_execution(
+#' svc$signal_workflow_execution(
 #'   domain = "string",
 #'   workflowId = "string",
 #'   runId = "string",
@@ -2877,7 +2877,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #'
 #' @section Request syntax:
 #' ```
-#' swf$start_workflow_execution(
+#' svc$start_workflow_execution(
 #'   domain = "string",
 #'   workflowId = "string",
 #'   workflowType = list(
@@ -2992,7 +2992,7 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #'
 #' @section Request syntax:
 #' ```
-#' swf$terminate_workflow_execution(
+#' svc$terminate_workflow_execution(
 #'   domain = "string",
 #'   workflowId = "string",
 #'   runId = "string",

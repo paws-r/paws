@@ -18,7 +18,7 @@ greengrass_list_device_definition_versions(DeviceDefinitionId,
 Lists the versions of a device definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_device_definition_versions(
+\preformatted{svc$list_device_definition_versions(
   DeviceDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"

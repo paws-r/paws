@@ -73,7 +73,7 @@ Valid values: 0-15}
 Creates a new DB instance.
 }
 \section{Request syntax}{
-\preformatted{docdb$create_db_instance(
+\preformatted{svc$create_db_instance(
   DBInstanceIdentifier = "string",
   DBInstanceClass = "string",
   Engine = "string",

@@ -21,7 +21,7 @@ with the specified policy. Resources are considered non-compliant if the
 specified policy has not been applied to them.
 }
 \section{Request syntax}{
-\preformatted{fms$get_compliance_detail(
+\preformatted{svc$get_compliance_detail(
   PolicyId = "string",
   MemberAccount = "string"
 )

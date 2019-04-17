@@ -24,7 +24,7 @@ on compatible AMIs, see \href{http://docs.aws.amazon.com/snowball/latest/develop
 in the \emph{AWS Snowball Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{snowball$list_compatible_images(
+\preformatted{svc$list_compatible_images(
   MaxResults = 123,
   NextToken = "string"
 )

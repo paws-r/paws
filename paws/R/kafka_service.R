@@ -7,11 +7,10 @@ NULL
 #' @description
 #' The operations for managing an Amazon MSK cluster.
 #'
-#' @section Example:
-#' ```
-#' kafka <- paws::kafka()
-#' kafka$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_cluster(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

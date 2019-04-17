@@ -26,7 +26,7 @@ successfully completed.
 }
 }
 \section{Request syntax}{
-\preformatted{configservice$deliver_config_snapshot(
+\preformatted{svc$deliver_config_snapshot(
   deliveryChannelName = "string"
 )
 }

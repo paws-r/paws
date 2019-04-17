@@ -19,7 +19,7 @@ connect with the AWS Direct Connect location, you must cancel your
 service with them separately.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_connection(
+\preformatted{svc$delete_connection(
   connectionId = "string"
 )
 }

@@ -55,7 +55,7 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_snapshot(
+\preformatted{svc$create_snapshot(
   Description = "string",
   VolumeId = "string",
   TagSpecifications = list(
@@ -78,7 +78,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example creates a snapshot of the volume with a volume ID of
 # ``vol-1234567890abcdef0`` and a short description to identify the
 # snapshot.
-\donttest{ec2$create_snapshot(
+\donttest{svc$create_snapshot(
   Description = "This is my root volume snapshot.",
   VolumeId = "vol-1234567890abcdef0"
 )}

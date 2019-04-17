@@ -39,7 +39,7 @@ Starts an asynchronous document classification job. Use the operation to
 track the progress of the job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$start_document_classification_job(
+\preformatted{svc$start_document_classification_job(
   JobName = "string",
   DocumentClassifierArn = "string",
   InputDataConfig = list(

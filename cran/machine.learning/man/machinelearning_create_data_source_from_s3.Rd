@@ -67,7 +67,7 @@ variable or will it be split apart into word combinations? The recipe
 provides answers to these questions.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_data_source_from_s3(
+\preformatted{svc$create_data_source_from_s3(
   DataSourceId = "string",
   DataSourceName = "string",
   DataSpec = list(

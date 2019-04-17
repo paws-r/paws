@@ -25,7 +25,7 @@ to Reviewable or Status equal to Reviewing that belong to the Requester
 calling the operation.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_reviewable_hi_ts(
+\preformatted{svc$list_reviewable_hi_ts(
   HITTypeId = "string",
   Status = "Reviewable"|"Reviewing",
   NextToken = "string",

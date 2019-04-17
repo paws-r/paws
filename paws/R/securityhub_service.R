@@ -13,11 +13,10 @@ NULL
 #' security issues. For more information, see [AWS Security Hub User
 #' Guide]().
 #'
-#' @section Example:
-#' ```
-#' securityhub <- paws::securityhub()
-#' securityhub$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_invitation(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

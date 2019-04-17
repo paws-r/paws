@@ -13,7 +13,7 @@ glue_delete_resource_policy(PolicyHashCondition)
 Deletes a specified policy.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_resource_policy(
+\preformatted{svc$delete_resource_policy(
   PolicyHashCondition = "string"
 )
 }

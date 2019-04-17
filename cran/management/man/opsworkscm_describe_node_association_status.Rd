@@ -25,7 +25,7 @@ server does not exist. A \code{ValidationException} is raised when parameters
 of the request are not valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$describe_node_association_status(
+\preformatted{svc$describe_node_association_status(
   NodeAssociationStatusToken = "string",
   ServerName = "string"
 )

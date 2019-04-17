@@ -37,7 +37,7 @@ data sources.
 Updates a \code{Resolver} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_resolver(
+\preformatted{svc$update_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string",

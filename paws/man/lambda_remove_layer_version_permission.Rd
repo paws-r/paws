@@ -24,7 +24,7 @@ Removes a statement from the permissions policy for a version of an \href{https:
 For more information, see AddLayerVersionPermission.
 }
 \section{Request syntax}{
-\preformatted{lambda$remove_layer_version_permission(
+\preformatted{svc$remove_layer_version_permission(
   LayerName = "string",
   VersionNumber = 123,
   StatementId = "string",

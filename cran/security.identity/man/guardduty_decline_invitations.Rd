@@ -14,7 +14,7 @@ guardduty_decline_invitations(AccountIds)
 Declines invitations sent to the current member account by AWS account specified by their account IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$decline_invitations(
+\preformatted{svc$decline_invitations(
   AccountIds = list(
     "string"
   )

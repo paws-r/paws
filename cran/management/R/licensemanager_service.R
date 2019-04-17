@@ -15,11 +15,10 @@ NULL
 #' tailored to the programming language or platform that you\'re using. For
 #' more information, see [AWS SDKs](http://aws.amazon.com/tools/#SDKs).
 #'
-#' @section Example:
-#' ```
-#' licensemanager <- paws::licensemanager()
-#' licensemanager$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_license_configuration(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

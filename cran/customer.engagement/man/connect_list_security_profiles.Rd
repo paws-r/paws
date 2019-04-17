@@ -29,7 +29,7 @@ information about the security profiles in your instance, including the
 ARN, Id, and Name of the security profile.
 }
 \section{Request syntax}{
-\preformatted{connect$list_security_profiles(
+\preformatted{svc$list_security_profiles(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123

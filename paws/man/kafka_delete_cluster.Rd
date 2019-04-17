@@ -17,7 +17,7 @@ Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 the request.
 }
 \section{Request syntax}{
-\preformatted{kafka$delete_cluster(
+\preformatted{svc$delete_cluster(
   ClusterArn = "string",
   CurrentVersion = "string"
 )

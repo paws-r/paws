@@ -15,7 +15,7 @@ pinpoint_update_endpoints_batch(ApplicationId, EndpointBatchRequest)
 Use to update a batch of endpoints.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_endpoints_batch(
+\preformatted{svc$update_endpoints_batch(
   ApplicationId = "string",
   EndpointBatchRequest = list(
     Item = list(

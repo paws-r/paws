@@ -13,7 +13,7 @@ cognitoidentityprovider_delete_user(AccessToken)
 Allows a user to delete himself or herself.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_user(
+\preformatted{svc$delete_user(
   AccessToken = "string"
 )
 }

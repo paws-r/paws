@@ -17,7 +17,7 @@ to which the policy is attached.}
 Attaches a policy to the specified target.
 }
 \section{Request syntax}{
-\preformatted{iot$attach_policy(
+\preformatted{svc$attach_policy(
   policyName = "string",
   target = "string"
 )

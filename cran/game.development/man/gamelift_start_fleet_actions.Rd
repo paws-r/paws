@@ -52,7 +52,7 @@ DescribeFleetAttributes.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$start_fleet_actions(
+\preformatted{svc$start_fleet_actions(
   FleetId = "string",
   Actions = list(
     "AUTO_SCALING"

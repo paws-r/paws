@@ -18,7 +18,7 @@ namespace to group the repository into a category (such as
 Creates an image repository.
 }
 \section{Request syntax}{
-\preformatted{ecr$create_repository(
+\preformatted{svc$create_repository(
   repositoryName = "string",
   tags = list(
     list(
@@ -33,7 +33,7 @@ Creates an image repository.
 \examples{
 # This example creates a repository called nginx-web-app inside the
 # project-a namespace in the default registry for an account.
-\donttest{ecr$create_repository(
+\donttest{svc$create_repository(
   repositoryName = "project-a/nginx-web-app"
 )}
 

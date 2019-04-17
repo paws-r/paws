@@ -30,7 +30,7 @@ Reset the service setting for the account to the default value as
 provisioned by the AWS service team.
 }
 \section{Request syntax}{
-\preformatted{ssm$reset_service_setting(
+\preformatted{svc$reset_service_setting(
   SettingId = "string"
 )
 }

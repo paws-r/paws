@@ -78,7 +78,7 @@ AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.h
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$copy_image(
+\preformatted{svc$copy_image(
   ClientToken = "string",
   Description = "string",
   Encrypted = TRUE|FALSE,
@@ -94,7 +94,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example copies the specified AMI from the us-east-1 region to the
 # current region.
-\donttest{ec2$copy_image(
+\donttest{svc$copy_image(
   Description = "",
   Name = "My server",
   SourceImageId = "ami-5731123e",

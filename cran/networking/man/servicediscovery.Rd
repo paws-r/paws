@@ -16,12 +16,6 @@ optional health check. Clients that submit public or private DNS
 queries, or HTTP requests, for the service receive an answer that
 contains up to eight healthy records.
 }
-\section{Example}{
-\preformatted{servicediscovery <- paws::servicediscovery()
-servicediscovery$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,3 +42,9 @@ servicediscovery$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_http_namespace(
+  Foo = 123
+)}
+
+}

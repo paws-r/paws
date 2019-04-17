@@ -13,7 +13,7 @@ Scaling.
 }
 \examples{
 # This example describes the available notification types.
-\donttest{autoscaling$describe_auto_scaling_notification_types()}
+\donttest{svc$describe_auto_scaling_notification_types()}
 
 }
 \keyword{internal}

@@ -34,7 +34,7 @@ Gets information about the route table propagations for the specified
 transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_transit_gateway_route_table_propagations(
+\preformatted{svc$get_transit_gateway_route_table_propagations(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(

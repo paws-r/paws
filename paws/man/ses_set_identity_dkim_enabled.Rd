@@ -36,7 +36,7 @@ You can execute this operation no more than once per second.
 For more information about Easy DKIM signing, go to the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$set_identity_dkim_enabled(
+\preformatted{svc$set_identity_dkim_enabled(
   Identity = "string",
   DkimEnabled = TRUE|FALSE
 )
@@ -46,7 +46,7 @@ For more information about Easy DKIM signing, go to the \href{http://docs.aws.am
 \examples{
 # The following example configures Amazon SES to Easy DKIM-sign the email
 # sent from an identity:
-\donttest{ses$set_identity_dkim_enabled(
+\donttest{svc$set_identity_dkim_enabled(
   DkimEnabled = TRUE,
   Identity = "user@example.com"
 )}

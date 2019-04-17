@@ -14,7 +14,7 @@ you want to get session information.}
 Returns a link to a currently running remote access session.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_remote_access_session(
+\preformatted{svc$get_remote_access_session(
   arn = "string"
 )
 }
@@ -22,7 +22,7 @@ Returns a link to a currently running remote access session.
 
 \examples{
 # The following example gets a specific remote access session.
-\donttest{devicefarm$get_remote_access_session(
+\donttest{svc$get_remote_access_session(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 )}
 

@@ -19,7 +19,7 @@ configuration has been set, the specified encryption is applied to every
 catalog write thereafter.
 }
 \section{Request syntax}{
-\preformatted{glue$put_data_catalog_encryption_settings(
+\preformatted{svc$put_data_catalog_encryption_settings(
   CatalogId = "string",
   DataCatalogEncryptionSettings = list(
     EncryptionAtRest = list(

@@ -17,7 +17,7 @@ can only perform this operation before the \code{AutomatedUpdateDate} and
 when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$cancel_elasticsearch_service_software_update(
+\preformatted{svc$cancel_elasticsearch_service_software_update(
   DomainName = "string"
 )
 }

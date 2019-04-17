@@ -55,7 +55,7 @@ You can filter the results by job status with the \code{jobStatus} parameter.
 If you do not specify a status, only \code{RUNNING} jobs are returned.
 }
 \section{Request syntax}{
-\preformatted{batch$list_jobs(
+\preformatted{svc$list_jobs(
   jobQueue = "string",
   arrayJobId = "string",
   multiNodeJobId = "string",
@@ -68,13 +68,13 @@ If you do not specify a status, only \code{RUNNING} jobs are returned.
 
 \examples{
 # This example lists the running jobs in the HighPriority job queue.
-\donttest{batch$list_jobs(
+\donttest{svc$list_jobs(
   jobQueue = "HighPriority"
 )}
 
 # This example lists jobs in the HighPriority job queue that are in the
 # SUBMITTED job status.
-\donttest{batch$list_jobs(
+\donttest{svc$list_jobs(
   jobQueue = "HighPriority",
   jobStatus = "SUBMITTED"
 )}

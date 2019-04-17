@@ -18,7 +18,7 @@ For information about managing IP address filters, see the \href{http://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_receipt_filter(
+\preformatted{svc$delete_receipt_filter(
   FilterName = "string"
 )
 }
@@ -26,7 +26,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example deletes an IP address filter:
-\donttest{ses$delete_receipt_filter(
+\donttest{svc$delete_receipt_filter(
   FilterName = "MyFilter"
 )}
 

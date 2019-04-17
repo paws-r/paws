@@ -14,7 +14,7 @@ guardduty_delete_invitations(AccountIds)
 Deletes invitations sent to the current member account by AWS accounts specified by their account IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_invitations(
+\preformatted{svc$delete_invitations(
   AccountIds = list(
     "string"
   )

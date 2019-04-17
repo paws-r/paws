@@ -15,7 +15,7 @@ apigatewayv2_delete_authorizer(ApiId, AuthorizerId)
 Deletes an Authorizer.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_authorizer(
+\preformatted{svc$delete_authorizer(
   ApiId = "string",
   AuthorizerId = "string"
 )

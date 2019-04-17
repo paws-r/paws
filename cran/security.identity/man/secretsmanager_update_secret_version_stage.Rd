@@ -81,7 +81,7 @@ a version of a secret, use \code{<a>DescribeSecret</a>} and examine the
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$update_secret_version_stage(
+\preformatted{svc$update_secret_version_stage(
   SecretId = "string",
   VersionStage = "string",
   RemoveFromVersionId = "string",
@@ -95,7 +95,7 @@ a version of a secret, use \code{<a>DescribeSecret</a>} and examine the
 # of a secret. You can review the results by running the operation
 # ListSecretVersionIds and viewing the VersionStages response field for
 # the affected version.
-\donttest{secretsmanager$update_secret_version_stage(
+\donttest{svc$update_secret_version_stage(
   MoveToVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
@@ -105,7 +105,7 @@ a version of a secret, use \code{<a>DescribeSecret</a>} and examine the
 # attached to a version of a secret. You can review the results by running
 # the operation ListSecretVersionIds and viewing the VersionStages
 # response field for the affected version.
-\donttest{secretsmanager$update_secret_version_stage(
+\donttest{svc$update_secret_version_stage(
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "STAGINGLABEL1"
@@ -115,7 +115,7 @@ a version of a secret, use \code{<a>DescribeSecret</a>} and examine the
 # attached to one version of a secret to a different version. You can
 # review the results by running the operation ListSecretVersionIds and
 # viewing the VersionStages response field for the affected version.
-\donttest{secretsmanager$update_secret_version_stage(
+\donttest{svc$update_secret_version_stage(
   MoveToVersionId = "EXAMPLE2-90ab-cdef-fedc-ba987SECRET2",
   RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   SecretId = "MyTestDatabaseSecret",

@@ -13,7 +13,7 @@ backup_describe_backup_job(BackupJobId)
 Returns metadata associated with creating a backup of a resource.
 }
 \section{Request syntax}{
-\preformatted{backup$describe_backup_job(
+\preformatted{svc$describe_backup_job(
   BackupJobId = "string"
 )
 }

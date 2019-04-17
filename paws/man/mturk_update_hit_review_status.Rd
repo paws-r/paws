@@ -24,7 +24,7 @@ Reviewing, or it can revert a Reviewing HIT back to the Reviewable
 status.
 }
 \section{Request syntax}{
-\preformatted{mturk$update_hit_review_status(
+\preformatted{svc$update_hit_review_status(
   HITId = "string",
   Revert = TRUE|FALSE
 )

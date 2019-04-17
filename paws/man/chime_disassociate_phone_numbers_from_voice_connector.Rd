@@ -18,7 +18,7 @@ Disassociates the specified phone number from the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$disassociate_phone_numbers_from_voice_connector(
+\preformatted{svc$disassociate_phone_numbers_from_voice_connector(
   VoiceConnectorId = "string",
   E164PhoneNumbers = list(
     "string"

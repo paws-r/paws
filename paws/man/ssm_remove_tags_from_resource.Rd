@@ -34,7 +34,7 @@ in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
 Removes all tags from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{ssm$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
   ResourceId = "string",
   TagKeys = list(

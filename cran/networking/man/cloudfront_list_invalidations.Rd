@@ -24,7 +24,7 @@ body.}
 Lists invalidation batches.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_invalidations(
+\preformatted{svc$list_invalidations(
   DistributionId = "string",
   Marker = "string",
   MaxItems = "string"

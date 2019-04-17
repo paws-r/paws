@@ -15,7 +15,7 @@ This call returns immediately, but might take additional time to
 retrieve all the servers.
 }
 \section{Request syntax}{
-\preformatted{sms$import_server_catalog()
+\preformatted{svc$import_server_catalog()
 }
 }
 

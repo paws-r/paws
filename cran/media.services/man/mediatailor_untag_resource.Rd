@@ -18,7 +18,7 @@ Removes tags from the specified playback configuration resource. You can
 specify one or more tags to remove.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

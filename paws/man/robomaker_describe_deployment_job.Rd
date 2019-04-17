@@ -14,7 +14,7 @@ Describes a deployment job. [Does it work regardless of deployment
 status, e.g. Failed?]
 }
 \section{Request syntax}{
-\preformatted{robomaker$describe_deployment_job(
+\preformatted{svc$describe_deployment_job(
   job = "string"
 )
 }

@@ -13,7 +13,7 @@ redshift_describe_account_attributes(AttributeNames)
 Returns a list of attributes attached to an account
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_account_attributes(
+\preformatted{svc$describe_account_attributes(
   AttributeNames = list(
     "string"
   )

@@ -15,7 +15,7 @@ glue_get_jobs(NextToken, MaxResults)
 Retrieves all current job definitions.
 }
 \section{Request syntax}{
-\preformatted{glue$get_jobs(
+\preformatted{svc$get_jobs(
   NextToken = "string",
   MaxResults = 123
 )

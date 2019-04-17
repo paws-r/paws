@@ -33,7 +33,7 @@ the matching values up to that point and a \code{NextToken}. You can specify
 the \code{NextToken} in a subsequent call to get the next set of results.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_parameters(
+\preformatted{svc$describe_parameters(
   Filters = list(
     list(
       Key = "Name"|"Type"|"KeyId",

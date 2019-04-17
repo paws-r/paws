@@ -15,7 +15,7 @@ ListXssMatchSets.}
 Returns the XssMatchSet that is specified by \code{XssMatchSetId}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_xss_match_set(
+\preformatted{svc$get_xss_match_set(
   XssMatchSetId = "string"
 )
 }
@@ -24,7 +24,7 @@ Returns the XssMatchSet that is specified by \code{XssMatchSetId}.
 \examples{
 # The following example returns the details of an XSS match set with the
 # ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{wafregional$get_xss_match_set(
+\donttest{svc$get_xss_match_set(
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}
 

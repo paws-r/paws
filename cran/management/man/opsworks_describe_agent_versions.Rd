@@ -18,7 +18,7 @@ returns a list of available agent versions for the specified stack or
 configuration manager.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_agent_versions(
+\preformatted{svc$describe_agent_versions(
   StackId = "string",
   ConfigurationManager = list(
     Name = "string",

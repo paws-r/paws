@@ -87,7 +87,7 @@ For a specific time period, retrieve the top \code{N} dimension keys for a
 metric.
 }
 \section{Request syntax}{
-\preformatted{pi$describe_dimension_keys(
+\preformatted{svc$describe_dimension_keys(
   ServiceType = "RDS",
   Identifier = "string",
   StartTime = as.POSIXct(

@@ -23,7 +23,7 @@ Modifies the configuration of bring your own license (BYOL) for the
 specified account.
 }
 \section{Request syntax}{
-\preformatted{workspaces$modify_account(
+\preformatted{svc$modify_account(
   DedicatedTenancySupport = "ENABLED",
   DedicatedTenancyManagementCidrRange = "string"
 )

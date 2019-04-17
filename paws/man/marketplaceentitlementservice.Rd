@@ -21,12 +21,6 @@ capacity in a multi-tenant database.
 \item \emph{GetEntitlements}- Gets the entitlements for a Marketplace product.
 }
 }
-\section{Example}{
-\preformatted{marketplaceentitlementservice <- paws::marketplaceentitlementservice()
-marketplaceentitlementservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -34,3 +28,9 @@ marketplaceentitlementservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$get_entitlements(
+  Foo = 123
+)}
+
+}

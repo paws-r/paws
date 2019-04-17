@@ -42,7 +42,7 @@ Creates an entity recognizer using submitted files. After your
 using the API.
 }
 \section{Request syntax}{
-\preformatted{comprehend$create_entity_recognizer(
+\preformatted{svc$create_entity_recognizer(
   RecognizerName = "string",
   DataAccessRoleArn = "string",
   InputDataConfig = list(

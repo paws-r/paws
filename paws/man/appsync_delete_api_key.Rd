@@ -15,7 +15,7 @@ appsync_delete_api_key(apiId, id)
 Deletes an API key.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_api_key(
+\preformatted{svc$delete_api_key(
   apiId = "string",
   id = "string"
 )

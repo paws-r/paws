@@ -32,7 +32,7 @@ and each entry in \code{FailedEntries} provides the ID of the failed target
 and the error code.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$remove_targets(
+\preformatted{svc$remove_targets(
   Rule = "string",
   Ids = list(
     "string"

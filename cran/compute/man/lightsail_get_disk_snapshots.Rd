@@ -21,7 +21,7 @@ the output to make the list more manageable. You can use the pageToken
 and nextPageToken values to retrieve the next items in the list.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_disk_snapshots(
+\preformatted{svc$get_disk_snapshots(
   pageToken = "string"
 )
 }

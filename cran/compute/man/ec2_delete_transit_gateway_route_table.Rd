@@ -21,7 +21,7 @@ the route table from any transit gateway route tables before you can
 delete it.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_transit_gateway_route_table(
+\preformatted{svc$delete_transit_gateway_route_table(
   TransitGatewayRouteTableId = "string",
   DryRun = TRUE|FALSE
 )

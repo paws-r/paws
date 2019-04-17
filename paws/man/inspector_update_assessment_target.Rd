@@ -25,7 +25,7 @@ If resourceGroupArn is not specified, all EC2 instances in the current
 AWS account and region are included in the assessment target.
 }
 \section{Request syntax}{
-\preformatted{inspector$update_assessment_target(
+\preformatted{svc$update_assessment_target(
   assessmentTargetArn = "string",
   assessmentTargetName = "string",
   resourceGroupArn = "string"
@@ -36,7 +36,7 @@ AWS account and region are included in the assessment target.
 \examples{
 # Updates the assessment target that is specified by the ARN of the
 # assessment target.
-\donttest{inspector$update_assessment_target(
+\donttest{svc$update_assessment_target(
   assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
   assessmentTargetName = "Example",
   resourceGroupArn = "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-yNbgL5Pt"

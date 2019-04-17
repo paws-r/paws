@@ -24,7 +24,7 @@ In the request, you must specify either the \code{StreamName} or the
 \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$list_tags_for_stream(
+\preformatted{svc$list_tags_for_stream(
   NextToken = "string",
   StreamARN = "string",
   StreamName = "string"

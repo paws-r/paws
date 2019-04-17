@@ -19,7 +19,7 @@ triggers will be returned.}
 Gets all the triggers associated with a job.
 }
 \section{Request syntax}{
-\preformatted{glue$get_triggers(
+\preformatted{svc$get_triggers(
   NextToken = "string",
   DependentJobName = "string",
   MaxResults = 123

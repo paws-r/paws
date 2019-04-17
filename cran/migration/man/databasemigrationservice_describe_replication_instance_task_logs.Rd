@@ -27,7 +27,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Returns information about the task logs for the specified task.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_replication_instance_task_logs(
+\preformatted{svc$describe_replication_instance_task_logs(
   ReplicationInstanceArn = "string",
   MaxRecords = 123,
   Marker = "string"

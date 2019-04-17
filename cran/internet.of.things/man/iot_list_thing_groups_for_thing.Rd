@@ -17,7 +17,7 @@ iot_list_thing_groups_for_thing(thingName, nextToken, maxResults)
 List the thing groups to which the specified thing belongs.
 }
 \section{Request syntax}{
-\preformatted{iot$list_thing_groups_for_thing(
+\preformatted{svc$list_thing_groups_for_thing(
   thingName = "string",
   nextToken = "string",
   maxResults = 123

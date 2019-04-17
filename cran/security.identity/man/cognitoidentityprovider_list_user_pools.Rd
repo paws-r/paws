@@ -18,7 +18,7 @@ listing the user pools.}
 Lists the user pools associated with an AWS account.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_user_pools(
+\preformatted{svc$list_user_pools(
   NextToken = "string",
   MaxResults = 123
 )

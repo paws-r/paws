@@ -15,7 +15,7 @@ user pool cannot be assigned to stacks with fleets that are joined to an
 Active Directory domain.
 }
 \section{Request syntax}{
-\preformatted{appstream$batch_associate_user_stack(
+\preformatted{svc$batch_associate_user_stack(
   UserStackAssociations = list(
     list(
       StackName = "string",

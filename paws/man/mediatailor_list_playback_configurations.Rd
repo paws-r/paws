@@ -22,7 +22,7 @@ maximum, it provides parameters in the response that you can use to
 retrieve the next pageful.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$list_playback_configurations(
+\preformatted{svc$list_playback_configurations(
   MaxResults = 123,
   NextToken = "string"
 )

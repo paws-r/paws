@@ -25,7 +25,7 @@ each Availability Zone. We recommend that you associate at least two
 subnets to provide Availability Zone redundancy.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_client_vpn_target_network(
+\preformatted{svc$associate_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   SubnetId = "string",
   DryRun = TRUE|FALSE

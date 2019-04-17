@@ -36,7 +36,7 @@ If you specify a SubscriptionName, lists the description for that
 subscription.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_event_subscriptions(
+\preformatted{svc$describe_event_subscriptions(
   SubscriptionName = "string",
   Filters = list(
     list(

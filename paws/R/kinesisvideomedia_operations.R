@@ -40,7 +40,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideomedia$get_media(
+#' svc$get_media(
 #'   StreamName = "string",
 #'   StreamARN = "string",
 #'   StartSelector = list(

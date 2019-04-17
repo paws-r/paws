@@ -15,7 +15,7 @@ mediaconnect_revoke_flow_entitlement(EntitlementArn, FlowArn)
 Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$revoke_flow_entitlement(
+\preformatted{svc$revoke_flow_entitlement(
   EntitlementArn = "string",
   FlowArn = "string"
 )

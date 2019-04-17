@@ -27,7 +27,7 @@ You can filter the results using either bundle ID or owner, but not
 both.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_workspace_bundles(
+\preformatted{svc$describe_workspace_bundles(
   BundleIds = list(
     "string"
   ),

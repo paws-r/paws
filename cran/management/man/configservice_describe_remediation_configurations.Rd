@@ -14,7 +14,7 @@ you want details.}
 Returns the details of one or more remediation configurations.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_remediation_configurations(
+\preformatted{svc$describe_remediation_configurations(
   ConfigRuleNames = list(
     "string"
   )

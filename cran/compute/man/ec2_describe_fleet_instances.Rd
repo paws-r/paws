@@ -31,7 +31,7 @@ value.}
 Describes the running instances for the specified EC2 Fleet.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_fleet_instances(
+\preformatted{svc$describe_fleet_instances(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",

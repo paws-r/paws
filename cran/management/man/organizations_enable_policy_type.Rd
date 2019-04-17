@@ -33,7 +33,7 @@ status of available policy types in the organization.
 To view the status of policy type in a root, use ListRoots.
 }
 \section{Request syntax}{
-\preformatted{organizations$enable_policy_type(
+\preformatted{svc$enable_policy_type(
   RootId = "string",
   PolicyType = "SERVICE_CONTROL_POLICY"
 )
@@ -44,7 +44,7 @@ To view the status of policy type in a root, use ListRoots.
 # The following example shows how to enable the service control policy
 # (SCP) policy type in a root. The output shows a root object with a
 # PolicyTypes response element showing that SCPs are now enabled:/n/n
-\donttest{organizations$enable_policy_type(
+\donttest{svc$enable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
 )}

@@ -18,7 +18,7 @@ For more information, see
 in the \emph{AWS IoT Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{iotdataplane$delete_thing_shadow(
+\preformatted{svc$delete_thing_shadow(
   thingName = "string"
 )
 }

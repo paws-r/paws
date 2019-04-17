@@ -43,7 +43,7 @@ The results can return an empty result page. But if you have a
 nextToken, the results are displayed on the next page.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_aggregate_compliance_details_by_config_rule(
+\preformatted{svc$get_aggregate_compliance_details_by_config_rule(
   ConfigurationAggregatorName = "string",
   ConfigRuleName = "string",
   AccountId = "string",

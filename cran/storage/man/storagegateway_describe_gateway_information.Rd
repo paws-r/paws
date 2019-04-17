@@ -18,7 +18,7 @@ not). To specify which gateway to describe, use the Amazon Resource Name
 (ARN) of the gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_gateway_information(
+\preformatted{svc$describe_gateway_information(
   GatewayARN = "string"
 )
 }
@@ -28,7 +28,7 @@ not). To specify which gateway to describe, use the Amazon Resource Name
 # Returns metadata about a gateway such as its name, network interfaces,
 # configured time zone, and the state (whether the gateway is running or
 # not).
-\donttest{storagegateway$describe_gateway_information(
+\donttest{svc$describe_gateway_information(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

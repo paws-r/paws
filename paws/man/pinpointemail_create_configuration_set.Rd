@@ -36,7 +36,7 @@ configuration set to an email, all of the rules in that configuration
 set are applied to the email.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$create_configuration_set(
+\preformatted{svc$create_configuration_set(
   ConfigurationSetName = "string",
   TrackingOptions = list(
     CustomRedirectDomain = "string"

@@ -39,7 +39,7 @@ For more information about parameters and parameter groups, go to
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_default_cluster_parameters(
+\preformatted{svc$describe_default_cluster_parameters(
   ParameterGroupFamily = "string",
   MaxRecords = 123,
   Marker = "string"

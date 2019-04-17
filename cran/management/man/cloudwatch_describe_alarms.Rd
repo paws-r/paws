@@ -28,7 +28,7 @@ are returned. Alarms can be retrieved by using only a prefix for the
 alarm name, the alarm state, or a prefix for any action.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$describe_alarms(
+\preformatted{svc$describe_alarms(
   AlarmNames = list(
     "string"
   ),

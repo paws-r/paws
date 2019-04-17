@@ -22,7 +22,7 @@ servicecatalog_update_constraint(AcceptLanguage, Id, Description)
 Updates the specified constraint.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_constraint(
+\preformatted{svc$update_constraint(
   AcceptLanguage = "string",
   Id = "string",
   Description = "string"

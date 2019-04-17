@@ -15,7 +15,7 @@ appmesh_describe_virtual_service(meshName, virtualServiceName)
 Describes an existing virtual service.
 }
 \section{Request syntax}{
-\preformatted{appmesh$describe_virtual_service(
+\preformatted{svc$describe_virtual_service(
   meshName = "string",
   virtualServiceName = "string"
 )

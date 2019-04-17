@@ -55,7 +55,7 @@ so, call GetLabelDetection and pass the job identifier (\code{JobId}) from
 the initial call to \code{StartLabelDetection}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_label_detection(
+\preformatted{svc$start_label_detection(
   Video = list(
     S3Object = list(
       Bucket = "string",

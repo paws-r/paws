@@ -27,7 +27,7 @@ the nextToken value.}
 Describes the authorization rules for a specified Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_client_vpn_authorization_rules(
+\preformatted{svc$describe_client_vpn_authorization_rules(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE,
   NextToken = "string",

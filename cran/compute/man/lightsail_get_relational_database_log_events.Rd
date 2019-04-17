@@ -50,7 +50,7 @@ Default: \code{false}}
 Returns a list of log events for a database in Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_log_events(
+\preformatted{svc$get_relational_database_log_events(
   relationalDatabaseName = "string",
   logStreamName = "string",
   startTime = as.POSIXct(

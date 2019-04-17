@@ -24,7 +24,7 @@ metadata about registered and remaining resources on each container
 instance requested.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_container_instances(
+\preformatted{svc$describe_container_instances(
   cluster = "string",
   containerInstances = list(
     "string"
@@ -40,7 +40,7 @@ instance requested.
 # This example provides a description of the specified container instance
 # in your default region, using the container instance UUID as an
 # identifier.
-\donttest{ecs$describe_container_instances(
+\donttest{svc$describe_container_instances(
   cluster = "default",
   containerInstances = list(
     "f2756532-8f13-4d53-87c9-aed50dc94cd7"

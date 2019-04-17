@@ -13,7 +13,7 @@ robomaker_list_tags_for_resource(resourceArn)
 Lists all tags on a AWS RoboMaker resource.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }

@@ -16,7 +16,7 @@ scheduled. If the crawler is already running, returns a
 \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException}{CrawlerRunningException}.
 }
 \section{Request syntax}{
-\preformatted{glue$start_crawler(
+\preformatted{svc$start_crawler(
   Name = "string"
 )
 }

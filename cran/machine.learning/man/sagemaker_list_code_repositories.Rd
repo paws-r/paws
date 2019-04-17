@@ -38,7 +38,7 @@ repositories, use the token in the next request.}
 Gets a list of the Git repositories in your account.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_code_repositories(
+\preformatted{svc$list_code_repositories(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),

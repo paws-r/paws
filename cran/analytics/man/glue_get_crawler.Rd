@@ -13,7 +13,7 @@ glue_get_crawler(Name)
 Retrieves metadata for a specified crawler.
 }
 \section{Request syntax}{
-\preformatted{glue$get_crawler(
+\preformatted{svc$get_crawler(
   Name = "string"
 )
 }

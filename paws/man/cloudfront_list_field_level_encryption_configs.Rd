@@ -22,7 +22,7 @@ List all field-level encryption configurations that have been created in
 CloudFront for this account.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_field_level_encryption_configs(
+\preformatted{svc$list_field_level_encryption_configs(
   Marker = "string",
   MaxItems = "string"
 )

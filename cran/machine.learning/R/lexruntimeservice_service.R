@@ -18,11 +18,10 @@ NULL
 #' create and manage your Amazon Lex bot. For a list of build-time
 #' operations, see the build-time API, .
 #'
-#' @section Example:
-#' ```
-#' lexruntimeservice <- paws::lexruntimeservice()
-#' lexruntimeservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$post_content(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

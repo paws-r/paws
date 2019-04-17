@@ -26,7 +26,7 @@ name tag for your location.}
 Creates an endpoint for an Amazon EFS file system.
 }
 \section{Request syntax}{
-\preformatted{datasync$create_location_efs(
+\preformatted{svc$create_location_efs(
   Subdirectory = "string",
   EfsFilesystemArn = "string",
   Ec2Config = list(

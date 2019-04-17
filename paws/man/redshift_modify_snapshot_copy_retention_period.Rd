@@ -53,7 +53,7 @@ manual snapshots. If you set this option, only newly copied manual
 snapshots have the new retention period.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_snapshot_copy_retention_period(
+\preformatted{svc$modify_snapshot_copy_retention_period(
   ClusterIdentifier = "string",
   RetentionPeriod = 123,
   Manual = TRUE|FALSE

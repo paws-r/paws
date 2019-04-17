@@ -33,7 +33,7 @@ megabytes per second (or 200 megabits per second) during a
 }
 }
 \section{Request syntax}{
-\preformatted{kinesisvideoarchivedmedia$get_media_for_fragment_list(
+\preformatted{svc$get_media_for_fragment_list(
   StreamName = "string",
   Fragments = list(
     "string"

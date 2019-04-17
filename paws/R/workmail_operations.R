@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$associate_delegate_to_resource(
+#' svc$associate_delegate_to_resource(
 #'   OrganizationId = "string",
 #'   ResourceId = "string",
 #'   EntityId = "string"
@@ -56,7 +56,7 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$associate_member_to_group(
+#' svc$associate_member_to_group(
 #'   OrganizationId = "string",
 #'   GroupId = "string",
 #'   MemberId = "string"
@@ -97,7 +97,7 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$create_alias(
+#' svc$create_alias(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   Alias = "string"
@@ -137,7 +137,7 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$create_group(
+#' svc$create_group(
 #'   OrganizationId = "string",
 #'   Name = "string"
 #' )
@@ -177,7 +177,7 @@ workmail_create_group <- function(OrganizationId, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$create_resource(
+#' svc$create_resource(
 #'   OrganizationId = "string",
 #'   Name = "string",
 #'   Type = "ROOM"|"EQUIPMENT"
@@ -220,7 +220,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$create_user(
+#' svc$create_user(
 #'   OrganizationId = "string",
 #'   Name = "string",
 #'   DisplayName = "string",
@@ -265,7 +265,7 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$delete_alias(
+#' svc$delete_alias(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   Alias = "string"
@@ -303,7 +303,7 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$delete_group(
+#' svc$delete_group(
 #'   OrganizationId = "string",
 #'   GroupId = "string"
 #' )
@@ -343,7 +343,7 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$delete_mailbox_permissions(
+#' svc$delete_mailbox_permissions(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   GranteeId = "string"
@@ -382,7 +382,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$delete_resource(
+#' svc$delete_resource(
 #'   OrganizationId = "string",
 #'   ResourceId = "string"
 #' )
@@ -424,7 +424,7 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$delete_user(
+#' svc$delete_user(
 #'   OrganizationId = "string",
 #'   UserId = "string"
 #' )
@@ -465,7 +465,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$deregister_from_work_mail(
+#' svc$deregister_from_work_mail(
 #'   OrganizationId = "string",
 #'   EntityId = "string"
 #' )
@@ -502,7 +502,7 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$describe_group(
+#' svc$describe_group(
 #'   OrganizationId = "string",
 #'   GroupId = "string"
 #' )
@@ -540,7 +540,7 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$describe_organization(
+#' svc$describe_organization(
 #'   OrganizationId = "string"
 #' )
 #' ```
@@ -577,7 +577,7 @@ workmail_describe_organization <- function(OrganizationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$describe_resource(
+#' svc$describe_resource(
 #'   OrganizationId = "string",
 #'   ResourceId = "string"
 #' )
@@ -614,7 +614,7 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$describe_user(
+#' svc$describe_user(
 #'   OrganizationId = "string",
 #'   UserId = "string"
 #' )
@@ -655,7 +655,7 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$disassociate_delegate_from_resource(
+#' svc$disassociate_delegate_from_resource(
 #'   OrganizationId = "string",
 #'   ResourceId = "string",
 #'   EntityId = "string"
@@ -695,7 +695,7 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$disassociate_member_from_group(
+#' svc$disassociate_member_from_group(
 #'   OrganizationId = "string",
 #'   GroupId = "string",
 #'   MemberId = "string"
@@ -738,7 +738,7 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_aliases(
+#' svc$list_aliases(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   NextToken = "string",
@@ -783,7 +783,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_group_members(
+#' svc$list_group_members(
 #'   OrganizationId = "string",
 #'   GroupId = "string",
 #'   NextToken = "string",
@@ -824,7 +824,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_groups(
+#' svc$list_groups(
 #'   OrganizationId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -870,7 +870,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_mailbox_permissions(
+#' svc$list_mailbox_permissions(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   NextToken = "string",
@@ -910,7 +910,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_organizations(
+#' svc$list_organizations(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -953,7 +953,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_resource_delegates(
+#' svc$list_resource_delegates(
 #'   OrganizationId = "string",
 #'   ResourceId = "string",
 #'   NextToken = "string",
@@ -994,7 +994,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_resources(
+#' svc$list_resources(
 #'   OrganizationId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1034,7 +1034,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$list_users(
+#' svc$list_users(
 #'   OrganizationId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1085,7 +1085,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$put_mailbox_permissions(
+#' svc$put_mailbox_permissions(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   GranteeId = "string",
@@ -1139,7 +1139,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$register_to_work_mail(
+#' svc$register_to_work_mail(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   Email = "string"
@@ -1179,7 +1179,7 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$reset_password(
+#' svc$reset_password(
 #'   OrganizationId = "string",
 #'   UserId = "string",
 #'   Password = "string"
@@ -1221,7 +1221,7 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$update_primary_email_address(
+#' svc$update_primary_email_address(
 #'   OrganizationId = "string",
 #'   EntityId = "string",
 #'   Email = "string"
@@ -1266,7 +1266,7 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #'
 #' @section Request syntax:
 #' ```
-#' workmail$update_resource(
+#' svc$update_resource(
 #'   OrganizationId = "string",
 #'   ResourceId = "string",
 #'   Name = "string",

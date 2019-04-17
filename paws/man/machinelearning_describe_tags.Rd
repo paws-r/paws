@@ -15,7 +15,7 @@ machinelearning_describe_tags(ResourceId, ResourceType)
 Describes one or more of the tags for your Amazon ML object.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceId = "string",
   ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
 )

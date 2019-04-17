@@ -19,7 +19,7 @@ list.}
 Gets information about projects.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_projects(
+\preformatted{svc$list_projects(
   arn = "string",
   nextToken = "string"
 )
@@ -29,7 +29,7 @@ Gets information about projects.
 \examples{
 # The following example returns information about the specified project in
 # Device Farm.
-\donttest{devicefarm$list_projects(
+\donttest{svc$list_projects(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAM...",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}

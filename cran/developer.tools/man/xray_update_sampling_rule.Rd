@@ -13,7 +13,7 @@ xray_update_sampling_rule(SamplingRuleUpdate)
 Modifies a sampling rule's configuration.
 }
 \section{Request syntax}{
-\preformatted{xray$update_sampling_rule(
+\preformatted{svc$update_sampling_rule(
   SamplingRuleUpdate = list(
     RuleName = "string",
     RuleARN = "string",

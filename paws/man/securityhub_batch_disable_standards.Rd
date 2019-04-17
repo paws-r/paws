@@ -17,7 +17,7 @@ your compliance status against security industry (including AWS) best
 practices.
 }
 \section{Request syntax}{
-\preformatted{securityhub$batch_disable_standards(
+\preformatted{svc$batch_disable_standards(
   StandardsSubscriptionArns = list(
     "string"
   )

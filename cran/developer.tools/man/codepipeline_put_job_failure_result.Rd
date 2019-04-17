@@ -18,7 +18,7 @@ Represents the failure of a job as returned to the pipeline by a job
 worker. Only used for custom actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_job_failure_result(
+\preformatted{svc$put_job_failure_result(
   jobId = "string",
   failureDetails = list(
     type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",

@@ -17,7 +17,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns if sending status for an account is
 # enabled. (true / false):
-\donttest{ses$get_account_sending_enabled()}
+\donttest{svc$get_account_sending_enabled()}
 
 }
 \keyword{internal}

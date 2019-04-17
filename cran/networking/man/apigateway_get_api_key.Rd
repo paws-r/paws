@@ -16,7 +16,7 @@ contains the key value.}
 Gets information about the current ApiKey resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_api_key(
+\preformatted{svc$get_api_key(
   apiKey = "string",
   includeValue = TRUE|FALSE
 )

@@ -31,7 +31,7 @@ buckets, and tries to send a test notification to Amazon SNS topics that
 you specify.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$test_role(
+\preformatted{svc$test_role(
   Role = "string",
   InputBucket = "string",
   OutputBucket = "string",

@@ -19,7 +19,7 @@ previous call.)}
 Lists the specified notification subscriptions.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_notification_subscriptions(
+\preformatted{svc$describe_notification_subscriptions(
   OrganizationId = "string",
   Marker = "string",
   Limit = 123

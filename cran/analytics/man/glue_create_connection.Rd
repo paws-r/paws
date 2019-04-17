@@ -16,7 +16,7 @@ provided, the AWS account ID is used by default.}
 Creates a connection definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$create_connection(
+\preformatted{svc$create_connection(
   CatalogId = "string",
   ConnectionInput = list(
     Name = "string",

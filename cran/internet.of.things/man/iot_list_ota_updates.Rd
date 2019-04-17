@@ -17,7 +17,7 @@ iot_list_ota_updates(maxResults, nextToken, otaUpdateStatus)
 Lists OTA updates.
 }
 \section{Request syntax}{
-\preformatted{iot$list_ota_updates(
+\preformatted{svc$list_ota_updates(
   maxResults = 123,
   nextToken = "string",
   otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"

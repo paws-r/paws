@@ -16,7 +16,7 @@ public key identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 Remove a public key you previously added to CloudFront.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_public_key(
+\preformatted{svc$delete_public_key(
   Id = "string",
   IfMatch = "string"
 )

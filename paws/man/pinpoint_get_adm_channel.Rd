@@ -13,7 +13,7 @@ pinpoint_get_adm_channel(ApplicationId)
 Get an ADM channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_adm_channel(
+\preformatted{svc$get_adm_channel(
   ApplicationId = "string"
 )
 }

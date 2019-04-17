@@ -44,7 +44,7 @@ For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/la
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_tags(
+\preformatted{svc$describe_tags(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -62,7 +62,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes the tags for the specified instance.
-\donttest{ec2$describe_tags(
+\donttest{svc$describe_tags(
   Filters = list(
     list(
       Name = "resource-id",

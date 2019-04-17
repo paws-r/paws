@@ -42,7 +42,7 @@ They consist of lowercase letters, numbers, and hyphens.}
 Returns metadata about your backup jobs.
 }
 \section{Request syntax}{
-\preformatted{backup$list_backup_jobs(
+\preformatted{svc$list_backup_jobs(
   NextToken = "string",
   MaxResults = 123,
   ByResourceArn = "string",

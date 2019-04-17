@@ -57,7 +57,7 @@ value.}
 Describes one or more of your VPC peering connections.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_peering_connections(
+\preformatted{svc$describe_vpc_peering_connections(
   Filters = list(
     list(
       Name = "string",

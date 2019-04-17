@@ -73,11 +73,10 @@ NULL
 #' All API operations allow for five requests per second with a burst of 10
 #' requests per second.
 #'
-#' @section Example:
-#' ```
-#' opsworkscm <- paws::opsworkscm()
-#' opsworkscm$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_node(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

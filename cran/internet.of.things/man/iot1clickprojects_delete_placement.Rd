@@ -19,7 +19,7 @@ associated with it.
 When you delete a placement, all associated data becomes irretrievable.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$delete_placement(
+\preformatted{svc$delete_placement(
   placementName = "string",
   projectName = "string"
 )

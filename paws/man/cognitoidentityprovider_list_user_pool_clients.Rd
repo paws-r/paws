@@ -22,7 +22,7 @@ list.}
 Lists the clients that have been created for the specified user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_user_pool_clients(
+\preformatted{svc$list_user_pool_clients(
   UserPoolId = "string",
   MaxResults = 123,
   NextToken = "string"

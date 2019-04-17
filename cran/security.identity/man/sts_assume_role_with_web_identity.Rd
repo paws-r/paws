@@ -185,7 +185,7 @@ Amazon S3.
 }
 }
 \section{Request syntax}{
-\preformatted{sts$assume_role_with_web_identity(
+\preformatted{svc$assume_role_with_web_identity(
   RoleArn = "string",
   RoleSessionName = "string",
   WebIdentityToken = "string",
@@ -198,7 +198,7 @@ Amazon S3.
 
 \examples{
 # 
-\donttest{sts$assume_role_with_web_identity(
+\donttest{svc$assume_role_with_web_identity(
   DurationSeconds = 3600L,
   ProviderId = "www.amazon.com",
   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",

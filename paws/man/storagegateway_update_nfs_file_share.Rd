@@ -71,7 +71,7 @@ To leave a file share field unchanged, set the corresponding input field
 to null. This operation is only supported in file gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_nfs_file_share(
+\preformatted{svc$update_nfs_file_share(
   FileShareARN = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",

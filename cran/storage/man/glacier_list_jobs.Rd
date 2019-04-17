@@ -72,7 +72,7 @@ For more information about using this operation, see the documentation
 for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html}{List Jobs}.
 }
 \section{Request syntax}{
-\preformatted{glacier$list_jobs(
+\preformatted{svc$list_jobs(
   accountId = "string",
   vaultName = "string",
   limit = "string",
@@ -85,7 +85,7 @@ for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/lates
 
 \examples{
 # The example lists jobs for the vault named my-vault.
-\donttest{glacier$list_jobs(
+\donttest{svc$list_jobs(
   accountId = "-",
   vaultName = "my-vault"
 )}

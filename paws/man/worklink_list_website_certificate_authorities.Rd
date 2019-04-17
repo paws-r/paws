@@ -21,7 +21,7 @@ Retrieves a list of certificate authorities added for the current
 account and Region.
 }
 \section{Request syntax}{
-\preformatted{worklink$list_website_certificate_authorities(
+\preformatted{svc$list_website_certificate_authorities(
   FleetArn = "string",
   MaxResults = 123,
   NextToken = "string"

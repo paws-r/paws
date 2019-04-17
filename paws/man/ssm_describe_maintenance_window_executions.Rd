@@ -32,7 +32,7 @@ about when the Maintenance Window was scheduled to be active, and
 information about tasks registered and run with the Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_window_executions(
+\preformatted{svc$describe_maintenance_window_executions(
   WindowId = "string",
   Filters = list(
     list(

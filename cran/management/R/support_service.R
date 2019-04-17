@@ -64,11 +64,10 @@ NULL
 #' service to create and manage your support cases, and how to call Trusted
 #' Advisor for results of checks on your resources.
 #'
-#' @section Example:
-#' ```
-#' support <- paws::support()
-#' support$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_attachments_to_set(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

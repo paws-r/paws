@@ -28,7 +28,7 @@ type, including:
 Describes one or more of your clusters.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_clusters(
+\preformatted{svc$describe_clusters(
   clusters = list(
     "string"
   ),
@@ -42,7 +42,7 @@ Describes one or more of your clusters.
 \examples{
 # This example provides a description of the specified cluster in your
 # default region.
-\donttest{ecs$describe_clusters(
+\donttest{svc$describe_clusters(
   clusters = list(
     "default"
   )

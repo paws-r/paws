@@ -24,7 +24,7 @@ instance ARN, after instance/, such as
 Updates the security profiles assigned to the user.
 }
 \section{Request syntax}{
-\preformatted{connect$update_user_security_profiles(
+\preformatted{svc$update_user_security_profiles(
   SecurityProfileIds = list(
     "string"
   ),

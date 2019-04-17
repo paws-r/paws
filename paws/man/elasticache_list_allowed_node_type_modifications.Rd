@@ -36,7 +36,7 @@ the \code{CacheNodeType} parameter must be one of the node types returned by
 this operation.
 }
 \section{Request syntax}{
-\preformatted{elasticache$list_allowed_node_type_modifications(
+\preformatted{svc$list_allowed_node_type_modifications(
   CacheClusterId = "string",
   ReplicationGroupId = "string"
 )

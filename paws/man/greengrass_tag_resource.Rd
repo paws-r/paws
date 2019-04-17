@@ -15,7 +15,7 @@ greengrass_tag_resource(ResourceArn, tags)
 Add tags to a resource.
 }
 \section{Request syntax}{
-\preformatted{greengrass$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   tags = list(
     "string"

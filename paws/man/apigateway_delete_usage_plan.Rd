@@ -13,7 +13,7 @@ apigateway_delete_usage_plan(usagePlanId)
 Deletes a usage plan of a given plan Id.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_usage_plan(
+\preformatted{svc$delete_usage_plan(
   usagePlanId = "string"
 )
 }

@@ -36,7 +36,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$create_activity(
+\preformatted{svc$create_activity(
   name = "string",
   tags = list(
     list(

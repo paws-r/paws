@@ -15,7 +15,7 @@ greengrass_untag_resource(ResourceArn, TagKeys)
 Remove tags with specified keys from a resource.
 }
 \section{Request syntax}{
-\preformatted{greengrass$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

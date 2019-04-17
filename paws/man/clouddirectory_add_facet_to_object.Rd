@@ -23,7 +23,7 @@ Adds a new Facet to an object. An object can have more than one facet
 applied on it.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$add_facet_to_object(
+\preformatted{svc$add_facet_to_object(
   DirectoryArn = "string",
   SchemaFacet = list(
     SchemaArn = "string",

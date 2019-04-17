@@ -32,7 +32,7 @@ replication instance and an endpoint. Connections are created when you
 test an endpoint.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_connections(
+\preformatted{svc$describe_connections(
   Filters = list(
     list(
       Name = "string",
@@ -51,7 +51,7 @@ test an endpoint.
 # Describes the status of the connections that have been made between the
 # replication instance and an endpoint. Connections are created when you
 # test an endpoint.
-\donttest{databasemigrationservice$describe_connections(
+\donttest{svc$describe_connections(
   Filters = list(
     list(
       Name = "string",

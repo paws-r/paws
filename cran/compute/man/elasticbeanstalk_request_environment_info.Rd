@@ -50,7 +50,7 @@ Related Topics
 }
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$request_environment_info(
+\preformatted{svc$request_environment_info(
   EnvironmentId = "string",
   EnvironmentName = "string",
   InfoType = "tail"|"bundle"
@@ -60,7 +60,7 @@ Related Topics
 
 \examples{
 # The following operation requests logs from an environment named my-env:
-\donttest{elasticbeanstalk$request_environment_info(
+\donttest{svc$request_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
 )}

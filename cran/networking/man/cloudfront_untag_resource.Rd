@@ -15,7 +15,7 @@ cloudfront_untag_resource(Resource, TagKeys)
 Remove tags from a CloudFront resource.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$untag_resource(
+\preformatted{svc$untag_resource(
   Resource = "string",
   TagKeys = list(
     Items = list(

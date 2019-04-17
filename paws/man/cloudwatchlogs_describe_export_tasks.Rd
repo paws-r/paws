@@ -25,7 +25,7 @@ Lists the specified export tasks. You can list all your export tasks or
 filter the results based on task ID or task status.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   taskId = "string",
   statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
   nextToken = "string",

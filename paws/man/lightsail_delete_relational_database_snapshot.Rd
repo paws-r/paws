@@ -19,7 +19,7 @@ access control via resource tags applied to the resource identified by
 relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_relational_database_snapshot(
+\preformatted{svc$delete_relational_database_snapshot(
   relationalDatabaseSnapshotName = "string"
 )
 }

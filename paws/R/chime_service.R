@@ -51,11 +51,10 @@ NULL
 #' Console](https://docs.aws.amazon.com/chime/latest/ag/control-access.html)
 #' in the *Amazon Chime Administration Guide*.
 #'
-#' @section Example:
-#' ```
-#' chime <- paws::chime()
-#' chime$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_phone_number_with_user(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -26,12 +26,6 @@ resources:
 \item \href{https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html}{AWS Sever Migration Service User Guide}
 }
 }
-\section{Example}{
-\preformatted{sms <- paws::sms()
-sms$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,3 +60,9 @@ sms$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_app(
+  Foo = 123
+)}
+
+}

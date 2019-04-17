@@ -16,7 +16,7 @@ idempotency of the request.}
 Deletes the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$delete_resource_share(
+\preformatted{svc$delete_resource_share(
   resourceShareArn = "string",
   clientToken = "string"
 )

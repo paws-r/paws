@@ -13,7 +13,7 @@ codepipeline_delete_pipeline(name)
 Deletes the specified pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   name = "string"
 )
 }

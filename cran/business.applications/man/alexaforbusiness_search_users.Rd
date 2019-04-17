@@ -32,7 +32,7 @@ Searches users and lists the ones that meet a set of filter and sort
 criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_users(
+\preformatted{svc$search_users(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

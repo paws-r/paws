@@ -15,7 +15,7 @@ pinpoint_update_email_channel(ApplicationId, EmailChannelRequest)
 Update an email channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_email_channel(
+\preformatted{svc$update_email_channel(
   ApplicationId = "string",
   EmailChannelRequest = list(
     ConfigurationSet = "string",

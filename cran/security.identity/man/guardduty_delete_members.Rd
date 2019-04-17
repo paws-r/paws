@@ -16,7 +16,7 @@ guardduty_delete_members(AccountIds, DetectorId)
 Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_members(
+\preformatted{svc$delete_members(
   AccountIds = list(
     "string"
   ),

@@ -19,7 +19,7 @@ Deletes a conditional forwarder that has been set up for your AWS
 directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$delete_conditional_forwarder(
+\preformatted{svc$delete_conditional_forwarder(
   DirectoryId = "string",
   RemoteDomainName = "string"
 )

@@ -19,7 +19,7 @@ container's endpoint does not change after it has been assigned. The
 with a specified AWS account, use ListContainers.
 }
 \section{Request syntax}{
-\preformatted{mediastore$describe_container(
+\preformatted{svc$describe_container(
   ContainerName = "string"
 )
 }

@@ -22,7 +22,7 @@ SQL is not enabled for this private beta. Using SQL parameters (such as
 RunConfiguration\$SqlRunConfigurations) will result in an error.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$start_application(
+\preformatted{svc$start_application(
   ApplicationName = "string",
   RunConfiguration = list(
     SqlRunConfigurations = list(

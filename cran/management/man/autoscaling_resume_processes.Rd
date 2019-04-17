@@ -32,7 +32,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$resume_processes(
+\preformatted{svc$resume_processes(
   AutoScalingGroupName = "string",
   ScalingProcesses = list(
     "string"
@@ -44,7 +44,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example resumes the specified suspended scaling process for the
 # specified Auto Scaling group.
-\donttest{autoscaling$resume_processes(
+\donttest{svc$resume_processes(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScalingProcesses = list(
     "AlarmNotification"

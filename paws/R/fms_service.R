@@ -13,11 +13,10 @@ NULL
 #' Firewall Manager features, see the [AWS Firewall Manager Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 #'
-#' @section Example:
-#' ```
-#' fms <- paws::fms()
-#' fms$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_admin_account(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

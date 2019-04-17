@@ -22,7 +22,7 @@ Deleting a notification also deletes the subscribers that are associated
 with the notification.
 }
 \section{Request syntax}{
-\preformatted{budgets$delete_notification(
+\preformatted{svc$delete_notification(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(

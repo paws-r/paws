@@ -30,7 +30,7 @@ Lists the plans for the specified provisioned product or all plans to
 which the user has access.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_provisioned_product_plans(
+\preformatted{svc$list_provisioned_product_plans(
   AcceptLanguage = "string",
   ProvisionProductId = "string",
   PageSize = 123,

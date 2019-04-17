@@ -42,7 +42,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationOutput} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$add_application_reference_data_source(
+\preformatted{svc$add_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceDataSource = list(

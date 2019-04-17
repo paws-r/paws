@@ -6,11 +6,10 @@ NULL
 #'
 #' 
 #'
-#' @section Example:
-#' ```
-#' kinesisvideomedia <- paws::kinesisvideomedia()
-#' kinesisvideomedia$operation()
-#' ```
+#' @examples
+#' \donttest{svc$get_media(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

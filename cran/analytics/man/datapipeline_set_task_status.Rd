@@ -38,7 +38,7 @@ task runner does not need to call \code{SetTaskStatus} for tasks that are
 canceled by the web service during a call to ReportTaskProgress.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$set_task_status(
+\preformatted{svc$set_task_status(
   taskId = "string",
   taskStatus = "FINISHED"|"FAILED"|"FALSE",
   errorId = "string",

@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$add_facet_to_object(
+#' svc$add_facet_to_object(
 #'   DirectoryArn = "string",
 #'   SchemaFacet = list(
 #'     SchemaArn = "string",
@@ -87,7 +87,7 @@ clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, Object
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$apply_schema(
+#' svc$apply_schema(
 #'   PublishedSchemaArn = "string",
 #'   DirectoryArn = "string"
 #' )
@@ -133,7 +133,7 @@ clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$attach_object(
+#' svc$attach_object(
 #'   DirectoryArn = "string",
 #'   ParentReference = list(
 #'     Selector = "string"
@@ -181,7 +181,7 @@ clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildRef
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$attach_policy(
+#' svc$attach_policy(
 #'   DirectoryArn = "string",
 #'   PolicyReference = list(
 #'     Selector = "string"
@@ -226,7 +226,7 @@ clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$attach_to_index(
+#' svc$attach_to_index(
 #'   DirectoryArn = "string",
 #'   IndexReference = list(
 #'     Selector = "string"
@@ -275,7 +275,7 @@ clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetR
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$attach_typed_link(
+#' svc$attach_typed_link(
 #'   DirectoryArn = "string",
 #'   SourceObjectReference = list(
 #'     Selector = "string"
@@ -339,7 +339,7 @@ clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$batch_read(
+#' svc$batch_read(
 #'   DirectoryArn = "string",
 #'   Operations = list(
 #'     list(
@@ -604,7 +604,7 @@ clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$batch_write(
+#' svc$batch_write(
 #'   DirectoryArn = "string",
 #'   Operations = list(
 #'     list(
@@ -915,7 +915,7 @@ clouddirectory_batch_write <- function(DirectoryArn, Operations) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_directory(
+#' svc$create_directory(
 #'   Name = "string",
 #'   SchemaArn = "string"
 #' )
@@ -978,7 +978,7 @@ clouddirectory_create_directory <- function(Name, SchemaArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_facet(
+#' svc$create_facet(
 #'   SchemaArn = "string",
 #'   Name = "string",
 #'   Attributes = list(
@@ -1056,7 +1056,7 @@ clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, Obje
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_index(
+#' svc$create_index(
 #'   DirectoryArn = "string",
 #'   OrderedIndexedAttributeList = list(
 #'     list(
@@ -1116,7 +1116,7 @@ clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeLis
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_object(
+#' svc$create_object(
 #'   DirectoryArn = "string",
 #'   SchemaFacets = list(
 #'     list(
@@ -1193,7 +1193,7 @@ clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttri
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_schema(
+#' svc$create_schema(
 #'   Name = "string"
 #' )
 #' ```
@@ -1231,7 +1231,7 @@ clouddirectory_create_schema <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$create_typed_link_facet(
+#' svc$create_typed_link_facet(
 #'   SchemaArn = "string",
 #'   Facet = list(
 #'     Name = "string",
@@ -1299,7 +1299,7 @@ clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$delete_directory(
+#' svc$delete_directory(
 #'   DirectoryArn = "string"
 #' )
 #' ```
@@ -1338,7 +1338,7 @@ clouddirectory_delete_directory <- function(DirectoryArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$delete_facet(
+#' svc$delete_facet(
 #'   SchemaArn = "string",
 #'   Name = "string"
 #' )
@@ -1380,7 +1380,7 @@ clouddirectory_delete_facet <- function(SchemaArn, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$delete_object(
+#' svc$delete_object(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -1420,7 +1420,7 @@ clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$delete_schema(
+#' svc$delete_schema(
 #'   SchemaArn = "string"
 #' )
 #' ```
@@ -1458,7 +1458,7 @@ clouddirectory_delete_schema <- function(SchemaArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$delete_typed_link_facet(
+#' svc$delete_typed_link_facet(
 #'   SchemaArn = "string",
 #'   Name = "string"
 #' )
@@ -1498,7 +1498,7 @@ clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$detach_from_index(
+#' svc$detach_from_index(
 #'   DirectoryArn = "string",
 #'   IndexReference = list(
 #'     Selector = "string"
@@ -1544,7 +1544,7 @@ clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, Targe
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$detach_object(
+#' svc$detach_object(
 #'   DirectoryArn = "string",
 #'   ParentReference = list(
 #'     Selector = "string"
@@ -1588,7 +1588,7 @@ clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$detach_policy(
+#' svc$detach_policy(
 #'   DirectoryArn = "string",
 #'   PolicyReference = list(
 #'     Selector = "string"
@@ -1633,7 +1633,7 @@ clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$detach_typed_link(
+#' svc$detach_typed_link(
 #'   DirectoryArn = "string",
 #'   TypedLinkSpecifier = list(
 #'     TypedLinkFacet = list(
@@ -1696,7 +1696,7 @@ clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$disable_directory(
+#' svc$disable_directory(
 #'   DirectoryArn = "string"
 #' )
 #' ```
@@ -1732,7 +1732,7 @@ clouddirectory_disable_directory <- function(DirectoryArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$enable_directory(
+#' svc$enable_directory(
 #'   DirectoryArn = "string"
 #' )
 #' ```
@@ -1769,7 +1769,7 @@ clouddirectory_enable_directory <- function(DirectoryArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_applied_schema_version(
+#' svc$get_applied_schema_version(
 #'   SchemaArn = "string"
 #' )
 #' ```
@@ -1804,7 +1804,7 @@ clouddirectory_get_applied_schema_version <- function(SchemaArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_directory(
+#' svc$get_directory(
 #'   DirectoryArn = "string"
 #' )
 #' ```
@@ -1844,7 +1844,7 @@ clouddirectory_get_directory <- function(DirectoryArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_facet(
+#' svc$get_facet(
 #'   SchemaArn = "string",
 #'   Name = "string"
 #' )
@@ -1887,7 +1887,7 @@ clouddirectory_get_facet <- function(SchemaArn, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_link_attributes(
+#' svc$get_link_attributes(
 #'   DirectoryArn = "string",
 #'   TypedLinkSpecifier = list(
 #'     TypedLinkFacet = list(
@@ -1959,7 +1959,7 @@ clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier,
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_object_attributes(
+#' svc$get_object_attributes(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2008,7 +2008,7 @@ clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, 
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_object_information(
+#' svc$get_object_information(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2049,7 +2049,7 @@ clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference,
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_schema_as_json(
+#' svc$get_schema_as_json(
 #'   SchemaArn = "string"
 #' )
 #' ```
@@ -2088,7 +2088,7 @@ clouddirectory_get_schema_as_json <- function(SchemaArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$get_typed_link_facet_information(
+#' svc$get_typed_link_facet_information(
 #'   SchemaArn = "string",
 #'   Name = "string"
 #' )
@@ -2130,7 +2130,7 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_applied_schema_arns(
+#' svc$list_applied_schema_arns(
 #'   DirectoryArn = "string",
 #'   SchemaArn = "string",
 #'   NextToken = "string",
@@ -2173,7 +2173,7 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_attached_indices(
+#' svc$list_attached_indices(
 #'   DirectoryArn = "string",
 #'   TargetReference = list(
 #'     Selector = "string"
@@ -2217,7 +2217,7 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_development_schema_arns(
+#' svc$list_development_schema_arns(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -2256,7 +2256,7 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_directories(
+#' svc$list_directories(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   state = "ENABLED"|"DISABLED"|"DELETED"
@@ -2297,7 +2297,7 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_facet_attributes(
+#' svc$list_facet_attributes(
 #'   SchemaArn = "string",
 #'   Name = "string",
 #'   NextToken = "string",
@@ -2337,7 +2337,7 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_facet_names(
+#' svc$list_facet_names(
 #'   SchemaArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2391,7 +2391,7 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_incoming_typed_links(
+#' svc$list_incoming_typed_links(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2472,7 +2472,7 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_index(
+#' svc$list_index(
 #'   DirectoryArn = "string",
 #'   RangesOnIndexedValues = list(
 #'     list(
@@ -2550,7 +2550,7 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_managed_schema_arns(
+#' svc$list_managed_schema_arns(
 #'   SchemaArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2599,7 +2599,7 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_object_attributes(
+#' svc$list_object_attributes(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2656,7 +2656,7 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_object_children(
+#' svc$list_object_children(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2714,7 +2714,7 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_object_parent_paths(
+#' svc$list_object_parent_paths(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2768,7 +2768,7 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_object_parents(
+#' svc$list_object_parents(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2819,7 +2819,7 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_object_policies(
+#' svc$list_object_policies(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2877,7 +2877,7 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_outgoing_typed_links(
+#' svc$list_outgoing_typed_links(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -2959,7 +2959,7 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_policy_attachments(
+#' svc$list_policy_attachments(
 #'   DirectoryArn = "string",
 #'   PolicyReference = list(
 #'     Selector = "string"
@@ -3006,7 +3006,7 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_published_schema_arns(
+#' svc$list_published_schema_arns(
 #'   SchemaArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -3051,7 +3051,7 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -3096,7 +3096,7 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_typed_link_facet_attributes(
+#' svc$list_typed_link_facet_attributes(
 #'   SchemaArn = "string",
 #'   Name = "string",
 #'   NextToken = "string",
@@ -3141,7 +3141,7 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$list_typed_link_facet_names(
+#' svc$list_typed_link_facet_names(
 #'   SchemaArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -3192,7 +3192,7 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$lookup_policy(
+#' svc$lookup_policy(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -3243,7 +3243,7 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$publish_schema(
+#' svc$publish_schema(
 #'   DevelopmentSchemaArn = "string",
 #'   Version = "string",
 #'   MinorVersion = "string",
@@ -3285,7 +3285,7 @@ clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVe
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$put_schema_from_json(
+#' svc$put_schema_from_json(
 #'   SchemaArn = "string",
 #'   Document = "string"
 #' )
@@ -3324,7 +3324,7 @@ clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$remove_facet_from_object(
+#' svc$remove_facet_from_object(
 #'   DirectoryArn = "string",
 #'   SchemaFacet = list(
 #'     SchemaArn = "string",
@@ -3368,7 +3368,7 @@ clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, O
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -3411,7 +3411,7 @@ clouddirectory_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3463,7 +3463,7 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$update_facet(
+#' svc$update_facet(
 #'   SchemaArn = "string",
 #'   Name = "string",
 #'   AttributeUpdates = list(
@@ -3542,7 +3542,7 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$update_link_attributes(
+#' svc$update_link_attributes(
 #'   DirectoryArn = "string",
 #'   TypedLinkSpecifier = list(
 #'     TypedLinkFacet = list(
@@ -3628,7 +3628,7 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$update_object_attributes(
+#' svc$update_object_attributes(
 #'   DirectoryArn = "string",
 #'   ObjectReference = list(
 #'     Selector = "string"
@@ -3690,7 +3690,7 @@ clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReferenc
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$update_schema(
+#' svc$update_schema(
 #'   SchemaArn = "string",
 #'   Name = "string"
 #' )
@@ -3741,7 +3741,7 @@ clouddirectory_update_schema <- function(SchemaArn, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$update_typed_link_facet(
+#' svc$update_typed_link_facet(
 #'   SchemaArn = "string",
 #'   Name = "string",
 #'   AttributeUpdates = list(
@@ -3821,7 +3821,7 @@ clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpd
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$upgrade_applied_schema(
+#' svc$upgrade_applied_schema(
 #'   PublishedSchemaArn = "string",
 #'   DirectoryArn = "string",
 #'   DryRun = TRUE|FALSE
@@ -3869,7 +3869,7 @@ clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryA
 #'
 #' @section Request syntax:
 #' ```
-#' clouddirectory$upgrade_published_schema(
+#' svc$upgrade_published_schema(
 #'   DevelopmentSchemaArn = "string",
 #'   PublishedSchemaArn = "string",
 #'   MinorVersion = "string",

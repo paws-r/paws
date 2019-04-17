@@ -33,7 +33,7 @@ greengrass_create_group_version(AmznClientToken,
 Creates a version of a group which has already been defined.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_group_version(
+\preformatted{svc$create_group_version(
   AmznClientToken = "string",
   ConnectorDefinitionVersionArn = "string",
   CoreDefinitionVersionArn = "string",

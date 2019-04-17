@@ -53,7 +53,7 @@ sub-connections. For a LAG owned by a partner, any associated virtual
 interfaces cannot be directly configured.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_lag(
+\preformatted{svc$create_lag(
   numberOfConnections = 123,
   location = "string",
   connectionsBandwidth = "string",

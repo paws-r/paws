@@ -117,7 +117,7 @@ one or more database configuration parameters by specifying these
 parameters and the new values in the request.
 }
 \section{Request syntax}{
-\preformatted{docdb$modify_db_cluster(
+\preformatted{svc$modify_db_cluster(
   DBClusterIdentifier = "string",
   NewDBClusterIdentifier = "string",
   ApplyImmediately = TRUE|FALSE,

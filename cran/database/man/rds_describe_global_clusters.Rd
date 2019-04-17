@@ -51,7 +51,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_global_clusters(
+\preformatted{svc$describe_global_clusters(
   GlobalClusterIdentifier = "string",
   Filters = list(
     list(

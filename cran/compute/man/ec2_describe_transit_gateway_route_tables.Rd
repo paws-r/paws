@@ -43,7 +43,7 @@ transit gateway route tables are described. Alternatively, you can
 filter the results.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_transit_gateway_route_tables(
+\preformatted{svc$describe_transit_gateway_route_tables(
   TransitGatewayRouteTableIds = list(
     "string"
   ),

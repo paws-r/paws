@@ -18,11 +18,10 @@ NULL
 #' enhanced visibility into the key performance statistics associated with
 #' their cache and can receive alarms if a part of their cache runs hot.
 #'
-#' @section Example:
-#' ```
-#' elasticache <- paws::elasticache()
-#' elasticache$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_resource(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

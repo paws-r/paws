@@ -15,7 +15,7 @@ apigateway_flush_stage_authorizers_cache(restApiId, stageName)
 Flushes all authorizer cache entries on a stage.
 }
 \section{Request syntax}{
-\preformatted{apigateway$flush_stage_authorizers_cache(
+\preformatted{svc$flush_stage_authorizers_cache(
   restApiId = "string",
   stageName = "string"
 )

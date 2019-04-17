@@ -16,7 +16,7 @@ Returns information about a specific database snapshot in Amazon
 Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_snapshot(
+\preformatted{svc$get_relational_database_snapshot(
   relationalDatabaseSnapshotName = "string"
 )
 }

@@ -28,7 +28,7 @@ value.}
 Gets the specified resource shares or all of your resource shares.
 }
 \section{Request syntax}{
-\preformatted{ram$get_resource_shares(
+\preformatted{svc$get_resource_shares(
   resourceShareArns = list(
     "string"
   ),

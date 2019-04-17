@@ -49,7 +49,7 @@ This new time range indicates the actual period during which AWS WAF
 selected the requests in the sample.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_sampled_requests(
+\preformatted{svc$get_sampled_requests(
   WebAclId = "string",
   RuleId = "string",
   TimeWindow = list(
@@ -70,7 +70,7 @@ selected the requests in the sample.
 # --a sample-- that AWS WAF randomly selects from among the first 5,000
 # requests that your AWS resource received between the time period
 # 2016-09-27T15:50Z to 2016-09-27T15:50Z.
-\donttest{wafregional$get_sampled_requests(
+\donttest{svc$get_sampled_requests(
   MaxItems = 100L,
   RuleId = "WAFRule-1-Example",
   TimeWindow = list(

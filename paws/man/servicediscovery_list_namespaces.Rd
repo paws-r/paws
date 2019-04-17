@@ -35,7 +35,7 @@ Lists summary information about the namespaces that were created by the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$list_namespaces(
+\preformatted{svc$list_namespaces(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

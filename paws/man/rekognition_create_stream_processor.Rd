@@ -49,7 +49,7 @@ StopStreamProcessor to stop processing. You can delete the stream
 processor by calling DeleteStreamProcessor.
 }
 \section{Request syntax}{
-\preformatted{rekognition$create_stream_processor(
+\preformatted{svc$create_stream_processor(
   Input = list(
     KinesisVideoStream = list(
       Arn = "string"

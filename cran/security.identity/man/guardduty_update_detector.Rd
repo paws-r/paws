@@ -18,7 +18,7 @@ guardduty_update_detector(DetectorId, Enable,
 Updates an Amazon GuardDuty detector specified by the detectorId.
 }
 \section{Request syntax}{
-\preformatted{guardduty$update_detector(
+\preformatted{svc$update_detector(
   DetectorId = "string",
   Enable = TRUE|FALSE,
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"

@@ -30,7 +30,7 @@ still more containers to receive.
 See also DescribeContainer, which gets the properties of one container.
 }
 \section{Request syntax}{
-\preformatted{mediastore$list_containers(
+\preformatted{svc$list_containers(
   NextToken = "string",
   MaxResults = 123
 )

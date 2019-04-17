@@ -24,7 +24,7 @@ Returns the default system parameter information for the DAX caching
 software.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_default_parameters(
+\preformatted{svc$describe_default_parameters(
   MaxResults = 123,
   NextToken = "string"
 )

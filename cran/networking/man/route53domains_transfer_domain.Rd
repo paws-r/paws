@@ -98,7 +98,7 @@ transfer doesn't complete successfully, the domain registrant will be
 notified by email.
 }
 \section{Request syntax}{
-\preformatted{route53domains$transfer_domain(
+\preformatted{svc$transfer_domain(
   DomainName = "string",
   IdnLangCode = "string",
   DurationInYears = 123,

@@ -21,7 +21,7 @@ about instance profiles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGui
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$get_instance_profile(
+\preformatted{svc$get_instance_profile(
   InstanceProfileName = "string"
 )
 }
@@ -30,7 +30,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command gets information about the instance profile named
 # ExampleInstanceProfile.
-\donttest{iam$get_instance_profile(
+\donttest{svc$get_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
 )}
 

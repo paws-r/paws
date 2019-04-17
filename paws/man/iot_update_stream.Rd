@@ -21,7 +21,7 @@ Updates an existing stream. The stream version will be incremented by
 one.
 }
 \section{Request syntax}{
-\preformatted{iot$update_stream(
+\preformatted{svc$update_stream(
   streamId = "string",
   description = "string",
   files = list(

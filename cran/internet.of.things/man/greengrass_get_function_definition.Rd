@@ -14,7 +14,7 @@ greengrass_get_function_definition(FunctionDefinitionId)
 Retrieves information about a Lambda function definition, including its creation time and latest version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_function_definition(
+\preformatted{svc$get_function_definition(
   FunctionDefinitionId = "string"
 )
 }

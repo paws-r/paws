@@ -20,7 +20,7 @@ SIP signaling and Secure RTP (SRTP) for media. Inbound calls use TLS
 transport, and unencrypted outbound calls are blocked.
 }
 \section{Request syntax}{
-\preformatted{chime$create_voice_connector(
+\preformatted{svc$create_voice_connector(
   Name = "string",
   RequireEncryption = TRUE|FALSE
 )

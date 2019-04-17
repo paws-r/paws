@@ -12,7 +12,7 @@ Provides the details for the Security Hub master account to the current
 member account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_master_account()
+\preformatted{svc$get_master_account()
 }
 }
 

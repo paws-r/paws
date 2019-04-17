@@ -23,7 +23,7 @@ To add an IP address to an endpoint, see
 AssociateResolverEndpointIpAddress.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$disassociate_resolver_endpoint_ip_address(
+\preformatted{svc$disassociate_resolver_endpoint_ip_address(
   ResolverEndpointId = "string",
   IpAddress = list(
     IpId = "string",

@@ -21,7 +21,7 @@ any \code{Available} or \code{PendingAcceptance} interface endpoint connections
 that are attached to the service.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpc_endpoint_service_configurations(
+\preformatted{svc$delete_vpc_endpoint_service_configurations(
   DryRun = TRUE|FALSE,
   ServiceIds = list(
     "string"

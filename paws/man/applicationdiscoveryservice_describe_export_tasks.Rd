@@ -32,7 +32,7 @@ Retrieve status of one or more export tasks. You can retrieve the status
 of up to 100 export tasks.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   exportIds = list(
     "string"
   ),

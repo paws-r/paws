@@ -17,7 +17,7 @@ list.}
 Lists your GraphQL APIs.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_graphql_apis(
+\preformatted{svc$list_graphql_apis(
   nextToken = "string",
   maxResults = 123
 )

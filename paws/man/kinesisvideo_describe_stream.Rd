@@ -16,7 +16,7 @@ Returns the most current information about the specified stream. You
 must specify either the \code{StreamName} or the \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$describe_stream(
+\preformatted{svc$describe_stream(
   StreamName = "string",
   StreamARN = "string"
 )

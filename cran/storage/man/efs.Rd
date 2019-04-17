@@ -13,12 +13,6 @@ EFS, storage capacity is elastic, growing and shrinking automatically as
 you add and remove files, so your applications have the storage they
 need, when they need it. For more information, see the \href{https://docs.aws.amazon.com/efs/latest/ug/api-reference.html}{User Guide}.
 }
-\section{Example}{
-\preformatted{efs <- paws::efs()
-efs$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -39,3 +33,18 @@ efs$operation()
 }
 }
 
+\examples{
+# This operation creates a new file system with the default generalpurpose
+# performance mode.
+\donttest{svc$create_file_system(
+  CreationToken = "tokenstring",
+  PerformanceMode = "generalPurpose",
+  Tags = list(
+    list(
+      Key = "Name",
+      Value = "MyFileSystem"
+    )
+  )
+)}
+
+}

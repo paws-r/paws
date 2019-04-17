@@ -21,7 +21,7 @@ API operation still succeeds, even if no job is cancelled); these jobs
 must be terminated with the TerminateJob operation.
 }
 \section{Request syntax}{
-\preformatted{batch$cancel_job(
+\preformatted{svc$cancel_job(
   jobId = "string",
   reason = "string"
 )
@@ -30,7 +30,7 @@ must be terminated with the TerminateJob operation.
 
 \examples{
 # This example cancels a job with the specified job ID.
-\donttest{batch$cancel_job(
+\donttest{svc$cancel_job(
   jobId = "1d828f65-7a4d-42e8-996d-3b900ed59dc4",
   reason = "Cancelling job."
 )}

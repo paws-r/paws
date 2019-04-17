@@ -136,7 +136,7 @@ information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send
 in the \emph{Amazon Simple Email Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$send_templated_email(
+\preformatted{svc$send_templated_email(
   Source = "string",
   Destination = list(
     ToAddresses = list(

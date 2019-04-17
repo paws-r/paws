@@ -67,7 +67,7 @@ This operation returns the \href{https://docs.aws.amazon.com/general/latest/gr/a
 of the imported certificate.
 }
 \section{Request syntax}{
-\preformatted{acm$import_certificate(
+\preformatted{svc$import_certificate(
   CertificateArn = "string",
   Certificate = raw,
   PrivateKey = raw,

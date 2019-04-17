@@ -190,7 +190,7 @@ For more information about working with snapshots, go to \href{http://docs.aws.a
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$restore_from_cluster_snapshot(
+\preformatted{svc$restore_from_cluster_snapshot(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string",

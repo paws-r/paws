@@ -182,7 +182,7 @@ request can contain InstanceFleets parameters or InstanceGroups
 parameters, but not both.
 }
 \section{Request syntax}{
-\preformatted{emr$run_job_flow(
+\preformatted{svc$run_job_flow(
   Name = "string",
   LogUri = "string",
   AdditionalInfo = "string",

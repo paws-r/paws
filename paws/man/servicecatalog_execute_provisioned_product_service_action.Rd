@@ -25,7 +25,7 @@ servicecatalog_execute_provisioned_product_service_action(
 Executes a self-service action against a provisioned product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$execute_provisioned_product_service_action(
+\preformatted{svc$execute_provisioned_product_service_action(
   ProvisionedProductId = "string",
   ServiceActionId = "string",
   ExecuteToken = "string",

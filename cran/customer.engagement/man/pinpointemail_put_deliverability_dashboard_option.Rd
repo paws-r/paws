@@ -24,7 +24,7 @@ first day of a calendar month, we prorate the monthly charge based on
 how many days have elapsed in the current calendar month.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_deliverability_dashboard_option(
+\preformatted{svc$put_deliverability_dashboard_option(
   DashboardEnabled = TRUE|FALSE
 )
 }

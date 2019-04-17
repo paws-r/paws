@@ -15,7 +15,7 @@ Returns information about a specific Amazon Lightsail instance, which is
 a virtual private server.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instance(
+\preformatted{svc$get_instance(
   instanceName = "string"
 )
 }

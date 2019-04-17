@@ -23,7 +23,7 @@ none is supplied, the AWS account ID is used by default.}
 Updates a partition.
 }
 \section{Request syntax}{
-\preformatted{glue$update_partition(
+\preformatted{svc$update_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

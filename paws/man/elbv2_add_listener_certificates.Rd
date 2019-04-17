@@ -25,7 +25,7 @@ use RemoveListenerCertificates. To specify the default SSL server
 certificate, use ModifyListener.
 }
 \section{Request syntax}{
-\preformatted{elbv2$add_listener_certificates(
+\preformatted{svc$add_listener_certificates(
   ListenerArn = "string",
   Certificates = list(
     list(

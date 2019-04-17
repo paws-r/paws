@@ -29,7 +29,7 @@ addresses, and the limit varies per instance type. For information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$assign_ipv_6_addresses(
+\preformatted{svc$assign_ipv_6_addresses(
   Ipv6AddressCount = 123,
   Ipv6Addresses = list(
     "string"

@@ -16,7 +16,7 @@ Any private or public skill that is rejected can be added later by
 calling the ApproveSkill API.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$reject_skill(
+\preformatted{svc$reject_skill(
   SkillId = "string"
 )
 }

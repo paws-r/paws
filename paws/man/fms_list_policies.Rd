@@ -25,7 +25,7 @@ to get another batch of \code{PolicySummary} objects.}
 Returns an array of \code{PolicySummary} objects in the response.
 }
 \section{Request syntax}{
-\preformatted{fms$list_policies(
+\preformatted{svc$list_policies(
   NextToken = "string",
   MaxResults = 123
 )

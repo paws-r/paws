@@ -42,7 +42,7 @@ Starts an asynchronous key phrase detection job for a collection of
 documents. Use the operation to track the status of a job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$start_key_phrases_detection_job(
+\preformatted{svc$start_key_phrases_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"

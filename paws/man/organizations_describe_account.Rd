@@ -22,7 +22,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$describe_account(
+\preformatted{svc$describe_account(
   AccountId = "string"
 )
 }
@@ -31,7 +31,7 @@ account.
 \examples{
 # The following example shows a user in the master account (111111111111)
 # asking for details about account 555555555555:
-\donttest{organizations$describe_account(
+\donttest{svc$describe_account(
   AccountId = "555555555555"
 )}
 

@@ -47,7 +47,7 @@ engine or engine and major version combination is to be returned.}
 Returns a list of the available cache engines and their versions.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_engine_versions(
+\preformatted{svc$describe_cache_engine_versions(
   Engine = "string",
   EngineVersion = "string",
   CacheParameterGroupFamily = "string",

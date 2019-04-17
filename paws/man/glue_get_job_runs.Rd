@@ -17,7 +17,7 @@ glue_get_job_runs(JobName, NextToken, MaxResults)
 Retrieves metadata for all runs of a given job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$get_job_runs(
+\preformatted{svc$get_job_runs(
   JobName = "string",
   NextToken = "string",
   MaxResults = 123

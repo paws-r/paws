@@ -15,7 +15,7 @@ greengrass_get_deployment_status(DeploymentId, GroupId)
 Returns the status of a deployment.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_deployment_status(
+\preformatted{svc$get_deployment_status(
   DeploymentId = "string",
   GroupId = "string"
 )

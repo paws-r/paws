@@ -49,7 +49,7 @@ Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.
 }
 \section{Request syntax}{
-\preformatted{datasync$create_agent(
+\preformatted{svc$create_agent(
   ActivationKey = "string",
   AgentName = "string",
   Tags = list(

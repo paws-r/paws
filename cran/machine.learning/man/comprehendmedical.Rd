@@ -10,12 +10,6 @@ comprehendmedical()
 Comprehend Medical extracts structured information from unstructured
 clinical text. Use these actions to gain insight in your documents.
 }
-\section{Example}{
-\preformatted{comprehendmedical <- paws::comprehendmedical()
-comprehendmedical$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -24,3 +18,9 @@ comprehendmedical$operation()
 }
 }
 
+\examples{
+\donttest{svc$detect_entities(
+  Foo = 123
+)}
+
+}

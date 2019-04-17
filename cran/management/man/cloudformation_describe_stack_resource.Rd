@@ -29,7 +29,7 @@ For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_resource(
+\preformatted{svc$describe_stack_resource(
   StackName = "string",
   LogicalResourceId = "string"
 )

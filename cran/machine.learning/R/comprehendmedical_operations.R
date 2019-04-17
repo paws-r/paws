@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' comprehendmedical$detect_entities(
+#' svc$detect_entities(
 #'   Text = "string"
 #' )
 #' ```
@@ -61,7 +61,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehendmedical$detect_phi(
+#' svc$detect_phi(
 #'   Text = "string"
 #' )
 #' ```

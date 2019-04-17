@@ -32,7 +32,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$create_cluster(
+#' svc$create_cluster(
 #'   clusterName = "string",
 #'   tags = list(
 #'     list(
@@ -45,7 +45,7 @@ NULL
 #'
 #' @examples
 #' # This example creates a cluster in your default region.
-#' \donttest{ecs$create_cluster(
+#' \donttest{svc$create_cluster(
 #'   clusterName = "my_cluster"
 #' )}
 #'
@@ -357,7 +357,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$create_service(
+#' svc$create_service(
 #'   cluster = "string",
 #'   serviceName = "string",
 #'   taskDefinition = "string",
@@ -429,7 +429,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' # This example creates a service in your default region called
 #' # ``ecs-simple-service``. The service uses the ``hello_world`` task
 #' # definition and it maintains 10 copies of that task.
-#' \donttest{ecs$create_service(
+#' \donttest{svc$create_service(
 #'   desiredCount = 10L,
 #'   serviceName = "ecs-simple-service",
 #'   taskDefinition = "hello_world"
@@ -439,7 +439,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' # ``ecs-simple-service-elb``. The service uses the ``ecs-demo`` task
 #' # definition and it maintains 10 copies of that task. You must reference
 #' # an existing load balancer in the same region by its name.
-#' \donttest{ecs$create_service(
+#' \donttest{svc$create_service(
 #'   desiredCount = 10L,
 #'   loadBalancers = list(
 #'     list(
@@ -516,7 +516,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$create_task_set(
+#' svc$create_task_set(
 #'   service = "string",
 #'   cluster = "string",
 #'   externalId = "string",
@@ -603,7 +603,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$delete_account_setting(
+#' svc$delete_account_setting(
 #'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
 #'   principalArn = "string"
 #' )
@@ -612,14 +612,14 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @examples
 #' # This example deletes the account setting for your user for the specified
 #' # resource type.
-#' \donttest{ecs$delete_account_setting(
+#' \donttest{svc$delete_account_setting(
 #'   name = "serviceLongArnFormat"
 #' )}
 #' 
 #' # This example deletes the account setting for a specific IAM user or IAM
 #' # role for the specified resource type. Only the root user can view or
 #' # modify the account settings for another user.
-#' \donttest{ecs$delete_account_setting(
+#' \donttest{svc$delete_account_setting(
 #'   name = "containerInstanceLongArnFormat",
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
 #' )}
@@ -660,7 +660,7 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$delete_attributes(
+#' svc$delete_attributes(
 #'   cluster = "string",
 #'   attributes = list(
 #'     list(
@@ -707,14 +707,14 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$delete_cluster(
+#' svc$delete_cluster(
 #'   cluster = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This example deletes an empty cluster in your default region.
-#' \donttest{ecs$delete_cluster(
+#' \donttest{svc$delete_cluster(
 #'   cluster = "my_cluster"
 #' )}
 #'
@@ -771,7 +771,7 @@ ecs_delete_cluster <- function(cluster) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$delete_service(
+#' svc$delete_service(
 #'   cluster = "string",
 #'   service = "string",
 #'   force = TRUE|FALSE
@@ -781,7 +781,7 @@ ecs_delete_cluster <- function(cluster) {
 #' @examples
 #' # This example deletes the my-http-service service. The service must have
 #' # a desired count and running count of 0 before you can delete it.
-#' \donttest{ecs$delete_service(
+#' \donttest{svc$delete_service(
 #'   service = "my-http-service"
 #' )}
 #'
@@ -826,7 +826,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$delete_task_set(
+#' svc$delete_task_set(
 #'   cluster = "string",
 #'   service = "string",
 #'   taskSet = "string",
@@ -901,7 +901,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$deregister_container_instance(
+#' svc$deregister_container_instance(
 #'   cluster = "string",
 #'   containerInstance = "string",
 #'   force = TRUE|FALSE
@@ -913,7 +913,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' # in your default region. If there are still tasks running on the
 #' # container instance, you must either stop those tasks before
 #' # deregistering, or use the force option.
-#' \donttest{ecs$deregister_container_instance(
+#' \donttest{svc$deregister_container_instance(
 #'   cluster = "default",
 #'   containerInstance = "container_instance_UUID",
 #'   force = TRUE
@@ -967,7 +967,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$deregister_task_definition(
+#' svc$deregister_task_definition(
 #'   taskDefinition = "string"
 #' )
 #' ```
@@ -1022,7 +1022,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_clusters(
+#' svc$describe_clusters(
 #'   clusters = list(
 #'     "string"
 #'   ),
@@ -1035,7 +1035,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' @examples
 #' # This example provides a description of the specified cluster in your
 #' # default region.
-#' \donttest{ecs$describe_clusters(
+#' \donttest{svc$describe_clusters(
 #'   clusters = list(
 #'     "default"
 #'   )
@@ -1080,7 +1080,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_container_instances(
+#' svc$describe_container_instances(
 #'   cluster = "string",
 #'   containerInstances = list(
 #'     "string"
@@ -1095,7 +1095,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' # This example provides a description of the specified container instance
 #' # in your default region, using the container instance UUID as an
 #' # identifier.
-#' \donttest{ecs$describe_container_instances(
+#' \donttest{svc$describe_container_instances(
 #'   cluster = "default",
 #'   containerInstances = list(
 #'     "f2756532-8f13-4d53-87c9-aed50dc94cd7"
@@ -1139,7 +1139,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_services(
+#' svc$describe_services(
 #'   cluster = "string",
 #'   services = list(
 #'     "string"
@@ -1153,7 +1153,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' @examples
 #' # This example provides descriptive information about the service named
 #' # ``ecs-simple-service``.
-#' \donttest{ecs$describe_services(
+#' \donttest{svc$describe_services(
 #'   services = list(
 #'     "ecs-simple-service"
 #'   )
@@ -1199,7 +1199,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_task_definition(
+#' svc$describe_task_definition(
 #'   taskDefinition = "string",
 #'   include = list(
 #'     "TAGS"
@@ -1209,7 +1209,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'
 #' @examples
 #' # This example provides a description of the specified task definition.
-#' \donttest{ecs$describe_task_definition(
+#' \donttest{svc$describe_task_definition(
 #'   taskDefinition = "hello_world:8"
 #' )}
 #'
@@ -1251,7 +1251,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_task_sets(
+#' svc$describe_task_sets(
 #'   cluster = "string",
 #'   service = "string",
 #'   taskSets = list(
@@ -1296,7 +1296,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$describe_tasks(
+#' svc$describe_tasks(
 #'   cluster = "string",
 #'   tasks = list(
 #'     "string"
@@ -1310,7 +1310,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
 #' @examples
 #' # This example provides a description of the specified task, using the
 #' # task UUID as an identifier.
-#' \donttest{ecs$describe_tasks(
+#' \donttest{svc$describe_tasks(
 #'   tasks = list(
 #'     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
 #'   )
@@ -1357,7 +1357,7 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$discover_poll_endpoint(
+#' svc$discover_poll_endpoint(
 #'   containerInstance = "string",
 #'   cluster = "string"
 #' )
@@ -1422,7 +1422,7 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_account_settings(
+#' svc$list_account_settings(
 #'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
 #'   value = "string",
 #'   principalArn = "string",
@@ -1434,13 +1434,13 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #'
 #' @examples
 #' # This example displays the effective account settings for your account.
-#' \donttest{ecs$list_account_settings(
+#' \donttest{svc$list_account_settings(
 #'   effectiveSettings = TRUE
 #' )}
 #' 
 #' # This example displays the effective account settings for the specified
 #' # user or role.
-#' \donttest{ecs$list_account_settings(
+#' \donttest{svc$list_account_settings(
 #'   effectiveSettings = TRUE,
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
 #' )}
@@ -1506,7 +1506,7 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_attributes(
+#' svc$list_attributes(
 #'   cluster = "string",
 #'   targetType = "container-instance",
 #'   attributeName = "string",
@@ -1561,7 +1561,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_clusters(
+#' svc$list_clusters(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1570,7 +1570,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @examples
 #' # This example lists all of your available clusters in your default
 #' # region.
-#' \donttest{ecs$list_clusters()}
+#' \donttest{svc$list_clusters()}
 #'
 #' @keywords internal
 #'
@@ -1637,7 +1637,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_container_instances(
+#' svc$list_container_instances(
 #'   cluster = "string",
 #'   filter = "string",
 #'   nextToken = "string",
@@ -1649,7 +1649,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @examples
 #' # This example lists all of your available container instances in the
 #' # specified cluster in your default region.
-#' \donttest{ecs$list_container_instances(
+#' \donttest{svc$list_container_instances(
 #'   cluster = "default"
 #' )}
 #'
@@ -1704,7 +1704,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_services(
+#' svc$list_services(
 #'   cluster = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
@@ -1716,7 +1716,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @examples
 #' # This example lists the services running in the default cluster for an
 #' # account.
-#' \donttest{ecs$list_services()}
+#' \donttest{svc$list_services()}
 #'
 #' @keywords internal
 #'
@@ -1750,14 +1750,14 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This example lists the tags for the 'dev' cluster.
-#' \donttest{ecs$list_tags_for_resource(
+#' \donttest{svc$list_tags_for_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
 #' )}
 #'
@@ -1830,7 +1830,7 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_task_definition_families(
+#' svc$list_task_definition_families(
 #'   familyPrefix = "string",
 #'   status = "ACTIVE"|"INACTIVE"|"ALL",
 #'   nextToken = "string",
@@ -1840,10 +1840,10 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @examples
 #' # This example lists all of your registered task definition families.
-#' \donttest{ecs$list_task_definition_families()}
+#' \donttest{svc$list_task_definition_families()}
 #' 
 #' # This example lists the task definition revisions that start with "hpcc".
-#' \donttest{ecs$list_task_definition_families(
+#' \donttest{svc$list_task_definition_families(
 #'   familyPrefix = "hpcc"
 #' )}
 #'
@@ -1911,7 +1911,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_task_definitions(
+#' svc$list_task_definitions(
 #'   familyPrefix = "string",
 #'   status = "ACTIVE"|"INACTIVE",
 #'   sort = "ASC"|"DESC",
@@ -1922,10 +1922,10 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #'
 #' @examples
 #' # This example lists all of your registered task definitions.
-#' \donttest{ecs$list_task_definitions()}
+#' \donttest{svc$list_task_definitions()}
 #' 
 #' # This example lists the task definition revisions of a specified family.
-#' \donttest{ecs$list_task_definitions(
+#' \donttest{svc$list_task_definitions(
 #'   familyPrefix = "wordpress"
 #' )}
 #'
@@ -2009,7 +2009,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$list_tasks(
+#' svc$list_tasks(
 #'   cluster = "string",
 #'   containerInstance = "string",
 #'   family = "string",
@@ -2024,14 +2024,14 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #'
 #' @examples
 #' # This example lists all of the tasks in a cluster.
-#' \donttest{ecs$list_tasks(
+#' \donttest{svc$list_tasks(
 #'   cluster = "default"
 #' )}
 #' 
 #' # This example lists the tasks of a specified container instance.
 #' # Specifying a ``containerInstance`` value limits  the  results  to  tasks
 #' #  that belong to that container instance.
-#' \donttest{ecs$list_tasks(
+#' \donttest{svc$list_tasks(
 #'   cluster = "default",
 #'   containerInstance = "f6bbb147-5370-4ace-8c73-c7181ded911f"
 #' )}
@@ -2091,7 +2091,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$put_account_setting(
+#' svc$put_account_setting(
 #'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
 #'   value = "string",
 #'   principalArn = "string"
@@ -2103,7 +2103,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' # resource ID format for Amazon ECS services. If you’re using this command
 #' # as the root user, then changes apply to the entire AWS account, unless
 #' # an IAM user or role explicitly overrides these settings for themselves.
-#' \donttest{ecs$put_account_setting(
+#' \donttest{svc$put_account_setting(
 #'   name = "serviceLongArnFormat",
 #'   value = "enabled"
 #' )}
@@ -2113,7 +2113,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' # container instances. If you’re using this command as the root user, then
 #' # changes apply to the entire AWS account, unless an IAM user or role
 #' # explicitly overrides these settings for themselves.
-#' \donttest{ecs$put_account_setting(
+#' \donttest{svc$put_account_setting(
 #'   name = "containerInstanceLongArnFormat",
 #'   value = "enabled",
 #'   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
@@ -2160,7 +2160,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$put_account_setting_default(
+#' svc$put_account_setting_default(
 #'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
 #'   value = "string"
 #' )
@@ -2171,7 +2171,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' # resource for all IAM users or roles on an account. These changes apply
 #' # to the entire AWS account, unless an IAM user or role explicitly
 #' # overrides these settings for themselves.
-#' \donttest{ecs$put_account_setting_default(
+#' \donttest{svc$put_account_setting_default(
 #'   name = "serviceLongArnFormat",
 #'   value = "enabled"
 #' )}
@@ -2216,7 +2216,7 @@ ecs_put_account_setting_default <- function(name, value) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$put_attributes(
+#' svc$put_attributes(
 #'   cluster = "string",
 #'   attributes = list(
 #'     list(
@@ -2288,7 +2288,7 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$register_container_instance(
+#' svc$register_container_instance(
 #'   cluster = "string",
 #'   instanceIdentityDocument = "string",
 #'   instanceIdentityDocumentSignature = "string",
@@ -2568,7 +2568,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$register_task_definition(
+#' svc$register_task_definition(
 #'   family = "string",
 #'   taskRoleArn = "string",
 #'   executionRoleArn = "string",
@@ -2778,7 +2778,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'
 #' @examples
 #' # This example registers a task definition to the specified family.
-#' \donttest{ecs$register_task_definition(
+#' \donttest{svc$register_task_definition(
 #'   containerDefinitions = list(
 #'     list(
 #'       name = "sleep",
@@ -2927,7 +2927,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$run_task(
+#' svc$run_task(
 #'   cluster = "string",
 #'   taskDefinition = "string",
 #'   overrides = list(
@@ -2998,7 +2998,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'
 #' @examples
 #' # This example runs the specified task definition on your default cluster.
-#' \donttest{ecs$run_task(
+#' \donttest{svc$run_task(
 #'   cluster = "default",
 #'   taskDefinition = "sleep360:1"
 #' )}
@@ -3087,7 +3087,7 @@ ecs_run_task <- function(cluster = NULL, taskDefinition, overrides = NULL, count
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$start_task(
+#' svc$start_task(
 #'   cluster = "string",
 #'   taskDefinition = "string",
 #'   overrides = list(
@@ -3195,7 +3195,7 @@ ecs_start_task <- function(cluster = NULL, taskDefinition, overrides = NULL, con
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$stop_task(
+#' svc$stop_task(
 #'   cluster = "string",
 #'   task = "string",
 #'   reason = "string"
@@ -3244,7 +3244,7 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$submit_container_state_change(
+#' svc$submit_container_state_change(
 #'   cluster = "string",
 #'   task = "string",
 #'   containerName = "string",
@@ -3306,7 +3306,7 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$submit_task_state_change(
+#' svc$submit_task_state_change(
 #'   cluster = "string",
 #'   task = "string",
 #'   status = "string",
@@ -3384,7 +3384,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -3397,7 +3397,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'
 #' @examples
 #' # This example tags the 'dev' cluster with key 'team' and value 'dev'.
-#' \donttest{ecs$tag_resource(
+#' \donttest{svc$tag_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
 #'   tags = list(
 #'     list(
@@ -3440,7 +3440,7 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -3450,7 +3450,7 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #'
 #' @examples
 #' # This example deletes the 'team' tag from the 'dev' cluster.
-#' \donttest{ecs$untag_resource(
+#' \donttest{svc$untag_resource(
 #'   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
 #'   tagKeys = list(
 #'     "team"
@@ -3503,7 +3503,7 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$update_container_agent(
+#' svc$update_container_agent(
 #'   cluster = "string",
 #'   containerInstance = "string"
 #' )
@@ -3593,7 +3593,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$update_container_instances_state(
+#' svc$update_container_instances_state(
 #'   cluster = "string",
 #'   containerInstances = list(
 #'     "string"
@@ -3783,7 +3783,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$update_service(
+#' svc$update_service(
 #'   cluster = "string",
 #'   service = "string",
 #'   desiredCount = 123,
@@ -3812,14 +3812,14 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @examples
 #' # This example updates the my-http-service service to use the
 #' # amazon-ecs-sample task definition.
-#' \donttest{ecs$update_service(
+#' \donttest{svc$update_service(
 #'   service = "my-http-service",
 #'   taskDefinition = "amazon-ecs-sample"
 #' )}
 #' 
 #' # This example updates the desired count of the my-http-service service to
 #' # 10.
-#' \donttest{ecs$update_service(
+#' \donttest{svc$update_service(
 #'   desiredCount = 10L,
 #'   service = "my-http-service"
 #' )}
@@ -3865,7 +3865,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$update_service_primary_task_set(
+#' svc$update_service_primary_task_set(
 #'   cluster = "string",
 #'   service = "string",
 #'   primaryTaskSet = "string"
@@ -3912,7 +3912,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #'
 #' @section Request syntax:
 #' ```
-#' ecs$update_task_set(
+#' svc$update_task_set(
 #'   cluster = "string",
 #'   service = "string",
 #'   taskSet = "string",

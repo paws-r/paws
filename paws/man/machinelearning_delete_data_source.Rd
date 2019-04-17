@@ -21,7 +21,7 @@ changed to DELETED.
 irreversible.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_data_source(
+\preformatted{svc$delete_data_source(
   DataSourceId = "string"
 )
 }

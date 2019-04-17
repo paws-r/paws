@@ -47,7 +47,7 @@ device, you should ensure that the information is destroyed following
 secure procedures.
 }
 \section{Request syntax}{
-\preformatted{iam$create_virtual_mfa_device(
+\preformatted{svc$create_virtual_mfa_device(
   Path = "string",
   VirtualMFADeviceName = "string"
 )

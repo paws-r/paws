@@ -19,7 +19,7 @@ operation. Contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-devicefar
 that you should be able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_offering_promotions(
+\preformatted{svc$list_offering_promotions(
   nextToken = "string"
 )
 }

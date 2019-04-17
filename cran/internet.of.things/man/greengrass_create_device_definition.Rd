@@ -20,7 +20,7 @@ greengrass_create_device_definition(AmznClientToken, InitialVersion,
 Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_device_definition(
+\preformatted{svc$create_device_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Devices = list(

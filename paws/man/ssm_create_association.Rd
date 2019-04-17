@@ -94,7 +94,7 @@ associated document, the system returns the AssociationAlreadyExists
 exception.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_association(
+\preformatted{svc$create_association(
   Name = "string",
   DocumentVersion = "string",
   InstanceId = "string",

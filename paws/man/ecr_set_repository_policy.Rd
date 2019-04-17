@@ -26,7 +26,7 @@ Applies a repository policy on a specified repository to control access
 permissions.
 }
 \section{Request syntax}{
-\preformatted{ecr$set_repository_policy(
+\preformatted{svc$set_repository_policy(
   registryId = "string",
   repositoryName = "string",
   policyText = "string",

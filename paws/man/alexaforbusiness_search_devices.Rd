@@ -30,7 +30,7 @@ DeviceSerialNumber, and ConnectionStatus.}
 Searches devices and lists the ones that meet a set of filter criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_devices(
+\preformatted{svc$search_devices(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

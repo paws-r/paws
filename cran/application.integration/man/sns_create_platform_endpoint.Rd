@@ -43,7 +43,7 @@ provided: ChannelId and UserId. The token field must also contain the
 ChannelId. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html}{Creating an Amazon SNS Endpoint for Baidu}.
 }
 \section{Request syntax}{
-\preformatted{sns$create_platform_endpoint(
+\preformatted{svc$create_platform_endpoint(
   PlatformApplicationArn = "string",
   Token = "string",
   CustomUserData = "string",

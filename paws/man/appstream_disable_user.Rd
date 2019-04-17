@@ -17,7 +17,7 @@ AppStream 2.0 until they are re-enabled. This action does not delete the
 user.
 }
 \section{Request syntax}{
-\preformatted{appstream$disable_user(
+\preformatted{svc$disable_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )

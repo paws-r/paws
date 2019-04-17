@@ -18,7 +18,7 @@ cannot be returned in one response.}
 Lists all team members associated with a project.
 }
 \section{Request syntax}{
-\preformatted{codestar$list_team_members(
+\preformatted{svc$list_team_members(
   projectId = "string",
   nextToken = "string",
   maxResults = 123

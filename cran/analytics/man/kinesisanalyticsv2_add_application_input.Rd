@@ -31,7 +31,7 @@ operation, results in a new version of the application. You can use the
 DescribeApplication operation to find the current application version.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$add_application_input(
+\preformatted{svc$add_application_input(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   Input = list(

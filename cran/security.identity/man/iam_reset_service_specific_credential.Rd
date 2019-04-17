@@ -28,7 +28,7 @@ by the user. Resetting the password immediately invalidates the previous
 password associated with this user.
 }
 \section{Request syntax}{
-\preformatted{iam$reset_service_specific_credential(
+\preformatted{svc$reset_service_specific_credential(
   UserName = "string",
   ServiceSpecificCredentialId = "string"
 )

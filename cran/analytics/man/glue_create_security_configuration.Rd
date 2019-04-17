@@ -15,7 +15,7 @@ glue_create_security_configuration(Name, EncryptionConfiguration)
 Creates a new security configuration.
 }
 \section{Request syntax}{
-\preformatted{glue$create_security_configuration(
+\preformatted{svc$create_security_configuration(
   Name = "string",
   EncryptionConfiguration = list(
     S3Encryption = list(

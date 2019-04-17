@@ -15,12 +15,6 @@ and bypassing the Internet. For large data sets, AWS Import/Export is
 often faster than Internet transfer and more cost effective than
 upgrading your connectivity.
 }
-\section{Example}{
-\preformatted{importexport <- paws::importexport()
-importexport$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -33,3 +27,9 @@ importexport$operation()
 }
 }
 
+\examples{
+\donttest{svc$cancel_job(
+  Foo = 123
+)}
+
+}

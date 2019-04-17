@@ -70,7 +70,7 @@ There is a limit of 20 transactions per second for this API. Each
 }
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$get_metric_widget_image(
+\preformatted{svc$get_metric_widget_image(
   MetricWidget = "string",
   OutputFormat = "string"
 )

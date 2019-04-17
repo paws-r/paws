@@ -16,7 +16,7 @@ Retrieves the Public Access Block configuration for an Amazon Web
 Services account.
 }
 \section{Request syntax}{
-\preformatted{s3control$get_public_access_block(
+\preformatted{svc$get_public_access_block(
   AccountId = "string"
 )
 }

@@ -18,7 +18,7 @@ time of a HIT. If you update it to a time in the past, the HIT will be
 immediately expired.
 }
 \section{Request syntax}{
-\preformatted{mturk$update_expiration_for_hit(
+\preformatted{svc$update_expiration_for_hit(
   HITId = "string",
   ExpireAt = as.POSIXct(
     "2015-01-01"

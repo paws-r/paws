@@ -17,7 +17,7 @@ pinpoint_get_segments(ApplicationId, PageSize, Token)
 Used to get information about your segments.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segments(
+\preformatted{svc$get_segments(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"

@@ -31,7 +31,7 @@ For a public virtual interface, the Autonomous System Number (ASN) must
 be private or already whitelisted for the virtual interface.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_bgp_peer(
+\preformatted{svc$create_bgp_peer(
   virtualInterfaceId = "string",
   newBGPPeer = list(
     asn = 123,

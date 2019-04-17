@@ -41,7 +41,7 @@ megabytes per second (or 200 megabits per second) during a
 }
 }
 \section{Request syntax}{
-\preformatted{kinesisvideomedia$get_media(
+\preformatted{svc$get_media(
   StreamName = "string",
   StreamARN = "string",
   StartSelector = list(

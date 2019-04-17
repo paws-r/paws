@@ -17,7 +17,7 @@ This operation is asynchronous and returns before the WorkSpaces are
 created.
 }
 \section{Request syntax}{
-\preformatted{workspaces$create_workspaces(
+\preformatted{svc$create_workspaces(
   Workspaces = list(
     list(
       DirectoryId = "string",

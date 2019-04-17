@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Amazon Mechanical Turk API Reference
 #'
-#' @section Example:
-#' ```
-#' mturk <- paws::mturk()
-#' mturk$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_qualification_request(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

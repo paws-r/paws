@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$associate_ip_groups(
+#' svc$associate_ip_groups(
 #'   DirectoryId = "string",
 #'   GroupIds = list(
 #'     "string"
@@ -59,7 +59,7 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$authorize_ip_rules(
+#' svc$authorize_ip_rules(
 #'   GroupId = "string",
 #'   UserRules = list(
 #'     list(
@@ -116,7 +116,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$create_ip_group(
+#' svc$create_ip_group(
 #'   GroupName = "string",
 #'   GroupDesc = "string",
 #'   UserRules = list(
@@ -166,7 +166,7 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$create_tags(
+#' svc$create_tags(
 #'   ResourceId = "string",
 #'   Tags = list(
 #'     list(
@@ -210,7 +210,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$create_workspaces(
+#' svc$create_workspaces(
 #'   Workspaces = list(
 #'     list(
 #'       DirectoryId = "string",
@@ -270,7 +270,7 @@ workspaces_create_workspaces <- function(Workspaces) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$delete_ip_group(
+#' svc$delete_ip_group(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -307,7 +307,7 @@ workspaces_delete_ip_group <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$delete_tags(
+#' svc$delete_tags(
 #'   ResourceId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -346,7 +346,7 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$delete_workspace_image(
+#' svc$delete_workspace_image(
 #'   ImageId = "string"
 #' )
 #' ```
@@ -381,7 +381,7 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_account()
+#' svc$describe_account()
 #' ```
 #'
 #' @keywords internal
@@ -417,7 +417,7 @@ workspaces_describe_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_account_modifications(
+#' svc$describe_account_modifications(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -454,7 +454,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_client_properties(
+#' svc$describe_client_properties(
 #'   ResourceIds = list(
 #'     "string"
 #'   )
@@ -494,7 +494,7 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_ip_groups(
+#' svc$describe_ip_groups(
 #'   GroupIds = list(
 #'     "string"
 #'   ),
@@ -534,7 +534,7 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_tags(
+#' svc$describe_tags(
 #'   ResourceId = "string"
 #' )
 #' ```
@@ -580,7 +580,7 @@ workspaces_describe_tags <- function(ResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_workspace_bundles(
+#' svc$describe_workspace_bundles(
 #'   BundleIds = list(
 #'     "string"
 #'   ),
@@ -624,7 +624,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_workspace_directories(
+#' svc$describe_workspace_directories(
 #'   DirectoryIds = list(
 #'     "string"
 #'   ),
@@ -668,7 +668,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, NextT
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_workspace_images(
+#' svc$describe_workspace_images(
 #'   ImageIds = list(
 #'     "string"
 #'   ),
@@ -727,7 +727,7 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_workspaces(
+#' svc$describe_workspaces(
 #'   WorkspaceIds = list(
 #'     "string"
 #'   ),
@@ -772,7 +772,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$describe_workspaces_connection_status(
+#' svc$describe_workspaces_connection_status(
 #'   WorkspaceIds = list(
 #'     "string"
 #'   ),
@@ -813,7 +813,7 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$disassociate_ip_groups(
+#' svc$disassociate_ip_groups(
 #'   DirectoryId = "string",
 #'   GroupIds = list(
 #'     "string"
@@ -860,7 +860,7 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$import_workspace_image(
+#' svc$import_workspace_image(
 #'   Ec2ImageId = "string",
 #'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
 #'   ImageName = "string",
@@ -919,7 +919,7 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$list_available_management_cidr_ranges(
+#' svc$list_available_management_cidr_ranges(
 #'   ManagementCidrRangeConstraint = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -965,7 +965,7 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$modify_account(
+#' svc$modify_account(
 #'   DedicatedTenancySupport = "ENABLED",
 #'   DedicatedTenancyManagementCidrRange = "string"
 #' )
@@ -1002,7 +1002,7 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$modify_client_properties(
+#' svc$modify_client_properties(
 #'   ResourceId = "string",
 #'   ClientProperties = list(
 #'     ReconnectEnabled = "ENABLED"|"DISABLED"
@@ -1041,7 +1041,7 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$modify_workspace_properties(
+#' svc$modify_workspace_properties(
 #'   WorkspaceId = "string",
 #'   WorkspaceProperties = list(
 #'     RunningMode = "AUTO_STOP"|"ALWAYS_ON",
@@ -1090,7 +1090,7 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$modify_workspace_state(
+#' svc$modify_workspace_state(
 #'   WorkspaceId = "string",
 #'   WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
 #' )
@@ -1132,7 +1132,7 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$reboot_workspaces(
+#' svc$reboot_workspaces(
 #'   RebootWorkspaceRequests = list(
 #'     list(
 #'       WorkspaceId = "string"
@@ -1181,7 +1181,7 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$rebuild_workspaces(
+#' svc$rebuild_workspaces(
 #'   RebuildWorkspaceRequests = list(
 #'     list(
 #'       WorkspaceId = "string"
@@ -1221,7 +1221,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$revoke_ip_rules(
+#' svc$revoke_ip_rules(
 #'   GroupId = "string",
 #'   UserRules = list(
 #'     "string"
@@ -1262,7 +1262,7 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$start_workspaces(
+#' svc$start_workspaces(
 #'   StartWorkspaceRequests = list(
 #'     list(
 #'       WorkspaceId = "string"
@@ -1304,7 +1304,7 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$stop_workspaces(
+#' svc$stop_workspaces(
 #'   StopWorkspaceRequests = list(
 #'     list(
 #'       WorkspaceId = "string"
@@ -1352,7 +1352,7 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$terminate_workspaces(
+#' svc$terminate_workspaces(
 #'   TerminateWorkspaceRequests = list(
 #'     list(
 #'       WorkspaceId = "string"
@@ -1394,7 +1394,7 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' workspaces$update_rules_of_ip_group(
+#' svc$update_rules_of_ip_group(
 #'   GroupId = "string",
 #'   UserRules = list(
 #'     list(

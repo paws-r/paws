@@ -30,7 +30,7 @@ authenticate to an AWS service, see \href{http://docs.aws.amazon.com/codecommit/
 in the AWS CodeCommit User Guide.
 }
 \section{Request syntax}{
-\preformatted{iam$list_service_specific_credentials(
+\preformatted{svc$list_service_specific_credentials(
   UserName = "string",
   ServiceName = "string"
 )

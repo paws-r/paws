@@ -30,7 +30,7 @@ group. If you choose to use tags filtering, only resources with the tag
 will be retrieved.
 }
 \section{Request syntax}{
-\preformatted{glue$list_triggers(
+\preformatted{svc$list_triggers(
   NextToken = "string",
   DependentJobName = "string",
   MaxResults = 123,

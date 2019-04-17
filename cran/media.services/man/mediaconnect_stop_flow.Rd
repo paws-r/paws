@@ -13,7 +13,7 @@ mediaconnect_stop_flow(FlowArn)
 Stops a flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$stop_flow(
+\preformatted{svc$stop_flow(
   FlowArn = "string"
 )
 }

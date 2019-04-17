@@ -19,7 +19,7 @@ The default is \code{false}.}
 Describes an existing model defined for a RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_model(
+\preformatted{svc$get_model(
   restApiId = "string",
   modelName = "string",
   flatten = TRUE|FALSE

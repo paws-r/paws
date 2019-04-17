@@ -22,7 +22,7 @@ retrieve.}
 Gets an object's current Legal Hold status.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_legal_hold(
+\preformatted{svc$get_object_legal_hold(
   Bucket = "string",
   Key = "string",
   VersionId = "string",

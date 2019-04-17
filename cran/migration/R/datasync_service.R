@@ -13,11 +13,10 @@ NULL
 #' This API interface reference for AWS DataSync contains documentation for
 #' a programming interface that you can use to manage AWS DataSync.
 #'
-#' @section Example:
-#' ```
-#' datasync <- paws::datasync()
-#' datasync$operation()
-#' ```
+#' @examples
+#' \donttest{svc$cancel_task_execution(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

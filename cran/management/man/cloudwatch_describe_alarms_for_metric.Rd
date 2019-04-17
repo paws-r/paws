@@ -31,7 +31,7 @@ Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$describe_alarms_for_metric(
+\preformatted{svc$describe_alarms_for_metric(
   MetricName = "string",
   Namespace = "string",
   Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",

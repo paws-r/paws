@@ -48,7 +48,7 @@ Returned aliases are not listed in any particular order.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$list_aliases(
+\preformatted{svc$list_aliases(
   RoutingStrategyType = "SIMPLE"|"TERMINAL",
   Name = "string",
   Limit = 123,

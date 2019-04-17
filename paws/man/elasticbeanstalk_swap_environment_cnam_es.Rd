@@ -39,7 +39,7 @@ specify the \code{SourceEnvironmentName} with the
 Swaps the CNAMEs of two environments.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$swap_environment_cnam_es(
+\preformatted{svc$swap_environment_cnam_es(
   SourceEnvironmentId = "string",
   SourceEnvironmentName = "string",
   DestinationEnvironmentId = "string",
@@ -51,7 +51,7 @@ Swaps the CNAMEs of two environments.
 \examples{
 # The following operation swaps the assigned subdomains of two
 # environments:
-\donttest{elasticbeanstalk$swap_environment_cnam_es(
+\donttest{svc$swap_environment_cnam_es(
   DestinationEnvironmentName = "my-env-green",
   SourceEnvironmentName = "my-env-blue"
 )}

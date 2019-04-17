@@ -58,7 +58,7 @@ Rule changes are propagated to affected instances as quickly as
 possible. However, a small delay might occur.
 }
 \section{Request syntax}{
-\preformatted{ec2$authorize_security_group_egress(
+\preformatted{svc$authorize_security_group_egress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   IpPermissions = list(
@@ -110,7 +110,7 @@ possible. However, a small delay might occur.
 \examples{
 # This example adds a rule that grants access to the specified address
 # ranges on TCP port 80.
-\donttest{ec2$authorize_security_group_egress(
+\donttest{svc$authorize_security_group_egress(
   GroupId = "sg-1a2b3c4d",
   IpPermissions = list(
     list(
@@ -128,7 +128,7 @@ possible. However, a small delay might occur.
 
 # This example adds a rule that grants access to the specified security
 # group on TCP port 80.
-\donttest{ec2$authorize_security_group_egress(
+\donttest{svc$authorize_security_group_egress(
   GroupId = "sg-1a2b3c4d",
   IpPermissions = list(
     list(

@@ -30,7 +30,7 @@ AWS Config calls \code{EnableAwsServiceAccess} API to enable integration
 between AWS Config and AWS Organizations.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_configuration_aggregator(
+\preformatted{svc$put_configuration_aggregator(
   ConfigurationAggregatorName = "string",
   AccountAggregationSources = list(
     list(

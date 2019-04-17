@@ -14,7 +14,7 @@ call. It can be used to return the next set of names in the list.}
 Lists the names of stored connections to GitHub accounts.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_git_hub_account_token_names(
+\preformatted{svc$list_git_hub_account_token_names(
   nextToken = "string"
 )
 }

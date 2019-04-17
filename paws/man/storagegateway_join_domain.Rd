@@ -32,7 +32,7 @@ Adds a file gateway to an Active Directory domain. This operation is
 only supported for file gateways that support the SMB file protocol.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$join_domain(
+\preformatted{svc$join_domain(
   GatewayARN = "string",
   DomainName = "string",
   OrganizationalUnit = "string",

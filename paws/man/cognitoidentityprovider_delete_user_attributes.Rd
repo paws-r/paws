@@ -20,7 +20,7 @@ attribute name.}
 Deletes the attributes for a user.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_user_attributes(
+\preformatted{svc$delete_user_attributes(
   UserAttributeNames = list(
     "string"
   ),

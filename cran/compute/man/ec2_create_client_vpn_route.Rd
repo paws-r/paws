@@ -41,7 +41,7 @@ network routes. Each route in the route table specifies the path for
 traï¬ƒc to speciï¬c resources or networks.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_client_vpn_route(
+\preformatted{svc$create_client_vpn_route(
   ClientVpnEndpointId = "string",
   DestinationCidrBlock = "string",
   TargetVpcSubnetId = "string",

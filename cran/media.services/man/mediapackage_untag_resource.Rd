@@ -15,7 +15,7 @@ mediapackage_untag_resource(ResourceArn, TagKeys)
 Untag resource
 }
 \section{Request syntax}{
-\preformatted{mediapackage$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

@@ -13,7 +13,7 @@ cloudfront_get_distribution(Id)
 Get the information about a distribution.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_distribution(
+\preformatted{svc$get_distribution(
   Id = "string"
 )
 }

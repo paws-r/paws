@@ -24,7 +24,7 @@ supported options are for backup and maintenance.}
 Updates a file system configuration.
 }
 \section{Request syntax}{
-\preformatted{fsx$update_file_system(
+\preformatted{svc$update_file_system(
   FileSystemId = "string",
   ClientRequestToken = "string",
   WindowsConfiguration = list(
@@ -41,7 +41,7 @@ Updates a file system configuration.
 
 \examples{
 # This operation updates an existing file system.
-\donttest{fsx$update_file_system(
+\donttest{svc$update_file_system(
   FileSystemId = "fs-0498eed5fe91001ec",
   WindowsConfiguration = list(
     AutomaticBackupRetentionDays = 10L,

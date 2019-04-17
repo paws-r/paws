@@ -14,7 +14,7 @@ information.}
 The ReadPreset operation gets detailed information about a preset.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$read_preset(
+\preformatted{svc$read_preset(
   Id = "string"
 )
 }

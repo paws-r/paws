@@ -18,7 +18,7 @@ resource tags applied to the resource identified by keyPairName. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_key_pair(
+\preformatted{svc$delete_key_pair(
   keyPairName = "string"
 )
 }

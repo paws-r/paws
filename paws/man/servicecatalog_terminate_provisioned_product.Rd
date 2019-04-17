@@ -39,7 +39,7 @@ provisioned product.
 You can check the status of this request using DescribeRecord.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$terminate_provisioned_product(
+\preformatted{svc$terminate_provisioned_product(
   ProvisionedProductName = "string",
   ProvisionedProductId = "string",
   TerminateToken = "string",

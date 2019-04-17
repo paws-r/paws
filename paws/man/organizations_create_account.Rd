@@ -117,7 +117,7 @@ billing information. For information about how to disable this switch
 for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.
 }
 \section{Request syntax}{
-\preformatted{organizations$create_account(
+\preformatted{svc$create_account(
   Email = "string",
   AccountName = "string",
   RoleName = "string",
@@ -136,7 +136,7 @@ for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/a
 # Organizations sends Susan a "Welcome to AWS" email:
 # 
 # 
-\donttest{organizations$create_account(
+\donttest{svc$create_account(
   AccountName = "Production Account",
   Email = "susan@example.com"
 )}

@@ -25,7 +25,7 @@ the list.}
 Gets a summary of the most recent executions for a pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$list_pipeline_executions(
+\preformatted{svc$list_pipeline_executions(
   pipelineName = "string",
   maxResults = 123,
   nextToken = "string"

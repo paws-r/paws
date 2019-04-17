@@ -20,7 +20,7 @@ Returns metadata of your saved backup plan templates, including the
 template ID, name, and the creation and deletion dates.
 }
 \section{Request syntax}{
-\preformatted{backup$list_backup_plan_templates(
+\preformatted{svc$list_backup_plan_templates(
   NextToken = "string",
   MaxResults = 123
 )

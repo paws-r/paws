@@ -46,7 +46,7 @@ same time.
 Gets information about compatibility with a device pool.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_device_pool_compatibility(
+\preformatted{svc$get_device_pool_compatibility(
   devicePoolArn = "string",
   appArn = "string",
   testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
@@ -99,7 +99,7 @@ Gets information about compatibility with a device pool.
 \examples{
 # The following example returns information about the compatibility of a
 # specific device pool, given its ARN.
-\donttest{devicefarm$get_device_pool_compatibility(
+\donttest{svc$get_device_pool_compatibility(
   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
   testType = "APPIUM_PYTHON"

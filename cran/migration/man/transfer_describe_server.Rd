@@ -17,7 +17,7 @@ parameter.
 The response contains a description of the server's properties.
 }
 \section{Request syntax}{
-\preformatted{transfer$describe_server(
+\preformatted{svc$describe_server(
   ServerId = "string"
 )
 }

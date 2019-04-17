@@ -9,12 +9,6 @@ marketplacecommerceanalytics()
 \description{
 Provides AWS Marketplace business intelligence data on-demand.
 }
-\section{Example}{
-\preformatted{marketplacecommerceanalytics <- paws::marketplacecommerceanalytics()
-marketplacecommerceanalytics$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -23,3 +17,9 @@ marketplacecommerceanalytics$operation()
 }
 }
 
+\examples{
+\donttest{svc$generate_data_set(
+  Foo = 123
+)}
+
+}

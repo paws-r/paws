@@ -21,7 +21,7 @@ Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$attach_policy(
+\preformatted{svc$attach_policy(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"

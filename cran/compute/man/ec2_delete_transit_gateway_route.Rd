@@ -24,7 +24,7 @@ Deletes the specified route from the specified transit gateway route
 table.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_transit_gateway_route(
+\preformatted{svc$delete_transit_gateway_route(
   TransitGatewayRouteTableId = "string",
   DestinationCidrBlock = "string",
   DryRun = TRUE|FALSE

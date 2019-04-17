@@ -43,7 +43,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DiscoverInputSchema} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$discover_input_schema(
+\preformatted{svc$discover_input_schema(
   ResourceARN = "string",
   RoleARN = "string",
   InputStartingPositionConfiguration = list(

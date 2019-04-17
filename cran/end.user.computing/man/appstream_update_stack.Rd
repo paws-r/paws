@@ -38,7 +38,7 @@ to the next session.}
 Updates the specified fields for the specified stack.
 }
 \section{Request syntax}{
-\preformatted{appstream$update_stack(
+\preformatted{svc$update_stack(
   DisplayName = "string",
   Description = "string",
   Name = "string",

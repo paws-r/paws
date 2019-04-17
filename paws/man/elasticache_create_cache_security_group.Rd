@@ -30,7 +30,7 @@ For more information, see
 \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html}{CreateCacheSubnetGroup}.
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_cache_security_group(
+\preformatted{svc$create_cache_security_group(
   CacheSecurityGroupName = "string",
   Description = "string"
 )

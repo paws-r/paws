@@ -16,7 +16,7 @@ Gets the roles for an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$get_identity_pool_roles(
+\preformatted{svc$get_identity_pool_roles(
   IdentityPoolId = "string"
 )
 }

@@ -264,7 +264,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_cluster(
+\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),

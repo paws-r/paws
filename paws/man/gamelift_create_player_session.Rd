@@ -39,7 +39,7 @@ sessions cannot be updated.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_player_session(
+\preformatted{svc$create_player_session(
   GameSessionId = "string",
   PlayerId = "string",
   PlayerData = "string"

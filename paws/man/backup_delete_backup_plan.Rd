@@ -16,7 +16,7 @@ plan deletes the current version of a backup plan. Previous versions, if
 any, will still exist.
 }
 \section{Request syntax}{
-\preformatted{backup$delete_backup_plan(
+\preformatted{svc$delete_backup_plan(
   BackupPlanId = "string"
 )
 }

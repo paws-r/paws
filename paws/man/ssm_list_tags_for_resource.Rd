@@ -15,7 +15,7 @@ ssm_list_tags_for_resource(ResourceType, ResourceId)
 Returns a list of the tags assigned to the specified resource.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
   ResourceId = "string"
 )

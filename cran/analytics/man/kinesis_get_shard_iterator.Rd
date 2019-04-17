@@ -89,7 +89,7 @@ GetShardIterator has a limit of five transactions per second per account
 per open shard.
 }
 \section{Request syntax}{
-\preformatted{kinesis$get_shard_iterator(
+\preformatted{svc$get_shard_iterator(
   StreamName = "string",
   ShardId = "string",
   ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",

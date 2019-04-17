@@ -17,7 +17,7 @@ development schemas. See \href{https://docs.aws.amazon.com/clouddirectory/latest
 for more information.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$put_schema_from_json(
+\preformatted{svc$put_schema_from_json(
   SchemaArn = "string",
   Document = "string"
 )

@@ -17,7 +17,7 @@ Retrieves each Amazon Resource Name (ARN) of schemas in the development
 state.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_development_schema_arns(
+\preformatted{svc$list_development_schema_arns(
   NextToken = "string",
   MaxResults = 123
 )

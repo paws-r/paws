@@ -15,7 +15,7 @@ serverlessapplicationrepository_list_applications(MaxItems, NextToken)
 Lists applications owned by the requester.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$list_applications(
+\preformatted{svc$list_applications(
   MaxItems = 123,
   NextToken = "string"
 )

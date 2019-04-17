@@ -15,7 +15,7 @@ mediaconnect_grant_flow_entitlements(Entitlements, FlowArn)
 Grants entitlements to an existing flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$grant_flow_entitlements(
+\preformatted{svc$grant_flow_entitlements(
   Entitlements = list(
     list(
       Description = "string",

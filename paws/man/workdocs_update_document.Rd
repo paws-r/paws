@@ -26,7 +26,7 @@ Updates the specified attributes of a document. The user must have
 access to both the document and its parent folder, if applicable.
 }
 \section{Request syntax}{
-\preformatted{workdocs$update_document(
+\preformatted{svc$update_document(
   AuthenticationToken = "string",
   DocumentId = "string",
   Name = "string",

@@ -40,7 +40,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$register_instances_with_load_balancer(
+\preformatted{svc$register_instances_with_load_balancer(
   LoadBalancerName = "string",
   Instances = list(
     list(
@@ -54,7 +54,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example registers the specified instance with the specified load
 # balancer.
-\donttest{elb$register_instances_with_load_balancer(
+\donttest{svc$register_instances_with_load_balancer(
   Instances = list(
     list(
       InstanceId = "i-d6f6fae3"

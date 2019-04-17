@@ -24,7 +24,7 @@ deployment controller type. For more information, see \href{http://docs.aws.amaz
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$update_task_set(
+\preformatted{svc$update_task_set(
   cluster = "string",
   service = "string",
   taskSet = "string",

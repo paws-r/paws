@@ -15,7 +15,7 @@ mediaconnect_remove_flow_output(FlowArn, OutputArn)
 Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$remove_flow_output(
+\preformatted{svc$remove_flow_output(
   FlowArn = "string",
   OutputArn = "string"
 )

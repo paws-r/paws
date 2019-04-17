@@ -13,7 +13,7 @@ codestar_describe_project(id)
 Describes a project and its resources.
 }
 \section{Request syntax}{
-\preformatted{codestar$describe_project(
+\preformatted{svc$describe_project(
   id = "string"
 )
 }

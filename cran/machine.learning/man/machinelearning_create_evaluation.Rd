@@ -42,7 +42,7 @@ You can use the \code{GetEvaluation} operation to check progress of the
 evaluation during the creation operation.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_evaluation(
+\preformatted{svc$create_evaluation(
   EvaluationId = "string",
   EvaluationName = "string",
   MLModelId = "string",

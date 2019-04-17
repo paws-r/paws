@@ -15,7 +15,7 @@ apigateway_get_documentation_part(restApiId, documentationPartId)
 Get documentation part
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_documentation_part(
+\preformatted{svc$get_documentation_part(
   restApiId = "string",
   documentationPartId = "string"
 )

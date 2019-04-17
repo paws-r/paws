@@ -16,7 +16,7 @@ costandusagereportservice_describe_report_definitions(MaxResults,
 Lists the AWS Cost and Usage reports available to this account.
 }
 \section{Request syntax}{
-\preformatted{costandusagereportservice$describe_report_definitions(
+\preformatted{svc$describe_report_definitions(
   MaxResults = 123,
   NextToken = "string"
 )
@@ -26,7 +26,7 @@ Lists the AWS Cost and Usage reports available to this account.
 \examples{
 # The following example lists the AWS Cost and Usage reports for the
 # account.
-\donttest{costandusagereportservice$describe_report_definitions(
+\donttest{svc$describe_report_definitions(
   MaxResults = 5L
 )}
 

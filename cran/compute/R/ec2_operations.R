@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$accept_reserved_instances_exchange_quote(
+#' svc$accept_reserved_instances_exchange_quote(
 #'   DryRun = TRUE|FALSE,
 #'   ReservedInstanceIds = list(
 #'     "string"
@@ -78,7 +78,7 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$accept_transit_gateway_vpc_attachment(
+#' svc$accept_transit_gateway_vpc_attachment(
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -121,7 +121,7 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$accept_vpc_endpoint_connections(
+#' svc$accept_vpc_endpoint_connections(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   VpcEndpointIds = list(
@@ -171,7 +171,7 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$accept_vpc_peering_connection(
+#' svc$accept_vpc_peering_connection(
 #'   DryRun = TRUE|FALSE,
 #'   VpcPeeringConnectionId = "string"
 #' )
@@ -229,7 +229,7 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$advertise_byoip_cidr(
+#' svc$advertise_byoip_cidr(
 #'   Cidr = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -302,7 +302,7 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$allocate_address(
+#' svc$allocate_address(
 #'   Domain = "vpc"|"standard",
 #'   Address = "string",
 #'   PublicIpv4Pool = "string",
@@ -313,13 +313,13 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' @examples
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # a VPC.
-#' \donttest{ec2$allocate_address(
+#' \donttest{svc$allocate_address(
 #'   Domain = "vpc"
 #' )}
 #' 
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # EC2-Classic.
-#' \donttest{ec2$allocate_address()}
+#' \donttest{svc$allocate_address()}
 #'
 #' @keywords internal
 #'
@@ -369,7 +369,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$allocate_hosts(
+#' svc$allocate_hosts(
 #'   AutoPlacement = "on"|"off",
 #'   AvailabilityZone = "string",
 #'   ClientToken = "string",
@@ -431,7 +431,7 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$apply_security_groups_to_client_vpn_target_network(
+#' svc$apply_security_groups_to_client_vpn_target_network(
 #'   ClientVpnEndpointId = "string",
 #'   VpcId = "string",
 #'   SecurityGroupIds = list(
@@ -486,7 +486,7 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$assign_ipv_6_addresses(
+#' svc$assign_ipv_6_addresses(
 #'   Ipv6AddressCount = 123,
 #'   Ipv6Addresses = list(
 #'     "string"
@@ -560,7 +560,7 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$assign_private_ip_addresses(
+#' svc$assign_private_ip_addresses(
 #'   AllowReassignment = TRUE|FALSE,
 #'   NetworkInterfaceId = "string",
 #'   PrivateIpAddresses = list(
@@ -573,7 +573,7 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' @examples
 #' # This example assigns the specified secondary private IP address to the
 #' # specified network interface.
-#' \donttest{ec2$assign_private_ip_addresses(
+#' \donttest{svc$assign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   PrivateIpAddresses = list(
 #'     "10.0.0.82"
@@ -584,7 +584,7 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' # network interface. Amazon EC2 automatically assigns these IP addresses
 #' # from the available IP addresses in the CIDR block range of the subnet
 #' # the network interface is associated with.
-#' \donttest{ec2$assign_private_ip_addresses(
+#' \donttest{svc$assign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   SecondaryPrivateIpAddressCount = 2L
 #' )}
@@ -668,7 +668,7 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_address(
+#' svc$associate_address(
 #'   AllocationId = "string",
 #'   InstanceId = "string",
 #'   PublicIp = "string",
@@ -682,21 +682,21 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' @examples
 #' # This example associates the specified Elastic IP address with the
 #' # specified instance in a VPC.
-#' \donttest{ec2$associate_address(
+#' \donttest{svc$associate_address(
 #'   AllocationId = "eipalloc-64d5890a",
 #'   InstanceId = "i-0b263919b6498b123"
 #' )}
 #' 
 #' # This example associates the specified Elastic IP address with the
 #' # specified network interface.
-#' \donttest{ec2$associate_address(
+#' \donttest{svc$associate_address(
 #'   AllocationId = "eipalloc-64d5890a",
 #'   NetworkInterfaceId = "eni-1a2b3c4d"
 #' )}
 #' 
 #' # This example associates an Elastic IP address with an instance in
 #' # EC2-Classic.
-#' \donttest{ec2$associate_address(
+#' \donttest{svc$associate_address(
 #'   InstanceId = "i-07ffe74c7330ebf53",
 #'   PublicIp = "198.51.100.0"
 #' )}
@@ -741,7 +741,7 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_client_vpn_target_network(
+#' svc$associate_client_vpn_target_network(
 #'   ClientVpnEndpointId = "string",
 #'   SubnetId = "string",
 #'   DryRun = TRUE|FALSE
@@ -797,7 +797,7 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_dhcp_options(
+#' svc$associate_dhcp_options(
 #'   DhcpOptionsId = "string",
 #'   VpcId = "string",
 #'   DryRun = TRUE|FALSE
@@ -807,14 +807,14 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #' @examples
 #' # This example associates the specified DHCP options set with the
 #' # specified VPC.
-#' \donttest{ec2$associate_dhcp_options(
+#' \donttest{svc$associate_dhcp_options(
 #'   DhcpOptionsId = "dopt-d9070ebb",
 #'   VpcId = "vpc-a01106c2"
 #' )}
 #' 
 #' # This example associates the default DHCP options set with the specified
 #' # VPC.
-#' \donttest{ec2$associate_dhcp_options(
+#' \donttest{svc$associate_dhcp_options(
 #'   DhcpOptionsId = "default",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -852,7 +852,7 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_iam_instance_profile(
+#' svc$associate_iam_instance_profile(
 #'   IamInstanceProfile = list(
 #'     Arn = "string",
 #'     Name = "string"
@@ -864,7 +864,7 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #' @examples
 #' # This example associates an IAM instance profile named admin-role with
 #' # the specified instance.
-#' \donttest{ec2$associate_iam_instance_profile(
+#' \donttest{svc$associate_iam_instance_profile(
 #'   IamInstanceProfile = list(
 #'     Name = "admin-role"
 #'   ),
@@ -915,7 +915,7 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_route_table(
+#' svc$associate_route_table(
 #'   DryRun = TRUE|FALSE,
 #'   RouteTableId = "string",
 #'   SubnetId = "string"
@@ -925,7 +925,7 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #' @examples
 #' # This example associates the specified route table with the specified
 #' # subnet.
-#' \donttest{ec2$associate_route_table(
+#' \donttest{svc$associate_route_table(
 #'   RouteTableId = "rtb-22574640",
 #'   SubnetId = "subnet-9d4a7b6"
 #' )}
@@ -964,7 +964,7 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_subnet_cidr_block(
+#' svc$associate_subnet_cidr_block(
 #'   Ipv6CidrBlock = "string",
 #'   SubnetId = "string"
 #' )
@@ -1008,7 +1008,7 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_transit_gateway_route_table(
+#' svc$associate_transit_gateway_route_table(
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
@@ -1057,7 +1057,7 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$associate_vpc_cidr_block(
+#' svc$associate_vpc_cidr_block(
 #'   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
 #'   CidrBlock = "string",
 #'   VpcId = "string"
@@ -1115,7 +1115,7 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$attach_classic_link_vpc(
+#' svc$attach_classic_link_vpc(
 #'   DryRun = TRUE|FALSE,
 #'   Groups = list(
 #'     "string"
@@ -1164,7 +1164,7 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$attach_internet_gateway(
+#' svc$attach_internet_gateway(
 #'   DryRun = TRUE|FALSE,
 #'   InternetGatewayId = "string",
 #'   VpcId = "string"
@@ -1174,7 +1174,7 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' @examples
 #' # This example attaches the specified Internet gateway to the specified
 #' # VPC.
-#' \donttest{ec2$attach_internet_gateway(
+#' \donttest{svc$attach_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -1216,7 +1216,7 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$attach_network_interface(
+#' svc$attach_network_interface(
 #'   DeviceIndex = 123,
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string",
@@ -1227,7 +1227,7 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @examples
 #' # This example attaches the specified network interface to the specified
 #' # instance.
-#' \donttest{ec2$attach_network_interface(
+#' \donttest{svc$attach_network_interface(
 #'   DeviceIndex = 1L,
 #'   InstanceId = "i-1234567890abcdef0",
 #'   NetworkInterfaceId = "eni-e5aa89a3"
@@ -1301,7 +1301,7 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$attach_volume(
+#' svc$attach_volume(
 #'   Device = "string",
 #'   InstanceId = "string",
 #'   VolumeId = "string",
@@ -1312,7 +1312,7 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #' @examples
 #' # This example attaches a volume (``vol-1234567890abcdef0``) to an
 #' # instance (``i-01474ef662b89480``) as ``/dev/sdf``.
-#' \donttest{ec2$attach_volume(
+#' \donttest{svc$attach_volume(
 #'   Device = "/dev/sdf",
 #'   InstanceId = "i-01474ef662b89480",
 #'   VolumeId = "vol-1234567890abcdef0"
@@ -1358,7 +1358,7 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$attach_vpn_gateway(
+#' svc$attach_vpn_gateway(
 #'   VpcId = "string",
 #'   VpnGatewayId = "string",
 #'   DryRun = TRUE|FALSE
@@ -1410,7 +1410,7 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$authorize_client_vpn_ingress(
+#' svc$authorize_client_vpn_ingress(
 #'   ClientVpnEndpointId = "string",
 #'   TargetNetworkCidr = "string",
 #'   AccessGroupId = "string",
@@ -1488,7 +1488,7 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$authorize_security_group_egress(
+#' svc$authorize_security_group_egress(
 #'   DryRun = TRUE|FALSE,
 #'   GroupId = "string",
 #'   IpPermissions = list(
@@ -1539,7 +1539,7 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' @examples
 #' # This example adds a rule that grants access to the specified address
 #' # ranges on TCP port 80.
-#' \donttest{ec2$authorize_security_group_egress(
+#' \donttest{svc$authorize_security_group_egress(
 #'   GroupId = "sg-1a2b3c4d",
 #'   IpPermissions = list(
 #'     list(
@@ -1557,7 +1557,7 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' 
 #' # This example adds a rule that grants access to the specified security
 #' # group on TCP port 80.
-#' \donttest{ec2$authorize_security_group_egress(
+#' \donttest{svc$authorize_security_group_egress(
 #'   GroupId = "sg-1a2b3c4d",
 #'   IpPermissions = list(
 #'     list(
@@ -1665,7 +1665,7 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$authorize_security_group_ingress(
+#' svc$authorize_security_group_ingress(
 #'   CidrIp = "string",
 #'   FromPort = 123,
 #'   GroupId = "string",
@@ -1717,7 +1717,7 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' @examples
 #' # This example enables inbound traffic on TCP port 22 (SSH). The rule
 #' # includes a description to help you identify it later.
-#' \donttest{ec2$authorize_security_group_ingress(
+#' \donttest{svc$authorize_security_group_ingress(
 #'   GroupId = "sg-903004f8",
 #'   IpPermissions = list(
 #'     list(
@@ -1738,7 +1738,7 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' # security group. The group must be in the same VPC or a peer VPC.
 #' # Incoming traffic is allowed based on the private IP addresses of
 #' # instances that are associated with the specified security group.
-#' \donttest{ec2$authorize_security_group_ingress(
+#' \donttest{svc$authorize_security_group_ingress(
 #'   GroupId = "sg-111aaa22",
 #'   IpPermissions = list(
 #'     list(
@@ -1758,7 +1758,7 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' # This example adds an inbound rule that allows RDP traffic from the
 #' # specified IPv6 address range. The rule includes a description to help
 #' # you identify it later.
-#' \donttest{ec2$authorize_security_group_ingress(
+#' \donttest{svc$authorize_security_group_ingress(
 #'   GroupId = "sg-123abc12 ",
 #'   IpPermissions = list(
 #'     list(
@@ -1825,7 +1825,7 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$bundle_instance(
+#' svc$bundle_instance(
 #'   InstanceId = "string",
 #'   Storage = list(
 #'     S3 = list(
@@ -1876,7 +1876,7 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_bundle_task(
+#' svc$cancel_bundle_task(
 #'   BundleId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -1925,7 +1925,7 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_capacity_reservation(
+#' svc$cancel_capacity_reservation(
 #'   CapacityReservationId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -1974,7 +1974,7 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_conversion_task(
+#' svc$cancel_conversion_task(
 #'   ConversionTaskId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   ReasonMessage = "string"
@@ -2015,7 +2015,7 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_export_task(
+#' svc$cancel_export_task(
 #'   ExportTaskId = "string"
 #' )
 #' ```
@@ -2055,7 +2055,7 @@ ec2_cancel_export_task <- function(ExportTaskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_import_task(
+#' svc$cancel_import_task(
 #'   CancelReason = "string",
 #'   DryRun = TRUE|FALSE,
 #'   ImportTaskId = "string"
@@ -2098,7 +2098,7 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_reserved_instances_listing(
+#' svc$cancel_reserved_instances_listing(
 #'   ReservedInstancesListingId = "string"
 #' )
 #' ```
@@ -2148,7 +2148,7 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_spot_fleet_requests(
+#' svc$cancel_spot_fleet_requests(
 #'   DryRun = TRUE|FALSE,
 #'   SpotFleetRequestIds = list(
 #'     "string"
@@ -2160,7 +2160,7 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #' @examples
 #' # This example cancels the specified Spot fleet request and terminates its
 #' # associated Spot Instances.
-#' \donttest{ec2$cancel_spot_fleet_requests(
+#' \donttest{svc$cancel_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   ),
@@ -2169,7 +2169,7 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #' 
 #' # This example cancels the specified Spot fleet request without
 #' # terminating its associated Spot Instances.
-#' \donttest{ec2$cancel_spot_fleet_requests(
+#' \donttest{svc$cancel_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   ),
@@ -2213,7 +2213,7 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$cancel_spot_instance_requests(
+#' svc$cancel_spot_instance_requests(
 #'   DryRun = TRUE|FALSE,
 #'   SpotInstanceRequestIds = list(
 #'     "string"
@@ -2223,7 +2223,7 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 #'
 #' @examples
 #' # This example cancels a Spot Instance request.
-#' \donttest{ec2$cancel_spot_instance_requests(
+#' \donttest{svc$cancel_spot_instance_requests(
 #'   SpotInstanceRequestIds = list(
 #'     "sir-08b93456"
 #'   )
@@ -2267,7 +2267,7 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$confirm_product_instance(
+#' svc$confirm_product_instance(
 #'   InstanceId = "string",
 #'   ProductCode = "string",
 #'   DryRun = TRUE|FALSE
@@ -2277,7 +2277,7 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 #' @examples
 #' # This example determines whether the specified product code is associated
 #' # with the specified instance.
-#' \donttest{ec2$confirm_product_instance(
+#' \donttest{svc$confirm_product_instance(
 #'   InstanceId = "i-1234567890abcdef0",
 #'   ProductCode = "774F4FF8"
 #' )}
@@ -2323,7 +2323,7 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$copy_fpga_image(
+#' svc$copy_fpga_image(
 #'   DryRun = TRUE|FALSE,
 #'   SourceFpgaImageId = "string",
 #'   Description = "string",
@@ -2425,7 +2425,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$copy_image(
+#' svc$copy_image(
 #'   ClientToken = "string",
 #'   Description = "string",
 #'   Encrypted = TRUE|FALSE,
@@ -2440,7 +2440,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' @examples
 #' # This example copies the specified AMI from the us-east-1 region to the
 #' # current region.
-#' \donttest{ec2$copy_image(
+#' \donttest{svc$copy_image(
 #'   Description = "",
 #'   Name = "My server",
 #'   SourceImageId = "ami-5731123e",
@@ -2564,7 +2564,7 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$copy_snapshot(
+#' svc$copy_snapshot(
 #'   Description = "string",
 #'   DestinationRegion = "string",
 #'   Encrypted = TRUE|FALSE,
@@ -2581,7 +2581,7 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
 #' # ``us-east-1`` region and adds a short description to identify the
 #' # snapshot.
-#' \donttest{ec2$copy_snapshot(
+#' \donttest{svc$copy_snapshot(
 #'   Description = "This is my copied snapshot.",
 #'   DestinationRegion = "us-east-1",
 #'   SourceRegion = "us-west-2",
@@ -2715,7 +2715,7 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationRegion = NULL, Encr
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_capacity_reservation(
+#' svc$create_capacity_reservation(
 #'   ClientToken = "string",
 #'   InstanceType = "string",
 #'   InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
@@ -2816,7 +2816,7 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_client_vpn_endpoint(
+#' svc$create_client_vpn_endpoint(
 #'   ClientCidrBlock = "string",
 #'   ServerCertificateArn = "string",
 #'   AuthenticationOptions = list(
@@ -2911,7 +2911,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_client_vpn_route(
+#' svc$create_client_vpn_route(
 #'   ClientVpnEndpointId = "string",
 #'   DestinationCidrBlock = "string",
 #'   TargetVpcSubnetId = "string",
@@ -2985,7 +2985,7 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_customer_gateway(
+#' svc$create_customer_gateway(
 #'   BgpAsn = 123,
 #'   PublicIp = "string",
 #'   Type = "ipsec.1",
@@ -2996,7 +2996,7 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 #' @examples
 #' # This example creates a customer gateway with the specified IP address
 #' # for its outside interface.
-#' \donttest{ec2$create_customer_gateway(
+#' \donttest{svc$create_customer_gateway(
 #'   BgpAsn = 65534L,
 #'   PublicIp = "12.1.2.3",
 #'   Type = "ipsec.1"
@@ -3042,7 +3042,7 @@ ec2_create_customer_gateway <- function(BgpAsn, PublicIp, Type, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_default_subnet(
+#' svc$create_default_subnet(
 #'   AvailabilityZone = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -3096,7 +3096,7 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_default_vpc(
+#' svc$create_default_vpc(
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
@@ -3180,7 +3180,7 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_dhcp_options(
+#' svc$create_dhcp_options(
 #'   DhcpConfigurations = list(
 #'     list(
 #'       Key = "string",
@@ -3195,7 +3195,7 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #'
 #' @examples
 #' # This example creates a DHCP options set.
-#' \donttest{ec2$create_dhcp_options(
+#' \donttest{svc$create_dhcp_options(
 #'   DhcpConfigurations = list(
 #'     list(
 #'       Key = "domain-name-servers",
@@ -3248,7 +3248,7 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_egress_only_internet_gateway(
+#' svc$create_egress_only_internet_gateway(
 #'   ClientToken = "string",
 #'   DryRun = TRUE|FALSE,
 #'   VpcId = "string"
@@ -3336,7 +3336,7 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_fleet(
+#' svc$create_fleet(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   SpotOptions = list(
@@ -3495,7 +3495,7 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_flow_logs(
+#' svc$create_flow_logs(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   DeliverLogsPermissionArn = "string",
@@ -3562,7 +3562,7 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_fpga_image(
+#' svc$create_fpga_image(
 #'   DryRun = TRUE|FALSE,
 #'   InputStorageLocation = list(
 #'     Bucket = "string",
@@ -3640,7 +3640,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_image(
+#' svc$create_image(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "string",
@@ -3669,7 +3669,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' # This example creates an AMI from the specified instance and adds an EBS
 #' # volume with the device name /dev/sdh and an instance store volume with
 #' # the device name /dev/sdc.
-#' \donttest{ec2$create_image(
+#' \donttest{svc$create_image(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "/dev/sdh",
@@ -3729,7 +3729,7 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_instance_export_task(
+#' svc$create_instance_export_task(
 #'   Description = "string",
 #'   ExportToS3Task = list(
 #'     ContainerFormat = "ova",
@@ -3780,14 +3780,14 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_internet_gateway(
+#' svc$create_internet_gateway(
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @examples
 #' # This example creates an Internet gateway.
-#' \donttest{ec2$create_internet_gateway()}
+#' \donttest{svc$create_internet_gateway()}
 #'
 #' @keywords internal
 #'
@@ -3839,7 +3839,7 @@ ec2_create_internet_gateway <- function(DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_key_pair(
+#' svc$create_key_pair(
 #'   KeyName = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -3847,7 +3847,7 @@ ec2_create_internet_gateway <- function(DryRun = NULL) {
 #'
 #' @examples
 #' # This example creates a key pair named my-key-pair.
-#' \donttest{ec2$create_key_pair(
+#' \donttest{svc$create_key_pair(
 #'   KeyName = "my-key-pair"
 #' )}
 #'
@@ -3896,7 +3896,7 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_launch_template(
+#' svc$create_launch_template(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   LaunchTemplateName = "string",
@@ -4037,7 +4037,7 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL) {
 #' # This example creates a launch template that specifies the subnet in
 #' # which to launch the instance, assigns a public IP address and an IPv6
 #' # address to the instance, and creates a tag for the instance.
-#' \donttest{ec2$create_launch_template(
+#' \donttest{svc$create_launch_template(
 #'   LaunchTemplateData = list(
 #'     ImageId = "ami-8c1be5f6",
 #'     InstanceType = "t2.small",
@@ -4120,7 +4120,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_launch_template_version(
+#' svc$create_launch_template_version(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   LaunchTemplateId = "string",
@@ -4262,7 +4262,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @examples
 #' # This example creates a new launch template version based on version 1 of
 #' # the specified launch template and specifies a different AMI ID.
-#' \donttest{ec2$create_launch_template_version(
+#' \donttest{svc$create_launch_template_version(
 #'   LaunchTemplateData = list(
 #'     ImageId = "ami-c998b6b2"
 #'   ),
@@ -4316,7 +4316,7 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_nat_gateway(
+#' svc$create_nat_gateway(
 #'   AllocationId = "string",
 #'   ClientToken = "string",
 #'   SubnetId = "string"
@@ -4327,7 +4327,7 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
 #' # This example creates a NAT gateway in subnet subnet-1a2b3c4d and
 #' # associates an Elastic IP address with the allocation ID
 #' # eipalloc-37fc1a52 with the NAT gateway.
-#' \donttest{ec2$create_nat_gateway(
+#' \donttest{svc$create_nat_gateway(
 #'   AllocationId = "eipalloc-37fc1a52",
 #'   SubnetId = "subnet-1a2b3c4d"
 #' )}
@@ -4372,7 +4372,7 @@ ec2_create_nat_gateway <- function(AllocationId, ClientToken = NULL, SubnetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_network_acl(
+#' svc$create_network_acl(
 #'   DryRun = TRUE|FALSE,
 #'   VpcId = "string"
 #' )
@@ -4380,7 +4380,7 @@ ec2_create_nat_gateway <- function(AllocationId, ClientToken = NULL, SubnetId) {
 #'
 #' @examples
 #' # This example creates a network ACL for the specified VPC.
-#' \donttest{ec2$create_network_acl(
+#' \donttest{svc$create_network_acl(
 #'   VpcId = "vpc-a01106c2"
 #' )}
 #'
@@ -4463,7 +4463,7 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_network_acl_entry(
+#' svc$create_network_acl_entry(
 #'   CidrBlock = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Egress = TRUE|FALSE,
@@ -4487,7 +4487,7 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId) {
 #' # This example creates an entry for the specified network ACL. The rule
 #' # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 #' # into any associated subnet.
-#' \donttest{ec2$create_network_acl_entry(
+#' \donttest{svc$create_network_acl_entry(
 #'   CidrBlock = "0.0.0.0/0",
 #'   Egress = FALSE,
 #'   NetworkAclId = "acl-5fb85d36",
@@ -4567,7 +4567,7 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_network_interface(
+#' svc$create_network_interface(
 #'   Description = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Groups = list(
@@ -4593,7 +4593,7 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 #'
 #' @examples
 #' # This example creates a network interface for the specified subnet.
-#' \donttest{ec2$create_network_interface(
+#' \donttest{svc$create_network_interface(
 #'   Description = "my network interface",
 #'   Groups = list(
 #'     "sg-903004f8"
@@ -4645,7 +4645,7 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_network_interface_permission(
+#' svc$create_network_interface_permission(
 #'   NetworkInterfaceId = "string",
 #'   AwsAccountId = "string",
 #'   AwsService = "string",
@@ -4707,7 +4707,7 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_placement_group(
+#' svc$create_placement_group(
 #'   DryRun = TRUE|FALSE,
 #'   GroupName = "string",
 #'   Strategy = "cluster"|"spread"|"partition",
@@ -4717,7 +4717,7 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #'
 #' @examples
 #' # This example creates a placement group with the specified name.
-#' \donttest{ec2$create_placement_group(
+#' \donttest{svc$create_placement_group(
 #'   GroupName = "my-cluster",
 #'   Strategy = "cluster"
 #' )}
@@ -4789,7 +4789,7 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_reserved_instances_listing(
+#' svc$create_reserved_instances_listing(
 #'   ClientToken = "string",
 #'   InstanceCount = 123,
 #'   PriceSchedules = list(
@@ -4874,7 +4874,7 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_route(
+#' svc$create_route(
 #'   DestinationCidrBlock = "string",
 #'   DestinationIpv6CidrBlock = "string",
 #'   DryRun = TRUE|FALSE,
@@ -4893,7 +4893,7 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #' # This example creates a route for the specified route table. The route
 #' # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 #' # gateway.
-#' \donttest{ec2$create_route(
+#' \donttest{svc$create_route(
 #'   DestinationCidrBlock = "0.0.0.0/0",
 #'   GatewayId = "igw-c0a643a9",
 #'   RouteTableId = "rtb-22574640"
@@ -4938,7 +4938,7 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_route_table(
+#' svc$create_route_table(
 #'   DryRun = TRUE|FALSE,
 #'   VpcId = "string"
 #' )
@@ -4946,7 +4946,7 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #'
 #' @examples
 #' # This example creates a route table for the specified VPC.
-#' \donttest{ec2$create_route_table(
+#' \donttest{svc$create_route_table(
 #'   VpcId = "vpc-a01106c2"
 #' )}
 #'
@@ -5030,7 +5030,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_security_group(
+#' svc$create_security_group(
 #'   Description = "string",
 #'   GroupName = "string",
 #'   VpcId = "string",
@@ -5040,7 +5040,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId) {
 #'
 #' @examples
 #' # This example creates a security group for the specified VPC.
-#' \donttest{ec2$create_security_group(
+#' \donttest{svc$create_security_group(
 #'   Description = "My security group",
 #'   GroupName = "my-security-group",
 #'   VpcId = "vpc-1a2b3c4d"
@@ -5117,7 +5117,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, DryR
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_snapshot(
+#' svc$create_snapshot(
 #'   Description = "string",
 #'   VolumeId = "string",
 #'   TagSpecifications = list(
@@ -5139,7 +5139,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, DryR
 #' # This example creates a snapshot of the volume with a volume ID of
 #' # ``vol-1234567890abcdef0`` and a short description to identify the
 #' # snapshot.
-#' \donttest{ec2$create_snapshot(
+#' \donttest{svc$create_snapshot(
 #'   Description = "This is my root volume snapshot.",
 #'   VolumeId = "vol-1234567890abcdef0"
 #' )}
@@ -5184,7 +5184,7 @@ ec2_create_snapshot <- function(Description = NULL, VolumeId, TagSpecifications 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_spot_datafeed_subscription(
+#' svc$create_spot_datafeed_subscription(
 #'   Bucket = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Prefix = "string"
@@ -5193,7 +5193,7 @@ ec2_create_snapshot <- function(Description = NULL, VolumeId, TagSpecifications 
 #'
 #' @examples
 #' # This example creates a Spot Instance data feed for your AWS account.
-#' \donttest{ec2$create_spot_datafeed_subscription(
+#' \donttest{svc$create_spot_datafeed_subscription(
 #'   Bucket = "my-s3-bucket",
 #'   Prefix = "spotdata"
 #' )}
@@ -5272,7 +5272,7 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_subnet(
+#' svc$create_subnet(
 #'   AvailabilityZone = "string",
 #'   AvailabilityZoneId = "string",
 #'   CidrBlock = "string",
@@ -5286,7 +5286,7 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #' # This example creates a subnet in the specified VPC with the specified
 #' # CIDR block. We recommend that you let us select an Availability Zone for
 #' # you.
-#' \donttest{ec2$create_subnet(
+#' \donttest{svc$create_subnet(
 #'   CidrBlock = "10.0.1.0/24",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -5344,7 +5344,7 @@ ec2_create_subnet <- function(AvailabilityZone = NULL, AvailabilityZoneId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_tags(
+#' svc$create_tags(
 #'   DryRun = TRUE|FALSE,
 #'   Resources = list(
 #'     "string"
@@ -5361,7 +5361,7 @@ ec2_create_subnet <- function(AvailabilityZone = NULL, AvailabilityZoneId = NULL
 #' @examples
 #' # This example adds the tag Stack=production to the specified image, or
 #' # overwrites an existing tag for the AMI where the tag key is Stack.
-#' \donttest{ec2$create_tags(
+#' \donttest{svc$create_tags(
 #'   Resources = list(
 #'     "ami-78a54011"
 #'   ),
@@ -5432,7 +5432,7 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_transit_gateway(
+#' svc$create_transit_gateway(
 #'   Description = "string",
 #'   Options = list(
 #'     AmazonSideAsn = 123,
@@ -5497,7 +5497,7 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_transit_gateway_route(
+#' svc$create_transit_gateway_route(
 #'   DestinationCidrBlock = "string",
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
@@ -5542,7 +5542,7 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_transit_gateway_route_table(
+#' svc$create_transit_gateway_route_table(
 #'   TransitGatewayId = "string",
 #'   TagSpecifications = list(
 #'     list(
@@ -5608,7 +5608,7 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_transit_gateway_vpc_attachment(
+#' svc$create_transit_gateway_vpc_attachment(
 #'   TransitGatewayId = "string",
 #'   VpcId = "string",
 #'   SubnetIds = list(
@@ -5764,7 +5764,7 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_volume(
+#' svc$create_volume(
 #'   AvailabilityZone = "string",
 #'   Encrypted = TRUE|FALSE,
 #'   Iops = 123,
@@ -5790,7 +5790,7 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' @examples
 #' # This example creates an 80 GiB General Purpose (SSD) volume in the
 #' # Availability Zone ``us-east-1a``.
-#' \donttest{ec2$create_volume(
+#' \donttest{svc$create_volume(
 #'   AvailabilityZone = "us-east-1a",
 #'   Size = 80L,
 #'   VolumeType = "gp2"
@@ -5799,7 +5799,7 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' # This example creates a new Provisioned IOPS (SSD) volume with 1000
 #' # provisioned IOPS from a snapshot in the Availability Zone
 #' # ``us-east-1a``.
-#' \donttest{ec2$create_volume(
+#' \donttest{svc$create_volume(
 #'   AvailabilityZone = "us-east-1a",
 #'   Iops = 1000L,
 #'   SnapshotId = "snap-066877671789bd71b",
@@ -5878,7 +5878,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpc(
+#' svc$create_vpc(
 #'   CidrBlock = "string",
 #'   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
 #'   DryRun = TRUE|FALSE,
@@ -5888,7 +5888,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #'
 #' @examples
 #' # This example creates a VPC with the specified CIDR block.
-#' \donttest{ec2$create_vpc(
+#' \donttest{svc$create_vpc(
 #'   CidrBlock = "10.0.0.0/16"
 #' )}
 #'
@@ -5978,7 +5978,7 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, DryRun
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpc_endpoint(
+#' svc$create_vpc_endpoint(
 #'   DryRun = TRUE|FALSE,
 #'   VpcEndpointType = "Interface"|"Gateway",
 #'   VpcId = "string",
@@ -6048,7 +6048,7 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpc_endpoint_connection_notification(
+#' svc$create_vpc_endpoint_connection_notification(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   VpcEndpointId = "string",
@@ -6111,7 +6111,7 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpc_endpoint_service_configuration(
+#' svc$create_vpc_endpoint_service_configuration(
 #'   DryRun = TRUE|FALSE,
 #'   AcceptanceRequired = TRUE|FALSE,
 #'   NetworkLoadBalancerArns = list(
@@ -6184,7 +6184,7 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpc_peering_connection(
+#' svc$create_vpc_peering_connection(
 #'   DryRun = TRUE|FALSE,
 #'   PeerOwnerId = "string",
 #'   PeerVpcId = "string",
@@ -6254,7 +6254,7 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpn_connection(
+#' svc$create_vpn_connection(
 #'   CustomerGatewayId = "string",
 #'   Type = "string",
 #'   VpnGatewayId = "string",
@@ -6311,7 +6311,7 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpn_connection_route(
+#' svc$create_vpn_connection_route(
 #'   DestinationCidrBlock = "string",
 #'   VpnConnectionId = "string"
 #' )
@@ -6364,7 +6364,7 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$create_vpn_gateway(
+#' svc$create_vpn_gateway(
 #'   AvailabilityZone = "string",
 #'   Type = "ipsec.1",
 #'   AmazonSideAsn = 123,
@@ -6407,7 +6407,7 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, AmazonSideAsn 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_client_vpn_endpoint(
+#' svc$delete_client_vpn_endpoint(
 #'   ClientVpnEndpointId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -6454,7 +6454,7 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_client_vpn_route(
+#' svc$delete_client_vpn_route(
 #'   ClientVpnEndpointId = "string",
 #'   TargetVpcSubnetId = "string",
 #'   DestinationCidrBlock = "string",
@@ -6497,7 +6497,7 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_customer_gateway(
+#' svc$delete_customer_gateway(
 #'   CustomerGatewayId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -6505,7 +6505,7 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 #'
 #' @examples
 #' # This example deletes the specified customer gateway.
-#' \donttest{ec2$delete_customer_gateway(
+#' \donttest{svc$delete_customer_gateway(
 #'   CustomerGatewayId = "cgw-0e11f167"
 #' )}
 #'
@@ -6546,7 +6546,7 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_dhcp_options(
+#' svc$delete_dhcp_options(
 #'   DhcpOptionsId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -6554,7 +6554,7 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 #'
 #' @examples
 #' # This example deletes the specified DHCP options set.
-#' \donttest{ec2$delete_dhcp_options(
+#' \donttest{svc$delete_dhcp_options(
 #'   DhcpOptionsId = "dopt-d9070ebb"
 #' )}
 #'
@@ -6593,7 +6593,7 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_egress_only_internet_gateway(
+#' svc$delete_egress_only_internet_gateway(
 #'   DryRun = TRUE|FALSE,
 #'   EgressOnlyInternetGatewayId = "string"
 #' )
@@ -6642,7 +6642,7 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_fleets(
+#' svc$delete_fleets(
 #'   DryRun = TRUE|FALSE,
 #'   FleetIds = list(
 #'     "string"
@@ -6685,7 +6685,7 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_flow_logs(
+#' svc$delete_flow_logs(
 #'   DryRun = TRUE|FALSE,
 #'   FlowLogIds = list(
 #'     "string"
@@ -6727,7 +6727,7 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_fpga_image(
+#' svc$delete_fpga_image(
 #'   DryRun = TRUE|FALSE,
 #'   FpgaImageId = "string"
 #' )
@@ -6768,7 +6768,7 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_internet_gateway(
+#' svc$delete_internet_gateway(
 #'   DryRun = TRUE|FALSE,
 #'   InternetGatewayId = "string"
 #' )
@@ -6776,7 +6776,7 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 #'
 #' @examples
 #' # This example deletes the specified Internet gateway.
-#' \donttest{ec2$delete_internet_gateway(
+#' \donttest{svc$delete_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9"
 #' )}
 #'
@@ -6816,7 +6816,7 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_key_pair(
+#' svc$delete_key_pair(
 #'   KeyName = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -6824,7 +6824,7 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #'
 #' @examples
 #' # This example deletes the specified key pair.
-#' \donttest{ec2$delete_key_pair(
+#' \donttest{svc$delete_key_pair(
 #'   KeyName = "my-key-pair"
 #' )}
 #'
@@ -6866,7 +6866,7 @@ ec2_delete_key_pair <- function(KeyName, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_launch_template(
+#' svc$delete_launch_template(
 #'   DryRun = TRUE|FALSE,
 #'   LaunchTemplateId = "string",
 #'   LaunchTemplateName = "string"
@@ -6875,7 +6875,7 @@ ec2_delete_key_pair <- function(KeyName, DryRun = NULL) {
 #'
 #' @examples
 #' # This example deletes the specified launch template.
-#' \donttest{ec2$delete_launch_template(
+#' \donttest{svc$delete_launch_template(
 #'   LaunchTemplateId = "lt-0abcd290751193123"
 #' )}
 #'
@@ -6922,7 +6922,7 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_launch_template_versions(
+#' svc$delete_launch_template_versions(
 #'   DryRun = TRUE|FALSE,
 #'   LaunchTemplateId = "string",
 #'   LaunchTemplateName = "string",
@@ -6934,7 +6934,7 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #'
 #' @examples
 #' # This example deletes the specified launch template version.
-#' \donttest{ec2$delete_launch_template_versions(
+#' \donttest{svc$delete_launch_template_versions(
 #'   LaunchTemplateId = "lt-0abcd290751193123",
 #'   Versions = list(
 #'     "1"
@@ -6974,14 +6974,14 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_nat_gateway(
+#' svc$delete_nat_gateway(
 #'   NatGatewayId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This example deletes the specified NAT gateway.
-#' \donttest{ec2$delete_nat_gateway(
+#' \donttest{svc$delete_nat_gateway(
 #'   NatGatewayId = "nat-04ae55e711cec5680"
 #' )}
 #'
@@ -7020,7 +7020,7 @@ ec2_delete_nat_gateway <- function(NatGatewayId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_network_acl(
+#' svc$delete_network_acl(
 #'   DryRun = TRUE|FALSE,
 #'   NetworkAclId = "string"
 #' )
@@ -7028,7 +7028,7 @@ ec2_delete_nat_gateway <- function(NatGatewayId) {
 #'
 #' @examples
 #' # This example deletes the specified network ACL.
-#' \donttest{ec2$delete_network_acl(
+#' \donttest{svc$delete_network_acl(
 #'   NetworkAclId = "acl-5fb85d36"
 #' )}
 #'
@@ -7070,7 +7070,7 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_network_acl_entry(
+#' svc$delete_network_acl_entry(
 #'   DryRun = TRUE|FALSE,
 #'   Egress = TRUE|FALSE,
 #'   NetworkAclId = "string",
@@ -7081,7 +7081,7 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #' @examples
 #' # This example deletes ingress rule number 100 from the specified network
 #' # ACL.
-#' \donttest{ec2$delete_network_acl_entry(
+#' \donttest{svc$delete_network_acl_entry(
 #'   Egress = TRUE,
 #'   NetworkAclId = "acl-5fb85d36",
 #'   RuleNumber = 100L
@@ -7122,7 +7122,7 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_network_interface(
+#' svc$delete_network_interface(
 #'   DryRun = TRUE|FALSE,
 #'   NetworkInterfaceId = "string"
 #' )
@@ -7130,7 +7130,7 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 #'
 #' @examples
 #' # This example deletes the specified network interface.
-#' \donttest{ec2$delete_network_interface(
+#' \donttest{svc$delete_network_interface(
 #'   NetworkInterfaceId = "eni-e5aa89a3"
 #' )}
 #'
@@ -7174,7 +7174,7 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_network_interface_permission(
+#' svc$delete_network_interface_permission(
 #'   NetworkInterfacePermissionId = "string",
 #'   Force = TRUE|FALSE,
 #'   DryRun = TRUE|FALSE
@@ -7219,7 +7219,7 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_placement_group(
+#' svc$delete_placement_group(
 #'   DryRun = TRUE|FALSE,
 #'   GroupName = "string"
 #' )
@@ -7228,7 +7228,7 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #' @examples
 #' # This example deletes the specified placement group.
 #' # 
-#' \donttest{ec2$delete_placement_group(
+#' \donttest{svc$delete_placement_group(
 #'   GroupName = "my-cluster"
 #' )}
 #'
@@ -7271,7 +7271,7 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_route(
+#' svc$delete_route(
 #'   DestinationCidrBlock = "string",
 #'   DestinationIpv6CidrBlock = "string",
 #'   DryRun = TRUE|FALSE,
@@ -7281,7 +7281,7 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
 #'
 #' @examples
 #' # This example deletes the specified route from the specified route table.
-#' \donttest{ec2$delete_route(
+#' \donttest{svc$delete_route(
 #'   DestinationCidrBlock = "0.0.0.0/0",
 #'   RouteTableId = "rtb-22574640"
 #' )}
@@ -7322,7 +7322,7 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_route_table(
+#' svc$delete_route_table(
 #'   DryRun = TRUE|FALSE,
 #'   RouteTableId = "string"
 #' )
@@ -7330,7 +7330,7 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #'
 #' @examples
 #' # This example deletes the specified route table.
-#' \donttest{ec2$delete_route_table(
+#' \donttest{svc$delete_route_table(
 #'   RouteTableId = "rtb-22574640"
 #' )}
 #'
@@ -7375,7 +7375,7 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_security_group(
+#' svc$delete_security_group(
 #'   GroupId = "string",
 #'   GroupName = "string",
 #'   DryRun = TRUE|FALSE
@@ -7384,7 +7384,7 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #'
 #' @examples
 #' # This example deletes the specified security group.
-#' \donttest{ec2$delete_security_group(
+#' \donttest{svc$delete_security_group(
 #'   GroupId = "sg-903004f8"
 #' )}
 #'
@@ -7438,7 +7438,7 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_snapshot(
+#' svc$delete_snapshot(
 #'   SnapshotId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7448,7 +7448,7 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #' # This example deletes a snapshot with the snapshot ID of
 #' # ``snap-1234567890abcdef0``. If the command succeeds, no output is
 #' # returned.
-#' \donttest{ec2$delete_snapshot(
+#' \donttest{svc$delete_snapshot(
 #'   SnapshotId = "snap-1234567890abcdef0"
 #' )}
 #'
@@ -7485,14 +7485,14 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_spot_datafeed_subscription(
+#' svc$delete_spot_datafeed_subscription(
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @examples
 #' # This example deletes a Spot data feed subscription for the account.
-#' \donttest{ec2$delete_spot_datafeed_subscription()}
+#' \donttest{svc$delete_spot_datafeed_subscription()}
 #'
 #' @keywords internal
 #'
@@ -7529,7 +7529,7 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_subnet(
+#' svc$delete_subnet(
 #'   SubnetId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7537,7 +7537,7 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 #'
 #' @examples
 #' # This example deletes the specified subnet.
-#' \donttest{ec2$delete_subnet(
+#' \donttest{svc$delete_subnet(
 #'   SubnetId = "subnet-9d4a7b6c"
 #' )}
 #'
@@ -7592,7 +7592,7 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_tags(
+#' svc$delete_tags(
 #'   DryRun = TRUE|FALSE,
 #'   Resources = list(
 #'     "string"
@@ -7608,7 +7608,7 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #'
 #' @examples
 #' # This example deletes the tag Stack=test from the specified image.
-#' \donttest{ec2$delete_tags(
+#' \donttest{svc$delete_tags(
 #'   Resources = list(
 #'     "ami-78a54011"
 #'   ),
@@ -7654,7 +7654,7 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_transit_gateway(
+#' svc$delete_transit_gateway(
 #'   TransitGatewayId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7699,7 +7699,7 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_transit_gateway_route(
+#' svc$delete_transit_gateway_route(
 #'   TransitGatewayRouteTableId = "string",
 #'   DestinationCidrBlock = "string",
 #'   DryRun = TRUE|FALSE
@@ -7743,7 +7743,7 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_transit_gateway_route_table(
+#' svc$delete_transit_gateway_route_table(
 #'   TransitGatewayRouteTableId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7784,7 +7784,7 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_transit_gateway_vpc_attachment(
+#' svc$delete_transit_gateway_vpc_attachment(
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7831,7 +7831,7 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_volume(
+#' svc$delete_volume(
 #'   VolumeId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7841,7 +7841,7 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' # This example deletes an available volume with the volume ID of
 #' # ``vol-049df61146c4d7901``. If the command succeeds, no output is
 #' # returned.
-#' \donttest{ec2$delete_volume(
+#' \donttest{svc$delete_volume(
 #'   VolumeId = "vol-049df61146c4d7901"
 #' )}
 #'
@@ -7884,7 +7884,7 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpc(
+#' svc$delete_vpc(
 #'   VpcId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -7892,7 +7892,7 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 #'
 #' @examples
 #' # This example deletes the specified VPC.
-#' \donttest{ec2$delete_vpc(
+#' \donttest{svc$delete_vpc(
 #'   VpcId = "vpc-a01106c2"
 #' )}
 #'
@@ -7931,7 +7931,7 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpc_endpoint_connection_notifications(
+#' svc$delete_vpc_endpoint_connection_notifications(
 #'   DryRun = TRUE|FALSE,
 #'   ConnectionNotificationIds = list(
 #'     "string"
@@ -7976,7 +7976,7 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpc_endpoint_service_configurations(
+#' svc$delete_vpc_endpoint_service_configurations(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceIds = list(
 #'     "string"
@@ -8021,7 +8021,7 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpc_endpoints(
+#' svc$delete_vpc_endpoints(
 #'   DryRun = TRUE|FALSE,
 #'   VpcEndpointIds = list(
 #'     "string"
@@ -8067,7 +8067,7 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpc_peering_connection(
+#' svc$delete_vpc_peering_connection(
 #'   DryRun = TRUE|FALSE,
 #'   VpcPeeringConnectionId = "string"
 #' )
@@ -8117,7 +8117,7 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpn_connection(
+#' svc$delete_vpn_connection(
 #'   VpnConnectionId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -8158,7 +8158,7 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpn_connection_route(
+#' svc$delete_vpn_connection_route(
 #'   DestinationCidrBlock = "string",
 #'   VpnConnectionId = "string"
 #' )
@@ -8202,7 +8202,7 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$delete_vpn_gateway(
+#' svc$delete_vpn_gateway(
 #'   VpnGatewayId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -8251,7 +8251,7 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$deprovision_byoip_cidr(
+#' svc$deprovision_byoip_cidr(
 #'   Cidr = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -8300,7 +8300,7 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$deregister_image(
+#' svc$deregister_image(
 #'   ImageId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -8359,7 +8359,7 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_account_attributes(
+#' svc$describe_account_attributes(
 #'   AttributeNames = list(
 #'     "supported-platforms"|"default-vpc"
 #'   ),
@@ -8370,14 +8370,14 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
 #' @examples
 #' # This example describes the supported-platforms attribute for your AWS
 #' # account.
-#' \donttest{ec2$describe_account_attributes(
+#' \donttest{svc$describe_account_attributes(
 #'   AttributeNames = list(
 #'     "supported-platforms"
 #'   )
 #' )}
 #' 
 #' # This example describes the attributes for your AWS account.
-#' \donttest{ec2$describe_account_attributes()}
+#' \donttest{svc$describe_account_attributes()}
 #'
 #' @keywords internal
 #'
@@ -8454,7 +8454,7 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_addresses(
+#' svc$describe_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -8475,11 +8475,11 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #'
 #' @examples
 #' # This example describes your Elastic IP addresses.
-#' \donttest{ec2$describe_addresses()}
+#' \donttest{svc$describe_addresses()}
 #' 
 #' # This example describes your Elastic IP addresses for use with instances
 #' # in a VPC.
-#' \donttest{ec2$describe_addresses(
+#' \donttest{svc$describe_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "domain",
@@ -8492,7 +8492,7 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' 
 #' # This example describes your Elastic IP addresses for use with instances
 #' # in EC2-Classic.
-#' \donttest{ec2$describe_addresses(
+#' \donttest{svc$describe_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "domain",
@@ -8555,7 +8555,7 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_aggregate_id_format(
+#' svc$describe_aggregate_id_format(
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
@@ -8619,7 +8619,7 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_availability_zones(
+#' svc$describe_availability_zones(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -8641,7 +8641,7 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' @examples
 #' # This example describes the Availability Zones that are available to you.
 #' # The response includes Availability Zones only for the current region.
-#' \donttest{ec2$describe_availability_zones()}
+#' \donttest{svc$describe_availability_zones()}
 #'
 #' @keywords internal
 #'
@@ -8709,7 +8709,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_bundle_tasks(
+#' svc$describe_bundle_tasks(
 #'   BundleIds = list(
 #'     "string"
 #'   ),
@@ -8767,7 +8767,7 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_byoip_cidrs(
+#' svc$describe_byoip_cidrs(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -8816,7 +8816,7 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_capacity_reservations(
+#' svc$describe_capacity_reservations(
 #'   CapacityReservationIds = list(
 #'     "string"
 #'   ),
@@ -8900,7 +8900,7 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_classic_link_instances(
+#' svc$describe_classic_link_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -8958,7 +8958,7 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_client_vpn_authorization_rules(
+#' svc$describe_client_vpn_authorization_rules(
 #'   ClientVpnEndpointId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   NextToken = "string",
@@ -9018,7 +9018,7 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_client_vpn_connections(
+#' svc$describe_client_vpn_connections(
 #'   ClientVpnEndpointId = "string",
 #'   Filters = list(
 #'     list(
@@ -9074,7 +9074,7 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_client_vpn_endpoints(
+#' svc$describe_client_vpn_endpoints(
 #'   ClientVpnEndpointIds = list(
 #'     "string"
 #'   ),
@@ -9132,7 +9132,7 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_client_vpn_routes(
+#' svc$describe_client_vpn_routes(
 #'   ClientVpnEndpointId = "string",
 #'   Filters = list(
 #'     list(
@@ -9191,7 +9191,7 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_client_vpn_target_networks(
+#' svc$describe_client_vpn_target_networks(
 #'   ClientVpnEndpointId = "string",
 #'   AssociationIds = list(
 #'     "string"
@@ -9250,7 +9250,7 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_conversion_tasks(
+#' svc$describe_conversion_tasks(
 #'   ConversionTaskIds = list(
 #'     "string"
 #'   ),
@@ -9323,7 +9323,7 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_customer_gateways(
+#' svc$describe_customer_gateways(
 #'   CustomerGatewayIds = list(
 #'     "string"
 #'   ),
@@ -9341,7 +9341,7 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #'
 #' @examples
 #' # This example describes the specified customer gateway.
-#' \donttest{ec2$describe_customer_gateways(
+#' \donttest{svc$describe_customer_gateways(
 #'   CustomerGatewayIds = list(
 #'     "cgw-0e11f167"
 #'   )
@@ -9407,7 +9407,7 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_dhcp_options(
+#' svc$describe_dhcp_options(
 #'   DhcpOptionsIds = list(
 #'     "string"
 #'   ),
@@ -9425,7 +9425,7 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #'
 #' @examples
 #' # This example describes the specified DHCP options set.
-#' \donttest{ec2$describe_dhcp_options(
+#' \donttest{svc$describe_dhcp_options(
 #'   DhcpOptionsIds = list(
 #'     "dopt-d9070ebb"
 #'   )
@@ -9470,7 +9470,7 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_egress_only_internet_gateways(
+#' svc$describe_egress_only_internet_gateways(
 #'   DryRun = TRUE|FALSE,
 #'   EgressOnlyInternetGatewayIds = list(
 #'     "string"
@@ -9539,7 +9539,7 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_elastic_gpus(
+#' svc$describe_elastic_gpus(
 #'   ElasticGpuIds = list(
 #'     "string"
 #'   ),
@@ -9587,7 +9587,7 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_export_tasks(
+#' svc$describe_export_tasks(
 #'   ExportTaskIds = list(
 #'     "string"
 #'   )
@@ -9639,7 +9639,7 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_fleet_history(
+#' svc$describe_fleet_history(
 #'   DryRun = TRUE|FALSE,
 #'   EventType = "instance-change"|"fleet-change"|"service-error",
 #'   MaxResults = 123,
@@ -9694,7 +9694,7 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_fleet_instances(
+#' svc$describe_fleet_instances(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -9766,7 +9766,7 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_fleets(
+#' svc$describe_fleets(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -9842,7 +9842,7 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_flow_logs(
+#' svc$describe_flow_logs(
 #'   DryRun = TRUE|FALSE,
 #'   Filter = list(
 #'     list(
@@ -9897,7 +9897,7 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_fpga_image_attribute(
+#' svc$describe_fpga_image_attribute(
 #'   DryRun = TRUE|FALSE,
 #'   FpgaImageId = "string",
 #'   Attribute = "description"|"name"|"loadPermission"|"productCodes"
@@ -9977,7 +9977,7 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_fpga_images(
+#' svc$describe_fpga_images(
 #'   DryRun = TRUE|FALSE,
 #'   FpgaImageIds = list(
 #'     "string"
@@ -10061,7 +10061,7 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_host_reservation_offerings(
+#' svc$describe_host_reservation_offerings(
 #'   Filter = list(
 #'     list(
 #'       Name = "string",
@@ -10135,7 +10135,7 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_host_reservations(
+#' svc$describe_host_reservations(
 #'   Filter = list(
 #'     list(
 #'       Name = "string",
@@ -10218,7 +10218,7 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_hosts(
+#' svc$describe_hosts(
 #'   Filter = list(
 #'     list(
 #'       Name = "string",
@@ -10276,7 +10276,7 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_iam_instance_profile_associations(
+#' svc$describe_iam_instance_profile_associations(
 #'   AssociationIds = list(
 #'     "string"
 #'   ),
@@ -10295,7 +10295,7 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #'
 #' @examples
 #' # This example describes the specified IAM instance profile association.
-#' \donttest{ec2$describe_iam_instance_profile_associations(
+#' \donttest{svc$describe_iam_instance_profile_associations(
 #'   AssociationIds = list(
 #'     "iip-assoc-0db249b1f25fa24b8"
 #'   )
@@ -10366,7 +10366,7 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_id_format(
+#' svc$describe_id_format(
 #'   Resource = "string"
 #' )
 #' ```
@@ -10435,7 +10435,7 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_identity_id_format(
+#' svc$describe_identity_id_format(
 #'   PrincipalArn = "string",
 #'   Resource = "string"
 #' )
@@ -10482,7 +10482,7 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_image_attribute(
+#' svc$describe_image_attribute(
 #'   Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
 #'   ImageId = "string",
 #'   DryRun = TRUE|FALSE
@@ -10491,7 +10491,7 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #'
 #' @examples
 #' # This example describes the launch permissions for the specified AMI.
-#' \donttest{ec2$describe_image_attribute(
+#' \donttest{svc$describe_image_attribute(
 #'   Attribute = "launchPermission",
 #'   ImageId = "ami-5731123e"
 #' )}
@@ -10635,7 +10635,7 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_images(
+#' svc$describe_images(
 #'   ExecutableUsers = list(
 #'     "string"
 #'   ),
@@ -10659,7 +10659,7 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #'
 #' @examples
 #' # This example describes the specified AMI.
-#' \donttest{ec2$describe_images(
+#' \donttest{svc$describe_images(
 #'   ImageIds = list(
 #'     "ami-5731123e"
 #'   )
@@ -10708,7 +10708,7 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_import_image_tasks(
+#' svc$describe_import_image_tasks(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -10766,7 +10766,7 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_import_snapshot_tasks(
+#' svc$describe_import_snapshot_tasks(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -10826,7 +10826,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_instance_attribute(
+#' svc$describe_instance_attribute(
 #'   Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string"
@@ -10836,7 +10836,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' @examples
 #' # This example describes the instance type of the specified instance.
 #' # 
-#' \donttest{ec2$describe_instance_attribute(
+#' \donttest{svc$describe_instance_attribute(
 #'   Attribute = "instanceType",
 #'   InstanceId = "i-1234567890abcdef0"
 #' )}
@@ -10844,7 +10844,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' # This example describes the ``disableApiTermination`` attribute of the
 #' # specified instance.
 #' # 
-#' \donttest{ec2$describe_instance_attribute(
+#' \donttest{svc$describe_instance_attribute(
 #'   Attribute = "disableApiTermination",
 #'   InstanceId = "i-1234567890abcdef0"
 #' )}
@@ -10852,7 +10852,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' # This example describes the ``blockDeviceMapping`` attribute of the
 #' # specified instance.
 #' # 
-#' \donttest{ec2$describe_instance_attribute(
+#' \donttest{svc$describe_instance_attribute(
 #'   Attribute = "blockDeviceMapping",
 #'   InstanceId = "i-1234567890abcdef0"
 #' )}
@@ -10929,7 +10929,7 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_instance_credit_specifications(
+#' svc$describe_instance_credit_specifications(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -11067,7 +11067,7 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_instance_status(
+#' svc$describe_instance_status(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -11088,7 +11088,7 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #'
 #' @examples
 #' # This example describes the current status of the specified instance.
-#' \donttest{ec2$describe_instance_status(
+#' \donttest{svc$describe_instance_status(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
@@ -11413,7 +11413,7 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_instances(
+#' svc$describe_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -11433,14 +11433,14 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #'
 #' @examples
 #' # This example describes the specified instance.
-#' \donttest{ec2$describe_instances(
+#' \donttest{svc$describe_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
 #' )}
 #' 
 #' # This example describes the instances with the t2.micro instance type.
-#' \donttest{ec2$describe_instances(
+#' \donttest{svc$describe_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "instance-type",
@@ -11452,7 +11452,7 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #' )}
 #' 
 #' # This example describes the instances with the Purpose=test tag.
-#' \donttest{ec2$describe_instances(
+#' \donttest{svc$describe_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "tag:Purpose",
@@ -11526,7 +11526,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_internet_gateways(
+#' svc$describe_internet_gateways(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -11546,7 +11546,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #'
 #' @examples
 #' # This example describes the Internet gateway for the specified VPC.
-#' \donttest{ec2$describe_internet_gateways(
+#' \donttest{svc$describe_internet_gateways(
 #'   Filters = list(
 #'     list(
 #'       Name = "attachment.vpc-id",
@@ -11602,7 +11602,7 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_key_pairs(
+#' svc$describe_key_pairs(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -11620,7 +11620,7 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #'
 #' @examples
 #' # This example displays the fingerprint for the specified key.
-#' \donttest{ec2$describe_key_pairs(
+#' \donttest{svc$describe_key_pairs(
 #'   KeyNames = list(
 #'     "my-key-pair"
 #'   )
@@ -11692,7 +11692,7 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, DryRun = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_launch_template_versions(
+#' svc$describe_launch_template_versions(
 #'   DryRun = TRUE|FALSE,
 #'   LaunchTemplateId = "string",
 #'   LaunchTemplateName = "string",
@@ -11716,7 +11716,7 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, DryRun = NUL
 #'
 #' @examples
 #' # This example describes the versions for the specified launch template.
-#' \donttest{ec2$describe_launch_template_versions(
+#' \donttest{svc$describe_launch_template_versions(
 #'   LaunchTemplateId = "068f72b72934aff71"
 #' )}
 #'
@@ -11775,7 +11775,7 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_launch_templates(
+#' svc$describe_launch_templates(
 #'   DryRun = TRUE|FALSE,
 #'   LaunchTemplateIds = list(
 #'     "string"
@@ -11798,7 +11798,7 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #'
 #' @examples
 #' # This example describes the specified launch template.
-#' \donttest{ec2$describe_launch_templates(
+#' \donttest{svc$describe_launch_templates(
 #'   LaunchTemplateIds = list(
 #'     "lt-01238c059e3466abc"
 #'   )
@@ -11855,7 +11855,7 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_moving_addresses(
+#' svc$describe_moving_addresses(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -11875,7 +11875,7 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #'
 #' @examples
 #' # This example describes all of your moving Elastic IP addresses.
-#' \donttest{ec2$describe_moving_addresses()}
+#' \donttest{svc$describe_moving_addresses()}
 #'
 #' @keywords internal
 #'
@@ -11931,7 +11931,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_nat_gateways(
+#' svc$describe_nat_gateways(
 #'   Filter = list(
 #'     list(
 #'       Name = "string",
@@ -11950,7 +11950,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #'
 #' @examples
 #' # This example describes the NAT gateway for the specified VPC.
-#' \donttest{ec2$describe_nat_gateways(
+#' \donttest{svc$describe_nat_gateways(
 #'   Filter = list(
 #'     list(
 #'       Name = "vpc-id",
@@ -12058,7 +12058,7 @@ ec2_describe_nat_gateways <- function(Filter = NULL, MaxResults = NULL, NatGatew
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_network_acls(
+#' svc$describe_network_acls(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12078,7 +12078,7 @@ ec2_describe_nat_gateways <- function(Filter = NULL, MaxResults = NULL, NatGatew
 #'
 #' @examples
 #' # This example describes the specified network ACL.
-#' \donttest{ec2$describe_network_acls(
+#' \donttest{svc$describe_network_acls(
 #'   NetworkAclIds = list(
 #'     "acl-5fb85d36"
 #'   )
@@ -12121,7 +12121,7 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_network_interface_attribute(
+#' svc$describe_network_interface_attribute(
 #'   Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
 #'   DryRun = TRUE|FALSE,
 #'   NetworkInterfaceId = "string"
@@ -12131,28 +12131,28 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 #' @examples
 #' # This example describes the attachment attribute of the specified network
 #' # interface.
-#' \donttest{ec2$describe_network_interface_attribute(
+#' \donttest{svc$describe_network_interface_attribute(
 #'   Attribute = "attachment",
 #'   NetworkInterfaceId = "eni-686ea200"
 #' )}
 #' 
 #' # This example describes the description attribute of the specified
 #' # network interface.
-#' \donttest{ec2$describe_network_interface_attribute(
+#' \donttest{svc$describe_network_interface_attribute(
 #'   Attribute = "description",
 #'   NetworkInterfaceId = "eni-686ea200"
 #' )}
 #' 
 #' # This example describes the groupSet attribute of the specified network
 #' # interface.
-#' \donttest{ec2$describe_network_interface_attribute(
+#' \donttest{svc$describe_network_interface_attribute(
 #'   Attribute = "groupSet",
 #'   NetworkInterfaceId = "eni-686ea200"
 #' )}
 #' 
 #' # This example describes the sourceDestCheck attribute of the specified
 #' # network interface.
-#' \donttest{ec2$describe_network_interface_attribute(
+#' \donttest{svc$describe_network_interface_attribute(
 #'   Attribute = "sourceDestCheck",
 #'   NetworkInterfaceId = "eni-686ea200"
 #' )}
@@ -12207,7 +12207,7 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_network_interface_permissions(
+#' svc$describe_network_interface_permissions(
 #'   NetworkInterfacePermissionIds = list(
 #'     "string"
 #'   ),
@@ -12376,7 +12376,7 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_network_interfaces(
+#' svc$describe_network_interfaces(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12396,7 +12396,7 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #'
 #' @examples
 #' # 
-#' \donttest{ec2$describe_network_interfaces(
+#' \donttest{svc$describe_network_interfaces(
 #'   NetworkInterfaceIds = list(
 #'     "eni-e5aa89a3"
 #'   )
@@ -12451,7 +12451,7 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_placement_groups(
+#' svc$describe_placement_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12518,7 +12518,7 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_prefix_lists(
+#' svc$describe_prefix_lists(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -12605,7 +12605,7 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_principal_id_format(
+#' svc$describe_principal_id_format(
 #'   DryRun = TRUE|FALSE,
 #'   Resources = list(
 #'     "string"
@@ -12649,7 +12649,7 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_public_ipv_4_pools(
+#' svc$describe_public_ipv_4_pools(
 #'   PoolIds = list(
 #'     "string"
 #'   ),
@@ -12701,7 +12701,7 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_regions(
+#' svc$describe_regions(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12719,7 +12719,7 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #'
 #' @examples
 #' # This example describes all the regions that are available to you.
-#' \donttest{ec2$describe_regions()}
+#' \donttest{svc$describe_regions()}
 #'
 #' @keywords internal
 #'
@@ -12821,7 +12821,7 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_reserved_instances(
+#' svc$describe_reserved_instances(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12906,7 +12906,7 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_reserved_instances_listings(
+#' svc$describe_reserved_instances_listings(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -12996,7 +12996,7 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_reserved_instances_modifications(
+#' svc$describe_reserved_instances_modifications(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -13142,7 +13142,7 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_reserved_instances_offerings(
+#' svc$describe_reserved_instances_offerings(
 #'   AvailabilityZone = "string",
 #'   Filters = list(
 #'     list(
@@ -13290,7 +13290,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_route_tables(
+#' svc$describe_route_tables(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -13310,7 +13310,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #'
 #' @examples
 #' # This example describes the specified route table.
-#' \donttest{ec2$describe_route_tables(
+#' \donttest{svc$describe_route_tables(
 #'   RouteTableIds = list(
 #'     "rtb-1f382e7d"
 #'   )
@@ -13385,7 +13385,7 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_scheduled_instance_availability(
+#' svc$describe_scheduled_instance_availability(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -13423,7 +13423,7 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' # This example describes a schedule that occurs every week on Sunday,
 #' # starting on the specified date. Note that the output contains a single
 #' # schedule as an example.
-#' \donttest{ec2$describe_scheduled_instance_availability(
+#' \donttest{svc$describe_scheduled_instance_availability(
 #'   FirstSlotStartTimeRange = list(
 #'     EarliestTime = "2016-01-31T00:00:00Z",
 #'     LatestTime = "2016-01-31T04:00:00Z"
@@ -13489,7 +13489,7 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_scheduled_instances(
+#' svc$describe_scheduled_instances(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -13517,7 +13517,7 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #'
 #' @examples
 #' # This example describes the specified Scheduled Instance.
-#' \donttest{ec2$describe_scheduled_instances(
+#' \donttest{svc$describe_scheduled_instances(
 #'   ScheduledInstanceIds = list(
 #'     "sci-1234-1234-1234-1234-123456789012"
 #'   )
@@ -13561,7 +13561,7 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_security_group_references(
+#' svc$describe_security_group_references(
 #'   DryRun = TRUE|FALSE,
 #'   GroupId = list(
 #'     "string"
@@ -13572,7 +13572,7 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #' @examples
 #' # This example describes the security group references for the specified
 #' # security group.
-#' \donttest{ec2$describe_security_group_references(
+#' \donttest{svc$describe_security_group_references(
 #'   GroupId = list(
 #'     "sg-903004f8"
 #'   )
@@ -13714,7 +13714,7 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_security_groups(
+#' svc$describe_security_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -13737,7 +13737,7 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #'
 #' @examples
 #' # This example describes the specified security group.
-#' \donttest{ec2$describe_security_groups(
+#' \donttest{svc$describe_security_groups(
 #'   GroupIds = list(
 #'     "sg-903004f8"
 #'   )
@@ -13745,7 +13745,7 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #' 
 #' # This example describes the security groups that include the specified
 #' # tag (Purpose=test).
-#' \donttest{ec2$describe_security_groups(
+#' \donttest{svc$describe_security_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "tag:Purpose",
@@ -13796,7 +13796,7 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_snapshot_attribute(
+#' svc$describe_snapshot_attribute(
 #'   Attribute = "productCodes"|"createVolumePermission",
 #'   SnapshotId = "string",
 #'   DryRun = TRUE|FALSE
@@ -13806,7 +13806,7 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 #' @examples
 #' # This example describes the ``createVolumePermission`` attribute on a
 #' # snapshot with the snapshot ID of ``snap-066877671789bd71b``.
-#' \donttest{ec2$describe_snapshot_attribute(
+#' \donttest{svc$describe_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   SnapshotId = "snap-066877671789bd71b"
 #' )}
@@ -13949,7 +13949,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_snapshots(
+#' svc$describe_snapshots(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -13976,7 +13976,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' @examples
 #' # This example describes a snapshot with the snapshot ID of
 #' # ``snap-1234567890abcdef0``.
-#' \donttest{ec2$describe_snapshots(
+#' \donttest{svc$describe_snapshots(
 #'   SnapshotIds = list(
 #'     "snap-1234567890abcdef0"
 #'   )
@@ -13984,7 +13984,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' 
 #' # This example describes all snapshots owned by the ID 012345678910 that
 #' # are in the ``pending`` status.
-#' \donttest{ec2$describe_snapshots(
+#' \donttest{svc$describe_snapshots(
 #'   Filters = list(
 #'     list(
 #'       Name = "status",
@@ -14034,7 +14034,7 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_datafeed_subscription(
+#' svc$describe_spot_datafeed_subscription(
 #'   DryRun = TRUE|FALSE
 #' )
 #' ```
@@ -14042,7 +14042,7 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 #' @examples
 #' # This example describes the Spot Instance datafeed subscription for your
 #' # AWS account.
-#' \donttest{ec2$describe_spot_datafeed_subscription()}
+#' \donttest{svc$describe_spot_datafeed_subscription()}
 #'
 #' @keywords internal
 #'
@@ -14084,7 +14084,7 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_fleet_instances(
+#' svc$describe_spot_fleet_instances(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -14095,7 +14095,7 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' @examples
 #' # This example lists the Spot Instances associated with the specified Spot
 #' # fleet.
-#' \donttest{ec2$describe_spot_fleet_instances(
+#' \donttest{svc$describe_spot_fleet_instances(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #' )}
 #'
@@ -14149,7 +14149,7 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_fleet_request_history(
+#' svc$describe_spot_fleet_request_history(
 #'   DryRun = TRUE|FALSE,
 #'   EventType = "instanceChange"|"fleetRequestChange"|"error",
 #'   MaxResults = 123,
@@ -14164,7 +14164,7 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #' @examples
 #' # This example returns the history for the specified Spot fleet starting
 #' # at the specified time.
-#' \donttest{ec2$describe_spot_fleet_request_history(
+#' \donttest{svc$describe_spot_fleet_request_history(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   StartTime = "2015-05-26T00:00:00Z"
 #' )}
@@ -14212,7 +14212,7 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_fleet_requests(
+#' svc$describe_spot_fleet_requests(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -14224,7 +14224,7 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 #'
 #' @examples
 #' # This example describes the specified Spot fleet request.
-#' \donttest{ec2$describe_spot_fleet_requests(
+#' \donttest{svc$describe_spot_fleet_requests(
 #'   SpotFleetRequestIds = list(
 #'     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 #'   )
@@ -14405,7 +14405,7 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_instance_requests(
+#' svc$describe_spot_instance_requests(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -14425,7 +14425,7 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #'
 #' @examples
 #' # This example describes the specified Spot Instance request.
-#' \donttest{ec2$describe_spot_instance_requests(
+#' \donttest{svc$describe_spot_instance_requests(
 #'   SpotInstanceRequestIds = list(
 #'     "sir-08b93456"
 #'   )
@@ -14508,7 +14508,7 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_spot_price_history(
+#' svc$describe_spot_price_history(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -14539,7 +14539,7 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #' @examples
 #' # This example returns the Spot Price history for m1.xlarge, Linux/UNIX
 #' # (Amazon VPC) instances for a particular day in January.
-#' \donttest{ec2$describe_spot_price_history(
+#' \donttest{svc$describe_spot_price_history(
 #'   EndTime = "2014-01-06T08:09:10",
 #'   InstanceTypes = list(
 #'     "m1.xlarge"
@@ -14593,7 +14593,7 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_stale_security_groups(
+#' svc$describe_stale_security_groups(
 #'   DryRun = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -14689,7 +14689,7 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_subnets(
+#' svc$describe_subnets(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -14707,7 +14707,7 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #'
 #' @examples
 #' # This example describes the subnets for the specified VPC.
-#' \donttest{ec2$describe_subnets(
+#' \donttest{svc$describe_subnets(
 #'   Filters = list(
 #'     list(
 #'       Name = "vpc-id",
@@ -14779,7 +14779,7 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_tags(
+#' svc$describe_tags(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -14796,7 +14796,7 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #'
 #' @examples
 #' # This example describes the tags for the specified instance.
-#' \donttest{ec2$describe_tags(
+#' \donttest{svc$describe_tags(
 #'   Filters = list(
 #'     list(
 #'       Name = "resource-id",
@@ -14874,7 +14874,7 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_transit_gateway_attachments(
+#' svc$describe_transit_gateway_attachments(
 #'   TransitGatewayAttachmentIds = list(
 #'     "string"
 #'   ),
@@ -14951,7 +14951,7 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_transit_gateway_route_tables(
+#' svc$describe_transit_gateway_route_tables(
 #'   TransitGatewayRouteTableIds = list(
 #'     "string"
 #'   ),
@@ -15020,7 +15020,7 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_transit_gateway_vpc_attachments(
+#' svc$describe_transit_gateway_vpc_attachments(
 #'   TransitGatewayAttachmentIds = list(
 #'     "string"
 #'   ),
@@ -15115,7 +15115,7 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_transit_gateways(
+#' svc$describe_transit_gateways(
 #'   TransitGatewayIds = list(
 #'     "string"
 #'   ),
@@ -15173,7 +15173,7 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_volume_attribute(
+#' svc$describe_volume_attribute(
 #'   Attribute = "autoEnableIO"|"productCodes",
 #'   VolumeId = "string",
 #'   DryRun = TRUE|FALSE
@@ -15183,7 +15183,7 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' @examples
 #' # This example describes the ``autoEnableIo`` attribute of the volume with
 #' # the ID ``vol-049df61146c4d7901``.
-#' \donttest{ec2$describe_volume_attribute(
+#' \donttest{svc$describe_volume_attribute(
 #'   Attribute = "autoEnableIO",
 #'   VolumeId = "vol-049df61146c4d7901"
 #' )}
@@ -15310,7 +15310,7 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_volume_status(
+#' svc$describe_volume_status(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -15331,7 +15331,7 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' @examples
 #' # This example describes the status for the volume
 #' # ``vol-1234567890abcdef0``.
-#' \donttest{ec2$describe_volume_status(
+#' \donttest{svc$describe_volume_status(
 #'   VolumeIds = list(
 #'     "vol-1234567890abcdef0"
 #'   )
@@ -15339,7 +15339,7 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' 
 #' # This example describes the status for all volumes that are impaired. In
 #' # this example output, there are no impaired volumes.
-#' \donttest{ec2$describe_volume_status(
+#' \donttest{svc$describe_volume_status(
 #'   Filters = list(
 #'     list(
 #'       Name = "volume-status.status",
@@ -15457,7 +15457,7 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_volumes(
+#' svc$describe_volumes(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -15477,12 +15477,12 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'
 #' @examples
 #' # This example describes all of your volumes in the default region.
-#' \donttest{ec2$describe_volumes()}
+#' \donttest{svc$describe_volumes()}
 #' 
 #' # This example describes all volumes that are both attached to the
 #' # instance with the ID i-1234567890abcdef0 and set to delete when the
 #' # instance terminates.
-#' \donttest{ec2$describe_volumes(
+#' \donttest{svc$describe_volumes(
 #'   Filters = list(
 #'     list(
 #'       Name = "attachment.instance-id",
@@ -15558,7 +15558,7 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_volumes_modifications(
+#' svc$describe_volumes_modifications(
 #'   DryRun = TRUE|FALSE,
 #'   VolumeIds = list(
 #'     "string"
@@ -15612,7 +15612,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_attribute(
+#' svc$describe_vpc_attribute(
 #'   Attribute = "enableDnsSupport"|"enableDnsHostnames",
 #'   VpcId = "string",
 #'   DryRun = TRUE|FALSE
@@ -15624,7 +15624,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #' # indicates whether DNS resolution is enabled for the VPC. If this
 #' # attribute is true, the Amazon DNS server resolves DNS hostnames for your
 #' # instances to their corresponding IP addresses; otherwise, it does not.
-#' \donttest{ec2$describe_vpc_attribute(
+#' \donttest{svc$describe_vpc_attribute(
 #'   Attribute = "enableDnsSupport",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -15633,7 +15633,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #' # indicates whether the instances launched in the VPC get DNS hostnames.
 #' # If this attribute is true, instances in the VPC get DNS hostnames;
 #' # otherwise, they do not.
-#' \donttest{ec2$describe_vpc_attribute(
+#' \donttest{svc$describe_vpc_attribute(
 #'   Attribute = "enableDnsHostnames",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -15686,7 +15686,7 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_classic_link(
+#' svc$describe_vpc_classic_link(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -15743,7 +15743,7 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_classic_link_dns_support(
+#' svc$describe_vpc_classic_link_dns_support(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   VpcIds = list(
@@ -15808,7 +15808,7 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoint_connection_notifications(
+#' svc$describe_vpc_endpoint_connection_notifications(
 #'   DryRun = TRUE|FALSE,
 #'   ConnectionNotificationId = "string",
 #'   Filters = list(
@@ -15878,7 +15878,7 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoint_connections(
+#' svc$describe_vpc_endpoint_connections(
 #'   DryRun = TRUE|FALSE,
 #'   Filters = list(
 #'     list(
@@ -15944,7 +15944,7 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoint_service_configurations(
+#' svc$describe_vpc_endpoint_service_configurations(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceIds = list(
 #'     "string"
@@ -16011,7 +16011,7 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoint_service_permissions(
+#' svc$describe_vpc_endpoint_service_permissions(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   Filters = list(
@@ -16073,7 +16073,7 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoint_services(
+#' svc$describe_vpc_endpoint_services(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceNames = list(
 #'     "string"
@@ -16144,7 +16144,7 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_endpoints(
+#' svc$describe_vpc_endpoints(
 #'   DryRun = TRUE|FALSE,
 #'   VpcEndpointIds = list(
 #'     "string"
@@ -16242,7 +16242,7 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpc_peering_connections(
+#' svc$describe_vpc_peering_connections(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -16344,7 +16344,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpcs(
+#' svc$describe_vpcs(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -16364,7 +16364,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #'
 #' @examples
 #' # This example describes the specified VPC.
-#' \donttest{ec2$describe_vpcs(
+#' \donttest{svc$describe_vpcs(
 #'   VpcIds = list(
 #'     "vpc-a01106c2"
 #'   )
@@ -16448,7 +16448,7 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpn_connections(
+#' svc$describe_vpn_connections(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -16535,7 +16535,7 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$describe_vpn_gateways(
+#' svc$describe_vpn_gateways(
 #'   Filters = list(
 #'     list(
 #'       Name = "string",
@@ -16589,7 +16589,7 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$detach_classic_link_vpc(
+#' svc$detach_classic_link_vpc(
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string",
 #'   VpcId = "string"
@@ -16634,7 +16634,7 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$detach_internet_gateway(
+#' svc$detach_internet_gateway(
 #'   DryRun = TRUE|FALSE,
 #'   InternetGatewayId = "string",
 #'   VpcId = "string"
@@ -16644,7 +16644,7 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #' @examples
 #' # This example detaches the specified Internet gateway from the specified
 #' # VPC.
-#' \donttest{ec2$detach_internet_gateway(
+#' \donttest{svc$detach_internet_gateway(
 #'   InternetGatewayId = "igw-c0a643a9",
 #'   VpcId = "vpc-a01106c2"
 #' )}
@@ -16684,7 +16684,7 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$detach_network_interface(
+#' svc$detach_network_interface(
 #'   AttachmentId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Force = TRUE|FALSE
@@ -16694,7 +16694,7 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @examples
 #' # This example detaches the specified network interface from its attached
 #' # instance.
-#' \donttest{ec2$detach_network_interface(
+#' \donttest{svc$detach_network_interface(
 #'   AttachmentId = "eni-attach-66c4350a"
 #' )}
 #'
@@ -16755,7 +16755,7 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$detach_volume(
+#' svc$detach_volume(
 #'   Device = "string",
 #'   Force = TRUE|FALSE,
 #'   InstanceId = "string",
@@ -16767,7 +16767,7 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 #' @examples
 #' # This example detaches the volume (``vol-049df61146c4d7901``) from the
 #' # instance it is attached to.
-#' \donttest{ec2$detach_volume(
+#' \donttest{svc$detach_volume(
 #'   VolumeId = "vol-1234567890abcdef0"
 #' )}
 #'
@@ -16814,7 +16814,7 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$detach_vpn_gateway(
+#' svc$detach_vpn_gateway(
 #'   VpcId = "string",
 #'   VpnGatewayId = "string",
 #'   DryRun = TRUE|FALSE
@@ -16859,7 +16859,7 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disable_transit_gateway_route_table_propagation(
+#' svc$disable_transit_gateway_route_table_propagation(
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
@@ -16899,7 +16899,7 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disable_vgw_route_propagation(
+#' svc$disable_vgw_route_propagation(
 #'   GatewayId = "string",
 #'   RouteTableId = "string"
 #' )
@@ -16908,7 +16908,7 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #' @examples
 #' # This example disables the specified virtual private gateway from
 #' # propagating static routes to the specified route table.
-#' \donttest{ec2$disable_vgw_route_propagation(
+#' \donttest{svc$disable_vgw_route_propagation(
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
 #' )}
@@ -16948,7 +16948,7 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disable_vpc_classic_link(
+#' svc$disable_vpc_classic_link(
 #'   DryRun = TRUE|FALSE,
 #'   VpcId = "string"
 #' )
@@ -16989,7 +16989,7 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disable_vpc_classic_link_dns_support(
+#' svc$disable_vpc_classic_link_dns_support(
 #'   VpcId = "string"
 #' )
 #' ```
@@ -17039,7 +17039,7 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_address(
+#' svc$disassociate_address(
 #'   AssociationId = "string",
 #'   PublicIp = "string",
 #'   DryRun = TRUE|FALSE
@@ -17049,13 +17049,13 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' @examples
 #' # This example disassociates an Elastic IP address from an instance in a
 #' # VPC.
-#' \donttest{ec2$disassociate_address(
+#' \donttest{svc$disassociate_address(
 #'   AssociationId = "eipassoc-2bebb745"
 #' )}
 #' 
 #' # This example disassociates an Elastic IP address from an instance in
 #' # EC2-Classic.
-#' \donttest{ec2$disassociate_address(
+#' \donttest{svc$disassociate_address(
 #'   PublicIp = "198.51.100.0"
 #' )}
 #'
@@ -17106,7 +17106,7 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_client_vpn_target_network(
+#' svc$disassociate_client_vpn_target_network(
 #'   ClientVpnEndpointId = "string",
 #'   AssociationId = "string",
 #'   DryRun = TRUE|FALSE
@@ -17146,7 +17146,7 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_iam_instance_profile(
+#' svc$disassociate_iam_instance_profile(
 #'   AssociationId = "string"
 #' )
 #' ```
@@ -17154,7 +17154,7 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #' @examples
 #' # This example disassociates the specified IAM instance profile from an
 #' # instance.
-#' \donttest{ec2$disassociate_iam_instance_profile(
+#' \donttest{svc$disassociate_iam_instance_profile(
 #'   AssociationId = "iip-assoc-05020b59952902f5f"
 #' )}
 #'
@@ -17199,7 +17199,7 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_route_table(
+#' svc$disassociate_route_table(
 #'   AssociationId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -17208,7 +17208,7 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 #' @examples
 #' # This example disassociates the specified route table from its associated
 #' # subnet.
-#' \donttest{ec2$disassociate_route_table(
+#' \donttest{svc$disassociate_route_table(
 #'   AssociationId = "rtbassoc-781d0d1a"
 #' )}
 #'
@@ -17245,7 +17245,7 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_subnet_cidr_block(
+#' svc$disassociate_subnet_cidr_block(
 #'   AssociationId = "string"
 #' )
 #' ```
@@ -17286,7 +17286,7 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_transit_gateway_route_table(
+#' svc$disassociate_transit_gateway_route_table(
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
@@ -17329,7 +17329,7 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$disassociate_vpc_cidr_block(
+#' svc$disassociate_vpc_cidr_block(
 #'   AssociationId = "string"
 #' )
 #' ```
@@ -17372,7 +17372,7 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$enable_transit_gateway_route_table_propagation(
+#' svc$enable_transit_gateway_route_table_propagation(
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
@@ -17412,7 +17412,7 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$enable_vgw_route_propagation(
+#' svc$enable_vgw_route_propagation(
 #'   GatewayId = "string",
 #'   RouteTableId = "string"
 #' )
@@ -17421,7 +17421,7 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #' @examples
 #' # This example enables the specified virtual private gateway to propagate
 #' # static routes to the specified route table.
-#' \donttest{ec2$enable_vgw_route_propagation(
+#' \donttest{svc$enable_vgw_route_propagation(
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
 #' )}
@@ -17462,7 +17462,7 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$enable_volume_io(
+#' svc$enable_volume_io(
 #'   DryRun = TRUE|FALSE,
 #'   VolumeId = "string"
 #' )
@@ -17470,7 +17470,7 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId) {
 #'
 #' @examples
 #' # This example enables I/O on volume ``vol-1234567890abcdef0``.
-#' \donttest{ec2$enable_volume_io(
+#' \donttest{svc$enable_volume_io(
 #'   VolumeId = "vol-1234567890abcdef0"
 #' )}
 #'
@@ -17516,7 +17516,7 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$enable_vpc_classic_link(
+#' svc$enable_vpc_classic_link(
 #'   DryRun = TRUE|FALSE,
 #'   VpcId = "string"
 #' )
@@ -17559,7 +17559,7 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$enable_vpc_classic_link_dns_support(
+#' svc$enable_vpc_classic_link_dns_support(
 #'   VpcId = "string"
 #' )
 #' ```
@@ -17601,7 +17601,7 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$export_client_vpn_client_certificate_revocation_list(
+#' svc$export_client_vpn_client_certificate_revocation_list(
 #'   ClientVpnEndpointId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -17645,7 +17645,7 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$export_client_vpn_client_configuration(
+#' svc$export_client_vpn_client_configuration(
 #'   ClientVpnEndpointId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -17720,7 +17720,7 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$export_transit_gateway_routes(
+#' svc$export_transit_gateway_routes(
 #'   TransitGatewayRouteTableId = "string",
 #'   Filters = list(
 #'     list(
@@ -17790,7 +17790,7 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_console_output(
+#' svc$get_console_output(
 #'   InstanceId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Latest = TRUE|FALSE
@@ -17799,7 +17799,7 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #'
 #' @examples
 #' # This example gets the console output for the specified instance.
-#' \donttest{ec2$get_console_output(
+#' \donttest{svc$get_console_output(
 #'   InstanceId = "i-1234567890abcdef0"
 #' )}
 #'
@@ -17843,7 +17843,7 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_console_screenshot(
+#' svc$get_console_screenshot(
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string",
 #'   WakeUp = TRUE|FALSE
@@ -17887,7 +17887,7 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_host_reservation_purchase_preview(
+#' svc$get_host_reservation_purchase_preview(
 #'   HostIdSet = list(
 #'     "string"
 #'   ),
@@ -17930,7 +17930,7 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_launch_template_data(
+#' svc$get_launch_template_data(
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string"
 #' )
@@ -17938,7 +17938,7 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 #'
 #' @examples
 #' # This example gets the launch template data for the specified instance.
-#' \donttest{ec2$get_launch_template_data(
+#' \donttest{svc$get_launch_template_data(
 #'   InstanceId = "0123d646e8048babc"
 #' )}
 #'
@@ -17999,7 +17999,7 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_password_data(
+#' svc$get_password_data(
 #'   InstanceId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -18048,7 +18048,7 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_reserved_instances_exchange_quote(
+#' svc$get_reserved_instances_exchange_quote(
 #'   DryRun = TRUE|FALSE,
 #'   ReservedInstanceIds = list(
 #'     "string"
@@ -18107,7 +18107,7 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_transit_gateway_attachment_propagations(
+#' svc$get_transit_gateway_attachment_propagations(
 #'   TransitGatewayAttachmentId = "string",
 #'   Filters = list(
 #'     list(
@@ -18171,7 +18171,7 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_transit_gateway_route_table_associations(
+#' svc$get_transit_gateway_route_table_associations(
 #'   TransitGatewayRouteTableId = "string",
 #'   Filters = list(
 #'     list(
@@ -18235,7 +18235,7 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$get_transit_gateway_route_table_propagations(
+#' svc$get_transit_gateway_route_table_propagations(
 #'   TransitGatewayRouteTableId = "string",
 #'   Filters = list(
 #'     list(
@@ -18297,7 +18297,7 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_client_vpn_client_certificate_revocation_list(
+#' svc$import_client_vpn_client_certificate_revocation_list(
 #'   ClientVpnEndpointId = "string",
 #'   CertificateRevocationList = "string",
 #'   DryRun = TRUE|FALSE
@@ -18414,7 +18414,7 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_image(
+#' svc$import_image(
 #'   Architecture = "string",
 #'   ClientData = list(
 #'     Comment = "string",
@@ -18498,7 +18498,7 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_instance(
+#' svc$import_instance(
 #'   Description = "string",
 #'   DiskImages = list(
 #'     list(
@@ -18590,7 +18590,7 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_key_pair(
+#' svc$import_key_pair(
 #'   DryRun = TRUE|FALSE,
 #'   KeyName = "string",
 #'   PublicKeyMaterial = raw
@@ -18672,7 +18672,7 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_snapshot(
+#' svc$import_snapshot(
 #'   ClientData = list(
 #'     Comment = "string",
 #'     UploadEnd = as.POSIXct(
@@ -18745,7 +18745,7 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$import_volume(
+#' svc$import_volume(
 #'   AvailabilityZone = "string",
 #'   Description = "string",
 #'   DryRun = TRUE|FALSE,
@@ -18824,7 +18824,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_capacity_reservation(
+#' svc$modify_capacity_reservation(
 #'   CapacityReservationId = "string",
 #'   InstanceCount = 123,
 #'   EndDate = as.POSIXct(
@@ -18892,7 +18892,7 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_client_vpn_endpoint(
+#' svc$modify_client_vpn_endpoint(
 #'   ClientVpnEndpointId = "string",
 #'   ServerCertificateArn = "string",
 #'   ConnectionLogOptions = list(
@@ -18952,7 +18952,7 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_fleet(
+#' svc$modify_fleet(
 #'   DryRun = TRUE|FALSE,
 #'   ExcessCapacityTerminationPolicy = "no-termination"|"termination",
 #'   FleetId = "string",
@@ -19015,7 +19015,7 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_fpga_image_attribute(
+#' svc$modify_fpga_image_attribute(
 #'   DryRun = TRUE|FALSE,
 #'   FpgaImageId = "string",
 #'   Attribute = "description"|"name"|"loadPermission"|"productCodes",
@@ -19085,7 +19085,7 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_hosts(
+#' svc$modify_hosts(
 #'   AutoPlacement = "on"|"off",
 #'   HostIds = list(
 #'     "string"
@@ -19164,7 +19164,7 @@ ec2_modify_hosts <- function(AutoPlacement, HostIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_id_format(
+#' svc$modify_id_format(
 #'   Resource = "string",
 #'   UseLongIds = TRUE|FALSE
 #' )
@@ -19245,7 +19245,7 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_identity_id_format(
+#' svc$modify_identity_id_format(
 #'   PrincipalArn = "string",
 #'   Resource = "string",
 #'   UseLongIds = TRUE|FALSE
@@ -19312,7 +19312,7 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_image_attribute(
+#' svc$modify_image_attribute(
 #'   Attribute = "string",
 #'   Description = list(
 #'     Value = "string"
@@ -19349,7 +19349,7 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #'
 #' @examples
 #' # This example makes the specified AMI public.
-#' \donttest{ec2$modify_image_attribute(
+#' \donttest{svc$modify_image_attribute(
 #'   ImageId = "ami-5731123e",
 #'   LaunchPermission = list(
 #'     Add = list(
@@ -19362,7 +19362,7 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #' 
 #' # This example grants launch permissions for the specified AMI to the
 #' # specified AWS account.
-#' \donttest{ec2$modify_image_attribute(
+#' \donttest{svc$modify_image_attribute(
 #'   ImageId = "ami-5731123e",
 #'   LaunchPermission = list(
 #'     Add = list(
@@ -19485,7 +19485,7 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_instance_attribute(
+#' svc$modify_instance_attribute(
 #'   SourceDestCheck = list(
 #'     Value = TRUE|FALSE
 #'   ),
@@ -19540,7 +19540,7 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' @examples
 #' # This example modifies the instance type of the specified stopped
 #' # instance.
-#' \donttest{ec2$modify_instance_attribute(
+#' \donttest{svc$modify_instance_attribute(
 #'   InstanceId = "i-1234567890abcdef0",
 #'   InstanceType = list(
 #'     Value = "m5.large"
@@ -19549,7 +19549,7 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' 
 #' # This example enables enhanced networking for the specified stopped
 #' # instance.
-#' \donttest{ec2$modify_instance_attribute(
+#' \donttest{svc$modify_instance_attribute(
 #'   EnaSupport = list(
 #'     Value = TRUE
 #'   ),
@@ -19595,7 +19595,7 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_instance_capacity_reservation_attributes(
+#' svc$modify_instance_capacity_reservation_attributes(
 #'   InstanceId = "string",
 #'   CapacityReservationSpecification = list(
 #'     CapacityReservationPreference = "open"|"none",
@@ -19651,7 +19651,7 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_instance_credit_specification(
+#' svc$modify_instance_credit_specification(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   InstanceCreditSpecifications = list(
@@ -19700,7 +19700,7 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_instance_event_start_time(
+#' svc$modify_instance_event_start_time(
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string",
 #'   InstanceEventId = "string",
@@ -19776,7 +19776,7 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_instance_placement(
+#' svc$modify_instance_placement(
 #'   Affinity = "default"|"host",
 #'   GroupName = "string",
 #'   HostId = "string",
@@ -19832,7 +19832,7 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_launch_template(
+#' svc$modify_launch_template(
 #'   DryRun = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   LaunchTemplateId = "string",
@@ -19844,7 +19844,7 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #' @examples
 #' # This example specifies version 2 as the default version of the specified
 #' # launch template.
-#' \donttest{ec2$modify_launch_template(
+#' \donttest{svc$modify_launch_template(
 #'   DefaultVersion = "2",
 #'   LaunchTemplateId = "lt-0abcd290751193123"
 #' )}
@@ -19900,7 +19900,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_network_interface_attribute(
+#' svc$modify_network_interface_attribute(
 #'   Attachment = list(
 #'     AttachmentId = "string",
 #'     DeleteOnTermination = TRUE|FALSE
@@ -19922,7 +19922,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @examples
 #' # This example modifies the attachment attribute of the specified network
 #' # interface.
-#' \donttest{ec2$modify_network_interface_attribute(
+#' \donttest{svc$modify_network_interface_attribute(
 #'   Attachment = list(
 #'     AttachmentId = "eni-attach-43348162",
 #'     DeleteOnTermination = FALSE
@@ -19932,7 +19932,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' 
 #' # This example modifies the description attribute of the specified network
 #' # interface.
-#' \donttest{ec2$modify_network_interface_attribute(
+#' \donttest{svc$modify_network_interface_attribute(
 #'   Description = list(
 #'     Value = "My description"
 #'   ),
@@ -19941,7 +19941,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' 
 #' # This example command modifies the groupSet attribute of the specified
 #' # network interface.
-#' \donttest{ec2$modify_network_interface_attribute(
+#' \donttest{svc$modify_network_interface_attribute(
 #'   Groups = list(
 #'     "sg-903004f8",
 #'     "sg-1a2b3c4d"
@@ -19951,7 +19951,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' 
 #' # This example command modifies the sourceDestCheck attribute of the
 #' # specified network interface.
-#' \donttest{ec2$modify_network_interface_attribute(
+#' \donttest{svc$modify_network_interface_attribute(
 #'   NetworkInterfaceId = "eni-686ea200",
 #'   SourceDestCheck = list(
 #'     Value = FALSE
@@ -20001,7 +20001,7 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_reserved_instances(
+#' svc$modify_reserved_instances(
 #'   ReservedInstancesIds = list(
 #'     "string"
 #'   ),
@@ -20071,7 +20071,7 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_snapshot_attribute(
+#' svc$modify_snapshot_attribute(
 #'   Attribute = "productCodes"|"createVolumePermission",
 #'   CreateVolumePermission = list(
 #'     Add = list(
@@ -20103,7 +20103,7 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #' # This example modifies snapshot ``snap-1234567890abcdef0`` to remove the
 #' # create volume permission for a user with the account ID
 #' # ``123456789012``. If the command succeeds, no output is returned.
-#' \donttest{ec2$modify_snapshot_attribute(
+#' \donttest{svc$modify_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   OperationType = "remove",
 #'   SnapshotId = "snap-1234567890abcdef0",
@@ -20113,7 +20113,7 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #' )}
 #' 
 #' # This example makes the snapshot ``snap-1234567890abcdef0`` public.
-#' \donttest{ec2$modify_snapshot_attribute(
+#' \donttest{svc$modify_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   GroupNames = list(
 #'     "all"
@@ -20181,7 +20181,7 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_spot_fleet_request(
+#' svc$modify_spot_fleet_request(
 #'   ExcessCapacityTerminationPolicy = "noTermination"|"default",
 #'   SpotFleetRequestId = "string",
 #'   TargetCapacity = 123
@@ -20191,14 +20191,14 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 #' @examples
 #' # This example increases the target capacity of the specified Spot fleet
 #' # request.
-#' \donttest{ec2$modify_spot_fleet_request(
+#' \donttest{svc$modify_spot_fleet_request(
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   TargetCapacity = 20L
 #' )}
 #' 
 #' # This example decreases the target capacity of the specified Spot fleet
 #' # request without terminating any Spot Instances as a result.
-#' \donttest{ec2$modify_spot_fleet_request(
+#' \donttest{svc$modify_spot_fleet_request(
 #'   ExcessCapacityTerminationPolicy = "NoTermination ",
 #'   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
 #'   TargetCapacity = 10L
@@ -20248,7 +20248,7 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_subnet_attribute(
+#' svc$modify_subnet_attribute(
 #'   AssignIpv6AddressOnCreation = list(
 #'     Value = TRUE|FALSE
 #'   ),
@@ -20262,7 +20262,7 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #' @examples
 #' # This example modifies the specified subnet so that all instances
 #' # launched into this subnet are assigned a public IP address.
-#' \donttest{ec2$modify_subnet_attribute(
+#' \donttest{svc$modify_subnet_attribute(
 #'   MapPublicIpOnLaunch = list(
 #'     Value = TRUE
 #'   ),
@@ -20308,7 +20308,7 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_transit_gateway_vpc_attachment(
+#' svc$modify_transit_gateway_vpc_attachment(
 #'   TransitGatewayAttachmentId = "string",
 #'   AddSubnetIds = list(
 #'     "string"
@@ -20415,7 +20415,7 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_volume(
+#' svc$modify_volume(
 #'   DryRun = TRUE|FALSE,
 #'   VolumeId = "string",
 #'   Size = 123,
@@ -20469,7 +20469,7 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_volume_attribute(
+#' svc$modify_volume_attribute(
 #'   AutoEnableIO = list(
 #'     Value = TRUE|FALSE
 #'   ),
@@ -20482,7 +20482,7 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 #' # This example sets the ``autoEnableIo`` attribute of the volume with the
 #' # ID ``vol-1234567890abcdef0`` to ``true``. If the command succeeds, no
 #' # output is returned.
-#' \donttest{ec2$modify_volume_attribute(
+#' \donttest{svc$modify_volume_attribute(
 #'   AutoEnableIO = list(
 #'     Value = TRUE
 #'   ),
@@ -20536,7 +20536,7 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_attribute(
+#' svc$modify_vpc_attribute(
 #'   EnableDnsHostnames = list(
 #'     Value = TRUE|FALSE
 #'   ),
@@ -20553,7 +20553,7 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #' # attribute is true, the Amazon DNS server resolves DNS hostnames for
 #' # instances in the VPC to their corresponding IP addresses; otherwise, it
 #' # does not.
-#' \donttest{ec2$modify_vpc_attribute(
+#' \donttest{svc$modify_vpc_attribute(
 #'   EnableDnsSupport = list(
 #'     Value = FALSE
 #'   ),
@@ -20564,7 +20564,7 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #' # indicates whether instances launched in the VPC get DNS hostnames. If
 #' # this attribute is true, instances in the VPC get DNS hostnames;
 #' # otherwise, they do not.
-#' \donttest{ec2$modify_vpc_attribute(
+#' \donttest{svc$modify_vpc_attribute(
 #'   EnableDnsHostnames = list(
 #'     Value = FALSE
 #'   ),
@@ -20632,7 +20632,7 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_endpoint(
+#' svc$modify_vpc_endpoint(
 #'   DryRun = TRUE|FALSE,
 #'   VpcEndpointId = "string",
 #'   ResetPolicy = TRUE|FALSE,
@@ -20700,7 +20700,7 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_endpoint_connection_notification(
+#' svc$modify_vpc_endpoint_connection_notification(
 #'   DryRun = TRUE|FALSE,
 #'   ConnectionNotificationId = "string",
 #'   ConnectionNotificationArn = "string",
@@ -20755,7 +20755,7 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_endpoint_service_configuration(
+#' svc$modify_vpc_endpoint_service_configuration(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   AcceptanceRequired = TRUE|FALSE,
@@ -20816,7 +20816,7 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_endpoint_service_permissions(
+#' svc$modify_vpc_endpoint_service_permissions(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   AddAllowedPrincipals = list(
@@ -20892,7 +20892,7 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_peering_connection_options(
+#' svc$modify_vpc_peering_connection_options(
 #'   AccepterPeeringConnectionOptions = list(
 #'     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
 #'     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
@@ -20954,7 +20954,7 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$modify_vpc_tenancy(
+#' svc$modify_vpc_tenancy(
 #'   VpcId = "string",
 #'   InstanceTenancy = "default",
 #'   DryRun = TRUE|FALSE
@@ -21001,7 +21001,7 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$monitor_instances(
+#' svc$monitor_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -21051,7 +21051,7 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$move_address_to_vpc(
+#' svc$move_address_to_vpc(
 #'   DryRun = TRUE|FALSE,
 #'   PublicIp = "string"
 #' )
@@ -21060,7 +21060,7 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' @examples
 #' # This example moves the specified Elastic IP address to the EC2-VPC
 #' # platform.
-#' \donttest{ec2$move_address_to_vpc(
+#' \donttest{svc$move_address_to_vpc(
 #'   PublicIp = "54.123.4.56"
 #' )}
 #'
@@ -21126,7 +21126,7 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$provision_byoip_cidr(
+#' svc$provision_byoip_cidr(
 #'   Cidr = "string",
 #'   CidrAuthorizationContext = list(
 #'     Message = "string",
@@ -21188,7 +21188,7 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Desc
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$purchase_host_reservation(
+#' svc$purchase_host_reservation(
 #'   ClientToken = "string",
 #'   CurrencyCode = "USD",
 #'   HostIdSet = list(
@@ -21251,7 +21251,7 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$purchase_reserved_instances_offering(
+#' svc$purchase_reserved_instances_offering(
 #'   InstanceCount = 123,
 #'   ReservedInstancesOfferingId = "string",
 #'   DryRun = TRUE|FALSE,
@@ -21309,7 +21309,7 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$purchase_scheduled_instances(
+#' svc$purchase_scheduled_instances(
 #'   ClientToken = "string",
 #'   DryRun = TRUE|FALSE,
 #'   PurchaseRequests = list(
@@ -21323,7 +21323,7 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #'
 #' @examples
 #' # This example purchases a Scheduled Instance.
-#' \donttest{ec2$purchase_scheduled_instances(
+#' \donttest{svc$purchase_scheduled_instances(
 #'   PurchaseRequests = list(
 #'     list(
 #'       InstanceCount = 1L,
@@ -21377,7 +21377,7 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reboot_instances(
+#' svc$reboot_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -21387,7 +21387,7 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 #'
 #' @examples
 #' # This example reboots the specified EC2 instance.
-#' \donttest{ec2$reboot_instances(
+#' \donttest{svc$reboot_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef5"
 #'   )
@@ -21498,7 +21498,7 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$register_image(
+#' svc$register_image(
 #'   ImageLocation = "string",
 #'   Architecture = "i386"|"x86_64"|"arm64",
 #'   BlockDeviceMappings = list(
@@ -21572,7 +21572,7 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reject_transit_gateway_vpc_attachment(
+#' svc$reject_transit_gateway_vpc_attachment(
 #'   TransitGatewayAttachmentId = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -21615,7 +21615,7 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reject_vpc_endpoint_connections(
+#' svc$reject_vpc_endpoint_connections(
 #'   DryRun = TRUE|FALSE,
 #'   ServiceId = "string",
 #'   VpcEndpointIds = list(
@@ -21663,7 +21663,7 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reject_vpc_peering_connection(
+#' svc$reject_vpc_peering_connection(
 #'   DryRun = TRUE|FALSE,
 #'   VpcPeeringConnectionId = "string"
 #' )
@@ -21723,7 +21723,7 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$release_address(
+#' svc$release_address(
 #'   AllocationId = "string",
 #'   PublicIp = "string",
 #'   DryRun = TRUE|FALSE
@@ -21733,13 +21733,13 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' @examples
 #' # This example releases an Elastic IP address for use with instances in a
 #' # VPC.
-#' \donttest{ec2$release_address(
+#' \donttest{svc$release_address(
 #'   AllocationId = "eipalloc-64d5890a"
 #' )}
 #' 
 #' # This example releases an Elastic IP address for use with instances in
 #' # EC2-Classic.
-#' \donttest{ec2$release_address(
+#' \donttest{svc$release_address(
 #'   PublicIp = "198.51.100.0"
 #' )}
 #'
@@ -21786,7 +21786,7 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, DryRun = N
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$release_hosts(
+#' svc$release_hosts(
 #'   HostIds = list(
 #'     "string"
 #'   )
@@ -21830,7 +21830,7 @@ ec2_release_hosts <- function(HostIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_iam_instance_profile_association(
+#' svc$replace_iam_instance_profile_association(
 #'   IamInstanceProfile = list(
 #'     Arn = "string",
 #'     Name = "string"
@@ -21881,7 +21881,7 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_network_acl_association(
+#' svc$replace_network_acl_association(
 #'   AssociationId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   NetworkAclId = "string"
@@ -21891,7 +21891,7 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #' @examples
 #' # This example associates the specified network ACL with the subnet for
 #' # the specified network ACL association.
-#' \donttest{ec2$replace_network_acl_association(
+#' \donttest{svc$replace_network_acl_association(
 #'   AssociationId = "aclassoc-e5b95c8c",
 #'   NetworkAclId = "acl-5fb85d36"
 #' )}
@@ -21956,7 +21956,7 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_network_acl_entry(
+#' svc$replace_network_acl_entry(
 #'   CidrBlock = "string",
 #'   DryRun = TRUE|FALSE,
 #'   Egress = TRUE|FALSE,
@@ -21980,7 +21980,7 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #' # This example replaces an entry for the specified network ACL. The new
 #' # rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
 #' # (DNS) into any associated subnet.
-#' \donttest{ec2$replace_network_acl_entry(
+#' \donttest{svc$replace_network_acl_entry(
 #'   CidrBlock = "203.0.113.12/24",
 #'   Egress = FALSE,
 #'   NetworkAclId = "acl-5fb85d36",
@@ -22048,7 +22048,7 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_route(
+#' svc$replace_route(
 #'   DestinationCidrBlock = "string",
 #'   DestinationIpv6CidrBlock = "string",
 #'   DryRun = TRUE|FALSE,
@@ -22067,7 +22067,7 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 #' # This example replaces the specified route in the specified table table.
 #' # The new route matches the specified CIDR and sends the traffic to the
 #' # specified virtual private gateway.
-#' \donttest{ec2$replace_route(
+#' \donttest{svc$replace_route(
 #'   DestinationCidrBlock = "10.0.0.0/16",
 #'   GatewayId = "vgw-9a4cacf3",
 #'   RouteTableId = "rtb-22574640"
@@ -22118,7 +22118,7 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_route_table_association(
+#' svc$replace_route_table_association(
 #'   AssociationId = "string",
 #'   DryRun = TRUE|FALSE,
 #'   RouteTableId = "string"
@@ -22128,7 +22128,7 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' @examples
 #' # This example associates the specified route table with the subnet for
 #' # the specified route table association.
-#' \donttest{ec2$replace_route_table_association(
+#' \donttest{svc$replace_route_table_association(
 #'   AssociationId = "rtbassoc-781d0d1a",
 #'   RouteTableId = "rtb-22574640"
 #' )}
@@ -22175,7 +22175,7 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$replace_transit_gateway_route(
+#' svc$replace_transit_gateway_route(
 #'   DestinationCidrBlock = "string",
 #'   TransitGatewayRouteTableId = "string",
 #'   TransitGatewayAttachmentId = "string",
@@ -22257,7 +22257,7 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$report_instance_status(
+#' svc$report_instance_status(
 #'   Description = "string",
 #'   DryRun = TRUE|FALSE,
 #'   EndTime = as.POSIXct(
@@ -22337,7 +22337,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$request_spot_fleet(
+#' svc$request_spot_fleet(
 #'   DryRun = TRUE|FALSE,
 #'   SpotFleetRequestConfig = list(
 #'     AllocationStrategy = "lowestPrice"|"diversified",
@@ -22495,7 +22495,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # instances are launched in a nondefault VPC, they do not receive a public
 #' # IP address by default. Note that you can't specify different subnets
 #' # from the same Availability Zone in a Spot fleet request.
-#' \donttest{ec2$request_spot_fleet(
+#' \donttest{svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -22526,7 +22526,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # instances in the default subnet of the Availability Zone. If your
 #' # account supports EC2-Classic, Amazon EC2 launches the instances in
 #' # EC2-Classic in the Availability Zone.
-#' \donttest{ec2$request_spot_fleet(
+#' \donttest{svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -22555,7 +22555,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # This example assigns public addresses to instances launched in a
 #' # nondefault VPC. Note that when you specify a network interface, you must
 #' # include the subnet ID and security group ID using the network interface.
-#' \donttest{ec2$request_spot_fleet(
+#' \donttest{svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
 #'     LaunchSpecifications = list(
@@ -22587,7 +22587,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' # using the diversified allocation strategy. The launch specifications
 #' # differ by instance type. The Spot fleet distributes the instances across
 #' # the launch specifications such that there are 10 instances of each type.
-#' \donttest{ec2$request_spot_fleet(
+#' \donttest{svc$request_spot_fleet(
 #'   SpotFleetRequestConfig = list(
 #'     AllocationStrategy = "diversified",
 #'     IamFleetRole = "arn:aws:iam::123456789012:role/my-spot-fleet-role",
@@ -22714,7 +22714,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$request_spot_instances(
+#' svc$request_spot_instances(
 #'   AvailabilityZoneGroup = "string",
 #'   BlockDurationMinutes = 123,
 #'   ClientToken = "string",
@@ -22812,7 +22812,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' # specified Availability Zone. If your account supports EC2-Classic,
 #' # Amazon EC2 launches the instances in EC2-Classic in the specified
 #' # Availability Zone.
-#' \donttest{ec2$request_spot_instances(
+#' \donttest{svc$request_spot_instances(
 #'   InstanceCount = 5L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -22836,7 +22836,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' # instances in the specified subnet. Amazon EC2 launches the instances in
 #' # the specified subnet. If the VPC is a nondefault VPC, the instances do
 #' # not receive a public IP address by default.
-#' \donttest{ec2$request_spot_instances(
+#' \donttest{svc$request_spot_instances(
 #'   InstanceCount = 5L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -22890,7 +22890,7 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reset_fpga_image_attribute(
+#' svc$reset_fpga_image_attribute(
 #'   DryRun = TRUE|FALSE,
 #'   FpgaImageId = "string",
 #'   Attribute = "loadPermission"
@@ -22935,7 +22935,7 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reset_image_attribute(
+#' svc$reset_image_attribute(
 #'   Attribute = "launchPermission",
 #'   ImageId = "string",
 #'   DryRun = TRUE|FALSE
@@ -22945,7 +22945,7 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 #' @examples
 #' # This example resets the launchPermission attribute for the specified
 #' # AMI. By default, AMIs are private.
-#' \donttest{ec2$reset_image_attribute(
+#' \donttest{svc$reset_image_attribute(
 #'   Attribute = "launchPermission",
 #'   ImageId = "ami-5731123e"
 #' )}
@@ -22998,7 +22998,7 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reset_instance_attribute(
+#' svc$reset_instance_attribute(
 #'   Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
 #'   DryRun = TRUE|FALSE,
 #'   InstanceId = "string"
@@ -23008,7 +23008,7 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' @examples
 #' # This example resets the sourceDestCheck attribute for the specified
 #' # instance.
-#' \donttest{ec2$reset_instance_attribute(
+#' \donttest{svc$reset_instance_attribute(
 #'   Attribute = "sourceDestCheck",
 #'   InstanceId = "i-1234567890abcdef0"
 #' )}
@@ -23050,7 +23050,7 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reset_network_interface_attribute(
+#' svc$reset_network_interface_attribute(
 #'   DryRun = TRUE|FALSE,
 #'   NetworkInterfaceId = "string",
 #'   SourceDestCheck = "string"
@@ -23097,7 +23097,7 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$reset_snapshot_attribute(
+#' svc$reset_snapshot_attribute(
 #'   Attribute = "productCodes"|"createVolumePermission",
 #'   SnapshotId = "string",
 #'   DryRun = TRUE|FALSE
@@ -23108,7 +23108,7 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 #' # This example resets the create volume permissions for snapshot
 #' # ``snap-1234567890abcdef0``. If the command succeeds, no output is
 #' # returned.
-#' \donttest{ec2$reset_snapshot_attribute(
+#' \donttest{svc$reset_snapshot_attribute(
 #'   Attribute = "createVolumePermission",
 #'   SnapshotId = "snap-1234567890abcdef0"
 #' )}
@@ -23151,7 +23151,7 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$restore_address_to_classic(
+#' svc$restore_address_to_classic(
 #'   DryRun = TRUE|FALSE,
 #'   PublicIp = "string"
 #' )
@@ -23160,7 +23160,7 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #' @examples
 #' # This example restores the specified Elastic IP address to the
 #' # EC2-Classic platform.
-#' \donttest{ec2$restore_address_to_classic(
+#' \donttest{svc$restore_address_to_classic(
 #'   PublicIp = "198.51.100.0"
 #' )}
 #'
@@ -23204,7 +23204,7 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$revoke_client_vpn_ingress(
+#' svc$revoke_client_vpn_ingress(
 #'   ClientVpnEndpointId = "string",
 #'   TargetNetworkCidr = "string",
 #'   AccessGroupId = "string",
@@ -23275,7 +23275,7 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$revoke_security_group_egress(
+#' svc$revoke_security_group_egress(
 #'   DryRun = TRUE|FALSE,
 #'   GroupId = "string",
 #'   IpPermissions = list(
@@ -23404,7 +23404,7 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$revoke_security_group_ingress(
+#' svc$revoke_security_group_ingress(
 #'   CidrIp = "string",
 #'   FromPort = 123,
 #'   GroupId = "string",
@@ -23730,7 +23730,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$run_instances(
+#' svc$run_instances(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "string",
@@ -23883,7 +23883,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' @examples
 #' # This example launches an instance using the specified AMI, instance
 #' # type, security group, subnet, block device mapping, and tags.
-#' \donttest{ec2$run_instances(
+#' \donttest{svc$run_instances(
 #'   BlockDeviceMappings = list(
 #'     list(
 #'       DeviceName = "/dev/sdh",
@@ -23968,7 +23968,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$run_scheduled_instances(
+#' svc$run_scheduled_instances(
 #'   ClientToken = "string",
 #'   DryRun = TRUE|FALSE,
 #'   InstanceCount = 123,
@@ -24044,7 +24044,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'
 #' @examples
 #' # This example launches the specified Scheduled Instance in a VPC.
-#' \donttest{ec2$run_scheduled_instances(
+#' \donttest{svc$run_scheduled_instances(
 #'   InstanceCount = 1L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -24068,7 +24068,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #' )}
 #' 
 #' # This example launches the specified Scheduled Instance in EC2-Classic.
-#' \donttest{ec2$run_scheduled_instances(
+#' \donttest{svc$run_scheduled_instances(
 #'   InstanceCount = 1L,
 #'   LaunchSpecification = list(
 #'     IamInstanceProfile = list(
@@ -24154,7 +24154,7 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$search_transit_gateway_routes(
+#' svc$search_transit_gateway_routes(
 #'   TransitGatewayRouteTableId = "string",
 #'   Filters = list(
 #'     list(
@@ -24228,7 +24228,7 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$start_instances(
+#' svc$start_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -24239,7 +24239,7 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #'
 #' @examples
 #' # This example starts the specified EC2 instance.
-#' \donttest{ec2$start_instances(
+#' \donttest{svc$start_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
@@ -24342,7 +24342,7 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$stop_instances(
+#' svc$stop_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -24354,7 +24354,7 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
 #'
 #' @examples
 #' # This example stops the specified EC2 instance.
-#' \donttest{ec2$stop_instances(
+#' \donttest{svc$stop_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
@@ -24401,7 +24401,7 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$terminate_client_vpn_connections(
+#' svc$terminate_client_vpn_connections(
 #'   ClientVpnEndpointId = "string",
 #'   ConnectionId = "string",
 #'   Username = "string",
@@ -24474,7 +24474,7 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$terminate_instances(
+#' svc$terminate_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -24484,7 +24484,7 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #'
 #' @examples
 #' # This example terminates the specified EC2 instance.
-#' \donttest{ec2$terminate_instances(
+#' \donttest{svc$terminate_instances(
 #'   InstanceIds = list(
 #'     "i-1234567890abcdef0"
 #'   )
@@ -24521,7 +24521,7 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$unassign_ipv_6_addresses(
+#' svc$unassign_ipv_6_addresses(
 #'   Ipv6Addresses = list(
 #'     "string"
 #'   ),
@@ -24565,7 +24565,7 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses, NetworkInterfaceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$unassign_private_ip_addresses(
+#' svc$unassign_private_ip_addresses(
 #'   NetworkInterfaceId = "string",
 #'   PrivateIpAddresses = list(
 #'     "string"
@@ -24576,7 +24576,7 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses, NetworkInterfaceId) {
 #' @examples
 #' # This example unassigns the specified private IP address from the
 #' # specified network interface.
-#' \donttest{ec2$unassign_private_ip_addresses(
+#' \donttest{svc$unassign_private_ip_addresses(
 #'   NetworkInterfaceId = "eni-e5aa89a3",
 #'   PrivateIpAddresses = list(
 #'     "10.0.0.82"
@@ -24620,7 +24620,7 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$unmonitor_instances(
+#' svc$unmonitor_instances(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -24675,7 +24675,7 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$update_security_group_rule_descriptions_egress(
+#' svc$update_security_group_rule_descriptions_egress(
 #'   DryRun = TRUE|FALSE,
 #'   GroupId = "string",
 #'   GroupName = "string",
@@ -24721,7 +24721,7 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' @examples
 #' # This example updates the description for the specified security group
 #' # rule.
-#' \donttest{ec2$update_security_group_rule_descriptions_egress(
+#' \donttest{svc$update_security_group_rule_descriptions_egress(
 #'   GroupId = "sg-123abc12",
 #'   IpPermissions = list(
 #'     list(
@@ -24785,7 +24785,7 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$update_security_group_rule_descriptions_ingress(
+#' svc$update_security_group_rule_descriptions_ingress(
 #'   DryRun = TRUE|FALSE,
 #'   GroupId = "string",
 #'   GroupName = "string",
@@ -24831,7 +24831,7 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #' @examples
 #' # This example updates the description for the specified security group
 #' # rule.
-#' \donttest{ec2$update_security_group_rule_descriptions_ingress(
+#' \donttest{svc$update_security_group_rule_descriptions_ingress(
 #'   GroupId = "sg-123abc12",
 #'   IpPermissions = list(
 #'     list(
@@ -24890,7 +24890,7 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
 #'
 #' @section Request syntax:
 #' ```
-#' ec2$withdraw_byoip_cidr(
+#' svc$withdraw_byoip_cidr(
 #'   Cidr = "string",
 #'   DryRun = TRUE|FALSE
 #' )

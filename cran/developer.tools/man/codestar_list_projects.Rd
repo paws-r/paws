@@ -17,7 +17,7 @@ results.}
 Lists all projects in AWS CodeStar associated with your AWS account.
 }
 \section{Request syntax}{
-\preformatted{codestar$list_projects(
+\preformatted{svc$list_projects(
   nextToken = "string",
   maxResults = 123
 )

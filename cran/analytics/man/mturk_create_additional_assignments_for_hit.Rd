@@ -41,7 +41,7 @@ exception.
 }
 }
 \section{Request syntax}{
-\preformatted{mturk$create_additional_assignments_for_hit(
+\preformatted{svc$create_additional_assignments_for_hit(
   HITId = "string",
   NumberOfAdditionalAssignments = 123,
   UniqueRequestToken = "string"

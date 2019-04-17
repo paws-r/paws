@@ -13,7 +13,7 @@ s3_get_bucket_policy(Bucket)
 Returns the policy of a specified bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_policy(
+\preformatted{svc$get_bucket_policy(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the policy of a specified bucket.
 
 \examples{
 # The following example returns bucket policy associated with a bucket.
-\donttest{s3$get_bucket_policy(
+\donttest{svc$get_bucket_policy(
   Bucket = "examplebucket"
 )}
 

@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$cancel_task_execution(
+#' svc$cancel_task_execution(
 #'   TaskExecutionArn = "string"
 #' )
 #' ```
@@ -92,7 +92,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$create_agent(
+#' svc$create_agent(
 #'   ActivationKey = "string",
 #'   AgentName = "string",
 #'   Tags = list(
@@ -144,7 +144,7 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$create_location_efs(
+#' svc$create_location_efs(
 #'   Subdirectory = "string",
 #'   EfsFilesystemArn = "string",
 #'   Ec2Config = list(
@@ -223,7 +223,7 @@ datasync_create_location_efs <- function(Subdirectory, EfsFilesystemArn, Ec2Conf
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$create_location_nfs(
+#' svc$create_location_nfs(
 #'   Subdirectory = "string",
 #'   ServerHostname = "string",
 #'   OnPremConfig = list(
@@ -285,7 +285,7 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$create_location_s3(
+#' svc$create_location_s3(
 #'   Subdirectory = "string",
 #'   S3BucketArn = "string",
 #'   S3Config = list(
@@ -373,7 +373,7 @@ datasync_create_location_s3 <- function(Subdirectory, S3BucketArn, S3Config, Tag
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$create_task(
+#' svc$create_task(
 #'   SourceLocationArn = "string",
 #'   DestinationLocationArn = "string",
 #'   CloudWatchLogGroupArn = "string",
@@ -436,7 +436,7 @@ datasync_create_task <- function(SourceLocationArn, DestinationLocationArn, Clou
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$delete_agent(
+#' svc$delete_agent(
 #'   AgentArn = "string"
 #' )
 #' ```
@@ -471,7 +471,7 @@ datasync_delete_agent <- function(AgentArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$delete_location(
+#' svc$delete_location(
 #'   LocationArn = "string"
 #' )
 #' ```
@@ -506,7 +506,7 @@ datasync_delete_location <- function(LocationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$delete_task(
+#' svc$delete_task(
 #'   TaskArn = "string"
 #' )
 #' ```
@@ -545,7 +545,7 @@ datasync_delete_task <- function(TaskArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_agent(
+#' svc$describe_agent(
 #'   AgentArn = "string"
 #' )
 #' ```
@@ -582,7 +582,7 @@ datasync_describe_agent <- function(AgentArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_location_efs(
+#' svc$describe_location_efs(
 #'   LocationArn = "string"
 #' )
 #' ```
@@ -617,7 +617,7 @@ datasync_describe_location_efs <- function(LocationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_location_nfs(
+#' svc$describe_location_nfs(
 #'   LocationArn = "string"
 #' )
 #' ```
@@ -655,7 +655,7 @@ datasync_describe_location_nfs <- function(LocationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_location_s3(
+#' svc$describe_location_s3(
 #'   LocationArn = "string"
 #' )
 #' ```
@@ -690,7 +690,7 @@ datasync_describe_location_s3 <- function(LocationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_task(
+#' svc$describe_task(
 #'   TaskArn = "string"
 #' )
 #' ```
@@ -725,7 +725,7 @@ datasync_describe_task <- function(TaskArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$describe_task_execution(
+#' svc$describe_task_execution(
 #'   TaskExecutionArn = "string"
 #' )
 #' ```
@@ -774,7 +774,7 @@ datasync_describe_task_execution <- function(TaskExecutionArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$list_agents(
+#' svc$list_agents(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -817,7 +817,7 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$list_locations(
+#' svc$list_locations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -856,7 +856,7 @@ datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -896,7 +896,7 @@ datasync_list_tags_for_resource <- function(ResourceArn, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$list_task_executions(
+#' svc$list_task_executions(
 #'   TaskArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -935,7 +935,7 @@ datasync_list_task_executions <- function(TaskArn = NULL, MaxResults = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$list_tasks(
+#' svc$list_tasks(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -980,7 +980,7 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$start_task_execution(
+#' svc$start_task_execution(
 #'   TaskArn = "string",
 #'   OverrideOptions = list(
 #'     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",
@@ -1027,7 +1027,7 @@ datasync_start_task_execution <- function(TaskArn, OverrideOptions = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -1069,7 +1069,7 @@ datasync_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   Keys = list(
 #'     "string"
@@ -1108,7 +1108,7 @@ datasync_untag_resource <- function(ResourceArn, Keys) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$update_agent(
+#' svc$update_agent(
 #'   AgentArn = "string",
 #'   Name = "string"
 #' )
@@ -1147,7 +1147,7 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' datasync$update_task(
+#' svc$update_task(
 #'   TaskArn = "string",
 #'   Options = list(
 #'     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",

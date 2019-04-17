@@ -31,7 +31,7 @@ This is a control plane operation. See
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{
-\preformatted{iot$create_thing(
+\preformatted{svc$create_thing(
   thingName = "string",
   thingTypeName = "string",
   attributePayload = list(

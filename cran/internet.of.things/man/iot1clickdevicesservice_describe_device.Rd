@@ -15,7 +15,7 @@ Given a device ID, returns a DescribeDeviceResponse object describing
 the details of the device.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$describe_device(
+\preformatted{svc$describe_device(
   DeviceId = "string"
 )
 }

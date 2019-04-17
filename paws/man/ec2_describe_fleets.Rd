@@ -40,7 +40,7 @@ replace unhealthy instances (\code{true} \| \code{false}).
 Describes one or more of your EC2 Fleets.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_fleets(
+\preformatted{svc$describe_fleets(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",

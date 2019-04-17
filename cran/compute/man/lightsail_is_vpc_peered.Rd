@@ -10,7 +10,7 @@ lightsail_is_vpc_peered()
 Returns a Boolean value indicating whether your Lightsail VPC is peered.
 }
 \section{Request syntax}{
-\preformatted{lightsail$is_vpc_peered()
+\preformatted{svc$is_vpc_peered()
 }
 }
 

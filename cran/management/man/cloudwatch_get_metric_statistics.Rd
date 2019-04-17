@@ -151,7 +151,7 @@ see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$get_metric_statistics(
+\preformatted{svc$get_metric_statistics(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(

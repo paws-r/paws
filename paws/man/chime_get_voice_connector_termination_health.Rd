@@ -17,7 +17,7 @@ received from your SIP infrastructure for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$get_voice_connector_termination_health(
+\preformatted{svc$get_voice_connector_termination_health(
   VoiceConnectorId = "string"
 )
 }

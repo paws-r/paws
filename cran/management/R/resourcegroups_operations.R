@@ -27,7 +27,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$create_group(
+#' svc$create_group(
 #'   Name = "string",
 #'   Description = "string",
 #'   ResourceQuery = list(
@@ -72,7 +72,7 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery,
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$delete_group(
+#' svc$delete_group(
 #'   GroupName = "string"
 #' )
 #' ```
@@ -107,7 +107,7 @@ resourcegroups_delete_group <- function(GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$get_group(
+#' svc$get_group(
 #'   GroupName = "string"
 #' )
 #' ```
@@ -142,7 +142,7 @@ resourcegroups_get_group <- function(GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$get_group_query(
+#' svc$get_group_query(
 #'   GroupName = "string"
 #' )
 #' ```
@@ -180,7 +180,7 @@ resourcegroups_get_group_query <- function(GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$get_tags(
+#' svc$get_tags(
 #'   Arn = "string"
 #' )
 #' ```
@@ -230,7 +230,7 @@ resourcegroups_get_tags <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$list_group_resources(
+#' svc$list_group_resources(
 #'   GroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -285,7 +285,7 @@ resourcegroups_list_group_resources <- function(GroupName, Filters = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$list_groups(
+#' svc$list_groups(
 #'   Filters = list(
 #'     list(
 #'       Name = "resource-type",
@@ -338,7 +338,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$search_resources(
+#' svc$search_resources(
 #'   ResourceQuery = list(
 #'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
 #'     Query = "string"
@@ -384,7 +384,7 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$tag(
+#' svc$tag(
 #'   Arn = "string",
 #'   Tags = list(
 #'     "string"
@@ -423,7 +423,7 @@ resourcegroups_tag <- function(Arn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$untag(
+#' svc$untag(
 #'   Arn = "string",
 #'   Keys = list(
 #'     "string"
@@ -466,7 +466,7 @@ resourcegroups_untag <- function(Arn, Keys) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$update_group(
+#' svc$update_group(
 #'   GroupName = "string",
 #'   Description = "string"
 #' )
@@ -504,7 +504,7 @@ resourcegroups_update_group <- function(GroupName, Description = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' resourcegroups$update_group_query(
+#' svc$update_group_query(
 #'   GroupName = "string",
 #'   ResourceQuery = list(
 #'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",

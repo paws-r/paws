@@ -16,7 +16,7 @@ cognitoidentityprovider_describe_risk_configuration(UserPoolId,
 Describes the risk configuration.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_risk_configuration(
+\preformatted{svc$describe_risk_configuration(
   UserPoolId = "string",
   ClientId = "string"
 )

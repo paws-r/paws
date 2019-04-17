@@ -25,7 +25,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$attach_vpn_gateway(
+\preformatted{svc$attach_vpn_gateway(
   VpcId = "string",
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE

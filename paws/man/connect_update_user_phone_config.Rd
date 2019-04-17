@@ -27,7 +27,7 @@ Updates the phone configuration settings in the \code{UserPhoneConfig} object
 for the specified user.
 }
 \section{Request syntax}{
-\preformatted{connect$update_user_phone_config(
+\preformatted{svc$update_user_phone_config(
   PhoneConfig = list(
     PhoneType = "SOFT_PHONE"|"DESK_PHONE",
     AutoAccept = TRUE|FALSE,

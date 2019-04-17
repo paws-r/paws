@@ -24,7 +24,7 @@ For detailed information, see \emph{Task Execution} in Components and
 Terminology in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
-\preformatted{datasync$start_task_execution(
+\preformatted{svc$start_task_execution(
   TaskArn = "string",
   OverrideOptions = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",

@@ -149,7 +149,7 @@ active, use DescribeGameSessionDetails.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$search_game_sessions(
+\preformatted{svc$search_game_sessions(
   FleetId = "string",
   AliasId = "string",
   FilterExpression = "string",

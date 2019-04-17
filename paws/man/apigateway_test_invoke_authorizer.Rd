@@ -45,7 +45,7 @@ parameters, and an incoming request body.
 :::
 }
 \section{Request syntax}{
-\preformatted{apigateway$test_invoke_authorizer(
+\preformatted{svc$test_invoke_authorizer(
   restApiId = "string",
   authorizerId = "string",
   headers = list(

@@ -27,7 +27,7 @@ characters are allowed for the identifier.}
 Creates a new snapshot schedule.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_snapshot_schedule(
+\preformatted{svc$create_snapshot_schedule(
   ScheduleDefinitions = list(
     "string"
   ),

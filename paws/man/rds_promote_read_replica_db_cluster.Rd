@@ -24,7 +24,7 @@ Promotes a Read Replica DB cluster to a standalone DB cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$promote_read_replica_db_cluster(
+\preformatted{svc$promote_read_replica_db_cluster(
   DBClusterIdentifier = "string"
 )
 }

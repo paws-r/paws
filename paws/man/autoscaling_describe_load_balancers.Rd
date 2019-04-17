@@ -25,7 +25,7 @@ Application Load Balancers or Network Load Balancers, use
 DescribeLoadBalancerTargetGroups instead.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_load_balancers(
+\preformatted{svc$describe_load_balancers(
   AutoScalingGroupName = "string",
   NextToken = "string",
   MaxRecords = 123
@@ -36,7 +36,7 @@ DescribeLoadBalancerTargetGroups instead.
 \examples{
 # This example describes the load balancers attached to the specified Auto
 # Scaling group.
-\donttest{autoscaling$describe_load_balancers(
+\donttest{svc$describe_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

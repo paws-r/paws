@@ -16,7 +16,7 @@ Deletes an email template.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_template(
+\preformatted{svc$delete_template(
   TemplateName = "string"
 )
 }

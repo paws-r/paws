@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$associate_device_with_placement(
+#' svc$associate_device_with_placement(
 #'   projectName = "string",
 #'   placementName = "string",
 #'   deviceId = "string",
@@ -63,7 +63,7 @@ iot1clickprojects_associate_device_with_placement <- function(projectName, place
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$create_placement(
+#' svc$create_placement(
 #'   placementName = "string",
 #'   projectName = "string",
 #'   attributes = list(
@@ -115,7 +115,7 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$create_project(
+#' svc$create_project(
 #'   projectName = "string",
 #'   description = "string",
 #'   placementTemplate = list(
@@ -171,7 +171,7 @@ iot1clickprojects_create_project <- function(projectName, description = NULL, pl
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$delete_placement(
+#' svc$delete_placement(
 #'   placementName = "string",
 #'   projectName = "string"
 #' )
@@ -210,7 +210,7 @@ iot1clickprojects_delete_placement <- function(placementName, projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$delete_project(
+#' svc$delete_project(
 #'   projectName = "string"
 #' )
 #' ```
@@ -246,7 +246,7 @@ iot1clickprojects_delete_project <- function(projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$describe_placement(
+#' svc$describe_placement(
 #'   placementName = "string",
 #'   projectName = "string"
 #' )
@@ -282,7 +282,7 @@ iot1clickprojects_describe_placement <- function(placementName, projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$describe_project(
+#' svc$describe_project(
 #'   projectName = "string"
 #' )
 #' ```
@@ -320,7 +320,7 @@ iot1clickprojects_describe_project <- function(projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$disassociate_device_from_placement(
+#' svc$disassociate_device_from_placement(
 #'   projectName = "string",
 #'   placementName = "string",
 #'   deviceTemplateName = "string"
@@ -358,7 +358,7 @@ iot1clickprojects_disassociate_device_from_placement <- function(projectName, pl
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$get_devices_in_placement(
+#' svc$get_devices_in_placement(
 #'   projectName = "string",
 #'   placementName = "string"
 #' )
@@ -397,7 +397,7 @@ iot1clickprojects_get_devices_in_placement <- function(projectName, placementNam
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$list_placements(
+#' svc$list_placements(
 #'   projectName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -438,7 +438,7 @@ iot1clickprojects_list_placements <- function(projectName, nextToken = NULL, max
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$list_projects(
+#' svc$list_projects(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -476,7 +476,7 @@ iot1clickprojects_list_projects <- function(nextToken = NULL, maxResults = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
@@ -518,7 +518,7 @@ iot1clickprojects_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     "string"
@@ -557,7 +557,7 @@ iot1clickprojects_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -600,7 +600,7 @@ iot1clickprojects_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$update_placement(
+#' svc$update_placement(
 #'   placementName = "string",
 #'   projectName = "string",
 #'   attributes = list(
@@ -649,7 +649,7 @@ iot1clickprojects_update_placement <- function(placementName, projectName, attri
 #'
 #' @section Request syntax:
 #' ```
-#' iot1clickprojects$update_project(
+#' svc$update_project(
 #'   projectName = "string",
 #'   description = "string",
 #'   placementTemplate = list(

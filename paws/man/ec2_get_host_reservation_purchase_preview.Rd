@@ -22,7 +22,7 @@ This is a preview of the PurchaseHostReservation action and does not
 result in the offering being purchased.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_host_reservation_purchase_preview(
+\preformatted{svc$get_host_reservation_purchase_preview(
   HostIdSet = list(
     "string"
   ),

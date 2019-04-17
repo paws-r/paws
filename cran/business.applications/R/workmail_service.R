@@ -41,11 +41,10 @@ NULL
 #' the scenarios listed above, as well as give users the ability to grant
 #' access on a selective basis using the IAM model.
 #'
-#' @section Example:
-#' ```
-#' workmail <- paws::workmail()
-#' workmail$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_delegate_to_resource(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

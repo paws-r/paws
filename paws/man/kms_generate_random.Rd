@@ -28,7 +28,7 @@ For more information about entropy and random number generation, see the
 whitepaper.
 }
 \section{Request syntax}{
-\preformatted{kms$generate_random(
+\preformatted{svc$generate_random(
   NumberOfBytes = 123,
   CustomKeyStoreId = "string"
 )
@@ -37,7 +37,7 @@ whitepaper.
 
 \examples{
 # The following example uses AWS KMS to generate 32 bytes of random data.
-\donttest{kms$generate_random(
+\donttest{svc$generate_random(
   NumberOfBytes = 32L
 )}
 

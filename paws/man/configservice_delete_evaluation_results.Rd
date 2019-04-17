@@ -17,7 +17,7 @@ evaluation results, you can call the StartConfigRulesEvaluation API to
 start evaluating your AWS resources against the rule.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_evaluation_results(
+\preformatted{svc$delete_evaluation_results(
   ConfigRuleName = "string"
 )
 }

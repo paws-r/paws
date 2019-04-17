@@ -13,7 +13,7 @@ greengrass_delete_group(GroupId)
 Deletes a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_group(
+\preformatted{svc$delete_group(
   GroupId = "string"
 )
 }

@@ -39,7 +39,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.h
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$delete_vault(
+\preformatted{svc$delete_vault(
   accountId = "string",
   vaultName = "string"
 )
@@ -48,7 +48,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example deletes a vault named my-vault:
-\donttest{glacier$delete_vault(
+\donttest{svc$delete_vault(
   accountId = "-",
   vaultName = "my-vault"
 )}

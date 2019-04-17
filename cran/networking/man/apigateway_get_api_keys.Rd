@@ -25,7 +25,7 @@ contains key values.}
 Gets information about the current ApiKeys resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_api_keys(
+\preformatted{svc$get_api_keys(
   position = "string",
   limit = 123,
   nameQuery = "string",

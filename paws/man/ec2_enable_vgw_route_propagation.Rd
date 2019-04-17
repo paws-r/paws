@@ -17,7 +17,7 @@ Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC.
 }
 \section{Request syntax}{
-\preformatted{ec2$enable_vgw_route_propagation(
+\preformatted{svc$enable_vgw_route_propagation(
   GatewayId = "string",
   RouteTableId = "string"
 )
@@ -27,7 +27,7 @@ specified route table of a VPC.
 \examples{
 # This example enables the specified virtual private gateway to propagate
 # static routes to the specified route table.
-\donttest{ec2$enable_vgw_route_propagation(
+\donttest{svc$enable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
 )}

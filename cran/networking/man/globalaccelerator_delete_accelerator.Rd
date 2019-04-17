@@ -15,7 +15,7 @@ must disable it and remove all dependent resources (listeners and
 endpoint groups).
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$delete_accelerator(
+\preformatted{svc$delete_accelerator(
   AcceleratorArn = "string"
 )
 }

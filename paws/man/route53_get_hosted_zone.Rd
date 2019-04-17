@@ -15,7 +15,7 @@ Gets information about a specified hosted zone including the four name
 servers assigned to the hosted zone.
 }
 \section{Request syntax}{
-\preformatted{route53$get_hosted_zone(
+\preformatted{svc$get_hosted_zone(
   Id = "string"
 )
 }
@@ -24,7 +24,7 @@ servers assigned to the hosted zone.
 \examples{
 # The following example gets information about the Z3M3LMPEXAMPLE hosted
 # zone.
-\donttest{route53$get_hosted_zone(
+\donttest{svc$get_hosted_zone(
   Id = "Z3M3LMPEXAMPLE"
 )}
 

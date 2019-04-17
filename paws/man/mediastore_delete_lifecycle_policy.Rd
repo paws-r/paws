@@ -14,7 +14,7 @@ Removes an object lifecycle policy from a container. It takes up to 20
 minutes for the change to take effect.
 }
 \section{Request syntax}{
-\preformatted{mediastore$delete_lifecycle_policy(
+\preformatted{svc$delete_lifecycle_policy(
   ContainerName = "string"
 )
 }

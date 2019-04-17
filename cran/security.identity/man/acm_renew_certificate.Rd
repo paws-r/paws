@@ -22,7 +22,7 @@ For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide
 in the ACM User Guide.
 }
 \section{Request syntax}{
-\preformatted{acm$renew_certificate(
+\preformatted{svc$renew_certificate(
   CertificateArn = "string"
 )
 }

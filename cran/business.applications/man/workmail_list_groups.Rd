@@ -18,7 +18,7 @@ does not contain any tokens.}
 Returns summaries of the organization's groups.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_groups(
+\preformatted{svc$list_groups(
   OrganizationId = "string",
   NextToken = "string",
   MaxResults = 123

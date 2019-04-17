@@ -17,7 +17,7 @@ in here in another request to list more bundles.}
 List all available bundles.
 }
 \section{Request syntax}{
-\preformatted{mobile$list_bundles(
+\preformatted{svc$list_bundles(
   maxResults = 123,
   nextToken = "string"
 )

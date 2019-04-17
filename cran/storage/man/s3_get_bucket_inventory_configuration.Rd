@@ -18,7 +18,7 @@ Returns an inventory configuration (identified by the inventory ID) from
 the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_inventory_configuration(
+\preformatted{svc$get_bucket_inventory_configuration(
   Bucket = "string",
   Id = "string"
 )

@@ -61,7 +61,7 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_subnet_groups(
+\preformatted{svc$describe_cluster_subnet_groups(
   ClusterSubnetGroupName = "string",
   MaxRecords = 123,
   Marker = "string",

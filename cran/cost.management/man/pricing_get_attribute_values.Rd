@@ -26,7 +26,7 @@ in a Price List API offer file. For a list of available attributes, see
 in the \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{pricing$get_attribute_values(
+\preformatted{svc$get_attribute_values(
   ServiceCode = "string",
   AttributeName = "string",
   NextToken = "string",
@@ -38,7 +38,7 @@ in the \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing
 \examples{
 # This operation returns a list of values available for the given
 # attribute.
-\donttest{pricing$get_attribute_values(
+\donttest{svc$get_attribute_values(
   AttributeName = "volumeType",
   MaxResults = 2L,
   ServiceCode = "AmazonEC2"

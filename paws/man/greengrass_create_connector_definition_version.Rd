@@ -19,7 +19,7 @@ greengrass_create_connector_definition_version(AmznClientToken,
 Creates a version of a connector definition which has already been defined.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_connector_definition_version(
+\preformatted{svc$create_connector_definition_version(
   AmznClientToken = "string",
   ConnectorDefinitionId = "string",
   Connectors = list(

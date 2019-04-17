@@ -41,7 +41,7 @@ default value is \code{10}.}
 Lists transform jobs.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_transform_jobs(
+\preformatted{svc$list_transform_jobs(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),

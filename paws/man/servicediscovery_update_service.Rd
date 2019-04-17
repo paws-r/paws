@@ -36,7 +36,7 @@ updates the corresponding settings in all the records and health checks
 that were created by using the specified service.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$update_service(
+\preformatted{svc$update_service(
   Id = "string",
   Service = list(
     Description = "string",

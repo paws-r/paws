@@ -14,7 +14,7 @@ Returns a description of the specified algorithm that is in your
 account.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_algorithm(
+\preformatted{svc$describe_algorithm(
   AlgorithmName = "string"
 )
 }

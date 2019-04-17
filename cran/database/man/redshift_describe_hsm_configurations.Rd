@@ -63,7 +63,7 @@ connections are returned regardless of whether they have tag keys or
 values associated with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_hsm_configurations(
+\preformatted{svc$describe_hsm_configurations(
   HsmConfigurationIdentifier = "string",
   MaxRecords = 123,
   Marker = "string",

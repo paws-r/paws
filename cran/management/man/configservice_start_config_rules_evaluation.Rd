@@ -46,7 +46,7 @@ resources.
 }
 }
 \section{Request syntax}{
-\preformatted{configservice$start_config_rules_evaluation(
+\preformatted{svc$start_config_rules_evaluation(
   ConfigRuleNames = list(
     "string"
   )

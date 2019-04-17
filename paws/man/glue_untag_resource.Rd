@@ -15,7 +15,7 @@ glue_untag_resource(ResourceArn, TagsToRemove)
 Removes tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{glue$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagsToRemove = list(
     "string"

@@ -14,7 +14,7 @@ DescribeWorkspaces.}
 Describes the specified tags for the specified WorkSpace.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceId = "string"
 )
 }

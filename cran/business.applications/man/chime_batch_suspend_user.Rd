@@ -32,7 +32,7 @@ action.
 To sign out users without suspending them, use the LogoutUser action.
 }
 \section{Request syntax}{
-\preformatted{chime$batch_suspend_user(
+\preformatted{svc$batch_suspend_user(
   AccountId = "string",
   UserIdList = list(
     "string"

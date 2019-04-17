@@ -28,7 +28,7 @@ For a given Maintenance Window execution, lists the tasks that were
 executed.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_window_execution_tasks(
+\preformatted{svc$describe_maintenance_window_execution_tasks(
   WindowExecutionId = "string",
   Filters = list(
     list(

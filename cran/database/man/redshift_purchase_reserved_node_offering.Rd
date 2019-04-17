@@ -28,7 +28,7 @@ For more information about reserved node offerings, go to \href{http://docs.aws.
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$purchase_reserved_node_offering(
+\preformatted{svc$purchase_reserved_node_offering(
   ReservedNodeOfferingId = "string",
   NodeCount = 123
 )

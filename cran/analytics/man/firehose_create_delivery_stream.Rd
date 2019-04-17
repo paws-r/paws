@@ -114,7 +114,7 @@ allow the service to deliver the data. For more information, see \href{http://do
 in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{firehose$create_delivery_stream(
+\preformatted{svc$create_delivery_stream(
   DeliveryStreamName = "string",
   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
   KinesisStreamSourceConfiguration = list(

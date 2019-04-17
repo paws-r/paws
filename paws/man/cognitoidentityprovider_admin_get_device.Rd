@@ -21,7 +21,7 @@ Gets the device, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_get_device(
+\preformatted{svc$admin_get_device(
   DeviceKey = "string",
   UserPoolId = "string",
   Username = "string"

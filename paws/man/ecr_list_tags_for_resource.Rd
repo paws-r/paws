@@ -15,7 +15,7 @@ repository.}
 List the tags for an Amazon ECR resource.
 }
 \section{Request syntax}{
-\preformatted{ecr$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }

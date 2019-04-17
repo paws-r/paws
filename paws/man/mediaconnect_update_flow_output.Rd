@@ -33,7 +33,7 @@ mediaconnect_update_flow_output(Description, Destination, Encryption,
 Updates an existing flow output.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$update_flow_output(
+\preformatted{svc$update_flow_output(
   Description = "string",
   Destination = "string",
   Encryption = list(

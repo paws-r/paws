@@ -25,7 +25,7 @@ that grants Amazon Redshift permission to the CMK in the destination
 region.
 }
 \section{Request syntax}{
-\preformatted{redshift$disable_snapshot_copy(
+\preformatted{svc$disable_snapshot_copy(
   ClusterIdentifier = "string"
 )
 }

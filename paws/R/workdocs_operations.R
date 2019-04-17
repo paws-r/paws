@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$abort_document_version_upload(
+#' svc$abort_document_version_upload(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string"
@@ -64,7 +64,7 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$activate_user(
+#' svc$activate_user(
 #'   UserId = "string",
 #'   AuthenticationToken = "string"
 #' )
@@ -108,7 +108,7 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$add_resource_permissions(
+#' svc$add_resource_permissions(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string",
 #'   Principals = list(
@@ -169,7 +169,7 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_comment(
+#' svc$create_comment(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string",
@@ -220,7 +220,7 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_custom_metadata(
+#' svc$create_custom_metadata(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string",
 #'   VersionId = "string",
@@ -264,7 +264,7 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_folder(
+#' svc$create_folder(
 #'   AuthenticationToken = "string",
 #'   Name = "string",
 #'   ParentFolderId = "string"
@@ -307,7 +307,7 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_labels(
+#' svc$create_labels(
 #'   ResourceId = "string",
 #'   Labels = list(
 #'     "string"
@@ -357,7 +357,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_notification_subscription(
+#' svc$create_notification_subscription(
 #'   OrganizationId = "string",
 #'   Endpoint = "string",
 #'   Protocol = "HTTPS",
@@ -407,7 +407,7 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$create_user(
+#' svc$create_user(
 #'   OrganizationId = "string",
 #'   Username = "string",
 #'   EmailAddress = "string",
@@ -458,7 +458,7 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$deactivate_user(
+#' svc$deactivate_user(
 #'   UserId = "string",
 #'   AuthenticationToken = "string"
 #' )
@@ -500,7 +500,7 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_comment(
+#' svc$delete_comment(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string",
@@ -547,7 +547,7 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_custom_metadata(
+#' svc$delete_custom_metadata(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string",
 #'   VersionId = "string",
@@ -591,7 +591,7 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_document(
+#' svc$delete_document(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string"
 #' )
@@ -630,7 +630,7 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_folder(
+#' svc$delete_folder(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string"
 #' )
@@ -669,7 +669,7 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_folder_contents(
+#' svc$delete_folder_contents(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string"
 #' )
@@ -711,7 +711,7 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_labels(
+#' svc$delete_labels(
 #'   ResourceId = "string",
 #'   AuthenticationToken = "string",
 #'   Labels = list(
@@ -753,7 +753,7 @@ workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Label
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_notification_subscription(
+#' svc$delete_notification_subscription(
 #'   SubscriptionId = "string",
 #'   OrganizationId = "string"
 #' )
@@ -792,7 +792,7 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$delete_user(
+#' svc$delete_user(
 #'   AuthenticationToken = "string",
 #'   UserId = "string"
 #' )
@@ -852,7 +852,7 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_activities(
+#' svc$describe_activities(
 #'   AuthenticationToken = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -908,7 +908,7 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_comments(
+#' svc$describe_comments(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string",
@@ -960,7 +960,7 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_document_versions(
+#' svc$describe_document_versions(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   Marker = "string",
@@ -1019,7 +1019,7 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_folder_contents(
+#' svc$describe_folder_contents(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string",
 #'   Sort = "DATE"|"NAME",
@@ -1070,7 +1070,7 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_groups(
+#' svc$describe_groups(
 #'   AuthenticationToken = "string",
 #'   SearchQuery = "string",
 #'   OrganizationId = "string",
@@ -1113,7 +1113,7 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_notification_subscriptions(
+#' svc$describe_notification_subscriptions(
 #'   OrganizationId = "string",
 #'   Marker = "string",
 #'   Limit = 123
@@ -1158,7 +1158,7 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_resource_permissions(
+#' svc$describe_resource_permissions(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string",
 #'   PrincipalId = "string",
@@ -1212,7 +1212,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_root_folders(
+#' svc$describe_root_folders(
 #'   AuthenticationToken = "string",
 #'   Limit = 123,
 #'   Marker = "string"
@@ -1268,7 +1268,7 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$describe_users(
+#' svc$describe_users(
 #'   AuthenticationToken = "string",
 #'   OrganizationId = "string",
 #'   UserIds = "string",
@@ -1317,7 +1317,7 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_current_user(
+#' svc$get_current_user(
 #'   AuthenticationToken = "string"
 #' )
 #' ```
@@ -1357,7 +1357,7 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_document(
+#' svc$get_document(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   IncludeCustomMetadata = TRUE|FALSE
@@ -1409,7 +1409,7 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_document_path(
+#' svc$get_document_path(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   Limit = 123,
@@ -1456,7 +1456,7 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_document_version(
+#' svc$get_document_version(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string",
@@ -1500,7 +1500,7 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_folder(
+#' svc$get_folder(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string",
 #'   IncludeCustomMetadata = TRUE|FALSE
@@ -1552,7 +1552,7 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_folder_path(
+#' svc$get_folder_path(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string",
 #'   Limit = 123,
@@ -1601,7 +1601,7 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$get_resources(
+#' svc$get_resources(
 #'   AuthenticationToken = "string",
 #'   UserId = "string",
 #'   CollectionType = "SHARED_WITH_ME",
@@ -1659,7 +1659,7 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$initiate_document_version_upload(
+#' svc$initiate_document_version_upload(
 #'   AuthenticationToken = "string",
 #'   Id = "string",
 #'   Name = "string",
@@ -1709,7 +1709,7 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$remove_all_resource_permissions(
+#' svc$remove_all_resource_permissions(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string"
 #' )
@@ -1753,7 +1753,7 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$remove_resource_permission(
+#' svc$remove_resource_permission(
 #'   AuthenticationToken = "string",
 #'   ResourceId = "string",
 #'   PrincipalId = "string",
@@ -1800,7 +1800,7 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$update_document(
+#' svc$update_document(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   Name = "string",
@@ -1849,7 +1849,7 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$update_document_version(
+#' svc$update_document_version(
 #'   AuthenticationToken = "string",
 #'   DocumentId = "string",
 #'   VersionId = "string",
@@ -1896,7 +1896,7 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$update_folder(
+#' svc$update_folder(
 #'   AuthenticationToken = "string",
 #'   FolderId = "string",
 #'   Name = "string",
@@ -1949,7 +1949,7 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #'
 #' @section Request syntax:
 #' ```
-#' workdocs$update_user(
+#' svc$update_user(
 #'   AuthenticationToken = "string",
 #'   UserId = "string",
 #'   GivenName = "string",

@@ -42,7 +42,7 @@ documents into the categories. For more information, see
 how-document-classification.
 }
 \section{Request syntax}{
-\preformatted{comprehend$create_document_classifier(
+\preformatted{svc$create_document_classifier(
   DocumentClassifierName = "string",
   DataAccessRoleArn = "string",
   InputDataConfig = list(

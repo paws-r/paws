@@ -27,7 +27,7 @@ interface is in the \code{Confirming} state and is not available to handle
 traffic.
 }
 \section{Request syntax}{
-\preformatted{directconnect$allocate_private_virtual_interface(
+\preformatted{svc$allocate_private_virtual_interface(
   connectionId = "string",
   ownerAccount = "string",
   newPrivateVirtualInterfaceAllocation = list(

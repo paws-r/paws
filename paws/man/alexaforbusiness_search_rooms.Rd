@@ -29,7 +29,7 @@ Searches rooms and lists the ones that meet a set of filter and sort
 criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_rooms(
+\preformatted{svc$search_rooms(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

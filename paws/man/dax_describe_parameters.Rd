@@ -28,7 +28,7 @@ specified by \code{MaxResults}.}
 Returns the detailed parameter list for a particular parameter group.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_parameters(
+\preformatted{svc$describe_parameters(
   ParameterGroupName = "string",
   Source = "string",
   MaxResults = 123,

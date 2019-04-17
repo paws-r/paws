@@ -22,12 +22,6 @@ following resources:
 \item \href{http://aws.amazon.com/documentation/vpc}{Amazon VPC documentation}
 }
 }
-\section{Example}{
-\preformatted{ec2 <- paws::ec2()
-ec2$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -364,3 +358,11 @@ ec2$operation()
 }
 }
 
+\examples{
+# This example allocates an Elastic IP address to use with an instance in
+# a VPC.
+\donttest{svc$allocate_address(
+  Domain = "vpc"
+)}
+
+}

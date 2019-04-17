@@ -80,7 +80,7 @@ onPremisesInstanceTagFilters.}
 Creates a deployment group to which application revisions are deployed.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$create_deployment_group(
+\preformatted{svc$create_deployment_group(
   applicationName = "string",
   deploymentGroupName = "string",
   deploymentConfigName = "string",

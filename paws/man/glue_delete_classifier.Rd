@@ -13,7 +13,7 @@ glue_delete_classifier(Name)
 Removes a classifier from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_classifier(
+\preformatted{svc$delete_classifier(
   Name = "string"
 )
 }

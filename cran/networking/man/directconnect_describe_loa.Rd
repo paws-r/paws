@@ -28,7 +28,7 @@ at the colocation facility. For more information, see \href{https://docs.aws.ama
 in the \emph{AWS Direct Connect User Guide}.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_loa(
+\preformatted{svc$describe_loa(
   connectionId = "string",
   providerName = "string",
   loaContentType = "application/pdf"

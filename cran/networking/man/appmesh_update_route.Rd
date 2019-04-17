@@ -26,7 +26,7 @@ Updates an existing route for a specified service mesh and virtual
 router.
 }
 \section{Request syntax}{
-\preformatted{appmesh$update_route(
+\preformatted{svc$update_route(
   clientToken = "string",
   meshName = "string",
   routeName = "string",

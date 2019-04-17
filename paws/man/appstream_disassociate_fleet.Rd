@@ -15,7 +15,7 @@ appstream_disassociate_fleet(FleetName, StackName)
 Disassociates the specified fleet from the specified stack.
 }
 \section{Request syntax}{
-\preformatted{appstream$disassociate_fleet(
+\preformatted{svc$disassociate_fleet(
   FleetName = "string",
   StackName = "string"
 )

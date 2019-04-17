@@ -9,12 +9,6 @@ mediaconnect()
 \description{
 API for AWS Elemental MediaConnect
 }
-\section{Example}{
-\preformatted{mediaconnect <- paws::mediaconnect()
-mediaconnect$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,9 @@ mediaconnect$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_flow_outputs(
+  Foo = 123
+)}
+
+}

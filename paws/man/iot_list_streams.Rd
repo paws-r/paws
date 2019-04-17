@@ -17,7 +17,7 @@ iot_list_streams(maxResults, nextToken, ascendingOrder)
 Lists all of the streams in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{iot$list_streams(
+\preformatted{svc$list_streams(
   maxResults = 123,
   nextToken = "string",
   ascendingOrder = TRUE|FALSE

@@ -15,12 +15,6 @@ resource-based permissions using IAM so that specific users or Amazon
 EC2 instances can access repositories and images. Developers can use the
 Docker CLI to author and manage images.
 }
-\section{Example}{
-\preformatted{ecr <- paws::ecr()
-ecr$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -52,3 +46,16 @@ ecr$operation()
 }
 }
 
+\examples{
+# This example deletes images with the tags precise and trusty in a
+# repository called ubuntu in the default registry for an account.
+\donttest{svc$batch_delete_image(
+  imageIds = list(
+    list(
+      imageTag = "precise"
+    )
+  ),
+  repositoryName = "ubuntu"
+)}
+
+}

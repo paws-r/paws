@@ -87,7 +87,7 @@ Creates a DAX cluster. All nodes in the cluster run the same DAX caching
 software.
 }
 \section{Request syntax}{
-\preformatted{dax$create_cluster(
+\preformatted{svc$create_cluster(
   ClusterName = "string",
   NodeType = "string",
   Description = "string",

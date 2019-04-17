@@ -28,7 +28,7 @@ Region, regardless of the Region in which the virtual interfaces are
 located, and pass traffic between them.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_direct_connect_gateway(
+\preformatted{svc$create_direct_connect_gateway(
   directConnectGatewayName = "string",
   amazonSideAsn = 123
 )

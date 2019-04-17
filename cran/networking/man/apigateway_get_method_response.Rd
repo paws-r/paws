@@ -20,7 +20,7 @@ apigateway_get_method_response(restApiId, resourceId, httpMethod,
 Describes a MethodResponse resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_method_response(
+\preformatted{svc$get_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

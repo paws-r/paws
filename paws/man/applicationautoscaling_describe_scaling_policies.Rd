@@ -99,7 +99,7 @@ PutScalingPolicy. If you are no longer using a scaling policy, you can
 delete it using DeleteScalingPolicy.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$describe_scaling_policies(
+\preformatted{svc$describe_scaling_policies(
   PolicyNames = list(
     "string"
   ),
@@ -115,7 +115,7 @@ delete it using DeleteScalingPolicy.
 \examples{
 # This example describes the scaling policies for the ecs service
 # namespace.
-\donttest{applicationautoscaling$describe_scaling_policies(
+\donttest{svc$describe_scaling_policies(
   ServiceNamespace = "ecs"
 )}
 

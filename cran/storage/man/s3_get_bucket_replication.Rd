@@ -18,7 +18,7 @@ configuration to all Amazon S3 systems. Therefore, a get request soon
 after put or delete can return a wrong result.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_replication(
+\preformatted{svc$get_bucket_replication(
   Bucket = "string"
 )
 }
@@ -26,7 +26,7 @@ after put or delete can return a wrong result.
 
 \examples{
 # The following example returns replication configuration set on a bucket.
-\donttest{s3$get_bucket_replication(
+\donttest{svc$get_bucket_replication(
   Bucket = "examplebucket"
 )}
 

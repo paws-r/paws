@@ -16,7 +16,7 @@ Deletes the run, given the run ARN.
 \strong{Note} Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_run(
+\preformatted{svc$delete_run(
   arn = "string"
 )
 }
@@ -24,7 +24,7 @@ Deletes the run, given the run ARN.
 
 \examples{
 # The following example deletes a specific test run.
-\donttest{devicefarm$delete_run(
+\donttest{svc$delete_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 )}
 

@@ -222,7 +222,7 @@ For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$update_stack(
+\preformatted{svc$update_stack(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",

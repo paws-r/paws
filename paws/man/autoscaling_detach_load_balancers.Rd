@@ -29,7 +29,7 @@ deregistered, then you can no longer describe the load balancer using
 DescribeLoadBalancers. The instances remain running.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$detach_load_balancers(
+\preformatted{svc$detach_load_balancers(
   AutoScalingGroupName = "string",
   LoadBalancerNames = list(
     "string"
@@ -41,7 +41,7 @@ DescribeLoadBalancers. The instances remain running.
 \examples{
 # This example detaches the specified load balancer from the specified
 # Auto Scaling group.
-\donttest{autoscaling$detach_load_balancers(
+\donttest{svc$detach_load_balancers(
   AutoScalingGroupName = "my-auto-scaling-group",
   LoadBalancerNames = list(
     "my-load-balancer"

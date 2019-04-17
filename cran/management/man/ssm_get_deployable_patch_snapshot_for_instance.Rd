@@ -18,7 +18,7 @@ This API is primarily used by the AWS-RunPatchBaseline Systems Manager
 document.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_deployable_patch_snapshot_for_instance(
+\preformatted{svc$get_deployable_patch_snapshot_for_instance(
   InstanceId = "string",
   SnapshotId = "string"
 )

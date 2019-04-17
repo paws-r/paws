@@ -47,7 +47,7 @@ name your resources.}
 Creates an endpoint for a Network File System (NFS) file system.
 }
 \section{Request syntax}{
-\preformatted{datasync$create_location_nfs(
+\preformatted{svc$create_location_nfs(
   Subdirectory = "string",
   ServerHostname = "string",
   OnPremConfig = list(

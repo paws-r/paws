@@ -21,7 +21,7 @@ robot application.}
 Creates a robot application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_robot_application(
+\preformatted{svc$create_robot_application(
   name = "string",
   sources = list(
     list(

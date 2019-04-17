@@ -20,7 +20,7 @@ operation resends the confirmation email to the current email address
 for the registrant contact.
 }
 \section{Request syntax}{
-\preformatted{route53domains$resend_contact_reachability_email(
+\preformatted{svc$resend_contact_reachability_email(
   domainName = "string"
 )
 }

@@ -39,7 +39,7 @@ Returns a list of robot application. You can optionally provide filters
 to retrieve specific robot applications.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_robot_applications(
+\preformatted{svc$list_robot_applications(
   versionQualifier = "string",
   nextToken = "string",
   maxResults = 123,

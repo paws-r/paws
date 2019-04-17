@@ -74,7 +74,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$list_secret_version_ids(
+\preformatted{svc$list_secret_version_ids(
   SecretId = "string",
   MaxResults = 123,
   NextToken = "string",
@@ -86,7 +86,7 @@ To run this command, you must have the following permissions:
 \examples{
 # The following example shows how to retrieve a list of all of the
 # versions of a secret, including those without any staging labels.
-\donttest{secretsmanager$list_secret_version_ids(
+\donttest{svc$list_secret_version_ids(
   IncludeDeprecated = TRUE,
   SecretId = "MyTestDatabaseSecret"
 )}

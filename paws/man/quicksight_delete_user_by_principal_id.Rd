@@ -19,7 +19,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 Deletes a user after locating the user by its principal ID.
 }
 \section{Request syntax}{
-\preformatted{quicksight$delete_user_by_principal_id(
+\preformatted{svc$delete_user_by_principal_id(
   PrincipalId = "string",
   AwsAccountId = "string",
   Namespace = "string"

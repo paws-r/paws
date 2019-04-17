@@ -15,7 +15,7 @@ Lists the results of the Security Hub insight specified by the insight
 ARN.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_insight_results(
+\preformatted{svc$get_insight_results(
   InsightArn = "string"
 )
 }

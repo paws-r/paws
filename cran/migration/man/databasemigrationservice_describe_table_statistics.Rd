@@ -41,7 +41,7 @@ time that AWS DMS last updated the table statistics record for a table.
 It does not indicate the time of the last update to the table.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_table_statistics(
+\preformatted{svc$describe_table_statistics(
   ReplicationTaskArn = "string",
   MaxRecords = 123,
   Marker = "string",
@@ -60,7 +60,7 @@ It does not indicate the time of the last update to the table.
 \examples{
 # Returns table statistics on the database migration task, including table
 # name, rows inserted, rows updated, and rows deleted.
-\donttest{databasemigrationservice$describe_table_statistics(
+\donttest{svc$describe_table_statistics(
   Marker = "",
   MaxRecords = 123L,
   ReplicationTaskArn = ""

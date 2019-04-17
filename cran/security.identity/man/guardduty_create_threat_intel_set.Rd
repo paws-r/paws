@@ -24,7 +24,7 @@ guardduty_create_threat_intel_set(Activate, ClientToken, DetectorId,
 Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_threat_intel_set(
+\preformatted{svc$create_threat_intel_set(
   Activate = TRUE|FALSE,
   ClientToken = "string",
   DetectorId = "string",

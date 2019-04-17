@@ -33,7 +33,7 @@ Currently \code{application/json} and \code{application/yaml} are supported for
 Exports a deployed version of a RestApi in a specified format.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_export(
+\preformatted{svc$get_export(
   restApiId = "string",
   stageName = "string",
   exportType = "string",

@@ -17,7 +17,7 @@ in an export project operation.}
 Update an existing project.
 }
 \section{Request syntax}{
-\preformatted{mobile$update_project(
+\preformatted{svc$update_project(
   contents = raw,
   projectId = "string"
 )

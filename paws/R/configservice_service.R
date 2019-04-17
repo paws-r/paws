@@ -29,11 +29,10 @@ NULL
 #' Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 #' in the *AWS Config Developer Guide*.
 #'
-#' @section Example:
-#' ```
-#' configservice <- paws::configservice()
-#' configservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_get_aggregate_resource_config(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

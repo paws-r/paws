@@ -91,7 +91,7 @@ credentials, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_cred
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{sts$get_session_token(
+\preformatted{svc$get_session_token(
   DurationSeconds = 123,
   SerialNumber = "string",
   TokenCode = "string"
@@ -101,7 +101,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # 
-\donttest{sts$get_session_token(
+\donttest{svc$get_session_token(
   DurationSeconds = 3600L,
   SerialNumber = "YourMFASerialNumber",
   TokenCode = "123456"

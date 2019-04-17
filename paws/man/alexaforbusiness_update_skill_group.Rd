@@ -18,7 +18,7 @@ alexaforbusiness_update_skill_group(SkillGroupArn, SkillGroupName,
 Updates skill group details by skill group ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_skill_group(
+\preformatted{svc$update_skill_group(
   SkillGroupArn = "string",
   SkillGroupName = "string",
   Description = "string"

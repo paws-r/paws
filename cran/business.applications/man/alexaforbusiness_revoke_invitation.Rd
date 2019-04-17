@@ -16,7 +16,7 @@ Required.}
 Revokes an invitation and invalidates the enrollment URL.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$revoke_invitation(
+\preformatted{svc$revoke_invitation(
   UserArn = "string",
   EnrollmentId = "string"
 )

@@ -185,7 +185,7 @@ given time.
 You can use the \code{DescribeTable} action to check the table status.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$create_table(
+\preformatted{svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "string",
@@ -257,7 +257,7 @@ You can use the \code{DescribeTable} action to check the table status.
 
 \examples{
 # This example creates a table named Music.
-\donttest{dynamodb$create_table(
+\donttest{svc$create_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "Artist",

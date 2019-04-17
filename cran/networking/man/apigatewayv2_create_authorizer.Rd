@@ -62,7 +62,7 @@ enabled, this property is optional.}
 Creates an Authorizer for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_authorizer(
+\preformatted{svc$create_authorizer(
   ApiId = "string",
   AuthorizerCredentialsArn = "string",
   AuthorizerResultTtlInSeconds = 123,

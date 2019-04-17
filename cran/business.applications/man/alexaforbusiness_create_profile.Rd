@@ -33,7 +33,7 @@ alexaforbusiness_create_profile(ProfileName, Timezone, Address,
 Creates a new room profile with the specified details.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_profile(
+\preformatted{svc$create_profile(
   ProfileName = "string",
   Timezone = "string",
   Address = "string",

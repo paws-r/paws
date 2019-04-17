@@ -17,7 +17,7 @@ Get information about a parameter by using the parameter name. Don't
 confuse this API action with the GetParameters API action.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_parameter(
+\preformatted{svc$get_parameter(
   Name = "string",
   WithDecryption = TRUE|FALSE
 )

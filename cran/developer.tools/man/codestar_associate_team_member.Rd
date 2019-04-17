@@ -27,7 +27,7 @@ to remotely access project resources, for example Amazon EC2 instances.}
 Adds an IAM user to the team for an AWS CodeStar project.
 }
 \section{Request syntax}{
-\preformatted{codestar$associate_team_member(
+\preformatted{svc$associate_team_member(
   projectId = "string",
   clientRequestToken = "string",
   userArn = "string",

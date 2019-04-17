@@ -32,7 +32,7 @@ Returns a list of \code{DBSecurityGroup} descriptions. If a
 descriptions of the specified DB security group.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_security_groups(
+\preformatted{svc$describe_db_security_groups(
   DBSecurityGroupName = "string",
   Filters = list(
     list(

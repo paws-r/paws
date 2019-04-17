@@ -20,7 +20,7 @@ previous call.}
 List the endpoint groups that are associated with a listener.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$list_endpoint_groups(
+\preformatted{svc$list_endpoint_groups(
   ListenerArn = "string",
   MaxResults = 123,
   NextToken = "string"

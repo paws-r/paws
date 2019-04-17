@@ -13,7 +13,7 @@ sagemaker_describe_notebook_instance(NotebookInstanceName)
 Returns information about a notebook instance.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_notebook_instance(
+\preformatted{svc$describe_notebook_instance(
   NotebookInstanceName = "string"
 )
 }

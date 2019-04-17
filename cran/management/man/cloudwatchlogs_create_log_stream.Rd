@@ -26,7 +26,7 @@ You must use the following guidelines when naming a log stream:
 }
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$create_log_stream(
+\preformatted{svc$create_log_stream(
   logGroupName = "string",
   logStreamName = "string"
 )

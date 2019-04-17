@@ -54,7 +54,7 @@ Create a machine learning algorithm that you can use in Amazon SageMaker
 and list in the AWS Marketplace.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_algorithm(
+\preformatted{svc$create_algorithm(
   AlgorithmName = "string",
   AlgorithmDescription = "string",
   TrainingSpecification = list(

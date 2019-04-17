@@ -29,7 +29,7 @@ Analytics will no longer write data from the corresponding
 in-application stream to the external output destination.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$delete_application_output(
+\preformatted{svc$delete_application_output(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   OutputId = "string"

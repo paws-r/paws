@@ -176,7 +176,7 @@ If the output is long, you can use \code{MaxItems} and \code{Marker} parameters 
 paginate the results.
 }
 \section{Request syntax}{
-\preformatted{iam$simulate_custom_policy(
+\preformatted{svc$simulate_custom_policy(
   PolicyInputList = list(
     "string"
   ),

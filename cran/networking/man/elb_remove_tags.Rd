@@ -16,7 +16,7 @@ balancer name.}
 Removes one or more tags from the specified load balancer.
 }
 \section{Request syntax}{
-\preformatted{elb$remove_tags(
+\preformatted{svc$remove_tags(
   LoadBalancerNames = list(
     "string"
   ),
@@ -31,7 +31,7 @@ Removes one or more tags from the specified load balancer.
 
 \examples{
 # This example removes the specified tag from the specified load balancer.
-\donttest{elb$remove_tags(
+\donttest{svc$remove_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),

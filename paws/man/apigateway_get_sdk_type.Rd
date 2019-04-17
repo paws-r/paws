@@ -13,7 +13,7 @@ apigateway_get_sdk_type(id)
 Get sdk type
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_sdk_type(
+\preformatted{svc$get_sdk_type(
   id = "string"
 )
 }

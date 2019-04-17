@@ -9,12 +9,6 @@ docdb()
 \description{
 Amazon DocumentDB API documentation
 }
-\section{Example}{
-\preformatted{docdb <- paws::docdb()
-docdb$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -60,3 +54,9 @@ docdb$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags_to_resource(
+  Foo = 123
+)}
+
+}

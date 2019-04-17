@@ -26,12 +26,6 @@ each time point decomposes overall load in relation to the requested
 dimensions, such as SQL, Wait-event, User or Host, measured at that time
 point.
 }
-\section{Example}{
-\preformatted{pi <- paws::pi()
-pi$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -40,3 +34,9 @@ pi$operation()
 }
 }
 
+\examples{
+\donttest{svc$describe_dimension_keys(
+  Foo = 123
+)}
+
+}

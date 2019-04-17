@@ -13,7 +13,7 @@ greengrass_disassociate_role_from_group(GroupId)
 Disassociates the role from a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$disassociate_role_from_group(
+\preformatted{svc$disassociate_role_from_group(
   GroupId = "string"
 )
 }

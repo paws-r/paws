@@ -21,7 +21,7 @@ help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$create_tags(
+\preformatted{svc$create_tags(
   configurationIds = list(
     "string"
   ),

@@ -21,7 +21,7 @@ glue_get_plan(Mapping, Source, Sinks, Location, Language)
 Gets code to perform a specified mapping.
 }
 \section{Request syntax}{
-\preformatted{glue$get_plan(
+\preformatted{svc$get_plan(
   Mapping = list(
     list(
       SourceTable = "string",

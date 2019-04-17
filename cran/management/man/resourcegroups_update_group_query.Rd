@@ -16,7 +16,7 @@ the resource group.}
 Updates the resource query of a group.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$update_group_query(
+\preformatted{svc$update_group_query(
   GroupName = "string",
   ResourceQuery = list(
     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",

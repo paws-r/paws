@@ -17,7 +17,7 @@ servicecatalog_update_tag_option(Id, Value, Active)
 Updates the specified TagOption.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_tag_option(
+\preformatted{svc$update_tag_option(
   Id = "string",
   Value = "string",
   Active = TRUE|FALSE

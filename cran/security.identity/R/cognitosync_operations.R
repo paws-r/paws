@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$bulk_publish(
+#' svc$bulk_publish(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -66,7 +66,7 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$delete_dataset(
+#' svc$delete_dataset(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string"
@@ -112,7 +112,7 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$describe_dataset(
+#' svc$describe_dataset(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string"
@@ -155,7 +155,7 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$describe_identity_pool_usage(
+#' svc$describe_identity_pool_usage(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -196,7 +196,7 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$describe_identity_usage(
+#' svc$describe_identity_usage(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string"
 #' )
@@ -236,7 +236,7 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$get_bulk_publish_details(
+#' svc$get_bulk_publish_details(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -277,7 +277,7 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$get_cognito_events(
+#' svc$get_cognito_events(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -318,7 +318,7 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$get_identity_pool_configuration(
+#' svc$get_identity_pool_configuration(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -363,7 +363,7 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$list_datasets(
+#' svc$list_datasets(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   NextToken = "string",
@@ -406,7 +406,7 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$list_identity_pool_usage(
+#' svc$list_identity_pool_usage(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -457,7 +457,7 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$list_records(
+#' svc$list_records(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string",
@@ -506,7 +506,7 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$register_device(
+#' svc$register_device(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   Platform = "APNS"|"APNS_SANDBOX"|"GCM"|"ADM",
@@ -552,7 +552,7 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$set_cognito_events(
+#' svc$set_cognito_events(
 #'   IdentityPoolId = "string",
 #'   Events = list(
 #'     "string"
@@ -599,7 +599,7 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$set_identity_pool_configuration(
+#' svc$set_identity_pool_configuration(
 #'   IdentityPoolId = "string",
 #'   PushSync = list(
 #'     ApplicationArns = list(
@@ -656,7 +656,7 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$subscribe_to_dataset(
+#' svc$subscribe_to_dataset(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string",
@@ -705,7 +705,7 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$unsubscribe_from_dataset(
+#' svc$unsubscribe_from_dataset(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string",
@@ -768,7 +768,7 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
 #'
 #' @section Request syntax:
 #' ```
-#' cognitosync$update_records(
+#' svc$update_records(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DatasetName = "string",

@@ -22,7 +22,7 @@ tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$untag_user(
+\preformatted{svc$untag_user(
   UserName = "string",
   TagKeys = list(
     "string"
@@ -34,7 +34,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following example shows how to remove tags that are attached to a
 # user named 'anika'.
-\donttest{iam$untag_user(
+\donttest{svc$untag_user(
   TagKeys = list(
     "Dept"
   ),

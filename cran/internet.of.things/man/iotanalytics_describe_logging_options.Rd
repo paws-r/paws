@@ -10,7 +10,7 @@ iotanalytics_describe_logging_options()
 Retrieves the current settings of the AWS IoT Analytics logging options.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$describe_logging_options()
+\preformatted{svc$describe_logging_options()
 }
 }
 

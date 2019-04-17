@@ -28,11 +28,11 @@ NULL
 #' operate your own cluster management and configuration management systems
 #' or worry about scaling your management infrastructure.
 #'
-#' @section Example:
-#' ```
-#' ecs <- paws::ecs()
-#' ecs$operation()
-#' ```
+#' @examples
+#' # This example creates a cluster in your default region.
+#' \donttest{svc$create_cluster(
+#'   clusterName = "my_cluster"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -17,12 +17,6 @@ authorized internal web content in a secure rendering service in the AWS
 cloud. Amazon WorkLink doesn't download or store any internal web
 content on mobile devices.
 }
-\section{Example}{
-\preformatted{worklink <- paws::worklink()
-worklink$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,3 +43,9 @@ worklink$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_website_certificate_authority(
+  Foo = 123
+)}
+
+}

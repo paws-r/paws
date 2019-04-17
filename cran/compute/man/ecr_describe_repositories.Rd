@@ -42,7 +42,7 @@ repositories with \code{repositoryNames}.}
 Describes image repositories in a registry.
 }
 \section{Request syntax}{
-\preformatted{ecr$describe_repositories(
+\preformatted{svc$describe_repositories(
   registryId = "string",
   repositoryNames = list(
     "string"
@@ -56,7 +56,7 @@ Describes image repositories in a registry.
 \examples{
 # The following example obtains a list and description of all repositories
 # in the default registry to which the current user has access.
-\donttest{ecr$describe_repositories()}
+\donttest{svc$describe_repositories()}
 
 }
 \keyword{internal}

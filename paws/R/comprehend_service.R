@@ -10,11 +10,10 @@ NULL
 #' your documents, the topics they discuss, the predominant sentiment
 #' expressed in them, the predominant language used, and more.
 #'
-#' @section Example:
-#' ```
-#' comprehend <- paws::comprehend()
-#' comprehend$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_detect_dominant_language(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

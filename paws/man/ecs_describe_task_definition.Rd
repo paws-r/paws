@@ -25,7 +25,7 @@ You can only describe \code{INACTIVE} task definitions while an active task
 or service references them.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_task_definition(
+\preformatted{svc$describe_task_definition(
   taskDefinition = "string",
   include = list(
     "TAGS"
@@ -36,7 +36,7 @@ or service references them.
 
 \examples{
 # This example provides a description of the specified task definition.
-\donttest{ecs$describe_task_definition(
+\donttest{svc$describe_task_definition(
   taskDefinition = "hello_world:8"
 )}
 

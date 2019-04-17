@@ -22,7 +22,7 @@ For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

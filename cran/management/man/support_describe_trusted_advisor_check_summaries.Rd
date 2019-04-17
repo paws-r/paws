@@ -19,7 +19,7 @@ DescribeTrustedAdvisorChecks.
 The response contains an array of TrustedAdvisorCheckSummary objects.
 }
 \section{Request syntax}{
-\preformatted{support$describe_trusted_advisor_check_summaries(
+\preformatted{svc$describe_trusted_advisor_check_summaries(
   checkIds = list(
     "string"
   )

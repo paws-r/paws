@@ -23,7 +23,7 @@ For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$list_tags_of_resource(
+\preformatted{svc$list_tags_of_resource(
   ResourceArn = "string",
   NextToken = "string"
 )

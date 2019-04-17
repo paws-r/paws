@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$acknowledge_job(
+#' svc$acknowledge_job(
 #'   jobId = "string",
 #'   nonce = "string"
 #' )
@@ -63,7 +63,7 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$acknowledge_third_party_job(
+#' svc$acknowledge_third_party_job(
 #'   jobId = "string",
 #'   nonce = "string",
 #'   clientToken = "string"
@@ -121,7 +121,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$create_custom_action_type(
+#' svc$create_custom_action_type(
 #'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
 #'   provider = "string",
 #'   version = "string",
@@ -184,7 +184,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$create_pipeline(
+#' svc$create_pipeline(
 #'   pipeline = list(
 #'     name = "string",
 #'     roleArn = "string",
@@ -291,7 +291,7 @@ codepipeline_create_pipeline <- function(pipeline) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$delete_custom_action_type(
+#' svc$delete_custom_action_type(
 #'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
 #'   provider = "string",
 #'   version = "string"
@@ -328,7 +328,7 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$delete_pipeline(
+#' svc$delete_pipeline(
 #'   name = "string"
 #' )
 #' ```
@@ -367,7 +367,7 @@ codepipeline_delete_pipeline <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$delete_webhook(
+#' svc$delete_webhook(
 #'   name = "string"
 #' )
 #' ```
@@ -405,7 +405,7 @@ codepipeline_delete_webhook <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$deregister_webhook_with_third_party(
+#' svc$deregister_webhook_with_third_party(
 #'   webhookName = "string"
 #' )
 #' ```
@@ -453,7 +453,7 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$disable_stage_transition(
+#' svc$disable_stage_transition(
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   transitionType = "Inbound"|"Outbound",
@@ -500,7 +500,7 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$enable_stage_transition(
+#' svc$enable_stage_transition(
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   transitionType = "Inbound"|"Outbound"
@@ -543,7 +543,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$get_job_details(
+#' svc$get_job_details(
 #'   jobId = "string"
 #' )
 #' ```
@@ -584,7 +584,7 @@ codepipeline_get_job_details <- function(jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$get_pipeline(
+#' svc$get_pipeline(
 #'   name = "string",
 #'   version = 123
 #' )
@@ -626,7 +626,7 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$get_pipeline_execution(
+#' svc$get_pipeline_execution(
 #'   pipelineName = "string",
 #'   pipelineExecutionId = "string"
 #' )
@@ -668,7 +668,7 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$get_pipeline_state(
+#' svc$get_pipeline_state(
 #'   name = "string"
 #' )
 #' ```
@@ -713,7 +713,7 @@ codepipeline_get_pipeline_state <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$get_third_party_job_details(
+#' svc$get_third_party_job_details(
 #'   jobId = "string",
 #'   clientToken = "string"
 #' )
@@ -759,7 +759,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$list_action_executions(
+#' svc$list_action_executions(
 #'   pipelineName = "string",
 #'   filter = list(
 #'     pipelineExecutionId = "string"
@@ -804,7 +804,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$list_action_types(
+#' svc$list_action_types(
 #'   actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
 #'   nextToken = "string"
 #' )
@@ -850,7 +850,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$list_pipeline_executions(
+#' svc$list_pipeline_executions(
 #'   pipelineName = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -888,7 +888,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$list_pipelines(
+#' svc$list_pipelines(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -929,7 +929,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$list_webhooks(
+#' svc$list_webhooks(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -980,7 +980,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$poll_for_jobs(
+#' svc$poll_for_jobs(
 #'   actionTypeId = list(
 #'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
 #'     owner = "AWS"|"ThirdParty"|"Custom",
@@ -1032,7 +1032,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$poll_for_third_party_jobs(
+#' svc$poll_for_third_party_jobs(
 #'   actionTypeId = list(
 #'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
 #'     owner = "AWS"|"ThirdParty"|"Custom",
@@ -1080,7 +1080,7 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_action_revision(
+#' svc$put_action_revision(
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   actionName = "string",
@@ -1133,7 +1133,7 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_approval_result(
+#' svc$put_approval_result(
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   actionName = "string",
@@ -1179,7 +1179,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_job_failure_result(
+#' svc$put_job_failure_result(
 #'   jobId = "string",
 #'   failureDetails = list(
 #'     type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
@@ -1233,7 +1233,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_job_success_result(
+#' svc$put_job_success_result(
 #'   jobId = "string",
 #'   currentRevision = list(
 #'     revision = "string",
@@ -1290,7 +1290,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_third_party_job_failure_result(
+#' svc$put_third_party_job_failure_result(
 #'   jobId = "string",
 #'   clientToken = "string",
 #'   failureDetails = list(
@@ -1347,7 +1347,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_third_party_job_success_result(
+#' svc$put_third_party_job_success_result(
 #'   jobId = "string",
 #'   clientToken = "string",
 #'   currentRevision = list(
@@ -1410,7 +1410,7 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$put_webhook(
+#' svc$put_webhook(
 #'   webhook = list(
 #'     name = "string",
 #'     targetPipeline = "string",
@@ -1463,7 +1463,7 @@ codepipeline_put_webhook <- function(webhook) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$register_webhook_with_third_party(
+#' svc$register_webhook_with_third_party(
 #'   webhookName = "string"
 #' )
 #' ```
@@ -1507,7 +1507,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$retry_stage_execution(
+#' svc$retry_stage_execution(
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   pipelineExecutionId = "string",
@@ -1548,7 +1548,7 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$start_pipeline_execution(
+#' svc$start_pipeline_execution(
 #'   name = "string",
 #'   clientRequestToken = "string"
 #' )
@@ -1587,7 +1587,7 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' codepipeline$update_pipeline(
+#' svc$update_pipeline(
 #'   pipeline = list(
 #'     name = "string",
 #'     roleArn = "string",

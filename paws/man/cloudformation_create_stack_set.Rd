@@ -132,7 +132,7 @@ automatically.}
 Creates a stack set.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$create_stack_set(
+\preformatted{svc$create_stack_set(
   StackSetName = "string",
   Description = "string",
   TemplateBody = "string",

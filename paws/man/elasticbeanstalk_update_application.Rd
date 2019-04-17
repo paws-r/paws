@@ -23,7 +23,7 @@ If a property (for example, \code{description}) is not provided, the value
 remains unchanged. To clear these properties, specify an empty string.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$update_application(
+\preformatted{svc$update_application(
   ApplicationName = "string",
   Description = "string"
 )
@@ -33,7 +33,7 @@ remains unchanged. To clear these properties, specify an empty string.
 \examples{
 # The following operation updates the description of an application named
 # my-app:
-\donttest{elasticbeanstalk$update_application(
+\donttest{svc$update_application(
   ApplicationName = "my-app",
   Description = "my Elastic Beanstalk application"
 )}

@@ -171,7 +171,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lexruntimeservice$post_content(
+#' svc$post_content(
 #'   botName = "string",
 #'   botAlias = "string",
 #'   userId = "string",
@@ -305,7 +305,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #'
 #' @section Request syntax:
 #' ```
-#' lexruntimeservice$post_text(
+#' svc$post_text(
 #'   botName = "string",
 #'   botAlias = "string",
 #'   userId = "string",

@@ -30,7 +30,7 @@ with a given data stream.
 This operation has a limit of 20 transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$describe_stream_consumer(
+\preformatted{svc$describe_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string",
   ConsumerARN = "string"

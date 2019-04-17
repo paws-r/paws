@@ -21,7 +21,7 @@ field is not populated. When you create a non-VPC development endpoint,
 AWS Glue returns only a public IP address.
 }
 \section{Request syntax}{
-\preformatted{glue$get_dev_endpoints(
+\preformatted{svc$get_dev_endpoints(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -18,7 +18,7 @@ pinpointsmsvoice_create_configuration_set_event_destination(
 Create a new event destination in a configuration set.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$create_configuration_set_event_destination(
+\preformatted{svc$create_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     CloudWatchLogsDestination = list(

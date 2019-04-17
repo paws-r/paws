@@ -16,7 +16,7 @@ Deletes the specified configuration aggregator and the aggregated data
 associated with the aggregator.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_configuration_aggregator(
+\preformatted{svc$delete_configuration_aggregator(
   ConfigurationAggregatorName = "string"
 )
 }

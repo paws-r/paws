@@ -43,7 +43,7 @@ external domain. You can create either a forest trust or an external
 trust.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_trust(
+\preformatted{svc$create_trust(
   DirectoryId = "string",
   RemoteDomainName = "string",
   TrustPassword = "string",

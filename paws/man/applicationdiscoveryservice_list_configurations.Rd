@@ -37,7 +37,7 @@ to the required paramater \code{configurationType}. Optional filtering may be
 applied to refine search results.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$list_configurations(
+\preformatted{svc$list_configurations(
   configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
   filters = list(
     list(

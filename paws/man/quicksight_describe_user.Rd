@@ -30,7 +30,7 @@ address.
 \code{aws quicksight describe-user --aws-account-id=111122223333 --namespace=default --user-name=Pat }
 }
 \section{Request syntax}{
-\preformatted{quicksight$describe_user(
+\preformatted{svc$describe_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string"

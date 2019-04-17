@@ -22,7 +22,7 @@ mediaconnect_update_flow_entitlement(Description, Encryption,
 You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$update_flow_entitlement(
+\preformatted{svc$update_flow_entitlement(
   Description = "string",
   Encryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",

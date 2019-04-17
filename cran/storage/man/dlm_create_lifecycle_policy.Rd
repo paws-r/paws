@@ -25,7 +25,7 @@ Creates a policy to manage the lifecycle of the specified AWS resources.
 You can create up to 100 lifecycle policies.
 }
 \section{Request syntax}{
-\preformatted{dlm$create_lifecycle_policy(
+\preformatted{svc$create_lifecycle_policy(
   ExecutionRoleArn = "string",
   Description = "string",
   State = "ENABLED"|"DISABLED",

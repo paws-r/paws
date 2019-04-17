@@ -16,7 +16,7 @@ Adds termination settings for the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$put_voice_connector_termination(
+\preformatted{svc$put_voice_connector_termination(
   VoiceConnectorId = "string",
   Termination = list(
     CpsLimit = 123,

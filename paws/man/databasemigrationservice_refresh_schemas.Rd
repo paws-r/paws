@@ -19,7 +19,7 @@ operation and can take several minutes. You can check the status of this
 operation by calling the DescribeRefreshSchemasStatus operation.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$refresh_schemas(
+\preformatted{svc$refresh_schemas(
   EndpointArn = "string",
   ReplicationInstanceArn = "string"
 )
@@ -30,7 +30,7 @@ operation by calling the DescribeRefreshSchemasStatus operation.
 # Populates the schema for the specified endpoint. This is an asynchronous
 # operation and can take several minutes. You can check the status of this
 # operation by calling the describe-refresh-schemas-status operation.
-\donttest{databasemigrationservice$refresh_schemas(
+\donttest{svc$refresh_schemas(
   EndpointArn = "",
   ReplicationInstanceArn = ""
 )}

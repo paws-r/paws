@@ -86,7 +86,7 @@ numbers are used by the DescribeCases operation to retrieve existing AWS
 Support cases.
 }
 \section{Request syntax}{
-\preformatted{support$create_case(
+\preformatted{svc$create_case(
   subject = "string",
   serviceCode = "string",
   severityCode = "string",

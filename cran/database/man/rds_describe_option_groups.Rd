@@ -37,7 +37,7 @@ also be specified.}
 Describes the available option groups.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_option_groups(
+\preformatted{svc$describe_option_groups(
   OptionGroupName = "string",
   Filters = list(
     list(

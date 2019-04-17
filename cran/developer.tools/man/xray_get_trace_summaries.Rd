@@ -44,7 +44,7 @@ filter expressions, see \href{http://docs.aws.amazon.com/xray/latest/devguide/xr
 in the \emph{AWS X-Ray Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{xray$get_trace_summaries(
+\preformatted{svc$get_trace_summaries(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

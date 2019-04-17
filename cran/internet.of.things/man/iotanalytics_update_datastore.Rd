@@ -15,7 +15,7 @@ iotanalytics_update_datastore(datastoreName, retentionPeriod)
 Updates the settings of a data store.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$update_datastore(
+\preformatted{svc$update_datastore(
   datastoreName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,

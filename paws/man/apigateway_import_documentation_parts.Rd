@@ -26,7 +26,7 @@ object.}
 Import documentation parts
 }
 \section{Request syntax}{
-\preformatted{apigateway$import_documentation_parts(
+\preformatted{svc$import_documentation_parts(
   restApiId = "string",
   mode = "merge"|"overwrite",
   failOnWarnings = TRUE|FALSE,

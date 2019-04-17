@@ -14,7 +14,7 @@ to reference this VpcLink.}
 Gets a specified VPC link under the caller's account in a region.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_vpc_link(
+\preformatted{svc$get_vpc_link(
   vpcLinkId = "string"
 )
 }

@@ -30,7 +30,7 @@ Displays details about an import virtual machine or import snapshot
 tasks that are already created.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_import_image_tasks(
+\preformatted{svc$describe_import_image_tasks(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(

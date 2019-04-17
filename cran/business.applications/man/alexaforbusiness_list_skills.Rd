@@ -29,7 +29,7 @@ Required.}
 Lists all enabled skills in a specific skill group.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_skills(
+\preformatted{svc$list_skills(
   SkillGroupArn = "string",
   EnablementType = "ENABLED"|"PENDING",
   SkillType = "PUBLIC"|"PRIVATE"|"ALL",

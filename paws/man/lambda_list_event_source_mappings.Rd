@@ -40,7 +40,7 @@ Lists event source mappings. Specify an \code{EventSourceArn} to only show
 event source mappings for a single event source.
 }
 \section{Request syntax}{
-\preformatted{lambda$list_event_source_mappings(
+\preformatted{svc$list_event_source_mappings(
   EventSourceArn = "string",
   FunctionName = "string",
   Marker = "string",

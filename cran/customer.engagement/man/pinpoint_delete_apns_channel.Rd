@@ -13,7 +13,7 @@ pinpoint_delete_apns_channel(ApplicationId)
 Deletes the APNs channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_apns_channel(
+\preformatted{svc$delete_apns_channel(
   ApplicationId = "string"
 )
 }

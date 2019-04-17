@@ -18,7 +18,7 @@ Adds a new schema to your GraphQL API.
 This operation is asynchronous. Use to determine when it has completed.
 }
 \section{Request syntax}{
-\preformatted{appsync$start_schema_creation(
+\preformatted{svc$start_schema_creation(
   apiId = "string",
   definition = raw
 )

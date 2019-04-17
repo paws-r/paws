@@ -20,7 +20,7 @@ is \code{100} and the maximum value is \code{100}.}
 Describes the target groups for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_load_balancer_target_groups(
+\preformatted{svc$describe_load_balancer_target_groups(
   AutoScalingGroupName = "string",
   NextToken = "string",
   MaxRecords = 123
@@ -31,7 +31,7 @@ Describes the target groups for the specified Auto Scaling group.
 \examples{
 # This example describes the target groups attached to the specified Auto
 # Scaling group.
-\donttest{autoscaling$describe_load_balancer_target_groups(
+\donttest{svc$describe_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

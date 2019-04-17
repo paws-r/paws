@@ -15,7 +15,7 @@ pinpoint_get_apps(PageSize, Token)
 Returns information about your apps.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_apps(
+\preformatted{svc$get_apps(
   PageSize = "string",
   Token = "string"
 )

@@ -43,7 +43,7 @@ This operation requires permissions for the \code{lex:GetUtterancesView}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_utterances_view(
+\preformatted{svc$get_utterances_view(
   botName = "string",
   botVersions = list(
     "string"

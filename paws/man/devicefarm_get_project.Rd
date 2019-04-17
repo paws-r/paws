@@ -13,7 +13,7 @@ devicefarm_get_project(arn)
 Gets information about a project.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_project(
+\preformatted{svc$get_project(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a project.
 
 \examples{
 # The following example gets information about a specific project.
-\donttest{devicefarm$get_project(
+\donttest{svc$get_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
 )}
 

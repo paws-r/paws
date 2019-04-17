@@ -31,7 +31,7 @@ different kind of CloudFront distribution. For more information, see
 CreateStreamingDistribution.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_distribution(
+\preformatted{svc$create_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(

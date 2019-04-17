@@ -41,7 +41,7 @@ lock is in the \code{InProgress} state, the operation throws an
 \code{InvalidParameter} error.
 }
 \section{Request syntax}{
-\preformatted{glacier$complete_vault_lock(
+\preformatted{svc$complete_vault_lock(
   accountId = "string",
   vaultName = "string",
   lockId = "string"
@@ -52,7 +52,7 @@ lock is in the \code{InProgress} state, the operation throws an
 \examples{
 # The example completes the vault locking process by transitioning the
 # vault lock from the InProgress state to the Locked state.
-\donttest{glacier$complete_vault_lock(
+\donttest{svc$complete_vault_lock(
   accountId = "-",
   lockId = "AE863rKkWZU53SLW5be4DUcW",
   vaultName = "example-vault"

@@ -36,7 +36,7 @@ Describes one or more VPC attachments. By default, all VPC attachments
 are described. Alternatively, you can filter the results.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_transit_gateway_vpc_attachments(
+\preformatted{svc$describe_transit_gateway_vpc_attachments(
   TransitGatewayAttachmentIds = list(
     "string"
   ),

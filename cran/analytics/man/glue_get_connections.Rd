@@ -28,7 +28,7 @@ connection properties.}
 Retrieves a list of connection definitions from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_connections(
+\preformatted{svc$get_connections(
   CatalogId = "string",
   Filter = list(
     MatchCriteria = list(

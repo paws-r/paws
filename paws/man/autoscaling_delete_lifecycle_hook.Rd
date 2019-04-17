@@ -21,7 +21,7 @@ If there are any outstanding lifecycle actions, they are completed first
 instances).
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_lifecycle_hook(
+\preformatted{svc$delete_lifecycle_hook(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string"
 )
@@ -30,7 +30,7 @@ instances).
 
 \examples{
 # This example deletes the specified lifecycle hook.
-\donttest{autoscaling$delete_lifecycle_hook(
+\donttest{svc$delete_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook"
 )}

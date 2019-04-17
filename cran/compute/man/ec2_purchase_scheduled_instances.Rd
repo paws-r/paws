@@ -32,7 +32,7 @@ After you purchase a Scheduled Instance, you can't cancel, modify, or
 resell your purchase.
 }
 \section{Request syntax}{
-\preformatted{ec2$purchase_scheduled_instances(
+\preformatted{svc$purchase_scheduled_instances(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   PurchaseRequests = list(
@@ -47,7 +47,7 @@ resell your purchase.
 
 \examples{
 # This example purchases a Scheduled Instance.
-\donttest{ec2$purchase_scheduled_instances(
+\donttest{svc$purchase_scheduled_instances(
   PurchaseRequests = list(
     list(
       InstanceCount = 1L,

@@ -20,7 +20,7 @@ in the \emph{Amazon SES Developer Guide.}
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$verify_domain_identity(
+\preformatted{svc$verify_domain_identity(
   Domain = "string"
 )
 }
@@ -29,7 +29,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example starts the domain verification process with Amazon
 # SES:
-\donttest{ses$verify_domain_identity(
+\donttest{svc$verify_domain_identity(
   Domain = "example.com"
 )}
 

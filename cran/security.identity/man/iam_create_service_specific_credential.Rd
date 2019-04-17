@@ -40,7 +40,7 @@ For more information about service-specific credentials, see \href{http://docs.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_service_specific_credential(
+\preformatted{svc$create_service_specific_credential(
   UserName = "string",
   ServiceName = "string"
 )

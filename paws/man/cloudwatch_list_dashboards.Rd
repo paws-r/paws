@@ -27,7 +27,7 @@ include the value you received for \code{NextToken} in the first call, to
 receive the next 1000 results.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$list_dashboards(
+\preformatted{svc$list_dashboards(
   DashboardNamePrefix = "string",
   NextToken = "string"
 )

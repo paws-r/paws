@@ -38,7 +38,7 @@ to track the lineage to the oldest shard.
 This operation has a limit of 10 transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$describe_stream(
+\preformatted{svc$describe_stream(
   StreamName = "string",
   Limit = 123,
   ExclusiveStartShardId = "string"

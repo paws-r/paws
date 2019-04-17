@@ -27,7 +27,7 @@ log events to this account, such as Amazon Route 53. An account can have
 up to 10 resource policies per region.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$put_resource_policy(
+\preformatted{svc$put_resource_policy(
   policyName = "string",
   policyDocument = "string"
 )

@@ -23,7 +23,7 @@ Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data
 Analytics application.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$delete_application_cloud_watch_logging_option(
+\preformatted{svc$delete_application_cloud_watch_logging_option(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   CloudWatchLoggingOptionId = "string"

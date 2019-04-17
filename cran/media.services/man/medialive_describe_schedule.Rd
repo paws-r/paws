@@ -17,7 +17,7 @@ medialive_describe_schedule(ChannelId, MaxResults, NextToken)
 Get a channel schedule
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_schedule(
+\preformatted{svc$describe_schedule(
   ChannelId = "string",
   MaxResults = 123,
   NextToken = "string"

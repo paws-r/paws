@@ -16,7 +16,7 @@ synced with the target Amazon S3 bucket. Deleting a sync configuration
 does not delete data in the target Amazon S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_resource_data_sync(
+\preformatted{svc$delete_resource_data_sync(
   SyncName = "string"
 )
 }

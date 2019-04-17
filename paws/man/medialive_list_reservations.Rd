@@ -31,7 +31,7 @@ medialive_list_reservations(Codec, MaxResults, MaximumBitrate,
 List purchased reservations.
 }
 \section{Request syntax}{
-\preformatted{medialive$list_reservations(
+\preformatted{svc$list_reservations(
   Codec = "string",
   MaxResults = 123,
   MaximumBitrate = "string",

@@ -21,7 +21,7 @@ containers.}
 Updates the company network configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$update_company_network_configuration(
+\preformatted{svc$update_company_network_configuration(
   FleetArn = "string",
   VpcId = "string",
   SubnetIds = list(

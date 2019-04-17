@@ -21,7 +21,7 @@ get another batch of clusters, provide this token in your next request.}
 Returns a list of clusters in an account.
 }
 \section{Request syntax}{
-\preformatted{kafka$list_clusters(
+\preformatted{svc$list_clusters(
   ClusterNameFilter = "string",
   MaxResults = 123,
   NextToken = "string"

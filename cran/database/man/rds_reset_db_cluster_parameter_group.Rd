@@ -40,7 +40,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$reset_db_cluster_parameter_group(
+\preformatted{svc$reset_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(

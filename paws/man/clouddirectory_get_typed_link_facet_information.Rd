@@ -17,7 +17,7 @@ Returns the identity attribute order for a specific TypedLinkFacet. For
 more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_typed_link_facet_information(
+\preformatted{svc$get_typed_link_facet_information(
   SchemaArn = "string",
   Name = "string"
 )

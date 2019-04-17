@@ -21,7 +21,7 @@ none is supplied, the AWS account ID is used by default.}
 Deletes a specified partition.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_partition(
+\preformatted{svc$delete_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

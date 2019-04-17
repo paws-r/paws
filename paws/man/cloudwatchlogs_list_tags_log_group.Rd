@@ -13,7 +13,7 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 Lists the tags for the specified log group.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$list_tags_log_group(
+\preformatted{svc$list_tags_log_group(
   logGroupName = "string"
 )
 }

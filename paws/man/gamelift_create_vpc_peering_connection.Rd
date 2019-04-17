@@ -57,7 +57,7 @@ events for success or failure using DescribeFleetEvents.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_vpc_peering_connection(
+\preformatted{svc$create_vpc_peering_connection(
   FleetId = "string",
   PeerVpcAwsAccountId = "string",
   PeerVpcId = "string"

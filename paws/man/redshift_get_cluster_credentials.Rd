@@ -106,7 +106,7 @@ If the \code{DbName} parameter is specified, the IAM policy must allow access
 to the resource \code{dbname} for the specified database name.
 }
 \section{Request syntax}{
-\preformatted{redshift$get_cluster_credentials(
+\preformatted{svc$get_cluster_credentials(
   DbUser = "string",
   DbName = "string",
   ClusterIdentifier = "string",

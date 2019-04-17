@@ -13,7 +13,7 @@ greengrass_stop_bulk_deployment(BulkDeploymentId)
 Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.
 }
 \section{Request syntax}{
-\preformatted{greengrass$stop_bulk_deployment(
+\preformatted{svc$stop_bulk_deployment(
   BulkDeploymentId = "string"
 )
 }

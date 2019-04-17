@@ -20,7 +20,7 @@ servicecatalog_describe_portfolio(AcceptLanguage, Id)
 Gets information about the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_portfolio(
+\preformatted{svc$describe_portfolio(
   AcceptLanguage = "string",
   Id = "string"
 )

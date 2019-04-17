@@ -48,7 +48,7 @@ instance in another.
 For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
-\preformatted{rds$authorize_db_security_group_ingress(
+\preformatted{svc$authorize_db_security_group_ingress(
   DBSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",

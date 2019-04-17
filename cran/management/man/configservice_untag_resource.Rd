@@ -17,7 +17,7 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 Deletes specified tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{configservice$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

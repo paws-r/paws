@@ -29,7 +29,7 @@ API endpoint.
 Returns a unique endpoint specific to the AWS account making the call.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_endpoint(
+\preformatted{svc$describe_endpoint(
   endpointType = "string"
 )
 }

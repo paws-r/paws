@@ -56,7 +56,7 @@ Use of this action does not change the value returned by
 DescribeInstanceStatus.
 }
 \section{Request syntax}{
-\preformatted{ec2$report_instance_status(
+\preformatted{svc$report_instance_status(
   Description = "string",
   DryRun = TRUE|FALSE,
   EndTime = as.POSIXct(

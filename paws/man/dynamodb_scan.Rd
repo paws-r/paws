@@ -262,7 +262,7 @@ consistent copy of the data, as of the time that the \code{Scan} begins, you
 can set the \code{ConsistentRead} parameter to \code{true}.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$scan(
+\preformatted{svc$scan(
   TableName = "string",
   IndexName = "string",
   AttributesToGet = list(
@@ -365,7 +365,7 @@ can set the \code{ConsistentRead} parameter to \code{true}.
 # This example scans the entire Music table, and then narrows the results
 # to songs by the artist "No One You Know". For each item, only the album
 # title and song title are returned.
-\donttest{dynamodb$scan(
+\donttest{svc$scan(
   ExpressionAttributeNames = list(
     AT = "AlbumTitle",
     ST = "SongTitle"

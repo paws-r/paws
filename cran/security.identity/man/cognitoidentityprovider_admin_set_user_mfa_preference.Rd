@@ -20,7 +20,7 @@ cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
 Sets the user's multi-factor authentication (MFA) preference.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_set_user_mfa_preference(
+\preformatted{svc$admin_set_user_mfa_preference(
   SMSMfaSettings = list(
     Enabled = TRUE|FALSE,
     PreferredMfa = TRUE|FALSE

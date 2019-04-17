@@ -13,7 +13,7 @@ sagemaker_describe_transform_job(TransformJobName)
 Returns information about a transform job.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_transform_job(
+\preformatted{svc$describe_transform_job(
   TransformJobName = "string"
 )
 }

@@ -13,7 +13,7 @@ directconnect_delete_virtual_interface(virtualInterfaceId)
 Deletes a virtual interface.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_virtual_interface(
+\preformatted{svc$delete_virtual_interface(
   virtualInterfaceId = "string"
 )
 }

@@ -19,7 +19,7 @@ base64 PEM-encoded. The chain does not include the CA certificate. Each
 certificate in the chain signs the one before it.
 }
 \section{Request syntax}{
-\preformatted{acmpca$get_certificate_authority_certificate(
+\preformatted{svc$get_certificate_authority_certificate(
   CertificateAuthorityArn = "string"
 )
 }

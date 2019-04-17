@@ -28,7 +28,7 @@ are disassociated, the LAG continues to exist as an empty LAG with no
 physical connections.
 }
 \section{Request syntax}{
-\preformatted{directconnect$disassociate_connection_from_lag(
+\preformatted{svc$disassociate_connection_from_lag(
   connectionId = "string",
   lagId = "string"
 )

@@ -41,7 +41,7 @@ Returns a list of all tags for the specified customer master key (CMK).
 You cannot perform this operation on a CMK in a different AWS account.
 }
 \section{Request syntax}{
-\preformatted{kms$list_resource_tags(
+\preformatted{svc$list_resource_tags(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
@@ -51,7 +51,7 @@ You cannot perform this operation on a CMK in a different AWS account.
 
 \examples{
 # The following example lists tags for a CMK.
-\donttest{kms$list_resource_tags(
+\donttest{svc$list_resource_tags(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

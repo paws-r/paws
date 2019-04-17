@@ -38,7 +38,7 @@ from a prior call.)}
 Describes one or more of your VPC endpoints.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoints(
+\preformatted{svc$describe_vpc_endpoints(
   DryRun = TRUE|FALSE,
   VpcEndpointIds = list(
     "string"

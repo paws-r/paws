@@ -16,7 +16,7 @@ supported for directories.}
 An API operation for adding tags to a resource.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

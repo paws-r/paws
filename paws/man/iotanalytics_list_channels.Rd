@@ -17,7 +17,7 @@ The default value is 100.}
 Retrieves a list of channels.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$list_channels(
+\preformatted{svc$list_channels(
   nextToken = "string",
   maxResults = 123
 )

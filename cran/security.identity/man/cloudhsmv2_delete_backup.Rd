@@ -16,7 +16,7 @@ Deletes a specified AWS CloudHSM backup. A backup can be restored up to
 a backup, see RestoreBackup
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$delete_backup(
+\preformatted{svc$delete_backup(
   BackupId = "string"
 )
 }

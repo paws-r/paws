@@ -34,7 +34,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$delete_queue(
+\preformatted{svc$delete_queue(
   QueueUrl = "string"
 )
 }

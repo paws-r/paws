@@ -17,7 +17,7 @@ appsync_delete_resolver(apiId, typeName, fieldName)
 Deletes a \code{Resolver} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_resolver(
+\preformatted{svc$delete_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string"

@@ -38,7 +38,7 @@ importexport_get_shipping_label(jobIds, name, company, phoneNumber,
 This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
 }
 \section{Request syntax}{
-\preformatted{importexport$get_shipping_label(
+\preformatted{svc$get_shipping_label(
   jobIds = list(
     "string"
   ),

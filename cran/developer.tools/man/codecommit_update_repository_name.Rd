@@ -21,7 +21,7 @@ description of the limits on repository names, see
 in the AWS CodeCommit User Guide.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_repository_name(
+\preformatted{svc$update_repository_name(
   oldName = "string",
   newName = "string"
 )

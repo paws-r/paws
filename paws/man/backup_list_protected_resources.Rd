@@ -22,7 +22,7 @@ including the time the resource was saved, an Amazon Resource Name (ARN)
 of the resource, and a resource type.
 }
 \section{Request syntax}{
-\preformatted{backup$list_protected_resources(
+\preformatted{svc$list_protected_resources(
   NextToken = "string",
   MaxResults = 123
 )

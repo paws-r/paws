@@ -13,7 +13,7 @@ iot1clickprojects_describe_project(projectName)
 Returns an object describing a project.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$describe_project(
+\preformatted{svc$describe_project(
   projectName = "string"
 )
 }

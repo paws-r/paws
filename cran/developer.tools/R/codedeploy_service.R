@@ -85,11 +85,10 @@ NULL
 #' -   [AWS CodeDeploy Developer
 #'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
 #'
-#' @section Example:
-#' ```
-#' codedeploy <- paws::codedeploy()
-#' codedeploy$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_on_premises_instances(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

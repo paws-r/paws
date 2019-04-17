@@ -44,7 +44,7 @@ When you receive a response with no \code{NextToken} (or an empty or null
 value), that means there are no more backups to get.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$describe_backups(
+\preformatted{svc$describe_backups(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

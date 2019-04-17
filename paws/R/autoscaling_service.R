@@ -17,11 +17,15 @@ NULL
 #' [Amazon EC2 Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
 #'
-#' @section Example:
-#' ```
-#' autoscaling <- paws::autoscaling()
-#' autoscaling$operation()
-#' ```
+#' @examples
+#' # This example attaches the specified instance to the specified Auto
+#' # Scaling group.
+#' \donttest{svc$attach_instances(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   InstanceIds = list(
+#'     "i-93633f9b"
+#'   )
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

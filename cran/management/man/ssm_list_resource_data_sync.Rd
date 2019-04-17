@@ -29,7 +29,7 @@ configurations to list, you can request them by specifying the
 \code{NextToken} returned in the call to the parameter of a subsequent call.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_resource_data_sync(
+\preformatted{svc$list_resource_data_sync(
   NextToken = "string",
   MaxResults = 123
 )

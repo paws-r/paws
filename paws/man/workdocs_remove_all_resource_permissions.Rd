@@ -18,7 +18,7 @@ credentials.}
 Removes all the permissions from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{workdocs$remove_all_resource_permissions(
+\preformatted{svc$remove_all_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string"
 )

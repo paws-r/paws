@@ -27,7 +27,7 @@ applicable restrictions, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_vpc_cidr_block(
+\preformatted{svc$associate_vpc_cidr_block(
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   CidrBlock = "string",
   VpcId = "string"

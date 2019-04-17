@@ -34,7 +34,7 @@ requested ID that currently exists.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_matchmaking(
+\preformatted{svc$describe_matchmaking(
   TicketIds = list(
     "string"
   )

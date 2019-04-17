@@ -15,7 +15,7 @@ amplify_delete_domain_association(appId, domainName)
 Deletes a DomainAssociation.
 }
 \section{Request syntax}{
-\preformatted{amplify$delete_domain_association(
+\preformatted{svc$delete_domain_association(
   appId = "string",
   domainName = "string"
 )

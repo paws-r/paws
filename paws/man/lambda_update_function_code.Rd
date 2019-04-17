@@ -50,7 +50,7 @@ The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
 }
 \section{Request syntax}{
-\preformatted{lambda$update_function_code(
+\preformatted{svc$update_function_code(
   FunctionName = "string",
   ZipFile = raw,
   S3Bucket = "string",
@@ -65,7 +65,7 @@ modify the code of a published version, only the unpublished version.
 
 \examples{
 # This operation updates a Lambda function's code
-\donttest{lambda$update_function_code(
+\donttest{svc$update_function_code(
   FunctionName = "myFunction",
   Publish = TRUE,
   S3Bucket = "myBucket",

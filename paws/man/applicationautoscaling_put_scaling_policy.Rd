@@ -129,7 +129,7 @@ the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
 Learn more about how to work with scaling policies in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$put_scaling_policy(
+\preformatted{svc$put_scaling_policy(
   PolicyName = "string",
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceId = "string",
@@ -178,7 +178,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # This example applies a scaling policy to an Amazon ECS service called
 # web-app in the default cluster. The policy increases the desired count
 # of the service by 200\%, with a cool down period of 60 seconds.
-\donttest{applicationautoscaling$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "web-app-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "service/default/web-app",
@@ -200,7 +200,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
 # policy increases the target capacity of the spot fleet by 200\%, with a
 # cool down period of 180 seconds.",
 # 
-\donttest{applicationautoscaling$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   PolicyName = "fleet-cpu-gt-75",
   PolicyType = "StepScaling",
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

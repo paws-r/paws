@@ -15,7 +15,7 @@ robomaker_delete_simulation_application(application, applicationVersion)
 Deletes a simulation application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$delete_simulation_application(
+\preformatted{svc$delete_simulation_application(
   application = "string",
   applicationVersion = "string"
 )

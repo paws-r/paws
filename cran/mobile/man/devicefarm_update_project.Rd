@@ -21,7 +21,7 @@ Modifies the specified project name, given the project ARN and a new
 name.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_project(
+\preformatted{svc$update_project(
   arn = "string",
   name = "string",
   defaultJobTimeoutMinutes = 123
@@ -31,7 +31,7 @@ name.
 
 \examples{
 # The following example updates the specified project with a new name.
-\donttest{devicefarm$update_project(
+\donttest{svc$update_project(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
 )}

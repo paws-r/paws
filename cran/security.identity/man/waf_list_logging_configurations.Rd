@@ -25,7 +25,7 @@ the number that you specify for \code{Limit}, the response includes a
 Returns an array of LoggingConfiguration objects.
 }
 \section{Request syntax}{
-\preformatted{waf$list_logging_configurations(
+\preformatted{svc$list_logging_configurations(
   NextMarker = "string",
   Limit = 123
 )

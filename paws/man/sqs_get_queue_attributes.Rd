@@ -110,7 +110,7 @@ example, a parameter list with two elements looks like this:
 \code{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
-\preformatted{sqs$get_queue_attributes(
+\preformatted{svc$get_queue_attributes(
   QueueUrl = "string",
   AttributeNames = list(
     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"

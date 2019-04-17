@@ -15,7 +15,7 @@ calling this API. This API can only be called by the master account in
 the organization.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$disable_aws_organizations_access()
+\preformatted{svc$disable_aws_organizations_access()
 }
 }
 

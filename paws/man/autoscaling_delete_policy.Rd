@@ -19,7 +19,7 @@ Deleting a policy deletes the underlying alarm action, but does not
 delete the alarm, even if it no longer has an associated action.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_policy(
+\preformatted{svc$delete_policy(
   AutoScalingGroupName = "string",
   PolicyName = "string"
 )
@@ -28,7 +28,7 @@ delete the alarm, even if it no longer has an associated action.
 
 \examples{
 # This example deletes the specified Auto Scaling policy.
-\donttest{autoscaling$delete_policy(
+\donttest{svc$delete_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn"
 )}

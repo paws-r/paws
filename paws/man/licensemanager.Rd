@@ -17,12 +17,6 @@ Alternatively, you can use one of the AWS SDKs to access an API that's
 tailored to the programming language or platform that you're using. For
 more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 }
-\section{Example}{
-\preformatted{licensemanager <- paws::licensemanager()
-licensemanager$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -44,3 +38,9 @@ licensemanager$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_license_configuration(
+  Foo = 123
+)}
+
+}

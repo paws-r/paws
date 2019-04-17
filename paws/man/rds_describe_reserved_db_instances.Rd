@@ -55,7 +55,7 @@ Returns information about reserved DB instances for this account, or
 about a specified reserved DB instance.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_reserved_db_instances(
+\preformatted{svc$describe_reserved_db_instances(
   ReservedDBInstanceId = "string",
   ReservedDBInstancesOfferingId = "string",
   DBInstanceClass = "string",

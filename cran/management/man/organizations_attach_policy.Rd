@@ -81,7 +81,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$attach_policy(
+\preformatted{svc$attach_policy(
   PolicyId = "string",
   TargetId = "string"
 )
@@ -92,7 +92,7 @@ account.
 # The following example shows how to attach a service control policy (SCP)
 # to an OU:
 # 
-\donttest{organizations$attach_policy(
+\donttest{svc$attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
 )}
@@ -100,7 +100,7 @@ account.
 # The following example shows how to attach a service control policy (SCP)
 # to an account:
 # 
-\donttest{organizations$attach_policy(
+\donttest{svc$attach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "333333333333"
 )}

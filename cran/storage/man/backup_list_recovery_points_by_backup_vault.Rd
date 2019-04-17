@@ -40,7 +40,7 @@ Returns detailed information about the recovery points stored in a
 backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$list_recovery_points_by_backup_vault(
+\preformatted{svc$list_recovery_points_by_backup_vault(
   BackupVaultName = "string",
   NextToken = "string",
   MaxResults = 123,

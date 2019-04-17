@@ -45,7 +45,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$create_certificate_authority(
+#' svc$create_certificate_authority(
 #'   CertificateAuthorityConfiguration = list(
 #'     KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
 #'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
@@ -126,7 +126,7 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$create_certificate_authority_audit_report(
+#' svc$create_certificate_authority_audit_report(
 #'   CertificateAuthorityArn = "string",
 #'   S3BucketName = "string",
 #'   AuditReportResponseFormat = "JSON"|"CSV"
@@ -184,7 +184,7 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$create_permission(
+#' svc$create_permission(
 #'   CertificateAuthorityArn = "string",
 #'   Principal = "string",
 #'   SourceAccount = "string",
@@ -251,7 +251,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$delete_certificate_authority(
+#' svc$delete_certificate_authority(
 #'   CertificateAuthorityArn = "string",
 #'   PermanentDeletionTimeInDays = 123
 #' )
@@ -298,7 +298,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$delete_permission(
+#' svc$delete_permission(
 #'   CertificateAuthorityArn = "string",
 #'   Principal = "string",
 #'   SourceAccount = "string"
@@ -362,7 +362,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$describe_certificate_authority(
+#' svc$describe_certificate_authority(
 #'   CertificateAuthorityArn = "string"
 #' )
 #' ```
@@ -408,7 +408,7 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$describe_certificate_authority_audit_report(
+#' svc$describe_certificate_authority_audit_report(
 #'   CertificateAuthorityArn = "string",
 #'   AuditReportId = "string"
 #' )
@@ -458,7 +458,7 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$get_certificate(
+#' svc$get_certificate(
 #'   CertificateAuthorityArn = "string",
 #'   CertificateArn = "string"
 #' )
@@ -500,7 +500,7 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$get_certificate_authority_certificate(
+#' svc$get_certificate_authority_certificate(
 #'   CertificateAuthorityArn = "string"
 #' )
 #' ```
@@ -545,7 +545,7 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$get_certificate_authority_csr(
+#' svc$get_certificate_authority_csr(
 #'   CertificateAuthorityArn = "string"
 #' )
 #' ```
@@ -608,7 +608,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$import_certificate_authority_certificate(
+#' svc$import_certificate_authority_certificate(
 #'   CertificateAuthorityArn = "string",
 #'   Certificate = raw,
 #'   CertificateChain = raw
@@ -677,7 +677,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$issue_certificate(
+#' svc$issue_certificate(
 #'   CertificateAuthorityArn = "string",
 #'   Csr = raw,
 #'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
@@ -728,7 +728,7 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$list_certificate_authorities(
+#' svc$list_certificate_authorities(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -780,7 +780,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$list_permissions(
+#' svc$list_permissions(
 #'   CertificateAuthorityArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -832,7 +832,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$list_tags(
+#' svc$list_tags(
 #'   CertificateAuthorityArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -887,7 +887,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$restore_certificate_authority(
+#' svc$restore_certificate_authority(
 #'   CertificateAuthorityArn = "string"
 #' )
 #' ```
@@ -948,7 +948,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$revoke_certificate(
+#' svc$revoke_certificate(
 #'   CertificateAuthorityArn = "string",
 #'   CertificateSerial = "string",
 #'   RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"
@@ -998,7 +998,7 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$tag_certificate_authority(
+#' svc$tag_certificate_authority(
 #'   CertificateAuthorityArn = "string",
 #'   Tags = list(
 #'     list(
@@ -1049,7 +1049,7 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$untag_certificate_authority(
+#' svc$untag_certificate_authority(
 #'   CertificateAuthorityArn = "string",
 #'   Tags = list(
 #'     list(
@@ -1100,7 +1100,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' acmpca$update_certificate_authority(
+#' svc$update_certificate_authority(
 #'   CertificateAuthorityArn = "string",
 #'   RevocationConfiguration = list(
 #'     CrlConfiguration = list(

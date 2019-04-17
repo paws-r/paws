@@ -17,7 +17,7 @@ Performs all the write operations in a batch. Either all the operations
 succeed or none.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$batch_write(
+\preformatted{svc$batch_write(
   DirectoryArn = "string",
   Operations = list(
     list(

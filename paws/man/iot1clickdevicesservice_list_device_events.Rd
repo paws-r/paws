@@ -27,7 +27,7 @@ Using a device ID, returns a DeviceEventsResponse object containing an
 array of events for the device.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$list_device_events(
+\preformatted{svc$list_device_events(
   DeviceId = "string",
   FromTimeStamp = as.POSIXct(
     "2015-01-01"

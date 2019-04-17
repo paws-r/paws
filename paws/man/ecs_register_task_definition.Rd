@@ -214,7 +214,7 @@ task definition. For more information, see \href{http://docs.aws.amazon.com/Amaz
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$register_task_definition(
+\preformatted{svc$register_task_definition(
   family = "string",
   taskRoleArn = "string",
   executionRoleArn = "string",
@@ -425,7 +425,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 \examples{
 # This example registers a task definition to the specified family.
-\donttest{ecs$register_task_definition(
+\donttest{svc$register_task_definition(
   containerDefinitions = list(
     list(
       name = "sleep",

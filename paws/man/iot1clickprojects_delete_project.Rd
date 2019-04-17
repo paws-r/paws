@@ -17,7 +17,7 @@ associated with it.
 When you delete a project, all associated data becomes irretrievable.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$delete_project(
+\preformatted{svc$delete_project(
   projectName = "string"
 )
 }

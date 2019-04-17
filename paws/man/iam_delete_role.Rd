@@ -24,7 +24,7 @@ is associated with a running instance will break any applications
 running on the instance.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_role(
+\preformatted{svc$delete_role(
   RoleName = "string"
 )
 }
@@ -32,7 +32,7 @@ running on the instance.
 
 \examples{
 # The following command removes the role named Test-Role.
-\donttest{iam$delete_role(
+\donttest{svc$delete_role(
   RoleName = "Test-Role"
 )}
 

@@ -42,7 +42,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$create_vault(
+\preformatted{svc$create_vault(
   accountId = "string",
   vaultName = "string"
 )
@@ -51,7 +51,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The following example creates a new vault named my-vault.
-\donttest{glacier$create_vault(
+\donttest{svc$create_vault(
   accountId = "-",
   vaultName = "my-vault"
 )}

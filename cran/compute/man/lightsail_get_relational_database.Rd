@@ -13,7 +13,7 @@ lightsail_get_relational_database(relationalDatabaseName)
 Returns information about a specific database in Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database(
+\preformatted{svc$get_relational_database(
   relationalDatabaseName = "string"
 )
 }

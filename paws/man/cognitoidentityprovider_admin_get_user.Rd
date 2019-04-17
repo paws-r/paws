@@ -20,7 +20,7 @@ Works on any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_get_user(
+\preformatted{svc$admin_get_user(
   UserPoolId = "string",
   Username = "string"
 )

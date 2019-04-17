@@ -23,7 +23,7 @@ Returns an overview of the members of a group. Users and groups can be
 members of a group.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_group_members(
+\preformatted{svc$list_group_members(
   OrganizationId = "string",
   GroupId = "string",
   NextToken = "string",

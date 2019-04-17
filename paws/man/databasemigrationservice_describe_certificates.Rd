@@ -26,7 +26,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Provides a description of the certificate.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_certificates(
+\preformatted{svc$describe_certificates(
   Filters = list(
     list(
       Name = "string",
@@ -43,7 +43,7 @@ Provides a description of the certificate.
 
 \examples{
 # Provides a description of the certificate.
-\donttest{databasemigrationservice$describe_certificates(
+\donttest{svc$describe_certificates(
   Filters = list(
     list(
       Name = "string",

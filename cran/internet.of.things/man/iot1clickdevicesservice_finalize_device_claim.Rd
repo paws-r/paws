@@ -21,7 +21,7 @@ device event, and finalizing the claim. For a device of type button, a
 device event can be published by simply clicking the device.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$finalize_device_claim(
+\preformatted{svc$finalize_device_claim(
   DeviceId = "string",
   Tags = list(
     "string"

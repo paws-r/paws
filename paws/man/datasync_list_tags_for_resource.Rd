@@ -18,7 +18,7 @@ list of locations.}
 Returns all the tags associated with a specified resources.
 }
 \section{Request syntax}{
-\preformatted{datasync$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"

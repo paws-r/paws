@@ -26,7 +26,7 @@ If a specified event cannot be retrieved, an error message is returned
 for that event.
 }
 \section{Request syntax}{
-\preformatted{health$describe_event_details(
+\preformatted{svc$describe_event_details(
   eventArns = list(
     "string"
   ),

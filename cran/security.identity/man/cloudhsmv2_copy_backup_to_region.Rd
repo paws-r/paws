@@ -15,7 +15,7 @@ cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId)
 Copy an AWS CloudHSM cluster backup to a different region.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$copy_backup_to_region(
+\preformatted{svc$copy_backup_to_region(
   DestinationRegion = "string",
   BackupId = "string"
 )

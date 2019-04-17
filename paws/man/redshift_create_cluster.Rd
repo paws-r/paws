@@ -265,7 +265,7 @@ For more information about managing clusters, go to \href{http://docs.aws.amazon
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_cluster(
+\preformatted{svc$create_cluster(
   DBName = "string",
   ClusterIdentifier = "string",
   ClusterType = "string",

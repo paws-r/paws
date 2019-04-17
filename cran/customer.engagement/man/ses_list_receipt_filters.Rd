@@ -17,14 +17,14 @@ For information about managing IP address filters, see the \href{http://docs.aws
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_receipt_filters()
+\preformatted{svc$list_receipt_filters()
 }
 }
 
 \examples{
 # The following example lists the IP address filters that are associated
 # with an AWS account:
-\donttest{ses$list_receipt_filters()}
+\donttest{svc$list_receipt_filters()}
 
 }
 \keyword{internal}

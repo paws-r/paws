@@ -15,7 +15,7 @@ Gets the status of the specified portfolio share operation. This API can
 only be called by the master account in the organization.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_portfolio_share_status(
+\preformatted{svc$describe_portfolio_share_status(
   PortfolioShareToken = "string"
 )
 }

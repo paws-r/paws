@@ -20,7 +20,7 @@ apigateway_create_documentation_version(restApiId, documentationVersion,
 Create documentation version
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_documentation_version(
+\preformatted{svc$create_documentation_version(
   restApiId = "string",
   documentationVersion = "string",
   stageName = "string",

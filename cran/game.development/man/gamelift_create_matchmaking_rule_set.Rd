@@ -52,7 +52,7 @@ new rule set.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_matchmaking_rule_set(
+\preformatted{svc$create_matchmaking_rule_set(
   Name = "string",
   RuleSetBody = "string"
 )

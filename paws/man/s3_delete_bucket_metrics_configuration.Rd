@@ -17,7 +17,7 @@ Deletes a metrics configuration (specified by the metrics configuration
 ID) from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_metrics_configuration(
+\preformatted{svc$delete_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string"
 )

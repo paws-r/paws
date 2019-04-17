@@ -20,7 +20,7 @@ Displays a list of categories for all event source types, or, if
 specified, for a specified source type.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(

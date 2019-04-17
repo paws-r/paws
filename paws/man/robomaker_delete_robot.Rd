@@ -13,7 +13,7 @@ robomaker_delete_robot(robot)
 Deletes a robot.
 }
 \section{Request syntax}{
-\preformatted{robomaker$delete_robot(
+\preformatted{svc$delete_robot(
   robot = "string"
 )
 }

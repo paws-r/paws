@@ -27,7 +27,7 @@ Gets the configuration files necessary to connect to all high
 availability partition groups the client is associated with.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$get_config(
+\preformatted{svc$get_config(
   ClientArn = "string",
   ClientVersion = "5.1"|"5.3",
   HapgList = list(

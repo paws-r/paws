@@ -34,7 +34,7 @@ idempotent, so if the requester already owns a topic with the specified
 name, that topic's ARN is returned without creating a new topic.
 }
 \section{Request syntax}{
-\preformatted{sns$create_topic(
+\preformatted{svc$create_topic(
   Name = "string",
   Attributes = list(
     "string"

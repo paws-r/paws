@@ -15,7 +15,7 @@ apigateway_get_stages(restApiId, deploymentId)
 Gets information about one or more Stage resources.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_stages(
+\preformatted{svc$get_stages(
   restApiId = "string",
   deploymentId = "string"
 )

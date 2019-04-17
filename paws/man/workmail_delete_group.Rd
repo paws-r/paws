@@ -15,7 +15,7 @@ workmail_delete_group(OrganizationId, GroupId)
 Deletes a group from Amazon WorkMail.
 }
 \section{Request syntax}{
-\preformatted{workmail$delete_group(
+\preformatted{svc$delete_group(
   OrganizationId = "string",
   GroupId = "string"
 )

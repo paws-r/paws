@@ -14,7 +14,7 @@ Describe an accelerator. To see an AWS CLI example of describing an
 accelerator, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$describe_accelerator(
+\preformatted{svc$describe_accelerator(
   AcceleratorArn = "string"
 )
 }

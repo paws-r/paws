@@ -16,7 +16,7 @@ provided, the AWS account ID is used by default.}
 Deletes a connection from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_connection(
+\preformatted{svc$delete_connection(
   CatalogId = "string",
   ConnectionName = "string"
 )

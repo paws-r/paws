@@ -92,7 +92,7 @@ For more information about how batch transformation works Amazon
 SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{How It Works}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_transform_job(
+\preformatted{svc$create_transform_job(
   TransformJobName = "string",
   ModelName = "string",
   MaxConcurrentTransforms = 123,

@@ -19,7 +19,7 @@ Lists the deployment groups for an application registered with the IAM
 user or AWS account.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_deployment_groups(
+\preformatted{svc$list_deployment_groups(
   applicationName = "string",
   nextToken = "string"
 )

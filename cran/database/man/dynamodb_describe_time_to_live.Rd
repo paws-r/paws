@@ -15,7 +15,7 @@ Gives a description of the Time to Live (TTL) status on the specified
 table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_time_to_live(
+\preformatted{svc$describe_time_to_live(
   TableName = "string"
 )
 }

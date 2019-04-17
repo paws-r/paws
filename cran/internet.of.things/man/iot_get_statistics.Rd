@@ -21,7 +21,7 @@ get the count of all indexed things in your AWS account.}
 Gets statistics about things that match the specified query.
 }
 \section{Request syntax}{
-\preformatted{iot$get_statistics(
+\preformatted{svc$get_statistics(
   indexName = "string",
   queryString = "string",
   aggregationField = "string",

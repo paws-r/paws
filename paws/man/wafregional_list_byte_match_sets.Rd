@@ -23,7 +23,7 @@ value that you can use to get another batch of \code{ByteMatchSet} objects.}
 Returns an array of ByteMatchSetSummary objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_byte_match_sets(
+\preformatted{svc$list_byte_match_sets(
   NextMarker = "string",
   Limit = 123
 )

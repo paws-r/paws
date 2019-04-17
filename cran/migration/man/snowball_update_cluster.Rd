@@ -39,7 +39,7 @@ Once the cluster changes to a different job state, usually 60 minutes
 after the cluster being created, this action is no longer available.
 }
 \section{Request syntax}{
-\preformatted{snowball$update_cluster(
+\preformatted{svc$update_cluster(
   ClusterId = "string",
   RoleARN = "string",
   Description = "string",
@@ -88,7 +88,7 @@ after the cluster being created, this action is no longer available.
 # This action allows you to update certain parameters for a cluster. Once
 # the cluster changes to a different state, usually within 60 minutes of
 # it being created, this action is no longer available.
-\donttest{snowball$update_cluster(
+\donttest{svc$update_cluster(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000",
   Description = "Updated the address to send this to image processing - RJ"

@@ -26,7 +26,7 @@ should first stop any applications that are sending records before
 deleting a delivery stream.
 }
 \section{Request syntax}{
-\preformatted{firehose$delete_delivery_stream(
+\preformatted{svc$delete_delivery_stream(
   DeliveryStreamName = "string"
 )
 }

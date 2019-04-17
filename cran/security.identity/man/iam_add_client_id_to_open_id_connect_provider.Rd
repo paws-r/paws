@@ -27,7 +27,7 @@ This operation is idempotent; it does not fail or return an error if you
 add an existing client ID to the provider.
 }
 \section{Request syntax}{
-\preformatted{iam$add_client_id_to_open_id_connect_provider(
+\preformatted{svc$add_client_id_to_open_id_connect_provider(
   OpenIDConnectProviderArn = "string",
   ClientID = "string"
 )
@@ -38,7 +38,7 @@ add an existing client ID to the provider.
 # The following add-client-id-to-open-id-connect-provider command adds the
 # client ID my-application-ID to the OIDC provider named
 # server.example.com:
-\donttest{iam$add_client_id_to_open_id_connect_provider(
+\donttest{svc$add_client_id_to_open_id_connect_provider(
   ClientID = "my-application-ID",
   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
 )}

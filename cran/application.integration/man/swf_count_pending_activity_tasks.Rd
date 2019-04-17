@@ -41,7 +41,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$count_pending_activity_tasks(
+\preformatted{svc$count_pending_activity_tasks(
   domain = "string",
   taskList = list(
     name = "string"

@@ -18,7 +18,7 @@ list of the executed tasks.}
 Returns a list of executed tasks.
 }
 \section{Request syntax}{
-\preformatted{datasync$list_task_executions(
+\preformatted{svc$list_task_executions(
   TaskArn = "string",
   MaxResults = 123,
   NextToken = "string"

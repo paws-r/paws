@@ -21,7 +21,7 @@ returns an empty map if there are no tags. For more information about
 tags, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon Glacier Resources}.
 }
 \section{Request syntax}{
-\preformatted{glacier$list_tags_for_vault(
+\preformatted{svc$list_tags_for_vault(
   accountId = "string",
   vaultName = "string"
 )
@@ -30,7 +30,7 @@ tags, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html
 
 \examples{
 # The example lists all the tags attached to the vault examplevault.
-\donttest{glacier$list_tags_for_vault(
+\donttest{svc$list_tags_for_vault(
   accountId = "-",
   vaultName = "examplevault"
 )}

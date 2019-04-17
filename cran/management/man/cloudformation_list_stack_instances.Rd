@@ -34,7 +34,7 @@ with the specified stack set. You can filter for stack instances that
 are associated with a specific AWS account name or region.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_stack_instances(
+\preformatted{svc$list_stack_instances(
   StackSetName = "string",
   NextToken = "string",
   MaxResults = 123,

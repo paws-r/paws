@@ -27,7 +27,7 @@ might contain fewer keys but will never contain more.}
 Returns metadata about all of the versions of objects in a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$list_object_versions(
+\preformatted{svc$list_object_versions(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -45,7 +45,7 @@ Returns metadata about all of the versions of objects in a bucket.
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-\donttest{s3$list_object_versions(
+\donttest{svc$list_object_versions(
   Bucket = "examplebucket",
   Prefix = "HappyFace.jpg"
 )}

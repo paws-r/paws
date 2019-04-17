@@ -16,7 +16,7 @@ a few minutes.
 This operation has a limit of one transaction per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$describe_limits()
+\preformatted{svc$describe_limits()
 }
 }
 

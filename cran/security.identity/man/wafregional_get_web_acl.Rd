@@ -14,7 +14,7 @@ returned by CreateWebACL and by ListWebACLs.}
 Returns the WebACL that is specified by \code{WebACLId}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_web_acl(
+\preformatted{svc$get_web_acl(
   WebACLId = "string"
 )
 }
@@ -23,7 +23,7 @@ Returns the WebACL that is specified by \code{WebACLId}.
 \examples{
 # The following example returns the details of a web ACL with the ID
 # createwebacl-1472061481310.
-\donttest{wafregional$get_web_acl(
+\donttest{svc$get_web_acl(
   WebACLId = "createwebacl-1472061481310"
 )}
 

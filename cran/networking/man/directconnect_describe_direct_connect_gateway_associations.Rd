@@ -39,7 +39,7 @@ association between the Direct Connect gateway and the virtual private
 gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_direct_connect_gateway_associations(
+\preformatted{svc$describe_direct_connect_gateway_associations(
   associationId = "string",
   associatedGatewayId = "string",
   directConnectGatewayId = "string",

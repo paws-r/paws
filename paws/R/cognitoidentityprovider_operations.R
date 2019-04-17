@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$add_custom_attributes(
+#' svc$add_custom_attributes(
 #'   UserPoolId = "string",
 #'   CustomAttributes = list(
 #'     list(
@@ -74,7 +74,7 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_add_user_to_group(
+#' svc$admin_add_user_to_group(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   GroupName = "string"
@@ -115,7 +115,7 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_confirm_sign_up(
+#' svc$admin_confirm_sign_up(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -245,7 +245,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_create_user(
+#' svc$admin_create_user(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   UserAttributes = list(
@@ -302,7 +302,7 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_delete_user(
+#' svc$admin_delete_user(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -350,7 +350,7 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_delete_user_attributes(
+#' svc$admin_delete_user_attributes(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   UserAttributeNames = list(
@@ -424,7 +424,7 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_disable_provider_for_user(
+#' svc$admin_disable_provider_for_user(
 #'   UserPoolId = "string",
 #'   User = list(
 #'     ProviderName = "string",
@@ -467,7 +467,7 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_disable_user(
+#' svc$admin_disable_user(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -506,7 +506,7 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_enable_user(
+#' svc$admin_enable_user(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -547,7 +547,7 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_forget_device(
+#' svc$admin_forget_device(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   DeviceKey = "string"
@@ -589,7 +589,7 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_get_device(
+#' svc$admin_get_device(
 #'   DeviceKey = "string",
 #'   UserPoolId = "string",
 #'   Username = "string"
@@ -631,7 +631,7 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_get_user(
+#' svc$admin_get_user(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -729,7 +729,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_initiate_auth(
+#' svc$admin_initiate_auth(
 #'   UserPoolId = "string",
 #'   ClientId = "string",
 #'   AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
@@ -847,7 +847,7 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_link_provider_for_user(
+#' svc$admin_link_provider_for_user(
 #'   UserPoolId = "string",
 #'   DestinationUser = list(
 #'     ProviderName = "string",
@@ -898,7 +898,7 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_list_devices(
+#' svc$admin_list_devices(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   Limit = 123,
@@ -944,7 +944,7 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_list_groups_for_user(
+#' svc$admin_list_groups_for_user(
 #'   Username = "string",
 #'   UserPoolId = "string",
 #'   Limit = 123,
@@ -988,7 +988,7 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_list_user_auth_events(
+#' svc$admin_list_user_auth_events(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   MaxResults = 123,
@@ -1031,7 +1031,7 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_remove_user_from_group(
+#' svc$admin_remove_user_from_group(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   GroupName = "string"
@@ -1083,7 +1083,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_reset_user_password(
+#' svc$admin_reset_user_password(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -1157,7 +1157,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_respond_to_auth_challenge(
+#' svc$admin_respond_to_auth_challenge(
 #'   UserPoolId = "string",
 #'   ClientId = "string",
 #'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
@@ -1217,7 +1217,7 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_set_user_mfa_preference(
+#' svc$admin_set_user_mfa_preference(
 #'   SMSMfaSettings = list(
 #'     Enabled = TRUE|FALSE,
 #'     PreferredMfa = TRUE|FALSE
@@ -1267,7 +1267,7 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_set_user_settings(
+#' svc$admin_set_user_settings(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   MFAOptions = list(
@@ -1316,7 +1316,7 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_update_auth_event_feedback(
+#' svc$admin_update_auth_event_feedback(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   EventId = "string",
@@ -1360,7 +1360,7 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_update_device_status(
+#' svc$admin_update_device_status(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   DeviceKey = "string",
@@ -1415,7 +1415,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_update_user_attributes(
+#' svc$admin_update_user_attributes(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   UserAttributes = list(
@@ -1460,7 +1460,7 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$admin_user_global_sign_out(
+#' svc$admin_user_global_sign_out(
 #'   UserPoolId = "string",
 #'   Username = "string"
 #' )
@@ -1500,7 +1500,7 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$associate_software_token(
+#' svc$associate_software_token(
 #'   AccessToken = "string",
 #'   Session = "string"
 #' )
@@ -1539,7 +1539,7 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$change_password(
+#' svc$change_password(
 #'   PreviousPassword = "string",
 #'   ProposedPassword = "string",
 #'   AccessToken = "string"
@@ -1581,7 +1581,7 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$confirm_device(
+#' svc$confirm_device(
 #'   AccessToken = "string",
 #'   DeviceKey = "string",
 #'   DeviceSecretVerifierConfig = list(
@@ -1638,7 +1638,7 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$confirm_forgot_password(
+#' svc$confirm_forgot_password(
 #'   ClientId = "string",
 #'   SecretHash = "string",
 #'   Username = "string",
@@ -1703,7 +1703,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$confirm_sign_up(
+#' svc$confirm_sign_up(
 #'   ClientId = "string",
 #'   SecretHash = "string",
 #'   Username = "string",
@@ -1771,7 +1771,7 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_group(
+#' svc$create_group(
 #'   GroupName = "string",
 #'   UserPoolId = "string",
 #'   Description = "string",
@@ -1818,7 +1818,7 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_identity_provider(
+#' svc$create_identity_provider(
 #'   UserPoolId = "string",
 #'   ProviderName = "string",
 #'   ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",
@@ -1871,7 +1871,7 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_resource_server(
+#' svc$create_resource_server(
 #'   UserPoolId = "string",
 #'   Identifier = "string",
 #'   Name = "string",
@@ -1919,7 +1919,7 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_user_import_job(
+#' svc$create_user_import_job(
 #'   JobName = "string",
 #'   UserPoolId = "string",
 #'   CloudWatchLogsRoleArn = "string"
@@ -2001,7 +2001,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_user_pool(
+#' svc$create_user_pool(
 #'   PoolName = "string",
 #'   Policies = list(
 #'     PasswordPolicy = list(
@@ -2194,7 +2194,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_user_pool_client(
+#' svc$create_user_pool_client(
 #'   UserPoolId = "string",
 #'   ClientName = "string",
 #'   GenerateSecret = TRUE|FALSE,
@@ -2276,7 +2276,7 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$create_user_pool_domain(
+#' svc$create_user_pool_domain(
 #'   Domain = "string",
 #'   UserPoolId = "string",
 #'   CustomDomainConfig = list(
@@ -2318,7 +2318,7 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_group(
+#' svc$delete_group(
 #'   GroupName = "string",
 #'   UserPoolId = "string"
 #' )
@@ -2356,7 +2356,7 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_identity_provider(
+#' svc$delete_identity_provider(
 #'   UserPoolId = "string",
 #'   ProviderName = "string"
 #' )
@@ -2393,7 +2393,7 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_resource_server(
+#' svc$delete_resource_server(
 #'   UserPoolId = "string",
 #'   Identifier = "string"
 #' )
@@ -2429,7 +2429,7 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_user(
+#' svc$delete_user(
 #'   AccessToken = "string"
 #' )
 #' ```
@@ -2470,7 +2470,7 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_user_attributes(
+#' svc$delete_user_attributes(
 #'   UserAttributeNames = list(
 #'     "string"
 #'   ),
@@ -2508,7 +2508,7 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_user_pool(
+#' svc$delete_user_pool(
 #'   UserPoolId = "string"
 #' )
 #' ```
@@ -2544,7 +2544,7 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_user_pool_client(
+#' svc$delete_user_pool_client(
 #'   UserPoolId = "string",
 #'   ClientId = "string"
 #' )
@@ -2581,7 +2581,7 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$delete_user_pool_domain(
+#' svc$delete_user_pool_domain(
 #'   Domain = "string",
 #'   UserPoolId = "string"
 #' )
@@ -2619,7 +2619,7 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_identity_provider(
+#' svc$describe_identity_provider(
 #'   UserPoolId = "string",
 #'   ProviderName = "string"
 #' )
@@ -2656,7 +2656,7 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_resource_server(
+#' svc$describe_resource_server(
 #'   UserPoolId = "string",
 #'   Identifier = "string"
 #' )
@@ -2694,7 +2694,7 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_risk_configuration(
+#' svc$describe_risk_configuration(
 #'   UserPoolId = "string",
 #'   ClientId = "string"
 #' )
@@ -2732,7 +2732,7 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_user_import_job(
+#' svc$describe_user_import_job(
 #'   UserPoolId = "string",
 #'   JobId = "string"
 #' )
@@ -2770,7 +2770,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_user_pool(
+#' svc$describe_user_pool(
 #'   UserPoolId = "string"
 #' )
 #' ```
@@ -2808,7 +2808,7 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_user_pool_client(
+#' svc$describe_user_pool_client(
 #'   UserPoolId = "string",
 #'   ClientId = "string"
 #' )
@@ -2844,7 +2844,7 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$describe_user_pool_domain(
+#' svc$describe_user_pool_domain(
 #'   Domain = "string"
 #' )
 #' ```
@@ -2880,7 +2880,7 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$forget_device(
+#' svc$forget_device(
 #'   AccessToken = "string",
 #'   DeviceKey = "string"
 #' )
@@ -2935,7 +2935,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$forgot_password(
+#' svc$forgot_password(
 #'   ClientId = "string",
 #'   SecretHash = "string",
 #'   UserContextData = list(
@@ -2980,7 +2980,7 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_csv_header(
+#' svc$get_csv_header(
 #'   UserPoolId = "string"
 #' )
 #' ```
@@ -3016,7 +3016,7 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_device(
+#' svc$get_device(
 #'   DeviceKey = "string",
 #'   AccessToken = "string"
 #' )
@@ -3055,7 +3055,7 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_group(
+#' svc$get_group(
 #'   GroupName = "string",
 #'   UserPoolId = "string"
 #' )
@@ -3093,7 +3093,7 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_identity_provider_by_identifier(
+#' svc$get_identity_provider_by_identifier(
 #'   UserPoolId = "string",
 #'   IdpIdentifier = "string"
 #' )
@@ -3129,7 +3129,7 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_signing_certificate(
+#' svc$get_signing_certificate(
 #'   UserPoolId = "string"
 #' )
 #' ```
@@ -3170,7 +3170,7 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_ui_customization(
+#' svc$get_ui_customization(
 #'   UserPoolId = "string",
 #'   ClientId = "string"
 #' )
@@ -3207,7 +3207,7 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_user(
+#' svc$get_user(
 #'   AccessToken = "string"
 #' )
 #' ```
@@ -3248,7 +3248,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_user_attribute_verification_code(
+#' svc$get_user_attribute_verification_code(
 #'   AccessToken = "string",
 #'   AttributeName = "string"
 #' )
@@ -3284,7 +3284,7 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$get_user_pool_mfa_config(
+#' svc$get_user_pool_mfa_config(
 #'   UserPoolId = "string"
 #' )
 #' ```
@@ -3319,7 +3319,7 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$global_sign_out(
+#' svc$global_sign_out(
 #'   AccessToken = "string"
 #' )
 #' ```
@@ -3406,7 +3406,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$initiate_auth(
+#' svc$initiate_auth(
 #'   AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
 #'   AuthParameters = list(
 #'     "string"
@@ -3457,7 +3457,7 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_devices(
+#' svc$list_devices(
 #'   AccessToken = "string",
 #'   Limit = 123,
 #'   PaginationToken = "string"
@@ -3500,7 +3500,7 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_groups(
+#' svc$list_groups(
 #'   UserPoolId = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -3540,7 +3540,7 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_identity_providers(
+#' svc$list_identity_providers(
 #'   UserPoolId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -3580,7 +3580,7 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_resource_servers(
+#' svc$list_resource_servers(
 #'   UserPoolId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -3624,7 +3624,7 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -3665,7 +3665,7 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_user_import_jobs(
+#' svc$list_user_import_jobs(
 #'   UserPoolId = "string",
 #'   MaxResults = 123,
 #'   PaginationToken = "string"
@@ -3709,7 +3709,7 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_user_pool_clients(
+#' svc$list_user_pool_clients(
 #'   UserPoolId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -3750,7 +3750,7 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_user_pools(
+#' svc$list_user_pools(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -3843,7 +3843,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_users(
+#' svc$list_users(
 #'   UserPoolId = "string",
 #'   AttributesToGet = list(
 #'     "string"
@@ -3892,7 +3892,7 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$list_users_in_group(
+#' svc$list_users_in_group(
 #'   UserPoolId = "string",
 #'   GroupName = "string",
 #'   Limit = 123,
@@ -3943,7 +3943,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$resend_confirmation_code(
+#' svc$resend_confirmation_code(
 #'   ClientId = "string",
 #'   SecretHash = "string",
 #'   UserContextData = list(
@@ -4014,7 +4014,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$respond_to_auth_challenge(
+#' svc$respond_to_auth_challenge(
 #'   ClientId = "string",
 #'   ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
 #'   Session = "string",
@@ -4079,7 +4079,7 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$set_risk_configuration(
+#' svc$set_risk_configuration(
 #'   UserPoolId = "string",
 #'   ClientId = "string",
 #'   CompromisedCredentialsRiskConfiguration = list(
@@ -4183,7 +4183,7 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$set_ui_customization(
+#' svc$set_ui_customization(
 #'   UserPoolId = "string",
 #'   ClientId = "string",
 #'   CSS = "string",
@@ -4224,7 +4224,7 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$set_user_mfa_preference(
+#' svc$set_user_mfa_preference(
 #'   SMSMfaSettings = list(
 #'     Enabled = TRUE|FALSE,
 #'     PreferredMfa = TRUE|FALSE
@@ -4271,7 +4271,7 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$set_user_pool_mfa_config(
+#' svc$set_user_pool_mfa_config(
 #'   UserPoolId = "string",
 #'   SmsMfaConfiguration = list(
 #'     SmsAuthenticationMessage = "string",
@@ -4320,7 +4320,7 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$set_user_settings(
+#' svc$set_user_settings(
 #'   AccessToken = "string",
 #'   MFAOptions = list(
 #'     list(
@@ -4380,7 +4380,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$sign_up(
+#' svc$sign_up(
 #'   ClientId = "string",
 #'   SecretHash = "string",
 #'   Username = "string",
@@ -4438,7 +4438,7 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$start_user_import_job(
+#' svc$start_user_import_job(
 #'   UserPoolId = "string",
 #'   JobId = "string"
 #' )
@@ -4476,7 +4476,7 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$stop_user_import_job(
+#' svc$stop_user_import_job(
 #'   UserPoolId = "string",
 #'   JobId = "string"
 #' )
@@ -4531,7 +4531,7 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -4572,7 +4572,7 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -4619,7 +4619,7 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_auth_event_feedback(
+#' svc$update_auth_event_feedback(
 #'   UserPoolId = "string",
 #'   Username = "string",
 #'   EventId = "string",
@@ -4661,7 +4661,7 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_device_status(
+#' svc$update_device_status(
 #'   AccessToken = "string",
 #'   DeviceKey = "string",
 #'   DeviceRememberedStatus = "remembered"|"not_remembered"
@@ -4707,7 +4707,7 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_group(
+#' svc$update_group(
 #'   GroupName = "string",
 #'   UserPoolId = "string",
 #'   Description = "string",
@@ -4752,7 +4752,7 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_identity_provider(
+#' svc$update_identity_provider(
 #'   UserPoolId = "string",
 #'   ProviderName = "string",
 #'   ProviderDetails = list(
@@ -4802,7 +4802,7 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_resource_server(
+#' svc$update_resource_server(
 #'   UserPoolId = "string",
 #'   Identifier = "string",
 #'   Name = "string",
@@ -4850,7 +4850,7 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_user_attributes(
+#' svc$update_user_attributes(
 #'   UserAttributes = list(
 #'     list(
 #'       Name = "string",
@@ -4927,7 +4927,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_user_pool(
+#' svc$update_user_pool(
 #'   UserPoolId = "string",
 #'   Policies = list(
 #'     PasswordPolicy = list(
@@ -5090,7 +5090,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_user_pool_client(
+#' svc$update_user_pool_client(
 #'   UserPoolId = "string",
 #'   ClientId = "string",
 #'   ClientName = "string",
@@ -5202,7 +5202,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$update_user_pool_domain(
+#' svc$update_user_pool_domain(
 #'   Domain = "string",
 #'   UserPoolId = "string",
 #'   CustomDomainConfig = list(
@@ -5249,7 +5249,7 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$verify_software_token(
+#' svc$verify_software_token(
 #'   AccessToken = "string",
 #'   Session = "string",
 #'   UserCode = "string",
@@ -5290,7 +5290,7 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentityprovider$verify_user_attribute(
+#' svc$verify_user_attribute(
 #'   AccessToken = "string",
 #'   AttributeName = "string",
 #'   Code = "string"

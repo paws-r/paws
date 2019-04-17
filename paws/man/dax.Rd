@@ -15,12 +15,6 @@ AWS Management Console. With a few simple modifications to your code,
 your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
 }
-\section{Example}{
-\preformatted{dax <- paws::dax()
-dax$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -48,3 +42,9 @@ dax$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_cluster(
+  Foo = 123
+)}
+
+}

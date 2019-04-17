@@ -15,7 +15,7 @@ datapipeline_remove_tags(pipelineId, tagKeys)
 Removes existing tags from the specified pipeline.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$remove_tags(
+\preformatted{svc$remove_tags(
   pipelineId = "string",
   tagKeys = list(
     "string"

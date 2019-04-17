@@ -21,7 +21,7 @@ your user account can be listed if you call \code{DescribeContinuousExports}
 as is without passing any parameters.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_continuous_exports(
+\preformatted{svc$describe_continuous_exports(
   exportIds = list(
     "string"
   ),

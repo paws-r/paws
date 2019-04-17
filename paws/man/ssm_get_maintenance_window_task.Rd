@@ -15,7 +15,7 @@ ssm_get_maintenance_window_task(WindowId, WindowTaskId)
 Lists the tasks in a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_maintenance_window_task(
+\preformatted{svc$get_maintenance_window_task(
   WindowId = "string",
   WindowTaskId = "string"
 )

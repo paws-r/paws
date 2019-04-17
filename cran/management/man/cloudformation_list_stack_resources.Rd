@@ -28,7 +28,7 @@ For deleted stacks, ListStackResources returns resource information for
 up to 90 days after the stack has been deleted.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_stack_resources(
+\preformatted{svc$list_stack_resources(
   StackName = "string",
   NextToken = "string"
 )

@@ -17,7 +17,7 @@ request.
 # there are are more than two object version, S3 returns NextToken in the
 # response. You can specify this token value in your next request to fetch
 # next set of object versions.
-\donttest{s3$list_buckets()}
+\donttest{svc$list_buckets()}
 
 }
 \keyword{internal}

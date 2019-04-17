@@ -90,7 +90,7 @@ Adds a new Authorizer resource to an existing RestApi resource.
 :::
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_authorizer(
+\preformatted{svc$create_authorizer(
   restApiId = "string",
   name = "string",
   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",

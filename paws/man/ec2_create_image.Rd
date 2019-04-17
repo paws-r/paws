@@ -50,7 +50,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_image(
+\preformatted{svc$create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -80,7 +80,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example creates an AMI from the specified instance and adds an EBS
 # volume with the device name /dev/sdh and an instance store volume with
 # the device name /dev/sdc.
-\donttest{ec2$create_image(
+\donttest{svc$create_image(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",

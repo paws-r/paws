@@ -17,7 +17,7 @@ element, if any.}
 Updates the comment for a specified hosted zone.
 }
 \section{Request syntax}{
-\preformatted{route53$update_hosted_zone_comment(
+\preformatted{svc$update_hosted_zone_comment(
   Id = "string",
   Comment = "string"
 )

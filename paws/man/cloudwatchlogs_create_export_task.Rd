@@ -48,7 +48,7 @@ can specify a prefix to be used as the Amazon S3 key prefix for all
 exported objects.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$create_export_task(
+\preformatted{svc$create_export_task(
   taskName = "string",
   logGroupName = "string",
   logStreamNamePrefix = "string",

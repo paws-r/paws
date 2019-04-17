@@ -18,7 +18,7 @@ iot_list_things_in_billing_group(billingGroupName, nextToken,
 Lists the things you have added to the given billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$list_things_in_billing_group(
+\preformatted{svc$list_things_in_billing_group(
   billingGroupName = "string",
   nextToken = "string",
   maxResults = 123

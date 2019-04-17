@@ -26,7 +26,7 @@ list.}
 Lists the action executions that have occurred in a pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$list_action_executions(
+\preformatted{svc$list_action_executions(
   pipelineName = "string",
   filter = list(
     pipelineExecutionId = "string"

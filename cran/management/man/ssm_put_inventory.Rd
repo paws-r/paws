@@ -18,7 +18,7 @@ adds an inventory item, if it doesn't already exist, or updates an
 inventory item, if it does exist.
 }
 \section{Request syntax}{
-\preformatted{ssm$put_inventory(
+\preformatted{svc$put_inventory(
   InstanceId = "string",
   Items = list(
     list(

@@ -17,7 +17,7 @@ configuration.}
 Deletes the remediation configuration.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_remediation_configuration(
+\preformatted{svc$delete_remediation_configuration(
   ConfigRuleName = "string",
   ResourceType = "string"
 )

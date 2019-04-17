@@ -9,12 +9,6 @@ apigatewayv2()
 \description{
 Amazon API Gateway V2
 }
-\section{Example}{
-\preformatted{apigatewayv2 <- paws::apigatewayv2()
-apigatewayv2$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -77,3 +71,9 @@ apigatewayv2$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_api(
+  Foo = 123
+)}
+
+}

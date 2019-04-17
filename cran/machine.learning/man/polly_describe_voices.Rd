@@ -47,7 +47,7 @@ This operation requires permissions to perform the
 \code{polly:DescribeVoices} action.
 }
 \section{Request syntax}{
-\preformatted{polly$describe_voices(
+\preformatted{svc$describe_voices(
   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
   IncludeAdditionalLanguageCodes = TRUE|FALSE,
   NextToken = "string"
@@ -60,7 +60,7 @@ This operation requires permissions to perform the
 # speech synthesis. Displayed languages are those within the specified
 # language code. If no language code is specified, voices for all
 # available languages are displayed.
-\donttest{polly$describe_voices(
+\donttest{svc$describe_voices(
   LanguageCode = "en-GB"
 )}
 

@@ -29,7 +29,7 @@ people who can use the document. If you share a document publicly, you
 must specify \emph{All} as the account ID.
 }
 \section{Request syntax}{
-\preformatted{ssm$modify_document_permission(
+\preformatted{svc$modify_document_permission(
   Name = "string",
   PermissionType = "Share",
   AccountIdsToAdd = list(

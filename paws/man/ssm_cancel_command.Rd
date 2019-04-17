@@ -19,7 +19,7 @@ guarantee that the command will be terminated and the underlying process
 stopped.
 }
 \section{Request syntax}{
-\preformatted{ssm$cancel_command(
+\preformatted{svc$cancel_command(
   CommandId = "string",
   InstanceIds = list(
     "string"

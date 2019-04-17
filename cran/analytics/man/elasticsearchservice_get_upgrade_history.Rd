@@ -20,7 +20,7 @@ Retrieves the complete history of the last 10 upgrades that were
 performed on the domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$get_upgrade_history(
+\preformatted{svc$get_upgrade_history(
   DomainName = "string",
   MaxResults = 123,
   NextToken = "string"

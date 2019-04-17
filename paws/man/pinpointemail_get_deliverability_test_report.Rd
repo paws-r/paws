@@ -13,7 +13,7 @@ pinpointemail_get_deliverability_test_report(ReportId)
 Retrieve the results of a predictive inbox placement test.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_deliverability_test_report(
+\preformatted{svc$get_deliverability_test_report(
   ReportId = "string"
 )
 }

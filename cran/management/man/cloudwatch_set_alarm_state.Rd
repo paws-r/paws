@@ -31,7 +31,7 @@ the alarm's \strong{History} tab in the Amazon CloudWatch console or through
 DescribeAlarmHistory.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$set_alarm_state(
+\preformatted{svc$set_alarm_state(
   AlarmName = "string",
   StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
   StateReason = "string",

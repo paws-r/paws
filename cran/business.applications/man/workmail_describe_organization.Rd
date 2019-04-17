@@ -15,7 +15,7 @@ Provides more information regarding a given organization based on its
 identifier.
 }
 \section{Request syntax}{
-\preformatted{workmail$describe_organization(
+\preformatted{svc$describe_organization(
   OrganizationId = "string"
 )
 }

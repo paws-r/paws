@@ -35,7 +35,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$associate_created_artifact(
+#' svc$associate_created_artifact(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   CreatedArtifact = list(
@@ -83,7 +83,7 @@ migrationhub_associate_created_artifact <- function(ProgressUpdateStream, Migrat
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$associate_discovered_resource(
+#' svc$associate_discovered_resource(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   DiscoveredResource = list(
@@ -134,7 +134,7 @@ migrationhub_associate_discovered_resource <- function(ProgressUpdateStream, Mig
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$create_progress_update_stream(
+#' svc$create_progress_update_stream(
 #'   ProgressUpdateStreamName = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -197,7 +197,7 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$delete_progress_update_stream(
+#' svc$delete_progress_update_stream(
 #'   ProgressUpdateStreamName = "string",
 #'   DryRun = TRUE|FALSE
 #' )
@@ -234,7 +234,7 @@ migrationhub_delete_progress_update_stream <- function(ProgressUpdateStreamName,
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$describe_application_state(
+#' svc$describe_application_state(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -273,7 +273,7 @@ migrationhub_describe_application_state <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$describe_migration_task(
+#' svc$describe_migration_task(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string"
 #' )
@@ -331,7 +331,7 @@ migrationhub_describe_migration_task <- function(ProgressUpdateStream, Migration
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$disassociate_created_artifact(
+#' svc$disassociate_created_artifact(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   CreatedArtifactName = "string",
@@ -376,7 +376,7 @@ migrationhub_disassociate_created_artifact <- function(ProgressUpdateStream, Mig
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$disassociate_discovered_resource(
+#' svc$disassociate_discovered_resource(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   ConfigurationId = "string",
@@ -423,7 +423,7 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$import_migration_task(
+#' svc$import_migration_task(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   DryRun = TRUE|FALSE
@@ -476,7 +476,7 @@ migrationhub_import_migration_task <- function(ProgressUpdateStream, MigrationTa
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$list_created_artifacts(
+#' svc$list_created_artifacts(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   NextToken = "string",
@@ -520,7 +520,7 @@ migrationhub_list_created_artifacts <- function(ProgressUpdateStream, MigrationT
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$list_discovered_resources(
+#' svc$list_discovered_resources(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   NextToken = "string",
@@ -571,7 +571,7 @@ migrationhub_list_discovered_resources <- function(ProgressUpdateStream, Migrati
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$list_migration_tasks(
+#' svc$list_migration_tasks(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   ResourceName = "string"
@@ -613,7 +613,7 @@ migrationhub_list_migration_tasks <- function(NextToken = NULL, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$list_progress_update_streams(
+#' svc$list_progress_update_streams(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -656,7 +656,7 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$notify_application_state(
+#' svc$notify_application_state(
 #'   ApplicationId = "string",
 #'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
 #'   DryRun = TRUE|FALSE
@@ -714,7 +714,7 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, DryRun 
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$notify_migration_task_state(
+#' svc$notify_migration_task_state(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   Task = list(
@@ -805,7 +805,7 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #'
 #' @section Request syntax:
 #' ```
-#' migrationhub$put_resource_attributes(
+#' svc$put_resource_attributes(
 #'   ProgressUpdateStream = "string",
 #'   MigrationTaskName = "string",
 #'   ResourceAttributeList = list(

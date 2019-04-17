@@ -41,7 +41,7 @@ job state, usually within 60 minutes of the job being created, this
 action is no longer available.
 }
 \section{Request syntax}{
-\preformatted{snowball$update_job(
+\preformatted{svc$update_job(
   JobId = "string",
   RoleARN = "string",
   Notification = list(
@@ -91,7 +91,7 @@ action is no longer available.
 # This action allows you to update certain parameters for a job. Once the
 # job changes to a different job state, usually within 60 minutes of the
 # job being created, this action is no longer available.
-\donttest{snowball$update_job(
+\donttest{svc$update_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster shipping sp...",
   JobId = "JID123e4567-e89b-12d3-a456-426655440000",

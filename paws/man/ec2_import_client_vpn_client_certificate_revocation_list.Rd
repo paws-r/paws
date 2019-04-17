@@ -31,7 +31,7 @@ Uploading a client certificate revocation list resets existing client
 connections.
 }
 \section{Request syntax}{
-\preformatted{ec2$import_client_vpn_client_certificate_revocation_list(
+\preformatted{svc$import_client_vpn_client_certificate_revocation_list(
   ClientVpnEndpointId = "string",
   CertificateRevocationList = "string",
   DryRun = TRUE|FALSE

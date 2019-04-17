@@ -77,7 +77,7 @@ the \code{DeleteDBInstance} API action to delete the final instance in the DB
 cluster.
 }
 \section{Request syntax}{
-\preformatted{neptune$delete_db_instance(
+\preformatted{svc$delete_db_instance(
   DBInstanceIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"

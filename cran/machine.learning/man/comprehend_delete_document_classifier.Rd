@@ -24,7 +24,7 @@ classifier disappears from your account and is no longer available for
 use.
 }
 \section{Request syntax}{
-\preformatted{comprehend$delete_document_classifier(
+\preformatted{svc$delete_document_classifier(
   DocumentClassifierArn = "string"
 )
 }

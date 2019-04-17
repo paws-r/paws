@@ -18,7 +18,7 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
 Allows you to purchase reserved Elasticsearch instances.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$purchase_reserved_elasticsearch_instance_offering(
+\preformatted{svc$purchase_reserved_elasticsearch_instance_offering(
   ReservedElasticsearchInstanceOfferingId = "string",
   ReservationName = "string",
   InstanceCount = 123

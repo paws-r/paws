@@ -15,7 +15,7 @@ Retrieves origination setting details for the specified Amazon Chime
 Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$get_voice_connector_origination(
+\preformatted{svc$get_voice_connector_origination(
   VoiceConnectorId = "string"
 )
 }

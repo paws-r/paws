@@ -22,7 +22,7 @@ Rejects one or more VPC endpoint connection requests to your VPC
 endpoint service.
 }
 \section{Request syntax}{
-\preformatted{ec2$reject_vpc_endpoint_connections(
+\preformatted{svc$reject_vpc_endpoint_connections(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   VpcEndpointIds = list(

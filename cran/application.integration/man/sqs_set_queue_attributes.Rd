@@ -128,7 +128,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$set_queue_attributes(
+\preformatted{svc$set_queue_attributes(
   QueueUrl = "string",
   Attributes = list(
     "string"

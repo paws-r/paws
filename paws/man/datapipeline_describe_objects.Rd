@@ -29,7 +29,7 @@ pipeline. Object definitions are composed of a set of fields that define
 the properties of the object.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$describe_objects(
+\preformatted{svc$describe_objects(
   pipelineId = "string",
   objectIds = list(
     "string"

@@ -84,7 +84,7 @@ Returns information about DB cluster snapshots. This API operation
 supports pagination.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_cluster_snapshots(
+\preformatted{svc$describe_db_cluster_snapshots(
   DBClusterIdentifier = "string",
   DBClusterSnapshotIdentifier = "string",
   SnapshotType = "string",

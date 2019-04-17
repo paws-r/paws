@@ -36,7 +36,7 @@ updated metadata is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_build(
+\preformatted{svc$update_build(
   BuildId = "string",
   Name = "string",
   Version = "string"

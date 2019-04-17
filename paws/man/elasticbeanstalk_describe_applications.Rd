@@ -14,7 +14,7 @@ to only include those with the specified names.}
 Returns the descriptions of existing applications.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_applications(
+\preformatted{svc$describe_applications(
   ApplicationNames = list(
     "string"
   )
@@ -25,7 +25,7 @@ Returns the descriptions of existing applications.
 \examples{
 # The following operation retrieves information about applications in the
 # current region:
-\donttest{elasticbeanstalk$describe_applications()}
+\donttest{svc$describe_applications()}
 
 }
 \keyword{internal}

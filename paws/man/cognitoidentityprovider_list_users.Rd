@@ -63,7 +63,7 @@ in the \emph{Amazon Cognito Developer Guide}.}
 Lists the users in the Amazon Cognito user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_users(
+\preformatted{svc$list_users(
   UserPoolId = "string",
   AttributesToGet = list(
     "string"

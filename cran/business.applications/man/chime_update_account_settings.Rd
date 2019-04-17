@@ -18,7 +18,7 @@ dial-out option. For more information about these settings, see \href{https://do
 \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
-\preformatted{chime$update_account_settings(
+\preformatted{svc$update_account_settings(
   AccountId = "string",
   AccountSettings = list(
     DisableRemoteControl = TRUE|FALSE,

@@ -52,7 +52,7 @@ template as the value.}
 Creates an IntegrationResponses.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_integration_response(
+\preformatted{svc$create_integration_response(
   ApiId = "string",
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationId = "string",

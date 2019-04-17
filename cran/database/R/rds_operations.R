@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' rds$add_role_to_db_cluster(
+#' svc$add_role_to_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   RoleArn = "string"
 #' )
@@ -67,7 +67,7 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$add_role_to_db_instance(
+#' svc$add_role_to_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   RoleArn = "string",
 #'   FeatureName = "string"
@@ -123,7 +123,7 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #'
 #' @section Request syntax:
 #' ```
-#' rds$add_source_identifier_to_subscription(
+#' svc$add_source_identifier_to_subscription(
 #'   SubscriptionName = "string",
 #'   SourceIdentifier = "string"
 #' )
@@ -169,7 +169,7 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
 #'
 #' @section Request syntax:
 #' ```
-#' rds$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -231,7 +231,7 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$apply_pending_maintenance_action(
+#' svc$apply_pending_maintenance_action(
 #'   ResourceIdentifier = "string",
 #'   ApplyAction = "string",
 #'   OptInType = "string"
@@ -299,7 +299,7 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #'
 #' @section Request syntax:
 #' ```
-#' rds$authorize_db_security_group_ingress(
+#' svc$authorize_db_security_group_ingress(
 #'   DBSecurityGroupName = "string",
 #'   CIDRIP = "string",
 #'   EC2SecurityGroupName = "string",
@@ -379,7 +379,7 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$backtrack_db_cluster(
+#' svc$backtrack_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   BacktrackTo = as.POSIXct(
 #'     "2015-01-01"
@@ -456,7 +456,7 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
 #'
 #' @section Request syntax:
 #' ```
-#' rds$copy_db_cluster_parameter_group(
+#' svc$copy_db_cluster_parameter_group(
 #'   SourceDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupDescription = "string",
@@ -667,7 +667,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #'
 #' @section Request syntax:
 #' ```
-#' rds$copy_db_cluster_snapshot(
+#' svc$copy_db_cluster_snapshot(
 #'   SourceDBClusterSnapshotIdentifier = "string",
 #'   TargetDBClusterSnapshotIdentifier = "string",
 #'   KmsKeyId = "string",
@@ -740,7 +740,7 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #'
 #' @section Request syntax:
 #' ```
-#' rds$copy_db_parameter_group(
+#' svc$copy_db_parameter_group(
 #'   SourceDBParameterGroupIdentifier = "string",
 #'   TargetDBParameterGroupIdentifier = "string",
 #'   TargetDBParameterGroupDescription = "string",
@@ -911,7 +911,7 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #'
 #' @section Request syntax:
 #' ```
-#' rds$copy_db_snapshot(
+#' svc$copy_db_snapshot(
 #'   SourceDBSnapshotIdentifier = "string",
 #'   TargetDBSnapshotIdentifier = "string",
 #'   KmsKeyId = "string",
@@ -989,7 +989,7 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 #'
 #' @section Request syntax:
 #' ```
-#' rds$copy_option_group(
+#' svc$copy_option_group(
 #'   SourceOptionGroupIdentifier = "string",
 #'   TargetOptionGroupIdentifier = "string",
 #'   TargetOptionGroupDescription = "string",
@@ -1264,7 +1264,7 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_cluster(
+#' svc$create_db_cluster(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -1359,7 +1359,7 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_cluster_endpoint(
+#' svc$create_db_cluster_endpoint(
 #'   DBClusterIdentifier = "string",
 #'   DBClusterEndpointIdentifier = "string",
 #'   EndpointType = "string",
@@ -1456,7 +1456,7 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_cluster_parameter_group(
+#' svc$create_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   DBParameterGroupFamily = "string",
 #'   Description = "string",
@@ -1525,7 +1525,7 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_cluster_snapshot(
+#' svc$create_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   Tags = list(
@@ -2249,7 +2249,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_instance(
+#' svc$create_db_instance(
 #'   DBName = "string",
 #'   DBInstanceIdentifier = "string",
 #'   AllocatedStorage = 123,
@@ -2599,7 +2599,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_instance_read_replica(
+#' svc$create_db_instance_read_replica(
 #'   DBInstanceIdentifier = "string",
 #'   SourceDBInstanceIdentifier = "string",
 #'   DBInstanceClass = "string",
@@ -2721,7 +2721,7 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_parameter_group(
+#' svc$create_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   DBParameterGroupFamily = "string",
 #'   Description = "string",
@@ -2784,7 +2784,7 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_security_group(
+#' svc$create_db_security_group(
 #'   DBSecurityGroupName = "string",
 #'   DBSecurityGroupDescription = "string",
 #'   Tags = list(
@@ -2846,7 +2846,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_snapshot(
+#' svc$create_db_snapshot(
 #'   DBSnapshotIdentifier = "string",
 #'   DBInstanceIdentifier = "string",
 #'   Tags = list(
@@ -2899,7 +2899,7 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_db_subnet_group(
+#' svc$create_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -3006,7 +3006,7 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_event_subscription(
+#' svc$create_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -3079,7 +3079,7 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_global_cluster(
+#' svc$create_global_cluster(
 #'   GlobalClusterIdentifier = "string",
 #'   SourceDBClusterIdentifier = "string",
 #'   Engine = "string",
@@ -3137,7 +3137,7 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #'
 #' @section Request syntax:
 #' ```
-#' rds$create_option_group(
+#' svc$create_option_group(
 #'   OptionGroupName = "string",
 #'   EngineName = "string",
 #'   MajorEngineVersion = "string",
@@ -3218,7 +3218,7 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_cluster(
+#' svc$delete_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
 #'   FinalDBSnapshotIdentifier = "string"
@@ -3260,7 +3260,7 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_cluster_endpoint(
+#' svc$delete_db_cluster_endpoint(
 #'   DBClusterEndpointIdentifier = "string"
 #' )
 #' ```
@@ -3310,7 +3310,7 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_cluster_parameter_group(
+#' svc$delete_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
@@ -3357,7 +3357,7 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_cluster_snapshot(
+#' svc$delete_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -3458,7 +3458,7 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_instance(
+#' svc$delete_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
 #'   FinalDBSnapshotIdentifier = "string",
@@ -3499,7 +3499,7 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_instance_automated_backup(
+#' svc$delete_db_instance_automated_backup(
 #'   DbiResourceId = "string"
 #' )
 #' ```
@@ -3543,7 +3543,7 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_parameter_group(
+#' svc$delete_db_parameter_group(
 #'   DBParameterGroupName = "string"
 #' )
 #' ```
@@ -3593,7 +3593,7 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_security_group(
+#' svc$delete_db_security_group(
 #'   DBSecurityGroupName = "string"
 #' )
 #' ```
@@ -3634,7 +3634,7 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_snapshot(
+#' svc$delete_db_snapshot(
 #'   DBSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -3681,7 +3681,7 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_db_subnet_group(
+#' svc$delete_db_subnet_group(
 #'   DBSubnetGroupName = "string"
 #' )
 #' ```
@@ -3716,7 +3716,7 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_event_subscription(
+#' svc$delete_event_subscription(
 #'   SubscriptionName = "string"
 #' )
 #' ```
@@ -3754,7 +3754,7 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_global_cluster(
+#' svc$delete_global_cluster(
 #'   GlobalClusterIdentifier = "string"
 #' )
 #' ```
@@ -3791,7 +3791,7 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$delete_option_group(
+#' svc$delete_option_group(
 #'   OptionGroupName = "string"
 #' )
 #' ```
@@ -3829,7 +3829,7 @@ rds_delete_option_group <- function(OptionGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_account_attributes()
+#' svc$describe_account_attributes()
 #' ```
 #'
 #' @keywords internal
@@ -3883,7 +3883,7 @@ rds_describe_account_attributes <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_certificates(
+#' svc$describe_certificates(
 #'   CertificateIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -3989,7 +3989,7 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_backtracks(
+#' svc$describe_db_cluster_backtracks(
 #'   DBClusterIdentifier = "string",
 #'   BacktrackIdentifier = "string",
 #'   Filters = list(
@@ -4064,7 +4064,7 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_endpoints(
+#' svc$describe_db_cluster_endpoints(
 #'   DBClusterIdentifier = "string",
 #'   DBClusterEndpointIdentifier = "string",
 #'   Filters = list(
@@ -4138,7 +4138,7 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_parameter_groups(
+#' svc$describe_db_cluster_parameter_groups(
 #'   DBClusterParameterGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -4213,7 +4213,7 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_parameters(
+#' svc$describe_db_cluster_parameters(
 #'   DBClusterParameterGroupName = "string",
 #'   Source = "string",
 #'   Filters = list(
@@ -4275,7 +4275,7 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_snapshot_attributes(
+#' svc$describe_db_cluster_snapshot_attributes(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -4389,7 +4389,7 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_cluster_snapshots(
+#' svc$describe_db_cluster_snapshots(
 #'   DBClusterIdentifier = "string",
 #'   DBClusterSnapshotIdentifier = "string",
 #'   SnapshotType = "string",
@@ -4470,7 +4470,7 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_clusters(
+#' svc$describe_db_clusters(
 #'   DBClusterIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -4545,7 +4545,7 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_engine_versions(
+#' svc$describe_db_engine_versions(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBParameterGroupFamily = "string",
@@ -4640,7 +4640,7 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_instance_automated_backups(
+#' svc$describe_db_instance_automated_backups(
 #'   DbiResourceId = "string",
 #'   DBInstanceIdentifier = "string",
 #'   Filters = list(
@@ -4718,7 +4718,7 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_instances(
+#' svc$describe_db_instances(
 #'   DBInstanceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -4783,7 +4783,7 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_log_files(
+#' svc$describe_db_log_files(
 #'   DBInstanceIdentifier = "string",
 #'   FilenameContains = "string",
 #'   FileLastWritten = 123,
@@ -4852,7 +4852,7 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_parameter_groups(
+#' svc$describe_db_parameter_groups(
 #'   DBParameterGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -4920,7 +4920,7 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_parameters(
+#' svc$describe_db_parameters(
 #'   DBParameterGroupName = "string",
 #'   Source = "string",
 #'   Filters = list(
@@ -4982,7 +4982,7 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_security_groups(
+#' svc$describe_db_security_groups(
 #'   DBSecurityGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -5040,7 +5040,7 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_snapshot_attributes(
+#' svc$describe_db_snapshot_attributes(
 #'   DBSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -5154,7 +5154,7 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_snapshots(
+#' svc$describe_db_snapshots(
 #'   DBInstanceIdentifier = "string",
 #'   DBSnapshotIdentifier = "string",
 #'   SnapshotType = "string",
@@ -5223,7 +5223,7 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_db_subnet_groups(
+#' svc$describe_db_subnet_groups(
 #'   DBSubnetGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -5289,7 +5289,7 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_engine_default_cluster_parameters(
+#' svc$describe_engine_default_cluster_parameters(
 #'   DBParameterGroupFamily = "string",
 #'   Filters = list(
 #'     list(
@@ -5350,7 +5350,7 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_engine_default_parameters(
+#' svc$describe_engine_default_parameters(
 #'   DBParameterGroupFamily = "string",
 #'   Filters = list(
 #'     list(
@@ -5404,7 +5404,7 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_event_categories(
+#' svc$describe_event_categories(
 #'   SourceType = "string",
 #'   Filters = list(
 #'     list(
@@ -5467,7 +5467,7 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_event_subscriptions(
+#' svc$describe_event_subscriptions(
 #'   SubscriptionName = "string",
 #'   Filters = list(
 #'     list(
@@ -5566,7 +5566,7 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_events(
+#' svc$describe_events(
 #'   SourceIdentifier = "string",
 #'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
 #'   StartTime = as.POSIXct(
@@ -5655,7 +5655,7 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_global_clusters(
+#' svc$describe_global_clusters(
 #'   GlobalClusterIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -5716,7 +5716,7 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_option_group_options(
+#' svc$describe_option_group_options(
 #'   EngineName = "string",
 #'   MajorEngineVersion = "string",
 #'   Filters = list(
@@ -5781,7 +5781,7 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_option_groups(
+#' svc$describe_option_groups(
 #'   OptionGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -5851,7 +5851,7 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_orderable_db_instance_options(
+#' svc$describe_orderable_db_instance_options(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBInstanceClass = "string",
@@ -5928,7 +5928,7 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_pending_maintenance_actions(
+#' svc$describe_pending_maintenance_actions(
 #'   ResourceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -6006,7 +6006,7 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_reserved_db_instances(
+#' svc$describe_reserved_db_instances(
 #'   ReservedDBInstanceId = "string",
 #'   ReservedDBInstancesOfferingId = "string",
 #'   DBInstanceClass = "string",
@@ -6091,7 +6091,7 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_reserved_db_instances_offerings(
+#' svc$describe_reserved_db_instances_offerings(
 #'   ReservedDBInstancesOfferingId = "string",
 #'   DBInstanceClass = "string",
 #'   Duration = "string",
@@ -6161,7 +6161,7 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_source_regions(
+#' svc$describe_source_regions(
 #'   RegionName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -6209,7 +6209,7 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' rds$describe_valid_db_instance_modifications(
+#' svc$describe_valid_db_instance_modifications(
 #'   DBInstanceIdentifier = "string"
 #' )
 #' ```
@@ -6279,7 +6279,7 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$download_db_log_file_portion(
+#' svc$download_db_log_file_portion(
 #'   DBInstanceIdentifier = "string",
 #'   LogFileName = "string",
 #'   Marker = "string",
@@ -6343,7 +6343,7 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$failover_db_cluster(
+#' svc$failover_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   TargetDBInstanceIdentifier = "string"
 #' )
@@ -6389,7 +6389,7 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 #'
 #' @section Request syntax:
 #' ```
-#' rds$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceName = "string",
 #'   Filters = list(
 #'     list(
@@ -6478,7 +6478,7 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_current_db_cluster_capacity(
+#' svc$modify_current_db_cluster_capacity(
 #'   DBClusterIdentifier = "string",
 #'   Capacity = 123,
 #'   SecondsBeforeTimeout = 123,
@@ -6669,7 +6669,7 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_cluster(
+#' svc$modify_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   NewDBClusterIdentifier = "string",
 #'   ApplyImmediately = TRUE|FALSE,
@@ -6746,7 +6746,7 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_cluster_endpoint(
+#' svc$modify_db_cluster_endpoint(
 #'   DBClusterEndpointIdentifier = "string",
 #'   EndpointType = "string",
 #'   StaticMembers = list(
@@ -6816,7 +6816,7 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_cluster_parameter_group(
+#' svc$modify_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -6911,7 +6911,7 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_cluster_snapshot_attribute(
+#' svc$modify_db_cluster_snapshot_attribute(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   AttributeName = "string",
 #'   ValuesToAdd = list(
@@ -7426,7 +7426,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_instance(
+#' svc$modify_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   AllocatedStorage = 123,
 #'   DBInstanceClass = "string",
@@ -7550,7 +7550,7 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_parameter_group(
+#' svc$modify_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -7630,7 +7630,7 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_snapshot(
+#' svc$modify_db_snapshot(
 #'   DBSnapshotIdentifier = "string",
 #'   EngineVersion = "string",
 #'   OptionGroupName = "string"
@@ -7707,7 +7707,7 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_snapshot_attribute(
+#' svc$modify_db_snapshot_attribute(
 #'   DBSnapshotIdentifier = "string",
 #'   AttributeName = "string",
 #'   ValuesToAdd = list(
@@ -7759,7 +7759,7 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_db_subnet_group(
+#' svc$modify_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -7824,7 +7824,7 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_event_subscription(
+#' svc$modify_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -7894,7 +7894,7 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_global_cluster(
+#' svc$modify_global_cluster(
 #'   GlobalClusterIdentifier = "string",
 #'   NewGlobalClusterIdentifier = "string",
 #'   DeletionProtection = TRUE|FALSE
@@ -7944,7 +7944,7 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #'
 #' @section Request syntax:
 #' ```
-#' rds$modify_option_group(
+#' svc$modify_option_group(
 #'   OptionGroupName = "string",
 #'   OptionsToInclude = list(
 #'     list(
@@ -8055,7 +8055,7 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'
 #' @section Request syntax:
 #' ```
-#' rds$promote_read_replica(
+#' svc$promote_read_replica(
 #'   DBInstanceIdentifier = "string",
 #'   BackupRetentionPeriod = 123,
 #'   PreferredBackupWindow = "string"
@@ -8101,7 +8101,7 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #'
 #' @section Request syntax:
 #' ```
-#' rds$promote_read_replica_db_cluster(
+#' svc$promote_read_replica_db_cluster(
 #'   DBClusterIdentifier = "string"
 #' )
 #' ```
@@ -8147,7 +8147,7 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$purchase_reserved_db_instances_offering(
+#' svc$purchase_reserved_db_instances_offering(
 #'   ReservedDBInstancesOfferingId = "string",
 #'   ReservedDBInstanceId = "string",
 #'   DBInstanceCount = 123,
@@ -8211,7 +8211,7 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #'
 #' @section Request syntax:
 #' ```
-#' rds$reboot_db_instance(
+#' svc$reboot_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   ForceFailover = TRUE|FALSE
 #' )
@@ -8257,7 +8257,7 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$remove_from_global_cluster(
+#' svc$remove_from_global_cluster(
 #'   GlobalClusterIdentifier = "string",
 #'   DbClusterIdentifier = "string"
 #' )
@@ -8303,7 +8303,7 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 #'
 #' @section Request syntax:
 #' ```
-#' rds$remove_role_from_db_cluster(
+#' svc$remove_role_from_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   RoleArn = "string"
 #' )
@@ -8347,7 +8347,7 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$remove_role_from_db_instance(
+#' svc$remove_role_from_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   RoleArn = "string",
 #'   FeatureName = "string"
@@ -8391,7 +8391,7 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
 #'
 #' @section Request syntax:
 #' ```
-#' rds$remove_source_identifier_from_subscription(
+#' svc$remove_source_identifier_from_subscription(
 #'   SubscriptionName = "string",
 #'   SourceIdentifier = "string"
 #' )
@@ -8437,7 +8437,7 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 #'
 #' @section Request syntax:
 #' ```
-#' rds$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -8500,7 +8500,7 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$reset_db_cluster_parameter_group(
+#' svc$reset_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -8594,7 +8594,7 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #'
 #' @section Request syntax:
 #' ```
-#' rds$reset_db_parameter_group(
+#' svc$reset_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -8828,7 +8828,7 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_cluster_from_s3(
+#' svc$restore_db_cluster_from_s3(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -9026,7 +9026,7 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_cluster_from_snapshot(
+#' svc$restore_db_cluster_from_snapshot(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -9247,7 +9247,7 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_cluster_to_point_in_time(
+#' svc$restore_db_cluster_to_point_in_time(
 #'   DBClusterIdentifier = "string",
 #'   RestoreType = "string",
 #'   SourceDBClusterIdentifier = "string",
@@ -9518,7 +9518,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_instance_from_db_snapshot(
+#' svc$restore_db_instance_from_db_snapshot(
 #'   DBInstanceIdentifier = "string",
 #'   DBSnapshotIdentifier = "string",
 #'   DBInstanceClass = "string",
@@ -9834,7 +9834,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_instance_from_s3(
+#' svc$restore_db_instance_from_s3(
 #'   DBName = "string",
 #'   DBInstanceIdentifier = "string",
 #'   AllocatedStorage = 123,
@@ -10134,7 +10134,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #'
 #' @section Request syntax:
 #' ```
-#' rds$restore_db_instance_to_point_in_time(
+#' svc$restore_db_instance_to_point_in_time(
 #'   SourceDBInstanceIdentifier = "string",
 #'   TargetDBInstanceIdentifier = "string",
 #'   RestoreTime = as.POSIXct(
@@ -10237,7 +10237,7 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 #'
 #' @section Request syntax:
 #' ```
-#' rds$revoke_db_security_group_ingress(
+#' svc$revoke_db_security_group_ingress(
 #'   DBSecurityGroupName = "string",
 #'   CIDRIP = "string",
 #'   EC2SecurityGroupName = "string",
@@ -10287,7 +10287,7 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 #'
 #' @section Request syntax:
 #' ```
-#' rds$start_db_cluster(
+#' svc$start_db_cluster(
 #'   DBClusterIdentifier = "string"
 #' )
 #' ```
@@ -10332,7 +10332,7 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$start_db_instance(
+#' svc$start_db_instance(
 #'   DBInstanceIdentifier = "string"
 #' )
 #' ```
@@ -10377,7 +10377,7 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$stop_db_cluster(
+#' svc$stop_db_cluster(
 #'   DBClusterIdentifier = "string"
 #' )
 #' ```
@@ -10424,7 +10424,7 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' rds$stop_db_instance(
+#' svc$stop_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   DBSnapshotIdentifier = "string"
 #' )

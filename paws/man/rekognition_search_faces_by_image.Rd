@@ -61,7 +61,7 @@ This operation requires permissions to perform the
 \code{rekognition:SearchFacesByImage} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$search_faces_by_image(
+\preformatted{svc$search_faces_by_image(
   CollectionId = "string",
   Image = list(
     Bytes = raw,
@@ -80,7 +80,7 @@ This operation requires permissions to perform the
 \examples{
 # This operation searches for faces in a Rekognition collection that match
 # the largest face in an S3 bucket stored image.
-\donttest{rekognition$search_faces_by_image(
+\donttest{svc$search_faces_by_image(
   CollectionId = "myphotos",
   FaceMatchThreshold = 95L,
   Image = list(

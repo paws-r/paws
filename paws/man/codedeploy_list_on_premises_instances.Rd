@@ -32,7 +32,7 @@ instance names are listed. To list only registered or deregistered
 on-premises instance names, use the registration status parameter.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_on_premises_instances(
+\preformatted{svc$list_on_premises_instances(
   registrationStatus = "Registered"|"Deregistered",
   tagFilters = list(
     list(

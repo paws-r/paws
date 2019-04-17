@@ -27,11 +27,10 @@ NULL
 #' For more information see [Amazon Cognito Federated
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
-#' @section Example:
-#' ```
-#' cognitoidentity <- paws::cognitoidentity()
-#' cognitoidentity$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_identity_pool(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

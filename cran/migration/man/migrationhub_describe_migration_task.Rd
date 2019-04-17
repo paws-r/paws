@@ -18,7 +18,7 @@ Retrieves a list of all attributes associated with a specific migration
 task.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$describe_migration_task(
+\preformatted{svc$describe_migration_task(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string"
 )

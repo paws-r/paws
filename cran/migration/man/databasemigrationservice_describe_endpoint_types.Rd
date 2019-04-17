@@ -29,7 +29,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Returns information about the type of endpoints available.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_endpoint_types(
+\preformatted{svc$describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",
@@ -46,7 +46,7 @@ Returns information about the type of endpoints available.
 
 \examples{
 # Returns information about the type of endpoints available.
-\donttest{databasemigrationservice$describe_endpoint_types(
+\donttest{svc$describe_endpoint_types(
   Filters = list(
     list(
       Name = "string",

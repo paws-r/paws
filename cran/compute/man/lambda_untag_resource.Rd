@@ -17,7 +17,7 @@ Removes
 function.
 }
 \section{Request syntax}{
-\preformatted{lambda$untag_resource(
+\preformatted{svc$untag_resource(
   Resource = "string",
   TagKeys = list(
     "string"

@@ -120,7 +120,7 @@ Amazon SES, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manag
 in the \emph{Amazon SES Developer Guide.}
 }
 \section{Request syntax}{
-\preformatted{ses$send_email(
+\preformatted{svc$send_email(
   Source = "string",
   Destination = list(
     ToAddresses = list(
@@ -168,7 +168,7 @@ in the \emph{Amazon SES Developer Guide.}
 
 \examples{
 # The following example sends a formatted email:
-\donttest{ses$send_email(
+\donttest{svc$send_email(
   Destination = list(
     BccAddresses = list(),
     CcAddresses = list(

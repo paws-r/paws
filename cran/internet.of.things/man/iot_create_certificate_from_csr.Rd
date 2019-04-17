@@ -62,7 +62,7 @@ create-certificate-from-csr \--certificate-signing-request
 file://\@path"
 }
 \section{Request syntax}{
-\preformatted{iot$create_certificate_from_csr(
+\preformatted{svc$create_certificate_from_csr(
   certificateSigningRequest = "string",
   setAsActive = TRUE|FALSE
 )

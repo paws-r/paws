@@ -39,7 +39,7 @@ If your route matches a request, you can distribute traffic to one or
 more target virtual nodes with relative weighting.
 }
 \section{Request syntax}{
-\preformatted{appmesh$create_route(
+\preformatted{svc$create_route(
   clientToken = "string",
   meshName = "string",
   routeName = "string",

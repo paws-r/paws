@@ -15,7 +15,7 @@ Makes a private skill unavailable for enrolled users and prevents them
 from enabling it on their devices.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$disassociate_skill_from_users(
+\preformatted{svc$disassociate_skill_from_users(
   SkillId = "string"
 )
 }

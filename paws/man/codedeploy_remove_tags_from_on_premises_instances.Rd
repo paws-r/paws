@@ -15,7 +15,7 @@ codedeploy_remove_tags_from_on_premises_instances(tags, instanceNames)
 Removes one or more tags from one or more on-premises instances.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$remove_tags_from_on_premises_instances(
+\preformatted{svc$remove_tags_from_on_premises_instances(
   tags = list(
     list(
       Key = "string",

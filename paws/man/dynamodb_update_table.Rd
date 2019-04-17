@@ -74,7 +74,7 @@ table returns to the \code{ACTIVE} state, the \code{UpdateTable} operation is
 complete.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_table(
+\preformatted{svc$update_table(
   AttributeDefinitions = list(
     list(
       AttributeName = "string",
@@ -136,7 +136,7 @@ complete.
 \examples{
 # This example increases the provisioned read and write capacity on the
 # Music table.
-\donttest{dynamodb$update_table(
+\donttest{svc$update_table(
   ProvisionedThroughput = list(
     ReadCapacityUnits = 10L,
     WriteCapacityUnits = 10L

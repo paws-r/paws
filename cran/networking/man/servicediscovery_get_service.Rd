@@ -13,7 +13,7 @@ servicediscovery_get_service(Id)
 Gets the settings for a specified service.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$get_service(
+\preformatted{svc$get_service(
   Id = "string"
 )
 }

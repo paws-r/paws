@@ -20,7 +20,7 @@ servicecatalog_describe_product(AcceptLanguage, Id)
 Gets information about the specified product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_product(
+\preformatted{svc$describe_product(
   AcceptLanguage = "string",
   Id = "string"
 )

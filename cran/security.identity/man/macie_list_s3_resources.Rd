@@ -26,7 +26,7 @@ memberAccountId is specified, the action lists the S3 resources
 associated with Amazon Macie for the specified member account.
 }
 \section{Request syntax}{
-\preformatted{macie$list_s3_resources(
+\preformatted{svc$list_s3_resources(
   memberAccountId = "string",
   nextToken = "string",
   maxResults = 123

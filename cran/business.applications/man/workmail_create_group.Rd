@@ -17,7 +17,7 @@ Creates a group that can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
 }
 \section{Request syntax}{
-\preformatted{workmail$create_group(
+\preformatted{svc$create_group(
   OrganizationId = "string",
   Name = "string"
 )

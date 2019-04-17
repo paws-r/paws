@@ -15,7 +15,7 @@ codestar_untag_project(id, tags)
 Removes tags from a project.
 }
 \section{Request syntax}{
-\preformatted{codestar$untag_project(
+\preformatted{svc$untag_project(
   id = "string",
   tags = list(
     "string"

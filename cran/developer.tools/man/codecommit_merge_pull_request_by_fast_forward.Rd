@@ -26,7 +26,7 @@ request into the specified destination branch for that pull request at
 the specified commit using the fast-forward merge option.
 }
 \section{Request syntax}{
-\preformatted{codecommit$merge_pull_request_by_fast_forward(
+\preformatted{svc$merge_pull_request_by_fast_forward(
   pullRequestId = "string",
   repositoryName = "string",
   sourceCommitId = "string"

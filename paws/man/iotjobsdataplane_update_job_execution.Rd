@@ -50,7 +50,7 @@ particular device.}
 Updates the status of a job execution.
 }
 \section{Request syntax}{
-\preformatted{iotjobsdataplane$update_job_execution(
+\preformatted{svc$update_job_execution(
   jobId = "string",
   thingName = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",

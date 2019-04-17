@@ -23,7 +23,7 @@ code.}
 Represents a delete integration response.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_integration_response(
+\preformatted{svc$delete_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

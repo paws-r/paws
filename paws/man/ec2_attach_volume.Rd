@@ -49,7 +49,7 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$attach_volume(
+\preformatted{svc$attach_volume(
   Device = "string",
   InstanceId = "string",
   VolumeId = "string",
@@ -61,7 +61,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example attaches a volume (``vol-1234567890abcdef0``) to an
 # instance (``i-01474ef662b89480``) as ``/dev/sdf``.
-\donttest{ec2$attach_volume(
+\donttest{svc$attach_volume(
   Device = "/dev/sdf",
   InstanceId = "i-01474ef662b89480",
   VolumeId = "vol-1234567890abcdef0"

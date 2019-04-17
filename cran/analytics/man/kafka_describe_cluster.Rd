@@ -15,7 +15,7 @@ Returns a description of the MSK cluster whose Amazon Resource Name
 (ARN) is specified in the request.
 }
 \section{Request syntax}{
-\preformatted{kafka$describe_cluster(
+\preformatted{svc$describe_cluster(
   ClusterArn = "string"
 )
 }

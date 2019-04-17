@@ -40,7 +40,7 @@ succeed, and that stream will be an entirely new logical resource
 }
 }
 \section{Request syntax}{
-\preformatted{migrationhub$delete_progress_update_stream(
+\preformatted{svc$delete_progress_update_stream(
   ProgressUpdateStreamName = "string",
   DryRun = TRUE|FALSE
 )

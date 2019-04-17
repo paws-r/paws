@@ -29,7 +29,7 @@ at the colocation facility. For more information, see \href{https://docs.aws.ama
 in the \emph{AWS Direct Connect User Guide}.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_interconnect_loa(
+\preformatted{svc$describe_interconnect_loa(
   interconnectId = "string",
   providerName = "string",
   loaContentType = "application/pdf"

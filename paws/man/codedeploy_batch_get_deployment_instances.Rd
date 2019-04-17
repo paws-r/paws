@@ -21,7 +21,7 @@ works with EC2/On-premises and AWS Lambda compute platforms. The newer
 \code{BatchGetDeploymentTargets} works with all compute platforms.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_deployment_instances(
+\preformatted{svc$batch_get_deployment_instances(
   deploymentId = "string",
   instanceIds = list(
     "string"

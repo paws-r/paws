@@ -21,7 +21,7 @@ description field in any application that uses this API to display the
 repository description on a web page.
 }
 \section{Request syntax}{
-\preformatted{codecommit$batch_get_repositories(
+\preformatted{svc$batch_get_repositories(
   repositoryNames = list(
     "string"
   )

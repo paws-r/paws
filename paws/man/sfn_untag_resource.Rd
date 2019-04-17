@@ -16,7 +16,7 @@ activity.}
 Remove a tag from a Step Functions resource
 }
 \section{Request syntax}{
-\preformatted{sfn$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

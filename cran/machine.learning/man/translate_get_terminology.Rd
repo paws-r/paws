@@ -16,7 +16,7 @@ TMX.}
 Retrieves a custom terminology.
 }
 \section{Request syntax}{
-\preformatted{translate$get_terminology(
+\preformatted{svc$get_terminology(
   Name = "string",
   TerminologyDataFormat = "CSV"|"TMX"
 )

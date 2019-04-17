@@ -50,7 +50,7 @@ IP address from one network interface to another, check
 confirm that the remapping is complete.
 }
 \section{Request syntax}{
-\preformatted{ec2$assign_private_ip_addresses(
+\preformatted{svc$assign_private_ip_addresses(
   AllowReassignment = TRUE|FALSE,
   NetworkInterfaceId = "string",
   PrivateIpAddresses = list(
@@ -64,7 +64,7 @@ confirm that the remapping is complete.
 \examples{
 # This example assigns the specified secondary private IP address to the
 # specified network interface.
-\donttest{ec2$assign_private_ip_addresses(
+\donttest{svc$assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"
@@ -75,7 +75,7 @@ confirm that the remapping is complete.
 # network interface. Amazon EC2 automatically assigns these IP addresses
 # from the available IP addresses in the CIDR block range of the subnet
 # the network interface is associated with.
-\donttest{ec2$assign_private_ip_addresses(
+\donttest{svc$assign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   SecondaryPrivateIpAddressCount = 2L
 )}

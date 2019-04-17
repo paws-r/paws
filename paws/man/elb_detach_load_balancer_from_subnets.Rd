@@ -23,7 +23,7 @@ the load balancer balances the traffic among the remaining routable
 subnets.
 }
 \section{Request syntax}{
-\preformatted{elb$detach_load_balancer_from_subnets(
+\preformatted{svc$detach_load_balancer_from_subnets(
   LoadBalancerName = "string",
   Subnets = list(
     "string"
@@ -35,7 +35,7 @@ subnets.
 \examples{
 # This example detaches the specified load balancer from the specified
 # subnet.
-\donttest{elb$detach_load_balancer_from_subnets(
+\donttest{svc$detach_load_balancer_from_subnets(
   LoadBalancerName = "my-load-balancer",
   Subnets = list(
     "subnet-0ecac448"

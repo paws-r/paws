@@ -20,7 +20,7 @@ nor is it possible to retrieve it using either the \code{GetLexicon} or
 For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-\preformatted{polly$delete_lexicon(
+\preformatted{svc$delete_lexicon(
   Name = "string"
 )
 }
@@ -28,7 +28,7 @@ For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/manag
 
 \examples{
 # Deletes a specified pronunciation lexicon stored in an AWS Region.
-\donttest{polly$delete_lexicon(
+\donttest{svc$delete_lexicon(
   Name = "example"
 )}
 

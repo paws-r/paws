@@ -36,7 +36,7 @@ For information about versions for managed policies, see \href{http://docs.aws.a
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_policy_version(
+\preformatted{svc$delete_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )

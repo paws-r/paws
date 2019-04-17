@@ -17,7 +17,7 @@ specify which agent to describe, use the Amazon Resource Name (ARN) of
 the agent in your request.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_agent(
+\preformatted{svc$describe_agent(
   AgentArn = "string"
 )
 }

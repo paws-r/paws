@@ -28,7 +28,7 @@ and the Client VPN endpoint. This action replaces the existing security
 groups with the specified security groups.
 }
 \section{Request syntax}{
-\preformatted{ec2$apply_security_groups_to_client_vpn_target_network(
+\preformatted{svc$apply_security_groups_to_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   VpcId = "string",
   SecurityGroupIds = list(

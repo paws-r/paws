@@ -35,7 +35,7 @@ that you can allocate for use with EC2-VPC.
 }
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_account_attributes(
+\preformatted{svc$describe_account_attributes(
   AttributeNames = list(
     "supported-platforms"|"default-vpc"
   ),
@@ -47,14 +47,14 @@ that you can allocate for use with EC2-VPC.
 \examples{
 # This example describes the supported-platforms attribute for your AWS
 # account.
-\donttest{ec2$describe_account_attributes(
+\donttest{svc$describe_account_attributes(
   AttributeNames = list(
     "supported-platforms"
   )
 )}
 
 # This example describes the attributes for your AWS account.
-\donttest{ec2$describe_account_attributes()}
+\donttest{svc$describe_account_attributes()}
 
 }
 \keyword{internal}

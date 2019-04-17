@@ -44,7 +44,7 @@ Returns information about provisioned DB clusters. This API supports
 pagination.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_clusters(
+\preformatted{svc$describe_db_clusters(
   DBClusterIdentifier = "string",
   Filters = list(
     list(

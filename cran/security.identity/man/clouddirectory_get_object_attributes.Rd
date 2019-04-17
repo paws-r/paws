@@ -24,7 +24,7 @@ SchemaFacet for details.}
 Retrieves attributes within a facet that are associated with an object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_object_attributes(
+\preformatted{svc$get_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

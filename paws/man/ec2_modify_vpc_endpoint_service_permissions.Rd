@@ -34,7 +34,7 @@ an endpoint. If the service does not require manual approval,
 attachments are automatically approved.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_vpc_endpoint_service_permissions(
+\preformatted{svc$modify_vpc_endpoint_service_permissions(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   AddAllowedPrincipals = list(

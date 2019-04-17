@@ -26,7 +26,7 @@ mediaconvert_update_job_template(AccelerationSettings, Category,
 Modify one of your existing job templates.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$update_job_template(
+\preformatted{svc$update_job_template(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"
   ),

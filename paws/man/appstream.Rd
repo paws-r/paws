@@ -23,12 +23,6 @@ To learn more about AppStream 2.0, see the following resources:
 \item \href{http://aws.amazon.com/documentation/appstream2}{Amazon AppStream 2.0 documentation}
 }
 }
-\section{Example}{
-\preformatted{appstream <- paws::appstream()
-appstream$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -79,3 +73,9 @@ appstream$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_fleet(
+  Foo = 123
+)}
+
+}

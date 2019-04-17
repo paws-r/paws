@@ -21,7 +21,7 @@ list.}
 Returns the list of available network profiles.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_network_profiles(
+\preformatted{svc$list_network_profiles(
   arn = "string",
   type = "CURATED"|"PRIVATE",
   nextToken = "string"

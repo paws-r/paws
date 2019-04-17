@@ -13,7 +13,7 @@ greengrass_get_bulk_deployment_status(BulkDeploymentId)
 Returns the status of a bulk deployment.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_bulk_deployment_status(
+\preformatted{svc$get_bulk_deployment_status(
   BulkDeploymentId = "string"
 )
 }

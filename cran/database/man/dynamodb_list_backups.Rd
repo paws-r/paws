@@ -47,7 +47,7 @@ requested.
 You can call \code{ListBackups} a maximum of 5 times per second.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$list_backups(
+\preformatted{svc$list_backups(
   TableName = "string",
   Limit = 123,
   TimeRangeLowerBound = as.POSIXct(

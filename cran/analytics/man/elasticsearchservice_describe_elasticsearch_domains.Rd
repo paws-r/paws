@@ -17,7 +17,7 @@ Elasticsearch domains, including the domain ID, domain endpoint, and
 domain ARN.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$describe_elasticsearch_domains(
+\preformatted{svc$describe_elasticsearch_domains(
   DomainNames = list(
     "string"
   )

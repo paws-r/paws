@@ -17,7 +17,7 @@ Detaches a typed link from a specified source and target object. For
 more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$detach_typed_link(
+\preformatted{svc$detach_typed_link(
   DirectoryArn = "string",
   TypedLinkSpecifier = list(
     TypedLinkFacet = list(

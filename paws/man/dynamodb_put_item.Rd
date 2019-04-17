@@ -179,7 +179,7 @@ For more information about \code{PutItem}, see \href{http://docs.aws.amazon.com/
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$put_item(
+\preformatted{svc$put_item(
   TableName = "string",
   Item = list(
     list(
@@ -295,7 +295,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 
 \examples{
 # This example adds a new item to the Music table.
-\donttest{dynamodb$put_item(
+\donttest{svc$put_item(
   Item = list(
     AlbumTitle = list(
       S = "Somewhat Famous"

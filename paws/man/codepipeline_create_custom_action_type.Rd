@@ -39,7 +39,7 @@ Creates a new custom action that can be used in all pipelines associated
 with the AWS account. Only used for custom actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$create_custom_action_type(
+\preformatted{svc$create_custom_action_type(
   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
   provider = "string",
   version = "string",

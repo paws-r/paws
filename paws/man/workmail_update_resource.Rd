@@ -24,7 +24,7 @@ should be the one expected when performing another \code{DescribeResource}
 call.
 }
 \section{Request syntax}{
-\preformatted{workmail$update_resource(
+\preformatted{svc$update_resource(
   OrganizationId = "string",
   ResourceId = "string",
   Name = "string",

@@ -49,7 +49,7 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN or alias ARN in the value of the KeyId parameter.
 }
 \section{Request syntax}{
-\preformatted{kms$describe_key(
+\preformatted{svc$describe_key(
   KeyId = "string",
   GrantTokens = list(
     "string"
@@ -61,7 +61,7 @@ the key ARN or alias ARN in the value of the KeyId parameter.
 \examples{
 # The following example returns information (metadata) about the specified
 # CMK.
-\donttest{kms$describe_key(
+\donttest{svc$describe_key(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

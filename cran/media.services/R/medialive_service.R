@@ -7,11 +7,10 @@ NULL
 #' @description
 #' API for AWS Elemental MediaLive
 #'
-#' @section Example:
-#' ```
-#' medialive <- paws::medialive()
-#' medialive$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_update_schedule(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

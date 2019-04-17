@@ -27,7 +27,7 @@ user who has permission to create rules will be able to access data
 processed by the rule.
 }
 \section{Request syntax}{
-\preformatted{iot$create_topic_rule(
+\preformatted{svc$create_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",

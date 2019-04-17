@@ -47,7 +47,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 Registers an AWS Batch job definition.
 }
 \section{Request syntax}{
-\preformatted{batch$register_job_definition(
+\preformatted{svc$register_job_definition(
   jobDefinitionName = "string",
   type = "container"|"multinode",
   parameters = list(
@@ -156,7 +156,7 @@ Registers an AWS Batch job definition.
 
 \examples{
 # This example registers a job definition for a simple container job.
-\donttest{batch$register_job_definition(
+\donttest{svc$register_job_definition(
   type = "container",
   containerProperties = list(
     command = list(

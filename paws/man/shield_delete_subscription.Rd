@@ -12,7 +12,7 @@ requires a 1-year subscription commitment. You cannot delete a
 subscription prior to the completion of that commitment.
 }
 \section{Request syntax}{
-\preformatted{shield$delete_subscription()
+\preformatted{svc$delete_subscription()
 }
 }
 

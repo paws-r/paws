@@ -14,7 +14,7 @@ deleted.}
 Deletes the ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_client_certificate(
+\preformatted{svc$delete_client_certificate(
   clientCertificateId = "string"
 )
 }

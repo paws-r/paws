@@ -46,7 +46,7 @@ automatic associations, you can use AssociateTransitGatewayRouteTable to
 associate a resource attachment with a transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_transit_gateway(
+\preformatted{svc$create_transit_gateway(
   Description = "string",
   Options = list(
     AmazonSideAsn = 123,

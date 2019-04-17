@@ -15,7 +15,7 @@ iot_detach_policy(policyName, target)
 Detaches a policy from the specified target.
 }
 \section{Request syntax}{
-\preformatted{iot$detach_policy(
+\preformatted{svc$detach_policy(
   policyName = "string",
   target = "string"
 )

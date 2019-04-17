@@ -13,7 +13,7 @@ apigateway_delete_domain_name(domainName)
 Deletes the DomainName resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_domain_name(
+\preformatted{svc$delete_domain_name(
   domainName = "string"
 )
 }

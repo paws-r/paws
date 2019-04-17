@@ -41,7 +41,7 @@ specified by \code{MaxRecords}.}
 Returns the detailed parameter list for a particular DB parameter group.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_parameters(
+\preformatted{svc$describe_db_parameters(
   DBParameterGroupName = "string",
   Source = "string",
   Filters = list(

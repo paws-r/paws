@@ -18,7 +18,7 @@ Spanish ("es"). All documents must be in the same language.}
 Detects the key noun phrases found in a batch of documents.
 }
 \section{Request syntax}{
-\preformatted{comprehend$batch_detect_key_phrases(
+\preformatted{svc$batch_detect_key_phrases(
   TextList = list(
     "string"
   ),

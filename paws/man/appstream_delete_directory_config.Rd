@@ -15,7 +15,7 @@ object includes the information required to join streaming instances to
 an Active Directory domain.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_directory_config(
+\preformatted{svc$delete_directory_config(
   DirectoryName = "string"
 )
 }

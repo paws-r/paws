@@ -98,7 +98,7 @@ Deregistered images are included in the returned results for an
 unspecified interval after deregistration.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_images(
+\preformatted{svc$describe_images(
   ExecutableUsers = list(
     "string"
   ),
@@ -123,7 +123,7 @@ unspecified interval after deregistration.
 
 \examples{
 # This example describes the specified AMI.
-\donttest{ec2$describe_images(
+\donttest{svc$describe_images(
   ImageIds = list(
     "ami-5731123e"
   )

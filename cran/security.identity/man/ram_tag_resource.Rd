@@ -15,7 +15,7 @@ ram_tag_resource(resourceShareArn, tags)
 Adds the specified tags to the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$tag_resource(
+\preformatted{svc$tag_resource(
   resourceShareArn = "string",
   tags = list(
     list(

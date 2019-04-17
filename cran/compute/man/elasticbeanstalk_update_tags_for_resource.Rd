@@ -46,7 +46,7 @@ of tag keys to remove in the \code{TagsToRemove} parameter.
 For details about creating a custom user policy, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$update_tags_for_resource(
+\preformatted{svc$update_tags_for_resource(
   ResourceArn = "string",
   TagsToAdd = list(
     list(

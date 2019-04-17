@@ -27,7 +27,7 @@ The specified DB security group must not be associated with any DB
 instances.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_security_group(
+\preformatted{svc$delete_db_security_group(
   DBSecurityGroupName = "string"
 )
 }

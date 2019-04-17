@@ -30,7 +30,7 @@ For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSE
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_key_pairs(
+\preformatted{svc$describe_key_pairs(
   Filters = list(
     list(
       Name = "string",
@@ -49,7 +49,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example displays the fingerprint for the specified key.
-\donttest{ec2$describe_key_pairs(
+\donttest{svc$describe_key_pairs(
   KeyNames = list(
     "my-key-pair"
   )

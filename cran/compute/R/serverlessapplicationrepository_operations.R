@@ -88,7 +88,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$create_application(
+#' svc$create_application(
 #'   Author = "string",
 #'   Description = "string",
 #'   HomePageUrl = "string",
@@ -150,7 +150,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$create_application_version(
+#' svc$create_application_version(
 #'   ApplicationId = "string",
 #'   SemanticVersion = "string",
 #'   SourceCodeArchiveUrl = "string",
@@ -272,7 +272,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$create_cloud_formation_change_set(
+#' svc$create_cloud_formation_change_set(
 #'   ApplicationId = "string",
 #'   Capabilities = list(
 #'     "string"
@@ -347,7 +347,7 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$create_cloud_formation_template(
+#' svc$create_cloud_formation_template(
 #'   ApplicationId = "string",
 #'   SemanticVersion = "string"
 #' )
@@ -383,7 +383,7 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$delete_application(
+#' svc$delete_application(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -420,7 +420,7 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$get_application(
+#' svc$get_application(
 #'   ApplicationId = "string",
 #'   SemanticVersion = "string"
 #' )
@@ -456,7 +456,7 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$get_application_policy(
+#' svc$get_application_policy(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -496,7 +496,7 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$get_cloud_formation_template(
+#' svc$get_cloud_formation_template(
 #'   ApplicationId = "string",
 #'   TemplateId = "string"
 #' )
@@ -536,7 +536,7 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$list_application_dependencies(
+#' svc$list_application_dependencies(
 #'   ApplicationId = "string",
 #'   MaxItems = 123,
 #'   NextToken = "string",
@@ -577,7 +577,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$list_application_versions(
+#' svc$list_application_versions(
 #'   ApplicationId = "string",
 #'   MaxItems = 123,
 #'   NextToken = "string"
@@ -615,7 +615,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$list_applications(
+#' svc$list_applications(
 #'   MaxItems = 123,
 #'   NextToken = "string"
 #' )
@@ -656,7 +656,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$put_application_policy(
+#' svc$put_application_policy(
 #'   ApplicationId = "string",
 #'   Statements = list(
 #'     list(
@@ -726,7 +726,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #'
 #' @section Request syntax:
 #' ```
-#' serverlessapplicationrepository$update_application(
+#' svc$update_application(
 #'   ApplicationId = "string",
 #'   Author = "string",
 #'   Description = "string",

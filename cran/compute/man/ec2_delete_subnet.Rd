@@ -19,7 +19,7 @@ Deletes the specified subnet. You must terminate all running instances
 in the subnet before you can delete the subnet.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_subnet(
+\preformatted{svc$delete_subnet(
   SubnetId = "string",
   DryRun = TRUE|FALSE
 )
@@ -28,7 +28,7 @@ in the subnet before you can delete the subnet.
 
 \examples{
 # This example deletes the specified subnet.
-\donttest{ec2$delete_subnet(
+\donttest{svc$delete_subnet(
   SubnetId = "subnet-9d4a7b6c"
 )}
 

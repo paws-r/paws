@@ -18,7 +18,7 @@ Inspects text for named entities, and returns information about them.
 For more information, about named entities, see how-entities.
 }
 \section{Request syntax}{
-\preformatted{comprehend$detect_entities(
+\preformatted{svc$detect_entities(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )

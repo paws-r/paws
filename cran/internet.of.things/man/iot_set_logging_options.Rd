@@ -17,7 +17,7 @@ NOTE: use of this command is not recommended. Use \code{SetV2LoggingOptions}
 instead.
 }
 \section{Request syntax}{
-\preformatted{iot$set_logging_options(
+\preformatted{svc$set_logging_options(
   loggingOptionsPayload = list(
     roleArn = "string",
     logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"

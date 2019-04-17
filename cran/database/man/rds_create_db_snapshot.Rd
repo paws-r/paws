@@ -34,7 +34,7 @@ Creates a DBSnapshot. The source DBInstance must be in "available"
 state.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_snapshot(
+\preformatted{svc$create_db_snapshot(
   DBSnapshotIdentifier = "string",
   DBInstanceIdentifier = "string",
   Tags = list(

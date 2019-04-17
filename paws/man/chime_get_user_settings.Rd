@@ -17,7 +17,7 @@ Retrieves settings for the specified user ID, such as any associated
 phone number settings.
 }
 \section{Request syntax}{
-\preformatted{chime$get_user_settings(
+\preformatted{svc$get_user_settings(
   AccountId = "string",
   UserId = "string"
 )

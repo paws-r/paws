@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Gets the RequestValidators collection of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_request_validators(
+\preformatted{svc$get_request_validators(
   restApiId = "string",
   position = "string",
   limit = 123

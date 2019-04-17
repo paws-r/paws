@@ -53,7 +53,7 @@ information for up to 90 days after the stack has been deleted. If the
 template does not exist, a \code{ValidationError} is returned.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$get_template_summary(
+\preformatted{svc$get_template_summary(
   TemplateBody = "string",
   TemplateURL = "string",
   StackName = "string",

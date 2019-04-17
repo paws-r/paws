@@ -29,7 +29,7 @@ If you specify a key that already exists for the resource, the value for
 that key will be updated with the new value.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_tags(
+\preformatted{svc$create_tags(
   ResourceName = "string",
   Tags = list(
     list(

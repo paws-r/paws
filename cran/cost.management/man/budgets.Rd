@@ -49,12 +49,6 @@ The AWS Budgets API provides the following endpoint:
 For information about costs that are associated with the AWS Budgets
 API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
-\section{Example}{
-\preformatted{budgets <- paws::budgets()
-budgets$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -75,3 +69,9 @@ budgets$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_budget(
+  Foo = 123
+)}
+
+}

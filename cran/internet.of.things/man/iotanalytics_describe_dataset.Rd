@@ -13,7 +13,7 @@ iotanalytics_describe_dataset(datasetName)
 Retrieves information about a data set.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$describe_dataset(
+\preformatted{svc$describe_dataset(
   datasetName = "string"
 )
 }

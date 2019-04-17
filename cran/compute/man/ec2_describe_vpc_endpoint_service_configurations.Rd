@@ -37,7 +37,7 @@ Describes the VPC endpoint service configurations in your account (your
 services).
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoint_service_configurations(
+\preformatted{svc$describe_vpc_endpoint_service_configurations(
   DryRun = TRUE|FALSE,
   ServiceIds = list(
     "string"

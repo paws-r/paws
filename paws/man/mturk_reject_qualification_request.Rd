@@ -23,7 +23,7 @@ You can provide a text message explaining why the request was rejected.
 The Worker who made the request can see this message.
 }
 \section{Request syntax}{
-\preformatted{mturk$reject_qualification_request(
+\preformatted{svc$reject_qualification_request(
   QualificationRequestId = "string",
   Reason = "string"
 )

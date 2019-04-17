@@ -26,7 +26,7 @@ previous response.}
 Lists the tags that you associated with the specified resource.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"

@@ -15,7 +15,7 @@ iot_list_tags_for_resource(resourceArn, nextToken)
 Lists the tags (metadata) you have assigned to the resource.
 }
 \section{Request syntax}{
-\preformatted{iot$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string",
   nextToken = "string"
 )

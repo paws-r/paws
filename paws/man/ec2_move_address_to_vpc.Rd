@@ -26,7 +26,7 @@ that was originally allocated for use in the EC2-VPC platform to the
 EC2-Classic platform.
 }
 \section{Request syntax}{
-\preformatted{ec2$move_address_to_vpc(
+\preformatted{svc$move_address_to_vpc(
   DryRun = TRUE|FALSE,
   PublicIp = "string"
 )
@@ -36,7 +36,7 @@ EC2-Classic platform.
 \examples{
 # This example moves the specified Elastic IP address to the EC2-VPC
 # platform.
-\donttest{ec2$move_address_to_vpc(
+\donttest{svc$move_address_to_vpc(
   PublicIp = "54.123.4.56"
 )}
 

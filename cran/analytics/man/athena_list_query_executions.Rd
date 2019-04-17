@@ -25,7 +25,7 @@ For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.co
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{athena$list_query_executions(
+\preformatted{svc$list_query_executions(
   NextToken = "string",
   MaxResults = 123,
   WorkGroup = "string"

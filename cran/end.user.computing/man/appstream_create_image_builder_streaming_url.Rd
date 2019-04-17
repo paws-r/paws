@@ -16,7 +16,7 @@ value between 1 and 604800 seconds. The default is 3600 seconds.}
 Creates a URL to start an image builder streaming session.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_image_builder_streaming_url(
+\preformatted{svc$create_image_builder_streaming_url(
   Name = "string",
   Validity = 123
 )

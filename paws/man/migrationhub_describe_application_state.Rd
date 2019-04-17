@@ -14,7 +14,7 @@ application.}
 Gets the migration status of an application.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$describe_application_state(
+\preformatted{svc$describe_application_state(
   ApplicationId = "string"
 )
 }

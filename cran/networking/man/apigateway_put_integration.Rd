@@ -117,7 +117,7 @@ support payload pass-through.}
 Sets up a method's integration.
 }
 \section{Request syntax}{
-\preformatted{apigateway$put_integration(
+\preformatted{svc$put_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

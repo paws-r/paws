@@ -108,7 +108,7 @@ seconds.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_matchmaking_configuration(
+\preformatted{svc$create_matchmaking_configuration(
   Name = "string",
   Description = "string",
   GameSessionQueueArns = list(

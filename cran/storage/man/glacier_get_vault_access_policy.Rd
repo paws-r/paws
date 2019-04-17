@@ -25,7 +25,7 @@ If there is no access policy set on the vault, the operation returns a
 see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 }
 \section{Request syntax}{
-\preformatted{glacier$get_vault_access_policy(
+\preformatted{svc$get_vault_access_policy(
   accountId = "string",
   vaultName = "string"
 )
@@ -35,7 +35,7 @@ see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-polic
 \examples{
 # The example retrieves the access-policy set on the vault named
 # example-vault.
-\donttest{glacier$get_vault_access_policy(
+\donttest{svc$get_vault_access_policy(
   accountId = "-",
   vaultName = "example-vault"
 )}

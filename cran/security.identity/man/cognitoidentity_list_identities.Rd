@@ -25,7 +25,7 @@ Lists the identities in an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$list_identities(
+\preformatted{svc$list_identities(
   IdentityPoolId = "string",
   MaxResults = 123,
   NextToken = "string",

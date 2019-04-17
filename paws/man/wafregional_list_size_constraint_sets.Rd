@@ -25,7 +25,7 @@ objects than the number you specify for \code{Limit}, the response includes a
 Returns an array of SizeConstraintSetSummary objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_size_constraint_sets(
+\preformatted{svc$list_size_constraint_sets(
   NextMarker = "string",
   Limit = 123
 )
@@ -35,7 +35,7 @@ Returns an array of SizeConstraintSetSummary objects.
 \examples{
 # The following example returns an array of up to 100 size contraint match
 # sets.
-\donttest{wafregional$list_size_constraint_sets(
+\donttest{svc$list_size_constraint_sets(
   Limit = 100L
 )}
 

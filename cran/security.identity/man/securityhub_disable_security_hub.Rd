@@ -10,7 +10,7 @@ securityhub_disable_security_hub()
 Disables the AWS Security Hub Service.
 }
 \section{Request syntax}{
-\preformatted{securityhub$disable_security_hub()
+\preformatted{svc$disable_security_hub()
 }
 }
 

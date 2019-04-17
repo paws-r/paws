@@ -34,7 +34,7 @@ For example,
 Accepts an offer to share the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$accept_portfolio_share(
+\preformatted{svc$accept_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"

@@ -24,7 +24,7 @@ policy.}
 Sets the Data Catalog resource policy for access control.
 }
 \section{Request syntax}{
-\preformatted{glue$put_resource_policy(
+\preformatted{svc$put_resource_policy(
   PolicyInJson = "string",
   PolicyHashCondition = "string",
   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE"

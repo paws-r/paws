@@ -36,7 +36,7 @@ see the list of all checks including those that are enabled or
 Creates a scheduled audit that is run at a specified time interval.
 }
 \section{Request syntax}{
-\preformatted{iot$create_scheduled_audit(
+\preformatted{svc$create_scheduled_audit(
   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
   dayOfMonth = "string",
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",

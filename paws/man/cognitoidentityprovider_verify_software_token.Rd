@@ -24,7 +24,7 @@ user's software token MFA status as "verified" if successful. The
 request takes an access token or a session string, but not both.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$verify_software_token(
+\preformatted{svc$verify_software_token(
   AccessToken = "string",
   Session = "string",
   UserCode = "string",

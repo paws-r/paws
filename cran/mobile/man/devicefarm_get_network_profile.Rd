@@ -14,7 +14,7 @@ information about.}
 Returns information about a network profile.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_network_profile(
+\preformatted{svc$get_network_profile(
   arn = "string"
 )
 }

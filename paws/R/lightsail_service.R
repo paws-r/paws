@@ -21,11 +21,10 @@ NULL
 #' how to set this up, see the [Lightsail Dev
 #' Guide](http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 #'
-#' @section Example:
-#' ```
-#' lightsail <- paws::lightsail()
-#' lightsail$operation()
-#' ```
+#' @examples
+#' \donttest{svc$allocate_static_ip(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

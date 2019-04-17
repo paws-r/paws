@@ -28,7 +28,7 @@ exceed 100.
 }
 }
 \section{Request syntax}{
-\preformatted{iot$associate_targets_with_job(
+\preformatted{svc$associate_targets_with_job(
   targets = list(
     "string"
   ),

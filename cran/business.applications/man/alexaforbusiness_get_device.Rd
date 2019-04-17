@@ -13,7 +13,7 @@ alexaforbusiness_get_device(DeviceArn)
 Gets the details of a device by device ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_device(
+\preformatted{svc$get_device(
   DeviceArn = "string"
 )
 }

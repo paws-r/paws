@@ -15,7 +15,7 @@ pinpoint_delete_campaign(ApplicationId, CampaignId)
 Deletes a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_campaign(
+\preformatted{svc$delete_campaign(
   ApplicationId = "string",
   CampaignId = "string"
 )

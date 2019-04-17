@@ -17,7 +17,7 @@ in here in another request to list more projects.}
 Lists projects in AWS Mobile Hub.
 }
 \section{Request syntax}{
-\preformatted{mobile$list_projects(
+\preformatted{svc$list_projects(
   maxResults = 123,
   nextToken = "string"
 )

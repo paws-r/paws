@@ -16,7 +16,7 @@ to subscribers. This action is idempotent, so deleting a topic that does
 not exist does not result in an error.
 }
 \section{Request syntax}{
-\preformatted{sns$delete_topic(
+\preformatted{svc$delete_topic(
   TopicArn = "string"
 )
 }

@@ -24,7 +24,7 @@ Not all response parameters will be populated. Whether a response
 parameter is populated depends on the type of model requested.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$predict(
+\preformatted{svc$predict(
   MLModelId = "string",
   Record = list(
     "string"

@@ -15,7 +15,7 @@ Returns the backup plan that is specified by the plan ID as a backup
 template.
 }
 \section{Request syntax}{
-\preformatted{backup$export_backup_plan_template(
+\preformatted{svc$export_backup_plan_template(
   BackupPlanId = "string"
 )
 }

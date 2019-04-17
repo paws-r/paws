@@ -17,7 +17,7 @@ s3_put_bucket_tagging(Bucket, ContentMD5, Tagging)
 Sets the tags for a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_tagging(
+\preformatted{svc$put_bucket_tagging(
   Bucket = "string",
   ContentMD5 = "string",
   Tagging = list(
@@ -35,7 +35,7 @@ Sets the tags for a bucket.
 \examples{
 # The following example sets tags on a bucket. Any existing tags are
 # replaced.
-\donttest{s3$put_bucket_tagging(
+\donttest{svc$put_bucket_tagging(
   Bucket = "examplebucket",
   Tagging = list(
     TagSet = list(

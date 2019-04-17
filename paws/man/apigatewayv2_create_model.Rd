@@ -22,7 +22,7 @@ JSON schema draft 4 model.}
 Creates a Model for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_model(
+\preformatted{svc$create_model(
   ApiId = "string",
   ContentType = "string",
   Description = "string",

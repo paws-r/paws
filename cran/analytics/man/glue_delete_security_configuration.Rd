@@ -13,7 +13,7 @@ glue_delete_security_configuration(Name)
 Deletes a specified security configuration.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_security_configuration(
+\preformatted{svc$delete_security_configuration(
   Name = "string"
 )
 }

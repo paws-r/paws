@@ -89,7 +89,7 @@ File gateway does not support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_nfs_file_share(
+\preformatted{svc$create_nfs_file_share(
   ClientToken = "string",
   NFSFileShareDefaults = list(
     FileMode = "string",

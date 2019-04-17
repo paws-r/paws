@@ -48,7 +48,7 @@ replication runs to replicate your server to AWS. Each replication run
 creates an Amazon Machine Image (AMI).
 }
 \section{Request syntax}{
-\preformatted{sms$create_replication_job(
+\preformatted{svc$create_replication_job(
   serverId = "string",
   seedReplicationTime = as.POSIXct(
     "2015-01-01"

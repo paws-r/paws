@@ -76,7 +76,7 @@ This operation requires permissions to perform the
 \code{rekognition:CompareFaces} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$compare_faces(
+\preformatted{svc$compare_faces(
   SourceImage = list(
     Bytes = raw,
     S3Object = list(
@@ -101,7 +101,7 @@ This operation requires permissions to perform the
 \examples{
 # This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-\donttest{rekognition$compare_faces(
+\donttest{svc$compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
     S3Object = list(

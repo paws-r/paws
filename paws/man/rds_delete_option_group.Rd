@@ -15,7 +15,7 @@ You can't delete default option groups.}
 Deletes an existing option group.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_option_group(
+\preformatted{svc$delete_option_group(
   OptionGroupName = "string"
 )
 }

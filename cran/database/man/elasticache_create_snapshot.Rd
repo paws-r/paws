@@ -25,7 +25,7 @@ moment in time.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_snapshot(
+\preformatted{svc$create_snapshot(
   ReplicationGroupId = "string",
   CacheClusterId = "string",
   SnapshotName = "string"

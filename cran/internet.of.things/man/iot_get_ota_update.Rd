@@ -13,7 +13,7 @@ iot_get_ota_update(otaUpdateId)
 Gets an OTA update.
 }
 \section{Request syntax}{
-\preformatted{iot$get_ota_update(
+\preformatted{svc$get_ota_update(
   otaUpdateId = "string"
 )
 }

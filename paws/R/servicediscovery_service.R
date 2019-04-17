@@ -14,11 +14,10 @@ NULL
 #' queries, or HTTP requests, for the service receive an answer that
 #' contains up to eight healthy records.
 #'
-#' @section Example:
-#' ```
-#' servicediscovery <- paws::servicediscovery()
-#' servicediscovery$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_http_namespace(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

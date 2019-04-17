@@ -16,7 +16,7 @@ included in the response.}
 Retrieves information about a data store.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$describe_datastore(
+\preformatted{svc$describe_datastore(
   datastoreName = "string",
   includeStatistics = TRUE|FALSE
 )

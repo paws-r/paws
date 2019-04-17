@@ -30,7 +30,7 @@ Searches contacts and lists the ones that meet a set of filter and sort
 criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_contacts(
+\preformatted{svc$search_contacts(
   Filters = list(
     list(
       Key = "string",

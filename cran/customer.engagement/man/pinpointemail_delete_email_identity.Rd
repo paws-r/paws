@@ -17,7 +17,7 @@ Amazon Pinpoint. An identity can be either an email address or a domain
 name.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$delete_email_identity(
+\preformatted{svc$delete_email_identity(
   EmailIdentity = "string"
 )
 }

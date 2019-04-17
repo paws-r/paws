@@ -20,7 +20,7 @@ This operation is asynchronous and returns before the WorkSpaces have
 rebooted.
 }
 \section{Request syntax}{
-\preformatted{workspaces$reboot_workspaces(
+\preformatted{svc$reboot_workspaces(
   RebootWorkspaceRequests = list(
     list(
       WorkspaceId = "string"

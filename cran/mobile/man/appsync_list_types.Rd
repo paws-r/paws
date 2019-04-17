@@ -21,7 +21,7 @@ list.}
 Lists the types for a given API.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_types(
+\preformatted{svc$list_types(
   apiId = "string",
   format = "SDL"|"JSON",
   nextToken = "string",

@@ -23,7 +23,7 @@ associated with it. An instance is automatically unlinked from a VPC
 when it's stopped.
 }
 \section{Request syntax}{
-\preformatted{ec2$detach_classic_link_vpc(
+\preformatted{svc$detach_classic_link_vpc(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   VpcId = "string"

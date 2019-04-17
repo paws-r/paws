@@ -28,7 +28,7 @@ the Qualification type is available for reuse with
 CreateQualificationType.
 }
 \section{Request syntax}{
-\preformatted{mturk$delete_qualification_type(
+\preformatted{svc$delete_qualification_type(
   QualificationTypeId = "string"
 )
 }

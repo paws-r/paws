@@ -35,7 +35,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$enable_key_rotation(
+\preformatted{svc$enable_key_rotation(
   KeyId = "string"
 )
 }
@@ -44,7 +44,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 \examples{
 # The following example enables automatic annual rotation of the key
 # material for the specified CMK.
-\donttest{kms$enable_key_rotation(
+\donttest{svc$enable_key_rotation(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

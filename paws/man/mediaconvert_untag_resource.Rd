@@ -15,7 +15,7 @@ mediaconvert_untag_resource(Arn, TagKeys)
 Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$untag_resource(
+\preformatted{svc$untag_resource(
   Arn = "string",
   TagKeys = list(
     "string"

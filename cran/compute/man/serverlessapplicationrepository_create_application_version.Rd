@@ -29,7 +29,7 @@ for example the URL of a specific GitHub commit.}
 Creates an application version.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$create_application_version(
+\preformatted{svc$create_application_version(
   ApplicationId = "string",
   SemanticVersion = "string",
   SourceCodeArchiveUrl = "string",

@@ -19,7 +19,7 @@ Deletes the specified network ACL. You can't delete the ACL if it's
 associated with any subnets. You can't delete the default network ACL.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_network_acl(
+\preformatted{svc$delete_network_acl(
   DryRun = TRUE|FALSE,
   NetworkAclId = "string"
 )
@@ -28,7 +28,7 @@ associated with any subnets. You can't delete the default network ACL.
 
 \examples{
 # This example deletes the specified network ACL.
-\donttest{ec2$delete_network_acl(
+\donttest{svc$delete_network_acl(
   NetworkAclId = "acl-5fb85d36"
 )}
 

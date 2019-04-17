@@ -15,7 +15,7 @@ ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 Removes a task from a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$deregister_task_from_maintenance_window(
+\preformatted{svc$deregister_task_from_maintenance_window(
   WindowId = "string",
   WindowTaskId = "string"
 )

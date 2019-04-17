@@ -26,7 +26,7 @@ Describes the groups specified by the query. Groups are defined by the
 underlying Active Directory.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_groups(
+\preformatted{svc$describe_groups(
   AuthenticationToken = "string",
   SearchQuery = "string",
   OrganizationId = "string",

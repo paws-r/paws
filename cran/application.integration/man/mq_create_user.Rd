@@ -21,7 +21,7 @@ mq_create_user(BrokerId, ConsoleAccess, Groups, Password, Username)
 Creates an ActiveMQ user.
 }
 \section{Request syntax}{
-\preformatted{mq$create_user(
+\preformatted{svc$create_user(
   BrokerId = "string",
   ConsoleAccess = TRUE|FALSE,
   Groups = list(

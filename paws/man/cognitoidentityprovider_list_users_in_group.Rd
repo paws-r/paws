@@ -25,7 +25,7 @@ Lists the users in the specified group.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_users_in_group(
+\preformatted{svc$list_users_in_group(
   UserPoolId = "string",
   GroupName = "string",
   Limit = 123,

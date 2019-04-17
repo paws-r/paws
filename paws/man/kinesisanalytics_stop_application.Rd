@@ -22,7 +22,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:StopApplication} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$stop_application(
+\preformatted{svc$stop_application(
   ApplicationName = "string"
 )
 }

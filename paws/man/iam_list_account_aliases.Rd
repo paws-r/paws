@@ -30,7 +30,7 @@ have only one). For information about using an AWS account alias, see
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$list_account_aliases(
+\preformatted{svc$list_account_aliases(
   Marker = "string",
   MaxItems = 123
 )
@@ -39,7 +39,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following command lists the aliases for the current account.
-\donttest{iam$list_account_aliases()}
+\donttest{svc$list_account_aliases()}
 
 }
 \keyword{internal}

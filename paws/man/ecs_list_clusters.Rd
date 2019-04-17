@@ -29,7 +29,7 @@ a \code{nextToken} value if applicable.}
 Returns a list of existing clusters.
 }
 \section{Request syntax}{
-\preformatted{ecs$list_clusters(
+\preformatted{svc$list_clusters(
   nextToken = "string",
   maxResults = 123
 )
@@ -39,7 +39,7 @@ Returns a list of existing clusters.
 \examples{
 # This example lists all of your available clusters in your default
 # region.
-\donttest{ecs$list_clusters()}
+\donttest{svc$list_clusters()}
 
 }
 \keyword{internal}

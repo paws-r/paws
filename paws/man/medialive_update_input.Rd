@@ -30,7 +30,7 @@ Only specify sources for PULL type Inputs. Leave Destinations empty.}
 Updates an input.
 }
 \section{Request syntax}{
-\preformatted{medialive$update_input(
+\preformatted{svc$update_input(
   Destinations = list(
     list(
       StreamName = "string"

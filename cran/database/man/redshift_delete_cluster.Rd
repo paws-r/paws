@@ -67,7 +67,7 @@ For more information about managing clusters, go to \href{http://docs.aws.amazon
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_cluster(
+\preformatted{svc$delete_cluster(
   ClusterIdentifier = "string",
   SkipFinalClusterSnapshot = TRUE|FALSE,
   FinalClusterSnapshotIdentifier = "string",

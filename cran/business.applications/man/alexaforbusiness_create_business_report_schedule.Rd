@@ -33,7 +33,7 @@ Creates a recurring schedule for usage reports to deliver to the
 specified S3 location with a specified daily or weekly interval.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_business_report_schedule(
+\preformatted{svc$create_business_report_schedule(
   ScheduleName = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",

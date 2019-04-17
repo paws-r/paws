@@ -16,7 +16,7 @@ calls.}
 Lists conference providers under a specific AWS account.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_conference_providers(
+\preformatted{svc$list_conference_providers(
   NextToken = "string",
   MaxResults = 123
 )

@@ -19,7 +19,7 @@ iot_list_job_executions_for_job(jobId, status, maxResults, nextToken)
 Lists the job executions for a job.
 }
 \section{Request syntax}{
-\preformatted{iot$list_job_executions_for_job(
+\preformatted{svc$list_job_executions_for_job(
   jobId = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
   maxResults = 123,

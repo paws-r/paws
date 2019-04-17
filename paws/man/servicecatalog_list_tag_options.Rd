@@ -19,7 +19,7 @@ results, use null.}
 Lists the specified TagOptions or all TagOptions.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_tag_options(
+\preformatted{svc$list_tag_options(
   Filters = list(
     Key = "string",
     Value = "string",

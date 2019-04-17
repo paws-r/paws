@@ -21,7 +21,7 @@ filter the results by prefix. The results are ASCII-sorted by log group
 name.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_log_groups(
+\preformatted{svc$describe_log_groups(
   logGroupNamePrefix = "string",
   nextToken = "string",
   limit = 123

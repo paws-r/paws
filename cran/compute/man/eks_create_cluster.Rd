@@ -56,7 +56,7 @@ and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html}{
 the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
-\preformatted{eks$create_cluster(
+\preformatted{svc$create_cluster(
   name = "string",
   version = "string",
   roleArn = "string",
@@ -77,7 +77,7 @@ the \emph{Amazon EKS User Guide}.
 
 \examples{
 # The following example creates an Amazon EKS cluster called prod.
-\donttest{eks$create_cluster(
+\donttest{svc$create_cluster(
   version = "1.10",
   name = "prod",
   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",

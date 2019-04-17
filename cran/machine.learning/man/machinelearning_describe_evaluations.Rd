@@ -82,7 +82,7 @@ Returns a list of \code{DescribeEvaluations} that match the search criteria
 in the request.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$describe_evaluations(
+\preformatted{svc$describe_evaluations(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
   EQ = "string",
   GT = "string",

@@ -17,7 +17,7 @@ Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_analytics_configuration(
+\preformatted{svc$delete_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string"
 )

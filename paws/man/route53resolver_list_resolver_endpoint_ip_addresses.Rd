@@ -27,7 +27,7 @@ specify the value of \code{NextToken} from the previous response.}
 Gets the IP addresses for a specified resolver endpoint.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$list_resolver_endpoint_ip_addresses(
+\preformatted{svc$list_resolver_endpoint_ip_addresses(
   ResolverEndpointId = "string",
   MaxResults = 123,
   NextToken = "string"

@@ -17,7 +17,7 @@ catalog.}
 Creates a new database in a Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$create_database(
+\preformatted{svc$create_database(
   CatalogId = "string",
   DatabaseInput = list(
     Name = "string",

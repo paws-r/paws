@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$create_configuration_set(
+#' svc$create_configuration_set(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -52,7 +52,7 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$create_configuration_set_event_destination(
+#' svc$create_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestination = list(
 #'     CloudWatchLogsDestination = list(
@@ -105,7 +105,7 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$delete_configuration_set(
+#' svc$delete_configuration_set(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -142,7 +142,7 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$delete_configuration_set_event_destination(
+#' svc$delete_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestinationName = "string"
 #' )
@@ -181,7 +181,7 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$get_configuration_set_event_destinations(
+#' svc$get_configuration_set_event_destinations(
 #'   ConfigurationSetName = "string"
 #' )
 #' ```
@@ -218,7 +218,7 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$list_configuration_sets(
+#' svc$list_configuration_sets(
 #'   NextToken = "string",
 #'   PageSize = "string"
 #' )
@@ -259,7 +259,7 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$send_voice_message(
+#' svc$send_voice_message(
 #'   CallerId = "string",
 #'   ConfigurationSetName = "string",
 #'   Content = list(
@@ -315,7 +315,7 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
 #'
 #' @section Request syntax:
 #' ```
-#' pinpointsmsvoice$update_configuration_set_event_destination(
+#' svc$update_configuration_set_event_destination(
 #'   ConfigurationSetName = "string",
 #'   EventDestination = list(
 #'     CloudWatchLogsDestination = list(

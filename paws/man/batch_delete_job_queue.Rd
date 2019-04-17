@@ -20,7 +20,7 @@ It is not necessary to disassociate compute environments from a queue
 before submitting a \code{DeleteJobQueue} request.
 }
 \section{Request syntax}{
-\preformatted{batch$delete_job_queue(
+\preformatted{svc$delete_job_queue(
   jobQueue = "string"
 )
 }
@@ -28,7 +28,7 @@ before submitting a \code{DeleteJobQueue} request.
 
 \examples{
 # This example deletes the GPGPU job queue.
-\donttest{batch$delete_job_queue(
+\donttest{svc$delete_job_queue(
   jobQueue = "GPGPU"
 )}
 

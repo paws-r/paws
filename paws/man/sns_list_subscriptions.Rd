@@ -19,7 +19,7 @@ parameter in a new \code{ListSubscriptions} call to get further results.
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$list_subscriptions(
+\preformatted{svc$list_subscriptions(
   NextToken = "string"
 )
 }

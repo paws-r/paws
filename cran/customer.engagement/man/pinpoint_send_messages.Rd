@@ -15,7 +15,7 @@ pinpoint_send_messages(ApplicationId, MessageRequest)
 Used to send a direct message.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$send_messages(
+\preformatted{svc$send_messages(
   ApplicationId = "string",
   MessageRequest = list(
     Addresses = list(

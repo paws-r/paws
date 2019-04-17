@@ -26,7 +26,7 @@ group. If you choose to use tags filtering, only resources with the tag
 will be retrieved.
 }
 \section{Request syntax}{
-\preformatted{glue$list_crawlers(
+\preformatted{svc$list_crawlers(
   MaxResults = 123,
   NextToken = "string",
   Tags = list(

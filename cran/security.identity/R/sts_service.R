@@ -60,11 +60,15 @@ NULL
 #' turn it on and find your log files, see the [AWS CloudTrail User
 #' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
-#' @section Example:
-#' ```
-#' sts <- paws::sts()
-#' sts$operation()
-#' ```
+#' @examples
+#' # 
+#' \donttest{svc$assume_role(
+#'   DurationSeconds = 3600L,
+#'   ExternalId = "123ABC",
+#'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   RoleArn = "arn:aws:iam::123456789012:role/demo",
+#'   RoleSessionName = "Bob"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

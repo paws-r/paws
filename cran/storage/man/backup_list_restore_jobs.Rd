@@ -20,7 +20,7 @@ Returns a list of jobs that AWS Backup initiated to restore a saved
 resource, including metadata about the recovery process.
 }
 \section{Request syntax}{
-\preformatted{backup$list_restore_jobs(
+\preformatted{svc$list_restore_jobs(
   NextToken = "string",
   MaxResults = 123
 )

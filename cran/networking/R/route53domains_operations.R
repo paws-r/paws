@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$check_domain_availability(
+#' svc$check_domain_availability(
 #'   DomainName = "string",
 #'   IdnLangCode = "string"
 #' )
@@ -64,7 +64,7 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$check_domain_transferability(
+#' svc$check_domain_transferability(
 #'   DomainName = "string",
 #'   AuthCode = "string"
 #' )
@@ -104,7 +104,7 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$delete_tags_for_domain(
+#' svc$delete_tags_for_domain(
 #'   DomainName = "string",
 #'   TagsToDelete = list(
 #'     "string"
@@ -144,7 +144,7 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$disable_domain_auto_renew(
+#' svc$disable_domain_auto_renew(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -186,7 +186,7 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$disable_domain_transfer_lock(
+#' svc$disable_domain_transfer_lock(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -233,7 +233,7 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$enable_domain_auto_renew(
+#' svc$enable_domain_auto_renew(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -273,7 +273,7 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$enable_domain_transfer_lock(
+#' svc$enable_domain_transfer_lock(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -318,7 +318,7 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$get_contact_reachability_status(
+#' svc$get_contact_reachability_status(
 #'   domainName = "string"
 #' )
 #' ```
@@ -356,7 +356,7 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$get_domain_detail(
+#' svc$get_domain_detail(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -408,7 +408,7 @@ route53domains_get_domain_detail <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$get_domain_suggestions(
+#' svc$get_domain_suggestions(
 #'   DomainName = "string",
 #'   SuggestionCount = 123,
 #'   OnlyAvailable = TRUE|FALSE
@@ -449,7 +449,7 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$get_operation_detail(
+#' svc$get_operation_detail(
 #'   OperationId = "string"
 #' )
 #' ```
@@ -497,7 +497,7 @@ route53domains_get_operation_detail <- function(OperationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$list_domains(
+#' svc$list_domains(
 #'   Marker = "string",
 #'   MaxItems = 123
 #' )
@@ -546,7 +546,7 @@ route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$list_operations(
+#' svc$list_operations(
 #'   SubmittedSince = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -590,7 +590,7 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$list_tags_for_domain(
+#' svc$list_tags_for_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -703,7 +703,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$register_domain(
+#' svc$register_domain(
 #'   DomainName = "string",
 #'   IdnLangCode = "string",
 #'   DurationInYears = 123,
@@ -827,7 +827,7 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$renew_domain(
+#' svc$renew_domain(
 #'   DomainName = "string",
 #'   DurationInYears = 123,
 #'   CurrentExpiryYear = 123
@@ -871,7 +871,7 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$resend_contact_reachability_email(
+#' svc$resend_contact_reachability_email(
 #'   domainName = "string"
 #' )
 #' ```
@@ -907,7 +907,7 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$retrieve_domain_auth_code(
+#' svc$retrieve_domain_auth_code(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -1017,7 +1017,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$transfer_domain(
+#' svc$transfer_domain(
 #'   DomainName = "string",
 #'   IdnLangCode = "string",
 #'   DurationInYears = 123,
@@ -1141,7 +1141,7 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$update_domain_contact(
+#' svc$update_domain_contact(
 #'   DomainName = "string",
 #'   AdminContact = list(
 #'     FirstName = "string",
@@ -1269,7 +1269,7 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$update_domain_contact_privacy(
+#' svc$update_domain_contact_privacy(
 #'   DomainName = "string",
 #'   AdminPrivacy = TRUE|FALSE,
 #'   RegistrantPrivacy = TRUE|FALSE,
@@ -1319,7 +1319,7 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$update_domain_nameservers(
+#' svc$update_domain_nameservers(
 #'   DomainName = "string",
 #'   FIAuthKey = "string",
 #'   Nameservers = list(
@@ -1369,7 +1369,7 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$update_tags_for_domain(
+#' svc$update_tags_for_domain(
 #'   DomainName = "string",
 #'   TagsToUpdate = list(
 #'     list(
@@ -1430,7 +1430,7 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' route53domains$view_billing(
+#' svc$view_billing(
 #'   Start = as.POSIXct(
 #'     "2015-01-01"
 #'   ),

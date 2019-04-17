@@ -14,7 +14,7 @@ guardduty_disassociate_from_master_account(DetectorId)
 Disassociates the current GuardDuty member account from its master account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$disassociate_from_master_account(
+\preformatted{svc$disassociate_from_master_account(
   DetectorId = "string"
 )
 }

@@ -13,7 +13,7 @@ appsync_delete_graphql_api(apiId)
 Deletes a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_graphql_api(
+\preformatted{svc$delete_graphql_api(
   apiId = "string"
 )
 }

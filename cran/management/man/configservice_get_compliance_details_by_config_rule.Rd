@@ -30,7 +30,7 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_compliance_details_by_config_rule(
+\preformatted{svc$get_compliance_details_by_config_rule(
   ConfigRuleName = "string",
   ComplianceTypes = list(
     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"

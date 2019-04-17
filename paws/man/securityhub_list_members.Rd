@@ -27,7 +27,7 @@ Lists details about all member accounts for the current Security Hub
 master account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$list_members(
+\preformatted{svc$list_members(
   OnlyAssociated = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string"

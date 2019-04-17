@@ -22,7 +22,7 @@ information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developergu
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$update_scaling_parameters(
+\preformatted{svc$update_scaling_parameters(
   DomainName = "string",
   ScalingParameters = list(
     DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge",

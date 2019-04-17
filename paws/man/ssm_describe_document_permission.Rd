@@ -19,7 +19,7 @@ be shared privately (by specifying a user's AWS account ID) or publicly
 (\emph{All}).
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_document_permission(
+\preformatted{svc$describe_document_permission(
   Name = "string",
   PermissionType = "Share"
 )

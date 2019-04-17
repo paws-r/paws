@@ -17,7 +17,7 @@ provide this token to receive the next set of results.}
 Describes the connection status of the specified WorkSpaces.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_workspaces_connection_status(
+\preformatted{svc$describe_workspaces_connection_status(
   WorkspaceIds = list(
     "string"
   ),

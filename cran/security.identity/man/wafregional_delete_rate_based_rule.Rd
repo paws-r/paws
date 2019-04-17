@@ -31,7 +31,7 @@ information, see UpdateRateBasedRule.
 }
 }
 \section{Request syntax}{
-\preformatted{wafregional$delete_rate_based_rule(
+\preformatted{svc$delete_rate_based_rule(
   RuleId = "string",
   ChangeToken = "string"
 )

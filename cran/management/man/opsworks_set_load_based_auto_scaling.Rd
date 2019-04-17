@@ -38,7 +38,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$set_load_based_auto_scaling(
+\preformatted{svc$set_load_based_auto_scaling(
   LayerId = "string",
   Enable = TRUE|FALSE,
   UpScaling = list(

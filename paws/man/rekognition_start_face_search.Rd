@@ -45,7 +45,7 @@ job identifier (\code{JobId}) from the initial call to \code{StartFaceSearch}. F
 more information, see procedure-person-search-videos.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_face_search(
+\preformatted{svc$start_face_search(
   Video = list(
     S3Object = list(
       Bucket = "string",

@@ -13,7 +13,7 @@ rds_delete_event_subscription(SubscriptionName)
 Deletes an RDS event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
 }

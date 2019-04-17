@@ -17,7 +17,7 @@ Gets operations for a specific resource (e.g., an instance or a static
 IP).
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_operations_for_resource(
+\preformatted{svc$get_operations_for_resource(
   resourceName = "string",
   pageToken = "string"
 )

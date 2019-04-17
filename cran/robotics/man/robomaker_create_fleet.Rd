@@ -18,7 +18,7 @@ Creates a fleet, a logical group of robots running the same robot
 application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_fleet(
+\preformatted{svc$create_fleet(
   name = "string",
   tags = list(
     "string"

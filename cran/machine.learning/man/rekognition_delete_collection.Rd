@@ -19,7 +19,7 @@ This operation requires permissions to perform the
 \code{rekognition:DeleteCollection} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$delete_collection(
+\preformatted{svc$delete_collection(
   CollectionId = "string"
 )
 }
@@ -27,7 +27,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation deletes a Rekognition collection.
-\donttest{rekognition$delete_collection(
+\donttest{svc$delete_collection(
   CollectionId = "myphotos"
 )}
 

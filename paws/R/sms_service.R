@@ -26,11 +26,10 @@ NULL
 #' -   [AWS Sever Migration Service User
 #'     Guide](https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
 #'
-#' @section Example:
-#' ```
-#' sms <- paws::sms()
-#' sms$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_app(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -19,7 +19,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -79,7 +79,7 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$apply_pending_maintenance_action(
+#' svc$apply_pending_maintenance_action(
 #'   ResourceIdentifier = "string",
 #'   ApplyAction = "string",
 #'   OptInType = "string"
@@ -148,7 +148,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$copy_db_cluster_parameter_group(
+#' svc$copy_db_cluster_parameter_group(
 #'   SourceDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupDescription = "string",
@@ -282,7 +282,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$copy_db_cluster_snapshot(
+#' svc$copy_db_cluster_snapshot(
 #'   SourceDBClusterSnapshotIdentifier = "string",
 #'   TargetDBClusterSnapshotIdentifier = "string",
 #'   KmsKeyId = "string",
@@ -438,7 +438,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$create_db_cluster(
+#' svc$create_db_cluster(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -531,7 +531,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$create_db_cluster_parameter_group(
+#' svc$create_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   DBParameterGroupFamily = "string",
 #'   Description = "string",
@@ -595,7 +595,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$create_db_cluster_snapshot(
+#' svc$create_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   Tags = list(
@@ -690,7 +690,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$create_db_instance(
+#' svc$create_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   DBInstanceClass = "string",
 #'   Engine = "string",
@@ -749,7 +749,7 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$create_db_subnet_group(
+#' svc$create_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -825,7 +825,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$delete_db_cluster(
+#' svc$delete_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
 #'   FinalDBSnapshotIdentifier = "string"
@@ -871,7 +871,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$delete_db_cluster_parameter_group(
+#' svc$delete_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
@@ -912,7 +912,7 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$delete_db_cluster_snapshot(
+#' svc$delete_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -952,7 +952,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$delete_db_instance(
+#' svc$delete_db_instance(
 #'   DBInstanceIdentifier = "string"
 #' )
 #' ```
@@ -998,7 +998,7 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$delete_db_subnet_group(
+#' svc$delete_db_subnet_group(
 #'   DBSubnetGroupName = "string"
 #' )
 #' ```
@@ -1053,7 +1053,7 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_cluster_parameter_groups(
+#' svc$describe_db_cluster_parameter_groups(
 #'   DBClusterParameterGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -1121,7 +1121,7 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_cluster_parameters(
+#' svc$describe_db_cluster_parameters(
 #'   DBClusterParameterGroupName = "string",
 #'   Source = "string",
 #'   Filters = list(
@@ -1178,7 +1178,7 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_cluster_snapshot_attributes(
+#' svc$describe_db_cluster_snapshot_attributes(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -1278,7 +1278,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_cluster_snapshots(
+#' svc$describe_db_cluster_snapshots(
 #'   DBClusterIdentifier = "string",
 #'   DBClusterSnapshotIdentifier = "string",
 #'   SnapshotType = "string",
@@ -1353,7 +1353,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_clusters(
+#' svc$describe_db_clusters(
 #'   DBClusterIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -1428,7 +1428,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_engine_versions(
+#' svc$describe_db_engine_versions(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBParameterGroupFamily = "string",
@@ -1509,7 +1509,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_instances(
+#' svc$describe_db_instances(
 #'   DBInstanceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -1569,7 +1569,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_db_subnet_groups(
+#' svc$describe_db_subnet_groups(
 #'   DBSubnetGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -1630,7 +1630,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_engine_default_cluster_parameters(
+#' svc$describe_engine_default_cluster_parameters(
 #'   DBParameterGroupFamily = "string",
 #'   Filters = list(
 #'     list(
@@ -1681,7 +1681,7 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_event_categories(
+#' svc$describe_event_categories(
 #'   SourceType = "string",
 #'   Filters = list(
 #'     list(
@@ -1777,7 +1777,7 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_events(
+#' svc$describe_events(
 #'   SourceIdentifier = "string",
 #'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
 #'   StartTime = as.POSIXct(
@@ -1855,7 +1855,7 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_orderable_db_instance_options(
+#' svc$describe_orderable_db_instance_options(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBInstanceClass = "string",
@@ -1930,7 +1930,7 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$describe_pending_maintenance_actions(
+#' svc$describe_pending_maintenance_actions(
 #'   ResourceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -1994,7 +1994,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$failover_db_cluster(
+#' svc$failover_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   TargetDBInstanceIdentifier = "string"
 #' )
@@ -2032,7 +2032,7 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceName = "string",
 #'   Filters = list(
 #'     list(
@@ -2169,7 +2169,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$modify_db_cluster(
+#' svc$modify_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   NewDBClusterIdentifier = "string",
 #'   ApplyImmediately = TRUE|FALSE,
@@ -2242,7 +2242,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$modify_db_cluster_parameter_group(
+#' svc$modify_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -2329,7 +2329,7 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$modify_db_cluster_snapshot_attribute(
+#' svc$modify_db_cluster_snapshot_attribute(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   AttributeName = "string",
 #'   ValuesToAdd = list(
@@ -2443,7 +2443,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$modify_db_instance(
+#' svc$modify_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   DBInstanceClass = "string",
 #'   ApplyImmediately = TRUE|FALSE,
@@ -2494,7 +2494,7 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$modify_db_subnet_group(
+#' svc$modify_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -2550,7 +2550,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$reboot_db_instance(
+#' svc$reboot_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   ForceFailover = TRUE|FALSE
 #' )
@@ -2588,7 +2588,7 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -2643,7 +2643,7 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$reset_db_cluster_parameter_group(
+#' svc$reset_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -2770,7 +2770,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$restore_db_cluster_from_snapshot(
+#' svc$restore_db_cluster_from_snapshot(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -2913,7 +2913,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'
 #' @section Request syntax:
 #' ```
-#' docdb$restore_db_cluster_to_point_in_time(
+#' svc$restore_db_cluster_to_point_in_time(
 #'   DBClusterIdentifier = "string",
 #'   SourceDBClusterIdentifier = "string",
 #'   RestoreToTime = as.POSIXct(

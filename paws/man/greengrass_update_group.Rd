@@ -15,7 +15,7 @@ greengrass_update_group(GroupId, Name)
 Updates a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_group(
+\preformatted{svc$update_group(
   GroupId = "string",
   Name = "string"
 )

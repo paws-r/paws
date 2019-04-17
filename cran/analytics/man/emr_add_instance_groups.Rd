@@ -15,7 +15,7 @@ emr_add_instance_groups(InstanceGroups, JobFlowId)
 Adds one or more instance groups to a running cluster.
 }
 \section{Request syntax}{
-\preformatted{emr$add_instance_groups(
+\preformatted{svc$add_instance_groups(
   InstanceGroups = list(
     list(
       Name = "string",

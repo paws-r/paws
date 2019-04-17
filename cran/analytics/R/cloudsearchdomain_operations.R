@@ -346,7 +346,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearchdomain$search(
+#' svc$search(
 #'   cursor = "string",
 #'   expr = "string",
 #'   facet = "string",
@@ -414,7 +414,7 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearchdomain$suggest(
+#' svc$suggest(
 #'   query = "string",
 #'   suggester = "string",
 #'   size = 123
@@ -481,7 +481,7 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearchdomain$upload_documents(
+#' svc$upload_documents(
 #'   documents = raw,
 #'   contentType = "application/json"|"application/xml"
 #' )

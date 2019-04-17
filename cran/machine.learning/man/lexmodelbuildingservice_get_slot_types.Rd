@@ -36,7 +36,7 @@ about the \code{$LATEST} version of all slot types.
 The operation requires permission for the \code{lex:GetSlotTypes} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_slot_types(
+\preformatted{svc$get_slot_types(
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
@@ -47,7 +47,7 @@ The operation requires permission for the \code{lex:GetSlotTypes} action.
 \examples{
 # This example shows how to get a list of all of the slot types in your
 # account.
-\donttest{lexmodelbuildingservice$get_slot_types(
+\donttest{svc$get_slot_types(
   maxResults = 10L,
   nextToken = ""
 )}

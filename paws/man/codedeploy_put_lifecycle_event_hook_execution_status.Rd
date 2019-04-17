@@ -23,7 +23,7 @@ one or both lifecycle events (\code{BeforeAllowTraffic} and
 \code{AfterAllowTraffic}) and returns \code{Succeeded} or \code{Failed}.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$put_lifecycle_event_hook_execution_status(
+\preformatted{svc$put_lifecycle_event_hook_execution_status(
   deploymentId = "string",
   lifecycleEventHookExecutionId = "string",
   status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"

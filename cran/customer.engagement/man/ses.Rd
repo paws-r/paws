@@ -14,12 +14,6 @@ For a list of Amazon SES endpoints to use in service requests, see
 \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html}{Regions and Amazon SES}
 in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
 }
-\section{Example}{
-\preformatted{ses <- paws::ses()
-ses$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -96,3 +90,12 @@ ses$operation()
 }
 }
 
+\examples{
+# The following example creates a receipt rule set by cloning an existing
+# one:
+\donttest{svc$clone_receipt_rule_set(
+  OriginalRuleSetName = "RuleSetToClone",
+  RuleSetName = "RuleSetToCreate"
+)}
+
+}

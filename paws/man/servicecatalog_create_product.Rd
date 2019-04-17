@@ -44,7 +44,7 @@ returned for each repeated request.}
 Creates a product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_product(
+\preformatted{svc$create_product(
   AcceptLanguage = "string",
   Name = "string",
   Owner = "string",

@@ -45,7 +45,7 @@ Related Topics
 }
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_configuration_settings(
+\preformatted{svc$describe_configuration_settings(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string"
@@ -56,7 +56,7 @@ Related Topics
 \examples{
 # The following operation retrieves configuration settings for an
 # environment named my-env:
-\donttest{elasticbeanstalk$describe_configuration_settings(
+\donttest{svc$describe_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
 )}

@@ -47,7 +47,7 @@ algorithm resource that you created or subscribed to in AWS Marketplace,
 provide a value for \code{SourceAlgorithmSpecification}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_model_package(
+\preformatted{svc$create_model_package(
   ModelPackageName = "string",
   ModelPackageDescription = "string",
   InferenceSpecification = list(

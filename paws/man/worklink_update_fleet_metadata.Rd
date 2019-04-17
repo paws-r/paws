@@ -21,7 +21,7 @@ Region.}
 Updates fleet metadata, such as DisplayName.
 }
 \section{Request syntax}{
-\preformatted{worklink$update_fleet_metadata(
+\preformatted{svc$update_fleet_metadata(
   FleetArn = "string",
   DisplayName = "string",
   OptimizeForEndUserLocation = TRUE|FALSE

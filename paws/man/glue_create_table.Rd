@@ -20,7 +20,7 @@ catalog.}
 Creates a new table definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$create_table(
+\preformatted{svc$create_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(

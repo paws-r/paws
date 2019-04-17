@@ -21,7 +21,7 @@ see
 \url{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$deregister_ecs_cluster(
+\preformatted{svc$deregister_ecs_cluster(
   EcsClusterArn = "string"
 )
 }

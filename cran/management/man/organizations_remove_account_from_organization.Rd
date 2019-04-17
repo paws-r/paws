@@ -42,7 +42,7 @@ in as the member account and follow the steps at \href{http://docs.aws.amazon.co
 in the \emph{AWS Organizations User Guide}.
 }
 \section{Request syntax}{
-\preformatted{organizations$remove_account_from_organization(
+\preformatted{svc$remove_account_from_organization(
   AccountId = "string"
 )
 }
@@ -51,7 +51,7 @@ in the \emph{AWS Organizations User Guide}.
 \examples{
 # The following example shows you how to remove an account from an
 # organization:
-\donttest{organizations$remove_account_from_organization(
+\donttest{svc$remove_account_from_organization(
   AccountId = "333333333333"
 )}
 

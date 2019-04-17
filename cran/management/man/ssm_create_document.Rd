@@ -63,7 +63,7 @@ After you create a document, you can use CreateAssociation to associate
 it with one or more running instances.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_document(
+\preformatted{svc$create_document(
   Content = "string",
   Attachments = list(
     list(

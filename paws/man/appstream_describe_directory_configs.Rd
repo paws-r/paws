@@ -28,7 +28,7 @@ Although the response syntax in this topic includes the account
 password, this password is not returned in the actual response.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_directory_configs(
+\preformatted{svc$describe_directory_configs(
   DirectoryNames = list(
     "string"
   ),

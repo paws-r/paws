@@ -35,7 +35,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$detach_instances(
+\preformatted{svc$detach_instances(
   InstanceIds = list(
     "string"
   ),
@@ -48,7 +48,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example detaches the specified instance from the specified Auto
 # Scaling group.
-\donttest{autoscaling$detach_instances(
+\donttest{svc$detach_instances(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"

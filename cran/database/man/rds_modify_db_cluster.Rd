@@ -180,7 +180,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_cluster(
+\preformatted{svc$modify_db_cluster(
   DBClusterIdentifier = "string",
   NewDBClusterIdentifier = "string",
   ApplyImmediately = TRUE|FALSE,

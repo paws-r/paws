@@ -22,7 +22,7 @@ mediaconvert_create_queue(Description, Name, PricingPlan,
 Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$create_queue(
+\preformatted{svc$create_queue(
   Description = "string",
   Name = "string",
   PricingPlan = "ON_DEMAND"|"RESERVED",

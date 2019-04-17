@@ -15,7 +15,7 @@ greengrass_update_function_definition(FunctionDefinitionId, Name)
 Updates a Lambda function definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_function_definition(
+\preformatted{svc$update_function_definition(
   FunctionDefinitionId = "string",
   Name = "string"
 )

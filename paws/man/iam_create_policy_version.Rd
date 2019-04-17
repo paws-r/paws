@@ -52,7 +52,7 @@ For more information about managed policy versions, see \href{http://docs.aws.am
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_policy_version(
+\preformatted{svc$create_policy_version(
   PolicyArn = "string",
   PolicyDocument = "string",
   SetAsDefault = TRUE|FALSE

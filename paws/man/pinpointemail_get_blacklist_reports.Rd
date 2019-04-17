@@ -17,7 +17,7 @@ Retrieve a list of the blacklists that your dedicated IP addresses
 appear on.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_blacklist_reports(
+\preformatted{svc$get_blacklist_reports(
   BlacklistItemNames = list(
     "string"
   )

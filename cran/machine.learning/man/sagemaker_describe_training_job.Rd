@@ -13,7 +13,7 @@ sagemaker_describe_training_job(TrainingJobName)
 Returns information about a training job.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_training_job(
+\preformatted{svc$describe_training_job(
   TrainingJobName = "string"
 )
 }

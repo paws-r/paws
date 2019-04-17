@@ -53,7 +53,7 @@ enable SriovNetSupport on an instance and create an AMI from the
 instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_image_attribute(
+\preformatted{svc$modify_image_attribute(
   Attribute = "string",
   Description = list(
     Value = "string"
@@ -91,7 +91,7 @@ instance.
 
 \examples{
 # This example makes the specified AMI public.
-\donttest{ec2$modify_image_attribute(
+\donttest{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(
@@ -104,7 +104,7 @@ instance.
 
 # This example grants launch permissions for the specified AMI to the
 # specified AWS account.
-\donttest{ec2$modify_image_attribute(
+\donttest{svc$modify_image_attribute(
   ImageId = "ami-5731123e",
   LaunchPermission = list(
     Add = list(

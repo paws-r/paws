@@ -20,7 +20,7 @@ for example,
 Deletes the recovery point specified by a recovery point ID.
 }
 \section{Request syntax}{
-\preformatted{backup$delete_recovery_point(
+\preformatted{svc$delete_recovery_point(
   BackupVaultName = "string",
   RecoveryPointArn = "string"
 )

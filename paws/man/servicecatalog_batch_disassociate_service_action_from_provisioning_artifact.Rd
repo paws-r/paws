@@ -24,7 +24,7 @@ Disassociates a batch of self-service actions from the specified
 provisioning artifact.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$batch_disassociate_service_action_from_provisioning_artifact(
+\preformatted{svc$batch_disassociate_service_action_from_provisioning_artifact(
   ServiceActionAssociations = list(
     list(
       ServiceActionId = "string",

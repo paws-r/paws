@@ -46,7 +46,7 @@ can't be recovered. Manual DB cluster snapshots of the specified DB
 cluster are not deleted.
 }
 \section{Request syntax}{
-\preformatted{docdb$delete_db_cluster(
+\preformatted{svc$delete_db_cluster(
   DBClusterIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"

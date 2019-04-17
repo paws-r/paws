@@ -15,7 +15,7 @@ apigateway_get_stage(restApiId, stageName)
 Gets information about a Stage resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_stage(
+\preformatted{svc$get_stage(
   restApiId = "string",
   stageName = "string"
 )

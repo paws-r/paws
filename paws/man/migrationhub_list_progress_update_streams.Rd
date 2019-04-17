@@ -19,7 +19,7 @@ Lists progress update streams associated with the user account making
 this call.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$list_progress_update_streams(
+\preformatted{svc$list_progress_update_streams(
   NextToken = "string",
   MaxResults = 123
 )

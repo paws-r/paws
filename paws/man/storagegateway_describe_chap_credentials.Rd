@@ -19,7 +19,7 @@ credentials information for a specified iSCSI target, one for each
 target-initiator pair.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_chap_credentials(
+\preformatted{svc$describe_chap_credentials(
   TargetARN = "string"
 )
 }
@@ -29,7 +29,7 @@ target-initiator pair.
 # Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 # credentials information for a specified iSCSI target, one for each
 # target-initiator pair.
-\donttest{storagegateway$describe_chap_credentials(
+\donttest{svc$describe_chap_credentials(
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
 )}
 

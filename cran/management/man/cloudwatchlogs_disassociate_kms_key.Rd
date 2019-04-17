@@ -24,7 +24,7 @@ requested.
 Note that it can take up to 5 minutes for this operation to take effect.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$disassociate_kms_key(
+\preformatted{svc$disassociate_kms_key(
   logGroupName = "string"
 )
 }

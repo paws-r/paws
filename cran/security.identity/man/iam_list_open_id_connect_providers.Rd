@@ -12,7 +12,7 @@ Lists information about the IAM OpenID Connect (OIDC) provider resource
 objects defined in the AWS account.
 }
 \section{Request syntax}{
-\preformatted{iam$list_open_id_connect_providers()
+\preformatted{svc$list_open_id_connect_providers()
 }
 }
 

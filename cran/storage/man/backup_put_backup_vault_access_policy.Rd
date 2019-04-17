@@ -21,7 +21,7 @@ on the target backup vault. Requires a backup vault name and an access
 policy document in JSON format.
 }
 \section{Request syntax}{
-\preformatted{backup$put_backup_vault_access_policy(
+\preformatted{svc$put_backup_vault_access_policy(
   BackupVaultName = "string",
   Policy = "string"
 )

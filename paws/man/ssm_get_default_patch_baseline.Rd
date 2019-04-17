@@ -19,7 +19,7 @@ If you do not specify an operating system value, the default patch
 baseline for Windows is returned.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_default_patch_baseline(
+\preformatted{svc$get_default_patch_baseline(
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
 )
 }

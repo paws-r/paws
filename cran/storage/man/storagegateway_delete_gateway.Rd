@@ -30,7 +30,7 @@ you can delete your snapshots using the Amazon EC2 console. For more
 information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gateway Detail Page}.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_gateway(
+\preformatted{svc$delete_gateway(
   GatewayARN = "string"
 )
 }
@@ -39,7 +39,7 @@ information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gat
 \examples{
 # This operation deletes the gateway, but not the gateway's VM from the
 # host computer.
-\donttest{storagegateway$delete_gateway(
+\donttest{svc$delete_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

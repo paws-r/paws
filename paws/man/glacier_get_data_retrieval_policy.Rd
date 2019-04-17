@@ -21,7 +21,7 @@ and region specified in the GET request. For more information about data
 retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 }
 \section{Request syntax}{
-\preformatted{glacier$get_data_retrieval_policy(
+\preformatted{svc$get_data_retrieval_policy(
   accountId = "string"
 )
 }
@@ -29,7 +29,7 @@ retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/de
 
 \examples{
 # The example returns the current data retrieval policy for the account.
-\donttest{glacier$get_data_retrieval_policy(
+\donttest{svc$get_data_retrieval_policy(
   accountId = "-"
 )}
 

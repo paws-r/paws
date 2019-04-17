@@ -29,7 +29,7 @@ The results of this list are not in any particular order. Please get the
 list and sort locally if needed.
 }
 \section{Request syntax}{
-\preformatted{comprehend$list_entity_recognizers(
+\preformatted{svc$list_entity_recognizers(
   Filter = list(
     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
     SubmitTimeBefore = as.POSIXct(

@@ -24,7 +24,7 @@ of \code{START_FAILED} can indicate an error condition.
 No response is returned from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$start_server(
+\preformatted{svc$start_server(
   ServerId = "string"
 )
 }

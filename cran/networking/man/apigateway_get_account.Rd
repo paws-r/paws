@@ -10,7 +10,7 @@ apigateway_get_account()
 Gets information about the current Account resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_account()
+\preformatted{svc$get_account()
 }
 }
 

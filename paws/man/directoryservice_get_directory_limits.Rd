@@ -10,7 +10,7 @@ directoryservice_get_directory_limits()
 Obtains directory limit information for the current region.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$get_directory_limits()
+\preformatted{svc$get_directory_limits()
 }
 }
 

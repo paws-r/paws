@@ -24,7 +24,7 @@ information, and the current status of the \code{MLModel}.
 \code{GetMLModel} provides results in normal or verbose format.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$get_ml_model(
+\preformatted{svc$get_ml_model(
   MLModelId = "string",
   Verbose = TRUE|FALSE
 )

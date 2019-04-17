@@ -25,7 +25,7 @@ The private key is used when you call the IssueCertificate operation or
 the RevokeCertificate operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$describe_certificate_authority_audit_report(
+\preformatted{svc$describe_certificate_authority_audit_report(
   CertificateAuthorityArn = "string",
   AuditReportId = "string"
 )

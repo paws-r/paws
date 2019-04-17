@@ -19,7 +19,7 @@ with Amazon DocumentDB resources. or in a \code{Condition} statement in an
 AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
 }
 \section{Request syntax}{
-\preformatted{docdb$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(

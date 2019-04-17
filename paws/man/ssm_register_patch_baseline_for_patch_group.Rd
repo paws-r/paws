@@ -16,7 +16,7 @@ baseline.}
 Registers a patch baseline for a patch group.
 }
 \section{Request syntax}{
-\preformatted{ssm$register_patch_baseline_for_patch_group(
+\preformatted{svc$register_patch_baseline_for_patch_group(
   BaselineId = "string",
   PatchGroup = "string"
 )

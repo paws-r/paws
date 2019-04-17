@@ -13,7 +13,7 @@ greengrass_delete_subscription_definition(SubscriptionDefinitionId)
 Deletes a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_subscription_definition(
+\preformatted{svc$delete_subscription_definition(
   SubscriptionDefinitionId = "string"
 )
 }

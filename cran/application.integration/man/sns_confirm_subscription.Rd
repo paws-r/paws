@@ -25,7 +25,7 @@ Amazon Resource Name (ARN). This call requires an AWS signature only
 when the \code{AuthenticateOnUnsubscribe} flag is set to "true".
 }
 \section{Request syntax}{
-\preformatted{sns$confirm_subscription(
+\preformatted{svc$confirm_subscription(
   TopicArn = "string",
   Token = "string",
   AuthenticateOnUnsubscribe = "string"

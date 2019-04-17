@@ -9,12 +9,6 @@ cloudhsmv2()
 \description{
 For more information about AWS CloudHSM, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
 }
-\section{Example}{
-\preformatted{cloudhsmv2 <- paws::cloudhsmv2()
-cloudhsmv2$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -34,3 +28,9 @@ cloudhsmv2$operation()
 }
 }
 
+\examples{
+\donttest{svc$copy_backup_to_region(
+  Foo = 123
+)}
+
+}

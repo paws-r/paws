@@ -17,7 +17,7 @@ task definitions, clusters, and container instances.}
 Deletes specified tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{ecs$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"
@@ -28,7 +28,7 @@ Deletes specified tags from a resource.
 
 \examples{
 # This example deletes the 'team' tag from the 'dev' cluster.
-\donttest{ecs$untag_resource(
+\donttest{svc$untag_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
   tagKeys = list(
     "team"

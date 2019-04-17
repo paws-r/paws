@@ -27,7 +27,7 @@ tests that are complete, you can use the \code{GetDeliverabilityTestReport}
 operation to view the results.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$list_deliverability_test_reports(
+\preformatted{svc$list_deliverability_test_reports(
   NextToken = "string",
   PageSize = 123
 )

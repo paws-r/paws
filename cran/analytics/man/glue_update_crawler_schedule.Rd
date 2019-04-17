@@ -18,7 +18,7 @@ For example, to run something every day at 12:15 UTC, you would specify:
 Updates the schedule of a crawler using a \code{cron} expression.
 }
 \section{Request syntax}{
-\preformatted{glue$update_crawler_schedule(
+\preformatted{svc$update_crawler_schedule(
   CrawlerName = "string",
   Schedule = "string"
 )

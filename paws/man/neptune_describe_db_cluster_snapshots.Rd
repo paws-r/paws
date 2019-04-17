@@ -92,7 +92,7 @@ Returns information about DB cluster snapshots. This API action supports
 pagination.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_cluster_snapshots(
+\preformatted{svc$describe_db_cluster_snapshots(
   DBClusterIdentifier = "string",
   DBClusterSnapshotIdentifier = "string",
   SnapshotType = "string",

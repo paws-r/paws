@@ -16,7 +16,7 @@ in the order specified in this list.}
 Changes information about the specified API.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_rest_api(
+\preformatted{svc$update_rest_api(
   restApiId = "string",
   patchOperations = list(
     list(

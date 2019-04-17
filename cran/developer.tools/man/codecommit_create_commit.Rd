@@ -40,7 +40,7 @@ prior commits.}
 Creates a commit for a repository on the tip of a specified branch.
 }
 \section{Request syntax}{
-\preformatted{codecommit$create_commit(
+\preformatted{svc$create_commit(
   repositoryName = "string",
   branchName = "string",
   parentCommitId = "string",

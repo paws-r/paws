@@ -78,12 +78,6 @@ deployment, and to get details about Amazon ECS service deployments.
 \item \href{https://forums.aws.amazon.com/forum.jspa?forumID=179}{AWS CodeDeploy Developer Forum}
 }
 }
-\section{Example}{
-\preformatted{codedeploy <- paws::codedeploy()
-codedeploy$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -133,3 +127,9 @@ codedeploy$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags_to_on_premises_instances(
+  Foo = 123
+)}
+
+}

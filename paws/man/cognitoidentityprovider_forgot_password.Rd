@@ -36,7 +36,7 @@ number nor a verified email exists, \code{InvalidParameterException} is
 thrown. To use the confirmation code for resetting the password, call .
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$forgot_password(
+\preformatted{svc$forgot_password(
   ClientId = "string",
   SecretHash = "string",
   UserContextData = list(

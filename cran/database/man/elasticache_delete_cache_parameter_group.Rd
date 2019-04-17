@@ -17,7 +17,7 @@ Deletes the specified cache parameter group. You cannot delete a cache
 parameter group if it is associated with any cache clusters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_cache_parameter_group(
+\preformatted{svc$delete_cache_parameter_group(
   CacheParameterGroupName = "string"
 )
 }

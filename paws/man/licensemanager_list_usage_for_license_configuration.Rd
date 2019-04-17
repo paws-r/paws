@@ -26,7 +26,7 @@ this action to audit the current license consumption for any license
 inventory and configuration.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_usage_for_license_configuration(
+\preformatted{svc$list_usage_for_license_configuration(
   LicenseConfigurationArn = "string",
   MaxResults = 123,
   NextToken = "string",

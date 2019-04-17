@@ -66,12 +66,6 @@ you're using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}
 
 This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application DiscoveryService UserGuide}.
 }
-\section{Example}{
-\preformatted{applicationdiscoveryservice <- paws::applicationdiscoveryservice()
-applicationdiscoveryservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -103,3 +97,9 @@ applicationdiscoveryservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_configuration_items_to_application(
+  Foo = 123
+)}
+
+}

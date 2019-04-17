@@ -93,7 +93,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_instance_status(
+\preformatted{svc$describe_instance_status(
   Filters = list(
     list(
       Name = "string",
@@ -115,7 +115,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes the current status of the specified instance.
-\donttest{ec2$describe_instance_status(
+\donttest{svc$describe_instance_status(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )

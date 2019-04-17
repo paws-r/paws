@@ -24,12 +24,6 @@ can monitor your own custom metrics. With CloudWatch, you gain
 system-wide visibility into resource utilization, application
 performance, and operational health.
 }
-\section{Example}{
-\preformatted{cloudwatch <- paws::cloudwatch()
-cloudwatch$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ cloudwatch$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_alarms(
+  Foo = 123
+)}
+
+}

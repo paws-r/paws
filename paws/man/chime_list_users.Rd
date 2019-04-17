@@ -22,7 +22,7 @@ can specify an email address to list only the user that the email
 address belongs to.
 }
 \section{Request syntax}{
-\preformatted{chime$list_users(
+\preformatted{svc$list_users(
   AccountId = "string",
   UserEmail = "string",
   MaxResults = 123,

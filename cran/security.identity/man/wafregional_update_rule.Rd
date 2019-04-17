@@ -59,7 +59,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$update_rule(
+\preformatted{svc$update_rule(
   RuleId = "string",
   ChangeToken = "string",
   Updates = list(
@@ -79,7 +79,7 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \examples{
 # The following example deletes a Predicate object in a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{wafregional$update_rule(
+\donttest{svc$update_rule(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
   Updates = list(

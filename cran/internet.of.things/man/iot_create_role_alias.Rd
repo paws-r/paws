@@ -18,7 +18,7 @@ role without having to update the device.}
 Creates a role alias.
 }
 \section{Request syntax}{
-\preformatted{iot$create_role_alias(
+\preformatted{svc$create_role_alias(
   roleAlias = "string",
   roleArn = "string",
   credentialDurationSeconds = 123

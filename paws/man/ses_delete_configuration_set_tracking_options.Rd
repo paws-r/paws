@@ -26,7 +26,7 @@ specified configuration set to capture open and click events using the
 standard, Amazon SES-operated domains.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_configuration_set_tracking_options(
+\preformatted{svc$delete_configuration_set_tracking_options(
   ConfigurationSetName = "string"
 )
 }

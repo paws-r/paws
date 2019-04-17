@@ -27,7 +27,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$remove_permission(
+\preformatted{svc$remove_permission(
   QueueUrl = "string",
   Label = "string"
 )

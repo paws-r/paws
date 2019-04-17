@@ -60,7 +60,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_instance_credit_specifications(
+\preformatted{svc$describe_instance_credit_specifications(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(

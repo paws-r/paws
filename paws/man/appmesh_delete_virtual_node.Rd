@@ -19,7 +19,7 @@ You must delete any virtual services that list a virtual node as a
 service provider before you can delete the virtual node itself.
 }
 \section{Request syntax}{
-\preformatted{appmesh$delete_virtual_node(
+\preformatted{svc$delete_virtual_node(
   meshName = "string",
   virtualNodeName = "string"
 )

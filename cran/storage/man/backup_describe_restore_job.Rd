@@ -15,7 +15,7 @@ Returns metadata associated with a restore job that is specified by a
 job ID.
 }
 \section{Request syntax}{
-\preformatted{backup$describe_restore_job(
+\preformatted{svc$describe_restore_job(
   RestoreJobId = "string"
 )
 }

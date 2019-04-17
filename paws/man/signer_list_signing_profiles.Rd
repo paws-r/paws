@@ -27,7 +27,7 @@ values that AWS Signer returns in the \code{nextToken} parameter until all of
 your signing jobs have been returned.
 }
 \section{Request syntax}{
-\preformatted{signer$list_signing_profiles(
+\preformatted{svc$list_signing_profiles(
   includeCanceled = TRUE|FALSE,
   maxResults = 123,
   nextToken = "string"

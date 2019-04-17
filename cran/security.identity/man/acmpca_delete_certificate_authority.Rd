@@ -42,7 +42,7 @@ restoration window of a Private CA in the \code{DELETED} state. To restore an
 eligible CA, call the RestoreCertificateAuthority operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$delete_certificate_authority(
+\preformatted{svc$delete_certificate_authority(
   CertificateAuthorityArn = "string",
   PermanentDeletionTimeInDays = 123
 )

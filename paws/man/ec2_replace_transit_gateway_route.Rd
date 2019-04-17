@@ -29,7 +29,7 @@ Replaces the specified route in the specified transit gateway route
 table.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_transit_gateway_route(
+\preformatted{svc$replace_transit_gateway_route(
   DestinationCidrBlock = "string",
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",

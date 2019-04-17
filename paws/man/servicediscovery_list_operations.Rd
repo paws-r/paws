@@ -34,7 +34,7 @@ to be returned by \code{ListOperations}.}
 Lists operations that match the criteria that you specify.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$list_operations(
+\preformatted{svc$list_operations(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

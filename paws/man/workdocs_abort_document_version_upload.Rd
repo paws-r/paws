@@ -24,7 +24,7 @@ call only when it no longer intends to upload the document version, or
 fails to do so.
 }
 \section{Request syntax}{
-\preformatted{workdocs$abort_document_version_upload(
+\preformatted{svc$abort_document_version_upload(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string"

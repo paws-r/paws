@@ -30,7 +30,7 @@ parameter and retrying the request.}
 Returns the descriptions of the reserved nodes.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_reserved_nodes(
+\preformatted{svc$describe_reserved_nodes(
   ReservedNodeId = "string",
   MaxRecords = 123,
   Marker = "string"

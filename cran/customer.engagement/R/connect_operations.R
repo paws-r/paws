@@ -53,7 +53,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' connect$create_user(
+#' svc$create_user(
 #'   Username = "string",
 #'   Password = "string",
 #'   IdentityInfo = list(
@@ -114,7 +114,7 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' connect$delete_user(
+#' svc$delete_user(
 #'   InstanceId = "string",
 #'   UserId = "string"
 #' )
@@ -159,7 +159,7 @@ connect_delete_user <- function(InstanceId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$describe_user(
+#' svc$describe_user(
 #'   UserId = "string",
 #'   InstanceId = "string"
 #' )
@@ -204,7 +204,7 @@ connect_describe_user <- function(UserId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$describe_user_hierarchy_group(
+#' svc$describe_user_hierarchy_group(
 #'   HierarchyGroupId = "string",
 #'   InstanceId = "string"
 #' )
@@ -248,7 +248,7 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
 #'
 #' @section Request syntax:
 #' ```
-#' connect$describe_user_hierarchy_structure(
+#' svc$describe_user_hierarchy_structure(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -286,7 +286,7 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$get_contact_attributes(
+#' svc$get_contact_attributes(
 #'   InstanceId = "string",
 #'   InitialContactId = "string"
 #' )
@@ -411,7 +411,7 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$get_current_metric_data(
+#' svc$get_current_metric_data(
 #'   InstanceId = "string",
 #'   Filters = list(
 #'     Queues = list(
@@ -471,7 +471,7 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' connect$get_federation_token(
+#' svc$get_federation_token(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -731,7 +731,7 @@ connect_get_federation_token <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$get_metric_data(
+#' svc$get_metric_data(
 #'   InstanceId = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -808,7 +808,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #'
 #' @section Request syntax:
 #' ```
-#' connect$list_routing_profiles(
+#' svc$list_routing_profiles(
 #'   InstanceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -859,7 +859,7 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' connect$list_security_profiles(
+#' svc$list_security_profiles(
 #'   InstanceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -910,7 +910,7 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' connect$list_user_hierarchy_groups(
+#' svc$list_user_hierarchy_groups(
 #'   InstanceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -957,7 +957,7 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' connect$list_users(
+#' svc$list_users(
 #'   InstanceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1045,7 +1045,7 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' connect$start_outbound_voice_contact(
+#' svc$start_outbound_voice_contact(
 #'   DestinationPhoneNumber = "string",
 #'   ContactFlowId = "string",
 #'   InstanceId = "string",
@@ -1098,7 +1098,7 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 #'
 #' @section Request syntax:
 #' ```
-#' connect$stop_contact(
+#' svc$stop_contact(
 #'   ContactId = "string",
 #'   InstanceId = "string"
 #' )
@@ -1175,7 +1175,7 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_contact_attributes(
+#' svc$update_contact_attributes(
 #'   InitialContactId = "string",
 #'   InstanceId = "string",
 #'   Attributes = list(
@@ -1222,7 +1222,7 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_user_hierarchy(
+#' svc$update_user_hierarchy(
 #'   HierarchyGroupId = "string",
 #'   UserId = "string",
 #'   InstanceId = "string"
@@ -1269,7 +1269,7 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_user_identity_info(
+#' svc$update_user_identity_info(
 #'   IdentityInfo = list(
 #'     FirstName = "string",
 #'     LastName = "string",
@@ -1322,7 +1322,7 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_user_phone_config(
+#' svc$update_user_phone_config(
 #'   PhoneConfig = list(
 #'     PhoneType = "SOFT_PHONE"|"DESK_PHONE",
 #'     AutoAccept = TRUE|FALSE,
@@ -1373,7 +1373,7 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_user_routing_profile(
+#' svc$update_user_routing_profile(
 #'   RoutingProfileId = "string",
 #'   UserId = "string",
 #'   InstanceId = "string"
@@ -1419,7 +1419,7 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
 #'
 #' @section Request syntax:
 #' ```
-#' connect$update_user_security_profiles(
+#' svc$update_user_security_profiles(
 #'   SecurityProfileIds = list(
 #'     "string"
 #'   ),

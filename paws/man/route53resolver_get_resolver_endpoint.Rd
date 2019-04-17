@@ -17,7 +17,7 @@ it's an inbound or an outbound resolver endpoint, and the current
 status of the endpoint.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$get_resolver_endpoint(
+\preformatted{svc$get_resolver_endpoint(
   ResolverEndpointId = "string"
 )
 }

@@ -13,7 +13,7 @@ medialive_describe_reservation(ReservationId)
 Get details for a reservation.
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_reservation(
+\preformatted{svc$describe_reservation(
   ReservationId = "string"
 )
 }

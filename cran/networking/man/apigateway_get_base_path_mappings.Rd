@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Represents a collection of BasePathMapping resources.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_base_path_mappings(
+\preformatted{svc$get_base_path_mappings(
   domainName = "string",
   position = "string",
   limit = 123

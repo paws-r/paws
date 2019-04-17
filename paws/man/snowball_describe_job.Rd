@@ -16,7 +16,7 @@ Returns information about a specific job including shipping information,
 job status, and other important metadata.
 }
 \section{Request syntax}{
-\preformatted{snowball$describe_job(
+\preformatted{svc$describe_job(
   JobId = "string"
 )
 }
@@ -24,7 +24,7 @@ job status, and other important metadata.
 
 \examples{
 # This operation describes a job you've created for AWS Snowball.
-\donttest{snowball$describe_job(
+\donttest{svc$describe_job(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
 )}
 

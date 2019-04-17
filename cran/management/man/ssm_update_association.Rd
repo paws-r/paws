@@ -90,7 +90,7 @@ Updates an association. You can update the association name and version,
 the document version, schedule, parameters, and Amazon S3 output.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_association(
+\preformatted{svc$update_association(
   AssociationId = "string",
   Parameters = list(
     list(

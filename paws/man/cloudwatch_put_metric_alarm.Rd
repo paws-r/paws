@@ -226,7 +226,7 @@ necessary service-linked role for you. The service-linked role is called
 \code{AWSServiceRoleForCloudWatchEvents}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$put_metric_alarm(
+\preformatted{svc$put_metric_alarm(
   AlarmName = "string",
   AlarmDescription = "string",
   ActionsEnabled = TRUE|FALSE,

@@ -21,7 +21,7 @@ greengrass_create_resource_definition(AmznClientToken, InitialVersion,
 Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_resource_definition(
+\preformatted{svc$create_resource_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Resources = list(

@@ -16,7 +16,7 @@ or AWS account.}
 Gets information about a deployment group.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_deployment_group(
+\preformatted{svc$get_deployment_group(
   applicationName = "string",
   deploymentGroupName = "string"
 )

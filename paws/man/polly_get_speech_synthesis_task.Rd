@@ -16,7 +16,7 @@ including the status of the task, and a link to the S3 bucket containing
 the output of the task.
 }
 \section{Request syntax}{
-\preformatted{polly$get_speech_synthesis_task(
+\preformatted{svc$get_speech_synthesis_task(
   TaskId = "string"
 )
 }

@@ -17,7 +17,7 @@ Deletes the Amazon Route 53 DNS records and health check, if any, that
 AWS Cloud Map created for the specified instance.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$deregister_instance(
+\preformatted{svc$deregister_instance(
   ServiceId = "string",
   InstanceId = "string"
 )

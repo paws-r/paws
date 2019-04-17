@@ -169,7 +169,7 @@ with the largest number of running tasks for this service.
 }
 }
 \section{Request syntax}{
-\preformatted{ecs$update_service(
+\preformatted{svc$update_service(
   cluster = "string",
   service = "string",
   desiredCount = 123,
@@ -199,14 +199,14 @@ with the largest number of running tasks for this service.
 \examples{
 # This example updates the my-http-service service to use the
 # amazon-ecs-sample task definition.
-\donttest{ecs$update_service(
+\donttest{svc$update_service(
   service = "my-http-service",
   taskDefinition = "amazon-ecs-sample"
 )}
 
 # This example updates the desired count of the my-http-service service to
 # 10.
-\donttest{ecs$update_service(
+\donttest{svc$update_service(
   desiredCount = 10L,
   service = "my-http-service"
 )}

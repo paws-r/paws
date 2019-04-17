@@ -21,7 +21,7 @@ For more information about your VPC and internet gateway, see the
 \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_internet_gateway(
+\preformatted{svc$create_internet_gateway(
   DryRun = TRUE|FALSE
 )
 }
@@ -29,7 +29,7 @@ For more information about your VPC and internet gateway, see the
 
 \examples{
 # This example creates an Internet gateway.
-\donttest{ec2$create_internet_gateway()}
+\donttest{svc$create_internet_gateway()}
 
 }
 \keyword{internal}

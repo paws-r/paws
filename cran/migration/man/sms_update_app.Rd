@@ -23,7 +23,7 @@ sms_update_app(appId, name, description, roleName, serverGroups, tags)
 Updates an application.
 }
 \section{Request syntax}{
-\preformatted{sms$update_app(
+\preformatted{svc$update_app(
   appId = "string",
   name = "string",
   description = "string",

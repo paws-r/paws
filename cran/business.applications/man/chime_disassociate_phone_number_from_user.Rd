@@ -17,7 +17,7 @@ Disassociates the primary provisioned phone number from the specified
 Amazon Chime user.
 }
 \section{Request syntax}{
-\preformatted{chime$disassociate_phone_number_from_user(
+\preformatted{svc$disassociate_phone_number_from_user(
   AccountId = "string",
   UserId = "string"
 )

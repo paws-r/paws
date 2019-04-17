@@ -33,7 +33,7 @@ Otherwise, there is no place to host the app's pages, and the service
 will throw an error.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$set_ui_customization(
+\preformatted{svc$set_ui_customization(
   UserPoolId = "string",
   ClientId = "string",
   CSS = "string",

@@ -18,7 +18,7 @@ For more information about tags, see \href{https://docs.aws.amazon.com/appstream
 in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{appstream$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

@@ -13,7 +13,7 @@ devicefarm_get_device_pool(arn)
 Gets information about a device pool.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_device_pool(
+\preformatted{svc$get_device_pool(
   arn = "string"
 )
 }
@@ -22,7 +22,7 @@ Gets information about a device pool.
 \examples{
 # The following example returns information about a specific device pool,
 # given a project ARN.
-\donttest{devicefarm$get_device_pool(
+\donttest{svc$get_device_pool(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 )}
 

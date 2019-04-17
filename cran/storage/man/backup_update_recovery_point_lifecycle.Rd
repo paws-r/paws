@@ -42,7 +42,7 @@ a minimum of 90 days. Therefore, the "expire after days" setting must be
 has been transitioned to cold.
 }
 \section{Request syntax}{
-\preformatted{backup$update_recovery_point_lifecycle(
+\preformatted{svc$update_recovery_point_lifecycle(
   BackupVaultName = "string",
   RecoveryPointArn = "string",
   Lifecycle = list(

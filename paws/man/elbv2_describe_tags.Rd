@@ -15,7 +15,7 @@ tags for one or more Application Load Balancers, Network Load Balancers,
 and target groups.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceArns = list(
     "string"
   )
@@ -25,7 +25,7 @@ and target groups.
 
 \examples{
 # This example describes the tags assigned to the specified load balancer.
-\donttest{elbv2$describe_tags(
+\donttest{svc$describe_tags(
   ResourceArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   )

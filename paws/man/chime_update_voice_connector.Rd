@@ -17,7 +17,7 @@ chime_update_voice_connector(VoiceConnectorId, Name, RequireEncryption)
 Updates details for the specified Amazon Chime Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$update_voice_connector(
+\preformatted{svc$update_voice_connector(
   VoiceConnectorId = "string",
   Name = "string",
   RequireEncryption = TRUE|FALSE

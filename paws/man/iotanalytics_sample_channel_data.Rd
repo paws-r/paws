@@ -23,7 +23,7 @@ Retrieves a sample of messages from the specified channel ingested
 during the specified timeframe. Up to 10 messages can be retrieved.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$sample_channel_data(
+\preformatted{svc$sample_channel_data(
   channelName = "string",
   maxMessages = 123,
   startTime = as.POSIXct(

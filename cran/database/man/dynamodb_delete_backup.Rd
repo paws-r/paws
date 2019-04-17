@@ -16,7 +16,7 @@ Deletes an existing backup of a table.
 You can call \code{DeleteBackup} at a maximum rate of 10 times per second.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$delete_backup(
+\preformatted{svc$delete_backup(
   BackupArn = "string"
 )
 }

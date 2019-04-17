@@ -13,7 +13,7 @@ cognitoidentityprovider_delete_user_pool(UserPoolId)
 Deletes the specified Amazon Cognito user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_user_pool(
+\preformatted{svc$delete_user_pool(
   UserPoolId = "string"
 )
 }

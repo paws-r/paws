@@ -32,7 +32,7 @@ In the request, you must provide the Amazon Resource Name (ARN) of the
 storage volume you want to delete.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_volume(
+\preformatted{svc$delete_volume(
   VolumeARN = "string"
 )
 }
@@ -41,7 +41,7 @@ storage volume you want to delete.
 \examples{
 # Deletes the specified gateway volume that you previously created using
 # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
-\donttest{storagegateway$delete_volume(
+\donttest{svc$delete_volume(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}
 

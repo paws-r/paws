@@ -29,7 +29,7 @@ This operation is only useful for long-lived tasks to report the
 liveliness of the task.
 }
 \section{Request syntax}{
-\preformatted{sfn$send_task_heartbeat(
+\preformatted{svc$send_task_heartbeat(
   taskToken = "string"
 )
 }

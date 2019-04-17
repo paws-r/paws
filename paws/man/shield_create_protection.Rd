@@ -41,7 +41,7 @@ resources at once, use the \href{https://console.aws.amazon.com/waf/}{AWS WAF co
 and \href{https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html}{Add AWS Shield Advanced Protection to more AWS Resources}.
 }
 \section{Request syntax}{
-\preformatted{shield$create_protection(
+\preformatted{svc$create_protection(
   Name = "string",
   ResourceArn = "string"
 )

@@ -18,7 +18,7 @@ All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   EndpointArn = "string"
 )
 }
@@ -28,7 +28,7 @@ delete the endpoint.
 # Deletes the specified endpoint. All tasks associated with the endpoint
 # must be deleted before you can delete the endpoint.
 # 
-\donttest{databasemigrationservice$delete_endpoint(
+\donttest{svc$delete_endpoint(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM"
 )}
 

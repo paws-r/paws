@@ -60,7 +60,7 @@ server or virtual machine that has been registered with EC2 is called a
 managed instance. For more information about activations, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting Up Systems Manager in Hybrid Environments}.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_activation(
+\preformatted{svc$create_activation(
   Description = "string",
   DefaultInstanceName = "string",
   IamRole = "string",

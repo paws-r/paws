@@ -22,11 +22,10 @@ NULL
 #' system-wide visibility into resource utilization, application
 #' performance, and operational health.
 #'
-#' @section Example:
-#' ```
-#' cloudwatch <- paws::cloudwatch()
-#' cloudwatch$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_alarms(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

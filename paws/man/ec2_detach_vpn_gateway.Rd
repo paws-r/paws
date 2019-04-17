@@ -29,7 +29,7 @@ you can delete the VPC or attach a different VPC to the virtual private
 gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$detach_vpn_gateway(
+\preformatted{svc$detach_vpn_gateway(
   VpcId = "string",
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE

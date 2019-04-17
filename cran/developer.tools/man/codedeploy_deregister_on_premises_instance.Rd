@@ -13,7 +13,7 @@ codedeploy_deregister_on_premises_instance(instanceName)
 Deregisters an on-premises instance.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$deregister_on_premises_instance(
+\preformatted{svc$deregister_on_premises_instance(
   instanceName = "string"
 )
 }

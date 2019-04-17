@@ -9,12 +9,6 @@ mq()
 \description{
 Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
 }
-\section{Example}{
-\preformatted{mq <- paws::mq()
-mq$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -41,3 +35,9 @@ mq$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_broker(
+  Foo = 123
+)}
+
+}

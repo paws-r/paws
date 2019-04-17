@@ -16,7 +16,7 @@ iot_update_indexing_configuration(thingIndexingConfiguration,
 Updates the search configuration.
 }
 \section{Request syntax}{
-\preformatted{iot$update_indexing_configuration(
+\preformatted{svc$update_indexing_configuration(
   thingIndexingConfiguration = list(
     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
     thingConnectivityIndexingMode = "OFF"|"STATUS"

@@ -15,7 +15,7 @@ cognitoidentityprovider_delete_user_pool_domain(Domain, UserPoolId)
 Deletes a domain for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_user_pool_domain(
+\preformatted{svc$delete_user_pool_domain(
   Domain = "string",
   UserPoolId = "string"
 )

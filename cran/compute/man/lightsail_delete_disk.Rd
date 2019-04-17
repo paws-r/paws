@@ -21,7 +21,7 @@ resource tags applied to the resource identified by diskName. For more
 information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_disk(
+\preformatted{svc$delete_disk(
   diskName = "string"
 )
 }

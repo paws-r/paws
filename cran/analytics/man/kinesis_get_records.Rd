@@ -80,7 +80,7 @@ might have time stamps that are out of order.
 This operation has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$get_records(
+\preformatted{svc$get_records(
   ShardIterator = "string",
   Limit = 123
 )

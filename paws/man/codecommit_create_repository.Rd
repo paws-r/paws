@@ -29,7 +29,7 @@ repository description on a web page.}
 Creates a new, empty repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$create_repository(
+\preformatted{svc$create_repository(
   repositoryName = "string",
   repositoryDescription = "string"
 )

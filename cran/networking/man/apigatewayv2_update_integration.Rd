@@ -110,7 +110,7 @@ client. The content type value is the key in this map, and the template
 Updates an Integration.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_integration(
+\preformatted{svc$update_integration(
   ApiId = "string",
   ConnectionId = "string",
   ConnectionType = "INTERNET"|"VPC_LINK",

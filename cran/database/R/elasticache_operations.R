@@ -36,7 +36,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -88,7 +88,7 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$authorize_cache_security_group_ingress(
+#' svc$authorize_cache_security_group_ingress(
 #'   CacheSecurityGroupName = "string",
 #'   EC2SecurityGroupName = "string",
 #'   EC2SecurityGroupOwnerId = "string"
@@ -216,7 +216,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$copy_snapshot(
+#' svc$copy_snapshot(
 #'   SourceSnapshotName = "string",
 #'   TargetSnapshotName = "string",
 #'   TargetBucket = "string"
@@ -511,7 +511,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_cache_cluster(
+#' svc$create_cache_cluster(
 #'   CacheClusterId = "string",
 #'   ReplicationGroupId = "string",
 #'   AZMode = "single-az"|"cross-az",
@@ -603,7 +603,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_cache_parameter_group(
+#' svc$create_cache_parameter_group(
 #'   CacheParameterGroupName = "string",
 #'   CacheParameterGroupFamily = "string",
 #'   Description = "string"
@@ -655,7 +655,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_cache_security_group(
+#' svc$create_cache_security_group(
 #'   CacheSecurityGroupName = "string",
 #'   Description = "string"
 #' )
@@ -703,7 +703,7 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_cache_subnet_group(
+#' svc$create_cache_subnet_group(
 #'   CacheSubnetGroupName = "string",
 #'   CacheSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -1084,7 +1084,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_replication_group(
+#' svc$create_replication_group(
 #'   ReplicationGroupId = "string",
 #'   ReplicationGroupDescription = "string",
 #'   PrimaryClusterId = "string",
@@ -1178,7 +1178,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$create_snapshot(
+#' svc$create_snapshot(
 #'   ReplicationGroupId = "string",
 #'   CacheClusterId = "string",
 #'   SnapshotName = "string"
@@ -1248,7 +1248,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$decrease_replica_count(
+#' svc$decrease_replica_count(
 #'   ReplicationGroupId = "string",
 #'   NewReplicaCount = 123,
 #'   ReplicaConfiguration = list(
@@ -1313,7 +1313,7 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_cache_cluster(
+#' svc$delete_cache_cluster(
 #'   CacheClusterId = "string",
 #'   FinalSnapshotIdentifier = "string"
 #' )
@@ -1353,7 +1353,7 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_cache_parameter_group(
+#' svc$delete_cache_parameter_group(
 #'   CacheParameterGroupName = "string"
 #' )
 #' ```
@@ -1393,7 +1393,7 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_cache_security_group(
+#' svc$delete_cache_security_group(
 #'   CacheSecurityGroupName = "string"
 #' )
 #' ```
@@ -1434,7 +1434,7 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_cache_subnet_group(
+#' svc$delete_cache_subnet_group(
 #'   CacheSubnetGroupName = "string"
 #' )
 #' ```
@@ -1488,7 +1488,7 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_replication_group(
+#' svc$delete_replication_group(
 #'   ReplicationGroupId = "string",
 #'   RetainPrimaryCluster = TRUE|FALSE,
 #'   FinalSnapshotIdentifier = "string"
@@ -1529,7 +1529,7 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$delete_snapshot(
+#' svc$delete_snapshot(
 #'   SnapshotName = "string"
 #' )
 #' ```
@@ -1608,7 +1608,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_clusters(
+#' svc$describe_cache_clusters(
 #'   CacheClusterId = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -1677,7 +1677,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_engine_versions(
+#' svc$describe_cache_engine_versions(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   CacheParameterGroupFamily = "string",
@@ -1731,7 +1731,7 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_parameter_groups(
+#' svc$describe_cache_parameter_groups(
 #'   CacheParameterGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -1785,7 +1785,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_parameters(
+#' svc$describe_cache_parameters(
 #'   CacheParameterGroupName = "string",
 #'   Source = "string",
 #'   MaxRecords = 123,
@@ -1837,7 +1837,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_security_groups(
+#' svc$describe_cache_security_groups(
 #'   CacheSecurityGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -1887,7 +1887,7 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_cache_subnet_groups(
+#' svc$describe_cache_subnet_groups(
 #'   CacheSubnetGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -1941,7 +1941,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_engine_default_parameters(
+#' svc$describe_engine_default_parameters(
 #'   CacheParameterGroupFamily = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -2009,7 +2009,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_events(
+#' svc$describe_events(
 #'   SourceIdentifier = "string",
 #'   SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
 #'   StartTime = as.POSIXct(
@@ -2074,7 +2074,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_replication_groups(
+#' svc$describe_replication_groups(
 #'   ReplicationGroupId = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -2214,7 +2214,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_reserved_cache_nodes(
+#' svc$describe_reserved_cache_nodes(
 #'   ReservedCacheNodeId = "string",
 #'   ReservedCacheNodesOfferingId = "string",
 #'   CacheNodeType = "string",
@@ -2358,7 +2358,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_reserved_cache_nodes_offerings(
+#' svc$describe_reserved_cache_nodes_offerings(
 #'   ReservedCacheNodesOfferingId = "string",
 #'   CacheNodeType = "string",
 #'   Duration = "string",
@@ -2428,7 +2428,7 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$describe_snapshots(
+#' svc$describe_snapshots(
 #'   ReplicationGroupId = "string",
 #'   CacheClusterId = "string",
 #'   SnapshotName = "string",
@@ -2488,7 +2488,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$increase_replica_count(
+#' svc$increase_replica_count(
 #'   ReplicationGroupId = "string",
 #'   NewReplicaCount = 123,
 #'   ReplicaConfiguration = list(
@@ -2555,7 +2555,7 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$list_allowed_node_type_modifications(
+#' svc$list_allowed_node_type_modifications(
 #'   CacheClusterId = "string",
 #'   ReplicationGroupId = "string"
 #' )
@@ -2608,7 +2608,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceName = "string"
 #' )
 #' ```
@@ -2868,7 +2868,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$modify_cache_cluster(
+#' svc$modify_cache_cluster(
 #'   CacheClusterId = "string",
 #'   NumCacheNodes = 123,
 #'   CacheNodeIdsToRemove = list(
@@ -2933,7 +2933,7 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$modify_cache_parameter_group(
+#' svc$modify_cache_parameter_group(
 #'   CacheParameterGroupName = "string",
 #'   ParameterNameValues = list(
 #'     list(
@@ -2983,7 +2983,7 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$modify_cache_subnet_group(
+#' svc$modify_cache_subnet_group(
 #'   CacheSubnetGroupName = "string",
 #'   CacheSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -3152,7 +3152,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$modify_replication_group(
+#' svc$modify_replication_group(
 #'   ReplicationGroupId = "string",
 #'   ReplicationGroupDescription = "string",
 #'   PrimaryClusterId = "string",
@@ -3241,7 +3241,7 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$modify_replication_group_shard_configuration(
+#' svc$modify_replication_group_shard_configuration(
 #'   ReplicationGroupId = "string",
 #'   NodeGroupCount = 123,
 #'   ApplyImmediately = TRUE|FALSE,
@@ -3305,7 +3305,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$purchase_reserved_cache_nodes_offering(
+#' svc$purchase_reserved_cache_nodes_offering(
 #'   ReservedCacheNodesOfferingId = "string",
 #'   ReservedCacheNodeId = "string",
 #'   CacheNodeCount = 123
@@ -3363,7 +3363,7 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$reboot_cache_cluster(
+#' svc$reboot_cache_cluster(
 #'   CacheClusterId = "string",
 #'   CacheNodeIdsToReboot = list(
 #'     "string"
@@ -3411,7 +3411,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3464,7 +3464,7 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$reset_cache_parameter_group(
+#' svc$reset_cache_parameter_group(
 #'   CacheParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   ParameterNameValues = list(
@@ -3513,7 +3513,7 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$revoke_cache_security_group_ingress(
+#' svc$revoke_cache_security_group_ingress(
 #'   CacheSecurityGroupName = "string",
 #'   EC2SecurityGroupName = "string",
 #'   EC2SecurityGroupOwnerId = "string"
@@ -3605,7 +3605,7 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'
 #' @section Request syntax:
 #' ```
-#' elasticache$test_failover(
+#' svc$test_failover(
 #'   ReplicationGroupId = "string",
 #'   NodeGroupId = "string"
 #' )

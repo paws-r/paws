@@ -13,7 +13,7 @@ mediapackage_describe_channel(Id)
 Gets details about a Channel.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$describe_channel(
+\preformatted{svc$describe_channel(
   Id = "string"
 )
 }

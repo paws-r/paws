@@ -22,7 +22,7 @@ delete a VPC peering connection in the \code{pending-acceptance} state. You
 cannot delete a VPC peering connection that's in the \code{failed} state.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpc_peering_connection(
+\preformatted{svc$delete_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )

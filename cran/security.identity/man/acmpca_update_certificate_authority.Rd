@@ -25,7 +25,7 @@ you can update it. You can disable a private CA that is in the \code{ACTIVE}
 state or make a CA that is in the \code{DISABLED} state active again.
 }
 \section{Request syntax}{
-\preformatted{acmpca$update_certificate_authority(
+\preformatted{svc$update_certificate_authority(
   CertificateAuthorityArn = "string",
   RevocationConfiguration = list(
     CrlConfiguration = list(

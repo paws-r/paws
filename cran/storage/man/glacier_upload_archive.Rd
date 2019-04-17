@@ -63,7 +63,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.h
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$upload_archive(
+\preformatted{svc$upload_archive(
   vaultName = "string",
   accountId = "string",
   archiveDescription = "string",
@@ -75,7 +75,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example adds an archive to a vault.
-\donttest{glacier$upload_archive(
+\donttest{svc$upload_archive(
   accountId = "-",
   archiveDescription = "",
   body = "example-data-to-upload",

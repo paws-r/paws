@@ -14,7 +14,7 @@ greengrass_get_resource_definition(ResourceDefinitionId)
 Retrieves information about a resource definition, including its creation time and latest version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_resource_definition(
+\preformatted{svc$get_resource_definition(
   ResourceDefinitionId = "string"
 )
 }

@@ -57,7 +57,7 @@ update fails. For more information about permissions, see \href{http://docs.aws.
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_server_certificate(
+\preformatted{svc$update_server_certificate(
   ServerCertificateName = "string",
   NewPath = "string",
   NewServerCertificateName = "string"

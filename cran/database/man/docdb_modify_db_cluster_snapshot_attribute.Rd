@@ -55,7 +55,7 @@ AWS account IDs for the \code{ValuesToAdd} parameter. You can't use \code{all} a
 a value for that parameter in this case.
 }
 \section{Request syntax}{
-\preformatted{docdb$modify_db_cluster_snapshot_attribute(
+\preformatted{svc$modify_db_cluster_snapshot_attribute(
   DBClusterSnapshotIdentifier = "string",
   AttributeName = "string",
   ValuesToAdd = list(

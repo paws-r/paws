@@ -21,7 +21,7 @@ group does not match the expected version specified in the request, the
 Updates information about the billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$update_billing_group(
+\preformatted{svc$update_billing_group(
   billingGroupName = "string",
   billingGroupProperties = list(
     billingGroupDescription = "string"

@@ -17,7 +17,7 @@ request should begin.}
 Lists the analytics configurations for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$list_bucket_analytics_configurations(
+\preformatted{svc$list_bucket_analytics_configurations(
   Bucket = "string",
   ContinuationToken = "string"
 )

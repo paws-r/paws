@@ -19,7 +19,7 @@ test will send data from the last commit. If no data is available,
 sample data will be generated.
 }
 \section{Request syntax}{
-\preformatted{codecommit$test_repository_triggers(
+\preformatted{svc$test_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(

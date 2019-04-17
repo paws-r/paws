@@ -78,7 +78,7 @@ the bot's \code{status} field is set to \code{NOT_BUILT}.
 This operation requires permissions for the \code{lex:PutSlotType} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$put_slot_type(
+\preformatted{svc$put_slot_type(
   name = "string",
   description = "string",
   enumerationValues = list(
@@ -99,7 +99,7 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
 \examples{
 # This example shows how to create a slot type that describes pizza
 # sauces.
-\donttest{lexmodelbuildingservice$put_slot_type(
+\donttest{svc$put_slot_type(
   name = "PizzaSauceType",
   description = "Available pizza sauces",
   enumerationValues = list(

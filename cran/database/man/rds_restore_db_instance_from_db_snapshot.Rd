@@ -232,7 +232,7 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora, use RestoreDBClusterFromSnapshot.
 }
 \section{Request syntax}{
-\preformatted{rds$restore_db_instance_from_db_snapshot(
+\preformatted{svc$restore_db_instance_from_db_snapshot(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string",
   DBInstanceClass = "string",

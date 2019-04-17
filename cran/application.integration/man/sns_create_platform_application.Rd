@@ -52,7 +52,7 @@ see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html}{Gettin
 or \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html}{Getting Started with WNS}.
 }
 \section{Request syntax}{
-\preformatted{sns$create_platform_application(
+\preformatted{svc$create_platform_application(
   Name = "string",
   Platform = "string",
   Attributes = list(

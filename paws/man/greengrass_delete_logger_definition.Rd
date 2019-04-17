@@ -13,7 +13,7 @@ greengrass_delete_logger_definition(LoggerDefinitionId)
 Deletes a logger definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_logger_definition(
+\preformatted{svc$delete_logger_definition(
   LoggerDefinitionId = "string"
 )
 }

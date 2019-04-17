@@ -20,7 +20,7 @@ property name to use in \code{Search} queries. Provides suggestions for
 \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$get_search_suggestions(
+\preformatted{svc$get_search_suggestions(
   Resource = "TrainingJob",
   SuggestionQuery = list(
     PropertyNameQuery = list(

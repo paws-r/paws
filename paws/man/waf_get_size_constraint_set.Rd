@@ -15,7 +15,7 @@ ListSizeConstraintSets.}
 Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
 }
 \section{Request syntax}{
-\preformatted{waf$get_size_constraint_set(
+\preformatted{svc$get_size_constraint_set(
   SizeConstraintSetId = "string"
 )
 }
@@ -24,7 +24,7 @@ Returns the SizeConstraintSet specified by \code{SizeConstraintSetId}.
 \examples{
 # The following example returns the details of a size constraint match set
 # with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{waf$get_size_constraint_set(
+\donttest{svc$get_size_constraint_set(
   SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}
 

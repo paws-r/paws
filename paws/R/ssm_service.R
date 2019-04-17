@@ -30,11 +30,10 @@ NULL
 #' information about how to use a Query API, see [Making API
 #' Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
 #'
-#' @section Example:
-#' ```
-#' ssm <- paws::ssm()
-#' ssm$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_resource(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

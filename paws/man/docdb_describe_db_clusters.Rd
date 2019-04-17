@@ -44,7 +44,7 @@ Returns information about provisioned Amazon DocumentDB DB clusters.
 This API operation supports pagination.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_clusters(
+\preformatted{svc$describe_db_clusters(
   DBClusterIdentifier = "string",
   Filters = list(
     list(

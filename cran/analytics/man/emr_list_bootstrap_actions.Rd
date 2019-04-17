@@ -17,7 +17,7 @@ Provides information about the bootstrap actions associated with a
 cluster.
 }
 \section{Request syntax}{
-\preformatted{emr$list_bootstrap_actions(
+\preformatted{svc$list_bootstrap_actions(
   ClusterId = "string",
   Marker = "string"
 )

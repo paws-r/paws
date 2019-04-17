@@ -16,7 +16,7 @@ Deletes the content of a comment made on a change, file, or commit in a
 repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$delete_comment_content(
+\preformatted{svc$delete_comment_content(
   commentId = "string"
 )
 }

@@ -15,7 +15,7 @@ cloudwatchlogs_delete_metric_filter(logGroupName, filterName)
 Deletes the specified metric filter.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$delete_metric_filter(
+\preformatted{svc$delete_metric_filter(
   logGroupName = "string",
   filterName = "string"
 )

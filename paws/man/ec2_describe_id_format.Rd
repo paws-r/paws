@@ -49,7 +49,7 @@ and provided that they have permission to use the relevant \code{Describe}
 command for the resource type.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_id_format(
+\preformatted{svc$describe_id_format(
   Resource = "string"
 )
 }

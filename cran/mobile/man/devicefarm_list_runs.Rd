@@ -18,7 +18,7 @@ list.}
 Gets information about runs, given an AWS Device Farm project ARN.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_runs(
+\preformatted{svc$list_runs(
   arn = "string",
   nextToken = "string"
 )
@@ -27,7 +27,7 @@ Gets information about runs, given an AWS Device Farm project ARN.
 
 \examples{
 # The following example returns information about a specific test run.
-\donttest{devicefarm$list_runs(
+\donttest{svc$list_runs(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/...",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}

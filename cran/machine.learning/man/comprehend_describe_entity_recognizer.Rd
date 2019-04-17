@@ -15,7 +15,7 @@ Provides details about an entity recognizer including status, S3 buckets
 containing training data, recognizer metadata, metrics, and so on.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_entity_recognizer(
+\preformatted{svc$describe_entity_recognizer(
   EntityRecognizerArn = "string"
 )
 }

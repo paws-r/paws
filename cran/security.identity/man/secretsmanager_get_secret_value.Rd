@@ -70,7 +70,7 @@ DescribeSecret.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$get_secret_value(
+\preformatted{svc$get_secret_value(
   SecretId = "string",
   VersionId = "string",
   VersionStage = "string"
@@ -84,7 +84,7 @@ DescribeSecret.
 # attached. If you want to retrieve the AWSCURRENT version of the secret,
 # then you can omit the VersionStage parameter because it defaults to
 # AWSCURRENT.
-\donttest{secretsmanager$get_secret_value(
+\donttest{svc$get_secret_value(
   SecretId = "MyTestDatabaseSecret",
   VersionStage = "AWSPREVIOUS"
 )}

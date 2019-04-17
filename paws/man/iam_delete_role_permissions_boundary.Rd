@@ -19,7 +19,7 @@ permissions by allowing anyone who assumes the role to perform all the
 actions granted in its permissions policies.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_role_permissions_boundary(
+\preformatted{svc$delete_role_permissions_boundary(
   RoleName = "string"
 )
 }

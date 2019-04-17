@@ -40,7 +40,7 @@ Retrieves settings for the trail associated with the current region for
 your account.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$describe_trails(
+\preformatted{svc$describe_trails(
   trailNameList = list(
     "string"
   ),

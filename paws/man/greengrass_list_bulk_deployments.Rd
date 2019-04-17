@@ -15,7 +15,7 @@ greengrass_list_bulk_deployments(MaxResults, NextToken)
 Returns a list of bulk deployments.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_bulk_deployments(
+\preformatted{svc$list_bulk_deployments(
   MaxResults = "string",
   NextToken = "string"
 )

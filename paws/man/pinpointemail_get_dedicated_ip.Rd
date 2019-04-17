@@ -19,7 +19,7 @@ dedicated IP pool that it's associated with, as well information about
 the automatic warm-up process for the address.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_dedicated_ip(
+\preformatted{svc$get_dedicated_ip(
   Ip = "string"
 )
 }

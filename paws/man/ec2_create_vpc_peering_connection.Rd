@@ -51,7 +51,7 @@ overlapping CIDR blocks, the VPC peering connection has a status of
 \code{failed}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpc_peering_connection(
+\preformatted{svc$create_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   PeerOwnerId = "string",
   PeerVpcId = "string",

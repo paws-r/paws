@@ -34,7 +34,7 @@ must revoke all of the authorizations before you can delete the
 snapshot.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_cluster_snapshot(
+\preformatted{svc$delete_cluster_snapshot(
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string"
 )

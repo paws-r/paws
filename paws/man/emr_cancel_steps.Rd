@@ -22,7 +22,7 @@ canceled, even if the request is successfully submitted. You can only
 cancel steps that are in a \code{PENDING} state.
 }
 \section{Request syntax}{
-\preformatted{emr$cancel_steps(
+\preformatted{svc$cancel_steps(
   ClusterId = "string",
   StepIds = list(
     "string"

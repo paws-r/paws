@@ -18,7 +18,7 @@ routers, and virtual nodes) in the service mesh before you can delete
 the mesh itself.
 }
 \section{Request syntax}{
-\preformatted{appmesh$delete_mesh(
+\preformatted{svc$delete_mesh(
   meshName = "string"
 )
 }

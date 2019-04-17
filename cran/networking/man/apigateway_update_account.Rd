@@ -14,7 +14,7 @@ in the order specified in this list.}
 Changes information about the current Account resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_account(
+\preformatted{svc$update_account(
   patchOperations = list(
     list(
       op = "add"|"remove"|"replace"|"move"|"copy"|"test",

@@ -19,7 +19,7 @@ Describes the available AWS Directory Service directories that are
 registered with Amazon WorkSpaces.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_workspace_directories(
+\preformatted{svc$describe_workspace_directories(
   DirectoryIds = list(
     "string"
   ),

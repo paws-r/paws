@@ -58,7 +58,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_policies_for_target(
+\preformatted{svc$list_policies_for_target(
   TargetId = "string",
   Filter = "SERVICE_CONTROL_POLICY",
   NextToken = "string",
@@ -73,7 +73,7 @@ account.
 # directly attached to an account. The returned list does not include
 # policies that apply to the account because of inheritance from its
 # location in an OU hierarchy:/n/n
-\donttest{organizations$list_policies_for_target(
+\donttest{svc$list_policies_for_target(
   Filter = "SERVICE_CONTROL_POLICY",
   TargetId = "444444444444"
 )}

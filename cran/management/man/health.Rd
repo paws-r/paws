@@ -46,12 +46,6 @@ The HTTP endpoint for the AWS Health API is:
 \item https://health.us-east-1.amazonaws.com
 }
 }
-\section{Example}{
-\preformatted{health <- paws::health()
-health$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,3 +58,9 @@ health$operation()
 }
 }
 
+\examples{
+\donttest{svc$describe_affected_entities(
+  Foo = 123
+)}
+
+}

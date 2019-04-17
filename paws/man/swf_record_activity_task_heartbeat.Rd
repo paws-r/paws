@@ -70,7 +70,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$record_activity_task_heartbeat(
+\preformatted{svc$record_activity_task_heartbeat(
   taskToken = "string",
   details = "string"
 )

@@ -17,7 +17,7 @@ operation to resume your account's ability to send email.}
 Enable or disable the ability of your account to send email.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_account_sending_attributes(
+\preformatted{svc$put_account_sending_attributes(
   SendingEnabled = TRUE|FALSE
 )
 }

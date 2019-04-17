@@ -17,7 +17,7 @@ all lifecycle hooks are described.}
 Describes the lifecycle hooks for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_lifecycle_hooks(
+\preformatted{svc$describe_lifecycle_hooks(
   AutoScalingGroupName = "string",
   LifecycleHookNames = list(
     "string"
@@ -29,7 +29,7 @@ Describes the lifecycle hooks for the specified Auto Scaling group.
 \examples{
 # This example describes the lifecycle hooks for the specified Auto
 # Scaling group.
-\donttest{autoscaling$describe_lifecycle_hooks(
+\donttest{svc$describe_lifecycle_hooks(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

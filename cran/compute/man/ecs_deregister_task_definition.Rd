@@ -32,7 +32,7 @@ future, so you should not rely on \code{INACTIVE} task definitions persisting
 beyond the lifecycle of any associated tasks and services.
 }
 \section{Request syntax}{
-\preformatted{ecs$deregister_task_definition(
+\preformatted{svc$deregister_task_definition(
   taskDefinition = "string"
 )
 }

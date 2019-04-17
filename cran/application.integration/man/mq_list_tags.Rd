@@ -13,7 +13,7 @@ mq_list_tags(ResourceArn)
 Lists tags for a resource.
 }
 \section{Request syntax}{
-\preformatted{mq$list_tags(
+\preformatted{svc$list_tags(
   ResourceArn = "string"
 )
 }

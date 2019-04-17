@@ -22,7 +22,7 @@ clouddirectory_list_attached_indices(DirectoryArn, TargetReference,
 Lists indices attached to the specified object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_attached_indices(
+\preformatted{svc$list_attached_indices(
   DirectoryArn = "string",
   TargetReference = list(
     Selector = "string"

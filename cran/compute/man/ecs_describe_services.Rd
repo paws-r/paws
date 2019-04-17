@@ -22,7 +22,7 @@ field is omitted, tags are not included in the response.}
 Describes the specified services running in your cluster.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_services(
+\preformatted{svc$describe_services(
   cluster = "string",
   services = list(
     "string"
@@ -37,7 +37,7 @@ Describes the specified services running in your cluster.
 \examples{
 # This example provides descriptive information about the service named
 # ``ecs-simple-service``.
-\donttest{ecs$describe_services(
+\donttest{svc$describe_services(
   services = list(
     "ecs-simple-service"
   )

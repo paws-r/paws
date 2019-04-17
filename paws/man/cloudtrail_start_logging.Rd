@@ -20,7 +20,7 @@ cannot be called on the shadow trails (replicated trails in other
 regions) of a trail that is enabled in all regions.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$start_logging(
+\preformatted{svc$start_logging(
   Name = "string"
 )
 }

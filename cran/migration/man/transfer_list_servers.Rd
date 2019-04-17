@@ -21,7 +21,7 @@ Lists the Secure File Transfer Protocol (SFTP) servers that are
 associated with your AWS account.
 }
 \section{Request syntax}{
-\preformatted{transfer$list_servers(
+\preformatted{svc$list_servers(
   MaxResults = 123,
   NextToken = "string"
 )

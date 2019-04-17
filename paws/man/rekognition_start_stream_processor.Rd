@@ -16,7 +16,7 @@ stream processor to start, use the value of the \code{Name} field specified
 in the call to \code{CreateStreamProcessor}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_stream_processor(
+\preformatted{svc$start_stream_processor(
   Name = "string"
 )
 }

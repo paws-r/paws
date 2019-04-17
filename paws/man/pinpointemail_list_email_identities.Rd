@@ -26,7 +26,7 @@ or a domain. This operation returns identities that are verified as well
 as those that aren't.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$list_email_identities(
+\preformatted{svc$list_email_identities(
   NextToken = "string",
   PageSize = 123
 )

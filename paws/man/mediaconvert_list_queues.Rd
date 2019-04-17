@@ -19,7 +19,7 @@ mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$list_queues(
+\preformatted{svc$list_queues(
   ListBy = "NAME"|"CREATION_DATE",
   MaxResults = 123,
   NextToken = "string",

@@ -18,7 +18,7 @@ element of the collection.}
 The API mappings.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_api_mappings(
+\preformatted{svc$get_api_mappings(
   DomainName = "string",
   MaxResults = "string",
   NextToken = "string"

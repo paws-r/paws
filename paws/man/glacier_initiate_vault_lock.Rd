@@ -56,7 +56,7 @@ vault lock is in the \code{InProgress} state you must call AbortVaultLock
 before you can initiate a new vault lock policy.
 }
 \section{Request syntax}{
-\preformatted{glacier$initiate_vault_lock(
+\preformatted{svc$initiate_vault_lock(
   accountId = "string",
   vaultName = "string",
   policy = list(
@@ -69,7 +69,7 @@ before you can initiate a new vault lock policy.
 \examples{
 # The example initiates the vault locking process for the vault named
 # my-vault.
-\donttest{glacier$initiate_vault_lock(
+\donttest{svc$initiate_vault_lock(
   accountId = "-",
   policy = list(
     Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Define-vault-lock\\",..."

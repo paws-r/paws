@@ -14,7 +14,7 @@ Lists the SIP credentials for the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$list_voice_connector_termination_credentials(
+\preformatted{svc$list_voice_connector_termination_credentials(
   VoiceConnectorId = "string"
 )
 }

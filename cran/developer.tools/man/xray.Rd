@@ -10,12 +10,6 @@ xray()
 AWS X-Ray provides APIs for managing debug traces and retrieving service
 maps and other data created by processing those traces.
 }
-\section{Example}{
-\preformatted{xray <- paws::xray()
-xray$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -41,3 +35,9 @@ xray$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_get_traces(
+  Foo = 123
+)}
+
+}

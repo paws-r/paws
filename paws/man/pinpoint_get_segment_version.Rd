@@ -17,7 +17,7 @@ pinpoint_get_segment_version(ApplicationId, SegmentId, Version)
 Returns information about a segment version.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segment_version(
+\preformatted{svc$get_segment_version(
   ApplicationId = "string",
   SegmentId = "string",
   Version = "string"

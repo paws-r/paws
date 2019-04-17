@@ -26,7 +26,7 @@ A resize operation can be requested using ModifyCluster and specifying a
 different number or type of nodes for the cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_resize(
+\preformatted{svc$describe_resize(
   ClusterIdentifier = "string"
 )
 }

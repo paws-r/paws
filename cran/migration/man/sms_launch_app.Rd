@@ -13,7 +13,7 @@ sms_launch_app(appId)
 Launches an application stack.
 }
 \section{Request syntax}{
-\preformatted{sms$launch_app(
+\preformatted{svc$launch_app(
   appId = "string"
 )
 }

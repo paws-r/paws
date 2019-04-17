@@ -35,7 +35,7 @@ The \code{GetBotChannelAssociations} operation requires permissions for the
 \code{lex:GetBotChannelAssociations} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot_channel_associations(
+\preformatted{svc$get_bot_channel_associations(
   botName = "string",
   botAlias = "string",
   nextToken = "string",

@@ -40,7 +40,7 @@ specified timestamp.}
 Lists endpoints.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_endpoints(
+\preformatted{svc$list_endpoints(
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",

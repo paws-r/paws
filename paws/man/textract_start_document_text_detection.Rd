@@ -45,7 +45,7 @@ For more information, see Document Text Detection in the Amazon Textract
 Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{textract$start_document_text_detection(
+\preformatted{svc$start_document_text_detection(
   DocumentLocation = list(
     S3Object = list(
       Bucket = "string",

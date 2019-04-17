@@ -62,7 +62,7 @@ collection of event log entries matching the request are returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_fleet_events(
+\preformatted{svc$describe_fleet_events(
   FleetId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"

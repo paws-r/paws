@@ -20,7 +20,7 @@ Resets the password for any user in your AWS Managed Microsoft AD or
 Simple AD directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$reset_user_password(
+\preformatted{svc$reset_user_password(
   DirectoryId = "string",
   UserName = "string",
   NewPassword = "string"

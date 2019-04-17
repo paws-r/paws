@@ -46,12 +46,6 @@ Administrative permissions are controlled using AWS Identity and Access
 Management (IAM). For more information, see \href{https://docs.aws.amazon.com/chime/latest/ag/control-access.html}{Control Access to the Amazon Chime Console}
 in the \emph{Amazon Chime Administration Guide}.
 }
-\section{Example}{
-\preformatted{chime <- paws::chime()
-chime$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -108,3 +102,9 @@ chime$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_phone_number_with_user(
+  Foo = 123
+)}
+
+}

@@ -27,7 +27,7 @@ see the \emph{UserName} parameter.}
 Disables single-sign on for a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$disable_sso(
+\preformatted{svc$disable_sso(
   DirectoryId = "string",
   UserName = "string",
   Password = "string"

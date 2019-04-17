@@ -20,7 +20,7 @@ job.}
 Creates the user import job.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_user_import_job(
+\preformatted{svc$create_user_import_job(
   JobName = "string",
   UserPoolId = "string",
   CloudWatchLogsRoleArn = "string"

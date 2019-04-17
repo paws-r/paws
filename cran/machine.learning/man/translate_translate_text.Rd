@@ -63,7 +63,7 @@ can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify
 source language.
 }
 \section{Request syntax}{
-\preformatted{translate$translate_text(
+\preformatted{svc$translate_text(
   Text = "string",
   TerminologyNames = list(
     "string"

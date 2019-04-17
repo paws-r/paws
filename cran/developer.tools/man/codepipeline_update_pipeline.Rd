@@ -16,7 +16,7 @@ UpdatePipeline to provide the full structure of the pipeline. Updating
 the pipeline increases the version number of the pipeline by 1.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$update_pipeline(
+\preformatted{svc$update_pipeline(
   pipeline = list(
     name = "string",
     roleArn = "string",

@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$create_project(
+#' svc$create_project(
 #'   name = "string",
 #'   region = "string",
 #'   contents = raw,
@@ -59,7 +59,7 @@ mobile_create_project <- function(name = NULL, region = NULL, contents = NULL, s
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$delete_project(
+#' svc$delete_project(
 #'   projectId = "string"
 #' )
 #' ```
@@ -94,7 +94,7 @@ mobile_delete_project <- function(projectId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$describe_bundle(
+#' svc$describe_bundle(
 #'   bundleId = "string"
 #' )
 #' ```
@@ -132,7 +132,7 @@ mobile_describe_bundle <- function(bundleId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$describe_project(
+#' svc$describe_project(
 #'   projectId = "string",
 #'   syncFromResources = TRUE|FALSE
 #' )
@@ -174,7 +174,7 @@ mobile_describe_project <- function(projectId, syncFromResources = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$export_bundle(
+#' svc$export_bundle(
 #'   bundleId = "string",
 #'   projectId = "string",
 #'   platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"
@@ -215,7 +215,7 @@ mobile_export_bundle <- function(bundleId, projectId = NULL, platform = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$export_project(
+#' svc$export_project(
 #'   projectId = "string"
 #' )
 #' ```
@@ -253,7 +253,7 @@ mobile_export_project <- function(projectId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$list_bundles(
+#' svc$list_bundles(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -292,7 +292,7 @@ mobile_list_bundles <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$list_projects(
+#' svc$list_projects(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -331,7 +331,7 @@ mobile_list_projects <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mobile$update_project(
+#' svc$update_project(
 #'   contents = raw,
 #'   projectId = "string"
 #' )

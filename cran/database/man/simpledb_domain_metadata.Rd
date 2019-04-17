@@ -17,7 +17,7 @@ created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 }
 \section{Request syntax}{
-\preformatted{simpledb$domain_metadata(
+\preformatted{svc$domain_metadata(
   DomainName = "string"
 )
 }

@@ -38,7 +38,7 @@ For information about managed policies, see \href{http://docs.aws.amazon.com/IAM
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_policy(
+\preformatted{svc$delete_policy(
   PolicyArn = "string"
 )
 }

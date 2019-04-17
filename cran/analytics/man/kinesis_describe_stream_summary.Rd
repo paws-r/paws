@@ -20,7 +20,7 @@ The information returned includes the stream name, Amazon Resource Name
 monitoring, encryption details, and open shard count.
 }
 \section{Request syntax}{
-\preformatted{kinesis$describe_stream_summary(
+\preformatted{svc$describe_stream_summary(
   StreamName = "string"
 )
 }

@@ -25,7 +25,7 @@ next set of results that you want to retrieve.}
 Lists the subscribers that are associated with a notification.
 }
 \section{Request syntax}{
-\preformatted{budgets$describe_subscribers_for_notification(
+\preformatted{svc$describe_subscribers_for_notification(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(

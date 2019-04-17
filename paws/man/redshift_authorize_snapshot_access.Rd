@@ -30,7 +30,7 @@ For more information about working with snapshots, go to \href{http://docs.aws.a
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$authorize_snapshot_access(
+\preformatted{svc$authorize_snapshot_access(
   SnapshotIdentifier = "string",
   SnapshotClusterIdentifier = "string",
   AccountWithRestoreAccess = "string"

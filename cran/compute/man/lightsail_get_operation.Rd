@@ -15,7 +15,7 @@ events such as when you create an instance, allocate a static IP, attach
 a static IP, and so on.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_operation(
+\preformatted{svc$get_operation(
   operationId = "string"
 )
 }

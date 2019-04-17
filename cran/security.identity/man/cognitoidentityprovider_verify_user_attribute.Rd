@@ -18,7 +18,7 @@ cognitoidentityprovider_verify_user_attribute(AccessToken,
 Verifies the specified user attributes in the user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$verify_user_attribute(
+\preformatted{svc$verify_user_attribute(
   AccessToken = "string",
   AttributeName = "string",
   Code = "string"

@@ -28,7 +28,7 @@ This operation returns the operation IDs of operations that are not yet
 complete.
 }
 \section{Request syntax}{
-\preformatted{route53domains$list_operations(
+\preformatted{svc$list_operations(
   SubmittedSince = as.POSIXct(
     "2015-01-01"
   ),

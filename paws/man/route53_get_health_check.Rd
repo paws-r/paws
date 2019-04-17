@@ -16,7 +16,7 @@ this value to specify which health check to use. The value can be up to
 Gets information about a specified health check.
 }
 \section{Request syntax}{
-\preformatted{route53$get_health_check(
+\preformatted{svc$get_health_check(
   HealthCheckId = "string"
 )
 }

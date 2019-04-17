@@ -26,7 +26,7 @@ be registered with one stream.
 This operation has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$register_stream_consumer(
+\preformatted{svc$register_stream_consumer(
   StreamARN = "string",
   ConsumerName = "string"
 )

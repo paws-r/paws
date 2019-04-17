@@ -17,7 +17,7 @@ of the comment.}
 Replaces the contents of a comment.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_comment(
+\preformatted{svc$update_comment(
   commentId = "string",
   content = "string"
 )

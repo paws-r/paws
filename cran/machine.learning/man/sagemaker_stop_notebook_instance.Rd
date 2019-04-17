@@ -22,7 +22,7 @@ it, and attaches the preserved ML storage volume so you can continue
 your work.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$stop_notebook_instance(
+\preformatted{svc$stop_notebook_instance(
   NotebookInstanceName = "string"
 )
 }

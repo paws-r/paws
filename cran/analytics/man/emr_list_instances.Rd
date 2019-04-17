@@ -31,7 +31,7 @@ in any of the following states are considered active:
 AWAITING\_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 }
 \section{Request syntax}{
-\preformatted{emr$list_instances(
+\preformatted{svc$list_instances(
   ClusterId = "string",
   InstanceGroupId = "string",
   InstanceGroupTypes = list(

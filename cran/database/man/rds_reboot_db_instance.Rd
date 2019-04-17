@@ -36,7 +36,7 @@ For more information about rebooting, see \href{https://docs.aws.amazon.com/Amaz
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$reboot_db_instance(
+\preformatted{svc$reboot_db_instance(
   DBInstanceIdentifier = "string",
   ForceFailover = TRUE|FALSE
 )

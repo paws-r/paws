@@ -234,7 +234,7 @@ You can also return the item's attribute values in the same
 \code{UpdateItem} operation using the \code{ReturnValues} parameter.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_item(
+\preformatted{svc$update_item(
   TableName = "string",
   Key = list(
     list(
@@ -380,7 +380,7 @@ You can also return the item's attribute values in the same
 # This example updates an item in the Music table. It adds a new attribute
 # (Year) and modifies the AlbumTitle attribute.  All of the attributes in
 # the item, as they appear after the update, are returned in the response.
-\donttest{dynamodb$update_item(
+\donttest{svc$update_item(
   ExpressionAttributeNames = list(
     `#AT` = "AlbumTitle",
     `#Y` = "Year"

@@ -16,7 +16,7 @@ operation. If this value is null, it retrieves the first page.}
 Retrieves a list of fleets for the current account and Region.
 }
 \section{Request syntax}{
-\preformatted{worklink$list_fleets(
+\preformatted{svc$list_fleets(
   NextToken = "string",
   MaxResults = 123
 )

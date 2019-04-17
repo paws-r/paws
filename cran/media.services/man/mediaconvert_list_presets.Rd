@@ -22,7 +22,7 @@ mediaconvert_list_presets(Category, ListBy, MaxResults, NextToken,
 Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$list_presets(
+\preformatted{svc$list_presets(
   Category = "string",
   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
   MaxResults = 123,

@@ -17,7 +17,7 @@ pinpoint_get_import_jobs(ApplicationId, PageSize, Token)
 Returns information about your import jobs.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_import_jobs(
+\preformatted{svc$get_import_jobs(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"

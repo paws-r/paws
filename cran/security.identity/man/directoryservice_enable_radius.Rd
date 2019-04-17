@@ -20,7 +20,7 @@ Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD
 directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$enable_radius(
+\preformatted{svc$enable_radius(
   DirectoryId = "string",
   RadiusSettings = list(
     RadiusServers = list(

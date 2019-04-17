@@ -19,7 +19,7 @@ deleted with the OTA update is deleted.}
 Delete an OTA update.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_ota_update(
+\preformatted{svc$delete_ota_update(
   otaUpdateId = "string",
   deleteStream = TRUE|FALSE,
   forceDeleteAWSJob = TRUE|FALSE

@@ -21,7 +21,7 @@ Inoperable status. You also receive a notification when the directory
 returns to an Active status.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$register_event_topic(
+\preformatted{svc$register_event_topic(
   DirectoryId = "string",
   TopicName = "string"
 )

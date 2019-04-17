@@ -30,7 +30,7 @@ Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$resend_confirmation_code(
+\preformatted{svc$resend_confirmation_code(
   ClientId = "string",
   SecretHash = "string",
   UserContextData = list(

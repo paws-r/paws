@@ -38,7 +38,7 @@ Inventory type. Deleting a custom inventory type is also referred to as
 deleting a custom inventory schema.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_inventory(
+\preformatted{svc$delete_inventory(
   TypeName = "string",
   SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
   DryRun = TRUE|FALSE,

@@ -40,7 +40,7 @@ servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
 Updates the specified product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_product(
+\preformatted{svc$update_product(
   AcceptLanguage = "string",
   Id = "string",
   Name = "string",

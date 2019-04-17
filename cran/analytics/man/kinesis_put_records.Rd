@@ -78,7 +78,7 @@ they are added to a stream. You can use IncreaseStreamRetentionPeriod or
 DecreaseStreamRetentionPeriod to modify this retention period.
 }
 \section{Request syntax}{
-\preformatted{kinesis$put_records(
+\preformatted{svc$put_records(
   Records = list(
     list(
       Data = raw,

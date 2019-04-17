@@ -13,7 +13,7 @@ sagemaker_delete_workteam(WorkteamName)
 Deletes an existing work team. This operation can't be undone.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_workteam(
+\preformatted{svc$delete_workteam(
   WorkteamName = "string"
 )
 }

@@ -23,7 +23,7 @@ query ran. This request does not execute the query but returns results.
 Use StartQueryExecution to run a query.
 }
 \section{Request syntax}{
-\preformatted{athena$get_query_results(
+\preformatted{svc$get_query_results(
   QueryExecutionId = "string",
   NextToken = "string",
   MaxResults = 123

@@ -14,7 +14,7 @@ Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$delete_alarms(
+\preformatted{svc$delete_alarms(
   AlarmNames = list(
     "string"
   )

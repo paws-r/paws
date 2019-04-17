@@ -16,7 +16,7 @@ tags. Required.}
 Adds metadata tags to a specified resource.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$tag_resource(
+\preformatted{svc$tag_resource(
   Arn = "string",
   Tags = list(
     list(

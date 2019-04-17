@@ -13,7 +13,7 @@ greengrass_delete_resource_definition(ResourceDefinitionId)
 Deletes a resource definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_resource_definition(
+\preformatted{svc$delete_resource_definition(
   ResourceDefinitionId = "string"
 )
 }

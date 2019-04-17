@@ -38,7 +38,7 @@ send the \code{ListFragments} requests to this endpoint using the
 \href{https://docs.aws.amazon.com/cli/latest/reference/}{\--endpoint-url parameter}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideoarchivedmedia$list_fragments(
+\preformatted{svc$list_fragments(
   StreamName = "string",
   MaxResults = 123,
   NextToken = "string",

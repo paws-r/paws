@@ -160,7 +160,7 @@ This operation requires permissions to perform the
 \code{rekognition:IndexFaces} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$index_faces(
+\preformatted{svc$index_faces(
   CollectionId = "string",
   Image = list(
     Bytes = raw,
@@ -183,7 +183,7 @@ This operation requires permissions to perform the
 \examples{
 # This operation detects faces in an image and adds them to the specified
 # Rekognition collection.
-\donttest{rekognition$index_faces(
+\donttest{svc$index_faces(
   CollectionId = "myphotos",
   DetectionAttributes = list(),
   ExternalImageId = "myphotoid",

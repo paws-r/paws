@@ -32,7 +32,7 @@ push notification services, such as GCM and APNS. For more information,
 see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
-\preformatted{sns$set_endpoint_attributes(
+\preformatted{svc$set_endpoint_attributes(
   EndpointArn = "string",
   Attributes = list(
     "string"

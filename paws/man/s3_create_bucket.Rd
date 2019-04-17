@@ -34,7 +34,7 @@ bucket.}
 Creates a new bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$create_bucket(
+\preformatted{svc$create_bucket(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   Bucket = "string",
   CreateBucketConfiguration = list(
@@ -53,7 +53,7 @@ Creates a new bucket.
 \examples{
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
-\donttest{s3$create_bucket(
+\donttest{svc$create_bucket(
   Bucket = "examplebucket",
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
@@ -61,7 +61,7 @@ Creates a new bucket.
 )}
 
 # The following example creates a bucket.
-\donttest{s3$create_bucket(
+\donttest{svc$create_bucket(
   Bucket = "examplebucket"
 )}
 

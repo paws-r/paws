@@ -10,7 +10,7 @@ codebuild_list_curated_environment_images()
 Gets information about Docker images that are managed by AWS CodeBuild.
 }
 \section{Request syntax}{
-\preformatted{codebuild$list_curated_environment_images()
+\preformatted{svc$list_curated_environment_images()
 }
 }
 

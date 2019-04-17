@@ -21,7 +21,7 @@ To retrieve user details with an email address instead of a user ID, use
 the ListUsers action, and then filter by email address.
 }
 \section{Request syntax}{
-\preformatted{chime$get_user(
+\preformatted{svc$get_user(
   AccountId = "string",
   UserId = "string"
 )

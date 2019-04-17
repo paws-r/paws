@@ -37,7 +37,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$untag_queue(
+\preformatted{svc$untag_queue(
   QueueUrl = "string",
   TagKeys = list(
     "string"

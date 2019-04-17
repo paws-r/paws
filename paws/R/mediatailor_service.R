@@ -17,11 +17,10 @@ NULL
 #' insertion behavior and mapping information for the origin server and the
 #' ad decision server (ADS).
 #'
-#' @section Example:
-#' ```
-#' mediatailor <- paws::mediatailor()
-#' mediatailor$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_playback_configuration(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

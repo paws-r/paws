@@ -21,7 +21,7 @@ medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start)
 Purchase an offering and create a reservation.
 }
 \section{Request syntax}{
-\preformatted{medialive$purchase_offering(
+\preformatted{svc$purchase_offering(
   Count = 123,
   Name = "string",
   OfferingId = "string",

@@ -14,7 +14,7 @@ Returns information about a single query. Requires that you have access
 to the workgroup in which the query was saved.
 }
 \section{Request syntax}{
-\preformatted{athena$get_named_query(
+\preformatted{svc$get_named_query(
   NamedQueryId = "string"
 )
 }

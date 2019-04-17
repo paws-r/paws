@@ -22,7 +22,7 @@ does not exist. A \code{ValidationException} is thrown when parameters of the
 request are not valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$delete_backup(
+\preformatted{svc$delete_backup(
   BackupId = "string"
 )
 }

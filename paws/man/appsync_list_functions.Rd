@@ -19,7 +19,7 @@ list.}
 List multiple functions.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_functions(
+\preformatted{svc$list_functions(
   apiId = "string",
   nextToken = "string",
   maxResults = 123

@@ -38,7 +38,7 @@ To send VPC traffic to an attached transit gateway, add a route to the
 VPC route table using CreateRoute.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_transit_gateway_vpc_attachment(
+\preformatted{svc$create_transit_gateway_vpc_attachment(
   TransitGatewayId = "string",
   VpcId = "string",
   SubnetIds = list(

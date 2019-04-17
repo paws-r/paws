@@ -22,7 +22,7 @@ and returns the message "WorkerId is invalid." If the specified Worker
 is not blocked, this operation returns successfully.
 }
 \section{Request syntax}{
-\preformatted{mturk$delete_worker_block(
+\preformatted{svc$delete_worker_block(
   WorkerId = "string",
   Reason = "string"
 )

@@ -22,7 +22,7 @@ existing tag key, use
 \href{https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html}{TagResource}.
 }
 \section{Request syntax}{
-\preformatted{robomaker$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

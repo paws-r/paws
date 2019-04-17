@@ -23,7 +23,7 @@ Gets a list of the documentation classification jobs that you have
 submitted.
 }
 \section{Request syntax}{
-\preformatted{comprehend$list_document_classification_jobs(
+\preformatted{svc$list_document_classification_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",

@@ -19,7 +19,7 @@ Reboots a replication instance. Rebooting results in a momentary outage,
 until the replication instance becomes available again.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$reboot_replication_instance(
+\preformatted{svc$reboot_replication_instance(
   ReplicationInstanceArn = "string",
   ForceFailover = TRUE|FALSE
 )

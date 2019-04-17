@@ -26,7 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Modifies the specified VPC attachment.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_transit_gateway_vpc_attachment(
+\preformatted{svc$modify_transit_gateway_vpc_attachment(
   TransitGatewayAttachmentId = "string",
   AddSubnetIds = list(
     "string"

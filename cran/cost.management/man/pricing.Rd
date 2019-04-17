@@ -34,12 +34,6 @@ AWS Price List Service API provides the following two endpoints:
 \item https://api.pricing.ap-south-1.amazonaws.com
 }
 }
-\section{Example}{
-\preformatted{pricing <- paws::pricing()
-pricing$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,3 +43,11 @@ pricing$operation()
 }
 }
 
+\examples{
+\donttest{svc$describe_services(
+  FormatVersion = "aws_v1",
+  MaxResults = 1L,
+  ServiceCode = "AmazonEC2"
+)}
+
+}

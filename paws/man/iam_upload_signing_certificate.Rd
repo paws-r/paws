@@ -48,7 +48,7 @@ Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$upload_signing_certificate(
+\preformatted{svc$upload_signing_certificate(
   UserName = "string",
   CertificateBody = "string"
 )
@@ -58,7 +58,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command uploads a signing certificate for the IAM user
 # named Bob.
-\donttest{iam$upload_signing_certificate(
+\donttest{svc$upload_signing_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
   UserName = "Bob"
 )}

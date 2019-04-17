@@ -32,7 +32,7 @@ can use this call to detect when the task runner application has failed
 and restart a new instance.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$report_task_runner_heartbeat(
+\preformatted{svc$report_task_runner_heartbeat(
   taskrunnerId = "string",
   workerGroup = "string",
   hostname = "string"

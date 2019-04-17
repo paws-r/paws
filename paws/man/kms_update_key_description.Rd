@@ -34,7 +34,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$update_key_description(
+\preformatted{svc$update_key_description(
   KeyId = "string",
   Description = "string"
 )
@@ -43,7 +43,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \examples{
 # The following example updates the description of the specified CMK.
-\donttest{kms$update_key_description(
+\donttest{svc$update_key_description(
   Description = "Example description that indicates the intended use of this CMK.",
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}

@@ -23,7 +23,7 @@ get another batch of \code{Rules}.}
 Returns an array of RuleSummary objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_rate_based_rules(
+\preformatted{svc$list_rate_based_rules(
   NextMarker = "string",
   Limit = 123
 )

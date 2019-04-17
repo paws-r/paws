@@ -18,7 +18,7 @@ permissions for an image, AWS accounts to which you previously granted
 these permissions can no longer use the image.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_image_permissions(
+\preformatted{svc$delete_image_permissions(
   Name = "string",
   SharedAccountId = "string"
 )

@@ -20,7 +20,7 @@ Detaches a given object from the parent object. The object that is to be
 detached from the parent is specified by the link name.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$detach_object(
+\preformatted{svc$detach_object(
   DirectoryArn = "string",
   ParentReference = list(
     Selector = "string"

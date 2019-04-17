@@ -44,7 +44,7 @@ it. Just use \code{RegisterImage} with the Amazon S3 bucket name and image
 manifest name you provided to the bundle task.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_bundle_tasks(
+\preformatted{svc$describe_bundle_tasks(
   BundleIds = list(
     "string"
   ),

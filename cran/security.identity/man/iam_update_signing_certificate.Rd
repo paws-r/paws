@@ -36,7 +36,7 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 }
 \section{Request syntax}{
-\preformatted{iam$update_signing_certificate(
+\preformatted{svc$update_signing_certificate(
   UserName = "string",
   CertificateId = "string",
   Status = "Active"|"Inactive"
@@ -47,7 +47,7 @@ if the AWS account has no associated users.
 \examples{
 # The following command changes the status of a signing certificate for a
 # user named Bob to Inactive.
-\donttest{iam$update_signing_certificate(
+\donttest{svc$update_signing_certificate(
   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"

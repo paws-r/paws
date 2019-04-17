@@ -21,7 +21,7 @@ or other criteria.
 You can use this action up to 10 times per second, per account.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

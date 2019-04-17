@@ -30,7 +30,7 @@ cards, etc.
 For a complete list of outputs for each asset type, see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations}{Using the DescribeConfigurations Action}.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_configurations(
+\preformatted{svc$describe_configurations(
   configurationIds = list(
     "string"
   )

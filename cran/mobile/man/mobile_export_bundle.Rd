@@ -21,7 +21,7 @@ used to integrate mobile web or mobile app clients with backend AWS
 resources.
 }
 \section{Request syntax}{
-\preformatted{mobile$export_bundle(
+\preformatted{svc$export_bundle(
   bundleId = "string",
   projectId = "string",
   platform = "OSX"|"WINDOWS"|"LINUX"|"OBJC"|"SWIFT"|"ANDROID"|"JAVASCRIPT"

@@ -13,7 +13,7 @@ elasticbeanstalk_check_dns_availability(CNAMEPrefix)
 Checks if the specified CNAME is available.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$check_dns_availability(
+\preformatted{svc$check_dns_availability(
   CNAMEPrefix = "string"
 )
 }
@@ -22,7 +22,7 @@ Checks if the specified CNAME is available.
 \examples{
 # The following operation checks the availability of the subdomain
 # my-cname:
-\donttest{elasticbeanstalk$check_dns_availability(
+\donttest{svc$check_dns_availability(
   CNAMEPrefix = "my-cname"
 )}
 

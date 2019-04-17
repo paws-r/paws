@@ -34,11 +34,10 @@ NULL
 #' explains how to design, build, query, and maintain the databases that
 #' make up your data warehouse.
 #'
-#' @section Example:
-#' ```
-#' redshift <- paws::redshift()
-#' redshift$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_reserved_node_exchange(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

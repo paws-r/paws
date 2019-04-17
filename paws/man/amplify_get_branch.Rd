@@ -15,7 +15,7 @@ amplify_get_branch(appId, branchName)
 Retrieves a branch for an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$get_branch(
+\preformatted{svc$get_branch(
   appId = "string",
   branchName = "string"
 )

@@ -34,7 +34,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics.DeleteApplicationReferenceDataSource} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$delete_application_reference_data_source(
+\preformatted{svc$delete_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceId = "string"

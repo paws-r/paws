@@ -22,7 +22,7 @@ environment's copy of the template without affecting the running
 environment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$delete_configuration_template(
+\preformatted{svc$delete_configuration_template(
   ApplicationName = "string",
   TemplateName = "string"
 )
@@ -32,7 +32,7 @@ environment.
 \examples{
 # The following operation deletes a configuration template named
 # my-template for an application named my-app:
-\donttest{elasticbeanstalk$delete_configuration_template(
+\donttest{svc$delete_configuration_template(
   ApplicationName = "my-app",
   TemplateName = "my-template"
 )}

@@ -29,7 +29,7 @@ describe only the Capacity Reservations in the AWS Region that you're
 currently using.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_capacity_reservations(
+\preformatted{svc$describe_capacity_reservations(
   CapacityReservationIds = list(
     "string"
   ),

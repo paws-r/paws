@@ -15,7 +15,7 @@ medialive_list_inputs(MaxResults, NextToken)
 Produces list of inputs that have been created
 }
 \section{Request syntax}{
-\preformatted{medialive$list_inputs(
+\preformatted{svc$list_inputs(
   MaxResults = 123,
   NextToken = "string"
 )

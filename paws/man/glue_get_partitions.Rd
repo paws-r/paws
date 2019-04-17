@@ -101,7 +101,7 @@ partitions.}
 Retrieves information about the partitions in a table.
 }
 \section{Request syntax}{
-\preformatted{glue$get_partitions(
+\preformatted{svc$get_partitions(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

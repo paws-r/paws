@@ -36,7 +36,7 @@ when you want the snapshot to begin on a day and the frequency (in
 hours) of snapshots.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_snapshot_schedule(
+\preformatted{svc$update_snapshot_schedule(
   VolumeARN = "string",
   StartAt = 123,
   RecurrenceInHours = 123,
@@ -47,7 +47,7 @@ hours) of snapshots.
 
 \examples{
 # Updates a snapshot schedule configured for a gateway volume.
-\donttest{storagegateway$update_snapshot_schedule(
+\donttest{svc$update_snapshot_schedule(
   Description = "Hourly snapshot",
   RecurrenceInHours = 1L,
   StartAt = 0L,

@@ -51,7 +51,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$accept_handshake(
+#' svc$accept_handshake(
 #'   HandshakeId = "string"
 #' )
 #' ```
@@ -61,7 +61,7 @@ NULL
 #' # (222222222222) to join his organization. The following example shows
 #' # Juan's account accepting the handshake and thus agreeing to the
 #' # invitation.
-#' \donttest{organizations$accept_handshake(
+#' \donttest{svc$accept_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
 #' )}
 #'
@@ -164,7 +164,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$attach_policy(
+#' svc$attach_policy(
 #'   PolicyId = "string",
 #'   TargetId = "string"
 #' )
@@ -174,7 +174,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' # The following example shows how to attach a service control policy (SCP)
 #' # to an OU:
 #' # 
-#' \donttest{organizations$attach_policy(
+#' \donttest{svc$attach_policy(
 #'   PolicyId = "p-examplepolicyid111",
 #'   TargetId = "ou-examplerootid111-exampleouid111"
 #' )}
@@ -182,7 +182,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' # The following example shows how to attach a service control policy (SCP)
 #' # to an account:
 #' # 
-#' \donttest{organizations$attach_policy(
+#' \donttest{svc$attach_policy(
 #'   PolicyId = "p-examplepolicyid111",
 #'   TargetId = "333333333333"
 #' )}
@@ -231,7 +231,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$cancel_handshake(
+#' svc$cancel_handshake(
 #'   HandshakeId = "string"
 #' )
 #' ```
@@ -242,7 +242,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' # before Susan accepts it. The following example shows Bill's
 #' # cancellation:
 #' # 
-#' \donttest{organizations$cancel_handshake(
+#' \donttest{svc$cancel_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
 #' )}
 #'
@@ -392,7 +392,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$create_account(
+#' svc$create_account(
 #'   Email = "string",
 #'   AccountName = "string",
 #'   RoleName = "string",
@@ -410,7 +410,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' # Organizations sends Susan a "Welcome to AWS" email:
 #' # 
 #' # 
-#' \donttest{organizations$create_account(
+#' \donttest{svc$create_account(
 #'   AccountName = "Production Account",
 #'   Email = "susan@example.com"
 #' )}
@@ -474,7 +474,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$create_organization(
+#' svc$create_organization(
 #'   FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
 #' )
 #' ```
@@ -487,14 +487,14 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' # service control policies enabled on the root:
 #' # 
 #' # 
-#' \donttest{organizations$create_organization()}
+#' \donttest{svc$create_organization()}
 #' 
 #' # In the following example, Bill creates an organization using credentials
 #' # from account 111111111111, and configures the organization to support
 #' # only the consolidated billing feature set:
 #' # 
 #' # 
-#' \donttest{organizations$create_organization(
+#' \donttest{svc$create_organization(
 #'   FeatureSet = "CONSOLIDATED_BILLING"
 #' )}
 #'
@@ -552,7 +552,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$create_organizational_unit(
+#' svc$create_organizational_unit(
 #'   ParentId = "string",
 #'   Name = "string"
 #' )
@@ -563,7 +563,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' # AccountingOU. The new OU is directly under the root.:
 #' # 
 #' # 
-#' \donttest{organizations$create_organizational_unit(
+#' \donttest{svc$create_organizational_unit(
 #'   Name = "AccountingOU",
 #'   ParentId = "r-examplerootid111"
 #' )}
@@ -625,7 +625,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$create_policy(
+#' svc$create_policy(
 #'   Content = "string",
 #'   Description = "string",
 #'   Name = "string",
@@ -642,7 +642,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #' # is surrounded by double quotes:
 #' # 
 #' # 
-#' \donttest{organizations$create_policy(
+#' \donttest{svc$create_policy(
 #'   Content = "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":...",
 #'   Description = "Enables admins of attached accounts to delegate all S3 permissions",
 #'   Name = "AllowAllS3Actions",
@@ -693,7 +693,7 @@ organizations_create_policy <- function(Content, Description, Name, Type) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$decline_handshake(
+#' svc$decline_handshake(
 #'   HandshakeId = "string"
 #' )
 #' ```
@@ -702,7 +702,7 @@ organizations_create_policy <- function(Content, Description, Name, Type) {
 #' # The following example shows Susan declining an invitation to join Bill's
 #' # organization. The DeclineHandshake operation returns a handshake object,
 #' # showing that the state is now DECLINED:
-#' \donttest{organizations$decline_handshake(
+#' \donttest{svc$decline_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
 #' )}
 #'
@@ -781,7 +781,7 @@ organizations_delete_organization <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$delete_organizational_unit(
+#' svc$delete_organizational_unit(
 #'   OrganizationalUnitId = "string"
 #' )
 #' ```
@@ -791,7 +791,7 @@ organizations_delete_organization <- function() {
 #' # that you previously removed all accounts and other OUs from the OU:
 #' # 
 #' # 
-#' \donttest{organizations$delete_organizational_unit(
+#' \donttest{svc$delete_organizational_unit(
 #'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 #' )}
 #'
@@ -836,7 +836,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$delete_policy(
+#' svc$delete_policy(
 #'   PolicyId = "string"
 #' )
 #' ```
@@ -847,7 +847,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' # entities:
 #' # 
 #' # 
-#' \donttest{organizations$delete_policy(
+#' \donttest{svc$delete_policy(
 #'   PolicyId = "p-examplepolicyid111"
 #' )}
 #'
@@ -889,7 +889,7 @@ organizations_delete_policy <- function(PolicyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$describe_account(
+#' svc$describe_account(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -897,7 +897,7 @@ organizations_delete_policy <- function(PolicyId) {
 #' @examples
 #' # The following example shows a user in the master account (111111111111)
 #' # asking for details about account 555555555555:
-#' \donttest{organizations$describe_account(
+#' \donttest{svc$describe_account(
 #'   AccountId = "555555555555"
 #' )}
 #'
@@ -942,7 +942,7 @@ organizations_describe_account <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$describe_create_account_status(
+#' svc$describe_create_account_status(
 #'   CreateAccountRequestId = "string"
 #' )
 #' ```
@@ -953,7 +953,7 @@ organizations_describe_account <- function(AccountId) {
 #' # called only by a principal from the organization's master account. In
 #' # the example, the specified "createAccountRequestId" comes from the
 #' # response of the original call to "CreateAccount":
-#' \donttest{organizations$describe_create_account_status(
+#' \donttest{svc$describe_create_account_status(
 #'   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
 #' )}
 #'
@@ -1002,7 +1002,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$describe_handshake(
+#' svc$describe_handshake(
 #'   HandshakeId = "string"
 #' )
 #' ```
@@ -1012,7 +1012,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' # handshake. The handshake ID comes either from the original call to
 #' # "InviteAccountToOrganization", or from a call to
 #' # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-#' \donttest{organizations$describe_handshake(
+#' \donttest{svc$describe_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
 #' )}
 #'
@@ -1057,7 +1057,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' @examples
 #' # The following example shows how to request information about the current
 #' # user's organization:/n/n
-#' \donttest{organizations$describe_organization()}
+#' \donttest{svc$describe_organization()}
 #'
 #' @keywords internal
 #'
@@ -1100,14 +1100,14 @@ organizations_describe_organization <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$describe_organizational_unit(
+#' svc$describe_organizational_unit(
 #'   OrganizationalUnitId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example shows how to request details about an OU:/n/n
-#' \donttest{organizations$describe_organizational_unit(
+#' \donttest{svc$describe_organizational_unit(
 #'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 #' )}
 #'
@@ -1150,7 +1150,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$describe_policy(
+#' svc$describe_policy(
 #'   PolicyId = "string"
 #' )
 #' ```
@@ -1158,7 +1158,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #' @examples
 #' # The following example shows how to request information about a
 #' # policy:/n/n
-#' \donttest{organizations$describe_policy(
+#' \donttest{svc$describe_policy(
 #'   PolicyId = "p-examplepolicyid111"
 #' )}
 #'
@@ -1232,7 +1232,7 @@ organizations_describe_policy <- function(PolicyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$detach_policy(
+#' svc$detach_policy(
 #'   PolicyId = "string",
 #'   TargetId = "string"
 #' )
@@ -1240,7 +1240,7 @@ organizations_describe_policy <- function(PolicyId) {
 #'
 #' @examples
 #' # The following example shows how to detach a policy from an OU:/n/n
-#' \donttest{organizations$detach_policy(
+#' \donttest{svc$detach_policy(
 #'   PolicyId = "p-examplepolicyid111",
 #'   TargetId = "ou-examplerootid111-exampleouid111"
 #' )}
@@ -1308,7 +1308,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$disable_aws_service_access(
+#' svc$disable_aws_service_access(
 #'   ServicePrincipal = "string"
 #' )
 #' ```
@@ -1363,7 +1363,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$disable_policy_type(
+#' svc$disable_policy_type(
 #'   RootId = "string",
 #'   PolicyType = "SERVICE_CONTROL_POLICY"
 #' )
@@ -1373,7 +1373,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' # The following example shows how to disable the service control policy
 #' # (SCP) policy type in a root. The response shows that the PolicyTypes
 #' # response element no longer includes SERVICE_CONTROL_POLICY:/n/n
-#' \donttest{organizations$disable_policy_type(
+#' \donttest{svc$disable_policy_type(
 #'   PolicyType = "SERVICE_CONTROL_POLICY",
 #'   RootId = "r-examplerootid111"
 #' )}
@@ -1433,7 +1433,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$enable_aws_service_access(
+#' svc$enable_aws_service_access(
 #'   ServicePrincipal = "string"
 #' )
 #' ```
@@ -1499,7 +1499,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$enable_all_features()
+#' svc$enable_all_features()
 #' ```
 #'
 #' @examples
@@ -1511,7 +1511,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' # accept the handshake, the organization administrator can finalize the
 #' # change to enable all features, and those with appropriate permissions
 #' # can create policies and apply them to roots, OUs, and accounts:/n/n
-#' \donttest{organizations$enable_all_features()}
+#' \donttest{svc$enable_all_features()}
 #'
 #' @keywords internal
 #'
@@ -1561,7 +1561,7 @@ organizations_enable_all_features <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$enable_policy_type(
+#' svc$enable_policy_type(
 #'   RootId = "string",
 #'   PolicyType = "SERVICE_CONTROL_POLICY"
 #' )
@@ -1571,7 +1571,7 @@ organizations_enable_all_features <- function() {
 #' # The following example shows how to enable the service control policy
 #' # (SCP) policy type in a root. The output shows a root object with a
 #' # PolicyTypes response element showing that SCPs are now enabled:/n/n
-#' \donttest{organizations$enable_policy_type(
+#' \donttest{svc$enable_policy_type(
 #'   PolicyType = "SERVICE_CONTROL_POLICY",
 #'   RootId = "r-examplerootid111"
 #' )}
@@ -1646,7 +1646,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$invite_account_to_organization(
+#' svc$invite_account_to_organization(
 #'   Target = list(
 #'     Id = "string",
 #'     Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
@@ -1659,7 +1659,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' # The following example shows the admin of the master account owned by
 #' # bill@example.com inviting the account owned by juan@example.com to join
 #' # an organization.
-#' \donttest{organizations$invite_account_to_organization(
+#' \donttest{svc$invite_account_to_organization(
 #'   Notes = "This is a request for Juan's account to join Bill's organization",
 #'   Target = list(
 #'     Id = "juan@example.com",
@@ -1734,7 +1734,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL) {
 #' @examples
 #' # TThe following example shows how to remove your member account from an
 #' # organization:
-#' \donttest{organizations$leave_organization()}
+#' \donttest{svc$leave_organization()}
 #'
 #' @keywords internal
 #'
@@ -1793,7 +1793,7 @@ organizations_leave_organization <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_aws_service_access_for_organization(
+#' svc$list_aws_service_access_for_organization(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1853,7 +1853,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_accounts(
+#' svc$list_accounts(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1862,7 +1862,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' @examples
 #' # The following example shows you how to request a list of the accounts in
 #' # an organization:
-#' \donttest{organizations$list_accounts()}
+#' \donttest{svc$list_accounts()}
 #'
 #' @keywords internal
 #'
@@ -1924,7 +1924,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_accounts_for_parent(
+#' svc$list_accounts_for_parent(
 #'   ParentId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1934,7 +1934,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @examples
 #' # The following example shows how to request a list of the accounts in an
 #' # OU:/n/n
-#' \donttest{organizations$list_accounts_for_parent(
+#' \donttest{svc$list_accounts_for_parent(
 #'   ParentId = "ou-examplerootid111-exampleouid111"
 #' )}
 #'
@@ -2008,7 +2008,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_children(
+#' svc$list_children(
 #'   ParentId = "string",
 #'   ChildType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
 #'   NextToken = "string",
@@ -2019,7 +2019,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @examples
 #' # The following example shows how to request a list of the child OUs in a
 #' # parent root or OU:/n/n
-#' \donttest{organizations$list_children(
+#' \donttest{svc$list_children(
 #'   ChildType = "ORGANIZATIONAL_UNIT",
 #'   ParentId = "ou-examplerootid111-exampleouid111"
 #' )}
@@ -2081,7 +2081,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_create_account_status(
+#' svc$list_create_account_status(
 #'   States = list(
 #'     "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
 #'   ),
@@ -2093,7 +2093,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' @examples
 #' # The following example shows a user requesting a list of only the
 #' # completed account creation requests made for the current organization:
-#' \donttest{organizations$list_create_account_status(
+#' \donttest{svc$list_create_account_status(
 #'   States = list(
 #'     "SUCCEEDED"
 #'   )
@@ -2101,7 +2101,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' 
 #' # The following example shows a user requesting a list of only the
 #' # in-progress account creation requests made for the current organization:
-#' \donttest{organizations$list_create_account_status(
+#' \donttest{svc$list_create_account_status(
 #'   States = list(
 #'     "IN_PROGRESS"
 #'   )
@@ -2171,7 +2171,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_handshakes_for_account(
+#' svc$list_handshakes_for_account(
 #'   Filter = list(
 #'     ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
 #'     ParentHandshakeId = "string"
@@ -2185,7 +2185,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' # The following example shows you how to get a list of handshakes that are
 #' # associated with the account of the credentials used to call the
 #' # operation:
-#' \donttest{organizations$list_handshakes_for_account()}
+#' \donttest{svc$list_handshakes_for_account()}
 #'
 #' @keywords internal
 #'
@@ -2255,7 +2255,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_handshakes_for_organization(
+#' svc$list_handshakes_for_organization(
 #'   Filter = list(
 #'     ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
 #'     ParentHandshakeId = "string"
@@ -2268,7 +2268,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' @examples
 #' # The following example shows you how to get a list of handshakes
 #' # associated with the current organization:
-#' \donttest{organizations$list_handshakes_for_organization()}
+#' \donttest{svc$list_handshakes_for_organization()}
 #'
 #' @keywords internal
 #'
@@ -2338,7 +2338,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_organizational_units_for_parent(
+#' svc$list_organizational_units_for_parent(
 #'   ParentId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2348,7 +2348,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' @examples
 #' # The following example shows how to get a list of OUs in a specified
 #' # root:/n/n
-#' \donttest{organizations$list_organizational_units_for_parent(
+#' \donttest{svc$list_organizational_units_for_parent(
 #'   ParentId = "r-examplerootid111"
 #' )}
 #'
@@ -2422,7 +2422,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_parents(
+#' svc$list_parents(
 #'   ChildId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2432,7 +2432,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' @examples
 #' # The following example shows how to list the root or OUs that contain
 #' # account 444444444444:/n/n
-#' \donttest{organizations$list_parents(
+#' \donttest{svc$list_parents(
 #'   ChildId = "444444444444"
 #' )}
 #'
@@ -2491,7 +2491,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_policies(
+#' svc$list_policies(
 #'   Filter = "SERVICE_CONTROL_POLICY",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2501,7 +2501,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @examples
 #' # The following example shows how to get a list of service control
 #' # policies (SCPs):/n/n
-#' \donttest{organizations$list_policies(
+#' \donttest{svc$list_policies(
 #'   Filter = "SERVICE_CONTROL_POLICY"
 #' )}
 #'
@@ -2577,7 +2577,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_policies_for_target(
+#' svc$list_policies_for_target(
 #'   TargetId = "string",
 #'   Filter = "SERVICE_CONTROL_POLICY",
 #'   NextToken = "string",
@@ -2591,7 +2591,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' # directly attached to an account. The returned list does not include
 #' # policies that apply to the account because of inheritance from its
 #' # location in an OU hierarchy:/n/n
-#' \donttest{organizations$list_policies_for_target(
+#' \donttest{svc$list_policies_for_target(
 #'   Filter = "SERVICE_CONTROL_POLICY",
 #'   TargetId = "444444444444"
 #' )}
@@ -2655,7 +2655,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_roots(
+#' svc$list_roots(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -2664,7 +2664,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' @examples
 #' # The following example shows how to get the list of the roots in the
 #' # current organization:/n/n
-#' \donttest{organizations$list_roots()}
+#' \donttest{svc$list_roots()}
 #'
 #' @keywords internal
 #'
@@ -2726,7 +2726,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$list_targets_for_policy(
+#' svc$list_targets_for_policy(
 #'   PolicyId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2736,7 +2736,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' @examples
 #' # The following example shows how to get the list of roots, OUs, and
 #' # accounts to which the specified policy is attached:/n/n
-#' \donttest{organizations$list_targets_for_policy(
+#' \donttest{svc$list_targets_for_policy(
 #'   PolicyId = "p-FullAWSAccess"
 #' )}
 #'
@@ -2805,7 +2805,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$move_account(
+#' svc$move_account(
 #'   AccountId = "string",
 #'   SourceParentId = "string",
 #'   DestinationParentId = "string"
@@ -2815,7 +2815,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' @examples
 #' # The following example shows how to move a member account from the root
 #' # to an OU:/n/n
-#' \donttest{organizations$move_account(
+#' \donttest{svc$move_account(
 #'   AccountId = "333333333333",
 #'   DestinationParentId = "ou-examplerootid111-exampleouid111",
 #'   SourceParentId = "r-examplerootid111"
@@ -2881,7 +2881,7 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$remove_account_from_organization(
+#' svc$remove_account_from_organization(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -2889,7 +2889,7 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' @examples
 #' # The following example shows you how to remove an account from an
 #' # organization:
-#' \donttest{organizations$remove_account_from_organization(
+#' \donttest{svc$remove_account_from_organization(
 #'   AccountId = "333333333333"
 #' )}
 #'
@@ -2940,7 +2940,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$update_organizational_unit(
+#' svc$update_organizational_unit(
 #'   OrganizationalUnitId = "string",
 #'   Name = "string"
 #' )
@@ -2949,7 +2949,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' @examples
 #' # The following example shows how to rename an OU. The output confirms the
 #' # new name:/n/n
-#' \donttest{organizations$update_organizational_unit(
+#' \donttest{svc$update_organizational_unit(
 #'   Name = "AccountingOU",
 #'   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 #' )}
@@ -3004,7 +3004,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #'
 #' @section Request syntax:
 #' ```
-#' organizations$update_policy(
+#' svc$update_policy(
 #'   PolicyId = "string",
 #'   Name = "string",
 #'   Description = "string",
@@ -3016,7 +3016,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' # The following example shows how to rename a policy and give it a new
 #' # description and new content. The output confirms the new name and
 #' # description text:/n/n
-#' \donttest{organizations$update_policy(
+#' \donttest{svc$update_policy(
 #'   Description = "This description replaces the original.",
 #'   Name = "Renamed-Policy",
 #'   PolicyId = "p-examplepolicyid111"
@@ -3025,7 +3025,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' # The following example shows how to replace the JSON text of the SCP from
 #' # the preceding example with a new JSON policy text string that allows S3
 #' # actions instead of EC2 actions:/n/n
-#' \donttest{organizations$update_policy(
+#' \donttest{svc$update_policy(
 #'   Content = "{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": {\\\"Effect\\\": ...",
 #'   PolicyId = "p-examplepolicyid111"
 #' )}

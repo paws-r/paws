@@ -76,7 +76,7 @@ For more information about Reserved Instances, see \href{https://docs.aws.amazon
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_reserved_instances(
+\preformatted{svc$describe_reserved_instances(
   Filters = list(
     list(
       Name = "string",

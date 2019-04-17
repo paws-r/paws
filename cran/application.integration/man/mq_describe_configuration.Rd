@@ -13,7 +13,7 @@ mq_describe_configuration(ConfigurationId)
 Returns information about the specified configuration.
 }
 \section{Request syntax}{
-\preformatted{mq$describe_configuration(
+\preformatted{svc$describe_configuration(
   ConfigurationId = "string"
 )
 }

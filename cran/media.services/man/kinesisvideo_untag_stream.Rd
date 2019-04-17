@@ -23,7 +23,7 @@ does not exist, it's ignored.
 In the request, you must provide the \code{StreamName} or \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$untag_stream(
+\preformatted{svc$untag_stream(
   StreamARN = "string",
   StreamName = "string",
   TagKeyList = list(

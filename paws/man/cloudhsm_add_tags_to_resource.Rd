@@ -27,7 +27,7 @@ Each tag consists of a key and a value. Tag keys must be unique to each
 resource.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceArn = "string",
   TagList = list(
     list(

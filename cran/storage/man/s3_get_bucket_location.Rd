@@ -13,7 +13,7 @@ s3_get_bucket_location(Bucket)
 Returns the region the bucket resides in.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_location(
+\preformatted{svc$get_bucket_location(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the region the bucket resides in.
 
 \examples{
 # The following example returns bucket location.
-\donttest{s3$get_bucket_location(
+\donttest{svc$get_bucket_location(
   Bucket = "examplebucket"
 )}
 

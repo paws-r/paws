@@ -35,7 +35,7 @@ Network Load Balancer for your service. For more information, see \href{https://
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpc_endpoint_service_configuration(
+\preformatted{svc$create_vpc_endpoint_service_configuration(
   DryRun = TRUE|FALSE,
   AcceptanceRequired = TRUE|FALSE,
   NetworkLoadBalancerArns = list(

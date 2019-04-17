@@ -39,7 +39,7 @@ specify at most 10 name/value pairs.}
 Cancels the execution of a job for a given thing.
 }
 \section{Request syntax}{
-\preformatted{iot$cancel_job_execution(
+\preformatted{svc$cancel_job_execution(
   jobId = "string",
   thingName = "string",
   force = TRUE|FALSE,

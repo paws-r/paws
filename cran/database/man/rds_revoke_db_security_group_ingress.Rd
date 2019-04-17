@@ -39,7 +39,7 @@ are one of CIDRIP, EC2SecurityGroupId for VPC, or
 EC2SecurityGroupId).
 }
 \section{Request syntax}{
-\preformatted{rds$revoke_db_security_group_ingress(
+\preformatted{svc$revoke_db_security_group_ingress(
   DBSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",

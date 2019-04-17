@@ -23,7 +23,7 @@ ImportCertificateAuthorityCertificate operation. The CSR is returned as
 a base64 PEM-encoded string.
 }
 \section{Request syntax}{
-\preformatted{acmpca$get_certificate_authority_csr(
+\preformatted{svc$get_certificate_authority_csr(
   CertificateAuthorityArn = "string"
 )
 }

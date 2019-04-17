@@ -25,7 +25,7 @@ After a certificate transfer is cancelled, the status of the certificate
 changes from PENDING\_TRANSFER to INACTIVE.
 }
 \section{Request syntax}{
-\preformatted{iot$cancel_certificate_transfer(
+\preformatted{svc$cancel_certificate_transfer(
   certificateId = "string"
 )
 }

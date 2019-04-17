@@ -67,7 +67,7 @@ are launched in Amazon GameLift's normal process recycling activity.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_runtime_configuration(
+\preformatted{svc$update_runtime_configuration(
   FleetId = "string",
   RuntimeConfiguration = list(
     ServerProcesses = list(

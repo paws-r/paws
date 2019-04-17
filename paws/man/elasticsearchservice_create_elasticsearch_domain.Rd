@@ -55,7 +55,7 @@ Creates a new Elasticsearch domain. For more information, see \href{http://docs.
 in the \emph{Amazon Elasticsearch Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$create_elasticsearch_domain(
+\preformatted{svc$create_elasticsearch_domain(
   DomainName = "string",
   ElasticsearchVersion = "string",
   ElasticsearchClusterConfig = list(

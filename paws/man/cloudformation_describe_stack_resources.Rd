@@ -61,7 +61,7 @@ A \code{ValidationError} is returned if you specify both \code{StackName} and
 \code{PhysicalResourceId} in the same request.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_resources(
+\preformatted{svc$describe_stack_resources(
   StackName = "string",
   LogicalResourceId = "string",
   PhysicalResourceId = "string"

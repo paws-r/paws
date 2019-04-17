@@ -95,7 +95,7 @@ parameters. (For example, "Key1=Value1")}
 Adds an object to a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_object(
+\preformatted{svc$put_object(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Body = raw,
   Bucket = "string",
@@ -139,7 +139,7 @@ Adds an object to a bucket.
 # The following example uploads an object. The request specifies optional
 # object tags. The bucket is versioned, therefore S3 returns version ID of
 # the newly created object.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "c:\\\\HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
@@ -150,7 +150,7 @@ Adds an object to a bucket.
 # canned ACL (access control list) to all READ access to authenticated
 # users. If the bucket is versioning enabled, S3 returns version ID in
 # response.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   ACL = "authenticated-read",
   Body = "filetoupload",
   Bucket = "examplebucket",
@@ -159,7 +159,7 @@ Adds an object to a bucket.
 
 # The following example creates an object. If the bucket is versioning
 # enabled, S3 returns version ID in response.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "objectkey"
@@ -168,7 +168,7 @@ Adds an object to a bucket.
 # The following example uploads an object. The request specifies optional
 # request headers to directs S3 to use specific storage class and use
 # server-side encryption.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
@@ -179,7 +179,7 @@ Adds an object to a bucket.
 # The following example uploads an object to a versioning-enabled bucket.
 # The source file is specified using Windows file syntax. S3 returns
 # VersionId of the newly created object.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
@@ -188,7 +188,7 @@ Adds an object to a bucket.
 # The following example creates an object. The request also specifies
 # optional metadata. If the bucket is versioning enabled, S3 returns
 # version ID in response.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject",
@@ -202,7 +202,7 @@ Adds an object to a bucket.
 # optional server-side encryption option. The request also specifies
 # optional object tags. If the bucket is versioning enabled, S3 returns
 # version ID in response.
-\donttest{s3$put_object(
+\donttest{svc$put_object(
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject",

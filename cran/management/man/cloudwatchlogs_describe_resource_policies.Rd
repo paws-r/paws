@@ -16,7 +16,7 @@ this API.}
 Lists the resource policies in this account.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_resource_policies(
+\preformatted{svc$describe_resource_policies(
   nextToken = "string",
   limit = 123
 )

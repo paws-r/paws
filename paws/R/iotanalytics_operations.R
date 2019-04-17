@@ -38,7 +38,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$batch_put_message(
+#' svc$batch_put_message(
 #'   channelName = "string",
 #'   messages = list(
 #'     list(
@@ -81,7 +81,7 @@ iotanalytics_batch_put_message <- function(channelName, messages) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$cancel_pipeline_reprocessing(
+#' svc$cancel_pipeline_reprocessing(
 #'   pipelineName = "string",
 #'   reprocessingId = "string"
 #' )
@@ -121,7 +121,7 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$create_channel(
+#' svc$create_channel(
 #'   channelName = "string",
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
@@ -192,7 +192,7 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$create_dataset(
+#' svc$create_dataset(
 #'   datasetName = "string",
 #'   actions = list(
 #'     list(
@@ -301,7 +301,7 @@ iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, c
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$create_dataset_content(
+#' svc$create_dataset_content(
 #'   datasetName = "string"
 #' )
 #' ```
@@ -338,7 +338,7 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$create_datastore(
+#' svc$create_datastore(
 #'   datastoreName = "string",
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
@@ -399,7 +399,7 @@ iotanalytics_create_datastore <- function(datastoreName, retentionPeriod = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$create_pipeline(
+#' svc$create_pipeline(
 #'   pipelineName = "string",
 #'   pipelineActivities = list(
 #'     list(
@@ -505,7 +505,7 @@ iotanalytics_create_pipeline <- function(pipelineName, pipelineActivities, tags 
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$delete_channel(
+#' svc$delete_channel(
 #'   channelName = "string"
 #' )
 #' ```
@@ -543,7 +543,7 @@ iotanalytics_delete_channel <- function(channelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$delete_dataset(
+#' svc$delete_dataset(
 #'   datasetName = "string"
 #' )
 #' ```
@@ -582,7 +582,7 @@ iotanalytics_delete_dataset <- function(datasetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$delete_dataset_content(
+#' svc$delete_dataset_content(
 #'   datasetName = "string",
 #'   versionId = "string"
 #' )
@@ -618,7 +618,7 @@ iotanalytics_delete_dataset_content <- function(datasetName, versionId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$delete_datastore(
+#' svc$delete_datastore(
 #'   datastoreName = "string"
 #' )
 #' ```
@@ -653,7 +653,7 @@ iotanalytics_delete_datastore <- function(datastoreName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$delete_pipeline(
+#' svc$delete_pipeline(
 #'   pipelineName = "string"
 #' )
 #' ```
@@ -690,7 +690,7 @@ iotanalytics_delete_pipeline <- function(pipelineName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$describe_channel(
+#' svc$describe_channel(
 #'   channelName = "string",
 #'   includeStatistics = TRUE|FALSE
 #' )
@@ -726,7 +726,7 @@ iotanalytics_describe_channel <- function(channelName, includeStatistics = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$describe_dataset(
+#' svc$describe_dataset(
 #'   datasetName = "string"
 #' )
 #' ```
@@ -763,7 +763,7 @@ iotanalytics_describe_dataset <- function(datasetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$describe_datastore(
+#' svc$describe_datastore(
 #'   datastoreName = "string",
 #'   includeStatistics = TRUE|FALSE
 #' )
@@ -797,7 +797,7 @@ iotanalytics_describe_datastore <- function(datastoreName, includeStatistics = N
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$describe_logging_options()
+#' svc$describe_logging_options()
 #' ```
 #'
 #' @keywords internal
@@ -830,7 +830,7 @@ iotanalytics_describe_logging_options <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$describe_pipeline(
+#' svc$describe_pipeline(
 #'   pipelineName = "string"
 #' )
 #' ```
@@ -869,7 +869,7 @@ iotanalytics_describe_pipeline <- function(pipelineName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$get_dataset_content(
+#' svc$get_dataset_content(
 #'   datasetName = "string",
 #'   versionId = "string"
 #' )
@@ -908,7 +908,7 @@ iotanalytics_get_dataset_content <- function(datasetName, versionId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_channels(
+#' svc$list_channels(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -953,7 +953,7 @@ iotanalytics_list_channels <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_dataset_contents(
+#' svc$list_dataset_contents(
 #'   datasetName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
@@ -999,7 +999,7 @@ iotanalytics_list_dataset_contents <- function(datasetName, nextToken = NULL, ma
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_datasets(
+#' svc$list_datasets(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1038,7 +1038,7 @@ iotanalytics_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_datastores(
+#' svc$list_datastores(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1077,7 +1077,7 @@ iotanalytics_list_datastores <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_pipelines(
+#' svc$list_pipelines(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1113,7 +1113,7 @@ iotanalytics_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
@@ -1154,7 +1154,7 @@ iotanalytics_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$put_logging_options(
+#' svc$put_logging_options(
 #'   loggingOptions = list(
 #'     roleArn = "string",
 #'     level = "ERROR",
@@ -1201,7 +1201,7 @@ iotanalytics_put_logging_options <- function(loggingOptions) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$run_pipeline_activity(
+#' svc$run_pipeline_activity(
 #'   pipelineActivity = list(
 #'     channel = list(
 #'       name = "string",
@@ -1308,7 +1308,7 @@ iotanalytics_run_pipeline_activity <- function(pipelineActivity, payloads) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$sample_channel_data(
+#' svc$sample_channel_data(
 #'   channelName = "string",
 #'   maxMessages = 123,
 #'   startTime = as.POSIXct(
@@ -1353,7 +1353,7 @@ iotanalytics_sample_channel_data <- function(channelName, maxMessages = NULL, st
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$start_pipeline_reprocessing(
+#' svc$start_pipeline_reprocessing(
 #'   pipelineName = "string",
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1396,7 +1396,7 @@ iotanalytics_start_pipeline_reprocessing <- function(pipelineName, startTime = N
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -1438,7 +1438,7 @@ iotanalytics_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -1477,7 +1477,7 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$update_channel(
+#' svc$update_channel(
 #'   channelName = "string",
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
@@ -1529,7 +1529,7 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$update_dataset(
+#' svc$update_dataset(
 #'   datasetName = "string",
 #'   actions = list(
 #'     list(
@@ -1631,7 +1631,7 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$update_datastore(
+#' svc$update_datastore(
 #'   datastoreName = "string",
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
@@ -1683,7 +1683,7 @@ iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iotanalytics$update_pipeline(
+#' svc$update_pipeline(
 #'   pipelineName = "string",
 #'   pipelineActivities = list(
 #'     list(

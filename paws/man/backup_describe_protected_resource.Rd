@@ -18,7 +18,7 @@ was backed-up, its Amazon Resource Name (ARN), and the AWS service type
 of the saved resource.
 }
 \section{Request syntax}{
-\preformatted{backup$describe_protected_resource(
+\preformatted{svc$describe_protected_resource(
   ResourceArn = "string"
 )
 }

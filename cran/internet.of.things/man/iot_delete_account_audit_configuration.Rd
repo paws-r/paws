@@ -16,7 +16,7 @@ account. Any configuration data you entered is deleted and all audit
 checks are reset to disabled.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_account_audit_configuration(
+\preformatted{svc$delete_account_audit_configuration(
   deleteScheduledAudits = TRUE|FALSE
 )
 }

@@ -39,7 +39,7 @@ to \code{pending-reboot} to take effect on the next DB instance restart or
 \code{RebootDBInstance} request.
 }
 \section{Request syntax}{
-\preformatted{neptune$reset_db_parameter_group(
+\preformatted{svc$reset_db_parameter_group(
   DBParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(

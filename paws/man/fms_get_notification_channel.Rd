@@ -12,7 +12,7 @@ Returns information about the Amazon Simple Notification Service (SNS)
 topic that is used to record AWS Firewall Manager SNS logs.
 }
 \section{Request syntax}{
-\preformatted{fms$get_notification_channel()
+\preformatted{svc$get_notification_channel()
 }
 }
 

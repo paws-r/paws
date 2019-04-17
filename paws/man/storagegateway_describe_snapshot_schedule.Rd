@@ -17,7 +17,7 @@ automatically initiated on the volume. This operation is only supported
 in the cached volume and stored volume types.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_snapshot_schedule(
+\preformatted{svc$describe_snapshot_schedule(
   VolumeARN = "string"
 )
 }
@@ -26,7 +26,7 @@ in the cached volume and stored volume types.
 \examples{
 # Describes the snapshot schedule for the specified gateway volume
 # including intervals at which snapshots are automatically initiated.
-\donttest{storagegateway$describe_snapshot_schedule(
+\donttest{svc$describe_snapshot_schedule(
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}
 

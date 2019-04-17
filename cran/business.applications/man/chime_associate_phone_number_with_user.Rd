@@ -18,7 +18,7 @@ chime_associate_phone_number_with_user(AccountId, UserId,
 Associates a phone number with the specified Amazon Chime user.
 }
 \section{Request syntax}{
-\preformatted{chime$associate_phone_number_with_user(
+\preformatted{svc$associate_phone_number_with_user(
   AccountId = "string",
   UserId = "string",
   E164PhoneNumber = "string"

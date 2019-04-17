@@ -16,7 +16,7 @@ indexing options. This operation must be invoked to activate options
 whose OptionStatus is \code{RequiresIndexDocuments}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$index_documents(
+\preformatted{svc$index_documents(
   DomainName = "string"
 )
 }

@@ -34,7 +34,7 @@ This operation implements a subset of the features of the AWS Support
 Center.
 }
 \section{Request syntax}{
-\preformatted{support$add_communication_to_case(
+\preformatted{svc$add_communication_to_case(
   caseId = "string",
   communicationBody = "string",
   ccEmailAddresses = list(

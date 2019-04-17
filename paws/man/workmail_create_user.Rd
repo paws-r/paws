@@ -22,7 +22,7 @@ Creates a user who can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
 }
 \section{Request syntax}{
-\preformatted{workmail$create_user(
+\preformatted{svc$create_user(
   OrganizationId = "string",
   Name = "string",
   DisplayName = "string",

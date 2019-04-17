@@ -33,7 +33,7 @@ You cannot modify the default IP access control group for your
 directory.
 }
 \section{Request syntax}{
-\preformatted{workspaces$create_ip_group(
+\preformatted{svc$create_ip_group(
   GroupName = "string",
   GroupDesc = "string",
   UserRules = list(

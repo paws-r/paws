@@ -20,7 +20,7 @@ credentials.}
 Retrieves details of a document.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_document(
+\preformatted{svc$get_document(
   AuthenticationToken = "string",
   DocumentId = "string",
   IncludeCustomMetadata = TRUE|FALSE

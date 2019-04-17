@@ -83,7 +83,7 @@ information about VPC security group limits, see \href{https://docs.aws.amazon.c
 You can optionally specify a description for the security group rule.
 }
 \section{Request syntax}{
-\preformatted{ec2$authorize_security_group_ingress(
+\preformatted{svc$authorize_security_group_ingress(
   CidrIp = "string",
   FromPort = 123,
   GroupId = "string",
@@ -136,7 +136,7 @@ You can optionally specify a description for the security group rule.
 \examples{
 # This example enables inbound traffic on TCP port 22 (SSH). The rule
 # includes a description to help you identify it later.
-\donttest{ec2$authorize_security_group_ingress(
+\donttest{svc$authorize_security_group_ingress(
   GroupId = "sg-903004f8",
   IpPermissions = list(
     list(
@@ -157,7 +157,7 @@ You can optionally specify a description for the security group rule.
 # security group. The group must be in the same VPC or a peer VPC.
 # Incoming traffic is allowed based on the private IP addresses of
 # instances that are associated with the specified security group.
-\donttest{ec2$authorize_security_group_ingress(
+\donttest{svc$authorize_security_group_ingress(
   GroupId = "sg-111aaa22",
   IpPermissions = list(
     list(
@@ -177,7 +177,7 @@ You can optionally specify a description for the security group rule.
 # This example adds an inbound rule that allows RDP traffic from the
 # specified IPv6 address range. The rule includes a description to help
 # you identify it later.
-\donttest{ec2$authorize_security_group_ingress(
+\donttest{svc$authorize_security_group_ingress(
   GroupId = "sg-123abc12 ",
   IpPermissions = list(
     list(

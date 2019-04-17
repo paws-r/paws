@@ -15,7 +15,7 @@ opsworks_untag_resource(ResourceArn, TagKeys)
 Removes tags from a specified stack or layer.
 }
 \section{Request syntax}{
-\preformatted{opsworks$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

@@ -40,7 +40,7 @@ more than one job queue, the job queue with a higher priority is given
 preference for scheduling jobs to that compute environment.
 }
 \section{Request syntax}{
-\preformatted{batch$create_job_queue(
+\preformatted{svc$create_job_queue(
   jobQueueName = "string",
   state = "ENABLED"|"DISABLED",
   priority = 123,
@@ -57,7 +57,7 @@ preference for scheduling jobs to that compute environment.
 \examples{
 # This example creates a job queue called LowPriority that uses the M4Spot
 # compute environment.
-\donttest{batch$create_job_queue(
+\donttest{svc$create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "M4Spot",
@@ -72,7 +72,7 @@ preference for scheduling jobs to that compute environment.
 # This example creates a job queue called HighPriority that uses the
 # C4OnDemand compute environment with an order of 1 and the M4Spot compute
 # environment with an order of 2.
-\donttest{batch$create_job_queue(
+\donttest{svc$create_job_queue(
   computeEnvironmentOrder = list(
     list(
       computeEnvironment = "C4OnDemand",

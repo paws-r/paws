@@ -19,7 +19,7 @@ greengrass_create_subscription_definition_version(AmznClientToken,
 Creates a version of a subscription definition which has already been defined.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_subscription_definition_version(
+\preformatted{svc$create_subscription_definition_version(
   AmznClientToken = "string",
   SubscriptionDefinitionId = "string",
   Subscriptions = list(

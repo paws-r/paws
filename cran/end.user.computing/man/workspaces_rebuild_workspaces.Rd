@@ -23,7 +23,7 @@ This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
 }
 \section{Request syntax}{
-\preformatted{workspaces$rebuild_workspaces(
+\preformatted{svc$rebuild_workspaces(
   RebuildWorkspaceRequests = list(
     list(
       WorkspaceId = "string"

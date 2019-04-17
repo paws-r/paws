@@ -54,7 +54,7 @@ template as the value.}
 Updates an IntegrationResponses.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_integration_response(
+\preformatted{svc$update_integration_response(
   ApiId = "string",
   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
   IntegrationId = "string",

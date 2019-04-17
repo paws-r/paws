@@ -66,7 +66,7 @@ For information about how the service works, see \href{https://docs.aws.amazon.c
 You must have permissions for the \code{KinesisVideo:CreateStream} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$create_stream(
+\preformatted{svc$create_stream(
   DeviceName = "string",
   StreamName = "string",
   MediaType = "string",

@@ -9,12 +9,6 @@ kinesisanalyticsv2()
 \description{
 Documentation for Kinesis Data Analytics API v2
 }
-\section{Example}{
-\preformatted{kinesisanalyticsv2 <- paws::kinesisanalyticsv2()
-kinesisanalyticsv2$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -42,3 +36,9 @@ kinesisanalyticsv2$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_application_cloud_watch_logging_option(
+  Foo = 123
+)}
+
+}

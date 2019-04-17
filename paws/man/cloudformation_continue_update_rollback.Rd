@@ -90,7 +90,7 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$continue_update_rollback(
+\preformatted{svc$continue_update_rollback(
   StackName = "string",
   RoleARN = "string",
   ResourcesToSkip = list(

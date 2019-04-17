@@ -13,7 +13,7 @@ iot_describe_security_profile(securityProfileName)
 Gets information about a Device Defender security profile.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_security_profile(
+\preformatted{svc$describe_security_profile(
   securityProfileName = "string"
 )
 }

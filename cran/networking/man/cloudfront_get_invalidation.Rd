@@ -16,7 +16,7 @@ cloudfront_get_invalidation(DistributionId, Id)
 Get the information about an invalidation.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_invalidation(
+\preformatted{svc$get_invalidation(
   DistributionId = "string",
   Id = "string"
 )

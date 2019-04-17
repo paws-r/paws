@@ -111,7 +111,7 @@ The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_labeling_job(
+\preformatted{svc$create_labeling_job(
   LabelingJobName = "string",
   LabelAttributeName = "string",
   InputConfig = list(

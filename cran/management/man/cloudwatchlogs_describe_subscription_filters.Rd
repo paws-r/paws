@@ -25,7 +25,7 @@ all the subscription filters or filter the results by prefix. The
 results are ASCII-sorted by filter name.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_subscription_filters(
+\preformatted{svc$describe_subscription_filters(
   logGroupName = "string",
   filterNamePrefix = "string",
   nextToken = "string",

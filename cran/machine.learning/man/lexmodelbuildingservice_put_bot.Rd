@@ -137,7 +137,7 @@ This operation requires permissions for the \code{lex:PutBot} action. For
 more information, see auth-and-access-control.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$put_bot(
+\preformatted{svc$put_bot(
   name = "string",
   description = "string",
   intents = list(
@@ -180,7 +180,7 @@ more information, see auth-and-access-control.
 
 \examples{
 # This example shows how to create a bot for ordering pizzas.
-\donttest{lexmodelbuildingservice$put_bot(
+\donttest{svc$put_bot(
   name = "DocOrderPizzaBot",
   abortStatement = list(
     messages = list(

@@ -18,7 +18,7 @@ does not contain any tokens.}
 Returns summaries of the organization's resources.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_resources(
+\preformatted{svc$list_resources(
   OrganizationId = "string",
   NextToken = "string",
   MaxResults = 123

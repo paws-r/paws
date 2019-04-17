@@ -47,7 +47,7 @@ exist. An \code{InvalidStateException} is thrown when the server is in any of
 the following states: CREATING, TERMINATED, FAILED or DELETING.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$export_server_engine_attribute(
+\preformatted{svc$export_server_engine_attribute(
   ExportAttributeName = "string",
   ServerName = "string",
   InputAttributes = list(

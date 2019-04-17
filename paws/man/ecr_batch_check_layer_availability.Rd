@@ -28,7 +28,7 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{ecr$batch_check_layer_availability(
+\preformatted{svc$batch_check_layer_availability(
   registryId = "string",
   repositoryName = "string",
   layerDigests = list(

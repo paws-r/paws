@@ -14,7 +14,7 @@ by CreateIPSet and by ListIPSets.}
 Returns the IPSet that is specified by \code{IPSetId}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_ip_set(
+\preformatted{svc$get_ip_set(
   IPSetId = "string"
 )
 }
@@ -23,7 +23,7 @@ Returns the IPSet that is specified by \code{IPSetId}.
 \examples{
 # The following example returns the details of an IP match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{wafregional$get_ip_set(
+\donttest{svc$get_ip_set(
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}
 

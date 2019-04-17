@@ -13,7 +13,7 @@ glue_get_security_configuration(Name)
 Retrieves a specified security configuration.
 }
 \section{Request syntax}{
-\preformatted{glue$get_security_configuration(
+\preformatted{svc$get_security_configuration(
   Name = "string"
 )
 }

@@ -37,7 +37,7 @@ enforces the policy during the update. You can't specify a temporary
 stack policy that overrides the current policy.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$execute_change_set(
+\preformatted{svc$execute_change_set(
   ChangeSetName = "string",
   StackName = "string",
   ClientRequestToken = "string"

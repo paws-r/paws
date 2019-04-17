@@ -62,7 +62,7 @@ and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloud
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$put_event_selectors(
+\preformatted{svc$put_event_selectors(
   TrailName = "string",
   EventSelectors = list(
     list(

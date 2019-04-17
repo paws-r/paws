@@ -34,7 +34,7 @@ see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.htm
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{
-\preformatted{elasticache$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(

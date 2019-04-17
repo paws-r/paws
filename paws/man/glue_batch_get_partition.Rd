@@ -21,7 +21,7 @@ none is supplied, the AWS account ID is used by default.}
 Retrieves partitions in a batch request.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_get_partition(
+\preformatted{svc$batch_get_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

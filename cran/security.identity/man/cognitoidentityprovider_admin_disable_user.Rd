@@ -18,7 +18,7 @@ Disables the specified user as an administrator. Works on any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_disable_user(
+\preformatted{svc$admin_disable_user(
   UserPoolId = "string",
   Username = "string"
 )

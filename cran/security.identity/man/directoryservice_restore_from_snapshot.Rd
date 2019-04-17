@@ -23,7 +23,7 @@ DescribeDirectories operation with the directory identifier. When the
 operation is complete.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$restore_from_snapshot(
+\preformatted{svc$restore_from_snapshot(
   SnapshotId = "string"
 )
 }

@@ -15,7 +15,7 @@ worklink_describe_website_certificate_authority(FleetArn, WebsiteCaId)
 Provides information about the certificate authority.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_website_certificate_authority(
+\preformatted{svc$describe_website_certificate_authority(
   FleetArn = "string",
   WebsiteCaId = "string"
 )

@@ -15,7 +15,7 @@ codedeploy_update_application(applicationName, newApplicationName)
 Changes the name of an application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$update_application(
+\preformatted{svc$update_application(
   applicationName = "string",
   newApplicationName = "string"
 )

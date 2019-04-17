@@ -22,7 +22,7 @@ created.}
 Creates a new partition.
 }
 \section{Request syntax}{
-\preformatted{glue$create_partition(
+\preformatted{svc$create_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

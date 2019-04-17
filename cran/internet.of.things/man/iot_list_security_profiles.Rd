@@ -17,7 +17,7 @@ use filters to list only those security profiles associated with a thing
 group or only those associated with your account.
 }
 \section{Request syntax}{
-\preformatted{iot$list_security_profiles(
+\preformatted{svc$list_security_profiles(
   nextToken = "string",
   maxResults = 123
 )

@@ -21,7 +21,7 @@ you want to update.}
 Updates a notification.
 }
 \section{Request syntax}{
-\preformatted{budgets$update_notification(
+\preformatted{svc$update_notification(
   AccountId = "string",
   BudgetName = "string",
   OldNotification = list(

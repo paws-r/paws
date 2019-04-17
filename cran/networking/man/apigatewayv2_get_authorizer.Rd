@@ -15,7 +15,7 @@ apigatewayv2_get_authorizer(ApiId, AuthorizerId)
 Gets an Authorizer.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_authorizer(
+\preformatted{svc$get_authorizer(
   ApiId = "string",
   AuthorizerId = "string"
 )

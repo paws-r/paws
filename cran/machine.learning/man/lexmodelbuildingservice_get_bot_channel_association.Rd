@@ -26,7 +26,7 @@ This operation requires permissions for the
 \code{lex:GetBotChannelAssociation} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot_channel_association(
+\preformatted{svc$get_bot_channel_association(
   name = "string",
   botName = "string",
   botAlias = "string"

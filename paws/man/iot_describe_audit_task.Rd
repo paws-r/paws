@@ -13,7 +13,7 @@ iot_describe_audit_task(taskId)
 Gets information about a Device Defender audit.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_audit_task(
+\preformatted{svc$describe_audit_task(
   taskId = "string"
 )
 }

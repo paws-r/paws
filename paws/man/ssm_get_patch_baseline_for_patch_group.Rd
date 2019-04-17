@@ -18,7 +18,7 @@ Retrieves the patch baseline that should be used for the specified patch
 group.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_patch_baseline_for_patch_group(
+\preformatted{svc$get_patch_baseline_for_patch_group(
   PatchGroup = "string",
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
 )

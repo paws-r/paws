@@ -13,7 +13,7 @@ pinpoint_get_apns_sandbox_channel(ApplicationId)
 Get an APNS sandbox channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_apns_sandbox_channel(
+\preformatted{svc$get_apns_sandbox_channel(
   ApplicationId = "string"
 )
 }

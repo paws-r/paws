@@ -25,7 +25,7 @@ Gets a list of build IDs, with each build ID representing a single
 build.
 }
 \section{Request syntax}{
-\preformatted{codebuild$list_builds(
+\preformatted{svc$list_builds(
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"
 )

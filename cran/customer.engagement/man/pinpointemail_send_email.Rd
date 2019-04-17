@@ -48,7 +48,7 @@ to be a valid MIME message.
 }
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$send_email(
+\preformatted{svc$send_email(
   FromEmailAddress = "string",
   Destination = list(
     ToAddresses = list(

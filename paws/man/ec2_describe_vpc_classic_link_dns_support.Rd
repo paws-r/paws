@@ -26,7 +26,7 @@ EC2-Classic instance. For more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_classic_link_dns_support(
+\preformatted{svc$describe_vpc_classic_link_dns_support(
   MaxResults = 123,
   NextToken = "string",
   VpcIds = list(

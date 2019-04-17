@@ -23,7 +23,7 @@ for your DNS failover configuration. For more information, see
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$delete_health_check(
+\preformatted{svc$delete_health_check(
   HealthCheckId = "string"
 )
 }

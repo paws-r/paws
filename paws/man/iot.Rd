@@ -20,12 +20,6 @@ For more information about how AWS IoT works, see the \href{https://docs.aws.ama
 For information about how to use the credentials provider for AWS IoT,
 see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html}{Authorizing Direct Calls to AWS Services}.
 }
-\section{Example}{
-\preformatted{iot <- paws::iot()
-iot$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -199,3 +193,9 @@ iot$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_certificate_transfer(
+  Foo = 123
+)}
+
+}

@@ -32,7 +32,7 @@ tenancy (shared or Dedicated Host), host affinity (how long a VM is
 associated with a host), the number of licenses purchased and used.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$update_license_configuration(
+\preformatted{svc$update_license_configuration(
   LicenseConfigurationArn = "string",
   LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
   LicenseRules = list(

@@ -34,7 +34,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_dhcp_options(
+\preformatted{svc$associate_dhcp_options(
   DhcpOptionsId = "string",
   VpcId = "string",
   DryRun = TRUE|FALSE
@@ -45,14 +45,14 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \examples{
 # This example associates the specified DHCP options set with the
 # specified VPC.
-\donttest{ec2$associate_dhcp_options(
+\donttest{svc$associate_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb",
   VpcId = "vpc-a01106c2"
 )}
 
 # This example associates the default DHCP options set with the specified
 # VPC.
-\donttest{ec2$associate_dhcp_options(
+\donttest{svc$associate_dhcp_options(
   DhcpOptionsId = "default",
   VpcId = "vpc-a01106c2"
 )}

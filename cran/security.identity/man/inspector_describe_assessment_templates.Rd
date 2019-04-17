@@ -15,7 +15,7 @@ Describes the assessment templates that are specified by the ARNs of the
 assessment templates.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_assessment_templates(
+\preformatted{svc$describe_assessment_templates(
   assessmentTemplateArns = list(
     "string"
   )
@@ -26,7 +26,7 @@ assessment templates.
 \examples{
 # Describes the assessment templates that are specified by the ARNs of the
 # assessment templates.
-\donttest{inspector$describe_assessment_templates(
+\donttest{svc$describe_assessment_templates(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   )

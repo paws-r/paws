@@ -31,7 +31,7 @@ specified time (timestamp).}
 Lists endpoint configurations.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_endpoint_configs(
+\preformatted{svc$list_endpoint_configs(
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",

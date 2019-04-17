@@ -45,7 +45,7 @@ For a Java example that shows how to use this action, see
 \url{http://docs.aws.amazon.com/acm/latest/userguide/}
 }
 \section{Request syntax}{
-\preformatted{signer$start_signing_job(
+\preformatted{svc$start_signing_job(
   source = list(
     s3 = list(
       bucketName = "string",

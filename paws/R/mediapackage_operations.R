@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$create_channel(
+#' svc$create_channel(
 #'   Description = "string",
 #'   Id = "string",
 #'   Tags = list(
@@ -73,7 +73,7 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$create_origin_endpoint(
+#' svc$create_origin_endpoint(
 #'   ChannelId = "string",
 #'   CmafPackage = list(
 #'     Encryption = list(
@@ -230,7 +230,7 @@ mediapackage_create_origin_endpoint <- function(ChannelId, CmafPackage = NULL, D
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$delete_channel(
+#' svc$delete_channel(
 #'   Id = "string"
 #' )
 #' ```
@@ -265,7 +265,7 @@ mediapackage_delete_channel <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$delete_origin_endpoint(
+#' svc$delete_origin_endpoint(
 #'   Id = "string"
 #' )
 #' ```
@@ -300,7 +300,7 @@ mediapackage_delete_origin_endpoint <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$describe_channel(
+#' svc$describe_channel(
 #'   Id = "string"
 #' )
 #' ```
@@ -335,7 +335,7 @@ mediapackage_describe_channel <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$describe_origin_endpoint(
+#' svc$describe_origin_endpoint(
 #'   Id = "string"
 #' )
 #' ```
@@ -371,7 +371,7 @@ mediapackage_describe_origin_endpoint <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$list_channels(
+#' svc$list_channels(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -409,7 +409,7 @@ mediapackage_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$list_origin_endpoints(
+#' svc$list_origin_endpoints(
 #'   ChannelId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -446,7 +446,7 @@ mediapackage_list_origin_endpoints <- function(ChannelId = NULL, MaxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -481,7 +481,7 @@ mediapackage_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$rotate_channel_credentials(
+#' svc$rotate_channel_credentials(
 #'   Id = "string"
 #' )
 #' ```
@@ -518,7 +518,7 @@ mediapackage_rotate_channel_credentials <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$rotate_ingest_endpoint_credentials(
+#' svc$rotate_ingest_endpoint_credentials(
 #'   Id = "string",
 #'   IngestEndpointId = "string"
 #' )
@@ -555,7 +555,7 @@ mediapackage_rotate_ingest_endpoint_credentials <- function(Id, IngestEndpointId
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -594,7 +594,7 @@ mediapackage_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -633,7 +633,7 @@ mediapackage_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$update_channel(
+#' svc$update_channel(
 #'   Description = "string",
 #'   Id = "string"
 #' )
@@ -682,7 +682,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediapackage$update_origin_endpoint(
+#' svc$update_origin_endpoint(
 #'   CmafPackage = list(
 #'     Encryption = list(
 #'       KeyRotationIntervalSeconds = 123,

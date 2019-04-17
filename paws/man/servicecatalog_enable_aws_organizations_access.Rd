@@ -18,7 +18,7 @@ organizations:EnableAWSServiceAccess on your behalf so that your shares
 can be in sync with any changes in your AWS Organizations structure.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$enable_aws_organizations_access()
+\preformatted{svc$enable_aws_organizations_access()
 }
 }
 

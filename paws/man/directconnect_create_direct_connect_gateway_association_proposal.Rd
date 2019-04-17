@@ -32,7 +32,7 @@ gateway when the account that owns the Direct Connect gateway and the
 account that owns the virtual private gateway have the same payer ID.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_direct_connect_gateway_association_proposal(
+\preformatted{svc$create_direct_connect_gateway_association_proposal(
   directConnectGatewayId = "string",
   directConnectGatewayOwnerAccount = "string",
   gatewayId = "string",

@@ -13,7 +13,7 @@ s3_get_bucket_lifecycle(Bucket)
 No longer used, see the GetBucketLifecycleConfiguration operation.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_lifecycle(
+\preformatted{svc$get_bucket_lifecycle(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ No longer used, see the GetBucketLifecycleConfiguration operation.
 
 \examples{
 # The following example gets ACL on the specified bucket.
-\donttest{s3$get_bucket_lifecycle(
+\donttest{svc$get_bucket_lifecycle(
   Bucket = "acl1"
 )}
 

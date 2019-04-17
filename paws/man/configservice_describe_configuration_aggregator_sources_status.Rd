@@ -31,7 +31,7 @@ case of a failure, the status contains the related error code or
 message.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_configuration_aggregator_sources_status(
+\preformatted{svc$describe_configuration_aggregator_sources_status(
   ConfigurationAggregatorName = "string",
   UpdateStatus = list(
     "FAILED"|"SUCCEEDED"|"OUTDATED"

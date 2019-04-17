@@ -16,7 +16,7 @@ specifies the Resolver operations and resources that you want to allow
 another AWS account to be able to use.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$get_resolver_rule_policy(
+\preformatted{svc$get_resolver_rule_policy(
   Arn = "string"
 )
 }

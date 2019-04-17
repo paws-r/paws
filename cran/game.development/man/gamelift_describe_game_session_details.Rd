@@ -55,7 +55,7 @@ returned for each session matching the request.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_game_session_details(
+\preformatted{svc$describe_game_session_details(
   FleetId = "string",
   GameSessionId = "string",
   AliasId = "string",

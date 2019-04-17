@@ -16,7 +16,7 @@ automated and continuous checks that help determine your compliance
 status against security industry (including AWS) best practices.
 }
 \section{Request syntax}{
-\preformatted{securityhub$batch_enable_standards(
+\preformatted{svc$batch_enable_standards(
   StandardsSubscriptionRequests = list(
     list(
       StandardsArn = "string",

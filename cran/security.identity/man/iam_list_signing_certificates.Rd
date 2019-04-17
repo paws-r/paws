@@ -46,7 +46,7 @@ Consequently, you can use this operation to manage AWS account root user
 credentials even if the AWS account has no associated users.
 }
 \section{Request syntax}{
-\preformatted{iam$list_signing_certificates(
+\preformatted{svc$list_signing_certificates(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
@@ -57,7 +57,7 @@ credentials even if the AWS account has no associated users.
 \examples{
 # The following command lists the signing certificates for the IAM user
 # named Bob.
-\donttest{iam$list_signing_certificates(
+\donttest{svc$list_signing_certificates(
   UserName = "Bob"
 )}
 

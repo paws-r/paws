@@ -14,7 +14,7 @@ guardduty_get_master_account(DetectorId)
 Provides the details for the GuardDuty master account to the current GuardDuty member account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_master_account(
+\preformatted{svc$get_master_account(
   DetectorId = "string"
 )
 }

@@ -28,7 +28,7 @@ Disassociates the specified self-service action association from the
 specified provisioning artifact.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$disassociate_service_action_from_provisioning_artifact(
+\preformatted{svc$disassociate_service_action_from_provisioning_artifact(
   ProductId = "string",
   ProvisioningArtifactId = "string",
   ServiceActionId = "string",

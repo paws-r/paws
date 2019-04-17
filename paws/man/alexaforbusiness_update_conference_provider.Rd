@@ -22,7 +22,7 @@ alexaforbusiness_update_conference_provider(ConferenceProviderArn,
 Updates an existing conference provider's settings.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_conference_provider(
+\preformatted{svc$update_conference_provider(
   ConferenceProviderArn = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(

@@ -28,7 +28,7 @@ including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_maintenance_start_time(
+\preformatted{svc$update_maintenance_start_time(
   GatewayARN = "string",
   HourOfDay = 123,
   MinuteOfHour = 123,
@@ -41,7 +41,7 @@ your gateway's time zone.
 # Updates a gateway's weekly maintenance start time information, including
 # day and time of the week. The maintenance time is in your gateway's time
 # zone.
-\donttest{storagegateway$update_maintenance_start_time(
+\donttest{svc$update_maintenance_start_time(
   DayOfWeek = 2L,
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   HourOfDay = 0L,

@@ -32,7 +32,7 @@ action.
 Kinesis video streams support up to 50 tags.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$tag_stream(
+\preformatted{svc$tag_stream(
   StreamARN = "string",
   StreamName = "string",
   Tags = list(

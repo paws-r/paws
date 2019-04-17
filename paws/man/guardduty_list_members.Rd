@@ -21,7 +21,7 @@ guardduty_list_members(DetectorId, MaxResults, NextToken,
 Lists details about all member accounts for the current GuardDuty master account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_members(
+\preformatted{svc$list_members(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string",

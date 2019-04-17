@@ -25,7 +25,7 @@ When a policy is deleted using DeletePolicy, its default version is
 deleted with it.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_policy(
+\preformatted{svc$delete_policy(
   policyName = "string"
 )
 }

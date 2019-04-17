@@ -31,7 +31,7 @@ recommend that you change this only for boot volumes or for volumes that
 are stateless or disposable.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_volume_attribute(
+\preformatted{svc$modify_volume_attribute(
   AutoEnableIO = list(
     Value = TRUE|FALSE
   ),
@@ -45,7 +45,7 @@ are stateless or disposable.
 # This example sets the ``autoEnableIo`` attribute of the volume with the
 # ID ``vol-1234567890abcdef0`` to ``true``. If the command succeeds, no
 # output is returned.
-\donttest{ec2$modify_volume_attribute(
+\donttest{svc$modify_volume_attribute(
   AutoEnableIO = list(
     Value = TRUE
   ),

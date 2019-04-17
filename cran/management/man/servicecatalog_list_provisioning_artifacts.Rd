@@ -22,7 +22,7 @@ Lists all provisioning artifacts (also known as versions) for the
 specified product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_provisioning_artifacts(
+\preformatted{svc$list_provisioning_artifacts(
   AcceptLanguage = "string",
   ProductId = "string"
 )

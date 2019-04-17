@@ -17,7 +17,7 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 Lists all tags on an Amazon Neptune resource.
 }
 \section{Request syntax}{
-\preformatted{neptune$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceName = "string",
   Filters = list(
     list(

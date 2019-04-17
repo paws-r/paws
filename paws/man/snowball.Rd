@@ -16,12 +16,6 @@ you to create and manage jobs for Snowball and Snowball Edge devices. To
 transfer data locally with a device, you'll need to use the Snowball
 client or the Amazon S3 API adapter for Snowball.
 }
-\section{Example}{
-\preformatted{snowball <- paws::snowball()
-snowball$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -46,3 +40,11 @@ snowball$operation()
 }
 }
 
+\examples{
+# This operation cancels a cluster job. You can only cancel a cluster job
+# while it's in the AwaitingQuorum status.
+\donttest{svc$cancel_cluster(
+  ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
+)}
+
+}

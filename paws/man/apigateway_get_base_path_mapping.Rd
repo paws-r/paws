@@ -19,7 +19,7 @@ callers to specify any base path name after the domain name.}
 Describe a BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_base_path_mapping(
+\preformatted{svc$get_base_path_mapping(
   domainName = "string",
   basePath = "string"
 )

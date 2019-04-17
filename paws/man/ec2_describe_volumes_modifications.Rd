@@ -45,7 +45,7 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_volumes_modifications(
+\preformatted{svc$describe_volumes_modifications(
   DryRun = TRUE|FALSE,
   VolumeIds = list(
     "string"

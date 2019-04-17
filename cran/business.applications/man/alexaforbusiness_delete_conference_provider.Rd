@@ -13,7 +13,7 @@ alexaforbusiness_delete_conference_provider(ConferenceProviderArn)
 Deletes a conference provider.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_conference_provider(
+\preformatted{svc$delete_conference_provider(
   ConferenceProviderArn = "string"
 )
 }

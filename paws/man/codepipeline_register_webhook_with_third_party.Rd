@@ -16,7 +16,7 @@ Configures a connection between the webhook that was created and the
 external tool with events to be detected.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$register_webhook_with_third_party(
+\preformatted{svc$register_webhook_with_third_party(
   webhookName = "string"
 )
 }

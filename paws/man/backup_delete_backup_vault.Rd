@@ -17,7 +17,7 @@ Deletes the backup vault identified by its name. A vault can be deleted
 only if it is empty.
 }
 \section{Request syntax}{
-\preformatted{backup$delete_backup_vault(
+\preformatted{svc$delete_backup_vault(
   BackupVaultName = "string"
 )
 }

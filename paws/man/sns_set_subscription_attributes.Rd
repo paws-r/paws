@@ -34,7 +34,7 @@ Allows a subscription owner to set an attribute of the subscription to a
 new value.
 }
 \section{Request syntax}{
-\preformatted{sns$set_subscription_attributes(
+\preformatted{svc$set_subscription_attributes(
   SubscriptionArn = "string",
   AttributeName = "string",
   AttributeValue = "string"

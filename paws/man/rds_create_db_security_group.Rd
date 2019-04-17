@@ -34,7 +34,7 @@ A DB security group controls access to EC2-Classic DB instances that are
 not in a VPC.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_security_group(
+\preformatted{svc$create_db_security_group(
   DBSecurityGroupName = "string",
   DBSecurityGroupDescription = "string",
   Tags = list(

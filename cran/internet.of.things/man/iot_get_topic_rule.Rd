@@ -13,7 +13,7 @@ iot_get_topic_rule(ruleName)
 Gets information about the rule.
 }
 \section{Request syntax}{
-\preformatted{iot$get_topic_rule(
+\preformatted{svc$get_topic_rule(
   ruleName = "string"
 )
 }

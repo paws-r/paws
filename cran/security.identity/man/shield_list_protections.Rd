@@ -23,7 +23,7 @@ to return, AWS WAF will always also return a \code{NextToken}.}
 Lists all Protection objects for the account.
 }
 \section{Request syntax}{
-\preformatted{shield$list_protections(
+\preformatted{svc$list_protections(
   NextToken = "string",
   MaxResults = 123
 )

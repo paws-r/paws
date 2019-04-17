@@ -18,7 +18,7 @@ dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
 Lists all global tables that have a replica in the specified region.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$list_global_tables(
+\preformatted{svc$list_global_tables(
   ExclusiveStartGlobalTableName = "string",
   Limit = 123,
   RegionName = "string"

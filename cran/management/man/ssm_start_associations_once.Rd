@@ -16,7 +16,7 @@ Use this API action to execute an association immediately and only one
 time. This action can be helpful when troubleshooting associations.
 }
 \section{Request syntax}{
-\preformatted{ssm$start_associations_once(
+\preformatted{svc$start_associations_once(
   AssociationIds = list(
     "string"
   )

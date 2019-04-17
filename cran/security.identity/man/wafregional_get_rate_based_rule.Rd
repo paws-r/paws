@@ -16,7 +16,7 @@ Returns the RateBasedRule that is specified by the \code{RuleId} that you
 included in the \code{GetRateBasedRule} request.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_rate_based_rule(
+\preformatted{svc$get_rate_based_rule(
   RuleId = "string"
 )
 }

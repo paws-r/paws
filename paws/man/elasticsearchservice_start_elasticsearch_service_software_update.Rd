@@ -15,7 +15,7 @@ software.}
 Schedules a service software update for an Amazon ES domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$start_elasticsearch_service_software_update(
+\preformatted{svc$start_elasticsearch_service_software_update(
   DomainName = "string"
 )
 }

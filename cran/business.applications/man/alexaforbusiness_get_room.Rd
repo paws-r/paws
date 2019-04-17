@@ -13,7 +13,7 @@ alexaforbusiness_get_room(RoomArn)
 Gets room details by room ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_room(
+\preformatted{svc$get_room(
   RoomArn = "string"
 )
 }

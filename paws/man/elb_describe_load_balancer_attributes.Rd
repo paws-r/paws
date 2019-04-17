@@ -13,7 +13,7 @@ elb_describe_load_balancer_attributes(LoadBalancerName)
 Describes the attributes for the specified load balancer.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_load_balancer_attributes(
+\preformatted{svc$describe_load_balancer_attributes(
   LoadBalancerName = "string"
 )
 }
@@ -21,7 +21,7 @@ Describes the attributes for the specified load balancer.
 
 \examples{
 # This example describes the attributes of the specified load balancer.
-\donttest{elb$describe_load_balancer_attributes(
+\donttest{svc$describe_load_balancer_attributes(
   LoadBalancerName = "my-load-balancer"
 )}
 

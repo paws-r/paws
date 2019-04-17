@@ -19,7 +19,7 @@ matching to a newly enabled rule. Allow a short period of time for
 changes to take effect.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$enable_rule(
+\preformatted{svc$enable_rule(
   Name = "string"
 )
 }

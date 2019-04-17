@@ -29,7 +29,7 @@ Constraints: Minimum 20, maximum 100.}
 For internal use only
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_pending_maintenance_actions(
+\preformatted{svc$describe_pending_maintenance_actions(
   ReplicationInstanceArn = "string",
   Filters = list(
     list(

@@ -21,7 +21,7 @@ List all of the dedicated IP pools that exist in your Amazon Pinpoint
 account in the current AWS Region.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$list_dedicated_ip_pools(
+\preformatted{svc$list_dedicated_ip_pools(
   NextToken = "string",
   PageSize = 123
 )

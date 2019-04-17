@@ -16,7 +16,7 @@ iot_delete_v2_logging_level(targetType, targetName)
 Deletes a logging level.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_v2_logging_level(
+\preformatted{svc$delete_v2_logging_level(
   targetType = "DEFAULT"|"THING_GROUP",
   targetName = "string"
 )

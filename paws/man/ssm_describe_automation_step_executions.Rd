@@ -30,7 +30,7 @@ Information about all active and terminated step executions in an
 Automation workflow.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_automation_step_executions(
+\preformatted{svc$describe_automation_step_executions(
   AutomationExecutionId = "string",
   Filters = list(
     list(

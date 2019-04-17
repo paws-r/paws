@@ -17,7 +17,7 @@ credentials.}
 Deletes the contents of the specified folder.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_folder_contents(
+\preformatted{svc$delete_folder_contents(
   AuthenticationToken = "string",
   FolderId = "string"
 )

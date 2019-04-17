@@ -39,7 +39,7 @@ Updates an identity pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$update_identity_pool(
+\preformatted{svc$update_identity_pool(
   IdentityPoolId = "string",
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,

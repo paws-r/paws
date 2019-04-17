@@ -14,7 +14,7 @@ Gets the properties associated with a topic detection job. Use this
 operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_topics_detection_job(
+\preformatted{svc$describe_topics_detection_job(
   JobId = "string"
 )
 }

@@ -13,7 +13,7 @@ alexaforbusiness_delete_contact(ContactArn)
 Deletes a contact by the contact ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_contact(
+\preformatted{svc$delete_contact(
   ContactArn = "string"
 )
 }

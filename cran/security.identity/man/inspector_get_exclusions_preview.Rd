@@ -33,7 +33,7 @@ specified by the preview token. You can obtain the preview token by
 running the CreateExclusionsPreview API.
 }
 \section{Request syntax}{
-\preformatted{inspector$get_exclusions_preview(
+\preformatted{svc$get_exclusions_preview(
   assessmentTemplateArn = "string",
   previewToken = "string",
   nextToken = "string",

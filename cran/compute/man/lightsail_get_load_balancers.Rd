@@ -19,7 +19,7 @@ the output to make the list more manageable. You can use the pageToken
 and nextPageToken values to retrieve the next items in the list.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_load_balancers(
+\preformatted{svc$get_load_balancers(
   pageToken = "string"
 )
 }

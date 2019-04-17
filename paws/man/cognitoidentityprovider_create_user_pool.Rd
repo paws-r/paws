@@ -76,7 +76,7 @@ Creates a new Amazon Cognito user pool and sets the password policy for
 the pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_user_pool(
+\preformatted{svc$create_user_pool(
   PoolName = "string",
   Policies = list(
     PasswordPolicy = list(

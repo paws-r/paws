@@ -15,7 +15,7 @@ appsync_delete_data_source(apiId, name)
 Deletes a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_data_source(
+\preformatted{svc$delete_data_source(
   apiId = "string",
   name = "string"
 )

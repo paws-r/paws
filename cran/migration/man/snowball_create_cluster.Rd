@@ -62,7 +62,7 @@ CreateJob action separately to create the jobs for each of these nodes.
 The cluster does not ship until these five node jobs have been created.
 }
 \section{Request syntax}{
-\preformatted{snowball$create_cluster(
+\preformatted{svc$create_cluster(
   JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
   Resources = list(
     S3Resources = list(
@@ -113,7 +113,7 @@ The cluster does not ship until these five node jobs have been created.
 # Creates an empty cluster. Each cluster supports five nodes. You use the
 # CreateJob action separately to create the jobs for each of these nodes.
 # The cluster does not ship until these five node jobs have been created.
-\donttest{snowball$create_cluster(
+\donttest{svc$create_cluster(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "MyCluster",
   JobType = "LOCAL_USE",

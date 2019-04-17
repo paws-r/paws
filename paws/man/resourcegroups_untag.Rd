@@ -15,7 +15,7 @@ resourcegroups_untag(Arn, Keys)
 Deletes specified tags from a specified resource.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$untag(
+\preformatted{svc$untag(
   Arn = "string",
   Keys = list(
     "string"

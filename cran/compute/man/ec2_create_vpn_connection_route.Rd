@@ -23,7 +23,7 @@ For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VP
 \emph{AWS Site-to-Site VPN User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpn_connection_route(
+\preformatted{svc$create_vpn_connection_route(
   DestinationCidrBlock = "string",
   VpnConnectionId = "string"
 )

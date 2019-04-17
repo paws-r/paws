@@ -20,7 +20,7 @@ For information about setting up IP address filters, see the \href{http://docs.a
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$create_receipt_filter(
+\preformatted{svc$create_receipt_filter(
   Filter = list(
     Name = "string",
     IpFilter = list(
@@ -34,7 +34,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example creates a new IP address filter:
-\donttest{ses$create_receipt_filter(
+\donttest{svc$create_receipt_filter(
   Filter = list(
     IpFilter = list(
       Cidr = "1.2.3.4/24",

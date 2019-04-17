@@ -17,7 +17,7 @@ API. It does not delete model artifacts, inference code, or the IAM role
 that you specified when creating the model.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_model(
+\preformatted{svc$delete_model(
   ModelName = "string"
 )
 }

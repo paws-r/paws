@@ -71,7 +71,7 @@ There is a 60 second dialing timeout for this operation. If the call is
 not connected after 60 seconds, the call fails.
 }
 \section{Request syntax}{
-\preformatted{connect$start_outbound_voice_contact(
+\preformatted{svc$start_outbound_voice_contact(
   DestinationPhoneNumber = "string",
   ContactFlowId = "string",
   InstanceId = "string",

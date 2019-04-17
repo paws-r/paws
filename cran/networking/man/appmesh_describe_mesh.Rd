@@ -13,7 +13,7 @@ appmesh_describe_mesh(meshName)
 Describes an existing service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$describe_mesh(
+\preformatted{svc$describe_mesh(
   meshName = "string"
 )
 }

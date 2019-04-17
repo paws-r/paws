@@ -13,7 +13,7 @@ iot_update_event_configurations(eventConfigurations)
 Updates the event configurations.
 }
 \section{Request syntax}{
-\preformatted{iot$update_event_configurations(
+\preformatted{svc$update_event_configurations(
   eventConfigurations = list(
     list(
       Enabled = TRUE|FALSE

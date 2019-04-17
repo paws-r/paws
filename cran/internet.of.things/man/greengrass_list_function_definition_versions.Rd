@@ -18,7 +18,7 @@ greengrass_list_function_definition_versions(FunctionDefinitionId,
 Lists the versions of a Lambda function definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_function_definition_versions(
+\preformatted{svc$list_function_definition_versions(
   FunctionDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"

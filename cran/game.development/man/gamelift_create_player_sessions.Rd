@@ -42,7 +42,7 @@ objects is returned. Player sessions cannot be updated.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_player_sessions(
+\preformatted{svc$create_player_sessions(
   GameSessionId = "string",
   PlayerIds = list(
     "string"

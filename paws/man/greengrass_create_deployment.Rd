@@ -22,7 +22,7 @@ greengrass_create_deployment(AmznClientToken, DeploymentId,
 Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_deployment(
+\preformatted{svc$create_deployment(
   AmznClientToken = "string",
   DeploymentId = "string",
   DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",

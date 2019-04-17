@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$associate_team_member(
+#' svc$associate_team_member(
 #'   projectId = "string",
 #'   clientRequestToken = "string",
 #'   userArn = "string",
@@ -79,7 +79,7 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$create_project(
+#' svc$create_project(
 #'   name = "string",
 #'   id = "string",
 #'   description = "string",
@@ -171,7 +171,7 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$create_user_profile(
+#' svc$create_user_profile(
 #'   userArn = "string",
 #'   displayName = "string",
 #'   emailAddress = "string",
@@ -219,7 +219,7 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$delete_project(
+#' svc$delete_project(
 #'   id = "string",
 #'   clientRequestToken = "string",
 #'   deleteStack = TRUE|FALSE
@@ -261,7 +261,7 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$delete_user_profile(
+#' svc$delete_user_profile(
 #'   userArn = "string"
 #' )
 #' ```
@@ -296,7 +296,7 @@ codestar_delete_user_profile <- function(userArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$describe_project(
+#' svc$describe_project(
 #'   id = "string"
 #' )
 #' ```
@@ -333,7 +333,7 @@ codestar_describe_project <- function(id) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$describe_user_profile(
+#' svc$describe_user_profile(
 #'   userArn = "string"
 #' )
 #' ```
@@ -375,7 +375,7 @@ codestar_describe_user_profile <- function(userArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$disassociate_team_member(
+#' svc$disassociate_team_member(
 #'   projectId = "string",
 #'   userArn = "string"
 #' )
@@ -414,7 +414,7 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$list_projects(
+#' svc$list_projects(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -454,7 +454,7 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$list_resources(
+#' svc$list_resources(
 #'   projectId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -493,7 +493,7 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$list_tags_for_project(
+#' svc$list_tags_for_project(
 #'   id = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -533,7 +533,7 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$list_team_members(
+#' svc$list_team_members(
 #'   projectId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -574,7 +574,7 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$list_user_profiles(
+#' svc$list_user_profiles(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -611,7 +611,7 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$tag_project(
+#' svc$tag_project(
 #'   id = "string",
 #'   tags = list(
 #'     "string"
@@ -650,7 +650,7 @@ codestar_tag_project <- function(id, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$untag_project(
+#' svc$untag_project(
 #'   id = "string",
 #'   tags = list(
 #'     "string"
@@ -690,7 +690,7 @@ codestar_untag_project <- function(id, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$update_project(
+#' svc$update_project(
 #'   id = "string",
 #'   name = "string",
 #'   description = "string"
@@ -740,7 +740,7 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$update_team_member(
+#' svc$update_team_member(
 #'   projectId = "string",
 #'   userArn = "string",
 #'   projectRole = "string",
@@ -790,7 +790,7 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' codestar$update_user_profile(
+#' svc$update_user_profile(
 #'   userArn = "string",
 #'   displayName = "string",
 #'   emailAddress = "string",

@@ -13,7 +13,7 @@ mediapackage_describe_origin_endpoint(Id)
 Gets details about an existing OriginEndpoint.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$describe_origin_endpoint(
+\preformatted{svc$describe_origin_endpoint(
   Id = "string"
 )
 }

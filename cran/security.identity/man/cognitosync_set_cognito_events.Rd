@@ -23,7 +23,7 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$set_cognito_events(
+\preformatted{svc$set_cognito_events(
   IdentityPoolId = "string",
   Events = list(
     "string"

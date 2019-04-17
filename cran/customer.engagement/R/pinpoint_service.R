@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Amazon Pinpoint
 #'
-#' @section Example:
-#' ```
-#' pinpoint <- paws::pinpoint()
-#' pinpoint$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_app(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

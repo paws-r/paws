@@ -18,7 +18,7 @@ Gets an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_analytics_configuration(
+\preformatted{svc$get_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string"
 )

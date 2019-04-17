@@ -47,7 +47,7 @@ and Robert, or must have permission on all (*). For more information
 about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_user(
+\preformatted{svc$update_user(
   UserName = "string",
   NewPath = "string",
   NewUserName = "string"
@@ -58,7 +58,7 @@ about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Per
 \examples{
 # The following command changes the name of the IAM user Bob to Robert. It
 # does not change the user's path.
-\donttest{iam$update_user(
+\donttest{svc$update_user(
   NewUserName = "Robert",
   UserName = "Bob"
 )}

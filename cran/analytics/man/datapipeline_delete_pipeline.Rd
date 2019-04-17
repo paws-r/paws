@@ -21,7 +21,7 @@ it, call SetStatus with the status set to \code{PAUSE} on individual
 components. Components that are paused by SetStatus can be resumed.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   pipelineId = "string"
 )
 }

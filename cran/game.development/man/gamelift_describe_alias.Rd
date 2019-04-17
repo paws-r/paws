@@ -28,7 +28,7 @@ requested alias record is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_alias(
+\preformatted{svc$describe_alias(
   AliasId = "string"
 )
 }

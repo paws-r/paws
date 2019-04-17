@@ -30,7 +30,7 @@ Return a list of inventory type names for the account, or return a list
 of attribute names for a specific Inventory item type.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_inventory_schema(
+\preformatted{svc$get_inventory_schema(
   TypeName = "string",
   NextToken = "string",
   MaxResults = 123,

@@ -23,7 +23,7 @@ Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$validate_pipeline_definition(
+\preformatted{svc$validate_pipeline_definition(
   pipelineId = "string",
   pipelineObjects = list(
     list(

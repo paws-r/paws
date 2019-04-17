@@ -13,7 +13,7 @@ autoscaling_delete_tags(Tags)
 Deletes the specified tags.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_tags(
+\preformatted{svc$delete_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -30,7 +30,7 @@ Deletes the specified tags.
 \examples{
 # This example deletes the specified tag from the specified Auto Scaling
 # group.
-\donttest{autoscaling$delete_tags(
+\donttest{svc$delete_tags(
   Tags = list(
     list(
       Key = "Dept",

@@ -96,7 +96,7 @@ error occurs because of changes made by the transaction.
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$transact_write_items(
+\preformatted{svc$transact_write_items(
   TransactItems = list(
     list(
       ConditionCheck = list(

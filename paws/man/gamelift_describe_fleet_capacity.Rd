@@ -65,7 +65,7 @@ error message includes the maximum allowed.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_fleet_capacity(
+\preformatted{svc$describe_fleet_capacity(
   FleetIds = list(
     "string"
   ),

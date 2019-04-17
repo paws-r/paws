@@ -31,7 +31,7 @@ https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\#
 Updates the settings of a data set.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$update_dataset(
+\preformatted{svc$update_dataset(
   datasetName = "string",
   actions = list(
     list(

@@ -28,7 +28,7 @@ Returns the data points for the specified Amazon Lightsail instance
 metric, given an instance name.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instance_metric_data(
+\preformatted{svc$get_instance_metric_data(
   instanceName = "string",
   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System",
   period = 123,

@@ -13,7 +13,7 @@ athena_get_work_group(WorkGroup)
 Returns information about the workgroup with the specified name.
 }
 \section{Request syntax}{
-\preformatted{athena$get_work_group(
+\preformatted{svc$get_work_group(
   WorkGroup = "string"
 )
 }

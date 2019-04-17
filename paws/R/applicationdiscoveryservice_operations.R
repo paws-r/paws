@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$associate_configuration_items_to_application(
+#' svc$associate_configuration_items_to_application(
 #'   applicationConfigurationId = "string",
 #'   configurationIds = list(
 #'     "string"
@@ -65,7 +65,7 @@ applicationdiscoveryservice_associate_configuration_items_to_application <- func
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$batch_delete_import_data(
+#' svc$batch_delete_import_data(
 #'   importTaskIds = list(
 #'     "string"
 #'   )
@@ -103,7 +103,7 @@ applicationdiscoveryservice_batch_delete_import_data <- function(importTaskIds) 
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$create_application(
+#' svc$create_application(
 #'   name = "string",
 #'   description = "string"
 #' )
@@ -146,7 +146,7 @@ applicationdiscoveryservice_create_application <- function(name, description = N
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$create_tags(
+#' svc$create_tags(
 #'   configurationIds = list(
 #'     "string"
 #'   ),
@@ -191,7 +191,7 @@ applicationdiscoveryservice_create_tags <- function(configurationIds, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$delete_applications(
+#' svc$delete_applications(
 #'   configurationIds = list(
 #'     "string"
 #'   )
@@ -234,7 +234,7 @@ applicationdiscoveryservice_delete_applications <- function(configurationIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$delete_tags(
+#' svc$delete_tags(
 #'   configurationIds = list(
 #'     "string"
 #'   ),
@@ -293,7 +293,7 @@ applicationdiscoveryservice_delete_tags <- function(configurationIds, tags = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_agents(
+#' svc$describe_agents(
 #'   agentIds = list(
 #'     "string"
 #'   ),
@@ -361,7 +361,7 @@ applicationdiscoveryservice_describe_agents <- function(agentIds = NULL, filters
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_configurations(
+#' svc$describe_configurations(
 #'   configurationIds = list(
 #'     "string"
 #'   )
@@ -404,7 +404,7 @@ applicationdiscoveryservice_describe_configurations <- function(configurationIds
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_continuous_exports(
+#' svc$describe_continuous_exports(
 #'   exportIds = list(
 #'     "string"
 #'   ),
@@ -449,7 +449,7 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_export_configurations(
+#' svc$describe_export_configurations(
 #'   exportIds = list(
 #'     "string"
 #'   ),
@@ -503,7 +503,7 @@ applicationdiscoveryservice_describe_export_configurations <- function(exportIds
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_export_tasks(
+#' svc$describe_export_tasks(
 #'   exportIds = list(
 #'     "string"
 #'   ),
@@ -561,7 +561,7 @@ applicationdiscoveryservice_describe_export_tasks <- function(exportIds = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_import_tasks(
+#' svc$describe_import_tasks(
 #'   filters = list(
 #'     list(
 #'       name = "IMPORT_TASK_ID"|"STATUS"|"NAME",
@@ -628,7 +628,7 @@ applicationdiscoveryservice_describe_import_tasks <- function(filters = NULL, ma
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$describe_tags(
+#' svc$describe_tags(
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -675,7 +675,7 @@ applicationdiscoveryservice_describe_tags <- function(filters = NULL, maxResults
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$disassociate_configuration_items_from_application(
+#' svc$disassociate_configuration_items_from_application(
 #'   applicationConfigurationId = "string",
 #'   configurationIds = list(
 #'     "string"
@@ -751,7 +751,7 @@ applicationdiscoveryservice_export_configurations <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$get_discovery_summary()
+#' svc$get_discovery_summary()
 #' ```
 #'
 #' @keywords internal
@@ -806,7 +806,7 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$list_configurations(
+#' svc$list_configurations(
 #'   configurationType = "SERVER"|"PROCESS"|"CONNECTION"|"APPLICATION",
 #'   filters = list(
 #'     list(
@@ -871,7 +871,7 @@ applicationdiscoveryservice_list_configurations <- function(configurationType, f
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$list_server_neighbors(
+#' svc$list_server_neighbors(
 #'   configurationId = "string",
 #'   portInformationNeeded = TRUE|FALSE,
 #'   neighborConfigurationIds = list(
@@ -911,7 +911,7 @@ applicationdiscoveryservice_list_server_neighbors <- function(configurationId, p
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$start_continuous_export()
+#' svc$start_continuous_export()
 #' ```
 #'
 #' @keywords internal
@@ -951,7 +951,7 @@ applicationdiscoveryservice_start_continuous_export <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$start_data_collection_by_agent_ids(
+#' svc$start_data_collection_by_agent_ids(
 #'   agentIds = list(
 #'     "string"
 #'   )
@@ -1014,7 +1014,7 @@ applicationdiscoveryservice_start_data_collection_by_agent_ids <- function(agent
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$start_export_task(
+#' svc$start_export_task(
 #'   exportDataFormat = list(
 #'     "CSV"|"GRAPHML"
 #'   ),
@@ -1115,7 +1115,7 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$start_import_task(
+#' svc$start_import_task(
 #'   clientRequestToken = "string",
 #'   name = "string",
 #'   importUrl = "string"
@@ -1152,7 +1152,7 @@ applicationdiscoveryservice_start_import_task <- function(clientRequestToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$stop_continuous_export(
+#' svc$stop_continuous_export(
 #'   exportId = "string"
 #' )
 #' ```
@@ -1187,7 +1187,7 @@ applicationdiscoveryservice_stop_continuous_export <- function(exportId) {
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$stop_data_collection_by_agent_ids(
+#' svc$stop_data_collection_by_agent_ids(
 #'   agentIds = list(
 #'     "string"
 #'   )
@@ -1227,7 +1227,7 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids <- function(agentI
 #'
 #' @section Request syntax:
 #' ```
-#' applicationdiscoveryservice$update_application(
+#' svc$update_application(
 #'   configurationId = "string",
 #'   name = "string",
 #'   description = "string"

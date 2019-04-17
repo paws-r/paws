@@ -18,7 +18,7 @@ Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or \emph{instance}).
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_bundles(
+\preformatted{svc$get_bundles(
   includeInactive = TRUE|FALSE,
   pageToken = "string"
 )

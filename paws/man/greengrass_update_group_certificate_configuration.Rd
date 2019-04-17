@@ -16,7 +16,7 @@ greengrass_update_group_certificate_configuration(
 Updates the Certificate expiry time for a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_group_certificate_configuration(
+\preformatted{svc$update_group_certificate_configuration(
   CertificateExpiryInMilliseconds = "string",
   GroupId = "string"
 )

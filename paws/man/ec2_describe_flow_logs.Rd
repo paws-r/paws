@@ -41,7 +41,7 @@ logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_flow_logs(
+\preformatted{svc$describe_flow_logs(
   DryRun = TRUE|FALSE,
   Filter = list(
     list(

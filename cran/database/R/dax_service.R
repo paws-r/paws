@@ -13,11 +13,10 @@ NULL
 #' your application can begin taking advantage of the DAX cluster and
 #' realize significant improvements in read performance.
 #'
-#' @section Example:
-#' ```
-#' dax <- paws::dax()
-#' dax$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_cluster(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -85,7 +85,7 @@ changes have propagated. When propagation is complete, the value of
 }
 }
 \section{Request syntax}{
-\preformatted{cloudfront$update_distribution(
+\preformatted{svc$update_distribution(
   DistributionConfig = list(
     CallerReference = "string",
     Aliases = list(

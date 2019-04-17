@@ -61,7 +61,7 @@ For more information about AWS DMS events, see \href{https://docs.aws.amazon.com
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$create_event_subscription(
+\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

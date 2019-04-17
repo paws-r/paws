@@ -23,7 +23,7 @@ changes the CompilationJobSummary\$CompilationJobStatus of the job to
 CompilationJobSummary\$CompilationJobStatus to \code{Stopped}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$stop_compilation_job(
+\preformatted{svc$stop_compilation_job(
   CompilationJobName = "string"
 )
 }

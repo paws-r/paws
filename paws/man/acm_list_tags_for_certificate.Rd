@@ -21,7 +21,7 @@ add a tag to an ACM certificate, use the AddTagsToCertificate action. To
 delete a tag, use the RemoveTagsFromCertificate action.
 }
 \section{Request syntax}{
-\preformatted{acm$list_tags_for_certificate(
+\preformatted{svc$list_tags_for_certificate(
   CertificateArn = "string"
 )
 }

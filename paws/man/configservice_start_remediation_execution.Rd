@@ -26,7 +26,7 @@ StartRemediationExecution call for the specified resource keys must
 complete before you can call the API again.
 }
 \section{Request syntax}{
-\preformatted{configservice$start_remediation_execution(
+\preformatted{svc$start_remediation_execution(
   ConfigRuleName = "string",
   ResourceKeys = list(
     list(

@@ -16,7 +16,7 @@ Deletes an analysis scheme. For more information, see \href{http://docs.aws.amaz
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$delete_analysis_scheme(
+\preformatted{svc$delete_analysis_scheme(
   DomainName = "string",
   AnalysisSchemeName = "string"
 )

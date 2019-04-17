@@ -31,7 +31,7 @@ user profile is displayed wherever the user's information appears to
 other users in AWS CodeStar.
 }
 \section{Request syntax}{
-\preformatted{codestar$create_user_profile(
+\preformatted{svc$create_user_profile(
   userArn = "string",
   displayName = "string",
   emailAddress = "string",

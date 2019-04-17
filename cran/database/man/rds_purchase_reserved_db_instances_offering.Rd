@@ -27,7 +27,7 @@ Default: \code{1}}
 Purchases a reserved DB instance offering.
 }
 \section{Request syntax}{
-\preformatted{rds$purchase_reserved_db_instances_offering(
+\preformatted{svc$purchase_reserved_db_instances_offering(
   ReservedDBInstancesOfferingId = "string",
   ReservedDBInstanceId = "string",
   DBInstanceCount = 123,

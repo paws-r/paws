@@ -14,7 +14,7 @@ Indexes the search suggestions. For more information, see \href{http://docs.aws.
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$build_suggesters(
+\preformatted{svc$build_suggesters(
   DomainName = "string"
 )
 }

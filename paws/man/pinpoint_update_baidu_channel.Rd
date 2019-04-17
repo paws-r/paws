@@ -15,7 +15,7 @@ pinpoint_update_baidu_channel(ApplicationId, BaiduChannelRequest)
 Update a BAIDU GCM channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_baidu_channel(
+\preformatted{svc$update_baidu_channel(
   ApplicationId = "string",
   BaiduChannelRequest = list(
     ApiKey = "string",

@@ -19,7 +19,7 @@ only supported in the cached volume, stored volume and tape gateway
 types.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"
@@ -31,7 +31,7 @@ types.
 \examples{
 # Lists the iSCSI stored volumes of a gateway. Removes one or more tags
 # from the specified resource.
-\donttest{storagegateway$remove_tags_from_resource(
+\donttest{svc$remove_tags_from_resource(
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
   TagKeys = list(
     "Dev Gatgeway Region",

@@ -15,7 +15,7 @@ mediaconnect_add_flow_outputs(FlowArn, Outputs)
 Adds outputs to an existing flow. You can create up to 20 outputs per flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$add_flow_outputs(
+\preformatted{svc$add_flow_outputs(
   FlowArn = "string",
   Outputs = list(
     list(

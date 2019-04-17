@@ -18,7 +18,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 Returns detailed metadata about the specified ACM certificate.
 }
 \section{Request syntax}{
-\preformatted{acm$describe_certificate(
+\preformatted{svc$describe_certificate(
   CertificateArn = "string"
 )
 }

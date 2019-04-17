@@ -15,7 +15,7 @@ pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 Use to update the APNs channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_apns_channel(
+\preformatted{svc$update_apns_channel(
   APNSChannelRequest = list(
     BundleId = "string",
     Certificate = "string",

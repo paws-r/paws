@@ -26,7 +26,7 @@ pool attributes.}
 Creates an identity provider for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_identity_provider(
+\preformatted{svc$create_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
   ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"OIDC",

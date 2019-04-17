@@ -21,7 +21,7 @@ guardduty_update_ip_set(Activate, DetectorId, IpSetId, Location, Name)
 Updates the IPSet specified by the IPSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$update_ip_set(
+\preformatted{svc$update_ip_set(
   Activate = TRUE|FALSE,
   DetectorId = "string",
   IpSetId = "string",

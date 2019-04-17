@@ -35,7 +35,7 @@ Lists the deployments in a deployment group for an application
 registered with the IAM user or AWS account.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_deployments(
+\preformatted{svc$list_deployments(
   applicationName = "string",
   deploymentGroupName = "string",
   includeOnlyStatuses = list(

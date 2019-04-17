@@ -25,7 +25,7 @@ stage name after any base path name.}
 Creates a new BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_base_path_mapping(
+\preformatted{svc$create_base_path_mapping(
   domainName = "string",
   basePath = "string",
   restApiId = "string",

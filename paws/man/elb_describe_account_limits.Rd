@@ -22,7 +22,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_account_limits(
+\preformatted{svc$describe_account_limits(
   Marker = "string",
   PageSize = 123
 )

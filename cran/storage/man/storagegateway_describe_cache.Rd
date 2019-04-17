@@ -18,7 +18,7 @@ The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_cache(
+\preformatted{svc$describe_cache(
   GatewayARN = "string"
 )
 }
@@ -26,7 +26,7 @@ includes the amount of cache allocated and used.
 
 \examples{
 # Returns information about the cache of a gateway.
-\donttest{storagegateway$describe_cache(
+\donttest{svc$describe_cache(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

@@ -31,7 +31,7 @@ in the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$send_custom_verification_email(
+\preformatted{svc$send_custom_verification_email(
   EmailAddress = "string",
   TemplateName = "string",
   ConfigurationSetName = "string"

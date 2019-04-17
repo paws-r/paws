@@ -10,7 +10,7 @@ xray_get_encryption_config()
 Retrieves the current encryption configuration for X-Ray data.
 }
 \section{Request syntax}{
-\preformatted{xray$get_encryption_config()
+\preformatted{svc$get_encryption_config()
 }
 }
 

@@ -96,7 +96,7 @@ that you want to change and make sure that all required fields have the
 appropriate values.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_data_source_from_redshift(
+\preformatted{svc$create_data_source_from_redshift(
   DataSourceId = "string",
   DataSourceName = "string",
   DataSpec = list(

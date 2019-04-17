@@ -16,7 +16,7 @@ lowercase letters, numbers, and hyphens.}
 Returns metadata about a backup vault specified by its name.
 }
 \section{Request syntax}{
-\preformatted{backup$describe_backup_vault(
+\preformatted{svc$describe_backup_vault(
   BackupVaultName = "string"
 )
 }

@@ -20,7 +20,7 @@ List all public keys that have been added to CloudFront for this
 account.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_public_keys(
+\preformatted{svc$list_public_keys(
   Marker = "string",
   MaxItems = "string"
 )

@@ -30,7 +30,7 @@ which you want to add working storage, and one or more disk IDs that you
 want to configure as working storage.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$add_working_storage(
+\preformatted{svc$add_working_storage(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -42,7 +42,7 @@ want to configure as working storage.
 \examples{
 # Configures one or more gateway local disks as working storage for a
 # gateway. (Working storage is also referred to as upload buffer.)
-\donttest{storagegateway$add_working_storage(
+\donttest{svc$add_working_storage(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"

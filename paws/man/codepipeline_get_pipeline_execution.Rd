@@ -20,7 +20,7 @@ about artifacts, the pipeline execution ID, and the name, version, and
 status of the pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$get_pipeline_execution(
+\preformatted{svc$get_pipeline_execution(
   pipelineName = "string",
   pipelineExecutionId = "string"
 )

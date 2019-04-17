@@ -34,7 +34,7 @@ rule set JSON string.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$validate_matchmaking_rule_set(
+\preformatted{svc$validate_matchmaking_rule_set(
   RuleSetBody = "string"
 )
 }

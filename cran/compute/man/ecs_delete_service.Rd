@@ -39,7 +39,7 @@ If you attempt to create a new service with the same name as an existing
 service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 }
 \section{Request syntax}{
-\preformatted{ecs$delete_service(
+\preformatted{svc$delete_service(
   cluster = "string",
   service = "string",
   force = TRUE|FALSE
@@ -50,7 +50,7 @@ service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.
 \examples{
 # This example deletes the my-http-service service. The service must have
 # a desired count and running count of 0 before you can delete it.
-\donttest{ecs$delete_service(
+\donttest{svc$delete_service(
   service = "my-http-service"
 )}
 

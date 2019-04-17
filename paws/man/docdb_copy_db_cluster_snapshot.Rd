@@ -107,7 +107,7 @@ DB cluster snapshot identified by \code{TargetDBClusterSnapshotIdentifier}
 while that DB cluster snapshot is in the \emph{copying} status.
 }
 \section{Request syntax}{
-\preformatted{docdb$copy_db_cluster_snapshot(
+\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",

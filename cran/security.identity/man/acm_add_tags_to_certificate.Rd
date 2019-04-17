@@ -39,7 +39,7 @@ view all of the tags that have been applied to the certificate, use the
 ListTagsForCertificate action.
 }
 \section{Request syntax}{
-\preformatted{acm$add_tags_to_certificate(
+\preformatted{svc$add_tags_to_certificate(
   CertificateArn = "string",
   Tags = list(
     list(

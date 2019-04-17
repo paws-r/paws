@@ -22,7 +22,7 @@ For more information about tags, see \href{https://docs.aws.amazon.com/AmazonClo
 in the \emph{Amazon CloudWatch Logs User Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$tag_log_group(
+\preformatted{svc$tag_log_group(
   logGroupName = "string",
   tags = list(
     "string"

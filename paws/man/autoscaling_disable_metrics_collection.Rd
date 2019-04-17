@@ -26,7 +26,7 @@ metrics are disabled.
 Disables group metrics for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$disable_metrics_collection(
+\preformatted{svc$disable_metrics_collection(
   AutoScalingGroupName = "string",
   Metrics = list(
     "string"
@@ -38,7 +38,7 @@ Disables group metrics for the specified Auto Scaling group.
 \examples{
 # This example disables collecting data for the GroupDesiredCapacity
 # metric for the specified Auto Scaling group.
-\donttest{autoscaling$disable_metrics_collection(
+\donttest{svc$disable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Metrics = list(
     "GroupDesiredCapacity"

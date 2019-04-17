@@ -35,7 +35,7 @@ ListReviewPolicyResultsForHIT operation can return results for both
 Assignment-level and HIT-level review results.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_review_policy_results_for_hit(
+\preformatted{svc$list_review_policy_results_for_hit(
   HITId = "string",
   PolicyLevels = list(
     "Assignment"|"HIT"

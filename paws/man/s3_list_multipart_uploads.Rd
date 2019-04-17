@@ -32,7 +32,7 @@ upload-id-marker parameter is ignored.}
 This operation lists in-progress multipart uploads.
 }
 \section{Request syntax}{
-\preformatted{s3$list_multipart_uploads(
+\preformatted{svc$list_multipart_uploads(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -47,13 +47,13 @@ This operation lists in-progress multipart uploads.
 \examples{
 # The following example lists in-progress multipart uploads on a specific
 # bucket.
-\donttest{s3$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   Bucket = "examplebucket"
 )}
 
 # The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
-\donttest{s3$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   Bucket = "examplebucket",
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",

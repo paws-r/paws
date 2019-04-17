@@ -20,7 +20,7 @@ list.}
 Returns an array of target IDs that are associated a deployment.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_deployment_targets(
+\preformatted{svc$list_deployment_targets(
   deploymentId = "string",
   nextToken = "string",
   targetFilters = list(

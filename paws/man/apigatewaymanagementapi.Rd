@@ -15,12 +15,6 @@ https://{api-id}.execute-api.{region}.amazonaws.com/{stage}, or will be
 the endpoint corresponding to your API's custom domain and base path,
 if applicable.
 }
-\section{Example}{
-\preformatted{apigatewaymanagementapi <- paws::apigatewaymanagementapi()
-apigatewaymanagementapi$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -28,3 +22,9 @@ apigatewaymanagementapi$operation()
 }
 }
 
+\examples{
+\donttest{svc$post_to_connection(
+  Foo = 123
+)}
+
+}

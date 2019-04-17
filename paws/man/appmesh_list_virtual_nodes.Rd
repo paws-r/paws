@@ -27,7 +27,7 @@ of the previous results that returned the \code{nextToken} value.}
 Returns a list of existing virtual nodes.
 }
 \section{Request syntax}{
-\preformatted{appmesh$list_virtual_nodes(
+\preformatted{svc$list_virtual_nodes(
   limit = 123,
   meshName = "string",
   nextToken = "string"

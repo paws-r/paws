@@ -13,7 +13,7 @@ pinpoint_delete_baidu_channel(ApplicationId)
 Delete a BAIDU GCM channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_baidu_channel(
+\preformatted{svc$delete_baidu_channel(
   ApplicationId = "string"
 )
 }

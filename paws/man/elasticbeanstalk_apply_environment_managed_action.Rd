@@ -20,7 +20,7 @@ applied only if its status is \code{Scheduled}. Get the status and action ID
 of a managed action with DescribeEnvironmentManagedActions.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$apply_environment_managed_action(
+\preformatted{svc$apply_environment_managed_action(
   EnvironmentName = "string",
   EnvironmentId = "string",
   ActionId = "string"

@@ -52,7 +52,7 @@ After 90 days, simulation jobs expire and will be deleted. They will no
 longer be accessible.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_simulation_job(
+\preformatted{svc$create_simulation_job(
   clientRequestToken = "string",
   outputLocation = list(
     s3Bucket = "string",

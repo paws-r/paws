@@ -32,7 +32,7 @@ about policies, refer to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/p
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_group_policy(
+\preformatted{svc$delete_group_policy(
   GroupName = "string",
   PolicyName = "string"
 )
@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command deletes the policy named ExamplePolicy from the
 # group named Admins:
-\donttest{iam$delete_group_policy(
+\donttest{svc$delete_group_policy(
   GroupName = "Admins",
   PolicyName = "ExamplePolicy"
 )}

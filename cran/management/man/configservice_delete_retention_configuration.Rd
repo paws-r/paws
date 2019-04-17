@@ -13,7 +13,7 @@ configservice_delete_retention_configuration(RetentionConfigurationName)
 Deletes the retention configuration.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_retention_configuration(
+\preformatted{svc$delete_retention_configuration(
   RetentionConfigurationName = "string"
 )
 }

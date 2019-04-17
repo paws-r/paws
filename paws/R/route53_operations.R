@@ -32,7 +32,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53$associate_vpc_with_hosted_zone(
+#' svc$associate_vpc_with_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
 #'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
@@ -45,7 +45,7 @@ NULL
 #' @examples
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the
 #' # hosted zone with ID Z3M3LMPEXAMPLE.
-#' \donttest{route53$associate_vpc_with_hosted_zone(
+#' \donttest{svc$associate_vpc_with_hosted_zone(
 #'   Comment = "",
 #'   HostedZoneId = "Z3M3LMPEXAMPLE",
 #'   VPC = list(
@@ -174,7 +174,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'
 #' @section Request syntax:
 #' ```
-#' route53$change_resource_record_sets(
+#' svc$change_resource_record_sets(
 #'   HostedZoneId = "string",
 #'   ChangeBatch = list(
 #'     Comment = "string",
@@ -217,7 +217,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' @examples
 #' # The following example creates a resource record set that routes Internet
 #' # traffic to a resource with an IP address of 192.0.2.44.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -242,7 +242,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # The following example creates two weighted resource record sets. The
 #' # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
 #' # and the other resource will get the rest of the traffic for example.com.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -285,7 +285,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' 
 #' # The following example creates an alias resource record set that routes
 #' # traffic to a CloudFront distribution.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -310,7 +310,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # that route traffic to ELB load balancers. The resource with a Weight of
 #' # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
 #' # get the rest of the traffic for example.com.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -351,7 +351,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # route traffic to EC2 instances. Traffic for example.com is routed either
 #' # to the Ohio region or the Oregon region, depending on the latency
 #' # between the user and those regions.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -396,7 +396,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # that route traffic for example.com to ELB load balancers. Requests are
 #' # routed either to the Ohio region or the Oregon region, depending on the
 #' # latency between the user and those regions.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -438,7 +438,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # routed to the primary resource, in the Ohio region. If that resource is
 #' # unavailable, traffic is routed to the secondary resource, in the Oregon
 #' # region.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -484,7 +484,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # is generally routed to the primary resource, in the Ohio region. If that
 #' # resource is unavailable, traffic is routed to the secondary resource, in
 #' # the Oregon region.
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -526,7 +526,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # running on EC2 instances. Traffic is routed to one of four IP addresses,
 #' # for North America (NA), for South America (SA), for Europe (EU), and for
 #' # all other locations (*).
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -607,7 +607,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' # sets that route traffic to ELB load balancers. Traffic is routed to one
 #' # of four IP addresses, for North America (NA), for South America (SA),
 #' # for Europe (EU), and for all other locations (*).
-#' \donttest{route53$change_resource_record_sets(
+#' \donttest{svc$change_resource_record_sets(
 #'   ChangeBatch = list(
 #'     Changes = list(
 #'       list(
@@ -730,7 +730,7 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$change_tags_for_resource(
+#' svc$change_tags_for_resource(
 #'   ResourceType = "healthcheck"|"hostedzone",
 #'   ResourceId = "string",
 #'   AddTags = list(
@@ -748,7 +748,7 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' @examples
 #' # The following example adds two tags and removes one tag from the hosted
 #' # zone with ID Z3M3LMPEXAMPLE.
-#' \donttest{route53$change_tags_for_resource(
+#' \donttest{svc$change_tags_for_resource(
 #'   AddTags = list(
 #'     list(
 #'       Key = "apex",
@@ -851,7 +851,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_health_check(
+#' svc$create_health_check(
 #'   CallerReference = "string",
 #'   HealthCheckConfig = list(
 #'     IPAddress = "string",
@@ -988,7 +988,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_hosted_zone(
+#' svc$create_hosted_zone(
 #'   Name = "string",
 #'   VPC = list(
 #'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
@@ -1162,7 +1162,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_query_logging_config(
+#' svc$create_query_logging_config(
 #'   HostedZoneId = "string",
 #'   CloudWatchLogsLogGroupArn = "string"
 #' )
@@ -1252,7 +1252,7 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_reusable_delegation_set(
+#' svc$create_reusable_delegation_set(
 #'   CallerReference = "string",
 #'   HostedZoneId = "string"
 #' )
@@ -1296,7 +1296,7 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_traffic_policy(
+#' svc$create_traffic_policy(
 #'   Name = "string",
 #'   Document = "string",
 #'   Comment = "string"
@@ -1352,7 +1352,7 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_traffic_policy_instance(
+#' svc$create_traffic_policy_instance(
 #'   HostedZoneId = "string",
 #'   Name = "string",
 #'   TTL = 123,
@@ -1403,7 +1403,7 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_traffic_policy_version(
+#' svc$create_traffic_policy_version(
 #'   Id = "string",
 #'   Document = "string",
 #'   Comment = "string"
@@ -1455,7 +1455,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' route53$create_vpc_association_authorization(
+#' svc$create_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
 #'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
@@ -1504,7 +1504,7 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_health_check(
+#' svc$delete_health_check(
 #'   HealthCheckId = "string"
 #' )
 #' ```
@@ -1570,7 +1570,7 @@ route53_delete_health_check <- function(HealthCheckId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_hosted_zone(
+#' svc$delete_hosted_zone(
 #'   Id = "string"
 #' )
 #' ```
@@ -1610,7 +1610,7 @@ route53_delete_hosted_zone <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_query_logging_config(
+#' svc$delete_query_logging_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1652,7 +1652,7 @@ route53_delete_query_logging_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_reusable_delegation_set(
+#' svc$delete_reusable_delegation_set(
 #'   Id = "string"
 #' )
 #' ```
@@ -1688,7 +1688,7 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_traffic_policy(
+#' svc$delete_traffic_policy(
 #'   Id = "string",
 #'   Version = 123
 #' )
@@ -1733,7 +1733,7 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_traffic_policy_instance(
+#' svc$delete_traffic_policy_instance(
 #'   Id = "string"
 #' )
 #' ```
@@ -1785,7 +1785,7 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$delete_vpc_association_authorization(
+#' svc$delete_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
 #'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
@@ -1837,7 +1837,7 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$disassociate_vpc_from_hosted_zone(
+#' svc$disassociate_vpc_from_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
 #'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
@@ -1903,7 +1903,7 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_account_limit(
+#' svc$get_account_limit(
 #'   Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
 #' )
 #' ```
@@ -1948,7 +1948,7 @@ route53_get_account_limit <- function(Type) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_change(
+#' svc$get_change(
 #'   Id = "string"
 #' )
 #' ```
@@ -1986,7 +1986,7 @@ route53_get_change <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_checker_ip_ranges()
+#' svc$get_checker_ip_ranges()
 #' ```
 #'
 #' @keywords internal
@@ -2058,7 +2058,7 @@ route53_get_checker_ip_ranges <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_geo_location(
+#' svc$get_geo_location(
 #'   ContinentCode = "string",
 #'   CountryCode = "string",
 #'   SubdivisionCode = "string"
@@ -2098,7 +2098,7 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_health_check(
+#' svc$get_health_check(
 #'   HealthCheckId = "string"
 #' )
 #' ```
@@ -2133,7 +2133,7 @@ route53_get_health_check <- function(HealthCheckId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_health_check_count()
+#' svc$get_health_check_count()
 #' ```
 #'
 #' @keywords internal
@@ -2173,7 +2173,7 @@ route53_get_health_check_count <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_health_check_last_failure_reason(
+#' svc$get_health_check_last_failure_reason(
 #'   HealthCheckId = "string"
 #' )
 #' ```
@@ -2215,7 +2215,7 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_health_check_status(
+#' svc$get_health_check_status(
 #'   HealthCheckId = "string"
 #' )
 #' ```
@@ -2252,7 +2252,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_hosted_zone(
+#' svc$get_hosted_zone(
 #'   Id = "string"
 #' )
 #' ```
@@ -2260,7 +2260,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' @examples
 #' # The following example gets information about the Z3M3LMPEXAMPLE hosted
 #' # zone.
-#' \donttest{route53$get_hosted_zone(
+#' \donttest{svc$get_hosted_zone(
 #'   Id = "Z3M3LMPEXAMPLE"
 #' )}
 #'
@@ -2294,7 +2294,7 @@ route53_get_hosted_zone <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_hosted_zone_count()
+#' svc$get_hosted_zone_count()
 #' ```
 #'
 #' @keywords internal
@@ -2342,7 +2342,7 @@ route53_get_hosted_zone_count <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_hosted_zone_limit(
+#' svc$get_hosted_zone_limit(
 #'   Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
 #'   HostedZoneId = "string"
 #' )
@@ -2383,7 +2383,7 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_query_logging_config(
+#' svc$get_query_logging_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -2421,7 +2421,7 @@ route53_get_query_logging_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_reusable_delegation_set(
+#' svc$get_reusable_delegation_set(
 #'   Id = "string"
 #' )
 #' ```
@@ -2467,7 +2467,7 @@ route53_get_reusable_delegation_set <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_reusable_delegation_set_limit(
+#' svc$get_reusable_delegation_set_limit(
 #'   Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
 #'   DelegationSetId = "string"
 #' )
@@ -2505,7 +2505,7 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_traffic_policy(
+#' svc$get_traffic_policy(
 #'   Id = "string",
 #'   Version = 123
 #' )
@@ -2551,7 +2551,7 @@ route53_get_traffic_policy <- function(Id, Version) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_traffic_policy_instance(
+#' svc$get_traffic_policy_instance(
 #'   Id = "string"
 #' )
 #' ```
@@ -2586,7 +2586,7 @@ route53_get_traffic_policy_instance <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$get_traffic_policy_instance_count()
+#' svc$get_traffic_policy_instance_count()
 #' ```
 #'
 #' @keywords internal
@@ -2655,7 +2655,7 @@ route53_get_traffic_policy_instance_count <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_geo_locations(
+#' svc$list_geo_locations(
 #'   StartContinentCode = "string",
 #'   StartCountryCode = "string",
 #'   StartSubdivisionCode = "string",
@@ -2708,7 +2708,7 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_health_checks(
+#' svc$list_health_checks(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -2768,7 +2768,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_hosted_zones(
+#' svc$list_hosted_zones(
 #'   Marker = "string",
 #'   MaxItems = "string",
 #'   DelegationSetId = "string"
@@ -2880,7 +2880,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_hosted_zones_by_name(
+#' svc$list_hosted_zones_by_name(
 #'   DNSName = "string",
 #'   HostedZoneId = "string",
 #'   MaxItems = "string"
@@ -2949,7 +2949,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_query_logging_configs(
+#' svc$list_query_logging_configs(
 #'   HostedZoneId = "string",
 #'   NextToken = "string",
 #'   MaxResults = "string"
@@ -3094,7 +3094,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_resource_record_sets(
+#' svc$list_resource_record_sets(
 #'   HostedZoneId = "string",
 #'   StartRecordName = "string",
 #'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
@@ -3147,7 +3147,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_reusable_delegation_sets(
+#' svc$list_reusable_delegation_sets(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -3193,7 +3193,7 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceType = "healthcheck"|"hostedzone",
 #'   ResourceId = "string"
 #' )
@@ -3240,7 +3240,7 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_tags_for_resources(
+#' svc$list_tags_for_resources(
 #'   ResourceType = "healthcheck"|"hostedzone",
 #'   ResourceIds = list(
 #'     "string"
@@ -3295,7 +3295,7 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_traffic_policies(
+#' svc$list_traffic_policies(
 #'   TrafficPolicyIdMarker = "string",
 #'   MaxItems = "string"
 #' )
@@ -3379,7 +3379,7 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_traffic_policy_instances(
+#' svc$list_traffic_policy_instances(
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
 #'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
@@ -3459,7 +3459,7 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_traffic_policy_instances_by_hosted_zone(
+#' svc$list_traffic_policy_instances_by_hosted_zone(
 #'   HostedZoneId = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
 #'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
@@ -3556,7 +3556,7 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_traffic_policy_instances_by_policy(
+#' svc$list_traffic_policy_instances_by_policy(
 #'   TrafficPolicyId = "string",
 #'   TrafficPolicyVersion = 123,
 #'   HostedZoneIdMarker = "string",
@@ -3618,7 +3618,7 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_traffic_policy_versions(
+#' svc$list_traffic_policy_versions(
 #'   Id = "string",
 #'   TrafficPolicyVersionMarker = "string",
 #'   MaxItems = "string"
@@ -3672,7 +3672,7 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #'
 #' @section Request syntax:
 #' ```
-#' route53$list_vpc_association_authorizations(
+#' svc$list_vpc_association_authorizations(
 #'   HostedZoneId = "string",
 #'   NextToken = "string",
 #'   MaxResults = "string"
@@ -3739,7 +3739,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' route53$test_dns_answer(
+#' svc$test_dns_answer(
 #'   HostedZoneId = "string",
 #'   RecordName = "string",
 #'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
@@ -4046,7 +4046,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'
 #' @section Request syntax:
 #' ```
-#' route53$update_health_check(
+#' svc$update_health_check(
 #'   HealthCheckId = "string",
 #'   HealthCheckVersion = 123,
 #'   IPAddress = "string",
@@ -4109,7 +4109,7 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53$update_hosted_zone_comment(
+#' svc$update_hosted_zone_comment(
 #'   Id = "string",
 #'   Comment = "string"
 #' )
@@ -4149,7 +4149,7 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$update_traffic_policy_comment(
+#' svc$update_traffic_policy_comment(
 #'   Id = "string",
 #'   Version = 123,
 #'   Comment = "string"
@@ -4213,7 +4213,7 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53$update_traffic_policy_instance(
+#' svc$update_traffic_policy_instance(
 #'   Id = "string",
 #'   TTL = 123,
 #'   TrafficPolicyId = "string",

@@ -72,7 +72,7 @@ that are calculated using historical data points from a specified
 CloudWatch load metric. Data points are available for up to 56 days.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$get_scaling_plan_resource_forecast_data(
+\preformatted{svc$get_scaling_plan_resource_forecast_data(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",

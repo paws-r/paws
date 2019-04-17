@@ -66,7 +66,7 @@ Cognito advanced security.}
 Initiates the authentication flow.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$initiate_auth(
+\preformatted{svc$initiate_auth(
   AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",
   AuthParameters = list(
     "string"

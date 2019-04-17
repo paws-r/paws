@@ -52,7 +52,7 @@ monitor the status of the HSM with the DescribeHsm operation. The HSM is
 ready to be initialized when the status changes to \code{RUNNING}.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$create_hsm(
+\preformatted{svc$create_hsm(
   SubnetId = "string",
   SshKey = "string",
   EniIp = "string",

@@ -20,7 +20,7 @@ pinpoint_get_segment_import_jobs(ApplicationId, PageSize, SegmentId,
 Returns a list of import jobs for a specific segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segment_import_jobs(
+\preformatted{svc$get_segment_import_jobs(
   ApplicationId = "string",
   PageSize = "string",
   SegmentId = "string",

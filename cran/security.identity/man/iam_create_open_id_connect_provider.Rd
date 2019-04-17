@@ -80,7 +80,7 @@ that this operation creates, it is best to limit access to the
 CreateOpenIDConnectProvider operation to highly privileged users.
 }
 \section{Request syntax}{
-\preformatted{iam$create_open_id_connect_provider(
+\preformatted{svc$create_open_id_connect_provider(
   Url = "string",
   ClientIDList = list(
     "string"
@@ -96,7 +96,7 @@ CreateOpenIDConnectProvider operation to highly privileged users.
 # The following example defines a new OIDC provider in IAM with a client
 # ID of my-application-id and pointing at the server with a URL of
 # https://server.example.com.
-\donttest{iam$create_open_id_connect_provider(
+\donttest{svc$create_open_id_connect_provider(
   ClientIDList = list(
     "my-application-id"
   ),

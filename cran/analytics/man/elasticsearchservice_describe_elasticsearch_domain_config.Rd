@@ -17,7 +17,7 @@ Elasticsearch domain, such as the state, creation date, update version,
 and update date for cluster options.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$describe_elasticsearch_domain_config(
+\preformatted{svc$describe_elasticsearch_domain_config(
   DomainName = "string"
 )
 }

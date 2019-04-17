@@ -34,7 +34,7 @@ Lists the assessment runs that correspond to the assessment templates
 that are specified by the ARNs of the assessment templates.
 }
 \section{Request syntax}{
-\preformatted{inspector$list_assessment_runs(
+\preformatted{svc$list_assessment_runs(
   assessmentTemplateArns = list(
     "string"
   ),
@@ -84,7 +84,7 @@ that are specified by the ARNs of the assessment templates.
 \examples{
 # Lists the assessment runs that correspond to the assessment templates
 # that are specified by the ARNs of the assessment templates.
-\donttest{inspector$list_assessment_runs(
+\donttest{svc$list_assessment_runs(
   assessmentTemplateArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw"
   ),

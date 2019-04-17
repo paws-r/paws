@@ -21,12 +21,6 @@ to AWS Directory Service and other AWS services. For more information
 about the AWS SDKs, including how to download and install them, see
 \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
-\section{Example}{
-\preformatted{directoryservice <- paws::directoryservice()
-directoryservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -83,3 +77,9 @@ directoryservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_shared_directory(
+  Foo = 123
+)}
+
+}

@@ -81,7 +81,7 @@ change the Amazon S3 location, you receive an exception when you attempt
 to launch an environment from the application version.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$create_application_version(
+\preformatted{svc$create_application_version(
   ApplicationName = "string",
   VersionLabel = "string",
   Description = "string",
@@ -116,7 +116,7 @@ to launch an environment from the application version.
 \examples{
 # The following operation creates a new version (v1) of an application
 # named my-app:
-\donttest{elasticbeanstalk$create_application_version(
+\donttest{svc$create_application_version(
   ApplicationName = "my-app",
   AutoCreateApplication = TRUE,
   Description = "my-app-v1",

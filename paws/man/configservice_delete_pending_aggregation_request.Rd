@@ -18,7 +18,7 @@ Deletes pending authorization requests for a specified aggregator
 account in a specified region.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_pending_aggregation_request(
+\preformatted{svc$delete_pending_aggregation_request(
   RequesterAccountId = "string",
   RequesterAwsRegion = "string"
 )

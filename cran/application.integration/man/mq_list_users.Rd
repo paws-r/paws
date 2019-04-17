@@ -17,7 +17,7 @@ mq_list_users(BrokerId, MaxResults, NextToken)
 Returns a list of all ActiveMQ users.
 }
 \section{Request syntax}{
-\preformatted{mq$list_users(
+\preformatted{svc$list_users(
   BrokerId = "string",
   MaxResults = 123,
   NextToken = "string"

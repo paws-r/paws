@@ -53,7 +53,7 @@ information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguid
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$create_task_set(
+\preformatted{svc$create_task_set(
   service = "string",
   cluster = "string",
   externalId = "string",

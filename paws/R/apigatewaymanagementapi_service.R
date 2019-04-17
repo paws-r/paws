@@ -13,11 +13,10 @@ NULL
 #' the endpoint corresponding to your API\'s custom domain and base path,
 #' if applicable.
 #'
-#' @section Example:
-#' ```
-#' apigatewaymanagementapi <- paws::apigatewaymanagementapi()
-#' apigatewaymanagementapi$operation()
-#' ```
+#' @examples
+#' \donttest{svc$post_to_connection(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

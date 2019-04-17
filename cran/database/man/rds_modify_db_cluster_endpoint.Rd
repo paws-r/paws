@@ -27,7 +27,7 @@ Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_cluster_endpoint(
+\preformatted{svc$modify_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string",
   EndpointType = "string",
   StaticMembers = list(

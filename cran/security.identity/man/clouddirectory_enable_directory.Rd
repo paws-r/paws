@@ -14,7 +14,7 @@ Enables the specified directory. Only disabled directories can be
 enabled. Once enabled, the directory can then be read and written to.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$enable_directory(
+\preformatted{svc$enable_directory(
   DirectoryArn = "string"
 )
 }

@@ -19,7 +19,7 @@ attribute name.}
 Allows a user to update a specific attribute (one at a time).
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_user_attributes(
+\preformatted{svc$update_user_attributes(
   UserAttributes = list(
     list(
       Name = "string",

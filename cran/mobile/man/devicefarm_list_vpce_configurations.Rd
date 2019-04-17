@@ -20,7 +20,7 @@ Returns information about all Amazon Virtual Private Cloud (VPC)
 endpoint configurations in the AWS account.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_vpce_configurations(
+\preformatted{svc$list_vpce_configurations(
   maxResults = 123,
   nextToken = "string"
 )

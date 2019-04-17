@@ -43,7 +43,7 @@ Maximum size 5 MB}
 Updates the specified application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$update_application(
+\preformatted{svc$update_application(
   ApplicationId = "string",
   Author = "string",
   Description = "string",

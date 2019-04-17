@@ -16,7 +16,7 @@ Creates an order for phone numbers to be provisioned. Choose from Amazon
 Chime Business Calling and Amazon Chime Voice Connector product types.
 }
 \section{Request syntax}{
-\preformatted{chime$create_phone_number_order(
+\preformatted{svc$create_phone_number_order(
   ProductType = "BusinessCalling"|"VoiceConnector",
   E164PhoneNumbers = list(
     "string"

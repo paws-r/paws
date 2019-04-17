@@ -25,7 +25,7 @@ DNS servers.
 }
 }
 \section{Request syntax}{
-\preformatted{route53$get_change(
+\preformatted{svc$get_change(
   Id = "string"
 )
 }

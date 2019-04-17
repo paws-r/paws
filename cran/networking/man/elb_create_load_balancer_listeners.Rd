@@ -22,7 +22,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$create_load_balancer_listeners(
+\preformatted{svc$create_load_balancer_listeners(
   LoadBalancerName = "string",
   Listeners = list(
     list(
@@ -40,7 +40,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example creates a listener for your load balancer at port 80 using
 # the HTTP protocol.
-\donttest{elb$create_load_balancer_listeners(
+\donttest{svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -54,7 +54,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 # This example creates a listener for your load balancer at port 443 using
 # the HTTPS protocol.
-\donttest{elb$create_load_balancer_listeners(
+\donttest{svc$create_load_balancer_listeners(
   Listeners = list(
     list(
       InstancePort = 80L,

@@ -115,7 +115,7 @@ until they sign in and change their password.
 AdminCreateUser requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_create_user(
+\preformatted{svc$admin_create_user(
   UserPoolId = "string",
   Username = "string",
   UserAttributes = list(

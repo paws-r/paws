@@ -18,7 +18,7 @@ greengrass_list_resource_definition_versions(MaxResults, NextToken,
 Lists the versions of a resource definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_resource_definition_versions(
+\preformatted{svc$list_resource_definition_versions(
   MaxResults = "string",
   NextToken = "string",
   ResourceDefinitionId = "string"

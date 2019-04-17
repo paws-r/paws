@@ -12,12 +12,6 @@ Amazon WorkSpaces Service
 Amazon WorkSpaces enables you to provision virtual, cloud-based
 Microsoft Windows and Amazon Linux desktops for your users.
 }
-\section{Example}{
-\preformatted{workspaces <- paws::workspaces()
-workspaces$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ workspaces$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_ip_groups(
+  Foo = 123
+)}
+
+}

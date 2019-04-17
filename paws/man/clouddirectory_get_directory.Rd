@@ -13,7 +13,7 @@ clouddirectory_get_directory(DirectoryArn)
 Retrieves metadata about a directory.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_directory(
+\preformatted{svc$get_directory(
   DirectoryArn = "string"
 )
 }

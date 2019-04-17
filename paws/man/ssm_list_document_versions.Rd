@@ -20,7 +20,7 @@ from a previous call.)}
 List all versions for a document.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_document_versions(
+\preformatted{svc$list_document_versions(
   Name = "string",
   MaxResults = 123,
   NextToken = "string"

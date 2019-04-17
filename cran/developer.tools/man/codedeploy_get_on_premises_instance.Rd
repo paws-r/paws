@@ -13,7 +13,7 @@ codedeploy_get_on_premises_instance(instanceName)
 Gets information about an on-premises instance.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_on_premises_instance(
+\preformatted{svc$get_on_premises_instance(
   instanceName = "string"
 )
 }

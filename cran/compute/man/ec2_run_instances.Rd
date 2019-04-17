@@ -269,7 +269,7 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingIns
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$run_instances(
+\preformatted{svc$run_instances(
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",
@@ -423,7 +423,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example launches an instance using the specified AMI, instance
 # type, security group, subnet, block device mapping, and tags.
-\donttest{ec2$run_instances(
+\donttest{svc$run_instances(
   BlockDeviceMappings = list(
     list(
       DeviceName = "/dev/sdh",

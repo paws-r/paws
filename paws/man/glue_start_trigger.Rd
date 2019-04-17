@@ -14,7 +14,7 @@ Starts an existing trigger. See \href{http://docs.aws.amazon.com/glue/latest/dg/
 information about how different types of trigger are started.
 }
 \section{Request syntax}{
-\preformatted{glue$start_trigger(
+\preformatted{svc$start_trigger(
   Name = "string"
 )
 }

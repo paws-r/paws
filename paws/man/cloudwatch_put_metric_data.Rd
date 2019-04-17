@@ -62,7 +62,7 @@ multiplied by \code{SampleCount}.
 }
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$put_metric_data(
+\preformatted{svc$put_metric_data(
   Namespace = "string",
   MetricData = list(
     list(

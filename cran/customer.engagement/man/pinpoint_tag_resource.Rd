@@ -15,7 +15,7 @@ pinpoint_tag_resource(ResourceArn, TagsModel)
 Tag resource
 }
 \section{Request syntax}{
-\preformatted{pinpoint$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   TagsModel = list(
     tags = list(

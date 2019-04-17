@@ -56,7 +56,7 @@ returned records represented by the \code{CaseDetails} objects.
 }
 }
 \section{Request syntax}{
-\preformatted{support$describe_cases(
+\preformatted{svc$describe_cases(
   caseIdList = list(
     "string"
   ),

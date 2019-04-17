@@ -24,7 +24,7 @@ returned.}
 Gets details of a job execution.
 }
 \section{Request syntax}{
-\preformatted{iotjobsdataplane$describe_job_execution(
+\preformatted{svc$describe_job_execution(
   jobId = "string",
   thingName = "string",
   includeJobDocument = TRUE|FALSE,

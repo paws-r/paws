@@ -26,7 +26,7 @@ Retrieves information about an HSM. You can identify the HSM by its ARN
 or its serial number.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$describe_hsm(
+\preformatted{svc$describe_hsm(
   HsmArn = "string",
   HsmSerialNumber = "string"
 )

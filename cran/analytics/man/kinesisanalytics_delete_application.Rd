@@ -22,7 +22,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplication} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$delete_application(
+\preformatted{svc$delete_application(
   ApplicationName = "string",
   CreateTimestamp = as.POSIXct(
     "2015-01-01"

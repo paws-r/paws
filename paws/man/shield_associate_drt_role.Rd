@@ -49,7 +49,7 @@ you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/busine
 \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
 }
 \section{Request syntax}{
-\preformatted{shield$associate_drt_role(
+\preformatted{svc$associate_drt_role(
   RoleArn = "string"
 )
 }

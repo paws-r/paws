@@ -17,7 +17,7 @@ Describes the rules packages that are specified by the ARNs of the rules
 packages.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_rules_packages(
+\preformatted{svc$describe_rules_packages(
   rulesPackageArns = list(
     "string"
   ),
@@ -29,7 +29,7 @@ packages.
 \examples{
 # Describes the rules packages that are specified by the ARNs of the rules
 # packages.
-\donttest{inspector$describe_rules_packages(
+\donttest{svc$describe_rules_packages(
   rulesPackageArns = list(
     "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"
   )

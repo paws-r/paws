@@ -21,7 +21,7 @@ The API server endpoint and certificate authority data are not available
 until the cluster reaches the \code{ACTIVE} state.
 }
 \section{Request syntax}{
-\preformatted{eks$describe_cluster(
+\preformatted{svc$describe_cluster(
   name = "string"
 )
 }
@@ -30,7 +30,7 @@ until the cluster reaches the \code{ACTIVE} state.
 \examples{
 # This example command provides a description of the specified cluster in
 # your default region.
-\donttest{eks$describe_cluster(
+\donttest{svc$describe_cluster(
   name = "devel"
 )}
 

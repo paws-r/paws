@@ -18,7 +18,7 @@ a member account, the master account can view Security Hub findings of
 the member account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$invite_members(
+\preformatted{svc$invite_members(
   AccountIds = list(
     "string"
   )

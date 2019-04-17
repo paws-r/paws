@@ -13,7 +13,7 @@ s3_get_bucket_tagging(Bucket)
 Returns the tag set associated with the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_tagging(
+\preformatted{svc$get_bucket_tagging(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the tag set associated with the bucket.
 
 \examples{
 # The following example returns tag set associated with a bucket
-\donttest{s3$get_bucket_tagging(
+\donttest{svc$get_bucket_tagging(
   Bucket = "examplebucket"
 )}
 

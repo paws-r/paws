@@ -27,7 +27,7 @@ subnet. To remove routes that have been automatically added,
 disassociate the target subnet from the Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_client_vpn_route(
+\preformatted{svc$delete_client_vpn_route(
   ClientVpnEndpointId = "string",
   TargetVpcSubnetId = "string",
   DestinationCidrBlock = "string",

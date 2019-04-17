@@ -60,7 +60,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VP
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_dhcp_options(
+\preformatted{svc$create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "string",
@@ -76,7 +76,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example creates a DHCP options set.
-\donttest{ec2$create_dhcp_options(
+\donttest{svc$create_dhcp_options(
   DhcpConfigurations = list(
     list(
       Key = "domain-name-servers",

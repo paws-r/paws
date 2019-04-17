@@ -19,7 +19,7 @@ in the order specified in this list.}
 Updates a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_request_validator(
+\preformatted{svc$update_request_validator(
   restApiId = "string",
   requestValidatorId = "string",
   patchOperations = list(

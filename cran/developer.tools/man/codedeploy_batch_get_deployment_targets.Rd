@@ -39,7 +39,7 @@ platform:
 }
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_deployment_targets(
+\preformatted{svc$batch_get_deployment_targets(
   deploymentId = "string",
   targetIds = list(
     "string"

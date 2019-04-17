@@ -13,11 +13,17 @@ NULL
 #' EC2 instances can access repositories and images. Developers can use the
 #' Docker CLI to author and manage images.
 #'
-#' @section Example:
-#' ```
-#' ecr <- paws::ecr()
-#' ecr$operation()
-#' ```
+#' @examples
+#' # This example deletes images with the tags precise and trusty in a
+#' # repository called ubuntu in the default registry for an account.
+#' \donttest{svc$batch_delete_image(
+#'   imageIds = list(
+#'     list(
+#'       imageTag = "precise"
+#'     )
+#'   ),
+#'   repositoryName = "ubuntu"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -15,7 +15,7 @@ medialive_list_input_security_groups(MaxResults, NextToken)
 Produces a list of Input Security Groups for an account
 }
 \section{Request syntax}{
-\preformatted{medialive$list_input_security_groups(
+\preformatted{svc$list_input_security_groups(
   MaxResults = 123,
   NextToken = "string"
 )

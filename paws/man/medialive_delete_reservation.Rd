@@ -13,7 +13,7 @@ medialive_delete_reservation(ReservationId)
 Delete an expired reservation.
 }
 \section{Request syntax}{
-\preformatted{medialive$delete_reservation(
+\preformatted{svc$delete_reservation(
   ReservationId = "string"
 )
 }

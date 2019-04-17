@@ -16,7 +16,7 @@ Accepts a directory sharing request that was sent from the directory
 owner account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$accept_shared_directory(
+\preformatted{svc$accept_shared_directory(
   SharedDirectoryId = "string"
 )
 }

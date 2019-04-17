@@ -14,7 +14,7 @@ case-sensitive.}
 Gets information about a vocabulary.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$get_vocabulary(
+\preformatted{svc$get_vocabulary(
   VocabularyName = "string"
 )
 }

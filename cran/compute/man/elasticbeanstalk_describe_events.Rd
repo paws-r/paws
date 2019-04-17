@@ -54,7 +54,7 @@ This action returns the most recent 1,000 events from the specified
 \code{NextToken}.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_events(
+\preformatted{svc$describe_events(
   ApplicationName = "string",
   VersionLabel = "string",
   TemplateName = "string",
@@ -78,7 +78,7 @@ This action returns the most recent 1,000 events from the specified
 \examples{
 # The following operation retrieves events for an environment named
 # my-env:
-\donttest{elasticbeanstalk$describe_events(
+\donttest{svc$describe_events(
   EnvironmentName = "my-env"
 )}
 

@@ -36,7 +36,7 @@ existing resource is overwritten with the data from the import file.
 Starts a job to import a resource to Amazon Lex.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$start_import(
+\preformatted{svc$start_import(
   payload = raw,
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"

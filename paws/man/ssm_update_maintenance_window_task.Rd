@@ -97,7 +97,7 @@ RegisterTaskWithMaintenanceWindow action are required for this request.
 Optional fields that aren't specified are set to null.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_maintenance_window_task(
+\preformatted{svc$update_maintenance_window_task(
   WindowId = "string",
   WindowTaskId = "string",
   Targets = list(

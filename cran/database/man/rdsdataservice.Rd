@@ -9,12 +9,6 @@ rdsdataservice()
 \description{
 AWS RDS DataService provides Http Endpoint to query RDS databases.
 }
-\section{Example}{
-\preformatted{rdsdataservice <- paws::rdsdataservice()
-rdsdataservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -22,3 +16,9 @@ rdsdataservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$execute_sql(
+  Foo = 123
+)}
+
+}

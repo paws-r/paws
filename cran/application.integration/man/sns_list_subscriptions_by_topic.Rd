@@ -22,7 +22,7 @@ results.
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$list_subscriptions_by_topic(
+\preformatted{svc$list_subscriptions_by_topic(
   TopicArn = "string",
   NextToken = "string"
 )

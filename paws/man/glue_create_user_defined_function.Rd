@@ -20,7 +20,7 @@ Catalog.}
 Creates a new function definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$create_user_defined_function(
+\preformatted{svc$create_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionInput = list(

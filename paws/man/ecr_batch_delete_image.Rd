@@ -30,7 +30,7 @@ You can completely delete an image (and all of its tags) by specifying
 the image's digest in your request.
 }
 \section{Request syntax}{
-\preformatted{ecr$batch_delete_image(
+\preformatted{svc$batch_delete_image(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(
@@ -46,7 +46,7 @@ the image's digest in your request.
 \examples{
 # This example deletes images with the tags precise and trusty in a
 # repository called ubuntu in the default registry for an account.
-\donttest{ecr$batch_delete_image(
+\donttest{svc$batch_delete_image(
   imageIds = list(
     list(
       imageTag = "precise"

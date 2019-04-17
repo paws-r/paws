@@ -43,12 +43,6 @@ number of times the operation can be called per second. For more
 information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api}{API Rate Limits in ACM PCA}
 in the ACM PCA user guide.
 }
-\section{Example}{
-\preformatted{acmpca <- paws::acmpca()
-acmpca$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -75,3 +69,9 @@ acmpca$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_certificate_authority(
+  Foo = 123
+)}
+
+}

@@ -20,7 +20,7 @@ You can use the \code{GetBatchPrediction} operation to view the contents of
 the updated data element.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$update_batch_prediction(
+\preformatted{svc$update_batch_prediction(
   BatchPredictionId = "string",
   BatchPredictionName = "string"
 )

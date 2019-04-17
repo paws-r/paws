@@ -27,7 +27,7 @@ Set to \code{NONE} for default encryption.}
 Updates the encryption configuration for X-Ray data.
 }
 \section{Request syntax}{
-\preformatted{xray$put_encryption_config(
+\preformatted{svc$put_encryption_config(
   KeyId = "string",
   Type = "NONE"|"KMS"
 )

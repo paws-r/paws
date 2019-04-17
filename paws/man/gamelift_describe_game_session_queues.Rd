@@ -34,7 +34,7 @@ region.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_game_session_queues(
+\preformatted{svc$describe_game_session_queues(
   Names = list(
     "string"
   ),

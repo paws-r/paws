@@ -47,7 +47,7 @@ either the specific address from the address pool or the ID of the
 address pool.
 }
 \section{Request syntax}{
-\preformatted{ec2$provision_byoip_cidr(
+\preformatted{svc$provision_byoip_cidr(
   Cidr = "string",
   CidrAuthorizationContext = list(
     Message = "string",

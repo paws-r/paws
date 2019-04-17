@@ -35,7 +35,7 @@ example, a parameter list with two elements looks like this:
 \code{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
-\preformatted{sqs$change_message_visibility_batch(
+\preformatted{svc$change_message_visibility_batch(
   QueueUrl = "string",
   Entries = list(
     list(

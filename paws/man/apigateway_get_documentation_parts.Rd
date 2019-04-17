@@ -29,7 +29,7 @@ and the maximum value is 500.}
 Get documentation parts
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_documentation_parts(
+\preformatted{svc$get_documentation_parts(
   restApiId = "string",
   type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
   nameQuery = "string",

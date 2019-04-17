@@ -21,7 +21,7 @@ which gateway to describe, use the Amazon Resource Name (ARN) of the
 gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_bandwidth_rate_limit(
+\preformatted{svc$describe_bandwidth_rate_limit(
   GatewayARN = "string"
 )
 }
@@ -30,7 +30,7 @@ gateway in your request.
 \examples{
 # Returns a value for a bandwidth rate limit if set. If not set, then only
 # the gateway ARN is returned.
-\donttest{storagegateway$describe_bandwidth_rate_limit(
+\donttest{svc$describe_bandwidth_rate_limit(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

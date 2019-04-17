@@ -41,7 +41,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_aws_service_access_for_organization(
+\preformatted{svc$list_aws_service_access_for_organization(
   NextToken = "string",
   MaxResults = 123
 )

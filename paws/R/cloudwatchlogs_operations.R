@@ -33,7 +33,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$associate_kms_key(
+#' svc$associate_kms_key(
 #'   logGroupName = "string",
 #'   kmsKeyId = "string"
 #' )
@@ -71,7 +71,7 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$cancel_export_task(
+#' svc$cancel_export_task(
 #'   taskId = "string"
 #' )
 #' ```
@@ -134,7 +134,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$create_export_task(
+#' svc$create_export_task(
 #'   taskName = "string",
 #'   logGroupName = "string",
 #'   logStreamNamePrefix = "string",
@@ -202,7 +202,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$create_log_group(
+#' svc$create_log_group(
 #'   logGroupName = "string",
 #'   kmsKeyId = "string",
 #'   tags = list(
@@ -253,7 +253,7 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$create_log_stream(
+#' svc$create_log_stream(
 #'   logGroupName = "string",
 #'   logStreamName = "string"
 #' )
@@ -292,7 +292,7 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_destination(
+#' svc$delete_destination(
 #'   destinationName = "string"
 #' )
 #' ```
@@ -329,7 +329,7 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_log_group(
+#' svc$delete_log_group(
 #'   logGroupName = "string"
 #' )
 #' ```
@@ -367,7 +367,7 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_log_stream(
+#' svc$delete_log_stream(
 #'   logGroupName = "string",
 #'   logStreamName = "string"
 #' )
@@ -404,7 +404,7 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_metric_filter(
+#' svc$delete_metric_filter(
 #'   logGroupName = "string",
 #'   filterName = "string"
 #' )
@@ -441,7 +441,7 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_resource_policy(
+#' svc$delete_resource_policy(
 #'   policyName = "string"
 #' )
 #' ```
@@ -479,7 +479,7 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_retention_policy(
+#' svc$delete_retention_policy(
 #'   logGroupName = "string"
 #' )
 #' ```
@@ -515,7 +515,7 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$delete_subscription_filter(
+#' svc$delete_subscription_filter(
 #'   logGroupName = "string",
 #'   filterName = "string"
 #' )
@@ -558,7 +558,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_destinations(
+#' svc$describe_destinations(
 #'   DestinationNamePrefix = "string",
 #'   nextToken = "string",
 #'   limit = 123
@@ -604,7 +604,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_export_tasks(
+#' svc$describe_export_tasks(
 #'   taskId = "string",
 #'   statusCode = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
 #'   nextToken = "string",
@@ -648,7 +648,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_log_groups(
+#' svc$describe_log_groups(
 #'   logGroupNamePrefix = "string",
 #'   nextToken = "string",
 #'   limit = 123
@@ -714,7 +714,7 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_log_streams(
+#' svc$describe_log_streams(
 #'   logGroupName = "string",
 #'   logStreamNamePrefix = "string",
 #'   orderBy = "LogStreamName"|"LastEventTime",
@@ -768,7 +768,7 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_metric_filters(
+#' svc$describe_metric_filters(
 #'   logGroupName = "string",
 #'   filterNamePrefix = "string",
 #'   nextToken = "string",
@@ -818,7 +818,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_queries(
+#' svc$describe_queries(
 #'   logGroupName = "string",
 #'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
 #'   maxResults = 123,
@@ -858,7 +858,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_resource_policies(
+#' svc$describe_resource_policies(
 #'   nextToken = "string",
 #'   limit = 123
 #' )
@@ -903,7 +903,7 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$describe_subscription_filters(
+#' svc$describe_subscription_filters(
 #'   logGroupName = "string",
 #'   filterNamePrefix = "string",
 #'   nextToken = "string",
@@ -951,7 +951,7 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$disassociate_kms_key(
+#' svc$disassociate_kms_key(
 #'   logGroupName = "string"
 #' )
 #' ```
@@ -1026,7 +1026,7 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$filter_log_events(
+#' svc$filter_log_events(
 #'   logGroupName = "string",
 #'   logStreamNames = list(
 #'     "string"
@@ -1093,7 +1093,7 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$get_log_events(
+#' svc$get_log_events(
 #'   logGroupName = "string",
 #'   logStreamName = "string",
 #'   startTime = 123,
@@ -1152,7 +1152,7 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$get_log_group_fields(
+#' svc$get_log_group_fields(
 #'   logGroupName = "string",
 #'   time = 123
 #' )
@@ -1197,7 +1197,7 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$get_log_record(
+#' svc$get_log_record(
 #'   logRecordPointer = "string"
 #' )
 #' ```
@@ -1237,7 +1237,7 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$get_query_results(
+#' svc$get_query_results(
 #'   queryId = "string"
 #' )
 #' ```
@@ -1272,7 +1272,7 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$list_tags_log_group(
+#' svc$list_tags_log_group(
 #'   logGroupName = "string"
 #' )
 #' ```
@@ -1321,7 +1321,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_destination(
+#' svc$put_destination(
 #'   destinationName = "string",
 #'   targetArn = "string",
 #'   roleArn = "string"
@@ -1365,7 +1365,7 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_destination_policy(
+#' svc$put_destination_policy(
 #'   destinationName = "string",
 #'   accessPolicy = "string"
 #' )
@@ -1444,7 +1444,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_log_events(
+#' svc$put_log_events(
 #'   logGroupName = "string",
 #'   logStreamName = "string",
 #'   logEvents = list(
@@ -1497,7 +1497,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_metric_filter(
+#' svc$put_metric_filter(
 #'   logGroupName = "string",
 #'   filterName = "string",
 #'   filterPattern = "string",
@@ -1555,7 +1555,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_resource_policy(
+#' svc$put_resource_policy(
 #'   policyName = "string",
 #'   policyDocument = "string"
 #' )
@@ -1594,7 +1594,7 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_retention_policy(
+#' svc$put_retention_policy(
 #'   logGroupName = "string",
 #'   retentionInDays = 123
 #' )
@@ -1681,7 +1681,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$put_subscription_filter(
+#' svc$put_subscription_filter(
 #'   logGroupName = "string",
 #'   filterName = "string",
 #'   filterPattern = "string",
@@ -1739,7 +1739,7 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$start_query(
+#' svc$start_query(
 #'   logGroupName = "string",
 #'   startTime = 123,
 #'   endTime = 123,
@@ -1781,7 +1781,7 @@ cloudwatchlogs_start_query <- function(logGroupName, startTime, endTime, querySt
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$stop_query(
+#' svc$stop_query(
 #'   queryId = "string"
 #' )
 #' ```
@@ -1825,7 +1825,7 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$tag_log_group(
+#' svc$tag_log_group(
 #'   logGroupName = "string",
 #'   tags = list(
 #'     "string"
@@ -1867,7 +1867,7 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$test_metric_filter(
+#' svc$test_metric_filter(
 #'   filterPattern = "string",
 #'   logEventMessages = list(
 #'     "string"
@@ -1909,7 +1909,7 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchlogs$untag_log_group(
+#' svc$untag_log_group(
 #'   logGroupName = "string",
 #'   tags = list(
 #'     "string"

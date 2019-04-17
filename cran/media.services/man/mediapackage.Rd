@@ -9,12 +9,6 @@ mediapackage()
 \description{
 AWS Elemental MediaPackage
 }
-\section{Example}{
-\preformatted{mediapackage <- paws::mediapackage()
-mediapackage$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -36,3 +30,9 @@ mediapackage$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_channel(
+  Foo = 123
+)}
+
+}

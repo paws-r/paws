@@ -32,7 +32,7 @@ information about renewing domain registration, see \href{http://docs.aws.amazon
 in the Amazon Route 53 Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{route53domains$renew_domain(
+\preformatted{svc$renew_domain(
   DomainName = "string",
   DurationInYears = 123,
   CurrentExpiryYear = 123

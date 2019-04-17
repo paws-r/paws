@@ -23,7 +23,7 @@ on requester pays buckets can be found at
 http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_request_payment(
+\preformatted{svc$put_bucket_request_payment(
   Bucket = "string",
   ContentMD5 = "string",
   RequestPaymentConfiguration = list(
@@ -36,7 +36,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 \examples{
 # The following example sets request payment configuration on a bucket so
 # that person requesting the download is charged.
-\donttest{s3$put_bucket_request_payment(
+\donttest{svc$put_bucket_request_payment(
   Bucket = "examplebucket",
   RequestPaymentConfiguration = list(
     Payer = "Requester"

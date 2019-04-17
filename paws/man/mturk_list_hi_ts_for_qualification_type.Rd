@@ -22,7 +22,7 @@ operation returns HITs of any status, except for HITs that have been
 deleted with the \code{DeleteHIT} operation or that have been auto-deleted.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_hi_ts_for_qualification_type(
+\preformatted{svc$list_hi_ts_for_qualification_type(
   QualificationTypeId = "string",
   NextToken = "string",
   MaxResults = 123

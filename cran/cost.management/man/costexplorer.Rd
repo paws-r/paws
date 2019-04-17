@@ -23,12 +23,6 @@ The Cost Explorer API provides the following endpoint:
 For information about costs associated with the Cost Explorer API, see
 \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
-\section{Example}{
-\preformatted{costexplorer <- paws::costexplorer()
-costexplorer$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -42,3 +36,9 @@ costexplorer$operation()
 }
 }
 
+\examples{
+\donttest{svc$get_cost_and_usage(
+  Foo = 123
+)}
+
+}

@@ -11,11 +11,12 @@ NULL
 #' interfaces. Use these actions to create, update, and delete
 #' conversational bots for new and existing client applications.
 #'
-#' @section Example:
-#' ```
-#' lexmodelbuildingservice <- paws::lexmodelbuildingservice()
-#' lexmodelbuildingservice$operation()
-#' ```
+#' @examples
+#' # This example shows how to get configuration information for a bot.
+#' \donttest{svc$get_bot(
+#'   name = "DocOrderPizza",
+#'   versionOrAlias = "$LATEST"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

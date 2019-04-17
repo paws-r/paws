@@ -15,7 +15,7 @@ disassociate it from all the VPCs that you associated the resolver rule
 with. For more infomation, see DisassociateResolverRule.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$delete_resolver_rule(
+\preformatted{svc$delete_resolver_rule(
   ResolverRuleId = "string"
 )
 }

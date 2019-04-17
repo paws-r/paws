@@ -25,7 +25,7 @@ image names or image ARNs are provided. Otherwise, all images in the
 account are described.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_images(
+\preformatted{svc$describe_images(
   Names = list(
     "string"
   ),

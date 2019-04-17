@@ -15,7 +15,7 @@ apigateway_flush_stage_cache(restApiId, stageName)
 Flushes a stage's cache.
 }
 \section{Request syntax}{
-\preformatted{apigateway$flush_stage_cache(
+\preformatted{svc$flush_stage_cache(
   restApiId = "string",
   stageName = "string"
 )

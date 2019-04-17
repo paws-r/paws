@@ -23,7 +23,7 @@ the license configurations directly to a resource creation operation,
 such as \code{RunInstances}.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$update_license_specifications_for_resource(
+\preformatted{svc$update_license_specifications_for_resource(
   ResourceArn = "string",
   AddLicenseSpecifications = list(
     list(

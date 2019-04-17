@@ -22,7 +22,7 @@ Updates the workgroup with the specified name. The workgroup's name
 cannot be changed.
 }
 \section{Request syntax}{
-\preformatted{athena$update_work_group(
+\preformatted{svc$update_work_group(
   WorkGroup = "string",
   Description = "string",
   ConfigurationUpdates = list(

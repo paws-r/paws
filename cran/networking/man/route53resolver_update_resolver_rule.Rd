@@ -17,7 +17,7 @@ required, and all other parameters are optional. If you don't specify a
 parameter, it retains its current value.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$update_resolver_rule(
+\preformatted{svc$update_resolver_rule(
   ResolverRuleId = "string",
   Config = list(
     Name = "string",

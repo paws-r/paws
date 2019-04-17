@@ -71,7 +71,7 @@ operation. Master accounts in an organization in AWS Organizations have
 access to all member accounts.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_cost_and_usage(
+\preformatted{svc$get_cost_and_usage(
   TimePeriod = list(
     Start = "string",
     End = "string"

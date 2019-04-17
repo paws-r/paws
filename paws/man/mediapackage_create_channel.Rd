@@ -18,7 +18,7 @@ cannot be changed after a Channel is created.}
 Creates a new Channel.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$create_channel(
+\preformatted{svc$create_channel(
   Description = "string",
   Id = "string",
   Tags = list(

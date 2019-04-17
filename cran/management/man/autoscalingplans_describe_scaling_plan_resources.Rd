@@ -21,7 +21,7 @@ between 1 and 50. The default value is 50.}
 Describes the scalable resources in the specified scaling plan.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$describe_scaling_plan_resources(
+\preformatted{svc$describe_scaling_plan_resources(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   MaxResults = 123,

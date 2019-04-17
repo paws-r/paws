@@ -54,7 +54,7 @@ the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGu
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$put_group_policy(
+\preformatted{svc$put_group_policy(
   GroupName = "string",
   PolicyName = "string",
   PolicyDocument = "string"
@@ -65,7 +65,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command adds a policy named AllPerms to the IAM group
 # named Admins.
-\donttest{iam$put_group_policy(
+\donttest{svc$put_group_policy(
   GroupName = "Admins",
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",...",
   PolicyName = "AllPerms"

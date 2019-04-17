@@ -13,7 +13,7 @@ iot_delete_topic_rule(ruleName)
 Deletes the rule.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_topic_rule(
+\preformatted{svc$delete_topic_rule(
   ruleName = "string"
 )
 }

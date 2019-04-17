@@ -51,7 +51,7 @@ across the responses of a multicall iteration is unspecified.
 }
 }
 \section{Request syntax}{
-\preformatted{fsx$describe_file_systems(
+\preformatted{svc$describe_file_systems(
   FileSystemIds = list(
     "string"
   ),
@@ -64,7 +64,7 @@ across the responses of a multicall iteration is unspecified.
 \examples{
 # This operation describes all of the Amazon FSx file systems in an
 # account.
-\donttest{fsx$describe_file_systems()}
+\donttest{svc$describe_file_systems()}
 
 }
 \keyword{internal}

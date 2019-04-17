@@ -20,7 +20,7 @@ target ID using the short form, you must also specify the target type.}
 Deletes one or more custom attributes from an Amazon ECS resource.
 }
 \section{Request syntax}{
-\preformatted{ecs$delete_attributes(
+\preformatted{svc$delete_attributes(
   cluster = "string",
   attributes = list(
     list(

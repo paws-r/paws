@@ -20,12 +20,6 @@ following endpoints:
 \item \strong{EU (Ireland)}: \code{email.eu-west-1.amazonaws.com}
 }
 }
-\section{Example}{
-\preformatted{pinpointemail <- paws::pinpointemail()
-pinpointemail$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -72,3 +66,9 @@ pinpointemail$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_configuration_set(
+  Foo = 123
+)}
+
+}

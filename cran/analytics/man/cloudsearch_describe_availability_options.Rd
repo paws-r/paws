@@ -20,7 +20,7 @@ more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/develo
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_availability_options(
+\preformatted{svc$describe_availability_options(
   DomainName = "string",
   Deployed = TRUE|FALSE
 )

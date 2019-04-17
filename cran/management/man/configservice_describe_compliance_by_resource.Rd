@@ -57,7 +57,7 @@ or removed from the rule's scope.
 }
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_compliance_by_resource(
+\preformatted{svc$describe_compliance_by_resource(
   ResourceType = "string",
   ResourceId = "string",
   ComplianceTypes = list(

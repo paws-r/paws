@@ -15,7 +15,7 @@ alexaforbusiness_delete_skill_authorization(SkillId, RoomArn)
 Unlinks a third-party account from a skill.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_skill_authorization(
+\preformatted{svc$delete_skill_authorization(
   SkillId = "string",
   RoomArn = "string"
 )

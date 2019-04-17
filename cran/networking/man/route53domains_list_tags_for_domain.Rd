@@ -19,7 +19,7 @@ All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }
 \section{Request syntax}{
-\preformatted{route53domains$list_tags_for_domain(
+\preformatted{svc$list_tags_for_domain(
   DomainName = "string"
 )
 }

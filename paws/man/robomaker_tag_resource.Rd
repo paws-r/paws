@@ -25,7 +25,7 @@ see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocatio
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{robomaker$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"

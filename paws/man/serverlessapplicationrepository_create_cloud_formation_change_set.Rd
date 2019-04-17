@@ -107,7 +107,7 @@ Pattern:
 Creates an AWS CloudFormation change set for the given application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$create_cloud_formation_change_set(
+\preformatted{svc$create_cloud_formation_change_set(
   ApplicationId = "string",
   Capabilities = list(
     "string"

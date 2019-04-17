@@ -20,7 +20,7 @@ specified source type. For a list of the event categories and source
 types, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string"
 )
 }

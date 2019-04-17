@@ -18,7 +18,7 @@ When you delete an endpoint that is also subscribed to a topic, then you
 must also unsubscribe the endpoint from the topic.
 }
 \section{Request syntax}{
-\preformatted{sns$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   EndpointArn = "string"
 )
 }

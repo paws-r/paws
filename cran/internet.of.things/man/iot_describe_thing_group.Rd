@@ -13,7 +13,7 @@ iot_describe_thing_group(thingGroupName)
 Describe a thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_thing_group(
+\preformatted{svc$describe_thing_group(
   thingGroupName = "string"
 )
 }

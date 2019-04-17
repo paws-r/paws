@@ -19,7 +19,7 @@ Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
 that has EC2-Classic instances linked to it.
 }
 \section{Request syntax}{
-\preformatted{ec2$disable_vpc_classic_link(
+\preformatted{svc$disable_vpc_classic_link(
   DryRun = TRUE|FALSE,
   VpcId = "string"
 )

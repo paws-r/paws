@@ -24,7 +24,7 @@ Lists and describes Security Hub-aggregated findings that are specified
 by filter attributes.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_findings(
+\preformatted{svc$get_findings(
   Filters = list(
     ProductArn = list(
       list(

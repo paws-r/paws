@@ -25,7 +25,7 @@ information, times, IDs, the Amazon S3 Object URL for the import file,
 and more.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_import_tasks(
+\preformatted{svc$describe_import_tasks(
   filters = list(
     list(
       name = "IMPORT_TASK_ID"|"STATUS"|"NAME",

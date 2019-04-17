@@ -29,7 +29,7 @@ Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-re
 for a function, version, or alias.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_policy(
+\preformatted{svc$get_policy(
   FunctionName = "string",
   Qualifier = "string"
 )
@@ -38,7 +38,7 @@ for a function, version, or alias.
 
 \examples{
 # This operation retrieves a Lambda function policy
-\donttest{lambda$get_policy(
+\donttest{svc$get_policy(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

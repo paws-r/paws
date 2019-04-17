@@ -18,7 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes the specified Amazon FPGA Image (AFI).
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_fpga_image(
+\preformatted{svc$delete_fpga_image(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string"
 )

@@ -232,7 +232,7 @@ number of nodes and the node type even if one of the parameters does not
 change.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster(
+\preformatted{svc$modify_cluster(
   ClusterIdentifier = "string",
   ClusterType = "string",
   NodeType = "string",

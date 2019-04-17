@@ -13,7 +13,7 @@ ec2_describe_export_tasks(ExportTaskIds)
 Describes one or more of your export tasks.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_export_tasks(
+\preformatted{svc$describe_export_tasks(
   ExportTaskIds = list(
     "string"
   )

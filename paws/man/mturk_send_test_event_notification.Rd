@@ -27,7 +27,7 @@ trying to trigger them using the website. When you call this operation,
 the service attempts to send the test notification immediately.
 }
 \section{Request syntax}{
-\preformatted{mturk$send_test_event_notification(
+\preformatted{svc$send_test_event_notification(
   Notification = list(
     Destination = "string",
     Transport = "Email"|"SQS"|"SNS",

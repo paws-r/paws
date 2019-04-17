@@ -19,7 +19,7 @@ databasemigrationservice_modify_replication_subnet_group(
 Modifies the settings for the specified replication subnet group.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$modify_replication_subnet_group(
+\preformatted{svc$modify_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "string",
   ReplicationSubnetGroupDescription = "string",
   SubnetIds = list(
@@ -31,7 +31,7 @@ Modifies the settings for the specified replication subnet group.
 
 \examples{
 # Modifies the settings for the specified replication subnet group.
-\donttest{databasemigrationservice$modify_replication_subnet_group(
+\donttest{svc$modify_replication_subnet_group(
   ReplicationSubnetGroupDescription = "",
   ReplicationSubnetGroupIdentifier = "",
   SubnetIds = list()

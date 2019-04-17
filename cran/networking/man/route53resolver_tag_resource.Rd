@@ -25,7 +25,7 @@ tags to. To get the ARN for a resource, use the applicable \code{Get} or
 Adds one or more tags to a specified resource.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

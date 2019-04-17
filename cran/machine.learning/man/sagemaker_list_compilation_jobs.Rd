@@ -46,7 +46,7 @@ information about a particular model compilation job you have created,
 use DescribeCompilationJob.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_compilation_jobs(
+\preformatted{svc$list_compilation_jobs(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(

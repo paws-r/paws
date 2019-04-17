@@ -24,7 +24,7 @@ Reservation, run in any \code{open} Capacity Reservation with matching
 attributes, or run On-Demand Instance capacity.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_instance_capacity_reservation_attributes(
+\preformatted{svc$modify_instance_capacity_reservation_attributes(
   InstanceId = "string",
   CapacityReservationSpecification = list(
     CapacityReservationPreference = "open"|"none",

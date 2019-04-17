@@ -82,7 +82,7 @@ new settings.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_matchmaking_configuration(
+\preformatted{svc$update_matchmaking_configuration(
   Name = "string",
   Description = "string",
   GameSessionQueueArns = list(

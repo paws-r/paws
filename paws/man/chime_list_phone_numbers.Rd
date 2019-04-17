@@ -26,7 +26,7 @@ Lists the phone numbers for the specified Amazon Chime account, Amazon
 Chime user, or Amazon Chime Voice Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$list_phone_numbers(
+\preformatted{svc$list_phone_numbers(
   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
   ProductType = "BusinessCalling"|"VoiceConnector",
   FilterName = "AccountId"|"UserId"|"VoiceConnectorId",

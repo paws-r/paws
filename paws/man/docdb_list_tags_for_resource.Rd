@@ -16,7 +16,7 @@ Amazon Resource Name (ARN).}
 Lists all tags on an Amazon DocumentDB resource.
 }
 \section{Request syntax}{
-\preformatted{docdb$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceName = "string",
   Filters = list(
     list(

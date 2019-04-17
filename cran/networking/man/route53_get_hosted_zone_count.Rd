@@ -12,7 +12,7 @@ Retrieves the number of hosted zones that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53$get_hosted_zone_count()
+\preformatted{svc$get_hosted_zone_count()
 }
 }
 

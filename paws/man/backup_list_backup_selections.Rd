@@ -22,7 +22,7 @@ Returns an array containing metadata of the resources associated with
 the target backup plan.
 }
 \section{Request syntax}{
-\preformatted{backup$list_backup_selections(
+\preformatted{svc$list_backup_selections(
   BackupPlanId = "string",
   NextToken = "string",
   MaxResults = 123

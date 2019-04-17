@@ -18,7 +18,7 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$describe_receipt_rule_set(
+\preformatted{svc$describe_receipt_rule_set(
   RuleSetName = "string"
 )
 }
@@ -27,7 +27,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns the metadata and receipt rules of a
 # receipt rule set:
-\donttest{ses$describe_receipt_rule_set(
+\donttest{svc$describe_receipt_rule_set(
   RuleSetName = "MyRuleSet"
 )}
 

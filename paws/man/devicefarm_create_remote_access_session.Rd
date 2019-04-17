@@ -64,7 +64,7 @@ Device Farm FAQs}.}
 Specifies and starts a remote access session.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$create_remote_access_session(
+\preformatted{svc$create_remote_access_session(
   projectArn = "string",
   deviceArn = "string",
   instanceArn = "string",
@@ -88,7 +88,7 @@ Specifies and starts a remote access session.
 
 \examples{
 # The following example creates a remote access session named MySession.
-\donttest{devicefarm$create_remote_access_session(
+\donttest{svc$create_remote_access_session(
   name = "MySession",
   configuration = list(
     billingMethod = "METERED"

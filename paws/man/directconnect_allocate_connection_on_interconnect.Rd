@@ -35,7 +35,7 @@ hosted connection on the specified interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$allocate_connection_on_interconnect(
+\preformatted{svc$allocate_connection_on_interconnect(
   bandwidth = "string",
   connectionName = "string",
   ownerAccount = "string",

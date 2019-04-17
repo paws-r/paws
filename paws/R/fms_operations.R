@@ -27,7 +27,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' fms$associate_admin_account(
+#' svc$associate_admin_account(
 #'   AdminAccount = "string"
 #' )
 #' ```
@@ -64,7 +64,7 @@ fms_associate_admin_account <- function(AdminAccount) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$delete_notification_channel()
+#' svc$delete_notification_channel()
 #' ```
 #'
 #' @keywords internal
@@ -113,7 +113,7 @@ fms_delete_notification_channel <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$delete_policy(
+#' svc$delete_policy(
 #'   PolicyId = "string",
 #'   DeleteAllPolicyResources = TRUE|FALSE
 #' )
@@ -150,7 +150,7 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$disassociate_admin_account()
+#' svc$disassociate_admin_account()
 #' ```
 #'
 #' @keywords internal
@@ -183,7 +183,7 @@ fms_disassociate_admin_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$get_admin_account()
+#' svc$get_admin_account()
 #' ```
 #'
 #' @keywords internal
@@ -223,7 +223,7 @@ fms_get_admin_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$get_compliance_detail(
+#' svc$get_compliance_detail(
 #'   PolicyId = "string",
 #'   MemberAccount = "string"
 #' )
@@ -259,7 +259,7 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$get_notification_channel()
+#' svc$get_notification_channel()
 #' ```
 #'
 #' @keywords internal
@@ -292,7 +292,7 @@ fms_get_notification_channel <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$get_policy(
+#' svc$get_policy(
 #'   PolicyId = "string"
 #' )
 #' ```
@@ -350,7 +350,7 @@ fms_get_policy <- function(PolicyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$get_protection_status(
+#' svc$get_protection_status(
 #'   PolicyId = "string",
 #'   MemberAccountId = "string",
 #'   StartTime = as.POSIXct(
@@ -409,7 +409,7 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 #'
 #' @section Request syntax:
 #' ```
-#' fms$list_compliance_status(
+#' svc$list_compliance_status(
 #'   PolicyId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -461,7 +461,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' fms$list_member_accounts(
+#' svc$list_member_accounts(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -508,7 +508,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$list_policies(
+#' svc$list_policies(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -549,7 +549,7 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$put_notification_channel(
+#' svc$put_notification_channel(
 #'   SnsTopicArn = "string",
 #'   SnsRoleName = "string"
 #' )
@@ -598,7 +598,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' fms$put_policy(
+#' svc$put_policy(
 #'   Policy = list(
 #'     PolicyId = "string",
 #'     PolicyName = "string",

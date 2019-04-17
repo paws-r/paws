@@ -19,7 +19,7 @@ This operation requires permission for the \code{lex:GetBuiltinIntent}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_builtin_intent(
+\preformatted{svc$get_builtin_intent(
   signature = "string"
 )
 }

@@ -16,7 +16,7 @@ Returns metadata, such as bucket name, about an Amazon S3 bucket
 location.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_location_s3(
+\preformatted{svc$describe_location_s3(
   LocationArn = "string"
 )
 }

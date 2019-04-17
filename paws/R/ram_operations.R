@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ram$accept_resource_share_invitation(
+#' svc$accept_resource_share_invitation(
 #'   resourceShareInvitationArn = "string",
 #'   clientToken = "string"
 #' )
@@ -60,7 +60,7 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #'
 #' @section Request syntax:
 #' ```
-#' ram$associate_resource_share(
+#' svc$associate_resource_share(
 #'   resourceShareArn = "string",
 #'   resourceArns = list(
 #'     "string"
@@ -113,7 +113,7 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ram$create_resource_share(
+#' svc$create_resource_share(
 #'   name = "string",
 #'   resourceArns = list(
 #'     "string"
@@ -164,7 +164,7 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ram$delete_resource_share(
+#' svc$delete_resource_share(
 #'   resourceShareArn = "string",
 #'   clientToken = "string"
 #' )
@@ -207,7 +207,7 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ram$disassociate_resource_share(
+#' svc$disassociate_resource_share(
 #'   resourceShareArn = "string",
 #'   resourceArns = list(
 #'     "string"
@@ -247,7 +247,7 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ram$enable_sharing_with_aws_organization()
+#' svc$enable_sharing_with_aws_organization()
 #' ```
 #'
 #' @keywords internal
@@ -286,7 +286,7 @@ ram_enable_sharing_with_aws_organization <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' ram$get_resource_policies(
+#' svc$get_resource_policies(
 #'   resourceArns = list(
 #'     "string"
 #'   ),
@@ -335,7 +335,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' ram$get_resource_share_associations(
+#' svc$get_resource_share_associations(
 #'   associationType = "PRINCIPAL"|"RESOURCE",
 #'   resourceShareArns = list(
 #'     "string"
@@ -384,7 +384,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 #'
 #' @section Request syntax:
 #' ```
-#' ram$get_resource_share_invitations(
+#' svc$get_resource_share_invitations(
 #'   resourceShareInvitationArns = list(
 #'     "string"
 #'   ),
@@ -435,7 +435,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ram$get_resource_shares(
+#' svc$get_resource_shares(
 #'   resourceShareArns = list(
 #'     "string"
 #'   ),
@@ -494,7 +494,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #'
 #' @section Request syntax:
 #' ```
-#' ram$list_principals(
+#' svc$list_principals(
 #'   resourceOwner = "SELF"|"OTHER-ACCOUNTS",
 #'   resourceArn = "string",
 #'   principals = list(
@@ -548,7 +548,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #'
 #' @section Request syntax:
 #' ```
-#' ram$list_resources(
+#' svc$list_resources(
 #'   resourceOwner = "SELF"|"OTHER-ACCOUNTS",
 #'   principal = "string",
 #'   resourceType = "string",
@@ -596,7 +596,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 #'
 #' @section Request syntax:
 #' ```
-#' ram$reject_resource_share_invitation(
+#' svc$reject_resource_share_invitation(
 #'   resourceShareInvitationArn = "string",
 #'   clientToken = "string"
 #' )
@@ -633,7 +633,7 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #'
 #' @section Request syntax:
 #' ```
-#' ram$tag_resource(
+#' svc$tag_resource(
 #'   resourceShareArn = "string",
 #'   tags = list(
 #'     list(
@@ -675,7 +675,7 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' ram$untag_resource(
+#' svc$untag_resource(
 #'   resourceShareArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -719,7 +719,7 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' ram$update_resource_share(
+#' svc$update_resource_share(
 #'   resourceShareArn = "string",
 #'   name = "string",
 #'   allowExternalPrincipals = TRUE|FALSE,

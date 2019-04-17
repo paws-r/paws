@@ -15,7 +15,7 @@ pinpoint_update_voice_channel(ApplicationId, VoiceChannelRequest)
 Update an Voice channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_voice_channel(
+\preformatted{svc$update_voice_channel(
   ApplicationId = "string",
   VoiceChannelRequest = list(
     Enabled = TRUE|FALSE

@@ -23,7 +23,7 @@ Lists the private certificate authorities that you created by using the
 CreateCertificateAuthority operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$list_certificate_authorities(
+\preformatted{svc$list_certificate_authorities(
   NextToken = "string",
   MaxResults = 123
 )

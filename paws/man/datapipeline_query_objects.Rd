@@ -31,7 +31,7 @@ Queries the specified pipeline for the names of objects that match the
 specified set of conditions.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$query_objects(
+\preformatted{svc$query_objects(
   pipelineId = "string",
   query = list(
     selectors = list(

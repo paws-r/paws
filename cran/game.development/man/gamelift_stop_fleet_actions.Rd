@@ -54,7 +54,7 @@ be done manually using UpdateFleetCapacity.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$stop_fleet_actions(
+\preformatted{svc$stop_fleet_actions(
   FleetId = "string",
   Actions = list(
     "AUTO_SCALING"

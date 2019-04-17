@@ -23,7 +23,7 @@ an ampersand. For example:
 Remove one or more tags (keys and values) from a specified resource.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

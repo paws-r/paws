@@ -22,7 +22,7 @@ Accepts one or more interface VPC endpoint connection requests to your
 VPC endpoint service.
 }
 \section{Request syntax}{
-\preformatted{ec2$accept_vpc_endpoint_connections(
+\preformatted{svc$accept_vpc_endpoint_connections(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   VpcEndpointIds = list(

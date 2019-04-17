@@ -59,7 +59,7 @@ create and configure to enable and manage client VPN sessions. It is the
 destination endpoint at which all client VPN sessions are terminated.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_client_vpn_endpoint(
+\preformatted{svc$create_client_vpn_endpoint(
   ClientCidrBlock = "string",
   ServerCertificateArn = "string",
   AuthenticationOptions = list(

@@ -15,7 +15,7 @@ mq_delete_user(BrokerId, Username)
 Deletes an ActiveMQ user.
 }
 \section{Request syntax}{
-\preformatted{mq$delete_user(
+\preformatted{svc$delete_user(
   BrokerId = "string",
   Username = "string"
 )

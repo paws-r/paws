@@ -46,7 +46,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$delete_archive(
+\preformatted{svc$delete_archive(
   accountId = "string",
   vaultName = "string",
   archiveId = "string"
@@ -56,7 +56,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example deletes the archive specified by the archive ID.
-\donttest{glacier$delete_archive(
+\donttest{svc$delete_archive(
   accountId = "-",
   archiveId = "NkbByEejwEggmBz2fTHgJrg0XBoDfjP4q6iu87-TjhqG6eGoOY9Z8i1_AUyUsuhPAdTqLHy8pTl5n...",
   vaultName = "examplevault"

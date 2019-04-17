@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$add_flow_outputs(
+#' svc$add_flow_outputs(
 #'   FlowArn = "string",
 #'   Outputs = list(
 #'     list(
@@ -73,7 +73,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$create_flow(
+#' svc$create_flow(
 #'   AvailabilityZone = "string",
 #'   Entitlements = list(
 #'     list(
@@ -159,7 +159,7 @@ mediaconnect_create_flow <- function(AvailabilityZone = NULL, Entitlements = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$delete_flow(
+#' svc$delete_flow(
 #'   FlowArn = "string"
 #' )
 #' ```
@@ -194,7 +194,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$describe_flow(
+#' svc$describe_flow(
 #'   FlowArn = "string"
 #' )
 #' ```
@@ -230,7 +230,7 @@ mediaconnect_describe_flow <- function(FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$grant_flow_entitlements(
+#' svc$grant_flow_entitlements(
 #'   Entitlements = list(
 #'     list(
 #'       Description = "string",
@@ -282,7 +282,7 @@ mediaconnect_grant_flow_entitlements <- function(Entitlements, FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$list_entitlements(
+#' svc$list_entitlements(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -319,7 +319,7 @@ mediaconnect_list_entitlements <- function(MaxResults = NULL, NextToken = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$list_flows(
+#' svc$list_flows(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -355,7 +355,7 @@ mediaconnect_list_flows <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -391,7 +391,7 @@ mediaconnect_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$remove_flow_output(
+#' svc$remove_flow_output(
 #'   FlowArn = "string",
 #'   OutputArn = "string"
 #' )
@@ -428,7 +428,7 @@ mediaconnect_remove_flow_output <- function(FlowArn, OutputArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$revoke_flow_entitlement(
+#' svc$revoke_flow_entitlement(
 #'   EntitlementArn = "string",
 #'   FlowArn = "string"
 #' )
@@ -464,7 +464,7 @@ mediaconnect_revoke_flow_entitlement <- function(EntitlementArn, FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$start_flow(
+#' svc$start_flow(
 #'   FlowArn = "string"
 #' )
 #' ```
@@ -499,7 +499,7 @@ mediaconnect_start_flow <- function(FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$stop_flow(
+#' svc$stop_flow(
 #'   FlowArn = "string"
 #' )
 #' ```
@@ -535,7 +535,7 @@ mediaconnect_stop_flow <- function(FlowArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -574,7 +574,7 @@ mediaconnect_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -617,7 +617,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$update_flow_entitlement(
+#' svc$update_flow_entitlement(
 #'   Description = "string",
 #'   Encryption = list(
 #'     Algorithm = "aes128"|"aes192"|"aes256",
@@ -674,7 +674,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$update_flow_output(
+#' svc$update_flow_output(
 #'   Description = "string",
 #'   Destination = "string",
 #'   Encryption = list(
@@ -735,7 +735,7 @@ mediaconnect_update_flow_output <- function(Description = NULL, Destination = NU
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconnect$update_flow_source(
+#' svc$update_flow_source(
 #'   Decryption = list(
 #'     Algorithm = "aes128"|"aes192"|"aes256",
 #'     KeyType = "static-key",

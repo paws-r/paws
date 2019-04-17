@@ -23,7 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation.}}
 Modifies the start time for a scheduled Amazon EC2 instance event.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_instance_event_start_time(
+\preformatted{svc$modify_instance_event_start_time(
   DryRun = TRUE|FALSE,
   InstanceId = "string",
   InstanceEventId = "string",

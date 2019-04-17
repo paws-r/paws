@@ -18,7 +18,7 @@ greengrass_get_subscription_definition_version(NextToken,
 Retrieves information about a subscription definition version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_subscription_definition_version(
+\preformatted{svc$get_subscription_definition_version(
   NextToken = "string",
   SubscriptionDefinitionId = "string",
   SubscriptionDefinitionVersionId = "string"

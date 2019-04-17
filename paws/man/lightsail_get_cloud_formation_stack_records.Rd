@@ -20,7 +20,7 @@ An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 from an exported Lightsail snapshot.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_cloud_formation_stack_records(
+\preformatted{svc$get_cloud_formation_stack_records(
   pageToken = "string"
 )
 }

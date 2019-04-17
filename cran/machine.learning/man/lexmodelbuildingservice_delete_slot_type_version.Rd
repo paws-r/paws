@@ -22,7 +22,7 @@ This operation requires permissions for the \code{lex:DeleteSlotTypeVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_slot_type_version(
+\preformatted{svc$delete_slot_type_version(
   name = "string",
   version = "string"
 )

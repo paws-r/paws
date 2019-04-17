@@ -15,7 +15,7 @@ greengrass_get_group_version(GroupId, GroupVersionId)
 Retrieves information about a group version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_group_version(
+\preformatted{svc$get_group_version(
   GroupId = "string",
   GroupVersionId = "string"
 )

@@ -15,7 +15,7 @@ glue_batch_stop_job_run(JobName, JobRunIds)
 Stops one or more job runs for a specified job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_stop_job_run(
+\preformatted{svc$batch_stop_job_run(
   JobName = "string",
   JobRunIds = list(
     "string"

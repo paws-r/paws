@@ -15,7 +15,7 @@ pinpoint_create_segment(ApplicationId, WriteSegmentRequest)
 Used to create or update a segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$create_segment(
+\preformatted{svc$create_segment(
   ApplicationId = "string",
   WriteSegmentRequest = list(
     Dimensions = list(

@@ -53,7 +53,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_vpc_endpoint(
+\preformatted{svc$modify_vpc_endpoint(
   DryRun = TRUE|FALSE,
   VpcEndpointId = "string",
   ResetPolicy = TRUE|FALSE,

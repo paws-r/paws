@@ -40,7 +40,7 @@ For more information about policies, see \href{http://docs.aws.amazon.com/IAM/la
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$get_user_policy(
+\preformatted{svc$get_user_policy(
   UserName = "string",
   PolicyName = "string"
 )

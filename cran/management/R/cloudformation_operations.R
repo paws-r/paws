@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$cancel_update_stack(
+#' svc$cancel_update_stack(
 #'   StackName = "string",
 #'   ClientRequestToken = "string"
 #' )
@@ -135,7 +135,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$continue_update_rollback(
+#' svc$continue_update_rollback(
 #'   StackName = "string",
 #'   RoleARN = "string",
 #'   ResourcesToSkip = list(
@@ -351,7 +351,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$create_change_set(
+#' svc$create_change_set(
 #'   StackName = "string",
 #'   TemplateBody = "string",
 #'   TemplateURL = "string",
@@ -625,7 +625,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$create_stack(
+#' svc$create_stack(
 #'   StackName = "string",
 #'   TemplateBody = "string",
 #'   TemplateURL = "string",
@@ -761,7 +761,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$create_stack_instances(
+#' svc$create_stack_instances(
 #'   StackSetName = "string",
 #'   Accounts = list(
 #'     "string"
@@ -943,7 +943,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$create_stack_set(
+#' svc$create_stack_set(
 #'   StackSetName = "string",
 #'   Description = "string",
 #'   TemplateBody = "string",
@@ -1008,7 +1008,7 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$delete_change_set(
+#' svc$delete_change_set(
 #'   ChangeSetName = "string",
 #'   StackName = "string"
 #' )
@@ -1082,7 +1082,7 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$delete_stack(
+#' svc$delete_stack(
 #'   StackName = "string",
 #'   RetainResources = list(
 #'     "string"
@@ -1149,7 +1149,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$delete_stack_instances(
+#' svc$delete_stack_instances(
 #'   StackSetName = "string",
 #'   Accounts = list(
 #'     "string"
@@ -1204,7 +1204,7 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts, Region
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$delete_stack_set(
+#' svc$delete_stack_set(
 #'   StackSetName = "string"
 #' )
 #' ```
@@ -1242,7 +1242,7 @@ cloudformation_delete_stack_set <- function(StackSetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_account_limits(
+#' svc$describe_account_limits(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -1287,7 +1287,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_change_set(
+#' svc$describe_change_set(
 #'   ChangeSetName = "string",
 #'   StackName = "string",
 #'   NextToken = "string"
@@ -1345,7 +1345,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_drift_detection_status(
+#' svc$describe_stack_drift_detection_status(
 #'   StackDriftDetectionId = "string"
 #' )
 #' ```
@@ -1398,7 +1398,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_events(
+#' svc$describe_stack_events(
 #'   StackName = "string",
 #'   NextToken = "string"
 #' )
@@ -1443,7 +1443,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_instance(
+#' svc$describe_stack_instance(
 #'   StackSetName = "string",
 #'   StackInstanceAccount = "string",
 #'   StackInstanceRegion = "string"
@@ -1494,7 +1494,7 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_resource(
+#' svc$describe_stack_resource(
 #'   StackName = "string",
 #'   LogicalResourceId = "string"
 #' )
@@ -1566,7 +1566,7 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_resource_drifts(
+#' svc$describe_stack_resource_drifts(
 #'   StackName = "string",
 #'   StackResourceDriftStatusFilters = list(
 #'     "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
@@ -1653,7 +1653,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_resources(
+#' svc$describe_stack_resources(
 #'   StackName = "string",
 #'   LogicalResourceId = "string",
 #'   PhysicalResourceId = "string"
@@ -1690,7 +1690,7 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_set(
+#' svc$describe_stack_set(
 #'   StackSetName = "string"
 #' )
 #' ```
@@ -1727,7 +1727,7 @@ cloudformation_describe_stack_set <- function(StackSetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stack_set_operation(
+#' svc$describe_stack_set_operation(
 #'   StackSetName = "string",
 #'   OperationId = "string"
 #' )
@@ -1778,7 +1778,7 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$describe_stacks(
+#' svc$describe_stacks(
 #'   StackName = "string",
 #'   NextToken = "string"
 #' )
@@ -1846,7 +1846,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$detect_stack_drift(
+#' svc$detect_stack_drift(
 #'   StackName = "string",
 #'   LogicalResourceIds = list(
 #'     "string"
@@ -1904,7 +1904,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$detect_stack_resource_drift(
+#' svc$detect_stack_resource_drift(
 #'   StackName = "string",
 #'   LogicalResourceId = "string"
 #' )
@@ -1959,7 +1959,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$estimate_template_cost(
+#' svc$estimate_template_cost(
 #'   TemplateBody = "string",
 #'   TemplateURL = "string",
 #'   Parameters = list(
@@ -2024,7 +2024,7 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$execute_change_set(
+#' svc$execute_change_set(
 #'   ChangeSetName = "string",
 #'   StackName = "string",
 #'   ClientRequestToken = "string"
@@ -2063,7 +2063,7 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$get_stack_policy(
+#' svc$get_stack_policy(
 #'   StackName = "string"
 #' )
 #' ```
@@ -2123,7 +2123,7 @@ cloudformation_get_stack_policy <- function(StackName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$get_template(
+#' svc$get_template(
 #'   StackName = "string",
 #'   ChangeSetName = "string",
 #'   TemplateStage = "Original"|"Processed"
@@ -2198,7 +2198,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$get_template_summary(
+#' svc$get_template_summary(
 #'   TemplateBody = "string",
 #'   TemplateURL = "string",
 #'   StackName = "string",
@@ -2241,7 +2241,7 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_change_sets(
+#' svc$list_change_sets(
 #'   StackName = "string",
 #'   NextToken = "string"
 #' )
@@ -2286,7 +2286,7 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_exports(
+#' svc$list_exports(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -2332,7 +2332,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_imports(
+#' svc$list_imports(
 #'   ExportName = "string",
 #'   NextToken = "string"
 #' )
@@ -2385,7 +2385,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stack_instances(
+#' svc$list_stack_instances(
 #'   StackSetName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -2437,7 +2437,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stack_resources(
+#' svc$list_stack_resources(
 #'   StackName = "string",
 #'   NextToken = "string"
 #' )
@@ -2486,7 +2486,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stack_set_operation_results(
+#' svc$list_stack_set_operation_results(
 #'   StackSetName = "string",
 #'   OperationId = "string",
 #'   NextToken = "string",
@@ -2536,7 +2536,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stack_set_operations(
+#' svc$list_stack_set_operations(
 #'   StackSetName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2586,7 +2586,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stack_sets(
+#' svc$list_stack_sets(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Status = "ACTIVE"|"DELETED"
@@ -2633,7 +2633,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$list_stacks(
+#' svc$list_stacks(
 #'   NextToken = "string",
 #'   StackStatusFilter = list(
 #'     "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"
@@ -2681,7 +2681,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$set_stack_policy(
+#' svc$set_stack_policy(
 #'   StackName = "string",
 #'   StackPolicyBody = "string",
 #'   StackPolicyURL = "string"
@@ -2736,7 +2736,7 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$signal_resource(
+#' svc$signal_resource(
 #'   StackName = "string",
 #'   LogicalResourceId = "string",
 #'   UniqueId = "string",
@@ -2778,7 +2778,7 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$stop_stack_set_operation(
+#' svc$stop_stack_set_operation(
 #'   StackSetName = "string",
 #'   OperationId = "string"
 #' )
@@ -3022,7 +3022,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$update_stack(
+#' svc$update_stack(
 #'   StackName = "string",
 #'   TemplateBody = "string",
 #'   TemplateURL = "string",
@@ -3181,7 +3181,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$update_stack_instances(
+#' svc$update_stack_instances(
 #'   StackSetName = "string",
 #'   Accounts = list(
 #'     "string"
@@ -3440,7 +3440,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$update_stack_set(
+#' svc$update_stack_set(
 #'   StackSetName = "string",
 #'   Description = "string",
 #'   TemplateBody = "string",
@@ -3527,7 +3527,7 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$update_termination_protection(
+#' svc$update_termination_protection(
 #'   EnableTerminationProtection = TRUE|FALSE,
 #'   StackName = "string"
 #' )
@@ -3581,7 +3581,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #'
 #' @section Request syntax:
 #' ```
-#' cloudformation$validate_template(
+#' svc$validate_template(
 #'   TemplateBody = "string",
 #'   TemplateURL = "string"
 #' )

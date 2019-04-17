@@ -11,7 +11,7 @@ Get the Access Status for AWS Organization portfolio share feature. This
 API can only be called by the master account in the organization.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$get_aws_organizations_access_status()
+\preformatted{svc$get_aws_organizations_access_status()
 }
 }
 

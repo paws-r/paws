@@ -19,7 +19,7 @@ Renders the UI template so that you can preview the worker's
 experience.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$render_ui_template(
+\preformatted{svc$render_ui_template(
   UiTemplate = list(
     Content = "string"
   ),

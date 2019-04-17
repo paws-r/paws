@@ -22,7 +22,7 @@ Resets a network interface attribute. You can specify only one attribute
 at a time.
 }
 \section{Request syntax}{
-\preformatted{ec2$reset_network_interface_attribute(
+\preformatted{svc$reset_network_interface_attribute(
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string",
   SourceDestCheck = "string"

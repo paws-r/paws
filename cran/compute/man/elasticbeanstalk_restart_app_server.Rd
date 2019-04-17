@@ -25,7 +25,7 @@ Causes the environment to restart the application container server
 running on each Amazon EC2 instance.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$restart_app_server(
+\preformatted{svc$restart_app_server(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
@@ -35,7 +35,7 @@ running on each Amazon EC2 instance.
 \examples{
 # The following operation restarts application servers on all instances in
 # an environment named my-env:
-\donttest{elasticbeanstalk$restart_app_server(
+\donttest{svc$restart_app_server(
   EnvironmentName = "my-env"
 )}
 

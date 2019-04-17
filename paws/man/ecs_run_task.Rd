@@ -122,7 +122,7 @@ increase gradually up to about five minutes of wait time.
 }
 }
 \section{Request syntax}{
-\preformatted{ecs$run_task(
+\preformatted{svc$run_task(
   cluster = "string",
   taskDefinition = "string",
   overrides = list(
@@ -194,7 +194,7 @@ increase gradually up to about five minutes of wait time.
 
 \examples{
 # This example runs the specified task definition on your default cluster.
-\donttest{ecs$run_task(
+\donttest{svc$run_task(
   cluster = "default",
   taskDefinition = "sleep360:1"
 )}

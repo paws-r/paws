@@ -15,7 +15,7 @@ iot_get_policy_version(policyName, policyVersionId)
 Gets information about the specified policy version.
 }
 \section{Request syntax}{
-\preformatted{iot$get_policy_version(
+\preformatted{svc$get_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )

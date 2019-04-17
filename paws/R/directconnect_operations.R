@@ -22,7 +22,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$accept_direct_connect_gateway_association_proposal(
+#' svc$accept_direct_connect_gateway_association_proposal(
 #'   directConnectGatewayId = "string",
 #'   proposalId = "string",
 #'   associatedGatewayOwnerAccount = "string",
@@ -81,7 +81,7 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$allocate_connection_on_interconnect(
+#' svc$allocate_connection_on_interconnect(
 #'   bandwidth = "string",
 #'   connectionName = "string",
 #'   ownerAccount = "string",
@@ -139,7 +139,7 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$allocate_hosted_connection(
+#' svc$allocate_hosted_connection(
 #'   connectionId = "string",
 #'   ownerAccount = "string",
 #'   bandwidth = "string",
@@ -189,7 +189,7 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$allocate_private_virtual_interface(
+#' svc$allocate_private_virtual_interface(
 #'   connectionId = "string",
 #'   ownerAccount = "string",
 #'   newPrivateVirtualInterfaceAllocation = list(
@@ -253,7 +253,7 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$allocate_public_virtual_interface(
+#' svc$allocate_public_virtual_interface(
 #'   connectionId = "string",
 #'   ownerAccount = "string",
 #'   newPublicVirtualInterfaceAllocation = list(
@@ -321,7 +321,7 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$associate_connection_with_lag(
+#' svc$associate_connection_with_lag(
 #'   connectionId = "string",
 #'   lagId = "string"
 #' )
@@ -366,7 +366,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$associate_hosted_connection(
+#' svc$associate_hosted_connection(
 #'   connectionId = "string",
 #'   parentConnectionId = "string"
 #' )
@@ -418,7 +418,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$associate_virtual_interface(
+#' svc$associate_virtual_interface(
 #'   virtualInterfaceId = "string",
 #'   connectionId = "string"
 #' )
@@ -460,7 +460,7 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$confirm_connection(
+#' svc$confirm_connection(
 #'   connectionId = "string"
 #' )
 #' ```
@@ -504,7 +504,7 @@ directconnect_confirm_connection <- function(connectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$confirm_private_virtual_interface(
+#' svc$confirm_private_virtual_interface(
 #'   virtualInterfaceId = "string",
 #'   virtualGatewayId = "string",
 #'   directConnectGatewayId = "string"
@@ -546,7 +546,7 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$confirm_public_virtual_interface(
+#' svc$confirm_public_virtual_interface(
 #'   virtualInterfaceId = "string"
 #' )
 #' ```
@@ -597,7 +597,7 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_bgp_peer(
+#' svc$create_bgp_peer(
 #'   virtualInterfaceId = "string",
 #'   newBGPPeer = list(
 #'     asn = 123,
@@ -658,7 +658,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_connection(
+#' svc$create_connection(
 #'   location = "string",
 #'   bandwidth = "string",
 #'   connectionName = "string",
@@ -710,7 +710,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_direct_connect_gateway(
+#' svc$create_direct_connect_gateway(
 #'   directConnectGatewayName = "string",
 #'   amazonSideAsn = 123
 #' )
@@ -754,7 +754,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_direct_connect_gateway_association(
+#' svc$create_direct_connect_gateway_association(
 #'   directConnectGatewayId = "string",
 #'   gatewayId = "string",
 #'   addAllowedPrefixesToDirectConnectGateway = list(
@@ -810,7 +810,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_direct_connect_gateway_association_proposal(
+#' svc$create_direct_connect_gateway_association_proposal(
 #'   directConnectGatewayId = "string",
 #'   directConnectGatewayOwnerAccount = "string",
 #'   gatewayId = "string",
@@ -885,7 +885,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_interconnect(
+#' svc$create_interconnect(
 #'   interconnectName = "string",
 #'   bandwidth = "string",
 #'   location = "string",
@@ -958,7 +958,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_lag(
+#' svc$create_lag(
 #'   numberOfConnections = 123,
 #'   location = "string",
 #'   connectionsBandwidth = "string",
@@ -1006,7 +1006,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_private_virtual_interface(
+#' svc$create_private_virtual_interface(
 #'   connectionId = "string",
 #'   newPrivateVirtualInterface = list(
 #'     virtualInterfaceName = "string",
@@ -1061,7 +1061,7 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$create_public_virtual_interface(
+#' svc$create_public_virtual_interface(
 #'   connectionId = "string",
 #'   newPublicVirtualInterface = list(
 #'     virtualInterfaceName = "string",
@@ -1119,7 +1119,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_bgp_peer(
+#' svc$delete_bgp_peer(
 #'   virtualInterfaceId = "string",
 #'   asn = 123,
 #'   customerAddress = "string",
@@ -1162,7 +1162,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_connection(
+#' svc$delete_connection(
 #'   connectionId = "string"
 #' )
 #' ```
@@ -1200,7 +1200,7 @@ directconnect_delete_connection <- function(connectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_direct_connect_gateway(
+#' svc$delete_direct_connect_gateway(
 #'   directConnectGatewayId = "string"
 #' )
 #' ```
@@ -1240,7 +1240,7 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_direct_connect_gateway_association(
+#' svc$delete_direct_connect_gateway_association(
 #'   associationId = "string",
 #'   directConnectGatewayId = "string",
 #'   virtualGatewayId = "string"
@@ -1280,7 +1280,7 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_direct_connect_gateway_association_proposal(
+#' svc$delete_direct_connect_gateway_association_proposal(
 #'   proposalId = "string"
 #' )
 #' ```
@@ -1317,7 +1317,7 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_interconnect(
+#' svc$delete_interconnect(
 #'   interconnectId = "string"
 #' )
 #' ```
@@ -1353,7 +1353,7 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_lag(
+#' svc$delete_lag(
 #'   lagId = "string"
 #' )
 #' ```
@@ -1388,7 +1388,7 @@ directconnect_delete_lag <- function(lagId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$delete_virtual_interface(
+#' svc$delete_virtual_interface(
 #'   virtualInterfaceId = "string"
 #' )
 #' ```
@@ -1439,7 +1439,7 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_connection_loa(
+#' svc$describe_connection_loa(
 #'   connectionId = "string",
 #'   providerName = "string",
 #'   loaContentType = "application/pdf"
@@ -1476,7 +1476,7 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_connections(
+#' svc$describe_connections(
 #'   connectionId = "string"
 #' )
 #' ```
@@ -1516,7 +1516,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_connections_on_interconnect(
+#' svc$describe_connections_on_interconnect(
 #'   interconnectId = "string"
 #' )
 #' ```
@@ -1564,7 +1564,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_direct_connect_gateway_association_proposals(
+#' svc$describe_direct_connect_gateway_association_proposals(
 #'   directConnectGatewayId = "string",
 #'   proposalId = "string",
 #'   associatedGatewayId = "string",
@@ -1624,7 +1624,7 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_direct_connect_gateway_associations(
+#' svc$describe_direct_connect_gateway_associations(
 #'   associationId = "string",
 #'   associatedGatewayId = "string",
 #'   directConnectGatewayId = "string",
@@ -1681,7 +1681,7 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_direct_connect_gateway_attachments(
+#' svc$describe_direct_connect_gateway_attachments(
 #'   directConnectGatewayId = "string",
 #'   virtualInterfaceId = "string",
 #'   maxResults = 123,
@@ -1729,7 +1729,7 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_direct_connect_gateways(
+#' svc$describe_direct_connect_gateways(
 #'   directConnectGatewayId = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -1770,7 +1770,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_hosted_connections(
+#' svc$describe_hosted_connections(
 #'   connectionId = "string"
 #' )
 #' ```
@@ -1820,7 +1820,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_interconnect_loa(
+#' svc$describe_interconnect_loa(
 #'   interconnectId = "string",
 #'   providerName = "string",
 #'   loaContentType = "application/pdf"
@@ -1859,7 +1859,7 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_interconnects(
+#' svc$describe_interconnects(
 #'   interconnectId = "string"
 #' )
 #' ```
@@ -1894,7 +1894,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_lags(
+#' svc$describe_lags(
 #'   lagId = "string"
 #' )
 #' ```
@@ -1943,7 +1943,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_loa(
+#' svc$describe_loa(
 #'   connectionId = "string",
 #'   providerName = "string",
 #'   loaContentType = "application/pdf"
@@ -2014,7 +2014,7 @@ directconnect_describe_locations <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_tags(
+#' svc$describe_tags(
 #'   resourceArns = list(
 #'     "string"
 #'   )
@@ -2093,7 +2093,7 @@ directconnect_describe_virtual_gateways <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$describe_virtual_interfaces(
+#' svc$describe_virtual_interfaces(
 #'   connectionId = "string",
 #'   virtualInterfaceId = "string"
 #' )
@@ -2142,7 +2142,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$disassociate_connection_from_lag(
+#' svc$disassociate_connection_from_lag(
 #'   connectionId = "string",
 #'   lagId = "string"
 #' )
@@ -2184,7 +2184,7 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -2226,7 +2226,7 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -2273,7 +2273,7 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$update_direct_connect_gateway_association(
+#' svc$update_direct_connect_gateway_association(
 #'   associationId = "string",
 #'   addAllowedPrefixesToDirectConnectGateway = list(
 #'     list(
@@ -2335,7 +2335,7 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$update_lag(
+#' svc$update_lag(
 #'   lagId = "string",
 #'   lagName = "string",
 #'   minimumLinks = 123
@@ -2385,7 +2385,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' directconnect$update_virtual_interface_attributes(
+#' svc$update_virtual_interface_attributes(
 #'   virtualInterfaceId = "string",
 #'   mtu = 123
 #' )

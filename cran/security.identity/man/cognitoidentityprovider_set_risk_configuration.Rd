@@ -37,7 +37,7 @@ pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
 See .
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$set_risk_configuration(
+\preformatted{svc$set_risk_configuration(
   UserPoolId = "string",
   ClientId = "string",
   CompromisedCredentialsRiskConfiguration = list(

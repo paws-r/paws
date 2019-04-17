@@ -40,7 +40,7 @@ and setting the \code{ExclusiveStartDeliveryStreamName} parameter to the name
 of the last delivery stream returned in the last call.
 }
 \section{Request syntax}{
-\preformatted{firehose$list_delivery_streams(
+\preformatted{svc$list_delivery_streams(
   Limit = 123,
   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
   ExclusiveStartDeliveryStreamName = "string"

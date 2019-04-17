@@ -27,7 +27,7 @@ This operation enables you to delete multiple objects from a bucket
 using a single HTTP request. You may specify up to 1000 keys.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_objects(
+\preformatted{svc$delete_objects(
   Bucket = "string",
   Delete = list(
     Objects = list(
@@ -50,7 +50,7 @@ using a single HTTP request. You may specify up to 1000 keys.
 # versioned, and the request does not specify the object version to
 # delete. In this case, all versions remain in the bucket and S3 adds a
 # delete marker.
-\donttest{s3$delete_objects(
+\donttest{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(
@@ -68,7 +68,7 @@ using a single HTTP request. You may specify up to 1000 keys.
 # The following example deletes objects from a bucket. The request
 # specifies object versions. S3 deletes specific object versions and
 # returns the key and versions of deleted objects in the response.
-\donttest{s3$delete_objects(
+\donttest{svc$delete_objects(
   Bucket = "examplebucket",
   Delete = list(
     Objects = list(

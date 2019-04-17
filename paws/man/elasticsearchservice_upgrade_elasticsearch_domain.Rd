@@ -21,7 +21,7 @@ Allows you to either upgrade your domain or perform an Upgrade
 eligibility check to a compatible Elasticsearch version.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$upgrade_elasticsearch_domain(
+\preformatted{svc$upgrade_elasticsearch_domain(
   DomainName = "string",
   TargetVersion = "string",
   PerformCheckOnly = TRUE|FALSE

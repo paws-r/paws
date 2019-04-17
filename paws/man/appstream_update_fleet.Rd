@@ -78,7 +78,7 @@ update the \code{DisplayName} and \code{ComputeCapacity} attributes. If the flee
 is in the \code{STARTING} or \code{STOPPING} state, you can't update it.
 }
 \section{Request syntax}{
-\preformatted{appstream$update_fleet(
+\preformatted{svc$update_fleet(
   ImageName = "string",
   ImageArn = "string",
   Name = "string",

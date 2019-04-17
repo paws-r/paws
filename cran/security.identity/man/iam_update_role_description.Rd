@@ -20,7 +20,7 @@ same function as the \code{Description} parameter in the \code{UpdateRole}
 operation.
 }
 \section{Request syntax}{
-\preformatted{iam$update_role_description(
+\preformatted{svc$update_role_description(
   RoleName = "string",
   Description = "string"
 )

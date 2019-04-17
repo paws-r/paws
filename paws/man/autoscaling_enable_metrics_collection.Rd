@@ -32,7 +32,7 @@ information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$enable_metrics_collection(
+\preformatted{svc$enable_metrics_collection(
   AutoScalingGroupName = "string",
   Metrics = list(
     "string"
@@ -45,7 +45,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example enables data collection for the specified Auto Scaling
 # group.
-\donttest{autoscaling$enable_metrics_collection(
+\donttest{svc$enable_metrics_collection(
   AutoScalingGroupName = "my-auto-scaling-group",
   Granularity = "1Minute"
 )}

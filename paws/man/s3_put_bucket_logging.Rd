@@ -20,7 +20,7 @@ who can view and modify the logging parameters. To set the logging
 status of a bucket, you must be the bucket owner.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_logging(
+\preformatted{svc$put_bucket_logging(
   Bucket = "string",
   BucketLoggingStatus = list(
     LoggingEnabled = list(
@@ -49,7 +49,7 @@ status of a bucket, you must be the bucket owner.
 # The following example sets logging policy on a bucket. For the Log
 # Delivery group to deliver logs to the destination bucket, it needs
 # permission for the READ_ACP action which the policy grants.
-\donttest{s3$put_bucket_logging(
+\donttest{svc$put_bucket_logging(
   Bucket = "sourcebucket",
   BucketLoggingStatus = list(
     LoggingEnabled = list(

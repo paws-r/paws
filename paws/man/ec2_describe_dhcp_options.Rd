@@ -41,7 +41,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_dhcp_options(
+\preformatted{svc$describe_dhcp_options(
   DhcpOptionsIds = list(
     "string"
   ),
@@ -60,7 +60,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example describes the specified DHCP options set.
-\donttest{ec2$describe_dhcp_options(
+\donttest{svc$describe_dhcp_options(
   DhcpOptionsIds = list(
     "dopt-d9070ebb"
   )

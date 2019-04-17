@@ -26,7 +26,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iam$add_client_id_to_open_id_connect_provider(
+#' svc$add_client_id_to_open_id_connect_provider(
 #'   OpenIDConnectProviderArn = "string",
 #'   ClientID = "string"
 #' )
@@ -36,7 +36,7 @@ NULL
 #' # The following add-client-id-to-open-id-connect-provider command adds the
 #' # client ID my-application-ID to the OIDC provider named
 #' # server.example.com:
-#' \donttest{iam$add_client_id_to_open_id_connect_provider(
+#' \donttest{svc$add_client_id_to_open_id_connect_provider(
 #'   ClientID = "my-application-ID",
 #'   OpenIDConnectProviderArn = "arn:aws:iam::123456789012:oidc-provider/server.example.com"
 #' )}
@@ -100,7 +100,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #'
 #' @section Request syntax:
 #' ```
-#' iam$add_role_to_instance_profile(
+#' svc$add_role_to_instance_profile(
 #'   InstanceProfileName = "string",
 #'   RoleName = "string"
 #' )
@@ -109,7 +109,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' @examples
 #' # The following command adds the role named S3Access to the instance
 #' # profile named Webserver:
-#' \donttest{iam$add_role_to_instance_profile(
+#' \donttest{svc$add_role_to_instance_profile(
 #'   InstanceProfileName = "Webserver",
 #'   RoleName = "S3Access"
 #' )}
@@ -155,7 +155,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$add_user_to_group(
+#' svc$add_user_to_group(
 #'   GroupName = "string",
 #'   UserName = "string"
 #' )
@@ -164,7 +164,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' @examples
 #' # The following command adds an IAM user named Bob to the IAM group named
 #' # Admins:
-#' \donttest{iam$add_user_to_group(
+#' \donttest{svc$add_user_to_group(
 #'   GroupName = "Admins",
 #'   UserName = "Bob"
 #' )}
@@ -217,7 +217,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$attach_group_policy(
+#' svc$attach_group_policy(
 #'   GroupName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -226,7 +226,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # ReadOnlyAccess to the IAM group named Finance.
-#' \donttest{iam$attach_group_policy(
+#' \donttest{svc$attach_group_policy(
 #'   GroupName = "Finance",
 #'   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 #' )}
@@ -284,7 +284,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$attach_role_policy(
+#' svc$attach_role_policy(
 #'   RoleName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -293,7 +293,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # ReadOnlyAccess to the IAM role named ReadOnlyRole.
-#' \donttest{iam$attach_role_policy(
+#' \donttest{svc$attach_role_policy(
 #'   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
 #'   RoleName = "ReadOnlyRole"
 #' )}
@@ -347,7 +347,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$attach_user_policy(
+#' svc$attach_user_policy(
 #'   UserName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -356,7 +356,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' @examples
 #' # The following command attaches the AWS managed policy named
 #' # AdministratorAccess to the IAM user named Alice.
-#' \donttest{iam$attach_user_policy(
+#' \donttest{svc$attach_user_policy(
 #'   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
 #'   UserName = "Alice"
 #' )}
@@ -409,7 +409,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$change_password(
+#' svc$change_password(
 #'   OldPassword = "string",
 #'   NewPassword = "string"
 #' )
@@ -417,7 +417,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #'
 #' @examples
 #' # The following command changes the password for the current IAM user.
-#' \donttest{iam$change_password(
+#' \donttest{svc$change_password(
 #'   NewPassword = "]35d/{pB9Fo9wJ",
 #'   OldPassword = "3s0K_;xh4~8XXI"
 #' )}
@@ -476,7 +476,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_access_key(
+#' svc$create_access_key(
 #'   UserName = "string"
 #' )
 #' ```
@@ -484,7 +484,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' @examples
 #' # The following command creates an access key (access key ID and secret
 #' # access key) for the IAM user named Bob.
-#' \donttest{iam$create_access_key(
+#' \donttest{svc$create_access_key(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -526,7 +526,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_account_alias(
+#' svc$create_account_alias(
 #'   AccountAlias = "string"
 #' )
 #' ```
@@ -534,7 +534,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' @examples
 #' # The following command associates the alias examplecorp to your AWS
 #' # account.
-#' \donttest{iam$create_account_alias(
+#' \donttest{svc$create_account_alias(
 #'   AccountAlias = "examplecorp"
 #' )}
 #'
@@ -595,7 +595,7 @@ iam_create_account_alias <- function(AccountAlias) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_group(
+#' svc$create_group(
 #'   Path = "string",
 #'   GroupName = "string"
 #' )
@@ -603,7 +603,7 @@ iam_create_account_alias <- function(AccountAlias) {
 #'
 #' @examples
 #' # The following command creates an IAM group named Admins.
-#' \donttest{iam$create_group(
+#' \donttest{svc$create_group(
 #'   GroupName = "Admins"
 #' )}
 #'
@@ -664,7 +664,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_instance_profile(
+#' svc$create_instance_profile(
 #'   InstanceProfileName = "string",
 #'   Path = "string"
 #' )
@@ -674,7 +674,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' # The following command creates an instance profile named Webserver that
 #' # is ready to have a role attached and then be associated with an EC2
 #' # instance.
-#' \donttest{iam$create_instance_profile(
+#' \donttest{svc$create_instance_profile(
 #'   InstanceProfileName = "Webserver"
 #' )}
 #'
@@ -732,7 +732,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_login_profile(
+#' svc$create_login_profile(
 #'   UserName = "string",
 #'   Password = "string",
 #'   PasswordResetRequired = TRUE|FALSE
@@ -742,7 +742,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' @examples
 #' # The following command changes IAM user Bob's password and sets the flag
 #' # that required Bob to change the password the next time he signs in.
-#' \donttest{iam$create_login_profile(
+#' \donttest{svc$create_login_profile(
 #'   Password = "h]6EszR}vJ*m",
 #'   PasswordResetRequired = TRUE,
 #'   UserName = "Bob"
@@ -844,7 +844,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_open_id_connect_provider(
+#' svc$create_open_id_connect_provider(
 #'   Url = "string",
 #'   ClientIDList = list(
 #'     "string"
@@ -859,7 +859,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' # The following example defines a new OIDC provider in IAM with a client
 #' # ID of my-application-id and pointing at the server with a URL of
 #' # https://server.example.com.
-#' \donttest{iam$create_open_id_connect_provider(
+#' \donttest{svc$create_open_id_connect_provider(
 #'   ClientIDList = list(
 #'     "my-application-id"
 #'   ),
@@ -952,7 +952,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_policy(
+#' svc$create_policy(
 #'   PolicyName = "string",
 #'   Path = "string",
 #'   PolicyDocument = "string",
@@ -1033,7 +1033,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_policy_version(
+#' svc$create_policy_version(
 #'   PolicyArn = "string",
 #'   PolicyDocument = "string",
 #'   SetAsDefault = TRUE|FALSE
@@ -1141,7 +1141,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_role(
+#' svc$create_role(
 #'   Path = "string",
 #'   RoleName = "string",
 #'   AssumeRolePolicyDocument = "string",
@@ -1160,7 +1160,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' @examples
 #' # The following command creates a role named Test-Role and attaches a
 #' # trust policy to it that is provided as a URL-encoded JSON string.
-#' \donttest{iam$create_role(
+#' \donttest{svc$create_role(
 #'   AssumeRolePolicyDocument = "<URL-encoded-JSON>",
 #'   Path = "/",
 #'   RoleName = "Test-Role"
@@ -1237,7 +1237,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_saml_provider(
+#' svc$create_saml_provider(
 #'   SAMLMetadataDocument = "string",
 #'   Name = "string"
 #' )
@@ -1305,7 +1305,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_service_linked_role(
+#' svc$create_service_linked_role(
 #'   AWSServiceName = "string",
 #'   Description = "string",
 #'   CustomSuffix = "string"
@@ -1370,7 +1370,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_service_specific_credential(
+#' svc$create_service_specific_credential(
 #'   UserName = "string",
 #'   ServiceName = "string"
 #' )
@@ -1443,7 +1443,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_user(
+#' svc$create_user(
 #'   Path = "string",
 #'   UserName = "string",
 #'   PermissionsBoundary = "string",
@@ -1459,7 +1459,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' @examples
 #' # The following create-user command creates an IAM user named Bob in the
 #' # current account.
-#' \donttest{iam$create_user(
+#' \donttest{svc$create_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -1530,7 +1530,7 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #'
 #' @section Request syntax:
 #' ```
-#' iam$create_virtual_mfa_device(
+#' svc$create_virtual_mfa_device(
 #'   Path = "string",
 #'   VirtualMFADeviceName = "string"
 #' )
@@ -1585,7 +1585,7 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$deactivate_mfa_device(
+#' svc$deactivate_mfa_device(
 #'   UserName = "string",
 #'   SerialNumber = "string"
 #' )
@@ -1638,7 +1638,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_access_key(
+#' svc$delete_access_key(
 #'   UserName = "string",
 #'   AccessKeyId = "string"
 #' )
@@ -1647,7 +1647,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' @examples
 #' # The following command deletes one access key (access key ID and secret
 #' # access key) assigned to the IAM user named Bob.
-#' \donttest{iam$delete_access_key(
+#' \donttest{svc$delete_access_key(
 #'   AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
 #'   UserName = "Bob"
 #' )}
@@ -1690,7 +1690,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_account_alias(
+#' svc$delete_account_alias(
 #'   AccountAlias = "string"
 #' )
 #' ```
@@ -1698,7 +1698,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' @examples
 #' # The following command removes the alias mycompany from the current AWS
 #' # account:
-#' \donttest{iam$delete_account_alias(
+#' \donttest{svc$delete_account_alias(
 #'   AccountAlias = "mycompany"
 #' )}
 #'
@@ -1736,7 +1736,7 @@ iam_delete_account_alias <- function(AccountAlias) {
 #' @examples
 #' # The following command removes the password policy from the current AWS
 #' # account:
-#' \donttest{iam$delete_account_password_policy()}
+#' \donttest{svc$delete_account_password_policy()}
 #'
 #' @keywords internal
 #'
@@ -1774,7 +1774,7 @@ iam_delete_account_password_policy <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_group(
+#' svc$delete_group(
 #'   GroupName = "string"
 #' )
 #' ```
@@ -1829,7 +1829,7 @@ iam_delete_group <- function(GroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_group_policy(
+#' svc$delete_group_policy(
 #'   GroupName = "string",
 #'   PolicyName = "string"
 #' )
@@ -1838,7 +1838,7 @@ iam_delete_group <- function(GroupName) {
 #' @examples
 #' # The following command deletes the policy named ExamplePolicy from the
 #' # group named Admins:
-#' \donttest{iam$delete_group_policy(
+#' \donttest{svc$delete_group_policy(
 #'   GroupName = "Admins",
 #'   PolicyName = "ExamplePolicy"
 #' )}
@@ -1887,7 +1887,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_instance_profile(
+#' svc$delete_instance_profile(
 #'   InstanceProfileName = "string"
 #' )
 #' ```
@@ -1895,7 +1895,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' @examples
 #' # The following command deletes the instance profile named
 #' # ExampleInstanceProfile
-#' \donttest{iam$delete_instance_profile(
+#' \donttest{svc$delete_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile"
 #' )}
 #'
@@ -1943,14 +1943,14 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_login_profile(
+#' svc$delete_login_profile(
 #'   UserName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following command deletes the password for the IAM user named Bob.
-#' \donttest{iam$delete_login_profile(
+#' \donttest{svc$delete_login_profile(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -1994,7 +1994,7 @@ iam_delete_login_profile <- function(UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_open_id_connect_provider(
+#' svc$delete_open_id_connect_provider(
 #'   OpenIDConnectProviderArn = "string"
 #' )
 #' ```
@@ -2057,7 +2057,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_policy(
+#' svc$delete_policy(
 #'   PolicyArn = "string"
 #' )
 #' ```
@@ -2120,7 +2120,7 @@ iam_delete_policy <- function(PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_policy_version(
+#' svc$delete_policy_version(
 #'   PolicyArn = "string",
 #'   VersionId = "string"
 #' )
@@ -2168,14 +2168,14 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_role(
+#' svc$delete_role(
 #'   RoleName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following command removes the role named Test-Role.
-#' \donttest{iam$delete_role(
+#' \donttest{svc$delete_role(
 #'   RoleName = "Test-Role"
 #' )}
 #'
@@ -2214,7 +2214,7 @@ iam_delete_role <- function(RoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_role_permissions_boundary(
+#' svc$delete_role_permissions_boundary(
 #'   RoleName = "string"
 #' )
 #' ```
@@ -2269,7 +2269,7 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_role_policy(
+#' svc$delete_role_policy(
 #'   RoleName = "string",
 #'   PolicyName = "string"
 #' )
@@ -2278,7 +2278,7 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' @examples
 #' # The following command removes the policy named ExamplePolicy from the
 #' # role named Test-Role.
-#' \donttest{iam$delete_role_policy(
+#' \donttest{svc$delete_role_policy(
 #'   PolicyName = "ExamplePolicy",
 #'   RoleName = "Test-Role"
 #' )}
@@ -2321,7 +2321,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_saml_provider(
+#' svc$delete_saml_provider(
 #'   SAMLProviderArn = "string"
 #' )
 #' ```
@@ -2373,7 +2373,7 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_ssh_public_key(
+#' svc$delete_ssh_public_key(
 #'   UserName = "string",
 #'   SSHPublicKeyId = "string"
 #' )
@@ -2431,7 +2431,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_server_certificate(
+#' svc$delete_server_certificate(
 #'   ServerCertificateName = "string"
 #' )
 #' ```
@@ -2488,7 +2488,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_service_linked_role(
+#' svc$delete_service_linked_role(
 #'   RoleName = "string"
 #' )
 #' ```
@@ -2537,7 +2537,7 @@ iam_delete_service_linked_role <- function(RoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_service_specific_credential(
+#' svc$delete_service_specific_credential(
 #'   UserName = "string",
 #'   ServiceSpecificCredentialId = "string"
 #' )
@@ -2589,7 +2589,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_signing_certificate(
+#' svc$delete_signing_certificate(
 #'   UserName = "string",
 #'   CertificateId = "string"
 #' )
@@ -2598,7 +2598,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @examples
 #' # The following command deletes the specified signing certificate for the
 #' # IAM user named Anika.
-#' \donttest{iam$delete_signing_certificate(
+#' \donttest{svc$delete_signing_certificate(
 #'   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
 #'   UserName = "Anika"
 #' )}
@@ -2640,7 +2640,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_user(
+#' svc$delete_user(
 #'   UserName = "string"
 #' )
 #' ```
@@ -2648,7 +2648,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' @examples
 #' # The following command removes the IAM user named Bob from the current
 #' # account.
-#' \donttest{iam$delete_user(
+#' \donttest{svc$delete_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -2687,7 +2687,7 @@ iam_delete_user <- function(UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_user_permissions_boundary(
+#' svc$delete_user_permissions_boundary(
 #'   UserName = "string"
 #' )
 #' ```
@@ -2742,7 +2742,7 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_user_policy(
+#' svc$delete_user_policy(
 #'   UserName = "string",
 #'   PolicyName = "string"
 #' )
@@ -2751,7 +2751,7 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' @examples
 #' # The following delete-user-policy command removes the specified policy
 #' # from the IAM user named Juan:
-#' \donttest{iam$delete_user_policy(
+#' \donttest{svc$delete_user_policy(
 #'   PolicyName = "ExamplePolicy",
 #'   UserName = "Juan"
 #' )}
@@ -2796,7 +2796,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$delete_virtual_mfa_device(
+#' svc$delete_virtual_mfa_device(
 #'   SerialNumber = "string"
 #' )
 #' ```
@@ -2804,7 +2804,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' @examples
 #' # The following delete-virtual-mfa-device command removes the specified
 #' # MFA device from the current AWS account.
-#' \donttest{iam$delete_virtual_mfa_device(
+#' \donttest{svc$delete_virtual_mfa_device(
 #'   SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
 #' )}
 #'
@@ -2856,7 +2856,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$detach_group_policy(
+#' svc$detach_group_policy(
 #'   GroupName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -2910,7 +2910,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$detach_role_policy(
+#' svc$detach_role_policy(
 #'   RoleName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -2964,7 +2964,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$detach_user_policy(
+#' svc$detach_user_policy(
 #'   UserName = "string",
 #'   PolicyArn = "string"
 #' )
@@ -3038,7 +3038,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$enable_mfa_device(
+#' svc$enable_mfa_device(
 #'   UserName = "string",
 #'   SerialNumber = "string",
 #'   AuthenticationCode1 = "string",
@@ -3168,7 +3168,7 @@ iam_generate_credential_report <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$generate_service_last_accessed_details(
+#' svc$generate_service_last_accessed_details(
 #'   Arn = "string"
 #' )
 #' ```
@@ -3176,7 +3176,7 @@ iam_generate_credential_report <- function() {
 #' @examples
 #' # The following operation generates a report for the policy:
 #' # ExamplePolicy1
-#' \donttest{iam$generate_service_last_accessed_details(
+#' \donttest{svc$generate_service_last_accessed_details(
 #'   Arn = "arn:aws:iam::123456789012:policy/ExamplePolicy1"
 #' )}
 #'
@@ -3217,7 +3217,7 @@ iam_generate_service_last_accessed_details <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_access_key_last_used(
+#' svc$get_access_key_last_used(
 #'   AccessKeyId = "string"
 #' )
 #' ```
@@ -3285,7 +3285,7 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_account_authorization_details(
+#' svc$get_account_authorization_details(
 #'   Filter = list(
 #'     "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
 #'   ),
@@ -3329,7 +3329,7 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 #' @examples
 #' # The following command displays details about the password policy for the
 #' # current AWS account.
-#' \donttest{iam$get_account_password_policy()}
+#' \donttest{svc$get_account_password_policy()}
 #'
 #' @keywords internal
 #'
@@ -3371,7 +3371,7 @@ iam_get_account_password_policy <- function() {
 #' @examples
 #' # The following command returns information about the IAM entity quotas
 #' # and usage in the current AWS account.
-#' \donttest{iam$get_account_summary()}
+#' \donttest{svc$get_account_summary()}
 #'
 #' @keywords internal
 #'
@@ -3428,7 +3428,7 @@ iam_get_account_summary <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_context_keys_for_custom_policy(
+#' svc$get_context_keys_for_custom_policy(
 #'   PolicyInputList = list(
 #'     "string"
 #'   )
@@ -3512,7 +3512,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_context_keys_for_principal_policy(
+#' svc$get_context_keys_for_principal_policy(
 #'   PolicySourceArn = "string",
 #'   PolicyInputList = list(
 #'     "string"
@@ -3602,7 +3602,7 @@ iam_get_credential_report <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_group(
+#' svc$get_group(
 #'   GroupName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -3668,7 +3668,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_group_policy(
+#' svc$get_group_policy(
 #'   GroupName = "string",
 #'   PolicyName = "string"
 #' )
@@ -3714,7 +3714,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_instance_profile(
+#' svc$get_instance_profile(
 #'   InstanceProfileName = "string"
 #' )
 #' ```
@@ -3722,7 +3722,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' @examples
 #' # The following command gets information about the instance profile named
 #' # ExampleInstanceProfile.
-#' \donttest{iam$get_instance_profile(
+#' \donttest{svc$get_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile"
 #' )}
 #'
@@ -3764,7 +3764,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_login_profile(
+#' svc$get_login_profile(
 #'   UserName = "string"
 #' )
 #' ```
@@ -3772,7 +3772,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @examples
 #' # The following command gets information about the password for the IAM
 #' # user named Anika.
-#' \donttest{iam$get_login_profile(
+#' \donttest{svc$get_login_profile(
 #'   UserName = "Anika"
 #' )}
 #'
@@ -3815,7 +3815,7 @@ iam_get_login_profile <- function(UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_open_id_connect_provider(
+#' svc$get_open_id_connect_provider(
 #'   OpenIDConnectProviderArn = "string"
 #' )
 #' ```
@@ -3873,7 +3873,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_policy(
+#' svc$get_policy(
 #'   PolicyArn = "string"
 #' )
 #' ```
@@ -3946,7 +3946,7 @@ iam_get_policy <- function(PolicyArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_policy_version(
+#' svc$get_policy_version(
 #'   PolicyArn = "string",
 #'   VersionId = "string"
 #' )
@@ -3999,14 +3999,14 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_role(
+#' svc$get_role(
 #'   RoleName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following command gets information about the role named Test-Role.
-#' \donttest{iam$get_role(
+#' \donttest{svc$get_role(
 #'   RoleName = "Test-Role"
 #' )}
 #'
@@ -4073,7 +4073,7 @@ iam_get_role <- function(RoleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_role_policy(
+#' svc$get_role_policy(
 #'   RoleName = "string",
 #'   PolicyName = "string"
 #' )
@@ -4120,7 +4120,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_saml_provider(
+#' svc$get_saml_provider(
 #'   SAMLProviderArn = "string"
 #' )
 #' ```
@@ -4176,7 +4176,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_ssh_public_key(
+#' svc$get_ssh_public_key(
 #'   UserName = "string",
 #'   SSHPublicKeyId = "string",
 #'   Encoding = "SSH"|"PEM"
@@ -4227,7 +4227,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_server_certificate(
+#' svc$get_server_certificate(
 #'   ServerCertificateName = "string"
 #' )
 #' ```
@@ -4318,7 +4318,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_service_last_accessed_details(
+#' svc$get_service_last_accessed_details(
 #'   JobId = "string",
 #'   MaxItems = 123,
 #'   Marker = "string"
@@ -4328,7 +4328,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' @examples
 #' # The following operation gets details about the report with the job ID:
 #' # examplef-1305-c245-eba4-71fe298bcda7
-#' \donttest{iam$get_service_last_accessed_details(
+#' \donttest{svc$get_service_last_accessed_details(
 #'   JobId = "examplef-1305-c245-eba4-71fe298bcda7"
 #' )}
 #'
@@ -4414,7 +4414,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_service_last_accessed_details_with_entities(
+#' svc$get_service_last_accessed_details_with_entities(
 #'   JobId = "string",
 #'   ServiceNamespace = "string",
 #'   MaxItems = 123,
@@ -4425,7 +4425,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' @examples
 #' # The following operation returns details about the entities that
 #' # attempted to access the IAM service.
-#' \donttest{iam$get_service_last_accessed_details_with_entities(
+#' \donttest{svc$get_service_last_accessed_details_with_entities(
 #'   JobId = "examplef-1305-c245-eba4-71fe298bcda7",
 #'   ServiceNamespace = "iam"
 #' )}
@@ -4467,7 +4467,7 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_service_linked_role_deletion_status(
+#' svc$get_service_linked_role_deletion_status(
 #'   DeletionTaskId = "string"
 #' )
 #' ```
@@ -4514,14 +4514,14 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_user(
+#' svc$get_user(
 #'   UserName = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following command gets information about the IAM user named Bob.
-#' \donttest{iam$get_user(
+#' \donttest{svc$get_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -4584,7 +4584,7 @@ iam_get_user <- function(UserName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$get_user_policy(
+#' svc$get_user_policy(
 #'   UserName = "string",
 #'   PolicyName = "string"
 #' )
@@ -4653,7 +4653,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_access_keys(
+#' svc$list_access_keys(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -4663,7 +4663,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' @examples
 #' # The following command lists the access keys IDs for the IAM user named
 #' # Alice.
-#' \donttest{iam$list_access_keys(
+#' \donttest{svc$list_access_keys(
 #'   UserName = "Alice"
 #' )}
 #'
@@ -4714,7 +4714,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_account_aliases(
+#' svc$list_account_aliases(
 #'   Marker = "string",
 #'   MaxItems = 123
 #' )
@@ -4722,7 +4722,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #'
 #' @examples
 #' # The following command lists the aliases for the current account.
-#' \donttest{iam$list_account_aliases()}
+#' \donttest{svc$list_account_aliases()}
 #'
 #' @keywords internal
 #'
@@ -4796,7 +4796,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_attached_group_policies(
+#' svc$list_attached_group_policies(
 #'   GroupName = "string",
 #'   PathPrefix = "string",
 #'   Marker = "string",
@@ -4875,7 +4875,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_attached_role_policies(
+#' svc$list_attached_role_policies(
 #'   RoleName = "string",
 #'   PathPrefix = "string",
 #'   Marker = "string",
@@ -4954,7 +4954,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_attached_user_policies(
+#' svc$list_attached_user_policies(
 #'   UserName = "string",
 #'   PathPrefix = "string",
 #'   Marker = "string",
@@ -5048,7 +5048,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_entities_for_policy(
+#' svc$list_entities_for_policy(
 #'   PolicyArn = "string",
 #'   EntityFilter = "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy",
 #'   PathPrefix = "string",
@@ -5119,7 +5119,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_group_policies(
+#' svc$list_group_policies(
 #'   GroupName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5129,7 +5129,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' @examples
 #' # The following command lists the names of in-line policies that are
 #' # embedded in the IAM group named Admins.
-#' \donttest{iam$list_group_policies(
+#' \donttest{svc$list_group_policies(
 #'   GroupName = "Admins"
 #' )}
 #'
@@ -5190,7 +5190,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_groups(
+#' svc$list_groups(
 #'   PathPrefix = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5199,7 +5199,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following command lists the IAM groups in the current account:
-#' \donttest{iam$list_groups()}
+#' \donttest{svc$list_groups()}
 #'
 #' @keywords internal
 #'
@@ -5252,7 +5252,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_groups_for_user(
+#' svc$list_groups_for_user(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5262,7 +5262,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @examples
 #' # The following command displays the groups that the IAM user named Bob
 #' # belongs to.
-#' \donttest{iam$list_groups_for_user(
+#' \donttest{svc$list_groups_for_user(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -5326,7 +5326,7 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_instance_profiles(
+#' svc$list_instance_profiles(
 #'   PathPrefix = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5387,7 +5387,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_instance_profiles_for_role(
+#' svc$list_instance_profiles_for_role(
 #'   RoleName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5449,7 +5449,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_mfa_devices(
+#' svc$list_mfa_devices(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5486,7 +5486,7 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_open_id_connect_providers()
+#' svc$list_open_id_connect_providers()
 #' ```
 #'
 #' @keywords internal
@@ -5581,7 +5581,7 @@ iam_list_open_id_connect_providers <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_policies(
+#' svc$list_policies(
 #'   Scope = "All"|"AWS"|"Local",
 #'   OnlyAttached = TRUE|FALSE,
 #'   PathPrefix = "string",
@@ -5677,7 +5677,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_policies_granting_service_access(
+#' svc$list_policies_granting_service_access(
 #'   Marker = "string",
 #'   Arn = "string",
 #'   ServiceNamespaces = list(
@@ -5689,7 +5689,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' @examples
 #' # The following operation lists policies that allow ExampleUser01 to
 #' # access IAM or EC2.
-#' \donttest{iam$list_policies_granting_service_access(
+#' \donttest{svc$list_policies_granting_service_access(
 #'   Arn = "arn:aws:iam::123456789012:user/ExampleUser01",
 #'   ServiceNamespaces = list(
 #'     "iam",
@@ -5755,7 +5755,7 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_policy_versions(
+#' svc$list_policy_versions(
 #'   PolicyArn = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5823,7 +5823,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_role_policies(
+#' svc$list_role_policies(
 #'   RoleName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5883,7 +5883,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_role_tags(
+#' svc$list_role_tags(
 #'   RoleName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5892,7 +5892,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following example shows how to list the tags attached to a role.
-#' \donttest{iam$list_role_tags(
+#' \donttest{svc$list_role_tags(
 #'   RoleName = "taggedrole1"
 #' )}
 #'
@@ -5956,7 +5956,7 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_roles(
+#' svc$list_roles(
 #'   PathPrefix = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -5994,7 +5994,7 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_saml_providers()
+#' svc$list_saml_providers()
 #' ```
 #'
 #' @keywords internal
@@ -6060,7 +6060,7 @@ iam_list_saml_providers <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_ssh_public_keys(
+#' svc$list_ssh_public_keys(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6132,7 +6132,7 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_server_certificates(
+#' svc$list_server_certificates(
 #'   PathPrefix = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6187,7 +6187,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_service_specific_credentials(
+#' svc$list_service_specific_credentials(
 #'   UserName = "string",
 #'   ServiceName = "string"
 #' )
@@ -6254,7 +6254,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_signing_certificates(
+#' svc$list_signing_certificates(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6264,7 +6264,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' @examples
 #' # The following command lists the signing certificates for the IAM user
 #' # named Bob.
-#' \donttest{iam$list_signing_certificates(
+#' \donttest{svc$list_signing_certificates(
 #'   UserName = "Bob"
 #' )}
 #'
@@ -6329,7 +6329,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_user_policies(
+#' svc$list_user_policies(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6389,7 +6389,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_user_tags(
+#' svc$list_user_tags(
 #'   UserName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6398,7 +6398,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following example shows how to list the tags attached to a user.
-#' \donttest{iam$list_user_tags(
+#' \donttest{svc$list_user_tags(
 #'   UserName = "anika"
 #' )}
 #'
@@ -6461,7 +6461,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_users(
+#' svc$list_users(
 #'   PathPrefix = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6470,7 +6470,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #'
 #' @examples
 #' # The following command lists the IAM users in the current account.
-#' \donttest{iam$list_users()}
+#' \donttest{svc$list_users()}
 #'
 #' @keywords internal
 #'
@@ -6524,7 +6524,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$list_virtual_mfa_devices(
+#' svc$list_virtual_mfa_devices(
 #'   AssignmentStatus = "Assigned"|"Unassigned"|"Any",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -6534,7 +6534,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @examples
 #' # The following command lists the virtual MFA devices that have been
 #' # configured for the current account.
-#' \donttest{iam$list_virtual_mfa_devices()}
+#' \donttest{svc$list_virtual_mfa_devices()}
 #'
 #' @keywords internal
 #'
@@ -6610,7 +6610,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iam$put_group_policy(
+#' svc$put_group_policy(
 #'   GroupName = "string",
 #'   PolicyName = "string",
 #'   PolicyDocument = "string"
@@ -6620,7 +6620,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' @examples
 #' # The following command adds a policy named AllPerms to the IAM group
 #' # named Admins.
-#' \donttest{iam$put_group_policy(
+#' \donttest{svc$put_group_policy(
 #'   GroupName = "Admins",
 #'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
 #'   PolicyName = "AllPerms"
@@ -6674,7 +6674,7 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$put_role_permissions_boundary(
+#' svc$put_role_permissions_boundary(
 #'   RoleName = "string",
 #'   PermissionsBoundary = "string"
 #' )
@@ -6762,7 +6762,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$put_role_policy(
+#' svc$put_role_policy(
 #'   RoleName = "string",
 #'   PolicyName = "string",
 #'   PolicyDocument = "string"
@@ -6772,7 +6772,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' @examples
 #' # The following command adds a permissions policy to the role named
 #' # Test-Role.
-#' \donttest{iam$put_role_policy(
+#' \donttest{svc$put_role_policy(
 #'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
 #'   PolicyName = "S3AccessPolicy",
 #'   RoleName = "S3Access"
@@ -6824,7 +6824,7 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$put_user_permissions_boundary(
+#' svc$put_user_permissions_boundary(
 #'   UserName = "string",
 #'   PermissionsBoundary = "string"
 #' )
@@ -6904,7 +6904,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$put_user_policy(
+#' svc$put_user_policy(
 #'   UserName = "string",
 #'   PolicyName = "string",
 #'   PolicyDocument = "string"
@@ -6913,7 +6913,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #'
 #' @examples
 #' # The following command attaches a policy to the IAM user named Bob.
-#' \donttest{iam$put_user_policy(
+#' \donttest{svc$put_user_policy(
 #'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",...",
 #'   PolicyName = "AllAccessPolicy",
 #'   UserName = "Bob"
@@ -6967,7 +6967,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$remove_client_id_from_open_id_connect_provider(
+#' svc$remove_client_id_from_open_id_connect_provider(
 #'   OpenIDConnectProviderArn = "string",
 #'   ClientID = "string"
 #' )
@@ -7024,7 +7024,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #'
 #' @section Request syntax:
 #' ```
-#' iam$remove_role_from_instance_profile(
+#' svc$remove_role_from_instance_profile(
 #'   InstanceProfileName = "string",
 #'   RoleName = "string"
 #' )
@@ -7033,7 +7033,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' @examples
 #' # The following command removes the role named Test-Role from the instance
 #' # profile named ExampleInstanceProfile.
-#' \donttest{iam$remove_role_from_instance_profile(
+#' \donttest{svc$remove_role_from_instance_profile(
 #'   InstanceProfileName = "ExampleInstanceProfile",
 #'   RoleName = "Test-Role"
 #' )}
@@ -7079,7 +7079,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #'
 #' @section Request syntax:
 #' ```
-#' iam$remove_user_from_group(
+#' svc$remove_user_from_group(
 #'   GroupName = "string",
 #'   UserName = "string"
 #' )
@@ -7088,7 +7088,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' @examples
 #' # The following command removes the user named Bob from the IAM group
 #' # named Admins.
-#' \donttest{iam$remove_user_from_group(
+#' \donttest{svc$remove_user_from_group(
 #'   GroupName = "Admins",
 #'   UserName = "Bob"
 #' )}
@@ -7139,7 +7139,7 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$reset_service_specific_credential(
+#' svc$reset_service_specific_credential(
 #'   UserName = "string",
 #'   ServiceSpecificCredentialId = "string"
 #' )
@@ -7200,7 +7200,7 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #'
 #' @section Request syntax:
 #' ```
-#' iam$resync_mfa_device(
+#' svc$resync_mfa_device(
 #'   UserName = "string",
 #'   SerialNumber = "string",
 #'   AuthenticationCode1 = "string",
@@ -7260,7 +7260,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #'
 #' @section Request syntax:
 #' ```
-#' iam$set_default_policy_version(
+#' svc$set_default_policy_version(
 #'   PolicyArn = "string",
 #'   VersionId = "string"
 #' )
@@ -7458,7 +7458,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$simulate_custom_policy(
+#' svc$simulate_custom_policy(
 #'   PolicyInputList = list(
 #'     "string"
 #'   ),
@@ -7695,7 +7695,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, ActionNames, ResourceArn
 #'
 #' @section Request syntax:
 #' ```
-#' iam$simulate_principal_policy(
+#' svc$simulate_principal_policy(
 #'   PolicySourceArn = "string",
 #'   PolicyInputList = list(
 #'     "string"
@@ -7799,7 +7799,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iam$tag_role(
+#' svc$tag_role(
 #'   RoleName = "string",
 #'   Tags = list(
 #'     list(
@@ -7812,7 +7812,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #'
 #' @examples
 #' # The following example shows how to add tags to an existing role.
-#' \donttest{iam$tag_role(
+#' \donttest{svc$tag_role(
 #'   RoleName = "taggedrole",
 #'   Tags = list(
 #'     list(
@@ -7899,7 +7899,7 @@ iam_tag_role <- function(RoleName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$tag_user(
+#' svc$tag_user(
 #'   UserName = "string",
 #'   Tags = list(
 #'     list(
@@ -7912,7 +7912,7 @@ iam_tag_role <- function(RoleName, Tags) {
 #'
 #' @examples
 #' # The following example shows how to add tags to an existing user.
-#' \donttest{iam$tag_user(
+#' \donttest{svc$tag_user(
 #'   Tags = list(
 #'     list(
 #'       Key = "Dept",
@@ -7966,7 +7966,7 @@ iam_tag_user <- function(UserName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$untag_role(
+#' svc$untag_role(
 #'   RoleName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -7977,7 +7977,7 @@ iam_tag_user <- function(UserName, Tags) {
 #' @examples
 #' # The following example shows how to remove a tag with the key 'Dept' from
 #' # a role named 'taggedrole'.
-#' \donttest{iam$untag_role(
+#' \donttest{svc$untag_role(
 #'   RoleName = "taggedrole",
 #'   TagKeys = list(
 #'     "Dept"
@@ -8024,7 +8024,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$untag_user(
+#' svc$untag_user(
 #'   UserName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -8035,7 +8035,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' @examples
 #' # The following example shows how to remove tags that are attached to a
 #' # user named 'anika'.
-#' \donttest{iam$untag_user(
+#' \donttest{svc$untag_user(
 #'   TagKeys = list(
 #'     "Dept"
 #'   ),
@@ -8098,7 +8098,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_access_key(
+#' svc$update_access_key(
 #'   UserName = "string",
 #'   AccessKeyId = "string",
 #'   Status = "Active"|"Inactive"
@@ -8108,7 +8108,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' @examples
 #' # The following command deactivates the specified access key (access key
 #' # ID and secret access key) for the IAM user named Bob.
-#' \donttest{iam$update_access_key(
+#' \donttest{svc$update_access_key(
 #'   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
 #'   Status = "Inactive",
 #'   UserName = "Bob"
@@ -8218,7 +8218,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_account_password_policy(
+#' svc$update_account_password_policy(
 #'   MinimumPasswordLength = 123,
 #'   RequireSymbols = TRUE|FALSE,
 #'   RequireNumbers = TRUE|FALSE,
@@ -8235,7 +8235,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' # The following command sets the password policy to require a minimum
 #' # length of eight characters and to require one or more numbers in the
 #' # password:
-#' \donttest{iam$update_account_password_policy(
+#' \donttest{svc$update_account_password_policy(
 #'   MinimumPasswordLength = 8L,
 #'   RequireNumbers = TRUE
 #' )}
@@ -8292,7 +8292,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_assume_role_policy(
+#' svc$update_assume_role_policy(
 #'   RoleName = "string",
 #'   PolicyDocument = "string"
 #' )
@@ -8301,7 +8301,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' @examples
 #' # The following command updates the role trust policy for the role named
 #' # Test-Role:
-#' \donttest{iam$update_assume_role_policy(
+#' \donttest{svc$update_assume_role_policy(
 #'   PolicyDocument = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",...",
 #'   RoleName = "S3AccessForEC2Instances"
 #' )}
@@ -8373,7 +8373,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_group(
+#' svc$update_group(
 #'   GroupName = "string",
 #'   NewPath = "string",
 #'   NewGroupName = "string"
@@ -8382,7 +8382,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #'
 #' @examples
 #' # The following command changes the name of the IAM group Test to Test-1.
-#' \donttest{iam$update_group(
+#' \donttest{svc$update_group(
 #'   GroupName = "Test",
 #'   NewGroupName = "Test-1"
 #' )}
@@ -8446,7 +8446,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_login_profile(
+#' svc$update_login_profile(
 #'   UserName = "string",
 #'   Password = "string",
 #'   PasswordResetRequired = TRUE|FALSE
@@ -8456,7 +8456,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' @examples
 #' # The following command creates or changes the password for the IAM user
 #' # named Bob.
-#' \donttest{iam$update_login_profile(
+#' \donttest{svc$update_login_profile(
 #'   Password = "SomeKindOfPassword123!@#",
 #'   UserName = "Bob"
 #' )}
@@ -8520,7 +8520,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_open_id_connect_provider_thumbprint(
+#' svc$update_open_id_connect_provider_thumbprint(
 #'   OpenIDConnectProviderArn = "string",
 #'   ThumbprintList = list(
 #'     "string"
@@ -8575,7 +8575,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_role(
+#' svc$update_role(
 #'   RoleName = "string",
 #'   Description = "string",
 #'   MaxSessionDuration = 123
@@ -8617,7 +8617,7 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_role_description(
+#' svc$update_role_description(
 #'   RoleName = "string",
 #'   Description = "string"
 #' )
@@ -8669,7 +8669,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_saml_provider(
+#' svc$update_saml_provider(
 #'   SAMLMetadataDocument = "string",
 #'   SAMLProviderArn = "string"
 #' )
@@ -8728,7 +8728,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_ssh_public_key(
+#' svc$update_ssh_public_key(
 #'   UserName = "string",
 #'   SSHPublicKeyId = "string",
 #'   Status = "Active"|"Inactive"
@@ -8813,7 +8813,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_server_certificate(
+#' svc$update_server_certificate(
 #'   ServerCertificateName = "string",
 #'   NewPath = "string",
 #'   NewServerCertificateName = "string"
@@ -8868,7 +8868,7 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_service_specific_credential(
+#' svc$update_service_specific_credential(
 #'   UserName = "string",
 #'   ServiceSpecificCredentialId = "string",
 #'   Status = "Active"|"Inactive"
@@ -8927,7 +8927,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_signing_certificate(
+#' svc$update_signing_certificate(
 #'   UserName = "string",
 #'   CertificateId = "string",
 #'   Status = "Active"|"Inactive"
@@ -8937,7 +8937,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @examples
 #' # The following command changes the status of a signing certificate for a
 #' # user named Bob to Inactive.
-#' \donttest{iam$update_signing_certificate(
+#' \donttest{svc$update_signing_certificate(
 #'   CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
 #'   Status = "Inactive",
 #'   UserName = "Bob"
@@ -9010,7 +9010,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #'
 #' @section Request syntax:
 #' ```
-#' iam$update_user(
+#' svc$update_user(
 #'   UserName = "string",
 #'   NewPath = "string",
 #'   NewUserName = "string"
@@ -9020,7 +9020,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' @examples
 #' # The following command changes the name of the IAM user Bob to Robert. It
 #' # does not change the user's path.
-#' \donttest{iam$update_user(
+#' \donttest{svc$update_user(
 #'   NewUserName = "Robert",
 #'   UserName = "Bob"
 #' )}
@@ -9083,7 +9083,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$upload_ssh_public_key(
+#' svc$upload_ssh_public_key(
 #'   UserName = "string",
 #'   SSHPublicKeyBody = "string"
 #' )
@@ -9214,7 +9214,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #'
 #' @section Request syntax:
 #' ```
-#' iam$upload_server_certificate(
+#' svc$upload_server_certificate(
 #'   Path = "string",
 #'   ServerCertificateName = "string",
 #'   CertificateBody = "string",
@@ -9226,7 +9226,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' @examples
 #' # The following upload-server-certificate command uploads a server
 #' # certificate to your AWS account:
-#' \donttest{iam$upload_server_certificate(
+#' \donttest{svc$upload_server_certificate(
 #'   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
 #'   Path = "/company/servercerts/",
 #'   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",
@@ -9300,7 +9300,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #'
 #' @section Request syntax:
 #' ```
-#' iam$upload_signing_certificate(
+#' svc$upload_signing_certificate(
 #'   UserName = "string",
 #'   CertificateBody = "string"
 #' )
@@ -9309,7 +9309,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' @examples
 #' # The following command uploads a signing certificate for the IAM user
 #' # named Bob.
-#' \donttest{iam$upload_signing_certificate(
+#' \donttest{svc$upload_signing_certificate(
 #'   CertificateBody = "-----BEGIN CERTIFICATE-----<certificate-body>-----END CERTIFICATE-----",
 #'   UserName = "Bob"
 #' )}

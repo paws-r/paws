@@ -15,7 +15,7 @@ greengrass_update_device_definition(DeviceDefinitionId, Name)
 Updates a device definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_device_definition(
+\preformatted{svc$update_device_definition(
   DeviceDefinitionId = "string",
   Name = "string"
 )

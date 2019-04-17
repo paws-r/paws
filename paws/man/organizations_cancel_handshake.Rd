@@ -28,7 +28,7 @@ After you cancel a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that it is deleted.
 }
 \section{Request syntax}{
-\preformatted{organizations$cancel_handshake(
+\preformatted{svc$cancel_handshake(
   HandshakeId = "string"
 )
 }
@@ -40,7 +40,7 @@ relevant APIs for only 30 days. After that it is deleted.
 # before Susan accepts it. The following example shows Bill's
 # cancellation:
 # 
-\donttest{organizations$cancel_handshake(
+\donttest{svc$cancel_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

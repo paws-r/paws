@@ -18,7 +18,7 @@ s3_put_bucket_notification(Bucket, ContentMD5,
 No longer used, see the PutBucketNotificationConfiguration operation.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_notification(
+\preformatted{svc$put_bucket_notification(
   Bucket = "string",
   ContentMD5 = "string",
   NotificationConfiguration = list(

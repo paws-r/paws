@@ -17,7 +17,7 @@ importexport_get_status(JobId, APIVersion)
 This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
 }
 \section{Request syntax}{
-\preformatted{importexport$get_status(
+\preformatted{svc$get_status(
   JobId = "string",
   APIVersion = "string"
 )

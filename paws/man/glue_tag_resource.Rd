@@ -18,7 +18,7 @@ resource. In AWS Glue, you can tag only certain resources. For
 information about what resources you can tag, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue}.
 }
 \section{Request syntax}{
-\preformatted{glue$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   TagsToAdd = list(
     "string"

@@ -22,7 +22,7 @@ This operation requires permissions for the \code{lex:DeleteBotVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_bot_version(
+\preformatted{svc$delete_bot_version(
   name = "string",
   version = "string"
 )

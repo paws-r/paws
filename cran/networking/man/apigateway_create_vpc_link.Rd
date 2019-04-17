@@ -24,7 +24,7 @@ and become operational. The caller must have permissions to create and
 update VPC Endpoint services.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_vpc_link(
+\preformatted{svc$create_vpc_link(
   name = "string",
   description = "string",
   targetArns = list(

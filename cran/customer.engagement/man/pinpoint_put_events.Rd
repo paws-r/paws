@@ -15,7 +15,7 @@ pinpoint_put_events(ApplicationId, EventsRequest)
 Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$put_events(
+\preformatted{svc$put_events(
   ApplicationId = "string",
   EventsRequest = list(
     BatchItem = list(

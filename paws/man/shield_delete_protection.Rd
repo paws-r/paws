@@ -13,7 +13,7 @@ shield_delete_protection(ProtectionId)
 Deletes an AWS Shield Advanced Protection.
 }
 \section{Request syntax}{
-\preformatted{shield$delete_protection(
+\preformatted{svc$delete_protection(
   ProtectionId = "string"
 )
 }

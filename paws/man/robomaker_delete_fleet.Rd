@@ -13,7 +13,7 @@ robomaker_delete_fleet(fleet)
 Deletes a fleet.
 }
 \section{Request syntax}{
-\preformatted{robomaker$delete_fleet(
+\preformatted{svc$delete_fleet(
   fleet = "string"
 )
 }

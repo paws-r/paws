@@ -13,7 +13,7 @@ pinpoint_delete_gcm_channel(ApplicationId)
 Deletes the GCM channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_gcm_channel(
+\preformatted{svc$delete_gcm_channel(
   ApplicationId = "string"
 )
 }

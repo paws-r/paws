@@ -23,7 +23,7 @@ last linked login will make this identity inaccessible.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$unlink_identity(
+\preformatted{svc$unlink_identity(
   IdentityId = "string",
   Logins = list(
     "string"

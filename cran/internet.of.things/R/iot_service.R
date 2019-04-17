@@ -20,11 +20,10 @@ NULL
 #' see [Authorizing Direct Calls to AWS
 #' Services](https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 #'
-#' @section Example:
-#' ```
-#' iot <- paws::iot()
-#' iot$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_certificate_transfer(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

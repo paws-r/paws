@@ -24,7 +24,7 @@ Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} bud
 Budget history isn't available for \code{ANNUAL} budgets.
 }
 \section{Request syntax}{
-\preformatted{budgets$describe_budget_performance_history(
+\preformatted{svc$describe_budget_performance_history(
   AccountId = "string",
   BudgetName = "string",
   TimePeriod = list(

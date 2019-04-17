@@ -31,7 +31,7 @@ virtual nodes, virtual routers, and routes to distribute traffic between
 the applications in your mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$create_mesh(
+\preformatted{svc$create_mesh(
   clientToken = "string",
   meshName = "string",
   spec = list(

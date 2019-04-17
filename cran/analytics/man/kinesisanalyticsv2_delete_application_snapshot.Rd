@@ -19,7 +19,7 @@ retrieve this value using or .}
 Deletes a snapshot of application state.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$delete_application_snapshot(
+\preformatted{svc$delete_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string",
   SnapshotCreationTimestamp = as.POSIXct(

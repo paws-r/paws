@@ -30,7 +30,7 @@ Represents the success of a job as returned to the pipeline by a job
 worker. Only used for custom actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_job_success_result(
+\preformatted{svc$put_job_success_result(
   jobId = "string",
   currentRevision = list(
     revision = "string",

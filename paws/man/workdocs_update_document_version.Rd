@@ -27,7 +27,7 @@ last step in a document upload, after the client uploads the document to
 an S3-presigned URL returned by InitiateDocumentVersionUpload.
 }
 \section{Request syntax}{
-\preformatted{workdocs$update_document_version(
+\preformatted{svc$update_document_version(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",

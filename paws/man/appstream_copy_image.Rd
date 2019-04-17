@@ -25,7 +25,7 @@ same AWS account. Note that any tags you added to the image will not be
 copied.
 }
 \section{Request syntax}{
-\preformatted{appstream$copy_image(
+\preformatted{svc$copy_image(
   SourceImageName = "string",
   DestinationImageName = "string",
   DestinationRegion = "string",

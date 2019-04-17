@@ -18,7 +18,7 @@ Activates the specified user. Only active users can access Amazon
 WorkDocs.
 }
 \section{Request syntax}{
-\preformatted{workdocs$activate_user(
+\preformatted{svc$activate_user(
   UserId = "string",
   AuthenticationToken = "string"
 )

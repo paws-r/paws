@@ -70,7 +70,7 @@ in Amazon CloudWatch Logs, logs in an S3 bucket, or both.}
 Changes the settings of a build project.
 }
 \section{Request syntax}{
-\preformatted{codebuild$update_project(
+\preformatted{svc$update_project(
   name = "string",
   description = "string",
   source = list(

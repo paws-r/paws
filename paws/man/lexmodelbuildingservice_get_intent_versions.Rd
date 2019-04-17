@@ -34,7 +34,7 @@ This operation requires permissions for the \code{lex:GetIntentVersions}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_intent_versions(
+\preformatted{svc$get_intent_versions(
   name = "string",
   nextToken = "string",
   maxResults = 123

@@ -14,7 +14,7 @@ operation for.}
 Cancels a resize operation.
 }
 \section{Request syntax}{
-\preformatted{redshift$cancel_resize(
+\preformatted{svc$cancel_resize(
   ClusterIdentifier = "string"
 )
 }

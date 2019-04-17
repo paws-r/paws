@@ -17,7 +17,7 @@ enabled.}
 Rotates the encryption keys for a cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$rotate_encryption_key(
+\preformatted{svc$rotate_encryption_key(
   ClusterIdentifier = "string"
 )
 }

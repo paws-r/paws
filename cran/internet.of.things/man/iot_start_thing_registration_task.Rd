@@ -22,7 +22,7 @@ provision one device (thing).}
 Creates a bulk thing provisioning task.
 }
 \section{Request syntax}{
-\preformatted{iot$start_thing_registration_task(
+\preformatted{svc$start_thing_registration_task(
   templateBody = "string",
   inputFileBucket = "string",
   inputFileKey = "string",

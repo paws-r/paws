@@ -125,7 +125,7 @@ Spot Instance requests are deleted four hours after they are canceled
 and their instances are terminated.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_spot_instance_requests(
+\preformatted{svc$describe_spot_instance_requests(
   Filters = list(
     list(
       Name = "string",
@@ -146,7 +146,7 @@ and their instances are terminated.
 
 \examples{
 # This example describes the specified Spot Instance request.
-\donttest{ec2$describe_spot_instance_requests(
+\donttest{svc$describe_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )

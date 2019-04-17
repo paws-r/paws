@@ -17,7 +17,7 @@ IAM user or AWS account.}
 Gets information about one or more deployment groups.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_deployment_groups(
+\preformatted{svc$batch_get_deployment_groups(
   applicationName = "string",
   deploymentGroupNames = list(
     "string"

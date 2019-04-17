@@ -33,7 +33,7 @@ Returns the detailed parameter list for a particular cache parameter
 group.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_parameters(
+\preformatted{svc$describe_cache_parameters(
   CacheParameterGroupName = "string",
   Source = "string",
   MaxRecords = 123,

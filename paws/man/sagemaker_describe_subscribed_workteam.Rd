@@ -14,7 +14,7 @@ Gets information about a work team provided by a vendor. It returns
 details about the subscription with a vendor in the AWS Marketplace.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_subscribed_workteam(
+\preformatted{svc$describe_subscribed_workteam(
   WorkteamArn = "string"
 )
 }

@@ -30,7 +30,7 @@ the histories for all alarms are returned.
 CloudWatch retains the history of an alarm even if you delete the alarm.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$describe_alarm_history(
+\preformatted{svc$describe_alarm_history(
   AlarmName = "string",
   HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
   StartDate = as.POSIXct(

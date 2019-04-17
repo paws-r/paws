@@ -17,7 +17,7 @@ at one time is 1. If you want to increase your service limit, contact
 AWS Support.
 }
 \section{Request syntax}{
-\preformatted{snowball$get_snowball_usage()
+\preformatted{svc$get_snowball_usage()
 }
 }
 
@@ -28,7 +28,7 @@ AWS Support.
 # The default
 # service limit for the number of Snowballs that you can have at one time
 # is 1. If you want to increase your service limit, contact AWS Support.
-\donttest{snowball$get_snowball_usage()}
+\donttest{svc$get_snowball_usage()}
 
 }
 \keyword{internal}

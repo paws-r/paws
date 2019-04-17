@@ -26,7 +26,7 @@ The permissions resource is
 \code{aws quicksight delete-group -\\-aws-account-id=111122223333 -\\-namespace=default -\\-group-name=Sales-Management }
 }
 \section{Request syntax}{
-\preformatted{quicksight$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string",
   AwsAccountId = "string",
   Namespace = "string"

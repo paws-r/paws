@@ -28,7 +28,7 @@ custom action, use a JSON file that is identical to the deleted action,
 including the original string in the version field.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$delete_custom_action_type(
+\preformatted{svc$delete_custom_action_type(
   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
   provider = "string",
   version = "string"

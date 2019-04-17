@@ -33,7 +33,7 @@ connections. Adjust this value with care, as it could force the LAG down
 if it is set higher than the current number of operational connections.
 }
 \section{Request syntax}{
-\preformatted{directconnect$update_lag(
+\preformatted{svc$update_lag(
   lagId = "string",
   lagName = "string",
   minimumLinks = 123

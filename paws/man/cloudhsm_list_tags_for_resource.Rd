@@ -21,7 +21,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Returns a list of all tags for the specified AWS CloudHSM resource.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

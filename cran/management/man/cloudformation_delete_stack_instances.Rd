@@ -44,7 +44,7 @@ Deletes stack instances for the specified accounts, in the specified
 regions.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$delete_stack_instances(
+\preformatted{svc$delete_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"

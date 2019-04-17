@@ -41,7 +41,7 @@ value. This value can be between 1 and 200.}
 Describes one or more launch templates.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_launch_templates(
+\preformatted{svc$describe_launch_templates(
   DryRun = TRUE|FALSE,
   LaunchTemplateIds = list(
     "string"
@@ -65,7 +65,7 @@ Describes one or more launch templates.
 
 \examples{
 # This example describes the specified launch template.
-\donttest{ec2$describe_launch_templates(
+\donttest{svc$describe_launch_templates(
   LaunchTemplateIds = list(
     "lt-01238c059e3466abc"
   )

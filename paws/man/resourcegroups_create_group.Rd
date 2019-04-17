@@ -29,7 +29,7 @@ characters, and tag values can have a maximum length of 256 characters.}
 Creates a group with a specified name, description, and resource query.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$create_group(
+\preformatted{svc$create_group(
   Name = "string",
   Description = "string",
   ResourceQuery = list(

@@ -23,7 +23,7 @@ null. You can tag a trail that applies to all regions only from the
 region in which the trail was created (that is, from its home region).
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$add_tags(
+\preformatted{svc$add_tags(
   ResourceId = "string",
   TagsList = list(
     list(

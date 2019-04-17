@@ -37,7 +37,7 @@ values: CONTINUOUS \| SNAPSHOT.}
 Creates an AWS IoT OTAUpdate on a target group of things or groups.
 }
 \section{Request syntax}{
-\preformatted{iot$create_ota_update(
+\preformatted{svc$create_ota_update(
   otaUpdateId = "string",
   description = "string",
   targets = list(

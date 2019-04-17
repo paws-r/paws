@@ -28,7 +28,7 @@ of the email. When you apply a configuration set to an email, all of the
 rules in that configuration set are applied to the email.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   PageSize = 123
 )

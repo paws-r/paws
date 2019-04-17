@@ -18,7 +18,7 @@ Disabled, or Deleted.}
 Lists directories created within an account.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_directories(
+\preformatted{svc$list_directories(
   NextToken = "string",
   MaxResults = 123,
   state = "ENABLED"|"DISABLED"|"DELETED"

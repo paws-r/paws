@@ -18,11 +18,10 @@ NULL
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 #'
-#' @section Example:
-#' ```
-#' cloudsearchdomain <- paws::cloudsearchdomain()
-#' cloudsearchdomain$operation()
-#' ```
+#' @examples
+#' \donttest{svc$search(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

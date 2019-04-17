@@ -14,7 +14,7 @@ Deprecated. Use the \code{DeleteIdentity} operation to delete email addresses
 and domains.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_verified_email_address(
+\preformatted{svc$delete_verified_email_address(
   EmailAddress = "string"
 )
 }
@@ -23,7 +23,7 @@ and domains.
 \examples{
 # The following example deletes an email address from the list of
 # identities that have been submitted for verification with Amazon SES:
-\donttest{ses$delete_verified_email_address(
+\donttest{svc$delete_verified_email_address(
   EmailAddress = "user@example.com"
 )}
 

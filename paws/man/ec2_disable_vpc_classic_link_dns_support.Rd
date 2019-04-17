@@ -18,7 +18,7 @@ more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$disable_vpc_classic_link_dns_support(
+\preformatted{svc$disable_vpc_classic_link_dns_support(
   VpcId = "string"
 )
 }

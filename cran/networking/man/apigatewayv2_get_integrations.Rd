@@ -18,7 +18,7 @@ element of the collection.}
 Gets the Integrations for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_integrations(
+\preformatted{svc$get_integrations(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"

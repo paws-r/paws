@@ -20,7 +20,7 @@ Android applications, the file must be in .apk format. For iOS
 applications, the file must be in .ipa format.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$install_to_remote_access_session(
+\preformatted{svc$install_to_remote_access_session(
   remoteAccessSessionArn = "string",
   appArn = "string"
 )
@@ -30,7 +30,7 @@ applications, the file must be in .ipa format.
 \examples{
 # The following example installs a specific app to a device in a specific
 # remote access session.
-\donttest{devicefarm$install_to_remote_access_session(
+\donttest{svc$install_to_remote_access_session(
   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
 )}

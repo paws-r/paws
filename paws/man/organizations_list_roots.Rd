@@ -44,7 +44,7 @@ see the availability of a policy type in an organization, use
 DescribeOrganization.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_roots(
+\preformatted{svc$list_roots(
   NextToken = "string",
   MaxResults = 123
 )
@@ -54,7 +54,7 @@ DescribeOrganization.
 \examples{
 # The following example shows how to get the list of the roots in the
 # current organization:/n/n
-\donttest{organizations$list_roots()}
+\donttest{svc$list_roots()}
 
 }
 \keyword{internal}

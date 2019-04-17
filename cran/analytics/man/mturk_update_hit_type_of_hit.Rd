@@ -20,7 +20,7 @@ The HIT takes on the properties of the new HITType in place of the old
 ones.
 }
 \section{Request syntax}{
-\preformatted{mturk$update_hit_type_of_hit(
+\preformatted{svc$update_hit_type_of_hit(
   HITId = "string",
   HITTypeId = "string"
 )

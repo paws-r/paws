@@ -36,7 +36,7 @@ information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/log
 in the \emph{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{waf$put_logging_configuration(
+\preformatted{svc$put_logging_configuration(
   LoggingConfiguration = list(
     ResourceArn = "string",
     LogDestinationConfigs = list(

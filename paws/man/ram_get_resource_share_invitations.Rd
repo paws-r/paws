@@ -22,7 +22,7 @@ value.}
 Gets the specified invitations for resource sharing.
 }
 \section{Request syntax}{
-\preformatted{ram$get_resource_share_invitations(
+\preformatted{svc$get_resource_share_invitations(
   resourceShareInvitationArns = list(
     "string"
   ),

@@ -32,12 +32,6 @@ If you are a database developer, the \href{http://docs.aws.amazon.com/redshift/l
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 }
-\section{Example}{
-\preformatted{redshift <- paws::redshift()
-redshift$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -125,3 +119,9 @@ redshift$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_reserved_node_exchange(
+  Foo = 123
+)}
+
+}

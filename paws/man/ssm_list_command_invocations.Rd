@@ -34,7 +34,7 @@ instance ID. ListCommandInvocations provide status about command
 execution.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_command_invocations(
+\preformatted{svc$list_command_invocations(
   CommandId = "string",
   InstanceId = "string",
   MaxResults = 123,

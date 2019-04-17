@@ -20,7 +20,7 @@ page. The default value is 25 and the maximum value is 500.}
 Gets the Tags collection for a given resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_tags(
+\preformatted{svc$get_tags(
   resourceArn = "string",
   position = "string",
   limit = 123

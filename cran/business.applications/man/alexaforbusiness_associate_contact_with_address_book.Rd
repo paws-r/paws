@@ -16,7 +16,7 @@ alexaforbusiness_associate_contact_with_address_book(ContactArn,
 Associates a contact with a given address book.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$associate_contact_with_address_book(
+\preformatted{svc$associate_contact_with_address_book(
   ContactArn = "string",
   AddressBookArn = "string"
 )

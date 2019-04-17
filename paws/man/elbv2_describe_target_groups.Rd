@@ -32,7 +32,7 @@ describe the attributes of a target group, use
 DescribeTargetGroupAttributes.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_target_groups(
+\preformatted{svc$describe_target_groups(
   LoadBalancerArn = "string",
   TargetGroupArns = list(
     "string"
@@ -48,7 +48,7 @@ DescribeTargetGroupAttributes.
 
 \examples{
 # This example describes the specified target group.
-\donttest{elbv2$describe_target_groups(
+\donttest{svc$describe_target_groups(
   TargetGroupArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
   )

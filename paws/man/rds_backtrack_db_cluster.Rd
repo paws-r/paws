@@ -55,7 +55,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$backtrack_db_cluster(
+\preformatted{svc$backtrack_db_cluster(
   DBClusterIdentifier = "string",
   BacktrackTo = as.POSIXct(
     "2015-01-01"

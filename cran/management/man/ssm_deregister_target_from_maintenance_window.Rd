@@ -20,7 +20,7 @@ deregister the target from the Maintenance Window.}
 Removes a target from a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$deregister_target_from_maintenance_window(
+\preformatted{svc$deregister_target_from_maintenance_window(
   WindowId = "string",
   WindowTargetId = "string",
   Safe = TRUE|FALSE

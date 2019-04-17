@@ -19,7 +19,7 @@ Each \code{ClusterListEntry} object contains a cluster's state, a cluster's
 ID, and other important status information.
 }
 \section{Request syntax}{
-\preformatted{snowball$list_clusters(
+\preformatted{svc$list_clusters(
   MaxResults = 123,
   NextToken = "string"
 )
@@ -30,7 +30,7 @@ ID, and other important status information.
 # Returns an array of ClusterListEntry objects of the specified length.
 # Each ClusterListEntry object contains a cluster's state, a cluster's ID,
 # and other important status information.
-\donttest{snowball$list_clusters()}
+\donttest{svc$list_clusters()}
 
 }
 \keyword{internal}

@@ -13,7 +13,7 @@ s3_delete_bucket_policy(Bucket)
 Deletes the policy from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_policy(
+\preformatted{svc$delete_bucket_policy(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the policy from the bucket.
 
 \examples{
 # The following example deletes bucket policy on the specified bucket.
-\donttest{s3$delete_bucket_policy(
+\donttest{svc$delete_bucket_policy(
   Bucket = "examplebucket"
 )}
 

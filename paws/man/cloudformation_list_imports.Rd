@@ -26,7 +26,7 @@ For more information about importing an exported output value, see the
 function.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_imports(
+\preformatted{svc$list_imports(
   ExportName = "string",
   NextToken = "string"
 )

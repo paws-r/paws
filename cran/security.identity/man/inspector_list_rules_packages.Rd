@@ -20,7 +20,7 @@ want in the response. The default value is 10. The maximum value is 500.}
 Lists all available Amazon Inspector rules packages.
 }
 \section{Request syntax}{
-\preformatted{inspector$list_rules_packages(
+\preformatted{svc$list_rules_packages(
   nextToken = "string",
   maxResults = 123
 )
@@ -29,7 +29,7 @@ Lists all available Amazon Inspector rules packages.
 
 \examples{
 # Lists all available Amazon Inspector rules packages.
-\donttest{inspector$list_rules_packages(
+\donttest{svc$list_rules_packages(
   maxResults = 123L
 )}
 

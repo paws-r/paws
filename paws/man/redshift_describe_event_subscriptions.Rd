@@ -63,7 +63,7 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_event_subscriptions(
+\preformatted{svc$describe_event_subscriptions(
   SubscriptionName = "string",
   MaxRecords = 123,
   Marker = "string",

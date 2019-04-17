@@ -22,7 +22,7 @@ Creates a classifier in the user's account. This may be a
 \code{CsvClassifier}, depending on which field of the request is present.
 }
 \section{Request syntax}{
-\preformatted{glue$create_classifier(
+\preformatted{svc$create_classifier(
   GrokClassifier = list(
     Classification = "string",
     Name = "string",

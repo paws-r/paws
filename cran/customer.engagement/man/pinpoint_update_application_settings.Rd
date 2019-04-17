@@ -16,7 +16,7 @@ pinpoint_update_application_settings(ApplicationId,
 Used to update the settings for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_application_settings(
+\preformatted{svc$update_application_settings(
   ApplicationId = "string",
   WriteApplicationSettingsRequest = list(
     CampaignHook = list(

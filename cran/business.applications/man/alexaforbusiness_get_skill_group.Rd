@@ -13,7 +13,7 @@ alexaforbusiness_get_skill_group(SkillGroupArn)
 Gets skill group details by skill group ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_skill_group(
+\preformatted{svc$get_skill_group(
   SkillGroupArn = "string"
 )
 }

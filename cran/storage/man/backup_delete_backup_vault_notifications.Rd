@@ -16,7 +16,7 @@ letters, numbers, and hyphens.}
 Deletes event notifications for the specified backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$delete_backup_vault_notifications(
+\preformatted{svc$delete_backup_vault_notifications(
   BackupVaultName = "string"
 )
 }

@@ -16,11 +16,10 @@ NULL
 #' Regions can only be accessed through locations associated with those
 #' Regions.
 #'
-#' @section Example:
-#' ```
-#' directconnect <- paws::directconnect()
-#' directconnect$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_direct_connect_gateway_association_proposal(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

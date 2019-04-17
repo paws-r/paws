@@ -33,7 +33,7 @@ a DB instance results in a momentary outage, during which the DB
 instance status is set to rebooting.
 }
 \section{Request syntax}{
-\preformatted{neptune$reboot_db_instance(
+\preformatted{svc$reboot_db_instance(
   DBInstanceIdentifier = "string",
   ForceFailover = TRUE|FALSE
 )

@@ -22,7 +22,7 @@ Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 to its default value. You can only reset the load permission attribute.
 }
 \section{Request syntax}{
-\preformatted{ec2$reset_fpga_image_attribute(
+\preformatted{svc$reset_fpga_image_attribute(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string",
   Attribute = "loadPermission"

@@ -225,7 +225,7 @@ call fails. If you describe instances and specify only instance IDs that
 are in an unaffected zone, the call works normally.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_instances(
+\preformatted{svc$describe_instances(
   Filters = list(
     list(
       Name = "string",
@@ -246,14 +246,14 @@ are in an unaffected zone, the call works normally.
 
 \examples{
 # This example describes the specified instance.
-\donttest{ec2$describe_instances(
+\donttest{svc$describe_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )
 )}
 
 # This example describes the instances with the t2.micro instance type.
-\donttest{ec2$describe_instances(
+\donttest{svc$describe_instances(
   Filters = list(
     list(
       Name = "instance-type",
@@ -265,7 +265,7 @@ are in an unaffected zone, the call works normally.
 )}
 
 # This example describes the instances with the Purpose=test tag.
-\donttest{ec2$describe_instances(
+\donttest{svc$describe_instances(
   Filters = list(
     list(
       Name = "tag:Purpose",

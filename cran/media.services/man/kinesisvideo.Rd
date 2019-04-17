@@ -9,12 +9,6 @@ kinesisvideo()
 \description{
 Amazon Kinesis Video Streams
 }
-\section{Example}{
-\preformatted{kinesisvideo <- paws::kinesisvideo()
-kinesisvideo$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -31,3 +25,9 @@ kinesisvideo$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_stream(
+  Foo = 123
+)}
+
+}

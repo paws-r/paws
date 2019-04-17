@@ -15,7 +15,7 @@ ec2_unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
 Unassigns one or more IPv6 addresses from a network interface.
 }
 \section{Request syntax}{
-\preformatted{ec2$unassign_ipv_6_addresses(
+\preformatted{svc$unassign_ipv_6_addresses(
   Ipv6Addresses = list(
     "string"
   ),

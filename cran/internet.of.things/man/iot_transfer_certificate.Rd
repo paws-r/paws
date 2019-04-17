@@ -31,7 +31,7 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 }
 \section{Request syntax}{
-\preformatted{iot$transfer_certificate(
+\preformatted{svc$transfer_certificate(
   certificateId = "string",
   targetAwsAccount = "string",
   transferMessage = "string"

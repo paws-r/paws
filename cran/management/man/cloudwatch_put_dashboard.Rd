@@ -46,7 +46,7 @@ the \code{DashboardBody} script or the CloudFormation template used to create
 the dashboard.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$put_dashboard(
+\preformatted{svc$put_dashboard(
   DashboardName = "string",
   DashboardBody = "string"
 )

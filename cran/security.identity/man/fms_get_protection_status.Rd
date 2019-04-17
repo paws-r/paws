@@ -41,7 +41,7 @@ If you created a Shield Advanced policy, returns policy-level attack
 summary information in the event of a potential DDoS attack.
 }
 \section{Request syntax}{
-\preformatted{fms$get_protection_status(
+\preformatted{svc$get_protection_status(
   PolicyId = "string",
   MemberAccountId = "string",
   StartTime = as.POSIXct(

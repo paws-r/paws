@@ -33,7 +33,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_affected_entities(
+#' svc$describe_affected_entities(
 #'   filter = list(
 #'     eventArns = list(
 #'       "string"
@@ -103,7 +103,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_entity_aggregates(
+#' svc$describe_entity_aggregates(
 #'   eventArns = list(
 #'     "string"
 #'   )
@@ -152,7 +152,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_event_aggregates(
+#' svc$describe_event_aggregates(
 #'   filter = list(
 #'     eventArns = list(
 #'       "string"
@@ -264,7 +264,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_event_details(
+#' svc$describe_event_details(
 #'   eventArns = list(
 #'     "string"
 #'   ),
@@ -313,7 +313,7 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_event_types(
+#' svc$describe_event_types(
 #'   filter = list(
 #'     eventTypeCodes = list(
 #'       "string"
@@ -377,7 +377,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' health$describe_events(
+#' svc$describe_events(
 #'   filter = list(
 #'     eventArns = list(
 #'       "string"

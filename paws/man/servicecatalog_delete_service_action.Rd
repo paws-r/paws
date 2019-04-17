@@ -20,7 +20,7 @@ servicecatalog_delete_service_action(Id, AcceptLanguage)
 Deletes a self-service action.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_service_action(
+\preformatted{svc$delete_service_action(
   Id = "string",
   AcceptLanguage = "string"
 )

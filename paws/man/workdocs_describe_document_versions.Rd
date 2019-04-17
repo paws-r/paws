@@ -32,7 +32,7 @@ Retrieves the document versions for the specified document.
 By default, only active versions are returned.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_document_versions(
+\preformatted{svc$describe_document_versions(
   AuthenticationToken = "string",
   DocumentId = "string",
   Marker = "string",

@@ -37,7 +37,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$create_state_machine(
+\preformatted{svc$create_state_machine(
   name = "string",
   definition = "string",
   roleArn = "string",

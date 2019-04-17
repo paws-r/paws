@@ -20,7 +20,7 @@ Deletes a file share from a file gateway. This operation is only
 supported for file gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_file_share(
+\preformatted{svc$delete_file_share(
   FileShareARN = "string",
   ForceDelete = TRUE|FALSE
 )

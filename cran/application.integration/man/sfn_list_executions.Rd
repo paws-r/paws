@@ -45,7 +45,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$list_executions(
+\preformatted{svc$list_executions(
   stateMachineArn = "string",
   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
   maxResults = 123,

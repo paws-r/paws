@@ -30,7 +30,7 @@ For more information about policies, see \href{http://docs.aws.amazon.com/IAM/la
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$attach_user_policy(
+\preformatted{svc$attach_user_policy(
   UserName = "string",
   PolicyArn = "string"
 )
@@ -40,7 +40,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command attaches the AWS managed policy named
 # AdministratorAccess to the IAM user named Alice.
-\donttest{iam$attach_user_policy(
+\donttest{svc$attach_user_policy(
   PolicyArn = "arn:aws:iam::aws:policy/AdministratorAccess",
   UserName = "Alice"
 )}

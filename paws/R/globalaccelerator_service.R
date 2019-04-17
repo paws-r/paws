@@ -93,11 +93,10 @@ NULL
 #'     traffic to route to each one. This can be useful, for example, to do
 #'     performance testing within a Region.
 #'
-#' @section Example:
-#' ```
-#' globalaccelerator <- paws::globalaccelerator()
-#' globalaccelerator$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_accelerator(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

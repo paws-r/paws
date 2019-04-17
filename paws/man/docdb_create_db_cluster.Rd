@@ -137,7 +137,7 @@ CloudWatch Logs.}
 Creates a new Amazon DocumentDB DB cluster.
 }
 \section{Request syntax}{
-\preformatted{docdb$create_db_cluster(
+\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),

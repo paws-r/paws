@@ -18,7 +18,7 @@ information about multiple model compilation jobs, use
 ListCompilationJobs.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_compilation_job(
+\preformatted{svc$describe_compilation_job(
   CompilationJobName = "string"
 )
 }

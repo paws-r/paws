@@ -98,7 +98,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_snapshots(
+\preformatted{svc$describe_cluster_snapshots(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SnapshotType = "string",

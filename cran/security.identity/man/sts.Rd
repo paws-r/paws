@@ -54,12 +54,6 @@ requests were successfully made to STS, who made the request, when it
 was made, and so on. To learn more about CloudTrail, including how to
 turn it on and find your log files, see the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
-\section{Example}{
-\preformatted{sts <- paws::sts()
-sts$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,3 +67,14 @@ sts$operation()
 }
 }
 
+\examples{
+# 
+\donttest{svc$assume_role(
+  DurationSeconds = 3600L,
+  ExternalId = "123ABC",
+  Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",
+  RoleArn = "arn:aws:iam::123456789012:role/demo",
+  RoleSessionName = "Bob"
+)}
+
+}

@@ -83,7 +83,7 @@ Returns a list of \code{BatchPrediction} operations that match the search
 criteria in the request.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$describe_batch_predictions(
+\preformatted{svc$describe_batch_predictions(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"MLModelId"|"DataSourceId"|"DataURI",
   EQ = "string",
   GT = "string",

@@ -15,7 +15,7 @@ pinpoint_create_import_job(ApplicationId, ImportJobRequest)
 Creates or updates an import job.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$create_import_job(
+\preformatted{svc$create_import_job(
   ApplicationId = "string",
   ImportJobRequest = list(
     DefineSegment = TRUE|FALSE,

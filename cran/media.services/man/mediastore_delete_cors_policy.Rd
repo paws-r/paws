@@ -20,7 +20,7 @@ To use this operation, you must have permission to perform the
 permission by default and can grant this permission to others.
 }
 \section{Request syntax}{
-\preformatted{mediastore$delete_cors_policy(
+\preformatted{svc$delete_cors_policy(
   ContainerName = "string"
 )
 }

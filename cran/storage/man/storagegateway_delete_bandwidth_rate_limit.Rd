@@ -22,7 +22,7 @@ specify which gateway to work with, use the Amazon Resource Name (ARN)
 of the gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_bandwidth_rate_limit(
+\preformatted{svc$delete_bandwidth_rate_limit(
   GatewayARN = "string",
   BandwidthType = "string"
 )
@@ -32,7 +32,7 @@ of the gateway in your request.
 \examples{
 # Deletes the bandwidth rate limits of a gateway; either the upload or
 # download limit, or both.
-\donttest{storagegateway$delete_bandwidth_rate_limit(
+\donttest{svc$delete_bandwidth_rate_limit(
   BandwidthType = "All",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}

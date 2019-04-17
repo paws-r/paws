@@ -22,7 +22,7 @@ After you delete an agent, you can't reactivate it and you longer pay
 software charges for it.
 }
 \section{Request syntax}{
-\preformatted{datasync$delete_agent(
+\preformatted{svc$delete_agent(
   AgentArn = "string"
 )
 }

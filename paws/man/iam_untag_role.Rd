@@ -22,7 +22,7 @@ tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$untag_role(
+\preformatted{svc$untag_role(
   RoleName = "string",
   TagKeys = list(
     "string"
@@ -34,7 +34,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following example shows how to remove a tag with the key 'Dept' from
 # a role named 'taggedrole'.
-\donttest{iam$untag_role(
+\donttest{svc$untag_role(
   RoleName = "taggedrole",
   TagKeys = list(
     "Dept"

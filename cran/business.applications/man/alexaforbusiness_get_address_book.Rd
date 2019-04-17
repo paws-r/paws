@@ -13,7 +13,7 @@ alexaforbusiness_get_address_book(AddressBookArn)
 Gets address the book details by the address book ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_address_book(
+\preformatted{svc$get_address_book(
   AddressBookArn = "string"
 )
 }

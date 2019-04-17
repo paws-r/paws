@@ -30,7 +30,7 @@ For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSE
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$import_key_pair(
+\preformatted{svc$import_key_pair(
   DryRun = TRUE|FALSE,
   KeyName = "string",
   PublicKeyMaterial = raw

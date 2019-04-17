@@ -19,7 +19,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$create_scaling_plan(
+#' svc$create_scaling_plan(
 #'   ScalingPlanName = "string",
 #'   ApplicationSource = list(
 #'     CloudFormationStackARN = "string",
@@ -129,7 +129,7 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$delete_scaling_plan(
+#' svc$delete_scaling_plan(
 #'   ScalingPlanName = "string",
 #'   ScalingPlanVersion = 123
 #' )
@@ -170,7 +170,7 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$describe_scaling_plan_resources(
+#' svc$describe_scaling_plan_resources(
 #'   ScalingPlanName = "string",
 #'   ScalingPlanVersion = 123,
 #'   MaxResults = 123,
@@ -217,7 +217,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$describe_scaling_plans(
+#' svc$describe_scaling_plans(
 #'   ScalingPlanNames = list(
 #'     "string"
 #'   ),
@@ -327,7 +327,7 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$get_scaling_plan_resource_forecast_data(
+#' svc$get_scaling_plan_resource_forecast_data(
 #'   ScalingPlanName = "string",
 #'   ScalingPlanVersion = 123,
 #'   ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
@@ -380,7 +380,7 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #'
 #' @section Request syntax:
 #' ```
-#' autoscalingplans$update_scaling_plan(
+#' svc$update_scaling_plan(
 #'   ScalingPlanName = "string",
 #'   ScalingPlanVersion = 123,
 #'   ApplicationSource = list(

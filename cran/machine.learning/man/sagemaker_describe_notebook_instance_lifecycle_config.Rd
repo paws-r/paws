@@ -18,7 +18,7 @@ For information about notebook instance lifestyle configurations, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_notebook_instance_lifecycle_config(
+\preformatted{svc$describe_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string"
 )
 }

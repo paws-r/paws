@@ -28,7 +28,7 @@ amplify_start_job(appId, branchName, jobId, jobType, jobReason,
 Starts a new job for a branch, part of an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$start_job(
+\preformatted{svc$start_job(
   appId = "string",
   branchName = "string",
   jobId = "string",

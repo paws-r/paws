@@ -29,7 +29,7 @@ For asynchronous function invocation, use Invoke.
 Invokes a function asynchronously.
 }
 \section{Request syntax}{
-\preformatted{lambda$invoke_async(
+\preformatted{svc$invoke_async(
   FunctionName = "string",
   InvokeArgs = raw
 )
@@ -38,7 +38,7 @@ Invokes a function asynchronously.
 
 \examples{
 # This operation invokes a Lambda function asynchronously
-\donttest{lambda$invoke_async(
+\donttest{svc$invoke_async(
   FunctionName = "myFunction",
   InvokeArgs = "fileb://file-path/input.json"
 )}

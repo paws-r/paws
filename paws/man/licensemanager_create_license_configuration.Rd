@@ -38,7 +38,7 @@ Host, or any of these), host affinity (how long a VM must be associated
 with a host), the number of licenses purchased and used.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$create_license_configuration(
+\preformatted{svc$create_license_configuration(
   Name = "string",
   Description = "string",
   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",

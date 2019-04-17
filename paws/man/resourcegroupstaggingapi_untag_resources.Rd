@@ -33,7 +33,7 @@ for the AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{resourcegroupstaggingapi$untag_resources(
+\preformatted{svc$untag_resources(
   ResourceARNList = list(
     "string"
   ),

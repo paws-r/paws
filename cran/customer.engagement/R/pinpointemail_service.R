@@ -22,11 +22,10 @@ NULL
 #' 
 #' -   **EU (Ireland)**: `email.eu-west-1.amazonaws.com`
 #'
-#' @section Example:
-#' ```
-#' pinpointemail <- paws::pinpointemail()
-#' pinpointemail$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_configuration_set(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

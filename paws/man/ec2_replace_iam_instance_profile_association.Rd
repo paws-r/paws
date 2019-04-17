@@ -22,7 +22,7 @@ IAM instance profile first.
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_iam_instance_profile_association(
+\preformatted{svc$replace_iam_instance_profile_association(
   IamInstanceProfile = list(
     Arn = "string",
     Name = "string"

@@ -61,7 +61,7 @@ and check the stopped actions.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_scaling_policies(
+\preformatted{svc$describe_scaling_policies(
   FleetId = "string",
   StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
   Limit = 123,

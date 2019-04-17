@@ -28,7 +28,7 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{ecr$get_download_url_for_layer(
+\preformatted{svc$get_download_url_for_layer(
   registryId = "string",
   repositoryName = "string",
   layerDigest = "string"

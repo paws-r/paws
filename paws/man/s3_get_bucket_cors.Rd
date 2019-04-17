@@ -13,7 +13,7 @@ s3_get_bucket_cors(Bucket)
 Returns the CORS configuration for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_cors(
+\preformatted{svc$get_bucket_cors(
   Bucket = "string"
 )
 }
@@ -22,7 +22,7 @@ Returns the CORS configuration for the bucket.
 \examples{
 # The following example returns cross-origin resource sharing (CORS)
 # configuration set on a bucket.
-\donttest{s3$get_bucket_cors(
+\donttest{svc$get_bucket_cors(
   Bucket = "examplebucket"
 )}
 

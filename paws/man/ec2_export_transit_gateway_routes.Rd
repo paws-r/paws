@@ -48,7 +48,7 @@ specified S3 bucket. By default, all routes are exported. Alternatively,
 you can filter by CIDR range.
 }
 \section{Request syntax}{
-\preformatted{ec2$export_transit_gateway_routes(
+\preformatted{svc$export_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(

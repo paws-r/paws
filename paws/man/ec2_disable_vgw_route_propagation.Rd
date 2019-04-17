@@ -17,7 +17,7 @@ Disables a virtual private gateway (VGW) from propagating routes to a
 specified route table of a VPC.
 }
 \section{Request syntax}{
-\preformatted{ec2$disable_vgw_route_propagation(
+\preformatted{svc$disable_vgw_route_propagation(
   GatewayId = "string",
   RouteTableId = "string"
 )
@@ -27,7 +27,7 @@ specified route table of a VPC.
 \examples{
 # This example disables the specified virtual private gateway from
 # propagating static routes to the specified route table.
-\donttest{ec2$disable_vgw_route_propagation(
+\donttest{svc$disable_vgw_route_propagation(
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"
 )}

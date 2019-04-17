@@ -56,7 +56,7 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpc(
+\preformatted{svc$create_vpc(
   CidrBlock = "string",
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   DryRun = TRUE|FALSE,
@@ -67,7 +67,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates a VPC with the specified CIDR block.
-\donttest{ec2$create_vpc(
+\donttest{svc$create_vpc(
   CidrBlock = "10.0.0.0/16"
 )}
 

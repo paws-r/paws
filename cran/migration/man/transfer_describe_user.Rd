@@ -24,7 +24,7 @@ The response from this call returns the properties of the user
 associated with the \code{ServerId} value that was specified.
 }
 \section{Request syntax}{
-\preformatted{transfer$describe_user(
+\preformatted{svc$describe_user(
   ServerId = "string",
   UserName = "string"
 )

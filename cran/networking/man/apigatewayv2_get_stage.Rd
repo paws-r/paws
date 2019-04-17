@@ -15,7 +15,7 @@ apigatewayv2_get_stage(ApiId, StageName)
 Gets a Stage.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_stage(
+\preformatted{svc$get_stage(
   ApiId = "string",
   StageName = "string"
 )

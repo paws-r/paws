@@ -45,7 +45,7 @@ more information, see the important note on the
 page.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_snapshot(
+\preformatted{svc$create_snapshot(
   VolumeARN = "string",
   SnapshotDescription = "string"
 )
@@ -54,7 +54,7 @@ page.
 
 \examples{
 # Initiates an ad-hoc snapshot of a gateway volume.
-\donttest{storagegateway$create_snapshot(
+\donttest{svc$create_snapshot(
   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
 )}

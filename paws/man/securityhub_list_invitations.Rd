@@ -20,7 +20,7 @@ Lists all Security Hub membership invitations that were sent to the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$list_invitations(
+\preformatted{svc$list_invitations(
   MaxResults = 123,
   NextToken = "string"
 )

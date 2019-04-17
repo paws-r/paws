@@ -21,7 +21,7 @@ well.}
 Lists the things in the specified group.
 }
 \section{Request syntax}{
-\preformatted{iot$list_things_in_thing_group(
+\preformatted{svc$list_things_in_thing_group(
   thingGroupName = "string",
   recursive = TRUE|FALSE,
   nextToken = "string",

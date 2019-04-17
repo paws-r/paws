@@ -28,7 +28,7 @@ For more information about creating DNS records using DKIM tokens, go to
 the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$verify_domain_dkim(
+\preformatted{svc$verify_domain_dkim(
   Domain = "string"
 )
 }
@@ -37,7 +37,7 @@ the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-rec
 \examples{
 # The following example generates DKIM tokens for a domain that has been
 # verified with Amazon SES:
-\donttest{ses$verify_domain_dkim(
+\donttest{svc$verify_domain_dkim(
   Domain = "example.com"
 )}
 

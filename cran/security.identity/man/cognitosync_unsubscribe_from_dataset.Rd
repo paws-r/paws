@@ -28,7 +28,7 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$unsubscribe_from_dataset(
+\preformatted{svc$unsubscribe_from_dataset(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",

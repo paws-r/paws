@@ -31,7 +31,7 @@ removed.}
 Updates the data for a thing.
 }
 \section{Request syntax}{
-\preformatted{iot$update_thing(
+\preformatted{svc$update_thing(
   thingName = "string",
   thingTypeName = "string",
   attributePayload = list(

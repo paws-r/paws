@@ -24,7 +24,7 @@ apigatewayv2_create_route_response(ApiId, ModelSelectionExpression,
 Creates a RouteResponse for a Route.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_route_response(
+\preformatted{svc$create_route_response(
   ApiId = "string",
   ModelSelectionExpression = "string",
   ResponseModels = list(

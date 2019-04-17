@@ -33,7 +33,7 @@ be associated with.}
 Creates a new option group. You can create up to 20 option groups.
 }
 \section{Request syntax}{
-\preformatted{rds$create_option_group(
+\preformatted{svc$create_option_group(
   OptionGroupName = "string",
   EngineName = "string",
   MajorEngineVersion = "string",

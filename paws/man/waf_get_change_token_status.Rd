@@ -26,7 +26,7 @@ request to all AWS WAF servers.
 }
 }
 \section{Request syntax}{
-\preformatted{waf$get_change_token_status(
+\preformatted{svc$get_change_token_status(
   ChangeToken = "string"
 )
 }
@@ -35,7 +35,7 @@ request to all AWS WAF servers.
 \examples{
 # The following example returns the status of a change token with the ID
 # abcd12f2-46da-4fdb-b8d5-fbd4c466928f.
-\donttest{waf$get_change_token_status(
+\donttest{svc$get_change_token_status(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f"
 )}
 

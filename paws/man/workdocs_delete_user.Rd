@@ -17,7 +17,7 @@ credentials.}
 Deletes the specified user from a Simple AD or Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_user(
+\preformatted{svc$delete_user(
   AuthenticationToken = "string",
   UserId = "string"
 )

@@ -15,7 +15,7 @@ datasync_untag_resource(ResourceArn, Keys)
 Removes a tag from an AWS resource.
 }
 \section{Request syntax}{
-\preformatted{datasync$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   Keys = list(
     "string"

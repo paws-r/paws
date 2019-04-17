@@ -19,7 +19,7 @@ example, AWS CloudFormation lists change sets that are in the
 \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_change_sets(
+\preformatted{svc$list_change_sets(
   StackName = "string",
   NextToken = "string"
 )

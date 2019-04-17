@@ -16,7 +16,7 @@ information about.}
 Gets information about a specific traffic policy version.
 }
 \section{Request syntax}{
-\preformatted{route53$get_traffic_policy(
+\preformatted{svc$get_traffic_policy(
   Id = "string",
   Version = 123
 )

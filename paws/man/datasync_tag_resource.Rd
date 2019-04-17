@@ -15,7 +15,7 @@ datasync_tag_resource(ResourceArn, Tags)
 Applies a key-value pair to an AWS resource.
 }
 \section{Request syntax}{
-\preformatted{datasync$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

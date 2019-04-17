@@ -32,7 +32,7 @@ Returns a list of ARNs of resources that are members of a specified
 resource group.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$list_group_resources(
+\preformatted{svc$list_group_resources(
   GroupName = "string",
   Filters = list(
     list(

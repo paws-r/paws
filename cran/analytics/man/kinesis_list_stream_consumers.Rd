@@ -55,7 +55,7 @@ enhanced fan-out, and provides information about each consumer.
 This operation has a limit of 10 transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$list_stream_consumers(
+\preformatted{svc$list_stream_consumers(
   StreamARN = "string",
   NextToken = "string",
   MaxResults = 123,

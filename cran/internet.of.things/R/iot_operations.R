@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$accept_certificate_transfer(
+#' svc$accept_certificate_transfer(
 #'   certificateId = "string",
 #'   setAsActive = TRUE|FALSE
 #' )
@@ -60,7 +60,7 @@ iot_accept_certificate_transfer <- function(certificateId, setAsActive = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$add_thing_to_billing_group(
+#' svc$add_thing_to_billing_group(
 #'   billingGroupName = "string",
 #'   billingGroupArn = "string",
 #'   thingName = "string",
@@ -106,7 +106,7 @@ iot_add_thing_to_billing_group <- function(billingGroupName = NULL, billingGroup
 #'
 #' @section Request syntax:
 #' ```
-#' iot$add_thing_to_thing_group(
+#' svc$add_thing_to_thing_group(
 #'   thingGroupName = "string",
 #'   thingGroupArn = "string",
 #'   thingName = "string",
@@ -157,7 +157,7 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$associate_targets_with_job(
+#' svc$associate_targets_with_job(
 #'   targets = list(
 #'     "string"
 #'   ),
@@ -199,7 +199,7 @@ iot_associate_targets_with_job <- function(targets, jobId, comment = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$attach_policy(
+#' svc$attach_policy(
 #'   policyName = "string",
 #'   target = "string"
 #' )
@@ -241,7 +241,7 @@ iot_attach_policy <- function(policyName, target) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$attach_principal_policy(
+#' svc$attach_principal_policy(
 #'   policyName = "string",
 #'   principal = "string"
 #' )
@@ -283,7 +283,7 @@ iot_attach_principal_policy <- function(policyName, principal) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$attach_security_profile(
+#' svc$attach_security_profile(
 #'   securityProfileName = "string",
 #'   securityProfileTargetArn = "string"
 #' )
@@ -322,7 +322,7 @@ iot_attach_security_profile <- function(securityProfileName, securityProfileTarg
 #'
 #' @section Request syntax:
 #' ```
-#' iot$attach_thing_principal(
+#' svc$attach_thing_principal(
 #'   thingName = "string",
 #'   principal = "string"
 #' )
@@ -361,7 +361,7 @@ iot_attach_thing_principal <- function(thingName, principal) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$cancel_audit_task(
+#' svc$cancel_audit_task(
 #'   taskId = "string"
 #' )
 #' ```
@@ -407,7 +407,7 @@ iot_cancel_audit_task <- function(taskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$cancel_certificate_transfer(
+#' svc$cancel_certificate_transfer(
 #'   certificateId = "string"
 #' )
 #' ```
@@ -452,7 +452,7 @@ iot_cancel_certificate_transfer <- function(certificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$cancel_job(
+#' svc$cancel_job(
 #'   jobId = "string",
 #'   reasonCode = "string",
 #'   comment = "string",
@@ -512,7 +512,7 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$cancel_job_execution(
+#' svc$cancel_job_execution(
 #'   jobId = "string",
 #'   thingName = "string",
 #'   force = TRUE|FALSE,
@@ -551,7 +551,7 @@ iot_cancel_job_execution <- function(jobId, thingName, force = NULL, expectedVer
 #'
 #' @section Request syntax:
 #' ```
-#' iot$clear_default_authorizer()
+#' svc$clear_default_authorizer()
 #' ```
 #'
 #' @keywords internal
@@ -591,7 +591,7 @@ iot_clear_default_authorizer <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_authorizer(
+#' svc$create_authorizer(
 #'   authorizerName = "string",
 #'   authorizerFunctionArn = "string",
 #'   tokenKeyName = "string",
@@ -634,7 +634,7 @@ iot_create_authorizer <- function(authorizerName, authorizerFunctionArn, tokenKe
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_billing_group(
+#' svc$create_billing_group(
 #'   billingGroupName = "string",
 #'   billingGroupProperties = list(
 #'     billingGroupDescription = "string"
@@ -725,7 +725,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_certificate_from_csr(
+#' svc$create_certificate_from_csr(
 #'   certificateSigningRequest = "string",
 #'   setAsActive = TRUE|FALSE
 #' )
@@ -776,7 +776,7 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_dynamic_thing_group(
+#' svc$create_dynamic_thing_group(
 #'   thingGroupName = "string",
 #'   thingGroupProperties = list(
 #'     thingGroupDescription = "string",
@@ -862,7 +862,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_job(
+#' svc$create_job(
 #'   jobId = "string",
 #'   targets = list(
 #'     "string"
@@ -942,7 +942,7 @@ iot_create_job <- function(jobId, targets, documentSource = NULL, document = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_keys_and_certificate(
+#' svc$create_keys_and_certificate(
 #'   setAsActive = TRUE|FALSE
 #' )
 #' ```
@@ -993,7 +993,7 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_ota_update(
+#' svc$create_ota_update(
 #'   otaUpdateId = "string",
 #'   description = "string",
 #'   targets = list(
@@ -1101,7 +1101,7 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, targ
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_policy(
+#' svc$create_policy(
 #'   policyName = "string",
 #'   policyDocument = "string"
 #' )
@@ -1152,7 +1152,7 @@ iot_create_policy <- function(policyName, policyDocument) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_policy_version(
+#' svc$create_policy_version(
 #'   policyName = "string",
 #'   policyDocument = "string",
 #'   setAsDefault = TRUE|FALSE
@@ -1192,7 +1192,7 @@ iot_create_policy_version <- function(policyName, policyDocument, setAsDefault =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_role_alias(
+#' svc$create_role_alias(
 #'   roleAlias = "string",
 #'   roleArn = "string",
 #'   credentialDurationSeconds = 123
@@ -1247,7 +1247,7 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_scheduled_audit(
+#' svc$create_scheduled_audit(
 #'   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
 #'   dayOfMonth = "string",
 #'   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
@@ -1306,7 +1306,7 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_security_profile(
+#' svc$create_security_profile(
 #'   securityProfileName = "string",
 #'   securityProfileDescription = "string",
 #'   behaviors = list(
@@ -1394,7 +1394,7 @@ iot_create_security_profile <- function(securityProfileName, securityProfileDesc
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_stream(
+#' svc$create_stream(
 #'   streamId = "string",
 #'   description = "string",
 #'   files = list(
@@ -1461,7 +1461,7 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_thing(
+#' svc$create_thing(
 #'   thingName = "string",
 #'   thingTypeName = "string",
 #'   attributePayload = list(
@@ -1512,7 +1512,7 @@ iot_create_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_thing_group(
+#' svc$create_thing_group(
 #'   thingGroupName = "string",
 #'   parentGroupName = "string",
 #'   thingGroupProperties = list(
@@ -1567,7 +1567,7 @@ iot_create_thing_group <- function(thingGroupName, parentGroupName = NULL, thing
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_thing_type(
+#' svc$create_thing_type(
 #'   thingTypeName = "string",
 #'   thingTypeProperties = list(
 #'     thingTypeDescription = "string",
@@ -1626,7 +1626,7 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'
 #' @section Request syntax:
 #' ```
-#' iot$create_topic_rule(
+#' svc$create_topic_rule(
 #'   ruleName = "string",
 #'   topicRulePayload = list(
 #'     sql = "string",
@@ -1859,7 +1859,7 @@ iot_create_topic_rule <- function(ruleName, topicRulePayload, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_account_audit_configuration(
+#' svc$delete_account_audit_configuration(
 #'   deleteScheduledAudits = TRUE|FALSE
 #' )
 #' ```
@@ -1894,7 +1894,7 @@ iot_delete_account_audit_configuration <- function(deleteScheduledAudits = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_authorizer(
+#' svc$delete_authorizer(
 #'   authorizerName = "string"
 #' )
 #' ```
@@ -1933,7 +1933,7 @@ iot_delete_authorizer <- function(authorizerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_billing_group(
+#' svc$delete_billing_group(
 #'   billingGroupName = "string",
 #'   expectedVersion = 123
 #' )
@@ -1970,7 +1970,7 @@ iot_delete_billing_group <- function(billingGroupName, expectedVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_ca_certificate(
+#' svc$delete_ca_certificate(
 #'   certificateId = "string"
 #' )
 #' ```
@@ -2012,7 +2012,7 @@ iot_delete_ca_certificate <- function(certificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_certificate(
+#' svc$delete_certificate(
 #'   certificateId = "string",
 #'   forceDelete = TRUE|FALSE
 #' )
@@ -2049,7 +2049,7 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_dynamic_thing_group(
+#' svc$delete_dynamic_thing_group(
 #'   thingGroupName = "string",
 #'   expectedVersion = 123
 #' )
@@ -2107,7 +2107,7 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_job(
+#' svc$delete_job(
 #'   jobId = "string",
 #'   force = TRUE|FALSE
 #' )
@@ -2160,7 +2160,7 @@ iot_delete_job <- function(jobId, force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_job_execution(
+#' svc$delete_job_execution(
 #'   jobId = "string",
 #'   thingName = "string",
 #'   executionNumber = 123,
@@ -2202,7 +2202,7 @@ iot_delete_job_execution <- function(jobId, thingName, executionNumber, force = 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_ota_update(
+#' svc$delete_ota_update(
 #'   otaUpdateId = "string",
 #'   deleteStream = TRUE|FALSE,
 #'   forceDeleteAWSJob = TRUE|FALSE
@@ -2250,7 +2250,7 @@ iot_delete_ota_update <- function(otaUpdateId, deleteStream = NULL, forceDeleteA
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_policy(
+#' svc$delete_policy(
 #'   policyName = "string"
 #' )
 #' ```
@@ -2289,7 +2289,7 @@ iot_delete_policy <- function(policyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_policy_version(
+#' svc$delete_policy_version(
 #'   policyName = "string",
 #'   policyVersionId = "string"
 #' )
@@ -2323,7 +2323,7 @@ iot_delete_policy_version <- function(policyName, policyVersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_registration_code()
+#' svc$delete_registration_code()
 #' ```
 #'
 #' @keywords internal
@@ -2356,7 +2356,7 @@ iot_delete_registration_code <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_role_alias(
+#' svc$delete_role_alias(
 #'   roleAlias = "string"
 #' )
 #' ```
@@ -2391,7 +2391,7 @@ iot_delete_role_alias <- function(roleAlias) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_scheduled_audit(
+#' svc$delete_scheduled_audit(
 #'   scheduledAuditName = "string"
 #' )
 #' ```
@@ -2430,7 +2430,7 @@ iot_delete_scheduled_audit <- function(scheduledAuditName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_security_profile(
+#' svc$delete_security_profile(
 #'   securityProfileName = "string",
 #'   expectedVersion = 123
 #' )
@@ -2466,7 +2466,7 @@ iot_delete_security_profile <- function(securityProfileName, expectedVersion = N
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_stream(
+#' svc$delete_stream(
 #'   streamId = "string"
 #' )
 #' ```
@@ -2506,7 +2506,7 @@ iot_delete_stream <- function(streamId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_thing(
+#' svc$delete_thing(
 #'   thingName = "string",
 #'   expectedVersion = 123
 #' )
@@ -2543,7 +2543,7 @@ iot_delete_thing <- function(thingName, expectedVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_thing_group(
+#' svc$delete_thing_group(
 #'   thingGroupName = "string",
 #'   expectedVersion = 123
 #' )
@@ -2583,7 +2583,7 @@ iot_delete_thing_group <- function(thingGroupName, expectedVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_thing_type(
+#' svc$delete_thing_type(
 #'   thingTypeName = "string"
 #' )
 #' ```
@@ -2618,7 +2618,7 @@ iot_delete_thing_type <- function(thingTypeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_topic_rule(
+#' svc$delete_topic_rule(
 #'   ruleName = "string"
 #' )
 #' ```
@@ -2655,7 +2655,7 @@ iot_delete_topic_rule <- function(ruleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$delete_v2_logging_level(
+#' svc$delete_v2_logging_level(
 #'   targetType = "DEFAULT"|"THING_GROUP",
 #'   targetName = "string"
 #' )
@@ -2695,7 +2695,7 @@ iot_delete_v2_logging_level <- function(targetType, targetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$deprecate_thing_type(
+#' svc$deprecate_thing_type(
 #'   thingTypeName = "string",
 #'   undoDeprecate = TRUE|FALSE
 #' )
@@ -2732,7 +2732,7 @@ iot_deprecate_thing_type <- function(thingTypeName, undoDeprecate = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_account_audit_configuration()
+#' svc$describe_account_audit_configuration()
 #' ```
 #'
 #' @keywords internal
@@ -2765,7 +2765,7 @@ iot_describe_account_audit_configuration <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_audit_task(
+#' svc$describe_audit_task(
 #'   taskId = "string"
 #' )
 #' ```
@@ -2800,7 +2800,7 @@ iot_describe_audit_task <- function(taskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_authorizer(
+#' svc$describe_authorizer(
 #'   authorizerName = "string"
 #' )
 #' ```
@@ -2835,7 +2835,7 @@ iot_describe_authorizer <- function(authorizerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_billing_group(
+#' svc$describe_billing_group(
 #'   billingGroupName = "string"
 #' )
 #' ```
@@ -2870,7 +2870,7 @@ iot_describe_billing_group <- function(billingGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_ca_certificate(
+#' svc$describe_ca_certificate(
 #'   certificateId = "string"
 #' )
 #' ```
@@ -2906,7 +2906,7 @@ iot_describe_ca_certificate <- function(certificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_certificate(
+#' svc$describe_certificate(
 #'   certificateId = "string"
 #' )
 #' ```
@@ -2939,7 +2939,7 @@ iot_describe_certificate <- function(certificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_default_authorizer()
+#' svc$describe_default_authorizer()
 #' ```
 #'
 #' @keywords internal
@@ -2987,7 +2987,7 @@ iot_describe_default_authorizer <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_endpoint(
+#' svc$describe_endpoint(
 #'   endpointType = "string"
 #' )
 #' ```
@@ -3020,7 +3020,7 @@ iot_describe_endpoint <- function(endpointType = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_event_configurations()
+#' svc$describe_event_configurations()
 #' ```
 #'
 #' @keywords internal
@@ -3053,7 +3053,7 @@ iot_describe_event_configurations <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_index(
+#' svc$describe_index(
 #'   indexName = "string"
 #' )
 #' ```
@@ -3088,7 +3088,7 @@ iot_describe_index <- function(indexName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_job(
+#' svc$describe_job(
 #'   jobId = "string"
 #' )
 #' ```
@@ -3126,7 +3126,7 @@ iot_describe_job <- function(jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_job_execution(
+#' svc$describe_job_execution(
 #'   jobId = "string",
 #'   thingName = "string",
 #'   executionNumber = 123
@@ -3163,7 +3163,7 @@ iot_describe_job_execution <- function(jobId, thingName, executionNumber = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_role_alias(
+#' svc$describe_role_alias(
 #'   roleAlias = "string"
 #' )
 #' ```
@@ -3198,7 +3198,7 @@ iot_describe_role_alias <- function(roleAlias) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_scheduled_audit(
+#' svc$describe_scheduled_audit(
 #'   scheduledAuditName = "string"
 #' )
 #' ```
@@ -3233,7 +3233,7 @@ iot_describe_scheduled_audit <- function(scheduledAuditName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_security_profile(
+#' svc$describe_security_profile(
 #'   securityProfileName = "string"
 #' )
 #' ```
@@ -3268,7 +3268,7 @@ iot_describe_security_profile <- function(securityProfileName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_stream(
+#' svc$describe_stream(
 #'   streamId = "string"
 #' )
 #' ```
@@ -3303,7 +3303,7 @@ iot_describe_stream <- function(streamId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_thing(
+#' svc$describe_thing(
 #'   thingName = "string"
 #' )
 #' ```
@@ -3338,7 +3338,7 @@ iot_describe_thing <- function(thingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_thing_group(
+#' svc$describe_thing_group(
 #'   thingGroupName = "string"
 #' )
 #' ```
@@ -3373,7 +3373,7 @@ iot_describe_thing_group <- function(thingGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_thing_registration_task(
+#' svc$describe_thing_registration_task(
 #'   taskId = "string"
 #' )
 #' ```
@@ -3408,7 +3408,7 @@ iot_describe_thing_registration_task <- function(taskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$describe_thing_type(
+#' svc$describe_thing_type(
 #'   thingTypeName = "string"
 #' )
 #' ```
@@ -3444,7 +3444,7 @@ iot_describe_thing_type <- function(thingTypeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$detach_policy(
+#' svc$detach_policy(
 #'   policyName = "string",
 #'   target = "string"
 #' )
@@ -3486,7 +3486,7 @@ iot_detach_policy <- function(policyName, target) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$detach_principal_policy(
+#' svc$detach_principal_policy(
 #'   policyName = "string",
 #'   principal = "string"
 #' )
@@ -3526,7 +3526,7 @@ iot_detach_principal_policy <- function(policyName, principal) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$detach_security_profile(
+#' svc$detach_security_profile(
 #'   securityProfileName = "string",
 #'   securityProfileTargetArn = "string"
 #' )
@@ -3570,7 +3570,7 @@ iot_detach_security_profile <- function(securityProfileName, securityProfileTarg
 #'
 #' @section Request syntax:
 #' ```
-#' iot$detach_thing_principal(
+#' svc$detach_thing_principal(
 #'   thingName = "string",
 #'   principal = "string"
 #' )
@@ -3606,7 +3606,7 @@ iot_detach_thing_principal <- function(thingName, principal) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$disable_topic_rule(
+#' svc$disable_topic_rule(
 #'   ruleName = "string"
 #' )
 #' ```
@@ -3641,7 +3641,7 @@ iot_disable_topic_rule <- function(ruleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$enable_topic_rule(
+#' svc$enable_topic_rule(
 #'   ruleName = "string"
 #' )
 #' ```
@@ -3682,7 +3682,7 @@ iot_enable_topic_rule <- function(ruleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_effective_policies(
+#' svc$get_effective_policies(
 #'   principal = "string",
 #'   cognitoIdentityPoolId = "string",
 #'   thingName = "string"
@@ -3717,7 +3717,7 @@ iot_get_effective_policies <- function(principal = NULL, cognitoIdentityPoolId =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_indexing_configuration()
+#' svc$get_indexing_configuration()
 #' ```
 #'
 #' @keywords internal
@@ -3750,7 +3750,7 @@ iot_get_indexing_configuration <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_job_document(
+#' svc$get_job_document(
 #'   jobId = "string"
 #' )
 #' ```
@@ -3786,7 +3786,7 @@ iot_get_job_document <- function(jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_logging_options()
+#' svc$get_logging_options()
 #' ```
 #'
 #' @keywords internal
@@ -3819,7 +3819,7 @@ iot_get_logging_options <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_ota_update(
+#' svc$get_ota_update(
 #'   otaUpdateId = "string"
 #' )
 #' ```
@@ -3856,7 +3856,7 @@ iot_get_ota_update <- function(otaUpdateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_policy(
+#' svc$get_policy(
 #'   policyName = "string"
 #' )
 #' ```
@@ -3892,7 +3892,7 @@ iot_get_policy <- function(policyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_policy_version(
+#' svc$get_policy_version(
 #'   policyName = "string",
 #'   policyVersionId = "string"
 #' )
@@ -3926,7 +3926,7 @@ iot_get_policy_version <- function(policyName, policyVersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_registration_code()
+#' svc$get_registration_code()
 #' ```
 #'
 #' @keywords internal
@@ -3964,7 +3964,7 @@ iot_get_registration_code <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_statistics(
+#' svc$get_statistics(
 #'   indexName = "string",
 #'   queryString = "string",
 #'   aggregationField = "string",
@@ -4002,7 +4002,7 @@ iot_get_statistics <- function(indexName = NULL, queryString, aggregationField =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_topic_rule(
+#' svc$get_topic_rule(
 #'   ruleName = "string"
 #' )
 #' ```
@@ -4035,7 +4035,7 @@ iot_get_topic_rule <- function(ruleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$get_v2_logging_options()
+#' svc$get_v2_logging_options()
 #' ```
 #'
 #' @keywords internal
@@ -4074,7 +4074,7 @@ iot_get_v2_logging_options <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_active_violations(
+#' svc$list_active_violations(
 #'   thingName = "string",
 #'   securityProfileName = "string",
 #'   nextToken = "string",
@@ -4115,7 +4115,7 @@ iot_list_active_violations <- function(thingName = NULL, securityProfileName = N
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_attached_policies(
+#' svc$list_attached_policies(
 #'   target = "string",
 #'   recursive = TRUE|FALSE,
 #'   marker = "string",
@@ -4168,7 +4168,7 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_audit_findings(
+#' svc$list_audit_findings(
 #'   taskId = "string",
 #'   checkName = "string",
 #'   resourceIdentifier = list(
@@ -4236,7 +4236,7 @@ iot_list_audit_findings <- function(taskId = NULL, checkName = NULL, resourceIde
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_audit_tasks(
+#' svc$list_audit_tasks(
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4283,7 +4283,7 @@ iot_list_audit_tasks <- function(startTime, endTime, taskType = NULL, taskStatus
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_authorizers(
+#' svc$list_authorizers(
 #'   pageSize = 123,
 #'   marker = "string",
 #'   ascendingOrder = TRUE|FALSE,
@@ -4323,7 +4323,7 @@ iot_list_authorizers <- function(pageSize = NULL, marker = NULL, ascendingOrder 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_billing_groups(
+#' svc$list_billing_groups(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   namePrefixFilter = "string"
@@ -4365,7 +4365,7 @@ iot_list_billing_groups <- function(nextToken = NULL, maxResults = NULL, namePre
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_ca_certificates(
+#' svc$list_ca_certificates(
 #'   pageSize = 123,
 #'   marker = "string",
 #'   ascendingOrder = TRUE|FALSE
@@ -4408,7 +4408,7 @@ iot_list_ca_certificates <- function(pageSize = NULL, marker = NULL, ascendingOr
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_certificates(
+#' svc$list_certificates(
 #'   pageSize = 123,
 #'   marker = "string",
 #'   ascendingOrder = TRUE|FALSE
@@ -4451,7 +4451,7 @@ iot_list_certificates <- function(pageSize = NULL, marker = NULL, ascendingOrder
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_certificates_by_ca(
+#' svc$list_certificates_by_ca(
 #'   caCertificateId = "string",
 #'   pageSize = 123,
 #'   marker = "string",
@@ -4491,7 +4491,7 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_indices(
+#' svc$list_indices(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -4530,7 +4530,7 @@ iot_list_indices <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_job_executions_for_job(
+#' svc$list_job_executions_for_job(
 #'   jobId = "string",
 #'   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
 #'   maxResults = 123,
@@ -4573,7 +4573,7 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_job_executions_for_thing(
+#' svc$list_job_executions_for_thing(
 #'   thingName = "string",
 #'   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
 #'   maxResults = 123,
@@ -4623,7 +4623,7 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, maxResul
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_jobs(
+#' svc$list_jobs(
 #'   status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
 #'   targetSelection = "CONTINUOUS"|"SNAPSHOT",
 #'   maxResults = 123,
@@ -4665,7 +4665,7 @@ iot_list_jobs <- function(status = NULL, targetSelection = NULL, maxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_ota_updates(
+#' svc$list_ota_updates(
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
@@ -4705,7 +4705,7 @@ iot_list_ota_updates <- function(maxResults = NULL, nextToken = NULL, otaUpdateS
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_outgoing_certificates(
+#' svc$list_outgoing_certificates(
 #'   pageSize = 123,
 #'   marker = "string",
 #'   ascendingOrder = TRUE|FALSE
@@ -4745,7 +4745,7 @@ iot_list_outgoing_certificates <- function(pageSize = NULL, marker = NULL, ascen
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_policies(
+#' svc$list_policies(
 #'   marker = "string",
 #'   pageSize = 123,
 #'   ascendingOrder = TRUE|FALSE
@@ -4789,7 +4789,7 @@ iot_list_policies <- function(marker = NULL, pageSize = NULL, ascendingOrder = N
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_policy_principals(
+#' svc$list_policy_principals(
 #'   policyName = "string",
 #'   marker = "string",
 #'   pageSize = 123,
@@ -4829,7 +4829,7 @@ iot_list_policy_principals <- function(policyName, marker = NULL, pageSize = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_policy_versions(
+#' svc$list_policy_versions(
 #'   policyName = "string"
 #' )
 #' ```
@@ -4873,7 +4873,7 @@ iot_list_policy_versions <- function(policyName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_principal_policies(
+#' svc$list_principal_policies(
 #'   principal = "string",
 #'   marker = "string",
 #'   pageSize = 123,
@@ -4915,7 +4915,7 @@ iot_list_principal_policies <- function(principal, marker = NULL, pageSize = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_principal_things(
+#' svc$list_principal_things(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   principal = "string"
@@ -4954,7 +4954,7 @@ iot_list_principal_things <- function(nextToken = NULL, maxResults = NULL, princ
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_role_aliases(
+#' svc$list_role_aliases(
 #'   pageSize = 123,
 #'   marker = "string",
 #'   ascendingOrder = TRUE|FALSE
@@ -4992,7 +4992,7 @@ iot_list_role_aliases <- function(pageSize = NULL, marker = NULL, ascendingOrder
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_scheduled_audits(
+#' svc$list_scheduled_audits(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -5031,7 +5031,7 @@ iot_list_scheduled_audits <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_security_profiles(
+#' svc$list_security_profiles(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -5074,7 +5074,7 @@ iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_security_profiles_for_target(
+#' svc$list_security_profiles_for_target(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   recursive = TRUE|FALSE,
@@ -5114,7 +5114,7 @@ iot_list_security_profiles_for_target <- function(nextToken = NULL, maxResults =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_streams(
+#' svc$list_streams(
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   ascendingOrder = TRUE|FALSE
@@ -5152,7 +5152,7 @@ iot_list_streams <- function(maxResults = NULL, nextToken = NULL, ascendingOrder
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string",
 #'   nextToken = "string"
 #' )
@@ -5190,7 +5190,7 @@ iot_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_targets_for_policy(
+#' svc$list_targets_for_policy(
 #'   policyName = "string",
 #'   marker = "string",
 #'   pageSize = 123
@@ -5232,7 +5232,7 @@ iot_list_targets_for_policy <- function(policyName, marker = NULL, pageSize = NU
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_targets_for_security_profile(
+#' svc$list_targets_for_security_profile(
 #'   securityProfileName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -5276,7 +5276,7 @@ iot_list_targets_for_security_profile <- function(securityProfileName, nextToken
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_groups(
+#' svc$list_thing_groups(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   parentGroup = "string",
@@ -5317,7 +5317,7 @@ iot_list_thing_groups <- function(nextToken = NULL, maxResults = NULL, parentGro
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_groups_for_thing(
+#' svc$list_thing_groups_for_thing(
 #'   thingName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -5356,7 +5356,7 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_principals(
+#' svc$list_thing_principals(
 #'   thingName = "string"
 #' )
 #' ```
@@ -5395,7 +5395,7 @@ iot_list_thing_principals <- function(thingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_registration_task_reports(
+#' svc$list_thing_registration_task_reports(
 #'   taskId = "string",
 #'   reportType = "ERRORS"|"RESULTS",
 #'   nextToken = "string",
@@ -5435,7 +5435,7 @@ iot_list_thing_registration_task_reports <- function(taskId, reportType, nextTok
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_registration_tasks(
+#' svc$list_thing_registration_tasks(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling"
@@ -5474,7 +5474,7 @@ iot_list_thing_registration_tasks <- function(nextToken = NULL, maxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_thing_types(
+#' svc$list_thing_types(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   thingTypeName = "string"
@@ -5519,7 +5519,7 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_things(
+#' svc$list_things(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   attributeName = "string",
@@ -5561,7 +5561,7 @@ iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_things_in_billing_group(
+#' svc$list_things_in_billing_group(
 #'   billingGroupName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -5603,7 +5603,7 @@ iot_list_things_in_billing_group <- function(billingGroupName, nextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_things_in_thing_group(
+#' svc$list_things_in_thing_group(
 #'   thingGroupName = "string",
 #'   recursive = TRUE|FALSE,
 #'   nextToken = "string",
@@ -5644,7 +5644,7 @@ iot_list_things_in_thing_group <- function(thingGroupName, recursive = NULL, nex
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_topic_rules(
+#' svc$list_topic_rules(
 #'   topic = "string",
 #'   maxResults = 123,
 #'   nextToken = "string",
@@ -5686,7 +5686,7 @@ iot_list_topic_rules <- function(topic = NULL, maxResults = NULL, nextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_v2_logging_levels(
+#' svc$list_v2_logging_levels(
 #'   targetType = "DEFAULT"|"THING_GROUP",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -5734,7 +5734,7 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #'
 #' @section Request syntax:
 #' ```
-#' iot$list_violation_events(
+#' svc$list_violation_events(
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -5790,7 +5790,7 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #'
 #' @section Request syntax:
 #' ```
-#' iot$register_ca_certificate(
+#' svc$register_ca_certificate(
 #'   caCertificate = "string",
 #'   verificationCertificate = "string",
 #'   setAsActive = TRUE|FALSE,
@@ -5839,7 +5839,7 @@ iot_register_ca_certificate <- function(caCertificate, verificationCertificate, 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$register_certificate(
+#' svc$register_certificate(
 #'   certificatePem = "string",
 #'   caCertificatePem = "string",
 #'   setAsActive = TRUE|FALSE,
@@ -5882,7 +5882,7 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 #'
 #' @section Request syntax:
 #' ```
-#' iot$register_thing(
+#' svc$register_thing(
 #'   templateBody = "string",
 #'   parameters = list(
 #'     "string"
@@ -5931,7 +5931,7 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$reject_certificate_transfer(
+#' svc$reject_certificate_transfer(
 #'   certificateId = "string",
 #'   rejectReason = "string"
 #' )
@@ -5971,7 +5971,7 @@ iot_reject_certificate_transfer <- function(certificateId, rejectReason = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$remove_thing_from_billing_group(
+#' svc$remove_thing_from_billing_group(
 #'   billingGroupName = "string",
 #'   billingGroupArn = "string",
 #'   thingName = "string",
@@ -6013,7 +6013,7 @@ iot_remove_thing_from_billing_group <- function(billingGroupName = NULL, billing
 #'
 #' @section Request syntax:
 #' ```
-#' iot$remove_thing_from_thing_group(
+#' svc$remove_thing_from_thing_group(
 #'   thingGroupName = "string",
 #'   thingGroupArn = "string",
 #'   thingName = "string",
@@ -6055,7 +6055,7 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'
 #' @section Request syntax:
 #' ```
-#' iot$replace_topic_rule(
+#' svc$replace_topic_rule(
 #'   ruleName = "string",
 #'   topicRulePayload = list(
 #'     sql = "string",
@@ -6290,7 +6290,7 @@ iot_replace_topic_rule <- function(ruleName, topicRulePayload) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$search_index(
+#' svc$search_index(
 #'   indexName = "string",
 #'   queryString = "string",
 #'   nextToken = "string",
@@ -6330,7 +6330,7 @@ iot_search_index <- function(indexName = NULL, queryString, nextToken = NULL, ma
 #'
 #' @section Request syntax:
 #' ```
-#' iot$set_default_authorizer(
+#' svc$set_default_authorizer(
 #'   authorizerName = "string"
 #' )
 #' ```
@@ -6370,7 +6370,7 @@ iot_set_default_authorizer <- function(authorizerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$set_default_policy_version(
+#' svc$set_default_policy_version(
 #'   policyName = "string",
 #'   policyVersionId = "string"
 #' )
@@ -6409,7 +6409,7 @@ iot_set_default_policy_version <- function(policyName, policyVersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$set_logging_options(
+#' svc$set_logging_options(
 #'   loggingOptionsPayload = list(
 #'     roleArn = "string",
 #'     logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
@@ -6448,7 +6448,7 @@ iot_set_logging_options <- function(loggingOptionsPayload) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$set_v2_logging_level(
+#' svc$set_v2_logging_level(
 #'   logTarget = list(
 #'     targetType = "DEFAULT"|"THING_GROUP",
 #'     targetName = "string"
@@ -6489,7 +6489,7 @@ iot_set_v2_logging_level <- function(logTarget, logLevel) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$set_v2_logging_options(
+#' svc$set_v2_logging_options(
 #'   roleArn = "string",
 #'   defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
 #'   disableAllLogs = TRUE|FALSE
@@ -6530,7 +6530,7 @@ iot_set_v2_logging_options <- function(roleArn = NULL, defaultLogLevel = NULL, d
 #'
 #' @section Request syntax:
 #' ```
-#' iot$start_on_demand_audit_task(
+#' svc$start_on_demand_audit_task(
 #'   targetCheckNames = list(
 #'     "string"
 #'   )
@@ -6573,7 +6573,7 @@ iot_start_on_demand_audit_task <- function(targetCheckNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$start_thing_registration_task(
+#' svc$start_thing_registration_task(
 #'   templateBody = "string",
 #'   inputFileBucket = "string",
 #'   inputFileKey = "string",
@@ -6611,7 +6611,7 @@ iot_start_thing_registration_task <- function(templateBody, inputFileBucket, inp
 #'
 #' @section Request syntax:
 #' ```
-#' iot$stop_thing_registration_task(
+#' svc$stop_thing_registration_task(
 #'   taskId = "string"
 #' )
 #' ```
@@ -6648,7 +6648,7 @@ iot_stop_thing_registration_task <- function(taskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -6702,7 +6702,7 @@ iot_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$test_authorization(
+#' svc$test_authorization(
 #'   principal = "string",
 #'   cognitoIdentityPoolId = "string",
 #'   authInfos = list(
@@ -6759,7 +6759,7 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' iot$test_invoke_authorizer(
+#' svc$test_invoke_authorizer(
 #'   authorizerName = "string",
 #'   token = "string",
 #'   tokenSignature = "string"
@@ -6811,7 +6811,7 @@ iot_test_invoke_authorizer <- function(authorizerName, token, tokenSignature) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$transfer_certificate(
+#' svc$transfer_certificate(
 #'   certificateId = "string",
 #'   targetAwsAccount = "string",
 #'   transferMessage = "string"
@@ -6849,7 +6849,7 @@ iot_transfer_certificate <- function(certificateId, targetAwsAccount, transferMe
 #'
 #' @section Request syntax:
 #' ```
-#' iot$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -6908,7 +6908,7 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_account_audit_configuration(
+#' svc$update_account_audit_configuration(
 #'   roleArn = "string",
 #'   auditNotificationTargetConfigurations = list(
 #'     list(
@@ -6960,7 +6960,7 @@ iot_update_account_audit_configuration <- function(roleArn = NULL, auditNotifica
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_authorizer(
+#' svc$update_authorizer(
 #'   authorizerName = "string",
 #'   authorizerFunctionArn = "string",
 #'   tokenKeyName = "string",
@@ -7007,7 +7007,7 @@ iot_update_authorizer <- function(authorizerName, authorizerFunctionArn = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_billing_group(
+#' svc$update_billing_group(
 #'   billingGroupName = "string",
 #'   billingGroupProperties = list(
 #'     billingGroupDescription = "string"
@@ -7055,7 +7055,7 @@ iot_update_billing_group <- function(billingGroupName, billingGroupProperties, e
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_ca_certificate(
+#' svc$update_ca_certificate(
 #'   certificateId = "string",
 #'   newStatus = "ACTIVE"|"INACTIVE",
 #'   newAutoRegistrationStatus = "ENABLE"|"DISABLE",
@@ -7114,7 +7114,7 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_certificate(
+#' svc$update_certificate(
 #'   certificateId = "string",
 #'   newStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
 #' )
@@ -7161,7 +7161,7 @@ iot_update_certificate <- function(certificateId, newStatus) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_dynamic_thing_group(
+#' svc$update_dynamic_thing_group(
 #'   thingGroupName = "string",
 #'   thingGroupProperties = list(
 #'     thingGroupDescription = "string",
@@ -7209,7 +7209,7 @@ iot_update_dynamic_thing_group <- function(thingGroupName, thingGroupProperties,
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_event_configurations(
+#' svc$update_event_configurations(
 #'   eventConfigurations = list(
 #'     list(
 #'       Enabled = TRUE|FALSE
@@ -7250,7 +7250,7 @@ iot_update_event_configurations <- function(eventConfigurations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_indexing_configuration(
+#' svc$update_indexing_configuration(
 #'   thingIndexingConfiguration = list(
 #'     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
 #'     thingConnectivityIndexingMode = "OFF"|"STATUS"
@@ -7301,7 +7301,7 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_job(
+#' svc$update_job(
 #'   jobId = "string",
 #'   description = "string",
 #'   presignedUrlConfig = list(
@@ -7367,7 +7367,7 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_role_alias(
+#' svc$update_role_alias(
 #'   roleAlias = "string",
 #'   roleArn = "string",
 #'   credentialDurationSeconds = 123
@@ -7423,7 +7423,7 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_scheduled_audit(
+#' svc$update_scheduled_audit(
 #'   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
 #'   dayOfMonth = "string",
 #'   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
@@ -7487,7 +7487,7 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_security_profile(
+#' svc$update_security_profile(
 #'   securityProfileName = "string",
 #'   securityProfileDescription = "string",
 #'   behaviors = list(
@@ -7565,7 +7565,7 @@ iot_update_security_profile <- function(securityProfileName, securityProfileDesc
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_stream(
+#' svc$update_stream(
 #'   streamId = "string",
 #'   description = "string",
 #'   files = list(
@@ -7626,7 +7626,7 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_thing(
+#' svc$update_thing(
 #'   thingName = "string",
 #'   thingTypeName = "string",
 #'   attributePayload = list(
@@ -7674,7 +7674,7 @@ iot_update_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_thing_group(
+#' svc$update_thing_group(
 #'   thingGroupName = "string",
 #'   thingGroupProperties = list(
 #'     thingGroupDescription = "string",
@@ -7726,7 +7726,7 @@ iot_update_thing_group <- function(thingGroupName, thingGroupProperties, expecte
 #'
 #' @section Request syntax:
 #' ```
-#' iot$update_thing_groups_for_thing(
+#' svc$update_thing_groups_for_thing(
 #'   thingName = "string",
 #'   thingGroupsToAdd = list(
 #'     "string"
@@ -7769,7 +7769,7 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #'
 #' @section Request syntax:
 #' ```
-#' iot$validate_security_profile_behaviors(
+#' svc$validate_security_profile_behaviors(
 #'   behaviors = list(
 #'     list(
 #'       name = "string",

@@ -23,7 +23,7 @@ partition group is a group of partitions that spans multiple physical
 HSMs.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$create_hapg(
+\preformatted{svc$create_hapg(
   Label = "string"
 )
 }

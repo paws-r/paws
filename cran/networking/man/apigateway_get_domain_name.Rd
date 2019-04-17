@@ -15,7 +15,7 @@ Represents a domain name that is contained in a simpler, more intuitive
 URL that can be called.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_domain_name(
+\preformatted{svc$get_domain_name(
   domainName = "string"
 )
 }

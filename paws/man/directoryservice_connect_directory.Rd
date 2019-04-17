@@ -34,7 +34,7 @@ about what permissions are required to run the \code{ConnectDirectory}
 operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$connect_directory(
+\preformatted{svc$connect_directory(
   Name = "string",
   ShortName = "string",
   Password = "string",

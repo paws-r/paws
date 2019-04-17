@@ -25,7 +25,7 @@ Cognito identity, the ID must be in \href{https://docs.aws.amazon.com/cognitoide
 instead.
 }
 \section{Request syntax}{
-\preformatted{iot$list_principal_policies(
+\preformatted{svc$list_principal_policies(
   principal = "string",
   marker = "string",
   pageSize = 123,

@@ -25,11 +25,10 @@ NULL
 #' account can use IAM policies to restrict access resources in the
 #' resource share.
 #'
-#' @section Example:
-#' ```
-#' ram <- paws::ram()
-#' ram$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_resource_share_invitation(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

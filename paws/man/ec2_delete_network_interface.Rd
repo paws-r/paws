@@ -19,7 +19,7 @@ Deletes the specified network interface. You must detach the network
 interface before you can delete it.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_network_interface(
+\preformatted{svc$delete_network_interface(
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string"
 )
@@ -28,7 +28,7 @@ interface before you can delete it.
 
 \examples{
 # This example deletes the specified network interface.
-\donttest{ec2$delete_network_interface(
+\donttest{svc$delete_network_interface(
   NetworkInterfaceId = "eni-e5aa89a3"
 )}
 

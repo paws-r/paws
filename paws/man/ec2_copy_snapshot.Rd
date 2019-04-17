@@ -101,7 +101,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$copy_snapshot(
+\preformatted{svc$copy_snapshot(
   Description = "string",
   DestinationRegion = "string",
   Encrypted = TRUE|FALSE,
@@ -119,7 +119,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
 # ``us-east-1`` region and adds a short description to identify the
 # snapshot.
-\donttest{ec2$copy_snapshot(
+\donttest{svc$copy_snapshot(
   Description = "This is my copied snapshot.",
   DestinationRegion = "us-east-1",
   SourceRegion = "us-west-2",

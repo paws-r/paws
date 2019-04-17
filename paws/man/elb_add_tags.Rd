@@ -24,7 +24,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$add_tags(
+\preformatted{svc$add_tags(
   LoadBalancerNames = list(
     "string"
   ),
@@ -40,7 +40,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 \examples{
 # This example adds two tags to the specified load balancer.
-\donttest{elb$add_tags(
+\donttest{svc$add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),

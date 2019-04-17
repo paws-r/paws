@@ -25,7 +25,7 @@ attributeName=Color and attributeValue=Red retrieves all things in the
 registry that contain an attribute \strong{Color} with the value \strong{Red}.
 }
 \section{Request syntax}{
-\preformatted{iot$list_things(
+\preformatted{svc$list_things(
   nextToken = "string",
   maxResults = 123,
   attributeName = "string",

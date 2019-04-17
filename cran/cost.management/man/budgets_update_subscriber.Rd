@@ -23,7 +23,7 @@ want to update.}
 Updates a subscriber.
 }
 \section{Request syntax}{
-\preformatted{budgets$update_subscriber(
+\preformatted{svc$update_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(

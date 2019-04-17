@@ -21,7 +21,7 @@ currently supported. The response contains a
 TrustedAdvisorCheckDescription for each check.
 }
 \section{Request syntax}{
-\preformatted{support$describe_trusted_advisor_checks(
+\preformatted{svc$describe_trusted_advisor_checks(
   language = "string"
 )
 }

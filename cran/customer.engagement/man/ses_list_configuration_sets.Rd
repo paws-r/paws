@@ -30,7 +30,7 @@ execute the \code{ListConfigurationSets} operation again, passing the
 additional results.
 }
 \section{Request syntax}{
-\preformatted{ses$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   MaxItems = 123
 )

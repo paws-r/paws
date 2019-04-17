@@ -20,7 +20,7 @@ The state machine itself is deleted after all executions are completed
 or deleted.
 }
 \section{Request syntax}{
-\preformatted{sfn$delete_state_machine(
+\preformatted{svc$delete_state_machine(
   stateMachineArn = "string"
 )
 }

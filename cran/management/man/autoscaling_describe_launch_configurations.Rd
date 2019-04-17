@@ -21,7 +21,7 @@ is \code{50} and the maximum value is \code{100}.}
 Describes one or more launch configurations.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_launch_configurations(
+\preformatted{svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "string"
   ),
@@ -33,7 +33,7 @@ Describes one or more launch configurations.
 
 \examples{
 # This example describes the specified launch configuration.
-\donttest{autoscaling$describe_launch_configurations(
+\donttest{svc$describe_launch_configurations(
   LaunchConfigurationNames = list(
     "my-launch-config"
   )

@@ -35,7 +35,7 @@ add the tags when you first create the tuning job by specifying them in
 the \code{Tags} parameter of CreateHyperParameterTuningJob
 }
 \section{Request syntax}{
-\preformatted{sagemaker$add_tags(
+\preformatted{svc$add_tags(
   ResourceArn = "string",
   Tags = list(
     list(

@@ -52,7 +52,7 @@ public AFIs, private AFIs that you own, and AFIs owned by other AWS
 accounts for which you have load permissions.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_fpga_images(
+\preformatted{svc$describe_fpga_images(
   DryRun = TRUE|FALSE,
   FpgaImageIds = list(
     "string"

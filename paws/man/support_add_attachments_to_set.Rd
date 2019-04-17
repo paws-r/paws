@@ -30,7 +30,7 @@ indicates when the set expires. The maximum number of attachments in a
 set is 3, and the maximum size of any attachment in the set is 5 MB.
 }
 \section{Request syntax}{
-\preformatted{support$add_attachments_to_set(
+\preformatted{svc$add_attachments_to_set(
   attachmentSetId = "string",
   attachments = list(
     list(

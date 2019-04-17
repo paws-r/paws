@@ -41,7 +41,7 @@ parameter group has been created or modified.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_cluster_parameter_group(
+\preformatted{svc$modify_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   Parameters = list(
     list(

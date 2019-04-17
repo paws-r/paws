@@ -24,7 +24,7 @@ You cannot update a scaling plan if it is in the process of being
 created, updated, or deleted.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$update_scaling_plan(
+\preformatted{svc$update_scaling_plan(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123,
   ApplicationSource = list(

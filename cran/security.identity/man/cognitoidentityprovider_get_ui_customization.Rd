@@ -20,7 +20,7 @@ client, but there is an existing pool level customization (app
 then an empty shape is returned.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_ui_customization(
+\preformatted{svc$get_ui_customization(
   UserPoolId = "string",
   ClientId = "string"
 )

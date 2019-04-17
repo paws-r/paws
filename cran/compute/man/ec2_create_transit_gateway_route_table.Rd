@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a route table for the specified transit gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_transit_gateway_route_table(
+\preformatted{svc$create_transit_gateway_route_table(
   TransitGatewayId = "string",
   TagSpecifications = list(
     list(

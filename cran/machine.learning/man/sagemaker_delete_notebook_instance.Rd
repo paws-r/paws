@@ -19,7 +19,7 @@ SageMaker removes the ML compute instance, and deletes the ML storage
 volume and the network interface associated with the notebook instance.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_notebook_instance(
+\preformatted{svc$delete_notebook_instance(
   NotebookInstanceName = "string"
 )
 }

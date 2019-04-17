@@ -16,7 +16,7 @@ Deletes a profile that can be applied to one or more private device
 instances.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_instance_profile(
+\preformatted{svc$delete_instance_profile(
   arn = "string"
 )
 }

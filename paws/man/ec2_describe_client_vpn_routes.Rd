@@ -27,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Describes the routes for the specified Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_client_vpn_routes(
+\preformatted{svc$describe_client_vpn_routes(
   ClientVpnEndpointId = "string",
   Filters = list(
     list(

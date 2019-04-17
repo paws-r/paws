@@ -48,12 +48,6 @@ of individual services as well as permission to view and apply tags to
 those resources. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
 in the \emph{AWS Resource Groups and Tag Editor User Guide}.
 }
-\section{Example}{
-\preformatted{resourcegroupstaggingapi <- paws::resourcegroupstaggingapi()
-resourcegroupstaggingapi$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -65,3 +59,9 @@ resourcegroupstaggingapi$operation()
 }
 }
 
+\examples{
+\donttest{svc$get_resources(
+  Foo = 123
+)}
+
+}

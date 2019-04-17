@@ -30,7 +30,7 @@ To ensure immediate deletion of all related resources, before calling
 delete any resources that belong to the database.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_database(
+\preformatted{svc$delete_database(
   CatalogId = "string",
   Name = "string"
 )

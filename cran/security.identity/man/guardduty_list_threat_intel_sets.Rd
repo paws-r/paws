@@ -18,7 +18,7 @@ guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
 Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_threat_intel_sets(
+\preformatted{svc$list_threat_intel_sets(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"

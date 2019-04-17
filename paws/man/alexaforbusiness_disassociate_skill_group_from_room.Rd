@@ -18,7 +18,7 @@ Disassociates a skill group from a specified room. This disables all
 skills in the skill group on all devices in the room.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$disassociate_skill_group_from_room(
+\preformatted{svc$disassociate_skill_group_from_room(
   SkillGroupArn = "string",
   RoomArn = "string"
 )

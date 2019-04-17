@@ -31,7 +31,7 @@ cluster's certificate signing request (CSR) with your issuing CA. To
 get the cluster's CSR, use DescribeClusters.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$initialize_cluster(
+\preformatted{svc$initialize_cluster(
   ClusterId = "string",
   SignedCert = "string",
   TrustAnchor = "string"

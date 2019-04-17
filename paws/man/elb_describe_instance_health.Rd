@@ -21,7 +21,7 @@ even if they are no longer registered with the load balancer. The state
 of terminated instances is not returned.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_instance_health(
+\preformatted{svc$describe_instance_health(
   LoadBalancerName = "string",
   Instances = list(
     list(
@@ -35,7 +35,7 @@ of terminated instances is not returned.
 \examples{
 # This example describes the health of the instances for the specified
 # load balancer.
-\donttest{elb$describe_instance_health(
+\donttest{svc$describe_instance_health(
   LoadBalancerName = "my-load-balancer"
 )}
 

@@ -20,7 +20,7 @@ Currently, only the \code{csv} format is supported.}
 Import API keys from an external source, such as a CSV-formatted file.
 }
 \section{Request syntax}{
-\preformatted{apigateway$import_api_keys(
+\preformatted{svc$import_api_keys(
   body = raw,
   format = "csv",
   failOnWarnings = TRUE|FALSE

@@ -15,7 +15,7 @@ Makes a private skill available for enrolled users to enable on their
 devices.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$associate_skill_with_users(
+\preformatted{svc$associate_skill_with_users(
   SkillId = "string"
 )
 }

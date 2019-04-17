@@ -29,7 +29,7 @@ returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_build(
+\preformatted{svc$describe_build(
   BuildId = "string"
 )
 }

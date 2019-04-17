@@ -24,7 +24,7 @@ Returns detailed information about recovery points of the type specified
 by a resource Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-\preformatted{backup$list_recovery_points_by_resource(
+\preformatted{svc$list_recovery_points_by_resource(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123

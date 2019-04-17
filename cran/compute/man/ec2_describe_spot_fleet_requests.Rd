@@ -30,7 +30,7 @@ Spot Fleet requests are deleted 48 hours after they are canceled and
 their instances are terminated.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_spot_fleet_requests(
+\preformatted{svc$describe_spot_fleet_requests(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
@@ -43,7 +43,7 @@ their instances are terminated.
 
 \examples{
 # This example describes the specified Spot fleet request.
-\donttest{ec2$describe_spot_fleet_requests(
+\donttest{svc$describe_spot_fleet_requests(
   SpotFleetRequestIds = list(
     "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
   )

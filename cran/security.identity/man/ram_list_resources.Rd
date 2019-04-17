@@ -28,7 +28,7 @@ value.}
 Lists the resources that the specified principal can access.
 }
 \section{Request syntax}{
-\preformatted{ram$list_resources(
+\preformatted{svc$list_resources(
   resourceOwner = "SELF"|"OTHER-ACCOUNTS",
   principal = "string",
   resourceType = "string",

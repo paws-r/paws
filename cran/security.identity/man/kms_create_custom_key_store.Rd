@@ -100,7 +100,7 @@ store. For help with failures, see \href{http://docs.aws.amazon.com/kms/latest/d
 in the \emph{AWS KMS Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$create_custom_key_store(
+\preformatted{svc$create_custom_key_store(
   CustomKeyStoreName = "string",
   CloudHsmClusterId = "string",
   TrustAnchorCertificate = "string",

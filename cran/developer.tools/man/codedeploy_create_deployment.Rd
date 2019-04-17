@@ -82,7 +82,7 @@ used as part of the new deployment.
 Deploys an application revision through the specified deployment group.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$create_deployment(
+\preformatted{svc$create_deployment(
   applicationName = "string",
   deploymentGroupName = "string",
   revision = list(

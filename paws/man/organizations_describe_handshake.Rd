@@ -29,7 +29,7 @@ no longer accessible.
 This operation can be called from any account in the organization.
 }
 \section{Request syntax}{
-\preformatted{organizations$describe_handshake(
+\preformatted{svc$describe_handshake(
   HandshakeId = "string"
 )
 }
@@ -40,7 +40,7 @@ This operation can be called from any account in the organization.
 # handshake. The handshake ID comes either from the original call to
 # "InviteAccountToOrganization", or from a call to
 # "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-\donttest{organizations$describe_handshake(
+\donttest{svc$describe_handshake(
   HandshakeId = "h-examplehandshakeid111"
 )}
 

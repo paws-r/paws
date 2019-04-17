@@ -19,7 +19,7 @@ list.}
 Lists the data sources for a given API.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_data_sources(
+\preformatted{svc$list_data_sources(
   apiId = "string",
   nextToken = "string",
   maxResults = 123

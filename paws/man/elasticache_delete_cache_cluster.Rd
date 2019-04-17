@@ -31,7 +31,7 @@ replication group.
 This operation is not valid for Redis (cluster mode enabled) clusters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_cache_cluster(
+\preformatted{svc$delete_cache_cluster(
   CacheClusterId = "string",
   FinalSnapshotIdentifier = "string"
 )

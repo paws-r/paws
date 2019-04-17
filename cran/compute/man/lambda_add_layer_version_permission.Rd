@@ -39,7 +39,7 @@ To revoke permission, call RemoveLayerVersionPermission with the
 statement ID that you specified when you added it.
 }
 \section{Request syntax}{
-\preformatted{lambda$add_layer_version_permission(
+\preformatted{svc$add_layer_version_permission(
   LayerName = "string",
   VersionNumber = 123,
   StatementId = "string",

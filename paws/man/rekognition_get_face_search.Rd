@@ -60,7 +60,7 @@ from the start of the video, persons are matched. You can also sort by
 persons by specifying \code{INDEX} for the \code{SORTBY} input parameter.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_face_search(
+\preformatted{svc$get_face_search(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",

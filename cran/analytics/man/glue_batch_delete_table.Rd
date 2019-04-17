@@ -31,7 +31,7 @@ To ensure immediate deletion of all related resources, before calling
 table.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_delete_table(
+\preformatted{svc$batch_delete_table(
   CatalogId = "string",
   DatabaseName = "string",
   TablesToDelete = list(

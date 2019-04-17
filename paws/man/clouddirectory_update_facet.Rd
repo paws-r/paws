@@ -31,7 +31,7 @@ Does the following:
 }
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$update_facet(
+\preformatted{svc$update_facet(
   SchemaArn = "string",
   Name = "string",
   AttributeUpdates = list(

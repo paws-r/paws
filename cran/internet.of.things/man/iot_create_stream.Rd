@@ -30,7 +30,7 @@ that existed and was deleted within last 90 days, we will resurrect that
 old stream by incrementing the version by 1.
 }
 \section{Request syntax}{
-\preformatted{iot$create_stream(
+\preformatted{svc$create_stream(
   streamId = "string",
   description = "string",
   files = list(

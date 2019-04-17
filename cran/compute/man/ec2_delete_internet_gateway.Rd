@@ -19,7 +19,7 @@ Deletes the specified internet gateway. You must detach the internet
 gateway from the VPC before you can delete it.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_internet_gateway(
+\preformatted{svc$delete_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string"
 )
@@ -28,7 +28,7 @@ gateway from the VPC before you can delete it.
 
 \examples{
 # This example deletes the specified Internet gateway.
-\donttest{ec2$delete_internet_gateway(
+\donttest{svc$delete_internet_gateway(
   InternetGatewayId = "igw-c0a643a9"
 )}
 

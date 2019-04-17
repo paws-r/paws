@@ -7,11 +7,10 @@ NULL
 #' @description
 #' AWS Elemental MediaConvert
 #'
-#' @section Example:
-#' ```
-#' mediaconvert <- paws::mediaconvert()
-#' mediaconvert$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_certificate(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

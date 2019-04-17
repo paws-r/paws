@@ -17,7 +17,7 @@ You cannot stop a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{AVAILABLE}, \code{IMPAIRED}, \code{UNHEALTHY}, or \code{ERROR}.
 }
 \section{Request syntax}{
-\preformatted{workspaces$stop_workspaces(
+\preformatted{svc$stop_workspaces(
   StopWorkspaceRequests = list(
     list(
       WorkspaceId = "string"

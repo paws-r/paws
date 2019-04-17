@@ -30,7 +30,7 @@ that the VPC uses to connect.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_vpc_peering_connections(
+\preformatted{svc$describe_vpc_peering_connections(
   FleetId = "string"
 )
 }

@@ -33,7 +33,7 @@ Describes the events for the specified EC2 Fleet during the specified
 time.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_fleet_history(
+\preformatted{svc$describe_fleet_history(
   DryRun = TRUE|FALSE,
   EventType = "instance-change"|"fleet-change"|"service-error",
   MaxResults = 123,

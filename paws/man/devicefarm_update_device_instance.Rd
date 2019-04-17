@@ -18,7 +18,7 @@ with the device instance.}
 Updates information about an existing private device instance.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_device_instance(
+\preformatted{svc$update_device_instance(
   arn = "string",
   profileArn = "string",
   labels = list(

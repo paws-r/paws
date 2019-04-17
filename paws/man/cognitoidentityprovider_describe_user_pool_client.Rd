@@ -17,7 +17,7 @@ Client method for returning the configuration information and metadata
 of the specified user pool app client.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_user_pool_client(
+\preformatted{svc$describe_user_pool_client(
   UserPoolId = "string",
   ClientId = "string"
 )

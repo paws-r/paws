@@ -54,7 +54,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$invite_account_to_organization(
+\preformatted{svc$invite_account_to_organization(
   Target = list(
     Id = "string",
     Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
@@ -68,7 +68,7 @@ account.
 # The following example shows the admin of the master account owned by
 # bill@example.com inviting the account owned by juan@example.com to join
 # an organization.
-\donttest{organizations$invite_account_to_organization(
+\donttest{svc$invite_account_to_organization(
   Notes = "This is a request for Juan's account to join Bill's organization",
   Target = list(
     Id = "juan@example.com",

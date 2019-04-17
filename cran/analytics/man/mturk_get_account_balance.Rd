@@ -12,7 +12,7 @@ The \code{GetAccountBalance} operation retrieves the amount of money in your
 Amazon Mechanical Turk account.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_account_balance()
+\preformatted{svc$get_account_balance()
 }
 }
 

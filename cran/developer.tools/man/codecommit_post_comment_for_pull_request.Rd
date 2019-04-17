@@ -38,7 +38,7 @@ request that used that token.}
 Posts a comment on a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$post_comment_for_pull_request(
+\preformatted{svc$post_comment_for_pull_request(
   pullRequestId = "string",
   repositoryName = "string",
   beforeCommitId = "string",

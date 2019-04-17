@@ -21,7 +21,7 @@ request parameters, they are not changed. When a resource is deleted,
 the tags associated with that resource are deleted as well.
 }
 \section{Request syntax}{
-\preformatted{configservice$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

@@ -45,7 +45,7 @@ Example: \code{my-cluster-param-group1}}
 Copies the specified DB cluster parameter group.
 }
 \section{Request syntax}{
-\preformatted{docdb$copy_db_cluster_parameter_group(
+\preformatted{svc$copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupDescription = "string",

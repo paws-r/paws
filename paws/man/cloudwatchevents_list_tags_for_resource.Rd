@@ -14,7 +14,7 @@ Displays the tags associated with a CloudWatch Events resource. In
 CloudWatch Events, rules can be tagged.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string"
 )
 }

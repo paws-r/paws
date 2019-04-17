@@ -25,7 +25,7 @@ the specified object.}
 Applies a Legal Hold configuration to the specified object.
 }
 \section{Request syntax}{
-\preformatted{s3$put_object_legal_hold(
+\preformatted{svc$put_object_legal_hold(
   Bucket = "string",
   Key = "string",
   LegalHold = list(

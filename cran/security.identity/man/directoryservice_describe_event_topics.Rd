@@ -26,7 +26,7 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_event_topics(
+\preformatted{svc$describe_event_topics(
   DirectoryId = "string",
   TopicNames = list(
     "string"

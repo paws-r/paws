@@ -26,7 +26,7 @@ is called, the certificate will be returned to the source's account in
 the INACTIVE state.
 }
 \section{Request syntax}{
-\preformatted{iot$reject_certificate_transfer(
+\preformatted{svc$reject_certificate_transfer(
   certificateId = "string",
   rejectReason = "string"
 )

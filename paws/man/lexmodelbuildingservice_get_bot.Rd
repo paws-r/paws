@@ -19,7 +19,7 @@ bot name and the bot version or alias.
 This operation requires permissions for the \code{lex:GetBot} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot(
+\preformatted{svc$get_bot(
   name = "string",
   versionOrAlias = "string"
 )
@@ -28,7 +28,7 @@ This operation requires permissions for the \code{lex:GetBot} action.
 
 \examples{
 # This example shows how to get configuration information for a bot.
-\donttest{lexmodelbuildingservice$get_bot(
+\donttest{svc$get_bot(
   name = "DocOrderPizza",
   versionOrAlias = "$LATEST"
 )}

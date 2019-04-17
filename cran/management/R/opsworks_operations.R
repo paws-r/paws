@@ -30,7 +30,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$assign_instance(
+#' svc$assign_instance(
 #'   InstanceId = "string",
 #'   LayerIds = list(
 #'     "string"
@@ -81,7 +81,7 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$assign_volume(
+#' svc$assign_volume(
 #'   VolumeId = "string",
 #'   InstanceId = "string"
 #' )
@@ -128,7 +128,7 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$associate_elastic_ip(
+#' svc$associate_elastic_ip(
 #'   ElasticIp = "string",
 #'   InstanceId = "string"
 #' )
@@ -181,7 +181,7 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$attach_elastic_load_balancer(
+#' svc$attach_elastic_load_balancer(
 #'   ElasticLoadBalancerName = "string",
 #'   LayerId = "string"
 #' )
@@ -432,7 +432,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$clone_stack(
+#' svc$clone_stack(
 #'   SourceStackId = "string",
 #'   Name = "string",
 #'   Region = "string",
@@ -548,7 +548,7 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_app(
+#' svc$create_app(
 #'   StackId = "string",
 #'   Shortname = "string",
 #'   Name = "string",
@@ -647,7 +647,7 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_deployment(
+#' svc$create_deployment(
 #'   StackId = "string",
 #'   AppId = "string",
 #'   InstanceIds = list(
@@ -822,7 +822,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_instance(
+#' svc$create_instance(
 #'   StackId = "string",
 #'   LayerIds = list(
 #'     "string"
@@ -964,7 +964,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_layer(
+#' svc$create_layer(
 #'   StackId = "string",
 #'   Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
 #'   Name = "string",
@@ -1290,7 +1290,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_stack(
+#' svc$create_stack(
 #'   Name = "string",
 #'   Region = "string",
 #'   VpcId = "string",
@@ -1374,7 +1374,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$create_user_profile(
+#' svc$create_user_profile(
 #'   IamUserArn = "string",
 #'   SshUsername = "string",
 #'   SshPublicKey = "string",
@@ -1418,7 +1418,7 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$delete_app(
+#' svc$delete_app(
 #'   AppId = "string"
 #' )
 #' ```
@@ -1466,7 +1466,7 @@ opsworks_delete_app <- function(AppId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$delete_instance(
+#' svc$delete_instance(
 #'   InstanceId = "string",
 #'   DeleteElasticIp = TRUE|FALSE,
 #'   DeleteVolumes = TRUE|FALSE
@@ -1512,7 +1512,7 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$delete_layer(
+#' svc$delete_layer(
 #'   LayerId = "string"
 #' )
 #' ```
@@ -1556,7 +1556,7 @@ opsworks_delete_layer <- function(LayerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$delete_stack(
+#' svc$delete_stack(
 #'   StackId = "string"
 #' )
 #' ```
@@ -1596,7 +1596,7 @@ opsworks_delete_stack <- function(StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$delete_user_profile(
+#' svc$delete_user_profile(
 #'   IamUserArn = "string"
 #' )
 #' ```
@@ -1639,7 +1639,7 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$deregister_ecs_cluster(
+#' svc$deregister_ecs_cluster(
 #'   EcsClusterArn = "string"
 #' )
 #' ```
@@ -1682,7 +1682,7 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$deregister_elastic_ip(
+#' svc$deregister_elastic_ip(
 #'   ElasticIp = "string"
 #' )
 #' ```
@@ -1726,7 +1726,7 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$deregister_instance(
+#' svc$deregister_instance(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -1767,7 +1767,7 @@ opsworks_deregister_instance <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$deregister_rds_db_instance(
+#' svc$deregister_rds_db_instance(
 #'   RdsDbInstanceArn = "string"
 #' )
 #' ```
@@ -1812,7 +1812,7 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$deregister_volume(
+#' svc$deregister_volume(
 #'   VolumeId = "string"
 #' )
 #' ```
@@ -1851,7 +1851,7 @@ opsworks_deregister_volume <- function(VolumeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_agent_versions(
+#' svc$describe_agent_versions(
 #'   StackId = "string",
 #'   ConfigurationManager = list(
 #'     Name = "string",
@@ -1902,7 +1902,7 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_apps(
+#' svc$describe_apps(
 #'   StackId = "string",
 #'   AppIds = list(
 #'     "string"
@@ -1956,7 +1956,7 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_commands(
+#' svc$describe_commands(
 #'   DeploymentId = "string",
 #'   InstanceId = "string",
 #'   CommandIds = list(
@@ -2009,7 +2009,7 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_deployments(
+#' svc$describe_deployments(
 #'   StackId = "string",
 #'   AppId = "string",
 #'   DeploymentIds = list(
@@ -2074,7 +2074,7 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_ecs_clusters(
+#' svc$describe_ecs_clusters(
 #'   EcsClusterArns = list(
 #'     "string"
 #'   ),
@@ -2132,7 +2132,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_elastic_ips(
+#' svc$describe_elastic_ips(
 #'   InstanceId = "string",
 #'   StackId = "string",
 #'   Ips = list(
@@ -2182,7 +2182,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_elastic_load_balancers(
+#' svc$describe_elastic_load_balancers(
 #'   StackId = "string",
 #'   LayerIds = list(
 #'     "string"
@@ -2234,7 +2234,7 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_instances(
+#' svc$describe_instances(
 #'   StackId = "string",
 #'   LayerId = "string",
 #'   InstanceIds = list(
@@ -2284,7 +2284,7 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_layers(
+#' svc$describe_layers(
 #'   StackId = "string",
 #'   LayerIds = list(
 #'     "string"
@@ -2330,7 +2330,7 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_load_based_auto_scaling(
+#' svc$describe_load_based_auto_scaling(
 #'   LayerIds = list(
 #'     "string"
 #'   )
@@ -2444,7 +2444,7 @@ opsworks_describe_operating_systems <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_permissions(
+#' svc$describe_permissions(
 #'   IamUserArn = "string",
 #'   StackId = "string"
 #' )
@@ -2493,7 +2493,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_raid_arrays(
+#' svc$describe_raid_arrays(
 #'   InstanceId = "string",
 #'   StackId = "string",
 #'   RaidArrayIds = list(
@@ -2542,7 +2542,7 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_rds_db_instances(
+#' svc$describe_rds_db_instances(
 #'   StackId = "string",
 #'   RdsDbInstanceArns = list(
 #'     "string"
@@ -2595,7 +2595,7 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_service_errors(
+#' svc$describe_service_errors(
 #'   StackId = "string",
 #'   InstanceId = "string",
 #'   ServiceErrorIds = list(
@@ -2640,7 +2640,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_stack_provisioning_parameters(
+#' svc$describe_stack_provisioning_parameters(
 #'   StackId = "string"
 #' )
 #' ```
@@ -2683,7 +2683,7 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_stack_summary(
+#' svc$describe_stack_summary(
 #'   StackId = "string"
 #' )
 #' ```
@@ -2726,7 +2726,7 @@ opsworks_describe_stack_summary <- function(StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_stacks(
+#' svc$describe_stacks(
 #'   StackIds = list(
 #'     "string"
 #'   )
@@ -2772,7 +2772,7 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_time_based_auto_scaling(
+#' svc$describe_time_based_auto_scaling(
 #'   InstanceIds = list(
 #'     "string"
 #'   )
@@ -2815,7 +2815,7 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_user_profiles(
+#' svc$describe_user_profiles(
 #'   IamUserArns = list(
 #'     "string"
 #'   )
@@ -2868,7 +2868,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$describe_volumes(
+#' svc$describe_volumes(
 #'   InstanceId = "string",
 #'   StackId = "string",
 #'   RaidArrayId = "string",
@@ -2916,7 +2916,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$detach_elastic_load_balancer(
+#' svc$detach_elastic_load_balancer(
 #'   ElasticLoadBalancerName = "string",
 #'   LayerId = "string"
 #' )
@@ -2960,7 +2960,7 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$disassociate_elastic_ip(
+#' svc$disassociate_elastic_ip(
 #'   ElasticIp = "string"
 #' )
 #' ```
@@ -3003,7 +3003,7 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$get_hostname_suggestion(
+#' svc$get_hostname_suggestion(
 #'   LayerId = "string"
 #' )
 #' ```
@@ -3044,7 +3044,7 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$grant_access(
+#' svc$grant_access(
 #'   InstanceId = "string",
 #'   ValidForInMinutes = 123
 #' )
@@ -3084,7 +3084,7 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$list_tags(
+#' svc$list_tags(
 #'   ResourceArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -3129,7 +3129,7 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$reboot_instance(
+#' svc$reboot_instance(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -3174,7 +3174,7 @@ opsworks_reboot_instance <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$register_ecs_cluster(
+#' svc$register_ecs_cluster(
 #'   EcsClusterArn = "string",
 #'   StackId = "string"
 #' )
@@ -3221,7 +3221,7 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$register_elastic_ip(
+#' svc$register_elastic_ip(
 #'   ElasticIp = "string",
 #'   StackId = "string"
 #' )
@@ -3289,7 +3289,7 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$register_instance(
+#' svc$register_instance(
 #'   StackId = "string",
 #'   Hostname = "string",
 #'   PublicIp = "string",
@@ -3343,7 +3343,7 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$register_rds_db_instance(
+#' svc$register_rds_db_instance(
 #'   StackId = "string",
 #'   RdsDbInstanceArn = "string",
 #'   DbUser = "string",
@@ -3392,7 +3392,7 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$register_volume(
+#' svc$register_volume(
 #'   Ec2VolumeId = "string",
 #'   StackId = "string"
 #' )
@@ -3451,7 +3451,7 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$set_load_based_auto_scaling(
+#' svc$set_load_based_auto_scaling(
 #'   LayerId = "string",
 #'   Enable = TRUE|FALSE,
 #'   UpScaling = list(
@@ -3535,7 +3535,7 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$set_permission(
+#' svc$set_permission(
 #'   StackId = "string",
 #'   IamUserArn = "string",
 #'   AllowSsh = TRUE|FALSE,
@@ -3585,7 +3585,7 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$set_time_based_auto_scaling(
+#' svc$set_time_based_auto_scaling(
 #'   InstanceId = "string",
 #'   AutoScalingSchedule = list(
 #'     Monday = list(
@@ -3651,7 +3651,7 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$start_instance(
+#' svc$start_instance(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -3692,7 +3692,7 @@ opsworks_start_instance <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$start_stack(
+#' svc$start_stack(
 #'   StackId = "string"
 #' )
 #' ```
@@ -3738,7 +3738,7 @@ opsworks_start_stack <- function(StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$stop_instance(
+#' svc$stop_instance(
 #'   InstanceId = "string",
 #'   Force = TRUE|FALSE
 #' )
@@ -3780,7 +3780,7 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$stop_stack(
+#' svc$stop_stack(
 #'   StackId = "string"
 #' )
 #' ```
@@ -3836,7 +3836,7 @@ opsworks_stop_stack <- function(StackId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -3884,7 +3884,7 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$unassign_instance(
+#' svc$unassign_instance(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -3927,7 +3927,7 @@ opsworks_unassign_instance <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$unassign_volume(
+#' svc$unassign_volume(
 #'   VolumeId = "string"
 #' )
 #' ```
@@ -3963,7 +3963,7 @@ opsworks_unassign_volume <- function(VolumeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -4036,7 +4036,7 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_app(
+#' svc$update_app(
 #'   AppId = "string",
 #'   Name = "string",
 #'   Description = "string",
@@ -4117,7 +4117,7 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_elastic_ip(
+#' svc$update_elastic_ip(
 #'   ElasticIp = "string",
 #'   Name = "string"
 #' )
@@ -4245,7 +4245,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_instance(
+#' svc$update_instance(
 #'   InstanceId = "string",
 #'   LayerIds = list(
 #'     "string"
@@ -4351,7 +4351,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_layer(
+#' svc$update_layer(
 #'   LayerId = "string",
 #'   Name = "string",
 #'   Shortname = "string",
@@ -4462,7 +4462,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_my_user_profile(
+#' svc$update_my_user_profile(
 #'   SshPublicKey = "string"
 #' )
 #' ```
@@ -4505,7 +4505,7 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_rds_db_instance(
+#' svc$update_rds_db_instance(
 #'   RdsDbInstanceArn = "string",
 #'   DbUser = "string",
 #'   DbPassword = "string"
@@ -4707,7 +4707,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_stack(
+#' svc$update_stack(
 #'   StackId = "string",
 #'   Name = "string",
 #'   Attributes = list(
@@ -4789,7 +4789,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_user_profile(
+#' svc$update_user_profile(
 #'   IamUserArn = "string",
 #'   SshUsername = "string",
 #'   SshPublicKey = "string",
@@ -4837,7 +4837,7 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #'
 #' @section Request syntax:
 #' ```
-#' opsworks$update_volume(
+#' svc$update_volume(
 #'   VolumeId = "string",
 #'   Name = "string",
 #'   MountPoint = "string"

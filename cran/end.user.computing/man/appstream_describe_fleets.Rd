@@ -19,7 +19,7 @@ fleet names are provided. Otherwise, all fleets in the account are
 described.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_fleets(
+\preformatted{svc$describe_fleets(
   Names = list(
     "string"
   ),

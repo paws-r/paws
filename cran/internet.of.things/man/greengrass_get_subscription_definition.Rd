@@ -13,7 +13,7 @@ greengrass_get_subscription_definition(SubscriptionDefinitionId)
 Retrieves information about a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_subscription_definition(
+\preformatted{svc$get_subscription_definition(
   SubscriptionDefinitionId = "string"
 )
 }

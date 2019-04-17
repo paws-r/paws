@@ -24,7 +24,7 @@ stage (outbound).}
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$enable_stage_transition(
+\preformatted{svc$enable_stage_transition(
   pipelineName = "string",
   stageName = "string",
   transitionType = "Inbound"|"Outbound"

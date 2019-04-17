@@ -27,11 +27,10 @@ NULL
 #' Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)*
 #' .
 #'
-#' @section Example:
-#' ```
-#' sfn <- paws::sfn()
-#' sfn$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_activity(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -42,12 +42,6 @@ To learn more about Application Auto Scaling, including information
 about granting IAM users required permissions for Application Auto
 Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
-\section{Example}{
-\preformatted{applicationautoscaling <- paws::applicationautoscaling()
-applicationautoscaling$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,3 +58,14 @@ applicationautoscaling$operation()
 }
 }
 
+\examples{
+# This example deletes a scaling policy for the Amazon ECS service called
+# web-app, which is running in the default cluster.
+\donttest{svc$delete_scaling_policy(
+  PolicyName = "web-app-cpu-lt-25",
+  ResourceId = "service/default/web-app",
+  ScalableDimension = "ecs:service:DesiredCount",
+  ServiceNamespace = "ecs"
+)}
+
+}

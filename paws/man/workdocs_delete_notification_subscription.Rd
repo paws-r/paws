@@ -16,7 +16,7 @@ workdocs_delete_notification_subscription(SubscriptionId,
 Deletes the specified subscription from the specified organization.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_notification_subscription(
+\preformatted{svc$delete_notification_subscription(
   SubscriptionId = "string",
   OrganizationId = "string"
 )

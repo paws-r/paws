@@ -22,7 +22,7 @@ Creates a unique key that you can distribute to clients who are
 executing your API.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_api_key(
+\preformatted{svc$create_api_key(
   apiId = "string",
   description = "string",
   expires = 123

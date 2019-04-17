@@ -48,7 +48,7 @@ To ensure the security of your AWS account, the secret access key is
 accessible only during key and user creation.
 }
 \section{Request syntax}{
-\preformatted{iam$list_access_keys(
+\preformatted{svc$list_access_keys(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
@@ -59,7 +59,7 @@ accessible only during key and user creation.
 \examples{
 # The following command lists the access keys IDs for the IAM user named
 # Alice.
-\donttest{iam$list_access_keys(
+\donttest{svc$list_access_keys(
   UserName = "Alice"
 )}
 

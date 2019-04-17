@@ -16,7 +16,7 @@ the \code{AwaitingQuorum} status. You'll have at least an hour after
 creating a cluster job to cancel it.
 }
 \section{Request syntax}{
-\preformatted{snowball$cancel_cluster(
+\preformatted{svc$cancel_cluster(
   ClusterId = "string"
 )
 }
@@ -25,7 +25,7 @@ creating a cluster job to cancel it.
 \examples{
 # This operation cancels a cluster job. You can only cancel a cluster job
 # while it's in the AwaitingQuorum status.
-\donttest{snowball$cancel_cluster(
+\donttest{svc$cancel_cluster(
   ClusterId = "CID123e4567-e89b-12d3-a456-426655440000"
 )}
 

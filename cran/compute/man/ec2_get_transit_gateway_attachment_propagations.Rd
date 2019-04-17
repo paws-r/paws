@@ -33,7 +33,7 @@ Lists the route tables to which the specified resource attachment
 propagates routes.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_transit_gateway_attachment_propagations(
+\preformatted{svc$get_transit_gateway_attachment_propagations(
   TransitGatewayAttachmentId = "string",
   Filters = list(
     list(

@@ -13,7 +13,7 @@ apigateway_get_rest_api(restApiId)
 Lists the RestApi resource in the collection.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_rest_api(
+\preformatted{svc$get_rest_api(
   restApiId = "string"
 )
 }

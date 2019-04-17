@@ -10,7 +10,7 @@ dynamodb_describe_endpoints()
 Returns the regional endpoint information.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_endpoints()
+\preformatted{svc$describe_endpoints()
 }
 }
 

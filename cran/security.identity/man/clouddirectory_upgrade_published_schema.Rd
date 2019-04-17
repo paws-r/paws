@@ -27,7 +27,7 @@ Upgrades a published schema under a new minor version revision using the
 current contents of \code{DevelopmentSchemaArn}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$upgrade_published_schema(
+\preformatted{svc$upgrade_published_schema(
   DevelopmentSchemaArn = "string",
   PublishedSchemaArn = "string",
   MinorVersion = "string",

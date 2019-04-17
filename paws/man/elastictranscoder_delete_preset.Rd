@@ -20,7 +20,7 @@ You can't delete the default presets that are included with Elastic
 Transcoder.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$delete_preset(
+\preformatted{svc$delete_preset(
   Id = "string"
 )
 }

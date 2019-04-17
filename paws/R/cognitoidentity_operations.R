@@ -49,7 +49,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$create_identity_pool(
+#' svc$create_identity_pool(
 #'   IdentityPoolName = "string",
 #'   AllowUnauthenticatedIdentities = TRUE|FALSE,
 #'   SupportedLoginProviders = list(
@@ -108,7 +108,7 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$delete_identities(
+#' svc$delete_identities(
 #'   IdentityIdsToDelete = list(
 #'     "string"
 #'   )
@@ -148,7 +148,7 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$delete_identity_pool(
+#' svc$delete_identity_pool(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -187,7 +187,7 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$describe_identity(
+#' svc$describe_identity(
 #'   IdentityId = "string"
 #' )
 #' ```
@@ -226,7 +226,7 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$describe_identity_pool(
+#' svc$describe_identity_pool(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -283,7 +283,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$get_credentials_for_identity(
+#' svc$get_credentials_for_identity(
 #'   IdentityId = "string",
 #'   Logins = list(
 #'     "string"
@@ -343,7 +343,7 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$get_id(
+#' svc$get_id(
 #'   AccountId = "string",
 #'   IdentityPoolId = "string",
 #'   Logins = list(
@@ -384,7 +384,7 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$get_identity_pool_roles(
+#' svc$get_identity_pool_roles(
 #'   IdentityPoolId = "string"
 #' )
 #' ```
@@ -430,7 +430,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$get_open_id_token(
+#' svc$get_open_id_token(
 #'   IdentityId = "string",
 #'   Logins = list(
 #'     "string"
@@ -506,7 +506,7 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$get_open_id_token_for_developer_identity(
+#' svc$get_open_id_token_for_developer_identity(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   Logins = list(
@@ -554,7 +554,7 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$list_identities(
+#' svc$list_identities(
 #'   IdentityPoolId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -595,7 +595,7 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$list_identity_pools(
+#' svc$list_identity_pools(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -638,7 +638,7 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -705,7 +705,7 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$lookup_developer_identity(
+#' svc$lookup_developer_identity(
 #'   IdentityPoolId = "string",
 #'   IdentityId = "string",
 #'   DeveloperUserIdentifier = "string",
@@ -770,7 +770,7 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$merge_developer_identities(
+#' svc$merge_developer_identities(
 #'   SourceUserIdentifier = "string",
 #'   DestinationUserIdentifier = "string",
 #'   DeveloperProviderName = "string",
@@ -821,7 +821,7 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$set_identity_pool_roles(
+#' svc$set_identity_pool_roles(
 #'   IdentityPoolId = "string",
 #'   Roles = list(
 #'     "string"
@@ -896,7 +896,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -945,7 +945,7 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$unlink_developer_identity(
+#' svc$unlink_developer_identity(
 #'   IdentityId = "string",
 #'   IdentityPoolId = "string",
 #'   DeveloperProviderName = "string",
@@ -990,7 +990,7 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$unlink_identity(
+#' svc$unlink_identity(
 #'   IdentityId = "string",
 #'   Logins = list(
 #'     "string"
@@ -1034,7 +1034,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1089,7 +1089,7 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cognitoidentity$update_identity_pool(
+#' svc$update_identity_pool(
 #'   IdentityPoolId = "string",
 #'   IdentityPoolName = "string",
 #'   AllowUnauthenticatedIdentities = TRUE|FALSE,

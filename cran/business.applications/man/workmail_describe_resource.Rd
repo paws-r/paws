@@ -16,7 +16,7 @@ is described.}
 Returns the data available for the resource.
 }
 \section{Request syntax}{
-\preformatted{workmail$describe_resource(
+\preformatted{svc$describe_resource(
   OrganizationId = "string",
   ResourceId = "string"
 )

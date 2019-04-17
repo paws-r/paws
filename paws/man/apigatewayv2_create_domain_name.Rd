@@ -15,7 +15,7 @@ apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations)
 Creates a domain name.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_domain_name(
+\preformatted{svc$create_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(

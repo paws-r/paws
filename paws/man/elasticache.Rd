@@ -20,12 +20,6 @@ In addition, through integration with Amazon CloudWatch, customers get
 enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
 }
-\section{Example}{
-\preformatted{elasticache <- paws::elasticache()
-elasticache$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -74,3 +68,9 @@ elasticache$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags_to_resource(
+  Foo = 123
+)}
+
+}

@@ -15,7 +15,7 @@ servicecatalog_create_tag_option(Key, Value)
 Creates a TagOption.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_tag_option(
+\preformatted{svc$create_tag_option(
   Key = "string",
   Value = "string"
 )

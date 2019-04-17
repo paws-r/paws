@@ -91,7 +91,7 @@ You can also update the AutoGranted and AutoGrantedValue attributes of
 the Qualification type.
 }
 \section{Request syntax}{
-\preformatted{mturk$update_qualification_type(
+\preformatted{svc$update_qualification_type(
   QualificationTypeId = "string",
   Description = "string",
   QualificationTypeStatus = "Active"|"Inactive",

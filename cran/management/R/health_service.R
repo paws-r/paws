@@ -50,11 +50,10 @@ NULL
 #' 
 #' -   https://health.us-east-1.amazonaws.com
 #'
-#' @section Example:
-#' ```
-#' health <- paws::health()
-#' health$operation()
-#' ```
+#' @examples
+#' \donttest{svc$describe_affected_entities(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

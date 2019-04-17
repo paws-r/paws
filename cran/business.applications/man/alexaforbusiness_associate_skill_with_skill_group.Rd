@@ -16,7 +16,7 @@ alexaforbusiness_associate_skill_with_skill_group(SkillGroupArn,
 Associates a skill with a skill group.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$associate_skill_with_skill_group(
+\preformatted{svc$associate_skill_with_skill_group(
   SkillGroupArn = "string",
   SkillId = "string"
 )

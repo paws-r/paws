@@ -46,7 +46,7 @@ in the list of InvalidLabels.
 }
 }
 \section{Request syntax}{
-\preformatted{ssm$label_parameter_version(
+\preformatted{svc$label_parameter_version(
   Name = "string",
   ParameterVersion = 123,
   Labels = list(

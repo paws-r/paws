@@ -31,7 +31,7 @@ You cannot update an endpoint with the current \code{EndpointConfig}. To
 update an endpoint, you must create a new \code{EndpointConfig}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$update_endpoint(
+\preformatted{svc$update_endpoint(
   EndpointName = "string",
   EndpointConfigName = "string"
 )

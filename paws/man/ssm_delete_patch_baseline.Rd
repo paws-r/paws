@@ -13,7 +13,7 @@ ssm_delete_patch_baseline(BaselineId)
 Deletes a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_patch_baseline(
+\preformatted{svc$delete_patch_baseline(
   BaselineId = "string"
 )
 }

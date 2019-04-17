@@ -26,7 +26,7 @@ specified resource.}
 Deletes custom metadata from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_custom_metadata(
+\preformatted{svc$delete_custom_metadata(
   AuthenticationToken = "string",
   ResourceId = "string",
   VersionId = "string",

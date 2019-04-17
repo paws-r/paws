@@ -25,7 +25,7 @@ table. For more information about route tables, see \href{https://docs.aws.amazo
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_route_table(
+\preformatted{svc$disassociate_route_table(
   AssociationId = "string",
   DryRun = TRUE|FALSE
 )
@@ -35,7 +35,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \examples{
 # This example disassociates the specified route table from its associated
 # subnet.
-\donttest{ec2$disassociate_route_table(
+\donttest{svc$disassociate_route_table(
   AssociationId = "rtbassoc-781d0d1a"
 )}
 

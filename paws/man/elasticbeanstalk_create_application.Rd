@@ -30,7 +30,7 @@ Creates an application that has one configuration template named
 \code{default} and no application versions.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$create_application(
+\preformatted{svc$create_application(
   ApplicationName = "string",
   Description = "string",
   ResourceLifecycleConfig = list(
@@ -60,7 +60,7 @@ Creates an application that has one configuration template named
 
 \examples{
 # The following operation creates a new application named my-app:
-\donttest{elasticbeanstalk$create_application(
+\donttest{svc$create_application(
   ApplicationName = "my-app",
   Description = "my application"
 )}

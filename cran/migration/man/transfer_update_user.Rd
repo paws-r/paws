@@ -43,7 +43,7 @@ The response returns the \code{ServerId} and the \code{UserName} for the updated
 user.
 }
 \section{Request syntax}{
-\preformatted{transfer$update_user(
+\preformatted{svc$update_user(
   HomeDirectory = "string",
   Policy = "string",
   Role = "string",

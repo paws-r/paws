@@ -19,7 +19,7 @@ profile identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 Update a field-level encryption profile.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$update_field_level_encryption_profile(
+\preformatted{svc$update_field_level_encryption_profile(
   FieldLevelEncryptionProfileConfig = list(
     Name = "string",
     CallerReference = "string",

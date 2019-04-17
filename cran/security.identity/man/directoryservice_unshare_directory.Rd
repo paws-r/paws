@@ -19,7 +19,7 @@ Stops the directory sharing between the directory owner and consumer
 accounts.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$unshare_directory(
+\preformatted{svc$unshare_directory(
   DirectoryId = "string",
   UnshareTarget = list(
     Id = "string",

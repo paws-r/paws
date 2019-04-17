@@ -32,7 +32,7 @@ information, see UpdateRegexMatchSet.
 }
 }
 \section{Request syntax}{
-\preformatted{waf$delete_regex_match_set(
+\preformatted{svc$delete_regex_match_set(
   RegexMatchSetId = "string",
   ChangeToken = "string"
 )

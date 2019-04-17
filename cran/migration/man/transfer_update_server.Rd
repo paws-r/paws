@@ -30,7 +30,7 @@ The \code{UpdateServer} call returns the \code{ServerId} of the Secure File
 Transfer Protocol (SFTP) server you updated.
 }
 \section{Request syntax}{
-\preformatted{transfer$update_server(
+\preformatted{svc$update_server(
   EndpointDetails = list(
     VpcEndpointId = "string"
   ),

@@ -21,7 +21,7 @@ Removes a source identifier from an existing RDS event notification
 subscription.
 }
 \section{Request syntax}{
-\preformatted{rds$remove_source_identifier_from_subscription(
+\preformatted{svc$remove_source_identifier_from_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )

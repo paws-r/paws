@@ -94,7 +94,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{ec2$request_spot_instances(
+\preformatted{svc$request_spot_instances(
   AvailabilityZoneGroup = "string",
   BlockDurationMinutes = 123,
   ClientToken = "string",
@@ -193,7 +193,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # specified Availability Zone. If your account supports EC2-Classic,
 # Amazon EC2 launches the instances in EC2-Classic in the specified
 # Availability Zone.
-\donttest{ec2$request_spot_instances(
+\donttest{svc$request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(
@@ -217,7 +217,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 # instances in the specified subnet. Amazon EC2 launches the instances in
 # the specified subnet. If the VPC is a nondefault VPC, the instances do
 # not receive a public IP address by default.
-\donttest{ec2$request_spot_instances(
+\donttest{svc$request_spot_instances(
   InstanceCount = 5L,
   LaunchSpecification = list(
     IamInstanceProfile = list(

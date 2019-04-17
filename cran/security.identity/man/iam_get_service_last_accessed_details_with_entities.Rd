@@ -67,7 +67,7 @@ By default, the list of associated entities is sorted by date, with the
 most recent access listed first.
 }
 \section{Request syntax}{
-\preformatted{iam$get_service_last_accessed_details_with_entities(
+\preformatted{svc$get_service_last_accessed_details_with_entities(
   JobId = "string",
   ServiceNamespace = "string",
   MaxItems = 123,
@@ -79,7 +79,7 @@ most recent access listed first.
 \examples{
 # The following operation returns details about the entities that
 # attempted to access the IAM service.
-\donttest{iam$get_service_last_accessed_details_with_entities(
+\donttest{svc$get_service_last_accessed_details_with_entities(
   JobId = "examplef-1305-c245-eba4-71fe298bcda7",
   ServiceNamespace = "iam"
 )}

@@ -22,7 +22,7 @@ permitted to invoke the operation. Please contact
 able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$purchase_offering(
+\preformatted{svc$purchase_offering(
   offeringId = "string",
   quantity = 123,
   offeringPromotionId = "string"
@@ -32,7 +32,7 @@ able to invoke this operation.
 
 \examples{
 # The following example purchases a specific device slot offering.
-\donttest{devicefarm$purchase_offering(
+\donttest{svc$purchase_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
 )}

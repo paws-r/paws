@@ -31,7 +31,7 @@ ProvisionProduct, TerminateProvisionedProduct, or
 UpdateProvisionedProduct).
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_record(
+\preformatted{svc$describe_record(
   AcceptLanguage = "string",
   Id = "string",
   PageToken = "string",

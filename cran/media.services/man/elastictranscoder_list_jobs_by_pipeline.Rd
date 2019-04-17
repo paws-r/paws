@@ -29,7 +29,7 @@ pipeline. The response body contains one element for each job that
 satisfies the search criteria.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$list_jobs_by_pipeline(
+\preformatted{svc$list_jobs_by_pipeline(
   PipelineId = "string",
   Ascending = "string",
   PageToken = "string"

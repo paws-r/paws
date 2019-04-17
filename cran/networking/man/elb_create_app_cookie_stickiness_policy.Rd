@@ -37,7 +37,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$create_app_cookie_stickiness_policy(
+\preformatted{svc$create_app_cookie_stickiness_policy(
   LoadBalancerName = "string",
   PolicyName = "string",
   CookieName = "string"
@@ -48,7 +48,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example generates a stickiness policy that follows the sticky
 # session lifetimes of the application-generated cookie.
-\donttest{elb$create_app_cookie_stickiness_policy(
+\donttest{svc$create_app_cookie_stickiness_policy(
   CookieName = "my-app-cookie",
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-app-cookie-policy"

@@ -20,7 +20,7 @@ Lists the targets (thing groups) associated with a given Device Defender
 security profile.
 }
 \section{Request syntax}{
-\preformatted{iot$list_targets_for_security_profile(
+\preformatted{svc$list_targets_for_security_profile(
   securityProfileName = "string",
   nextToken = "string",
   maxResults = 123

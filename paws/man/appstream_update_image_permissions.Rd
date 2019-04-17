@@ -19,7 +19,7 @@ update image permissions.}
 Adds or updates permissions for the specified private image.
 }
 \section{Request syntax}{
-\preformatted{appstream$update_image_permissions(
+\preformatted{svc$update_image_permissions(
   Name = "string",
   SharedAccountId = "string",
   ImagePermissions = list(

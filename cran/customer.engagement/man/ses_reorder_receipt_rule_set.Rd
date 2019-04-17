@@ -25,7 +25,7 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$reorder_receipt_rule_set(
+\preformatted{svc$reorder_receipt_rule_set(
   RuleSetName = "string",
   RuleNames = list(
     "string"
@@ -37,7 +37,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example reorders the receipt rules within a receipt rule
 # set:
-\donttest{ses$reorder_receipt_rule_set(
+\donttest{svc$reorder_receipt_rule_set(
   RuleNames = list(
     "MyRule",
     "MyOtherRule"

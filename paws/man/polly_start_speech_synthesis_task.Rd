@@ -65,7 +65,7 @@ SpeechSynthesisTask object, which will include an identifier of this
 task as well as the current status.
 }
 \section{Request syntax}{
-\preformatted{polly$start_speech_synthesis_task(
+\preformatted{svc$start_speech_synthesis_task(
   LexiconNames = list(
     "string"
   ),

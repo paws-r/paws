@@ -18,7 +18,7 @@ For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.co
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{athena$stop_query_execution(
+\preformatted{svc$stop_query_execution(
   QueryExecutionId = "string"
 )
 }

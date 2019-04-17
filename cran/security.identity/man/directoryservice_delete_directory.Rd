@@ -19,7 +19,7 @@ about what permissions are required to run the \code{DeleteDirectory}
 operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$delete_directory(
+\preformatted{svc$delete_directory(
   DirectoryId = "string"
 )
 }

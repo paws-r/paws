@@ -24,7 +24,7 @@ chime_search_available_phone_numbers(AreaCode, City, Country, State,
 Searches phone numbers that can be ordered.
 }
 \section{Request syntax}{
-\preformatted{chime$search_available_phone_numbers(
+\preformatted{svc$search_available_phone_numbers(
   AreaCode = "string",
   City = "string",
   Country = "string",

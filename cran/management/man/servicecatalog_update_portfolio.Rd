@@ -34,7 +34,7 @@ Updates the specified portfolio.
 You cannot update a product that was shared with you.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_portfolio(
+\preformatted{svc$update_portfolio(
   AcceptLanguage = "string",
   Id = "string",
   DisplayName = "string",

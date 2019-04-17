@@ -25,7 +25,7 @@ This operation requires permission for the
 \code{elasticfilesystem:CreateTags} action.
 }
 \section{Request syntax}{
-\preformatted{efs$create_tags(
+\preformatted{svc$create_tags(
   FileSystemId = "string",
   Tags = list(
     list(
@@ -39,7 +39,7 @@ This operation requires permission for the
 
 \examples{
 # This operation creates a new tag for an EFS file system.
-\donttest{efs$create_tags(
+\donttest{svc$create_tags(
   FileSystemId = "fs-01234567",
   Tags = list(
     list(

@@ -18,7 +18,7 @@ ID description, creation date, and current number of users.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$describe_identity_pool(
+\preformatted{svc$describe_identity_pool(
   IdentityPoolId = "string"
 )
 }

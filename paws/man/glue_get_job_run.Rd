@@ -17,7 +17,7 @@ glue_get_job_run(JobName, RunId, PredecessorsIncluded)
 Retrieves the metadata for a given job run.
 }
 \section{Request syntax}{
-\preformatted{glue$get_job_run(
+\preformatted{svc$get_job_run(
   JobName = "string",
   RunId = "string",
   PredecessorsIncluded = TRUE|FALSE

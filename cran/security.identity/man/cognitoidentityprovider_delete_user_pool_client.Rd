@@ -15,7 +15,7 @@ cognitoidentityprovider_delete_user_pool_client(UserPoolId, ClientId)
 Allows the developer to delete the user pool client.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_user_pool_client(
+\preformatted{svc$delete_user_pool_client(
   UserPoolId = "string",
   ClientId = "string"
 )

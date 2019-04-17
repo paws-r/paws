@@ -13,11 +13,10 @@ NULL
 #' documentation for a programming interface that you can use to manage
 #' Amazon QuickSight.
 #'
-#' @section Example:
-#' ```
-#' quicksight <- paws::quicksight()
-#' quicksight$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_group(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

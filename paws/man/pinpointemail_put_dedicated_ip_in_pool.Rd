@@ -25,7 +25,7 @@ The dedicated IP pool you specify must already exist. You can create a
 new pool by using the \code{CreateDedicatedIpPool} operation.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_dedicated_ip_in_pool(
+\preformatted{svc$put_dedicated_ip_in_pool(
   Ip = "string",
   DestinationPoolName = "string"
 )

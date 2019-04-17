@@ -18,7 +18,7 @@ in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_target_group_attributes(
+\preformatted{svc$describe_target_group_attributes(
   TargetGroupArn = "string"
 )
 }
@@ -26,7 +26,7 @@ in the \emph{Network Load Balancers Guide}.
 
 \examples{
 # This example describes the attributes of the specified target group.
-\donttest{elbv2$describe_target_group_attributes(
+\donttest{svc$describe_target_group_attributes(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
 )}
 

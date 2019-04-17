@@ -13,7 +13,7 @@ alexaforbusiness_forget_smart_home_appliances(RoomArn)
 Forgets smart home appliances associated to a room.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$forget_smart_home_appliances(
+\preformatted{svc$forget_smart_home_appliances(
   RoomArn = "string"
 )
 }

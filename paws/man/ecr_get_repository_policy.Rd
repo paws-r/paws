@@ -17,7 +17,7 @@ assumed.}
 Retrieves the repository policy for a specified repository.
 }
 \section{Request syntax}{
-\preformatted{ecr$get_repository_policy(
+\preformatted{svc$get_repository_policy(
   registryId = "string",
   repositoryName = "string"
 )
@@ -27,7 +27,7 @@ Retrieves the repository policy for a specified repository.
 \examples{
 # This example obtains the repository policy for the repository named
 # ubuntu.
-\donttest{ecr$get_repository_policy(
+\donttest{svc$get_repository_policy(
   repositoryName = "ubuntu"
 )}
 

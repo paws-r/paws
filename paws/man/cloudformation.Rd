@@ -28,12 +28,6 @@ additional technical information about a specific AWS product, you can
 find the product's technical documentation at
 \href{http://docs.aws.amazon.com/}{docs.aws.amazon.com}.
 }
-\section{Example}{
-\preformatted{cloudformation <- paws::cloudformation()
-cloudformation$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -85,3 +79,9 @@ cloudformation$operation()
 }
 }
 
+\examples{
+\donttest{svc$cancel_update_stack(
+  Foo = 123
+)}
+
+}

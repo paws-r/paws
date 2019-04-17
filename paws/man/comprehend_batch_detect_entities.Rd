@@ -21,7 +21,7 @@ information about them. For more information about named entities, see
 how-entities
 }
 \section{Request syntax}{
-\preformatted{comprehend$batch_detect_entities(
+\preformatted{svc$batch_detect_entities(
   TextList = list(
     "string"
   ),

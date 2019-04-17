@@ -19,7 +19,7 @@ AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Acc
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_account_alias(
+\preformatted{svc$delete_account_alias(
   AccountAlias = "string"
 )
 }
@@ -28,7 +28,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command removes the alias mycompany from the current AWS
 # account:
-\donttest{iam$delete_account_alias(
+\donttest{svc$delete_account_alias(
   AccountAlias = "mycompany"
 )}
 

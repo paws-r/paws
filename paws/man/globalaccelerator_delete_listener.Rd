@@ -13,7 +13,7 @@ globalaccelerator_delete_listener(ListenerArn)
 Delete a listener from an accelerator.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$delete_listener(
+\preformatted{svc$delete_listener(
   ListenerArn = "string"
 )
 }

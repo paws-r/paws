@@ -45,7 +45,7 @@ Along with data, the following are also included on the backups:
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$create_backup(
+\preformatted{svc$create_backup(
   TableName = "string",
   BackupName = "string"
 )

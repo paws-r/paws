@@ -39,7 +39,7 @@ For information about rotating keys, see \href{http://docs.aws.amazon.com/IAM/la
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_access_key(
+\preformatted{svc$update_access_key(
   UserName = "string",
   AccessKeyId = "string",
   Status = "Active"|"Inactive"
@@ -50,7 +50,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command deactivates the specified access key (access key
 # ID and secret access key) for the IAM user named Bob.
-\donttest{iam$update_access_key(
+\donttest{svc$update_access_key(
   AccessKeyId = "AKIAIOSFODNN7EXAMPLE",
   Status = "Inactive",
   UserName = "Bob"

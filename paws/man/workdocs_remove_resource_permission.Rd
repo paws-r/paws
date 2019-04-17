@@ -24,7 +24,7 @@ Removes the permission for the specified principal from the specified
 resource.
 }
 \section{Request syntax}{
-\preformatted{workdocs$remove_resource_permission(
+\preformatted{svc$remove_resource_permission(
   AuthenticationToken = "string",
   ResourceId = "string",
   PrincipalId = "string",

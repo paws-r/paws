@@ -33,7 +33,7 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 \code{locationType}, and \code{instanceCapacity10xlarge}.
 }
 \section{Request syntax}{
-\preformatted{pricing$describe_services(
+\preformatted{svc$describe_services(
   ServiceCode = "string",
   FormatVersion = "string",
   NextToken = "string",
@@ -44,7 +44,7 @@ available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
 
 \examples{
 #
-\donttest{pricing$describe_services(
+\donttest{svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,
   ServiceCode = "AmazonEC2"

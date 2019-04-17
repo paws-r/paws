@@ -29,7 +29,7 @@ For more information about policies, see \href{http://docs.aws.amazon.com/IAM/la
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$attach_group_policy(
+\preformatted{svc$attach_group_policy(
   GroupName = "string",
   PolicyArn = "string"
 )
@@ -39,7 +39,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command attaches the AWS managed policy named
 # ReadOnlyAccess to the IAM group named Finance.
-\donttest{iam$attach_group_policy(
+\donttest{svc$attach_group_policy(
   GroupName = "Finance",
   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 )}

@@ -49,7 +49,7 @@ Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon RDS cons
 has been created or modified.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_parameter_group(
+\preformatted{svc$modify_db_parameter_group(
   DBParameterGroupName = "string",
   Parameters = list(
     list(

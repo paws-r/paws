@@ -28,7 +28,7 @@ in the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_custom_verification_email_templates(
+\preformatted{svc$list_custom_verification_email_templates(
   NextToken = "string",
   MaxResults = 123
 )

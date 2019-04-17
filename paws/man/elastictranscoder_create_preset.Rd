@@ -47,7 +47,7 @@ information, see the International Telecommunication Union publication
 audiovisual services}.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$create_preset(
+\preformatted{svc$create_preset(
   Name = "string",
   Description = "string",
   Container = "string",

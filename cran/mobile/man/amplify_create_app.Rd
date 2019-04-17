@@ -42,7 +42,7 @@ branches part of this App.}
 Creates a new Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$create_app(
+\preformatted{svc$create_app(
   name = "string",
   description = "string",
   repository = "string",

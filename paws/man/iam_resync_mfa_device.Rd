@@ -39,7 +39,7 @@ devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Virtu
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$resync_mfa_device(
+\preformatted{svc$resync_mfa_device(
   UserName = "string",
   SerialNumber = "string",
   AuthenticationCode1 = "string",

@@ -21,7 +21,7 @@ discovery.}
 Updates License Manager service settings.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$update_service_settings(
+\preformatted{svc$update_service_settings(
   S3BucketArn = "string",
   SnsTopicArn = "string",
   OrganizationConfiguration = list(

@@ -27,7 +27,7 @@ of the previous results that returned the \code{nextToken} value.}
 Returns a list of existing virtual routers in a service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$list_virtual_routers(
+\preformatted{svc$list_virtual_routers(
   limit = 123,
   meshName = "string",
   nextToken = "string"

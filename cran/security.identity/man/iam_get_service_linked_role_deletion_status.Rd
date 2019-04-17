@@ -20,7 +20,7 @@ deletion. If the deletion fails, this operation returns the reason that
 it failed, if that information is returned by the service.
 }
 \section{Request syntax}{
-\preformatted{iam$get_service_linked_role_deletion_status(
+\preformatted{svc$get_service_linked_role_deletion_status(
   DeletionTaskId = "string"
 )
 }

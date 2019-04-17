@@ -15,7 +15,7 @@ mq_list_configurations(MaxResults, NextToken)
 Returns a list of all configurations.
 }
 \section{Request syntax}{
-\preformatted{mq$list_configurations(
+\preformatted{svc$list_configurations(
   MaxResults = 123,
   NextToken = "string"
 )

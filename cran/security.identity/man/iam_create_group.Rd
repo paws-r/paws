@@ -38,7 +38,7 @@ For information about the number of groups you can create, see
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_group(
+\preformatted{svc$create_group(
   Path = "string",
   GroupName = "string"
 )
@@ -47,7 +47,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following command creates an IAM group named Admins.
-\donttest{iam$create_group(
+\donttest{svc$create_group(
   GroupName = "Admins"
 )}
 

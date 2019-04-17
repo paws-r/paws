@@ -48,7 +48,7 @@ Host. Dedicated Hosts that have recently been released are listed with
 the state \code{released}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_hosts(
+\preformatted{svc$describe_hosts(
   Filter = list(
     list(
       Name = "string",

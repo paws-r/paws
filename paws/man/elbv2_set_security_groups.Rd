@@ -21,7 +21,7 @@ associated security groups.
 You can't specify a security group for a Network Load Balancer.
 }
 \section{Request syntax}{
-\preformatted{elbv2$set_security_groups(
+\preformatted{svc$set_security_groups(
   LoadBalancerArn = "string",
   SecurityGroups = list(
     "string"
@@ -33,7 +33,7 @@ You can't specify a security group for a Network Load Balancer.
 \examples{
 # This example associates the specified security group with the specified
 # load balancer.
-\donttest{elbv2$set_security_groups(
+\donttest{svc$set_security_groups(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
   SecurityGroups = list(
     "sg-5943793c"

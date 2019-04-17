@@ -13,7 +13,7 @@ directoryservice_get_snapshot_limits(DirectoryId)
 Obtains the manual snapshot limits for a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$get_snapshot_limits(
+\preformatted{svc$get_snapshot_limits(
   DirectoryId = "string"
 )
 }

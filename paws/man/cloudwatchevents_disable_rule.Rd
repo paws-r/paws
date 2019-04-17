@@ -18,7 +18,7 @@ When you disable a rule, incoming events might continue to match to the
 disabled rule. Allow a short period of time for changes to take effect.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$disable_rule(
+\preformatted{svc$disable_rule(
   Name = "string"
 )
 }

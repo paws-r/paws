@@ -26,7 +26,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$register_rds_db_instance(
+\preformatted{svc$register_rds_db_instance(
   StackId = "string",
   RdsDbInstanceArn = "string",
   DbUser = "string",

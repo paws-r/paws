@@ -23,7 +23,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$enter_standby(
+\preformatted{svc$enter_standby(
   InstanceIds = list(
     "string"
   ),
@@ -35,7 +35,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example puts the specified instance into standby mode.
-\donttest{autoscaling$enter_standby(
+\donttest{svc$enter_standby(
   AutoScalingGroupName = "my-auto-scaling-group",
   InstanceIds = list(
     "i-93633f9b"

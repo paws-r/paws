@@ -17,7 +17,7 @@ name that the rule forwards DNS queries for and the ID of the outbound
 resolver endpoint that the rule is associated with.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$get_resolver_rule(
+\preformatted{svc$get_resolver_rule(
   ResolverRuleId = "string"
 )
 }

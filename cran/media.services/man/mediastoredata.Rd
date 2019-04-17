@@ -11,12 +11,6 @@ An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 }
-\section{Example}{
-\preformatted{mediastoredata <- paws::mediastoredata()
-mediastoredata$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -28,3 +22,9 @@ mediastoredata$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_object(
+  Foo = 123
+)}
+
+}

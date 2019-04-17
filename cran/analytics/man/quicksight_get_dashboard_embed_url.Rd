@@ -50,7 +50,7 @@ Get the URL for the embedded dashboard
 \code{aws quicksight get-dashboard-embed-url --aws-account-id 111122223333 --dashboard-id 1a1ac2b2-3fc3-4b44-5e5d-c6db6778df89 --identity-type IAM}
 }
 \section{Request syntax}{
-\preformatted{quicksight$get_dashboard_embed_url(
+\preformatted{svc$get_dashboard_embed_url(
   AwsAccountId = "string",
   DashboardId = "string",
   IdentityType = "IAM"|"QUICKSIGHT",

@@ -27,7 +27,7 @@ deleted.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_alias(
+\preformatted{svc$delete_alias(
   AliasId = "string"
 )
 }

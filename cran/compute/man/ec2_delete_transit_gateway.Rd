@@ -18,7 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes the specified transit gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_transit_gateway(
+\preformatted{svc$delete_transit_gateway(
   TransitGatewayId = "string",
   DryRun = TRUE|FALSE
 )

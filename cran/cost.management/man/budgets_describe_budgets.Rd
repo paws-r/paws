@@ -20,7 +20,7 @@ next set of results that you want to retrieve.}
 Lists the budgets that are associated with an account.
 }
 \section{Request syntax}{
-\preformatted{budgets$describe_budgets(
+\preformatted{svc$describe_budgets(
   AccountId = "string",
   MaxResults = 123,
   NextToken = "string"

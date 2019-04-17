@@ -17,7 +17,7 @@ mq_update_configuration(ConfigurationId, Data, Description)
 Updates the specified configuration.
 }
 \section{Request syntax}{
-\preformatted{mq$update_configuration(
+\preformatted{svc$update_configuration(
   ConfigurationId = "string",
   Data = "string",
   Description = "string"

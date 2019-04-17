@@ -28,7 +28,7 @@ the tags.}
 Create a new version of your custom platform.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$create_platform_version(
+\preformatted{svc$create_platform_version(
   PlatformName = "string",
   PlatformVersion = "string",
   PlatformDefinitionBundle = list(

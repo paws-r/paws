@@ -13,7 +13,7 @@ elbv2_delete_rule(RuleArn)
 Deletes the specified rule.
 }
 \section{Request syntax}{
-\preformatted{elbv2$delete_rule(
+\preformatted{svc$delete_rule(
   RuleArn = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the specified rule.
 
 \examples{
 # This example deletes the specified rule.
-\donttest{elbv2$delete_rule(
+\donttest{svc$delete_rule(
   RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-b..."
 )}
 

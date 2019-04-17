@@ -37,7 +37,7 @@ A node can can only be disassociated from a server that is in a
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$disassociate_node(
+\preformatted{svc$disassociate_node(
   ServerName = "string",
   NodeName = "string",
   EngineAttributes = list(

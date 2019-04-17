@@ -15,7 +15,7 @@ cloudfront_list_streaming_distributions(Marker, MaxItems)
 List streaming distributions.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_streaming_distributions(
+\preformatted{svc$list_streaming_distributions(
   Marker = "string",
   MaxItems = "string"
 )

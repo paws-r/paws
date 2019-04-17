@@ -114,7 +114,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$register_activity_type(
+\preformatted{svc$register_activity_type(
   domain = "string",
   name = "string",
   version = "string",

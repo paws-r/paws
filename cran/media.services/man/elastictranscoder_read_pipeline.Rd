@@ -13,7 +13,7 @@ elastictranscoder_read_pipeline(Id)
 The ReadPipeline operation gets detailed information about a pipeline.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$read_pipeline(
+\preformatted{svc$read_pipeline(
   Id = "string"
 )
 }

@@ -44,7 +44,7 @@ created. You cannot specify, change, or replace the numbering of launch
 template versions.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_launch_template_version(
+\preformatted{svc$create_launch_template_version(
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   LaunchTemplateId = "string",
@@ -187,7 +187,7 @@ template versions.
 \examples{
 # This example creates a new launch template version based on version 1 of
 # the specified launch template and specifies a different AMI ID.
-\donttest{ec2$create_launch_template_version(
+\donttest{svc$create_launch_template_version(
   LaunchTemplateData = list(
     ImageId = "ami-c998b6b2"
   ),

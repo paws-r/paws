@@ -13,7 +13,7 @@ databasemigrationservice_delete_replication_task(ReplicationTaskArn)
 Deletes the specified replication task.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_replication_task(
+\preformatted{svc$delete_replication_task(
   ReplicationTaskArn = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the specified replication task.
 
 \examples{
 # Deletes the specified replication task.
-\donttest{databasemigrationservice$delete_replication_task(
+\donttest{svc$delete_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 )}
 

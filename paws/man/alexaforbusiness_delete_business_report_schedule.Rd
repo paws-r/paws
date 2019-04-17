@@ -15,7 +15,7 @@ Deletes the recurring report delivery schedule with the specified
 schedule ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_business_report_schedule(
+\preformatted{svc$delete_business_report_schedule(
   ScheduleArn = "string"
 )
 }

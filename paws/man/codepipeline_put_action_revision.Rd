@@ -23,7 +23,7 @@ Provides information to AWS CodePipeline about new revisions to a
 source.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_action_revision(
+\preformatted{svc$put_action_revision(
   pipelineName = "string",
   stageName = "string",
   actionName = "string",

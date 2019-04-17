@@ -15,7 +15,7 @@ greengrass_list_device_definitions(MaxResults, NextToken)
 Retrieves a list of device definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_device_definitions(
+\preformatted{svc$list_device_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

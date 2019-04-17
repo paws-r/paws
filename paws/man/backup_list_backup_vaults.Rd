@@ -20,7 +20,7 @@ Returns a list of recovery point storage containers along with
 information about them.
 }
 \section{Request syntax}{
-\preformatted{backup$list_backup_vaults(
+\preformatted{svc$list_backup_vaults(
   NextToken = "string",
   MaxResults = 123
 )

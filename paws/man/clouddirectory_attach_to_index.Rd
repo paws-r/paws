@@ -19,7 +19,7 @@ index exist.}
 Attaches the specified object to the specified index.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$attach_to_index(
+\preformatted{svc$attach_to_index(
   DirectoryArn = "string",
   IndexReference = list(
     Selector = "string"

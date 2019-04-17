@@ -14,7 +14,7 @@ For more information, see \href{http://docs.aws.amazon.com/Route53/latest/Develo
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$get_checker_ip_ranges()
+\preformatted{svc$get_checker_ip_ranges()
 }
 }
 

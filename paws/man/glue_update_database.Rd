@@ -20,7 +20,7 @@ database in the catalog.}
 Updates an existing database definition in a Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$update_database(
+\preformatted{svc$update_database(
   CatalogId = "string",
   Name = "string",
   DatabaseInput = list(

@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$delete_alarms(
+#' svc$delete_alarms(
 #'   AlarmNames = list(
 #'     "string"
 #'   )
@@ -54,7 +54,7 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$delete_dashboards(
+#' svc$delete_dashboards(
 #'   DashboardNames = list(
 #'     "string"
 #'   )
@@ -102,7 +102,7 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$describe_alarm_history(
+#' svc$describe_alarm_history(
 #'   AlarmName = "string",
 #'   HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
 #'   StartDate = as.POSIXct(
@@ -156,7 +156,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, HistoryItemType 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$describe_alarms(
+#' svc$describe_alarms(
 #'   AlarmNames = list(
 #'     "string"
 #'   ),
@@ -210,7 +210,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$describe_alarms_for_metric(
+#' svc$describe_alarms_for_metric(
 #'   MetricName = "string",
 #'   Namespace = "string",
 #'   Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
@@ -258,7 +258,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$disable_alarm_actions(
+#' svc$disable_alarm_actions(
 #'   AlarmNames = list(
 #'     "string"
 #'   )
@@ -295,7 +295,7 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$enable_alarm_actions(
+#' svc$enable_alarm_actions(
 #'   AlarmNames = list(
 #'     "string"
 #'   )
@@ -336,7 +336,7 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$get_dashboard(
+#' svc$get_dashboard(
 #'   DashboardName = "string"
 #' )
 #' ```
@@ -436,7 +436,7 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$get_metric_data(
+#' svc$get_metric_data(
 #'   MetricDataQueries = list(
 #'     list(
 #'       Id = "string",
@@ -638,7 +638,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$get_metric_statistics(
+#' svc$get_metric_statistics(
 #'   Namespace = "string",
 #'   MetricName = "string",
 #'   Dimensions = list(
@@ -749,7 +749,7 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$get_metric_widget_image(
+#' svc$get_metric_widget_image(
 #'   MetricWidget = "string",
 #'   OutputFormat = "string"
 #' )
@@ -797,7 +797,7 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$list_dashboards(
+#' svc$list_dashboards(
 #'   DashboardNamePrefix = "string",
 #'   NextToken = "string"
 #' )
@@ -845,7 +845,7 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$list_metrics(
+#' svc$list_metrics(
 #'   Namespace = "string",
 #'   MetricName = "string",
 #'   Dimensions = list(
@@ -892,7 +892,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceARN = "string"
 #' )
 #' ```
@@ -958,7 +958,7 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$put_dashboard(
+#' svc$put_dashboard(
 #'   DashboardName = "string",
 #'   DashboardBody = "string"
 #' )
@@ -1195,7 +1195,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$put_metric_alarm(
+#' svc$put_metric_alarm(
 #'   AlarmName = "string",
 #'   AlarmDescription = "string",
 #'   ActionsEnabled = TRUE|FALSE,
@@ -1336,7 +1336,7 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$put_metric_data(
+#' svc$put_metric_data(
 #'   Namespace = "string",
 #'   MetricData = list(
 #'     list(
@@ -1415,7 +1415,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$set_alarm_state(
+#' svc$set_alarm_state(
 #'   AlarmName = "string",
 #'   StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
 #'   StateReason = "string",
@@ -1473,7 +1473,7 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$tag_resource(
+#' svc$tag_resource(
 #'   ResourceARN = "string",
 #'   Tags = list(
 #'     list(
@@ -1518,7 +1518,7 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatch$untag_resource(
+#' svc$untag_resource(
 #'   ResourceARN = "string",
 #'   TagKeys = list(
 #'     "string"

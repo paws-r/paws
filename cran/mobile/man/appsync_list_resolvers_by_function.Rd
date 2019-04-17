@@ -22,7 +22,7 @@ list.}
 List the resolvers that are associated with a specific function.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_resolvers_by_function(
+\preformatted{svc$list_resolvers_by_function(
   apiId = "string",
   functionId = "string",
   nextToken = "string",

@@ -15,7 +15,7 @@ iot_list_scheduled_audits(nextToken, maxResults)
 Lists all of your scheduled audits.
 }
 \section{Request syntax}{
-\preformatted{iot$list_scheduled_audits(
+\preformatted{svc$list_scheduled_audits(
   nextToken = "string",
   maxResults = 123
 )

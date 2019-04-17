@@ -13,7 +13,7 @@ sfn_delete_activity(activityArn)
 Deletes an activity.
 }
 \section{Request syntax}{
-\preformatted{sfn$delete_activity(
+\preformatted{svc$delete_activity(
   activityArn = "string"
 )
 }

@@ -10,7 +10,7 @@ sms_delete_server_catalog()
 Deletes all servers from your server catalog.
 }
 \section{Request syntax}{
-\preformatted{sms$delete_server_catalog()
+\preformatted{svc$delete_server_catalog()
 }
 }
 

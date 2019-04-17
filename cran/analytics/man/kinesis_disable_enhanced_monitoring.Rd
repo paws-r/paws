@@ -32,7 +32,7 @@ in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 Disables enhanced monitoring.
 }
 \section{Request syntax}{
-\preformatted{kinesis$disable_enhanced_monitoring(
+\preformatted{svc$disable_enhanced_monitoring(
   StreamName = "string",
   ShardLevelMetrics = list(
     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"

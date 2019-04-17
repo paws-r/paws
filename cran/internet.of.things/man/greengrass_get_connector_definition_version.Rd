@@ -19,7 +19,7 @@ greengrass_get_connector_definition_version(ConnectorDefinitionId,
 Retrieves information about a connector definition version, including the connectors that the version contains. Connectors are prebuilt modules that interact with local infrastructure, device protocols, AWS, and other cloud services.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_connector_definition_version(
+\preformatted{svc$get_connector_definition_version(
   ConnectorDefinitionId = "string",
   ConnectorDefinitionVersionId = "string",
   NextToken = "string"

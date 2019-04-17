@@ -21,7 +21,7 @@ Stops the assessment run that is specified by the ARN of the assessment
 run.
 }
 \section{Request syntax}{
-\preformatted{inspector$stop_assessment_run(
+\preformatted{svc$stop_assessment_run(
   assessmentRunArn = "string",
   stopAction = "START_EVALUATION"|"SKIP_EVALUATION"
 )
@@ -31,7 +31,7 @@ run.
 \examples{
 # Stops the assessment run that is specified by the ARN of the assessment
 # run.
-\donttest{inspector$stop_assessment_run(
+\donttest{svc$stop_assessment_run(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-..."
 )}
 

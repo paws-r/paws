@@ -42,7 +42,7 @@ all tags, if tagged.}
 Retrieves the results of the specified lifecycle policy preview request.
 }
 \section{Request syntax}{
-\preformatted{ecr$get_lifecycle_policy_preview(
+\preformatted{svc$get_lifecycle_policy_preview(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(

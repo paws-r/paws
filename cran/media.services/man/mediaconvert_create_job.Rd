@@ -31,7 +31,7 @@ mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
 Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$create_job(
+\preformatted{svc$create_job(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"
   ),

@@ -17,7 +17,7 @@ unless overridden when scheduling a run.}
 Creates a new project.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$create_project(
+\preformatted{svc$create_project(
   name = "string",
   defaultJobTimeoutMinutes = 123
 )
@@ -26,7 +26,7 @@ Creates a new project.
 
 \examples{
 # The following example creates a new project named MyProject.
-\donttest{devicefarm$create_project(
+\donttest{svc$create_project(
   name = "MyProject"
 )}
 

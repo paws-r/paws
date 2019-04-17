@@ -18,7 +18,7 @@ see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sendi
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_configuration_set(
+\preformatted{svc$delete_configuration_set(
   ConfigurationSetName = "string"
 )
 }

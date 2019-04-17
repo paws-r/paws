@@ -33,7 +33,7 @@ domain. It usually takes around 72 hours to complete the domain
 verification process.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$create_email_identity(
+\preformatted{svc$create_email_identity(
   EmailIdentity = "string",
   Tags = list(
     list(

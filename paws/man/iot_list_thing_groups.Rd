@@ -24,7 +24,7 @@ prefix.}
 List the thing groups in your account.
 }
 \section{Request syntax}{
-\preformatted{iot$list_thing_groups(
+\preformatted{svc$list_thing_groups(
   nextToken = "string",
   maxResults = 123,
   parentGroup = "string",

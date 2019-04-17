@@ -15,7 +15,7 @@ Gets the properties associated with a document classification job. Use
 this operation to get the status of a classification job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_document_classification_job(
+\preformatted{svc$describe_document_classification_job(
   JobId = "string"
 )
 }

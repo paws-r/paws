@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sns$add_permission(
+#' svc$add_permission(
 #'   TopicArn = "string",
 #'   Label = "string",
 #'   AWSAccountId = list(
@@ -71,7 +71,7 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$check_if_phone_number_is_opted_out(
+#' svc$check_if_phone_number_is_opted_out(
 #'   phoneNumber = "string"
 #' )
 #' ```
@@ -116,7 +116,7 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$confirm_subscription(
+#' svc$confirm_subscription(
 #'   TopicArn = "string",
 #'   Token = "string",
 #'   AuthenticateOnUnsubscribe = "string"
@@ -196,7 +196,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #'
 #' @section Request syntax:
 #' ```
-#' sns$create_platform_application(
+#' svc$create_platform_application(
 #'   Name = "string",
 #'   Platform = "string",
 #'   Attributes = list(
@@ -265,7 +265,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$create_platform_endpoint(
+#' svc$create_platform_endpoint(
 #'   PlatformApplicationArn = "string",
 #'   Token = "string",
 #'   CustomUserData = "string",
@@ -326,7 +326,7 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #'
 #' @section Request syntax:
 #' ```
-#' sns$create_topic(
+#' svc$create_topic(
 #'   Name = "string",
 #'   Attributes = list(
 #'     "string"
@@ -370,7 +370,7 @@ sns_create_topic <- function(Name, Attributes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$delete_endpoint(
+#' svc$delete_endpoint(
 #'   EndpointArn = "string"
 #' )
 #' ```
@@ -409,7 +409,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$delete_platform_application(
+#' svc$delete_platform_application(
 #'   PlatformApplicationArn = "string"
 #' )
 #' ```
@@ -447,7 +447,7 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$delete_topic(
+#' svc$delete_topic(
 #'   TopicArn = "string"
 #' )
 #' ```
@@ -486,7 +486,7 @@ sns_delete_topic <- function(TopicArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$get_endpoint_attributes(
+#' svc$get_endpoint_attributes(
 #'   EndpointArn = "string"
 #' )
 #' ```
@@ -525,7 +525,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$get_platform_application_attributes(
+#' svc$get_platform_application_attributes(
 #'   PlatformApplicationArn = "string"
 #' )
 #' ```
@@ -568,7 +568,7 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$get_sms_attributes(
+#' svc$get_sms_attributes(
 #'   attributes = list(
 #'     "string"
 #'   )
@@ -605,7 +605,7 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$get_subscription_attributes(
+#' svc$get_subscription_attributes(
 #'   SubscriptionArn = "string"
 #' )
 #' ```
@@ -641,7 +641,7 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$get_topic_attributes(
+#' svc$get_topic_attributes(
 #'   TopicArn = "string"
 #' )
 #' ```
@@ -693,7 +693,7 @@ sns_get_topic_attributes <- function(TopicArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_endpoints_by_platform_application(
+#' svc$list_endpoints_by_platform_application(
 #'   PlatformApplicationArn = "string",
 #'   NextToken = "string"
 #' )
@@ -741,7 +741,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_phone_numbers_opted_out(
+#' svc$list_phone_numbers_opted_out(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -790,7 +790,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_platform_applications(
+#' svc$list_platform_applications(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -830,7 +830,7 @@ sns_list_platform_applications <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_subscriptions(
+#' svc$list_subscriptions(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -872,7 +872,7 @@ sns_list_subscriptions <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_subscriptions_by_topic(
+#' svc$list_subscriptions_by_topic(
 #'   TopicArn = "string",
 #'   NextToken = "string"
 #' )
@@ -913,7 +913,7 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$list_topics(
+#' svc$list_topics(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -952,7 +952,7 @@ sns_list_topics <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$opt_in_phone_number(
+#' svc$opt_in_phone_number(
 #'   phoneNumber = "string"
 #' )
 #' ```
@@ -1102,7 +1102,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$publish(
+#' svc$publish(
 #'   TopicArn = "string",
 #'   TargetArn = "string",
 #'   PhoneNumber = "string",
@@ -1150,7 +1150,7 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' sns$remove_permission(
+#' svc$remove_permission(
 #'   TopicArn = "string",
 #'   Label = "string"
 #' )
@@ -1206,7 +1206,7 @@ sns_remove_permission <- function(TopicArn, Label) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$set_endpoint_attributes(
+#' svc$set_endpoint_attributes(
 #'   EndpointArn = "string",
 #'   Attributes = list(
 #'     "string"
@@ -1286,7 +1286,7 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$set_platform_application_attributes(
+#' svc$set_platform_application_attributes(
 #'   PlatformApplicationArn = "string",
 #'   Attributes = list(
 #'     "string"
@@ -1409,7 +1409,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #'
 #' @section Request syntax:
 #' ```
-#' sns$set_sms_attributes(
+#' svc$set_sms_attributes(
 #'   attributes = list(
 #'     "string"
 #'   )
@@ -1466,7 +1466,7 @@ sns_set_sms_attributes <- function(attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' sns$set_subscription_attributes(
+#' svc$set_subscription_attributes(
 #'   SubscriptionArn = "string",
 #'   AttributeName = "string",
 #'   AttributeValue = "string"
@@ -1517,7 +1517,7 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'
 #' @section Request syntax:
 #' ```
-#' sns$set_topic_attributes(
+#' svc$set_topic_attributes(
 #'   TopicArn = "string",
 #'   AttributeName = "string",
 #'   AttributeValue = "string"
@@ -1633,7 +1633,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'
 #' @section Request syntax:
 #' ```
-#' sns$subscribe(
+#' svc$subscribe(
 #'   TopicArn = "string",
 #'   Protocol = "string",
 #'   Endpoint = "string",
@@ -1682,7 +1682,7 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sns$unsubscribe(
+#' svc$unsubscribe(
 #'   SubscriptionArn = "string"
 #' )
 #' ```

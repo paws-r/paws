@@ -48,7 +48,7 @@ These settings apply to the principal specified in the request. They do
 not apply to the principal that makes the request.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_identity_id_format(
+\preformatted{svc$describe_identity_id_format(
   PrincipalArn = "string",
   Resource = "string"
 )

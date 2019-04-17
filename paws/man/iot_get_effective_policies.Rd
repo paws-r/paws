@@ -21,7 +21,7 @@ behavior of the specified device when it connects to the AWS IoT device
 gateway.
 }
 \section{Request syntax}{
-\preformatted{iot$get_effective_policies(
+\preformatted{svc$get_effective_policies(
   principal = "string",
   cognitoIdentityPoolId = "string",
   thingName = "string"

@@ -14,7 +14,7 @@ Deletes a specified job definition. If the job definition is not found,
 no exception is thrown.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_job(
+\preformatted{svc$delete_job(
   JobName = "string"
 )
 }

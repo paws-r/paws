@@ -53,7 +53,7 @@ This operation requires permissions to perform the
 \code{rekognition:RecognizeCelebrities} operation.
 }
 \section{Request syntax}{
-\preformatted{rekognition$recognize_celebrities(
+\preformatted{svc$recognize_celebrities(
   Image = list(
     Bytes = raw,
     S3Object = list(

@@ -32,7 +32,7 @@ bucket.}
 Sets the permissions on a bucket using access control lists (ACL).
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_acl(
+\preformatted{svc$put_bucket_acl(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   AccessControlPolicy = list(
     Grants = list(
@@ -69,7 +69,7 @@ Sets the permissions on a bucket using access control lists (ACL).
 # the LogDelivery group. Because this is a replace operation, you must
 # specify all the grants in your request. To incrementally add or remove
 # ACL grants, you might use the console.
-\donttest{s3$put_bucket_acl(
+\donttest{svc$put_bucket_acl(
   Bucket = "examplebucket",
   GrantFullControl = "id=examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484",
   GrantWrite = "uri=http://acs.amazonaws.com/groups/s3/LogDelivery"

@@ -15,7 +15,7 @@ Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
 credentials.
 }
 \section{Request syntax}{
-\preformatted{codebuild$delete_source_credentials(
+\preformatted{svc$delete_source_credentials(
   arn = "string"
 )
 }

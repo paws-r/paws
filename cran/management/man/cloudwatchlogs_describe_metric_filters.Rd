@@ -32,7 +32,7 @@ or filter the results by log name, prefix, metric name, or metric
 namespace. The results are ASCII-sorted by filter name.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_metric_filters(
+\preformatted{svc$describe_metric_filters(
   logGroupName = "string",
   filterNamePrefix = "string",
   nextToken = "string",

@@ -13,7 +13,7 @@ glue_delete_dev_endpoint(EndpointName)
 Deletes a specified DevEndpoint.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_dev_endpoint(
+\preformatted{svc$delete_dev_endpoint(
   EndpointName = "string"
 )
 }

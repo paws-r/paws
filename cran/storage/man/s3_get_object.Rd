@@ -69,7 +69,7 @@ specified. Useful for downloading just a part of an object.}
 Retrieves objects from Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object(
+\preformatted{svc$get_object(
   Bucket = "string",
   IfMatch = "string",
   IfModifiedSince = as.POSIXct(
@@ -101,14 +101,14 @@ Retrieves objects from Amazon S3.
 
 \examples{
 # The following example retrieves an object for an S3 bucket.
-\donttest{s3$get_object(
+\donttest{svc$get_object(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}
 
 # The following example retrieves an object for an S3 bucket. The request
 # specifies the range header to retrieve a specific byte range.
-\donttest{s3$get_object(
+\donttest{svc$get_object(
   Bucket = "examplebucket",
   Key = "SampleFile.txt",
   Range = "bytes=0-9"

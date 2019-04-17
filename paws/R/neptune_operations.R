@@ -19,7 +19,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$add_role_to_db_cluster(
+#' svc$add_role_to_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   RoleArn = "string"
 #' )
@@ -72,7 +72,7 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$add_source_identifier_to_subscription(
+#' svc$add_source_identifier_to_subscription(
 #'   SubscriptionName = "string",
 #'   SourceIdentifier = "string"
 #' )
@@ -115,7 +115,7 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -177,7 +177,7 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$apply_pending_maintenance_action(
+#' svc$apply_pending_maintenance_action(
 #'   ResourceIdentifier = "string",
 #'   ApplyAction = "string",
 #'   OptInType = "string"
@@ -248,7 +248,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$copy_db_cluster_parameter_group(
+#' svc$copy_db_cluster_parameter_group(
 #'   SourceDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupIdentifier = "string",
 #'   TargetDBClusterParameterGroupDescription = "string",
@@ -442,7 +442,7 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$copy_db_cluster_snapshot(
+#' svc$copy_db_cluster_snapshot(
 #'   SourceDBClusterSnapshotIdentifier = "string",
 #'   TargetDBClusterSnapshotIdentifier = "string",
 #'   KmsKeyId = "string",
@@ -513,7 +513,7 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$copy_db_parameter_group(
+#' svc$copy_db_parameter_group(
 #'   SourceDBParameterGroupIdentifier = "string",
 #'   TargetDBParameterGroupIdentifier = "string",
 #'   TargetDBParameterGroupDescription = "string",
@@ -739,7 +739,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_cluster(
+#' svc$create_db_cluster(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -844,7 +844,7 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_cluster_parameter_group(
+#' svc$create_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   DBParameterGroupFamily = "string",
 #'   Description = "string",
@@ -908,7 +908,7 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_cluster_snapshot(
+#' svc$create_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   DBClusterIdentifier = "string",
 #'   Tags = list(
@@ -1162,7 +1162,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_instance(
+#' svc$create_db_instance(
 #'   DBName = "string",
 #'   DBInstanceIdentifier = "string",
 #'   AllocatedStorage = 123,
@@ -1287,7 +1287,7 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_parameter_group(
+#' svc$create_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   DBParameterGroupFamily = "string",
 #'   Description = "string",
@@ -1341,7 +1341,7 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_db_subnet_group(
+#' svc$create_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -1446,7 +1446,7 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$create_event_subscription(
+#' svc$create_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -1527,7 +1527,7 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_cluster(
+#' svc$delete_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
 #'   FinalDBSnapshotIdentifier = "string"
@@ -1573,7 +1573,7 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_cluster_parameter_group(
+#' svc$delete_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
@@ -1614,7 +1614,7 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_cluster_snapshot(
+#' svc$delete_db_cluster_snapshot(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -1711,7 +1711,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_instance(
+#' svc$delete_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   SkipFinalSnapshot = TRUE|FALSE,
 #'   FinalDBSnapshotIdentifier = "string"
@@ -1757,7 +1757,7 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_parameter_group(
+#' svc$delete_db_parameter_group(
 #'   DBParameterGroupName = "string"
 #' )
 #' ```
@@ -1804,7 +1804,7 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_db_subnet_group(
+#' svc$delete_db_subnet_group(
 #'   DBSubnetGroupName = "string"
 #' )
 #' ```
@@ -1839,7 +1839,7 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$delete_event_subscription(
+#' svc$delete_event_subscription(
 #'   SubscriptionName = "string"
 #' )
 #' ```
@@ -1896,7 +1896,7 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_cluster_parameter_groups(
+#' svc$describe_db_cluster_parameter_groups(
 #'   DBClusterParameterGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -1965,7 +1965,7 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_cluster_parameters(
+#' svc$describe_db_cluster_parameters(
 #'   DBClusterParameterGroupName = "string",
 #'   Source = "string",
 #'   Filters = list(
@@ -2026,7 +2026,7 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_cluster_snapshot_attributes(
+#' svc$describe_db_cluster_snapshot_attributes(
 #'   DBClusterSnapshotIdentifier = "string"
 #' )
 #' ```
@@ -2134,7 +2134,7 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_cluster_snapshots(
+#' svc$describe_db_cluster_snapshots(
 #'   DBClusterIdentifier = "string",
 #'   DBClusterSnapshotIdentifier = "string",
 #'   SnapshotType = "string",
@@ -2209,7 +2209,7 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_clusters(
+#' svc$describe_db_clusters(
 #'   DBClusterIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -2284,7 +2284,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_engine_versions(
+#' svc$describe_db_engine_versions(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBParameterGroupFamily = "string",
@@ -2366,7 +2366,7 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_instances(
+#' svc$describe_db_instances(
 #'   DBInstanceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -2432,7 +2432,7 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_parameter_groups(
+#' svc$describe_db_parameter_groups(
 #'   DBParameterGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -2500,7 +2500,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_parameters(
+#' svc$describe_db_parameters(
 #'   DBParameterGroupName = "string",
 #'   Source = "string",
 #'   Filters = list(
@@ -2565,7 +2565,7 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_db_subnet_groups(
+#' svc$describe_db_subnet_groups(
 #'   DBSubnetGroupName = "string",
 #'   Filters = list(
 #'     list(
@@ -2627,7 +2627,7 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_engine_default_cluster_parameters(
+#' svc$describe_engine_default_cluster_parameters(
 #'   DBParameterGroupFamily = "string",
 #'   Filters = list(
 #'     list(
@@ -2688,7 +2688,7 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_engine_default_parameters(
+#' svc$describe_engine_default_parameters(
 #'   DBParameterGroupFamily = "string",
 #'   Filters = list(
 #'     list(
@@ -2739,7 +2739,7 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_event_categories(
+#' svc$describe_event_categories(
 #'   SourceType = "string",
 #'   Filters = list(
 #'     list(
@@ -2801,7 +2801,7 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_event_subscriptions(
+#' svc$describe_event_subscriptions(
 #'   SubscriptionName = "string",
 #'   Filters = list(
 #'     list(
@@ -2900,7 +2900,7 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_events(
+#' svc$describe_events(
 #'   SourceIdentifier = "string",
 #'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
 #'   StartTime = as.POSIXct(
@@ -2979,7 +2979,7 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_orderable_db_instance_options(
+#' svc$describe_orderable_db_instance_options(
 #'   Engine = "string",
 #'   EngineVersion = "string",
 #'   DBInstanceClass = "string",
@@ -3056,7 +3056,7 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_pending_maintenance_actions(
+#' svc$describe_pending_maintenance_actions(
 #'   ResourceIdentifier = "string",
 #'   Filters = list(
 #'     list(
@@ -3104,7 +3104,7 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$describe_valid_db_instance_modifications(
+#' svc$describe_valid_db_instance_modifications(
 #'   DBInstanceIdentifier = "string"
 #' )
 #' ```
@@ -3160,7 +3160,7 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$failover_db_cluster(
+#' svc$failover_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   TargetDBInstanceIdentifier = "string"
 #' )
@@ -3200,7 +3200,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceName = "string",
 #'   Filters = list(
 #'     list(
@@ -3351,7 +3351,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_cluster(
+#' svc$modify_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   NewDBClusterIdentifier = "string",
 #'   ApplyImmediately = TRUE|FALSE,
@@ -3421,7 +3421,7 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_cluster_parameter_group(
+#' svc$modify_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -3511,7 +3511,7 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_cluster_snapshot_attribute(
+#' svc$modify_db_cluster_snapshot_attribute(
 #'   DBClusterSnapshotIdentifier = "string",
 #'   AttributeName = "string",
 #'   ValuesToAdd = list(
@@ -3826,7 +3826,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_instance(
+#' svc$modify_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   AllocatedStorage = 123,
 #'   DBInstanceClass = "string",
@@ -3940,7 +3940,7 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_parameter_group(
+#' svc$modify_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -3999,7 +3999,7 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_db_subnet_group(
+#' svc$modify_db_subnet_group(
 #'   DBSubnetGroupName = "string",
 #'   DBSubnetGroupDescription = "string",
 #'   SubnetIds = list(
@@ -4060,7 +4060,7 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$modify_event_subscription(
+#' svc$modify_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -4108,7 +4108,7 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$promote_read_replica_db_cluster(
+#' svc$promote_read_replica_db_cluster(
 #'   DBClusterIdentifier = "string"
 #' )
 #' ```
@@ -4160,7 +4160,7 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$reboot_db_instance(
+#' svc$reboot_db_instance(
 #'   DBInstanceIdentifier = "string",
 #'   ForceFailover = TRUE|FALSE
 #' )
@@ -4201,7 +4201,7 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$remove_role_from_db_cluster(
+#' svc$remove_role_from_db_cluster(
 #'   DBClusterIdentifier = "string",
 #'   RoleArn = "string"
 #' )
@@ -4244,7 +4244,7 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$remove_source_identifier_from_subscription(
+#' svc$remove_source_identifier_from_subscription(
 #'   SubscriptionName = "string",
 #'   SourceIdentifier = "string"
 #' )
@@ -4284,7 +4284,7 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -4341,7 +4341,7 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$reset_db_cluster_parameter_group(
+#' svc$reset_db_cluster_parameter_group(
 #'   DBClusterParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -4414,7 +4414,7 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$reset_db_parameter_group(
+#' svc$reset_db_parameter_group(
 #'   DBParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -4542,7 +4542,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$restore_db_cluster_from_snapshot(
+#' svc$restore_db_cluster_from_snapshot(
 #'   AvailabilityZones = list(
 #'     "string"
 #'   ),
@@ -4708,7 +4708,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #'
 #' @section Request syntax:
 #' ```
-#' neptune$restore_db_cluster_to_point_in_time(
+#' svc$restore_db_cluster_to_point_in_time(
 #'   DBClusterIdentifier = "string",
 #'   RestoreType = "string",
 #'   SourceDBClusterIdentifier = "string",

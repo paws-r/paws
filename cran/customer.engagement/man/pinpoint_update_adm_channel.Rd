@@ -15,7 +15,7 @@ pinpoint_update_adm_channel(ADMChannelRequest, ApplicationId)
 Update an ADM channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_adm_channel(
+\preformatted{svc$update_adm_channel(
   ADMChannelRequest = list(
     ClientId = "string",
     ClientSecret = "string",

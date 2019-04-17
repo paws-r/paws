@@ -45,7 +45,7 @@ calling "CreateDatasetContent" or automatically according to a
 "trigger" you specify.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$create_dataset(
+\preformatted{svc$create_dataset(
   datasetName = "string",
   actions = list(
     list(

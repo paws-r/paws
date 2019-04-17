@@ -19,7 +19,7 @@ identity's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 Update an origin access identity.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$update_cloud_front_origin_access_identity(
+\preformatted{svc$update_cloud_front_origin_access_identity(
   CloudFrontOriginAccessIdentityConfig = list(
     CallerReference = "string",
     Comment = "string"

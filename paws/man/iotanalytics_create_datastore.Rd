@@ -17,7 +17,7 @@ iotanalytics_create_datastore(datastoreName, retentionPeriod, tags)
 Creates a data store, which is a repository for messages.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$create_datastore(
+\preformatted{svc$create_datastore(
   datastoreName = "string",
   retentionPeriod = list(
     unlimited = TRUE|FALSE,

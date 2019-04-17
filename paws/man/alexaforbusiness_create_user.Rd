@@ -25,7 +25,7 @@ idempotency.}
 Creates a user.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_user(
+\preformatted{svc$create_user(
   UserId = "string",
   FirstName = "string",
   LastName = "string",

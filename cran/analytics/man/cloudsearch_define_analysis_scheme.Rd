@@ -19,7 +19,7 @@ For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/de
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$define_analysis_scheme(
+\preformatted{svc$define_analysis_scheme(
   DomainName = "string",
   AnalysisScheme = list(
     AnalysisSchemeName = "string",

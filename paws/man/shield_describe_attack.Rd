@@ -13,7 +13,7 @@ shield_describe_attack(AttackId)
 Describes the details of a DDoS attack.
 }
 \section{Request syntax}{
-\preformatted{shield$describe_attack(
+\preformatted{svc$describe_attack(
   AttackId = "string"
 )
 }

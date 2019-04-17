@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes the specified VPC attachment.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_transit_gateway_vpc_attachment(
+\preformatted{svc$delete_transit_gateway_vpc_attachment(
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE
 )

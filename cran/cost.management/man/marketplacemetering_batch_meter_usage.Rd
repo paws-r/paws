@@ -30,7 +30,7 @@ BatchMeterUsage.
 BatchMeterUsage can process up to 25 UsageRecords at a time.
 }
 \section{Request syntax}{
-\preformatted{marketplacemetering$batch_meter_usage(
+\preformatted{svc$batch_meter_usage(
   UsageRecords = list(
     list(
       Timestamp = as.POSIXct(

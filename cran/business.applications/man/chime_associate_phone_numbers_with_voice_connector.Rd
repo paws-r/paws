@@ -18,7 +18,7 @@ Associates a phone number with the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$associate_phone_numbers_with_voice_connector(
+\preformatted{svc$associate_phone_numbers_with_voice_connector(
   VoiceConnectorId = "string",
   E164PhoneNumbers = list(
     "string"

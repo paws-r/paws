@@ -17,7 +17,7 @@ instance.
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_iam_instance_profile(
+\preformatted{svc$disassociate_iam_instance_profile(
   AssociationId = "string"
 )
 }
@@ -26,7 +26,7 @@ Use DescribeIamInstanceProfileAssociations to get the association ID.
 \examples{
 # This example disassociates the specified IAM instance profile from an
 # instance.
-\donttest{ec2$disassociate_iam_instance_profile(
+\donttest{svc$disassociate_iam_instance_profile(
   AssociationId = "iip-assoc-05020b59952902f5f"
 )}
 

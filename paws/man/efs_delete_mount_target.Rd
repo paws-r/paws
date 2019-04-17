@@ -41,7 +41,7 @@ action on the mount target's network interface:
 }
 }
 \section{Request syntax}{
-\preformatted{efs$delete_mount_target(
+\preformatted{svc$delete_mount_target(
   MountTargetId = "string"
 )
 }
@@ -49,7 +49,7 @@ action on the mount target's network interface:
 
 \examples{
 # This operation deletes a mount target.
-\donttest{efs$delete_mount_target(
+\donttest{svc$delete_mount_target(
   MountTargetId = "fsmt-12340abc"
 )}
 

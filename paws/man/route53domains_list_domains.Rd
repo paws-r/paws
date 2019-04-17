@@ -27,7 +27,7 @@ This operation returns all the domain names registered with Amazon Route
 53 for the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53domains$list_domains(
+\preformatted{svc$list_domains(
   Marker = "string",
   MaxItems = 123
 )

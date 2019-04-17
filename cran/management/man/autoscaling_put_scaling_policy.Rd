@@ -86,7 +86,7 @@ change. Any existing parameter not changed in an update to an existing
 policy is not changed in this update request.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$put_scaling_policy(
+\preformatted{svc$put_scaling_policy(
   AutoScalingGroupName = "string",
   PolicyName = "string",
   PolicyType = "string",
@@ -131,7 +131,7 @@ policy is not changed in this update request.
 \examples{
 # This example adds the specified policy to the specified Auto Scaling
 # group.
-\donttest{autoscaling$put_scaling_policy(
+\donttest{svc$put_scaling_policy(
   AdjustmentType = "ChangeInCapacity",
   AutoScalingGroupName = "my-auto-scaling-group",
   PolicyName = "ScaleIn",

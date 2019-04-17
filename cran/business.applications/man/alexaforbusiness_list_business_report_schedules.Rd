@@ -16,7 +16,7 @@ call.}
 Lists the details of the schedules that a user configured.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_business_report_schedules(
+\preformatted{svc$list_business_report_schedules(
   NextToken = "string",
   MaxResults = 123
 )

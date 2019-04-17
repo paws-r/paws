@@ -101,7 +101,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$delete_scaling_policy(
+#' svc$delete_scaling_policy(
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceId = "string",
@@ -112,7 +112,7 @@ NULL
 #' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
-#' \donttest{applicationautoscaling$delete_scaling_policy(
+#' \donttest{svc$delete_scaling_policy(
 #'   PolicyName = "web-app-cpu-lt-25",
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
@@ -229,7 +229,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$delete_scheduled_action(
+#' svc$delete_scheduled_action(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
@@ -352,7 +352,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$deregister_scalable_target(
+#' svc$deregister_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceId = "string",
 #'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
@@ -362,7 +362,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @examples
 #' # This example deregisters a scalable target for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' \donttest{applicationautoscaling$deregister_scalable_target(
+#' \donttest{svc$deregister_scalable_target(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
@@ -496,7 +496,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$describe_scalable_targets(
+#' svc$describe_scalable_targets(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceIds = list(
 #'     "string"
@@ -510,7 +510,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @examples
 #' # This example describes the scalable targets for the ecs service
 #' # namespace.
-#' \donttest{applicationautoscaling$describe_scalable_targets(
+#' \donttest{svc$describe_scalable_targets(
 #'   ServiceNamespace = "ecs"
 #' )}
 #'
@@ -644,7 +644,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$describe_scaling_activities(
+#' svc$describe_scaling_activities(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceId = "string",
 #'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
@@ -656,7 +656,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @examples
 #' # This example describes the scaling activities for an Amazon ECS service
 #' # called web-app that is running in the default cluster.
-#' \donttest{applicationautoscaling$describe_scaling_activities(
+#' \donttest{svc$describe_scaling_activities(
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
@@ -790,7 +790,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$describe_scaling_policies(
+#' svc$describe_scaling_policies(
 #'   PolicyNames = list(
 #'     "string"
 #'   ),
@@ -805,7 +805,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' @examples
 #' # This example describes the scaling policies for the ecs service
 #' # namespace.
-#' \donttest{applicationautoscaling$describe_scaling_policies(
+#' \donttest{svc$describe_scaling_policies(
 #'   ServiceNamespace = "ecs"
 #' )}
 #'
@@ -937,7 +937,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$describe_scheduled_actions(
+#' svc$describe_scheduled_actions(
 #'   ScheduledActionNames = list(
 #'     "string"
 #'   ),
@@ -1111,7 +1111,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$put_scaling_policy(
+#' svc$put_scaling_policy(
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceId = "string",
@@ -1159,7 +1159,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # This example applies a scaling policy to an Amazon ECS service called
 #' # web-app in the default cluster. The policy increases the desired count
 #' # of the service by 200%, with a cool down period of 60 seconds.
-#' \donttest{applicationautoscaling$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "web-app-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "service/default/web-app",
@@ -1181,7 +1181,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' # policy increases the target capacity of the spot fleet by 200%, with a
 #' # cool down period of 180 seconds.",
 #' # 
-#' \donttest{applicationautoscaling$put_scaling_policy(
+#' \donttest{svc$put_scaling_policy(
 #'   PolicyName = "fleet-cpu-gt-75",
 #'   PolicyType = "StepScaling",
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
@@ -1356,7 +1356,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$put_scheduled_action(
+#' svc$put_scheduled_action(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   Schedule = "string",
 #'   ScheduledActionName = "string",
@@ -1509,7 +1509,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'
 #' @section Request syntax:
 #' ```
-#' applicationautoscaling$register_scalable_target(
+#' svc$register_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
 #'   ResourceId = "string",
 #'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
@@ -1523,7 +1523,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' # This example registers a scalable target from an Amazon ECS service
 #' # called web-app that is running on the default cluster, with a minimum
 #' # desired count of 1 task and a maximum desired count of 10 tasks.
-#' \donttest{applicationautoscaling$register_scalable_target(
+#' \donttest{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "service/default/web-app",
@@ -1534,7 +1534,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' # This example registers a scalable target from an Amazon EC2 Spot fleet
 #' # with a minimum target capacity of 1 and a maximum of 10.
-#' \donttest{applicationautoscaling$register_scalable_target(
+#' \donttest{svc$register_scalable_target(
 #'   MaxCapacity = 10L,
 #'   MinCapacity = 1L,
 #'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

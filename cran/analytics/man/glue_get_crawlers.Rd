@@ -15,7 +15,7 @@ glue_get_crawlers(MaxResults, NextToken)
 Retrieves metadata for all crawlers defined in the customer account.
 }
 \section{Request syntax}{
-\preformatted{glue$get_crawlers(
+\preformatted{svc$get_crawlers(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -23,7 +23,7 @@ Before you can describe your servers, you must import them using
 ImportServerCatalog.
 }
 \section{Request syntax}{
-\preformatted{sms$get_servers(
+\preformatted{svc$get_servers(
   nextToken = "string",
   maxResults = 123,
   vmServerAddressList = list(

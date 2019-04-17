@@ -47,7 +47,7 @@ can filter the results by attachment ID, attachment state, resource ID,
 or resource owner.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_transit_gateway_attachments(
+\preformatted{svc$describe_transit_gateway_attachments(
   TransitGatewayAttachmentIds = list(
     "string"
   ),

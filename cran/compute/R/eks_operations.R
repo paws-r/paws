@@ -57,7 +57,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' eks$create_cluster(
+#' svc$create_cluster(
 #'   name = "string",
 #'   version = "string",
 #'   roleArn = "string",
@@ -77,7 +77,7 @@ NULL
 #'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
-#' \donttest{eks$create_cluster(
+#' \donttest{svc$create_cluster(
 #'   version = "1.10",
 #'   name = "prod",
 #'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
@@ -131,7 +131,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #'
 #' @section Request syntax:
 #' ```
-#' eks$delete_cluster(
+#' svc$delete_cluster(
 #'   name = "string"
 #' )
 #' ```
@@ -139,7 +139,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' @examples
 #' # This example command deletes a cluster named `devel` in your default
 #' # region.
-#' \donttest{eks$delete_cluster(
+#' \donttest{svc$delete_cluster(
 #'   name = "devel"
 #' )}
 #'
@@ -182,7 +182,7 @@ eks_delete_cluster <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' eks$describe_cluster(
+#' svc$describe_cluster(
 #'   name = "string"
 #' )
 #' ```
@@ -190,7 +190,7 @@ eks_delete_cluster <- function(name) {
 #' @examples
 #' # This example command provides a description of the specified cluster in
 #' # your default region.
-#' \donttest{eks$describe_cluster(
+#' \donttest{svc$describe_cluster(
 #'   name = "devel"
 #' )}
 #'
@@ -231,7 +231,7 @@ eks_describe_cluster <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' eks$describe_update(
+#' svc$describe_update(
 #'   name = "string",
 #'   updateId = "string"
 #' )
@@ -284,7 +284,7 @@ eks_describe_update <- function(name, updateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' eks$list_clusters(
+#' svc$list_clusters(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -293,7 +293,7 @@ eks_describe_update <- function(name, updateId) {
 #' @examples
 #' # This example command lists all of your available clusters in your
 #' # default region.
-#' \donttest{eks$list_clusters()}
+#' \donttest{svc$list_clusters()}
 #'
 #' @keywords internal
 #'
@@ -339,7 +339,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' eks$list_updates(
+#' svc$list_updates(
 #'   name = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -393,7 +393,7 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' eks$update_cluster_config(
+#' svc$update_cluster_config(
 #'   name = "string",
 #'   resourcesVpcConfig = list(
 #'     subnetIds = list(
@@ -450,7 +450,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, clientReq
 #'
 #' @section Request syntax:
 #' ```
-#' eks$update_cluster_version(
+#' svc$update_cluster_version(
 #'   name = "string",
 #'   version = "string",
 #'   clientRequestToken = "string"

@@ -13,7 +13,7 @@ glue_stop_trigger(Name)
 Stops a specified trigger.
 }
 \section{Request syntax}{
-\preformatted{glue$stop_trigger(
+\preformatted{svc$stop_trigger(
   Name = "string"
 )
 }

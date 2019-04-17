@@ -16,7 +16,7 @@ and time of the week. Note that values are in terms of the gateway's
 time zone.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_maintenance_start_time(
+\preformatted{svc$describe_maintenance_start_time(
   GatewayARN = "string"
 )
 }
@@ -25,7 +25,7 @@ time zone.
 \examples{
 # Returns your gateway's weekly maintenance start time including the day
 # and time of the week.
-\donttest{storagegateway$describe_maintenance_start_time(
+\donttest{svc$describe_maintenance_start_time(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

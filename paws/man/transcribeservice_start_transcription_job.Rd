@@ -46,7 +46,7 @@ job.}
 Starts an asynchronous job to transcribe speech to text.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$start_transcription_job(
+\preformatted{svc$start_transcription_job(
   TranscriptionJobName = "string",
   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
   MediaSampleRateHertz = 123,

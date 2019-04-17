@@ -26,11 +26,10 @@ NULL
 #' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
-#' @section Example:
-#' ```
-#' athena <- paws::athena()
-#' athena$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_get_named_query(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

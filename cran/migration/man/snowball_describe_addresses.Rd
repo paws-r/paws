@@ -20,7 +20,7 @@ of the US regions will return addresses from the list of all addresses
 associated with this account in all US regions.
 }
 \section{Request syntax}{
-\preformatted{snowball$describe_addresses(
+\preformatted{svc$describe_addresses(
   MaxResults = 123,
   NextToken = "string"
 )
@@ -32,7 +32,7 @@ associated with this account in all US regions.
 # Snowball. Calling this API in one of the US regions will return
 # addresses from the list of all addresses associated with this account in
 # all US regions.
-\donttest{snowball$describe_addresses()}
+\donttest{svc$describe_addresses()}
 
 }
 \keyword{internal}

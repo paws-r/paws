@@ -60,7 +60,7 @@ an access token instead of an identity token for authorization purposes.}
 Add a method to an existing Resource resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$put_method(
+\preformatted{svc$put_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

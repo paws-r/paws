@@ -15,7 +15,7 @@ greengrass_list_resource_definitions(MaxResults, NextToken)
 Retrieves a list of resource definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_resource_definitions(
+\preformatted{svc$list_resource_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

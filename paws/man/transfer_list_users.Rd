@@ -24,7 +24,7 @@ Lists the users for the server that you specify by passing the
 \code{ServerId} parameter.
 }
 \section{Request syntax}{
-\preformatted{transfer$list_users(
+\preformatted{svc$list_users(
   MaxResults = 123,
   NextToken = "string",
   ServerId = "string"

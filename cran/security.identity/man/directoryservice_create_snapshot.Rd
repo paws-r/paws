@@ -20,7 +20,7 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_snapshot(
+\preformatted{svc$create_snapshot(
   DirectoryId = "string",
   Name = "string"
 )

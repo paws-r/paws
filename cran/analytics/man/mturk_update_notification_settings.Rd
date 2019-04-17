@@ -32,7 +32,7 @@ must already have a notification specification, or one must be provided
 in the same call to \code{UpdateNotificationSettings}.
 }
 \section{Request syntax}{
-\preformatted{mturk$update_notification_settings(
+\preformatted{svc$update_notification_settings(
   HITTypeId = "string",
   Notification = list(
     Destination = "string",

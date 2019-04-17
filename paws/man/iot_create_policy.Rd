@@ -22,7 +22,7 @@ creates a policy version with a version identifier of \strong{1} and sets
 \strong{1} as the policy's default version.
 }
 \section{Request syntax}{
-\preformatted{iot$create_policy(
+\preformatted{svc$create_policy(
   policyName = "string",
   policyDocument = "string"
 )

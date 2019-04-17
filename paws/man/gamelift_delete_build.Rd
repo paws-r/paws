@@ -32,7 +32,7 @@ create new fleets with the deleted build.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_build(
+\preformatted{svc$delete_build(
   BuildId = "string"
 )
 }

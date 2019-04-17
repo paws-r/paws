@@ -14,7 +14,7 @@ attached that you want to view.}
 Returns all tags for the given Elasticsearch domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$list_tags(
+\preformatted{svc$list_tags(
   ARN = "string"
 )
 }

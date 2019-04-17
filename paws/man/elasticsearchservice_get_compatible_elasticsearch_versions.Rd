@@ -15,7 +15,7 @@ optionally pass a \code{<a>DomainName</a>} to get all upgrade compatible
 Elasticsearch versions for that specific domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$get_compatible_elasticsearch_versions(
+\preformatted{svc$get_compatible_elasticsearch_versions(
   DomainName = "string"
 )
 }

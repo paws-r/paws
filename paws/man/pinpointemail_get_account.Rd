@@ -12,7 +12,7 @@ Obtain information about the email-sending status and capabilities of
 your Amazon Pinpoint account in the current AWS Region.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_account()
+\preformatted{svc$get_account()
 }
 }
 

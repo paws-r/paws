@@ -18,7 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes one or more flow logs.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_flow_logs(
+\preformatted{svc$delete_flow_logs(
   DryRun = TRUE|FALSE,
   FlowLogIds = list(
     "string"

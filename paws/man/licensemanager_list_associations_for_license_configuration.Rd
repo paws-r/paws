@@ -24,7 +24,7 @@ example, an AMI or a stopped instance may not consume a license
 resources associated with a license configuration.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_associations_for_license_configuration(
+\preformatted{svc$list_associations_for_license_configuration(
   LicenseConfigurationArn = "string",
   MaxResults = 123,
   NextToken = "string"

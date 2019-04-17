@@ -19,7 +19,7 @@ new configuration replaces the old one. For more information, see
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$define_expression(
+\preformatted{svc$define_expression(
   DomainName = "string",
   Expression = list(
     ExpressionName = "string",

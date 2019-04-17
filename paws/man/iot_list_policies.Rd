@@ -18,7 +18,7 @@ ascending creation order.}
 Lists your policies.
 }
 \section{Request syntax}{
-\preformatted{iot$list_policies(
+\preformatted{svc$list_policies(
   marker = "string",
   pageSize = 123,
   ascendingOrder = TRUE|FALSE

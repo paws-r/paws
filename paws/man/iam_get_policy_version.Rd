@@ -45,7 +45,7 @@ For more information about managed policy versions, see \href{http://docs.aws.am
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$get_policy_version(
+\preformatted{svc$get_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )

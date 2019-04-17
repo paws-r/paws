@@ -17,7 +17,7 @@ to authenticate with the pool.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$delete_identity_pool(
+\preformatted{svc$delete_identity_pool(
   IdentityPoolId = "string"
 )
 }

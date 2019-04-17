@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$batch_get_repositories(
+#' svc$batch_get_repositories(
 #'   repositoryNames = list(
 #'     "string"
 #'   )
@@ -63,7 +63,7 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$create_branch(
+#' svc$create_branch(
 #'   repositoryName = "string",
 #'   branchName = "string",
 #'   commitId = "string"
@@ -118,7 +118,7 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$create_commit(
+#' svc$create_commit(
 #'   repositoryName = "string",
 #'   branchName = "string",
 #'   parentCommitId = "string",
@@ -197,7 +197,7 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$create_pull_request(
+#' svc$create_pull_request(
 #'   title = "string",
 #'   description = "string",
 #'   targets = list(
@@ -256,7 +256,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$create_repository(
+#' svc$create_repository(
 #'   repositoryName = "string",
 #'   repositoryDescription = "string"
 #' )
@@ -295,7 +295,7 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$delete_branch(
+#' svc$delete_branch(
 #'   repositoryName = "string",
 #'   branchName = "string"
 #' )
@@ -334,7 +334,7 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$delete_comment_content(
+#' svc$delete_comment_content(
 #'   commentId = "string"
 #' )
 #' ```
@@ -396,7 +396,7 @@ codecommit_delete_comment_content <- function(commentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$delete_file(
+#' svc$delete_file(
 #'   repositoryName = "string",
 #'   branchName = "string",
 #'   filePath = "string",
@@ -443,7 +443,7 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$delete_repository(
+#' svc$delete_repository(
 #'   repositoryName = "string"
 #' )
 #' ```
@@ -490,7 +490,7 @@ codecommit_delete_repository <- function(repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$describe_pull_request_events(
+#' svc$describe_pull_request_events(
 #'   pullRequestId = "string",
 #'   pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED",
 #'   actorArn = "string",
@@ -532,7 +532,7 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_blob(
+#' svc$get_blob(
 #'   repositoryName = "string",
 #'   blobId = "string"
 #' )
@@ -572,7 +572,7 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_branch(
+#' svc$get_branch(
 #'   repositoryName = "string",
 #'   branchName = "string"
 #' )
@@ -611,7 +611,7 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_comment(
+#' svc$get_comment(
 #'   commentId = "string"
 #' )
 #' ```
@@ -657,7 +657,7 @@ codecommit_get_comment <- function(commentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_comments_for_compared_commit(
+#' svc$get_comments_for_compared_commit(
 #'   repositoryName = "string",
 #'   beforeCommitId = "string",
 #'   afterCommitId = "string",
@@ -708,7 +708,7 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_comments_for_pull_request(
+#' svc$get_comments_for_pull_request(
 #'   pullRequestId = "string",
 #'   repositoryName = "string",
 #'   beforeCommitId = "string",
@@ -751,7 +751,7 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_commit(
+#' svc$get_commit(
 #'   repositoryName = "string",
 #'   commitId = "string"
 #' )
@@ -810,7 +810,7 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_differences(
+#' svc$get_differences(
 #'   repositoryName = "string",
 #'   beforeCommitSpecifier = "string",
 #'   afterCommitSpecifier = "string",
@@ -860,7 +860,7 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_file(
+#' svc$get_file(
 #'   repositoryName = "string",
 #'   commitSpecifier = "string",
 #'   filePath = "string"
@@ -906,7 +906,7 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_folder(
+#' svc$get_folder(
 #'   repositoryName = "string",
 #'   commitSpecifier = "string",
 #'   folderPath = "string"
@@ -952,7 +952,7 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_merge_conflicts(
+#' svc$get_merge_conflicts(
 #'   repositoryName = "string",
 #'   destinationCommitSpecifier = "string",
 #'   sourceCommitSpecifier = "string",
@@ -991,7 +991,7 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_pull_request(
+#' svc$get_pull_request(
 #'   pullRequestId = "string"
 #' )
 #' ```
@@ -1033,7 +1033,7 @@ codecommit_get_pull_request <- function(pullRequestId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_repository(
+#' svc$get_repository(
 #'   repositoryName = "string"
 #' )
 #' ```
@@ -1068,7 +1068,7 @@ codecommit_get_repository <- function(repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$get_repository_triggers(
+#' svc$get_repository_triggers(
 #'   repositoryName = "string"
 #' )
 #' ```
@@ -1104,7 +1104,7 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$list_branches(
+#' svc$list_branches(
 #'   repositoryName = "string",
 #'   nextToken = "string"
 #' )
@@ -1150,7 +1150,7 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$list_pull_requests(
+#' svc$list_pull_requests(
 #'   repositoryName = "string",
 #'   authorArn = "string",
 #'   pullRequestStatus = "OPEN"|"CLOSED",
@@ -1194,7 +1194,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$list_repositories(
+#' svc$list_repositories(
 #'   nextToken = "string",
 #'   sortBy = "repositoryName"|"lastModifiedDate",
 #'   order = "ascending"|"descending"
@@ -1242,7 +1242,7 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$merge_pull_request_by_fast_forward(
+#' svc$merge_pull_request_by_fast_forward(
 #'   pullRequestId = "string",
 #'   repositoryName = "string",
 #'   sourceCommitId = "string"
@@ -1292,7 +1292,7 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$post_comment_for_compared_commit(
+#' svc$post_comment_for_compared_commit(
 #'   repositoryName = "string",
 #'   beforeCommitId = "string",
 #'   afterCommitId = "string",
@@ -1355,7 +1355,7 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$post_comment_for_pull_request(
+#' svc$post_comment_for_pull_request(
 #'   pullRequestId = "string",
 #'   repositoryName = "string",
 #'   beforeCommitId = "string",
@@ -1410,7 +1410,7 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$post_comment_reply(
+#' svc$post_comment_reply(
 #'   inReplyTo = "string",
 #'   clientRequestToken = "string",
 #'   content = "string"
@@ -1474,7 +1474,7 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$put_file(
+#' svc$put_file(
 #'   repositoryName = "string",
 #'   branchName = "string",
 #'   fileContent = raw,
@@ -1520,7 +1520,7 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$put_repository_triggers(
+#' svc$put_repository_triggers(
 #'   repositoryName = "string",
 #'   triggers = list(
 #'     list(
@@ -1573,7 +1573,7 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$test_repository_triggers(
+#' svc$test_repository_triggers(
 #'   repositoryName = "string",
 #'   triggers = list(
 #'     list(
@@ -1624,7 +1624,7 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_comment(
+#' svc$update_comment(
 #'   commentId = "string",
 #'   content = "string"
 #' )
@@ -1665,7 +1665,7 @@ codecommit_update_comment <- function(commentId, content) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_default_branch(
+#' svc$update_default_branch(
 #'   repositoryName = "string",
 #'   defaultBranchName = "string"
 #' )
@@ -1704,7 +1704,7 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_pull_request_description(
+#' svc$update_pull_request_description(
 #'   pullRequestId = "string",
 #'   description = "string"
 #' )
@@ -1744,7 +1744,7 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_pull_request_status(
+#' svc$update_pull_request_status(
 #'   pullRequestId = "string",
 #'   pullRequestStatus = "OPEN"|"CLOSED"
 #' )
@@ -1783,7 +1783,7 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_pull_request_title(
+#' svc$update_pull_request_title(
 #'   pullRequestId = "string",
 #'   title = "string"
 #' )
@@ -1830,7 +1830,7 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_repository_description(
+#' svc$update_repository_description(
 #'   repositoryName = "string",
 #'   repositoryDescription = "string"
 #' )
@@ -1873,7 +1873,7 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #'
 #' @section Request syntax:
 #' ```
-#' codecommit$update_repository_name(
+#' svc$update_repository_name(
 #'   oldName = "string",
 #'   newName = "string"
 #' )

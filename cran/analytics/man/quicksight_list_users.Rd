@@ -34,7 +34,7 @@ email address.
 \code{aws quicksight list-users --aws-account-id=111122223333 --namespace=default }
 }
 \section{Request syntax}{
-\preformatted{quicksight$list_users(
+\preformatted{svc$list_users(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123,

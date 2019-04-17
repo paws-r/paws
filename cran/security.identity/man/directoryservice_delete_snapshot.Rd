@@ -13,7 +13,7 @@ directoryservice_delete_snapshot(SnapshotId)
 Deletes a directory snapshot.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$delete_snapshot(
+\preformatted{svc$delete_snapshot(
   SnapshotId = "string"
 )
 }

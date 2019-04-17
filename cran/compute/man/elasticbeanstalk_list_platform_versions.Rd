@@ -19,7 +19,7 @@ of the supplied values.}
 Lists the available platforms.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$list_platform_versions(
+\preformatted{svc$list_platform_versions(
   Filters = list(
     list(
       Type = "string",

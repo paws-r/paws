@@ -13,7 +13,7 @@ securityhub_delete_insight(InsightArn)
 Deletes an insight that is specified by the insight ARN.
 }
 \section{Request syntax}{
-\preformatted{securityhub$delete_insight(
+\preformatted{svc$delete_insight(
   InsightArn = "string"
 )
 }

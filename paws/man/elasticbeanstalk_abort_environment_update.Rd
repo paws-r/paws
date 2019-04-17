@@ -20,7 +20,7 @@ Cancels in-progress environment configuration update or application
 version deployment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$abort_environment_update(
+\preformatted{svc$abort_environment_update(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
@@ -30,7 +30,7 @@ version deployment.
 \examples{
 # The following code aborts a running application version deployment for
 # an environment named my-env:
-\donttest{elasticbeanstalk$abort_environment_update(
+\donttest{svc$abort_environment_update(
   EnvironmentName = "my-env"
 )}
 

@@ -24,7 +24,7 @@ listed on the Gandi website so we can complete processing before the
 deadline.
 }
 \section{Request syntax}{
-\preformatted{route53domains$enable_domain_auto_renew(
+\preformatted{svc$enable_domain_auto_renew(
   DomainName = "string"
 )
 }

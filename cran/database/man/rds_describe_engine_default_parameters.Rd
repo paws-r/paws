@@ -32,7 +32,7 @@ Returns the default engine and system parameter information for the
 specified database engine.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_engine_default_parameters(
+\preformatted{svc$describe_engine_default_parameters(
   DBParameterGroupFamily = "string",
   Filters = list(
     list(

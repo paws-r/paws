@@ -13,7 +13,7 @@ emr_delete_security_configuration(Name)
 Deletes a security configuration.
 }
 \section{Request syntax}{
-\preformatted{emr$delete_security_configuration(
+\preformatted{svc$delete_security_configuration(
   Name = "string"
 )
 }

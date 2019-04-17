@@ -16,7 +16,7 @@ Deletes the specified interconnect.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_interconnect(
+\preformatted{svc$delete_interconnect(
   interconnectId = "string"
 )
 }

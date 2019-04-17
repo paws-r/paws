@@ -28,7 +28,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGui
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_nat_gateway(
+\preformatted{svc$create_nat_gateway(
   AllocationId = "string",
   ClientToken = "string",
   SubnetId = "string"
@@ -40,7 +40,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example creates a NAT gateway in subnet subnet-1a2b3c4d and
 # associates an Elastic IP address with the allocation ID
 # eipalloc-37fc1a52 with the NAT gateway.
-\donttest{ec2$create_nat_gateway(
+\donttest{svc$create_nat_gateway(
   AllocationId = "eipalloc-37fc1a52",
   SubnetId = "subnet-1a2b3c4d"
 )}

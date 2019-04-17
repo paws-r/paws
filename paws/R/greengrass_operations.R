@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$associate_role_to_group(
+#' svc$associate_role_to_group(
 #'   GroupId = "string",
 #'   RoleArn = "string"
 #' )
@@ -51,7 +51,7 @@ greengrass_associate_role_to_group <- function(GroupId, RoleArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$associate_service_role_to_account(
+#' svc$associate_service_role_to_account(
 #'   RoleArn = "string"
 #' )
 #' ```
@@ -90,7 +90,7 @@ greengrass_associate_service_role_to_account <- function(RoleArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_connector_definition(
+#' svc$create_connector_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Connectors = list(
@@ -144,7 +144,7 @@ greengrass_create_connector_definition <- function(AmznClientToken = NULL, Initi
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_connector_definition_version(
+#' svc$create_connector_definition_version(
 #'   AmznClientToken = "string",
 #'   ConnectorDefinitionId = "string",
 #'   Connectors = list(
@@ -193,7 +193,7 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_core_definition(
+#' svc$create_core_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Cores = list(
@@ -245,7 +245,7 @@ greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVer
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_core_definition_version(
+#' svc$create_core_definition_version(
 #'   AmznClientToken = "string",
 #'   CoreDefinitionId = "string",
 #'   Cores = list(
@@ -294,7 +294,7 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_deployment(
+#' svc$create_deployment(
 #'   AmznClientToken = "string",
 #'   DeploymentId = "string",
 #'   DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
@@ -337,7 +337,7 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_device_definition(
+#' svc$create_device_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Devices = list(
@@ -389,7 +389,7 @@ greengrass_create_device_definition <- function(AmznClientToken = NULL, InitialV
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_device_definition_version(
+#' svc$create_device_definition_version(
 #'   AmznClientToken = "string",
 #'   DeviceDefinitionId = "string",
 #'   Devices = list(
@@ -438,7 +438,7 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_function_definition(
+#' svc$create_function_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     DefaultConfig = list(
@@ -526,7 +526,7 @@ greengrass_create_function_definition <- function(AmznClientToken = NULL, Initia
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_function_definition_version(
+#' svc$create_function_definition_version(
 #'   AmznClientToken = "string",
 #'   DefaultConfig = list(
 #'     Execution = list(
@@ -607,7 +607,7 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_group(
+#' svc$create_group(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     ConnectorDefinitionVersionArn = "string",
@@ -656,7 +656,7 @@ greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_group_certificate_authority(
+#' svc$create_group_certificate_authority(
 #'   AmznClientToken = "string",
 #'   GroupId = "string"
 #' )
@@ -704,7 +704,7 @@ greengrass_create_group_certificate_authority <- function(AmznClientToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_group_version(
+#' svc$create_group_version(
 #'   AmznClientToken = "string",
 #'   ConnectorDefinitionVersionArn = "string",
 #'   CoreDefinitionVersionArn = "string",
@@ -751,7 +751,7 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_logger_definition(
+#' svc$create_logger_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Loggers = list(
@@ -804,7 +804,7 @@ greengrass_create_logger_definition <- function(AmznClientToken = NULL, InitialV
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_logger_definition_version(
+#' svc$create_logger_definition_version(
 #'   AmznClientToken = "string",
 #'   LoggerDefinitionId = "string",
 #'   Loggers = list(
@@ -854,7 +854,7 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_resource_definition(
+#' svc$create_resource_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Resources = list(
@@ -935,7 +935,7 @@ greengrass_create_resource_definition <- function(AmznClientToken = NULL, Initia
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_resource_definition_version(
+#' svc$create_resource_definition_version(
 #'   AmznClientToken = "string",
 #'   ResourceDefinitionId = "string",
 #'   Resources = list(
@@ -1017,7 +1017,7 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_software_update_job(
+#' svc$create_software_update_job(
 #'   AmznClientToken = "string",
 #'   S3UrlSignerRole = "string",
 #'   SoftwareToUpdate = "core"|"ota_agent",
@@ -1064,7 +1064,7 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_subscription_definition(
+#' svc$create_subscription_definition(
 #'   AmznClientToken = "string",
 #'   InitialVersion = list(
 #'     Subscriptions = list(
@@ -1117,7 +1117,7 @@ greengrass_create_subscription_definition <- function(AmznClientToken = NULL, In
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$create_subscription_definition_version(
+#' svc$create_subscription_definition_version(
 #'   AmznClientToken = "string",
 #'   SubscriptionDefinitionId = "string",
 #'   Subscriptions = list(
@@ -1162,7 +1162,7 @@ greengrass_create_subscription_definition_version <- function(AmznClientToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   tags = list(
 #'     "string"
@@ -1200,7 +1200,7 @@ greengrass_tag_resource <- function(ResourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_connector_definition(
+#' svc$delete_connector_definition(
 #'   ConnectorDefinitionId = "string"
 #' )
 #' ```
@@ -1235,7 +1235,7 @@ greengrass_delete_connector_definition <- function(ConnectorDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_core_definition(
+#' svc$delete_core_definition(
 #'   CoreDefinitionId = "string"
 #' )
 #' ```
@@ -1270,7 +1270,7 @@ greengrass_delete_core_definition <- function(CoreDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_device_definition(
+#' svc$delete_device_definition(
 #'   DeviceDefinitionId = "string"
 #' )
 #' ```
@@ -1305,7 +1305,7 @@ greengrass_delete_device_definition <- function(DeviceDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_function_definition(
+#' svc$delete_function_definition(
 #'   FunctionDefinitionId = "string"
 #' )
 #' ```
@@ -1340,7 +1340,7 @@ greengrass_delete_function_definition <- function(FunctionDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_group(
+#' svc$delete_group(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -1375,7 +1375,7 @@ greengrass_delete_group <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_logger_definition(
+#' svc$delete_logger_definition(
 #'   LoggerDefinitionId = "string"
 #' )
 #' ```
@@ -1410,7 +1410,7 @@ greengrass_delete_logger_definition <- function(LoggerDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_resource_definition(
+#' svc$delete_resource_definition(
 #'   ResourceDefinitionId = "string"
 #' )
 #' ```
@@ -1445,7 +1445,7 @@ greengrass_delete_resource_definition <- function(ResourceDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$delete_subscription_definition(
+#' svc$delete_subscription_definition(
 #'   SubscriptionDefinitionId = "string"
 #' )
 #' ```
@@ -1481,7 +1481,7 @@ greengrass_delete_subscription_definition <- function(SubscriptionDefinitionId) 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1519,7 +1519,7 @@ greengrass_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$disassociate_role_from_group(
+#' svc$disassociate_role_from_group(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -1552,7 +1552,7 @@ greengrass_disassociate_role_from_group <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$disassociate_service_role_from_account()
+#' svc$disassociate_service_role_from_account()
 #' ```
 #'
 #' @keywords internal
@@ -1585,7 +1585,7 @@ greengrass_disassociate_service_role_from_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_associated_role(
+#' svc$get_associated_role(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -1620,7 +1620,7 @@ greengrass_get_associated_role <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_bulk_deployment_status(
+#' svc$get_bulk_deployment_status(
 #'   BulkDeploymentId = "string"
 #' )
 #' ```
@@ -1655,7 +1655,7 @@ greengrass_get_bulk_deployment_status <- function(BulkDeploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_connectivity_info(
+#' svc$get_connectivity_info(
 #'   ThingName = "string"
 #' )
 #' ```
@@ -1690,7 +1690,7 @@ greengrass_get_connectivity_info <- function(ThingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_connector_definition(
+#' svc$get_connector_definition(
 #'   ConnectorDefinitionId = "string"
 #' )
 #' ```
@@ -1729,7 +1729,7 @@ greengrass_get_connector_definition <- function(ConnectorDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_connector_definition_version(
+#' svc$get_connector_definition_version(
 #'   ConnectorDefinitionId = "string",
 #'   ConnectorDefinitionVersionId = "string",
 #'   NextToken = "string"
@@ -1766,7 +1766,7 @@ greengrass_get_connector_definition_version <- function(ConnectorDefinitionId, C
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_core_definition(
+#' svc$get_core_definition(
 #'   CoreDefinitionId = "string"
 #' )
 #' ```
@@ -1803,7 +1803,7 @@ greengrass_get_core_definition <- function(CoreDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_core_definition_version(
+#' svc$get_core_definition_version(
 #'   CoreDefinitionId = "string",
 #'   CoreDefinitionVersionId = "string"
 #' )
@@ -1840,7 +1840,7 @@ greengrass_get_core_definition_version <- function(CoreDefinitionId, CoreDefinit
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_deployment_status(
+#' svc$get_deployment_status(
 #'   DeploymentId = "string",
 #'   GroupId = "string"
 #' )
@@ -1876,7 +1876,7 @@ greengrass_get_deployment_status <- function(DeploymentId, GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_device_definition(
+#' svc$get_device_definition(
 #'   DeviceDefinitionId = "string"
 #' )
 #' ```
@@ -1914,7 +1914,7 @@ greengrass_get_device_definition <- function(DeviceDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_device_definition_version(
+#' svc$get_device_definition_version(
 #'   DeviceDefinitionId = "string",
 #'   DeviceDefinitionVersionId = "string",
 #'   NextToken = "string"
@@ -1952,7 +1952,7 @@ greengrass_get_device_definition_version <- function(DeviceDefinitionId, DeviceD
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_function_definition(
+#' svc$get_function_definition(
 #'   FunctionDefinitionId = "string"
 #' )
 #' ```
@@ -1992,7 +1992,7 @@ greengrass_get_function_definition <- function(FunctionDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_function_definition_version(
+#' svc$get_function_definition_version(
 #'   FunctionDefinitionId = "string",
 #'   FunctionDefinitionVersionId = "string",
 #'   NextToken = "string"
@@ -2029,7 +2029,7 @@ greengrass_get_function_definition_version <- function(FunctionDefinitionId, Fun
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_group(
+#' svc$get_group(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -2066,7 +2066,7 @@ greengrass_get_group <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_group_certificate_authority(
+#' svc$get_group_certificate_authority(
 #'   CertificateAuthorityId = "string",
 #'   GroupId = "string"
 #' )
@@ -2102,7 +2102,7 @@ greengrass_get_group_certificate_authority <- function(CertificateAuthorityId, G
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_group_certificate_configuration(
+#' svc$get_group_certificate_configuration(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -2138,7 +2138,7 @@ greengrass_get_group_certificate_configuration <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_group_version(
+#' svc$get_group_version(
 #'   GroupId = "string",
 #'   GroupVersionId = "string"
 #' )
@@ -2174,7 +2174,7 @@ greengrass_get_group_version <- function(GroupId, GroupVersionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_logger_definition(
+#' svc$get_logger_definition(
 #'   LoggerDefinitionId = "string"
 #' )
 #' ```
@@ -2212,7 +2212,7 @@ greengrass_get_logger_definition <- function(LoggerDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_logger_definition_version(
+#' svc$get_logger_definition_version(
 #'   LoggerDefinitionId = "string",
 #'   LoggerDefinitionVersionId = "string",
 #'   NextToken = "string"
@@ -2250,7 +2250,7 @@ greengrass_get_logger_definition_version <- function(LoggerDefinitionId, LoggerD
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_resource_definition(
+#' svc$get_resource_definition(
 #'   ResourceDefinitionId = "string"
 #' )
 #' ```
@@ -2288,7 +2288,7 @@ greengrass_get_resource_definition <- function(ResourceDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_resource_definition_version(
+#' svc$get_resource_definition_version(
 #'   ResourceDefinitionId = "string",
 #'   ResourceDefinitionVersionId = "string"
 #' )
@@ -2322,7 +2322,7 @@ greengrass_get_resource_definition_version <- function(ResourceDefinitionId, Res
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_service_role_for_account()
+#' svc$get_service_role_for_account()
 #' ```
 #'
 #' @keywords internal
@@ -2355,7 +2355,7 @@ greengrass_get_service_role_for_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_subscription_definition(
+#' svc$get_subscription_definition(
 #'   SubscriptionDefinitionId = "string"
 #' )
 #' ```
@@ -2393,7 +2393,7 @@ greengrass_get_subscription_definition <- function(SubscriptionDefinitionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$get_subscription_definition_version(
+#' svc$get_subscription_definition_version(
 #'   NextToken = "string",
 #'   SubscriptionDefinitionId = "string",
 #'   SubscriptionDefinitionVersionId = "string"
@@ -2434,7 +2434,7 @@ greengrass_get_subscription_definition_version <- function(NextToken = NULL, Sub
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_bulk_deployment_detailed_reports(
+#' svc$list_bulk_deployment_detailed_reports(
 #'   BulkDeploymentId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2472,7 +2472,7 @@ greengrass_list_bulk_deployment_detailed_reports <- function(BulkDeploymentId, M
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_bulk_deployments(
+#' svc$list_bulk_deployments(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2512,7 +2512,7 @@ greengrass_list_bulk_deployments <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_connector_definition_versions(
+#' svc$list_connector_definition_versions(
 #'   ConnectorDefinitionId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2550,7 +2550,7 @@ greengrass_list_connector_definition_versions <- function(ConnectorDefinitionId,
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_connector_definitions(
+#' svc$list_connector_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2589,7 +2589,7 @@ greengrass_list_connector_definitions <- function(MaxResults = NULL, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_core_definition_versions(
+#' svc$list_core_definition_versions(
 #'   CoreDefinitionId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2627,7 +2627,7 @@ greengrass_list_core_definition_versions <- function(CoreDefinitionId, MaxResult
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_core_definitions(
+#' svc$list_core_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2665,7 +2665,7 @@ greengrass_list_core_definitions <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_deployments(
+#' svc$list_deployments(
 #'   GroupId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2705,7 +2705,7 @@ greengrass_list_deployments <- function(GroupId, MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_device_definition_versions(
+#' svc$list_device_definition_versions(
 #'   DeviceDefinitionId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2743,7 +2743,7 @@ greengrass_list_device_definition_versions <- function(DeviceDefinitionId, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_device_definitions(
+#' svc$list_device_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2782,7 +2782,7 @@ greengrass_list_device_definitions <- function(MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_function_definition_versions(
+#' svc$list_function_definition_versions(
 #'   FunctionDefinitionId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2820,7 +2820,7 @@ greengrass_list_function_definition_versions <- function(FunctionDefinitionId, M
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_function_definitions(
+#' svc$list_function_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2856,7 +2856,7 @@ greengrass_list_function_definitions <- function(MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_group_certificate_authorities(
+#' svc$list_group_certificate_authorities(
 #'   GroupId = "string"
 #' )
 #' ```
@@ -2893,7 +2893,7 @@ greengrass_list_group_certificate_authorities <- function(GroupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_group_versions(
+#' svc$list_group_versions(
 #'   GroupId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2931,7 +2931,7 @@ greengrass_list_group_versions <- function(GroupId, MaxResults = NULL, NextToken
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_groups(
+#' svc$list_groups(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -2970,7 +2970,7 @@ greengrass_list_groups <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_logger_definition_versions(
+#' svc$list_logger_definition_versions(
 #'   LoggerDefinitionId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -3008,7 +3008,7 @@ greengrass_list_logger_definition_versions <- function(LoggerDefinitionId, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_logger_definitions(
+#' svc$list_logger_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -3047,7 +3047,7 @@ greengrass_list_logger_definitions <- function(MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_resource_definition_versions(
+#' svc$list_resource_definition_versions(
 #'   MaxResults = "string",
 #'   NextToken = "string",
 #'   ResourceDefinitionId = "string"
@@ -3085,7 +3085,7 @@ greengrass_list_resource_definition_versions <- function(MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_resource_definitions(
+#' svc$list_resource_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -3124,7 +3124,7 @@ greengrass_list_resource_definitions <- function(MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_subscription_definition_versions(
+#' svc$list_subscription_definition_versions(
 #'   MaxResults = "string",
 #'   NextToken = "string",
 #'   SubscriptionDefinitionId = "string"
@@ -3162,7 +3162,7 @@ greengrass_list_subscription_definition_versions <- function(MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_subscription_definitions(
+#' svc$list_subscription_definitions(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -3198,7 +3198,7 @@ greengrass_list_subscription_definitions <- function(MaxResults = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -3235,7 +3235,7 @@ greengrass_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$reset_deployments(
+#' svc$reset_deployments(
 #'   AmznClientToken = "string",
 #'   Force = TRUE|FALSE,
 #'   GroupId = "string"
@@ -3276,7 +3276,7 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$start_bulk_deployment(
+#' svc$start_bulk_deployment(
 #'   AmznClientToken = "string",
 #'   ExecutionRoleArn = "string",
 #'   InputFileUri = "string",
@@ -3316,7 +3316,7 @@ greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRo
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$stop_bulk_deployment(
+#' svc$stop_bulk_deployment(
 #'   BulkDeploymentId = "string"
 #' )
 #' ```
@@ -3352,7 +3352,7 @@ greengrass_stop_bulk_deployment <- function(BulkDeploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_connectivity_info(
+#' svc$update_connectivity_info(
 #'   ConnectivityInfo = list(
 #'     list(
 #'       HostAddress = "string",
@@ -3396,7 +3396,7 @@ greengrass_update_connectivity_info <- function(ConnectivityInfo = NULL, ThingNa
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_connector_definition(
+#' svc$update_connector_definition(
 #'   ConnectorDefinitionId = "string",
 #'   Name = "string"
 #' )
@@ -3433,7 +3433,7 @@ greengrass_update_connector_definition <- function(ConnectorDefinitionId, Name =
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_core_definition(
+#' svc$update_core_definition(
 #'   CoreDefinitionId = "string",
 #'   Name = "string"
 #' )
@@ -3470,7 +3470,7 @@ greengrass_update_core_definition <- function(CoreDefinitionId, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_device_definition(
+#' svc$update_device_definition(
 #'   DeviceDefinitionId = "string",
 #'   Name = "string"
 #' )
@@ -3507,7 +3507,7 @@ greengrass_update_device_definition <- function(DeviceDefinitionId, Name = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_function_definition(
+#' svc$update_function_definition(
 #'   FunctionDefinitionId = "string",
 #'   Name = "string"
 #' )
@@ -3544,7 +3544,7 @@ greengrass_update_function_definition <- function(FunctionDefinitionId, Name = N
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_group(
+#' svc$update_group(
 #'   GroupId = "string",
 #'   Name = "string"
 #' )
@@ -3582,7 +3582,7 @@ greengrass_update_group <- function(GroupId, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_group_certificate_configuration(
+#' svc$update_group_certificate_configuration(
 #'   CertificateExpiryInMilliseconds = "string",
 #'   GroupId = "string"
 #' )
@@ -3619,7 +3619,7 @@ greengrass_update_group_certificate_configuration <- function(CertificateExpiryI
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_logger_definition(
+#' svc$update_logger_definition(
 #'   LoggerDefinitionId = "string",
 #'   Name = "string"
 #' )
@@ -3656,7 +3656,7 @@ greengrass_update_logger_definition <- function(LoggerDefinitionId, Name = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_resource_definition(
+#' svc$update_resource_definition(
 #'   Name = "string",
 #'   ResourceDefinitionId = "string"
 #' )
@@ -3694,7 +3694,7 @@ greengrass_update_resource_definition <- function(Name = NULL, ResourceDefinitio
 #'
 #' @section Request syntax:
 #' ```
-#' greengrass$update_subscription_definition(
+#' svc$update_subscription_definition(
 #'   Name = "string",
 #'   SubscriptionDefinitionId = "string"
 #' )

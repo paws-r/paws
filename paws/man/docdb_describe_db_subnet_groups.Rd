@@ -31,7 +31,7 @@ is specified, the list will contain only the descriptions of the
 specified \code{DBSubnetGroup}.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_subnet_groups(
+\preformatted{svc$describe_db_subnet_groups(
   DBSubnetGroupName = "string",
   Filters = list(
     list(

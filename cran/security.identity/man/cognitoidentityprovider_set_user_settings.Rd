@@ -17,7 +17,7 @@ to be removed for a particular attribute pass the attribute with code
 delivery as null. If null list is passed, all MFA options are removed.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$set_user_settings(
+\preformatted{svc$set_user_settings(
   AccessToken = "string",
   MFAOptions = list(
     list(

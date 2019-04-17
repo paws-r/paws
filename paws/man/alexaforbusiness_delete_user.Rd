@@ -15,7 +15,7 @@ alexaforbusiness_delete_user(UserArn, EnrollmentId)
 Deletes a specified user by user ARN and enrollment ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_user(
+\preformatted{svc$delete_user(
   UserArn = "string",
   EnrollmentId = "string"
 )

@@ -17,7 +17,7 @@ Amazon Pinpoint account, including the identity's verification status,
 its DKIM authentication status, and its custom Mail-From settings.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_email_identity(
+\preformatted{svc$get_email_identity(
   EmailIdentity = "string"
 )
 }

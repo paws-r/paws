@@ -30,7 +30,7 @@ completed by all things originally in the group.}
 Lists jobs.
 }
 \section{Request syntax}{
-\preformatted{iot$list_jobs(
+\preformatted{svc$list_jobs(
   status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
   targetSelection = "CONTINUOUS"|"SNAPSHOT",
   maxResults = 123,

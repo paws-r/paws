@@ -26,7 +26,7 @@ to false, the accelerator can be deleted.}
 Update an accelerator.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$update_accelerator(
+\preformatted{svc$update_accelerator(
   AcceleratorArn = "string",
   Name = "string",
   IpAddressType = "IPV4",

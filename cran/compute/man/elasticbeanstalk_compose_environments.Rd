@@ -33,7 +33,7 @@ manifest named \code{env.yaml}. See \href{https://docs.aws.amazon.com/elasticbea
 for details.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$compose_environments(
+\preformatted{svc$compose_environments(
   ApplicationName = "string",
   GroupName = "string",
   VersionLabels = list(

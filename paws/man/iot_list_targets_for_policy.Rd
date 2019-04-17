@@ -17,7 +17,7 @@ iot_list_targets_for_policy(policyName, marker, pageSize)
 List targets for the specified policy.
 }
 \section{Request syntax}{
-\preformatted{iot$list_targets_for_policy(
+\preformatted{svc$list_targets_for_policy(
   policyName = "string",
   marker = "string",
   pageSize = 123

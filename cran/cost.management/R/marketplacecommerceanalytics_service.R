@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Provides AWS Marketplace business intelligence data on-demand.
 #'
-#' @section Example:
-#' ```
-#' marketplacecommerceanalytics <- paws::marketplacecommerceanalytics()
-#' marketplacecommerceanalytics$operation()
-#' ```
+#' @examples
+#' \donttest{svc$generate_data_set(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

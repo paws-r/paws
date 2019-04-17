@@ -21,7 +21,7 @@ s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer)
 Restores an archived copy of an object back into Amazon S3
 }
 \section{Request syntax}{
-\preformatted{s3$restore_object(
+\preformatted{svc$restore_object(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -113,7 +113,7 @@ Restores an archived copy of an object back into Amazon S3
 \examples{
 # The following example restores for one day an archived copy of an object
 # back into Amazon S3 bucket.
-\donttest{s3$restore_object(
+\donttest{svc$restore_object(
   Bucket = "examplebucket",
   Key = "archivedobjectkey",
   RestoreRequest = list(

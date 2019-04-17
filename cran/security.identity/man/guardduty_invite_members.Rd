@@ -23,7 +23,7 @@ guardduty_invite_members(AccountIds, DetectorId,
 Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$invite_members(
+\preformatted{svc$invite_members(
   AccountIds = list(
     "string"
   ),

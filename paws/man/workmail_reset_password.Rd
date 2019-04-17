@@ -18,7 +18,7 @@ password is reset.}
 Allows the administrator to reset the password for a user.
 }
 \section{Request syntax}{
-\preformatted{workmail$reset_password(
+\preformatted{svc$reset_password(
   OrganizationId = "string",
   UserId = "string",
   Password = "string"

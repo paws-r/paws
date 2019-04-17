@@ -35,7 +35,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$accept_portfolio_share(
+#' svc$accept_portfolio_share(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
@@ -82,7 +82,7 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$associate_principal_with_portfolio(
+#' svc$associate_principal_with_portfolio(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PrincipalARN = "string",
@@ -130,7 +130,7 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$associate_product_with_portfolio(
+#' svc$associate_product_with_portfolio(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   PortfolioId = "string",
@@ -179,7 +179,7 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$associate_service_action_with_provisioning_artifact(
+#' svc$associate_service_action_with_provisioning_artifact(
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
 #'   ServiceActionId = "string",
@@ -221,7 +221,7 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$associate_tag_option_with_resource(
+#' svc$associate_tag_option_with_resource(
 #'   ResourceId = "string",
 #'   TagOptionId = "string"
 #' )
@@ -266,7 +266,7 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$batch_associate_service_action_with_provisioning_artifact(
+#' svc$batch_associate_service_action_with_provisioning_artifact(
 #'   ServiceActionAssociations = list(
 #'     list(
 #'       ServiceActionId = "string",
@@ -319,7 +319,7 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$batch_disassociate_service_action_from_provisioning_artifact(
+#' svc$batch_disassociate_service_action_from_provisioning_artifact(
 #'   ServiceActionAssociations = list(
 #'     list(
 #'       ServiceActionId = "string",
@@ -390,7 +390,7 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$copy_product(
+#' svc$copy_product(
 #'   AcceptLanguage = "string",
 #'   SourceProductArn = "string",
 #'   TargetProductId = "string",
@@ -509,7 +509,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_constraint(
+#' svc$create_constraint(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   ProductId = "string",
@@ -564,7 +564,7 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_portfolio(
+#' svc$create_portfolio(
 #'   AcceptLanguage = "string",
 #'   DisplayName = "string",
 #'   Description = "string",
@@ -627,7 +627,7 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_portfolio_share(
+#' svc$create_portfolio_share(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   AccountId = "string",
@@ -689,7 +689,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_product(
+#' svc$create_product(
 #'   AcceptLanguage = "string",
 #'   Name = "string",
 #'   Owner = "string",
@@ -783,7 +783,7 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_provisioned_product_plan(
+#' svc$create_provisioned_product_plan(
 #'   AcceptLanguage = "string",
 #'   PlanName = "string",
 #'   PlanType = "CLOUDFORMATION",
@@ -858,7 +858,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_provisioning_artifact(
+#' svc$create_provisioning_artifact(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   Parameters = list(
@@ -942,7 +942,7 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_service_action(
+#' svc$create_service_action(
 #'   Name = "string",
 #'   DefinitionType = "SSM_AUTOMATION",
 #'   Definition = list(
@@ -985,7 +985,7 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$create_tag_option(
+#' svc$create_tag_option(
 #'   Key = "string",
 #'   Value = "string"
 #' )
@@ -1028,7 +1028,7 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_constraint(
+#' svc$delete_constraint(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1074,7 +1074,7 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_portfolio(
+#' svc$delete_portfolio(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1123,7 +1123,7 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_portfolio_share(
+#' svc$delete_portfolio_share(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   AccountId = "string",
@@ -1174,7 +1174,7 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_product(
+#' svc$delete_product(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1220,7 +1220,7 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_provisioned_product_plan(
+#' svc$delete_provisioned_product_plan(
 #'   AcceptLanguage = "string",
 #'   PlanId = "string",
 #'   IgnoreErrors = TRUE|FALSE
@@ -1273,7 +1273,7 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_provisioning_artifact(
+#' svc$delete_provisioning_artifact(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string"
@@ -1317,7 +1317,7 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_service_action(
+#' svc$delete_service_action(
 #'   Id = "string",
 #'   AcceptLanguage = "string"
 #' )
@@ -1356,7 +1356,7 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$delete_tag_option(
+#' svc$delete_tag_option(
 #'   Id = "string"
 #' )
 #' ```
@@ -1398,7 +1398,7 @@ servicecatalog_delete_tag_option <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_constraint(
+#' svc$describe_constraint(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1443,7 +1443,7 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_copy_product_status(
+#' svc$describe_copy_product_status(
 #'   AcceptLanguage = "string",
 #'   CopyProductToken = "string"
 #' )
@@ -1486,7 +1486,7 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_portfolio(
+#' svc$describe_portfolio(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1524,7 +1524,7 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_portfolio_share_status(
+#' svc$describe_portfolio_share_status(
 #'   PortfolioShareToken = "string"
 #' )
 #' ```
@@ -1566,7 +1566,7 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_product(
+#' svc$describe_product(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1610,7 +1610,7 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_product_as_admin(
+#' svc$describe_product_as_admin(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1653,7 +1653,7 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id) 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_product_view(
+#' svc$describe_product_view(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1696,7 +1696,7 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_provisioned_product(
+#' svc$describe_provisioned_product(
 #'   AcceptLanguage = "string",
 #'   Id = "string"
 #' )
@@ -1743,7 +1743,7 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_provisioned_product_plan(
+#' svc$describe_provisioned_product_plan(
 #'   AcceptLanguage = "string",
 #'   PlanId = "string",
 #'   PageSize = 123,
@@ -1793,7 +1793,7 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_provisioning_artifact(
+#' svc$describe_provisioning_artifact(
 #'   AcceptLanguage = "string",
 #'   ProvisioningArtifactId = "string",
 #'   ProductId = "string",
@@ -1853,7 +1853,7 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_provisioning_parameters(
+#' svc$describe_provisioning_parameters(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
@@ -1906,7 +1906,7 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_record(
+#' svc$describe_record(
 #'   AcceptLanguage = "string",
 #'   Id = "string",
 #'   PageToken = "string",
@@ -1951,7 +1951,7 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_service_action(
+#' svc$describe_service_action(
 #'   Id = "string",
 #'   AcceptLanguage = "string"
 #' )
@@ -1987,7 +1987,7 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$describe_tag_option(
+#' svc$describe_tag_option(
 #'   Id = "string"
 #' )
 #' ```
@@ -2025,7 +2025,7 @@ servicecatalog_describe_tag_option <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$disable_aws_organizations_access()
+#' svc$disable_aws_organizations_access()
 #' ```
 #'
 #' @keywords internal
@@ -2069,7 +2069,7 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$disassociate_principal_from_portfolio(
+#' svc$disassociate_principal_from_portfolio(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PrincipalARN = "string"
@@ -2115,7 +2115,7 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$disassociate_product_from_portfolio(
+#' svc$disassociate_product_from_portfolio(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   PortfolioId = "string"
@@ -2165,7 +2165,7 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$disassociate_service_action_from_provisioning_artifact(
+#' svc$disassociate_service_action_from_provisioning_artifact(
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
 #'   ServiceActionId = "string",
@@ -2205,7 +2205,7 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$disassociate_tag_option_from_resource(
+#' svc$disassociate_tag_option_from_resource(
 #'   ResourceId = "string",
 #'   TagOptionId = "string"
 #' )
@@ -2246,7 +2246,7 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$enable_aws_organizations_access()
+#' svc$enable_aws_organizations_access()
 #' ```
 #'
 #' @keywords internal
@@ -2292,7 +2292,7 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$execute_provisioned_product_plan(
+#' svc$execute_provisioned_product_plan(
 #'   AcceptLanguage = "string",
 #'   PlanId = "string",
 #'   IdempotencyToken = "string"
@@ -2339,7 +2339,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$execute_provisioned_product_service_action(
+#' svc$execute_provisioned_product_service_action(
 #'   ProvisionedProductId = "string",
 #'   ServiceActionId = "string",
 #'   ExecuteToken = "string",
@@ -2376,7 +2376,7 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$get_aws_organizations_access_status()
+#' svc$get_aws_organizations_access_status()
 #' ```
 #'
 #' @keywords internal
@@ -2428,7 +2428,7 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_accepted_portfolio_shares(
+#' svc$list_accepted_portfolio_shares(
 #'   AcceptLanguage = "string",
 #'   PageToken = "string",
 #'   PageSize = 123,
@@ -2478,7 +2478,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_constraints_for_portfolio(
+#' svc$list_constraints_for_portfolio(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   ProductId = "string",
@@ -2530,7 +2530,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_launch_paths(
+#' svc$list_launch_paths(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   PageSize = 123,
@@ -2590,7 +2590,7 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_organization_portfolio_access(
+#' svc$list_organization_portfolio_access(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
@@ -2636,7 +2636,7 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_portfolio_access(
+#' svc$list_portfolio_access(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string"
 #' )
@@ -2681,7 +2681,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_portfolios(
+#' svc$list_portfolios(
 #'   AcceptLanguage = "string",
 #'   PageToken = "string",
 #'   PageSize = 123
@@ -2729,7 +2729,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_portfolios_for_product(
+#' svc$list_portfolios_for_product(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   PageToken = "string",
@@ -2778,7 +2778,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_principals_for_portfolio(
+#' svc$list_principals_for_portfolio(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PageSize = 123,
@@ -2830,7 +2830,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_provisioned_product_plans(
+#' svc$list_provisioned_product_plans(
 #'   AcceptLanguage = "string",
 #'   ProvisionProductId = "string",
 #'   PageSize = 123,
@@ -2881,7 +2881,7 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_provisioning_artifacts(
+#' svc$list_provisioning_artifacts(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string"
 #' )
@@ -2930,7 +2930,7 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_provisioning_artifacts_for_service_action(
+#' svc$list_provisioning_artifacts_for_service_action(
 #'   ServiceActionId = "string",
 #'   PageSize = 123,
 #'   PageToken = "string",
@@ -2980,7 +2980,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_record_history(
+#' svc$list_record_history(
 #'   AcceptLanguage = "string",
 #'   AccessLevelFilter = list(
 #'     Key = "Account"|"Role"|"User",
@@ -3034,7 +3034,7 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_resources_for_tag_option(
+#' svc$list_resources_for_tag_option(
 #'   TagOptionId = "string",
 #'   ResourceType = "string",
 #'   PageSize = 123,
@@ -3081,7 +3081,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_service_actions(
+#' svc$list_service_actions(
 #'   AcceptLanguage = "string",
 #'   PageSize = 123,
 #'   PageToken = "string"
@@ -3133,7 +3133,7 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_service_actions_for_provisioning_artifact(
+#' svc$list_service_actions_for_provisioning_artifact(
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
 #'   PageSize = 123,
@@ -3176,7 +3176,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$list_tag_options(
+#' svc$list_tag_options(
 #'   Filters = list(
 #'     Key = "string",
 #'     Value = "string",
@@ -3252,7 +3252,7 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$provision_product(
+#' svc$provision_product(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
@@ -3340,7 +3340,7 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId, P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$reject_portfolio_share(
+#' svc$reject_portfolio_share(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
@@ -3390,7 +3390,7 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$scan_provisioned_products(
+#' svc$scan_provisioned_products(
 #'   AcceptLanguage = "string",
 #'   AccessLevelFilter = list(
 #'     Key = "Account"|"Role"|"User",
@@ -3445,7 +3445,7 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$search_products(
+#' svc$search_products(
 #'   AcceptLanguage = "string",
 #'   Filters = list(
 #'     list(
@@ -3507,7 +3507,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$search_products_as_admin(
+#' svc$search_products_as_admin(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   Filters = list(
@@ -3577,7 +3577,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$search_provisioned_products(
+#' svc$search_provisioned_products(
 #'   AcceptLanguage = "string",
 #'   AccessLevelFilter = list(
 #'     Key = "Account"|"Role"|"User",
@@ -3647,7 +3647,7 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$terminate_provisioned_product(
+#' svc$terminate_provisioned_product(
 #'   ProvisionedProductName = "string",
 #'   ProvisionedProductId = "string",
 #'   TerminateToken = "string",
@@ -3694,7 +3694,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_constraint(
+#' svc$update_constraint(
 #'   AcceptLanguage = "string",
 #'   Id = "string",
 #'   Description = "string"
@@ -3746,7 +3746,7 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_portfolio(
+#' svc$update_portfolio(
 #'   AcceptLanguage = "string",
 #'   Id = "string",
 #'   DisplayName = "string",
@@ -3812,7 +3812,7 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_product(
+#' svc$update_product(
 #'   AcceptLanguage = "string",
 #'   Id = "string",
 #'   Name = "string",
@@ -3898,7 +3898,7 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_provisioned_product(
+#' svc$update_provisioned_product(
 #'   AcceptLanguage = "string",
 #'   ProvisionedProductName = "string",
 #'   ProvisionedProductId = "string",
@@ -3982,7 +3982,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_provisioning_artifact(
+#' svc$update_provisioning_artifact(
 #'   AcceptLanguage = "string",
 #'   ProductId = "string",
 #'   ProvisioningArtifactId = "string",
@@ -4033,7 +4033,7 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_service_action(
+#' svc$update_service_action(
 #'   Id = "string",
 #'   Name = "string",
 #'   Definition = list(
@@ -4076,7 +4076,7 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
 #'
 #' @section Request syntax:
 #' ```
-#' servicecatalog$update_tag_option(
+#' svc$update_tag_option(
 #'   Id = "string",
 #'   Value = "string",
 #'   Active = TRUE|FALSE

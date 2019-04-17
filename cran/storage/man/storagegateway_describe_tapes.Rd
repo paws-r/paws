@@ -32,7 +32,7 @@ all virtual tapes associated with the specified gateway. This operation
 is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_tapes(
+\preformatted{svc$describe_tapes(
   GatewayARN = "string",
   TapeARNs = list(
     "string"
@@ -47,7 +47,7 @@ is only supported in the tape gateway type.
 # Returns a description of the specified Amazon Resource Name (ARN) of
 # virtual tapes. If a TapeARN is not specified, returns a description of
 # all virtual tapes.
-\donttest{storagegateway$describe_tapes(
+\donttest{svc$describe_tapes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1",

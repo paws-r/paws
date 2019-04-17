@@ -20,11 +20,12 @@ NULL
 #' 
 #' -   cur.us-east-1.amazonaws.com
 #'
-#' @section Example:
-#' ```
-#' costandusagereportservice <- paws::costandusagereportservice()
-#' costandusagereportservice$operation()
-#' ```
+#' @examples
+#' # The following example deletes the AWS Cost and Usage report named
+#' # ExampleReport.
+#' \donttest{svc$delete_report_definition(
+#'   ReportName = "ExampleReport"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

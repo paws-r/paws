@@ -15,7 +15,7 @@ greengrass_list_subscription_definitions(MaxResults, NextToken)
 Retrieves a list of subscription definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_subscription_definitions(
+\preformatted{svc$list_subscription_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

@@ -35,7 +35,7 @@ This operation requires permissions for the \code{lex:GetSlotTypeVersions}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_slot_type_versions(
+\preformatted{svc$get_slot_type_versions(
   name = "string",
   nextToken = "string",
   maxResults = 123

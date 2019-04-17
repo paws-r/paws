@@ -22,7 +22,7 @@ chain are base64 encoded. If you want to decode the certificate to see
 the individual fields, you can use OpenSSL.
 }
 \section{Request syntax}{
-\preformatted{acm$get_certificate(
+\preformatted{svc$get_certificate(
   CertificateArn = "string"
 )
 }

@@ -53,7 +53,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$list_secrets(
+\preformatted{svc$list_secrets(
   MaxResults = 123,
   NextToken = "string"
 )
@@ -63,7 +63,7 @@ To run this command, you must have the following permissions:
 \examples{
 # The following example shows how to list all of the secrets in your
 # account.
-\donttest{secretsmanager$list_secrets()}
+\donttest{svc$list_secrets()}
 
 }
 \keyword{internal}

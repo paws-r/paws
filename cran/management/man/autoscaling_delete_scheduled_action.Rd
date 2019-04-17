@@ -16,7 +16,7 @@ autoscaling_delete_scheduled_action(AutoScalingGroupName,
 Deletes the specified scheduled action.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_scheduled_action(
+\preformatted{svc$delete_scheduled_action(
   AutoScalingGroupName = "string",
   ScheduledActionName = "string"
 )
@@ -26,7 +26,7 @@ Deletes the specified scheduled action.
 \examples{
 # This example deletes the specified scheduled action from the specified
 # Auto Scaling group.
-\donttest{autoscaling$delete_scheduled_action(
+\donttest{svc$delete_scheduled_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   ScheduledActionName = "my-scheduled-action"
 )}

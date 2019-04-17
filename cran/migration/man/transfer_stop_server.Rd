@@ -24,7 +24,7 @@ values of \code{STOP_FAILED} can indicate an error condition.
 No response is returned from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$stop_server(
+\preformatted{svc$stop_server(
   ServerId = "string"
 )
 }

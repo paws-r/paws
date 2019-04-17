@@ -46,7 +46,7 @@ operation and checking the \code{Status} parameter of the result. After the
 specified by the \code{OutputUri} parameter.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_batch_prediction(
+\preformatted{svc$create_batch_prediction(
   BatchPredictionId = "string",
   BatchPredictionName = "string",
   MLModelId = "string",

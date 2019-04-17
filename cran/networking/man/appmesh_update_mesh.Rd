@@ -19,7 +19,7 @@ underscores are allowed.}
 Updates an existing service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$update_mesh(
+\preformatted{svc$update_mesh(
   clientToken = "string",
   meshName = "string",
   spec = list(

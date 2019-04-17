@@ -18,7 +18,7 @@ element of the collection.}
 Gets the Stages for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_stages(
+\preformatted{svc$get_stages(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"

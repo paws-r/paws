@@ -25,7 +25,7 @@ For more information about modifying snapshot permissions, see \href{https://doc
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$reset_snapshot_attribute(
+\preformatted{svc$reset_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   SnapshotId = "string",
   DryRun = TRUE|FALSE
@@ -37,7 +37,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example resets the create volume permissions for snapshot
 # ``snap-1234567890abcdef0``. If the command succeeds, no output is
 # returned.
-\donttest{ec2$reset_snapshot_attribute(
+\donttest{svc$reset_snapshot_attribute(
   Attribute = "createVolumePermission",
   SnapshotId = "snap-1234567890abcdef0"
 )}

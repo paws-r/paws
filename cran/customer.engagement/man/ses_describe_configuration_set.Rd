@@ -20,7 +20,7 @@ about using configuration sets, see the \href{http://docs.aws.amazon.com/ses/lat
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$describe_configuration_set(
+\preformatted{svc$describe_configuration_set(
   ConfigurationSetName = "string",
   ConfigurationSetAttributeNames = list(
     "eventDestinations"|"trackingOptions"|"reputationOptions"

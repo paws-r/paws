@@ -48,7 +48,7 @@ The \code{ShareNotes} parameter is only used when \code{HANDSHAKE} is called,
 which sends a directory sharing request to the directory consumer.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$share_directory(
+\preformatted{svc$share_directory(
   DirectoryId = "string",
   ShareNotes = "string",
   ShareTarget = list(

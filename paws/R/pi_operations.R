@@ -81,7 +81,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' pi$describe_dimension_keys(
+#' svc$describe_dimension_keys(
 #'   ServiceType = "RDS",
 #'   Identifier = "string",
 #'   StartTime = as.POSIXct(
@@ -191,7 +191,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #'
 #' @section Request syntax:
 #' ```
-#' pi$get_resource_metrics(
+#' svc$get_resource_metrics(
 #'   ServiceType = "RDS",
 #'   Identifier = "string",
 #'   MetricQueries = list(

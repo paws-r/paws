@@ -13,7 +13,7 @@ iot_describe_billing_group(billingGroupName)
 Returns information about a billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_billing_group(
+\preformatted{svc$describe_billing_group(
   billingGroupName = "string"
 )
 }

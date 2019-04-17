@@ -42,7 +42,7 @@ wait up to 15 minutes after launching an instance before trying to
 retrieve the generated password.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_password_data(
+\preformatted{svc$get_password_data(
   InstanceId = "string",
   DryRun = TRUE|FALSE
 )

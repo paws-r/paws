@@ -16,7 +16,7 @@ element of the collection.}
 Gets the domain names for an AWS account.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_domain_names(
+\preformatted{svc$get_domain_names(
   MaxResults = "string",
   NextToken = "string"
 )

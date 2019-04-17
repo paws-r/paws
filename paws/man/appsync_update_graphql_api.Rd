@@ -25,7 +25,7 @@ object.}
 Updates a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_graphql_api(
+\preformatted{svc$update_graphql_api(
   apiId = "string",
   name = "string",
   logConfig = list(

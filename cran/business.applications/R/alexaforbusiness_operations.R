@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$approve_skill(
+#' svc$approve_skill(
 #'   SkillId = "string"
 #' )
 #' ```
@@ -54,7 +54,7 @@ alexaforbusiness_approve_skill <- function(SkillId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$associate_contact_with_address_book(
+#' svc$associate_contact_with_address_book(
 #'   ContactArn = "string",
 #'   AddressBookArn = "string"
 #' )
@@ -94,7 +94,7 @@ alexaforbusiness_associate_contact_with_address_book <- function(ContactArn, Add
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$associate_device_with_room(
+#' svc$associate_device_with_room(
 #'   DeviceArn = "string",
 #'   RoomArn = "string"
 #' )
@@ -132,7 +132,7 @@ alexaforbusiness_associate_device_with_room <- function(DeviceArn = NULL, RoomAr
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$associate_skill_group_with_room(
+#' svc$associate_skill_group_with_room(
 #'   SkillGroupArn = "string",
 #'   RoomArn = "string"
 #' )
@@ -170,7 +170,7 @@ alexaforbusiness_associate_skill_group_with_room <- function(SkillGroupArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$associate_skill_with_skill_group(
+#' svc$associate_skill_with_skill_group(
 #'   SkillGroupArn = "string",
 #'   SkillId = "string"
 #' )
@@ -208,7 +208,7 @@ alexaforbusiness_associate_skill_with_skill_group <- function(SkillGroupArn = NU
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$associate_skill_with_users(
+#' svc$associate_skill_with_users(
 #'   SkillId = "string"
 #' )
 #' ```
@@ -247,7 +247,7 @@ alexaforbusiness_associate_skill_with_users <- function(SkillId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_address_book(
+#' svc$create_address_book(
 #'   Name = "string",
 #'   Description = "string",
 #'   ClientRequestToken = "string"
@@ -298,7 +298,7 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_business_report_schedule(
+#' svc$create_business_report_schedule(
 #'   ScheduleName = "string",
 #'   S3BucketName = "string",
 #'   S3KeyPrefix = "string",
@@ -350,7 +350,7 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_conference_provider(
+#' svc$create_conference_provider(
 #'   ConferenceProviderName = "string",
 #'   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
 #'   IPDialIn = list(
@@ -408,7 +408,7 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_contact(
+#' svc$create_contact(
 #'   DisplayName = "string",
 #'   FirstName = "string",
 #'   LastName = "string",
@@ -458,7 +458,7 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_profile(
+#' svc$create_profile(
 #'   ProfileName = "string",
 #'   Timezone = "string",
 #'   Address = "string",
@@ -509,7 +509,7 @@ alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, Dist
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_room(
+#' svc$create_room(
 #'   RoomName = "string",
 #'   Description = "string",
 #'   ProfileArn = "string",
@@ -558,7 +558,7 @@ alexaforbusiness_create_room <- function(RoomName, Description = NULL, ProfileAr
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_skill_group(
+#' svc$create_skill_group(
 #'   SkillGroupName = "string",
 #'   Description = "string",
 #'   ClientRequestToken = "string"
@@ -602,7 +602,7 @@ alexaforbusiness_create_skill_group <- function(SkillGroupName, Description = NU
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$create_user(
+#' svc$create_user(
 #'   UserId = "string",
 #'   FirstName = "string",
 #'   LastName = "string",
@@ -647,7 +647,7 @@ alexaforbusiness_create_user <- function(UserId, FirstName = NULL, LastName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_address_book(
+#' svc$delete_address_book(
 #'   AddressBookArn = "string"
 #' )
 #' ```
@@ -684,7 +684,7 @@ alexaforbusiness_delete_address_book <- function(AddressBookArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_business_report_schedule(
+#' svc$delete_business_report_schedule(
 #'   ScheduleArn = "string"
 #' )
 #' ```
@@ -719,7 +719,7 @@ alexaforbusiness_delete_business_report_schedule <- function(ScheduleArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_conference_provider(
+#' svc$delete_conference_provider(
 #'   ConferenceProviderArn = "string"
 #' )
 #' ```
@@ -754,7 +754,7 @@ alexaforbusiness_delete_conference_provider <- function(ConferenceProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_contact(
+#' svc$delete_contact(
 #'   ContactArn = "string"
 #' )
 #' ```
@@ -789,7 +789,7 @@ alexaforbusiness_delete_contact <- function(ContactArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_device(
+#' svc$delete_device(
 #'   DeviceArn = "string"
 #' )
 #' ```
@@ -824,7 +824,7 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_profile(
+#' svc$delete_profile(
 #'   ProfileArn = "string"
 #' )
 #' ```
@@ -859,7 +859,7 @@ alexaforbusiness_delete_profile <- function(ProfileArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_room(
+#' svc$delete_room(
 #'   RoomArn = "string"
 #' )
 #' ```
@@ -901,7 +901,7 @@ alexaforbusiness_delete_room <- function(RoomArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_room_skill_parameter(
+#' svc$delete_room_skill_parameter(
 #'   RoomArn = "string",
 #'   SkillId = "string",
 #'   ParameterKey = "string"
@@ -939,7 +939,7 @@ alexaforbusiness_delete_room_skill_parameter <- function(RoomArn = NULL, SkillId
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_skill_authorization(
+#' svc$delete_skill_authorization(
 #'   SkillId = "string",
 #'   RoomArn = "string"
 #' )
@@ -975,7 +975,7 @@ alexaforbusiness_delete_skill_authorization <- function(SkillId, RoomArn = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_skill_group(
+#' svc$delete_skill_group(
 #'   SkillGroupArn = "string"
 #' )
 #' ```
@@ -1011,7 +1011,7 @@ alexaforbusiness_delete_skill_group <- function(SkillGroupArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$delete_user(
+#' svc$delete_user(
 #'   UserArn = "string",
 #'   EnrollmentId = "string"
 #' )
@@ -1049,7 +1049,7 @@ alexaforbusiness_delete_user <- function(UserArn = NULL, EnrollmentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$disassociate_contact_from_address_book(
+#' svc$disassociate_contact_from_address_book(
 #'   ContactArn = "string",
 #'   AddressBookArn = "string"
 #' )
@@ -1087,7 +1087,7 @@ alexaforbusiness_disassociate_contact_from_address_book <- function(ContactArn, 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$disassociate_device_from_room(
+#' svc$disassociate_device_from_room(
 #'   DeviceArn = "string"
 #' )
 #' ```
@@ -1124,7 +1124,7 @@ alexaforbusiness_disassociate_device_from_room <- function(DeviceArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$disassociate_skill_from_skill_group(
+#' svc$disassociate_skill_from_skill_group(
 #'   SkillGroupArn = "string",
 #'   SkillId = "string"
 #' )
@@ -1162,7 +1162,7 @@ alexaforbusiness_disassociate_skill_from_skill_group <- function(SkillGroupArn =
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$disassociate_skill_from_users(
+#' svc$disassociate_skill_from_users(
 #'   SkillId = "string"
 #' )
 #' ```
@@ -1201,7 +1201,7 @@ alexaforbusiness_disassociate_skill_from_users <- function(SkillId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$disassociate_skill_group_from_room(
+#' svc$disassociate_skill_group_from_room(
 #'   SkillGroupArn = "string",
 #'   RoomArn = "string"
 #' )
@@ -1237,7 +1237,7 @@ alexaforbusiness_disassociate_skill_group_from_room <- function(SkillGroupArn = 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$forget_smart_home_appliances(
+#' svc$forget_smart_home_appliances(
 #'   RoomArn = "string"
 #' )
 #' ```
@@ -1272,7 +1272,7 @@ alexaforbusiness_forget_smart_home_appliances <- function(RoomArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_address_book(
+#' svc$get_address_book(
 #'   AddressBookArn = "string"
 #' )
 #' ```
@@ -1305,7 +1305,7 @@ alexaforbusiness_get_address_book <- function(AddressBookArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_conference_preference()
+#' svc$get_conference_preference()
 #' ```
 #'
 #' @keywords internal
@@ -1338,7 +1338,7 @@ alexaforbusiness_get_conference_preference <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_conference_provider(
+#' svc$get_conference_provider(
 #'   ConferenceProviderArn = "string"
 #' )
 #' ```
@@ -1373,7 +1373,7 @@ alexaforbusiness_get_conference_provider <- function(ConferenceProviderArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_contact(
+#' svc$get_contact(
 #'   ContactArn = "string"
 #' )
 #' ```
@@ -1408,7 +1408,7 @@ alexaforbusiness_get_contact <- function(ContactArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_device(
+#' svc$get_device(
 #'   DeviceArn = "string"
 #' )
 #' ```
@@ -1443,7 +1443,7 @@ alexaforbusiness_get_device <- function(DeviceArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_invitation_configuration()
+#' svc$get_invitation_configuration()
 #' ```
 #'
 #' @keywords internal
@@ -1476,7 +1476,7 @@ alexaforbusiness_get_invitation_configuration <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_profile(
+#' svc$get_profile(
 #'   ProfileArn = "string"
 #' )
 #' ```
@@ -1511,7 +1511,7 @@ alexaforbusiness_get_profile <- function(ProfileArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_room(
+#' svc$get_room(
 #'   RoomArn = "string"
 #' )
 #' ```
@@ -1550,7 +1550,7 @@ alexaforbusiness_get_room <- function(RoomArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_room_skill_parameter(
+#' svc$get_room_skill_parameter(
 #'   RoomArn = "string",
 #'   SkillId = "string",
 #'   ParameterKey = "string"
@@ -1587,7 +1587,7 @@ alexaforbusiness_get_room_skill_parameter <- function(RoomArn = NULL, SkillId, P
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$get_skill_group(
+#' svc$get_skill_group(
 #'   SkillGroupArn = "string"
 #' )
 #' ```
@@ -1624,7 +1624,7 @@ alexaforbusiness_get_skill_group <- function(SkillGroupArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_business_report_schedules(
+#' svc$list_business_report_schedules(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1662,7 +1662,7 @@ alexaforbusiness_list_business_report_schedules <- function(NextToken = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_conference_providers(
+#' svc$list_conference_providers(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1714,7 +1714,7 @@ alexaforbusiness_list_conference_providers <- function(NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_device_events(
+#' svc$list_device_events(
 #'   DeviceArn = "string",
 #'   EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
 #'   NextToken = "string",
@@ -1764,7 +1764,7 @@ alexaforbusiness_list_device_events <- function(DeviceArn, EventType = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_skills(
+#' svc$list_skills(
 #'   SkillGroupArn = "string",
 #'   EnablementType = "ENABLED"|"PENDING",
 #'   SkillType = "PUBLIC"|"PRIVATE"|"ALL",
@@ -1804,7 +1804,7 @@ alexaforbusiness_list_skills <- function(SkillGroupArn = NULL, EnablementType = 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_skills_store_categories(
+#' svc$list_skills_store_categories(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1844,7 +1844,7 @@ alexaforbusiness_list_skills_store_categories <- function(NextToken = NULL, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_skills_store_skills_by_category(
+#' svc$list_skills_store_skills_by_category(
 #'   CategoryId = 123,
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1884,7 +1884,7 @@ alexaforbusiness_list_skills_store_skills_by_category <- function(CategoryId, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_smart_home_appliances(
+#' svc$list_smart_home_appliances(
 #'   RoomArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1928,7 +1928,7 @@ alexaforbusiness_list_smart_home_appliances <- function(RoomArn, MaxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$list_tags(
+#' svc$list_tags(
 #'   Arn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1967,7 +1967,7 @@ alexaforbusiness_list_tags <- function(Arn, NextToken = NULL, MaxResults = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$put_conference_preference(
+#' svc$put_conference_preference(
 #'   ConferencePreference = list(
 #'     DefaultConferenceProviderArn = "string"
 #'   )
@@ -2011,7 +2011,7 @@ alexaforbusiness_put_conference_preference <- function(ConferencePreference) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$put_invitation_configuration(
+#' svc$put_invitation_configuration(
 #'   OrganizationName = "string",
 #'   ContactEmail = "string",
 #'   PrivateSkillIds = list(
@@ -2055,7 +2055,7 @@ alexaforbusiness_put_invitation_configuration <- function(OrganizationName, Cont
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$put_room_skill_parameter(
+#' svc$put_room_skill_parameter(
 #'   RoomArn = "string",
 #'   SkillId = "string",
 #'   RoomSkillParameter = list(
@@ -2103,7 +2103,7 @@ alexaforbusiness_put_room_skill_parameter <- function(RoomArn = NULL, SkillId, R
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$put_skill_authorization(
+#' svc$put_skill_authorization(
 #'   AuthorizationResult = list(
 #'     "string"
 #'   ),
@@ -2154,7 +2154,7 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$register_avs_device(
+#' svc$register_avs_device(
 #'   ClientId = "string",
 #'   UserCode = "string",
 #'   ProductId = "string",
@@ -2196,7 +2196,7 @@ alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$reject_skill(
+#' svc$reject_skill(
 #'   SkillId = "string"
 #' )
 #' ```
@@ -2234,7 +2234,7 @@ alexaforbusiness_reject_skill <- function(SkillId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$resolve_room(
+#' svc$resolve_room(
 #'   UserId = "string",
 #'   SkillId = "string"
 #' )
@@ -2272,7 +2272,7 @@ alexaforbusiness_resolve_room <- function(UserId, SkillId) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$revoke_invitation(
+#' svc$revoke_invitation(
 #'   UserArn = "string",
 #'   EnrollmentId = "string"
 #' )
@@ -2321,7 +2321,7 @@ alexaforbusiness_revoke_invitation <- function(UserArn = NULL, EnrollmentId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_address_books(
+#' svc$search_address_books(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -2385,7 +2385,7 @@ alexaforbusiness_search_address_books <- function(Filters = NULL, SortCriteria =
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_contacts(
+#' svc$search_contacts(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -2449,7 +2449,7 @@ alexaforbusiness_search_contacts <- function(Filters = NULL, SortCriteria = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_devices(
+#' svc$search_devices(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -2512,7 +2512,7 @@ alexaforbusiness_search_devices <- function(NextToken = NULL, MaxResults = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_profiles(
+#' svc$search_profiles(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -2575,7 +2575,7 @@ alexaforbusiness_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_rooms(
+#' svc$search_rooms(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -2638,7 +2638,7 @@ alexaforbusiness_search_rooms <- function(NextToken = NULL, MaxResults = NULL, F
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_skill_groups(
+#' svc$search_skill_groups(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -2704,7 +2704,7 @@ alexaforbusiness_search_skill_groups <- function(NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$search_users(
+#' svc$search_users(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -2756,7 +2756,7 @@ alexaforbusiness_search_users <- function(NextToken = NULL, MaxResults = NULL, F
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$send_invitation(
+#' svc$send_invitation(
 #'   UserArn = "string"
 #' )
 #' ```
@@ -2796,7 +2796,7 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$start_device_sync(
+#' svc$start_device_sync(
 #'   RoomArn = "string",
 #'   DeviceArn = "string",
 #'   Features = list(
@@ -2837,7 +2837,7 @@ alexaforbusiness_start_device_sync <- function(RoomArn = NULL, DeviceArn = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$start_smart_home_appliance_discovery(
+#' svc$start_smart_home_appliance_discovery(
 #'   RoomArn = "string"
 #' )
 #' ```
@@ -2874,7 +2874,7 @@ alexaforbusiness_start_smart_home_appliance_discovery <- function(RoomArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$tag_resource(
+#' svc$tag_resource(
 #'   Arn = "string",
 #'   Tags = list(
 #'     list(
@@ -2917,7 +2917,7 @@ alexaforbusiness_tag_resource <- function(Arn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$untag_resource(
+#' svc$untag_resource(
 #'   Arn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -2957,7 +2957,7 @@ alexaforbusiness_untag_resource <- function(Arn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_address_book(
+#' svc$update_address_book(
 #'   AddressBookArn = "string",
 #'   Name = "string",
 #'   Description = "string"
@@ -3003,7 +3003,7 @@ alexaforbusiness_update_address_book <- function(AddressBookArn, Name = NULL, De
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_business_report_schedule(
+#' svc$update_business_report_schedule(
 #'   ScheduleArn = "string",
 #'   S3BucketName = "string",
 #'   S3KeyPrefix = "string",
@@ -3050,7 +3050,7 @@ alexaforbusiness_update_business_report_schedule <- function(ScheduleArn, S3Buck
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_conference_provider(
+#' svc$update_conference_provider(
 #'   ConferenceProviderArn = "string",
 #'   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
 #'   IPDialIn = list(
@@ -3104,7 +3104,7 @@ alexaforbusiness_update_conference_provider <- function(ConferenceProviderArn, C
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_contact(
+#' svc$update_contact(
 #'   ContactArn = "string",
 #'   DisplayName = "string",
 #'   FirstName = "string",
@@ -3144,7 +3144,7 @@ alexaforbusiness_update_contact <- function(ContactArn, DisplayName = NULL, Firs
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_device(
+#' svc$update_device(
 #'   DeviceArn = "string",
 #'   DeviceName = "string"
 #' )
@@ -3193,7 +3193,7 @@ alexaforbusiness_update_device <- function(DeviceArn = NULL, DeviceName = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_profile(
+#' svc$update_profile(
 #'   ProfileArn = "string",
 #'   ProfileName = "string",
 #'   IsDefault = TRUE|FALSE,
@@ -3243,7 +3243,7 @@ alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_room(
+#' svc$update_room(
 #'   RoomArn = "string",
 #'   RoomName = "string",
 #'   Description = "string",
@@ -3285,7 +3285,7 @@ alexaforbusiness_update_room <- function(RoomArn = NULL, RoomName = NULL, Descri
 #'
 #' @section Request syntax:
 #' ```
-#' alexaforbusiness$update_skill_group(
+#' svc$update_skill_group(
 #'   SkillGroupArn = "string",
 #'   SkillGroupName = "string",
 #'   Description = "string"

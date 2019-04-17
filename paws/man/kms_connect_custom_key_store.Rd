@@ -55,7 +55,7 @@ store, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keysto
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$connect_custom_key_store(
+\preformatted{svc$connect_custom_key_store(
   CustomKeyStoreId = "string"
 )
 }

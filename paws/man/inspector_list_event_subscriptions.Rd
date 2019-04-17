@@ -26,7 +26,7 @@ specified by the ARN of the assessment template. For more information,
 see SubscribeToEvent and UnsubscribeFromEvent.
 }
 \section{Request syntax}{
-\preformatted{inspector$list_event_subscriptions(
+\preformatted{svc$list_event_subscriptions(
   resourceArn = "string",
   nextToken = "string",
   maxResults = 123
@@ -37,7 +37,7 @@ see SubscribeToEvent and UnsubscribeFromEvent.
 \examples{
 # Lists all the event subscriptions for the assessment template that is
 # specified by the ARN of the assessment template.
-\donttest{inspector$list_event_subscriptions(
+\donttest{svc$list_event_subscriptions(
   maxResults = 123L,
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2..."
 )}

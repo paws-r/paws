@@ -14,7 +14,7 @@ to reference this VpcLink.}
 Deletes an existing VpcLink of a specified identifier.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_vpc_link(
+\preformatted{svc$delete_vpc_link(
   vpcLinkId = "string"
 )
 }

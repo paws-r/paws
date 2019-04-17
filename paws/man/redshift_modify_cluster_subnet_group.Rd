@@ -22,7 +22,7 @@ subnets. The operation replaces the existing list of subnets with the
 new list of subnets.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_subnet_group(
+\preformatted{svc$modify_cluster_subnet_group(
   ClusterSubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(

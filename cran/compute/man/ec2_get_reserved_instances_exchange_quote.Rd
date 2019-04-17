@@ -28,7 +28,7 @@ the response. Use AcceptReservedInstancesExchangeQuote to perform the
 exchange.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_reserved_instances_exchange_quote(
+\preformatted{svc$get_reserved_instances_exchange_quote(
   DryRun = TRUE|FALSE,
   ReservedInstanceIds = list(
     "string"

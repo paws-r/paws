@@ -26,7 +26,7 @@ want to retrieve.}
 Returns a list of all products that match the filter criteria.
 }
 \section{Request syntax}{
-\preformatted{pricing$get_products(
+\preformatted{svc$get_products(
   ServiceCode = "string",
   Filters = list(
     list(
@@ -44,7 +44,7 @@ Returns a list of all products that match the filter criteria.
 
 \examples{
 # This operation returns a list of products that match the given criteria.
-\donttest{pricing$get_products(
+\donttest{svc$get_products(
   Filters = list(
     list(
       Field = "ServiceCode",

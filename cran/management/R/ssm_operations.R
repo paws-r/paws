@@ -60,7 +60,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
 #'   ResourceId = "string",
 #'   Tags = list(
@@ -107,7 +107,7 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$cancel_command(
+#' svc$cancel_command(
 #'   CommandId = "string",
 #'   InstanceIds = list(
 #'     "string"
@@ -148,7 +148,7 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$cancel_maintenance_window_execution(
+#' svc$cancel_maintenance_window_execution(
 #'   WindowExecutionId = "string"
 #' )
 #' ```
@@ -227,7 +227,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_activation(
+#' svc$create_activation(
 #'   Description = "string",
 #'   DefaultInstanceName = "string",
 #'   IamRole = "string",
@@ -343,7 +343,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_association(
+#' svc$create_association(
 #'   Name = "string",
 #'   DocumentVersion = "string",
 #'   InstanceId = "string",
@@ -416,7 +416,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_association_batch(
+#' svc$create_association_batch(
 #'   Entries = list(
 #'     list(
 #'       Name = "string",
@@ -527,7 +527,7 @@ ssm_create_association_batch <- function(Entries) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_document(
+#' svc$create_document(
 #'   Content = "string",
 #'   Attachments = list(
 #'     list(
@@ -625,7 +625,7 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_maintenance_window(
+#' svc$create_maintenance_window(
 #'   Name = "string",
 #'   Description = "string",
 #'   StartDate = "string",
@@ -738,7 +738,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_patch_baseline(
+#' svc$create_patch_baseline(
 #'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
 #'   Name = "string",
 #'   GlobalFilters = list(
@@ -843,7 +843,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$create_resource_data_sync(
+#' svc$create_resource_data_sync(
 #'   SyncName = "string",
 #'   S3Destination = list(
 #'     BucketName = "string",
@@ -889,7 +889,7 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_activation(
+#' svc$delete_activation(
 #'   ActivationId = "string"
 #' )
 #' ```
@@ -934,7 +934,7 @@ ssm_delete_activation <- function(ActivationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_association(
+#' svc$delete_association(
 #'   Name = "string",
 #'   InstanceId = "string",
 #'   AssociationId = "string"
@@ -977,7 +977,7 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_document(
+#' svc$delete_document(
 #'   Name = "string"
 #' )
 #' ```
@@ -1034,7 +1034,7 @@ ssm_delete_document <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_inventory(
+#' svc$delete_inventory(
 #'   TypeName = "string",
 #'   SchemaDeleteOption = "DisableSchema"|"DeleteSchema",
 #'   DryRun = TRUE|FALSE,
@@ -1072,7 +1072,7 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_maintenance_window(
+#' svc$delete_maintenance_window(
 #'   WindowId = "string"
 #' )
 #' ```
@@ -1107,7 +1107,7 @@ ssm_delete_maintenance_window <- function(WindowId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_parameter(
+#' svc$delete_parameter(
 #'   Name = "string"
 #' )
 #' ```
@@ -1143,7 +1143,7 @@ ssm_delete_parameter <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_parameters(
+#' svc$delete_parameters(
 #'   Names = list(
 #'     "string"
 #'   )
@@ -1180,7 +1180,7 @@ ssm_delete_parameters <- function(Names) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_patch_baseline(
+#' svc$delete_patch_baseline(
 #'   BaselineId = "string"
 #' )
 #' ```
@@ -1218,7 +1218,7 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$delete_resource_data_sync(
+#' svc$delete_resource_data_sync(
 #'   SyncName = "string"
 #' )
 #' ```
@@ -1258,7 +1258,7 @@ ssm_delete_resource_data_sync <- function(SyncName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$deregister_managed_instance(
+#' svc$deregister_managed_instance(
 #'   InstanceId = "string"
 #' )
 #' ```
@@ -1295,7 +1295,7 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$deregister_patch_baseline_for_patch_group(
+#' svc$deregister_patch_baseline_for_patch_group(
 #'   BaselineId = "string",
 #'   PatchGroup = "string"
 #' )
@@ -1336,7 +1336,7 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$deregister_target_from_maintenance_window(
+#' svc$deregister_target_from_maintenance_window(
 #'   WindowId = "string",
 #'   WindowTargetId = "string",
 #'   Safe = TRUE|FALSE
@@ -1374,7 +1374,7 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$deregister_task_from_maintenance_window(
+#' svc$deregister_task_from_maintenance_window(
 #'   WindowId = "string",
 #'   WindowTaskId = "string"
 #' )
@@ -1421,7 +1421,7 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_activations(
+#' svc$describe_activations(
 #'   Filters = list(
 #'     list(
 #'       FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",
@@ -1478,7 +1478,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_association(
+#' svc$describe_association(
 #'   Name = "string",
 #'   InstanceId = "string",
 #'   AssociationId = "string",
@@ -1534,7 +1534,7 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_association_execution_targets(
+#' svc$describe_association_execution_targets(
 #'   AssociationId = "string",
 #'   ExecutionId = "string",
 #'   Filters = list(
@@ -1593,7 +1593,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_association_executions(
+#' svc$describe_association_executions(
 #'   AssociationId = "string",
 #'   Filters = list(
 #'     list(
@@ -1642,7 +1642,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_automation_executions(
+#' svc$describe_automation_executions(
 #'   Filters = list(
 #'     list(
 #'       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",
@@ -1699,7 +1699,7 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_automation_step_executions(
+#' svc$describe_automation_step_executions(
 #'   AutomationExecutionId = "string",
 #'   Filters = list(
 #'     list(
@@ -1748,7 +1748,7 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_available_patches(
+#' svc$describe_available_patches(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -1797,7 +1797,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_document(
+#' svc$describe_document(
 #'   Name = "string",
 #'   DocumentVersion = "string",
 #'   VersionName = "string"
@@ -1839,7 +1839,7 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_document_permission(
+#' svc$describe_document_permission(
 #'   Name = "string",
 #'   PermissionType = "Share"
 #' )
@@ -1881,7 +1881,7 @@ ssm_describe_document_permission <- function(Name, PermissionType) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_effective_instance_associations(
+#' svc$describe_effective_instance_associations(
 #'   InstanceId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1925,7 +1925,7 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_effective_patches_for_patch_baseline(
+#' svc$describe_effective_patches_for_patch_baseline(
 #'   BaselineId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1968,7 +1968,7 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_instance_associations_status(
+#' svc$describe_instance_associations_status(
 #'   InstanceId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -2031,7 +2031,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_instance_information(
+#' svc$describe_instance_information(
 #'   InstanceInformationFilterList = list(
 #'     list(
 #'       key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",
@@ -2087,7 +2087,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_instance_patch_states(
+#' svc$describe_instance_patch_states(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -2140,7 +2140,7 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_instance_patch_states_for_patch_group(
+#' svc$describe_instance_patch_states_for_patch_group(
 #'   PatchGroup = "string",
 #'   Filters = list(
 #'     list(
@@ -2198,7 +2198,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_instance_patches(
+#' svc$describe_instance_patches(
 #'   InstanceId = "string",
 #'   Filters = list(
 #'     list(
@@ -2249,7 +2249,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_inventory_deletions(
+#' svc$describe_inventory_deletions(
 #'   DeletionId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2299,7 +2299,7 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_execution_task_invocations(
+#' svc$describe_maintenance_window_execution_task_invocations(
 #'   WindowExecutionId = "string",
 #'   TaskId = "string",
 #'   Filters = list(
@@ -2357,7 +2357,7 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_execution_tasks(
+#' svc$describe_maintenance_window_execution_tasks(
 #'   WindowExecutionId = "string",
 #'   Filters = list(
 #'     list(
@@ -2418,7 +2418,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_executions(
+#' svc$describe_maintenance_window_executions(
 #'   WindowId = "string",
 #'   Filters = list(
 #'     list(
@@ -2475,7 +2475,7 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_schedule(
+#' svc$describe_maintenance_window_schedule(
 #'   WindowId = "string",
 #'   Targets = list(
 #'     list(
@@ -2538,7 +2538,7 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_targets(
+#' svc$describe_maintenance_window_targets(
 #'   WindowId = "string",
 #'   Filters = list(
 #'     list(
@@ -2592,7 +2592,7 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_window_tasks(
+#' svc$describe_maintenance_window_tasks(
 #'   WindowId = "string",
 #'   Filters = list(
 #'     list(
@@ -2643,7 +2643,7 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_windows(
+#' svc$describe_maintenance_windows(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -2697,7 +2697,7 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_maintenance_windows_for_target(
+#' svc$describe_maintenance_windows_for_target(
 #'   Targets = list(
 #'     list(
 #'       Key = "string",
@@ -2758,7 +2758,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_parameters(
+#' svc$describe_parameters(
 #'   Filters = list(
 #'     list(
 #'       Key = "Name"|"Type"|"KeyId",
@@ -2818,7 +2818,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_patch_baselines(
+#' svc$describe_patch_baselines(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -2862,7 +2862,7 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_patch_group_state(
+#' svc$describe_patch_group_state(
 #'   PatchGroup = "string"
 #' )
 #' ```
@@ -2901,7 +2901,7 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_patch_groups(
+#' svc$describe_patch_groups(
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
@@ -2955,7 +2955,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$describe_sessions(
+#' svc$describe_sessions(
 #'   State = "Active"|"History",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -3000,7 +3000,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_automation_execution(
+#' svc$get_automation_execution(
 #'   AutomationExecutionId = "string"
 #' )
 #' ```
@@ -3043,7 +3043,7 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_command_invocation(
+#' svc$get_command_invocation(
 #'   CommandId = "string",
 #'   InstanceId = "string",
 #'   PluginName = "string"
@@ -3084,7 +3084,7 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_connection_status(
+#' svc$get_connection_status(
 #'   Target = "string"
 #' )
 #' ```
@@ -3124,7 +3124,7 @@ ssm_get_connection_status <- function(Target) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_default_patch_baseline(
+#' svc$get_default_patch_baseline(
 #'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
 #' )
 #' ```
@@ -3163,7 +3163,7 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_deployable_patch_snapshot_for_instance(
+#' svc$get_deployable_patch_snapshot_for_instance(
 #'   InstanceId = "string",
 #'   SnapshotId = "string"
 #' )
@@ -3205,7 +3205,7 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_document(
+#' svc$get_document(
 #'   Name = "string",
 #'   VersionName = "string",
 #'   DocumentVersion = "string",
@@ -3255,7 +3255,7 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_inventory(
+#' svc$get_inventory(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -3338,7 +3338,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_inventory_schema(
+#' svc$get_inventory_schema(
 #'   TypeName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -3377,7 +3377,7 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_maintenance_window(
+#' svc$get_maintenance_window(
 #'   WindowId = "string"
 #' )
 #' ```
@@ -3414,7 +3414,7 @@ ssm_get_maintenance_window <- function(WindowId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_maintenance_window_execution(
+#' svc$get_maintenance_window_execution(
 #'   WindowExecutionId = "string"
 #' )
 #' ```
@@ -3453,7 +3453,7 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_maintenance_window_execution_task(
+#' svc$get_maintenance_window_execution_task(
 #'   WindowExecutionId = "string",
 #'   TaskId = "string"
 #' )
@@ -3495,7 +3495,7 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_maintenance_window_execution_task_invocation(
+#' svc$get_maintenance_window_execution_task_invocation(
 #'   WindowExecutionId = "string",
 #'   TaskId = "string",
 #'   InvocationId = "string"
@@ -3533,7 +3533,7 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_maintenance_window_task(
+#' svc$get_maintenance_window_task(
 #'   WindowId = "string",
 #'   WindowTaskId = "string"
 #' )
@@ -3572,7 +3572,7 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_parameter(
+#' svc$get_parameter(
 #'   Name = "string",
 #'   WithDecryption = TRUE|FALSE
 #' )
@@ -3615,7 +3615,7 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_parameter_history(
+#' svc$get_parameter_history(
 #'   Name = "string",
 #'   WithDecryption = TRUE|FALSE,
 #'   MaxResults = 123,
@@ -3657,7 +3657,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_parameters(
+#' svc$get_parameters(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -3728,7 +3728,7 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_parameters_by_path(
+#' svc$get_parameters_by_path(
 #'   Path = "string",
 #'   Recursive = TRUE|FALSE,
 #'   ParameterFilters = list(
@@ -3776,7 +3776,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_patch_baseline(
+#' svc$get_patch_baseline(
 #'   BaselineId = "string"
 #' )
 #' ```
@@ -3815,7 +3815,7 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_patch_baseline_for_patch_group(
+#' svc$get_patch_baseline_for_patch_group(
 #'   PatchGroup = "string",
 #'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"
 #' )
@@ -3867,7 +3867,7 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$get_service_setting(
+#' svc$get_service_setting(
 #'   SettingId = "string"
 #' )
 #' ```
@@ -3938,7 +3938,7 @@ ssm_get_service_setting <- function(SettingId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$label_parameter_version(
+#' svc$label_parameter_version(
 #'   Name = "string",
 #'   ParameterVersion = 123,
 #'   Labels = list(
@@ -3982,7 +3982,7 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_association_versions(
+#' svc$list_association_versions(
 #'   AssociationId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -4027,7 +4027,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_associations(
+#' svc$list_associations(
 #'   AssociationFilterList = list(
 #'     list(
 #'       key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName",
@@ -4085,7 +4085,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_command_invocations(
+#' svc$list_command_invocations(
 #'   CommandId = "string",
 #'   InstanceId = "string",
 #'   MaxResults = 123,
@@ -4138,7 +4138,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_commands(
+#' svc$list_commands(
 #'   CommandId = "string",
 #'   InstanceId = "string",
 #'   MaxResults = 123,
@@ -4197,7 +4197,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_compliance_items(
+#' svc$list_compliance_items(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -4258,7 +4258,7 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_compliance_summaries(
+#' svc$list_compliance_summaries(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -4308,7 +4308,7 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_document_versions(
+#' svc$list_document_versions(
 #'   Name = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -4353,7 +4353,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_documents(
+#' svc$list_documents(
 #'   DocumentFilterList = list(
 #'     list(
 #'       key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",
@@ -4412,7 +4412,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_inventory_entries(
+#' svc$list_inventory_entries(
 #'   InstanceId = "string",
 #'   TypeName = "string",
 #'   Filters = list(
@@ -4467,7 +4467,7 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_resource_compliance_summaries(
+#' svc$list_resource_compliance_summaries(
 #'   Filters = list(
 #'     list(
 #'       Key = "string",
@@ -4526,7 +4526,7 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_resource_data_sync(
+#' svc$list_resource_data_sync(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -4563,7 +4563,7 @@ ssm_list_resource_data_sync <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
 #'   ResourceId = "string"
 #' )
@@ -4612,7 +4612,7 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$modify_document_permission(
+#' svc$modify_document_permission(
 #'   Name = "string",
 #'   PermissionType = "Share",
 #'   AccountIdsToAdd = list(
@@ -4715,7 +4715,7 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$put_compliance_items(
+#' svc$put_compliance_items(
 #'   ResourceId = "string",
 #'   ResourceType = "string",
 #'   ComplianceType = "string",
@@ -4775,7 +4775,7 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$put_inventory(
+#' svc$put_inventory(
 #'   InstanceId = "string",
 #'   Items = list(
 #'     list(
@@ -4905,7 +4905,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$put_parameter(
+#' svc$put_parameter(
 #'   Name = "string",
 #'   Description = "string",
 #'   Value = "string",
@@ -4952,7 +4952,7 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type, KeyId = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$register_default_patch_baseline(
+#' svc$register_default_patch_baseline(
 #'   BaselineId = "string"
 #' )
 #' ```
@@ -4989,7 +4989,7 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$register_patch_baseline_for_patch_group(
+#' svc$register_patch_baseline_for_patch_group(
 #'   BaselineId = "string",
 #'   PatchGroup = "string"
 #' )
@@ -5043,7 +5043,7 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$register_target_with_maintenance_window(
+#' svc$register_target_with_maintenance_window(
 #'   WindowId = "string",
 #'   ResourceType = "INSTANCE",
 #'   Targets = list(
@@ -5147,7 +5147,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$register_task_with_maintenance_window(
+#' svc$register_task_with_maintenance_window(
 #'   WindowId = "string",
 #'   Targets = list(
 #'     list(
@@ -5270,7 +5270,7 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets, TaskArn
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
 #'   ResourceId = "string",
 #'   TagKeys = list(
@@ -5325,7 +5325,7 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$reset_service_setting(
+#' svc$reset_service_setting(
 #'   SettingId = "string"
 #' )
 #' ```
@@ -5366,7 +5366,7 @@ ssm_reset_service_setting <- function(SettingId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$resume_session(
+#' svc$resume_session(
 #'   SessionId = "string"
 #' )
 #' ```
@@ -5408,7 +5408,7 @@ ssm_resume_session <- function(SessionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$send_automation_signal(
+#' svc$send_automation_signal(
 #'   AutomationExecutionId = "string",
 #'   SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
 #'   Payload = list(
@@ -5514,7 +5514,7 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$send_command(
+#' svc$send_command(
 #'   InstanceIds = list(
 #'     "string"
 #'   ),
@@ -5590,7 +5590,7 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$start_associations_once(
+#' svc$start_associations_once(
 #'   AssociationIds = list(
 #'     "string"
 #'   )
@@ -5666,7 +5666,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$start_automation_execution(
+#' svc$start_automation_execution(
 #'   DocumentName = "string",
 #'   DocumentVersion = "string",
 #'   Parameters = list(
@@ -5755,7 +5755,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$start_session(
+#' svc$start_session(
 #'   Target = "string",
 #'   DocumentName = "string",
 #'   Parameters = list(
@@ -5798,7 +5798,7 @@ ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$stop_automation_execution(
+#' svc$stop_automation_execution(
 #'   AutomationExecutionId = "string",
 #'   Type = "Complete"|"Cancel"
 #' )
@@ -5837,7 +5837,7 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$terminate_session(
+#' svc$terminate_session(
 #'   SessionId = "string"
 #' )
 #' ```
@@ -5937,7 +5937,7 @@ ssm_terminate_session <- function(SessionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_association(
+#' svc$update_association(
 #'   AssociationId = "string",
 #'   Parameters = list(
 #'     list(
@@ -6005,7 +6005,7 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_association_status(
+#' svc$update_association_status(
 #'   Name = "string",
 #'   InstanceId = "string",
 #'   AssociationStatus = list(
@@ -6061,7 +6061,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_document(
+#' svc$update_document(
 #'   Content = "string",
 #'   Attachments = list(
 #'     list(
@@ -6112,7 +6112,7 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName =
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_document_default_version(
+#' svc$update_document_default_version(
 #'   Name = "string",
 #'   DocumentVersion = "string"
 #' )
@@ -6177,7 +6177,7 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_maintenance_window(
+#' svc$update_maintenance_window(
 #'   WindowId = "string",
 #'   Name = "string",
 #'   Description = "string",
@@ -6249,7 +6249,7 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_maintenance_window_target(
+#' svc$update_maintenance_window_target(
 #'   WindowId = "string",
 #'   WindowTargetId = "string",
 #'   Targets = list(
@@ -6373,7 +6373,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_maintenance_window_task(
+#' svc$update_maintenance_window_task(
 #'   WindowId = "string",
 #'   WindowTaskId = "string",
 #'   Targets = list(
@@ -6480,7 +6480,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_managed_instance_role(
+#' svc$update_managed_instance_role(
 #'   InstanceId = "string",
 #'   IamRole = "string"
 #' )
@@ -6566,7 +6566,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_patch_baseline(
+#' svc$update_patch_baseline(
 #'   BaselineId = "string",
 #'   Name = "string",
 #'   GlobalFilters = list(
@@ -6668,7 +6668,7 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #'
 #' @section Request syntax:
 #' ```
-#' ssm$update_service_setting(
+#' svc$update_service_setting(
 #'   SettingId = "string",
 #'   SettingValue = "string"
 #' )

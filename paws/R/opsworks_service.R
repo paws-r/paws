@@ -90,11 +90,10 @@ NULL
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as
 #' possible.
 #'
-#' @section Example:
-#' ```
-#' opsworks <- paws::opsworks()
-#' opsworks$operation()
-#' ```
+#' @examples
+#' \donttest{svc$assign_instance(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

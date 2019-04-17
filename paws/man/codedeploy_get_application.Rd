@@ -14,7 +14,7 @@ or AWS account.}
 Gets information about an application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_application(
+\preformatted{svc$get_application(
   applicationName = "string"
 )
 }

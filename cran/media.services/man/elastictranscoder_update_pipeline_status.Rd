@@ -28,7 +28,7 @@ jobs, you have more time to get the job IDs for the jobs that you want
 to cancel, and to send a CancelJob request.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$update_pipeline_status(
+\preformatted{svc$update_pipeline_status(
   Id = "string",
   Status = "string"
 )

@@ -17,7 +17,7 @@ guardduty_accept_invitation(DetectorId, InvitationId, MasterId)
 Accepts the invitation to be monitored by a master GuardDuty account.
 }
 \section{Request syntax}{
-\preformatted{guardduty$accept_invitation(
+\preformatted{svc$accept_invitation(
   DetectorId = "string",
   InvitationId = "string",
   MasterId = "string"

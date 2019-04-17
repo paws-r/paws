@@ -34,12 +34,6 @@ common IoT use cases so you can answer questions like which devices are
 about to fail or which customers are at risk of abandoning their
 wearable devices.
 }
-\section{Example}{
-\preformatted{iotanalytics <- paws::iotanalytics()
-iotanalytics$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -80,3 +74,9 @@ iotanalytics$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_put_message(
+  Foo = 123
+)}
+
+}

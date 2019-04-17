@@ -22,7 +22,7 @@ Deletes room skill parameter details by room, skill, and parameter key
 ID.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_room_skill_parameter(
+\preformatted{svc$delete_room_skill_parameter(
   RoomArn = "string",
   SkillId = "string",
   ParameterKey = "string"

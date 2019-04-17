@@ -25,11 +25,10 @@ NULL
 #' dimensions, such as SQL, Wait-event, User or Host, measured at that time
 #' point.
 #'
-#' @section Example:
-#' ```
-#' pi <- paws::pi()
-#' pi$operation()
-#' ```
+#' @examples
+#' \donttest{svc$describe_dimension_keys(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -24,7 +24,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$register_volume(
+\preformatted{svc$register_volume(
   Ec2VolumeId = "string",
   StackId = "string"
 )

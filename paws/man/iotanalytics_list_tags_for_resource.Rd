@@ -13,7 +13,7 @@ iotanalytics_list_tags_for_resource(resourceArn)
 Lists the tags (metadata) which you have assigned to the resource.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }

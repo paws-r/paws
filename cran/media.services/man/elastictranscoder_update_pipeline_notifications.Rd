@@ -42,7 +42,7 @@ When you update notifications for a pipeline, Elastic Transcoder returns
 the values that you specified in the request.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$update_pipeline_notifications(
+\preformatted{svc$update_pipeline_notifications(
   Id = "string",
   Notifications = list(
     Progressing = "string",

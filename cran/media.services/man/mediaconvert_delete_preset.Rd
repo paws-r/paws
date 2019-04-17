@@ -13,7 +13,7 @@ mediaconvert_delete_preset(Name)
 Permanently delete a preset you have created.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$delete_preset(
+\preformatted{svc$delete_preset(
   Name = "string"
 )
 }

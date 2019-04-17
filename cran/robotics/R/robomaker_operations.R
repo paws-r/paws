@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$batch_describe_simulation_job(
+#' svc$batch_describe_simulation_job(
 #'   jobs = list(
 #'     "string"
 #'   )
@@ -51,7 +51,7 @@ robomaker_batch_describe_simulation_job <- function(jobs) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$cancel_simulation_job(
+#' svc$cancel_simulation_job(
 #'   job = "string"
 #' )
 #' ```
@@ -101,7 +101,7 @@ robomaker_cancel_simulation_job <- function(job) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_deployment_job(
+#' svc$create_deployment_job(
 #'   deploymentConfig = list(
 #'     concurrentDeploymentPercentage = 123,
 #'     failureThresholdPercentage = 123
@@ -163,7 +163,7 @@ robomaker_create_deployment_job <- function(deploymentConfig = NULL, clientReque
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_fleet(
+#' svc$create_fleet(
 #'   name = "string",
 #'   tags = list(
 #'     "string"
@@ -205,7 +205,7 @@ robomaker_create_fleet <- function(name, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_robot(
+#' svc$create_robot(
 #'   name = "string",
 #'   architecture = "X86_64"|"ARM64"|"ARMHF",
 #'   greengrassGroupId = "string",
@@ -250,7 +250,7 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_robot_application(
+#' svc$create_robot_application(
 #'   name = "string",
 #'   sources = list(
 #'     list(
@@ -303,7 +303,7 @@ robomaker_create_robot_application <- function(name, sources, robotSoftwareSuite
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_robot_application_version(
+#' svc$create_robot_application_version(
 #'   application = "string",
 #'   currentRevisionId = "string"
 #' )
@@ -346,7 +346,7 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_simulation_application(
+#' svc$create_simulation_application(
 #'   name = "string",
 #'   sources = list(
 #'     list(
@@ -407,7 +407,7 @@ robomaker_create_simulation_application <- function(name, sources, simulationSof
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_simulation_application_version(
+#' svc$create_simulation_application_version(
 #'   application = "string",
 #'   currentRevisionId = "string"
 #' )
@@ -473,7 +473,7 @@ robomaker_create_simulation_application_version <- function(application, current
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$create_simulation_job(
+#' svc$create_simulation_job(
 #'   clientRequestToken = "string",
 #'   outputLocation = list(
 #'     s3Bucket = "string",
@@ -553,7 +553,7 @@ robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLoc
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$delete_fleet(
+#' svc$delete_fleet(
 #'   fleet = "string"
 #' )
 #' ```
@@ -588,7 +588,7 @@ robomaker_delete_fleet <- function(fleet) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$delete_robot(
+#' svc$delete_robot(
 #'   robot = "string"
 #' )
 #' ```
@@ -624,7 +624,7 @@ robomaker_delete_robot <- function(robot) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$delete_robot_application(
+#' svc$delete_robot_application(
 #'   application = "string",
 #'   applicationVersion = "string"
 #' )
@@ -661,7 +661,7 @@ robomaker_delete_robot_application <- function(application, applicationVersion =
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$delete_simulation_application(
+#' svc$delete_simulation_application(
 #'   application = "string",
 #'   applicationVersion = "string"
 #' )
@@ -698,7 +698,7 @@ robomaker_delete_simulation_application <- function(application, applicationVers
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$deregister_robot(
+#' svc$deregister_robot(
 #'   fleet = "string",
 #'   robot = "string"
 #' )
@@ -735,7 +735,7 @@ robomaker_deregister_robot <- function(fleet, robot) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_deployment_job(
+#' svc$describe_deployment_job(
 #'   job = "string"
 #' )
 #' ```
@@ -770,7 +770,7 @@ robomaker_describe_deployment_job <- function(job) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_fleet(
+#' svc$describe_fleet(
 #'   fleet = "string"
 #' )
 #' ```
@@ -805,7 +805,7 @@ robomaker_describe_fleet <- function(fleet) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_robot(
+#' svc$describe_robot(
 #'   robot = "string"
 #' )
 #' ```
@@ -841,7 +841,7 @@ robomaker_describe_robot <- function(robot) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_robot_application(
+#' svc$describe_robot_application(
 #'   application = "string",
 #'   applicationVersion = "string"
 #' )
@@ -879,7 +879,7 @@ robomaker_describe_robot_application <- function(application, applicationVersion
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_simulation_application(
+#' svc$describe_simulation_application(
 #'   application = "string",
 #'   applicationVersion = "string"
 #' )
@@ -915,7 +915,7 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$describe_simulation_job(
+#' svc$describe_simulation_job(
 #'   job = "string"
 #' )
 #' ```
@@ -973,7 +973,7 @@ robomaker_describe_simulation_job <- function(job) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_deployment_jobs(
+#' svc$list_deployment_jobs(
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -1037,7 +1037,7 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_fleets(
+#' svc$list_fleets(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filters = list(
@@ -1104,7 +1104,7 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_robot_applications(
+#' svc$list_robot_applications(
 #'   versionQualifier = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
@@ -1172,7 +1172,7 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_robots(
+#' svc$list_robots(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filters = list(
@@ -1239,7 +1239,7 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_simulation_applications(
+#' svc$list_simulation_applications(
 #'   versionQualifier = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
@@ -1307,7 +1307,7 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_simulation_jobs(
+#' svc$list_simulation_jobs(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   filters = list(
@@ -1351,7 +1351,7 @@ robomaker_list_simulation_jobs <- function(nextToken = NULL, maxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
@@ -1387,7 +1387,7 @@ robomaker_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$register_robot(
+#' svc$register_robot(
 #'   fleet = "string",
 #'   robot = "string"
 #' )
@@ -1423,7 +1423,7 @@ robomaker_register_robot <- function(fleet, robot) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$restart_simulation_job(
+#' svc$restart_simulation_job(
 #'   job = "string"
 #' )
 #' ```
@@ -1461,7 +1461,7 @@ robomaker_restart_simulation_job <- function(job) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$sync_deployment_job(
+#' svc$sync_deployment_job(
 #'   clientRequestToken = "string",
 #'   fleet = "string"
 #' )
@@ -1508,7 +1508,7 @@ robomaker_sync_deployment_job <- function(clientRequestToken, fleet) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     "string"
@@ -1553,7 +1553,7 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -1595,7 +1595,7 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$update_robot_application(
+#' svc$update_robot_application(
 #'   application = "string",
 #'   sources = list(
 #'     list(
@@ -1649,7 +1649,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #'
 #' @section Request syntax:
 #' ```
-#' robomaker$update_simulation_application(
+#' svc$update_simulation_application(
 #'   application = "string",
 #'   sources = list(
 #'     list(

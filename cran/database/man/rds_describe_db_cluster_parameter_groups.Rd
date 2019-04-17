@@ -45,7 +45,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_cluster_parameter_groups(
+\preformatted{svc$describe_db_cluster_parameter_groups(
   DBClusterParameterGroupName = "string",
   Filters = list(
     list(

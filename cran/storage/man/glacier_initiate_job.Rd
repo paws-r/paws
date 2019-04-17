@@ -25,7 +25,7 @@ information about using this operation, see the documentation for the
 underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
 }
 \section{Request syntax}{
-\preformatted{glacier$initiate_job(
+\preformatted{svc$initiate_job(
   accountId = "string",
   vaultName = "string",
   jobParameters = list(
@@ -104,7 +104,7 @@ underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/ap
 \examples{
 # The example initiates an inventory-retrieval job for the vault named
 # examplevault.
-\donttest{glacier$initiate_job(
+\donttest{svc$initiate_job(
   accountId = "-",
   jobParameters = list(
     Description = "My inventory job",

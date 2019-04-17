@@ -22,7 +22,7 @@ Application Load Balancer or Network Load Balancer.
 Network Load Balancers must use \code{ipv4}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$set_ip_address_type(
+\preformatted{svc$set_ip_address_type(
   LoadBalancerArn = "string",
   IpAddressType = "ipv4"|"dualstack"
 )

@@ -17,7 +17,7 @@ s3_put_bucket_website(Bucket, ContentMD5, WebsiteConfiguration)
 Set the website configuration for a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_website(
+\preformatted{svc$put_bucket_website(
   Bucket = "string",
   ContentMD5 = "string",
   WebsiteConfiguration = list(
@@ -53,7 +53,7 @@ Set the website configuration for a bucket.
 
 \examples{
 # The following example adds website configuration to a bucket.
-\donttest{s3$put_bucket_website(
+\donttest{svc$put_bucket_website(
   Bucket = "examplebucket",
   ContentMD5 = "",
   WebsiteConfiguration = list(

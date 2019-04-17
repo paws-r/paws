@@ -13,7 +13,7 @@ sms_get_app(appId)
 Retrieve information about an application.
 }
 \section{Request syntax}{
-\preformatted{sms$get_app(
+\preformatted{svc$get_app(
   appId = "string"
 )
 }

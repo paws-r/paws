@@ -18,7 +18,7 @@ Gets a group.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_group(
+\preformatted{svc$get_group(
   GroupName = "string",
   UserPoolId = "string"
 )

@@ -25,7 +25,7 @@ permission has attached the network interface to an instance. However,
 you can force delete the permission, regardless of any attachment.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_network_interface_permission(
+\preformatted{svc$delete_network_interface_permission(
   NetworkInterfacePermissionId = "string",
   Force = TRUE|FALSE,
   DryRun = TRUE|FALSE

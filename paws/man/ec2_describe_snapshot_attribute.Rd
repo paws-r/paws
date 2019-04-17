@@ -25,7 +25,7 @@ For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_snapshot_attribute(
+\preformatted{svc$describe_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   SnapshotId = "string",
   DryRun = TRUE|FALSE
@@ -36,7 +36,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example describes the ``createVolumePermission`` attribute on a
 # snapshot with the snapshot ID of ``snap-066877671789bd71b``.
-\donttest{ec2$describe_snapshot_attribute(
+\donttest{svc$describe_snapshot_attribute(
   Attribute = "createVolumePermission",
   SnapshotId = "snap-066877671789bd71b"
 )}

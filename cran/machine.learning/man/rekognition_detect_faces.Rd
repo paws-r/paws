@@ -54,7 +54,7 @@ This operation requires permissions to perform the
 \code{rekognition:DetectFaces} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$detect_faces(
+\preformatted{svc$detect_faces(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -72,7 +72,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation detects faces in an image stored in an AWS S3 bucket.
-\donttest{rekognition$detect_faces(
+\donttest{svc$detect_faces(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",

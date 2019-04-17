@@ -22,7 +22,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sms$create_app(
+#' svc$create_app(
 #'   name = "string",
 #'   description = "string",
 #'   roleName = "string",
@@ -118,7 +118,7 @@ sms_create_app <- function(name = NULL, description = NULL, roleName = NULL, cli
 #'
 #' @section Request syntax:
 #' ```
-#' sms$create_replication_job(
+#' svc$create_replication_job(
 #'   serverId = "string",
 #'   seedReplicationTime = as.POSIXct(
 #'     "2015-01-01"
@@ -170,7 +170,7 @@ sms_create_replication_job <- function(serverId, seedReplicationTime, frequency 
 #'
 #' @section Request syntax:
 #' ```
-#' sms$delete_app(
+#' svc$delete_app(
 #'   appId = "string",
 #'   forceStopAppReplication = TRUE|FALSE,
 #'   forceTerminateApp = TRUE|FALSE
@@ -207,7 +207,7 @@ sms_delete_app <- function(appId = NULL, forceStopAppReplication = NULL, forceTe
 #'
 #' @section Request syntax:
 #' ```
-#' sms$delete_app_launch_configuration(
+#' svc$delete_app_launch_configuration(
 #'   appId = "string"
 #' )
 #' ```
@@ -242,7 +242,7 @@ sms_delete_app_launch_configuration <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$delete_app_replication_configuration(
+#' svc$delete_app_replication_configuration(
 #'   appId = "string"
 #' )
 #' ```
@@ -281,7 +281,7 @@ sms_delete_app_replication_configuration <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$delete_replication_job(
+#' svc$delete_replication_job(
 #'   replicationJobId = "string"
 #' )
 #' ```
@@ -314,7 +314,7 @@ sms_delete_replication_job <- function(replicationJobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$delete_server_catalog()
+#' svc$delete_server_catalog()
 #' ```
 #'
 #' @keywords internal
@@ -350,7 +350,7 @@ sms_delete_server_catalog <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$disassociate_connector(
+#' svc$disassociate_connector(
 #'   connectorId = "string"
 #' )
 #' ```
@@ -388,7 +388,7 @@ sms_disassociate_connector <- function(connectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$generate_change_set(
+#' svc$generate_change_set(
 #'   appId = "string",
 #'   changesetFormat = "JSON"|"YAML"
 #' )
@@ -430,7 +430,7 @@ sms_generate_change_set <- function(appId = NULL, changesetFormat = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$generate_template(
+#' svc$generate_template(
 #'   appId = "string",
 #'   templateFormat = "JSON"|"YAML"
 #' )
@@ -466,7 +466,7 @@ sms_generate_template <- function(appId = NULL, templateFormat = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_app(
+#' svc$get_app(
 #'   appId = "string"
 #' )
 #' ```
@@ -503,7 +503,7 @@ sms_get_app <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_app_launch_configuration(
+#' svc$get_app_launch_configuration(
 #'   appId = "string"
 #' )
 #' ```
@@ -540,7 +540,7 @@ sms_get_app_launch_configuration <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_app_replication_configuration(
+#' svc$get_app_replication_configuration(
 #'   appId = "string"
 #' )
 #' ```
@@ -578,7 +578,7 @@ sms_get_app_replication_configuration <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_connectors(
+#' svc$get_connectors(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -618,7 +618,7 @@ sms_get_connectors <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_replication_jobs(
+#' svc$get_replication_jobs(
 #'   replicationJobId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -659,7 +659,7 @@ sms_get_replication_jobs <- function(replicationJobId = NULL, nextToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_replication_runs(
+#' svc$get_replication_runs(
 #'   replicationJobId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -703,7 +703,7 @@ sms_get_replication_runs <- function(replicationJobId, nextToken = NULL, maxResu
 #'
 #' @section Request syntax:
 #' ```
-#' sms$get_servers(
+#' svc$get_servers(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   vmServerAddressList = list(
@@ -747,7 +747,7 @@ sms_get_servers <- function(nextToken = NULL, maxResults = NULL, vmServerAddress
 #'
 #' @section Request syntax:
 #' ```
-#' sms$import_server_catalog()
+#' svc$import_server_catalog()
 #' ```
 #'
 #' @keywords internal
@@ -780,7 +780,7 @@ sms_import_server_catalog <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$launch_app(
+#' svc$launch_app(
 #'   appId = "string"
 #' )
 #' ```
@@ -819,7 +819,7 @@ sms_launch_app <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$list_apps(
+#' svc$list_apps(
 #'   appIds = list(
 #'     "string"
 #'   ),
@@ -862,7 +862,7 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$put_app_launch_configuration(
+#' svc$put_app_launch_configuration(
 #'   appId = "string",
 #'   roleName = "string",
 #'   serverGroupLaunchConfigurations = list(
@@ -939,7 +939,7 @@ sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, serv
 #'
 #' @section Request syntax:
 #' ```
-#' sms$put_app_replication_configuration(
+#' svc$put_app_replication_configuration(
 #'   appId = "string",
 #'   serverGroupReplicationConfigurations = list(
 #'     list(
@@ -1010,7 +1010,7 @@ sms_put_app_replication_configuration <- function(appId = NULL, serverGroupRepli
 #'
 #' @section Request syntax:
 #' ```
-#' sms$start_app_replication(
+#' svc$start_app_replication(
 #'   appId = "string"
 #' )
 #' ```
@@ -1051,7 +1051,7 @@ sms_start_app_replication <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$start_on_demand_replication_run(
+#' svc$start_on_demand_replication_run(
 #'   replicationJobId = "string",
 #'   description = "string"
 #' )
@@ -1087,7 +1087,7 @@ sms_start_on_demand_replication_run <- function(replicationJobId, description = 
 #'
 #' @section Request syntax:
 #' ```
-#' sms$stop_app_replication(
+#' svc$stop_app_replication(
 #'   appId = "string"
 #' )
 #' ```
@@ -1122,7 +1122,7 @@ sms_stop_app_replication <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$terminate_app(
+#' svc$terminate_app(
 #'   appId = "string"
 #' )
 #' ```
@@ -1162,7 +1162,7 @@ sms_terminate_app <- function(appId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sms$update_app(
+#' svc$update_app(
 #'   appId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -1255,7 +1255,7 @@ sms_update_app <- function(appId = NULL, name = NULL, description = NULL, roleNa
 #'
 #' @section Request syntax:
 #' ```
-#' sms$update_replication_job(
+#' svc$update_replication_job(
 #'   replicationJobId = "string",
 #'   frequency = 123,
 #'   nextReplicationRunStartTime = as.POSIXct(

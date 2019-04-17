@@ -83,7 +83,7 @@ DescribeBuild to check the status of your build. A build must be in
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_build(
+\preformatted{svc$create_build(
   Name = "string",
   Version = "string",
   StorageLocation = list(

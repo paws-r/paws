@@ -24,7 +24,7 @@ You cannot use \code{DecreaseReplicationFactor} to remove the last node in a
 DAX cluster. If you need to do this, use \code{DeleteCluster} instead.
 }
 \section{Request syntax}{
-\preformatted{dax$decrease_replication_factor(
+\preformatted{svc$decrease_replication_factor(
   ClusterName = "string",
   NewReplicationFactor = 123,
   AvailabilityZones = list(

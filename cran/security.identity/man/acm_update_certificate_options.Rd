@@ -24,7 +24,7 @@ whether to opt in to or out of recording your certificate in a
 certificate transparency log. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.
 }
 \section{Request syntax}{
-\preformatted{acm$update_certificate_options(
+\preformatted{svc$update_certificate_options(
   CertificateArn = "string",
   Options = list(
     CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"

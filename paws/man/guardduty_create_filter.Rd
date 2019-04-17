@@ -26,7 +26,7 @@ guardduty_create_filter(Action, ClientToken, Description, DetectorId,
 Creates a filter using the specified finding criteria.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_filter(
+\preformatted{svc$create_filter(
   Action = "NOOP"|"ARCHIVE",
   ClientToken = "string",
   Description = "string",

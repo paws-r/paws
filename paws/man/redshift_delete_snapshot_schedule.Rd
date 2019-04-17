@@ -13,7 +13,7 @@ redshift_delete_snapshot_schedule(ScheduleIdentifier)
 Deletes a snapshot schedule.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_snapshot_schedule(
+\preformatted{svc$delete_snapshot_schedule(
   ScheduleIdentifier = "string"
 )
 }

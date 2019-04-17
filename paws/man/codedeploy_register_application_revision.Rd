@@ -20,7 +20,7 @@ and location.}
 Registers with AWS CodeDeploy a revision for the specified application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$register_application_revision(
+\preformatted{svc$register_application_revision(
   applicationName = "string",
   description = "string",
   revision = list(

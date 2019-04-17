@@ -29,7 +29,7 @@ DB cluster snapshot, or to make the manual DB cluster snapshot public or
 private, use the ModifyDBClusterSnapshotAttribute API action.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_cluster_snapshot_attributes(
+\preformatted{svc$describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier = "string"
 )
 }

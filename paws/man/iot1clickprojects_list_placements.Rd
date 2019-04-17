@@ -18,7 +18,7 @@ default value of 100 is used.}
 Lists the placement(s) of a project.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$list_placements(
+\preformatted{svc$list_placements(
   projectName = "string",
   nextToken = "string",
   maxResults = 123

@@ -18,7 +18,7 @@ specify a particular job execution on a particular device.}
 Describes a job execution.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_job_execution(
+\preformatted{svc$describe_job_execution(
   jobId = "string",
   thingName = "string",
   executionNumber = 123

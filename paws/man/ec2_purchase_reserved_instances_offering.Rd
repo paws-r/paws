@@ -37,7 +37,7 @@ and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$purchase_reserved_instances_offering(
+\preformatted{svc$purchase_reserved_instances_offering(
   InstanceCount = 123,
   ReservedInstancesOfferingId = "string",
   DryRun = TRUE|FALSE,

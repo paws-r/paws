@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Get documentation versions
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_documentation_versions(
+\preformatted{svc$get_documentation_versions(
   restApiId = "string",
   position = "string",
   limit = 123

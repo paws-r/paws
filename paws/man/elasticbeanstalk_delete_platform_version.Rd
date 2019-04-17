@@ -13,7 +13,7 @@ elasticbeanstalk_delete_platform_version(PlatformArn)
 Deletes the specified version of a custom platform.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$delete_platform_version(
+\preformatted{svc$delete_platform_version(
   PlatformArn = "string"
 )
 }

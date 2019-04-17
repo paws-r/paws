@@ -13,7 +13,7 @@ glue_reset_job_bookmark(JobName)
 Resets a bookmark entry.
 }
 \section{Request syntax}{
-\preformatted{glue$reset_job_bookmark(
+\preformatted{svc$reset_job_bookmark(
   JobName = "string"
 )
 }

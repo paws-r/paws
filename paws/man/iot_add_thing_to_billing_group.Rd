@@ -20,7 +20,7 @@ iot_add_thing_to_billing_group(billingGroupName, billingGroupArn,
 Adds a thing to a billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$add_thing_to_billing_group(
+\preformatted{svc$add_thing_to_billing_group(
   billingGroupName = "string",
   billingGroupArn = "string",
   thingName = "string",

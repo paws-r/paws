@@ -15,7 +15,7 @@ Moves a phone number from the \strong{Deletion queue} back into the phone
 number \strong{Inventory}.
 }
 \section{Request syntax}{
-\preformatted{chime$restore_phone_number(
+\preformatted{svc$restore_phone_number(
   PhoneNumberId = "string"
 )
 }

@@ -21,7 +21,7 @@ Gets a list of stream processors that you have created with
 CreateStreamProcessor.
 }
 \section{Request syntax}{
-\preformatted{rekognition$list_stream_processors(
+\preformatted{svc$list_stream_processors(
   NextToken = "string",
   MaxResults = 123
 )

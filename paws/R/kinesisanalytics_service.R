@@ -6,11 +6,10 @@ NULL
 #'
 #' 
 #'
-#' @section Example:
-#' ```
-#' kinesisanalytics <- paws::kinesisanalytics()
-#' kinesisanalytics$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_application_cloud_watch_logging_option(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

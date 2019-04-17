@@ -15,7 +15,7 @@ guardduty_delete_threat_intel_set(DetectorId, ThreatIntelSetId)
 Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_threat_intel_set(
+\preformatted{svc$delete_threat_intel_set(
   DetectorId = "string",
   ThreatIntelSetId = "string"
 )

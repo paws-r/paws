@@ -18,7 +18,7 @@ ascending order, based on the creation date.}
 Lists certificates that are being transferred but not yet accepted.
 }
 \section{Request syntax}{
-\preformatted{iot$list_outgoing_certificates(
+\preformatted{svc$list_outgoing_certificates(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE

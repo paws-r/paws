@@ -13,7 +13,7 @@ pinpoint_delete_adm_channel(ApplicationId)
 Delete an ADM channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_adm_channel(
+\preformatted{svc$delete_adm_channel(
   ApplicationId = "string"
 )
 }

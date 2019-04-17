@@ -24,7 +24,7 @@ associated document, the system returns the AssociationAlreadyExists
 exception.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_association_batch(
+\preformatted{svc$create_association_batch(
   Entries = list(
     list(
       Name = "string",

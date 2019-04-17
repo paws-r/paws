@@ -26,7 +26,7 @@ tape is read-only. The virtual tape can be retrieved to only a tape
 gateway. There is no charge for retrieving recovery points.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$retrieve_tape_recovery_point(
+\preformatted{svc$retrieve_tape_recovery_point(
   TapeARN = "string",
   GatewayARN = "string"
 )
@@ -35,7 +35,7 @@ gateway. There is no charge for retrieving recovery points.
 
 \examples{
 # Retrieves the recovery point for the specified virtual tape.
-\donttest{storagegateway$retrieve_tape_recovery_point(
+\donttest{svc$retrieve_tape_recovery_point(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST0AA2AF"
 )}

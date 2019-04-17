@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Describes existing Models defined for a RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_models(
+\preformatted{svc$get_models(
   restApiId = "string",
   position = "string",
   limit = 123

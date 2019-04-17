@@ -16,7 +16,7 @@ Returns information about the configuration settings for your Amazon
 Virtual Private Cloud (VPC) endpoint.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_vpce_configuration(
+\preformatted{svc$get_vpce_configuration(
   arn = "string"
 )
 }

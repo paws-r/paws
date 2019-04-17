@@ -21,7 +21,7 @@ Used by workers to report that the task identified by the \code{taskToken}
 failed.
 }
 \section{Request syntax}{
-\preformatted{sfn$send_task_failure(
+\preformatted{svc$send_task_failure(
   taskToken = "string",
   error = "string",
   cause = "string"

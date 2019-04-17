@@ -48,7 +48,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_route(
+\preformatted{svc$replace_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DryRun = TRUE|FALSE,
@@ -68,7 +68,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example replaces the specified route in the specified table table.
 # The new route matches the specified CIDR and sends the traffic to the
 # specified virtual private gateway.
-\donttest{ec2$replace_route(
+\donttest{svc$replace_route(
   DestinationCidrBlock = "10.0.0.0/16",
   GatewayId = "vgw-9a4cacf3",
   RouteTableId = "rtb-22574640"

@@ -15,7 +15,7 @@ route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
 Updates the name of an inbound or an outbound resolver endpoint.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$update_resolver_endpoint(
+\preformatted{svc$update_resolver_endpoint(
   ResolverEndpointId = "string",
   Name = "string"
 )

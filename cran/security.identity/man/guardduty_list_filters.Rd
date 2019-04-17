@@ -17,7 +17,7 @@ guardduty_list_filters(DetectorId, MaxResults, NextToken)
 Returns a paginated list of the current filters.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_filters(
+\preformatted{svc$list_filters(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"

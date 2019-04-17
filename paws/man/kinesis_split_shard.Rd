@@ -73,7 +73,7 @@ a \code{LimitExceededException}.
 \code{SplitShard} has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$split_shard(
+\preformatted{svc$split_shard(
   StreamName = "string",
   ShardToSplit = "string",
   NewStartingHashKey = "string"

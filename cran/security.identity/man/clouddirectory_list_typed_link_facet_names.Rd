@@ -21,7 +21,7 @@ Returns a paginated list of \code{TypedLink} facet names for a particular
 schema. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_typed_link_facet_names(
+\preformatted{svc$list_typed_link_facet_names(
   SchemaArn = "string",
   NextToken = "string",
   MaxResults = 123

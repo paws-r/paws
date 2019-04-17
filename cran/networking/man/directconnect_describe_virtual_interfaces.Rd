@@ -24,7 +24,7 @@ A virtual interface (VLAN) transmits the traffic between the AWS Direct
 Connect location and the customer network.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_virtual_interfaces(
+\preformatted{svc$describe_virtual_interfaces(
   connectionId = "string",
   virtualInterfaceId = "string"
 )

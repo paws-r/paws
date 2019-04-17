@@ -19,7 +19,7 @@ of searchable thing attribute names.}
 Creates a new thing type.
 }
 \section{Request syntax}{
-\preformatted{iot$create_thing_type(
+\preformatted{svc$create_thing_type(
   thingTypeName = "string",
   thingTypeProperties = list(
     thingTypeDescription = "string",

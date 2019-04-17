@@ -15,7 +15,7 @@ codedeploy_get_deployment_instance(deploymentId, instanceId)
 Gets information about an instance as part of a deployment.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_deployment_instance(
+\preformatted{svc$get_deployment_instance(
   deploymentId = "string",
   instanceId = "string"
 )

@@ -32,7 +32,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$update_organizational_unit(
+\preformatted{svc$update_organizational_unit(
   OrganizationalUnitId = "string",
   Name = "string"
 )
@@ -42,7 +42,7 @@ account.
 \examples{
 # The following example shows how to rename an OU. The output confirms the
 # new name:/n/n
-\donttest{organizations$update_organizational_unit(
+\donttest{svc$update_organizational_unit(
   Name = "AccountingOU",
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 )}

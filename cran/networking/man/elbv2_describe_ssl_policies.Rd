@@ -24,7 +24,7 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Application Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_ssl_policies(
+\preformatted{svc$describe_ssl_policies(
   Names = list(
     "string"
   ),
@@ -36,7 +36,7 @@ in the \emph{Application Load Balancers Guide}.
 
 \examples{
 # This example describes the specified policy used for SSL negotiation.
-\donttest{elbv2$describe_ssl_policies(
+\donttest{svc$describe_ssl_policies(
   Names = list(
     "ELBSecurityPolicy-2015-05"
   )

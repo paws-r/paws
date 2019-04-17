@@ -28,7 +28,7 @@ example, you can change a team member's role in the project, or change
 whether they have remote access to project resources.
 }
 \section{Request syntax}{
-\preformatted{codestar$update_team_member(
+\preformatted{svc$update_team_member(
   projectId = "string",
   userArn = "string",
   projectRole = "string",

@@ -35,7 +35,7 @@ and a toolchain template file can be included with the project request.
 If these are not provided, an empty project is created.
 }
 \section{Request syntax}{
-\preformatted{codestar$create_project(
+\preformatted{svc$create_project(
   name = "string",
   id = "string",
   description = "string",

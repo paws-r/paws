@@ -23,7 +23,7 @@ Disassociates the specified principals or resources from the specified
 resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$disassociate_resource_share(
+\preformatted{svc$disassociate_resource_share(
   resourceShareArn = "string",
   resourceArns = list(
     "string"

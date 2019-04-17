@@ -17,7 +17,7 @@ projects, so they can only be shared successfully within the same AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{mobile$export_project(
+\preformatted{svc$export_project(
   projectId = "string"
 )
 }

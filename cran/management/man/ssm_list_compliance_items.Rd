@@ -32,7 +32,7 @@ only specify one resource ID per call. List results depend on the
 criteria specified in the filter.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_compliance_items(
+\preformatted{svc$list_compliance_items(
   Filters = list(
     list(
       Key = "string",

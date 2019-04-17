@@ -41,7 +41,7 @@ Enables the automatic copy of snapshots from one region to another
 region for a specified cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$enable_snapshot_copy(
+\preformatted{svc$enable_snapshot_copy(
   ClusterIdentifier = "string",
   DestinationRegion = "string",
   RetentionPeriod = 123,

@@ -38,7 +38,7 @@ Returns a list of simulation jobs. You can optionally provide filters to
 retrieve specific simulation jobs.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_simulation_jobs(
+\preformatted{svc$list_simulation_jobs(
   nextToken = "string",
   maxResults = 123,
   filters = list(

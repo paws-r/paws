@@ -42,7 +42,7 @@ base64-encoded string. A grant ID is a 64 character unique identifier of
 a grant. The CreateGrant operation returns both.
 }
 \section{Request syntax}{
-\preformatted{kms$retire_grant(
+\preformatted{svc$retire_grant(
   GrantToken = "string",
   KeyId = "string",
   GrantId = "string"
@@ -52,7 +52,7 @@ a grant. The CreateGrant operation returns both.
 
 \examples{
 # The following example retires a grant.
-\donttest{kms$retire_grant(
+\donttest{svc$retire_grant(
   GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
   KeyId = "arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 )}

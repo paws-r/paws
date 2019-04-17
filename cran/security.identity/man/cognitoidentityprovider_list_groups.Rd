@@ -22,7 +22,7 @@ Lists the groups associated with a user pool.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_groups(
+\preformatted{svc$list_groups(
   UserPoolId = "string",
   Limit = 123,
   NextToken = "string"

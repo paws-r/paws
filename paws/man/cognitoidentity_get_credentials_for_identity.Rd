@@ -37,7 +37,7 @@ Security Token Service with the appropriate role for the token.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$get_credentials_for_identity(
+\preformatted{svc$get_credentials_for_identity(
   IdentityId = "string",
   Logins = list(
     "string"

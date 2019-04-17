@@ -28,7 +28,7 @@ terminal state before the time expires, it will be automatically set to
 Updates supported fields of the specified job.
 }
 \section{Request syntax}{
-\preformatted{iot$update_job(
+\preformatted{svc$update_job(
   jobId = "string",
   description = "string",
   presignedUrlConfig = list(

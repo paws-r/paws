@@ -30,7 +30,7 @@ restrictions.j}
 Places an Object Retention configuration on an object.
 }
 \section{Request syntax}{
-\preformatted{s3$put_object_retention(
+\preformatted{svc$put_object_retention(
   Bucket = "string",
   Key = "string",
   Retention = list(

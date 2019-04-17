@@ -51,7 +51,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 }
 \section{Request syntax}{
-\preformatted{ecs$register_container_instance(
+\preformatted{svc$register_container_instance(
   cluster = "string",
   instanceIdentityDocument = "string",
   instanceIdentityDocumentSignature = "string",

@@ -41,7 +41,7 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment.
 }
 \section{Request syntax}{
-\preformatted{cloud9$create_environment_ec2(
+\preformatted{svc$create_environment_ec2(
   name = "string",
   description = "string",
   clientRequestToken = "string",
@@ -55,7 +55,7 @@ instance to the environment.
 
 \examples{
 # 
-\donttest{cloud9$create_environment_ec2(
+\donttest{svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",

@@ -25,7 +25,7 @@ value.}
 Describes one or more of your egress-only internet gateways.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_egress_only_internet_gateways(
+\preformatted{svc$describe_egress_only_internet_gateways(
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayIds = list(
     "string"

@@ -31,7 +31,7 @@ Returns the task assessment results from Amazon S3. This action always
 returns the latest results.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_replication_task_assessment_results(
+\preformatted{svc$describe_replication_task_assessment_results(
   ReplicationTaskArn = "string",
   MaxRecords = 123,
   Marker = "string"

@@ -20,7 +20,7 @@ unique across all versions of a document, and cannot be changed.}
 Describes the specified Systems Manager document.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_document(
+\preformatted{svc$describe_document(
   Name = "string",
   DocumentVersion = "string",
   VersionName = "string"

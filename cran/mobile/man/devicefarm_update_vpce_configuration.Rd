@@ -29,7 +29,7 @@ Updates information about an existing Amazon Virtual Private Cloud (VPC)
 endpoint configuration.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_vpce_configuration(
+\preformatted{svc$update_vpce_configuration(
   arn = "string",
   vpceConfigurationName = "string",
   vpceServiceName = "string",

@@ -20,7 +20,7 @@ configuration and writes it to an Amazon S3 object in the customer's
 Amazon S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{sms$generate_template(
+\preformatted{svc$generate_template(
   appId = "string",
   templateFormat = "JSON"|"YAML"
 )

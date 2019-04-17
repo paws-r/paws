@@ -35,7 +35,7 @@ failover when you want to simulate a failure of a primary instance for
 testing.
 }
 \section{Request syntax}{
-\preformatted{docdb$failover_db_cluster(
+\preformatted{svc$failover_db_cluster(
   DBClusterIdentifier = "string",
   TargetDBInstanceIdentifier = "string"
 )

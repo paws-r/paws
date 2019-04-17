@@ -46,7 +46,7 @@ Updates a crawler. If a crawler is running, you must stop it using
 \code{StopCrawler} before updating it.
 }
 \section{Request syntax}{
-\preformatted{glue$update_crawler(
+\preformatted{svc$update_crawler(
   Name = "string",
   Role = "string",
   DatabaseName = "string",

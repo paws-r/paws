@@ -25,7 +25,7 @@ cluster in a different region.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$remove_from_global_cluster(
+\preformatted{svc$remove_from_global_cluster(
   GlobalClusterIdentifier = "string",
   DbClusterIdentifier = "string"
 )

@@ -38,7 +38,7 @@ For information about subnet groups, go to \href{http://docs.aws.amazon.com/reds
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_cluster_subnet_group(
+\preformatted{svc$create_cluster_subnet_group(
   ClusterSubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(

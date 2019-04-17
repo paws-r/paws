@@ -33,7 +33,7 @@ You must configure ingress authorization rules to enable clients to
 access resources in AWS or on-premises networks.
 }
 \section{Request syntax}{
-\preformatted{ec2$authorize_client_vpn_ingress(
+\preformatted{svc$authorize_client_vpn_ingress(
   ClientVpnEndpointId = "string",
   TargetNetworkCidr = "string",
   AccessGroupId = "string",

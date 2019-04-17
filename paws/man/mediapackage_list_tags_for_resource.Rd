@@ -13,7 +13,7 @@ mediapackage_list_tags_for_resource(ResourceArn)
 List tags for resource
 }
 \section{Request syntax}{
-\preformatted{mediapackage$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

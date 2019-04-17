@@ -33,7 +33,7 @@ use.
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$start_query(
+\preformatted{svc$start_query(
   logGroupName = "string",
   startTime = 123,
   endTime = 123,

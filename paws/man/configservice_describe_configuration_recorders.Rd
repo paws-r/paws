@@ -20,7 +20,7 @@ Currently, you can specify only one configuration recorder per region in
 your account.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_configuration_recorders(
+\preformatted{svc$describe_configuration_recorders(
   ConfigurationRecorderNames = list(
     "string"
   )

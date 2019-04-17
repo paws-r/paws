@@ -22,7 +22,7 @@ Retrieve inbox placement and engagement rates for the domains that you
 use to send email.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_domain_statistics_report(
+\preformatted{svc$get_domain_statistics_report(
   Domain = "string",
   StartDate = as.POSIXct(
     "2015-01-01"

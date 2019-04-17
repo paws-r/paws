@@ -20,7 +20,7 @@ greengrass_start_bulk_deployment(AmznClientToken, ExecutionRoleArn,
 Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
 }
 \section{Request syntax}{
-\preformatted{greengrass$start_bulk_deployment(
+\preformatted{svc$start_bulk_deployment(
   AmznClientToken = "string",
   ExecutionRoleArn = "string",
   InputFileUri = "string",

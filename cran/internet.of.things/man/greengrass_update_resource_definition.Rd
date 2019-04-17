@@ -15,7 +15,7 @@ greengrass_update_resource_definition(Name, ResourceDefinitionId)
 Updates a resource definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_resource_definition(
+\preformatted{svc$update_resource_definition(
   Name = "string",
   ResourceDefinitionId = "string"
 )

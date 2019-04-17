@@ -32,7 +32,7 @@ you.}
 Creates a pull request in the specified repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$create_pull_request(
+\preformatted{svc$create_pull_request(
   title = "string",
   description = "string",
   targets = list(

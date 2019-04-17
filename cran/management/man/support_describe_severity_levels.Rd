@@ -19,7 +19,7 @@ Support case. The severity level for a case is also a field in the
 CaseDetails data type included in any CreateCase request.
 }
 \section{Request syntax}{
-\preformatted{support$describe_severity_levels(
+\preformatted{svc$describe_severity_levels(
   language = "string"
 )
 }

@@ -50,7 +50,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$associate_node(
+#' svc$associate_node(
 #'   ServerName = "string",
 #'   NodeName = "string",
 #'   EngineAttributes = list(
@@ -108,7 +108,7 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$create_backup(
+#' svc$create_backup(
 #'   ServerName = "string",
 #'   Description = "string"
 #' )
@@ -292,7 +292,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$create_server(
+#' svc$create_server(
 #'   AssociatePublicIpAddress = TRUE|FALSE,
 #'   DisableAutomatedBackup = TRUE|FALSE,
 #'   Engine = "string",
@@ -360,7 +360,7 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, DisableAut
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$delete_backup(
+#' svc$delete_backup(
 #'   BackupId = "string"
 #' )
 #' ```
@@ -407,7 +407,7 @@ opsworkscm_delete_backup <- function(BackupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$delete_server(
+#' svc$delete_server(
 #'   ServerName = "string"
 #' )
 #' ```
@@ -444,7 +444,7 @@ opsworkscm_delete_server <- function(ServerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$describe_account_attributes()
+#' svc$describe_account_attributes()
 #' ```
 #'
 #' @keywords internal
@@ -488,7 +488,7 @@ opsworkscm_describe_account_attributes <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$describe_backups(
+#' svc$describe_backups(
 #'   BackupId = "string",
 #'   ServerName = "string",
 #'   NextToken = "string",
@@ -546,7 +546,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$describe_events(
+#' svc$describe_events(
 #'   ServerName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -593,7 +593,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$describe_node_association_status(
+#' svc$describe_node_association_status(
 #'   NodeAssociationStatusToken = "string",
 #'   ServerName = "string"
 #' )
@@ -640,7 +640,7 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$describe_servers(
+#' svc$describe_servers(
 #'   ServerName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -697,7 +697,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$disassociate_node(
+#' svc$disassociate_node(
 #'   ServerName = "string",
 #'   NodeName = "string",
 #'   EngineAttributes = list(
@@ -772,7 +772,7 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$export_server_engine_attribute(
+#' svc$export_server_engine_attribute(
 #'   ExportAttributeName = "string",
 #'   ServerName = "string",
 #'   InputAttributes = list(
@@ -835,7 +835,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$restore_server(
+#' svc$restore_server(
 #'   BackupId = "string",
 #'   ServerName = "string",
 #'   InstanceType = "string",
@@ -884,7 +884,7 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$start_maintenance(
+#' svc$start_maintenance(
 #'   ServerName = "string",
 #'   EngineAttributes = list(
 #'     list(
@@ -933,7 +933,7 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$update_server(
+#' svc$update_server(
 #'   DisableAutomatedBackup = TRUE|FALSE,
 #'   BackupRetentionCount = 123,
 #'   ServerName = "string",
@@ -987,7 +987,7 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 #'
 #' @section Request syntax:
 #' ```
-#' opsworkscm$update_server_engine_attributes(
+#' svc$update_server_engine_attributes(
 #'   ServerName = "string",
 #'   AttributeName = "string",
 #'   AttributeValue = "string"

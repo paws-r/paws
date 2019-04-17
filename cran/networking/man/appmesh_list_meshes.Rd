@@ -28,7 +28,7 @@ purposes.}
 Returns a list of existing service meshes.
 }
 \section{Request syntax}{
-\preformatted{appmesh$list_meshes(
+\preformatted{svc$list_meshes(
   limit = 123,
   nextToken = "string"
 )

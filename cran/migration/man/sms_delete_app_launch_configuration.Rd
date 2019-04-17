@@ -13,7 +13,7 @@ sms_delete_app_launch_configuration(appId)
 Deletes existing launch configuration for an application.
 }
 \section{Request syntax}{
-\preformatted{sms$delete_app_launch_configuration(
+\preformatted{svc$delete_app_launch_configuration(
   appId = "string"
 )
 }

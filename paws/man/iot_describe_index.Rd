@@ -13,7 +13,7 @@ iot_describe_index(indexName)
 Describes a search index.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_index(
+\preformatted{svc$describe_index(
   indexName = "string"
 )
 }

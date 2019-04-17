@@ -31,7 +31,7 @@ authority into the private CA before it can be activated. You cannot
 restore a CA after the restoration period has ended.
 }
 \section{Request syntax}{
-\preformatted{acmpca$restore_certificate_authority(
+\preformatted{svc$restore_certificate_authority(
   CertificateAuthorityArn = "string"
 )
 }

@@ -13,7 +13,7 @@ mobile_delete_project(projectId)
 Delets a project in AWS Mobile Hub.
 }
 \section{Request syntax}{
-\preformatted{mobile$delete_project(
+\preformatted{svc$delete_project(
   projectId = "string"
 )
 }

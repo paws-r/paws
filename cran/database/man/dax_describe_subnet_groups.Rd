@@ -25,7 +25,7 @@ Returns a list of subnet group descriptions. If a subnet group name is
 specified, the list will contain only the description of that group.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_subnet_groups(
+\preformatted{svc$describe_subnet_groups(
   SubnetGroupNames = list(
     "string"
   ),

@@ -13,7 +13,7 @@ greengrass_get_device_definition(DeviceDefinitionId)
 Retrieves information about a device definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_device_definition(
+\preformatted{svc$get_device_definition(
   DeviceDefinitionId = "string"
 )
 }

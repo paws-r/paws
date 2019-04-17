@@ -30,7 +30,7 @@ information, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working
 in the Amazon Redshift Cluster Management Guide.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_hsm_client_certificate(
+\preformatted{svc$create_hsm_client_certificate(
   HsmClientCertificateIdentifier = "string",
   Tags = list(
     list(

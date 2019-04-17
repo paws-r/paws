@@ -51,7 +51,7 @@ the \code{NextToken} in a subsequent call to get the next set of results.
 This API action doesn't support filtering by tags.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_parameters_by_path(
+\preformatted{svc$get_parameters_by_path(
   Path = "string",
   Recursive = TRUE|FALSE,
   ParameterFilters = list(

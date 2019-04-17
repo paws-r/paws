@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$accept_invitation(
+#' svc$accept_invitation(
 #'   MasterId = "string",
 #'   InvitationId = "string"
 #' )
@@ -57,7 +57,7 @@ securityhub_accept_invitation <- function(MasterId = NULL, InvitationId = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$batch_disable_standards(
+#' svc$batch_disable_standards(
 #'   StandardsSubscriptionArns = list(
 #'     "string"
 #'   )
@@ -97,7 +97,7 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$batch_enable_standards(
+#' svc$batch_enable_standards(
 #'   StandardsSubscriptionRequests = list(
 #'     list(
 #'       StandardsArn = "string",
@@ -142,7 +142,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$batch_import_findings(
+#' svc$batch_import_findings(
 #'   Findings = list(
 #'     list(
 #'       SchemaVersion = "string",
@@ -324,7 +324,7 @@ securityhub_batch_import_findings <- function(Findings) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$create_insight(
+#' svc$create_insight(
 #'   Name = "string",
 #'   Filters = list(
 #'     ProductArn = list(
@@ -912,7 +912,7 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$create_members(
+#' svc$create_members(
 #'   AccountDetails = list(
 #'     list(
 #'       AccountId = "string",
@@ -955,7 +955,7 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$decline_invitations(
+#' svc$decline_invitations(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -992,7 +992,7 @@ securityhub_decline_invitations <- function(AccountIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$delete_insight(
+#' svc$delete_insight(
 #'   InsightArn = "string"
 #' )
 #' ```
@@ -1030,7 +1030,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$delete_invitations(
+#' svc$delete_invitations(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -1070,7 +1070,7 @@ securityhub_delete_invitations <- function(AccountIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$delete_members(
+#' svc$delete_members(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -1110,7 +1110,7 @@ securityhub_delete_members <- function(AccountIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$disable_import_findings_for_product(
+#' svc$disable_import_findings_for_product(
 #'   ProductSubscriptionArn = "string"
 #' )
 #' ```
@@ -1143,7 +1143,7 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$disable_security_hub()
+#' svc$disable_security_hub()
 #' ```
 #'
 #' @keywords internal
@@ -1176,7 +1176,7 @@ securityhub_disable_security_hub <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$disassociate_from_master_account()
+#' svc$disassociate_from_master_account()
 #' ```
 #'
 #' @keywords internal
@@ -1212,7 +1212,7 @@ securityhub_disassociate_from_master_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$disassociate_members(
+#' svc$disassociate_members(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -1252,7 +1252,7 @@ securityhub_disassociate_members <- function(AccountIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$enable_import_findings_for_product(
+#' svc$enable_import_findings_for_product(
 #'   ProductArn = "string"
 #' )
 #' ```
@@ -1285,7 +1285,7 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$enable_security_hub()
+#' svc$enable_security_hub()
 #' ```
 #'
 #' @keywords internal
@@ -1325,7 +1325,7 @@ securityhub_enable_security_hub <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_enabled_standards(
+#' svc$get_enabled_standards(
 #'   StandardsSubscriptionArns = list(
 #'     "string"
 #'   ),
@@ -1372,7 +1372,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_findings(
+#' svc$get_findings(
 #'   Filters = list(
 #'     ProductArn = list(
 #'       list(
@@ -1965,7 +1965,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_insight_results(
+#' svc$get_insight_results(
 #'   InsightArn = "string"
 #' )
 #' ```
@@ -2005,7 +2005,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_insights(
+#' svc$get_insights(
 #'   InsightArns = list(
 #'     "string"
 #'   ),
@@ -2046,7 +2046,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_invitations_count()
+#' svc$get_invitations_count()
 #' ```
 #'
 #' @keywords internal
@@ -2079,7 +2079,7 @@ securityhub_get_invitations_count <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_master_account()
+#' svc$get_master_account()
 #' ```
 #'
 #' @keywords internal
@@ -2115,7 +2115,7 @@ securityhub_get_master_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$get_members(
+#' svc$get_members(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -2157,7 +2157,7 @@ securityhub_get_members <- function(AccountIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$invite_members(
+#' svc$invite_members(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -2198,7 +2198,7 @@ securityhub_invite_members <- function(AccountIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$list_enabled_products_for_import(
+#' svc$list_enabled_products_for_import(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -2240,7 +2240,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$list_invitations(
+#' svc$list_invitations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2288,7 +2288,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$list_members(
+#' svc$list_members(
 #'   OnlyAssociated = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -2330,7 +2330,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$update_findings(
+#' svc$update_findings(
 #'   Filters = list(
 #'     ProductArn = list(
 #'       list(
@@ -2921,7 +2921,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' securityhub$update_insight(
+#' svc$update_insight(
 #'   InsightArn = "string",
 #'   Name = "string",
 #'   Filters = list(

@@ -17,7 +17,7 @@ apigateway_get_integration(restApiId, resourceId, httpMethod)
 Get the integration settings.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_integration(
+\preformatted{svc$get_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"

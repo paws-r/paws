@@ -50,7 +50,7 @@ indicates the subscription is enabled}
 Modifies an existing Amazon Redshift event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

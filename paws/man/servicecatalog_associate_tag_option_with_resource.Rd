@@ -18,7 +18,7 @@ Associate the specified TagOption with the specified portfolio or
 product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$associate_tag_option_with_resource(
+\preformatted{svc$associate_tag_option_with_resource(
   ResourceId = "string",
   TagOptionId = "string"
 )

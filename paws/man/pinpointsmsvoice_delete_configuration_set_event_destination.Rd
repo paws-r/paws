@@ -16,7 +16,7 @@ pinpointsmsvoice_delete_configuration_set_event_destination(
 Deletes an event destination in a configuration set.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$delete_configuration_set_event_destination(
+\preformatted{svc$delete_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestinationName = "string"
 )

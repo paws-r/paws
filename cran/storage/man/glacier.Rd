@@ -40,12 +40,6 @@ creating a vault, uploading archives, creating jobs to download
 archives, retrieving the job output, and deleting archives.
 }
 }
-\section{Example}{
-\preformatted{glacier <- paws::glacier()
-glacier$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -85,3 +79,13 @@ glacier$operation()
 }
 }
 
+\examples{
+# The example deletes an in-progress multipart upload to a vault named
+# my-vault:
+\donttest{svc$abort_multipart_upload(
+  accountId = "-",
+  uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
+  vaultName = "my-vault"
+)}
+
+}

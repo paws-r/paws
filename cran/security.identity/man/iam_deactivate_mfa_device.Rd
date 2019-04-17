@@ -31,7 +31,7 @@ devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Virtu
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$deactivate_mfa_device(
+\preformatted{svc$deactivate_mfa_device(
   UserName = "string",
   SerialNumber = "string"
 )

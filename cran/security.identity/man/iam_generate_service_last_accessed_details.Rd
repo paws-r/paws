@@ -68,7 +68,7 @@ For more information about service last accessed data, see \href{http://docs.aws
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$generate_service_last_accessed_details(
+\preformatted{svc$generate_service_last_accessed_details(
   Arn = "string"
 )
 }
@@ -77,7 +77,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following operation generates a report for the policy:
 # ExamplePolicy1
-\donttest{iam$generate_service_last_accessed_details(
+\donttest{svc$generate_service_last_accessed_details(
   Arn = "arn:aws:iam::123456789012:policy/ExamplePolicy1"
 )}
 

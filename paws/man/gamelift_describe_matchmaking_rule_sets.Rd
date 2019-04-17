@@ -44,7 +44,7 @@ If successful, a rule set is returned for each requested name.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_matchmaking_rule_sets(
+\preformatted{svc$describe_matchmaking_rule_sets(
   Names = list(
     "string"
   ),

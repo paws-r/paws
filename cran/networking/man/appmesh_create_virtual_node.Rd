@@ -51,7 +51,7 @@ can override the \code{node.cluster} value that is set by
 environment variable.
 }
 \section{Request syntax}{
-\preformatted{appmesh$create_virtual_node(
+\preformatted{svc$create_virtual_node(
   clientToken = "string",
   meshName = "string",
   spec = list(

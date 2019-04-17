@@ -33,7 +33,7 @@ Applies a pending maintenance action to a resource (for example, to a DB
 instance).
 }
 \section{Request syntax}{
-\preformatted{docdb$apply_pending_maintenance_action(
+\preformatted{svc$apply_pending_maintenance_action(
   ResourceIdentifier = "string",
   ApplyAction = "string",
   OptInType = "string"

@@ -15,7 +15,7 @@ medialive_delete_tags(ResourceArn, TagKeys)
 Removes tags for a resource
 }
 \section{Request syntax}{
-\preformatted{medialive$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceArn = "string",
   TagKeys = list(
     "string"

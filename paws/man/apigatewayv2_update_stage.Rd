@@ -33,7 +33,7 @@ have alphanumeric and underscore characters, and the values must match
 Updates a Stage.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_stage(
+\preformatted{svc$update_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"

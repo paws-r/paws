@@ -18,7 +18,7 @@ supported for this operation, see \href{https://docs.aws.amazon.com/serverlessre
 .
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$put_application_policy(
+\preformatted{svc$put_application_policy(
   ApplicationId = "string",
   Statements = list(
     list(

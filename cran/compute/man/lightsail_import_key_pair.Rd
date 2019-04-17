@@ -15,7 +15,7 @@ lightsail_import_key_pair(keyPairName, publicKeyBase64)
 Imports a public SSH key from a specific key pair.
 }
 \section{Request syntax}{
-\preformatted{lightsail$import_key_pair(
+\preformatted{svc$import_key_pair(
   keyPairName = "string",
   publicKeyBase64 = "string"
 )

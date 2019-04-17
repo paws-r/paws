@@ -20,7 +20,7 @@ The registration token is resolved through this API to obtain a
 CustomerIdentifier and product code.
 }
 \section{Request syntax}{
-\preformatted{marketplacemetering$resolve_customer(
+\preformatted{svc$resolve_customer(
   RegistrationToken = "string"
 )
 }

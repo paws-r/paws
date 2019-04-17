@@ -51,7 +51,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$move_account(
+\preformatted{svc$move_account(
   AccountId = "string",
   SourceParentId = "string",
   DestinationParentId = "string"
@@ -62,7 +62,7 @@ account.
 \examples{
 # The following example shows how to move a member account from the root
 # to an OU:/n/n
-\donttest{organizations$move_account(
+\donttest{svc$move_account(
   AccountId = "333333333333",
   DestinationParentId = "ou-examplerootid111-exampleouid111",
   SourceParentId = "r-examplerootid111"

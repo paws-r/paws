@@ -19,7 +19,7 @@ Gets details of the Facet, such as facet name, attributes, Rules, or
 published, development, or applied.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_facet(
+\preformatted{svc$get_facet(
   SchemaArn = "string",
   Name = "string"
 )

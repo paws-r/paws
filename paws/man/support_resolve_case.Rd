@@ -17,7 +17,7 @@ Takes a \code{caseId} and returns the initial state of the case along with
 the state of the case after the call to ResolveCase completed.
 }
 \section{Request syntax}{
-\preformatted{support$resolve_case(
+\preformatted{svc$resolve_case(
   caseId = "string"
 )
 }

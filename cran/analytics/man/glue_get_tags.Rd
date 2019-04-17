@@ -13,7 +13,7 @@ glue_get_tags(ResourceArn)
 Retrieves a list of tags associated with a resource.
 }
 \section{Request syntax}{
-\preformatted{glue$get_tags(
+\preformatted{svc$get_tags(
   ResourceArn = "string"
 )
 }

@@ -29,7 +29,7 @@ Searches room profiles and lists the ones that meet a set of filter
 criteria.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$search_profiles(
+\preformatted{svc$search_profiles(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

@@ -40,7 +40,7 @@ following states: \code{RUNNING}, \code{WAITING}, \code{SHUTTING_DOWN}, \code{ST
 Amazon EMR can return a maximum of 512 job flow descriptions.
 }
 \section{Request syntax}{
-\preformatted{emr$describe_job_flows(
+\preformatted{svc$describe_job_flows(
   CreatedAfter = as.POSIXct(
     "2015-01-01"
   ),

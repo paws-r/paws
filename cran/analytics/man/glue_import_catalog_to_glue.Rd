@@ -14,7 +14,7 @@ account ID.}
 Imports an existing Athena Data Catalog to AWS Glue
 }
 \section{Request syntax}{
-\preformatted{glue$import_catalog_to_glue(
+\preformatted{svc$import_catalog_to_glue(
   CatalogId = "string"
 )
 }

@@ -25,7 +25,7 @@ deleted. You can safely call \code{DeleteApiKey} to manually delete a key
 before it's automatically deleted.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_api_keys(
+\preformatted{svc$list_api_keys(
   apiId = "string",
   nextToken = "string",
   maxResults = 123

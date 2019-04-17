@@ -23,7 +23,7 @@ the deleted tags are not removed from training jobs that the
 hyperparameter tuning job launched before you called this API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceArn = "string",
   TagKeys = list(
     "string"

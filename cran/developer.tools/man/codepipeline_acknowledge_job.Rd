@@ -20,7 +20,7 @@ Returns information about a specified job and whether that job has been
 received by the job worker. Only used for custom actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$acknowledge_job(
+\preformatted{svc$acknowledge_job(
   jobId = "string",
   nonce = "string"
 )

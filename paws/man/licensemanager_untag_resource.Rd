@@ -15,7 +15,7 @@ licensemanager_untag_resource(ResourceArn, TagKeys)
 Remove tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

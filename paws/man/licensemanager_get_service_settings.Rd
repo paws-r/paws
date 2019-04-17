@@ -11,7 +11,7 @@ Gets License Manager settings for a region. Exposes the configured S3
 bucket, SNS topic, etc., for inspection.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$get_service_settings()
+\preformatted{svc$get_service_settings()
 }
 }
 

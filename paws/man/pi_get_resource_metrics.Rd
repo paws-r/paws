@@ -64,7 +64,7 @@ time period. You can provide specific dimension groups and dimensions,
 and provide aggregation and filtering criteria for each group.
 }
 \section{Request syntax}{
-\preformatted{pi$get_resource_metrics(
+\preformatted{svc$get_resource_metrics(
   ServiceType = "RDS",
   Identifier = "string",
   MetricQueries = list(

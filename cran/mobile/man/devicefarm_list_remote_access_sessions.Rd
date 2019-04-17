@@ -18,7 +18,7 @@ list.}
 Returns a list of all currently running remote access sessions.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_remote_access_sessions(
+\preformatted{svc$list_remote_access_sessions(
   arn = "string",
   nextToken = "string"
 )
@@ -28,7 +28,7 @@ Returns a list of all currently running remote access sessions.
 \examples{
 # The following example returns information about a specific Device Farm
 # remote access session.
-\donttest{devicefarm$list_remote_access_sessions(
+\donttest{svc$list_remote_access_sessions(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 )}

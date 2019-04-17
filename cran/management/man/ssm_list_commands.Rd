@@ -25,7 +25,7 @@ list of results.}
 Lists the commands requested by users of the AWS account.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_commands(
+\preformatted{svc$list_commands(
   CommandId = "string",
   InstanceId = "string",
   MaxResults = 123,

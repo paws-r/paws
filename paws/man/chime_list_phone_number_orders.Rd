@@ -17,7 +17,7 @@ Lists the phone number orders for the administrator's Amazon Chime
 account.
 }
 \section{Request syntax}{
-\preformatted{chime$list_phone_number_orders(
+\preformatted{svc$list_phone_number_orders(
   NextToken = "string",
   MaxResults = 123
 )

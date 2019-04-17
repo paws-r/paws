@@ -21,14 +21,14 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' polly$delete_lexicon(
+#' svc$delete_lexicon(
 #'   Name = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' \donttest{polly$delete_lexicon(
+#' \donttest{svc$delete_lexicon(
 #'   Name = "example"
 #' )}
 #'
@@ -93,7 +93,7 @@ polly_delete_lexicon <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' polly$describe_voices(
+#' svc$describe_voices(
 #'   LanguageCode = "cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
 #'   IncludeAdditionalLanguageCodes = TRUE|FALSE,
 #'   NextToken = "string"
@@ -105,7 +105,7 @@ polly_delete_lexicon <- function(Name) {
 #' # speech synthesis. Displayed languages are those within the specified
 #' # language code. If no language code is specified, voices for all
 #' # available languages are displayed.
-#' \donttest{polly$describe_voices(
+#' \donttest{svc$describe_voices(
 #'   LanguageCode = "en-GB"
 #' )}
 #'
@@ -142,7 +142,7 @@ polly_describe_voices <- function(LanguageCode = NULL, IncludeAdditionalLanguage
 #'
 #' @section Request syntax:
 #' ```
-#' polly$get_lexicon(
+#' svc$get_lexicon(
 #'   Name = "string"
 #' )
 #' ```
@@ -150,7 +150,7 @@ polly_describe_voices <- function(LanguageCode = NULL, IncludeAdditionalLanguage
 #' @examples
 #' # Returns the content of the specified pronunciation lexicon stored in an
 #' # AWS Region.
-#' \donttest{polly$get_lexicon(
+#' \donttest{svc$get_lexicon(
 #'   Name = ""
 #' )}
 #'
@@ -187,7 +187,7 @@ polly_get_lexicon <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' polly$get_speech_synthesis_task(
+#' svc$get_speech_synthesis_task(
 #'   TaskId = "string"
 #' )
 #' ```
@@ -225,14 +225,14 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #'
 #' @section Request syntax:
 #' ```
-#' polly$list_lexicons(
+#' svc$list_lexicons(
 #'   NextToken = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # Returns a list of pronunciation lexicons stored in an AWS Region.
-#' \donttest{polly$list_lexicons()}
+#' \donttest{svc$list_lexicons()}
 #'
 #' @keywords internal
 #'
@@ -270,7 +270,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' polly$list_speech_synthesis_tasks(
+#' svc$list_speech_synthesis_tasks(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Status = "scheduled"|"inProgress"|"completed"|"failed"
@@ -317,7 +317,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' polly$put_lexicon(
+#' svc$put_lexicon(
 #'   Name = "string",
 #'   Content = "string"
 #' )
@@ -325,7 +325,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #'
 #' @examples
 #' # Stores a pronunciation lexicon in an AWS Region.
-#' \donttest{polly$put_lexicon(
+#' \donttest{svc$put_lexicon(
 #'   Content = "file://example.pls",
 #'   Name = "W3C"
 #' )}
@@ -402,7 +402,7 @@ polly_put_lexicon <- function(Name, Content) {
 #'
 #' @section Request syntax:
 #' ```
-#' polly$start_speech_synthesis_task(
+#' svc$start_speech_synthesis_task(
 #'   LexiconNames = list(
 #'     "string"
 #'   ),
@@ -494,7 +494,7 @@ polly_start_speech_synthesis_task <- function(LexiconNames = NULL, OutputFormat,
 #'
 #' @section Request syntax:
 #' ```
-#' polly$synthesize_speech(
+#' svc$synthesize_speech(
 #'   LexiconNames = list(
 #'     "string"
 #'   ),
@@ -512,7 +512,7 @@ polly_start_speech_synthesis_task <- function(LexiconNames = NULL, OutputFormat,
 #'
 #' @examples
 #' # Synthesizes plain text or SSML into a file of human-like speech.
-#' \donttest{polly$synthesize_speech(
+#' \donttest{svc$synthesize_speech(
 #'   LexiconNames = list(
 #'     "example"
 #'   ),

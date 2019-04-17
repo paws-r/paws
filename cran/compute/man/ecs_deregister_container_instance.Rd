@@ -53,7 +53,7 @@ or instances with disconnected agents are not automatically deregistered
 when terminated).
 }
 \section{Request syntax}{
-\preformatted{ecs$deregister_container_instance(
+\preformatted{svc$deregister_container_instance(
   cluster = "string",
   containerInstance = "string",
   force = TRUE|FALSE
@@ -66,7 +66,7 @@ when terminated).
 # in your default region. If there are still tasks running on the
 # container instance, you must either stop those tasks before
 # deregistering, or use the force option.
-\donttest{ecs$deregister_container_instance(
+\donttest{svc$deregister_container_instance(
   cluster = "default",
   containerInstance = "container_instance_UUID",
   force = TRUE

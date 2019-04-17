@@ -24,7 +24,7 @@ DeleteAttributes. For more information, see
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$put_attributes(
+\preformatted{svc$put_attributes(
   cluster = "string",
   attributes = list(
     list(

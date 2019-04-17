@@ -45,7 +45,7 @@ ID. The maximum length is 512 characters.}
 Adds a new playback configuration to AWS Elemental MediaTailor.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$put_playback_configuration(
+\preformatted{svc$put_playback_configuration(
   AdDecisionServerUrl = "string",
   CdnConfiguration = list(
     AdSegmentUrlPrefix = "string",

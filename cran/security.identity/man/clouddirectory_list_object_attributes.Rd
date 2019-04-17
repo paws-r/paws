@@ -30,7 +30,7 @@ certain facet.}
 Lists all attributes that are associated with an object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_object_attributes(
+\preformatted{svc$list_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

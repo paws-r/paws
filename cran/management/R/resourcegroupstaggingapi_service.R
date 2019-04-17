@@ -54,11 +54,10 @@ NULL
 #' Tagging](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
 #' in the *AWS Resource Groups and Tag Editor User Guide*.
 #'
-#' @section Example:
-#' ```
-#' resourcegroupstaggingapi <- paws::resourcegroupstaggingapi()
-#' resourcegroupstaggingapi$operation()
-#' ```
+#' @examples
+#' \donttest{svc$get_resources(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -19,7 +19,7 @@ symbols: \code{_ . : / = + - @}.}
 Add a tag to a Step Functions resource.
 }
 \section{Request syntax}{
-\preformatted{sfn$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(

@@ -13,7 +13,7 @@ alexaforbusiness_delete_address_book(AddressBookArn)
 Deletes an address book by the address book ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_address_book(
+\preformatted{svc$delete_address_book(
   AddressBookArn = "string"
 )
 }

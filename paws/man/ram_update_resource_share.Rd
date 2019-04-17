@@ -22,7 +22,7 @@ idempotency of the request.}
 Updates the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$update_resource_share(
+\preformatted{svc$update_resource_share(
   resourceShareArn = "string",
   name = "string",
   allowExternalPrincipals = TRUE|FALSE,

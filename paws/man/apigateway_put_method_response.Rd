@@ -38,7 +38,7 @@ as the key and a Model name as the value.}
 Adds a MethodResponse to an existing Method resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$put_method_response(
+\preformatted{svc$put_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

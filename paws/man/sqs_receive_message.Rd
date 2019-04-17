@@ -171,7 +171,7 @@ calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
 }
 \section{Request syntax}{
-\preformatted{sqs$receive_message(
+\preformatted{svc$receive_message(
   QueueUrl = "string",
   AttributeNames = list(
     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"

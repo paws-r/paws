@@ -13,7 +13,7 @@ pinpoint_delete_apns_voip_channel(ApplicationId)
 Delete an APNS VoIP channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_apns_voip_channel(
+\preformatted{svc$delete_apns_voip_channel(
   ApplicationId = "string"
 )
 }

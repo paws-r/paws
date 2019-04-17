@@ -16,7 +16,7 @@ Describes the assessment targets that are specified by the ARNs of the
 assessment targets.
 }
 \section{Request syntax}{
-\preformatted{inspector$describe_assessment_targets(
+\preformatted{svc$describe_assessment_targets(
   assessmentTargetArns = list(
     "string"
   )
@@ -27,7 +27,7 @@ assessment targets.
 \examples{
 # Describes the assessment targets that are specified by the ARNs of the
 # assessment targets.
-\donttest{inspector$describe_assessment_targets(
+\donttest{svc$describe_assessment_targets(
   assessmentTargetArns = list(
     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
   )

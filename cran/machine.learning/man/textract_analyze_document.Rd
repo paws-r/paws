@@ -43,7 +43,7 @@ information, see how-it-works-analyzing.
 asynchronously, use StartDocumentAnalysis.
 }
 \section{Request syntax}{
-\preformatted{textract$analyze_document(
+\preformatted{svc$analyze_document(
   Document = list(
     Bytes = raw,
     S3Object = list(

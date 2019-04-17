@@ -14,12 +14,6 @@ provides additional information. For the service overview, see \href{https://doc
 and for information about how the service works, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html}{AWS Lambda: How it Works}
 in the \strong{AWS Lambda Developer Guide}.
 }
-\section{Example}{
-\preformatted{lambda <- paws::lambda()
-lambda$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,3 +58,16 @@ lambda$operation()
 }
 }
 
+\examples{
+# This example adds a permission for an S3 bucket to invoke a Lambda
+# function.
+\donttest{svc$add_permission(
+  Action = "lambda:InvokeFunction",
+  FunctionName = "MyFunction",
+  Principal = "s3.amazonaws.com",
+  SourceAccount = "123456789012",
+  SourceArn = "arn:aws:s3:::examplebucket/*",
+  StatementId = "ID-1"
+)}
+
+}

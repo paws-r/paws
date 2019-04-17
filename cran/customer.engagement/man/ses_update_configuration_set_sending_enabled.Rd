@@ -26,7 +26,7 @@ thresholds.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$update_configuration_set_sending_enabled(
+\preformatted{svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "string",
   Enabled = TRUE|FALSE
 )
@@ -35,7 +35,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # Set the sending enabled flag for a specific configuration set.
-\donttest{ses$update_configuration_set_sending_enabled(
+\donttest{svc$update_configuration_set_sending_enabled(
   ConfigurationSetName = "foo",
   Enabled = TRUE
 )}

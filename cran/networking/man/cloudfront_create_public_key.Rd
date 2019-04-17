@@ -16,7 +16,7 @@ encryption. You can add a maximum of 10 public keys with one AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_public_key(
+\preformatted{svc$create_public_key(
   PublicKeyConfig = list(
     CallerReference = "string",
     Name = "string",

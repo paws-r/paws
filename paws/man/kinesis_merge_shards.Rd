@@ -60,7 +60,7 @@ CreateStream, DeleteStream, \code{MergeShards}, or SplitShard, you receive a
 \code{MergeShards} has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$merge_shards(
+\preformatted{svc$merge_shards(
   StreamName = "string",
   ShardToMerge = "string",
   AdjacentShardToMerge = "string"

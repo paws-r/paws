@@ -19,7 +19,7 @@ streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 Update a streaming distribution.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$update_streaming_distribution(
+\preformatted{svc$update_streaming_distribution(
   StreamingDistributionConfig = list(
     CallerReference = "string",
     S3Origin = list(

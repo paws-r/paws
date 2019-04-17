@@ -14,12 +14,6 @@ processing stream records. To learn more about application development
 with Streams, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html}{Capturing Table Activity with DynamoDB Streams}
 in the Amazon DynamoDB Developer Guide.
 }
-\section{Example}{
-\preformatted{dynamodbstreams <- paws::dynamodbstreams()
-dynamodbstreams$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -30,3 +24,10 @@ dynamodbstreams$operation()
 }
 }
 
+\examples{
+# The following example describes a stream with a given stream ARN.
+\donttest{svc$describe_stream(
+  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+)}
+
+}

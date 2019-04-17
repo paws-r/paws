@@ -19,7 +19,7 @@ Permanently deletes an IAM policy from the specified RuleGroup.
 The user making the request must be the owner of the RuleGroup.
 }
 \section{Request syntax}{
-\preformatted{waf$delete_permission_policy(
+\preformatted{svc$delete_permission_policy(
   ResourceArn = "string"
 )
 }

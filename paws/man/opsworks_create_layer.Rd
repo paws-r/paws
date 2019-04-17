@@ -98,7 +98,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$create_layer(
+\preformatted{svc$create_layer(
   StackId = "string",
   Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
   Name = "string",

@@ -43,7 +43,7 @@ and we recommend you use this revised API for new application
 development.
 }
 \section{Request syntax}{
-\preformatted{s3$list_objects_v2(
+\preformatted{svc$list_objects_v2(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -60,7 +60,7 @@ development.
 \examples{
 # The following example retrieves object list. The request specifies max
 # keys to limit response to include only 2 object keys.
-\donttest{s3$list_objects_v2(
+\donttest{svc$list_objects_v2(
   Bucket = "examplebucket",
   MaxKeys = "2"
 )}

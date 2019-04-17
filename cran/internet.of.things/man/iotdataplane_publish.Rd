@@ -21,7 +21,7 @@ For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerg
 in the \emph{AWS IoT Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{iotdataplane$publish(
+\preformatted{svc$publish(
   topic = "string",
   qos = 123,
   payload = raw

@@ -17,7 +17,7 @@ guardduty_list_ip_sets(DetectorId, MaxResults, NextToken)
 Lists the IPSets of the GuardDuty service specified by the detector ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_ip_sets(
+\preformatted{svc$list_ip_sets(
   DetectorId = "string",
   MaxResults = 123,
   NextToken = "string"

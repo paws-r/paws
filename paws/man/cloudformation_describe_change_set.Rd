@@ -24,7 +24,7 @@ information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserG
 in the AWS CloudFormation User Guide.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_change_set(
+\preformatted{svc$describe_change_set(
   ChangeSetName = "string",
   StackName = "string",
   NextToken = "string"

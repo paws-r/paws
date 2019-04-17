@@ -21,7 +21,7 @@ list.}
 Lists the resolvers for a given API and type.
 }
 \section{Request syntax}{
-\preformatted{appsync$list_resolvers(
+\preformatted{svc$list_resolvers(
   apiId = "string",
   typeName = "string",
   nextToken = "string",

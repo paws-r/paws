@@ -26,7 +26,7 @@ Provides the response to a manual approval request to AWS CodePipeline.
 Valid responses include Approved and Rejected.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_approval_result(
+\preformatted{svc$put_approval_result(
   pipelineName = "string",
   stageName = "string",
   actionName = "string",

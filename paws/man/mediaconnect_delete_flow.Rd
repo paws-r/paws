@@ -13,7 +13,7 @@ mediaconnect_delete_flow(FlowArn)
 Deletes a flow. Before you can delete a flow, you must stop the flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$delete_flow(
+\preformatted{svc$delete_flow(
   FlowArn = "string"
 )
 }

@@ -281,7 +281,7 @@ For more information about updating health checks, see \href{http://docs.aws.ama
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$update_health_check(
+\preformatted{svc$update_health_check(
   HealthCheckId = "string",
   HealthCheckVersion = 123,
   IPAddress = "string",

@@ -28,7 +28,7 @@ tags for.}
 List the tags for an App Mesh resource.
 }
 \section{Request syntax}{
-\preformatted{appmesh$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   limit = 123,
   nextToken = "string",
   resourceArn = "string"

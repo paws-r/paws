@@ -18,7 +18,7 @@ Deletes a group. Currently only groups with no members can be deleted.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string",
   UserPoolId = "string"
 )

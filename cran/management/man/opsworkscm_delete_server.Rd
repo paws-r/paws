@@ -26,7 +26,7 @@ does not exist. A \code{ValidationException} is raised when parameters of the
 request are not valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$delete_server(
+\preformatted{svc$delete_server(
   ServerName = "string"
 )
 }

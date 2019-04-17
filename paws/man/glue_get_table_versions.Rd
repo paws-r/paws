@@ -27,7 +27,7 @@ Retrieves a list of strings that identify available versions of a
 specified table.
 }
 \section{Request syntax}{
-\preformatted{glue$get_table_versions(
+\preformatted{svc$get_table_versions(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

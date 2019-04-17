@@ -21,7 +21,7 @@ multiple AZs.}
 Adds one or more nodes to a DAX cluster.
 }
 \section{Request syntax}{
-\preformatted{dax$increase_replication_factor(
+\preformatted{svc$increase_replication_factor(
   ClusterName = "string",
   NewReplicationFactor = 123,
   AvailabilityZones = list(

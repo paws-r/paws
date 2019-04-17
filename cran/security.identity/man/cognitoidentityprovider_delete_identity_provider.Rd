@@ -16,7 +16,7 @@ cognitoidentityprovider_delete_identity_provider(UserPoolId,
 Deletes an identity provider for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_identity_provider(
+\preformatted{svc$delete_identity_provider(
   UserPoolId = "string",
   ProviderName = "string"
 )

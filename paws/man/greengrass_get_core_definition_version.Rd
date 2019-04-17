@@ -16,7 +16,7 @@ greengrass_get_core_definition_version(CoreDefinitionId,
 Retrieves information about a core definition version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_core_definition_version(
+\preformatted{svc$get_core_definition_version(
   CoreDefinitionId = "string",
   CoreDefinitionVersionId = "string"
 )

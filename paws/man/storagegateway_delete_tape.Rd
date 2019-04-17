@@ -18,7 +18,7 @@ Deletes the specified virtual tape. This operation is only supported in
 the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_tape(
+\preformatted{svc$delete_tape(
   GatewayARN = "string",
   TapeARN = "string"
 )
@@ -27,7 +27,7 @@ the tape gateway type.
 
 \examples{
 # This example deletes the specified virtual tape.
-\donttest{storagegateway$delete_tape(
+\donttest{svc$delete_tape(
   GatewayARN = "arn:aws:storagegateway:us-east-1:204469490176:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
 )}

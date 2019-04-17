@@ -61,7 +61,7 @@ log events available, and you can get additional results by specifying
 the token in a subsequent call.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$filter_log_events(
+\preformatted{svc$filter_log_events(
   logGroupName = "string",
   logStreamNames = list(
     "string"

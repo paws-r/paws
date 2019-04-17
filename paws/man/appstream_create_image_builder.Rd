@@ -50,7 +50,7 @@ The initial state of the builder is \code{PENDING}. When it is ready, the
 state is \code{RUNNING}.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_image_builder(
+\preformatted{svc$create_image_builder(
   Name = "string",
   ImageName = "string",
   ImageArn = "string",

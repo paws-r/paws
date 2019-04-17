@@ -29,11 +29,10 @@ NULL
 #' 
 #' **Amazon Neptune API Reference**
 #'
-#' @section Example:
-#' ```
-#' neptune <- paws::neptune()
-#' neptune$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_role_to_db_cluster(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

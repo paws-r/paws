@@ -33,7 +33,7 @@ Use the \code{get instance snapshots} or \code{get disk snapshots} operations to
 get a list of snapshots that you can export to Amazon EC2.
 }
 \section{Request syntax}{
-\preformatted{lightsail$export_snapshot(
+\preformatted{svc$export_snapshot(
   sourceSnapshotName = "string"
 )
 }

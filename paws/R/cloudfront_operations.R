@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_cloud_front_origin_access_identity(
+#' svc$create_cloud_front_origin_access_identity(
 #'   CloudFrontOriginAccessIdentityConfig = list(
 #'     CallerReference = "string",
 #'     Comment = "string"
@@ -77,7 +77,7 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_distribution(
+#' svc$create_distribution(
 #'   DistributionConfig = list(
 #'     CallerReference = "string",
 #'     Aliases = list(
@@ -353,7 +353,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_distribution_with_tags(
+#' svc$create_distribution_with_tags(
 #'   DistributionConfigWithTags = list(
 #'     DistributionConfig = list(
 #'       CallerReference = "string",
@@ -640,7 +640,7 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_field_level_encryption_config(
+#' svc$create_field_level_encryption_config(
 #'   FieldLevelEncryptionConfig = list(
 #'     CallerReference = "string",
 #'     Comment = "string",
@@ -704,7 +704,7 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_field_level_encryption_profile(
+#' svc$create_field_level_encryption_profile(
 #'   FieldLevelEncryptionProfileConfig = list(
 #'     Name = "string",
 #'     CallerReference = "string",
@@ -759,7 +759,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_invalidation(
+#' svc$create_invalidation(
 #'   DistributionId = "string",
 #'   InvalidationBatch = list(
 #'     Paths = list(
@@ -806,7 +806,7 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_public_key(
+#' svc$create_public_key(
 #'   PublicKeyConfig = list(
 #'     CallerReference = "string",
 #'     Name = "string",
@@ -876,7 +876,7 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_streaming_distribution(
+#' svc$create_streaming_distribution(
 #'   StreamingDistributionConfig = list(
 #'     CallerReference = "string",
 #'     S3Origin = list(
@@ -939,7 +939,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$create_streaming_distribution_with_tags(
+#' svc$create_streaming_distribution_with_tags(
 #'   StreamingDistributionConfigWithTags = list(
 #'     StreamingDistributionConfig = list(
 #'       CallerReference = "string",
@@ -1013,7 +1013,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_cloud_front_origin_access_identity(
+#' svc$delete_cloud_front_origin_access_identity(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1051,7 +1051,7 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_distribution(
+#' svc$delete_distribution(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1089,7 +1089,7 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_field_level_encryption_config(
+#' svc$delete_field_level_encryption_config(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1127,7 +1127,7 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_field_level_encryption_profile(
+#' svc$delete_field_level_encryption_profile(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1165,7 +1165,7 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_public_key(
+#' svc$delete_public_key(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1242,7 +1242,7 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$delete_streaming_distribution(
+#' svc$delete_streaming_distribution(
 #'   Id = "string",
 #'   IfMatch = "string"
 #' )
@@ -1278,7 +1278,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_cloud_front_origin_access_identity(
+#' svc$get_cloud_front_origin_access_identity(
 #'   Id = "string"
 #' )
 #' ```
@@ -1313,7 +1313,7 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_cloud_front_origin_access_identity_config(
+#' svc$get_cloud_front_origin_access_identity_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1348,7 +1348,7 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_distribution(
+#' svc$get_distribution(
 #'   Id = "string"
 #' )
 #' ```
@@ -1383,7 +1383,7 @@ cloudfront_get_distribution <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_distribution_config(
+#' svc$get_distribution_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1418,7 +1418,7 @@ cloudfront_get_distribution_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_field_level_encryption(
+#' svc$get_field_level_encryption(
 #'   Id = "string"
 #' )
 #' ```
@@ -1453,7 +1453,7 @@ cloudfront_get_field_level_encryption <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_field_level_encryption_config(
+#' svc$get_field_level_encryption_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1488,7 +1488,7 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_field_level_encryption_profile(
+#' svc$get_field_level_encryption_profile(
 #'   Id = "string"
 #' )
 #' ```
@@ -1524,7 +1524,7 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_field_level_encryption_profile_config(
+#' svc$get_field_level_encryption_profile_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1561,7 +1561,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_invalidation(
+#' svc$get_invalidation(
 #'   DistributionId = "string",
 #'   Id = "string"
 #' )
@@ -1597,7 +1597,7 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_public_key(
+#' svc$get_public_key(
 #'   Id = "string"
 #' )
 #' ```
@@ -1632,7 +1632,7 @@ cloudfront_get_public_key <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_public_key_config(
+#' svc$get_public_key_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1669,7 +1669,7 @@ cloudfront_get_public_key_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_streaming_distribution(
+#' svc$get_streaming_distribution(
 #'   Id = "string"
 #' )
 #' ```
@@ -1704,7 +1704,7 @@ cloudfront_get_streaming_distribution <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$get_streaming_distribution_config(
+#' svc$get_streaming_distribution_config(
 #'   Id = "string"
 #' )
 #' ```
@@ -1745,7 +1745,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_cloud_front_origin_access_identities(
+#' svc$list_cloud_front_origin_access_identities(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -1786,7 +1786,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_distributions(
+#' svc$list_distributions(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -1834,7 +1834,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_distributions_by_web_acl_id(
+#' svc$list_distributions_by_web_acl_id(
 #'   Marker = "string",
 #'   MaxItems = "string",
 #'   WebACLId = "string"
@@ -1879,7 +1879,7 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_field_level_encryption_configs(
+#' svc$list_field_level_encryption_configs(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -1923,7 +1923,7 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_field_level_encryption_profiles(
+#' svc$list_field_level_encryption_profiles(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -1968,7 +1968,7 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_invalidations(
+#' svc$list_invalidations(
 #'   DistributionId = "string",
 #'   Marker = "string",
 #'   MaxItems = "string"
@@ -2011,7 +2011,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_public_keys(
+#' svc$list_public_keys(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -2048,7 +2048,7 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_streaming_distributions(
+#' svc$list_streaming_distributions(
 #'   Marker = "string",
 #'   MaxItems = "string"
 #' )
@@ -2084,7 +2084,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   Resource = "string"
 #' )
 #' ```
@@ -2120,7 +2120,7 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$tag_resource(
+#' svc$tag_resource(
 #'   Resource = "string",
 #'   Tags = list(
 #'     Items = list(
@@ -2164,7 +2164,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$untag_resource(
+#' svc$untag_resource(
 #'   Resource = "string",
 #'   TagKeys = list(
 #'     Items = list(
@@ -2208,7 +2208,7 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_cloud_front_origin_access_identity(
+#' svc$update_cloud_front_origin_access_identity(
 #'   CloudFrontOriginAccessIdentityConfig = list(
 #'     CallerReference = "string",
 #'     Comment = "string"
@@ -2319,7 +2319,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_distribution(
+#' svc$update_distribution(
 #'   DistributionConfig = list(
 #'     CallerReference = "string",
 #'     Aliases = list(
@@ -2601,7 +2601,7 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_field_level_encryption_config(
+#' svc$update_field_level_encryption_config(
 #'   FieldLevelEncryptionConfig = list(
 #'     CallerReference = "string",
 #'     Comment = "string",
@@ -2670,7 +2670,7 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_field_level_encryption_profile(
+#' svc$update_field_level_encryption_profile(
 #'   FieldLevelEncryptionProfileConfig = list(
 #'     Name = "string",
 #'     CallerReference = "string",
@@ -2730,7 +2730,7 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_public_key(
+#' svc$update_public_key(
 #'   PublicKeyConfig = list(
 #'     CallerReference = "string",
 #'     Name = "string",
@@ -2776,7 +2776,7 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudfront$update_streaming_distribution(
+#' svc$update_streaming_distribution(
 #'   StreamingDistributionConfig = list(
 #'     CallerReference = "string",
 #'     S3Origin = list(

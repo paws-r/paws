@@ -66,12 +66,6 @@ You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as
 possible.
 }
-\section{Example}{
-\preformatted{opsworks <- paws::opsworks()
-opsworks$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -152,3 +146,9 @@ opsworks$operation()
 }
 }
 
+\examples{
+\donttest{svc$assign_instance(
+  Foo = 123
+)}
+
+}

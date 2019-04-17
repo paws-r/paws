@@ -22,7 +22,7 @@ Sends a signal to an Automation execution to change the current behavior
 or status of the execution.
 }
 \section{Request syntax}{
-\preformatted{ssm$send_automation_signal(
+\preformatted{svc$send_automation_signal(
   AutomationExecutionId = "string",
   SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
   Payload = list(

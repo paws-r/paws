@@ -17,7 +17,7 @@ things by calling UpdateThing to change the thing type on any associated
 thing, and finally use DeleteThingType to delete the thing type.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_thing_type(
+\preformatted{svc$delete_thing_type(
   thingTypeName = "string"
 )
 }

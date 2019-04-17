@@ -107,7 +107,7 @@ in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$create_target_group(
+\preformatted{svc$create_target_group(
   Name = "string",
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   Port = 123,
@@ -132,7 +132,7 @@ in the \emph{Network Load Balancers Guide}.
 # This example creates a target group that you can use to route traffic to
 # targets using HTTP on port 80. This target group uses the default health
 # check configuration.
-\donttest{elbv2$create_target_group(
+\donttest{svc$create_target_group(
   Name = "my-targets",
   Port = 80L,
   Protocol = "HTTP",

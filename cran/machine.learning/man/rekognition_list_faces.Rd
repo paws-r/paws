@@ -28,7 +28,7 @@ This operation requires permissions to perform the
 \code{rekognition:ListFaces} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$list_faces(
+\preformatted{svc$list_faces(
   CollectionId = "string",
   NextToken = "string",
   MaxResults = 123
@@ -38,7 +38,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation lists the faces in a Rekognition collection.
-\donttest{rekognition$list_faces(
+\donttest{svc$list_faces(
   CollectionId = "myphotos",
   MaxResults = 20L
 )}

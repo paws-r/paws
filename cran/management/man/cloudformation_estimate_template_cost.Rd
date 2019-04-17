@@ -32,7 +32,7 @@ AWS Simple Monthly Calculator URL with a query string that describes the
 resources required to run the template.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$estimate_template_cost(
+\preformatted{svc$estimate_template_cost(
   TemplateBody = "string",
   TemplateURL = "string",
   Parameters = list(

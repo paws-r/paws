@@ -61,7 +61,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 Initiates execution of an Automation document.
 }
 \section{Request syntax}{
-\preformatted{ssm$start_automation_execution(
+\preformatted{svc$start_automation_execution(
   DocumentName = "string",
   DocumentVersion = "string",
   Parameters = list(

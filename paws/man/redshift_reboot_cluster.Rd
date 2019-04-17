@@ -19,7 +19,7 @@ to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.h
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$reboot_cluster(
+\preformatted{svc$reboot_cluster(
   ClusterIdentifier = "string"
 )
 }

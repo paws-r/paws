@@ -13,7 +13,7 @@ apigatewayv2_get_domain_name(DomainName)
 Gets a domain name.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_domain_name(
+\preformatted{svc$get_domain_name(
   DomainName = "string"
 )
 }

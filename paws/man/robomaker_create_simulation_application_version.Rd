@@ -18,7 +18,7 @@ created.}
 Creates a simulation application with a specific revision id.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_simulation_application_version(
+\preformatted{svc$create_simulation_application_version(
   application = "string",
   currentRevisionId = "string"
 )

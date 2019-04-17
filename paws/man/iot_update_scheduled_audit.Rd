@@ -36,7 +36,7 @@ Updates a scheduled audit, including what checks are performed and how
 often the audit takes place.
 }
 \section{Request syntax}{
-\preformatted{iot$update_scheduled_audit(
+\preformatted{svc$update_scheduled_audit(
   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
   dayOfMonth = "string",
   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",

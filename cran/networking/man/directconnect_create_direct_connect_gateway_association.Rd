@@ -24,7 +24,7 @@ private gateway. The virtual private gateway must be attached to a VPC
 and must not be associated with another Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_direct_connect_gateway_association(
+\preformatted{svc$create_direct_connect_gateway_association(
   directConnectGatewayId = "string",
   gatewayId = "string",
   addAllowedPrefixesToDirectConnectGateway = list(

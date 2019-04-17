@@ -7,11 +7,10 @@ NULL
 #' @description
 #' API for AWS Elemental MediaConnect
 #'
-#' @section Example:
-#' ```
-#' mediaconnect <- paws::mediaconnect()
-#' mediaconnect$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_flow_outputs(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

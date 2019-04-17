@@ -13,7 +13,7 @@ greengrass_get_logger_definition(LoggerDefinitionId)
 Retrieves information about a logger definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_logger_definition(
+\preformatted{svc$get_logger_definition(
   LoggerDefinitionId = "string"
 )
 }

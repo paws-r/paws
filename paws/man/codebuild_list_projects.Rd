@@ -41,7 +41,7 @@ Gets a list of build project names, with each build project name
 representing a single build project.
 }
 \section{Request syntax}{
-\preformatted{codebuild$list_projects(
+\preformatted{svc$list_projects(
   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"

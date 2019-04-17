@@ -18,7 +18,7 @@ instance, Amazon SageMaker sets the notebook instance status to
 you can connect to your Jupyter notebook.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$start_notebook_instance(
+\preformatted{svc$start_notebook_instance(
   NotebookInstanceName = "string"
 )
 }

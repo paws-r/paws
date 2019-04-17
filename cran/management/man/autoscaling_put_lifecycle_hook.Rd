@@ -99,7 +99,7 @@ DescribeLifecycleHooks. If you are no longer using a lifecycle hook, you
 can delete it using DeleteLifecycleHook.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$put_lifecycle_hook(
+\preformatted{svc$put_lifecycle_hook(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleTransition = "string",
@@ -114,7 +114,7 @@ can delete it using DeleteLifecycleHook.
 
 \examples{
 # This example creates a lifecycle hook.
-\donttest{autoscaling$put_lifecycle_hook(
+\donttest{svc$put_lifecycle_hook(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleHookName = "my-lifecycle-hook",
   LifecycleTransition = "autoscaling:EC2_INSTANCE_LAUNCHING",

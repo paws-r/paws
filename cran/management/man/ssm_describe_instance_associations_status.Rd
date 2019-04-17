@@ -21,7 +21,7 @@ from a previous call.)}
 The status of the associations for the instance(s).
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_instance_associations_status(
+\preformatted{svc$describe_instance_associations_status(
   InstanceId = "string",
   MaxResults = 123,
   NextToken = "string"

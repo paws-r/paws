@@ -35,7 +35,7 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 Updates the source of a flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$update_flow_source(
+\preformatted{svc$update_flow_source(
   Decryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",
     KeyType = "static-key",

@@ -24,7 +24,7 @@ The response returns the \code{UserName} value, the \code{ServerId} value, and t
 name of the \code{SshPublicKeyId}.
 }
 \section{Request syntax}{
-\preformatted{transfer$import_ssh_public_key(
+\preformatted{svc$import_ssh_public_key(
   ServerId = "string",
   SshPublicKeyBody = "string",
   UserName = "string"

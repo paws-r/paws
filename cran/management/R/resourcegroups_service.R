@@ -42,11 +42,10 @@ NULL
 #' 
 #' -   Searching AWS resources based on a resource query
 #'
-#' @section Example:
-#' ```
-#' resourcegroups <- paws::resourcegroups()
-#' resourcegroups$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_group(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

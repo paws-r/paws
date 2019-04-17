@@ -83,7 +83,7 @@ parameter to \code{FAILED} and includes an error message in the \code{Message}
 attribute of the \code{GetDataSource} operation response.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_data_source_from_rds(
+\preformatted{svc$create_data_source_from_rds(
   DataSourceId = "string",
   DataSourceName = "string",
   RDSData = list(

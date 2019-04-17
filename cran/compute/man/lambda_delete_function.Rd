@@ -37,7 +37,7 @@ your function directly, delete the trigger in the service where you
 originally configured it.
 }
 \section{Request syntax}{
-\preformatted{lambda$delete_function(
+\preformatted{svc$delete_function(
   FunctionName = "string",
   Qualifier = "string"
 )
@@ -46,7 +46,7 @@ originally configured it.
 
 \examples{
 # This operation deletes a Lambda function
-\donttest{lambda$delete_function(
+\donttest{svc$delete_function(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

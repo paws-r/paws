@@ -16,7 +16,7 @@ cancels any tasks in the window that have not already starting running.
 (Tasks already in progress will continue to completion.)
 }
 \section{Request syntax}{
-\preformatted{ssm$cancel_maintenance_window_execution(
+\preformatted{svc$cancel_maintenance_window_execution(
   WindowExecutionId = "string"
 )
 }

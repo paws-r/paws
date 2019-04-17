@@ -18,7 +18,7 @@ When this call completes, the launch configuration is no longer
 available for use.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_launch_configuration(
+\preformatted{svc$delete_launch_configuration(
   LaunchConfigurationName = "string"
 )
 }
@@ -26,7 +26,7 @@ available for use.
 
 \examples{
 # This example deletes the specified launch configuration.
-\donttest{autoscaling$delete_launch_configuration(
+\donttest{svc$delete_launch_configuration(
   LaunchConfigurationName = "my-launch-config"
 )}
 

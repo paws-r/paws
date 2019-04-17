@@ -14,7 +14,7 @@ to.}
 Retrieves the object lifecycle policy that is assigned to a container.
 }
 \section{Request syntax}{
-\preformatted{mediastore$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   ContainerName = "string"
 )
 }

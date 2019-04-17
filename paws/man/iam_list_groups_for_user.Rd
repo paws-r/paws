@@ -36,7 +36,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_groups_for_user(
+\preformatted{svc$list_groups_for_user(
   UserName = "string",
   Marker = "string",
   MaxItems = 123
@@ -47,7 +47,7 @@ parameters.
 \examples{
 # The following command displays the groups that the IAM user named Bob
 # belongs to.
-\donttest{iam$list_groups_for_user(
+\donttest{svc$list_groups_for_user(
   UserName = "Bob"
 )}
 

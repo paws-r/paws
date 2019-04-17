@@ -40,7 +40,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_console_output(
+\preformatted{svc$get_console_output(
   InstanceId = "string",
   DryRun = TRUE|FALSE,
   Latest = TRUE|FALSE
@@ -50,7 +50,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example gets the console output for the specified instance.
-\donttest{ec2$get_console_output(
+\donttest{svc$get_console_output(
   InstanceId = "i-1234567890abcdef0"
 )}
 

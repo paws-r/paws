@@ -58,7 +58,7 @@ change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add
 the security policy and server certificate properties.
 }
 \section{Request syntax}{
-\preformatted{elbv2$modify_listener(
+\preformatted{svc$modify_listener(
   ListenerArn = "string",
   Port = 123,
   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
@@ -123,7 +123,7 @@ the security policy and server certificate properties.
 
 \examples{
 # This example changes the default action for the specified listener.
-\donttest{elbv2$modify_listener(
+\donttest{svc$modify_listener(
   DefaultActions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-n...",
@@ -135,7 +135,7 @@ the security policy and server certificate properties.
 
 # This example changes the server certificate for the specified HTTPS
 # listener.
-\donttest{elbv2$modify_listener(
+\donttest{svc$modify_listener(
   Certificates = list(
     list(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"

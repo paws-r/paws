@@ -15,7 +15,7 @@ mediaconnect_list_flows(MaxResults, NextToken)
 Displays a list of flows that are associated with this account. This request returns a paginated result.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$list_flows(
+\preformatted{svc$list_flows(
   MaxResults = 123,
   NextToken = "string"
 )

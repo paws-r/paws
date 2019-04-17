@@ -19,7 +19,7 @@ Permanently deletes a RegexPatternSet. You can't delete a
 \code{RegexPatternSet} is not empty.
 }
 \section{Request syntax}{
-\preformatted{wafregional$delete_regex_pattern_set(
+\preformatted{svc$delete_regex_pattern_set(
   RegexPatternSetId = "string",
   ChangeToken = "string"
 )

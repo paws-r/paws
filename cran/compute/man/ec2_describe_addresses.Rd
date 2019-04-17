@@ -53,7 +53,7 @@ in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/lat
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_addresses(
+\preformatted{svc$describe_addresses(
   Filters = list(
     list(
       Name = "string",
@@ -75,11 +75,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes your Elastic IP addresses.
-\donttest{ec2$describe_addresses()}
+\donttest{svc$describe_addresses()}
 
 # This example describes your Elastic IP addresses for use with instances
 # in a VPC.
-\donttest{ec2$describe_addresses(
+\donttest{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",
@@ -92,7 +92,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 # This example describes your Elastic IP addresses for use with instances
 # in EC2-Classic.
-\donttest{ec2$describe_addresses(
+\donttest{svc$describe_addresses(
   Filters = list(
     list(
       Name = "domain",

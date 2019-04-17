@@ -15,7 +15,7 @@ iot_delete_thing_group(thingGroupName, expectedVersion)
 Deletes a thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_thing_group(
+\preformatted{svc$delete_thing_group(
   thingGroupName = "string",
   expectedVersion = 123
 )

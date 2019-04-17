@@ -25,7 +25,7 @@ successful.
 This operation requires permissions for the \code{lex:DeleteBot} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_bot(
+\preformatted{svc$delete_bot(
   name = "string"
 )
 }

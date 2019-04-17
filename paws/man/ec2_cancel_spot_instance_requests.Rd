@@ -22,7 +22,7 @@ Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_spot_instance_requests(
+\preformatted{svc$cancel_spot_instance_requests(
   DryRun = TRUE|FALSE,
   SpotInstanceRequestIds = list(
     "string"
@@ -33,7 +33,7 @@ Instances associated with the request.
 
 \examples{
 # This example cancels a Spot Instance request.
-\donttest{ec2$cancel_spot_instance_requests(
+\donttest{svc$cancel_spot_instance_requests(
   SpotInstanceRequestIds = list(
     "sir-08b93456"
   )

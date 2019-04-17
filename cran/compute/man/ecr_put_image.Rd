@@ -27,7 +27,7 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{ecr$put_image(
+\preformatted{svc$put_image(
   registryId = "string",
   repositoryName = "string",
   imageManifest = "string",

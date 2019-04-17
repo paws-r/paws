@@ -13,7 +13,7 @@ apigateway_delete_api_key(apiKey)
 Deletes the ApiKey resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_api_key(
+\preformatted{svc$delete_api_key(
   apiKey = "string"
 )
 }

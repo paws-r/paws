@@ -23,7 +23,7 @@ directories with a limit of 50 tags per directory. All 50 tags are
 returned for a given directory with this API call.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123

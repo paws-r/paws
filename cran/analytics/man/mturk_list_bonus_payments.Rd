@@ -27,7 +27,7 @@ The \code{ListBonusPayments} operation retrieves the amounts of bonuses you
 have paid to Workers for a given HIT or assignment.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_bonus_payments(
+\preformatted{svc$list_bonus_payments(
   HITId = "string",
   AssignmentId = "string",
   NextToken = "string",

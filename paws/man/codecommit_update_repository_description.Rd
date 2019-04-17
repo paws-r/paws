@@ -26,7 +26,7 @@ description field in any application that uses this API to display the
 repository description on a web page.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_repository_description(
+\preformatted{svc$update_repository_description(
   repositoryName = "string",
   repositoryDescription = "string"
 )

@@ -13,7 +13,7 @@ iot_describe_stream(streamId)
 Gets information about a stream.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_stream(
+\preformatted{svc$describe_stream(
   streamId = "string"
 )
 }

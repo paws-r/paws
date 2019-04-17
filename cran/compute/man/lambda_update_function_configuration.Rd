@@ -80,7 +80,7 @@ To configure function concurrency, use PutFunctionConcurrency. To grant
 invoke permissions to an account or AWS service, use AddPermission.
 }
 \section{Request syntax}{
-\preformatted{lambda$update_function_configuration(
+\preformatted{svc$update_function_configuration(
   FunctionName = "string",
   Role = "string",
   Handler = "string",
@@ -118,7 +118,7 @@ invoke permissions to an account or AWS service, use AddPermission.
 
 \examples{
 # This operation updates a Lambda function's configuration
-\donttest{lambda$update_function_configuration(
+\donttest{svc$update_function_configuration(
   Description = "",
   FunctionName = "myFunction",
   Handler = "index.handler",

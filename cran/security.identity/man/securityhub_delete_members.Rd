@@ -16,7 +16,7 @@ Deletes the Security Hub member accounts that are specified by the
 account IDs.
 }
 \section{Request syntax}{
-\preformatted{securityhub$delete_members(
+\preformatted{svc$delete_members(
   AccountIds = list(
     "string"
   )

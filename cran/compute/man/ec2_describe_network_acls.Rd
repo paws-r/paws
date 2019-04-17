@@ -68,7 +68,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_network_acls(
+\preformatted{svc$describe_network_acls(
   Filters = list(
     list(
       Name = "string",
@@ -89,7 +89,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example describes the specified network ACL.
-\donttest{ec2$describe_network_acls(
+\donttest{svc$describe_network_acls(
   NetworkAclIds = list(
     "acl-5fb85d36"
   )

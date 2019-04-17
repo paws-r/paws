@@ -15,7 +15,7 @@ Requests a sampling quota for rules that the service is using to sample
 requests.
 }
 \section{Request syntax}{
-\preformatted{xray$get_sampling_targets(
+\preformatted{svc$get_sampling_targets(
   SamplingStatisticsDocuments = list(
     list(
       RuleName = "string",

@@ -74,7 +74,7 @@ This action adds a statement to a resource-based permission policy for
 the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
 }
 \section{Request syntax}{
-\preformatted{lambda$add_permission(
+\preformatted{svc$add_permission(
   FunctionName = "string",
   StatementId = "string",
   Action = "string",
@@ -91,7 +91,7 @@ the function. For more information about function policies, see \href{https://do
 \examples{
 # This example adds a permission for an S3 bucket to invoke a Lambda
 # function.
-\donttest{lambda$add_permission(
+\donttest{svc$add_permission(
   Action = "lambda:InvokeFunction",
   FunctionName = "MyFunction",
   Principal = "s3.amazonaws.com",

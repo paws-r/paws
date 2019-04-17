@@ -18,7 +18,7 @@ default value of 100 is used.}
 Lists the 1-Click compatible devices associated with your AWS account.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$list_devices(
+\preformatted{svc$list_devices(
   DeviceType = "string",
   MaxResults = 123,
   NextToken = "string"

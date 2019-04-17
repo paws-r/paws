@@ -78,7 +78,7 @@ recommend that you use budgeting, which alerts you when charges exceed
 your specified limit. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html}{Managing Your Costs with Budgets}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$put_rule(
+\preformatted{svc$put_rule(
   Name = "string",
   ScheduleExpression = "string",
   EventPattern = "string",

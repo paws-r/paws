@@ -20,7 +20,7 @@ check.}
 Gets status of a specified health check.
 }
 \section{Request syntax}{
-\preformatted{route53$get_health_check_status(
+\preformatted{svc$get_health_check_status(
   HealthCheckId = "string"
 )
 }

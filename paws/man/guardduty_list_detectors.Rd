@@ -16,7 +16,7 @@ guardduty_list_detectors(MaxResults, NextToken)
 Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_detectors(
+\preformatted{svc$list_detectors(
   MaxResults = 123,
   NextToken = "string"
 )

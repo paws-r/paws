@@ -65,7 +65,7 @@ will need to wait at least six hours before applying further
 modifications to the affected EBS volume.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_volume(
+\preformatted{svc$modify_volume(
   DryRun = TRUE|FALSE,
   VolumeId = "string",
   Size = 123,

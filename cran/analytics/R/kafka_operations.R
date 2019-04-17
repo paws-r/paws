@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$create_cluster(
+#' svc$create_cluster(
 #'   BrokerNodeGroupInfo = list(
 #'     BrokerAZDistribution = "DEFAULT",
 #'     ClientSubnets = list(
@@ -82,7 +82,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClusterName, EncryptionInf
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$delete_cluster(
+#' svc$delete_cluster(
 #'   ClusterArn = "string",
 #'   CurrentVersion = "string"
 #' )
@@ -120,7 +120,7 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$describe_cluster(
+#' svc$describe_cluster(
 #'   ClusterArn = "string"
 #' )
 #' ```
@@ -155,7 +155,7 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$get_bootstrap_brokers(
+#' svc$get_bootstrap_brokers(
 #'   ClusterArn = "string"
 #' )
 #' ```
@@ -196,7 +196,7 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$list_clusters(
+#' svc$list_clusters(
 #'   ClusterNameFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -238,7 +238,7 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' kafka$list_nodes(
+#' svc$list_nodes(
 #'   ClusterArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"

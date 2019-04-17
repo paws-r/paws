@@ -21,7 +21,7 @@ field is omitted, tags are not included in the response.}
 Describes a specified task or tasks.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_tasks(
+\preformatted{svc$describe_tasks(
   cluster = "string",
   tasks = list(
     "string"
@@ -36,7 +36,7 @@ Describes a specified task or tasks.
 \examples{
 # This example provides a description of the specified task, using the
 # task UUID as an identifier.
-\donttest{ecs$describe_tasks(
+\donttest{svc$describe_tasks(
   tasks = list(
     "c5cba4eb-5dad-405e-96db-71ef8eefe6a8"
   )

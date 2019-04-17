@@ -13,7 +13,7 @@ pinpoint_get_voice_channel(ApplicationId)
 Get a Voice Channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_voice_channel(
+\preformatted{svc$get_voice_channel(
   ApplicationId = "string"
 )
 }

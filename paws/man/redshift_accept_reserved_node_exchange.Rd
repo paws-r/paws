@@ -23,7 +23,7 @@ the configuration (term, payment type, or number of nodes) and no
 additional costs.
 }
 \section{Request syntax}{
-\preformatted{redshift$accept_reserved_node_exchange(
+\preformatted{svc$accept_reserved_node_exchange(
   ReservedNodeId = "string",
   TargetReservedNodeOfferingId = "string"
 )

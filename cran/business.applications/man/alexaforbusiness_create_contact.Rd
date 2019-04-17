@@ -25,7 +25,7 @@ idempotency.}
 Creates a contact with the specified details.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_contact(
+\preformatted{svc$create_contact(
   DisplayName = "string",
   FirstName = "string",
   LastName = "string",

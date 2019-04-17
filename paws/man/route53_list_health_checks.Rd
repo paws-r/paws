@@ -29,7 +29,7 @@ Retrieve a list of the health checks that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53$list_health_checks(
+\preformatted{svc$list_health_checks(
   Marker = "string",
   MaxItems = "string"
 )

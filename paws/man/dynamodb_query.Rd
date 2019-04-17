@@ -336,7 +336,7 @@ consistent reads only, so do not specify \code{ConsistentRead} when querying
 a global secondary index.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$query(
+\preformatted{svc$query(
   TableName = "string",
   IndexName = "string",
   Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
@@ -469,7 +469,7 @@ a global secondary index.
 # key and sort key (Artist and SongTitle), but this query only specifies
 # the partition key value. It returns song titles by the artist named "No
 # One You Know".
-\donttest{dynamodb$query(
+\donttest{svc$query(
   ExpressionAttributeValues = list(
     `:v1` = list(
       S = "No One You Know"

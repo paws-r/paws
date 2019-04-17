@@ -23,7 +23,7 @@ recognizer disappears from your account and is no longer available for
 use.
 }
 \section{Request syntax}{
-\preformatted{comprehend$delete_entity_recognizer(
+\preformatted{svc$delete_entity_recognizer(
   EntityRecognizerArn = "string"
 )
 }

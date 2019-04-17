@@ -67,7 +67,7 @@ The permission policy on the default event bus cannot exceed 10 KB in
 size.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$put_permission(
+\preformatted{svc$put_permission(
   Action = "string",
   Principal = "string",
   StatementId = "string",

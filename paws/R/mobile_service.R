@@ -10,11 +10,10 @@ NULL
 #' developer desktop projects with the necessary SDKs, constants, tools and
 #' samples to make use of those resources.
 #'
-#' @section Example:
-#' ```
-#' mobile <- paws::mobile()
-#' mobile$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_project(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

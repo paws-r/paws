@@ -13,7 +13,7 @@ mediaconvert_cancel_job(Id)
 Permanently cancel a job. Once you have canceled a job, you can't start it again.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$cancel_job(
+\preformatted{svc$cancel_job(
   Id = "string"
 )
 }

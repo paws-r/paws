@@ -51,7 +51,7 @@ Replaces an entry (rule) in a network ACL. For more information, see
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_network_acl_entry(
+\preformatted{svc$replace_network_acl_entry(
   CidrBlock = "string",
   DryRun = TRUE|FALSE,
   Egress = TRUE|FALSE,
@@ -76,7 +76,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example replaces an entry for the specified network ACL. The new
 # rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
 # (DNS) into any associated subnet.
-\donttest{ec2$replace_network_acl_entry(
+\donttest{svc$replace_network_acl_entry(
   CidrBlock = "203.0.113.12/24",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",

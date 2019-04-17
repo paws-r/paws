@@ -24,7 +24,7 @@ objects than the number you specify for \code{Limit}, the response includes a
 Returns an array of SqlInjectionMatchSet objects.
 }
 \section{Request syntax}{
-\preformatted{waf$list_sql_injection_match_sets(
+\preformatted{svc$list_sql_injection_match_sets(
   NextMarker = "string",
   Limit = 123
 )
@@ -34,7 +34,7 @@ Returns an array of SqlInjectionMatchSet objects.
 \examples{
 # The following example returns an array of up to 100 SQL injection match
 # sets.
-\donttest{waf$list_sql_injection_match_sets(
+\donttest{svc$list_sql_injection_match_sets(
   Limit = 100L
 )}
 

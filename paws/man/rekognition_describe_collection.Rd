@@ -19,7 +19,7 @@ For more information, see Describing a Collection in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$describe_collection(
+\preformatted{svc$describe_collection(
   CollectionId = "string"
 )
 }

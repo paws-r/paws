@@ -42,7 +42,7 @@ more information about modifying passwords, see \href{http://docs.aws.amazon.com
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_login_profile(
+\preformatted{svc$update_login_profile(
   UserName = "string",
   Password = "string",
   PasswordResetRequired = TRUE|FALSE
@@ -53,7 +53,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command creates or changes the password for the IAM user
 # named Bob.
-\donttest{iam$update_login_profile(
+\donttest{svc$update_login_profile(
   Password = "SomeKindOfPassword123!@#",
   UserName = "Bob"
 )}

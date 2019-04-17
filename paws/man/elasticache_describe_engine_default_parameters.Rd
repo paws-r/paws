@@ -32,7 +32,7 @@ Returns the default engine and system parameter information for the
 specified cache engine.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_engine_default_parameters(
+\preformatted{svc$describe_engine_default_parameters(
   CacheParameterGroupFamily = "string",
   MaxRecords = 123,
   Marker = "string"

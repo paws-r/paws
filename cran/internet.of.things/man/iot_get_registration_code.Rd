@@ -10,7 +10,7 @@ iot_get_registration_code()
 Gets a registration code used to register a CA certificate with AWS IoT.
 }
 \section{Request syntax}{
-\preformatted{iot$get_registration_code()
+\preformatted{svc$get_registration_code()
 }
 }
 

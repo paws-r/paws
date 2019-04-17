@@ -14,7 +14,7 @@ Deletes a namespace from the current account. If the namespace still
 contains one or more services, the request fails.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$delete_namespace(
+\preformatted{svc$delete_namespace(
   Id = "string"
 )
 }

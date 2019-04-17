@@ -38,7 +38,7 @@ InstanceAccess object is returned containing the instance's IP address
 and a set of credentials.
 }
 \section{Request syntax}{
-\preformatted{gamelift$get_instance_access(
+\preformatted{svc$get_instance_access(
   FleetId = "string",
   InstanceId = "string"
 )

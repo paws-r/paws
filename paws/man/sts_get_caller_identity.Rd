@@ -12,24 +12,24 @@ Returns details about the IAM identity whose credentials are used to
 call the API.
 }
 \section{Request syntax}{
-\preformatted{sts$get_caller_identity()
+\preformatted{svc$get_caller_identity()
 }
 }
 
 \examples{
 # This example shows a request and response made with the credentials for
 # a user named Alice in the AWS account 123456789012.
-\donttest{sts$get_caller_identity()}
+\donttest{svc$get_caller_identity()}
 
 # This example shows a request and response made with temporary
 # credentials created by AssumeRole. The name of the assumed role is
 # my-role-name, and the RoleSessionName is set to my-role-session-name.
-\donttest{sts$get_caller_identity()}
+\donttest{svc$get_caller_identity()}
 
 # This example shows a request and response made with temporary
 # credentials created by using GetFederationToken. The Name parameter is
 # set to my-federated-user-name.
-\donttest{sts$get_caller_identity()}
+\donttest{svc$get_caller_identity()}
 
 }
 \keyword{internal}

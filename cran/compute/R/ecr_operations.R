@@ -26,7 +26,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$batch_check_layer_availability(
+#' svc$batch_check_layer_availability(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   layerDigests = list(
@@ -79,7 +79,7 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$batch_delete_image(
+#' svc$batch_delete_image(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageIds = list(
@@ -94,7 +94,7 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' @examples
 #' # This example deletes images with the tags precise and trusty in a
 #' # repository called ubuntu in the default registry for an account.
-#' \donttest{ecr$batch_delete_image(
+#' \donttest{svc$batch_delete_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
@@ -148,7 +148,7 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$batch_get_image(
+#' svc$batch_get_image(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageIds = list(
@@ -166,7 +166,7 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' @examples
 #' # This example obtains information for an image with a specified image
 #' # digest ID from the repository named ubuntu in the current account.
-#' \donttest{ecr$batch_get_image(
+#' \donttest{svc$batch_get_image(
 #'   imageIds = list(
 #'     list(
 #'       imageTag = "precise"
@@ -220,7 +220,7 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$complete_layer_upload(
+#' svc$complete_layer_upload(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   uploadId = "string",
@@ -264,7 +264,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$create_repository(
+#' svc$create_repository(
 #'   repositoryName = "string",
 #'   tags = list(
 #'     list(
@@ -278,7 +278,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @examples
 #' # This example creates a repository called nginx-web-app inside the
 #' # project-a namespace in the default registry for an account.
-#' \donttest{ecr$create_repository(
+#' \donttest{svc$create_repository(
 #'   repositoryName = "project-a/nginx-web-app"
 #' )}
 #'
@@ -315,7 +315,7 @@ ecr_create_repository <- function(repositoryName, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$delete_lifecycle_policy(
+#' svc$delete_lifecycle_policy(
 #'   registryId = "string",
 #'   repositoryName = "string"
 #' )
@@ -356,7 +356,7 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$delete_repository(
+#' svc$delete_repository(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   force = TRUE|FALSE
@@ -367,7 +367,7 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' # This example force deletes a repository named ubuntu in the default
 #' # registry for an account. The force parameter is required if the
 #' # repository contains images.
-#' \donttest{ecr$delete_repository(
+#' \donttest{svc$delete_repository(
 #'   force = TRUE,
 #'   repositoryName = "ubuntu"
 #' )}
@@ -406,7 +406,7 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$delete_repository_policy(
+#' svc$delete_repository_policy(
 #'   registryId = "string",
 #'   repositoryName = "string"
 #' )
@@ -415,7 +415,7 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' @examples
 #' # This example deletes the policy associated with the repository named
 #' # ubuntu in the current account.
-#' \donttest{ecr$delete_repository_policy(
+#' \donttest{svc$delete_repository_policy(
 #'   repositoryName = "ubuntu"
 #' )}
 #'
@@ -479,7 +479,7 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$describe_images(
+#' svc$describe_images(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageIds = list(
@@ -552,7 +552,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$describe_repositories(
+#' svc$describe_repositories(
 #'   registryId = "string",
 #'   repositoryNames = list(
 #'     "string"
@@ -565,7 +565,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' @examples
 #' # The following example obtains a list and description of all repositories
 #' # in the default registry to which the current user has access.
-#' \donttest{ecr$describe_repositories()}
+#' \donttest{svc$describe_repositories()}
 #'
 #' @keywords internal
 #'
@@ -607,7 +607,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$get_authorization_token(
+#' svc$get_authorization_token(
 #'   registryIds = list(
 #'     "string"
 #'   )
@@ -616,7 +616,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'
 #' @examples
 #' # This example gets an authorization token for your default registry.
-#' \donttest{ecr$get_authorization_token()}
+#' \donttest{svc$get_authorization_token()}
 #'
 #' @keywords internal
 #'
@@ -660,7 +660,7 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$get_download_url_for_layer(
+#' svc$get_download_url_for_layer(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   layerDigest = "string"
@@ -700,7 +700,7 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$get_lifecycle_policy(
+#' svc$get_lifecycle_policy(
 #'   registryId = "string",
 #'   repositoryName = "string"
 #' )
@@ -760,7 +760,7 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$get_lifecycle_policy_preview(
+#' svc$get_lifecycle_policy_preview(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageIds = list(
@@ -810,7 +810,7 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$get_repository_policy(
+#' svc$get_repository_policy(
 #'   registryId = "string",
 #'   repositoryName = "string"
 #' )
@@ -819,7 +819,7 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' @examples
 #' # This example obtains the repository policy for the repository named
 #' # ubuntu.
-#' \donttest{ecr$get_repository_policy(
+#' \donttest{svc$get_repository_policy(
 #'   repositoryName = "ubuntu"
 #' )}
 #'
@@ -860,7 +860,7 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$initiate_layer_upload(
+#' svc$initiate_layer_upload(
 #'   registryId = "string",
 #'   repositoryName = "string"
 #' )
@@ -925,7 +925,7 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$list_images(
+#' svc$list_images(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   nextToken = "string",
@@ -939,7 +939,7 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @examples
 #' # This example lists all of the images in the repository named ubuntu in
 #' # the default registry in the current account.
-#' \donttest{ecr$list_images(
+#' \donttest{svc$list_images(
 #'   repositoryName = "ubuntu"
 #' )}
 #'
@@ -975,7 +975,7 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
@@ -1020,7 +1020,7 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$put_image(
+#' svc$put_image(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageManifest = "string",
@@ -1065,7 +1065,7 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$put_lifecycle_policy(
+#' svc$put_lifecycle_policy(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   lifecyclePolicyText = "string"
@@ -1112,7 +1112,7 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$set_repository_policy(
+#' svc$set_repository_policy(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   policyText = "string",
@@ -1157,7 +1157,7 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$start_lifecycle_policy_preview(
+#' svc$start_lifecycle_policy_preview(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   lifecyclePolicyText = "string"
@@ -1200,7 +1200,7 @@ ecr_start_lifecycle_policy_preview <- function(registryId = NULL, repositoryName
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -1244,7 +1244,7 @@ ecr_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -1295,7 +1295,7 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' ecr$upload_layer_part(
+#' svc$upload_layer_part(
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   uploadId = "string",

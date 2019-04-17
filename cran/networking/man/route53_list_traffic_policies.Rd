@@ -31,7 +31,7 @@ is associated with the current AWS account. Policies are listed in the
 order that they were created in.
 }
 \section{Request syntax}{
-\preformatted{route53$list_traffic_policies(
+\preformatted{svc$list_traffic_policies(
   TrafficPolicyIdMarker = "string",
   MaxItems = "string"
 )

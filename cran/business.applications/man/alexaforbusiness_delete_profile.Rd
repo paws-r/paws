@@ -13,7 +13,7 @@ alexaforbusiness_delete_profile(ProfileArn)
 Deletes a room profile by the profile ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_profile(
+\preformatted{svc$delete_profile(
   ProfileArn = "string"
 )
 }

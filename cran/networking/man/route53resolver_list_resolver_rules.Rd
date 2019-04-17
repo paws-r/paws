@@ -30,7 +30,7 @@ Lists the resolver rules that were created using the current AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$list_resolver_rules(
+\preformatted{svc$list_resolver_rules(
   MaxResults = 123,
   NextToken = "string",
   Filters = list(

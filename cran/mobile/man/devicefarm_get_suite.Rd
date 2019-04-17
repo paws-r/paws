@@ -13,7 +13,7 @@ devicefarm_get_suite(arn)
 Gets information about a suite.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_suite(
+\preformatted{svc$get_suite(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a suite.
 
 \examples{
 # The following example gets information about a specific test suite.
-\donttest{devicefarm$get_suite(
+\donttest{svc$get_suite(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
 )}
 

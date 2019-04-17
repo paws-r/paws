@@ -19,7 +19,7 @@ Removes the specified tag or tags from the specified AWS CloudHSM
 cluster.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceId = "string",
   TagKeyList = list(
     "string"

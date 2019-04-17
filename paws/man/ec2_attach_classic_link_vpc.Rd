@@ -38,7 +38,7 @@ Linking your instance to a VPC is sometimes referred to as \emph{attaching}
 your instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$attach_classic_link_vpc(
+\preformatted{svc$attach_classic_link_vpc(
   DryRun = TRUE|FALSE,
   Groups = list(
     "string"

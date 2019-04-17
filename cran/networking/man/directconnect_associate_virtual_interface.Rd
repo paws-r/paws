@@ -31,7 +31,7 @@ to which the virtual interface is currently associated. Additionally,
 the requester must own the connection or LAG for the association.
 }
 \section{Request syntax}{
-\preformatted{directconnect$associate_virtual_interface(
+\preformatted{svc$associate_virtual_interface(
   virtualInterfaceId = "string",
   connectionId = "string"
 )

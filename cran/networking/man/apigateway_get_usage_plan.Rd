@@ -13,7 +13,7 @@ apigateway_get_usage_plan(usagePlanId)
 Gets a usage plan of a given plan identifier.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_usage_plan(
+\preformatted{svc$get_usage_plan(
   usagePlanId = "string"
 )
 }

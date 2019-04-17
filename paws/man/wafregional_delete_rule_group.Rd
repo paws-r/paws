@@ -32,7 +32,7 @@ information, see UpdateRuleGroup.
 }
 }
 \section{Request syntax}{
-\preformatted{wafregional$delete_rule_group(
+\preformatted{svc$delete_rule_group(
   RuleGroupId = "string",
   ChangeToken = "string"
 )

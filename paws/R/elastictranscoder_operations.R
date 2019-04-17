@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$cancel_job(
+#' svc$cancel_job(
 #'   Id = "string"
 #' )
 #' ```
@@ -93,7 +93,7 @@ elastictranscoder_cancel_job <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$create_job(
+#' svc$create_job(
 #'   PipelineId = "string",
 #'   Input = list(
 #'     Key = "string",
@@ -626,7 +626,7 @@ elastictranscoder_create_job <- function(PipelineId, Input = NULL, Inputs = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$create_pipeline(
+#' svc$create_pipeline(
 #'   Name = "string",
 #'   InputBucket = "string",
 #'   OutputBucket = "string",
@@ -725,7 +725,7 @@ elastictranscoder_create_pipeline <- function(Name, InputBucket, OutputBucket = 
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$create_preset(
+#' svc$create_preset(
 #'   Name = "string",
 #'   Description = "string",
 #'   Container = "string",
@@ -821,7 +821,7 @@ elastictranscoder_create_preset <- function(Name, Description = NULL, Container,
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$delete_pipeline(
+#' svc$delete_pipeline(
 #'   Id = "string"
 #' )
 #' ```
@@ -862,7 +862,7 @@ elastictranscoder_delete_pipeline <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$delete_preset(
+#' svc$delete_preset(
 #'   Id = "string"
 #' )
 #' ```
@@ -910,7 +910,7 @@ elastictranscoder_delete_preset <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$list_jobs_by_pipeline(
+#' svc$list_jobs_by_pipeline(
 #'   PipelineId = "string",
 #'   Ascending = "string",
 #'   PageToken = "string"
@@ -958,7 +958,7 @@ elastictranscoder_list_jobs_by_pipeline <- function(PipelineId, Ascending = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$list_jobs_by_status(
+#' svc$list_jobs_by_status(
 #'   Status = "string",
 #'   Ascending = "string",
 #'   PageToken = "string"
@@ -1002,7 +1002,7 @@ elastictranscoder_list_jobs_by_status <- function(Status, Ascending = NULL, Page
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$list_pipelines(
+#' svc$list_pipelines(
 #'   Ascending = "string",
 #'   PageToken = "string"
 #' )
@@ -1047,7 +1047,7 @@ elastictranscoder_list_pipelines <- function(Ascending = NULL, PageToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$list_presets(
+#' svc$list_presets(
 #'   Ascending = "string",
 #'   PageToken = "string"
 #' )
@@ -1084,7 +1084,7 @@ elastictranscoder_list_presets <- function(Ascending = NULL, PageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$read_job(
+#' svc$read_job(
 #'   Id = "string"
 #' )
 #' ```
@@ -1119,7 +1119,7 @@ elastictranscoder_read_job <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$read_pipeline(
+#' svc$read_pipeline(
 #'   Id = "string"
 #' )
 #' ```
@@ -1155,7 +1155,7 @@ elastictranscoder_read_pipeline <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$read_preset(
+#' svc$read_preset(
 #'   Id = "string"
 #' )
 #' ```
@@ -1204,7 +1204,7 @@ elastictranscoder_read_preset <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$test_role(
+#' svc$test_role(
 #'   Role = "string",
 #'   InputBucket = "string",
 #'   OutputBucket = "string",
@@ -1424,7 +1424,7 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$update_pipeline(
+#' svc$update_pipeline(
 #'   Id = "string",
 #'   Name = "string",
 #'   InputBucket = "string",
@@ -1524,7 +1524,7 @@ elastictranscoder_update_pipeline <- function(Id, Name = NULL, InputBucket = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$update_pipeline_notifications(
+#' svc$update_pipeline_notifications(
 #'   Id = "string",
 #'   Notifications = list(
 #'     Progressing = "string",
@@ -1578,7 +1578,7 @@ elastictranscoder_update_pipeline_notifications <- function(Id, Notifications) {
 #'
 #' @section Request syntax:
 #' ```
-#' elastictranscoder$update_pipeline_status(
+#' svc$update_pipeline_status(
 #'   Id = "string",
 #'   Status = "string"
 #' )

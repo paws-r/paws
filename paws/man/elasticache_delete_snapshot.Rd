@@ -18,7 +18,7 @@ snapshot; you cannot cancel or revert this operation.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$delete_snapshot(
+\preformatted{svc$delete_snapshot(
   SnapshotName = "string"
 )
 }

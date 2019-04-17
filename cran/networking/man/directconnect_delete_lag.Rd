@@ -14,7 +14,7 @@ Deletes the specified link aggregation group (LAG). You cannot delete a
 LAG if it has active virtual interfaces or hosted connections.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_lag(
+\preformatted{svc$delete_lag(
   lagId = "string"
 )
 }

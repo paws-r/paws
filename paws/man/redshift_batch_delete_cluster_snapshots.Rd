@@ -13,7 +13,7 @@ redshift_batch_delete_cluster_snapshots(Identifiers)
 Deletes a set of cluster snapshots.
 }
 \section{Request syntax}{
-\preformatted{redshift$batch_delete_cluster_snapshots(
+\preformatted{svc$batch_delete_cluster_snapshots(
   Identifiers = list(
     list(
       SnapshotIdentifier = "string",

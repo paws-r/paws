@@ -17,7 +17,7 @@ directory can have a maximum of 50 tags. Each tag consists of a key and
 optional value. Tag keys must be unique to each resource.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceId = "string",
   Tags = list(
     list(

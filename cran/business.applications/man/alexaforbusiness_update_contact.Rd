@@ -22,7 +22,7 @@ alexaforbusiness_update_contact(ContactArn, DisplayName, FirstName,
 Updates the contact details by the contact ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_contact(
+\preformatted{svc$update_contact(
   ContactArn = "string",
   DisplayName = "string",
   FirstName = "string",

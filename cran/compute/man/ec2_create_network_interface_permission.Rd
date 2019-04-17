@@ -31,7 +31,7 @@ You can grant permission to a single AWS account only, and only one
 account at a time.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_network_interface_permission(
+\preformatted{svc$create_network_interface_permission(
   NetworkInterfaceId = "string",
   AwsAccountId = "string",
   AwsService = "string",

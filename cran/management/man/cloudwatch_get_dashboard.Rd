@@ -18,7 +18,7 @@ returned within \code{DashboardBody} as the template for the new dashboard
 when you call \code{PutDashboard} to create the copy.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$get_dashboard(
+\preformatted{svc$get_dashboard(
   DashboardName = "string"
 )
 }

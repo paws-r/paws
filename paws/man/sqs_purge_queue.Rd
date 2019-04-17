@@ -29,7 +29,7 @@ Messages sent to the queue \emph{after} you call \code{PurgeQueue} might be
 deleted while the queue is being purged.
 }
 \section{Request syntax}{
-\preformatted{sqs$purge_queue(
+\preformatted{svc$purge_queue(
   QueueUrl = "string"
 )
 }

@@ -20,7 +20,7 @@ When you send an email that uses that configuration set, Amazon Pinpoint
 sends it using only the IP addresses in the associated pool.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$create_dedicated_ip_pool(
+\preformatted{svc$create_dedicated_ip_pool(
   PoolName = "string",
   Tags = list(
     list(

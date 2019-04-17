@@ -64,7 +64,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$add_permission(
+\preformatted{svc$add_permission(
   QueueUrl = "string",
   Label = "string",
   AWSAccountIds = list(

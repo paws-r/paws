@@ -17,7 +17,7 @@ pinpoint_get_campaign_version(ApplicationId, CampaignId, Version)
 Returns information about a specific version of a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_campaign_version(
+\preformatted{svc$get_campaign_version(
   ApplicationId = "string",
   CampaignId = "string",
   Version = "string"

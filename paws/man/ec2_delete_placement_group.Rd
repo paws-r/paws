@@ -21,7 +21,7 @@ more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_placement_group(
+\preformatted{svc$delete_placement_group(
   DryRun = TRUE|FALSE,
   GroupName = "string"
 )
@@ -31,7 +31,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example deletes the specified placement group.
 # 
-\donttest{ec2$delete_placement_group(
+\donttest{svc$delete_placement_group(
   GroupName = "my-cluster"
 )}
 

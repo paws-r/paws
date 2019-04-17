@@ -16,7 +16,7 @@ then pass its value in another request to fetch more entries.}
 Lists existing Amplify Apps.
 }
 \section{Request syntax}{
-\preformatted{amplify$list_apps(
+\preformatted{svc$list_apps(
   nextToken = "string",
   maxResults = 123
 )

@@ -29,7 +29,7 @@ Returns a list of aliases for a specified Amazon Lex bot.
 This operation requires permissions for the \code{lex:GetBotAliases} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot_aliases(
+\preformatted{svc$get_bot_aliases(
   botName = "string",
   nextToken = "string",
   maxResults = 123,

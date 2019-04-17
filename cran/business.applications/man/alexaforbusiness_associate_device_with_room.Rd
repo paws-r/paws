@@ -18,7 +18,7 @@ groups added to that room. This operation requires the device to be
 online, or else a manual sync is required.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$associate_device_with_room(
+\preformatted{svc$associate_device_with_room(
   DeviceArn = "string",
   RoomArn = "string"
 )

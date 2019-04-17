@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_api_key(
+#' svc$create_api_key(
 #'   apiId = "string",
 #'   description = "string",
 #'   expires = 123
@@ -70,7 +70,7 @@ appsync_create_api_key <- function(apiId, description = NULL, expires = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_data_source(
+#' svc$create_data_source(
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -153,7 +153,7 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_function(
+#' svc$create_function(
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -199,7 +199,7 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_graphql_api(
+#' svc$create_graphql_api(
 #'   name = "string",
 #'   logConfig = list(
 #'     fieldLogLevel = "NONE"|"ERROR"|"ALL",
@@ -275,7 +275,7 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_resolver(
+#' svc$create_resolver(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   fieldName = "string",
@@ -326,7 +326,7 @@ appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$create_type(
+#' svc$create_type(
 #'   apiId = "string",
 #'   definition = "string",
 #'   format = "SDL"|"JSON"
@@ -364,7 +364,7 @@ appsync_create_type <- function(apiId, definition, format) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_api_key(
+#' svc$delete_api_key(
 #'   apiId = "string",
 #'   id = "string"
 #' )
@@ -401,7 +401,7 @@ appsync_delete_api_key <- function(apiId, id) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_data_source(
+#' svc$delete_data_source(
 #'   apiId = "string",
 #'   name = "string"
 #' )
@@ -438,7 +438,7 @@ appsync_delete_data_source <- function(apiId, name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_function(
+#' svc$delete_function(
 #'   apiId = "string",
 #'   functionId = "string"
 #' )
@@ -474,7 +474,7 @@ appsync_delete_function <- function(apiId, functionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_graphql_api(
+#' svc$delete_graphql_api(
 #'   apiId = "string"
 #' )
 #' ```
@@ -511,7 +511,7 @@ appsync_delete_graphql_api <- function(apiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_resolver(
+#' svc$delete_resolver(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   fieldName = "string"
@@ -549,7 +549,7 @@ appsync_delete_resolver <- function(apiId, typeName, fieldName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$delete_type(
+#' svc$delete_type(
 #'   apiId = "string",
 #'   typeName = "string"
 #' )
@@ -586,7 +586,7 @@ appsync_delete_type <- function(apiId, typeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_data_source(
+#' svc$get_data_source(
 #'   apiId = "string",
 #'   name = "string"
 #' )
@@ -623,7 +623,7 @@ appsync_get_data_source <- function(apiId, name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_function(
+#' svc$get_function(
 #'   apiId = "string",
 #'   functionId = "string"
 #' )
@@ -659,7 +659,7 @@ appsync_get_function <- function(apiId, functionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_graphql_api(
+#' svc$get_graphql_api(
 #'   apiId = "string"
 #' )
 #' ```
@@ -695,7 +695,7 @@ appsync_get_graphql_api <- function(apiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_introspection_schema(
+#' svc$get_introspection_schema(
 #'   apiId = "string",
 #'   format = "SDL"|"JSON"
 #' )
@@ -733,7 +733,7 @@ appsync_get_introspection_schema <- function(apiId, format) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_resolver(
+#' svc$get_resolver(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   fieldName = "string"
@@ -770,7 +770,7 @@ appsync_get_resolver <- function(apiId, typeName, fieldName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_schema_creation_status(
+#' svc$get_schema_creation_status(
 #'   apiId = "string"
 #' )
 #' ```
@@ -807,7 +807,7 @@ appsync_get_schema_creation_status <- function(apiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$get_type(
+#' svc$get_type(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   format = "SDL"|"JSON"
@@ -853,7 +853,7 @@ appsync_get_type <- function(apiId, typeName, format) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_api_keys(
+#' svc$list_api_keys(
 #'   apiId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -894,7 +894,7 @@ appsync_list_api_keys <- function(apiId, nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_data_sources(
+#' svc$list_data_sources(
 #'   apiId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -935,7 +935,7 @@ appsync_list_data_sources <- function(apiId, nextToken = NULL, maxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_functions(
+#' svc$list_functions(
 #'   apiId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -975,7 +975,7 @@ appsync_list_functions <- function(apiId, nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_graphql_apis(
+#' svc$list_graphql_apis(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1016,7 +1016,7 @@ appsync_list_graphql_apis <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_resolvers(
+#' svc$list_resolvers(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   nextToken = "string",
@@ -1060,7 +1060,7 @@ appsync_list_resolvers <- function(apiId, typeName, nextToken = NULL, maxResults
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_resolvers_by_function(
+#' svc$list_resolvers_by_function(
 #'   apiId = "string",
 #'   functionId = "string",
 #'   nextToken = "string",
@@ -1103,7 +1103,7 @@ appsync_list_resolvers_by_function <- function(apiId, functionId, nextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$list_types(
+#' svc$list_types(
 #'   apiId = "string",
 #'   format = "SDL"|"JSON",
 #'   nextToken = "string",
@@ -1144,7 +1144,7 @@ appsync_list_types <- function(apiId, format, nextToken = NULL, maxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$start_schema_creation(
+#' svc$start_schema_creation(
 #'   apiId = "string",
 #'   definition = raw
 #' )
@@ -1184,7 +1184,7 @@ appsync_start_schema_creation <- function(apiId, definition) {
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_api_key(
+#' svc$update_api_key(
 #'   apiId = "string",
 #'   id = "string",
 #'   description = "string",
@@ -1233,7 +1233,7 @@ appsync_update_api_key <- function(apiId, id, description = NULL, expires = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_data_source(
+#' svc$update_data_source(
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -1315,7 +1315,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_function(
+#' svc$update_function(
 #'   apiId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -1364,7 +1364,7 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_graphql_api(
+#' svc$update_graphql_api(
 #'   apiId = "string",
 #'   name = "string",
 #'   logConfig = list(
@@ -1434,7 +1434,7 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_resolver(
+#' svc$update_resolver(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   fieldName = "string",
@@ -1483,7 +1483,7 @@ appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 #'
 #' @section Request syntax:
 #' ```
-#' appsync$update_type(
+#' svc$update_type(
 #'   apiId = "string",
 #'   typeName = "string",
 #'   definition = "string",

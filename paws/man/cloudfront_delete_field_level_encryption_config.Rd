@@ -16,7 +16,7 @@ configuration identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 Remove a field-level encryption configuration.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_field_level_encryption_config(
+\preformatted{svc$delete_field_level_encryption_config(
   Id = "string",
   IfMatch = "string"
 )

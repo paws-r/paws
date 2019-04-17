@@ -65,7 +65,7 @@ For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_content_moderation(
+\preformatted{svc$get_content_moderation(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",

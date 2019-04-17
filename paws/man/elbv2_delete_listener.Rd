@@ -17,7 +17,7 @@ Alternatively, your listener is deleted when you delete the load
 balancer to which it is attached, using DeleteLoadBalancer.
 }
 \section{Request syntax}{
-\preformatted{elbv2$delete_listener(
+\preformatted{svc$delete_listener(
   ListenerArn = "string"
 )
 }
@@ -25,7 +25,7 @@ balancer to which it is attached, using DeleteLoadBalancer.
 
 \examples{
 # This example deletes the specified listener.
-\donttest{elbv2$delete_listener(
+\donttest{svc$delete_listener(
   ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listener/app/my-load-ba..."
 )}
 

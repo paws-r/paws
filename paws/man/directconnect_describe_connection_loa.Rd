@@ -31,7 +31,7 @@ more information, see \href{https://docs.aws.amazon.com/directconnect/latest/Use
 in the \emph{AWS Direct Connect User Guide}.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_connection_loa(
+\preformatted{svc$describe_connection_loa(
   connectionId = "string",
   providerName = "string",
   loaContentType = "application/pdf"

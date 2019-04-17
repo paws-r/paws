@@ -50,7 +50,7 @@ Copies the specified DB cluster parameter group.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$copy_db_cluster_parameter_group(
+\preformatted{svc$copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupIdentifier = "string",
   TargetDBClusterParameterGroupDescription = "string",

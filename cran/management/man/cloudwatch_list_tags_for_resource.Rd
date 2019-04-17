@@ -16,7 +16,7 @@ Displays the tags associated with a CloudWatch resource. Alarms support
 tagging.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string"
 )
 }

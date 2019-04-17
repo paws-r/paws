@@ -40,7 +40,7 @@ Describes reservations that are associated with Dedicated Hosts in your
 account.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_host_reservations(
+\preformatted{svc$describe_host_reservations(
   Filter = list(
     list(
       Name = "string",

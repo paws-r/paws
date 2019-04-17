@@ -17,7 +17,7 @@ amplify_get_job(appId, branchName, jobId)
 Get a job for a branch, part of an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$get_job(
+\preformatted{svc$get_job(
   appId = "string",
   branchName = "string",
   jobId = "string"

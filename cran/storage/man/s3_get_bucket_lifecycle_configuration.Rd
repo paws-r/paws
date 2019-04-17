@@ -13,7 +13,7 @@ s3_get_bucket_lifecycle_configuration(Bucket)
 Returns the lifecycle configuration information set on the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_lifecycle_configuration(
+\preformatted{svc$get_bucket_lifecycle_configuration(
   Bucket = "string"
 )
 }
@@ -22,7 +22,7 @@ Returns the lifecycle configuration information set on the bucket.
 \examples{
 # The following example retrieves lifecycle configuration on set on a
 # bucket.
-\donttest{s3$get_bucket_lifecycle_configuration(
+\donttest{svc$get_bucket_lifecycle_configuration(
   Bucket = "examplebucket"
 )}
 

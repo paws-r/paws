@@ -13,7 +13,7 @@ elasticbeanstalk_describe_platform_version(PlatformArn)
 Describes the version of the platform.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_platform_version(
+\preformatted{svc$describe_platform_version(
   PlatformArn = "string"
 )
 }

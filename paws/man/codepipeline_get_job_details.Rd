@@ -20,7 +20,7 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$get_job_details(
+\preformatted{svc$get_job_details(
   jobId = "string"
 )
 }

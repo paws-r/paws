@@ -15,7 +15,7 @@ robomaker_register_robot(fleet, robot)
 Registers a robot with a fleet.
 }
 \section{Request syntax}{
-\preformatted{robomaker$register_robot(
+\preformatted{svc$register_robot(
   fleet = "string",
   robot = "string"
 )

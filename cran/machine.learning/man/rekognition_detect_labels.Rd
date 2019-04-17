@@ -103,7 +103,7 @@ This operation requires permissions to perform the
 \code{rekognition:DetectLabels} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$detect_labels(
+\preformatted{svc$detect_labels(
   Image = list(
     Bytes = raw,
     S3Object = list(
@@ -120,7 +120,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation detects labels in the supplied image
-\donttest{rekognition$detect_labels(
+\donttest{svc$detect_labels(
   Image = list(
     S3Object = list(
       Bucket = "mybucket",

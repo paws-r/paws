@@ -31,7 +31,7 @@ Adds a source identifier to an existing RDS event notification
 subscription.
 }
 \section{Request syntax}{
-\preformatted{rds$add_source_identifier_to_subscription(
+\preformatted{svc$add_source_identifier_to_subscription(
   SubscriptionName = "string",
   SourceIdentifier = "string"
 )

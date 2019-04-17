@@ -13,7 +13,7 @@ iot_describe_thing_registration_task(taskId)
 Describes a bulk thing provisioning task.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_thing_registration_task(
+\preformatted{svc$describe_thing_registration_task(
   taskId = "string"
 )
 }

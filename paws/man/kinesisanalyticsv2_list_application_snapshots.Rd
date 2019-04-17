@@ -21,7 +21,7 @@ the output should continue from.}
 Lists information about the current application snapshots.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$list_application_snapshots(
+\preformatted{svc$list_application_snapshots(
   ApplicationName = "string",
   Limit = 123,
   NextToken = "string"

@@ -17,7 +17,7 @@ location.}
 Gets information about one or more application revisions.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_application_revisions(
+\preformatted{svc$batch_get_application_revisions(
   applicationName = "string",
   revisions = list(
     list(

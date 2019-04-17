@@ -74,7 +74,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$compare_faces(
+#' svc$compare_faces(
 #'   SourceImage = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -98,7 +98,7 @@ NULL
 #' @examples
 #' # This operation compares the largest face detected in the source image
 #' # with each face detected in the target image.
-#' \donttest{rekognition$compare_faces(
+#' \donttest{svc$compare_faces(
 #'   SimilarityThreshold = 90L,
 #'   SourceImage = list(
 #'     S3Object = list(
@@ -158,14 +158,14 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$create_collection(
+#' svc$create_collection(
 #'   CollectionId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This operation creates a Rekognition collection for storing image data.
-#' \donttest{rekognition$create_collection(
+#' \donttest{svc$create_collection(
 #'   CollectionId = "myphotos"
 #' )}
 #'
@@ -230,7 +230,7 @@ rekognition_create_collection <- function(CollectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$create_stream_processor(
+#' svc$create_stream_processor(
 #'   Input = list(
 #'     KinesisVideoStream = list(
 #'       Arn = "string"
@@ -287,14 +287,14 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$delete_collection(
+#' svc$delete_collection(
 #'   CollectionId = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This operation deletes a Rekognition collection.
-#' \donttest{rekognition$delete_collection(
+#' \donttest{svc$delete_collection(
 #'   CollectionId = "myphotos"
 #' )}
 #'
@@ -333,7 +333,7 @@ rekognition_delete_collection <- function(CollectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$delete_faces(
+#' svc$delete_faces(
 #'   CollectionId = "string",
 #'   FaceIds = list(
 #'     "string"
@@ -343,7 +343,7 @@ rekognition_delete_collection <- function(CollectionId) {
 #'
 #' @examples
 #' # This operation deletes one or more faces from a Rekognition collection.
-#' \donttest{rekognition$delete_faces(
+#' \donttest{svc$delete_faces(
 #'   CollectionId = "myphotos",
 #'   FaceIds = list(
 #'     "ff43d742-0c13-5d16-a3e8-03d3f58e980b"
@@ -384,7 +384,7 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$delete_stream_processor(
+#' svc$delete_stream_processor(
 #'   Name = "string"
 #' )
 #' ```
@@ -424,7 +424,7 @@ rekognition_delete_stream_processor <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$describe_collection(
+#' svc$describe_collection(
 #'   CollectionId = "string"
 #' )
 #' ```
@@ -463,7 +463,7 @@ rekognition_describe_collection <- function(CollectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$describe_stream_processor(
+#' svc$describe_stream_processor(
 #'   Name = "string"
 #' )
 #' ```
@@ -537,7 +537,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$detect_faces(
+#' svc$detect_faces(
 #'   Image = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -554,7 +554,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #'
 #' @examples
 #' # This operation detects faces in an image stored in an AWS S3 bucket.
-#' \donttest{rekognition$detect_faces(
+#' \donttest{svc$detect_faces(
 #'   Image = list(
 #'     S3Object = list(
 #'       Bucket = "mybucket",
@@ -680,7 +680,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$detect_labels(
+#' svc$detect_labels(
 #'   Image = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -696,7 +696,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #'
 #' @examples
 #' # This operation detects labels in the supplied image
-#' \donttest{rekognition$detect_labels(
+#' \donttest{svc$detect_labels(
 #'   Image = list(
 #'     S3Object = list(
 #'       Bucket = "mybucket",
@@ -764,7 +764,7 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$detect_moderation_labels(
+#' svc$detect_moderation_labels(
 #'   Image = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -847,7 +847,7 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$detect_text(
+#' svc$detect_text(
 #'   Image = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -901,7 +901,7 @@ rekognition_detect_text <- function(Image) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_celebrity_info(
+#' svc$get_celebrity_info(
 #'   Id = "string"
 #' )
 #' ```
@@ -995,7 +995,7 @@ rekognition_get_celebrity_info <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_celebrity_recognition(
+#' svc$get_celebrity_recognition(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1081,7 +1081,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_content_moderation(
+#' svc$get_content_moderation(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1149,7 +1149,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_face_detection(
+#' svc$get_face_detection(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1229,7 +1229,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_face_search(
+#' svc$get_face_search(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1312,7 +1312,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_label_detection(
+#' svc$get_label_detection(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1398,7 +1398,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$get_person_tracking(
+#' svc$get_person_tracking(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1582,7 +1582,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$index_faces(
+#' svc$index_faces(
 #'   CollectionId = "string",
 #'   Image = list(
 #'     Bytes = raw,
@@ -1604,7 +1604,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' @examples
 #' # This operation detects faces in an image and adds them to the specified
 #' # Rekognition collection.
-#' \donttest{rekognition$index_faces(
+#' \donttest{svc$index_faces(
 #'   CollectionId = "myphotos",
 #'   DetectionAttributes = list(),
 #'   ExternalImageId = "myphotoid",
@@ -1655,7 +1655,7 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$list_collections(
+#' svc$list_collections(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1663,7 +1663,7 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #'
 #' @examples
 #' # This operation returns a list of Rekognition collections.
-#' \donttest{rekognition$list_collections()}
+#' \donttest{svc$list_collections()}
 #'
 #' @keywords internal
 #'
@@ -1707,7 +1707,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$list_faces(
+#' svc$list_faces(
 #'   CollectionId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1716,7 +1716,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @examples
 #' # This operation lists the faces in a Rekognition collection.
-#' \donttest{rekognition$list_faces(
+#' \donttest{svc$list_faces(
 #'   CollectionId = "myphotos",
 #'   MaxResults = 20L
 #' )}
@@ -1758,7 +1758,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$list_stream_processors(
+#' svc$list_stream_processors(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1833,7 +1833,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$recognize_celebrities(
+#' svc$recognize_celebrities(
 #'   Image = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -1902,7 +1902,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$search_faces(
+#' svc$search_faces(
 #'   CollectionId = "string",
 #'   FaceId = "string",
 #'   MaxFaces = 123,
@@ -1913,7 +1913,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @examples
 #' # This operation searches for matching faces in the collection the
 #' # supplied face belongs to.
-#' \donttest{rekognition$search_faces(
+#' \donttest{svc$search_faces(
 #'   CollectionId = "myphotos",
 #'   FaceId = "70008e50-75e4-55d0-8e80-363fb73b3a14",
 #'   FaceMatchThreshold = 90L,
@@ -1994,7 +1994,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$search_faces_by_image(
+#' svc$search_faces_by_image(
 #'   CollectionId = "string",
 #'   Image = list(
 #'     Bytes = raw,
@@ -2012,7 +2012,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @examples
 #' # This operation searches for faces in a Rekognition collection that match
 #' # the largest face in an S3 bucket stored image.
-#' \donttest{rekognition$search_faces_by_image(
+#' \donttest{svc$search_faces_by_image(
 #'   CollectionId = "myphotos",
 #'   FaceMatchThreshold = 95L,
 #'   Image = list(
@@ -2079,7 +2079,7 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_celebrity_recognition(
+#' svc$start_celebrity_recognition(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2162,7 +2162,7 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_content_moderation(
+#' svc$start_content_moderation(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2240,7 +2240,7 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_face_detection(
+#' svc$start_face_detection(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2314,7 +2314,7 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_face_search(
+#' svc$start_face_search(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2400,7 +2400,7 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_label_detection(
+#' svc$start_label_detection(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2471,7 +2471,7 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_person_tracking(
+#' svc$start_person_tracking(
 #'   Video = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -2521,7 +2521,7 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$start_stream_processor(
+#' svc$start_stream_processor(
 #'   Name = "string"
 #' )
 #' ```
@@ -2558,7 +2558,7 @@ rekognition_start_stream_processor <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' rekognition$stop_stream_processor(
+#' svc$stop_stream_processor(
 #'   Name = "string"
 #' )
 #' ```

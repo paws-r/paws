@@ -53,12 +53,6 @@ You can also use CloudTrail to audit records over time. For more
 information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}}
 .
 }
-\section{Example}{
-\preformatted{marketplacemetering <- paws::marketplacemetering()
-marketplacemetering$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -69,3 +63,9 @@ marketplacemetering$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_meter_usage(
+  Foo = 123
+)}
+
+}

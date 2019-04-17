@@ -37,7 +37,7 @@ the \emph{Amazon Simple Notification Service Developer Guide}.
 You can create a connection notification for interface endpoints only.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_vpc_endpoint_connection_notification(
+\preformatted{svc$create_vpc_endpoint_connection_notification(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   VpcEndpointId = "string",

@@ -33,7 +33,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifica
 in the Amazon Glacier Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{glacier$delete_vault_notifications(
+\preformatted{svc$delete_vault_notifications(
   accountId = "string",
   vaultName = "string"
 )
@@ -43,7 +43,7 @@ in the Amazon Glacier Developer Guide.
 \examples{
 # The example deletes the notification configuration set for the vault
 # named examplevault.
-\donttest{glacier$delete_vault_notifications(
+\donttest{svc$delete_vault_notifications(
   accountId = "-",
   vaultName = "examplevault"
 )}

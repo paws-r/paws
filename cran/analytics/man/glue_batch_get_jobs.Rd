@@ -18,7 +18,7 @@ supports all IAM permissions, including permission conditions that uses
 tags.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_get_jobs(
+\preformatted{svc$batch_get_jobs(
   JobNames = list(
     "string"
   )

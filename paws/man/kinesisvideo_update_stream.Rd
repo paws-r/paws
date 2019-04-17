@@ -47,7 +47,7 @@ version, use the \code{DescribeStream} API.
 \code{UpdateStream} is an asynchronous operation, and takes time to complete.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$update_stream(
+\preformatted{svc$update_stream(
   StreamName = "string",
   StreamARN = "string",
   CurrentVersion = "string",

@@ -34,7 +34,7 @@ mapping information that describes how data in an Amazon S3 object maps
 to columns in the resulting in-application table.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$add_application_reference_data_source(
+\preformatted{svc$add_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceDataSource = list(

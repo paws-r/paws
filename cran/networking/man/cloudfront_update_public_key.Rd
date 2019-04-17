@@ -19,7 +19,7 @@ Update public key information. Note that the only value you can change
 is the comment.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$update_public_key(
+\preformatted{svc$update_public_key(
   PublicKeyConfig = list(
     CallerReference = "string",
     Name = "string",

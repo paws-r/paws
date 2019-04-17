@@ -9,11 +9,10 @@ NULL
 #' 
 #' The AWS Elastic Transcoder Service.
 #'
-#' @section Example:
-#' ```
-#' elastictranscoder <- paws::elastictranscoder()
-#' elastictranscoder$operation()
-#' ```
+#' @examples
+#' \donttest{svc$cancel_job(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

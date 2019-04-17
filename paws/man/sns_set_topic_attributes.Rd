@@ -28,7 +28,7 @@ default, only the topic owner can publish or subscribe to the topic.
 Allows a topic owner to set an attribute of the topic to a new value.
 }
 \section{Request syntax}{
-\preformatted{sns$set_topic_attributes(
+\preformatted{svc$set_topic_attributes(
   TopicArn = "string",
   AttributeName = "string",
   AttributeValue = "string"

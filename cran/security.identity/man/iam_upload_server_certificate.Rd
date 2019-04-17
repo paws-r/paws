@@ -102,7 +102,7 @@ Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$upload_server_certificate(
+\preformatted{svc$upload_server_certificate(
   Path = "string",
   ServerCertificateName = "string",
   CertificateBody = "string",
@@ -115,7 +115,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
-\donttest{iam$upload_server_certificate(
+\donttest{svc$upload_server_certificate(
   CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
   Path = "/company/servercerts/",
   PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",

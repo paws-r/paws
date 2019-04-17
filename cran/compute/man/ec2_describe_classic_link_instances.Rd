@@ -50,7 +50,7 @@ through ClassicLink. You cannot use this request to return information
 about other instances.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_classic_link_instances(
+\preformatted{svc$describe_classic_link_instances(
   Filters = list(
     list(
       Name = "string",

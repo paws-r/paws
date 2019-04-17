@@ -27,7 +27,7 @@ either SetLoadBalancerPoliciesOfListener or
 SetLoadBalancerPoliciesForBackendServer to set the policy.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_load_balancer_policy_types(
+\preformatted{svc$describe_load_balancer_policy_types(
   PolicyTypeNames = list(
     "string"
   )
@@ -37,7 +37,7 @@ SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 \examples{
 # This example describes the specified load balancer policy type.
-\donttest{elb$describe_load_balancer_policy_types(
+\donttest{svc$describe_load_balancer_policy_types(
   PolicyTypeNames = list(
     "ProxyProtocolPolicyType"
   )

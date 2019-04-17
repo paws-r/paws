@@ -42,7 +42,7 @@ expression. You must also specify the data serialization format for the
 response.
 }
 \section{Request syntax}{
-\preformatted{s3$select_object_content(
+\preformatted{svc$select_object_content(
   Bucket = "string",
   Key = "string",
   SSECustomerAlgorithm = "string",

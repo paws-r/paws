@@ -13,7 +13,7 @@ pinpoint_get_apns_channel(ApplicationId)
 Returns information about the APNs channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_apns_channel(
+\preformatted{svc$get_apns_channel(
   ApplicationId = "string"
 )
 }

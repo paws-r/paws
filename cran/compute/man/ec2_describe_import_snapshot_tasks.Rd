@@ -27,7 +27,7 @@ value.}
 Describes your import snapshot tasks.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_import_snapshot_tasks(
+\preformatted{svc$describe_import_snapshot_tasks(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(

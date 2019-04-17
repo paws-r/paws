@@ -54,7 +54,7 @@ Uploads an object to the specified path. Object sizes are limited to 25
 MB.
 }
 \section{Request syntax}{
-\preformatted{mediastoredata$put_object(
+\preformatted{svc$put_object(
   Body = raw,
   Path = "string",
   ContentType = "string",

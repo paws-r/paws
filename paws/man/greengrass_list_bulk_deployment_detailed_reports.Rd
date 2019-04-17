@@ -19,7 +19,7 @@ greengrass_list_bulk_deployment_detailed_reports(BulkDeploymentId,
 Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_bulk_deployment_detailed_reports(
+\preformatted{svc$list_bulk_deployment_detailed_reports(
   BulkDeploymentId = "string",
   MaxResults = "string",
   NextToken = "string"

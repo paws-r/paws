@@ -26,7 +26,7 @@ evaluation decision for the user pool as part of Amazon Cognito advanced
 security.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_auth_event_feedback(
+\preformatted{svc$update_auth_event_feedback(
   UserPoolId = "string",
   Username = "string",
   EventId = "string",

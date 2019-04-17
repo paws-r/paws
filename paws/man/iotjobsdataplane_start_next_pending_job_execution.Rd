@@ -29,7 +29,7 @@ Gets and starts the next pending (status IN\_PROGRESS or QUEUED) job
 execution for a thing.
 }
 \section{Request syntax}{
-\preformatted{iotjobsdataplane$start_next_pending_job_execution(
+\preformatted{svc$start_next_pending_job_execution(
   thingName = "string",
   statusDetails = list(
     "string"

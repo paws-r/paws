@@ -29,7 +29,7 @@ parameter group name is specified, the list contains only the
 descriptions for that group.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_parameter_groups(
+\preformatted{svc$describe_cache_parameter_groups(
   CacheParameterGroupName = "string",
   MaxRecords = 123,
   Marker = "string"

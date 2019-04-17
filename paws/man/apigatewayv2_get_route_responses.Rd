@@ -20,7 +20,7 @@ element of the collection.}
 Gets the RouteResponses for a Route.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_route_responses(
+\preformatted{svc$get_route_responses(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string",

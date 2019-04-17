@@ -21,7 +21,7 @@ the current registrar for the domain.}
 Checks whether a domain name can be transferred to Amazon Route 53.
 }
 \section{Request syntax}{
-\preformatted{route53domains$check_domain_transferability(
+\preformatted{svc$check_domain_transferability(
   DomainName = "string",
   AuthCode = "string"
 )

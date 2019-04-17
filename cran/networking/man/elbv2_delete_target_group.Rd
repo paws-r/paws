@@ -17,7 +17,7 @@ You can delete a target group if it is not referenced by any actions.
 Deleting a target group also deletes any associated health checks.
 }
 \section{Request syntax}{
-\preformatted{elbv2$delete_target_group(
+\preformatted{svc$delete_target_group(
   TargetGroupArn = "string"
 )
 }
@@ -25,7 +25,7 @@ Deleting a target group also deletes any associated health checks.
 
 \examples{
 # This example deletes the specified target group.
-\donttest{elbv2$delete_target_group(
+\donttest{svc$delete_target_group(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
 )}
 

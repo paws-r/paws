@@ -21,7 +21,7 @@ is specified, the action removes specified S3 resources from Macie for
 the specified member account.
 }
 \section{Request syntax}{
-\preformatted{macie$disassociate_s3_resources(
+\preformatted{svc$disassociate_s3_resources(
   memberAccountId = "string",
   associatedS3Resources = list(
     list(

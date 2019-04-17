@@ -59,7 +59,7 @@ GetContextKeysForPrincipalPolicy to understand what key names and values
 you must supply when you call SimulatePrincipalPolicy.
 }
 \section{Request syntax}{
-\preformatted{iam$get_context_keys_for_principal_policy(
+\preformatted{svc$get_context_keys_for_principal_policy(
   PolicySourceArn = "string",
   PolicyInputList = list(
     "string"

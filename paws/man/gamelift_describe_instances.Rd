@@ -31,7 +31,7 @@ parameters to retrieve results as a set of sequential pages. If
 successful, an Instance object is returned for each result.
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_instances(
+\preformatted{svc$describe_instances(
   FleetId = "string",
   InstanceId = "string",
   Limit = 123,

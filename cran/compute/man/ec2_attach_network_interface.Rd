@@ -23,7 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Attaches a network interface to an instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$attach_network_interface(
+\preformatted{svc$attach_network_interface(
   DeviceIndex = 123,
   DryRun = TRUE|FALSE,
   InstanceId = "string",
@@ -35,7 +35,7 @@ Attaches a network interface to an instance.
 \examples{
 # This example attaches the specified network interface to the specified
 # instance.
-\donttest{ec2$attach_network_interface(
+\donttest{svc$attach_network_interface(
   DeviceIndex = 1L,
   InstanceId = "i-1234567890abcdef0",
   NetworkInterfaceId = "eni-e5aa89a3"

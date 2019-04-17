@@ -32,7 +32,7 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_elastic_ips(
+\preformatted{svc$describe_elastic_ips(
   InstanceId = "string",
   StackId = "string",
   Ips = list(

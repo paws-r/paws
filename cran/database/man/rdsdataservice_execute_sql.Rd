@@ -22,7 +22,7 @@ rdsdataservice_execute_sql(awsSecretStoreArn, database,
 Executes any SQL statement on the target database synchronously
 }
 \section{Request syntax}{
-\preformatted{rdsdataservice$execute_sql(
+\preformatted{svc$execute_sql(
   awsSecretStoreArn = "string",
   database = "string",
   dbClusterOrInstanceArn = "string",

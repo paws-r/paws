@@ -63,7 +63,7 @@ For more information about working with snapshots, go to \href{http://docs.aws.a
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$copy_cluster_snapshot(
+\preformatted{svc$copy_cluster_snapshot(
   SourceSnapshotIdentifier = "string",
   SourceSnapshotClusterIdentifier = "string",
   TargetSnapshotIdentifier = "string",

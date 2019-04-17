@@ -27,7 +27,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$create_group(
+#' svc$create_group(
 #'   GroupName = "string",
 #'   Description = "string",
 #'   AwsAccountId = "string",
@@ -83,7 +83,7 @@ quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId,
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$create_group_membership(
+#' svc$create_group_membership(
 #'   MemberName = "string",
 #'   GroupName = "string",
 #'   AwsAccountId = "string",
@@ -131,7 +131,7 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$delete_group(
+#' svc$delete_group(
 #'   GroupName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string"
@@ -186,7 +186,7 @@ quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$delete_group_membership(
+#' svc$delete_group_membership(
 #'   MemberName = "string",
 #'   GroupName = "string",
 #'   AwsAccountId = "string",
@@ -238,7 +238,7 @@ quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccount
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$delete_user(
+#' svc$delete_user(
 #'   UserName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string"
@@ -279,7 +279,7 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$delete_user_by_principal_id(
+#' svc$delete_user_by_principal_id(
 #'   PrincipalId = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string"
@@ -330,7 +330,7 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$describe_group(
+#' svc$describe_group(
 #'   GroupName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string"
@@ -381,7 +381,7 @@ quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$describe_user(
+#' svc$describe_user(
 #'   UserName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string"
@@ -450,7 +450,7 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$get_dashboard_embed_url(
+#' svc$get_dashboard_embed_url(
 #'   AwsAccountId = "string",
 #'   DashboardId = "string",
 #'   IdentityType = "IAM"|"QUICKSIGHT",
@@ -505,7 +505,7 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$list_group_memberships(
+#' svc$list_group_memberships(
 #'   GroupName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -557,7 +557,7 @@ quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$list_groups(
+#' svc$list_groups(
 #'   AwsAccountId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -613,7 +613,7 @@ quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$list_user_groups(
+#' svc$list_user_groups(
 #'   UserName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string",
@@ -669,7 +669,7 @@ quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextT
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$list_users(
+#' svc$list_users(
 #'   AwsAccountId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -754,7 +754,7 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$register_user(
+#' svc$register_user(
 #'   IdentityType = "IAM"|"QUICKSIGHT",
 #'   Email = "string",
 #'   UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
@@ -809,7 +809,7 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$update_group(
+#' svc$update_group(
 #'   GroupName = "string",
 #'   Description = "string",
 #'   AwsAccountId = "string",
@@ -872,7 +872,7 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #'
 #' @section Request syntax:
 #' ```
-#' quicksight$update_user(
+#' svc$update_user(
 #'   UserName = "string",
 #'   AwsAccountId = "string",
 #'   Namespace = "string",

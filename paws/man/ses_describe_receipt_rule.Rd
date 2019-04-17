@@ -20,7 +20,7 @@ For information about setting up receipt rules, see the \href{http://docs.aws.am
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$describe_receipt_rule(
+\preformatted{svc$describe_receipt_rule(
   RuleSetName = "string",
   RuleName = "string"
 )
@@ -29,7 +29,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example returns the details of a receipt rule:
-\donttest{ses$describe_receipt_rule(
+\donttest{svc$describe_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
 )}

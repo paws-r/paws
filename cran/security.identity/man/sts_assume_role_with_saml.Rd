@@ -149,7 +149,7 @@ in the \emph{IAM User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{sts$assume_role_with_saml(
+\preformatted{svc$assume_role_with_saml(
   RoleArn = "string",
   PrincipalArn = "string",
   SAMLAssertion = "string",

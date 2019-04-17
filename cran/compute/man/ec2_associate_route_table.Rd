@@ -29,7 +29,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_route_table(
+\preformatted{svc$associate_route_table(
   DryRun = TRUE|FALSE,
   RouteTableId = "string",
   SubnetId = "string"
@@ -40,7 +40,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \examples{
 # This example associates the specified route table with the specified
 # subnet.
-\donttest{ec2$associate_route_table(
+\donttest{svc$associate_route_table(
   RouteTableId = "rtb-22574640",
   SubnetId = "subnet-9d4a7b6"
 )}

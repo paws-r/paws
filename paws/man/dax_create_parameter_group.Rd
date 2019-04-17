@@ -17,7 +17,7 @@ Creates a new parameter group. A parameter group is a collection of
 parameters that you apply to all of the nodes in a DAX cluster.
 }
 \section{Request syntax}{
-\preformatted{dax$create_parameter_group(
+\preformatted{svc$create_parameter_group(
   ParameterGroupName = "string",
   Description = "string"
 )

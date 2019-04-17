@@ -24,7 +24,7 @@ resource tags applied to the resource identified by instanceName. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$start_instance(
+\preformatted{svc$start_instance(
   instanceName = "string"
 )
 }

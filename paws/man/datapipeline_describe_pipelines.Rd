@@ -25,7 +25,7 @@ To retrieve the full pipeline definition instead of metadata about the
 pipeline, call GetPipelineDefinition.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$describe_pipelines(
+\preformatted{svc$describe_pipelines(
   pipelineIds = list(
     "string"
   )

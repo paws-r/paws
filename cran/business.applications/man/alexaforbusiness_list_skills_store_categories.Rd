@@ -15,7 +15,7 @@ alexaforbusiness_list_skills_store_categories(NextToken, MaxResults)
 Lists all categories in the Alexa skill store.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_skills_store_categories(
+\preformatted{svc$list_skills_store_categories(
   NextToken = "string",
   MaxResults = 123
 )

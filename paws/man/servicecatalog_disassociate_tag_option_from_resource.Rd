@@ -16,7 +16,7 @@ servicecatalog_disassociate_tag_option_from_resource(ResourceId,
 Disassociates the specified TagOption from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$disassociate_tag_option_from_resource(
+\preformatted{svc$disassociate_tag_option_from_resource(
   ResourceId = "string",
   TagOptionId = "string"
 )

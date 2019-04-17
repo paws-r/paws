@@ -10,7 +10,7 @@ iot_clear_default_authorizer()
 Clears the default authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$clear_default_authorizer()
+\preformatted{svc$clear_default_authorizer()
 }
 }
 

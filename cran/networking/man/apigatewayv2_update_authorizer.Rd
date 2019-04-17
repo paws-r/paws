@@ -65,7 +65,7 @@ caching is not enabled, this property is optional.}
 Updates an Authorizer.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_authorizer(
+\preformatted{svc$update_authorizer(
   ApiId = "string",
   AuthorizerCredentialsArn = "string",
   AuthorizerId = "string",

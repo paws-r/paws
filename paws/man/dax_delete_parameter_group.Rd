@@ -14,7 +14,7 @@ Deletes the specified parameter group. You cannot delete a parameter
 group if it is associated with any DAX clusters.
 }
 \section{Request syntax}{
-\preformatted{dax$delete_parameter_group(
+\preformatted{svc$delete_parameter_group(
   ParameterGroupName = "string"
 )
 }

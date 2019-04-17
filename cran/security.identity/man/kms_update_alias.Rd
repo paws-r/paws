@@ -54,7 +54,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$update_alias(
+\preformatted{svc$update_alias(
   AliasName = "string",
   TargetKeyId = "string"
 )
@@ -64,7 +64,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 \examples{
 # The following example updates the specified alias to refer to the
 # specified customer master key (CMK).
-\donttest{kms$update_alias(
+\donttest{svc$update_alias(
   AliasName = "alias/ExampleAlias",
   TargetKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}

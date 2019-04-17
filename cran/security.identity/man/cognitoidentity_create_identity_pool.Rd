@@ -54,7 +54,7 @@ are as follows:
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$create_identity_pool(
+\preformatted{svc$create_identity_pool(
   IdentityPoolName = "string",
   AllowUnauthenticatedIdentities = TRUE|FALSE,
   SupportedLoginProviders = list(

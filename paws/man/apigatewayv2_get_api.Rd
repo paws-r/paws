@@ -13,7 +13,7 @@ apigatewayv2_get_api(ApiId)
 Gets an Api resource.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_api(
+\preformatted{svc$get_api(
   ApiId = "string"
 )
 }

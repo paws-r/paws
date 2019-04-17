@@ -17,7 +17,7 @@ iot_set_v2_logging_options(roleArn, defaultLogLevel, disableAllLogs)
 Sets the logging options for the V2 logging service.
 }
 \section{Request syntax}{
-\preformatted{iot$set_v2_logging_options(
+\preformatted{svc$set_v2_logging_options(
   roleArn = "string",
   defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
   disableAllLogs = TRUE|FALSE

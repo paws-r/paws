@@ -14,7 +14,7 @@ Returns the state of a specific instance. Works on one instance at a
 time.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instance_state(
+\preformatted{svc$get_instance_state(
   instanceName = "string"
 )
 }

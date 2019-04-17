@@ -18,7 +18,7 @@ alexaforbusiness_list_smart_home_appliances(RoomArn, MaxResults,
 Lists all of the smart home appliances associated with a room.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_smart_home_appliances(
+\preformatted{svc$list_smart_home_appliances(
   RoomArn = "string",
   MaxResults = 123,
   NextToken = "string"

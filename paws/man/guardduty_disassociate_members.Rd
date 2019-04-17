@@ -16,7 +16,7 @@ guardduty_disassociate_members(AccountIds, DetectorId)
 Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$disassociate_members(
+\preformatted{svc$disassociate_members(
   AccountIds = list(
     "string"
   ),

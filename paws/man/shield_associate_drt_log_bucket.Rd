@@ -21,7 +21,7 @@ request, you must be subscribed to the \href{https://aws.amazon.com/premiumsuppo
 \href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
 }
 \section{Request syntax}{
-\preformatted{shield$associate_drt_log_bucket(
+\preformatted{svc$associate_drt_log_bucket(
   LogBucket = "string"
 )
 }

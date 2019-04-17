@@ -53,7 +53,7 @@ either complete or abort multipart upload, Amazon S3 frees up the parts
 storage and stops charging you for the parts storage.
 }
 \section{Request syntax}{
-\preformatted{s3$upload_part(
+\preformatted{svc$upload_part(
   Body = raw,
   Bucket = "string",
   ContentLength = 123,
@@ -73,7 +73,7 @@ storage and stops charging you for the parts storage.
 # The following example uploads part 1 of a multipart upload. The example
 # specifies a file name for the part data. The Upload ID is same that is
 # returned by the initiate multipart upload.
-\donttest{s3$upload_part(
+\donttest{svc$upload_part(
   Body = "fileToUpload",
   Bucket = "examplebucket",
   Key = "examplelargeobject",

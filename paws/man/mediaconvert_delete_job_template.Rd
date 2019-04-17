@@ -13,7 +13,7 @@ mediaconvert_delete_job_template(Name)
 Permanently delete a job template you have created.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$delete_job_template(
+\preformatted{svc$delete_job_template(
   Name = "string"
 )
 }

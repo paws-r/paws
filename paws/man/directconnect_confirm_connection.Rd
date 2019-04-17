@@ -20,7 +20,7 @@ state, and remains in this state until the owner confirms creation of
 the hosted connection.
 }
 \section{Request syntax}{
-\preformatted{directconnect$confirm_connection(
+\preformatted{svc$confirm_connection(
   connectionId = "string"
 )
 }

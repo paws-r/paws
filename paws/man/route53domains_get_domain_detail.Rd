@@ -16,7 +16,7 @@ that is associated with the current AWS account. Contact information for
 the domain is also returned as part of the output.
 }
 \section{Request syntax}{
-\preformatted{route53domains$get_domain_detail(
+\preformatted{svc$get_domain_detail(
   DomainName = "string"
 )
 }

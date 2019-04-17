@@ -43,7 +43,7 @@ user, \code{DestinationUserIdentifier}, together should not be larger than
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$merge_developer_identities(
+\preformatted{svc$merge_developer_identities(
   SourceUserIdentifier = "string",
   DestinationUserIdentifier = "string",
   DeveloperProviderName = "string",

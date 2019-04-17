@@ -20,7 +20,7 @@ servicecatalog_describe_service_action(Id, AcceptLanguage)
 Describes a self-service action.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_service_action(
+\preformatted{svc$describe_service_action(
   Id = "string",
   AcceptLanguage = "string"
 )

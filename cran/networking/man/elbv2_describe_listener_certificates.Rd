@@ -18,7 +18,7 @@ previous call.)}
 Describes the certificates for the specified HTTPS listener.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_listener_certificates(
+\preformatted{svc$describe_listener_certificates(
   ListenerArn = "string",
   Marker = "string",
   PageSize = 123

@@ -34,7 +34,7 @@ from a prior call.)}
 Describes available services to which you can create a VPC endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoint_services(
+\preformatted{svc$describe_vpc_endpoint_services(
   DryRun = TRUE|FALSE,
   ServiceNames = list(
     "string"

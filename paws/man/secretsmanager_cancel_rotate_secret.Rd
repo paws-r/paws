@@ -72,7 +72,7 @@ ListSecretVersionIds.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$cancel_rotate_secret(
+\preformatted{svc$cancel_rotate_secret(
   SecretId = "string"
 )
 }
@@ -83,7 +83,7 @@ ListSecretVersionIds.
 # operation sets the RotationEnabled field to false and cancels all
 # scheduled rotations. To resume scheduled rotations, you must re-enable
 # rotation by calling the rotate-secret operation.
-\donttest{secretsmanager$cancel_rotate_secret(
+\donttest{svc$cancel_rotate_secret(
   SecretId = "MyTestDatabaseSecret"
 )}
 

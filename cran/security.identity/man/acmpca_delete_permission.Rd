@@ -26,7 +26,7 @@ service. Permissions can be created with the CreatePermission operation
 and listed with the ListPermissions operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$delete_permission(
+\preformatted{svc$delete_permission(
   CertificateAuthorityArn = "string",
   Principal = "string",
   SourceAccount = "string"

@@ -12,13 +12,13 @@ Retrieves details about your account's
 usage in an AWS Region.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_account_settings()
+\preformatted{svc$get_account_settings()
 }
 }
 
 \examples{
 # This operation retrieves a Lambda customer's account settings
-\donttest{lambda$get_account_settings()}
+\donttest{svc$get_account_settings()}
 
 }
 \keyword{internal}

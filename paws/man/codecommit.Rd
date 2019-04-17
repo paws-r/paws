@@ -118,12 +118,6 @@ repository trigger by sending data to the trigger target.
 
 For information about how to use AWS CodeCommit, see the \href{http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit User Guide}.
 }
-\section{Example}{
-\preformatted{codecommit <- paws::codecommit()
-codecommit$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -170,3 +164,9 @@ codecommit$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_get_repositories(
+  Foo = 123
+)}
+
+}

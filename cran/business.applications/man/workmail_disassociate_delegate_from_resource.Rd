@@ -20,7 +20,7 @@ resource's delegates.}
 Removes a member from the resource's set of delegates.
 }
 \section{Request syntax}{
-\preformatted{workmail$disassociate_delegate_from_resource(
+\preformatted{svc$disassociate_delegate_from_resource(
   OrganizationId = "string",
   ResourceId = "string",
   EntityId = "string"

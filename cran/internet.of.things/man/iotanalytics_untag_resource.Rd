@@ -15,7 +15,7 @@ iotanalytics_untag_resource(resourceArn, tagKeys)
 Removes the given tags (metadata) from the resource.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

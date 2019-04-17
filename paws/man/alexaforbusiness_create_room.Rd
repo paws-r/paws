@@ -25,7 +25,7 @@ idempotency.}
 Creates a room with the specified details.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_room(
+\preformatted{svc$create_room(
   RoomName = "string",
   Description = "string",
   ProfileArn = "string",

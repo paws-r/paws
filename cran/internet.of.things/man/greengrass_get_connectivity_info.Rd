@@ -13,7 +13,7 @@ greengrass_get_connectivity_info(ThingName)
 Retrieves the connectivity information for a core.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_connectivity_info(
+\preformatted{svc$get_connectivity_info(
   ThingName = "string"
 )
 }

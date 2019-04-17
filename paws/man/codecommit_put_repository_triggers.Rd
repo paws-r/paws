@@ -17,7 +17,7 @@ Replaces all triggers for a repository. This can be used to create or
 delete triggers.
 }
 \section{Request syntax}{
-\preformatted{codecommit$put_repository_triggers(
+\preformatted{svc$put_repository_triggers(
   repositoryName = "string",
   triggers = list(
     list(

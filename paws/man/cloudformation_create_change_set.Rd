@@ -192,7 +192,7 @@ execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$create_change_set(
+\preformatted{svc$create_change_set(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",

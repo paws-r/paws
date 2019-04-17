@@ -26,7 +26,7 @@ next set of results.}
 A list of inventory items returned by the request.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_inventory_entries(
+\preformatted{svc$list_inventory_entries(
   InstanceId = "string",
   TypeName = "string",
   Filters = list(

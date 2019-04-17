@@ -36,7 +36,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$list_state_machines(
+\preformatted{svc$list_state_machines(
   maxResults = 123,
   nextToken = "string"
 )

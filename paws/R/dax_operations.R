@@ -82,7 +82,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' dax$create_cluster(
+#' svc$create_cluster(
 #'   ClusterName = "string",
 #'   NodeType = "string",
 #'   Description = "string",
@@ -143,7 +143,7 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 #'
 #' @section Request syntax:
 #' ```
-#' dax$create_parameter_group(
+#' svc$create_parameter_group(
 #'   ParameterGroupName = "string",
 #'   Description = "string"
 #' )
@@ -181,7 +181,7 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$create_subnet_group(
+#' svc$create_subnet_group(
 #'   SubnetGroupName = "string",
 #'   Description = "string",
 #'   SubnetIds = list(
@@ -227,7 +227,7 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'
 #' @section Request syntax:
 #' ```
-#' dax$decrease_replication_factor(
+#' svc$decrease_replication_factor(
 #'   ClusterName = "string",
 #'   NewReplicationFactor = 123,
 #'   AvailabilityZones = list(
@@ -272,7 +272,7 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'
 #' @section Request syntax:
 #' ```
-#' dax$delete_cluster(
+#' svc$delete_cluster(
 #'   ClusterName = "string"
 #' )
 #' ```
@@ -308,7 +308,7 @@ dax_delete_cluster <- function(ClusterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$delete_parameter_group(
+#' svc$delete_parameter_group(
 #'   ParameterGroupName = "string"
 #' )
 #' ```
@@ -346,7 +346,7 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$delete_subnet_group(
+#' svc$delete_subnet_group(
 #'   SubnetGroupName = "string"
 #' )
 #' ```
@@ -408,7 +408,7 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_clusters(
+#' svc$describe_clusters(
 #'   ClusterNames = list(
 #'     "string"
 #'   ),
@@ -457,7 +457,7 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_default_parameters(
+#' svc$describe_default_parameters(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -516,7 +516,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_events(
+#' svc$describe_events(
 #'   SourceName = "string",
 #'   SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
 #'   StartTime = as.POSIXct(
@@ -573,7 +573,7 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_parameter_groups(
+#' svc$describe_parameter_groups(
 #'   ParameterGroupNames = list(
 #'     "string"
 #'   ),
@@ -624,7 +624,7 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_parameters(
+#' svc$describe_parameters(
 #'   ParameterGroupName = "string",
 #'   Source = "string",
 #'   MaxResults = 123,
@@ -672,7 +672,7 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #'
 #' @section Request syntax:
 #' ```
-#' dax$describe_subnet_groups(
+#' svc$describe_subnet_groups(
 #'   SubnetGroupNames = list(
 #'     "string"
 #'   ),
@@ -717,7 +717,7 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' dax$increase_replication_factor(
+#' svc$increase_replication_factor(
 #'   ClusterName = "string",
 #'   NewReplicationFactor = 123,
 #'   AvailabilityZones = list(
@@ -760,7 +760,7 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'
 #' @section Request syntax:
 #' ```
-#' dax$list_tags(
+#' svc$list_tags(
 #'   ResourceName = "string",
 #'   NextToken = "string"
 #' )
@@ -799,7 +799,7 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$reboot_node(
+#' svc$reboot_node(
 #'   ClusterName = "string",
 #'   NodeId = "string"
 #' )
@@ -837,7 +837,7 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$tag_resource(
+#' svc$tag_resource(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -881,7 +881,7 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$untag_resource(
+#' svc$untag_resource(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -934,7 +934,7 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' dax$update_cluster(
+#' svc$update_cluster(
 #'   ClusterName = "string",
 #'   Description = "string",
 #'   PreferredMaintenanceWindow = "string",
@@ -981,7 +981,7 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #'
 #' @section Request syntax:
 #' ```
-#' dax$update_parameter_group(
+#' svc$update_parameter_group(
 #'   ParameterGroupName = "string",
 #'   ParameterNameValues = list(
 #'     list(
@@ -1024,7 +1024,7 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #'
 #' @section Request syntax:
 #' ```
-#' dax$update_subnet_group(
+#' svc$update_subnet_group(
 #'   SubnetGroupName = "string",
 #'   Description = "string",
 #'   SubnetIds = list(

@@ -34,7 +34,7 @@ policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-man
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$attach_role_policy(
+\preformatted{svc$attach_role_policy(
   RoleName = "string",
   PolicyArn = "string"
 )
@@ -44,7 +44,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command attaches the AWS managed policy named
 # ReadOnlyAccess to the IAM role named ReadOnlyRole.
-\donttest{iam$attach_role_policy(
+\donttest{svc$attach_role_policy(
   PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
   RoleName = "ReadOnlyRole"
 )}

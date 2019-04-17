@@ -15,7 +15,7 @@ pinpoint_update_apns_voip_channel(APNSVoipChannelRequest, ApplicationId)
 Update an APNS VoIP channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_apns_voip_channel(
+\preformatted{svc$update_apns_voip_channel(
   APNSVoipChannelRequest = list(
     BundleId = "string",
     Certificate = "string",

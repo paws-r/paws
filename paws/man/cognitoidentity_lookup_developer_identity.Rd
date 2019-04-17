@@ -50,7 +50,7 @@ higher-volume operations for user authentication.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$lookup_developer_identity(
+\preformatted{svc$lookup_developer_identity(
   IdentityPoolId = "string",
   IdentityId = "string",
   DeveloperUserIdentifier = "string",

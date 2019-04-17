@@ -139,7 +139,7 @@ according to the type of read. For more information, see \href{http://docs.aws.a
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$batch_get_item(
+\preformatted{svc$batch_get_item(
   RequestItems = list(
     list(
       Keys = list(
@@ -186,7 +186,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \examples{
 # This example reads multiple items from the Music table using a batch of
 # three GetItem requests.  Only the AlbumTitle attribute is returned.
-\donttest{dynamodb$batch_get_item(
+\donttest{svc$batch_get_item(
   RequestItems = list(
     Music = list(
       Keys = list(

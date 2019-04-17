@@ -10,11 +10,10 @@ NULL
 #' data types, and errors. For detailed information about CloudFront
 #' features, see the *Amazon CloudFront Developer Guide*.
 #'
-#' @section Example:
-#' ```
-#' cloudfront <- paws::cloudfront()
-#' cloudfront$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_cloud_front_origin_access_identity(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

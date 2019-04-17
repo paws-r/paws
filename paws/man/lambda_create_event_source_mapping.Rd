@@ -60,7 +60,7 @@ For details about each event source type, see the following topics.
 }
 }
 \section{Request syntax}{
-\preformatted{lambda$create_event_source_mapping(
+\preformatted{svc$create_event_source_mapping(
   EventSourceArn = "string",
   FunctionName = "string",
   Enabled = TRUE|FALSE,

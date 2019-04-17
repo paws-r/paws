@@ -15,7 +15,7 @@ appmesh_describe_virtual_node(meshName, virtualNodeName)
 Describes an existing virtual node.
 }
 \section{Request syntax}{
-\preformatted{appmesh$describe_virtual_node(
+\preformatted{svc$describe_virtual_node(
   meshName = "string",
   virtualNodeName = "string"
 )

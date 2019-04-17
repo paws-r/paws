@@ -16,7 +16,7 @@ Deletes automated backups based on the source instance's
 \code{DbiResourceId} value or the restorable instance's resource ID.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_instance_automated_backup(
+\preformatted{svc$delete_db_instance_automated_backup(
   DbiResourceId = "string"
 )
 }

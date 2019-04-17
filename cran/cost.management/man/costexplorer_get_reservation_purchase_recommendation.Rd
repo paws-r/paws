@@ -61,7 +61,7 @@ recommendation would be for \code{c4.large} because that is the smallest size
 instance in the c4 instance family.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_reservation_purchase_recommendation(
+\preformatted{svc$get_reservation_purchase_recommendation(
   AccountId = "string",
   Service = "string",
   AccountScope = "PAYER"|"LINKED",

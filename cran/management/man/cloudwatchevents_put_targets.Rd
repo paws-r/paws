@@ -110,7 +110,7 @@ and each entry in \code{FailedEntries} provides the ID of the failed target
 and the error code.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$put_targets(
+\preformatted{svc$put_targets(
   Rule = "string",
   Targets = list(
     list(

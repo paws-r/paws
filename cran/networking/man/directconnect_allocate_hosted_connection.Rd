@@ -37,7 +37,7 @@ connection for the specified capacity.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$allocate_hosted_connection(
+\preformatted{svc$allocate_hosted_connection(
   connectionId = "string",
   ownerAccount = "string",
   bandwidth = "string",

@@ -13,7 +13,7 @@ s3_get_bucket_versioning(Bucket)
 Returns the versioning state of a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_versioning(
+\preformatted{svc$get_bucket_versioning(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the versioning state of a bucket.
 
 \examples{
 # The following example retrieves bucket versioning configuration.
-\donttest{s3$get_bucket_versioning(
+\donttest{svc$get_bucket_versioning(
   Bucket = "examplebucket"
 )}
 

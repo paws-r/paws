@@ -16,7 +16,7 @@ included in the response.}
 Retrieves information about a channel.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$describe_channel(
+\preformatted{svc$describe_channel(
   channelName = "string",
   includeStatistics = TRUE|FALSE
 )

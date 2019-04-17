@@ -25,7 +25,7 @@ already passed.}
 Modifies the settings for a snapshot.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_snapshot(
+\preformatted{svc$modify_cluster_snapshot(
   SnapshotIdentifier = "string",
   ManualSnapshotRetentionPeriod = 123,
   Force = TRUE|FALSE

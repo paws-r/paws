@@ -13,7 +13,7 @@ medialive_list_tags_for_resource(ResourceArn)
 Produces list of tags that have been created for a resource
 }
 \section{Request syntax}{
-\preformatted{medialive$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

@@ -24,7 +24,7 @@ Lists the tags for the specified delivery stream. This operation has a
 limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{firehose$list_tags_for_delivery_stream(
+\preformatted{svc$list_tags_for_delivery_stream(
   DeliveryStreamName = "string",
   ExclusiveStartTagKey = "string",
   Limit = 123

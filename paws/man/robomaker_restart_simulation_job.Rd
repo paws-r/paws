@@ -13,7 +13,7 @@ robomaker_restart_simulation_job(job)
 Restarts a running simulation job.
 }
 \section{Request syntax}{
-\preformatted{robomaker$restart_simulation_job(
+\preformatted{svc$restart_simulation_job(
   job = "string"
 )
 }

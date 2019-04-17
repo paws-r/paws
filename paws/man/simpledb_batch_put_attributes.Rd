@@ -68,7 +68,7 @@ The following limitations are enforced for this operation:
 }
 }
 \section{Request syntax}{
-\preformatted{simpledb$batch_put_attributes(
+\preformatted{svc$batch_put_attributes(
   DomainName = "string",
   Items = list(
     list(

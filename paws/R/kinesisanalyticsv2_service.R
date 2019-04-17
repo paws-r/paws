@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Documentation for Kinesis Data Analytics API v2
 #'
-#' @section Example:
-#' ```
-#' kinesisanalyticsv2 <- paws::kinesisanalyticsv2()
-#' kinesisanalyticsv2$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_application_cloud_watch_logging_option(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

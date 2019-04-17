@@ -61,7 +61,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$get_workflow_execution_history(
+\preformatted{svc$get_workflow_execution_history(
   domain = "string",
   execution = list(
     workflowId = "string",

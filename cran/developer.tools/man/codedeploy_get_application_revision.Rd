@@ -16,7 +16,7 @@ location.}
 Gets information about an application revision.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_application_revision(
+\preformatted{svc$get_application_revision(
   applicationName = "string",
   revision = list(
     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",

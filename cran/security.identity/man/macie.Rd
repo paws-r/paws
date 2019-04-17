@@ -14,12 +14,6 @@ information (PII) or intellectual property, and provides you with
 dashboards and alerts that give visibility into how this data is being
 accessed or moved. For more information, see the \href{https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html}{Macie User Guide}.
 }
-\section{Example}{
-\preformatted{macie <- paws::macie()
-macie$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -33,3 +27,9 @@ macie$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_member_account(
+  Foo = 123
+)}
+
+}

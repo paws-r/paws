@@ -13,7 +13,7 @@ appsync_get_schema_creation_status(apiId)
 Retrieves the current status of a schema creation operation.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_schema_creation_status(
+\preformatted{svc$get_schema_creation_status(
   apiId = "string"
 )
 }

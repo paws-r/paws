@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediastoredata$delete_object(
+#' svc$delete_object(
 #'   Path = "string"
 #' )
 #' ```
@@ -51,7 +51,7 @@ mediastoredata_delete_object <- function(Path) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastoredata$describe_object(
+#' svc$describe_object(
 #'   Path = "string"
 #' )
 #' ```
@@ -114,7 +114,7 @@ mediastoredata_describe_object <- function(Path) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastoredata$get_object(
+#' svc$get_object(
 #'   Path = "string",
 #'   Range = "string"
 #' )
@@ -169,7 +169,7 @@ mediastoredata_get_object <- function(Path, Range = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastoredata$list_items(
+#' svc$list_items(
 #'   Path = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -244,7 +244,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' mediastoredata$put_object(
+#' svc$put_object(
 #'   Body = raw,
 #'   Path = "string",
 #'   ContentType = "string",

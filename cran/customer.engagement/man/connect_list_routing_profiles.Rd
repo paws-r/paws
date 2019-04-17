@@ -27,7 +27,7 @@ Returns an array of \code{RoutingProfileSummary} objects that includes
 information about the routing profiles in your instance.
 }
 \section{Request syntax}{
-\preformatted{connect$list_routing_profiles(
+\preformatted{svc$list_routing_profiles(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123

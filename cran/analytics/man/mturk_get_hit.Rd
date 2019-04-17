@@ -13,7 +13,7 @@ mturk_get_hit(HITId)
 The \code{GetHIT} operation retrieves the details of the specified HIT.
 }
 \section{Request syntax}{
-\preformatted{mturk$get_hit(
+\preformatted{svc$get_hit(
   HITId = "string"
 )
 }

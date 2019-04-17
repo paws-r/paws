@@ -9,12 +9,6 @@ sagemaker()
 \description{
 Provides APIs for creating and managing Amazon SageMaker resources.
 }
-\section{Example}{
-\preformatted{sagemaker <- paws::sagemaker()
-sagemaker$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -96,3 +90,9 @@ sagemaker$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags(
+  Foo = 123
+)}
+
+}

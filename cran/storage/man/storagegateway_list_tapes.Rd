@@ -32,7 +32,7 @@ to retrieve the next set of tapes. This operation is only supported in
 the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_tapes(
+\preformatted{svc$list_tapes(
   TapeARNs = list(
     "string"
   ),

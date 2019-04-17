@@ -33,7 +33,7 @@ using sending authorization, see the \href{http://docs.aws.amazon.com/ses/latest
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_identity_policies(
+\preformatted{svc$list_identity_policies(
   Identity = "string"
 )
 }
@@ -42,7 +42,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example returns a list of sending authorization policies
 # that are attached to an identity:
-\donttest{ses$list_identity_policies(
+\donttest{svc$list_identity_policies(
   Identity = "example.com"
 )}
 

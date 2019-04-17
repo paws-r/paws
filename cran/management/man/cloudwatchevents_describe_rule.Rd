@@ -17,7 +17,7 @@ DescribeRule does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$describe_rule(
+\preformatted{svc$describe_rule(
   Name = "string"
 )
 }

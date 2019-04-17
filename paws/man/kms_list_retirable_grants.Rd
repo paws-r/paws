@@ -37,7 +37,7 @@ A typical use is to list all grants that you are able to retire. To
 retire a grant, use RetireGrant.
 }
 \section{Request syntax}{
-\preformatted{kms$list_retirable_grants(
+\preformatted{svc$list_retirable_grants(
   Limit = 123,
   Marker = "string",
   RetiringPrincipal = "string"
@@ -48,7 +48,7 @@ retire a grant, use RetireGrant.
 \examples{
 # The following example lists the grants that the specified principal
 # (identity) can retire.
-\donttest{kms$list_retirable_grants(
+\donttest{svc$list_retirable_grants(
   RetiringPrincipal = "arn:aws:iam::111122223333:role/ExampleRole"
 )}
 

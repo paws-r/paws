@@ -17,7 +17,7 @@ Sends custom events to Amazon CloudWatch Events so that they can be
 matched to rules.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$put_events(
+\preformatted{svc$put_events(
   Entries = list(
     list(
       Time = as.POSIXct(

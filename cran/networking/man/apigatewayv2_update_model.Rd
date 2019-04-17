@@ -25,7 +25,7 @@ JSON schema draft 4 model.}
 Updates a Model.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_model(
+\preformatted{svc$update_model(
   ApiId = "string",
   ContentType = "string",
   Description = "string",

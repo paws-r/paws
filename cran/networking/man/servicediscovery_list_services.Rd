@@ -35,7 +35,7 @@ Lists summary information for all the services that are associated with
 one or more specified namespaces.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$list_services(
+\preformatted{svc$list_services(
   NextToken = "string",
   MaxResults = 123,
   Filters = list(

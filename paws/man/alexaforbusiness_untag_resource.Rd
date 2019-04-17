@@ -16,7 +16,7 @@ system tags. Required.}
 Removes metadata tags from a specified resource.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$untag_resource(
+\preformatted{svc$untag_resource(
   Arn = "string",
   TagKeys = list(
     "string"

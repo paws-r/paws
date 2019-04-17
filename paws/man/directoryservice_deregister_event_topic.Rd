@@ -19,7 +19,7 @@ Removes the specified directory as a publisher to the specified SNS
 topic.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$deregister_event_topic(
+\preformatted{svc$deregister_event_topic(
   DirectoryId = "string",
   TopicName = "string"
 )

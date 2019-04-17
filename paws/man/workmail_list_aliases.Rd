@@ -22,7 +22,7 @@ Creates a paginated call to list the aliases associated with a given
 entity.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_aliases(
+\preformatted{svc$list_aliases(
   OrganizationId = "string",
   EntityId = "string",
   NextToken = "string",

@@ -17,7 +17,7 @@ Amazon API Gateway.}
 Returns an array of resources associated with the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_resources_for_web_acl(
+\preformatted{svc$list_resources_for_web_acl(
   WebACLId = "string",
   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
 )

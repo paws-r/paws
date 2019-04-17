@@ -44,7 +44,7 @@ thrown.}
 Updates a Device Defender security profile.
 }
 \section{Request syntax}{
-\preformatted{iot$update_security_profile(
+\preformatted{svc$update_security_profile(
   securityProfileName = "string",
   securityProfileDescription = "string",
   behaviors = list(

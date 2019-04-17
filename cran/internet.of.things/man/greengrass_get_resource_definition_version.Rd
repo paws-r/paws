@@ -17,7 +17,7 @@ greengrass_get_resource_definition_version(ResourceDefinitionId,
 Retrieves information about a resource definition version, including which resources are included in the version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_resource_definition_version(
+\preformatted{svc$get_resource_definition_version(
   ResourceDefinitionId = "string",
   ResourceDefinitionVersionId = "string"
 )

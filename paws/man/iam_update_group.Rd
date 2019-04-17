@@ -48,7 +48,7 @@ then the update fails. For more information about permissions, see
 \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   NewPath = "string",
   NewGroupName = "string"
@@ -58,7 +58,7 @@ then the update fails. For more information about permissions, see
 
 \examples{
 # The following command changes the name of the IAM group Test to Test-1.
-\donttest{iam$update_group(
+\donttest{svc$update_group(
   GroupName = "Test",
   NewGroupName = "Test-1"
 )}

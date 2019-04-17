@@ -21,7 +21,7 @@ operation is complete, you can't recover deleted tags.
 If you specify a tag that doesn't exist, Amazon ML ignores it.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_tags(
+\preformatted{svc$delete_tags(
   TagKeys = list(
     "string"
   ),

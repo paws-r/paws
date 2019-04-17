@@ -15,7 +15,7 @@ appsync_get_function(apiId, functionId)
 Get a \code{Function}.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_function(
+\preformatted{svc$get_function(
   apiId = "string",
   functionId = "string"
 )

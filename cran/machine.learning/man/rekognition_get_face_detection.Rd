@@ -46,7 +46,7 @@ getting the next set of results. To get the next page of results, call
 the token value returned from the previous call to \code{GetFaceDetection}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_face_detection(
+\preformatted{svc$get_face_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"

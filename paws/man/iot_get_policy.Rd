@@ -15,7 +15,7 @@ Gets information about the specified policy with the policy document of
 the default version.
 }
 \section{Request syntax}{
-\preformatted{iot$get_policy(
+\preformatted{svc$get_policy(
   policyName = "string"
 )
 }

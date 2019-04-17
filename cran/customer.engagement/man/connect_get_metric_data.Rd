@@ -220,7 +220,7 @@ If you are using an IAM account, it must have permission to the
 \code{connect:GetMetricData} action.
 }
 \section{Request syntax}{
-\preformatted{connect$get_metric_data(
+\preformatted{svc$get_metric_data(
   InstanceId = "string",
   StartTime = as.POSIXct(
     "2015-01-01"

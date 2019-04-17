@@ -13,7 +13,7 @@ sagemaker_delete_code_repository(CodeRepositoryName)
 Deletes the specified Git repository from your account.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_code_repository(
+\preformatted{svc$delete_code_repository(
   CodeRepositoryName = "string"
 )
 }

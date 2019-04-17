@@ -36,7 +36,7 @@ is done to the default status.}
 Updates an existing room profile by room profile ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_profile(
+\preformatted{svc$update_profile(
   ProfileArn = "string",
   ProfileName = "string",
   IsDefault = TRUE|FALSE,

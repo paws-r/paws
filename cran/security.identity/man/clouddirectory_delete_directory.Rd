@@ -15,7 +15,7 @@ directory cannot be undone. Exercise extreme caution when deleting
 directories.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$delete_directory(
+\preformatted{svc$delete_directory(
   DirectoryArn = "string"
 )
 }

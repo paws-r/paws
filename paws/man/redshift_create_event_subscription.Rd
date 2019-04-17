@@ -84,7 +84,7 @@ sources belonging to your AWS account. You must specify a source type if
 you specify a source ID.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_event_subscription(
+\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

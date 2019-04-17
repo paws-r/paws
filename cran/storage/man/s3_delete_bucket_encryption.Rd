@@ -14,7 +14,7 @@ configuration to delete.}
 Deletes the server-side encryption configuration from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_encryption(
+\preformatted{svc$delete_bucket_encryption(
   Bucket = "string"
 )
 }

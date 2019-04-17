@@ -27,7 +27,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' backup$create_backup_plan(
+#' svc$create_backup_plan(
 #'   BackupPlan = list(
 #'     BackupPlanName = "string",
 #'     Rules = list(
@@ -125,7 +125,7 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #'
 #' @section Request syntax:
 #' ```
-#' backup$create_backup_selection(
+#' svc$create_backup_selection(
 #'   BackupPlanId = "string",
 #'   BackupSelection = list(
 #'     SelectionName = "string",
@@ -191,7 +191,7 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
 #'
 #' @section Request syntax:
 #' ```
-#' backup$create_backup_vault(
+#' svc$create_backup_vault(
 #'   BackupVaultName = "string",
 #'   BackupVaultTags = list(
 #'     "string"
@@ -234,7 +234,7 @@ backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_backup_plan(
+#' svc$delete_backup_plan(
 #'   BackupPlanId = "string"
 #' )
 #' ```
@@ -273,7 +273,7 @@ backup_delete_backup_plan <- function(BackupPlanId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_backup_selection(
+#' svc$delete_backup_selection(
 #'   BackupPlanId = "string",
 #'   SelectionId = "string"
 #' )
@@ -313,7 +313,7 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_backup_vault(
+#' svc$delete_backup_vault(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -351,7 +351,7 @@ backup_delete_backup_vault <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_backup_vault_access_policy(
+#' svc$delete_backup_vault_access_policy(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -389,7 +389,7 @@ backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_backup_vault_notifications(
+#' svc$delete_backup_vault_notifications(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -430,7 +430,7 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$delete_recovery_point(
+#' svc$delete_recovery_point(
 #'   BackupVaultName = "string",
 #'   RecoveryPointArn = "string"
 #' )
@@ -466,7 +466,7 @@ backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$describe_backup_job(
+#' svc$describe_backup_job(
 #'   BackupJobId = "string"
 #' )
 #' ```
@@ -504,7 +504,7 @@ backup_describe_backup_job <- function(BackupJobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$describe_backup_vault(
+#' svc$describe_backup_vault(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -544,7 +544,7 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$describe_protected_resource(
+#' svc$describe_protected_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -587,7 +587,7 @@ backup_describe_protected_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$describe_recovery_point(
+#' svc$describe_recovery_point(
 #'   BackupVaultName = "string",
 #'   RecoveryPointArn = "string"
 #' )
@@ -625,7 +625,7 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$describe_restore_job(
+#' svc$describe_restore_job(
 #'   RestoreJobId = "string"
 #' )
 #' ```
@@ -662,7 +662,7 @@ backup_describe_restore_job <- function(RestoreJobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$export_backup_plan_template(
+#' svc$export_backup_plan_template(
 #'   BackupPlanId = "string"
 #' )
 #' ```
@@ -701,7 +701,7 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_plan(
+#' svc$get_backup_plan(
 #'   BackupPlanId = "string",
 #'   VersionId = "string"
 #' )
@@ -737,7 +737,7 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_plan_from_json(
+#' svc$get_backup_plan_from_json(
 #'   BackupPlanTemplateJson = "string"
 #' )
 #' ```
@@ -772,7 +772,7 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_plan_from_template(
+#' svc$get_backup_plan_from_template(
 #'   BackupPlanTemplateId = "string"
 #' )
 #' ```
@@ -811,7 +811,7 @@ backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_selection(
+#' svc$get_backup_selection(
 #'   BackupPlanId = "string",
 #'   SelectionId = "string"
 #' )
@@ -852,7 +852,7 @@ backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_vault_access_policy(
+#' svc$get_backup_vault_access_policy(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -890,7 +890,7 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_backup_vault_notifications(
+#' svc$get_backup_vault_notifications(
 #'   BackupVaultName = "string"
 #' )
 #' ```
@@ -940,7 +940,7 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$get_recovery_point_restore_metadata(
+#' svc$get_recovery_point_restore_metadata(
 #'   BackupVaultName = "string",
 #'   RecoveryPointArn = "string"
 #' )
@@ -1031,7 +1031,7 @@ backup_get_supported_resource_types <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_jobs(
+#' svc$list_backup_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   ByResourceArn = "string",
@@ -1083,7 +1083,7 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_plan_templates(
+#' svc$list_backup_plan_templates(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1128,7 +1128,7 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_plan_versions(
+#' svc$list_backup_plan_versions(
 #'   BackupPlanId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1175,7 +1175,7 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_plans(
+#' svc$list_backup_plans(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   IncludeDeleted = TRUE|FALSE
@@ -1219,7 +1219,7 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_selections(
+#' svc$list_backup_selections(
 #'   BackupPlanId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1262,7 +1262,7 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_backup_vaults(
+#' svc$list_backup_vaults(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1306,7 +1306,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_protected_resources(
+#' svc$list_protected_resources(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1362,7 +1362,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_recovery_points_by_backup_vault(
+#' svc$list_recovery_points_by_backup_vault(
 #'   BackupVaultName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -1417,7 +1417,7 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_recovery_points_by_resource(
+#' svc$list_recovery_points_by_resource(
 #'   ResourceArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1460,7 +1460,7 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_restore_jobs(
+#' svc$list_restore_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1505,7 +1505,7 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$list_tags(
+#' svc$list_tags(
 #'   ResourceArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1549,7 +1549,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$put_backup_vault_access_policy(
+#' svc$put_backup_vault_access_policy(
 #'   BackupVaultName = "string",
 #'   Policy = "string"
 #' )
@@ -1596,7 +1596,7 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' backup$put_backup_vault_notifications(
+#' svc$put_backup_vault_notifications(
 #'   BackupVaultName = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
@@ -1665,7 +1665,7 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #'
 #' @section Request syntax:
 #' ```
-#' backup$start_backup_job(
+#' svc$start_backup_job(
 #'   BackupVaultName = "string",
 #'   ResourceArn = "string",
 #'   IamRoleArn = "string",
@@ -1742,7 +1742,7 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #'
 #' @section Request syntax:
 #' ```
-#' backup$start_restore_job(
+#' svc$start_restore_job(
 #'   RecoveryPointArn = "string",
 #'   Metadata = list(
 #'     "string"
@@ -1783,7 +1783,7 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn, Ide
 #'
 #' @section Request syntax:
 #' ```
-#' backup$stop_backup_job(
+#' svc$stop_backup_job(
 #'   BackupJobId = "string"
 #' )
 #' ```
@@ -1823,7 +1823,7 @@ backup_stop_backup_job <- function(BackupJobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -1866,7 +1866,7 @@ backup_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeyList = list(
 #'     "string"
@@ -1909,7 +1909,7 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$update_backup_plan(
+#' svc$update_backup_plan(
 #'   BackupPlanId = "string",
 #'   BackupPlan = list(
 #'     BackupPlanName = "string",
@@ -1989,7 +1989,7 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 #'
 #' @section Request syntax:
 #' ```
-#' backup$update_recovery_point_lifecycle(
+#' svc$update_recovery_point_lifecycle(
 #'   BackupVaultName = "string",
 #'   RecoveryPointArn = "string",
 #'   Lifecycle = list(

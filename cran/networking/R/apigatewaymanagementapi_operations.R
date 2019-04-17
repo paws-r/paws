@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewaymanagementapi$post_to_connection(
+#' svc$post_to_connection(
 #'   Data = raw,
 #'   ConnectionId = "string"
 #' )

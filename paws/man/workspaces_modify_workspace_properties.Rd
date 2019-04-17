@@ -15,7 +15,7 @@ workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
 Modifies the specified WorkSpace properties.
 }
 \section{Request syntax}{
-\preformatted{workspaces$modify_workspace_properties(
+\preformatted{svc$modify_workspace_properties(
   WorkspaceId = "string",
   WorkspaceProperties = list(
     RunningMode = "AUTO_STOP"|"ALWAYS_ON",

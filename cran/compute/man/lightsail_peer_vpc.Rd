@@ -10,7 +10,7 @@ lightsail_peer_vpc()
 Tries to peer the Lightsail VPC with the user's default VPC.
 }
 \section{Request syntax}{
-\preformatted{lightsail$peer_vpc()
+\preformatted{svc$peer_vpc()
 }
 }
 

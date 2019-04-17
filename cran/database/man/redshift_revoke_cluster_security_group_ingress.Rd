@@ -36,7 +36,7 @@ about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$revoke_cluster_security_group_ingress(
+\preformatted{svc$revoke_cluster_security_group_ingress(
   ClusterSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",

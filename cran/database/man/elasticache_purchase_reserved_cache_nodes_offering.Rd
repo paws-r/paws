@@ -28,7 +28,7 @@ Default: \code{1}}
 Allows you to purchase a reserved cache node offering.
 }
 \section{Request syntax}{
-\preformatted{elasticache$purchase_reserved_cache_nodes_offering(
+\preformatted{svc$purchase_reserved_cache_nodes_offering(
   ReservedCacheNodesOfferingId = "string",
   ReservedCacheNodeId = "string",
   CacheNodeCount = 123

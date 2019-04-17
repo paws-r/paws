@@ -27,7 +27,7 @@ List the distributions that are associated with a specified AWS WAF web
 ACL.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_distributions_by_web_acl_id(
+\preformatted{svc$list_distributions_by_web_acl_id(
   Marker = "string",
   MaxItems = "string",
   WebACLId = "string"

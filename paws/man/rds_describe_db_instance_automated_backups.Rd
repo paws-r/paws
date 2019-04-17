@@ -61,7 +61,7 @@ operations.
 All parameters are optional.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_instance_automated_backups(
+\preformatted{svc$describe_db_instance_automated_backups(
   DbiResourceId = "string",
   DBInstanceIdentifier = "string",
   Filters = list(

@@ -22,7 +22,7 @@ For more information about tags, see \href{https://docs.aws.amazon.com/appstream
 in the \emph{Amazon AppStream 2.0 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{appstream$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

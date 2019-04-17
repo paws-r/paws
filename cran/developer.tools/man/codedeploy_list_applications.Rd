@@ -14,7 +14,7 @@ be used to return the next set of applications in the list.}
 Lists the applications registered with the IAM user or AWS account.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_applications(
+\preformatted{svc$list_applications(
   nextToken = "string"
 )
 }

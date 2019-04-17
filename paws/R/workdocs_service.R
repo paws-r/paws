@@ -39,11 +39,10 @@ NULL
 #' above, as well as give users the ability to grant access on a selective
 #' basis using the IAM model.
 #'
-#' @section Example:
-#' ```
-#' workdocs <- paws::workdocs()
-#' workdocs$operation()
-#' ```
+#' @examples
+#' \donttest{svc$abort_document_version_upload(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

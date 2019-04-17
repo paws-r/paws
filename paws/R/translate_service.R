@@ -8,11 +8,10 @@ NULL
 #' Provides translation between one source language and another of the same
 #' set of languages.
 #'
-#' @section Example:
-#' ```
-#' translate <- paws::translate()
-#' translate$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_terminology(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

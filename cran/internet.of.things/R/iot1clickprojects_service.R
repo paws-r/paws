@@ -7,11 +7,10 @@ NULL
 #' @description
 #' The AWS IoT 1-Click Projects API Reference
 #'
-#' @section Example:
-#' ```
-#' iot1clickprojects <- paws::iot1clickprojects()
-#' iot1clickprojects$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_device_with_placement(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

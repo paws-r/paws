@@ -142,7 +142,7 @@ parameter to cap model training costs.
 For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_training_job(
+\preformatted{svc$create_training_job(
   TrainingJobName = "string",
   HyperParameters = list(
     "string"

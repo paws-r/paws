@@ -27,7 +27,7 @@ filter criteria are specified, all event types are returned, in no
 particular order.
 }
 \section{Request syntax}{
-\preformatted{health$describe_event_types(
+\preformatted{svc$describe_event_types(
   filter = list(
     eventTypeCodes = list(
       "string"

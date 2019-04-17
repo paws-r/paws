@@ -38,7 +38,7 @@ Returns a list of deployment jobs for a fleet. You can optionally
 provide filters to retrieve specific deployment jobs.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_deployment_jobs(
+\preformatted{svc$list_deployment_jobs(
   filters = list(
     list(
       name = "string",

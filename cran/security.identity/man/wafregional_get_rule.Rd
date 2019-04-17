@@ -16,7 +16,7 @@ Returns the Rule that is specified by the \code{RuleId} that you included in
 the \code{GetRule} request.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_rule(
+\preformatted{svc$get_rule(
   RuleId = "string"
 )
 }
@@ -25,7 +25,7 @@ the \code{GetRule} request.
 \examples{
 # The following example returns the details of a rule with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{wafregional$get_rule(
+\donttest{svc$get_rule(
   RuleId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}
 

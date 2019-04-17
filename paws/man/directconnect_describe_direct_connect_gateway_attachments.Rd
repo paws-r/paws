@@ -33,7 +33,7 @@ specify both, the response contains the attachment between the Direct
 Connect gateway and the virtual interface.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_direct_connect_gateway_attachments(
+\preformatted{svc$describe_direct_connect_gateway_attachments(
   directConnectGatewayId = "string",
   virtualInterfaceId = "string",
   maxResults = 123,

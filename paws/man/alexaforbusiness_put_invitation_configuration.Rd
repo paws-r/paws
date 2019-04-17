@@ -22,7 +22,7 @@ Configures the email template for the user enrollment invitation with
 the specified attributes.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$put_invitation_configuration(
+\preformatted{svc$put_invitation_configuration(
   OrganizationName = "string",
   ContactEmail = "string",
   PrivateSkillIds = list(

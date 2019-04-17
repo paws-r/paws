@@ -16,7 +16,7 @@ Removes the Public Access Block configuration for an Amazon Web Services
 account.
 }
 \section{Request syntax}{
-\preformatted{s3control$delete_public_access_block(
+\preformatted{svc$delete_public_access_block(
   AccountId = "string"
 )
 }

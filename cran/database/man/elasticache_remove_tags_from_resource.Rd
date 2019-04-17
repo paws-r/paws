@@ -22,7 +22,7 @@ Removes the tags identified by the \code{TagKeys} list from the named
 resource.
 }
 \section{Request syntax}{
-\preformatted{elasticache$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"

@@ -32,7 +32,7 @@ After 90 days, deployment jobs expire and will be deleted. They will no
 longer be accessible.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_deployment_job(
+\preformatted{svc$create_deployment_job(
   deploymentConfig = list(
     concurrentDeploymentPercentage = 123,
     failureThresholdPercentage = 123

@@ -68,7 +68,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$create_load_balancer(
+\preformatted{svc$create_load_balancer(
   LoadBalancerName = "string",
   Listeners = list(
     list(
@@ -101,7 +101,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 \examples{
 # This example creates a load balancer with an HTTP listener in a VPC.
-\donttest{elb$create_load_balancer(
+\donttest{svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -121,7 +121,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 # This example creates a load balancer with an HTTP listener in
 # EC2-Classic.
-\donttest{elb$create_load_balancer(
+\donttest{svc$create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -137,7 +137,7 @@ in the \emph{Classic Load Balancers Guide}.
 )}
 
 # This example creates a load balancer with an HTTPS listener in a VPC.
-\donttest{elb$create_load_balancer(
+\donttest{svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,
@@ -164,7 +164,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 # This example creates a load balancer with an HTTPS listener in
 # EC2-Classic.
-\donttest{elb$create_load_balancer(
+\donttest{svc$create_load_balancer(
   AvailabilityZones = list(
     "us-west-2a"
   ),
@@ -188,7 +188,7 @@ in the \emph{Classic Load Balancers Guide}.
 
 # This example creates an internal load balancer with an HTTP listener in
 # a VPC.
-\donttest{elb$create_load_balancer(
+\donttest{svc$create_load_balancer(
   Listeners = list(
     list(
       InstancePort = 80L,

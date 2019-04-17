@@ -69,7 +69,7 @@ parameter group can be obtained by providing the name as a parameter. By
 default, the past hour of events are returned.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
   StartTime = as.POSIXct(

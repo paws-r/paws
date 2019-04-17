@@ -33,7 +33,7 @@ NAT. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/lates
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$reset_instance_attribute(
+\preformatted{svc$reset_instance_attribute(
   Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
   DryRun = TRUE|FALSE,
   InstanceId = "string"
@@ -44,7 +44,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \examples{
 # This example resets the sourceDestCheck attribute for the specified
 # instance.
-\donttest{ec2$reset_instance_attribute(
+\donttest{svc$reset_instance_attribute(
   Attribute = "sourceDestCheck",
   InstanceId = "i-1234567890abcdef0"
 )}

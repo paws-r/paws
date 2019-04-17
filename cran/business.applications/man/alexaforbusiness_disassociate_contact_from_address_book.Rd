@@ -16,7 +16,7 @@ alexaforbusiness_disassociate_contact_from_address_book(ContactArn,
 Disassociates a contact from a given address book.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$disassociate_contact_from_address_book(
+\preformatted{svc$disassociate_contact_from_address_book(
   ContactArn = "string",
   AddressBookArn = "string"
 )

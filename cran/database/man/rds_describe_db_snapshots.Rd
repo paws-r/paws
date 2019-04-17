@@ -97,7 +97,7 @@ Returns information about DB snapshots. This API action supports
 pagination.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_snapshots(
+\preformatted{svc$describe_db_snapshots(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string",
   SnapshotType = "string",

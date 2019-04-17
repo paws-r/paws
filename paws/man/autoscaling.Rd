@@ -18,12 +18,6 @@ For more information, including information about granting IAM users
 required permissions for Amazon EC2 Auto Scaling actions, see the
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}.
 }
-\section{Example}{
-\preformatted{autoscaling <- paws::autoscaling()
-autoscaling$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -84,3 +78,14 @@ autoscaling$operation()
 }
 }
 
+\examples{
+# This example attaches the specified instance to the specified Auto
+# Scaling group.
+\donttest{svc$attach_instances(
+  AutoScalingGroupName = "my-auto-scaling-group",
+  InstanceIds = list(
+    "i-93633f9b"
+  )
+)}
+
+}

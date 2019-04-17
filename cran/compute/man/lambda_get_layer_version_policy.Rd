@@ -16,7 +16,7 @@ Returns the permission policy for a version of an \href{https://docs.aws.amazon.
 For more information, see AddLayerVersionPermission.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_layer_version_policy(
+\preformatted{svc$get_layer_version_policy(
   LayerName = "string",
   VersionNumber = 123
 )

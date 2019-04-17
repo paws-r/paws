@@ -10,12 +10,6 @@ route53domains()
 Amazon Route 53 API actions let you register domain names and perform
 related operations.
 }
-\section{Example}{
-\preformatted{route53domains <- paws::route53domains()
-route53domains$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -46,3 +40,9 @@ route53domains$operation()
 }
 }
 
+\examples{
+\donttest{svc$check_domain_availability(
+  Foo = 123
+)}
+
+}

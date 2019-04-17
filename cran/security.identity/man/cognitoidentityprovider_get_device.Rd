@@ -15,7 +15,7 @@ cognitoidentityprovider_get_device(DeviceKey, AccessToken)
 Gets the device.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_device(
+\preformatted{svc$get_device(
   DeviceKey = "string",
   AccessToken = "string"
 )

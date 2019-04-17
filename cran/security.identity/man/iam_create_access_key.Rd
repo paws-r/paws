@@ -36,7 +36,7 @@ secret key is lost, you can delete the access keys for the associated
 user and then create new keys.
 }
 \section{Request syntax}{
-\preformatted{iam$create_access_key(
+\preformatted{svc$create_access_key(
   UserName = "string"
 )
 }
@@ -45,7 +45,7 @@ user and then create new keys.
 \examples{
 # The following command creates an access key (access key ID and secret
 # access key) for the IAM user named Bob.
-\donttest{iam$create_access_key(
+\donttest{svc$create_access_key(
   UserName = "Bob"
 )}
 

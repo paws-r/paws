@@ -15,7 +15,7 @@ Deletes the specified virtual tape from the virtual tape shelf (VTS).
 This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_tape_archive(
+\preformatted{svc$delete_tape_archive(
   TapeARN = "string"
 )
 }
@@ -23,7 +23,7 @@ This operation is only supported in the tape gateway type.
 
 \examples{
 # Deletes the specified virtual tape from the virtual tape shelf (VTS).
-\donttest{storagegateway$delete_tape_archive(
+\donttest{svc$delete_tape_archive(
   TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
 )}
 

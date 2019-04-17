@@ -34,7 +34,7 @@ an authentication type is not provided, the default is to authenticate
 users using a streaming URL.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_sessions(
+\preformatted{svc$describe_sessions(
   StackName = "string",
   FleetName = "string",
   UserId = "string",

@@ -19,7 +19,7 @@ Updates a budget. You can change every part of a budget except for the
 forecasting.
 }
 \section{Request syntax}{
-\preformatted{budgets$update_budget(
+\preformatted{svc$update_budget(
   AccountId = "string",
   NewBudget = list(
     BudgetName = "string",

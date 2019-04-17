@@ -19,7 +19,7 @@ Deletes the specified Client VPN endpoint. You must disassociate all
 target networks before you can delete a Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_client_vpn_endpoint(
+\preformatted{svc$delete_client_vpn_endpoint(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )

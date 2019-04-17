@@ -27,7 +27,7 @@ response contains a token that you pass in the next call to
 \code{ListLunaClients} to retrieve the next set of items.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$list_luna_clients(
+\preformatted{svc$list_luna_clients(
   NextToken = "string"
 )
 }

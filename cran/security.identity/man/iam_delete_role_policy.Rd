@@ -32,7 +32,7 @@ about policies, refer to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/p
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_role_policy(
+\preformatted{svc$delete_role_policy(
   RoleName = "string",
   PolicyName = "string"
 )
@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command removes the policy named ExamplePolicy from the
 # role named Test-Role.
-\donttest{iam$delete_role_policy(
+\donttest{svc$delete_role_policy(
   PolicyName = "ExamplePolicy",
   RoleName = "Test-Role"
 )}

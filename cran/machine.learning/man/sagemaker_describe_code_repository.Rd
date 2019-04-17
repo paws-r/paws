@@ -13,7 +13,7 @@ sagemaker_describe_code_repository(CodeRepositoryName)
 Gets details about the specified Git repository.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_code_repository(
+\preformatted{svc$describe_code_repository(
   CodeRepositoryName = "string"
 )
 }

@@ -50,7 +50,7 @@ Clients can invoke versions directly or with an alias. To create an
 alias, use CreateAlias.
 }
 \section{Request syntax}{
-\preformatted{lambda$publish_version(
+\preformatted{svc$publish_version(
   FunctionName = "string",
   CodeSha256 = "string",
   Description = "string",
@@ -61,7 +61,7 @@ alias, use CreateAlias.
 
 \examples{
 # This operation publishes a version of a Lambda function
-\donttest{lambda$publish_version(
+\donttest{svc$publish_version(
   CodeSha256 = "",
   Description = "",
   FunctionName = "myFunction"

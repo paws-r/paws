@@ -17,7 +17,7 @@ apigateway_get_method(restApiId, resourceId, httpMethod)
 Describe an existing Method resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_method(
+\preformatted{svc$get_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"

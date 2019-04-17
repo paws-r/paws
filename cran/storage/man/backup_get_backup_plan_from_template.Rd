@@ -13,7 +13,7 @@ backup_get_backup_plan_from_template(BackupPlanTemplateId)
 Returns the template specified by its \code{templateId} as a backup plan.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_plan_from_template(
+\preformatted{svc$get_backup_plan_from_template(
   BackupPlanTemplateId = "string"
 )
 }

@@ -50,7 +50,7 @@ more results to display.
 This operation can be called from any account in the organization.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_handshakes_for_account(
+\preformatted{svc$list_handshakes_for_account(
   Filter = list(
     ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
     ParentHandshakeId = "string"
@@ -65,7 +65,7 @@ This operation can be called from any account in the organization.
 # The following example shows you how to get a list of handshakes that are
 # associated with the account of the credentials used to call the
 # operation:
-\donttest{organizations$list_handshakes_for_account()}
+\donttest{svc$list_handshakes_for_account()}
 
 }
 \keyword{internal}

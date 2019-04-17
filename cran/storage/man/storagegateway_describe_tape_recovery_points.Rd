@@ -27,7 +27,7 @@ virtual tapes that have recovery points can be recovered to a new
 gateway. This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_tape_recovery_points(
+\preformatted{svc$describe_tape_recovery_points(
   GatewayARN = "string",
   Marker = "string",
   Limit = 123
@@ -38,7 +38,7 @@ gateway. This operation is only supported in the tape gateway type.
 \examples{
 # Returns a list of virtual tape recovery points that are available for
 # the specified gateway-VTL.
-\donttest{storagegateway$describe_tape_recovery_points(
+\donttest{svc$describe_tape_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 1L,
   Marker = "1"

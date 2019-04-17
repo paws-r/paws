@@ -27,7 +27,7 @@ deleted if it is being used in any active matchmaking tickets.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_matchmaking_configuration(
+\preformatted{svc$delete_matchmaking_configuration(
   Name = "string"
 )
 }

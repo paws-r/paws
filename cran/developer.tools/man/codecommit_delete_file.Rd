@@ -47,7 +47,7 @@ the branch that contains the revision. The file will still exist in the
 commits prior to the commit that contains the deletion.
 }
 \section{Request syntax}{
-\preformatted{codecommit$delete_file(
+\preformatted{svc$delete_file(
   repositoryName = "string",
   branchName = "string",
   filePath = "string",

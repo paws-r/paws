@@ -15,7 +15,7 @@ apigatewayv2_delete_model(ApiId, ModelId)
 Deletes a Model.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_model(
+\preformatted{svc$delete_model(
   ApiId = "string",
   ModelId = "string"
 )

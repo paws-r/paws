@@ -28,7 +28,7 @@ creating a restrictive bucket policy. For more information, see
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_resource_data_sync(
+\preformatted{svc$create_resource_data_sync(
   SyncName = "string",
   S3Destination = list(
     BucketName = "string",

@@ -21,7 +21,7 @@ classification types of the S3 resources associated with Amazon Macie
 for the specified member account.
 }
 \section{Request syntax}{
-\preformatted{macie$update_s3_resources(
+\preformatted{svc$update_s3_resources(
   memberAccountId = "string",
   s3ResourcesUpdate = list(
     list(

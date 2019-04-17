@@ -21,7 +21,7 @@ notifications and subscribers for you.}
 Creates a budget and, if included, notifications and subscribers.
 }
 \section{Request syntax}{
-\preformatted{budgets$create_budget(
+\preformatted{svc$create_budget(
   AccountId = "string",
   Budget = list(
     BudgetName = "string",

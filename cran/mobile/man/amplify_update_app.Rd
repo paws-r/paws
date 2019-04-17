@@ -35,7 +35,7 @@ amplify_update_app(appId, name, description, platform,
 Updates an existing Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$update_app(
+\preformatted{svc$update_app(
   appId = "string",
   name = "string",
   description = "string",

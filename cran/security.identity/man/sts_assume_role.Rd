@@ -216,7 +216,7 @@ hardware or virtual MFA device. The \code{TokenCode} is the time-based
 one-time password (TOTP) that the MFA devices produces.
 }
 \section{Request syntax}{
-\preformatted{sts$assume_role(
+\preformatted{svc$assume_role(
   RoleArn = "string",
   RoleSessionName = "string",
   Policy = "string",
@@ -230,7 +230,7 @@ one-time password (TOTP) that the MFA devices produces.
 
 \examples{
 # 
-\donttest{sts$assume_role(
+\donttest{svc$assume_role(
   DurationSeconds = 3600L,
   ExternalId = "123ABC",
   Policy = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"Stmt1\\",\\"Effect\\":...",

@@ -35,7 +35,7 @@ This operation requires permission for the \code{lex:CreateBotVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$create_bot_version(
+\preformatted{svc$create_bot_version(
   name = "string",
   checksum = "string"
 )

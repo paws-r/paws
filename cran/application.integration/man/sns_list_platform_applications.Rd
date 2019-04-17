@@ -26,7 +26,7 @@ to return, NextToken will be null. For more information, see \href{http://docs.a
 This action is throttled at 15 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$list_platform_applications(
+\preformatted{svc$list_platform_applications(
   NextToken = "string"
 )
 }

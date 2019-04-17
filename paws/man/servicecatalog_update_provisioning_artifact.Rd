@@ -35,7 +35,7 @@ You cannot update a provisioning artifact for a product that was shared
 with you.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_provisioning_artifact(
+\preformatted{svc$update_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string",

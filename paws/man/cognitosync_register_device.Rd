@@ -25,7 +25,7 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$register_device(
+\preformatted{svc$register_device(
   IdentityPoolId = "string",
   IdentityId = "string",
   Platform = "APNS"|"APNS_SANDBOX"|"GCM"|"ADM",

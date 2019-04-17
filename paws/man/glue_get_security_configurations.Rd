@@ -15,7 +15,7 @@ glue_get_security_configurations(MaxResults, NextToken)
 Retrieves a list of all security configurations.
 }
 \section{Request syntax}{
-\preformatted{glue$get_security_configurations(
+\preformatted{svc$get_security_configurations(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -28,7 +28,7 @@ Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_cache_subnet_group(
+\preformatted{svc$create_cache_subnet_group(
   CacheSubnetGroupName = "string",
   CacheSubnetGroupDescription = "string",
   SubnetIds = list(

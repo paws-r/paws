@@ -18,7 +18,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$add_tags_to_on_premises_instances(
+#' svc$add_tags_to_on_premises_instances(
 #'   tags = list(
 #'     list(
 #'       Key = "string",
@@ -64,7 +64,7 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_application_revisions(
+#' svc$batch_get_application_revisions(
 #'   applicationName = "string",
 #'   revisions = list(
 #'     list(
@@ -123,7 +123,7 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_applications(
+#' svc$batch_get_applications(
 #'   applicationNames = list(
 #'     "string"
 #'   )
@@ -163,7 +163,7 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_deployment_groups(
+#' svc$batch_get_deployment_groups(
 #'   applicationName = "string",
 #'   deploymentGroupNames = list(
 #'     "string"
@@ -207,7 +207,7 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_deployment_instances(
+#' svc$batch_get_deployment_instances(
 #'   deploymentId = "string",
 #'   instanceIds = list(
 #'     "string"
@@ -271,7 +271,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_deployment_targets(
+#' svc$batch_get_deployment_targets(
 #'   deploymentId = "string",
 #'   targetIds = list(
 #'     "string"
@@ -309,7 +309,7 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_deployments(
+#' svc$batch_get_deployments(
 #'   deploymentIds = list(
 #'     "string"
 #'   )
@@ -346,7 +346,7 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$batch_get_on_premises_instances(
+#' svc$batch_get_on_premises_instances(
 #'   instanceNames = list(
 #'     "string"
 #'   )
@@ -396,7 +396,7 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$continue_deployment(
+#' svc$continue_deployment(
 #'   deploymentId = "string",
 #'   deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
 #' )
@@ -434,7 +434,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$create_application(
+#' svc$create_application(
 #'   applicationName = "string",
 #'   computePlatform = "Server"|"Lambda"|"ECS"
 #' )
@@ -531,7 +531,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$create_deployment(
+#' svc$create_deployment(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string",
 #'   revision = list(
@@ -646,7 +646,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$create_deployment_config(
+#' svc$create_deployment_config(
 #'   deploymentConfigName = "string",
 #'   minimumHealthyHosts = list(
 #'     value = 123,
@@ -751,7 +751,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$create_deployment_group(
+#' svc$create_deployment_group(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string",
 #'   deploymentConfigName = "string",
@@ -907,7 +907,7 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$delete_application(
+#' svc$delete_application(
 #'   applicationName = "string"
 #' )
 #' ```
@@ -946,7 +946,7 @@ codedeploy_delete_application <- function(applicationName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$delete_deployment_config(
+#' svc$delete_deployment_config(
 #'   deploymentConfigName = "string"
 #' )
 #' ```
@@ -983,7 +983,7 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$delete_deployment_group(
+#' svc$delete_deployment_group(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string"
 #' )
@@ -1019,7 +1019,7 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$delete_git_hub_account_token(
+#' svc$delete_git_hub_account_token(
 #'   tokenName = "string"
 #' )
 #' ```
@@ -1054,7 +1054,7 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$deregister_on_premises_instance(
+#' svc$deregister_on_premises_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -1090,7 +1090,7 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_application(
+#' svc$get_application(
 #'   applicationName = "string"
 #' )
 #' ```
@@ -1127,7 +1127,7 @@ codedeploy_get_application <- function(applicationName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_application_revision(
+#' svc$get_application_revision(
 #'   applicationName = "string",
 #'   revision = list(
 #'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
@@ -1190,7 +1190,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_deployment(
+#' svc$get_deployment(
 #'   deploymentId = "string"
 #' )
 #' ```
@@ -1226,7 +1226,7 @@ codedeploy_get_deployment <- function(deploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_deployment_config(
+#' svc$get_deployment_config(
 #'   deploymentConfigName = "string"
 #' )
 #' ```
@@ -1263,7 +1263,7 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_deployment_group(
+#' svc$get_deployment_group(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string"
 #' )
@@ -1300,7 +1300,7 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_deployment_instance(
+#' svc$get_deployment_instance(
 #'   deploymentId = "string",
 #'   instanceId = "string"
 #' )
@@ -1337,7 +1337,7 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_deployment_target(
+#' svc$get_deployment_target(
 #'   deploymentId = "string",
 #'   targetId = "string"
 #' )
@@ -1373,7 +1373,7 @@ codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$get_on_premises_instance(
+#' svc$get_on_premises_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -1449,7 +1449,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_application_revisions(
+#' svc$list_application_revisions(
 #'   applicationName = "string",
 #'   sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
 #'   sortOrder = "ascending"|"descending",
@@ -1491,7 +1491,7 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_applications(
+#' svc$list_applications(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1528,7 +1528,7 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_deployment_configs(
+#' svc$list_deployment_configs(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1568,7 +1568,7 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_deployment_groups(
+#' svc$list_deployment_groups(
 #'   applicationName = "string",
 #'   nextToken = "string"
 #' )
@@ -1633,7 +1633,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_deployment_instances(
+#' svc$list_deployment_instances(
 #'   deploymentId = "string",
 #'   nextToken = "string",
 #'   instanceStatusFilter = list(
@@ -1680,7 +1680,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_deployment_targets(
+#' svc$list_deployment_targets(
 #'   deploymentId = "string",
 #'   nextToken = "string",
 #'   targetFilters = list(
@@ -1743,7 +1743,7 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_deployments(
+#' svc$list_deployments(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string",
 #'   includeOnlyStatuses = list(
@@ -1792,7 +1792,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_git_hub_account_token_names(
+#' svc$list_git_hub_account_token_names(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1843,7 +1843,7 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$list_on_premises_instances(
+#' svc$list_on_premises_instances(
 #'   registrationStatus = "Registered"|"Deregistered",
 #'   tagFilters = list(
 #'     list(
@@ -1894,7 +1894,7 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$put_lifecycle_event_hook_execution_status(
+#' svc$put_lifecycle_event_hook_execution_status(
 #'   deploymentId = "string",
 #'   lifecycleEventHookExecutionId = "string",
 #'   status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
@@ -1936,7 +1936,7 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$register_application_revision(
+#' svc$register_application_revision(
 #'   applicationName = "string",
 #'   description = "string",
 #'   revision = list(
@@ -2000,7 +2000,7 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$register_on_premises_instance(
+#' svc$register_on_premises_instance(
 #'   instanceName = "string",
 #'   iamSessionArn = "string",
 #'   iamUserArn = "string"
@@ -2038,7 +2038,7 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$remove_tags_from_on_premises_instances(
+#' svc$remove_tags_from_on_premises_instances(
 #'   tags = list(
 #'     list(
 #'       Key = "string",
@@ -2084,7 +2084,7 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$skip_wait_time_for_instance_termination(
+#' svc$skip_wait_time_for_instance_termination(
 #'   deploymentId = "string"
 #' )
 #' ```
@@ -2122,7 +2122,7 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$stop_deployment(
+#' svc$stop_deployment(
 #'   deploymentId = "string",
 #'   autoRollbackEnabled = TRUE|FALSE
 #' )
@@ -2159,7 +2159,7 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$update_application(
+#' svc$update_application(
 #'   applicationName = "string",
 #'   newApplicationName = "string"
 #' )
@@ -2240,7 +2240,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #'
 #' @section Request syntax:
 #' ```
-#' codedeploy$update_deployment_group(
+#' svc$update_deployment_group(
 #'   applicationName = "string",
 #'   currentDeploymentGroupName = "string",
 #'   newDeploymentGroupName = "string",

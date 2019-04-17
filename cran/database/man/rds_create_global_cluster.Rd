@@ -43,7 +43,7 @@ becomes the primary cluster of the global database.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$create_global_cluster(
+\preformatted{svc$create_global_cluster(
   GlobalClusterIdentifier = "string",
   SourceDBClusterIdentifier = "string",
   Engine = "string",

@@ -62,7 +62,7 @@ For more information about subnets, see \href{https://docs.aws.amazon.com/Amazon
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_subnet(
+\preformatted{svc$create_subnet(
   AvailabilityZone = "string",
   AvailabilityZoneId = "string",
   CidrBlock = "string",
@@ -77,7 +77,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example creates a subnet in the specified VPC with the specified
 # CIDR block. We recommend that you let us select an Availability Zone for
 # you.
-\donttest{ec2$create_subnet(
+\donttest{svc$create_subnet(
   CidrBlock = "10.0.1.0/24",
   VpcId = "vpc-a01106c2"
 )}

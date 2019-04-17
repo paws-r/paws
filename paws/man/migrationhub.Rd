@@ -11,12 +11,6 @@ The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
 }
-\section{Example}{
-\preformatted{migrationhub <- paws::migrationhub()
-migrationhub$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -39,3 +33,9 @@ migrationhub$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_created_artifact(
+  Foo = 123
+)}
+
+}

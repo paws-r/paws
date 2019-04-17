@@ -15,7 +15,7 @@ Deletes a previously submitted transcription job along with any other
 generated results such as the transcription, models, and so on.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$delete_transcription_job(
+\preformatted{svc$delete_transcription_job(
   TranscriptionJobName = "string"
 )
 }

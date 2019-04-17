@@ -15,7 +15,7 @@ only if it is in the running state. You can use the DescribeApplication
 operation to find the application state.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$stop_application(
+\preformatted{svc$stop_application(
   ApplicationName = "string"
 )
 }

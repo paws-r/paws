@@ -30,7 +30,7 @@ category for more specific tag values. A tag value acts as a descriptor
 within a tag key.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

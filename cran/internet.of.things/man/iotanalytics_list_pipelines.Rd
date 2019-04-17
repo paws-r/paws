@@ -17,7 +17,7 @@ The default value is 100.}
 Retrieves a list of pipelines.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$list_pipelines(
+\preformatted{svc$list_pipelines(
   nextToken = "string",
   maxResults = 123
 )

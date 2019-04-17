@@ -21,7 +21,7 @@ mq_update_user(BrokerId, ConsoleAccess, Groups, Password, Username)
 Updates the information for an ActiveMQ user.
 }
 \section{Request syntax}{
-\preformatted{mq$update_user(
+\preformatted{svc$update_user(
   BrokerId = "string",
   ConsoleAccess = TRUE|FALSE,
   Groups = list(

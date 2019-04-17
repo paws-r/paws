@@ -36,7 +36,7 @@ or virtual router that is specified as the provider for the virtual
 service.
 }
 \section{Request syntax}{
-\preformatted{appmesh$create_virtual_service(
+\preformatted{svc$create_virtual_service(
   clientToken = "string",
   meshName = "string",
   spec = list(

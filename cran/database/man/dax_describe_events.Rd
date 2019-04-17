@@ -43,7 +43,7 @@ By default, only the events occurring within the last hour are returned;
 however, you can retrieve up to 14 days' worth of events if necessary.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_events(
+\preformatted{svc$describe_events(
   SourceName = "string",
   SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
   StartTime = as.POSIXct(

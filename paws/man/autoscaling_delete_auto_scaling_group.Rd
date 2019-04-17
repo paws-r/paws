@@ -35,7 +35,7 @@ UpdateAutoScalingGroup and set the minimum size and desired capacity of
 the Auto Scaling group to zero.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$delete_auto_scaling_group(
+\preformatted{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "string",
   ForceDelete = TRUE|FALSE
 )
@@ -44,13 +44,13 @@ the Auto Scaling group to zero.
 
 \examples{
 # This example deletes the specified Auto Scaling group.
-\donttest{autoscaling$delete_auto_scaling_group(
+\donttest{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 
 # This example deletes the specified Auto Scaling group and all its
 # instances.
-\donttest{autoscaling$delete_auto_scaling_group(
+\donttest{svc$delete_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   ForceDelete = TRUE
 )}

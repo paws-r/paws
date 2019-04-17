@@ -16,7 +16,7 @@ count. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/la
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_scaling_parameters(
+\preformatted{svc$describe_scaling_parameters(
   DomainName = "string"
 )
 }

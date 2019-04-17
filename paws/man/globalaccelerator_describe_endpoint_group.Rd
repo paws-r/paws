@@ -13,7 +13,7 @@ globalaccelerator_describe_endpoint_group(EndpointGroupArn)
 Describe an endpoint group.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$describe_endpoint_group(
+\preformatted{svc$describe_endpoint_group(
   EndpointGroupArn = "string"
 )
 }

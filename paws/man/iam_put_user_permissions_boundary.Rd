@@ -29,7 +29,7 @@ learn how the effective permissions for a user are evaluated, see \href{http://d
 in the IAM User Guide.
 }
 \section{Request syntax}{
-\preformatted{iam$put_user_permissions_boundary(
+\preformatted{svc$put_user_permissions_boundary(
   UserName = "string",
   PermissionsBoundary = "string"
 )

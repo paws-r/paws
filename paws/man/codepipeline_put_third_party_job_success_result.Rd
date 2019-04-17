@@ -33,7 +33,7 @@ Represents the success of a third party job as returned to the pipeline
 by a job worker. Only used for partner actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_third_party_job_success_result(
+\preformatted{svc$put_third_party_job_success_result(
   jobId = "string",
   clientToken = "string",
   currentRevision = list(

@@ -16,7 +16,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$build_suggesters(
+#' svc$build_suggesters(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -57,7 +57,7 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$create_domain(
+#' svc$create_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -98,7 +98,7 @@ cloudsearch_create_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$define_analysis_scheme(
+#' svc$define_analysis_scheme(
 #'   DomainName = "string",
 #'   AnalysisScheme = list(
 #'     AnalysisSchemeName = "string",
@@ -150,7 +150,7 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$define_expression(
+#' svc$define_expression(
 #'   DomainName = "string",
 #'   Expression = list(
 #'     ExpressionName = "string",
@@ -199,7 +199,7 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$define_index_field(
+#' svc$define_index_field(
 #'   DomainName = "string",
 #'   IndexField = list(
 #'     IndexFieldName = "string",
@@ -328,7 +328,7 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$define_suggester(
+#' svc$define_suggester(
 #'   DomainName = "string",
 #'   Suggester = list(
 #'     SuggesterName = "string",
@@ -375,7 +375,7 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$delete_analysis_scheme(
+#' svc$delete_analysis_scheme(
 #'   DomainName = "string",
 #'   AnalysisSchemeName = "string"
 #' )
@@ -415,7 +415,7 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$delete_domain(
+#' svc$delete_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -454,7 +454,7 @@ cloudsearch_delete_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$delete_expression(
+#' svc$delete_expression(
 #'   DomainName = "string",
 #'   ExpressionName = "string"
 #' )
@@ -495,7 +495,7 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$delete_index_field(
+#' svc$delete_index_field(
 #'   DomainName = "string",
 #'   IndexFieldName = "string"
 #' )
@@ -534,7 +534,7 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$delete_suggester(
+#' svc$delete_suggester(
 #'   DomainName = "string",
 #'   SuggesterName = "string"
 #' )
@@ -582,7 +582,7 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_analysis_schemes(
+#' svc$describe_analysis_schemes(
 #'   DomainName = "string",
 #'   AnalysisSchemeNames = list(
 #'     "string"
@@ -628,7 +628,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_availability_options(
+#' svc$describe_availability_options(
 #'   DomainName = "string",
 #'   Deployed = TRUE|FALSE
 #' )
@@ -671,7 +671,7 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_domains(
+#' svc$describe_domains(
 #'   DomainNames = list(
 #'     "string"
 #'   )
@@ -718,7 +718,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_expressions(
+#' svc$describe_expressions(
 #'   DomainName = "string",
 #'   ExpressionNames = list(
 #'     "string"
@@ -767,7 +767,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_index_fields(
+#' svc$describe_index_fields(
 #'   DomainName = "string",
 #'   FieldNames = list(
 #'     "string"
@@ -810,7 +810,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_scaling_parameters(
+#' svc$describe_scaling_parameters(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -854,7 +854,7 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_service_access_policies(
+#' svc$describe_service_access_policies(
 #'   DomainName = "string",
 #'   Deployed = TRUE|FALSE
 #' )
@@ -900,7 +900,7 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$describe_suggesters(
+#' svc$describe_suggesters(
 #'   DomainName = "string",
 #'   SuggesterNames = list(
 #'     "string"
@@ -942,7 +942,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$index_documents(
+#' svc$index_documents(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -1018,7 +1018,7 @@ cloudsearch_list_domain_names <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$update_availability_options(
+#' svc$update_availability_options(
 #'   DomainName = "string",
 #'   MultiAZ = TRUE|FALSE
 #' )
@@ -1063,7 +1063,7 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$update_scaling_parameters(
+#' svc$update_scaling_parameters(
 #'   DomainName = "string",
 #'   ScalingParameters = list(
 #'     DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge",
@@ -1109,7 +1109,7 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudsearch$update_service_access_policies(
+#' svc$update_service_access_policies(
 #'   DomainName = "string",
 #'   AccessPolicies = "string"
 #' )

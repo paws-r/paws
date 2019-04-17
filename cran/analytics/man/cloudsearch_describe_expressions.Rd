@@ -24,7 +24,7 @@ changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_expressions(
+\preformatted{svc$describe_expressions(
   DomainName = "string",
   ExpressionNames = list(
     "string"

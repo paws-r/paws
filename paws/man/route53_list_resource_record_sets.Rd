@@ -123,7 +123,7 @@ of results, get the values of \code{NextRecordName}, \code{NextRecordType}, and
 \code{StartRecordName}, \code{StartRecordType}, and \code{StartRecordIdentifier}.
 }
 \section{Request syntax}{
-\preformatted{route53$list_resource_record_sets(
+\preformatted{svc$list_resource_record_sets(
   HostedZoneId = "string",
   StartRecordName = "string",
   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",

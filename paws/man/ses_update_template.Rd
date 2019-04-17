@@ -18,7 +18,7 @@ operation. For more information, see the \href{http://docs.aws.amazon.com/ses/la
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$update_template(
+\preformatted{svc$update_template(
   Template = list(
     TemplateName = "string",
     SubjectPart = "string",

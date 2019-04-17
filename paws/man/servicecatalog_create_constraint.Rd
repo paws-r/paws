@@ -81,7 +81,7 @@ returned for each repeated request.}
 Creates a constraint.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_constraint(
+\preformatted{svc$create_constraint(
   AcceptLanguage = "string",
   PortfolioId = "string",
   ProductId = "string",

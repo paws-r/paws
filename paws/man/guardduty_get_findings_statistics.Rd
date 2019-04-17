@@ -19,7 +19,7 @@ guardduty_get_findings_statistics(DetectorId, FindingCriteria,
 Lists Amazon GuardDuty findings' statistics for the specified detector ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_findings_statistics(
+\preformatted{svc$get_findings_statistics(
   DetectorId = "string",
   FindingCriteria = list(
     Criterion = list(

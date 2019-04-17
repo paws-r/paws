@@ -44,7 +44,7 @@ uploading data for indexing, see \href{http://docs.aws.amazon.com/cloudsearch/la
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearchdomain$upload_documents(
+\preformatted{svc$upload_documents(
   documents = raw,
   contentType = "application/json"|"application/xml"
 )

@@ -49,7 +49,7 @@ Returns information about provisioned RDS instances. This API supports
 pagination.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_instances(
+\preformatted{svc$describe_db_instances(
   DBInstanceIdentifier = "string",
   Filters = list(
     list(

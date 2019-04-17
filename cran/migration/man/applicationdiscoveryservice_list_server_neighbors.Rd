@@ -30,7 +30,7 @@ Retrieves a list of servers that are one network hop away from a
 specified server.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$list_server_neighbors(
+\preformatted{svc$list_server_neighbors(
   configurationId = "string",
   portInformationNeeded = TRUE|FALSE,
   neighborConfigurationIds = list(

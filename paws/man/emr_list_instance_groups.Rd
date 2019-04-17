@@ -15,7 +15,7 @@ emr_list_instance_groups(ClusterId, Marker)
 Provides all available details about the instance groups in a cluster.
 }
 \section{Request syntax}{
-\preformatted{emr$list_instance_groups(
+\preformatted{svc$list_instance_groups(
   ClusterId = "string",
   Marker = "string"
 )

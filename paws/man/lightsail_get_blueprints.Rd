@@ -21,7 +21,7 @@ stack. The software each instance is running depends on the blueprint
 image you choose.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_blueprints(
+\preformatted{svc$get_blueprints(
   includeInactive = TRUE|FALSE,
   pageToken = "string"
 )

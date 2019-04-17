@@ -17,7 +17,7 @@ pinpoint_get_export_jobs(ApplicationId, PageSize, Token)
 Returns information about your export jobs.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_export_jobs(
+\preformatted{svc$get_export_jobs(
   ApplicationId = "string",
   PageSize = "string",
   Token = "string"

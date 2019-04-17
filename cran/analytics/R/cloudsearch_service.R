@@ -19,11 +19,10 @@ NULL
 #' regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
 #'
-#' @section Example:
-#' ```
-#' cloudsearch <- paws::cloudsearch()
-#' cloudsearch$operation()
-#' ```
+#' @examples
+#' \donttest{svc$build_suggesters(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

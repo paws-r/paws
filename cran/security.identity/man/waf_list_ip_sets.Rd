@@ -23,7 +23,7 @@ can use to get another batch of \code{IPSet} objects.}
 Returns an array of IPSetSummary objects in the response.
 }
 \section{Request syntax}{
-\preformatted{waf$list_ip_sets(
+\preformatted{svc$list_ip_sets(
   NextMarker = "string",
   Limit = 123
 )
@@ -32,7 +32,7 @@ Returns an array of IPSetSummary objects in the response.
 
 \examples{
 # The following example returns an array of up to 100 IP match sets.
-\donttest{waf$list_ip_sets(
+\donttest{svc$list_ip_sets(
   Limit = 100L
 )}
 

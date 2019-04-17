@@ -15,7 +15,7 @@ alexaforbusiness_update_device(DeviceArn, DeviceName)
 Updates the device name by device ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_device(
+\preformatted{svc$update_device(
   DeviceArn = "string",
   DeviceName = "string"
 )

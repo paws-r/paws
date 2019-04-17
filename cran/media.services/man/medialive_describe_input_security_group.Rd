@@ -13,7 +13,7 @@ medialive_describe_input_security_group(InputSecurityGroupId)
 Produces a summary of an Input Security Group
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_input_security_group(
+\preformatted{svc$describe_input_security_group(
   InputSecurityGroupId = "string"
 )
 }

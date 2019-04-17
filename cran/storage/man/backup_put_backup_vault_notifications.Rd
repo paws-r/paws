@@ -26,7 +26,7 @@ Turns on notifications on a backup vault for the specified topic and
 events.
 }
 \section{Request syntax}{
-\preformatted{backup$put_backup_vault_notifications(
+\preformatted{svc$put_backup_vault_notifications(
   BackupVaultName = "string",
   SNSTopicArn = "string",
   BackupVaultEvents = list(

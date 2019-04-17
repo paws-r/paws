@@ -58,7 +58,7 @@ original timeout value (not to the value you set using the
 \code{ChangeMessageVisibility} action) the next time the message is received.
 }
 \section{Request syntax}{
-\preformatted{sqs$change_message_visibility(
+\preformatted{svc$change_message_visibility(
   QueueUrl = "string",
   ReceiptHandle = "string",
   VisibilityTimeout = 123

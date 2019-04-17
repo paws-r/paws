@@ -39,7 +39,7 @@ Confirms registration of a user and handles the existing alias from a
 previous user.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$confirm_sign_up(
+\preformatted{svc$confirm_sign_up(
   ClientId = "string",
   SecretHash = "string",
   Username = "string",

@@ -15,7 +15,7 @@ apigateway_delete_resource(restApiId, resourceId)
 Deletes a Resource resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_resource(
+\preformatted{svc$delete_resource(
   restApiId = "string",
   resourceId = "string"
 )

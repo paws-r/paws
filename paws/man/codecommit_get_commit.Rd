@@ -17,7 +17,7 @@ Returns information about a commit, including commit message and
 committer information.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_commit(
+\preformatted{svc$get_commit(
   repositoryName = "string",
   commitId = "string"
 )

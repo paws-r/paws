@@ -13,7 +13,7 @@ databasemigrationservice_stop_replication_task(ReplicationTaskArn)
 Stops the replication task.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$stop_replication_task(
+\preformatted{svc$stop_replication_task(
   ReplicationTaskArn = "string"
 )
 }
@@ -21,7 +21,7 @@ Stops the replication task.
 
 \examples{
 # Stops the replication task.
-\donttest{databasemigrationservice$stop_replication_task(
+\donttest{svc$stop_replication_task(
   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ..."
 )}
 

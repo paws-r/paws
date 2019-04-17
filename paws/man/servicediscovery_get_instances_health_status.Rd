@@ -41,7 +41,7 @@ There is a brief delay between when you register an instance and when
 the health status for the instance is available.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$get_instances_health_status(
+\preformatted{svc$get_instances_health_status(
   ServiceId = "string",
   Instances = list(
     "string"

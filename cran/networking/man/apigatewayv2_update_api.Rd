@@ -26,7 +26,7 @@ apigatewayv2_update_api(ApiId, ApiKeySelectionExpression, Description,
 Updates an Api resource.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_api(
+\preformatted{svc$update_api(
   ApiId = "string",
   ApiKeySelectionExpression = "string",
   Description = "string",

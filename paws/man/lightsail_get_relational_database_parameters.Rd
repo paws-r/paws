@@ -25,7 +25,7 @@ whether changes require a reboot, whether the parameter is modifiable,
 the allowed values, and the data types.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_parameters(
+\preformatted{svc$get_relational_database_parameters(
   relationalDatabaseName = "string",
   pageToken = "string"
 )

@@ -45,7 +45,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$disable_aws_service_access(
+\preformatted{svc$disable_aws_service_access(
   ServicePrincipal = "string"
 )
 }

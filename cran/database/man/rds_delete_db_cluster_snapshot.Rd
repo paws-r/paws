@@ -25,7 +25,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_cluster_snapshot(
+\preformatted{svc$delete_db_cluster_snapshot(
   DBClusterSnapshotIdentifier = "string"
 )
 }

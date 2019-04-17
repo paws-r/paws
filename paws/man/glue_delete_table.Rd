@@ -31,7 +31,7 @@ and \code{DeletePartition} or \code{BatchDeletePartition}, to delete any resourc
 that belong to the table.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_table(
+\preformatted{svc$delete_table(
   CatalogId = "string",
   DatabaseName = "string",
   Name = "string"

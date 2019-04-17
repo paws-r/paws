@@ -23,7 +23,7 @@ Associates the specified resource share with the specified principals
 and resources.
 }
 \section{Request syntax}{
-\preformatted{ram$associate_resource_share(
+\preformatted{svc$associate_resource_share(
   resourceShareArn = "string",
   resourceArns = list(
     "string"

@@ -20,7 +20,7 @@ amplify_update_domain_association(appId, domainName,
 Create a new DomainAssociation on an App
 }
 \section{Request syntax}{
-\preformatted{amplify$update_domain_association(
+\preformatted{svc$update_domain_association(
   appId = "string",
   domainName = "string",
   enableAutoSubDomain = TRUE|FALSE,

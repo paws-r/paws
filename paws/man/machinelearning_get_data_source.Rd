@@ -27,7 +27,7 @@ verbose format adds the schema description and the list of files pointed
 to by the DataSource to the normal format.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$get_data_source(
+\preformatted{svc$get_data_source(
   DataSourceId = "string",
   Verbose = TRUE|FALSE
 )

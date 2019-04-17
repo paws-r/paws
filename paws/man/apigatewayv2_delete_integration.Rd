@@ -15,7 +15,7 @@ apigatewayv2_delete_integration(ApiId, IntegrationId)
 Deletes an Integration.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_integration(
+\preformatted{svc$delete_integration(
   ApiId = "string",
   IntegrationId = "string"
 )

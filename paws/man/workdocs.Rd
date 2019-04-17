@@ -40,12 +40,6 @@ to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 }
-\section{Example}{
-\preformatted{workdocs <- paws::workdocs()
-workdocs$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -93,3 +87,9 @@ workdocs$operation()
 }
 }
 
+\examples{
+\donttest{svc$abort_document_version_upload(
+  Foo = 123
+)}
+
+}

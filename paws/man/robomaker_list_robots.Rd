@@ -38,7 +38,7 @@ Returns a list of robots. You can optionally provide filters to retrieve
 specific robots.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_robots(
+\preformatted{svc$list_robots(
   nextToken = "string",
   maxResults = 123,
   filters = list(

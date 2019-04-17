@@ -42,12 +42,6 @@ them available to other developers, and publish new versions of
 applications.
 }
 }
-\section{Example}{
-\preformatted{serverlessapplicationrepository <- paws::serverlessapplicationrepository()
-serverlessapplicationrepository$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -67,3 +61,9 @@ serverlessapplicationrepository$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_application(
+  Foo = 123
+)}
+
+}

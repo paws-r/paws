@@ -25,7 +25,7 @@ If you are using an IAM account, it must have permission to the
 \code{connect:StopContact} action.
 }
 \section{Request syntax}{
-\preformatted{connect$stop_contact(
+\preformatted{svc$stop_contact(
   ContactId = "string",
   InstanceId = "string"
 )

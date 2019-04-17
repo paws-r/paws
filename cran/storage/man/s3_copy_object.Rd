@@ -122,7 +122,7 @@ expire.}
 Creates a copy of an object that is already stored in Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{s3$copy_object(
+\preformatted{svc$copy_object(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Bucket = "string",
   CacheControl = "string",
@@ -175,7 +175,7 @@ Creates a copy of an object that is already stored in Amazon S3.
 
 \examples{
 # The following example copies an object from one bucket to another.
-\donttest{s3$copy_object(
+\donttest{svc$copy_object(
   Bucket = "destinationbucket",
   CopySource = "/sourcebucket/HappyFacejpg",
   Key = "HappyFaceCopyjpg"

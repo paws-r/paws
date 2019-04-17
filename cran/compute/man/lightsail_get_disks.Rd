@@ -21,7 +21,7 @@ to make the list more manageable. You can use the pageToken and
 nextPageToken values to retrieve the next items in the list.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_disks(
+\preformatted{svc$get_disks(
   pageToken = "string"
 )
 }

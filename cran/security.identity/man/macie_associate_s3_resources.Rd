@@ -22,7 +22,7 @@ account. If memberAccountId is specified, the action associates
 specified S3 resources with Macie for the specified member account.
 }
 \section{Request syntax}{
-\preformatted{macie$associate_s3_resources(
+\preformatted{svc$associate_s3_resources(
   memberAccountId = "string",
   s3Resources = list(
     list(

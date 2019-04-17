@@ -40,7 +40,7 @@ about what permissions are required to run the \emph{CreateMicrosoftAD}
 operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_microsoft_ad(
+\preformatted{svc$create_microsoft_ad(
   Name = "string",
   ShortName = "string",
   Password = "string",

@@ -14,7 +14,7 @@ which can be used to return the next set of pipelines in the list.}
 Gets a summary of all of the pipelines associated with your account.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$list_pipelines(
+\preformatted{svc$list_pipelines(
   nextToken = "string"
 )
 }

@@ -31,7 +31,7 @@ this request describes all the trust relationships belonging to the
 account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_trusts(
+\preformatted{svc$describe_trusts(
   DirectoryId = "string",
   TrustIds = list(
     "string"

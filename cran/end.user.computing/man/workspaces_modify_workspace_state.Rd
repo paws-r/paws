@@ -22,7 +22,7 @@ this state is not stopped. Users can log into a WorkSpace in the
 \code{ADMIN_MAINTENANCE} state.
 }
 \section{Request syntax}{
-\preformatted{workspaces$modify_workspace_state(
+\preformatted{svc$modify_workspace_state(
   WorkspaceId = "string",
   WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
 )

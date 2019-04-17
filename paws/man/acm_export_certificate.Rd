@@ -32,7 +32,7 @@ command to decrypt it later. Provide the passphrase when prompted.
 \code{openssl rsa -in encrypted_key.pem -out decrypted_key.pem}
 }
 \section{Request syntax}{
-\preformatted{acm$export_certificate(
+\preformatted{svc$export_certificate(
   CertificateArn = "string",
   Passphrase = raw
 )

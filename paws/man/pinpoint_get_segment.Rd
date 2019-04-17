@@ -15,7 +15,7 @@ pinpoint_get_segment(ApplicationId, SegmentId)
 Returns information about a segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segment(
+\preformatted{svc$get_segment(
   ApplicationId = "string",
   SegmentId = "string"
 )

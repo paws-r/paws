@@ -13,7 +13,7 @@ redshift_delete_hsm_configuration(HsmConfigurationIdentifier)
 Deletes the specified Amazon Redshift HSM configuration.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_hsm_configuration(
+\preformatted{svc$delete_hsm_configuration(
   HsmConfigurationIdentifier = "string"
 )
 }

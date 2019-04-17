@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$accept_shared_directory(
+#' svc$accept_shared_directory(
 #'   SharedDirectoryId = "string"
 #' )
 #' ```
@@ -118,7 +118,7 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$add_ip_routes(
+#' svc$add_ip_routes(
 #'   DirectoryId = "string",
 #'   IpRoutes = list(
 #'     list(
@@ -163,7 +163,7 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$add_tags_to_resource(
+#' svc$add_tags_to_resource(
 #'   ResourceId = "string",
 #'   Tags = list(
 #'     list(
@@ -209,7 +209,7 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$cancel_schema_extension(
+#' svc$cancel_schema_extension(
 #'   DirectoryId = "string",
 #'   SchemaExtensionId = "string"
 #' )
@@ -261,7 +261,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$connect_directory(
+#' svc$connect_directory(
 #'   Name = "string",
 #'   ShortName = "string",
 #'   Password = "string",
@@ -326,7 +326,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_alias(
+#' svc$create_alias(
 #'   DirectoryId = "string",
 #'   Alias = "string"
 #' )
@@ -372,7 +372,7 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_computer(
+#' svc$create_computer(
 #'   DirectoryId = "string",
 #'   ComputerName = "string",
 #'   Password = "string",
@@ -425,7 +425,7 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_conditional_forwarder(
+#' svc$create_conditional_forwarder(
 #'   DirectoryId = "string",
 #'   RemoteDomainName = "string",
 #'   DnsIpAddrs = list(
@@ -481,7 +481,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_directory(
+#' svc$create_directory(
 #'   Name = "string",
 #'   ShortName = "string",
 #'   Password = "string",
@@ -539,7 +539,7 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_log_subscription(
+#' svc$create_log_subscription(
 #'   DirectoryId = "string",
 #'   LogGroupName = "string"
 #' )
@@ -597,7 +597,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_microsoft_ad(
+#' svc$create_microsoft_ad(
 #'   Name = "string",
 #'   ShortName = "string",
 #'   Password = "string",
@@ -653,7 +653,7 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_snapshot(
+#' svc$create_snapshot(
 #'   DirectoryId = "string",
 #'   Name = "string"
 #' )
@@ -712,7 +712,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$create_trust(
+#' svc$create_trust(
 #'   DirectoryId = "string",
 #'   RemoteDomainName = "string",
 #'   TrustPassword = "string",
@@ -760,7 +760,7 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$delete_conditional_forwarder(
+#' svc$delete_conditional_forwarder(
 #'   DirectoryId = "string",
 #'   RemoteDomainName = "string"
 #' )
@@ -803,7 +803,7 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$delete_directory(
+#' svc$delete_directory(
 #'   DirectoryId = "string"
 #' )
 #' ```
@@ -839,7 +839,7 @@ directoryservice_delete_directory <- function(DirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$delete_log_subscription(
+#' svc$delete_log_subscription(
 #'   DirectoryId = "string"
 #' )
 #' ```
@@ -874,7 +874,7 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$delete_snapshot(
+#' svc$delete_snapshot(
 #'   SnapshotId = "string"
 #' )
 #' ```
@@ -913,7 +913,7 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$delete_trust(
+#' svc$delete_trust(
 #'   TrustId = "string",
 #'   DeleteAssociatedConditionalForwarder = TRUE|FALSE
 #' )
@@ -954,7 +954,7 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$deregister_event_topic(
+#' svc$deregister_event_topic(
 #'   DirectoryId = "string",
 #'   TopicName = "string"
 #' )
@@ -998,7 +998,7 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_conditional_forwarders(
+#' svc$describe_conditional_forwarders(
 #'   DirectoryId = "string",
 #'   RemoteDomainNames = list(
 #'     "string"
@@ -1058,7 +1058,7 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_directories(
+#' svc$describe_directories(
 #'   DirectoryIds = list(
 #'     "string"
 #'   ),
@@ -1104,7 +1104,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_domain_controllers(
+#' svc$describe_domain_controllers(
 #'   DirectoryId = "string",
 #'   DomainControllerIds = list(
 #'     "string"
@@ -1155,7 +1155,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_event_topics(
+#' svc$describe_event_topics(
 #'   DirectoryId = "string",
 #'   TopicNames = list(
 #'     "string"
@@ -1198,7 +1198,7 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_shared_directories(
+#' svc$describe_shared_directories(
 #'   OwnerDirectoryId = "string",
 #'   SharedDirectoryIds = list(
 #'     "string"
@@ -1256,7 +1256,7 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_snapshots(
+#' svc$describe_snapshots(
 #'   DirectoryId = "string",
 #'   SnapshotIds = list(
 #'     "string"
@@ -1310,7 +1310,7 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$describe_trusts(
+#' svc$describe_trusts(
 #'   DirectoryId = "string",
 #'   TrustIds = list(
 #'     "string"
@@ -1354,7 +1354,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$disable_radius(
+#' svc$disable_radius(
 #'   DirectoryId = "string"
 #' )
 #' ```
@@ -1401,7 +1401,7 @@ directoryservice_disable_radius <- function(DirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$disable_sso(
+#' svc$disable_sso(
 #'   DirectoryId = "string",
 #'   UserName = "string",
 #'   Password = "string"
@@ -1444,7 +1444,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$enable_radius(
+#' svc$enable_radius(
 #'   DirectoryId = "string",
 #'   RadiusSettings = list(
 #'     RadiusServers = list(
@@ -1503,7 +1503,7 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$enable_sso(
+#' svc$enable_sso(
 #'   DirectoryId = "string",
 #'   UserName = "string",
 #'   Password = "string"
@@ -1538,7 +1538,7 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$get_directory_limits()
+#' svc$get_directory_limits()
 #' ```
 #'
 #' @keywords internal
@@ -1571,7 +1571,7 @@ directoryservice_get_directory_limits <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$get_snapshot_limits(
+#' svc$get_snapshot_limits(
 #'   DirectoryId = "string"
 #' )
 #' ```
@@ -1611,7 +1611,7 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$list_ip_routes(
+#' svc$list_ip_routes(
 #'   DirectoryId = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -1654,7 +1654,7 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$list_log_subscriptions(
+#' svc$list_log_subscriptions(
 #'   DirectoryId = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -1695,7 +1695,7 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$list_schema_extensions(
+#' svc$list_schema_extensions(
 #'   DirectoryId = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -1734,7 +1734,7 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceId = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -1778,7 +1778,7 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$register_event_topic(
+#' svc$register_event_topic(
 #'   DirectoryId = "string",
 #'   TopicName = "string"
 #' )
@@ -1817,7 +1817,7 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$reject_shared_directory(
+#' svc$reject_shared_directory(
 #'   SharedDirectoryId = "string"
 #' )
 #' ```
@@ -1854,7 +1854,7 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$remove_ip_routes(
+#' svc$remove_ip_routes(
 #'   DirectoryId = "string",
 #'   CidrIps = list(
 #'     "string"
@@ -1893,7 +1893,7 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$remove_tags_from_resource(
+#' svc$remove_tags_from_resource(
 #'   ResourceId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1936,7 +1936,7 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$reset_user_password(
+#' svc$reset_user_password(
 #'   DirectoryId = "string",
 #'   UserName = "string",
 #'   NewPassword = "string"
@@ -1982,7 +1982,7 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$restore_from_snapshot(
+#' svc$restore_from_snapshot(
 #'   SnapshotId = "string"
 #' )
 #' ```
@@ -2048,7 +2048,7 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$share_directory(
+#' svc$share_directory(
 #'   DirectoryId = "string",
 #'   ShareNotes = "string",
 #'   ShareTarget = list(
@@ -2098,7 +2098,7 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$start_schema_extension(
+#' svc$start_schema_extension(
 #'   DirectoryId = "string",
 #'   CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
 #'   LdifContent = "string",
@@ -2141,7 +2141,7 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$unshare_directory(
+#' svc$unshare_directory(
 #'   DirectoryId = "string",
 #'   UnshareTarget = list(
 #'     Id = "string",
@@ -2188,7 +2188,7 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$update_conditional_forwarder(
+#' svc$update_conditional_forwarder(
 #'   DirectoryId = "string",
 #'   RemoteDomainName = "string",
 #'   DnsIpAddrs = list(
@@ -2235,7 +2235,7 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$update_number_of_domain_controllers(
+#' svc$update_number_of_domain_controllers(
 #'   DirectoryId = "string",
 #'   DesiredNumber = 123
 #' )
@@ -2276,7 +2276,7 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$update_radius(
+#' svc$update_radius(
 #'   DirectoryId = "string",
 #'   RadiusSettings = list(
 #'     RadiusServers = list(
@@ -2326,7 +2326,7 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$update_trust(
+#' svc$update_trust(
 #'   TrustId = "string",
 #'   SelectiveAuth = "Enabled"|"Disabled"
 #' )
@@ -2367,7 +2367,7 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' directoryservice$verify_trust(
+#' svc$verify_trust(
 #'   TrustId = "string"
 #' )
 #' ```

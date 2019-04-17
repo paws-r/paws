@@ -43,7 +43,7 @@ Returns a list of orderable DB instance options for the specified
 engine.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_orderable_db_instance_options(
+\preformatted{svc$describe_orderable_db_instance_options(
   Engine = "string",
   EngineVersion = "string",
   DBInstanceClass = "string",

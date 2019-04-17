@@ -10,7 +10,7 @@ glue_get_resource_policy()
 Retrieves a specified resource policy.
 }
 \section{Request syntax}{
-\preformatted{glue$get_resource_policy()
+\preformatted{svc$get_resource_policy()
 }
 }
 

@@ -19,7 +19,7 @@ response (which is also the ID of the last distribution on that page).}
 List distributions.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_distributions(
+\preformatted{svc$list_distributions(
   Marker = "string",
   MaxItems = "string"
 )

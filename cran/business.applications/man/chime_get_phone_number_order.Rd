@@ -16,7 +16,7 @@ creation timestamp, phone numbers in E.164 format, product type, and
 order status.
 }
 \section{Request syntax}{
-\preformatted{chime$get_phone_number_order(
+\preformatted{svc$get_phone_number_order(
   PhoneNumberOrderId = "string"
 )
 }

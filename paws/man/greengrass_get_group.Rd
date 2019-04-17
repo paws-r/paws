@@ -13,7 +13,7 @@ greengrass_get_group(GroupId)
 Retrieves information about a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_group(
+\preformatted{svc$get_group(
   GroupId = "string"
 )
 }

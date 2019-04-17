@@ -15,7 +15,7 @@ Deletes the specified log group and permanently deletes all the archived
 log events associated with the log group.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$delete_log_group(
+\preformatted{svc$delete_log_group(
   logGroupName = "string"
 )
 }

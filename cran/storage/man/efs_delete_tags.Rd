@@ -23,7 +23,7 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteTags} action.
 }
 \section{Request syntax}{
-\preformatted{efs$delete_tags(
+\preformatted{svc$delete_tags(
   FileSystemId = "string",
   TagKeys = list(
     "string"
@@ -34,7 +34,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation deletes tags for an EFS file system.
-\donttest{efs$delete_tags(
+\donttest{svc$delete_tags(
   FileSystemId = "fs-01234567",
   TagKeys = list(
     "Name"

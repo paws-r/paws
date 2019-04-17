@@ -13,7 +13,7 @@ iot_describe_thing(thingName)
 Gets information about the specified thing.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_thing(
+\preformatted{svc$describe_thing(
   thingName = "string"
 )
 }

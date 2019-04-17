@@ -17,7 +17,7 @@ medialive_batch_update_schedule(ChannelId, Creates, Deletes)
 Update a channel schedule
 }
 \section{Request syntax}{
-\preformatted{medialive$batch_update_schedule(
+\preformatted{svc$batch_update_schedule(
   ChannelId = "string",
   Creates = list(
     ScheduleActions = list(

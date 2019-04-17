@@ -20,7 +20,7 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$unmonitor_instances(
+\preformatted{svc$unmonitor_instances(
   InstanceIds = list(
     "string"
   ),

@@ -22,7 +22,7 @@ in the response so that the remaining results can be retrieved.}
 Lists all tags for the specified resource.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_tags(
+\preformatted{svc$list_tags(
   Arn = "string",
   NextToken = "string",
   MaxResults = 123

@@ -25,7 +25,7 @@ than the number you specify for \code{Limit}, the response includes a
 Returns an array of RegexPatternSetSummary objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_regex_pattern_sets(
+\preformatted{svc$list_regex_pattern_sets(
   NextMarker = "string",
   Limit = 123
 )

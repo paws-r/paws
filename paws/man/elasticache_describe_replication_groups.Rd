@@ -36,7 +36,7 @@ about all replication groups.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_replication_groups(
+\preformatted{svc$describe_replication_groups(
   ReplicationGroupId = "string",
   MaxRecords = 123,
   Marker = "string"

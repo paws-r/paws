@@ -55,7 +55,7 @@ For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/lat
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$tag_role(
+\preformatted{svc$tag_role(
   RoleName = "string",
   Tags = list(
     list(
@@ -69,7 +69,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to add tags to an existing role.
-\donttest{iam$tag_role(
+\donttest{svc$tag_role(
   RoleName = "taggedrole",
   Tags = list(
     list(

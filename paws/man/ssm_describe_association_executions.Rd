@@ -31,7 +31,7 @@ Use this API action to view all executions for a specific association
 ID.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_association_executions(
+\preformatted{svc$describe_association_executions(
   AssociationId = "string",
   Filters = list(
     list(

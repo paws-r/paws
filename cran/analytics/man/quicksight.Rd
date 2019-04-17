@@ -15,12 +15,6 @@ every user in your organization. This API interface reference contains
 documentation for a programming interface that you can use to manage
 Amazon QuickSight.
 }
-\section{Example}{
-\preformatted{quicksight <- paws::quicksight()
-quicksight$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -43,3 +37,9 @@ quicksight$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_group(
+  Foo = 123
+)}
+
+}

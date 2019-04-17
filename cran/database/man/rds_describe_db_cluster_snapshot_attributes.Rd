@@ -30,7 +30,7 @@ private, use the ModifyDBClusterSnapshotAttribute API action.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_cluster_snapshot_attributes(
+\preformatted{svc$describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier = "string"
 )
 }

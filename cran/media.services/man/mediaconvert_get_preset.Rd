@@ -13,7 +13,7 @@ mediaconvert_get_preset(Name)
 Retrieve the JSON for a specific preset.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$get_preset(
+\preformatted{svc$get_preset(
   Name = "string"
 )
 }

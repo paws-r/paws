@@ -18,7 +18,7 @@ group does not match the expected version specified in the request, the
 Deletes the billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_billing_group(
+\preformatted{svc$delete_billing_group(
   billingGroupName = "string",
   expectedVersion = 123
 )

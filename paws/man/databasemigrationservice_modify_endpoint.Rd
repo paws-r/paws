@@ -102,7 +102,7 @@ in the \emph{AWS Database Migration User Guide.}}
 Modifies the specified endpoint.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$modify_endpoint(
+\preformatted{svc$modify_endpoint(
   EndpointArn = "string",
   EndpointIdentifier = "string",
   EndpointType = "source"|"target",
@@ -201,7 +201,7 @@ Modifies the specified endpoint.
 
 \examples{
 # Modifies the specified endpoint.
-\donttest{databasemigrationservice$modify_endpoint(
+\donttest{svc$modify_endpoint(
   CertificateArn = "",
   DatabaseName = "",
   EndpointArn = "",

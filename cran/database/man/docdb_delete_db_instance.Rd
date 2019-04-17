@@ -19,7 +19,7 @@ Constraints:
 Deletes a previously provisioned DB instance.
 }
 \section{Request syntax}{
-\preformatted{docdb$delete_db_instance(
+\preformatted{svc$delete_db_instance(
   DBInstanceIdentifier = "string"
 )
 }

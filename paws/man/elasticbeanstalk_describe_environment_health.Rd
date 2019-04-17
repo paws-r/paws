@@ -27,7 +27,7 @@ environment. The \strong{DescribeEnvironmentHealth} operation is only
 available with AWS Elastic Beanstalk Enhanced Health.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_environment_health(
+\preformatted{svc$describe_environment_health(
   EnvironmentName = "string",
   EnvironmentId = "string",
   AttributeNames = list(
@@ -40,7 +40,7 @@ available with AWS Elastic Beanstalk Enhanced Health.
 \examples{
 # The following operation retrieves overall health information for an
 # environment named my-env:
-\donttest{elasticbeanstalk$describe_environment_health(
+\donttest{svc$describe_environment_health(
   AttributeNames = list(
     "All"
   ),

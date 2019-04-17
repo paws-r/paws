@@ -25,7 +25,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$describe_organizational_unit(
+\preformatted{svc$describe_organizational_unit(
   OrganizationalUnitId = "string"
 )
 }
@@ -33,7 +33,7 @@ account.
 
 \examples{
 # The following example shows how to request details about an OU:/n/n
-\donttest{organizations$describe_organizational_unit(
+\donttest{svc$describe_organizational_unit(
   OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
 )}
 

@@ -17,7 +17,7 @@ and a VPC. You associate a resolver rule and a VPC using
 AssociateResolverRule.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$get_resolver_rule_association(
+\preformatted{svc$get_resolver_rule_association(
   ResolverRuleAssociationId = "string"
 )
 }

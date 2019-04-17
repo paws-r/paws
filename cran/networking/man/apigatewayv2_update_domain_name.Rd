@@ -15,7 +15,7 @@ apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations)
 Updates a domain name.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_domain_name(
+\preformatted{svc$update_domain_name(
   DomainName = "string",
   DomainNameConfigurations = list(
     list(

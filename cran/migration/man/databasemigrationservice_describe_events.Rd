@@ -48,7 +48,7 @@ see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html}{Wor
 in the \emph{AWS Database Migration User Guide.}
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "replication-instance",
   StartTime = as.POSIXct(

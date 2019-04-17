@@ -52,7 +52,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_cluster(
+\preformatted{svc$delete_db_cluster(
   DBClusterIdentifier = "string",
   SkipFinalSnapshot = TRUE|FALSE,
   FinalDBSnapshotIdentifier = "string"

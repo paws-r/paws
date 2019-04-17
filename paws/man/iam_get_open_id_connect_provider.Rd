@@ -20,7 +20,7 @@ Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.
 }
 \section{Request syntax}{
-\preformatted{iam$get_open_id_connect_provider(
+\preformatted{svc$get_open_id_connect_provider(
   OpenIDConnectProviderArn = "string"
 )
 }

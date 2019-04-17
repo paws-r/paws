@@ -21,7 +21,7 @@ Downloads the client certificate revocation list for the specified
 Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$export_client_vpn_client_certificate_revocation_list(
+\preformatted{svc$export_client_vpn_client_certificate_revocation_list(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )

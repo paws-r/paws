@@ -25,7 +25,7 @@ Resumes the pipeline execution by retrying the last failed actions in a
 stage.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$retry_stage_execution(
+\preformatted{svc$retry_stage_execution(
   pipelineName = "string",
   stageName = "string",
   pipelineExecutionId = "string",

@@ -52,7 +52,7 @@ This operation requires permissions for the
 \code{elasticfilesystem:DescribeFileSystems} action.
 }
 \section{Request syntax}{
-\preformatted{efs$describe_file_systems(
+\preformatted{svc$describe_file_systems(
   MaxItems = 123,
   Marker = "string",
   CreationToken = "string",
@@ -63,7 +63,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation describes all of the EFS file systems in an account.
-\donttest{efs$describe_file_systems()}
+\donttest{svc$describe_file_systems()}
 
 }
 \keyword{internal}

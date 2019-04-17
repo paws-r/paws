@@ -22,12 +22,6 @@ automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
-\section{Example}{
-\preformatted{sns <- paws::sns()
-sns$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -64,3 +58,9 @@ sns$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_permission(
+  Foo = 123
+)}
+
+}

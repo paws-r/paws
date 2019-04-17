@@ -20,7 +20,7 @@ Returns information about the private device instances associated with
 one or more AWS accounts.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_device_instances(
+\preformatted{svc$list_device_instances(
   maxResults = 123,
   nextToken = "string"
 )

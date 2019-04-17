@@ -45,7 +45,7 @@ parameters. If there are no inline policies embedded with the specified
 group, the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{iam$list_group_policies(
+\preformatted{svc$list_group_policies(
   GroupName = "string",
   Marker = "string",
   MaxItems = 123
@@ -56,7 +56,7 @@ group, the operation returns an empty list.
 \examples{
 # The following command lists the names of in-line policies that are
 # embedded in the IAM group named Admins.
-\donttest{iam$list_group_policies(
+\donttest{svc$list_group_policies(
   GroupName = "Admins"
 )}
 

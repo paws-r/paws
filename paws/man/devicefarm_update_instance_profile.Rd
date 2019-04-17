@@ -30,7 +30,7 @@ The default value is \code{true}.}
 Updates information about an existing private device instance profile.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_instance_profile(
+\preformatted{svc$update_instance_profile(
   arn = "string",
   name = "string",
   description = "string",

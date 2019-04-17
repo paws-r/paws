@@ -19,7 +19,7 @@ Designates the IAM role and Amazon Simple Notification Service (SNS)
 topic that AWS Firewall Manager uses to record SNS logs.
 }
 \section{Request syntax}{
-\preformatted{fms$put_notification_channel(
+\preformatted{svc$put_notification_channel(
   SnsTopicArn = "string",
   SnsRoleName = "string"
 )

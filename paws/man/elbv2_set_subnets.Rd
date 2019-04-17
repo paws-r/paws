@@ -29,7 +29,7 @@ previously enabled subnets.
 You can't change the subnets for a Network Load Balancer.
 }
 \section{Request syntax}{
-\preformatted{elbv2$set_subnets(
+\preformatted{svc$set_subnets(
   LoadBalancerArn = "string",
   Subnets = list(
     "string"
@@ -47,7 +47,7 @@ You can't change the subnets for a Network Load Balancer.
 \examples{
 # This example enables the Availability Zones for the specified subnets
 # for the specified load balancer.
-\donttest{elbv2$set_subnets(
+\donttest{svc$set_subnets(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my...",
   Subnets = list(
     "subnet-8360a9e7",

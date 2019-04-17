@@ -30,7 +30,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$put_notification_configuration(
+\preformatted{svc$put_notification_configuration(
   AutoScalingGroupName = "string",
   TopicARN = "string",
   NotificationTypes = list(
@@ -43,7 +43,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example adds the specified notification to the specified Auto
 # Scaling group.
-\donttest{autoscaling$put_notification_configuration(
+\donttest{svc$put_notification_configuration(
   AutoScalingGroupName = "my-auto-scaling-group",
   NotificationTypes = list(
     "autoscaling:TEST_NOTIFICATION"

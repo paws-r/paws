@@ -59,7 +59,7 @@ DescribeProvisionedProductPlan. To create or modify the provisioned
 product, use ExecuteProvisionedProductPlan.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_provisioned_product_plan(
+\preformatted{svc$create_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanName = "string",
   PlanType = "CLOUDFORMATION",

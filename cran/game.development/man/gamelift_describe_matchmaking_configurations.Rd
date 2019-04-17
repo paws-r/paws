@@ -45,7 +45,7 @@ list of names, only configurations that currently exist are returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_matchmaking_configurations(
+\preformatted{svc$describe_matchmaking_configurations(
   Names = list(
     "string"
   ),

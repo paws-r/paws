@@ -15,7 +15,7 @@ ListRegexMatchSets.}
 Returns the RegexMatchSet specified by \code{RegexMatchSetId}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_regex_match_set(
+\preformatted{svc$get_regex_match_set(
   RegexMatchSetId = "string"
 )
 }

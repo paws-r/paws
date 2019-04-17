@@ -278,7 +278,7 @@ This operation is not supported for Redis (cluster mode enabled)
 clusters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$create_cache_cluster(
+\preformatted{svc$create_cache_cluster(
   CacheClusterId = "string",
   ReplicationGroupId = "string",
   AZMode = "single-az"|"cross-az",

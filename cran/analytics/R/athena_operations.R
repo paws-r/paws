@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' athena$batch_get_named_query(
+#' svc$batch_get_named_query(
 #'   NamedQueryIds = list(
 #'     "string"
 #'   )
@@ -69,7 +69,7 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$batch_get_query_execution(
+#' svc$batch_get_query_execution(
 #'   QueryExecutionIds = list(
 #'     "string"
 #'   )
@@ -126,7 +126,7 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$create_named_query(
+#' svc$create_named_query(
 #'   Name = "string",
 #'   Description = "string",
 #'   Database = "string",
@@ -177,7 +177,7 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #'
 #' @section Request syntax:
 #' ```
-#' athena$create_work_group(
+#' svc$create_work_group(
 #'   Name = "string",
 #'   Configuration = list(
 #'     ResultConfiguration = list(
@@ -237,7 +237,7 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' athena$delete_named_query(
+#' svc$delete_named_query(
 #'   NamedQueryId = "string"
 #' )
 #' ```
@@ -275,7 +275,7 @@ athena_delete_named_query <- function(NamedQueryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$delete_work_group(
+#' svc$delete_work_group(
 #'   WorkGroup = "string",
 #'   RecursiveDeleteOption = TRUE|FALSE
 #' )
@@ -312,7 +312,7 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$get_named_query(
+#' svc$get_named_query(
 #'   NamedQueryId = "string"
 #' )
 #' ```
@@ -351,7 +351,7 @@ athena_get_named_query <- function(NamedQueryId) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$get_query_execution(
+#' svc$get_query_execution(
 #'   QueryExecutionId = "string"
 #' )
 #' ```
@@ -394,7 +394,7 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$get_query_results(
+#' svc$get_query_results(
 #'   QueryExecutionId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -431,7 +431,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' athena$get_work_group(
+#' svc$get_work_group(
 #'   WorkGroup = "string"
 #' )
 #' ```
@@ -476,7 +476,7 @@ athena_get_work_group <- function(WorkGroup) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$list_named_queries(
+#' svc$list_named_queries(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   WorkGroup = "string"
@@ -523,7 +523,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #'
 #' @section Request syntax:
 #' ```
-#' athena$list_query_executions(
+#' svc$list_query_executions(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   WorkGroup = "string"
@@ -565,7 +565,7 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 #'
 #' @section Request syntax:
 #' ```
-#' athena$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceARN = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -603,7 +603,7 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' athena$list_work_groups(
+#' svc$list_work_groups(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -664,7 +664,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$start_query_execution(
+#' svc$start_query_execution(
 #'   QueryString = "string",
 #'   ClientRequestToken = "string",
 #'   QueryExecutionContext = list(
@@ -716,7 +716,7 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' athena$stop_query_execution(
+#' svc$stop_query_execution(
 #'   QueryExecutionId = "string"
 #' )
 #' ```
@@ -767,7 +767,7 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$tag_resource(
+#' svc$tag_resource(
 #'   ResourceARN = "string",
 #'   Tags = list(
 #'     list(
@@ -813,7 +813,7 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$untag_resource(
+#' svc$untag_resource(
 #'   ResourceARN = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -857,7 +857,7 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' athena$update_work_group(
+#' svc$update_work_group(
 #'   WorkGroup = "string",
 #'   Description = "string",
 #'   ConfigurationUpdates = list(

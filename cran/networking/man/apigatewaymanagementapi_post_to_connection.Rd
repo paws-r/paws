@@ -15,7 +15,7 @@ apigatewaymanagementapi_post_to_connection(Data, ConnectionId)
 Sends the provided data to the specified connection.
 }
 \section{Request syntax}{
-\preformatted{apigatewaymanagementapi$post_to_connection(
+\preformatted{svc$post_to_connection(
   Data = raw,
   ConnectionId = "string"
 )

@@ -13,11 +13,10 @@ NULL
 #' accessed or moved. For more information, see the [Macie User
 #' Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
 #'
-#' @section Example:
-#' ```
-#' macie <- paws::macie()
-#' macie$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_member_account(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

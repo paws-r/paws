@@ -6,11 +6,10 @@ NULL
 #'
 #' 
 #'
-#' @section Example:
-#' ```
-#' kinesisvideoarchivedmedia <- paws::kinesisvideoarchivedmedia()
-#' kinesisvideoarchivedmedia$operation()
-#' ```
+#' @examples
+#' \donttest{svc$get_hls_streaming_session_url(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

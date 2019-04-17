@@ -33,7 +33,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 Describes all available options.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_option_group_options(
+\preformatted{svc$describe_option_group_options(
   EngineName = "string",
   MajorEngineVersion = "string",
   Filters = list(

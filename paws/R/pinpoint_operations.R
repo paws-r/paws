@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$create_app(
+#' svc$create_app(
 #'   CreateApplicationRequest = list(
 #'     Name = "string",
 #'     tags = list(
@@ -55,7 +55,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$create_campaign(
+#' svc$create_campaign(
 #'   ApplicationId = "string",
 #'   WriteCampaignRequest = list(
 #'     AdditionalTreatments = list(
@@ -360,7 +360,7 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$create_export_job(
+#' svc$create_export_job(
 #'   ApplicationId = "string",
 #'   ExportJobRequest = list(
 #'     RoleArn = "string",
@@ -402,7 +402,7 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$create_import_job(
+#' svc$create_import_job(
 #'   ApplicationId = "string",
 #'   ImportJobRequest = list(
 #'     DefineSegment = TRUE|FALSE,
@@ -448,7 +448,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$create_segment(
+#' svc$create_segment(
 #'   ApplicationId = "string",
 #'   WriteSegmentRequest = list(
 #'     Dimensions = list(
@@ -672,7 +672,7 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_adm_channel(
+#' svc$delete_adm_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -707,7 +707,7 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_apns_channel(
+#' svc$delete_apns_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -742,7 +742,7 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_apns_sandbox_channel(
+#' svc$delete_apns_sandbox_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -777,7 +777,7 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_apns_voip_channel(
+#' svc$delete_apns_voip_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -812,7 +812,7 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_apns_voip_sandbox_channel(
+#' svc$delete_apns_voip_sandbox_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -847,7 +847,7 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_app(
+#' svc$delete_app(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -882,7 +882,7 @@ pinpoint_delete_app <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_baidu_channel(
+#' svc$delete_baidu_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -918,7 +918,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_campaign(
+#' svc$delete_campaign(
 #'   ApplicationId = "string",
 #'   CampaignId = "string"
 #' )
@@ -954,7 +954,7 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_email_channel(
+#' svc$delete_email_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -990,7 +990,7 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_endpoint(
+#' svc$delete_endpoint(
 #'   ApplicationId = "string",
 #'   EndpointId = "string"
 #' )
@@ -1026,7 +1026,7 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_event_stream(
+#' svc$delete_event_stream(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1061,7 +1061,7 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_gcm_channel(
+#' svc$delete_gcm_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1097,7 +1097,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_segment(
+#' svc$delete_segment(
 #'   ApplicationId = "string",
 #'   SegmentId = "string"
 #' )
@@ -1133,7 +1133,7 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_sms_channel(
+#' svc$delete_sms_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1169,7 +1169,7 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_user_endpoints(
+#' svc$delete_user_endpoints(
 #'   ApplicationId = "string",
 #'   UserId = "string"
 #' )
@@ -1205,7 +1205,7 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$delete_voice_channel(
+#' svc$delete_voice_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1240,7 +1240,7 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_adm_channel(
+#' svc$get_adm_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1275,7 +1275,7 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_apns_channel(
+#' svc$get_apns_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1310,7 +1310,7 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_apns_sandbox_channel(
+#' svc$get_apns_sandbox_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1345,7 +1345,7 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_apns_voip_channel(
+#' svc$get_apns_voip_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1380,7 +1380,7 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_apns_voip_sandbox_channel(
+#' svc$get_apns_voip_sandbox_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1415,7 +1415,7 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_app(
+#' svc$get_app(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1450,7 +1450,7 @@ pinpoint_get_app <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_application_settings(
+#' svc$get_application_settings(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1486,7 +1486,7 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_apps(
+#' svc$get_apps(
 #'   PageSize = "string",
 #'   Token = "string"
 #' )
@@ -1522,7 +1522,7 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_baidu_channel(
+#' svc$get_baidu_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1558,7 +1558,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_campaign(
+#' svc$get_campaign(
 #'   ApplicationId = "string",
 #'   CampaignId = "string"
 #' )
@@ -1598,7 +1598,7 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_campaign_activities(
+#' svc$get_campaign_activities(
 #'   ApplicationId = "string",
 #'   CampaignId = "string",
 #'   PageSize = "string",
@@ -1638,7 +1638,7 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_campaign_version(
+#' svc$get_campaign_version(
 #'   ApplicationId = "string",
 #'   CampaignId = "string",
 #'   Version = "string"
@@ -1679,7 +1679,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_campaign_versions(
+#' svc$get_campaign_versions(
 #'   ApplicationId = "string",
 #'   CampaignId = "string",
 #'   PageSize = "string",
@@ -1719,7 +1719,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_campaigns(
+#' svc$get_campaigns(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   Token = "string"
@@ -1756,7 +1756,7 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_channels(
+#' svc$get_channels(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1791,7 +1791,7 @@ pinpoint_get_channels <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_email_channel(
+#' svc$get_email_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1827,7 +1827,7 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_endpoint(
+#' svc$get_endpoint(
 #'   ApplicationId = "string",
 #'   EndpointId = "string"
 #' )
@@ -1863,7 +1863,7 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_event_stream(
+#' svc$get_event_stream(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -1899,7 +1899,7 @@ pinpoint_get_event_stream <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_export_job(
+#' svc$get_export_job(
 #'   ApplicationId = "string",
 #'   JobId = "string"
 #' )
@@ -1937,7 +1937,7 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_export_jobs(
+#' svc$get_export_jobs(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   Token = "string"
@@ -1974,7 +1974,7 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_gcm_channel(
+#' svc$get_gcm_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -2010,7 +2010,7 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_import_job(
+#' svc$get_import_job(
 #'   ApplicationId = "string",
 #'   JobId = "string"
 #' )
@@ -2048,7 +2048,7 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_import_jobs(
+#' svc$get_import_jobs(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   Token = "string"
@@ -2086,7 +2086,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segment(
+#' svc$get_segment(
 #'   ApplicationId = "string",
 #'   SegmentId = "string"
 #' )
@@ -2126,7 +2126,7 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segment_export_jobs(
+#' svc$get_segment_export_jobs(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   SegmentId = "string",
@@ -2168,7 +2168,7 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segment_import_jobs(
+#' svc$get_segment_import_jobs(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   SegmentId = "string",
@@ -2208,7 +2208,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segment_version(
+#' svc$get_segment_version(
 #'   ApplicationId = "string",
 #'   SegmentId = "string",
 #'   Version = "string"
@@ -2248,7 +2248,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segment_versions(
+#' svc$get_segment_versions(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   SegmentId = "string",
@@ -2288,7 +2288,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_segments(
+#' svc$get_segments(
 #'   ApplicationId = "string",
 #'   PageSize = "string",
 #'   Token = "string"
@@ -2325,7 +2325,7 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_sms_channel(
+#' svc$get_sms_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -2362,7 +2362,7 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_user_endpoints(
+#' svc$get_user_endpoints(
 #'   ApplicationId = "string",
 #'   UserId = "string"
 #' )
@@ -2398,7 +2398,7 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$get_voice_channel(
+#' svc$get_voice_channel(
 #'   ApplicationId = "string"
 #' )
 #' ```
@@ -2433,7 +2433,7 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -2468,7 +2468,7 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$phone_number_validate(
+#' svc$phone_number_validate(
 #'   NumberValidateRequest = list(
 #'     IsoCountryCode = "string",
 #'     PhoneNumber = "string"
@@ -2507,7 +2507,7 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$put_event_stream(
+#' svc$put_event_stream(
 #'   ApplicationId = "string",
 #'   WriteEventStream = list(
 #'     DestinationStreamArn = "string",
@@ -2547,7 +2547,7 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$put_events(
+#' svc$put_events(
 #'   ApplicationId = "string",
 #'   EventsRequest = list(
 #'     BatchItem = list(
@@ -2656,7 +2656,7 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$remove_attributes(
+#' svc$remove_attributes(
 #'   ApplicationId = "string",
 #'   AttributeType = "string",
 #'   UpdateAttributesRequest = list(
@@ -2698,7 +2698,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$send_messages(
+#' svc$send_messages(
 #'   ApplicationId = "string",
 #'   MessageRequest = list(
 #'     Addresses = list(
@@ -2945,7 +2945,7 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$send_users_messages(
+#' svc$send_users_messages(
 #'   ApplicationId = "string",
 #'   SendUsersMessageRequest = list(
 #'     Context = list(
@@ -3176,7 +3176,7 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   TagsModel = list(
 #'     tags = list(
@@ -3217,7 +3217,7 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3256,7 +3256,7 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_adm_channel(
+#' svc$update_adm_channel(
 #'   ADMChannelRequest = list(
 #'     ClientId = "string",
 #'     ClientSecret = "string",
@@ -3297,7 +3297,7 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_apns_channel(
+#' svc$update_apns_channel(
 #'   APNSChannelRequest = list(
 #'     BundleId = "string",
 #'     Certificate = "string",
@@ -3344,7 +3344,7 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_apns_sandbox_channel(
+#' svc$update_apns_sandbox_channel(
 #'   APNSSandboxChannelRequest = list(
 #'     BundleId = "string",
 #'     Certificate = "string",
@@ -3390,7 +3390,7 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_apns_voip_channel(
+#' svc$update_apns_voip_channel(
 #'   APNSVoipChannelRequest = list(
 #'     BundleId = "string",
 #'     Certificate = "string",
@@ -3437,7 +3437,7 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_apns_voip_sandbox_channel(
+#' svc$update_apns_voip_sandbox_channel(
 #'   APNSVoipSandboxChannelRequest = list(
 #'     BundleId = "string",
 #'     Certificate = "string",
@@ -3484,7 +3484,7 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_application_settings(
+#' svc$update_application_settings(
 #'   ApplicationId = "string",
 #'   WriteApplicationSettingsRequest = list(
 #'     CampaignHook = list(
@@ -3538,7 +3538,7 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_baidu_channel(
+#' svc$update_baidu_channel(
 #'   ApplicationId = "string",
 #'   BaiduChannelRequest = list(
 #'     ApiKey = "string",
@@ -3581,7 +3581,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_campaign(
+#' svc$update_campaign(
 #'   ApplicationId = "string",
 #'   CampaignId = "string",
 #'   WriteCampaignRequest = list(
@@ -3887,7 +3887,7 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_email_channel(
+#' svc$update_email_channel(
 #'   ApplicationId = "string",
 #'   EmailChannelRequest = list(
 #'     ConfigurationSet = "string",
@@ -3931,7 +3931,7 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_endpoint(
+#' svc$update_endpoint(
 #'   ApplicationId = "string",
 #'   EndpointId = "string",
 #'   EndpointRequest = list(
@@ -4010,7 +4010,7 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_endpoints_batch(
+#' svc$update_endpoints_batch(
 #'   ApplicationId = "string",
 #'   EndpointBatchRequest = list(
 #'     Item = list(
@@ -4093,7 +4093,7 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_gcm_channel(
+#' svc$update_gcm_channel(
 #'   ApplicationId = "string",
 #'   GCMChannelRequest = list(
 #'     ApiKey = "string",
@@ -4134,7 +4134,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_segment(
+#' svc$update_segment(
 #'   ApplicationId = "string",
 #'   SegmentId = "string",
 #'   WriteSegmentRequest = list(
@@ -4360,7 +4360,7 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_sms_channel(
+#' svc$update_sms_channel(
 #'   ApplicationId = "string",
 #'   SMSChannelRequest = list(
 #'     Enabled = TRUE|FALSE,
@@ -4401,7 +4401,7 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #'
 #' @section Request syntax:
 #' ```
-#' pinpoint$update_voice_channel(
+#' svc$update_voice_channel(
 #'   ApplicationId = "string",
 #'   VoiceChannelRequest = list(
 #'     Enabled = TRUE|FALSE

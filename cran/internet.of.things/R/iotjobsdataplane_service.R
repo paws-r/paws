@@ -24,11 +24,10 @@ NULL
 #' progress of a job on a specific target and for all the targets of the
 #' job
 #'
-#' @section Example:
-#' ```
-#' iotjobsdataplane <- paws::iotjobsdataplane()
-#' iotjobsdataplane$operation()
-#' ```
+#' @examples
+#' \donttest{svc$describe_job_execution(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

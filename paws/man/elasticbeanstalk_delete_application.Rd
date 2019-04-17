@@ -23,7 +23,7 @@ Amazon S3 bucket.
 You cannot delete an application that has a running environment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$delete_application(
+\preformatted{svc$delete_application(
   ApplicationName = "string",
   TerminateEnvByForce = TRUE|FALSE
 )
@@ -32,7 +32,7 @@ You cannot delete an application that has a running environment.
 
 \examples{
 # The following operation deletes an application named my-app:
-\donttest{elasticbeanstalk$delete_application(
+\donttest{svc$delete_application(
   ApplicationName = "my-app"
 )}
 

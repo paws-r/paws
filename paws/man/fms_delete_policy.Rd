@@ -29,7 +29,7 @@ not specify tags or accounts, all resources are in-scope.}
 Permanently deletes an AWS Firewall Manager policy.
 }
 \section{Request syntax}{
-\preformatted{fms$delete_policy(
+\preformatted{svc$delete_policy(
   PolicyId = "string",
   DeleteAllPolicyResources = TRUE|FALSE
 )

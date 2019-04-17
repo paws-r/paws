@@ -15,7 +15,7 @@ Returns a list of pronunciation lexicons stored in an AWS Region. For
 more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-\preformatted{polly$list_lexicons(
+\preformatted{svc$list_lexicons(
   NextToken = "string"
 )
 }
@@ -23,7 +23,7 @@ more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-
 
 \examples{
 # Returns a list of pronunciation lexicons stored in an AWS Region.
-\donttest{polly$list_lexicons()}
+\donttest{svc$list_lexicons()}
 
 }
 \keyword{internal}

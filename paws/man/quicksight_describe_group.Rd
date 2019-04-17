@@ -30,7 +30,7 @@ The response is the group object.
 \code{aws quicksight describe-group -\\-aws-account-id=11112222333 -\\-namespace=default -\\-group-name=Sales }
 }
 \section{Request syntax}{
-\preformatted{quicksight$describe_group(
+\preformatted{svc$describe_group(
   GroupName = "string",
   AwsAccountId = "string",
   Namespace = "string"

@@ -15,7 +15,7 @@ appsync_get_data_source(apiId, name)
 Retrieves a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_data_source(
+\preformatted{svc$get_data_source(
   apiId = "string",
   name = "string"
 )

@@ -37,7 +37,7 @@ the developer guide.}
 Creates a new trigger.
 }
 \section{Request syntax}{
-\preformatted{glue$create_trigger(
+\preformatted{svc$create_trigger(
   Name = "string",
   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
   Schedule = "string",

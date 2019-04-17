@@ -25,7 +25,7 @@ stream. To retrieve only streams that satisfy a specific condition, you
 can specify a \code{StreamNameCondition}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$list_streams(
+\preformatted{svc$list_streams(
   MaxResults = 123,
   NextToken = "string",
   StreamNameCondition = list(

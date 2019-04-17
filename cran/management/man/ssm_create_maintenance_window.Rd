@@ -65,7 +65,7 @@ action.}
 Creates a new Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_maintenance_window(
+\preformatted{svc$create_maintenance_window(
   Name = "string",
   Description = "string",
   StartDate = "string",

@@ -32,7 +32,7 @@ Returns the default engine and system parameter information for the
 cluster database engine.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_engine_default_cluster_parameters(
+\preformatted{svc$describe_engine_default_cluster_parameters(
   DBParameterGroupFamily = "string",
   Filters = list(
     list(

@@ -13,7 +13,7 @@ globalaccelerator_delete_endpoint_group(EndpointGroupArn)
 Delete an endpoint group from a listener.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$delete_endpoint_group(
+\preformatted{svc$delete_endpoint_group(
   EndpointGroupArn = "string"
 )
 }

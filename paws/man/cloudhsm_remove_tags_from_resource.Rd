@@ -29,7 +29,7 @@ To remove a tag, specify only the tag key to remove (not the value). To
 overwrite the value for an existing tag, use AddTagsToResource.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceArn = "string",
   TagKeyList = list(
     "string"

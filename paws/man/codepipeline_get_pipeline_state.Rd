@@ -20,7 +20,7 @@ source revision information, such as the commit ID, for the current
 state.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$get_pipeline_state(
+\preformatted{svc$get_pipeline_state(
   name = "string"
 )
 }

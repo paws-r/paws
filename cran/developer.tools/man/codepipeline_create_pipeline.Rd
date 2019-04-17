@@ -14,7 +14,7 @@ pipeline.}
 Creates a pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$create_pipeline(
+\preformatted{svc$create_pipeline(
   pipeline = list(
     name = "string",
     roleArn = "string",

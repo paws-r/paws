@@ -20,7 +20,7 @@ function multiple times using the same domain name will not result in an
 error response.
 }
 \section{Request syntax}{
-\preformatted{simpledb$delete_domain(
+\preformatted{svc$delete_domain(
   DomainName = "string"
 )
 }

@@ -19,11 +19,23 @@ NULL
 #' clouds. This means that you can easily migrate any standard Kubernetes
 #' application to Amazon EKS without any code modification required.
 #'
-#' @section Example:
-#' ```
-#' eks <- paws::eks()
-#' eks$operation()
-#' ```
+#' @examples
+#' # The following example creates an Amazon EKS cluster called prod.
+#' \donttest{svc$create_cluster(
+#'   version = "1.10",
+#'   name = "prod",
+#'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
+#'   resourcesVpcConfig = list(
+#'     securityGroupIds = list(
+#'       "sg-6979fe18"
+#'     ),
+#'     subnetIds = list(
+#'       "subnet-6782e71e",
+#'       "subnet-e7e761ac"
+#'     )
+#'   ),
+#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

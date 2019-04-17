@@ -13,7 +13,7 @@ datasync_describe_location_nfs(LocationArn)
 Returns metadata, such as the path information, about a NFS location.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_location_nfs(
+\preformatted{svc$describe_location_nfs(
   LocationArn = "string"
 )
 }

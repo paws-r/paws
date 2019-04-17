@@ -55,7 +55,7 @@ no policies attached to the specified role (or none that match the
 specified path prefix), the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{iam$list_attached_role_policies(
+\preformatted{svc$list_attached_role_policies(
   RoleName = "string",
   PathPrefix = "string",
   Marker = "string",

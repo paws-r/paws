@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$batch_delete_builds(
+#' svc$batch_delete_builds(
 #'   ids = list(
 #'     "string"
 #'   )
@@ -51,7 +51,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$batch_get_builds(
+#' svc$batch_get_builds(
 #'   ids = list(
 #'     "string"
 #'   )
@@ -61,7 +61,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #' @examples
 #' # The following example gets information about builds with the specified
 #' # build IDs.
-#' \donttest{codebuild$batch_get_builds(
+#' \donttest{svc$batch_get_builds(
 #'   ids = list(
 #'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
 #'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
@@ -98,7 +98,7 @@ codebuild_batch_get_builds <- function(ids) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$batch_get_projects(
+#' svc$batch_get_projects(
 #'   names = list(
 #'     "string"
 #'   )
@@ -172,7 +172,7 @@ codebuild_batch_get_projects <- function(names) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$create_project(
+#' svc$create_project(
 #'   name = "string",
 #'   description = "string",
 #'   source = list(
@@ -353,7 +353,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$create_webhook(
+#' svc$create_webhook(
 #'   projectName = "string",
 #'   branchFilter = "string",
 #'   filterGroups = list(
@@ -398,7 +398,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$delete_project(
+#' svc$delete_project(
 #'   name = "string"
 #' )
 #' ```
@@ -435,7 +435,7 @@ codebuild_delete_project <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$delete_source_credentials(
+#' svc$delete_source_credentials(
 #'   arn = "string"
 #' )
 #' ```
@@ -476,7 +476,7 @@ codebuild_delete_source_credentials <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$delete_webhook(
+#' svc$delete_webhook(
 #'   projectName = "string"
 #' )
 #' ```
@@ -525,7 +525,7 @@ codebuild_delete_webhook <- function(projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$import_source_credentials(
+#' svc$import_source_credentials(
 #'   username = "string",
 #'   token = "string",
 #'   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
@@ -563,7 +563,7 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$invalidate_project_cache(
+#' svc$invalidate_project_cache(
 #'   projectName = "string"
 #' )
 #' ```
@@ -609,7 +609,7 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$list_builds(
+#' svc$list_builds(
 #'   sortOrder = "ASCENDING"|"DESCENDING",
 #'   nextToken = "string"
 #' )
@@ -658,7 +658,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$list_builds_for_project(
+#' svc$list_builds_for_project(
 #'   projectName = "string",
 #'   sortOrder = "ASCENDING"|"DESCENDING",
 #'   nextToken = "string"
@@ -693,7 +693,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$list_curated_environment_images()
+#' svc$list_curated_environment_images()
 #' ```
 #'
 #' @keywords internal
@@ -753,7 +753,7 @@ codebuild_list_curated_environment_images <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$list_projects(
+#' svc$list_projects(
 #'   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
 #'   sortOrder = "ASCENDING"|"DESCENDING",
 #'   nextToken = "string"
@@ -788,7 +788,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$list_source_credentials()
+#' svc$list_source_credentials()
 #' ```
 #'
 #' @keywords internal
@@ -919,7 +919,7 @@ codebuild_list_source_credentials <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$start_build(
+#' svc$start_build(
 #'   projectName = "string",
 #'   secondarySourcesOverride = list(
 #'     list(
@@ -1056,7 +1056,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$stop_build(
+#' svc$stop_build(
 #'   id = "string"
 #' )
 #' ```
@@ -1133,7 +1133,7 @@ codebuild_stop_build <- function(id) {
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$update_project(
+#' svc$update_project(
 #'   name = "string",
 #'   description = "string",
 #'   source = list(
@@ -1300,7 +1300,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'
 #' @section Request syntax:
 #' ```
-#' codebuild$update_webhook(
+#' svc$update_webhook(
 #'   projectName = "string",
 #'   branchFilter = "string",
 #'   rotateSecret = TRUE|FALSE,

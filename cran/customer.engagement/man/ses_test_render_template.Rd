@@ -22,7 +22,7 @@ template and a set of replacement data.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$test_render_template(
+\preformatted{svc$test_render_template(
   TemplateName = "string",
   TemplateData = "string"
 )

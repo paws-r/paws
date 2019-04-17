@@ -14,7 +14,7 @@ domains request.}
 Returns a list of all domains in the user's account.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_domains(
+\preformatted{svc$get_domains(
   pageToken = "string"
 )
 }

@@ -9,12 +9,6 @@ machinelearning()
 \description{
 Definition of the public APIs exposed by Amazon Machine Learning
 }
-\section{Example}{
-\preformatted{machinelearning <- paws::machinelearning()
-machinelearning$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,3 +43,9 @@ machinelearning$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags(
+  Foo = 123
+)}
+
+}

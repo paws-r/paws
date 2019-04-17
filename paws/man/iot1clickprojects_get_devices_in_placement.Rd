@@ -15,7 +15,7 @@ iot1clickprojects_get_devices_in_placement(projectName, placementName)
 Returns an object enumerating the devices in a placement.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$get_devices_in_placement(
+\preformatted{svc$get_devices_in_placement(
   projectName = "string",
   placementName = "string"
 )

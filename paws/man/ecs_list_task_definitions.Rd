@@ -51,7 +51,7 @@ You can filter the results by family name with the \code{familyPrefix}
 parameter or by status with the \code{status} parameter.
 }
 \section{Request syntax}{
-\preformatted{ecs$list_task_definitions(
+\preformatted{svc$list_task_definitions(
   familyPrefix = "string",
   status = "ACTIVE"|"INACTIVE",
   sort = "ASC"|"DESC",
@@ -63,10 +63,10 @@ parameter or by status with the \code{status} parameter.
 
 \examples{
 # This example lists all of your registered task definitions.
-\donttest{ecs$list_task_definitions()}
+\donttest{svc$list_task_definitions()}
 
 # This example lists the task definition revisions of a specified family.
-\donttest{ecs$list_task_definitions(
+\donttest{svc$list_task_definitions(
   familyPrefix = "wordpress"
 )}
 

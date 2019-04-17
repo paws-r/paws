@@ -17,7 +17,7 @@ soon as possible. During the reboot, the node status is set to
 REBOOTING.
 }
 \section{Request syntax}{
-\preformatted{dax$reboot_node(
+\preformatted{svc$reboot_node(
   ClusterName = "string",
   NodeId = "string"
 )

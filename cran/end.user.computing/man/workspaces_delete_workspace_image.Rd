@@ -14,7 +14,7 @@ Deletes the specified image from your account. To delete an image, you
 must first delete any bundles that are associated with the image.
 }
 \section{Request syntax}{
-\preformatted{workspaces$delete_workspace_image(
+\preformatted{svc$delete_workspace_image(
   ImageId = "string"
 )
 }

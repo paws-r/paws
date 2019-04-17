@@ -33,7 +33,7 @@ Gets a list of TrainingJobSummary objects that describe the training
 jobs that a hyperparameter tuning job launched.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_training_jobs_for_hyper_parameter_tuning_job(
+\preformatted{svc$list_training_jobs_for_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string",
   NextToken = "string",
   MaxResults = 123,

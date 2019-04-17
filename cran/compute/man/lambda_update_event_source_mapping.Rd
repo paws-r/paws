@@ -40,7 +40,7 @@ Lambda invokes, or pause invocation and resume later from the same
 location.
 }
 \section{Request syntax}{
-\preformatted{lambda$update_event_source_mapping(
+\preformatted{svc$update_event_source_mapping(
   UUID = "string",
   FunctionName = "string",
   Enabled = TRUE|FALSE,
@@ -51,7 +51,7 @@ location.
 
 \examples{
 # This operation updates a Lambda function event source mapping
-\donttest{lambda$update_event_source_mapping(
+\donttest{svc$update_event_source_mapping(
   BatchSize = 123L,
   Enabled = TRUE,
   FunctionName = "myFunction",

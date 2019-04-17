@@ -20,7 +20,7 @@ For information about managing receipt rules, see the \href{http://docs.aws.amaz
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$update_receipt_rule(
+\preformatted{svc$update_receipt_rule(
   RuleSetName = "string",
   Rule = list(
     Name = "string",
@@ -75,7 +75,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example updates a receipt rule to use an Amazon S3 action:
-\donttest{ses$update_receipt_rule(
+\donttest{svc$update_receipt_rule(
   Rule = list(
     Actions = list(
       list(

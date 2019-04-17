@@ -19,7 +19,7 @@ Updates user details for a specified user ID. Currently, only
 \code{LicenseType} updates are supported for this action.
 }
 \section{Request syntax}{
-\preformatted{chime$update_user(
+\preformatted{svc$update_user(
   AccountId = "string",
   UserId = "string",
   LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"

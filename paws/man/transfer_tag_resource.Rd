@@ -24,7 +24,7 @@ entities.
 There is no response returned from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$tag_resource(
+\preformatted{svc$tag_resource(
   Arn = "string",
   Tags = list(
     list(

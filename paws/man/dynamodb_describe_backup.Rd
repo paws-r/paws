@@ -16,7 +16,7 @@ Describes an existing backup of a table.
 You can call \code{DescribeBackup} at a maximum rate of 10 times per second.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_backup(
+\preformatted{svc$describe_backup(
   BackupArn = "string"
 )
 }

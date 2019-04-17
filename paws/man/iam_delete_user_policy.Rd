@@ -32,7 +32,7 @@ about policies, refer to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/p
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_user_policy(
+\preformatted{svc$delete_user_policy(
   UserName = "string",
   PolicyName = "string"
 )
@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following delete-user-policy command removes the specified policy
 # from the IAM user named Juan:
-\donttest{iam$delete_user_policy(
+\donttest{svc$delete_user_policy(
   PolicyName = "ExamplePolicy",
   UserName = "Juan"
 )}

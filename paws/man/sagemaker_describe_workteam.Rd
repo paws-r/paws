@@ -15,7 +15,7 @@ such as the create date, the last updated date, membership information,
 and the work team's Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_workteam(
+\preformatted{svc$describe_workteam(
   WorkteamName = "string"
 )
 }

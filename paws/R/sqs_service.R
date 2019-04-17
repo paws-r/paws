@@ -52,11 +52,10 @@ NULL
 #'     -   [Regions and
 #'         Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
-#' @section Example:
-#' ```
-#' sqs <- paws::sqs()
-#' sqs$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_permission(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

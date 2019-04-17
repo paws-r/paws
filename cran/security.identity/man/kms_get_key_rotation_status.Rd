@@ -44,7 +44,7 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the \code{KeyId} parameter.
 }
 \section{Request syntax}{
-\preformatted{kms$get_key_rotation_status(
+\preformatted{svc$get_key_rotation_status(
   KeyId = "string"
 )
 }
@@ -53,7 +53,7 @@ the key ARN in the value of the \code{KeyId} parameter.
 \examples{
 # The following example retrieves the status of automatic annual rotation
 # of the key material for the specified CMK.
-\donttest{kms$get_key_rotation_status(
+\donttest{svc$get_key_rotation_status(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

@@ -16,7 +16,7 @@ Removes one or more tags from the specified CloudWatch Events resource.
 In CloudWatch Events, rules can be tagged.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"

@@ -23,7 +23,7 @@ group removes the thing from the last dynamic group.}
 Updates the groups to which the thing belongs.
 }
 \section{Request syntax}{
-\preformatted{iot$update_thing_groups_for_thing(
+\preformatted{svc$update_thing_groups_for_thing(
   thingName = "string",
   thingGroupsToAdd = list(
     "string"

@@ -23,7 +23,7 @@ all route tables associated with the VPC (except the default one), and
 so on.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpc(
+\preformatted{svc$delete_vpc(
   VpcId = "string",
   DryRun = TRUE|FALSE
 )
@@ -32,7 +32,7 @@ so on.
 
 \examples{
 # This example deletes the specified VPC.
-\donttest{ec2$delete_vpc(
+\donttest{svc$delete_vpc(
   VpcId = "vpc-a01106c2"
 )}
 

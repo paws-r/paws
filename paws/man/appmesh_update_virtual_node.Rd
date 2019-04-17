@@ -23,7 +23,7 @@ existing data.}
 Updates an existing virtual node in a specified service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$update_virtual_node(
+\preformatted{svc$update_virtual_node(
   clientToken = "string",
   meshName = "string",
   spec = list(

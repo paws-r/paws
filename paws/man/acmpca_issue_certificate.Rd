@@ -50,7 +50,7 @@ You cannot use the ACM \strong{ListCertificateAuthorities} operation to
 retrieve the ARNs of the certificates that you issue by using ACM PCA.
 }
 \section{Request syntax}{
-\preformatted{acmpca$issue_certificate(
+\preformatted{svc$issue_certificate(
   CertificateAuthorityArn = "string",
   Csr = raw,
   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",

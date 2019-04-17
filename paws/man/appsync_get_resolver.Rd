@@ -17,7 +17,7 @@ appsync_get_resolver(apiId, typeName, fieldName)
 Retrieves a \code{Resolver} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_resolver(
+\preformatted{svc$get_resolver(
   apiId = "string",
   typeName = "string",
   fieldName = "string"

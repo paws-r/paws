@@ -17,7 +17,7 @@ apigateway_delete_method(restApiId, resourceId, httpMethod)
 Deletes an existing Method resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_method(
+\preformatted{svc$delete_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"

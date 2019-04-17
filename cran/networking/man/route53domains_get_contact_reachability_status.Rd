@@ -24,7 +24,7 @@ If you want us to resend the email, use the
 \code{ResendContactReachabilityEmail} operation.
 }
 \section{Request syntax}{
-\preformatted{route53domains$get_contact_reachability_status(
+\preformatted{svc$get_contact_reachability_status(
   domainName = "string"
 )
 }

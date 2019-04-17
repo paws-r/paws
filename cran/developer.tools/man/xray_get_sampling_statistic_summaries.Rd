@@ -15,7 +15,7 @@ Retrieves information about recent sampling results for all sampling
 rules.
 }
 \section{Request syntax}{
-\preformatted{xray$get_sampling_statistic_summaries(
+\preformatted{svc$get_sampling_statistic_summaries(
   NextToken = "string"
 )
 }

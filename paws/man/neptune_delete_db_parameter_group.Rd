@@ -21,7 +21,7 @@ Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
 can't be associated with any DB instances.
 }
 \section{Request syntax}{
-\preformatted{neptune$delete_db_parameter_group(
+\preformatted{svc$delete_db_parameter_group(
   DBParameterGroupName = "string"
 )
 }

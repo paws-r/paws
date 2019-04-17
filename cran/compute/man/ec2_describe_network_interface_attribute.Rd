@@ -22,7 +22,7 @@ Describes a network interface attribute. You can specify only one
 attribute at a time.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_network_interface_attribute(
+\preformatted{svc$describe_network_interface_attribute(
   Attribute = "description"|"groupSet"|"sourceDestCheck"|"attachment",
   DryRun = TRUE|FALSE,
   NetworkInterfaceId = "string"
@@ -33,28 +33,28 @@ attribute at a time.
 \examples{
 # This example describes the attachment attribute of the specified network
 # interface.
-\donttest{ec2$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "attachment",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the description attribute of the specified
 # network interface.
-\donttest{ec2$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "description",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the groupSet attribute of the specified network
 # interface.
-\donttest{ec2$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "groupSet",
   NetworkInterfaceId = "eni-686ea200"
 )}
 
 # This example describes the sourceDestCheck attribute of the specified
 # network interface.
-\donttest{ec2$describe_network_interface_attribute(
+\donttest{svc$describe_network_interface_attribute(
   Attribute = "sourceDestCheck",
   NetworkInterfaceId = "eni-686ea200"
 )}

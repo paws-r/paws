@@ -38,7 +38,7 @@ one attribute at a time. You can use this action to attach and detach
 security groups from an existing EC2 instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_network_interface_attribute(
+\preformatted{svc$modify_network_interface_attribute(
   Attachment = list(
     AttachmentId = "string",
     DeleteOnTermination = TRUE|FALSE
@@ -61,7 +61,7 @@ security groups from an existing EC2 instance.
 \examples{
 # This example modifies the attachment attribute of the specified network
 # interface.
-\donttest{ec2$modify_network_interface_attribute(
+\donttest{svc$modify_network_interface_attribute(
   Attachment = list(
     AttachmentId = "eni-attach-43348162",
     DeleteOnTermination = FALSE
@@ -71,7 +71,7 @@ security groups from an existing EC2 instance.
 
 # This example modifies the description attribute of the specified network
 # interface.
-\donttest{ec2$modify_network_interface_attribute(
+\donttest{svc$modify_network_interface_attribute(
   Description = list(
     Value = "My description"
   ),
@@ -80,7 +80,7 @@ security groups from an existing EC2 instance.
 
 # This example command modifies the groupSet attribute of the specified
 # network interface.
-\donttest{ec2$modify_network_interface_attribute(
+\donttest{svc$modify_network_interface_attribute(
   Groups = list(
     "sg-903004f8",
     "sg-1a2b3c4d"
@@ -90,7 +90,7 @@ security groups from an existing EC2 instance.
 
 # This example command modifies the sourceDestCheck attribute of the
 # specified network interface.
-\donttest{ec2$modify_network_interface_attribute(
+\donttest{svc$modify_network_interface_attribute(
   NetworkInterfaceId = "eni-686ea200",
   SourceDestCheck = list(
     Value = FALSE

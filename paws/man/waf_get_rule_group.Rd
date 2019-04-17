@@ -19,7 +19,7 @@ included in the \code{GetRuleGroup} request.
 To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 }
 \section{Request syntax}{
-\preformatted{waf$get_rule_group(
+\preformatted{svc$get_rule_group(
   RuleGroupId = "string"
 )
 }

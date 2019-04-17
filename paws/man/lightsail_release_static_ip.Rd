@@ -13,7 +13,7 @@ lightsail_release_static_ip(staticIpName)
 Deletes a specific static IP from your account.
 }
 \section{Request syntax}{
-\preformatted{lightsail$release_static_ip(
+\preformatted{svc$release_static_ip(
   staticIpName = "string"
 )
 }

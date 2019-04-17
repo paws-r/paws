@@ -17,7 +17,7 @@ in the \emph{Amazon Web Services General Reference}.}
 Removes one or more tags from the specified resource.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"

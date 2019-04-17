@@ -47,7 +47,7 @@ For information about receiving email through Amazon SES, see the
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$send_bounce(
+\preformatted{svc$send_bounce(
   OriginalMessageId = "string",
   BounceSender = "string",
   Explanation = "string",

@@ -25,7 +25,7 @@ tags from. To get the ARN for a resource, use the applicable \code{Get} or
 Removes one or more tags from a specified resource.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

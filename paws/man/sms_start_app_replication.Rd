@@ -13,7 +13,7 @@ sms_start_app_replication(appId)
 Starts replicating an application.
 }
 \section{Request syntax}{
-\preformatted{sms$start_app_replication(
+\preformatted{svc$start_app_replication(
   appId = "string"
 )
 }

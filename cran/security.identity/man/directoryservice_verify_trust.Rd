@@ -19,7 +19,7 @@ This action verifies a trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$verify_trust(
+\preformatted{svc$verify_trust(
   TrustId = "string"
 )
 }

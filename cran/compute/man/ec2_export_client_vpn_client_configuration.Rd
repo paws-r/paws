@@ -22,7 +22,7 @@ file includes the Client VPN endpoint and certificate information
 clients need to establish a connection with the Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$export_client_vpn_client_configuration(
+\preformatted{svc$export_client_vpn_client_configuration(
   ClientVpnEndpointId = "string",
   DryRun = TRUE|FALSE
 )

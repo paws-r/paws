@@ -36,7 +36,7 @@ Returns information about replication tasks for your account in the
 current region.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_replication_tasks(
+\preformatted{svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",
@@ -55,7 +55,7 @@ current region.
 \examples{
 # Returns information about replication tasks for your account in the
 # current region.
-\donttest{databasemigrationservice$describe_replication_tasks(
+\donttest{svc$describe_replication_tasks(
   Filters = list(
     list(
       Name = "string",

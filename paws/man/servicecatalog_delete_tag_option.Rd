@@ -17,7 +17,7 @@ You cannot delete a TagOption if it is associated with a product or
 portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_tag_option(
+\preformatted{svc$delete_tag_option(
   Id = "string"
 )
 }

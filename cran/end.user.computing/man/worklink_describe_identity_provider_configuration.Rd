@@ -13,7 +13,7 @@ worklink_describe_identity_provider_configuration(FleetArn)
 Describes the identity provider configuration of the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_identity_provider_configuration(
+\preformatted{svc$describe_identity_provider_configuration(
   FleetArn = "string"
 )
 }

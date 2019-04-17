@@ -20,7 +20,7 @@ number of items is specified by the limitations of the operation.}
 Lists the address blocks that you have added to a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$list_ip_routes(
+\preformatted{svc$list_ip_routes(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123

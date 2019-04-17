@@ -15,7 +15,7 @@ Retrieves details for the specified Amazon Chime account, such as
 account type and supported licenses.
 }
 \section{Request syntax}{
-\preformatted{chime$get_account(
+\preformatted{svc$get_account(
   AccountId = "string"
 )
 }

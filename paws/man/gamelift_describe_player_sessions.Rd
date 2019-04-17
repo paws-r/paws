@@ -65,7 +65,7 @@ PlayerSession object is returned for each session matching the request.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_player_sessions(
+\preformatted{svc$describe_player_sessions(
   GameSessionId = "string",
   PlayerId = "string",
   PlayerSessionId = "string",

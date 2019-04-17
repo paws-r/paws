@@ -17,7 +17,7 @@ s3_get_object_tagging(Bucket, Key, VersionId)
 Returns the tag-set of an object.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_tagging(
+\preformatted{svc$get_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string"
@@ -28,14 +28,14 @@ Returns the tag-set of an object.
 \examples{
 # The following example retrieves tag set of an object. The request
 # specifies object version.
-\donttest{s3$get_object_tagging(
+\donttest{svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "exampleobject",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
 )}
 
 # The following example retrieves tag set of an object.
-\donttest{s3$get_object_tagging(
+\donttest{svc$get_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

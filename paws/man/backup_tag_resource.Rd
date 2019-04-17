@@ -19,7 +19,7 @@ Assigns a set of key-value pairs to a recovery point, backup plan, or
 backup vault identified by an Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
-\preformatted{backup$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

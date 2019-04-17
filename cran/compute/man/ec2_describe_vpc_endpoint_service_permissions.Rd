@@ -36,7 +36,7 @@ Describes the principals (service consumers) that are permitted to
 discover your VPC endpoint service.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoint_service_permissions(
+\preformatted{svc$describe_vpc_endpoint_service_permissions(
   DryRun = TRUE|FALSE,
   ServiceId = "string",
   Filters = list(

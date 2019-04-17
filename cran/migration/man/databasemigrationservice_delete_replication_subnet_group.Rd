@@ -14,7 +14,7 @@ databasemigrationservice_delete_replication_subnet_group(
 Deletes a subnet group.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_replication_subnet_group(
+\preformatted{svc$delete_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "string"
 )
 }
@@ -22,7 +22,7 @@ Deletes a subnet group.
 
 \examples{
 # Deletes a replication subnet group.
-\donttest{databasemigrationservice$delete_replication_subnet_group(
+\donttest{svc$delete_replication_subnet_group(
   ReplicationSubnetGroupIdentifier = "us-west-2ab-vpc-215ds366"
 )}
 

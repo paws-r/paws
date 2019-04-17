@@ -56,7 +56,7 @@ the optional \code{EntityRecognizerArn} must be used in order to provide
 access to the recognizer being used to detect the custom entity.
 }
 \section{Request syntax}{
-\preformatted{comprehend$start_entities_detection_job(
+\preformatted{svc$start_entities_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"

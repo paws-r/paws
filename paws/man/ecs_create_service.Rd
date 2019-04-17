@@ -296,7 +296,7 @@ tasks for this service.
 }
 }
 \section{Request syntax}{
-\preformatted{ecs$create_service(
+\preformatted{svc$create_service(
   cluster = "string",
   serviceName = "string",
   taskDefinition = "string",
@@ -369,7 +369,7 @@ tasks for this service.
 # This example creates a service in your default region called
 # ``ecs-simple-service``. The service uses the ``hello_world`` task
 # definition and it maintains 10 copies of that task.
-\donttest{ecs$create_service(
+\donttest{svc$create_service(
   desiredCount = 10L,
   serviceName = "ecs-simple-service",
   taskDefinition = "hello_world"
@@ -379,7 +379,7 @@ tasks for this service.
 # ``ecs-simple-service-elb``. The service uses the ``ecs-demo`` task
 # definition and it maintains 10 copies of that task. You must reference
 # an existing load balancer in the same region by its name.
-\donttest{ecs$create_service(
+\donttest{svc$create_service(
   desiredCount = 10L,
   loadBalancers = list(
     list(

@@ -65,7 +65,7 @@ DescribeCompilationJob. To get information about multiple model
 compilation jobs, use ListCompilationJobs.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_compilation_job(
+\preformatted{svc$create_compilation_job(
   CompilationJobName = "string",
   RoleArn = "string",
   InputConfig = list(

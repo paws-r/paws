@@ -40,7 +40,7 @@ You can only add steps to a cluster that is in one of the following
 states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 }
 \section{Request syntax}{
-\preformatted{emr$add_job_flow_steps(
+\preformatted{svc$add_job_flow_steps(
   JobFlowId = "string",
   Steps = list(
     list(

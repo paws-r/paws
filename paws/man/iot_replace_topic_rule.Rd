@@ -18,7 +18,7 @@ permission to create rules will be able to access data processed by the
 rule.
 }
 \section{Request syntax}{
-\preformatted{iot$replace_topic_rule(
+\preformatted{svc$replace_topic_rule(
   ruleName = "string",
   topicRulePayload = list(
     sql = "string",

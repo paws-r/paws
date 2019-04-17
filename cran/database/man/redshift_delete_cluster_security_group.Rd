@@ -20,7 +20,7 @@ For information about managing security groups, go to \href{http://docs.aws.amaz
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_cluster_security_group(
+\preformatted{svc$delete_cluster_security_group(
   ClusterSecurityGroupName = "string"
 )
 }

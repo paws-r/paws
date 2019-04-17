@@ -10,7 +10,7 @@ greengrass_get_service_role_for_account()
 Retrieves the service role that is attached to your account.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_service_role_for_account()
+\preformatted{svc$get_service_role_for_account()
 }
 }
 

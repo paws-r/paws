@@ -50,7 +50,7 @@ and \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_sam
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_saml_provider(
+\preformatted{svc$create_saml_provider(
   SAMLMetadataDocument = "string",
   Name = "string"
 )

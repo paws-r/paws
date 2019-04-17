@@ -19,7 +19,7 @@ permissions.}
 Deletes permissions granted to a member (user or group).
 }
 \section{Request syntax}{
-\preformatted{workmail$delete_mailbox_permissions(
+\preformatted{svc$delete_mailbox_permissions(
   OrganizationId = "string",
   EntityId = "string",
   GranteeId = "string"

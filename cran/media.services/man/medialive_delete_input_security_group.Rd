@@ -13,7 +13,7 @@ medialive_delete_input_security_group(InputSecurityGroupId)
 Deletes an Input Security Group
 }
 \section{Request syntax}{
-\preformatted{medialive$delete_input_security_group(
+\preformatted{svc$delete_input_security_group(
   InputSecurityGroupId = "string"
 )
 }

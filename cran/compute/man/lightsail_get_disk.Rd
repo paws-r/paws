@@ -13,7 +13,7 @@ lightsail_get_disk(diskName)
 Returns information about a specific block storage disk.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_disk(
+\preformatted{svc$get_disk(
   diskName = "string"
 )
 }

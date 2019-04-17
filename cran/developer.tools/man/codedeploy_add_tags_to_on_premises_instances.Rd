@@ -18,7 +18,7 @@ Value-only tags are not allowed.}
 Adds tags to on-premises instances.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$add_tags_to_on_premises_instances(
+\preformatted{svc$add_tags_to_on_premises_instances(
   tags = list(
     list(
       Key = "string",

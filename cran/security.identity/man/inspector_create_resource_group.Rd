@@ -23,7 +23,7 @@ used to create an Amazon Inspector assessment target. For more
 information, see CreateAssessmentTarget.
 }
 \section{Request syntax}{
-\preformatted{inspector$create_resource_group(
+\preformatted{svc$create_resource_group(
   resourceGroupTags = list(
     list(
       key = "string",
@@ -39,7 +39,7 @@ information, see CreateAssessmentTarget.
 # pairs) that are used to select the EC2 instances to be included in an
 # Amazon Inspector assessment target. The created resource group is then
 # used to create an Amazon Inspector assessment target.
-\donttest{inspector$create_resource_group(
+\donttest{svc$create_resource_group(
   resourceGroupTags = list(
     list(
       key = "Name",

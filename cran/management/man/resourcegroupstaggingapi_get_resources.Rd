@@ -72,7 +72,7 @@ associated with the requested resources. If no filter is provided, this
 action returns a paginated resource list with the associated tags.
 }
 \section{Request syntax}{
-\preformatted{resourcegroupstaggingapi$get_resources(
+\preformatted{svc$get_resources(
   PaginationToken = "string",
   TagFilters = list(
     list(

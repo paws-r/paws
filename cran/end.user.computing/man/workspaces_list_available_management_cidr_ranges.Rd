@@ -31,7 +31,7 @@ the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
 WorkSpaces to manage the WorkSpace.
 }
 \section{Request syntax}{
-\preformatted{workspaces$list_available_management_cidr_ranges(
+\preformatted{svc$list_available_management_cidr_ranges(
   ManagementCidrRangeConstraint = "string",
   MaxResults = 123,
   NextToken = "string"

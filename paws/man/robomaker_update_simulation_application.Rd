@@ -25,7 +25,7 @@ robomaker_update_simulation_application(application, sources,
 Updates a simulation application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$update_simulation_application(
+\preformatted{svc$update_simulation_application(
   application = "string",
   sources = list(
     list(

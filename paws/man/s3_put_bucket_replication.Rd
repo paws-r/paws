@@ -19,7 +19,7 @@ more information, see Cross-Region Replication (CRR) in the \emph{Amazon S3
 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_replication(
+\preformatted{svc$put_bucket_replication(
   Bucket = "string",
   ContentMD5 = "string",
   ReplicationConfiguration = list(
@@ -74,7 +74,7 @@ Developer Guide}.
 
 \examples{
 # The following example sets replication configuration on a bucket.
-\donttest{s3$put_bucket_replication(
+\donttest{svc$put_bucket_replication(
   Bucket = "examplebucket",
   ReplicationConfiguration = list(
     Role = "arn:aws:iam::123456789012:role/examplerole",

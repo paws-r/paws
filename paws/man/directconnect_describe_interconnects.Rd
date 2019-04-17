@@ -15,7 +15,7 @@ Lists the interconnects owned by the AWS account or only the specified
 interconnect.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_interconnects(
+\preformatted{svc$describe_interconnects(
   interconnectId = "string"
 )
 }

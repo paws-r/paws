@@ -14,7 +14,7 @@ To enable your account to receive events from other accounts, use
 PutPermission.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$describe_event_bus()
+\preformatted{svc$describe_event_bus()
 }
 }
 

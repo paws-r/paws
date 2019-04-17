@@ -51,7 +51,7 @@ By default, only the events occurring within the last hour are returned;
 however, you can retrieve up to 14 days' worth of events if necessary.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
   StartTime = as.POSIXct(

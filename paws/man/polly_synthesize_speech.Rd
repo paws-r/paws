@@ -61,7 +61,7 @@ at all by English voices) unless phoneme mapping is used. For more
 information, see \href{http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 }
 \section{Request syntax}{
-\preformatted{polly$synthesize_speech(
+\preformatted{svc$synthesize_speech(
   LexiconNames = list(
     "string"
   ),
@@ -80,7 +80,7 @@ information, see \href{http://docs.aws.amazon.com/polly/latest/dg/how-text-to-sp
 
 \examples{
 # Synthesizes plain text or SSML into a file of human-like speech.
-\donttest{polly$synthesize_speech(
+\donttest{svc$synthesize_speech(
   LexiconNames = list(
     "example"
   ),

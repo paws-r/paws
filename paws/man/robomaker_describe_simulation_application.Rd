@@ -16,7 +16,7 @@ robomaker_describe_simulation_application(application,
 Describes a simulation application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$describe_simulation_application(
+\preformatted{svc$describe_simulation_application(
   application = "string",
   applicationVersion = "string"
 )

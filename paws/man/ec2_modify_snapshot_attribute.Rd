@@ -42,7 +42,7 @@ For more information about modifying snapshot permissions, see \href{https://doc
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_snapshot_attribute(
+\preformatted{svc$modify_snapshot_attribute(
   Attribute = "productCodes"|"createVolumePermission",
   CreateVolumePermission = list(
     Add = list(
@@ -75,7 +75,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example modifies snapshot ``snap-1234567890abcdef0`` to remove the
 # create volume permission for a user with the account ID
 # ``123456789012``. If the command succeeds, no output is returned.
-\donttest{ec2$modify_snapshot_attribute(
+\donttest{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   OperationType = "remove",
   SnapshotId = "snap-1234567890abcdef0",
@@ -85,7 +85,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 )}
 
 # This example makes the snapshot ``snap-1234567890abcdef0`` public.
-\donttest{ec2$modify_snapshot_attribute(
+\donttest{svc$modify_snapshot_attribute(
   Attribute = "createVolumePermission",
   GroupNames = list(
     "all"

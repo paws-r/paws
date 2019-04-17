@@ -81,7 +81,7 @@ the developer guide.}
 Creates a new job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$create_job(
+\preformatted{svc$create_job(
   Name = "string",
   Description = "string",
   LogUri = "string",

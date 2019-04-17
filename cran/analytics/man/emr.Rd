@@ -13,12 +13,6 @@ several AWS products to do tasks such as web indexing, data mining, log
 file analysis, machine learning, scientific simulation, and data
 warehousing.
 }
-\section{Example}{
-\preformatted{emr <- paws::emr()
-emr$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -52,3 +46,9 @@ emr$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_instance_fleet(
+  Foo = 123
+)}
+
+}

@@ -50,7 +50,7 @@ service for a VPC to your network or another VPC.
 }
 }
 \section{Request syntax}{
-\preformatted{route53resolver$create_resolver_endpoint(
+\preformatted{svc$create_resolver_endpoint(
   CreatorRequestId = "string",
   Name = "string",
   SecurityGroupIds = list(

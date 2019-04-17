@@ -83,7 +83,7 @@ To create a scalable target or update an existing one, see
 RegisterScalableTarget.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$deregister_scalable_target(
+\preformatted{svc$deregister_scalable_target(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceId = "string",
   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"
@@ -94,7 +94,7 @@ RegisterScalableTarget.
 \examples{
 # This example deregisters a scalable target for an Amazon ECS service
 # called web-app that is running in the default cluster.
-\donttest{applicationautoscaling$deregister_scalable_target(
+\donttest{svc$deregister_scalable_target(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"

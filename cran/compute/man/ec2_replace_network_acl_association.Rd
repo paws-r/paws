@@ -27,7 +27,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 This is an idempotent operation.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_network_acl_association(
+\preformatted{svc$replace_network_acl_association(
   AssociationId = "string",
   DryRun = TRUE|FALSE,
   NetworkAclId = "string"
@@ -38,7 +38,7 @@ This is an idempotent operation.
 \examples{
 # This example associates the specified network ACL with the subnet for
 # the specified network ACL association.
-\donttest{ec2$replace_network_acl_association(
+\donttest{svc$replace_network_acl_association(
   AssociationId = "aclassoc-e5b95c8c",
   NetworkAclId = "acl-5fb85d36"
 )}

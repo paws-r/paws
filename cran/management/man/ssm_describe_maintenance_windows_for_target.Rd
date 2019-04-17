@@ -26,7 +26,7 @@ Retrieves information about the Maintenance Windows targets or tasks
 that an instance is associated with.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_windows_for_target(
+\preformatted{svc$describe_maintenance_windows_for_target(
   Targets = list(
     list(
       Key = "string",

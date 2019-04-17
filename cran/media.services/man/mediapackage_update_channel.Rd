@@ -15,7 +15,7 @@ mediapackage_update_channel(Description, Id)
 Updates an existing Channel.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$update_channel(
+\preformatted{svc$update_channel(
   Description = "string",
   Id = "string"
 )

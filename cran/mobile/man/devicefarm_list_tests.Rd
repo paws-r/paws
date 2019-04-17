@@ -17,7 +17,7 @@ list.}
 Gets information about tests in a given test suite.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_tests(
+\preformatted{svc$list_tests(
   arn = "string",
   nextToken = "string"
 )
@@ -27,7 +27,7 @@ Gets information about tests in a given test suite.
 \examples{
 # The following example returns information about tests, given a specific
 # Device Farm project.
-\donttest{devicefarm$list_tests(
+\donttest{svc$list_tests(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}

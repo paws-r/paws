@@ -55,7 +55,7 @@ is a collection of endpoints in one AWS Region. To see an AWS CLI
 example of creating an endpoint group, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$create_endpoint_group(
+\preformatted{svc$create_endpoint_group(
   ListenerArn = "string",
   EndpointGroupRegion = "string",
   EndpointConfigurations = list(

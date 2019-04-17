@@ -7,11 +7,10 @@ NULL
 #' @description
 #' The Amazon SageMaker runtime API.
 #'
-#' @section Example:
-#' ```
-#' sagemakerruntime <- paws::sagemakerruntime()
-#' sagemakerruntime$operation()
-#' ```
+#' @examples
+#' \donttest{svc$invoke_endpoint(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

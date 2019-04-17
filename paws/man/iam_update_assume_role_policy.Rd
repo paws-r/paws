@@ -32,7 +32,7 @@ role. This is typically referred to as the "role trust policy". For
 more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_assume_role_policy(
+\preformatted{svc$update_assume_role_policy(
   RoleName = "string",
   PolicyDocument = "string"
 )
@@ -42,7 +42,7 @@ more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/
 \examples{
 # The following command updates the role trust policy for the role named
 # Test-Role:
-\donttest{iam$update_assume_role_policy(
+\donttest{svc$update_assume_role_policy(
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":[{\\"Effect\\":\\"Allow\\",...",
   RoleName = "S3AccessForEC2Instances"
 )}

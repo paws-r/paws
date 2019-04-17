@@ -18,7 +18,7 @@ Detaches one or more target groups from the specified Auto Scaling
 group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$detach_load_balancer_target_groups(
+\preformatted{svc$detach_load_balancer_target_groups(
   AutoScalingGroupName = "string",
   TargetGroupARNs = list(
     "string"
@@ -30,7 +30,7 @@ group.
 \examples{
 # This example detaches the specified target group from the specified Auto
 # Scaling group
-\donttest{autoscaling$detach_load_balancer_target_groups(
+\donttest{svc$detach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."

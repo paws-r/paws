@@ -16,7 +16,7 @@ Returns information about all Amazon Lightsail virtual private servers,
 or \emph{instances}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instances(
+\preformatted{svc$get_instances(
   pageToken = "string"
 )
 }

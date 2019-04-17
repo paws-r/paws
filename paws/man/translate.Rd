@@ -10,12 +10,6 @@ translate()
 Provides translation between one source language and another of the same
 set of languages.
 }
-\section{Example}{
-\preformatted{translate <- paws::translate()
-translate$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -27,3 +21,9 @@ translate$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_terminology(
+  Foo = 123
+)}
+
+}

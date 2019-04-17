@@ -18,7 +18,7 @@ greengrass_get_logger_definition_version(LoggerDefinitionId,
 Retrieves information about a logger definition version.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_logger_definition_version(
+\preformatted{svc$get_logger_definition_version(
   LoggerDefinitionId = "string",
   LoggerDefinitionVersionId = "string",
   NextToken = "string"

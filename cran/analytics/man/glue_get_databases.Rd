@@ -18,7 +18,7 @@ is supplied, the AWS account ID is used by default.}
 Retrieves all Databases defined in a given Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_databases(
+\preformatted{svc$get_databases(
   CatalogId = "string",
   NextToken = "string",
   MaxResults = 123

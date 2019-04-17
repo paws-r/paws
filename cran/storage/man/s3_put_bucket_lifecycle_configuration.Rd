@@ -16,7 +16,7 @@ Sets lifecycle configuration for your bucket. If a lifecycle
 configuration exists, it replaces it.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_lifecycle_configuration(
+\preformatted{svc$put_bucket_lifecycle_configuration(
   Bucket = "string",
   LifecycleConfiguration = list(
     Rules = list(
@@ -78,7 +78,7 @@ configuration exists, it replaces it.
 \examples{
 # The following example replaces existing lifecycle configuration, if any,
 # on the specified bucket.
-\donttest{s3$put_bucket_lifecycle_configuration(
+\donttest{svc$put_bucket_lifecycle_configuration(
   Bucket = "examplebucket",
   LifecycleConfiguration = list(
     Rules = list(

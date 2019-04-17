@@ -23,7 +23,7 @@ call returns a maximum of 50 clusters per call, but returns a marker to
 track the paging of the cluster list across multiple ListClusters calls.
 }
 \section{Request syntax}{
-\preformatted{emr$list_clusters(
+\preformatted{svc$list_clusters(
   CreatedAfter = as.POSIXct(
     "2015-01-01"
   ),

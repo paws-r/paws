@@ -15,7 +15,7 @@ s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration)
 Sets the accelerate configuration of an existing bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_accelerate_configuration(
+\preformatted{svc$put_bucket_accelerate_configuration(
   Bucket = "string",
   AccelerateConfiguration = list(
     Status = "Enabled"|"Suspended"

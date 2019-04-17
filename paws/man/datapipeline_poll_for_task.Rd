@@ -44,7 +44,7 @@ the same \code{workerGroup} until it receives a response, and this can take
 up to 90 seconds.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$poll_for_task(
+\preformatted{svc$poll_for_task(
   workerGroup = "string",
   hostname = "string",
   instanceIdentity = list(

@@ -20,7 +20,7 @@ Deletes the association between the specified Direct Connect gateway and
 virtual private gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_direct_connect_gateway_association(
+\preformatted{svc$delete_direct_connect_gateway_association(
   associationId = "string",
   directConnectGatewayId = "string",
   virtualGatewayId = "string"

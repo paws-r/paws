@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$cancel_job(
+#' svc$cancel_job(
 #'   JobId = "string",
 #'   APIVersion = "string"
 #' )
@@ -57,7 +57,7 @@ importexport_cancel_job <- function(JobId, APIVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$create_job(
+#' svc$create_job(
 #'   JobType = "Import"|"Export",
 #'   Manifest = "string",
 #'   ManifestAddendum = "string",
@@ -110,7 +110,7 @@ importexport_create_job <- function(JobType, Manifest, ManifestAddendum = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$get_shipping_label(
+#' svc$get_shipping_label(
 #'   jobIds = list(
 #'     "string"
 #'   ),
@@ -161,7 +161,7 @@ importexport_get_shipping_label <- function(jobIds, name = NULL, company = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$get_status(
+#' svc$get_status(
 #'   JobId = "string",
 #'   APIVersion = "string"
 #' )
@@ -199,7 +199,7 @@ importexport_get_status <- function(JobId, APIVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$list_jobs(
+#' svc$list_jobs(
 #'   MaxJobs = 123,
 #'   Marker = "string",
 #'   APIVersion = "string"
@@ -242,7 +242,7 @@ importexport_list_jobs <- function(MaxJobs = NULL, Marker = NULL, APIVersion = N
 #'
 #' @section Request syntax:
 #' ```
-#' importexport$update_job(
+#' svc$update_job(
 #'   JobId = "string",
 #'   Manifest = "string",
 #'   JobType = "Import"|"Export",

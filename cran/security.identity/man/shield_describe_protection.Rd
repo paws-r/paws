@@ -20,7 +20,7 @@ but not both.}
 Lists the details of a Protection object.
 }
 \section{Request syntax}{
-\preformatted{shield$describe_protection(
+\preformatted{svc$describe_protection(
   ProtectionId = "string",
   ResourceArn = "string"
 )

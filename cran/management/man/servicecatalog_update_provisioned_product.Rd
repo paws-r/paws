@@ -56,7 +56,7 @@ provisioned product entirely.
 You can check the status of this request using DescribeRecord.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_provisioned_product(
+\preformatted{svc$update_provisioned_product(
   AcceptLanguage = "string",
   ProvisionedProductName = "string",
   ProvisionedProductId = "string",

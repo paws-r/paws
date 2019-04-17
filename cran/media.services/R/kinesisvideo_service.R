@@ -6,11 +6,10 @@ NULL
 #'
 #' 
 #'
-#' @section Example:
-#' ```
-#' kinesisvideo <- paws::kinesisvideo()
-#' kinesisvideo$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_stream(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

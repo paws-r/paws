@@ -62,11 +62,15 @@ NULL
 #' Scaling actions, see the [Application Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #'
-#' @section Example:
-#' ```
-#' applicationautoscaling <- paws::applicationautoscaling()
-#' applicationautoscaling$operation()
-#' ```
+#' @examples
+#' # This example deletes a scaling policy for the Amazon ECS service called
+#' # web-app, which is running in the default cluster.
+#' \donttest{svc$delete_scaling_policy(
+#'   PolicyName = "web-app-cpu-lt-25",
+#'   ResourceId = "service/default/web-app",
+#'   ScalableDimension = "ecs:service:DesiredCount",
+#'   ServiceNamespace = "ecs"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

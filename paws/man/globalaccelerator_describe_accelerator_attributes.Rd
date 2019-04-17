@@ -14,7 +14,7 @@ that you want to describe. Value is required.}
 Describe the attributes of an accelerator.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$describe_accelerator_attributes(
+\preformatted{svc$describe_accelerator_attributes(
   AcceleratorArn = "string"
 )
 }

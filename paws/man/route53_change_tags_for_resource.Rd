@@ -35,7 +35,7 @@ For information about using tags for cost allocation, see \href{http://docs.aws.
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$change_tags_for_resource(
+\preformatted{svc$change_tags_for_resource(
   ResourceType = "healthcheck"|"hostedzone",
   ResourceId = "string",
   AddTags = list(
@@ -54,7 +54,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
 \examples{
 # The following example adds two tags and removes one tag from the hosted
 # zone with ID Z3M3LMPEXAMPLE.
-\donttest{route53$change_tags_for_resource(
+\donttest{svc$change_tags_for_resource(
   AddTags = list(
     list(
       Key = "apex",

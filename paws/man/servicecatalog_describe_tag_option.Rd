@@ -13,7 +13,7 @@ servicecatalog_describe_tag_option(Id)
 Gets information about the specified TagOption.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_tag_option(
+\preformatted{svc$describe_tag_option(
   Id = "string"
 )
 }

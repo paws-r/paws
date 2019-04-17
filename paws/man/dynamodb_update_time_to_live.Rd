@@ -45,7 +45,7 @@ For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_time_to_live(
+\preformatted{svc$update_time_to_live(
   TableName = "string",
   TimeToLiveSpecification = list(
     Enabled = TRUE|FALSE,

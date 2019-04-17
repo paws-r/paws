@@ -29,7 +29,7 @@ Returns a paginated list of child objects that are associated with a
 given object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_object_children(
+\preformatted{svc$list_object_children(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

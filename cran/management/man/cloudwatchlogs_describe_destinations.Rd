@@ -22,7 +22,7 @@ Lists all your destinations. The results are ASCII-sorted by destination
 name.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_destinations(
+\preformatted{svc$describe_destinations(
   DestinationNamePrefix = "string",
   nextToken = "string",
   limit = 123

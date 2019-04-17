@@ -13,7 +13,7 @@ dynamodb_describe_global_table(GlobalTableName)
 Returns information about the specified global table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_global_table(
+\preformatted{svc$describe_global_table(
   GlobalTableName = "string"
 )
 }

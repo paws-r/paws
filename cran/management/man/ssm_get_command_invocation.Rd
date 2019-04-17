@@ -23,7 +23,7 @@ Returns detailed information about command execution for an invocation
 or plugin.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_command_invocation(
+\preformatted{svc$get_command_invocation(
   CommandId = "string",
   InstanceId = "string",
   PluginName = "string"

@@ -20,7 +20,7 @@ this account. Each thing group or account can have up to five security
 profiles associated with it.
 }
 \section{Request syntax}{
-\preformatted{iot$attach_security_profile(
+\preformatted{svc$attach_security_profile(
   securityProfileName = "string",
   securityProfileTargetArn = "string"
 )

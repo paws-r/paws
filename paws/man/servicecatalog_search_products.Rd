@@ -31,7 +31,7 @@ results, use null.}
 Gets information about the products to which the caller has access.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$search_products(
+\preformatted{svc$search_products(
   AcceptLanguage = "string",
   Filters = list(
     list(

@@ -15,7 +15,7 @@ Initiates the discovery of any smart home appliances associated with the
 room.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$start_smart_home_appliance_discovery(
+\preformatted{svc$start_smart_home_appliance_discovery(
   RoomArn = "string"
 )
 }

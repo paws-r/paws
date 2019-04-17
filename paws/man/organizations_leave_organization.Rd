@@ -42,7 +42,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.
 \examples{
 # TThe following example shows how to remove your member account from an
 # organization:
-\donttest{organizations$leave_organization()}
+\donttest{svc$leave_organization()}
 
 }
 \keyword{internal}

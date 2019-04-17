@@ -32,7 +32,7 @@ and the authentication type for the user
 }
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_user_stack_associations(
+\preformatted{svc$describe_user_stack_associations(
   StackName = "string",
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL",

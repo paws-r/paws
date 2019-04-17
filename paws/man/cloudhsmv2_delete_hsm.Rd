@@ -25,7 +25,7 @@ the ID of the HSM's ENI. You need to specify only one of these values.
 To find these values, use DescribeClusters.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$delete_hsm(
+\preformatted{svc$delete_hsm(
   ClusterId = "string",
   HsmId = "string",
   EniId = "string",

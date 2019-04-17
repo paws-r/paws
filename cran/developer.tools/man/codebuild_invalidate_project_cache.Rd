@@ -13,7 +13,7 @@ codebuild_invalidate_project_cache(projectName)
 Resets the cache for a project.
 }
 \section{Request syntax}{
-\preformatted{codebuild$invalidate_project_cache(
+\preformatted{svc$invalidate_project_cache(
   projectName = "string"
 )
 }

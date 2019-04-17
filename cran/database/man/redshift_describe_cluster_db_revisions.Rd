@@ -37,7 +37,7 @@ or the \code{marker} parameter, but not both.}
 Returns an array of \code{ClusterDbRevision} objects.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_db_revisions(
+\preformatted{svc$describe_cluster_db_revisions(
   ClusterIdentifier = "string",
   MaxRecords = 123,
   Marker = "string"

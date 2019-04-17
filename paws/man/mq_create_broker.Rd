@@ -44,7 +44,7 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 Creates a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-\preformatted{mq$create_broker(
+\preformatted{svc$create_broker(
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerName = "string",
   Configuration = list(

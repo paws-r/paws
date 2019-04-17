@@ -15,7 +15,7 @@ greengrass_list_connector_definitions(MaxResults, NextToken)
 Retrieves a list of connector definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_connector_definitions(
+\preformatted{svc$list_connector_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

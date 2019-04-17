@@ -34,7 +34,7 @@ this role when accessing the data source.}
 Creates a \code{DataSource} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_data_source(
+\preformatted{svc$create_data_source(
   apiId = "string",
   name = "string",
   description = "string",

@@ -12,7 +12,7 @@ Retrieves the number of health checks that are associated with the
 current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53$get_health_check_count()
+\preformatted{svc$get_health_check_count()
 }
 }
 

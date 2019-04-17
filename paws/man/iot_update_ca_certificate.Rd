@@ -26,7 +26,7 @@ not be used.}
 Updates a registered CA certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$update_ca_certificate(
+\preformatted{svc$update_ca_certificate(
   certificateId = "string",
   newStatus = "ACTIVE"|"INACTIVE",
   newAutoRegistrationStatus = "ENABLE"|"DISABLE",

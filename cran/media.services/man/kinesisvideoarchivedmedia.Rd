@@ -9,12 +9,6 @@ kinesisvideoarchivedmedia()
 \description{
 Amazon Kinesis Video Streams Archived Media
 }
-\section{Example}{
-\preformatted{kinesisvideoarchivedmedia <- paws::kinesisvideoarchivedmedia()
-kinesisvideoarchivedmedia$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -24,3 +18,9 @@ kinesisvideoarchivedmedia$operation()
 }
 }
 
+\examples{
+\donttest{svc$get_hls_streaming_session_url(
+  Foo = 123
+)}
+
+}

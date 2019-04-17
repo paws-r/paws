@@ -50,7 +50,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{waf$update_rule_group(
+\preformatted{svc$update_rule_group(
   RuleGroupId = "string",
   Updates = list(
     list(

@@ -37,7 +37,7 @@ Only 10 jobs may have status "DELETION\_IN\_PROGRESS" at the same
 time, or a LimitExceededException will occur.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_job(
+\preformatted{svc$delete_job(
   jobId = "string",
   force = TRUE|FALSE
 )

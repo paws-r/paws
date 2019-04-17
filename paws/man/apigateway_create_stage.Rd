@@ -42,7 +42,7 @@ Creates a new Stage resource that references a pre-existing Deployment
 for the API.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_stage(
+\preformatted{svc$create_stage(
   restApiId = "string",
   stageName = "string",
   deploymentId = "string",

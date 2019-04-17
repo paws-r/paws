@@ -15,7 +15,7 @@ apigatewayv2_get_api_mapping(ApiMappingId, DomainName)
 The API mapping.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_api_mapping(
+\preformatted{svc$get_api_mapping(
   ApiMappingId = "string",
   DomainName = "string"
 )

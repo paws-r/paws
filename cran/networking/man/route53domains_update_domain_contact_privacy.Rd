@@ -47,7 +47,7 @@ If the request doesn't complete successfully, the domain registrant
 will be notified by email.
 }
 \section{Request syntax}{
-\preformatted{route53domains$update_domain_contact_privacy(
+\preformatted{svc$update_domain_contact_privacy(
   DomainName = "string",
   AdminPrivacy = TRUE|FALSE,
   RegistrantPrivacy = TRUE|FALSE,

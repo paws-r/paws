@@ -15,7 +15,7 @@ greengrass_update_logger_definition(LoggerDefinitionId, Name)
 Updates a logger definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_logger_definition(
+\preformatted{svc$update_logger_definition(
   LoggerDefinitionId = "string",
   Name = "string"
 )

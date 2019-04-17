@@ -14,7 +14,7 @@ activity.}
 List tags for a given resource.
 }
 \section{Request syntax}{
-\preformatted{sfn$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }

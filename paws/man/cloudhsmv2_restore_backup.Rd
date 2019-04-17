@@ -17,7 +17,7 @@ Restores a specified AWS CloudHSM backup that is in the
 DeleteBackup.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$restore_backup(
+\preformatted{svc$restore_backup(
   BackupId = "string"
 )
 }

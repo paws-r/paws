@@ -18,7 +18,7 @@ cognitoidentityprovider_change_password(PreviousPassword,
 Changes the password for a specified user in a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$change_password(
+\preformatted{svc$change_password(
   PreviousPassword = "string",
   ProposedPassword = "string",
   AccessToken = "string"

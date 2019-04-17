@@ -36,7 +36,7 @@ DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 }
 \section{Request syntax}{
-\preformatted{neptune$modify_db_cluster_parameter_group(
+\preformatted{svc$modify_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   Parameters = list(
     list(

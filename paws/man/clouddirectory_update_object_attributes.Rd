@@ -19,7 +19,7 @@ where the object resides. For more information, see arns.}
 Updates a given object's attributes.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$update_object_attributes(
+\preformatted{svc$update_object_attributes(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

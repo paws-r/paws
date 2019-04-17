@@ -14,7 +14,7 @@ Returns details about an event source mapping. You can get the
 identifier of a mapping from the output of ListEventSourceMappings.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_event_source_mapping(
+\preformatted{svc$get_event_source_mapping(
   UUID = "string"
 )
 }
@@ -22,7 +22,7 @@ identifier of a mapping from the output of ListEventSourceMappings.
 
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-\donttest{lambda$get_event_source_mapping(
+\donttest{svc$get_event_source_mapping(
   UUID = "123489-xxxxx-kdla8d89d7"
 )}
 

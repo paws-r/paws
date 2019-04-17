@@ -18,7 +18,7 @@ Disassociates a Device Defender security profile from a thing group or
 from this account.
 }
 \section{Request syntax}{
-\preformatted{iot$detach_security_profile(
+\preformatted{svc$detach_security_profile(
   securityProfileName = "string",
   securityProfileTargetArn = "string"
 )

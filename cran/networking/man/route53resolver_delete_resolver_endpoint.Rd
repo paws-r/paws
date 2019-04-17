@@ -22,7 +22,7 @@ network or to another VPC.
 }
 }
 \section{Request syntax}{
-\preformatted{route53resolver$delete_resolver_endpoint(
+\preformatted{svc$delete_resolver_endpoint(
   ResolverEndpointId = "string"
 )
 }

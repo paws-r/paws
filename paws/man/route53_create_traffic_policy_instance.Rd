@@ -36,7 +36,7 @@ or subdomain name by using the resource record sets that
 \code{CreateTrafficPolicyInstance} created.
 }
 \section{Request syntax}{
-\preformatted{route53$create_traffic_policy_instance(
+\preformatted{svc$create_traffic_policy_instance(
   HostedZoneId = "string",
   Name = "string",
   TTL = 123,

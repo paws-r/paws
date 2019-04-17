@@ -23,7 +23,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$describe_policy(
+\preformatted{svc$describe_policy(
   PolicyId = "string"
 )
 }
@@ -32,7 +32,7 @@ account.
 \examples{
 # The following example shows how to request information about a
 # policy:/n/n
-\donttest{organizations$describe_policy(
+\donttest{svc$describe_policy(
   PolicyId = "p-examplepolicyid111"
 )}
 

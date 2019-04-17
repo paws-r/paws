@@ -14,7 +14,7 @@ delete.}
 Removes the \code{PublicAccessBlock} configuration from an Amazon S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_public_access_block(
+\preformatted{svc$delete_public_access_block(
   Bucket = "string"
 )
 }

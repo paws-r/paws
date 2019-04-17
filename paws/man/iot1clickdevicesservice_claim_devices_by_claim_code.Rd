@@ -15,7 +15,7 @@ Adds device(s) to your account (i.e., claim one or more devices) if and
 only if you received a claim code with the device(s).
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$claim_devices_by_claim_code(
+\preformatted{svc$claim_devices_by_claim_code(
   ClaimCode = "string"
 )
 }

@@ -15,7 +15,7 @@ mq_delete_tags(ResourceArn, TagKeys)
 Remove a tag from a resource.
 }
 \section{Request syntax}{
-\preformatted{mq$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceArn = "string",
   TagKeys = list(
     "string"

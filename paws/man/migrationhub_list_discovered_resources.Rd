@@ -22,7 +22,7 @@ using the returned token in \code{NextToken}.}
 Lists discovered resources associated with the given \code{MigrationTask}.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$list_discovered_resources(
+\preformatted{svc$list_discovered_resources(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   NextToken = "string",

@@ -25,7 +25,7 @@ For a list of stack instances that are associated with a specific stack
 set, use ListStackInstances.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_instance(
+\preformatted{svc$describe_stack_instance(
   StackSetName = "string",
   StackInstanceAccount = "string",
   StackInstanceRegion = "string"

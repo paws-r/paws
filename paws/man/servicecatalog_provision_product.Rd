@@ -57,7 +57,7 @@ this causes the error "Parameter validation failed: Missing required
 parameter in Tags[\emph{N}]:\emph{Value}".
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$provision_product(
+\preformatted{svc$provision_product(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string",

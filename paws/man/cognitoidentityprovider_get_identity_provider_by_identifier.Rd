@@ -16,7 +16,7 @@ cognitoidentityprovider_get_identity_provider_by_identifier(UserPoolId,
 Gets the specified identity provider.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_identity_provider_by_identifier(
+\preformatted{svc$get_identity_provider_by_identifier(
   UserPoolId = "string",
   IdpIdentifier = "string"
 )

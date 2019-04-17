@@ -100,7 +100,7 @@ service namespace, see DescribeScalingPolicies. To create a scaling
 policy or update an existing one, see PutScalingPolicy.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$describe_scaling_activities(
+\preformatted{svc$describe_scaling_activities(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceId = "string",
   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
@@ -113,7 +113,7 @@ policy or update an existing one, see PutScalingPolicy.
 \examples{
 # This example describes the scaling activities for an Amazon ECS service
 # called web-app that is running in the default cluster.
-\donttest{applicationautoscaling$describe_scaling_activities(
+\donttest{svc$describe_scaling_activities(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"

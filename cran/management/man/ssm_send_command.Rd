@@ -90,7 +90,7 @@ Logs.}
 Executes commands on one or more managed instances.
 }
 \section{Request syntax}{
-\preformatted{ssm$send_command(
+\preformatted{svc$send_command(
   InstanceIds = list(
     "string"
   ),

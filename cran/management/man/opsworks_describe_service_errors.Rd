@@ -30,7 +30,7 @@ user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_service_errors(
+\preformatted{svc$describe_service_errors(
   StackId = "string",
   InstanceId = "string",
   ServiceErrorIds = list(

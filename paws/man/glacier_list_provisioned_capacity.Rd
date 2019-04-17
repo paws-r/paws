@@ -19,7 +19,7 @@ This operation lists the provisioned capacity units for the specified
 AWS account.
 }
 \section{Request syntax}{
-\preformatted{glacier$list_provisioned_capacity(
+\preformatted{svc$list_provisioned_capacity(
   accountId = "string"
 )
 }
@@ -27,7 +27,7 @@ AWS account.
 
 \examples{
 # The example lists the provisioned capacity units for an account.
-\donttest{glacier$list_provisioned_capacity(
+\donttest{svc$list_provisioned_capacity(
   accountId = "-"
 )}
 

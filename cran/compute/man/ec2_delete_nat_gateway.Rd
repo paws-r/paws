@@ -16,7 +16,7 @@ account. Deleting a NAT gateway does not delete any NAT gateway routes
 in your route tables.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_nat_gateway(
+\preformatted{svc$delete_nat_gateway(
   NatGatewayId = "string"
 )
 }
@@ -24,7 +24,7 @@ in your route tables.
 
 \examples{
 # This example deletes the specified NAT gateway.
-\donttest{ec2$delete_nat_gateway(
+\donttest{svc$delete_nat_gateway(
   NatGatewayId = "nat-04ae55e711cec5680"
 )}
 

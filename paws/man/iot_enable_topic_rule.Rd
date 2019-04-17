@@ -13,7 +13,7 @@ iot_enable_topic_rule(ruleName)
 Enables the rule.
 }
 \section{Request syntax}{
-\preformatted{iot$enable_topic_rule(
+\preformatted{svc$enable_topic_rule(
   ruleName = "string"
 )
 }

@@ -17,7 +17,7 @@ Removes the association of tags from a DAX resource. You can call
 \code{UntagResource} up to 5 times per second, per account.
 }
 \section{Request syntax}{
-\preformatted{dax$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"

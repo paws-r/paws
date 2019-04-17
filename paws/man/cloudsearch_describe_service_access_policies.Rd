@@ -22,7 +22,7 @@ more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/develo
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_service_access_policies(
+\preformatted{svc$describe_service_access_policies(
   DomainName = "string",
   Deployed = TRUE|FALSE
 )

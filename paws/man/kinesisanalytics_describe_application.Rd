@@ -24,7 +24,7 @@ This operation requires permissions to perform the
 you need to call other operations such as \code{Update}.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$describe_application(
+\preformatted{svc$describe_application(
   ApplicationName = "string"
 )
 }

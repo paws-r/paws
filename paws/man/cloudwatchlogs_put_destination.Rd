@@ -30,7 +30,7 @@ call PutSubscriptionFilter against this destination. To enable this, the
 destination owner must call PutDestinationPolicy after \code{PutDestination}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$put_destination(
+\preformatted{svc$put_destination(
   destinationName = "string",
   targetArn = "string",
   roleArn = "string"

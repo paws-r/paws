@@ -68,7 +68,7 @@ desired instance count is higher than the instance type's limit, the
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_fleet_capacity(
+\preformatted{svc$update_fleet_capacity(
   FleetId = "string",
   DesiredInstances = 123,
   MinSize = 123,

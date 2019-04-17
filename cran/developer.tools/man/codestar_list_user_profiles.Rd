@@ -18,7 +18,7 @@ Lists all the user profiles configured for your AWS account in AWS
 CodeStar.
 }
 \section{Request syntax}{
-\preformatted{codestar$list_user_profiles(
+\preformatted{svc$list_user_profiles(
   nextToken = "string",
   maxResults = 123
 )

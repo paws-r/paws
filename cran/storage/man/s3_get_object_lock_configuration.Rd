@@ -15,7 +15,7 @@ the Object Lock configuration will be applied by default to every new
 object placed in the specified bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_lock_configuration(
+\preformatted{svc$get_object_lock_configuration(
   Bucket = "string"
 )
 }

@@ -23,7 +23,7 @@ from a previous call.)}
 Query a list of all parameters used by the AWS account.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_parameter_history(
+\preformatted{svc$get_parameter_history(
   Name = "string",
   WithDecryption = TRUE|FALSE,
   MaxResults = 123,

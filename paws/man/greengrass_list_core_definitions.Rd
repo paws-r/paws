@@ -15,7 +15,7 @@ greengrass_list_core_definitions(MaxResults, NextToken)
 Retrieves a list of core definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_core_definitions(
+\preformatted{svc$list_core_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

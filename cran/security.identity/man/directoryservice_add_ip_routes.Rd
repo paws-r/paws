@@ -66,7 +66,7 @@ about what permissions are required to run the \emph{AddIpRoutes} operation,
 see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$add_ip_routes(
+\preformatted{svc$add_ip_routes(
   DirectoryId = "string",
   IpRoutes = list(
     list(

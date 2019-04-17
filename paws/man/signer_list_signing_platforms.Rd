@@ -32,7 +32,7 @@ values that AWS Signer returns in the \code{nextToken} parameter until all of
 your signing jobs have been returned.
 }
 \section{Request syntax}{
-\preformatted{signer$list_signing_platforms(
+\preformatted{svc$list_signing_platforms(
   category = "string",
   partner = "string",
   target = "string",

@@ -24,7 +24,7 @@ Creates an insight, which is a consolidation of findings that identifies
 a security area that requires attention or intervention.
 }
 \section{Request syntax}{
-\preformatted{securityhub$create_insight(
+\preformatted{svc$create_insight(
   Name = "string",
   Filters = list(
     ProductArn = list(

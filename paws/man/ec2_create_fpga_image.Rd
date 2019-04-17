@@ -39,7 +39,7 @@ You can securely deploy an AFI on one or more FPGA-accelerated
 instances. For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA Hardware Development Kit}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_fpga_image(
+\preformatted{svc$create_fpga_image(
   DryRun = TRUE|FALSE,
   InputStorageLocation = list(
     Bucket = "string",

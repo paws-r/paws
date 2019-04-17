@@ -21,7 +21,7 @@ This action can be used only with Windows stacks.
 Grants RDP access to a Windows instance for a specified time period.
 }
 \section{Request syntax}{
-\preformatted{opsworks$grant_access(
+\preformatted{svc$grant_access(
   InstanceId = "string",
   ValidForInMinutes = 123
 )

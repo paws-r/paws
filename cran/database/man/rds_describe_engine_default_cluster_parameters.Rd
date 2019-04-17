@@ -37,7 +37,7 @@ For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/Ama
 in the \emph{Amazon Aurora User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$describe_engine_default_cluster_parameters(
+\preformatted{svc$describe_engine_default_cluster_parameters(
   DBParameterGroupFamily = "string",
   Filters = list(
     list(

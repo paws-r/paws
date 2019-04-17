@@ -36,7 +36,7 @@ Example: \code{my-cluster1}}
 Creates a snapshot of a DB cluster.
 }
 \section{Request syntax}{
-\preformatted{neptune$create_db_cluster_snapshot(
+\preformatted{svc$create_db_cluster_snapshot(
   DBClusterSnapshotIdentifier = "string",
   DBClusterIdentifier = "string",
   Tags = list(

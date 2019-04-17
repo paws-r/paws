@@ -14,12 +14,6 @@ real-time streaming data to destinations such as Amazon Simple Storage
 Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 Redshift, and Splunk.
 }
-\section{Example}{
-\preformatted{firehose <- paws::firehose()
-firehose$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,9 @@ firehose$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_delivery_stream(
+  Foo = 123
+)}
+
+}

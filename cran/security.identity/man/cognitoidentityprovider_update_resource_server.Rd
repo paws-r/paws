@@ -21,7 +21,7 @@ Updates the name and scopes of resource server. All other fields are
 read-only.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_resource_server(
+\preformatted{svc$update_resource_server(
   UserPoolId = "string",
   Identifier = "string",
   Name = "string",

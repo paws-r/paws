@@ -27,7 +27,7 @@ value.}
 Describes your IAM instance profile associations.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_iam_instance_profile_associations(
+\preformatted{svc$describe_iam_instance_profile_associations(
   AssociationIds = list(
     "string"
   ),
@@ -47,7 +47,7 @@ Describes your IAM instance profile associations.
 
 \examples{
 # This example describes the specified IAM instance profile association.
-\donttest{ec2$describe_iam_instance_profile_associations(
+\donttest{svc$describe_iam_instance_profile_associations(
   AssociationIds = list(
     "iip-assoc-0db249b1f25fa24b8"
   )

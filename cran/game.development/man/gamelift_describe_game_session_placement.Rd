@@ -30,7 +30,7 @@ ID. If successful, a GameSessionPlacement object is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_game_session_placement(
+\preformatted{svc$describe_game_session_placement(
   PlacementId = "string"
 )
 }

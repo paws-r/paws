@@ -21,7 +21,7 @@ Gets information about the specified product. This operation is run with
 administrator access.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_product_as_admin(
+\preformatted{svc$describe_product_as_admin(
   AcceptLanguage = "string",
   Id = "string"
 )

@@ -20,7 +20,7 @@ Inspects a batch of documents and returns an inference of the prevailing
 sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
 }
 \section{Request syntax}{
-\preformatted{comprehend$batch_detect_sentiment(
+\preformatted{svc$batch_detect_sentiment(
   TextList = list(
     "string"
   ),

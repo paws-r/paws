@@ -18,7 +18,7 @@ in the order specified in this list.}
 Changes information about a Resource resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_resource(
+\preformatted{svc$update_resource(
   restApiId = "string",
   resourceId = "string",
   patchOperations = list(

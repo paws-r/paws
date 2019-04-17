@@ -74,7 +74,7 @@ value must be equal to or larger than the size of the copied volume, in
 bytes.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_cachedi_scsi_volume(
+\preformatted{svc$create_cachedi_scsi_volume(
   GatewayARN = "string",
   VolumeSizeInBytes = 123,
   SnapshotId = "string",
@@ -90,7 +90,7 @@ bytes.
 
 \examples{
 # Creates a cached volume on a specified cached gateway.
-\donttest{storagegateway$create_cachedi_scsi_volume(
+\donttest{svc$create_cachedi_scsi_volume(
   ClientToken = "cachedvol112233",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   NetworkInterfaceId = "10.1.1.1",

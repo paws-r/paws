@@ -26,7 +26,7 @@ can consist of any upper or lowercased letter or digit.}
 Deletes the specified service-specific credential.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_service_specific_credential(
+\preformatted{svc$delete_service_specific_credential(
   UserName = "string",
   ServiceSpecificCredentialId = "string"
 )

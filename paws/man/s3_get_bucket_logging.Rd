@@ -15,7 +15,7 @@ Returns the logging status of a bucket and the permissions users have to
 view and modify that status. To use GET, you must be the bucket owner.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_logging(
+\preformatted{svc$get_bucket_logging(
   Bucket = "string"
 )
 }

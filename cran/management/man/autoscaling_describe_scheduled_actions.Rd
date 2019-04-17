@@ -34,7 +34,7 @@ haven't run. To describe the actions that have already run, use
 DescribeScalingActivities.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_scheduled_actions(
+\preformatted{svc$describe_scheduled_actions(
   AutoScalingGroupName = "string",
   ScheduledActionNames = list(
     "string"
@@ -54,7 +54,7 @@ DescribeScalingActivities.
 \examples{
 # This example describes the scheduled actions for the specified Auto
 # Scaling group.
-\donttest{autoscaling$describe_scheduled_actions(
+\donttest{svc$describe_scheduled_actions(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

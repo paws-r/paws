@@ -36,7 +36,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$list_activities(
+\preformatted{svc$list_activities(
   maxResults = 123,
   nextToken = "string"
 )

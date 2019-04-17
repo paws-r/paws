@@ -18,7 +18,7 @@ clouddirectory_remove_facet_from_object(DirectoryArn, SchemaFacet,
 Removes the specified facet from the specified object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$remove_facet_from_object(
+\preformatted{svc$remove_facet_from_object(
   DirectoryArn = "string",
   SchemaFacet = list(
     SchemaArn = "string",

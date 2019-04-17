@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$associate_fleet(
+#' svc$associate_fleet(
 #'   FleetName = "string",
 #'   StackName = "string"
 #' )
@@ -53,7 +53,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$batch_associate_user_stack(
+#' svc$batch_associate_user_stack(
 #'   UserStackAssociations = list(
 #'     list(
 #'       StackName = "string",
@@ -95,7 +95,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$batch_disassociate_user_stack(
+#' svc$batch_disassociate_user_stack(
 #'   UserStackAssociations = list(
 #'     list(
 #'       StackName = "string",
@@ -146,7 +146,7 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$copy_image(
+#' svc$copy_image(
 #'   SourceImageName = "string",
 #'   DestinationImageName = "string",
 #'   DestinationRegion = "string",
@@ -192,7 +192,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_directory_config(
+#' svc$create_directory_config(
 #'   DirectoryName = "string",
 #'   OrganizationalUnitDistinguishedNames = list(
 #'     "string"
@@ -318,7 +318,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_fleet(
+#' svc$create_fleet(
 #'   Name = "string",
 #'   ImageName = "string",
 #'   ImageArn = "string",
@@ -407,7 +407,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_image_builder(
+#' svc$create_image_builder(
 #'   Name = "string",
 #'   ImageName = "string",
 #'   ImageArn = "string",
@@ -466,7 +466,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_image_builder_streaming_url(
+#' svc$create_image_builder_streaming_url(
 #'   Name = "string",
 #'   Validity = 123
 #' )
@@ -527,7 +527,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_stack(
+#' svc$create_stack(
 #'   Name = "string",
 #'   Description = "string",
 #'   DisplayName = "string",
@@ -600,7 +600,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_streaming_url(
+#' svc$create_streaming_url(
 #'   StackName = "string",
 #'   FleetName = "string",
 #'   UserId = "string",
@@ -652,7 +652,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$create_user(
+#' svc$create_user(
 #'   UserName = "string",
 #'   MessageAction = "SUPPRESS"|"RESEND",
 #'   FirstName = "string",
@@ -693,7 +693,7 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_directory_config(
+#' svc$delete_directory_config(
 #'   DirectoryName = "string"
 #' )
 #' ```
@@ -728,7 +728,7 @@ appstream_delete_directory_config <- function(DirectoryName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_fleet(
+#' svc$delete_fleet(
 #'   Name = "string"
 #' )
 #' ```
@@ -765,7 +765,7 @@ appstream_delete_fleet <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_image(
+#' svc$delete_image(
 #'   Name = "string"
 #' )
 #' ```
@@ -800,7 +800,7 @@ appstream_delete_image <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_image_builder(
+#' svc$delete_image_builder(
 #'   Name = "string"
 #' )
 #' ```
@@ -839,7 +839,7 @@ appstream_delete_image_builder <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_image_permissions(
+#' svc$delete_image_permissions(
 #'   Name = "string",
 #'   SharedAccountId = "string"
 #' )
@@ -878,7 +878,7 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_stack(
+#' svc$delete_stack(
 #'   Name = "string"
 #' )
 #' ```
@@ -914,7 +914,7 @@ appstream_delete_stack <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$delete_user(
+#' svc$delete_user(
 #'   UserName = "string",
 #'   AuthenticationType = "API"|"SAML"|"USERPOOL"
 #' )
@@ -962,7 +962,7 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_directory_configs(
+#' svc$describe_directory_configs(
 #'   DirectoryNames = list(
 #'     "string"
 #'   ),
@@ -1006,7 +1006,7 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_fleets(
+#' svc$describe_fleets(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -1050,7 +1050,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_image_builders(
+#' svc$describe_image_builders(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -1098,7 +1098,7 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_image_permissions(
+#' svc$describe_image_permissions(
 #'   Name = "string",
 #'   MaxResults = 123,
 #'   SharedAwsAccountIds = list(
@@ -1146,7 +1146,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_images(
+#' svc$describe_images(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -1205,7 +1205,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_sessions(
+#' svc$describe_sessions(
 #'   StackName = "string",
 #'   FleetName = "string",
 #'   UserId = "string",
@@ -1250,7 +1250,7 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_stacks(
+#' svc$describe_stacks(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -1301,7 +1301,7 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_user_stack_associations(
+#' svc$describe_user_stack_associations(
 #'   StackName = "string",
 #'   UserName = "string",
 #'   AuthenticationType = "API"|"SAML"|"USERPOOL",
@@ -1346,7 +1346,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$describe_users(
+#' svc$describe_users(
 #'   AuthenticationType = "API"|"SAML"|"USERPOOL",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1386,7 +1386,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$disable_user(
+#' svc$disable_user(
 #'   UserName = "string",
 #'   AuthenticationType = "API"|"SAML"|"USERPOOL"
 #' )
@@ -1423,7 +1423,7 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$disassociate_fleet(
+#' svc$disassociate_fleet(
 #'   FleetName = "string",
 #'   StackName = "string"
 #' )
@@ -1462,7 +1462,7 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$enable_user(
+#' svc$enable_user(
 #'   UserName = "string",
 #'   AuthenticationType = "API"|"SAML"|"USERPOOL"
 #' )
@@ -1498,7 +1498,7 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$expire_session(
+#' svc$expire_session(
 #'   SessionId = "string"
 #' )
 #' ```
@@ -1537,7 +1537,7 @@ appstream_expire_session <- function(SessionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$list_associated_fleets(
+#' svc$list_associated_fleets(
 #'   StackName = "string",
 #'   NextToken = "string"
 #' )
@@ -1577,7 +1577,7 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$list_associated_stacks(
+#' svc$list_associated_stacks(
 #'   FleetName = "string",
 #'   NextToken = "string"
 #' )
@@ -1618,7 +1618,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -1653,7 +1653,7 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$start_fleet(
+#' svc$start_fleet(
 #'   Name = "string"
 #' )
 #' ```
@@ -1690,7 +1690,7 @@ appstream_start_fleet <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$start_image_builder(
+#' svc$start_image_builder(
 #'   Name = "string",
 #'   AppstreamAgentVersion = "string"
 #' )
@@ -1726,7 +1726,7 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$stop_fleet(
+#' svc$stop_fleet(
 #'   Name = "string"
 #' )
 #' ```
@@ -1761,7 +1761,7 @@ appstream_stop_fleet <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$stop_image_builder(
+#' svc$stop_image_builder(
 #'   Name = "string"
 #' )
 #' ```
@@ -1813,7 +1813,7 @@ appstream_stop_image_builder <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -1859,7 +1859,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1904,7 +1904,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$update_directory_config(
+#' svc$update_directory_config(
 #'   DirectoryName = "string",
 #'   OrganizationalUnitDistinguishedNames = list(
 #'     "string"
@@ -2015,7 +2015,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$update_fleet(
+#' svc$update_fleet(
 #'   ImageName = "string",
 #'   ImageArn = "string",
 #'   Name = "string",
@@ -2081,7 +2081,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$update_image_permissions(
+#' svc$update_image_permissions(
 #'   Name = "string",
 #'   SharedAccountId = "string",
 #'   ImagePermissions = list(
@@ -2137,7 +2137,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'
 #' @section Request syntax:
 #' ```
-#' appstream$update_stack(
+#' svc$update_stack(
 #'   DisplayName = "string",
 #'   Description = "string",
 #'   Name = "string",

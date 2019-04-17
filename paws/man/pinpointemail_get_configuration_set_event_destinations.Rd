@@ -24,7 +24,7 @@ bounces or complaints, or you can use Amazon Kinesis Data Firehose to
 stream data to Amazon S3 for long-term storage.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_configuration_set_event_destinations(
+\preformatted{svc$get_configuration_set_event_destinations(
   ConfigurationSetName = "string"
 )
 }

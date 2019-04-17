@@ -30,7 +30,7 @@ contains a marker that you can specify in your next request to fetch the
 next page of gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_gateways(
+\preformatted{svc$list_gateways(
   Marker = "string",
   Limit = 123
 )
@@ -41,7 +41,7 @@ next page of gateways.
 # Lists gateways owned by an AWS account in a specified region as
 # requested. Results are sorted by gateway ARN up to a maximum of 100
 # gateways.
-\donttest{storagegateway$list_gateways(
+\donttest{svc$list_gateways(
   Limit = 2L,
   Marker = "1"
 )}

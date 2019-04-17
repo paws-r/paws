@@ -36,7 +36,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$create_server(
+#' svc$create_server(
 #'   EndpointDetails = list(
 #'     VpcEndpointId = "string"
 #'   ),
@@ -116,7 +116,7 @@ transfer_create_server <- function(EndpointDetails = NULL, EndpointType = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$create_user(
+#' svc$create_user(
 #'   HomeDirectory = "string",
 #'   Policy = "string",
 #'   Role = "string",
@@ -167,7 +167,7 @@ transfer_create_user <- function(HomeDirectory = NULL, Policy = NULL, Role, Serv
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$delete_server(
+#' svc$delete_server(
 #'   ServerId = "string"
 #' )
 #' ```
@@ -208,7 +208,7 @@ transfer_delete_server <- function(ServerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$delete_ssh_public_key(
+#' svc$delete_ssh_public_key(
 #'   ServerId = "string",
 #'   SshPublicKeyId = "string",
 #'   UserName = "string"
@@ -252,7 +252,7 @@ transfer_delete_ssh_public_key <- function(ServerId, SshPublicKeyId, UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$delete_user(
+#' svc$delete_user(
 #'   ServerId = "string",
 #'   UserName = "string"
 #' )
@@ -291,7 +291,7 @@ transfer_delete_user <- function(ServerId, UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$describe_server(
+#' svc$describe_server(
 #'   ServerId = "string"
 #' )
 #' ```
@@ -335,7 +335,7 @@ transfer_describe_server <- function(ServerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$describe_user(
+#' svc$describe_user(
 #'   ServerId = "string",
 #'   UserName = "string"
 #' )
@@ -379,7 +379,7 @@ transfer_describe_user <- function(ServerId, UserName) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$import_ssh_public_key(
+#' svc$import_ssh_public_key(
 #'   ServerId = "string",
 #'   SshPublicKeyBody = "string",
 #'   UserName = "string"
@@ -423,7 +423,7 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$list_servers(
+#' svc$list_servers(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -469,7 +469,7 @@ transfer_list_servers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   Arn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -515,7 +515,7 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$list_users(
+#' svc$list_users(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   ServerId = "string"
@@ -562,7 +562,7 @@ transfer_list_users <- function(MaxResults = NULL, NextToken = NULL, ServerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$start_server(
+#' svc$start_server(
 #'   ServerId = "string"
 #' )
 #' ```
@@ -607,7 +607,7 @@ transfer_start_server <- function(ServerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$stop_server(
+#' svc$stop_server(
 #'   ServerId = "string"
 #' )
 #' ```
@@ -651,7 +651,7 @@ transfer_stop_server <- function(ServerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$tag_resource(
+#' svc$tag_resource(
 #'   Arn = "string",
 #'   Tags = list(
 #'     list(
@@ -701,7 +701,7 @@ transfer_tag_resource <- function(Arn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$test_identity_provider(
+#' svc$test_identity_provider(
 #'   ServerId = "string",
 #'   UserName = "string",
 #'   UserPassword = "string"
@@ -748,7 +748,7 @@ transfer_test_identity_provider <- function(ServerId, UserName, UserPassword = N
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$untag_resource(
+#' svc$untag_resource(
 #'   Arn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -798,7 +798,7 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$update_server(
+#' svc$update_server(
 #'   EndpointDetails = list(
 #'     VpcEndpointId = "string"
 #'   ),
@@ -867,7 +867,7 @@ transfer_update_server <- function(EndpointDetails = NULL, EndpointType = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' transfer$update_user(
+#' svc$update_user(
 #'   HomeDirectory = "string",
 #'   Policy = "string",
 #'   Role = "string",

@@ -26,7 +26,7 @@ find the backup ID, use DescribeBackups.}
 Creates a new AWS CloudHSM cluster.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$create_cluster(
+\preformatted{svc$create_cluster(
   SubnetIds = list(
     "string"
   ),

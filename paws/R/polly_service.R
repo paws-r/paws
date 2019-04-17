@@ -13,11 +13,11 @@ NULL
 #' (SSML), along with managing pronunciations lexicons that enable you to
 #' get the best results for your application domain.
 #'
-#' @section Example:
-#' ```
-#' polly <- paws::polly()
-#' polly$operation()
-#' ```
+#' @examples
+#' # Deletes a specified pronunciation lexicon stored in an AWS Region.
+#' \donttest{svc$delete_lexicon(
+#'   Name = "example"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

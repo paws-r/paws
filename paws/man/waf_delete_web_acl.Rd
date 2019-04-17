@@ -27,7 +27,7 @@ see UpdateWebACL.
 }
 }
 \section{Request syntax}{
-\preformatted{waf$delete_web_acl(
+\preformatted{svc$delete_web_acl(
   WebACLId = "string",
   ChangeToken = "string"
 )
@@ -37,7 +37,7 @@ see UpdateWebACL.
 \examples{
 # The following example deletes a web ACL with the ID
 # example-46da-4444-5555-example.
-\donttest{waf$delete_web_acl(
+\donttest{svc$delete_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   WebACLId = "example-46da-4444-5555-example"
 )}

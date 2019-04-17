@@ -101,7 +101,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$generate_data_key(
+\preformatted{svc$generate_data_key(
   KeyId = "string",
   EncryptionContext = list(
     "string"
@@ -120,7 +120,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 # (data key) in two formats. One is the unencrypted (plainext) data key,
 # and the other is the data key encrypted with the specified customer
 # master key (CMK).
-\donttest{kms$generate_data_key(
+\donttest{svc$generate_data_key(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
 )}

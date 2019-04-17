@@ -94,7 +94,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$update_web_acl(
+\preformatted{svc$update_web_acl(
   WebACLId = "string",
   ChangeToken = "string",
   Updates = list(
@@ -128,7 +128,7 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \examples{
 # The following example deletes an ActivatedRule object in a WebACL with
 # the ID webacl-1472061481310.
-\donttest{wafregional$update_web_acl(
+\donttest{svc$update_web_acl(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   DefaultAction = list(
     Type = "ALLOW"

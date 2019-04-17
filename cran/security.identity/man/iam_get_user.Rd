@@ -25,7 +25,7 @@ implicitly based on the AWS access key ID used to sign the request to
 this API.
 }
 \section{Request syntax}{
-\preformatted{iam$get_user(
+\preformatted{svc$get_user(
   UserName = "string"
 )
 }
@@ -33,7 +33,7 @@ this API.
 
 \examples{
 # The following command gets information about the IAM user named Bob.
-\donttest{iam$get_user(
+\donttest{svc$get_user(
   UserName = "Bob"
 )}
 

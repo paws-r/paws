@@ -16,7 +16,7 @@ mediaconnect_list_entitlements(MaxResults, NextToken)
 Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$list_entitlements(
+\preformatted{svc$list_entitlements(
   MaxResults = 123,
   NextToken = "string"
 )

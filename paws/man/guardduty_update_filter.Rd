@@ -24,7 +24,7 @@ guardduty_update_filter(Action, Description, DetectorId, FilterName,
 Updates the filter specified by the filter name.
 }
 \section{Request syntax}{
-\preformatted{guardduty$update_filter(
+\preformatted{svc$update_filter(
   Action = "NOOP"|"ARCHIVE",
   Description = "string",
   DetectorId = "string",

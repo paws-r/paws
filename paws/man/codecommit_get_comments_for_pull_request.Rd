@@ -30,7 +30,7 @@ request.}
 Returns comments made on a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_comments_for_pull_request(
+\preformatted{svc$get_comments_for_pull_request(
   pullRequestId = "string",
   repositoryName = "string",
   beforeCommitId = "string",

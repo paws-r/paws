@@ -13,7 +13,7 @@ s3_delete_bucket_cors(Bucket)
 Deletes the CORS configuration information set for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_cors(
+\preformatted{svc$delete_bucket_cors(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the CORS configuration information set for the bucket.
 
 \examples{
 # The following example deletes CORS configuration on a bucket.
-\donttest{s3$delete_bucket_cors(
+\donttest{svc$delete_bucket_cors(
   Bucket = "examplebucket"
 )}
 

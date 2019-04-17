@@ -28,7 +28,7 @@ Returns summary information about stack sets that are associated with
 the user.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_stack_sets(
+\preformatted{svc$list_stack_sets(
   NextToken = "string",
   MaxResults = 123,
   Status = "ACTIVE"|"DELETED"

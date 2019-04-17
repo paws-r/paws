@@ -13,7 +13,7 @@ licensemanager_list_tags_for_resource(ResourceArn)
 Lists tags attached to a resource.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

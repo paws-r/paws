@@ -30,7 +30,7 @@ You can call \code{DescribeContinuousBackups} at a maximum rate of 10 times
 per second.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_continuous_backups(
+\preformatted{svc$describe_continuous_backups(
   TableName = "string"
 )
 }

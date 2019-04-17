@@ -16,7 +16,7 @@ description of.}
 Describes a budget.
 }
 \section{Request syntax}{
-\preformatted{budgets$describe_budget(
+\preformatted{svc$describe_budget(
   AccountId = "string",
   BudgetName = "string"
 )

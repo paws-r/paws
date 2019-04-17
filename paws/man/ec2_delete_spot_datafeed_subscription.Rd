@@ -16,7 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes the data feed for Spot Instances.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_spot_datafeed_subscription(
+\preformatted{svc$delete_spot_datafeed_subscription(
   DryRun = TRUE|FALSE
 )
 }
@@ -24,7 +24,7 @@ Deletes the data feed for Spot Instances.
 
 \examples{
 # This example deletes a Spot data feed subscription for the account.
-\donttest{ec2$delete_spot_datafeed_subscription()}
+\donttest{svc$delete_spot_datafeed_subscription()}
 
 }
 \keyword{internal}

@@ -18,7 +18,7 @@ Returns a unique generated shared secret key code for the user account.
 The request takes an access token or a session string, but not both.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$associate_software_token(
+\preformatted{svc$associate_software_token(
   AccessToken = "string",
   Session = "string"
 )

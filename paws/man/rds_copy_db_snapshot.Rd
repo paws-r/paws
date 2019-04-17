@@ -143,7 +143,7 @@ For more information about copying snapshots, see \href{https://docs.aws.amazon.
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$copy_db_snapshot(
+\preformatted{svc$copy_db_snapshot(
   SourceDBSnapshotIdentifier = "string",
   TargetDBSnapshotIdentifier = "string",
   KmsKeyId = "string",

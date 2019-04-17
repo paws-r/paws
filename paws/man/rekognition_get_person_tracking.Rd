@@ -65,7 +65,7 @@ getting the next set of results. To get the next page of results, call
 the token value returned from the previous call to \code{GetPersonTracking}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_person_tracking(
+\preformatted{svc$get_person_tracking(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string",

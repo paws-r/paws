@@ -27,7 +27,7 @@ It can take a few minutes before traffic to the specified addresses
 stops routing to AWS because of BGP propagation delays.
 }
 \section{Request syntax}{
-\preformatted{ec2$withdraw_byoip_cidr(
+\preformatted{svc$withdraw_byoip_cidr(
   Cidr = "string",
   DryRun = TRUE|FALSE
 )

@@ -37,7 +37,7 @@ Revokes function-use permission from an AWS service or another account.
 You can get the ID of the statement from the output of GetPolicy.
 }
 \section{Request syntax}{
-\preformatted{lambda$remove_permission(
+\preformatted{svc$remove_permission(
   FunctionName = "string",
   StatementId = "string",
   Qualifier = "string",
@@ -48,7 +48,7 @@ You can get the ID of the statement from the output of GetPolicy.
 
 \examples{
 # This operation removes a Lambda function's permissions
-\donttest{lambda$remove_permission(
+\donttest{svc$remove_permission(
   FunctionName = "myFunction",
   Qualifier = "1",
   StatementId = "role-statement-id"

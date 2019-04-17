@@ -20,7 +20,7 @@ Modifies the parameters of a cache parameter group. You can modify up to
 and value pairs.
 }
 \section{Request syntax}{
-\preformatted{elasticache$modify_cache_parameter_group(
+\preformatted{svc$modify_cache_parameter_group(
   CacheParameterGroupName = "string",
   ParameterNameValues = list(
     list(

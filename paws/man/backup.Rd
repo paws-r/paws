@@ -12,12 +12,6 @@ and their associated data. AWS Backup simplifies the creation,
 migration, restoration, and deletion of backups, while also providing
 reporting and auditing.
 }
-\section{Example}{
-\preformatted{backup <- paws::backup()
-backup$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -67,3 +61,9 @@ backup$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_backup_plan(
+  Foo = 123
+)}
+
+}

@@ -26,7 +26,7 @@ from the previous call. When there are no more records to return,
 \code{NextToken} will be null.
 }
 \section{Request syntax}{
-\preformatted{sns$list_phone_numbers_opted_out(
+\preformatted{svc$list_phone_numbers_opted_out(
   nextToken = "string"
 )
 }

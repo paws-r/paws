@@ -24,7 +24,7 @@ you do not specify either, AWS Elastic Beanstalk returns
 Returns AWS resources for this environment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_environment_resources(
+\preformatted{svc$describe_environment_resources(
   EnvironmentId = "string",
   EnvironmentName = "string"
 )
@@ -34,7 +34,7 @@ Returns AWS resources for this environment.
 \examples{
 # The following operation retrieves information about resources in an
 # environment named my-env:
-\donttest{elasticbeanstalk$describe_environment_resources(
+\donttest{svc$describe_environment_resources(
   EnvironmentName = "my-env"
 )}
 

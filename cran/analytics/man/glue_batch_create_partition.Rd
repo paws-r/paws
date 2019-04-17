@@ -23,7 +23,7 @@ created.}
 Creates one or more partitions in a batch operation.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_create_partition(
+\preformatted{svc$batch_create_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

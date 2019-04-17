@@ -16,7 +16,7 @@ baseline.}
 Removes a patch group from a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{ssm$deregister_patch_baseline_for_patch_group(
+\preformatted{svc$deregister_patch_baseline_for_patch_group(
   BaselineId = "string",
   PatchGroup = "string"
 )

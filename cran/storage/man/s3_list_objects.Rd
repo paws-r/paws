@@ -31,7 +31,7 @@ the request parameters as selection criteria to return a subset of the
 objects in a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$list_objects(
+\preformatted{svc$list_objects(
   Bucket = "string",
   Delimiter = "string",
   EncodingType = "url",
@@ -45,7 +45,7 @@ objects in a bucket.
 
 \examples{
 # The following example list two objects in a bucket.
-\donttest{s3$list_objects(
+\donttest{svc$list_objects(
   Bucket = "examplebucket",
   MaxKeys = "2"
 )}

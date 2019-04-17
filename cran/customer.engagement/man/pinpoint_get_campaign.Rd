@@ -15,7 +15,7 @@ pinpoint_get_campaign(ApplicationId, CampaignId)
 Returns information about a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_campaign(
+\preformatted{svc$get_campaign(
   ApplicationId = "string",
   CampaignId = "string"
 )

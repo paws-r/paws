@@ -16,7 +16,7 @@ doesn't exist, the call will still succeed to be idempotent.}
 This action removes a tag from an Amazon FSx resource.
 }
 \section{Request syntax}{
-\preformatted{fsx$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"
@@ -27,7 +27,7 @@ This action removes a tag from an Amazon FSx resource.
 
 \examples{
 # This operation untags an Amazon FSx resource.
-\donttest{fsx$untag_resource(
+\donttest{svc$untag_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
   TagKeys = list(
     "Name"

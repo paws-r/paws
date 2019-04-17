@@ -50,7 +50,7 @@ resources that you create. Each tag is a key-value pair.}
 Starts a job to create a one-time backup of the specified resource.
 }
 \section{Request syntax}{
-\preformatted{backup$start_backup_job(
+\preformatted{svc$start_backup_job(
   BackupVaultName = "string",
   ResourceArn = "string",
   IamRoleArn = "string",

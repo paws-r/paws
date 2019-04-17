@@ -13,7 +13,7 @@ iot_delete_role_alias(roleAlias)
 Deletes a role alias
 }
 \section{Request syntax}{
-\preformatted{iot$delete_role_alias(
+\preformatted{svc$delete_role_alias(
   roleAlias = "string"
 )
 }

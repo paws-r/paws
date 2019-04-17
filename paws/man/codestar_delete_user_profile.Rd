@@ -18,7 +18,7 @@ email address. It does not delete the history of that user, for example
 the history of commits made by that user.
 }
 \section{Request syntax}{
-\preformatted{codestar$delete_user_profile(
+\preformatted{svc$delete_user_profile(
   userArn = "string"
 )
 }

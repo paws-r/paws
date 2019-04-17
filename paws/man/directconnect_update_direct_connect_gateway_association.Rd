@@ -25,7 +25,7 @@ association.
 Add or remove prefixes from the association.
 }
 \section{Request syntax}{
-\preformatted{directconnect$update_direct_connect_gateway_association(
+\preformatted{svc$update_direct_connect_gateway_association(
   associationId = "string",
   addAllowedPrefixesToDirectConnectGateway = list(
     list(

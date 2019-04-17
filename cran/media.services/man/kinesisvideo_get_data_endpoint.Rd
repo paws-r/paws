@@ -30,7 +30,7 @@ In the request, specify the stream either by \code{StreamName} or
 \code{StreamARN}.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$get_data_endpoint(
+\preformatted{svc$get_data_endpoint(
   StreamName = "string",
   StreamARN = "string",
   APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"

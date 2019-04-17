@@ -13,7 +13,7 @@ appsync_get_graphql_api(apiId)
 Retrieves a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_graphql_api(
+\preformatted{svc$get_graphql_api(
   apiId = "string"
 )
 }

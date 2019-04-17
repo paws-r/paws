@@ -23,7 +23,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/Use
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_route_table(
+\preformatted{svc$create_route_table(
   DryRun = TRUE|FALSE,
   VpcId = "string"
 )
@@ -32,7 +32,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 \examples{
 # This example creates a route table for the specified VPC.
-\donttest{ec2$create_route_table(
+\donttest{svc$create_route_table(
   VpcId = "vpc-a01106c2"
 )}
 

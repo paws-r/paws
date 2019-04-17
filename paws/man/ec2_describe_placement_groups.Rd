@@ -32,7 +32,7 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.h
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_placement_groups(
+\preformatted{svc$describe_placement_groups(
   Filters = list(
     list(
       Name = "string",

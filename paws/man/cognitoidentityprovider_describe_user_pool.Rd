@@ -15,7 +15,7 @@ Returns the configuration information and metadata of the specified user
 pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_user_pool(
+\preformatted{svc$describe_user_pool(
   UserPoolId = "string"
 )
 }

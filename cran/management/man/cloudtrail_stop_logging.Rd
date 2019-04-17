@@ -25,7 +25,7 @@ called on the shadow trails (replicated trails in other regions) of a
 trail enabled in all regions.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$stop_logging(
+\preformatted{svc$stop_logging(
   Name = "string"
 )
 }

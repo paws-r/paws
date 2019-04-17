@@ -35,7 +35,7 @@ about what permissions are required to run the \code{CreateDirectory}
 operation, see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_directory(
+\preformatted{svc$create_directory(
   Name = "string",
   ShortName = "string",
   Password = "string",

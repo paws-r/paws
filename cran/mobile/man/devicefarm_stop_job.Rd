@@ -20,7 +20,7 @@ be billed for Setup, Teardown, and any tests that were in progress or
 already completed.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$stop_job(
+\preformatted{svc$stop_job(
   arn = "string"
 )
 }

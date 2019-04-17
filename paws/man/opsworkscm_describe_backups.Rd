@@ -28,7 +28,7 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$describe_backups(
+\preformatted{svc$describe_backups(
   BackupId = "string",
   ServerName = "string",
   NextToken = "string",

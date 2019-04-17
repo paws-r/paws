@@ -20,7 +20,7 @@ This operation requires permissions to perform the \code{lex:GetIntent}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_intent(
+\preformatted{svc$get_intent(
   name = "string",
   version = "string"
 )
@@ -29,7 +29,7 @@ action.
 
 \examples{
 # This example shows how to get information about an intent.
-\donttest{lexmodelbuildingservice$get_intent(
+\donttest{svc$get_intent(
   version = "$LATEST",
   name = "DocOrderPizza"
 )}

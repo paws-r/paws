@@ -28,12 +28,6 @@ actions or commands, as well as how to work with AWS Management Console,
 see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is AWS Config}
 in the \emph{AWS Config Developer Guide}.
 }
-\section{Example}{
-\preformatted{configservice <- paws::configservice()
-configservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -96,3 +90,9 @@ configservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_get_aggregate_resource_config(
+  Foo = 123
+)}
+
+}

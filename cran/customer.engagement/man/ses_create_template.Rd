@@ -19,7 +19,7 @@ operation. For more information, see the \href{http://docs.aws.amazon.com/ses/la
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$create_template(
+\preformatted{svc$create_template(
   Template = list(
     TemplateName = "string",
     SubjectPart = "string",

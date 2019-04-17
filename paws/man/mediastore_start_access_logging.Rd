@@ -15,7 +15,7 @@ logging on a container, MediaStore delivers access logs for objects
 stored in that container to Amazon CloudWatch Logs.
 }
 \section{Request syntax}{
-\preformatted{mediastore$start_access_logging(
+\preformatted{svc$start_access_logging(
   ContainerName = "string"
 )
 }

@@ -17,7 +17,7 @@ Hub master account.}
 Accepts the invitation to be monitored by a master SecurityHub account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$accept_invitation(
+\preformatted{svc$accept_invitation(
   MasterId = "string",
   InvitationId = "string"
 )

@@ -46,7 +46,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_targets_for_policy(
+\preformatted{svc$list_targets_for_policy(
   PolicyId = "string",
   NextToken = "string",
   MaxResults = 123
@@ -57,7 +57,7 @@ account.
 \examples{
 # The following example shows how to get the list of roots, OUs, and
 # accounts to which the specified policy is attached:/n/n
-\donttest{organizations$list_targets_for_policy(
+\donttest{svc$list_targets_for_policy(
   PolicyId = "p-FullAWSAccess"
 )}
 

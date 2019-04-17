@@ -13,7 +13,7 @@ codebuild_batch_get_projects(names)
 Gets information about build projects.
 }
 \section{Request syntax}{
-\preformatted{codebuild$batch_get_projects(
+\preformatted{svc$batch_get_projects(
   names = list(
     "string"
   )

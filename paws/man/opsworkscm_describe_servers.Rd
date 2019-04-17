@@ -27,7 +27,7 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$describe_servers(
+\preformatted{svc$describe_servers(
   ServerName = "string",
   NextToken = "string",
   MaxResults = 123

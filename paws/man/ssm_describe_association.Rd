@@ -29,7 +29,7 @@ then you retrieve the association by specifying the document name and
 the instance ID.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_association(
+\preformatted{svc$describe_association(
   Name = "string",
   InstanceId = "string",
   AssociationId = "string",

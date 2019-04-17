@@ -32,7 +32,7 @@ agents/connectors associated with your user account can be listed if you
 call \code{DescribeAgents} as is without passing any parameters.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_agents(
+\preformatted{svc$describe_agents(
   agentIds = list(
     "string"
   ),

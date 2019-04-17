@@ -18,7 +18,7 @@ operation. If this value is null, it retrieves the first page.}
 Retrieves a list of devices registered with the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$list_devices(
+\preformatted{svc$list_devices(
   FleetArn = "string",
   NextToken = "string",
   MaxResults = 123

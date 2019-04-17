@@ -21,7 +21,7 @@ For more information about using dead-letter queues, see \href{http://docs.aws.a
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$list_dead_letter_source_queues(
+\preformatted{svc$list_dead_letter_source_queues(
   QueueUrl = "string"
 )
 }

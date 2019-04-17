@@ -23,7 +23,7 @@ cognitoidentityprovider_update_identity_provider(UserPoolId,
 Updates identity provider information for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_identity_provider(
+\preformatted{svc$update_identity_provider(
   UserPoolId = "string",
   ProviderName = "string",
   ProviderDetails = list(

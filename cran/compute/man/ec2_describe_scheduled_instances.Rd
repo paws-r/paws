@@ -38,7 +38,7 @@ value.}
 Describes one or more of your Scheduled Instances.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_scheduled_instances(
+\preformatted{svc$describe_scheduled_instances(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(
@@ -67,7 +67,7 @@ Describes one or more of your Scheduled Instances.
 
 \examples{
 # This example describes the specified Scheduled Instance.
-\donttest{ec2$describe_scheduled_instances(
+\donttest{svc$describe_scheduled_instances(
   ScheduledInstanceIds = list(
     "sci-1234-1234-1234-1234-123456789012"
   )

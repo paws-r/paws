@@ -59,7 +59,7 @@ TagResource.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$untag_resource(
+\preformatted{svc$untag_resource(
   SecretId = "string",
   TagKeys = list(
     "string"
@@ -73,7 +73,7 @@ TagResource.
 # metadata. For each, both the tag and the associated value are removed.
 # There is no output from this API. To see the result, use the
 # DescribeSecret operation.
-\donttest{secretsmanager$untag_resource(
+\donttest{svc$untag_resource(
   SecretId = "MyTestDatabaseSecret",
   TagKeys = list(
     "FirstTag",

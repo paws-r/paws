@@ -17,7 +17,7 @@ application revision.}
 Attempts to stop an ongoing deployment.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$stop_deployment(
+\preformatted{svc$stop_deployment(
   deploymentId = "string",
   autoRollbackEnabled = TRUE|FALSE
 )

@@ -53,7 +53,7 @@ For more information, see Document Text Detection in the Amazon Textract
 Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{textract$get_document_text_detection(
+\preformatted{svc$get_document_text_detection(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"

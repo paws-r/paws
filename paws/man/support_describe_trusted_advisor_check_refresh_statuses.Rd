@@ -24,7 +24,7 @@ cannot be retrieved by using this operation. Use of the
 causes an \code{InvalidParameterValue} error.
 }
 \section{Request syntax}{
-\preformatted{support$describe_trusted_advisor_check_refresh_statuses(
+\preformatted{svc$describe_trusted_advisor_check_refresh_statuses(
   checkIds = list(
     "string"
   )

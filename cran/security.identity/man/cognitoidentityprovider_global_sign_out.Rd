@@ -13,7 +13,7 @@ cognitoidentityprovider_global_sign_out(AccessToken)
 Signs out users from all devices.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$global_sign_out(
+\preformatted{svc$global_sign_out(
   AccessToken = "string"
 )
 }

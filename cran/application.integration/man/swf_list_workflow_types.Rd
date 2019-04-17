@@ -60,7 +60,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$list_workflow_types(
+\preformatted{svc$list_workflow_types(
   domain = "string",
   name = "string",
   registrationStatus = "REGISTERED"|"DEPRECATED",

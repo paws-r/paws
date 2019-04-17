@@ -26,12 +26,6 @@ resources in the resource share. An administrator of the specified
 account can use IAM policies to restrict access resources in the
 resource share.
 }
-\section{Example}{
-\preformatted{ram <- paws::ram()
-ram$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -54,3 +48,9 @@ ram$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_resource_share_invitation(
+  Foo = 123
+)}
+
+}

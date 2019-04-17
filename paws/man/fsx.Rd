@@ -10,12 +10,6 @@ fsx()
 Amazon FSx is a fully managed service that makes it easy for storage and
 application administrators to launch and use shared file storage.
 }
-\section{Example}{
-\preformatted{fsx <- paws::fsx()
-fsx$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -33,3 +27,16 @@ fsx$operation()
 }
 }
 
+\examples{
+# This operation creates a new backup.
+\donttest{svc$create_backup(
+  FileSystemId = "fs-0498eed5fe91001ec",
+  Tags = list(
+    list(
+      Key = "Name",
+      Value = "MyBackup"
+    )
+  )
+)}
+
+}

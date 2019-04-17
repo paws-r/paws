@@ -46,7 +46,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Searches for routes in the specified transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$search_transit_gateway_routes(
+\preformatted{svc$search_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",
   Filters = list(
     list(

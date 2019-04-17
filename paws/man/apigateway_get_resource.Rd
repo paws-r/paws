@@ -23,7 +23,7 @@ query parameter value must be a single-valued list and contain the
 Lists information about a resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_resource(
+\preformatted{svc$get_resource(
   restApiId = "string",
   resourceId = "string",
   embed = list(

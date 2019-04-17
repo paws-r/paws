@@ -25,7 +25,7 @@ previous call.}
 List all the comments for the specified document version.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_comments(
+\preformatted{svc$describe_comments(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",

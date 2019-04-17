@@ -51,7 +51,7 @@ customer gateway. The subsequent requests do not create new customer
 gateway resources.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_customer_gateway(
+\preformatted{svc$create_customer_gateway(
   BgpAsn = 123,
   PublicIp = "string",
   Type = "ipsec.1",
@@ -63,7 +63,7 @@ gateway resources.
 \examples{
 # This example creates a customer gateway with the specified IP address
 # for its outside interface.
-\donttest{ec2$create_customer_gateway(
+\donttest{svc$create_customer_gateway(
   BgpAsn = 65534L,
   PublicIp = "12.1.2.3",
   Type = "ipsec.1"

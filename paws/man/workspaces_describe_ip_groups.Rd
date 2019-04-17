@@ -18,7 +18,7 @@ provide this token to receive the next set of results.}
 Describes one or more of your IP access control groups.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_ip_groups(
+\preformatted{svc$describe_ip_groups(
   GroupIds = list(
     "string"
   ),

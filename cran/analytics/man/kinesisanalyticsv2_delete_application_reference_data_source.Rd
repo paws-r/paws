@@ -31,7 +31,7 @@ removes the in-application table that you created using the
 AddApplicationReferenceDataSource operation.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$delete_application_reference_data_source(
+\preformatted{svc$delete_application_reference_data_source(
   ApplicationName = "string",
   CurrentApplicationVersionId = 123,
   ReferenceId = "string"

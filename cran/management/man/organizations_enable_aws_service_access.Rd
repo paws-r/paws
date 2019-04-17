@@ -36,7 +36,7 @@ This operation can be called only from the organization's master
 account and only if the organization has \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
 }
 \section{Request syntax}{
-\preformatted{organizations$enable_aws_service_access(
+\preformatted{svc$enable_aws_service_access(
   ServicePrincipal = "string"
 )
 }

@@ -69,11 +69,10 @@ NULL
 #' Service User
 #' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/).
 #'
-#' @section Example:
-#' ```
-#' applicationdiscoveryservice <- paws::applicationdiscoveryservice()
-#' applicationdiscoveryservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_configuration_items_to_application(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

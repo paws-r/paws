@@ -17,7 +17,7 @@ codestar_update_project(id, name, description)
 Updates a project in AWS CodeStar.
 }
 \section{Request syntax}{
-\preformatted{codestar$update_project(
+\preformatted{svc$update_project(
   id = "string",
   name = "string",
   description = "string"

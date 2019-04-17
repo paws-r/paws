@@ -34,7 +34,7 @@ returned \code{marker} value.}
 Returns a list of snapshot schedules.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_snapshot_schedules(
+\preformatted{svc$describe_snapshot_schedules(
   ClusterIdentifier = "string",
   ScheduleIdentifier = "string",
   TagKeys = list(

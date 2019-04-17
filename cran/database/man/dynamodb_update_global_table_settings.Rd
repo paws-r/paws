@@ -32,7 +32,7 @@ modified.}
 Updates settings for a global table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_global_table_settings(
+\preformatted{svc$update_global_table_settings(
   GlobalTableName = "string",
   GlobalTableBillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
   GlobalTableProvisionedWriteCapacityUnits = 123,

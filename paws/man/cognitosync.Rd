@@ -27,12 +27,6 @@ will probably want to make API calls via the AWS Mobile SDK. To learn
 more, see the \href{http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html}{Developer Guide for Android}
 and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html}{Developer Guide for iOS}.
 }
-\section{Example}{
-\preformatted{cognitosync <- paws::cognitosync()
-cognitosync$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ cognitosync$operation()
 }
 }
 
+\examples{
+\donttest{svc$bulk_publish(
+  Foo = 123
+)}
+
+}

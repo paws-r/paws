@@ -19,7 +19,7 @@ For more information, see the \href{http://graphql.org/learn/schema/}{GraphQL SD
 Creates a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_type(
+\preformatted{svc$create_type(
   apiId = "string",
   definition = "string",
   format = "SDL"|"JSON"

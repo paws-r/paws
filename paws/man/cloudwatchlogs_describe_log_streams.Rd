@@ -48,7 +48,7 @@ This operation has a limit of five transactions per second, after which
 transactions are throttled.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_log_streams(
+\preformatted{svc$describe_log_streams(
   logGroupName = "string",
   logStreamNamePrefix = "string",
   orderBy = "LogStreamName"|"LastEventTime",

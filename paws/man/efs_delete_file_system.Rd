@@ -30,7 +30,7 @@ This operation requires permissions for the
 \code{elasticfilesystem:DeleteFileSystem} action.
 }
 \section{Request syntax}{
-\preformatted{efs$delete_file_system(
+\preformatted{svc$delete_file_system(
   FileSystemId = "string"
 )
 }
@@ -38,7 +38,7 @@ This operation requires permissions for the
 
 \examples{
 # This operation deletes an EFS file system.
-\donttest{efs$delete_file_system(
+\donttest{svc$delete_file_system(
   FileSystemId = "fs-01234567"
 )}
 

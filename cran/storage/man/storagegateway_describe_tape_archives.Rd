@@ -27,7 +27,7 @@ description of all virtual tapes found in the VTS associated with your
 account.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_tape_archives(
+\preformatted{svc$describe_tape_archives(
   TapeARNs = list(
     "string"
   ),
@@ -40,7 +40,7 @@ account.
 \examples{
 # Returns a description of specified virtual tapes in the virtual tape
 # shelf (VTS).
-\donttest{storagegateway$describe_tape_archives(
+\donttest{svc$describe_tape_archives(
   Limit = 123L,
   Marker = "1",
   TapeARNs = list(

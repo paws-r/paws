@@ -20,7 +20,7 @@ Disables the process of sending Amazon Simple Notification Service (SNS)
 notifications about a specified event to a specified SNS topic.
 }
 \section{Request syntax}{
-\preformatted{inspector$unsubscribe_from_event(
+\preformatted{svc$unsubscribe_from_event(
   resourceArn = "string",
   event = "ASSESSMENT_RUN_STARTED"|"ASSESSMENT_RUN_COMPLETED"|"ASSESSMENT_RUN_STATE_CHANGED"|"FINDING_REPORTED"|"OTHER",
   topicArn = "string"
@@ -31,7 +31,7 @@ notifications about a specified event to a specified SNS topic.
 \examples{
 # Disables the process of sending Amazon Simple Notification Service (SNS)
 # notifications about a specified event to a specified SNS topic.
-\donttest{inspector$unsubscribe_from_event(
+\donttest{svc$unsubscribe_from_event(
   event = "ASSESSMENT_RUN_COMPLETED",
   resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2...",
   topicArn = "arn:aws:sns:us-west-2:123456789012:exampletopic"

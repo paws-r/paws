@@ -67,7 +67,7 @@ Name (ARN), its size, and the iSCSI target ARN that initiators can use
 to connect to the volume target.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_storedi_scsi_volume(
+\preformatted{svc$create_storedi_scsi_volume(
   GatewayARN = "string",
   DiskId = "string",
   SnapshotId = "string",
@@ -82,7 +82,7 @@ to connect to the volume target.
 
 \examples{
 # Creates a stored volume on a specified stored gateway.
-\donttest{storagegateway$create_storedi_scsi_volume(
+\donttest{svc$create_storedi_scsi_volume(
   DiskId = "pci-0000:03:00.0-scsi-0:0:0:0",
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   NetworkInterfaceId = "10.1.1.1",

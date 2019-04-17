@@ -15,7 +15,7 @@ You can get the identifier of a mapping from the output of
 ListEventSourceMappings.
 }
 \section{Request syntax}{
-\preformatted{lambda$delete_event_source_mapping(
+\preformatted{svc$delete_event_source_mapping(
   UUID = "string"
 )
 }
@@ -23,7 +23,7 @@ ListEventSourceMappings.
 
 \examples{
 # This operation deletes a Lambda function event source mapping
-\donttest{lambda$delete_event_source_mapping(
+\donttest{svc$delete_event_source_mapping(
   UUID = "12345kxodurf3443"
 )}
 

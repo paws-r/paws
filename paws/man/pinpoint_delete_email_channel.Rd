@@ -13,7 +13,7 @@ pinpoint_delete_email_channel(ApplicationId)
 Delete an email channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_email_channel(
+\preformatted{svc$delete_email_channel(
   ApplicationId = "string"
 )
 }

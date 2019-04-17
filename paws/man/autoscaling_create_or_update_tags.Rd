@@ -21,7 +21,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$create_or_update_tags(
+\preformatted{svc$create_or_update_tags(
   Tags = list(
     list(
       ResourceId = "string",
@@ -37,7 +37,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 \examples{
 # This example adds two tags to the specified Auto Scaling group.
-\donttest{autoscaling$create_or_update_tags(
+\donttest{svc$create_or_update_tags(
   Tags = list(
     list(
       Key = "Role",

@@ -17,7 +17,7 @@ endpoint.}
 Tests the connection between the replication instance and the endpoint.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$test_connection(
+\preformatted{svc$test_connection(
   ReplicationInstanceArn = "string",
   EndpointArn = "string"
 )
@@ -26,7 +26,7 @@ Tests the connection between the replication instance and the endpoint.
 
 \examples{
 # Tests the connection between the replication instance and the endpoint.
-\donttest{databasemigrationservice$test_connection(
+\donttest{svc$test_connection(
   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 )}

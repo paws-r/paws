@@ -15,7 +15,7 @@ amplify_get_domain_association(appId, domainName)
 Retrieves domain info that corresponds to an appId and domainName.
 }
 \section{Request syntax}{
-\preformatted{amplify$get_domain_association(
+\preformatted{svc$get_domain_association(
   appId = "string",
   domainName = "string"
 )

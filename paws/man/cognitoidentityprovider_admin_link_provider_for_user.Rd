@@ -76,7 +76,7 @@ This action is enabled only for admin access and requires developer
 credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_link_provider_for_user(
+\preformatted{svc$admin_link_provider_for_user(
   UserPoolId = "string",
   DestinationUser = list(
     ProviderName = "string",

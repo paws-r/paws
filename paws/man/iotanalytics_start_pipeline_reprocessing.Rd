@@ -18,7 +18,7 @@ iotanalytics_start_pipeline_reprocessing(pipelineName, startTime,
 Starts the reprocessing of raw message data through the pipeline.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$start_pipeline_reprocessing(
+\preformatted{svc$start_pipeline_reprocessing(
   pipelineName = "string",
   startTime = as.POSIXct(
     "2015-01-01"

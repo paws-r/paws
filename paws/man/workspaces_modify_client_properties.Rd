@@ -15,7 +15,7 @@ workspaces_modify_client_properties(ResourceId, ClientProperties)
 Modifies the properties of the specified Amazon WorkSpaces clients.
 }
 \section{Request syntax}{
-\preformatted{workspaces$modify_client_properties(
+\preformatted{svc$modify_client_properties(
   ResourceId = "string",
   ClientProperties = list(
     ReconnectEnabled = "ENABLED"|"DISABLED"

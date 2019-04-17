@@ -29,7 +29,7 @@ security group in a peer VPC, or a security group in a peer VPC for
 which the VPC peering connection has been deleted.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_stale_security_groups(
+\preformatted{svc$describe_stale_security_groups(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",

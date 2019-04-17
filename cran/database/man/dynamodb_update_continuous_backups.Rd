@@ -30,7 +30,7 @@ time. You can restore your table to any point in time during the last 35
 days..
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_continuous_backups(
+\preformatted{svc$update_continuous_backups(
   TableName = "string",
   PointInTimeRecoverySpecification = list(
     PointInTimeRecoveryEnabled = TRUE|FALSE

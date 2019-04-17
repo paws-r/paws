@@ -26,7 +26,7 @@ Queries for available tag keys and tag values for a specified period.
 You can search the tag values for an arbitrary string.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_tags(
+\preformatted{svc$get_tags(
   SearchString = "string",
   TimePeriod = list(
     Start = "string",

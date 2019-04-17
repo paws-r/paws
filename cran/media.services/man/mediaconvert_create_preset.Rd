@@ -21,7 +21,7 @@ mediaconvert_create_preset(Category, Description, Name, Settings, Tags)
 Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$create_preset(
+\preformatted{svc$create_preset(
   Category = "string",
   Description = "string",
   Name = "string",

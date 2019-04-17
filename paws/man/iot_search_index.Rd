@@ -23,7 +23,7 @@ additional results.}
 The query search index.
 }
 \section{Request syntax}{
-\preformatted{iot$search_index(
+\preformatted{svc$search_index(
   indexName = "string",
   queryString = "string",
   nextToken = "string",

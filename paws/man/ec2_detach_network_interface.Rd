@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Detaches a network interface from an instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$detach_network_interface(
+\preformatted{svc$detach_network_interface(
   AttachmentId = "string",
   DryRun = TRUE|FALSE,
   Force = TRUE|FALSE
@@ -31,7 +31,7 @@ Detaches a network interface from an instance.
 \examples{
 # This example detaches the specified network interface from its attached
 # instance.
-\donttest{ec2$detach_network_interface(
+\donttest{svc$detach_network_interface(
   AttachmentId = "eni-attach-66c4350a"
 )}
 

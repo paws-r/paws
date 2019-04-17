@@ -21,7 +21,7 @@ Returns a \code{HiearchyGroupStructure} object, which contains data about the
 levels in the agent hierarchy.
 }
 \section{Request syntax}{
-\preformatted{connect$describe_user_hierarchy_structure(
+\preformatted{svc$describe_user_hierarchy_structure(
   InstanceId = "string"
 )
 }

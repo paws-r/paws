@@ -23,7 +23,7 @@ Returns an array of DC2 ReservedNodeOfferings that matches the payment
 type, term, and usage price of the given DC1 reserved node.
 }
 \section{Request syntax}{
-\preformatted{redshift$get_reserved_node_exchange_offerings(
+\preformatted{svc$get_reserved_node_exchange_offerings(
   ReservedNodeId = "string",
   MaxRecords = 123,
   Marker = "string"

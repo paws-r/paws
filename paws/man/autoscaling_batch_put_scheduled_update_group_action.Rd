@@ -19,7 +19,7 @@ Scaling group. If you leave a parameter unspecified when updating a
 scheduled scaling action, the corresponding value remains unchanged.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$batch_put_scheduled_update_group_action(
+\preformatted{svc$batch_put_scheduled_update_group_action(
   AutoScalingGroupName = "string",
   ScheduledUpdateGroupActions = list(
     list(

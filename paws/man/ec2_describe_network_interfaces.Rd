@@ -106,7 +106,7 @@ next set of results.}
 Describes one or more of your network interfaces.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_network_interfaces(
+\preformatted{svc$describe_network_interfaces(
   Filters = list(
     list(
       Name = "string",
@@ -127,7 +127,7 @@ Describes one or more of your network interfaces.
 
 \examples{
 # 
-\donttest{ec2$describe_network_interfaces(
+\donttest{svc$describe_network_interfaces(
   NetworkInterfaceIds = list(
     "eni-e5aa89a3"
   )

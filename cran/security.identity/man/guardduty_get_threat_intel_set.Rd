@@ -15,7 +15,7 @@ guardduty_get_threat_intel_set(DetectorId, ThreatIntelSetId)
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_threat_intel_set(
+\preformatted{svc$get_threat_intel_set(
   DetectorId = "string",
   ThreatIntelSetId = "string"
 )

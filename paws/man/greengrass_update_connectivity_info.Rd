@@ -15,7 +15,7 @@ greengrass_update_connectivity_info(ConnectivityInfo, ThingName)
 Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_connectivity_info(
+\preformatted{svc$update_connectivity_info(
   ConnectivityInfo = list(
     list(
       HostAddress = "string",

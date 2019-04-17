@@ -15,7 +15,7 @@ route53_delete_traffic_policy(Id, Version)
 Deletes a traffic policy.
 }
 \section{Request syntax}{
-\preformatted{route53$delete_traffic_policy(
+\preformatted{svc$delete_traffic_policy(
   Id = "string",
   Version = 123
 )

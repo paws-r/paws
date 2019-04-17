@@ -19,7 +19,7 @@ Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.
 }
 \section{Request syntax}{
-\preformatted{emr$remove_auto_scaling_policy(
+\preformatted{svc$remove_auto_scaling_policy(
   ClusterId = "string",
   InstanceGroupId = "string"
 )

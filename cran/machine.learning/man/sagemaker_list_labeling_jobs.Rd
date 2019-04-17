@@ -41,7 +41,7 @@ jobs whose name contains the specified string.}
 Gets a list of labeling jobs.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_labeling_jobs(
+\preformatted{svc$list_labeling_jobs(
   CreationTimeAfter = as.POSIXct(
     "2015-01-01"
   ),

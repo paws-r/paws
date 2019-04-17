@@ -64,7 +64,7 @@ in the \emph{Amazon Aurora User Guide}.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_current_db_cluster_capacity(
+\preformatted{svc$modify_current_db_cluster_capacity(
   DBClusterIdentifier = "string",
   Capacity = 123,
   SecondsBeforeTimeout = 123,

@@ -50,7 +50,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the Amazon Elastic Compute Cloud User Guide.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_reserved_instances_modifications(
+\preformatted{svc$describe_reserved_instances_modifications(
   Filters = list(
     list(
       Name = "string",

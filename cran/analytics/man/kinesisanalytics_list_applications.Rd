@@ -32,7 +32,7 @@ This operation requires permissions to perform the
 \code{kinesisanalytics:ListApplications} action.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalytics$list_applications(
+\preformatted{svc$list_applications(
   Limit = 123,
   ExclusiveStartApplicationName = "string"
 )

@@ -19,7 +19,7 @@ For more information about how to use origin access identities, see
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_cloud_front_origin_access_identity(
+\preformatted{svc$create_cloud_front_origin_access_identity(
   CloudFrontOriginAccessIdentityConfig = list(
     CallerReference = "string",
     Comment = "string"

@@ -15,11 +15,10 @@ NULL
 #' cloud. Amazon WorkLink doesn\'t download or store any internal web
 #' content on mobile devices.
 #'
-#' @section Example:
-#' ```
-#' worklink <- paws::worklink()
-#' worklink$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_website_certificate_authority(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

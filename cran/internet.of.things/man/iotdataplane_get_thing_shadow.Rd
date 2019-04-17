@@ -18,7 +18,7 @@ For more information, see
 in the \emph{AWS IoT Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{iotdataplane$get_thing_shadow(
+\preformatted{svc$get_thing_shadow(
   thingName = "string"
 )
 }

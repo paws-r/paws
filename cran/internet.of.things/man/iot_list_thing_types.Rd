@@ -17,7 +17,7 @@ iot_list_thing_types(nextToken, maxResults, thingTypeName)
 Lists the existing thing types.
 }
 \section{Request syntax}{
-\preformatted{iot$list_thing_types(
+\preformatted{svc$list_thing_types(
   nextToken = "string",
   maxResults = 123,
   thingTypeName = "string"

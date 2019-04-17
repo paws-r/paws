@@ -15,7 +15,7 @@ pinpoint_create_export_job(ApplicationId, ExportJobRequest)
 Creates an export job.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$create_export_job(
+\preformatted{svc$create_export_job(
   ApplicationId = "string",
   ExportJobRequest = list(
     RoleArn = "string",

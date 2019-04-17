@@ -17,7 +17,7 @@ see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#t
 Removes metadata tags from an Amazon Neptune resource.
 }
 \section{Request syntax}{
-\preformatted{neptune$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"

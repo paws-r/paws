@@ -14,7 +14,7 @@ pairs request.}
 Returns information about all key pairs in the user's account.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_key_pairs(
+\preformatted{svc$get_key_pairs(
   pageToken = "string"
 )
 }

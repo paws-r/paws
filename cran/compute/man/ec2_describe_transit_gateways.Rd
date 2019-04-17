@@ -55,7 +55,7 @@ Describes one or more transit gateways. By default, all transit gateways
 are described. Alternatively, you can filter the results.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_transit_gateways(
+\preformatted{svc$describe_transit_gateways(
   TransitGatewayIds = list(
     "string"
   ),

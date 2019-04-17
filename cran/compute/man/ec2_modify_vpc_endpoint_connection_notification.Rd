@@ -27,7 +27,7 @@ service. You can change the SNS topic for the notification, or the
 events for which to be notified.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_vpc_endpoint_connection_notification(
+\preformatted{svc$modify_vpc_endpoint_connection_notification(
   DryRun = TRUE|FALSE,
   ConnectionNotificationId = "string",
   ConnectionNotificationArn = "string",

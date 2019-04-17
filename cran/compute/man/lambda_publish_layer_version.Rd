@@ -36,7 +36,7 @@ Add layers to your function with CreateFunction or
 UpdateFunctionConfiguration.
 }
 \section{Request syntax}{
-\preformatted{lambda$publish_layer_version(
+\preformatted{svc$publish_layer_version(
   LayerName = "string",
   Description = "string",
   Content = list(

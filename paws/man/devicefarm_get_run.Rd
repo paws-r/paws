@@ -13,7 +13,7 @@ devicefarm_get_run(arn)
 Gets information about a run.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_run(
+\preformatted{svc$get_run(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a run.
 
 \examples{
 # The following example gets information about a specific test run.
-\donttest{devicefarm$get_run(
+\donttest{svc$get_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/..."
 )}
 

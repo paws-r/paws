@@ -128,7 +128,7 @@ Any characters not included in this list will be rejected. For more
 information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 }
 \section{Request syntax}{
-\preformatted{sqs$send_message(
+\preformatted{svc$send_message(
   QueueUrl = "string",
   MessageBody = "string",
   DelaySeconds = 123,

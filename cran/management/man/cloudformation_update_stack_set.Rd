@@ -212,7 +212,7 @@ CreateStackInstances calls on the specified stack set use the updated
 stack set.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$update_stack_set(
+\preformatted{svc$update_stack_set(
   StackSetName = "string",
   Description = "string",
   TemplateBody = "string",

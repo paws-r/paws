@@ -40,7 +40,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abor
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$abort_multipart_upload(
+\preformatted{svc$abort_multipart_upload(
   accountId = "string",
   vaultName = "string",
   uploadId = "string"
@@ -51,7 +51,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example deletes an in-progress multipart upload to a vault named
 # my-vault:
-\donttest{glacier$abort_multipart_upload(
+\donttest{svc$abort_multipart_upload(
   accountId = "-",
   uploadId = "19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV...",
   vaultName = "my-vault"

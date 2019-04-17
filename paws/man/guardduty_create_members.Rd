@@ -16,7 +16,7 @@ guardduty_create_members(AccountDetails, DetectorId)
 Creates member accounts of the current AWS account by specifying a list of AWS account IDs. The current AWS account can then invite these members to manage GuardDuty in their accounts.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_members(
+\preformatted{svc$create_members(
   AccountDetails = list(
     list(
       AccountId = "string",

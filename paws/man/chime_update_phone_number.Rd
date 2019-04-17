@@ -17,7 +17,7 @@ Updates phone number details, such as product type, for the specified
 phone number ID.
 }
 \section{Request syntax}{
-\preformatted{chime$update_phone_number(
+\preformatted{svc$update_phone_number(
   PhoneNumberId = "string",
   ProductType = "BusinessCalling"|"VoiceConnector"
 )

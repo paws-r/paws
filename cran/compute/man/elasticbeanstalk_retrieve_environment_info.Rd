@@ -39,7 +39,7 @@ Related Topics
 }
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$retrieve_environment_info(
+\preformatted{svc$retrieve_environment_info(
   EnvironmentId = "string",
   EnvironmentName = "string",
   InfoType = "tail"|"bundle"
@@ -50,7 +50,7 @@ Related Topics
 \examples{
 # The following operation retrieves a link to logs from an environment
 # named my-env:
-\donttest{elasticbeanstalk$retrieve_environment_info(
+\donttest{svc$retrieve_environment_info(
   EnvironmentName = "my-env",
   InfoType = "tail"
 )}

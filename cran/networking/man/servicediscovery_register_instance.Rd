@@ -165,7 +165,7 @@ using the same namespace and using the same service, see \href{http://docs.aws.a
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$register_instance(
+\preformatted{svc$register_instance(
   ServiceId = "string",
   InstanceId = "string",
   CreatorRequestId = "string",

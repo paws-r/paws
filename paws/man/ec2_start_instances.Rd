@@ -44,7 +44,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$start_instances(
+\preformatted{svc$start_instances(
   InstanceIds = list(
     "string"
   ),
@@ -56,7 +56,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example starts the specified EC2 instance.
-\donttest{ec2$start_instances(
+\donttest{svc$start_instances(
   InstanceIds = list(
     "i-1234567890abcdef0"
   )

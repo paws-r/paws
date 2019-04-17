@@ -82,7 +82,7 @@ you can create, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Limi
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_role(
+\preformatted{svc$create_role(
   Path = "string",
   RoleName = "string",
   AssumeRolePolicyDocument = "string",
@@ -102,7 +102,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command creates a role named Test-Role and attaches a
 # trust policy to it that is provided as a URL-encoded JSON string.
-\donttest{iam$create_role(
+\donttest{svc$create_role(
   AssumeRolePolicyDocument = "<URL-encoded-JSON>",
   Path = "/",
   RoleName = "Test-Role"

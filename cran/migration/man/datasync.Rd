@@ -15,12 +15,6 @@ EFS).
 This API interface reference for AWS DataSync contains documentation for
 a programming interface that you can use to manage AWS DataSync.
 }
-\section{Example}{
-\preformatted{datasync <- paws::datasync()
-datasync$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -52,3 +46,9 @@ datasync$operation()
 }
 }
 
+\examples{
+\donttest{svc$cancel_task_execution(
+  Foo = 123
+)}
+
+}

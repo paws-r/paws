@@ -15,7 +15,7 @@ job by using the \code{jobId} value that is returned by the StartSigningJob
 operation.
 }
 \section{Request syntax}{
-\preformatted{signer$describe_signing_job(
+\preformatted{svc$describe_signing_job(
   jobId = "string"
 )
 }

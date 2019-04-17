@@ -17,11 +17,10 @@ NULL
 #' with AWS Transfer for SFTP (AWS SFTP) is easy; there is no
 #' infrastructure to buy and setup.
 #'
-#' @section Example:
-#' ```
-#' transfer <- paws::transfer()
-#' transfer$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_server(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

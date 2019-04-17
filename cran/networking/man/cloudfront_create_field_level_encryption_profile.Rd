@@ -14,7 +14,7 @@ cloudfront_create_field_level_encryption_profile(
 Create a field-level encryption profile.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_field_level_encryption_profile(
+\preformatted{svc$create_field_level_encryption_profile(
   FieldLevelEncryptionProfileConfig = list(
     Name = "string",
     CallerReference = "string",

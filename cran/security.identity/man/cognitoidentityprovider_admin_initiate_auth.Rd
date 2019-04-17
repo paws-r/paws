@@ -76,7 +76,7 @@ Initiates the authentication flow, as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_initiate_auth(
+\preformatted{svc$admin_initiate_auth(
   UserPoolId = "string",
   ClientId = "string",
   AuthFlow = "USER_SRP_AUTH"|"REFRESH_TOKEN_AUTH"|"REFRESH_TOKEN"|"CUSTOM_AUTH"|"ADMIN_NO_SRP_AUTH"|"USER_PASSWORD_AUTH",

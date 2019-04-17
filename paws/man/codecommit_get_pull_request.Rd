@@ -14,7 +14,7 @@ ListPullRequests.}
 Gets information about a pull request in a specified repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_pull_request(
+\preformatted{svc$get_pull_request(
   pullRequestId = "string"
 )
 }

@@ -24,7 +24,7 @@ For information about setting up receipt rule sets, see the \href{http://docs.aw
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$create_receipt_rule_set(
+\preformatted{svc$create_receipt_rule_set(
   RuleSetName = "string"
 )
 }
@@ -32,7 +32,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example creates an empty receipt rule set:
-\donttest{ses$create_receipt_rule_set(
+\donttest{svc$create_receipt_rule_set(
   RuleSetName = "MyRuleSet"
 )}
 

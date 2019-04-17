@@ -27,7 +27,7 @@ The maximum number of metric filters that can be associated with a log
 group is 100.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$put_metric_filter(
+\preformatted{svc$put_metric_filter(
   logGroupName = "string",
   filterName = "string",
   filterPattern = "string",

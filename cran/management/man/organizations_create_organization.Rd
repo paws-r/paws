@@ -40,7 +40,7 @@ features by setting the \code{FeatureSet} parameter to
 and you cannot use organization policies.
 }
 \section{Request syntax}{
-\preformatted{organizations$create_organization(
+\preformatted{svc$create_organization(
   FeatureSet = "ALL"|"CONSOLIDATED_BILLING"
 )
 }
@@ -54,14 +54,14 @@ and you cannot use organization policies.
 # service control policies enabled on the root:
 # 
 # 
-\donttest{organizations$create_organization()}
+\donttest{svc$create_organization()}
 
 # In the following example, Bill creates an organization using credentials
 # from account 111111111111, and configures the organization to support
 # only the consolidated billing feature set:
 # 
 # 
-\donttest{organizations$create_organization(
+\donttest{svc$create_organization(
   FeatureSet = "CONSOLIDATED_BILLING"
 )}
 

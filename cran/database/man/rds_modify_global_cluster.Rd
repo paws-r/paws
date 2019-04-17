@@ -44,7 +44,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_global_cluster(
+\preformatted{svc$modify_global_cluster(
   GlobalClusterIdentifier = "string",
   NewGlobalClusterIdentifier = "string",
   DeletionProtection = TRUE|FALSE

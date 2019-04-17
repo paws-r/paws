@@ -21,7 +21,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Deletes a client.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$delete_luna_client(
+\preformatted{svc$delete_luna_client(
   ClientArn = "string"
 )
 }

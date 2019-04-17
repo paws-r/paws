@@ -40,7 +40,7 @@ cluster.
 }
 }
 \section{Request syntax}{
-\preformatted{redshift$resize_cluster(
+\preformatted{svc$resize_cluster(
   ClusterIdentifier = "string",
   ClusterType = "string",
   NodeType = "string",

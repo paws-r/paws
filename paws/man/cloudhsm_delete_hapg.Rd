@@ -21,7 +21,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Deletes a high-availability partition group.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$delete_hapg(
+\preformatted{svc$delete_hapg(
   HapgArn = "string"
 )
 }

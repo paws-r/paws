@@ -22,7 +22,7 @@ Deletes an HSM. After completion, this operation cannot be undone and
 your key material cannot be recovered.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$delete_hsm(
+\preformatted{svc$delete_hsm(
   HsmArn = "string"
 )
 }

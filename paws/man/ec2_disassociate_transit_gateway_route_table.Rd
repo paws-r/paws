@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Disassociates a resource attachment from a transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_transit_gateway_route_table(
+\preformatted{svc$disassociate_transit_gateway_route_table(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE

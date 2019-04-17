@@ -20,7 +20,7 @@ Sets an analytics configuration for the bucket (specified by the
 analytics configuration ID).
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_analytics_configuration(
+\preformatted{svc$put_bucket_analytics_configuration(
   Bucket = "string",
   Id = "string",
   AnalyticsConfiguration = list(

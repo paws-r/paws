@@ -43,7 +43,7 @@ Starts an asynchronous topic detection job. Use the
 \code{DescribeTopicDetectionJob} operation to track the status of a job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$start_topics_detection_job(
+\preformatted{svc$start_topics_detection_job(
   InputDataConfig = list(
     S3Uri = "string",
     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"

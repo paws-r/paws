@@ -13,7 +13,7 @@ lightsail_get_instance_snapshot(instanceSnapshotName)
 Returns information about a specific instance snapshot.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instance_snapshot(
+\preformatted{svc$get_instance_snapshot(
   instanceSnapshotName = "string"
 )
 }

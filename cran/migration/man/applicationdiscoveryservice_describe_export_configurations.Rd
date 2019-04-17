@@ -21,7 +21,7 @@ export descriptions returned.}
 instead.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$describe_export_configurations(
+\preformatted{svc$describe_export_configurations(
   exportIds = list(
     "string"
   ),

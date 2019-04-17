@@ -28,7 +28,7 @@ in two ways:
 }
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$attach_object(
+\preformatted{svc$attach_object(
   DirectoryArn = "string",
   ParentReference = list(
     Selector = "string"

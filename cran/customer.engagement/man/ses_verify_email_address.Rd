@@ -14,7 +14,7 @@ Deprecated. Use the \code{VerifyEmailIdentity} operation to verify a new
 email address.
 }
 \section{Request syntax}{
-\preformatted{ses$verify_email_address(
+\preformatted{svc$verify_email_address(
   EmailAddress = "string"
 )
 }
@@ -23,7 +23,7 @@ email address.
 \examples{
 # The following example starts the email address verification process with
 # Amazon SES:
-\donttest{ses$verify_email_address(
+\donttest{svc$verify_email_address(
   EmailAddress = "user@example.com"
 )}
 

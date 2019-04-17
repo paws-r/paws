@@ -23,7 +23,7 @@ a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is
 present).
 }
 \section{Request syntax}{
-\preformatted{glue$update_classifier(
+\preformatted{svc$update_classifier(
   GrokClassifier = list(
     Name = "string",
     Classification = "string",

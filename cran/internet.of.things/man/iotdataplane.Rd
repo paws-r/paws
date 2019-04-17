@@ -17,12 +17,6 @@ retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
 }
-\section{Example}{
-\preformatted{iotdataplane <- paws::iotdataplane()
-iotdataplane$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -33,3 +27,9 @@ iotdataplane$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_thing_shadow(
+  Foo = 123
+)}
+
+}

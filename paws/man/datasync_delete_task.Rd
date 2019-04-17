@@ -13,7 +13,7 @@ datasync_delete_task(TaskArn)
 Deletes a task.
 }
 \section{Request syntax}{
-\preformatted{datasync$delete_task(
+\preformatted{svc$delete_task(
   TaskArn = "string"
 )
 }

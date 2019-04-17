@@ -20,7 +20,7 @@ You must have created at least one delivery channel to successfully
 start the configuration recorder.
 }
 \section{Request syntax}{
-\preformatted{configservice$start_configuration_recorder(
+\preformatted{svc$start_configuration_recorder(
   ConfigurationRecorderName = "string"
 )
 }

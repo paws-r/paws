@@ -17,7 +17,7 @@ attributes.}
 Adds additional user attributes to the user pool schema.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$add_custom_attributes(
+\preformatted{svc$add_custom_attributes(
   UserPoolId = "string",
   CustomAttributes = list(
     list(

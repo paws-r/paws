@@ -22,7 +22,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$deregister_instance(
+\preformatted{svc$deregister_instance(
   InstanceId = "string"
 )
 }

@@ -17,7 +17,7 @@ s3_get_object_torrent(Bucket, Key, RequestPayer)
 Return torrent files from a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_torrent(
+\preformatted{svc$get_object_torrent(
   Bucket = "string",
   Key = "string",
   RequestPayer = "requester"
@@ -27,7 +27,7 @@ Return torrent files from a bucket.
 
 \examples{
 # The following example retrieves torrent files of an object.
-\donttest{s3$get_object_torrent(
+\donttest{svc$get_object_torrent(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

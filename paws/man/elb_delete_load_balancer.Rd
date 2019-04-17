@@ -23,7 +23,7 @@ If the load balancer does not exist or has already been deleted, the
 call to \code{DeleteLoadBalancer} still succeeds.
 }
 \section{Request syntax}{
-\preformatted{elb$delete_load_balancer(
+\preformatted{svc$delete_load_balancer(
   LoadBalancerName = "string"
 )
 }
@@ -31,7 +31,7 @@ call to \code{DeleteLoadBalancer} still succeeds.
 
 \examples{
 # This example deletes the specified load balancer.
-\donttest{elb$delete_load_balancer(
+\donttest{svc$delete_load_balancer(
   LoadBalancerName = "my-load-balancer"
 )}
 

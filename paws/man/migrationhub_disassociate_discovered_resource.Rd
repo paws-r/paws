@@ -23,7 +23,7 @@ Disassociate an Application Discovery Service (ADS) discovered resource
 from a migration task.
 }
 \section{Request syntax}{
-\preformatted{migrationhub$disassociate_discovered_resource(
+\preformatted{svc$disassociate_discovered_resource(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   ConfigurationId = "string",

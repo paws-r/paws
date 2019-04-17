@@ -13,7 +13,7 @@ mq_describe_broker(BrokerId)
 Returns information about the specified broker.
 }
 \section{Request syntax}{
-\preformatted{mq$describe_broker(
+\preformatted{svc$describe_broker(
   BrokerId = "string"
 )
 }

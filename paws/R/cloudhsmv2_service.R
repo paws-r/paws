@@ -9,11 +9,10 @@ NULL
 #' CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
 #' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 #'
-#' @section Example:
-#' ```
-#' cloudhsmv2 <- paws::cloudhsmv2()
-#' cloudhsmv2$operation()
-#' ```
+#' @examples
+#' \donttest{svc$copy_backup_to_region(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

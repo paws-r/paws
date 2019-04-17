@@ -16,7 +16,7 @@ Retrieves the policy status for an Amazon S3 bucket, indicating whether
 the bucket is public.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_policy_status(
+\preformatted{svc$get_bucket_policy_status(
   Bucket = "string"
 )
 }

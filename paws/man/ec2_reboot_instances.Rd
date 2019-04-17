@@ -28,7 +28,7 @@ For more information about troubleshooting, see \href{https://docs.aws.amazon.co
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$reboot_instances(
+\preformatted{svc$reboot_instances(
   InstanceIds = list(
     "string"
   ),
@@ -39,7 +39,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example reboots the specified EC2 instance.
-\donttest{ec2$reboot_instances(
+\donttest{svc$reboot_instances(
   InstanceIds = list(
     "i-1234567890abcdef5"
   )

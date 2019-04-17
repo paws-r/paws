@@ -52,7 +52,7 @@ deleted immediately.
 }
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$update_data_retention(
+\preformatted{svc$update_data_retention(
   StreamName = "string",
   StreamARN = "string",
   CurrentVersion = "string",

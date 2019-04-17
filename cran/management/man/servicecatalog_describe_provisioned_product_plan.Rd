@@ -26,7 +26,7 @@ results, use null.}
 Gets information about the resource changes for the specified plan.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_provisioned_product_plan(
+\preformatted{svc$describe_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   PageSize = 123,

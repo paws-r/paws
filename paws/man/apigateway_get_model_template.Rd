@@ -17,7 +17,7 @@ Generates a sample mapping template that can be used to transform a
 payload into the structure of a model.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_model_template(
+\preformatted{svc$get_model_template(
   restApiId = "string",
   modelName = "string"
 )

@@ -79,7 +79,7 @@ of events generated from all RDS sources belonging to your customer
 account.
 }
 \section{Request syntax}{
-\preformatted{rds$create_event_subscription(
+\preformatted{svc$create_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

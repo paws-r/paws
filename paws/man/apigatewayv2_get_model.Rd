@@ -15,7 +15,7 @@ apigatewayv2_get_model(ApiId, ModelId)
 Gets a Model.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_model(
+\preformatted{svc$get_model(
   ApiId = "string",
   ModelId = "string"
 )

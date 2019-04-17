@@ -39,7 +39,7 @@ You can filter the results by using the bundle identifier, directory
 identifier, or owner, but you can specify only one filter at a time.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_workspaces(
+\preformatted{svc$describe_workspaces(
   WorkspaceIds = list(
     "string"
   ),

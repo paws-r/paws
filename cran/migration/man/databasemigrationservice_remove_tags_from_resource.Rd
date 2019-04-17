@@ -16,7 +16,7 @@ be removed from.}
 Removes metadata tags from a DMS resource.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"
@@ -27,7 +27,7 @@ Removes metadata tags from a DMS resource.
 
 \examples{
 # Removes metadata tags from an AWS DMS resource.
-\donttest{databasemigrationservice$remove_tags_from_resource(
+\donttest{svc$remove_tags_from_resource(
   ResourceArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E",
   TagKeys = list()
 )}

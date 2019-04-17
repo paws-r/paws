@@ -21,7 +21,7 @@ via resource tags applied to the resource identified by domainName. For
 more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_domain_entry(
+\preformatted{svc$delete_domain_entry(
   domainName = "string",
   domainEntry = list(
     id = "string",

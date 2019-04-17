@@ -20,7 +20,7 @@ Describe an existing Authorizer resource.
 :::
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_authorizer(
+\preformatted{svc$get_authorizer(
   restApiId = "string",
   authorizerId = "string"
 )

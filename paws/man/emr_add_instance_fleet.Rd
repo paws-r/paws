@@ -19,7 +19,7 @@ The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x.
 }
 \section{Request syntax}{
-\preformatted{emr$add_instance_fleet(
+\preformatted{svc$add_instance_fleet(
   ClusterId = "string",
   InstanceFleet = list(
     Name = "string",

@@ -15,7 +15,7 @@ assigned to the Amazon Chime Voice Connector must be unassigned from it
 before it can be deleted.
 }
 \section{Request syntax}{
-\preformatted{chime$delete_voice_connector(
+\preformatted{svc$delete_voice_connector(
   VoiceConnectorId = "string"
 )
 }

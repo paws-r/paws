@@ -67,7 +67,7 @@ following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 }
 }
 \section{Request syntax}{
-\preformatted{ssm$put_compliance_items(
+\preformatted{svc$put_compliance_items(
   ResourceId = "string",
   ResourceType = "string",
   ComplianceType = "string",

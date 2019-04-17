@@ -80,7 +80,7 @@ use UntagResource.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$tag_resource(
+\preformatted{svc$tag_resource(
   SecretId = "string",
   Tags = list(
     list(
@@ -96,7 +96,7 @@ use UntagResource.
 # The following example shows how to attach two tags each with a Key and
 # Value to a secret. There is no output from this API. To see the result,
 # use the DescribeSecret operation.
-\donttest{secretsmanager$tag_resource(
+\donttest{svc$tag_resource(
   SecretId = "MyExampleSecret",
   Tags = list(
     list(

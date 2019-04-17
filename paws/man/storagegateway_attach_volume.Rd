@@ -42,7 +42,7 @@ creating a snapshot. It also makes it easier to move your volumes from
 an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$attach_volume(
+\preformatted{svc$attach_volume(
   GatewayARN = "string",
   TargetName = "string",
   VolumeARN = "string",

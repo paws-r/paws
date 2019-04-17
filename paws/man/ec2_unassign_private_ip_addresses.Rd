@@ -20,7 +20,7 @@ Unassigns one or more secondary private IP addresses from a network
 interface.
 }
 \section{Request syntax}{
-\preformatted{ec2$unassign_private_ip_addresses(
+\preformatted{svc$unassign_private_ip_addresses(
   NetworkInterfaceId = "string",
   PrivateIpAddresses = list(
     "string"
@@ -32,7 +32,7 @@ interface.
 \examples{
 # This example unassigns the specified private IP address from the
 # specified network interface.
-\donttest{ec2$unassign_private_ip_addresses(
+\donttest{svc$unassign_private_ip_addresses(
   NetworkInterfaceId = "eni-e5aa89a3",
   PrivateIpAddresses = list(
     "10.0.0.82"

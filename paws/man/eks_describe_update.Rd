@@ -22,7 +22,7 @@ an update fails, the status is \code{Failed}, and an error detail explains
 the reason for the failure.
 }
 \section{Request syntax}{
-\preformatted{eks$describe_update(
+\preformatted{svc$describe_update(
   name = "string",
   updateId = "string"
 )

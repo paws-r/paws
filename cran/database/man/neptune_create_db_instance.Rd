@@ -264,7 +264,7 @@ CloudWatch Logs.}
 Creates a new DB instance.
 }
 \section{Request syntax}{
-\preformatted{neptune$create_db_instance(
+\preformatted{svc$create_db_instance(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,

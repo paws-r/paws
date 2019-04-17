@@ -24,7 +24,7 @@ Returns information about reserved Elasticsearch instances for this
 account.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$describe_reserved_elasticsearch_instances(
+\preformatted{svc$describe_reserved_elasticsearch_instances(
   ReservedElasticsearchInstanceId = "string",
   MaxResults = 123,
   NextToken = "string"

@@ -13,7 +13,7 @@ cognitoidentityprovider_get_signing_certificate(UserPoolId)
 This method takes a user pool ID, and returns the signing certificate.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_signing_certificate(
+\preformatted{svc$get_signing_certificate(
   UserPoolId = "string"
 )
 }

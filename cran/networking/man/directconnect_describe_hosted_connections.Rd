@@ -18,7 +18,7 @@ interconnect or link aggregation group (LAG).
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_hosted_connections(
+\preformatted{svc$describe_hosted_connections(
   connectionId = "string"
 )
 }

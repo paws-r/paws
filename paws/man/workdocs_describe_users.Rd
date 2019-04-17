@@ -42,7 +42,7 @@ users. If there are more results, the response includes a marker that
 you can use to request the next set of results.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_users(
+\preformatted{svc$describe_users(
   AuthenticationToken = "string",
   OrganizationId = "string",
   UserIds = "string",

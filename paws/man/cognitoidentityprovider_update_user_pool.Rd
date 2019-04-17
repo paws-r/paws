@@ -63,7 +63,7 @@ don't provide a value for an attribute, it will be set to the default
 value. You can get a list of the current user pool settings with .
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_user_pool(
+\preformatted{svc$update_user_pool(
   UserPoolId = "string",
   Policies = list(
     PasswordPolicy = list(

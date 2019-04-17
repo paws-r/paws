@@ -15,7 +15,7 @@ Returns a list of available log streams for a specific database in
 Amazon Lightsail.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_log_streams(
+\preformatted{svc$get_relational_database_log_streams(
   relationalDatabaseName = "string"
 )
 }

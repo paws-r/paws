@@ -22,7 +22,7 @@ Returns metadata associated with a recovery point, including ID, status,
 encryption, and lifecycle.
 }
 \section{Request syntax}{
-\preformatted{backup$describe_recovery_point(
+\preformatted{svc$describe_recovery_point(
   BackupVaultName = "string",
   RecoveryPointArn = "string"
 )

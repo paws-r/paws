@@ -27,7 +27,7 @@ alias. To associate an existing alias with a different customer master
 key (CMK), call UpdateAlias.
 }
 \section{Request syntax}{
-\preformatted{kms$delete_alias(
+\preformatted{svc$delete_alias(
   AliasName = "string"
 )
 }
@@ -35,7 +35,7 @@ key (CMK), call UpdateAlias.
 
 \examples{
 # The following example deletes the specified alias.
-\donttest{kms$delete_alias(
+\donttest{svc$delete_alias(
   AliasName = "alias/ExampleAlias"
 )}
 

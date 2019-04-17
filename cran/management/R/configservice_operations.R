@@ -25,7 +25,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$batch_get_aggregate_resource_config(
+#' svc$batch_get_aggregate_resource_config(
 #'   ConfigurationAggregatorName = "string",
 #'   ResourceIdentifiers = list(
 #'     list(
@@ -79,7 +79,7 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$batch_get_resource_config(
+#' svc$batch_get_resource_config(
 #'   resourceKeys = list(
 #'     list(
 #'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
@@ -123,7 +123,7 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_aggregation_authorization(
+#' svc$delete_aggregation_authorization(
 #'   AuthorizedAccountId = "string",
 #'   AuthorizedAwsRegion = "string"
 #' )
@@ -167,7 +167,7 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_config_rule(
+#' svc$delete_config_rule(
 #'   ConfigRuleName = "string"
 #' )
 #' ```
@@ -205,7 +205,7 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_configuration_aggregator(
+#' svc$delete_configuration_aggregator(
 #'   ConfigurationAggregatorName = "string"
 #' )
 #' ```
@@ -252,7 +252,7 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_configuration_recorder(
+#' svc$delete_configuration_recorder(
 #'   ConfigurationRecorderName = "string"
 #' )
 #' ```
@@ -290,7 +290,7 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_delivery_channel(
+#' svc$delete_delivery_channel(
 #'   DeliveryChannelName = "string"
 #' )
 #' ```
@@ -329,7 +329,7 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_evaluation_results(
+#' svc$delete_evaluation_results(
 #'   ConfigRuleName = "string"
 #' )
 #' ```
@@ -368,7 +368,7 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_pending_aggregation_request(
+#' svc$delete_pending_aggregation_request(
 #'   RequesterAccountId = "string",
 #'   RequesterAwsRegion = "string"
 #' )
@@ -407,7 +407,7 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_remediation_configuration(
+#' svc$delete_remediation_configuration(
 #'   ConfigRuleName = "string",
 #'   ResourceType = "string"
 #' )
@@ -443,7 +443,7 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$delete_retention_configuration(
+#' svc$delete_retention_configuration(
 #'   RetentionConfigurationName = "string"
 #' )
 #' ```
@@ -490,7 +490,7 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$deliver_config_snapshot(
+#' svc$deliver_config_snapshot(
 #'   deliveryChannelName = "string"
 #' )
 #' ```
@@ -536,7 +536,7 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_aggregate_compliance_by_config_rules(
+#' svc$describe_aggregate_compliance_by_config_rules(
 #'   ConfigurationAggregatorName = "string",
 #'   Filters = list(
 #'     ConfigRuleName = "string",
@@ -584,7 +584,7 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_aggregation_authorizations(
+#' svc$describe_aggregation_authorizations(
 #'   Limit = 123,
 #'   NextToken = "string"
 #' )
@@ -650,7 +650,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_compliance_by_config_rule(
+#' svc$describe_compliance_by_config_rule(
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   ),
@@ -731,7 +731,7 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_compliance_by_resource(
+#' svc$describe_compliance_by_resource(
 #'   ResourceType = "string",
 #'   ResourceId = "string",
 #'   ComplianceTypes = list(
@@ -788,7 +788,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_config_rule_evaluation_status(
+#' svc$describe_config_rule_evaluation_status(
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   ),
@@ -830,7 +830,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_config_rules(
+#' svc$describe_config_rules(
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   ),
@@ -884,7 +884,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_configuration_aggregator_sources_status(
+#' svc$describe_configuration_aggregator_sources_status(
 #'   ConfigurationAggregatorName = "string",
 #'   UpdateStatus = list(
 #'     "FAILED"|"SUCCEEDED"|"OUTDATED"
@@ -932,7 +932,7 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_configuration_aggregators(
+#' svc$describe_configuration_aggregators(
 #'   ConfigurationAggregatorNames = list(
 #'     "string"
 #'   ),
@@ -979,7 +979,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_configuration_recorder_status(
+#' svc$describe_configuration_recorder_status(
 #'   ConfigurationRecorderNames = list(
 #'     "string"
 #'   )
@@ -1022,7 +1022,7 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_configuration_recorders(
+#' svc$describe_configuration_recorders(
 #'   ConfigurationRecorderNames = list(
 #'     "string"
 #'   )
@@ -1064,7 +1064,7 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_delivery_channel_status(
+#' svc$describe_delivery_channel_status(
 #'   DeliveryChannelNames = list(
 #'     "string"
 #'   )
@@ -1106,7 +1106,7 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_delivery_channels(
+#' svc$describe_delivery_channels(
 #'   DeliveryChannelNames = list(
 #'     "string"
 #'   )
@@ -1146,7 +1146,7 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_pending_aggregation_requests(
+#' svc$describe_pending_aggregation_requests(
 #'   Limit = 123,
 #'   NextToken = "string"
 #' )
@@ -1183,7 +1183,7 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_remediation_configurations(
+#' svc$describe_remediation_configurations(
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   )
@@ -1234,7 +1234,7 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_remediation_execution_status(
+#' svc$describe_remediation_execution_status(
 #'   ConfigRuleName = "string",
 #'   ResourceKeys = list(
 #'     list(
@@ -1290,7 +1290,7 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$describe_retention_configurations(
+#' svc$describe_retention_configurations(
 #'   RetentionConfigurationNames = list(
 #'     "string"
 #'   ),
@@ -1351,7 +1351,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_aggregate_compliance_details_by_config_rule(
+#' svc$get_aggregate_compliance_details_by_config_rule(
 #'   ConfigurationAggregatorName = "string",
 #'   ConfigRuleName = "string",
 #'   AccountId = "string",
@@ -1406,7 +1406,7 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_aggregate_config_rule_compliance_summary(
+#' svc$get_aggregate_config_rule_compliance_summary(
 #'   ConfigurationAggregatorName = "string",
 #'   Filters = list(
 #'     AccountId = "string",
@@ -1465,7 +1465,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_aggregate_discovered_resource_counts(
+#' svc$get_aggregate_discovered_resource_counts(
 #'   ConfigurationAggregatorName = "string",
 #'   Filters = list(
 #'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
@@ -1512,7 +1512,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_aggregate_resource_config(
+#' svc$get_aggregate_resource_config(
 #'   ConfigurationAggregatorName = "string",
 #'   ResourceIdentifier = list(
 #'     SourceAccountId = "string",
@@ -1568,7 +1568,7 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_compliance_details_by_config_rule(
+#' svc$get_compliance_details_by_config_rule(
 #'   ConfigRuleName = "string",
 #'   ComplianceTypes = list(
 #'     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
@@ -1619,7 +1619,7 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_compliance_details_by_resource(
+#' svc$get_compliance_details_by_resource(
 #'   ResourceType = "string",
 #'   ResourceId = "string",
 #'   ComplianceTypes = list(
@@ -1701,7 +1701,7 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_compliance_summary_by_resource_type(
+#' svc$get_compliance_summary_by_resource_type(
 #'   ResourceTypes = list(
 #'     "string"
 #'   )
@@ -1793,7 +1793,7 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_discovered_resource_counts(
+#' svc$get_discovered_resource_counts(
 #'   resourceTypes = list(
 #'     "string"
 #'   ),
@@ -1862,7 +1862,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$get_resource_config_history(
+#' svc$get_resource_config_history(
 #'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
 #'   resourceId = "string",
 #'   laterTime = as.POSIXct(
@@ -1926,7 +1926,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$list_aggregate_discovered_resources(
+#' svc$list_aggregate_discovered_resources(
 #'   ConfigurationAggregatorName = "string",
 #'   ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
 #'   Filters = list(
@@ -2000,7 +2000,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$list_discovered_resources(
+#' svc$list_discovered_resources(
 #'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::EventSubscription"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::S3::Bucket"|"AWS::SSM::ManagedInstanceInventory"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::DynamoDB::Table"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::WAF::RuleGroup"|"AWS::WAFRegional::RuleGroup"|"AWS::Lambda::Function"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::CodePipeline::Pipeline",
 #'   resourceIds = list(
 #'     "string"
@@ -2049,7 +2049,7 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -2090,7 +2090,7 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_aggregation_authorization(
+#' svc$put_aggregation_authorization(
 #'   AuthorizedAccountId = "string",
 #'   AuthorizedAwsRegion = "string"
 #' )
@@ -2165,7 +2165,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_config_rule(
+#' svc$put_config_rule(
 #'   ConfigRule = list(
 #'     ConfigRuleName = "string",
 #'     ConfigRuleArn = "string",
@@ -2242,7 +2242,7 @@ configservice_put_config_rule <- function(ConfigRule) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_configuration_aggregator(
+#' svc$put_configuration_aggregator(
 #'   ConfigurationAggregatorName = "string",
 #'   AccountAggregationSources = list(
 #'     list(
@@ -2309,7 +2309,7 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_configuration_recorder(
+#' svc$put_configuration_recorder(
 #'   ConfigurationRecorder = list(
 #'     name = "string",
 #'     roleARN = "string",
@@ -2370,7 +2370,7 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_delivery_channel(
+#' svc$put_delivery_channel(
 #'   DeliveryChannel = list(
 #'     name = "string",
 #'     s3BucketName = "string",
@@ -2427,7 +2427,7 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_evaluations(
+#' svc$put_evaluations(
 #'   Evaluations = list(
 #'     list(
 #'       ComplianceResourceType = "string",
@@ -2480,7 +2480,7 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_remediation_configurations(
+#' svc$put_remediation_configurations(
 #'   RemediationConfigurations = list(
 #'     list(
 #'       ConfigRuleName = "string",
@@ -2547,7 +2547,7 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$put_retention_configuration(
+#' svc$put_retention_configuration(
 #'   RetentionPeriodInDays = 123
 #' )
 #' ```
@@ -2593,7 +2593,7 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$select_resource_config(
+#' svc$select_resource_config(
 #'   Expression = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -2665,7 +2665,7 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$start_config_rules_evaluation(
+#' svc$start_config_rules_evaluation(
 #'   ConfigRuleNames = list(
 #'     "string"
 #'   )
@@ -2708,7 +2708,7 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$start_configuration_recorder(
+#' svc$start_configuration_recorder(
 #'   ConfigurationRecorderName = "string"
 #' )
 #' ```
@@ -2754,7 +2754,7 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$start_remediation_execution(
+#' svc$start_remediation_execution(
 #'   ConfigRuleName = "string",
 #'   ResourceKeys = list(
 #'     list(
@@ -2798,7 +2798,7 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$stop_configuration_recorder(
+#' svc$stop_configuration_recorder(
 #'   ConfigurationRecorderName = "string"
 #' )
 #' ```
@@ -2840,7 +2840,7 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -2884,7 +2884,7 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' configservice$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"

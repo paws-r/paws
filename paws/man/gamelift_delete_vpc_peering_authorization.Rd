@@ -33,7 +33,7 @@ call DeleteVpcPeeringConnection to remove the connection.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_vpc_peering_authorization(
+\preformatted{svc$delete_vpc_peering_authorization(
   GameLiftAwsAccountId = "string",
   PeerVpcId = "string"
 )

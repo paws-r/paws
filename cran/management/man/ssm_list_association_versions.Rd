@@ -20,7 +20,7 @@ results.}
 Retrieves all versions of an association for a specific association ID.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_association_versions(
+\preformatted{svc$list_association_versions(
   AssociationId = "string",
   MaxResults = 123,
   NextToken = "string"

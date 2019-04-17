@@ -52,7 +52,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_reserved_instances_listing(
+\preformatted{svc$create_reserved_instances_listing(
   ClientToken = "string",
   InstanceCount = 123,
   PriceSchedules = list(

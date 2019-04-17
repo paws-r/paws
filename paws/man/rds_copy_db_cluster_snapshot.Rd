@@ -177,7 +177,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$copy_db_cluster_snapshot(
+\preformatted{svc$copy_db_cluster_snapshot(
   SourceDBClusterSnapshotIdentifier = "string",
   TargetDBClusterSnapshotIdentifier = "string",
   KmsKeyId = "string",

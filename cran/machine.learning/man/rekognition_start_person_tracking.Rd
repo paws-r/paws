@@ -40,7 +40,7 @@ so, call GetPersonTracking and pass the job identifier (\code{JobId}) from
 the initial call to \code{StartPersonTracking}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$start_person_tracking(
+\preformatted{svc$start_person_tracking(
   Video = list(
     S3Object = list(
       Bucket = "string",

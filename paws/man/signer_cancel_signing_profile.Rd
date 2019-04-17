@@ -16,7 +16,7 @@ operation, but it cannot perform new signing jobs, and is deleted two
 years after cancelation.
 }
 \section{Request syntax}{
-\preformatted{signer$cancel_signing_profile(
+\preformatted{svc$cancel_signing_profile(
   profileName = "string"
 )
 }

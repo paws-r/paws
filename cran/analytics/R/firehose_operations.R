@@ -110,7 +110,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$create_delivery_stream(
+#' svc$create_delivery_stream(
 #'   DeliveryStreamName = "string",
 #'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
 #'   KinesisStreamSourceConfiguration = list(
@@ -487,7 +487,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$delete_delivery_stream(
+#' svc$delete_delivery_stream(
 #'   DeliveryStreamName = "string"
 #' )
 #' ```
@@ -531,7 +531,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$describe_delivery_stream(
+#' svc$describe_delivery_stream(
 #'   DeliveryStreamName = "string",
 #'   Limit = 123,
 #'   ExclusiveStartDestinationId = "string"
@@ -592,7 +592,7 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$list_delivery_streams(
+#' svc$list_delivery_streams(
 #'   Limit = 123,
 #'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource",
 #'   ExclusiveStartDeliveryStreamName = "string"
@@ -638,7 +638,7 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$list_tags_for_delivery_stream(
+#' svc$list_tags_for_delivery_stream(
 #'   DeliveryStreamName = "string",
 #'   ExclusiveStartTagKey = "string",
 #'   Limit = 123
@@ -717,7 +717,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$put_record(
+#' svc$put_record(
 #'   DeliveryStreamName = "string",
 #'   Record = list(
 #'     Data = raw
@@ -826,7 +826,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$put_record_batch(
+#' svc$put_record_batch(
 #'   DeliveryStreamName = "string",
 #'   Records = list(
 #'     list(
@@ -890,7 +890,7 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$start_delivery_stream_encryption(
+#' svc$start_delivery_stream_encryption(
 #'   DeliveryStreamName = "string"
 #' )
 #' ```
@@ -946,7 +946,7 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$stop_delivery_stream_encryption(
+#' svc$stop_delivery_stream_encryption(
 #'   DeliveryStreamName = "string"
 #' )
 #' ```
@@ -994,7 +994,7 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$tag_delivery_stream(
+#' svc$tag_delivery_stream(
 #'   DeliveryStreamName = "string",
 #'   Tags = list(
 #'     list(
@@ -1043,7 +1043,7 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$untag_delivery_stream(
+#' svc$untag_delivery_stream(
 #'   DeliveryStreamName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1131,7 +1131,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' firehose$update_destination(
+#' svc$update_destination(
 #'   DeliveryStreamName = "string",
 #'   CurrentDeliveryStreamVersionId = "string",
 #'   DestinationId = "string",

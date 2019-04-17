@@ -15,7 +15,7 @@ worklink_describe_device(FleetArn, DeviceId)
 Provides information about a user's device.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_device(
+\preformatted{svc$describe_device(
   FleetArn = "string",
   DeviceId = "string"
 )

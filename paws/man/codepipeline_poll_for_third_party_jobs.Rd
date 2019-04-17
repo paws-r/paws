@@ -23,7 +23,7 @@ the action requires access to that Amazon S3 bucket for input or output
 artifacts.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$poll_for_third_party_jobs(
+\preformatted{svc$poll_for_third_party_jobs(
   actionTypeId = list(
     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
     owner = "AWS"|"ThirdParty"|"Custom",

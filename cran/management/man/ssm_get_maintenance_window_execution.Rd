@@ -15,7 +15,7 @@ Retrieves details about a specific task executed as part of a
 Maintenance Window execution.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_maintenance_window_execution(
+\preformatted{svc$get_maintenance_window_execution(
   WindowExecutionId = "string"
 )
 }

@@ -39,7 +39,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$create_policy(
+\preformatted{svc$create_policy(
   Content = "string",
   Description = "string",
   Name = "string",
@@ -57,7 +57,7 @@ account.
 # is surrounded by double quotes:
 # 
 # 
-\donttest{organizations$create_policy(
+\donttest{svc$create_policy(
   Content = "{\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\",\\\\\\"Statement\\\\\\":{\\\\\\"Effect\\\\\\":...",
   Description = "Enables admins of attached accounts to delegate all S3 permissions",
   Name = "AllowAllS3Actions",

@@ -21,7 +21,7 @@ endpoint. The output from \code{ListTables} is paginated, with each page
 returning a maximum of 100 table names.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$list_tables(
+\preformatted{svc$list_tables(
   ExclusiveStartTableName = "string",
   Limit = 123
 )
@@ -31,7 +31,7 @@ returning a maximum of 100 table names.
 \examples{
 # This example lists all of the tables associated with the current AWS
 # account and endpoint.
-\donttest{dynamodb$list_tables()}
+\donttest{svc$list_tables()}
 
 }
 \keyword{internal}

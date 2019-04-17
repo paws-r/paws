@@ -25,7 +25,7 @@ Retrieves a list that describes the permissions for shared AWS account
 IDs on a private image that you own.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_image_permissions(
+\preformatted{svc$describe_image_permissions(
   Name = "string",
   MaxResults = 123,
   SharedAwsAccountIds = list(

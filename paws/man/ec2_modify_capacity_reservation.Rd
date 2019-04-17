@@ -51,7 +51,7 @@ these attributes, we recommend that you cancel the Capacity Reservation,
 and then create a new one with the required attributes.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_capacity_reservation(
+\preformatted{svc$modify_capacity_reservation(
   CapacityReservationId = "string",
   InstanceCount = 123,
   EndDate = as.POSIXct(

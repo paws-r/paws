@@ -13,7 +13,7 @@ databasemigrationservice_delete_event_subscription(SubscriptionName)
 Deletes an AWS DMS event subscription.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
 }

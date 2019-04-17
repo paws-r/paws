@@ -76,7 +76,7 @@ see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$start_match_backfill(
+\preformatted{svc$start_match_backfill(
   TicketId = "string",
   ConfigurationName = "string",
   GameSessionArn = "string",

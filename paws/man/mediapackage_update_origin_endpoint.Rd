@@ -35,7 +35,7 @@ If not specified, there will be no time delay in effect for the OriginEndpoint.}
 Updates an existing OriginEndpoint.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$update_origin_endpoint(
+\preformatted{svc$update_origin_endpoint(
   CmafPackage = list(
     Encryption = list(
       KeyRotationIntervalSeconds = 123,

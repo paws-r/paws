@@ -25,7 +25,7 @@ Target tags cannot be re-used across policies.}
 Updates the specified lifecycle policy.
 }
 \section{Request syntax}{
-\preformatted{dlm$update_lifecycle_policy(
+\preformatted{svc$update_lifecycle_policy(
   PolicyId = "string",
   ExecutionRoleArn = "string",
   State = "ENABLED"|"DISABLED",

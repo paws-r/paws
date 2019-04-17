@@ -15,7 +15,7 @@ licensemanager_tag_resource(ResourceArn, Tags)
 Attach one of more tags to any resource.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     list(

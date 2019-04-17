@@ -26,7 +26,7 @@ you can use to get another batch of \code{ActivatedRules}.}
 Returns an array of ActivatedRule objects.
 }
 \section{Request syntax}{
-\preformatted{waf$list_activated_rules_in_rule_group(
+\preformatted{svc$list_activated_rules_in_rule_group(
   RuleGroupId = "string",
   NextMarker = "string",
   Limit = 123

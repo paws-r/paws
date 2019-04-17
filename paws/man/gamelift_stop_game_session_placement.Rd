@@ -29,7 +29,7 @@ is moved to \code{CANCELLED} status.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$stop_game_session_placement(
+\preformatted{svc$stop_game_session_placement(
   PlacementId = "string"
 )
 }

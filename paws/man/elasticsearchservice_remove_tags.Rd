@@ -19,7 +19,7 @@ Removes the specified set of tags from the specified Elasticsearch
 domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$remove_tags(
+\preformatted{svc$remove_tags(
   ARN = "string",
   TagKeys = list(
     "string"

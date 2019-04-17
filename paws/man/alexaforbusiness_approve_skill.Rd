@@ -16,7 +16,7 @@ account. If a skill is private, the user implicitly accepts access to
 this skill during enablement.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$approve_skill(
+\preformatted{svc$approve_skill(
   SkillId = "string"
 )
 }

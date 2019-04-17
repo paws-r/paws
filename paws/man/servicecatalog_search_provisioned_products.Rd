@@ -42,7 +42,7 @@ Gets information about the provisioned products that meet the specified
 criteria.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$search_provisioned_products(
+\preformatted{svc$search_provisioned_products(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",

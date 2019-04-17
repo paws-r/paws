@@ -33,11 +33,23 @@ NULL
 #' they complete at most one time. If you repeat an operation, it succeeds
 #' with a 200 OK response code.
 #'
-#' @section Example:
-#' ```
-#' elb <- paws::elb()
-#' elb$operation()
-#' ```
+#' @examples
+#' # This example adds two tags to the specified load balancer.
+#' \donttest{svc$add_tags(
+#'   LoadBalancerNames = list(
+#'     "my-load-balancer"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "project",
+#'       Value = "lima"
+#'     ),
+#'     list(
+#'       Key = "department",
+#'       Value = "digital-media"
+#'     )
+#'   )
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

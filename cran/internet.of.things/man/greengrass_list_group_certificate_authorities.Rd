@@ -13,7 +13,7 @@ greengrass_list_group_certificate_authorities(GroupId)
 Retrieves the current CAs for a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_group_certificate_authorities(
+\preformatted{svc$list_group_certificate_authorities(
   GroupId = "string"
 )
 }

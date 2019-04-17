@@ -100,7 +100,7 @@ In addition, Amazon Lex also returns your application-specific
 \code{sessionAttributes}. For more information, see \href{http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
 }
 \section{Request syntax}{
-\preformatted{lexruntimeservice$post_text(
+\preformatted{svc$post_text(
   botName = "string",
   botAlias = "string",
   userId = "string",

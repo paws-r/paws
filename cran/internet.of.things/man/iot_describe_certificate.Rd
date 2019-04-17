@@ -14,7 +14,7 @@ contains the certificate ID.)}
 Gets information about the specified certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_certificate(
+\preformatted{svc$describe_certificate(
   certificateId = "string"
 )
 }

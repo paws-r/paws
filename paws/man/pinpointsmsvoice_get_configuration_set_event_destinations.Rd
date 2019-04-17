@@ -16,7 +16,7 @@ pinpointsmsvoice_get_configuration_set_event_destinations(
 Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$get_configuration_set_event_destinations(
+\preformatted{svc$get_configuration_set_event_destinations(
   ConfigurationSetName = "string"
 )
 }

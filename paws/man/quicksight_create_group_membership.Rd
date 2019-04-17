@@ -35,7 +35,7 @@ The response is the group member object.
 \code{aws quicksight create-group-membership --aws-account-id=111122223333 --namespace=default --group-name=Sales --member-name=Pat }
 }
 \section{Request syntax}{
-\preformatted{quicksight$create_group_membership(
+\preformatted{svc$create_group_membership(
   MemberName = "string",
   GroupName = "string",
   AwsAccountId = "string",

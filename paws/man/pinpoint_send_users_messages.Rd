@@ -15,7 +15,7 @@ pinpoint_send_users_messages(ApplicationId, SendUsersMessageRequest)
 Used to send a message to a list of users.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$send_users_messages(
+\preformatted{svc$send_users_messages(
   ApplicationId = "string",
   SendUsersMessageRequest = list(
     Context = list(

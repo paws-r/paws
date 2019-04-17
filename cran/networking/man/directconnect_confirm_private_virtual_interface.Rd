@@ -25,7 +25,7 @@ is created and attached to the specified virtual private gateway or
 Direct Connect gateway, and is made available to handle traffic.
 }
 \section{Request syntax}{
-\preformatted{directconnect$confirm_private_virtual_interface(
+\preformatted{svc$confirm_private_virtual_interface(
   virtualInterfaceId = "string",
   virtualGatewayId = "string",
   directConnectGatewayId = "string"

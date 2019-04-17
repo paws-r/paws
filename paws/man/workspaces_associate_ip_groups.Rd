@@ -17,7 +17,7 @@ Associates the specified IP access control group with the specified
 directory.
 }
 \section{Request syntax}{
-\preformatted{workspaces$associate_ip_groups(
+\preformatted{svc$associate_ip_groups(
   DirectoryId = "string",
   GroupIds = list(
     "string"

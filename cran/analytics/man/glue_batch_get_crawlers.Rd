@@ -18,7 +18,7 @@ operation supports all IAM permissions, including permission conditions
 that uses tags.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_get_crawlers(
+\preformatted{svc$batch_get_crawlers(
   CrawlerNames = list(
     "string"
   )

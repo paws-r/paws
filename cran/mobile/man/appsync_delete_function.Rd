@@ -15,7 +15,7 @@ appsync_delete_function(apiId, functionId)
 Deletes a \code{Function}.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_function(
+\preformatted{svc$delete_function(
   apiId = "string",
   functionId = "string"
 )

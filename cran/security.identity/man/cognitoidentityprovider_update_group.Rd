@@ -27,7 +27,7 @@ Updates the specified group with the specified attributes.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   UserPoolId = "string",
   Description = "string",

@@ -17,7 +17,7 @@ determine whether it is connected and ready to receive Session Manager
 connections.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_connection_status(
+\preformatted{svc$get_connection_status(
   Target = "string"
 )
 }

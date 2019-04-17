@@ -13,7 +13,7 @@ codebuild_delete_project(name)
 Deletes a build project.
 }
 \section{Request syntax}{
-\preformatted{codebuild$delete_project(
+\preformatted{svc$delete_project(
   name = "string"
 )
 }

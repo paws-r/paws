@@ -28,7 +28,7 @@ You can have a maximum of 50 cost allocation tags on an ElastiCache
 resource. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.
 }
 \section{Request syntax}{
-\preformatted{elasticache$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceName = "string"
 )
 }

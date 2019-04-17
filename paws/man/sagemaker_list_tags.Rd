@@ -20,7 +20,7 @@ in the subsequent request.}
 Returns the tags for the specified Amazon SageMaker resource.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_tags(
+\preformatted{svc$list_tags(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123

@@ -13,7 +13,7 @@ pinpointemail_delete_dedicated_ip_pool(PoolName)
 Delete a dedicated IP pool.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$delete_dedicated_ip_pool(
+\preformatted{svc$delete_dedicated_ip_pool(
   PoolName = "string"
 )
 }

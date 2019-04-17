@@ -84,7 +84,7 @@ message. Confirmation tokens are valid for three days.
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$subscribe(
+\preformatted{svc$subscribe(
   TopicArn = "string",
   Protocol = "string",
   Endpoint = "string",

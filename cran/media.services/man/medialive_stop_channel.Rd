@@ -13,7 +13,7 @@ medialive_stop_channel(ChannelId)
 Stops a running channel
 }
 \section{Request syntax}{
-\preformatted{medialive$stop_channel(
+\preformatted{svc$stop_channel(
   ChannelId = "string"
 )
 }

@@ -20,7 +20,7 @@ Enable or disable email sending for messages that use a particular
 configuration set in a specific AWS Region.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_configuration_set_sending_options(
+\preformatted{svc$put_configuration_set_sending_options(
   ConfigurationSetName = "string",
   SendingEnabled = TRUE|FALSE
 )

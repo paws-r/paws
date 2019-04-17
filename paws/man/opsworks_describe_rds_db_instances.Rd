@@ -24,7 +24,7 @@ user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide
 This call accepts only one resource-identifying parameter.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_rds_db_instances(
+\preformatted{svc$describe_rds_db_instances(
   StackId = "string",
   RdsDbInstanceArns = list(
     "string"

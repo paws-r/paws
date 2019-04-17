@@ -34,7 +34,7 @@ collaborators after the comment is created.}
 Adds a new comment to the specified document version.
 }
 \section{Request syntax}{
-\preformatted{workdocs$create_comment(
+\preformatted{svc$create_comment(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",

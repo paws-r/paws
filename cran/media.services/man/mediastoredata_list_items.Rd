@@ -34,7 +34,7 @@ Provides a list of metadata entries about folders and objects in the
 specified folder.
 }
 \section{Request syntax}{
-\preformatted{mediastoredata$list_items(
+\preformatted{svc$list_items(
   Path = "string",
   MaxResults = 123,
   NextToken = "string"

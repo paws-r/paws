@@ -36,7 +36,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$stop_task(
+\preformatted{svc$stop_task(
   cluster = "string",
   task = "string",
   reason = "string"

@@ -30,7 +30,7 @@ they can be synchronized from your directory. For more information, see
 DeregisterFromWorkMail.
 }
 \section{Request syntax}{
-\preformatted{workmail$register_to_work_mail(
+\preformatted{svc$register_to_work_mail(
   OrganizationId = "string",
   EntityId = "string",
   Email = "string"

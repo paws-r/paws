@@ -18,7 +18,7 @@ cognitoidentityprovider_update_device_status(AccessToken, DeviceKey,
 Updates the device status.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_device_status(
+\preformatted{svc$update_device_status(
   AccessToken = "string",
   DeviceKey = "string",
   DeviceRememberedStatus = "remembered"|"not_remembered"

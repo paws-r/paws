@@ -15,7 +15,7 @@ mq_list_brokers(MaxResults, NextToken)
 Returns a list of all brokers.
 }
 \section{Request syntax}{
-\preformatted{mq$list_brokers(
+\preformatted{svc$list_brokers(
   MaxResults = 123,
   NextToken = "string"
 )

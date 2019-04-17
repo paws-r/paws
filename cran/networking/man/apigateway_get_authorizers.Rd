@@ -23,7 +23,7 @@ Describe an existing Authorizers resource.
 :::
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_authorizers(
+\preformatted{svc$get_authorizers(
   restApiId = "string",
   position = "string",
   limit = 123

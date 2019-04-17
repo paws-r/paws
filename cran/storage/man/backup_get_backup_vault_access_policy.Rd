@@ -18,7 +18,7 @@ Returns the access policy document that is associated with the named
 backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_vault_access_policy(
+\preformatted{svc$get_backup_vault_access_policy(
   BackupVaultName = "string"
 )
 }

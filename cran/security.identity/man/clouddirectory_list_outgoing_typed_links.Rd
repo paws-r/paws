@@ -35,7 +35,7 @@ information for an object. It also supports filtering by typed link
 facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_outgoing_typed_links(
+\preformatted{svc$list_outgoing_typed_links(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

@@ -30,7 +30,7 @@ defined by the AWS service team.
 Query the current service setting for the account.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_service_setting(
+\preformatted{svc$get_service_setting(
   SettingId = "string"
 )
 }

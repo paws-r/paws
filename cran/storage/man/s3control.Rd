@@ -9,12 +9,6 @@ s3control()
 \description{
 AWS S3 Control provides access to Amazon S3 control plane operations.
 }
-\section{Example}{
-\preformatted{s3control <- paws::s3control()
-s3control$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -24,3 +18,9 @@ s3control$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_public_access_block(
+  Foo = 123
+)}
+
+}

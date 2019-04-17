@@ -29,7 +29,7 @@ can be returned in a result.}
 Returns information about one or more pull request events.
 }
 \section{Request syntax}{
-\preformatted{codecommit$describe_pull_request_events(
+\preformatted{svc$describe_pull_request_events(
   pullRequestId = "string",
   pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED",
   actorArn = "string",

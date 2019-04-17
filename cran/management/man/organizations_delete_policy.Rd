@@ -25,7 +25,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$delete_policy(
+\preformatted{svc$delete_policy(
   PolicyId = "string"
 )
 }
@@ -37,7 +37,7 @@ account.
 # entities:
 # 
 # 
-\donttest{organizations$delete_policy(
+\donttest{svc$delete_policy(
   PolicyId = "p-examplepolicyid111"
 )}
 

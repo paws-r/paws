@@ -13,7 +13,7 @@ backup_get_backup_plan_from_json(BackupPlanTemplateJson)
 Returns a valid JSON document specifying a backup plan or an error.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_plan_from_json(
+\preformatted{svc$get_backup_plan_from_json(
   BackupPlanTemplateJson = "string"
 )
 }

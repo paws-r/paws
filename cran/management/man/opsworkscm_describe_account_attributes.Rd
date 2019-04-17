@@ -15,7 +15,7 @@ limits before they are reached or exceeded.
 This operation is synchronous.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$describe_account_attributes()
+\preformatted{svc$describe_account_attributes()
 }
 }
 

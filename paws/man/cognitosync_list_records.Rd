@@ -35,7 +35,7 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$list_records(
+\preformatted{svc$list_records(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",

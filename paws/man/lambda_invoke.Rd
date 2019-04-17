@@ -77,7 +77,7 @@ This operation requires permission for the \code{lambda:InvokeFunction}
 action.
 }
 \section{Request syntax}{
-\preformatted{lambda$invoke(
+\preformatted{svc$invoke(
   FunctionName = "string",
   InvocationType = "Event"|"RequestResponse"|"DryRun",
   LogType = "None"|"Tail",
@@ -90,7 +90,7 @@ action.
 
 \examples{
 # This operation invokes a Lambda function
-\donttest{lambda$invoke(
+\donttest{svc$invoke(
   ClientContext = "MyApp",
   FunctionName = "MyFunction",
   InvocationType = "Event",

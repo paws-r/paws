@@ -85,7 +85,7 @@ in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon
 in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elbv2$create_load_balancer(
+\preformatted{svc$create_load_balancer(
   Name = "string",
   Subnets = list(
     "string"
@@ -115,7 +115,7 @@ in the \emph{Network Load Balancers Guide}.
 \examples{
 # This example creates an Internet-facing load balancer and enables the
 # Availability Zones for the specified subnets.
-\donttest{elbv2$create_load_balancer(
+\donttest{svc$create_load_balancer(
   Name = "my-load-balancer",
   Subnets = list(
     "subnet-b7d581c0",
@@ -125,7 +125,7 @@ in the \emph{Network Load Balancers Guide}.
 
 # This example creates an internal load balancer and enables the
 # Availability Zones for the specified subnets.
-\donttest{elbv2$create_load_balancer(
+\donttest{svc$create_load_balancer(
   Name = "my-internal-load-balancer",
   Scheme = "internal",
   SecurityGroups = list(),

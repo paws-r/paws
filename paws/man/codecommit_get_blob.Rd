@@ -17,7 +17,7 @@ Returns the base-64 encoded content of an individual blob within a
 repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_blob(
+\preformatted{svc$get_blob(
   repositoryName = "string",
   blobId = "string"
 )

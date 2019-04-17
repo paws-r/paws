@@ -33,7 +33,7 @@ You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_events(
+\preformatted{svc$describe_stack_events(
   StackName = "string",
   NextToken = "string"
 )

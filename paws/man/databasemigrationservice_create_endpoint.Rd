@@ -100,7 +100,7 @@ in the \emph{AWS Database Migration User Guide.}}
 Creates an endpoint using the provided settings.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$create_endpoint(
+\preformatted{svc$create_endpoint(
   EndpointIdentifier = "string",
   EndpointType = "source"|"target",
   EngineName = "string",
@@ -205,7 +205,7 @@ Creates an endpoint using the provided settings.
 
 \examples{
 # Creates an endpoint using the provided settings.
-\donttest{databasemigrationservice$create_endpoint(
+\donttest{svc$create_endpoint(
   CertificateArn = "",
   DatabaseName = "testdb",
   EndpointIdentifier = "test-endpoint-1",

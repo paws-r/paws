@@ -18,7 +18,7 @@ workmail_disassociate_member_from_group(OrganizationId, GroupId,
 Removes a member from a group.
 }
 \section{Request syntax}{
-\preformatted{workmail$disassociate_member_from_group(
+\preformatted{svc$disassociate_member_from_group(
   OrganizationId = "string",
   GroupId = "string",
   MemberId = "string"

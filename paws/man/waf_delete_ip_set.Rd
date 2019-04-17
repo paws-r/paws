@@ -30,7 +30,7 @@ information, see UpdateIPSet.
 }
 }
 \section{Request syntax}{
-\preformatted{waf$delete_ip_set(
+\preformatted{svc$delete_ip_set(
   IPSetId = "string",
   ChangeToken = "string"
 )
@@ -40,7 +40,7 @@ information, see UpdateIPSet.
 \examples{
 # The following example deletes an IP match set  with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{waf$delete_ip_set(
+\donttest{svc$delete_ip_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   IPSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}

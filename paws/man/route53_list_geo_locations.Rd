@@ -51,7 +51,7 @@ provinces), the subdivisions for that country are listed in alphabetical
 order immediately after the corresponding country.
 }
 \section{Request syntax}{
-\preformatted{route53$list_geo_locations(
+\preformatted{svc$list_geo_locations(
   StartContinentCode = "string",
   StartCountryCode = "string",
   StartSubdivisionCode = "string",

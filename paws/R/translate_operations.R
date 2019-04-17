@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' translate$delete_terminology(
+#' svc$delete_terminology(
 #'   Name = "string"
 #' )
 #' ```
@@ -51,7 +51,7 @@ translate_delete_terminology <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' translate$get_terminology(
+#' svc$get_terminology(
 #'   Name = "string",
 #'   TerminologyDataFormat = "CSV"|"TMX"
 #' )
@@ -106,7 +106,7 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 #'
 #' @section Request syntax:
 #' ```
-#' translate$import_terminology(
+#' svc$import_terminology(
 #'   Name = "string",
 #'   MergeStrategy = "OVERWRITE",
 #'   Description = "string",
@@ -153,7 +153,7 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' translate$list_terminologies(
+#' svc$list_terminologies(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -254,7 +254,7 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' translate$translate_text(
+#' svc$translate_text(
 #'   Text = "string",
 #'   TerminologyNames = list(
 #'     "string"

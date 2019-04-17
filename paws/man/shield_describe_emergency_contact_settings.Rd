@@ -12,7 +12,7 @@ Lists the email addresses that the DRT can use to contact you during a
 suspected attack.
 }
 \section{Request syntax}{
-\preformatted{shield$describe_emergency_contact_settings()
+\preformatted{svc$describe_emergency_contact_settings()
 }
 }
 

@@ -13,7 +13,7 @@ xray_get_sampling_rules(NextToken)
 Retrieves all sampling rules.
 }
 \section{Request syntax}{
-\preformatted{xray$get_sampling_rules(
+\preformatted{svc$get_sampling_rules(
   NextToken = "string"
 )
 }

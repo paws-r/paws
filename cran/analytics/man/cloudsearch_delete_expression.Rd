@@ -17,7 +17,7 @@ information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developergu
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$delete_expression(
+\preformatted{svc$delete_expression(
   DomainName = "string",
   ExpressionName = "string"
 )

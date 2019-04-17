@@ -15,7 +15,7 @@ glue_update_job(JobName, JobUpdate)
 Updates an existing job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$update_job(
+\preformatted{svc$update_job(
   JobName = "string",
   JobUpdate = list(
     Description = "string",

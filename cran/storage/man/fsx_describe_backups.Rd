@@ -54,7 +54,7 @@ responses of a multi-call iteration is unspecified.
 }
 }
 \section{Request syntax}{
-\preformatted{fsx$describe_backups(
+\preformatted{svc$describe_backups(
   BackupIds = list(
     "string"
   ),
@@ -74,7 +74,7 @@ responses of a multi-call iteration is unspecified.
 
 \examples{
 # This operation describes all of the Amazon FSx backups in an account.
-\donttest{fsx$describe_backups()}
+\donttest{svc$describe_backups()}
 
 }
 \keyword{internal}

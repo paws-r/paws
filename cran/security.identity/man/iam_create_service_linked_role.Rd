@@ -45,7 +45,7 @@ To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
 }
 \section{Request syntax}{
-\preformatted{iam$create_service_linked_role(
+\preformatted{svc$create_service_linked_role(
   AWSServiceName = "string",
   Description = "string",
   CustomSuffix = "string"

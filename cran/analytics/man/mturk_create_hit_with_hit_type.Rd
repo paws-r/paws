@@ -93,7 +93,7 @@ If a HIT is created with 10 or more maximum assignments, there is an
 additional fee. For more information, see \href{https://requester.mturk.com/pricing}{Amazon Mechanical Turk Pricing}.
 }
 \section{Request syntax}{
-\preformatted{mturk$create_hit_with_hit_type(
+\preformatted{svc$create_hit_with_hit_type(
   HITTypeId = "string",
   MaxAssignments = 123,
   LifetimeInSeconds = 123,

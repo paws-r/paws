@@ -19,7 +19,7 @@ Adds an alias to the set of a given member (user or group) of Amazon
 WorkMail.
 }
 \section{Request syntax}{
-\preformatted{workmail$create_alias(
+\preformatted{svc$create_alias(
   OrganizationId = "string",
   EntityId = "string",
   Alias = "string"

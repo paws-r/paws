@@ -54,7 +54,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$detach_policy(
+\preformatted{svc$detach_policy(
   PolicyId = "string",
   TargetId = "string"
 )
@@ -63,7 +63,7 @@ account.
 
 \examples{
 # The following example shows how to detach a policy from an OU:/n/n
-\donttest{organizations$detach_policy(
+\donttest{svc$detach_policy(
   PolicyId = "p-examplepolicyid111",
   TargetId = "ou-examplerootid111-exampleouid111"
 )}

@@ -71,7 +71,7 @@ DescribeDeliveryStream. Use the new version ID to set
 \code{CurrentDeliveryStreamVersionId} in the next call.
 }
 \section{Request syntax}{
-\preformatted{firehose$update_destination(
+\preformatted{svc$update_destination(
   DeliveryStreamName = "string",
   CurrentDeliveryStreamVersionId = "string",
   DestinationId = "string",

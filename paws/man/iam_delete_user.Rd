@@ -19,7 +19,7 @@ or have any access keys, signing certificates, MFA devices enabled for
 AWS, or attached policies.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_user(
+\preformatted{svc$delete_user(
   UserName = "string"
 )
 }
@@ -28,7 +28,7 @@ AWS, or attached policies.
 \examples{
 # The following command removes the IAM user named Bob from the current
 # account.
-\donttest{iam$delete_user(
+\donttest{svc$delete_user(
   UserName = "Bob"
 )}
 

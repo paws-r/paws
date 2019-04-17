@@ -37,7 +37,7 @@ completed.
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$transact_get_items(
+\preformatted{svc$transact_get_items(
   TransactItems = list(
     list(
       Get = list(

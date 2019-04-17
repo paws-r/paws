@@ -23,7 +23,7 @@ ListRules does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$list_rules(
+\preformatted{svc$list_rules(
   NamePrefix = "string",
   NextToken = "string",
   Limit = 123

@@ -13,7 +13,7 @@ cognitoidentityprovider_get_user_pool_mfa_config(UserPoolId)
 Gets the user pool multi-factor authentication (MFA) configuration.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_user_pool_mfa_config(
+\preformatted{svc$get_user_pool_mfa_config(
   UserPoolId = "string"
 )
 }

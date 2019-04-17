@@ -24,7 +24,7 @@ for the part storage, you should call the List Parts operation and
 ensure the parts list is empty.
 }
 \section{Request syntax}{
-\preformatted{s3$abort_multipart_upload(
+\preformatted{svc$abort_multipart_upload(
   Bucket = "string",
   Key = "string",
   UploadId = "string",
@@ -35,7 +35,7 @@ ensure the parts list is empty.
 
 \examples{
 # The following example aborts a multipart upload.
-\donttest{s3$abort_multipart_upload(
+\donttest{svc$abort_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."

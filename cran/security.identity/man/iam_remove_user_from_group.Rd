@@ -23,7 +23,7 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 Removes the specified user from the specified group.
 }
 \section{Request syntax}{
-\preformatted{iam$remove_user_from_group(
+\preformatted{svc$remove_user_from_group(
   GroupName = "string",
   UserName = "string"
 )
@@ -33,7 +33,7 @@ Removes the specified user from the specified group.
 \examples{
 # The following command removes the user named Bob from the IAM group
 # named Admins.
-\donttest{iam$remove_user_from_group(
+\donttest{svc$remove_user_from_group(
   GroupName = "Admins",
   UserName = "Bob"
 )}

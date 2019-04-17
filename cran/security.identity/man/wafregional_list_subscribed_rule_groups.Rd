@@ -24,7 +24,7 @@ can use to get another batch of objects.}
 Returns an array of RuleGroup objects that you are subscribed to.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_subscribed_rule_groups(
+\preformatted{svc$list_subscribed_rule_groups(
   NextMarker = "string",
   Limit = 123
 )

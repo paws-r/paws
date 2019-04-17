@@ -20,7 +20,7 @@ mediaconvert_update_queue(Description, Name, ReservationPlanSettings,
 Modify one of your existing queues.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$update_queue(
+\preformatted{svc$update_queue(
   Description = "string",
   Name = "string",
   ReservationPlanSettings = list(

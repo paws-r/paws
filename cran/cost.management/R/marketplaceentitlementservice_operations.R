@@ -28,7 +28,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' marketplaceentitlementservice$get_entitlements(
+#' svc$get_entitlements(
 #'   ProductCode = "string",
 #'   Filter = list(
 #'     list(

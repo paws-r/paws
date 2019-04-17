@@ -13,7 +13,7 @@ lightsail_get_static_ip(staticIpName)
 Returns information about a specific static IP.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_static_ip(
+\preformatted{svc$get_static_ip(
   staticIpName = "string"
 )
 }

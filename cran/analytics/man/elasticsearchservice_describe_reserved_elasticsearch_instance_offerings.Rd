@@ -22,7 +22,7 @@ containing NextToken. It is used for pagination.}
 Lists available reserved Elasticsearch instance offerings.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$describe_reserved_elasticsearch_instance_offerings(
+\preformatted{svc$describe_reserved_elasticsearch_instance_offerings(
   ReservedElasticsearchInstanceOfferingId = "string",
   MaxResults = 123,
   NextToken = "string"

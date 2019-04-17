@@ -128,7 +128,7 @@ API may be limited by your account's maximum sending rate.
 }
 }
 \section{Request syntax}{
-\preformatted{ses$send_bulk_templated_email(
+\preformatted{svc$send_bulk_templated_email(
   Source = "string",
   SourceArn = "string",
   ReplyToAddresses = list(

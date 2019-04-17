@@ -23,7 +23,7 @@ Catalog.}
 Updates an existing function definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$update_user_defined_function(
+\preformatted{svc$update_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string",

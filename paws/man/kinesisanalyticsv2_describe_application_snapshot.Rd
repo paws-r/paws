@@ -17,7 +17,7 @@ using .}
 Returns information about a snapshot of application state data.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$describe_application_snapshot(
+\preformatted{svc$describe_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string"
 )

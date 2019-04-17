@@ -27,7 +27,7 @@ retention period has passed.}
 Modifies the settings for a list of snapshots.
 }
 \section{Request syntax}{
-\preformatted{redshift$batch_modify_cluster_snapshots(
+\preformatted{svc$batch_modify_cluster_snapshots(
   SnapshotIdentifierList = list(
     "string"
   ),

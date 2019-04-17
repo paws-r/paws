@@ -20,7 +20,7 @@ Modifies the database revision of a cluster. The database revision is a
 unique revision of the database running in a cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_db_revision(
+\preformatted{svc$modify_cluster_db_revision(
   ClusterIdentifier = "string",
   RevisionTarget = "string"
 )

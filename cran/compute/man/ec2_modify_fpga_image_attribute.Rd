@@ -42,7 +42,7 @@ Modifies the specified attribute of the specified Amazon FPGA Image
 (AFI).
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_fpga_image_attribute(
+\preformatted{svc$modify_fpga_image_attribute(
   DryRun = TRUE|FALSE,
   FpgaImageId = "string",
   Attribute = "description"|"name"|"loadPermission"|"productCodes",

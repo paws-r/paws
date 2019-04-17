@@ -26,7 +26,7 @@ For more information about query components, see the \href{https://docs.aws.amaz
 section in the AWS Config Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{configservice$select_resource_config(
+\preformatted{svc$select_resource_config(
   Expression = "string",
   Limit = 123,
   NextToken = "string"

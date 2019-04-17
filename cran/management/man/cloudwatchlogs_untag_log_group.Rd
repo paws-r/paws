@@ -19,7 +19,7 @@ To list the tags for a log group, use ListTagsLogGroup. To add tags, use
 UntagLogGroup.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$untag_log_group(
+\preformatted{svc$untag_log_group(
   logGroupName = "string",
   tags = list(
     "string"

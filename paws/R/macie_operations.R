@@ -16,7 +16,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' macie$associate_member_account(
+#' svc$associate_member_account(
 #'   memberAccountId = "string"
 #' )
 #' ```
@@ -59,7 +59,7 @@ macie_associate_member_account <- function(memberAccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' macie$associate_s3_resources(
+#' svc$associate_s3_resources(
 #'   memberAccountId = "string",
 #'   s3Resources = list(
 #'     list(
@@ -104,7 +104,7 @@ macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
 #'
 #' @section Request syntax:
 #' ```
-#' macie$disassociate_member_account(
+#' svc$disassociate_member_account(
 #'   memberAccountId = "string"
 #' )
 #' ```
@@ -146,7 +146,7 @@ macie_disassociate_member_account <- function(memberAccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' macie$disassociate_s3_resources(
+#' svc$disassociate_s3_resources(
 #'   memberAccountId = "string",
 #'   associatedS3Resources = list(
 #'     list(
@@ -194,7 +194,7 @@ macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3
 #'
 #' @section Request syntax:
 #' ```
-#' macie$list_member_accounts(
+#' svc$list_member_accounts(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -241,7 +241,7 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' macie$list_s3_resources(
+#' svc$list_s3_resources(
 #'   memberAccountId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -285,7 +285,7 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
 #'
 #' @section Request syntax:
 #' ```
-#' macie$update_s3_resources(
+#' svc$update_s3_resources(
 #'   memberAccountId = "string",
 #'   s3ResourcesUpdate = list(
 #'     list(

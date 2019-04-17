@@ -48,7 +48,7 @@ of the domain name.}
 Creates a new domain name.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_domain_name(
+\preformatted{svc$create_domain_name(
   domainName = "string",
   certificateName = "string",
   certificateBody = "string",

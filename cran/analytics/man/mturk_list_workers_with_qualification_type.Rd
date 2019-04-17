@@ -22,7 +22,7 @@ The \code{ListWorkersWithQualificationType} operation returns all of the
 Workers that have been associated with a given Qualification type.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_workers_with_qualification_type(
+\preformatted{svc$list_workers_with_qualification_type(
   QualificationTypeId = "string",
   Status = "Granted"|"Revoked",
   NextToken = "string",

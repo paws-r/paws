@@ -24,7 +24,7 @@ Previews the agents installed on the EC2 instances that are part of the
 specified assessment target.
 }
 \section{Request syntax}{
-\preformatted{inspector$preview_agents(
+\preformatted{svc$preview_agents(
   previewAgentsArn = "string",
   nextToken = "string",
   maxResults = 123
@@ -35,7 +35,7 @@ specified assessment target.
 \examples{
 # Previews the agents installed on the EC2 instances that are part of the
 # specified assessment target.
-\donttest{inspector$preview_agents(
+\donttest{svc$preview_agents(
   maxResults = 123L,
   previewAgentsArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
 )}

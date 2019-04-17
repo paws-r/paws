@@ -17,7 +17,7 @@ credentials.}
 Permanently deletes the specified document and its associated metadata.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_document(
+\preformatted{svc$delete_document(
   AuthenticationToken = "string",
   DocumentId = "string"
 )

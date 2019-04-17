@@ -24,7 +24,7 @@ representation of an integer. Each version is incremented by 1.}
 Deletes a specified batch of versions of a table.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_delete_table_version(
+\preformatted{svc$batch_delete_table_version(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

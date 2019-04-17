@@ -13,7 +13,7 @@ s3_delete_bucket_website(Bucket)
 This operation removes the website configuration from the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_website(
+\preformatted{svc$delete_bucket_website(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ This operation removes the website configuration from the bucket.
 
 \examples{
 # The following example deletes bucket website configuration.
-\donttest{s3$delete_bucket_website(
+\donttest{svc$delete_bucket_website(
   Bucket = "examplebucket"
 )}
 

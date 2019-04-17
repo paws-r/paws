@@ -10,11 +10,20 @@ NULL
 #' information, see [Amazon Inspector User
 #' Guide](http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 #'
-#' @section Example:
-#' ```
-#' inspector <- paws::inspector()
-#' inspector$operation()
-#' ```
+#' @examples
+#' # Assigns attributes (key and value pairs) to the findings that are
+#' # specified by the ARNs of the findings.
+#' \donttest{svc$add_attributes_to_findings(
+#'   attributes = list(
+#'     list(
+#'       key = "Example",
+#'       value = "example"
+#'     )
+#'   ),
+#'   findingArns = list(
+#'     "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-8l1VIE0D/run/0-Z0..."
+#'   )
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

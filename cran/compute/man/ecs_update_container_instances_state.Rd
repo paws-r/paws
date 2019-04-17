@@ -70,7 +70,7 @@ When you set a container instance to \code{ACTIVE}, the Amazon ECS scheduler
 can begin scheduling tasks on the instance again.
 }
 \section{Request syntax}{
-\preformatted{ecs$update_container_instances_state(
+\preformatted{svc$update_container_instances_state(
   cluster = "string",
   containerInstances = list(
     "string"

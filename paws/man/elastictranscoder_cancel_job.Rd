@@ -21,7 +21,7 @@ pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$cancel_job(
+\preformatted{svc$cancel_job(
   Id = "string"
 )
 }

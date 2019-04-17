@@ -16,7 +16,7 @@ greengrass_get_group_certificate_authority(CertificateAuthorityId,
 Retreives the CA associated with a group. Returns the public key of the CA.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_group_certificate_authority(
+\preformatted{svc$get_group_certificate_authority(
   CertificateAuthorityId = "string",
   GroupId = "string"
 )

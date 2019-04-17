@@ -16,7 +16,7 @@ into.}
 Stops the user import job.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$stop_user_import_job(
+\preformatted{svc$stop_user_import_job(
   UserPoolId = "string",
   JobId = "string"
 )

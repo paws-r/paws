@@ -14,7 +14,7 @@ AWS account.}
 Gets information about a deployment configuration.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$get_deployment_config(
+\preformatted{svc$get_deployment_config(
   deploymentConfigName = "string"
 )
 }

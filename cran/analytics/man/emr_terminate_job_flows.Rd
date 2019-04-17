@@ -23,7 +23,7 @@ the cluster, it may take up to 1-5 minutes for the cluster to completely
 terminate and release allocated resources, such as Amazon EC2 instances.
 }
 \section{Request syntax}{
-\preformatted{emr$terminate_job_flows(
+\preformatted{svc$terminate_job_flows(
   JobFlowIds = list(
     "string"
   )

@@ -17,7 +17,7 @@ AWS Mobile Hub project.}
 Gets details about a project in AWS Mobile Hub.
 }
 \section{Request syntax}{
-\preformatted{mobile$describe_project(
+\preformatted{svc$describe_project(
   projectId = "string",
   syncFromResources = TRUE|FALSE
 )

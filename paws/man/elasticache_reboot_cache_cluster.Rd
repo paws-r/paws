@@ -35,7 +35,7 @@ enabled) cluster reboot for the changes to be applied, see \href{http://docs.aws
 for an alternate process.
 }
 \section{Request syntax}{
-\preformatted{elasticache$reboot_cache_cluster(
+\preformatted{svc$reboot_cache_cluster(
   CacheClusterId = "string",
   CacheNodeIdsToReboot = list(
     "string"

@@ -25,7 +25,7 @@ servicecatalog_associate_product_with_portfolio(AcceptLanguage,
 Associates the specified product with the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$associate_product_with_portfolio(
+\preformatted{svc$associate_product_with_portfolio(
   AcceptLanguage = "string",
   ProductId = "string",
   PortfolioId = "string",

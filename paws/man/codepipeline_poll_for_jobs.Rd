@@ -31,7 +31,7 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$poll_for_jobs(
+\preformatted{svc$poll_for_jobs(
   actionTypeId = list(
     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
     owner = "AWS"|"ThirdParty"|"Custom",

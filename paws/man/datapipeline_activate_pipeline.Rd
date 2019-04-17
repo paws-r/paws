@@ -27,7 +27,7 @@ To activate a finished pipeline, modify the end date for the pipeline
 and then activate it.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$activate_pipeline(
+\preformatted{svc$activate_pipeline(
   pipelineId = "string",
   parameterValues = list(
     list(

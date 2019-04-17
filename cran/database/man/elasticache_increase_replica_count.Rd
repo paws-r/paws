@@ -35,7 +35,7 @@ more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.
 }
 \section{Request syntax}{
-\preformatted{elasticache$increase_replica_count(
+\preformatted{svc$increase_replica_count(
   ReplicationGroupId = "string",
   NewReplicaCount = 123,
   ReplicaConfiguration = list(

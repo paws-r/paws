@@ -18,7 +18,7 @@ pinpoint_remove_attributes(ApplicationId, AttributeType,
 Used to remove the attributes for an app
 }
 \section{Request syntax}{
-\preformatted{pinpoint$remove_attributes(
+\preformatted{svc$remove_attributes(
   ApplicationId = "string",
   AttributeType = "string",
   UpdateAttributesRequest = list(

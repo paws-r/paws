@@ -17,7 +17,7 @@ dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
 Modifies an existing subnet group.
 }
 \section{Request syntax}{
-\preformatted{dax$update_subnet_group(
+\preformatted{svc$update_subnet_group(
   SubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(

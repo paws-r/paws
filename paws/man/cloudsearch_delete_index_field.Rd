@@ -18,7 +18,7 @@ information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developergu
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$delete_index_field(
+\preformatted{svc$delete_index_field(
   DomainName = "string",
   IndexFieldName = "string"
 )

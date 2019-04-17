@@ -17,7 +17,7 @@ next page of results in a paginated response.}
 Returns a list of all pending aggregation requests.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_pending_aggregation_requests(
+\preformatted{svc$describe_pending_aggregation_requests(
   Limit = 123,
   NextToken = "string"
 )

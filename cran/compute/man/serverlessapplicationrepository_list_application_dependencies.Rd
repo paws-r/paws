@@ -20,7 +20,7 @@ serverlessapplicationrepository_list_application_dependencies(
 Retrieves the list of applications nested in the containing application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$list_application_dependencies(
+\preformatted{svc$list_application_dependencies(
   ApplicationId = "string",
   MaxItems = 123,
   NextToken = "string",

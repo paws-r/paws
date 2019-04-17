@@ -24,7 +24,7 @@ provisioned product even if it cannot delete the underlying resources.}
 Deletes the specified plan.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_provisioned_product_plan(
+\preformatted{svc$delete_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   IgnoreErrors = TRUE|FALSE

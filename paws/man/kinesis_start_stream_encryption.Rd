@@ -51,7 +51,7 @@ enable encryption, you can verify that encryption is applied by
 inspecting the API response from \code{PutRecord} or \code{PutRecords}.
 }
 \section{Request syntax}{
-\preformatted{kinesis$start_stream_encryption(
+\preformatted{svc$start_stream_encryption(
   StreamName = "string",
   EncryptionType = "NONE"|"KMS",
   KeyId = "string"

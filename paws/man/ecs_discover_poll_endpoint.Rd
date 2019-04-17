@@ -26,7 +26,7 @@ for use outside of the agent.
 Returns an endpoint for the Amazon ECS agent to poll for updates.
 }
 \section{Request syntax}{
-\preformatted{ecs$discover_poll_endpoint(
+\preformatted{svc$discover_poll_endpoint(
   containerInstance = "string",
   cluster = "string"
 )

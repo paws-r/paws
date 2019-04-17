@@ -29,7 +29,7 @@ welcome email.}
 Creates a new user in the user pool.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_user(
+\preformatted{svc$create_user(
   UserName = "string",
   MessageAction = "SUPPRESS"|"RESEND",
   FirstName = "string",

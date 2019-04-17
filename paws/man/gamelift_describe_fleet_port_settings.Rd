@@ -47,7 +47,7 @@ set is empty.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_fleet_port_settings(
+\preformatted{svc$describe_fleet_port_settings(
   FleetId = "string"
 )
 }

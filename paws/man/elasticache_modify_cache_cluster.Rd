@@ -238,7 +238,7 @@ change one or more cluster configuration parameters by specifying the
 parameters and the new values.
 }
 \section{Request syntax}{
-\preformatted{elasticache$modify_cache_cluster(
+\preformatted{svc$modify_cache_cluster(
   CacheClusterId = "string",
   NumCacheNodes = 123,
   CacheNodeIdsToRemove = list(

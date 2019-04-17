@@ -16,7 +16,7 @@ Creates member Security Hub accounts in the current AWS account (which
 becomes the master Security Hub account) that has Security Hub enabled.
 }
 \section{Request syntax}{
-\preformatted{securityhub$create_members(
+\preformatted{svc$create_members(
   AccountDetails = list(
     list(
       AccountId = "string",

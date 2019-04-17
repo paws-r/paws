@@ -36,7 +36,7 @@ tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.h
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_tags(
+\preformatted{svc$delete_tags(
   DryRun = TRUE|FALSE,
   Resources = list(
     "string"
@@ -53,7 +53,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example deletes the tag Stack=test from the specified image.
-\donttest{ec2$delete_tags(
+\donttest{svc$delete_tags(
   Resources = list(
     "ami-78a54011"
   ),

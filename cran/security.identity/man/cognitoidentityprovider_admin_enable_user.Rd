@@ -18,7 +18,7 @@ Enables the specified user as an administrator. Works on any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_enable_user(
+\preformatted{svc$admin_enable_user(
   UserPoolId = "string",
   Username = "string"
 )

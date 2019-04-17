@@ -18,7 +18,7 @@ applicationdiscoveryservice_update_application(configurationId, name,
 Updates metadata about an application.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$update_application(
+\preformatted{svc$update_application(
   configurationId = "string",
   name = "string",
   description = "string"

@@ -49,7 +49,7 @@ DetectStackDrift to detect drift on all supported resources for a given
 stack.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_resource_drifts(
+\preformatted{svc$describe_stack_resource_drifts(
   StackName = "string",
   StackResourceDriftStatusFilters = list(
     "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"

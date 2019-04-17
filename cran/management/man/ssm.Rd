@@ -28,12 +28,6 @@ For information about other API actions you can perform on Amazon EC2
 instances, see the \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}. For
 information about how to use a Query API, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API Requests}.
 }
-\section{Example}{
-\preformatted{ssm <- paws::ssm()
-ssm$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -154,3 +148,9 @@ ssm$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags_to_resource(
+  Foo = 123
+)}
+
+}

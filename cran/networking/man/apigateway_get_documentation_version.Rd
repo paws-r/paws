@@ -16,7 +16,7 @@ snapshot.}
 Get documentation version
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_documentation_version(
+\preformatted{svc$get_documentation_version(
   restApiId = "string",
   documentationVersion = "string"
 )

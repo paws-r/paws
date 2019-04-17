@@ -35,7 +35,7 @@ To get all of a function's details, including function-level settings,
 use GetFunction.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_function_configuration(
+\preformatted{svc$get_function_configuration(
   FunctionName = "string",
   Qualifier = "string"
 )
@@ -44,7 +44,7 @@ use GetFunction.
 
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-\donttest{lambda$get_function_configuration(
+\donttest{svc$get_function_configuration(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

@@ -38,7 +38,7 @@ For more information about managing snapshot copy grants, go to \href{http://doc
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_snapshot_copy_grant(
+\preformatted{svc$create_snapshot_copy_grant(
   SnapshotCopyGrantName = "string",
   KmsKeyId = "string",
   Tags = list(

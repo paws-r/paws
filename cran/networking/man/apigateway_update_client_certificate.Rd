@@ -18,7 +18,7 @@ in the order specified in this list.}
 Changes information about an ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_client_certificate(
+\preformatted{svc$update_client_certificate(
   clientCertificateId = "string",
   patchOperations = list(
     list(

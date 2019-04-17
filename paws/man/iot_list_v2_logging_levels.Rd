@@ -19,7 +19,7 @@ no additional results.}
 Lists logging levels.
 }
 \section{Request syntax}{
-\preformatted{iot$list_v2_logging_levels(
+\preformatted{svc$list_v2_logging_levels(
   targetType = "DEFAULT"|"THING_GROUP",
   nextToken = "string",
   maxResults = 123

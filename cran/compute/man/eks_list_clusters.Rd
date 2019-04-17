@@ -31,7 +31,7 @@ Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
 }
 \section{Request syntax}{
-\preformatted{eks$list_clusters(
+\preformatted{svc$list_clusters(
   maxResults = 123,
   nextToken = "string"
 )
@@ -41,7 +41,7 @@ Region.
 \examples{
 # This example command lists all of your available clusters in your
 # default region.
-\donttest{eks$list_clusters()}
+\donttest{svc$list_clusters()}
 
 }
 \keyword{internal}

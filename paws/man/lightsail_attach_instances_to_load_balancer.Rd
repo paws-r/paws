@@ -32,7 +32,7 @@ access control via resource tags applied to the resource identified by
 loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$attach_instances_to_load_balancer(
+\preformatted{svc$attach_instances_to_load_balancer(
   loadBalancerName = "string",
   instanceNames = list(
     "string"

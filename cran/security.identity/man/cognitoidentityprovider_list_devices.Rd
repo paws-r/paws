@@ -18,7 +18,7 @@ cognitoidentityprovider_list_devices(AccessToken, Limit,
 Lists the devices.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_devices(
+\preformatted{svc$list_devices(
   AccessToken = "string",
   Limit = 123,
   PaginationToken = "string"

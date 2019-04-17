@@ -24,7 +24,7 @@ custom authentication service.}
 Creates an authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$create_authorizer(
+\preformatted{svc$create_authorizer(
   authorizerName = "string",
   authorizerFunctionArn = "string",
   tokenKeyName = "string",

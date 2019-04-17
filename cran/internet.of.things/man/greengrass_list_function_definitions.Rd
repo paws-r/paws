@@ -15,7 +15,7 @@ greengrass_list_function_definitions(MaxResults, NextToken)
 Retrieves a list of Lambda function definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_function_definitions(
+\preformatted{svc$list_function_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

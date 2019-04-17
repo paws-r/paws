@@ -14,7 +14,7 @@ described.}
 Gets information about the current ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_client_certificate(
+\preformatted{svc$get_client_certificate(
   clientCertificateId = "string"
 )
 }

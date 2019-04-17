@@ -26,7 +26,7 @@ guardduty_create_ip_set(Activate, ClientToken, DetectorId, Format,
 Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_ip_set(
+\preformatted{svc$create_ip_set(
   Activate = TRUE|FALSE,
   ClientToken = "string",
   DetectorId = "string",

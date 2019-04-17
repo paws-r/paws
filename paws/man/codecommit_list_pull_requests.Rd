@@ -27,7 +27,7 @@ Returns a list of pull requests for a specified repository. The return
 list can be refined by pull request status or pull request author ARN.
 }
 \section{Request syntax}{
-\preformatted{codecommit$list_pull_requests(
+\preformatted{svc$list_pull_requests(
   repositoryName = "string",
   authorArn = "string",
   pullRequestStatus = "OPEN"|"CLOSED",

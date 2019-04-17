@@ -31,7 +31,7 @@ default values and sets the source values of the parameters to
 must reboot any associated clusters.
 }
 \section{Request syntax}{
-\preformatted{redshift$reset_cluster_parameter_group(
+\preformatted{svc$reset_cluster_parameter_group(
   ParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(

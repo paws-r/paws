@@ -37,7 +37,7 @@ stream, which is returned in \code{StreamStatus}.
 DeleteStream has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$delete_stream(
+\preformatted{svc$delete_stream(
   StreamName = "string",
   EnforceConsumerDeletion = TRUE|FALSE
 )

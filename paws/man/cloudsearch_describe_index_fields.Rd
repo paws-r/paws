@@ -24,7 +24,7 @@ pending changes. For more information, see \href{http://docs.aws.amazon.com/clou
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_index_fields(
+\preformatted{svc$describe_index_fields(
   DomainName = "string",
   FieldNames = list(
     "string"

@@ -22,7 +22,7 @@ If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$delete_change_set(
+\preformatted{svc$delete_change_set(
   ChangeSetName = "string",
   StackName = "string"
 )

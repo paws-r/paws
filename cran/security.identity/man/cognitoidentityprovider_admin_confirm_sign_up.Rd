@@ -19,7 +19,7 @@ code. Works on any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_confirm_sign_up(
+\preformatted{svc$admin_confirm_sign_up(
   UserPoolId = "string",
   Username = "string"
 )

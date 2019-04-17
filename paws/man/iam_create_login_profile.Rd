@@ -37,7 +37,7 @@ information about managing passwords, see \href{http://docs.aws.amazon.com/IAM/l
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_login_profile(
+\preformatted{svc$create_login_profile(
   UserName = "string",
   Password = "string",
   PasswordResetRequired = TRUE|FALSE
@@ -48,7 +48,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
-\donttest{iam$create_login_profile(
+\donttest{svc$create_login_profile(
   Password = "h]6EszR}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"

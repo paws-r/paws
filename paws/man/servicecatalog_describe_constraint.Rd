@@ -20,7 +20,7 @@ servicecatalog_describe_constraint(AcceptLanguage, Id)
 Gets information about the specified constraint.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_constraint(
+\preformatted{svc$describe_constraint(
   AcceptLanguage = "string",
   Id = "string"
 )

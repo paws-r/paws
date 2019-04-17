@@ -16,7 +16,7 @@ Returns the details on the Security Hub member accounts that are
 specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_members(
+\preformatted{svc$get_members(
   AccountIds = list(
     "string"
   )

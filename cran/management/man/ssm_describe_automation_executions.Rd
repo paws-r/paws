@@ -20,7 +20,7 @@ from a previous call.)}
 Provides details about all active and terminated Automation executions.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_automation_executions(
+\preformatted{svc$describe_automation_executions(
   Filters = list(
     list(
       Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType",

@@ -46,7 +46,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_accounts_for_parent(
+\preformatted{svc$list_accounts_for_parent(
   ParentId = "string",
   NextToken = "string",
   MaxResults = 123
@@ -57,7 +57,7 @@ account.
 \examples{
 # The following example shows how to request a list of the accounts in an
 # OU:/n/n
-\donttest{organizations$list_accounts_for_parent(
+\donttest{svc$list_accounts_for_parent(
   ParentId = "ou-examplerootid111-exampleouid111"
 )}
 

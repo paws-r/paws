@@ -75,7 +75,7 @@ region. \code{Accounts} and \code{Regions} are required parameters---you must
 specify at least one account and one region.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$create_stack_instances(
+\preformatted{svc$create_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"

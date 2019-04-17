@@ -39,7 +39,7 @@ request does not return information about any other Elastic IP addresses
 in your account.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_moving_addresses(
+\preformatted{svc$describe_moving_addresses(
   Filters = list(
     list(
       Name = "string",
@@ -60,7 +60,7 @@ in your account.
 
 \examples{
 # This example describes all of your moving Elastic IP addresses.
-\donttest{ec2$describe_moving_addresses()}
+\donttest{svc$describe_moving_addresses()}
 
 }
 \keyword{internal}

@@ -56,7 +56,7 @@ If a call to PutLogEvents returns "UnrecognizedClientException" the
 most likely cause is an invalid AWS access key ID or secret key.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$put_log_events(
+\preformatted{svc$put_log_events(
   logGroupName = "string",
   logStreamName = "string",
   logEvents = list(

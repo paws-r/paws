@@ -23,7 +23,7 @@ forwarded to the IP addresses for the DNS resolvers that are specified
 in the rule. For more information about rules, see CreateResolverRule.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$associate_resolver_rule(
+\preformatted{svc$associate_resolver_rule(
   ResolverRuleId = "string",
   Name = "string",
   VPCId = "string"

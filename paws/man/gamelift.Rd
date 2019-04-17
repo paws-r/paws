@@ -56,7 +56,8 @@ either the AWS CLI or programmatically. See \href{https://docs.aws.amazon.com/ga
 started fast with walkthroughs and sample projects.
 \item \href{https://gamedev.amazon.com/blogs/gamedev/}{GameDev Blog} \-- Stay
 up to date with new features and techniques.
-\item GameDev Forums \-- Connect with the GameDev community.
+\item \href{https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html}{GameDev Forums}
+\-- Connect with the GameDev community.
 \item \href{https://aws.amazon.com/releasenotes/Amazon-GameLift/}{Release notes} and
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html}{document history}
 \-- Stay current with updates to the Amazon GameLift service, SDKs,
@@ -276,12 +277,6 @@ with a Amazon GameLift fleet.
 }
 }
 }
-\section{Example}{
-\preformatted{gamelift <- paws::gamelift()
-gamelift$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -356,3 +351,9 @@ gamelift$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_match(
+  Foo = 123
+)}
+
+}

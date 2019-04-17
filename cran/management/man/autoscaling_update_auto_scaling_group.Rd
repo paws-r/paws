@@ -118,7 +118,7 @@ set the size of the group to the new value of \code{MaxSize}.
 }
 }
 \section{Request syntax}{
-\preformatted{autoscaling$update_auto_scaling_group(
+\preformatted{svc$update_auto_scaling_group(
   AutoScalingGroupName = "string",
   LaunchConfigurationName = "string",
   LaunchTemplate = list(
@@ -171,14 +171,14 @@ set the size of the group to the new value of \code{MaxSize}.
 \examples{
 # This example updates the launch configuration of the specified Auto
 # Scaling group.
-\donttest{autoscaling$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   LaunchConfigurationName = "new-launch-config"
 )}
 
 # This example updates the minimum size and maximum size of the specified
 # Auto Scaling group.
-\donttest{autoscaling$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   MaxSize = 3L,
   MinSize = 1L
@@ -186,7 +186,7 @@ set the size of the group to the new value of \code{MaxSize}.
 
 # This example enables instance protection for the specified Auto Scaling
 # group.
-\donttest{autoscaling$update_auto_scaling_group(
+\donttest{svc$update_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
   NewInstancesProtectedFromScaleIn = TRUE
 )}

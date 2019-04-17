@@ -28,7 +28,7 @@ Returns a list of cache subnet group descriptions. If a subnet group
 name is specified, the list contains only the description of that group.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_cache_subnet_groups(
+\preformatted{svc$describe_cache_subnet_groups(
   CacheSubnetGroupName = "string",
   MaxRecords = 123,
   Marker = "string"

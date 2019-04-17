@@ -20,7 +20,7 @@ dedicated IP pools to create groups of dedicated IP addresses for
 sending specific types of email.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_configuration_set_delivery_options(
+\preformatted{svc$put_configuration_set_delivery_options(
   ConfigurationSetName = "string",
   SendingPoolName = "string"
 )

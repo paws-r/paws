@@ -28,7 +28,7 @@ any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_delete_user_attributes(
+\preformatted{svc$admin_delete_user_attributes(
   UserPoolId = "string",
   Username = "string",
   UserAttributeNames = list(

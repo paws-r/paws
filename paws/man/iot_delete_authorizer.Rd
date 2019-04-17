@@ -13,7 +13,7 @@ iot_delete_authorizer(authorizerName)
 Deletes an authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_authorizer(
+\preformatted{svc$delete_authorizer(
   authorizerName = "string"
 )
 }

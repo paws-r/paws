@@ -30,12 +30,6 @@ See the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtra
 for information about the data that is included with each AWS API call
 listed in the log files.
 }
-\section{Example}{
-\preformatted{cloudtrail <- paws::cloudtrail()
-cloudtrail$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -56,3 +50,9 @@ cloudtrail$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags(
+  Foo = 123
+)}
+
+}

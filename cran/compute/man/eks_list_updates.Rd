@@ -29,7 +29,7 @@ Lists the updates associated with an Amazon EKS cluster in your AWS
 account, in the specified Region.
 }
 \section{Request syntax}{
-\preformatted{eks$list_updates(
+\preformatted{svc$list_updates(
   name = "string",
   nextToken = "string",
   maxResults = 123

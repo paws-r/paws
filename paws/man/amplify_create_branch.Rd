@@ -39,7 +39,7 @@ amplify_create_branch(appId, branchName, description, stage, framework,
 Creates a new Branch for an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$create_branch(
+\preformatted{svc$create_branch(
   appId = "string",
   branchName = "string",
   description = "string",

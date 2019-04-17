@@ -35,7 +35,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$add_layer_version_permission(
+#' svc$add_layer_version_permission(
 #'   LayerName = "string",
 #'   VersionNumber = 123,
 #'   StatementId = "string",
@@ -131,7 +131,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$add_permission(
+#' svc$add_permission(
 #'   FunctionName = "string",
 #'   StatementId = "string",
 #'   Action = "string",
@@ -147,7 +147,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @examples
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
-#' \donttest{lambda$add_permission(
+#' \donttest{svc$add_permission(
 #'   Action = "lambda:InvokeFunction",
 #'   FunctionName = "MyFunction",
 #'   Principal = "s3.amazonaws.com",
@@ -212,7 +212,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$create_alias(
+#' svc$create_alias(
 #'   FunctionName = "string",
 #'   Name = "string",
 #'   FunctionVersion = "string",
@@ -304,7 +304,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$create_event_source_mapping(
+#' svc$create_event_source_mapping(
 #'   EventSourceArn = "string",
 #'   FunctionName = "string",
 #'   Enabled = TRUE|FALSE,
@@ -432,7 +432,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$create_function(
+#' svc$create_function(
 #'   FunctionName = "string",
 #'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Role = "string",
@@ -478,7 +478,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'
 #' @examples
 #' # This example creates a Lambda function.
-#' \donttest{lambda$create_function(
+#' \donttest{svc$create_function(
 #'   Code = structure(
 #'     list(),
 #'     .Names = character(
@@ -545,7 +545,7 @@ lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, D
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$delete_alias(
+#' svc$delete_alias(
 #'   FunctionName = "string",
 #'   Name = "string"
 #' )
@@ -553,7 +553,7 @@ lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, D
 #'
 #' @examples
 #' # This operation deletes a Lambda function alias
-#' \donttest{lambda$delete_alias(
+#' \donttest{svc$delete_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "alias"
 #' )}
@@ -591,14 +591,14 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$delete_event_source_mapping(
+#' svc$delete_event_source_mapping(
 #'   UUID = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This operation deletes a Lambda function event source mapping
-#' \donttest{lambda$delete_event_source_mapping(
+#' \donttest{svc$delete_event_source_mapping(
 #'   UUID = "12345kxodurf3443"
 #' )}
 #'
@@ -655,7 +655,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$delete_function(
+#' svc$delete_function(
 #'   FunctionName = "string",
 #'   Qualifier = "string"
 #' )
@@ -663,7 +663,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #'
 #' @examples
 #' # This operation deletes a Lambda function
-#' \donttest{lambda$delete_function(
+#' \donttest{svc$delete_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -710,7 +710,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$delete_function_concurrency(
+#' svc$delete_function_concurrency(
 #'   FunctionName = "string"
 #' )
 #' ```
@@ -750,7 +750,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$delete_layer_version(
+#' svc$delete_layer_version(
 #'   LayerName = "string",
 #'   VersionNumber = 123
 #' )
@@ -786,12 +786,12 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_account_settings()
+#' svc$get_account_settings()
 #' ```
 #'
 #' @examples
 #' # This operation retrieves a Lambda customer's account settings
-#' \donttest{lambda$get_account_settings()}
+#' \donttest{svc$get_account_settings()}
 #'
 #' @keywords internal
 #'
@@ -837,7 +837,7 @@ lambda_get_account_settings <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_alias(
+#' svc$get_alias(
 #'   FunctionName = "string",
 #'   Name = "string"
 #' )
@@ -845,7 +845,7 @@ lambda_get_account_settings <- function() {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function alias
-#' \donttest{lambda$get_alias(
+#' \donttest{svc$get_alias(
 #'   FunctionName = "myFunction",
 #'   Name = "myFunctionAlias"
 #' )}
@@ -881,14 +881,14 @@ lambda_get_alias <- function(FunctionName, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_event_source_mapping(
+#' svc$get_event_source_mapping(
 #'   UUID = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{lambda$get_event_source_mapping(
+#' \donttest{svc$get_event_source_mapping(
 #'   UUID = "123489-xxxxx-kdla8d89d7"
 #' )}
 #'
@@ -942,7 +942,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_function(
+#' svc$get_function(
 #'   FunctionName = "string",
 #'   Qualifier = "string"
 #' )
@@ -950,7 +950,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{lambda$get_function(
+#' \donttest{svc$get_function(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1006,7 +1006,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_function_configuration(
+#' svc$get_function_configuration(
 #'   FunctionName = "string",
 #'   Qualifier = "string"
 #' )
@@ -1014,7 +1014,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's event source mapping
-#' \donttest{lambda$get_function_configuration(
+#' \donttest{svc$get_function_configuration(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1053,7 +1053,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_layer_version(
+#' svc$get_layer_version(
 #'   LayerName = "string",
 #'   VersionNumber = 123
 #' )
@@ -1092,7 +1092,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_layer_version_policy(
+#' svc$get_layer_version_policy(
 #'   LayerName = "string",
 #'   VersionNumber = 123
 #' )
@@ -1145,7 +1145,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$get_policy(
+#' svc$get_policy(
 #'   FunctionName = "string",
 #'   Qualifier = "string"
 #' )
@@ -1153,7 +1153,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function policy
-#' \donttest{lambda$get_policy(
+#' \donttest{svc$get_policy(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1"
 #' )}
@@ -1251,7 +1251,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$invoke(
+#' svc$invoke(
 #'   FunctionName = "string",
 #'   InvocationType = "Event"|"RequestResponse"|"DryRun",
 #'   LogType = "None"|"Tail",
@@ -1263,7 +1263,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #'
 #' @examples
 #' # This operation invokes a Lambda function
-#' \donttest{lambda$invoke(
+#' \donttest{svc$invoke(
 #'   ClientContext = "MyApp",
 #'   FunctionName = "MyFunction",
 #'   InvocationType = "Event",
@@ -1317,7 +1317,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$invoke_async(
+#' svc$invoke_async(
 #'   FunctionName = "string",
 #'   InvokeArgs = raw
 #' )
@@ -1325,7 +1325,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'
 #' @examples
 #' # This operation invokes a Lambda function asynchronously
-#' \donttest{lambda$invoke_async(
+#' \donttest{svc$invoke_async(
 #'   FunctionName = "myFunction",
 #'   InvokeArgs = "fileb://file-path/input.json"
 #' )}
@@ -1379,7 +1379,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_aliases(
+#' svc$list_aliases(
 #'   FunctionName = "string",
 #'   FunctionVersion = "string",
 #'   Marker = "string",
@@ -1389,7 +1389,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function's aliases
-#' \donttest{lambda$list_aliases(
+#' \donttest{svc$list_aliases(
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
 #'   Marker = "",
@@ -1453,7 +1453,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_event_source_mappings(
+#' svc$list_event_source_mappings(
 #'   EventSourceArn = "string",
 #'   FunctionName = "string",
 #'   Marker = "string",
@@ -1505,7 +1505,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_functions(
+#' svc$list_functions(
 #'   MasterRegion = "string",
 #'   FunctionVersion = "ALL",
 #'   Marker = "string",
@@ -1515,7 +1515,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #'
 #' @examples
 #' # This operation retrieves a Lambda functions
-#' \donttest{lambda$list_functions(
+#' \donttest{svc$list_functions(
 #'   Marker = "",
 #'   MaxItems = 123L
 #' )}
@@ -1559,7 +1559,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_layer_versions(
+#' svc$list_layer_versions(
 #'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   LayerName = "string",
 #'   Marker = "string",
@@ -1606,7 +1606,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_layers(
+#' svc$list_layers(
 #'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -1645,7 +1645,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_tags(
+#' svc$list_tags(
 #'   Resource = "string"
 #' )
 #' ```
@@ -1698,7 +1698,7 @@ lambda_list_tags <- function(Resource) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$list_versions_by_function(
+#' svc$list_versions_by_function(
 #'   FunctionName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -1707,7 +1707,7 @@ lambda_list_tags <- function(Resource) {
 #'
 #' @examples
 #' # This operation retrieves a Lambda function versions
-#' \donttest{lambda$list_versions_by_function(
+#' \donttest{svc$list_versions_by_function(
 #'   FunctionName = "myFunction",
 #'   Marker = "",
 #'   MaxItems = 123L
@@ -1764,7 +1764,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$publish_layer_version(
+#' svc$publish_layer_version(
 #'   LayerName = "string",
 #'   Description = "string",
 #'   Content = list(
@@ -1844,7 +1844,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$publish_version(
+#' svc$publish_version(
 #'   FunctionName = "string",
 #'   CodeSha256 = "string",
 #'   Description = "string",
@@ -1854,7 +1854,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'
 #' @examples
 #' # This operation publishes a version of a Lambda function
-#' \donttest{lambda$publish_version(
+#' \donttest{svc$publish_version(
 #'   CodeSha256 = "",
 #'   Description = "",
 #'   FunctionName = "myFunction"
@@ -1919,7 +1919,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$put_function_concurrency(
+#' svc$put_function_concurrency(
 #'   FunctionName = "string",
 #'   ReservedConcurrentExecutions = 123
 #' )
@@ -1965,7 +1965,7 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$remove_layer_version_permission(
+#' svc$remove_layer_version_permission(
 #'   LayerName = "string",
 #'   VersionNumber = 123,
 #'   StatementId = "string",
@@ -2025,7 +2025,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$remove_permission(
+#' svc$remove_permission(
 #'   FunctionName = "string",
 #'   StatementId = "string",
 #'   Qualifier = "string",
@@ -2035,7 +2035,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #'
 #' @examples
 #' # This operation removes a Lambda function's permissions
-#' \donttest{lambda$remove_permission(
+#' \donttest{svc$remove_permission(
 #'   FunctionName = "myFunction",
 #'   Qualifier = "1",
 #'   StatementId = "role-statement-id"
@@ -2073,7 +2073,7 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$tag_resource(
+#' svc$tag_resource(
 #'   Resource = "string",
 #'   Tags = list(
 #'     "string"
@@ -2114,7 +2114,7 @@ lambda_tag_resource <- function(Resource, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$untag_resource(
+#' svc$untag_resource(
 #'   Resource = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -2175,7 +2175,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$update_alias(
+#' svc$update_alias(
 #'   FunctionName = "string",
 #'   Name = "string",
 #'   FunctionVersion = "string",
@@ -2191,7 +2191,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #'
 #' @examples
 #' # This operation updates a Lambda function alias
-#' \donttest{lambda$update_alias(
+#' \donttest{svc$update_alias(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   FunctionVersion = "1",
@@ -2255,7 +2255,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$update_event_source_mapping(
+#' svc$update_event_source_mapping(
 #'   UUID = "string",
 #'   FunctionName = "string",
 #'   Enabled = TRUE|FALSE,
@@ -2265,7 +2265,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'
 #' @examples
 #' # This operation updates a Lambda function event source mapping
-#' \donttest{lambda$update_event_source_mapping(
+#' \donttest{svc$update_event_source_mapping(
 #'   BatchSize = 123L,
 #'   Enabled = TRUE,
 #'   FunctionName = "myFunction",
@@ -2332,7 +2332,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$update_function_code(
+#' svc$update_function_code(
 #'   FunctionName = "string",
 #'   ZipFile = raw,
 #'   S3Bucket = "string",
@@ -2346,7 +2346,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' @examples
 #' # This operation updates a Lambda function's code
-#' \donttest{lambda$update_function_code(
+#' \donttest{svc$update_function_code(
 #'   FunctionName = "myFunction",
 #'   Publish = TRUE,
 #'   S3Bucket = "myBucket",
@@ -2443,7 +2443,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' @section Request syntax:
 #' ```
-#' lambda$update_function_configuration(
+#' svc$update_function_configuration(
 #'   FunctionName = "string",
 #'   Role = "string",
 #'   Handler = "string",
@@ -2480,7 +2480,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' @examples
 #' # This operation updates a Lambda function's configuration
-#' \donttest{lambda$update_function_configuration(
+#' \donttest{svc$update_function_configuration(
 #'   Description = "",
 #'   FunctionName = "myFunction",
 #'   Handler = "index.handler",

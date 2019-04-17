@@ -108,7 +108,7 @@ If you are using an IAM account, it must have permission to the
 \code{connect:GetCurrentMetricData} action.
 }
 \section{Request syntax}{
-\preformatted{connect$get_current_metric_data(
+\preformatted{svc$get_current_metric_data(
   InstanceId = "string",
   Filters = list(
     Queues = list(

@@ -18,7 +18,7 @@ cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
 Lists the resource servers for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_resource_servers(
+\preformatted{svc$list_resource_servers(
   UserPoolId = "string",
   MaxResults = 123,
   NextToken = "string"

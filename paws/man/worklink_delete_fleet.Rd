@@ -14,7 +14,7 @@ Deletes a fleet. Prevents users from accessing previously associated
 websites.
 }
 \section{Request syntax}{
-\preformatted{worklink$delete_fleet(
+\preformatted{svc$delete_fleet(
   FleetArn = "string"
 )
 }

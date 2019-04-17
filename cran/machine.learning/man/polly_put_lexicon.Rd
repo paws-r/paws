@@ -24,7 +24,7 @@ SynthesizeSpeech operation.
 For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-\preformatted{polly$put_lexicon(
+\preformatted{svc$put_lexicon(
   Name = "string",
   Content = "string"
 )
@@ -33,7 +33,7 @@ For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/manag
 
 \examples{
 # Stores a pronunciation lexicon in an AWS Region.
-\donttest{polly$put_lexicon(
+\donttest{svc$put_lexicon(
   Content = "file://example.pls",
   Name = "W3C"
 )}

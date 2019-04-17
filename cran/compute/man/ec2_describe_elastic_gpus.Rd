@@ -41,7 +41,7 @@ Describes the Elastic Graphics accelerator associated with your
 instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_elastic_gpus(
+\preformatted{svc$describe_elastic_gpus(
   ElasticGpuIds = list(
     "string"
   ),

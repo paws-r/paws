@@ -15,7 +15,7 @@ Associates a specified AWS account with Amazon Macie as a member
 account.
 }
 \section{Request syntax}{
-\preformatted{macie$associate_member_account(
+\preformatted{svc$associate_member_account(
   memberAccountId = "string"
 )
 }

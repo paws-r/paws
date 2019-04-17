@@ -15,7 +15,7 @@ amplify_delete_branch(appId, branchName)
 Deletes a branch for an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$delete_branch(
+\preformatted{svc$delete_branch(
   appId = "string",
   branchName = "string"
 )

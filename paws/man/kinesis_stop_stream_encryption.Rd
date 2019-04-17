@@ -51,7 +51,7 @@ encryption is not applied by inspecting the API response from
 \code{PutRecord} or \code{PutRecords}.
 }
 \section{Request syntax}{
-\preformatted{kinesis$stop_stream_encryption(
+\preformatted{svc$stop_stream_encryption(
   StreamName = "string",
   EncryptionType = "NONE"|"KMS",
   KeyId = "string"

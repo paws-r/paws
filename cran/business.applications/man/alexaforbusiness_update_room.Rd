@@ -22,7 +22,7 @@ alexaforbusiness_update_room(RoomArn, RoomName, Description,
 Updates room details by room ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_room(
+\preformatted{svc$update_room(
   RoomArn = "string",
   RoomName = "string",
   Description = "string",

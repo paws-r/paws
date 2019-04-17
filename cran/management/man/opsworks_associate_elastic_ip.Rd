@@ -24,7 +24,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$associate_elastic_ip(
+\preformatted{svc$associate_elastic_ip(
   ElasticIp = "string",
   InstanceId = "string"
 )

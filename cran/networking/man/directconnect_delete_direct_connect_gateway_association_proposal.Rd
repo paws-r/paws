@@ -16,7 +16,7 @@ Deletes the association proposal request between the specified Direct
 Connect gateway and virtual private gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_direct_connect_gateway_association_proposal(
+\preformatted{svc$delete_direct_connect_gateway_association_proposal(
   proposalId = "string"
 )
 }

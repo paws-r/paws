@@ -21,7 +21,7 @@ Confirms tracking of the device. This API call is the call that begins
 device tracking.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$confirm_device(
+\preformatted{svc$confirm_device(
   AccessToken = "string",
   DeviceKey = "string",
   DeviceSecretVerifierConfig = list(

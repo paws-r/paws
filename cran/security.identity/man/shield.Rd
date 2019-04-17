@@ -15,12 +15,6 @@ API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
 }
-\section{Example}{
-\preformatted{shield <- paws::shield()
-shield$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -45,3 +39,9 @@ shield$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_drt_log_bucket(
+  Foo = 123
+)}
+
+}

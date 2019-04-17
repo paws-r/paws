@@ -40,7 +40,7 @@ Analytics console, the console uses this operation to infer a schema and
 show it in the console user interface.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$discover_input_schema(
+\preformatted{svc$discover_input_schema(
   ResourceARN = "string",
   ServiceExecutionRole = "string",
   InputStartingPositionConfiguration = list(

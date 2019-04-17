@@ -35,7 +35,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$list_queue_tags(
+\preformatted{svc$list_queue_tags(
   QueueUrl = "string"
 )
 }

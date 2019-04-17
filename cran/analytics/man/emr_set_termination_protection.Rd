@@ -40,7 +40,7 @@ For more information, see\href{http://docs.aws.amazon.com/emr/latest/ManagementG
 in the \emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{emr$set_termination_protection(
+\preformatted{svc$set_termination_protection(
   JobFlowIds = list(
     "string"
   ),

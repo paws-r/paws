@@ -13,7 +13,7 @@ apigateway_generate_client_certificate(description)
 Generates a ClientCertificate resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$generate_client_certificate(
+\preformatted{svc$generate_client_certificate(
   description = "string"
 )
 }

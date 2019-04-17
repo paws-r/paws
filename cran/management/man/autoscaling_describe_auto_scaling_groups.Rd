@@ -24,7 +24,7 @@ is \code{50} and the maximum value is \code{100}.}
 Describes one or more Auto Scaling groups.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_auto_scaling_groups(
+\preformatted{svc$describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "string"
   ),
@@ -36,7 +36,7 @@ Describes one or more Auto Scaling groups.
 
 \examples{
 # This example describes the specified Auto Scaling group.
-\donttest{autoscaling$describe_auto_scaling_groups(
+\donttest{svc$describe_auto_scaling_groups(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )

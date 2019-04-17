@@ -13,7 +13,7 @@ iot1clickdevicesservice_unclaim_device(DeviceId)
 Disassociates a device from your AWS account using its device ID.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$unclaim_device(
+\preformatted{svc$unclaim_device(
   DeviceId = "string"
 )
 }

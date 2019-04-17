@@ -13,7 +13,7 @@ pinpointsmsvoice_create_configuration_set(ConfigurationSetName)
 Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$create_configuration_set(
+\preformatted{svc$create_configuration_set(
   ConfigurationSetName = "string"
 )
 }

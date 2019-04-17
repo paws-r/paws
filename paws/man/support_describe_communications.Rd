@@ -40,7 +40,7 @@ you want displayed on each page, and use \code{nextToken} to specify the
 resumption of pagination.
 }
 \section{Request syntax}{
-\preformatted{support$describe_communications(
+\preformatted{svc$describe_communications(
   caseId = "string",
   beforeTime = "string",
   afterTime = "string",

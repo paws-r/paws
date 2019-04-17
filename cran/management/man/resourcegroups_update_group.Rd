@@ -19,7 +19,7 @@ Updates an existing group with a new or changed description. You cannot
 update the name of a resource group.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   Description = "string"
 )

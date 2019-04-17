@@ -36,7 +36,7 @@ A \code{ValidationException} is raised when parameters of the request are not
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$describe_events(
+\preformatted{svc$describe_events(
   ServerName = "string",
   NextToken = "string",
   MaxResults = 123

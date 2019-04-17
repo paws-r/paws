@@ -21,7 +21,7 @@ associated with the application and all AWS SMS replication jobs for
 servers in the application.
 }
 \section{Request syntax}{
-\preformatted{sms$delete_app(
+\preformatted{svc$delete_app(
   appId = "string",
   forceStopAppReplication = TRUE|FALSE,
   forceTerminateApp = TRUE|FALSE

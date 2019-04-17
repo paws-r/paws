@@ -22,7 +22,7 @@ deleted.}
 Deletes one or more partitions in a batch operation.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_delete_partition(
+\preformatted{svc$batch_delete_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

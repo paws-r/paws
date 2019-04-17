@@ -26,7 +26,7 @@ input. The IssueCertificate and RevokeCertificate operations use the
 private key. You can generate a new report every 30 minutes.
 }
 \section{Request syntax}{
-\preformatted{acmpca$create_certificate_authority_audit_report(
+\preformatted{svc$create_certificate_authority_audit_report(
   CertificateAuthorityArn = "string",
   S3BucketName = "string",
   AuditReportResponseFormat = "JSON"|"CSV"

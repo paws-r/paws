@@ -16,7 +16,7 @@ Deletes a suggester. For more information, see \href{http://docs.aws.amazon.com/
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$delete_suggester(
+\preformatted{svc$delete_suggester(
   DomainName = "string",
   SuggesterName = "string"
 )

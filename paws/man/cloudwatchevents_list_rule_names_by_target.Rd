@@ -20,7 +20,7 @@ in Amazon CloudWatch Events can invoke a specific target in your
 account.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$list_rule_names_by_target(
+\preformatted{svc$list_rule_names_by_target(
   TargetArn = "string",
   NextToken = "string",
   Limit = 123

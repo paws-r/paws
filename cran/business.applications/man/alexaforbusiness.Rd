@@ -19,12 +19,6 @@ Alexa Voice Service (AVS) can create fully integrated solutions,
 register their products with Alexa for Business, and manage them as
 shared devices in their organization.
 }
-\section{Example}{
-\preformatted{alexaforbusiness <- paws::alexaforbusiness()
-alexaforbusiness$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -108,3 +102,9 @@ alexaforbusiness$operation()
 }
 }
 
+\examples{
+\donttest{svc$approve_skill(
+  Foo = 123
+)}
+
+}

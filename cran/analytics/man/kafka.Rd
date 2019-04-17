@@ -9,12 +9,6 @@ kafka()
 \description{
 The operations for managing an Amazon MSK cluster.
 }
-\section{Example}{
-\preformatted{kafka <- paws::kafka()
-kafka$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -27,3 +21,9 @@ kafka$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_cluster(
+  Foo = 123
+)}
+
+}

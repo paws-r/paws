@@ -28,7 +28,7 @@ organization node. Shares to an organization node can only be deleted by
 the master account of an Organization.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_portfolio_share(
+\preformatted{svc$delete_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   AccountId = "string",

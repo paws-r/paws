@@ -23,7 +23,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Retrieves information about an HSM client.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$describe_luna_client(
+\preformatted{svc$describe_luna_client(
   ClientArn = "string",
   CertificateFingerprint = "string"
 )

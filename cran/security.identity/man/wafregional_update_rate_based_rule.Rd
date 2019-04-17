@@ -67,7 +67,7 @@ By adding this \code{RateBasedRule} to a \code{WebACL}, you could limit requests
 to your login page without affecting the rest of your site.
 }
 \section{Request syntax}{
-\preformatted{wafregional$update_rate_based_rule(
+\preformatted{svc$update_rate_based_rule(
   RuleId = "string",
   ChangeToken = "string",
   Updates = list(

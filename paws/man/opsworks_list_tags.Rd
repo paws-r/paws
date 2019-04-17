@@ -19,7 +19,7 @@ parameter to a \code{ListTagsRequest} call.}
 Returns a list of tags that are applied to the specified stack or layer.
 }
 \section{Request syntax}{
-\preformatted{opsworks$list_tags(
+\preformatted{svc$list_tags(
   ResourceArn = "string",
   MaxResults = 123,
   NextToken = "string"

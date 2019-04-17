@@ -100,7 +100,7 @@ with the new parameter, you can then override the parameter value using
 \code{UpdateStackInstances}.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$update_stack_instances(
+\preformatted{svc$update_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"

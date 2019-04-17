@@ -14,7 +14,7 @@ account ID.}
 Retrieves the status of a migration operation.
 }
 \section{Request syntax}{
-\preformatted{glue$get_catalog_import_status(
+\preformatted{svc$get_catalog_import_status(
   CatalogId = "string"
 )
 }

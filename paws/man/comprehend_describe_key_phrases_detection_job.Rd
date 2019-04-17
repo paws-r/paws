@@ -15,7 +15,7 @@ Gets the properties associated with a key phrases detection job. Use
 this operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_key_phrases_detection_job(
+\preformatted{svc$describe_key_phrases_detection_job(
   JobId = "string"
 )
 }

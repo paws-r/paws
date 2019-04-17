@@ -18,7 +18,7 @@ paging of the cluster list across multiple ListSecurityConfigurations
 calls.
 }
 \section{Request syntax}{
-\preformatted{emr$list_security_configurations(
+\preformatted{svc$list_security_configurations(
   Marker = "string"
 )
 }

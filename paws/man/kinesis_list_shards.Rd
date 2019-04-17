@@ -74,7 +74,7 @@ specific operations, you must update your policy to allow calls to this
 API. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html}{Controlling Access to Amazon Kinesis Data Streams Resources Using IAM}.
 }
 \section{Request syntax}{
-\preformatted{kinesis$list_shards(
+\preformatted{svc$list_shards(
   StreamName = "string",
   NextToken = "string",
   ExclusiveStartShardId = "string",

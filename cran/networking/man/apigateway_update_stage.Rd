@@ -18,7 +18,7 @@ in the order specified in this list.}
 Changes information about a Stage resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_stage(
+\preformatted{svc$update_stage(
   restApiId = "string",
   stageName = "string",
   patchOperations = list(

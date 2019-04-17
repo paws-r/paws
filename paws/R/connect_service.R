@@ -24,11 +24,10 @@ NULL
 #' form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
 #' You must be signed in to your AWS account to access the form.
 #'
-#' @section Example:
-#' ```
-#' connect <- paws::connect()
-#' connect$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_user(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

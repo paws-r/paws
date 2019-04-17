@@ -25,7 +25,7 @@ Lists the mailbox permissions associated with a user, group, or resource
 mailbox.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_mailbox_permissions(
+\preformatted{svc$list_mailbox_permissions(
   OrganizationId = "string",
   EntityId = "string",
   NextToken = "string",

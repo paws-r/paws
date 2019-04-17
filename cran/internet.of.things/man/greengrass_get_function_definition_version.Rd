@@ -20,7 +20,7 @@ greengrass_get_function_definition_version(FunctionDefinitionId,
 Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_function_definition_version(
+\preformatted{svc$get_function_definition_version(
   FunctionDefinitionId = "string",
   FunctionDefinitionVersionId = "string",
   NextToken = "string"

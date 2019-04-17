@@ -63,7 +63,7 @@ to use the reusable delegation set.
 }
 }
 \section{Request syntax}{
-\preformatted{route53$create_reusable_delegation_set(
+\preformatted{svc$create_reusable_delegation_set(
   CallerReference = "string",
   HostedZoneId = "string"
 )

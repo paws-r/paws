@@ -16,12 +16,6 @@ Cognito User Pools.
 
 For more information, see the Amazon Cognito Documentation.
 }
-\section{Example}{
-\preformatted{cognitoidentityprovider <- paws::cognitoidentityprovider()
-cognitoidentityprovider$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -127,3 +121,9 @@ cognitoidentityprovider$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_custom_attributes(
+  Foo = 123
+)}
+
+}

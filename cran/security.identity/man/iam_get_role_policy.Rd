@@ -42,7 +42,7 @@ in the \emph{IAM User Guide}.
 For more information about roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
-\preformatted{iam$get_role_policy(
+\preformatted{svc$get_role_policy(
   RoleName = "string",
   PolicyName = "string"
 )

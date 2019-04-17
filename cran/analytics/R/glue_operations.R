@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_create_partition(
+#' svc$batch_create_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -121,7 +121,7 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_delete_connection(
+#' svc$batch_delete_connection(
 #'   CatalogId = "string",
 #'   ConnectionNameList = list(
 #'     "string"
@@ -165,7 +165,7 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_delete_partition(
+#' svc$batch_delete_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -224,7 +224,7 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_delete_table(
+#' svc$batch_delete_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TablesToDelete = list(
@@ -271,7 +271,7 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_delete_table_version(
+#' svc$batch_delete_table_version(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -316,7 +316,7 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_get_crawlers(
+#' svc$batch_get_crawlers(
 #'   CrawlerNames = list(
 #'     "string"
 #'   )
@@ -359,7 +359,7 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_get_dev_endpoints(
+#' svc$batch_get_dev_endpoints(
 #'   DevEndpointNames = list(
 #'     "string"
 #'   )
@@ -401,7 +401,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_get_jobs(
+#' svc$batch_get_jobs(
 #'   JobNames = list(
 #'     "string"
 #'   )
@@ -443,7 +443,7 @@ glue_batch_get_jobs <- function(JobNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_get_partition(
+#' svc$batch_get_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -492,7 +492,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_get_triggers(
+#' svc$batch_get_triggers(
 #'   TriggerNames = list(
 #'     "string"
 #'   )
@@ -530,7 +530,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$batch_stop_job_run(
+#' svc$batch_stop_job_run(
 #'   JobName = "string",
 #'   JobRunIds = list(
 #'     "string"
@@ -574,7 +574,7 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_classifier(
+#' svc$create_classifier(
 #'   GrokClassifier = list(
 #'     Classification = "string",
 #'     Name = "string",
@@ -636,7 +636,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_connection(
+#' svc$create_connection(
 #'   CatalogId = "string",
 #'   ConnectionInput = list(
 #'     Name = "string",
@@ -723,7 +723,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_crawler(
+#' svc$create_crawler(
 #'   Name = "string",
 #'   Role = "string",
 #'   DatabaseName = "string",
@@ -802,7 +802,7 @@ glue_create_crawler <- function(Name, Role, DatabaseName, Description = NULL, Ta
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_database(
+#' svc$create_database(
 #'   CatalogId = "string",
 #'   DatabaseInput = list(
 #'     Name = "string",
@@ -883,7 +883,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_dev_endpoint(
+#' svc$create_dev_endpoint(
 #'   EndpointName = "string",
 #'   RoleArn = "string",
 #'   SecurityGroupIds = list(
@@ -996,7 +996,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_job(
+#' svc$create_job(
 #'   Name = "string",
 #'   Description = "string",
 #'   LogUri = "string",
@@ -1066,7 +1066,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_partition(
+#' svc$create_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -1164,7 +1164,7 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_script(
+#' svc$create_script(
 #'   DagNodes = list(
 #'     list(
 #'       Id = "string",
@@ -1221,7 +1221,7 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_security_configuration(
+#' svc$create_security_configuration(
 #'   Name = "string",
 #'   EncryptionConfiguration = list(
 #'     S3Encryption = list(
@@ -1277,7 +1277,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_table(
+#' svc$create_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableInput = list(
@@ -1404,7 +1404,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_trigger(
+#' svc$create_trigger(
 #'   Name = "string",
 #'   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
 #'   Schedule = "string",
@@ -1474,7 +1474,7 @@ glue_create_trigger <- function(Name, Type, Schedule = NULL, Predicate = NULL, A
 #'
 #' @section Request syntax:
 #' ```
-#' glue$create_user_defined_function(
+#' svc$create_user_defined_function(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   FunctionInput = list(
@@ -1522,7 +1522,7 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_classifier(
+#' svc$delete_classifier(
 #'   Name = "string"
 #' )
 #' ```
@@ -1559,7 +1559,7 @@ glue_delete_classifier <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_connection(
+#' svc$delete_connection(
 #'   CatalogId = "string",
 #'   ConnectionName = "string"
 #' )
@@ -1597,7 +1597,7 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_crawler(
+#' svc$delete_crawler(
 #'   Name = "string"
 #' )
 #' ```
@@ -1647,7 +1647,7 @@ glue_delete_crawler <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_database(
+#' svc$delete_database(
 #'   CatalogId = "string",
 #'   Name = "string"
 #' )
@@ -1683,7 +1683,7 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_dev_endpoint(
+#' svc$delete_dev_endpoint(
 #'   EndpointName = "string"
 #' )
 #' ```
@@ -1719,7 +1719,7 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_job(
+#' svc$delete_job(
 #'   JobName = "string"
 #' )
 #' ```
@@ -1759,7 +1759,7 @@ glue_delete_job <- function(JobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_partition(
+#' svc$delete_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -1799,7 +1799,7 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_resource_policy(
+#' svc$delete_resource_policy(
 #'   PolicyHashCondition = "string"
 #' )
 #' ```
@@ -1834,7 +1834,7 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_security_configuration(
+#' svc$delete_security_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -1884,7 +1884,7 @@ glue_delete_security_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_table(
+#' svc$delete_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   Name = "string"
@@ -1928,7 +1928,7 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_table_version(
+#' svc$delete_table_version(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -1967,7 +1967,7 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_trigger(
+#' svc$delete_trigger(
 #'   Name = "string"
 #' )
 #' ```
@@ -2005,7 +2005,7 @@ glue_delete_trigger <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$delete_user_defined_function(
+#' svc$delete_user_defined_function(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   FunctionName = "string"
@@ -2043,7 +2043,7 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_catalog_import_status(
+#' svc$get_catalog_import_status(
 #'   CatalogId = "string"
 #' )
 #' ```
@@ -2078,7 +2078,7 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_classifier(
+#' svc$get_classifier(
 #'   Name = "string"
 #' )
 #' ```
@@ -2114,7 +2114,7 @@ glue_get_classifier <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_classifiers(
+#' svc$get_classifiers(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2158,7 +2158,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_connection(
+#' svc$get_connection(
 #'   CatalogId = "string",
 #'   Name = "string",
 #'   HidePassword = TRUE|FALSE
@@ -2206,7 +2206,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_connections(
+#' svc$get_connections(
 #'   CatalogId = "string",
 #'   Filter = list(
 #'     MatchCriteria = list(
@@ -2250,7 +2250,7 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_crawler(
+#' svc$get_crawler(
 #'   Name = "string"
 #' )
 #' ```
@@ -2287,7 +2287,7 @@ glue_get_crawler <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_crawler_metrics(
+#' svc$get_crawler_metrics(
 #'   CrawlerNameList = list(
 #'     "string"
 #'   ),
@@ -2327,7 +2327,7 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_crawlers(
+#' svc$get_crawlers(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2365,7 +2365,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_data_catalog_encryption_settings(
+#' svc$get_data_catalog_encryption_settings(
 #'   CatalogId = "string"
 #' )
 #' ```
@@ -2403,7 +2403,7 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_database(
+#' svc$get_database(
 #'   CatalogId = "string",
 #'   Name = "string"
 #' )
@@ -2442,7 +2442,7 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_databases(
+#' svc$get_databases(
 #'   CatalogId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2479,7 +2479,7 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_dataflow_graph(
+#' svc$get_dataflow_graph(
 #'   PythonScript = "string"
 #' )
 #' ```
@@ -2519,7 +2519,7 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_dev_endpoint(
+#' svc$get_dev_endpoint(
 #'   EndpointName = "string"
 #' )
 #' ```
@@ -2560,7 +2560,7 @@ glue_get_dev_endpoint <- function(EndpointName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_dev_endpoints(
+#' svc$get_dev_endpoints(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2596,7 +2596,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_job(
+#' svc$get_job(
 #'   JobName = "string"
 #' )
 #' ```
@@ -2633,7 +2633,7 @@ glue_get_job <- function(JobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_job_run(
+#' svc$get_job_run(
 #'   JobName = "string",
 #'   RunId = "string",
 #'   PredecessorsIncluded = TRUE|FALSE
@@ -2672,7 +2672,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_job_runs(
+#' svc$get_job_runs(
 #'   JobName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -2710,7 +2710,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_jobs(
+#' svc$get_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -2748,7 +2748,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_mapping(
+#' svc$get_mapping(
 #'   Source = list(
 #'     DatabaseName = "string",
 #'     TableName = "string"
@@ -2819,7 +2819,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_partition(
+#' svc$get_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -2954,7 +2954,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_partitions(
+#' svc$get_partitions(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -3002,7 +3002,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_plan(
+#' svc$get_plan(
 #'   Mapping = list(
 #'     list(
 #'       SourceTable = "string",
@@ -3078,7 +3078,7 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_resource_policy()
+#' svc$get_resource_policy()
 #' ```
 #'
 #' @keywords internal
@@ -3111,7 +3111,7 @@ glue_get_resource_policy <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_security_configuration(
+#' svc$get_security_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -3147,7 +3147,7 @@ glue_get_security_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_security_configurations(
+#' svc$get_security_configurations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -3189,7 +3189,7 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_table(
+#' svc$get_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   Name = "string"
@@ -3233,7 +3233,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_table_version(
+#' svc$get_table_version(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -3281,7 +3281,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_table_versions(
+#' svc$get_table_versions(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -3330,7 +3330,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_tables(
+#' svc$get_tables(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   Expression = "string",
@@ -3369,7 +3369,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_tags(
+#' svc$get_tags(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -3404,7 +3404,7 @@ glue_get_tags <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_trigger(
+#' svc$get_trigger(
 #'   Name = "string"
 #' )
 #' ```
@@ -3443,7 +3443,7 @@ glue_get_trigger <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_triggers(
+#' svc$get_triggers(
 #'   NextToken = "string",
 #'   DependentJobName = "string",
 #'   MaxResults = 123
@@ -3483,7 +3483,7 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_user_defined_function(
+#' svc$get_user_defined_function(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   FunctionName = "string"
@@ -3527,7 +3527,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #'
 #' @section Request syntax:
 #' ```
-#' glue$get_user_defined_functions(
+#' svc$get_user_defined_functions(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   Pattern = "string",
@@ -3567,7 +3567,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName, Patt
 #'
 #' @section Request syntax:
 #' ```
-#' glue$import_catalog_to_glue(
+#' svc$import_catalog_to_glue(
 #'   CatalogId = "string"
 #' )
 #' ```
@@ -3612,7 +3612,7 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$list_crawlers(
+#' svc$list_crawlers(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Tags = list(
@@ -3661,7 +3661,7 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' glue$list_dev_endpoints(
+#' svc$list_dev_endpoints(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Tags = list(
@@ -3710,7 +3710,7 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$list_jobs(
+#' svc$list_jobs(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Tags = list(
@@ -3762,7 +3762,7 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$list_triggers(
+#' svc$list_triggers(
 #'   NextToken = "string",
 #'   DependentJobName = "string",
 #'   MaxResults = 123,
@@ -3807,7 +3807,7 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
 #'
 #' @section Request syntax:
 #' ```
-#' glue$put_data_catalog_encryption_settings(
+#' svc$put_data_catalog_encryption_settings(
 #'   CatalogId = "string",
 #'   DataCatalogEncryptionSettings = list(
 #'     EncryptionAtRest = list(
@@ -3861,7 +3861,7 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #'
 #' @section Request syntax:
 #' ```
-#' glue$put_resource_policy(
+#' svc$put_resource_policy(
 #'   PolicyInJson = "string",
 #'   PolicyHashCondition = "string",
 #'   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE"
@@ -3898,7 +3898,7 @@ glue_put_resource_policy <- function(PolicyInJson, PolicyHashCondition = NULL, P
 #'
 #' @section Request syntax:
 #' ```
-#' glue$reset_job_bookmark(
+#' svc$reset_job_bookmark(
 #'   JobName = "string"
 #' )
 #' ```
@@ -3936,7 +3936,7 @@ glue_reset_job_bookmark <- function(JobName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$start_crawler(
+#' svc$start_crawler(
 #'   Name = "string"
 #' )
 #' ```
@@ -3975,7 +3975,7 @@ glue_start_crawler <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$start_crawler_schedule(
+#' svc$start_crawler_schedule(
 #'   CrawlerName = "string"
 #' )
 #' ```
@@ -4058,7 +4058,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$start_job_run(
+#' svc$start_job_run(
 #'   JobName = "string",
 #'   JobRunId = "string",
 #'   Arguments = list(
@@ -4106,7 +4106,7 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 #'
 #' @section Request syntax:
 #' ```
-#' glue$start_trigger(
+#' svc$start_trigger(
 #'   Name = "string"
 #' )
 #' ```
@@ -4141,7 +4141,7 @@ glue_start_trigger <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$stop_crawler(
+#' svc$stop_crawler(
 #'   Name = "string"
 #' )
 #' ```
@@ -4178,7 +4178,7 @@ glue_stop_crawler <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$stop_crawler_schedule(
+#' svc$stop_crawler_schedule(
 #'   CrawlerName = "string"
 #' )
 #' ```
@@ -4213,7 +4213,7 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$stop_trigger(
+#' svc$stop_trigger(
 #'   Name = "string"
 #' )
 #' ```
@@ -4254,7 +4254,7 @@ glue_stop_trigger <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   TagsToAdd = list(
 #'     "string"
@@ -4293,7 +4293,7 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagsToRemove = list(
 #'     "string"
@@ -4338,7 +4338,7 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_classifier(
+#' svc$update_classifier(
 #'   GrokClassifier = list(
 #'     Name = "string",
 #'     Classification = "string",
@@ -4401,7 +4401,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_connection(
+#' svc$update_connection(
 #'   CatalogId = "string",
 #'   Name = "string",
 #'   ConnectionInput = list(
@@ -4481,7 +4481,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_crawler(
+#' svc$update_crawler(
 #'   Name = "string",
 #'   Role = "string",
 #'   DatabaseName = "string",
@@ -4559,7 +4559,7 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_crawler_schedule(
+#' svc$update_crawler_schedule(
 #'   CrawlerName = "string",
 #'   Schedule = "string"
 #' )
@@ -4600,7 +4600,7 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_database(
+#' svc$update_database(
 #'   CatalogId = "string",
 #'   Name = "string",
 #'   DatabaseInput = list(
@@ -4656,7 +4656,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_dev_endpoint(
+#' svc$update_dev_endpoint(
 #'   EndpointName = "string",
 #'   PublicKey = "string",
 #'   AddPublicKeys = list(
@@ -4710,7 +4710,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_job(
+#' svc$update_job(
 #'   JobName = "string",
 #'   JobUpdate = list(
 #'     Description = "string",
@@ -4779,7 +4779,7 @@ glue_update_job <- function(JobName, JobUpdate) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_partition(
+#' svc$update_partition(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
@@ -4886,7 +4886,7 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_table(
+#' svc$update_table(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableInput = list(
@@ -4994,7 +4994,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_trigger(
+#' svc$update_trigger(
 #'   Name = "string",
 #'   TriggerUpdate = list(
 #'     Name = "string",
@@ -5064,7 +5064,7 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
 #'
 #' @section Request syntax:
 #' ```
-#' glue$update_user_defined_function(
+#' svc$update_user_defined_function(
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   FunctionName = "string",

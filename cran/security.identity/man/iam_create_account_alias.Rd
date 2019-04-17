@@ -19,7 +19,7 @@ AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Acc
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_account_alias(
+\preformatted{svc$create_account_alias(
   AccountAlias = "string"
 )
 }
@@ -28,7 +28,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command associates the alias examplecorp to your AWS
 # account.
-\donttest{iam$create_account_alias(
+\donttest{svc$create_account_alias(
   AccountAlias = "examplecorp"
 )}
 

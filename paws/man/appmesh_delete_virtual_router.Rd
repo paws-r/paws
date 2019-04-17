@@ -19,7 +19,7 @@ You must delete any routes associated with the virtual router before you
 can delete the router itself.
 }
 \section{Request syntax}{
-\preformatted{appmesh$delete_virtual_router(
+\preformatted{svc$delete_virtual_router(
   meshName = "string",
   virtualRouterName = "string"
 )

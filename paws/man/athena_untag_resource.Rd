@@ -19,7 +19,7 @@ a list of TagKey Strings separated by commas, and removes their tags at
 the same time.
 }
 \section{Request syntax}{
-\preformatted{athena$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceARN = "string",
   TagKeys = list(
     "string"

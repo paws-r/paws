@@ -29,7 +29,7 @@ is successful.
 This operation requires permission for the \code{lex:DeleteIntent} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_intent(
+\preformatted{svc$delete_intent(
   name = "string"
 )
 }

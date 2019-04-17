@@ -7,11 +7,10 @@ NULL
 #' @description
 #' AWS S3 Control provides access to Amazon S3 control plane operations.
 #'
-#' @section Example:
-#' ```
-#' s3control <- paws::s3control()
-#' s3control$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_public_access_block(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

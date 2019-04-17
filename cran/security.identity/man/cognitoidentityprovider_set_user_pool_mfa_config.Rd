@@ -20,7 +20,7 @@ cognitoidentityprovider_set_user_pool_mfa_config(UserPoolId,
 Set the user pool MFA configuration.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$set_user_pool_mfa_config(
+\preformatted{svc$set_user_pool_mfa_config(
   UserPoolId = "string",
   SmsMfaConfiguration = list(
     SmsAuthenticationMessage = "string",

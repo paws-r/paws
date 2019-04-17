@@ -34,7 +34,7 @@ For more information about service-linked roles, see \href{http://docs.aws.amazo
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_service_linked_role(
+\preformatted{svc$delete_service_linked_role(
   RoleName = "string"
 )
 }

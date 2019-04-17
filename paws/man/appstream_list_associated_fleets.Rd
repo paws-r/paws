@@ -18,7 +18,7 @@ Retrieves the name of the fleet that is associated with the specified
 stack.
 }
 \section{Request syntax}{
-\preformatted{appstream$list_associated_fleets(
+\preformatted{svc$list_associated_fleets(
   StackName = "string",
   NextToken = "string"
 )

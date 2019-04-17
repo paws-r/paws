@@ -40,7 +40,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$create_activity(
+#' svc$create_activity(
 #'   name = "string",
 #'   tags = list(
 #'     list(
@@ -106,7 +106,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$create_state_machine(
+#' svc$create_state_machine(
 #'   name = "string",
 #'   definition = "string",
 #'   roleArn = "string",
@@ -149,7 +149,7 @@ sfn_create_state_machine <- function(name, definition, roleArn, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$delete_activity(
+#' svc$delete_activity(
 #'   activityArn = "string"
 #' )
 #' ```
@@ -190,7 +190,7 @@ sfn_delete_activity <- function(activityArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$delete_state_machine(
+#' svc$delete_state_machine(
 #'   stateMachineArn = "string"
 #' )
 #' ```
@@ -228,7 +228,7 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$describe_activity(
+#' svc$describe_activity(
 #'   activityArn = "string"
 #' )
 #' ```
@@ -266,7 +266,7 @@ sfn_describe_activity <- function(activityArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$describe_execution(
+#' svc$describe_execution(
 #'   executionArn = "string"
 #' )
 #' ```
@@ -304,7 +304,7 @@ sfn_describe_execution <- function(executionArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$describe_state_machine(
+#' svc$describe_state_machine(
 #'   stateMachineArn = "string"
 #' )
 #' ```
@@ -343,7 +343,7 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$describe_state_machine_for_execution(
+#' svc$describe_state_machine_for_execution(
 #'   executionArn = "string"
 #' )
 #' ```
@@ -398,7 +398,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$get_activity_task(
+#' svc$get_activity_task(
 #'   activityArn = "string",
 #'   workerName = "string"
 #' )
@@ -458,7 +458,7 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$get_execution_history(
+#' svc$get_execution_history(
 #'   executionArn = "string",
 #'   maxResults = 123,
 #'   reverseOrder = TRUE|FALSE,
@@ -517,7 +517,7 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$list_activities(
+#' svc$list_activities(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -581,7 +581,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$list_executions(
+#' svc$list_executions(
 #'   stateMachineArn = "string",
 #'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
 #'   maxResults = 123,
@@ -640,7 +640,7 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$list_state_machines(
+#' svc$list_state_machines(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -677,7 +677,7 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   resourceArn = "string"
 #' )
 #' ```
@@ -718,7 +718,7 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$send_task_failure(
+#' svc$send_task_failure(
 #'   taskToken = "string",
 #'   error = "string",
 #'   cause = "string"
@@ -770,7 +770,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$send_task_heartbeat(
+#' svc$send_task_heartbeat(
 #'   taskToken = "string"
 #' )
 #' ```
@@ -810,7 +810,7 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$send_task_success(
+#' svc$send_task_success(
 #'   taskToken = "string",
 #'   output = "string"
 #' )
@@ -876,7 +876,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$start_execution(
+#' svc$start_execution(
 #'   stateMachineArn = "string",
 #'   name = "string",
 #'   input = "string"
@@ -915,7 +915,7 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$stop_execution(
+#' svc$stop_execution(
 #'   executionArn = "string",
 #'   error = "string",
 #'   cause = "string"
@@ -957,7 +957,7 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -1000,7 +1000,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -1052,7 +1052,7 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' sfn$update_state_machine(
+#' svc$update_state_machine(
 #'   stateMachineArn = "string",
 #'   definition = "string",
 #'   roleArn = "string"

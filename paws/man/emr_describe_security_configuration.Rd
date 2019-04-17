@@ -15,7 +15,7 @@ Provides the details of a security configuration by returning the
 configuration JSON.
 }
 \section{Request syntax}{
-\preformatted{emr$describe_security_configuration(
+\preformatted{svc$describe_security_configuration(
   Name = "string"
 )
 }

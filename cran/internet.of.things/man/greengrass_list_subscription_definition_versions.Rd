@@ -18,7 +18,7 @@ greengrass_list_subscription_definition_versions(MaxResults, NextToken,
 Lists the versions of a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_subscription_definition_versions(
+\preformatted{svc$list_subscription_definition_versions(
   MaxResults = "string",
   NextToken = "string",
   SubscriptionDefinitionId = "string"

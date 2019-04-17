@@ -33,7 +33,7 @@ associated by the \code{AssociateCreatedArtifact} API.
 }
 }
 \section{Request syntax}{
-\preformatted{migrationhub$list_created_artifacts(
+\preformatted{svc$list_created_artifacts(
   ProgressUpdateStream = "string",
   MigrationTaskName = "string",
   NextToken = "string",

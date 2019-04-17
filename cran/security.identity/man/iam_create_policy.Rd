@@ -63,7 +63,7 @@ For more information about managed policies in general, see \href{http://docs.aw
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_policy(
+\preformatted{svc$create_policy(
   PolicyName = "string",
   Path = "string",
   PolicyDocument = "string",

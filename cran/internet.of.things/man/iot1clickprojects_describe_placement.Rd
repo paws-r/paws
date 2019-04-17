@@ -15,7 +15,7 @@ iot1clickprojects_describe_placement(placementName, projectName)
 Describes a placement in a project.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$describe_placement(
+\preformatted{svc$describe_placement(
   placementName = "string",
   projectName = "string"
 )

@@ -19,7 +19,7 @@ Enable or disable the automatic warm-up feature for dedicated IP
 addresses.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_account_dedicated_ip_warmup_attributes(
+\preformatted{svc$put_account_dedicated_ip_warmup_attributes(
   AutoWarmupEnabled = TRUE|FALSE
 )
 }

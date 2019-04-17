@@ -17,7 +17,7 @@ operation is only supported in the cached volume and stored volume
 gateway types.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_volume_initiators(
+\preformatted{svc$list_volume_initiators(
   VolumeARN = "string"
 )
 }

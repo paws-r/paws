@@ -33,7 +33,7 @@ create an implicit linked account.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$get_id(
+\preformatted{svc$get_id(
   AccountId = "string",
   IdentityPoolId = "string",
   Logins = list(

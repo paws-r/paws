@@ -17,7 +17,7 @@ appmesh_describe_route(meshName, routeName, virtualRouterName)
 Describes an existing route.
 }
 \section{Request syntax}{
-\preformatted{appmesh$describe_route(
+\preformatted{svc$describe_route(
   meshName = "string",
   routeName = "string",
   virtualRouterName = "string"

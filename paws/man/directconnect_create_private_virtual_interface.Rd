@@ -23,7 +23,7 @@ interface to a VGW only provides access to a single VPC within the same
 Region.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_private_virtual_interface(
+\preformatted{svc$create_private_virtual_interface(
   connectionId = "string",
   newPrivateVirtualInterface = list(
     virtualInterfaceName = "string",

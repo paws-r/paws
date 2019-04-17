@@ -19,7 +19,7 @@ Updates the status of the Systems Manager document associated with the
 specified instance.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_association_status(
+\preformatted{svc$update_association_status(
   Name = "string",
   InstanceId = "string",
   AssociationStatus = list(

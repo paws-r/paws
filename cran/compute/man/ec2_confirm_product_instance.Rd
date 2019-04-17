@@ -23,7 +23,7 @@ when a product code owner must verify whether another user's instance
 is eligible for support.
 }
 \section{Request syntax}{
-\preformatted{ec2$confirm_product_instance(
+\preformatted{svc$confirm_product_instance(
   InstanceId = "string",
   ProductCode = "string",
   DryRun = TRUE|FALSE
@@ -34,7 +34,7 @@ is eligible for support.
 \examples{
 # This example determines whether the specified product code is associated
 # with the specified instance.
-\donttest{ec2$confirm_product_instance(
+\donttest{svc$confirm_product_instance(
   InstanceId = "i-1234567890abcdef0",
   ProductCode = "774F4FF8"
 )}

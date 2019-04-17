@@ -13,7 +13,7 @@ amplify_delete_app(appId)
 Delete an existing Amplify App by appId.
 }
 \section{Request syntax}{
-\preformatted{amplify$delete_app(
+\preformatted{svc$delete_app(
   appId = "string"
 )
 }

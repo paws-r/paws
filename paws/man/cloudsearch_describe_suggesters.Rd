@@ -24,7 +24,7 @@ exclude pending changes. For more information, see \href{http://docs.aws.amazon.
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$describe_suggesters(
+\preformatted{svc$describe_suggesters(
   DomainName = "string",
   SuggesterNames = list(
     "string"

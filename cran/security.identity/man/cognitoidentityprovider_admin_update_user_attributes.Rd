@@ -33,7 +33,7 @@ mark phone and email as verified.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_update_user_attributes(
+\preformatted{svc$admin_update_user_attributes(
   UserPoolId = "string",
   Username = "string",
   UserAttributes = list(

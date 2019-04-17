@@ -14,7 +14,7 @@ cloudfront_create_streaming_distribution_with_tags(
 Create a new streaming distribution with tags.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_streaming_distribution_with_tags(
+\preformatted{svc$create_streaming_distribution_with_tags(
   StreamingDistributionConfigWithTags = list(
     StreamingDistributionConfig = list(
       CallerReference = "string",

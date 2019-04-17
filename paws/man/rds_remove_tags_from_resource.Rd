@@ -22,7 +22,7 @@ For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.am
 in the \emph{Amazon RDS User Guide.}
 }
 \section{Request syntax}{
-\preformatted{rds$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceName = "string",
   TagKeys = list(
     "string"

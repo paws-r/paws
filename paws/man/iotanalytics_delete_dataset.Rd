@@ -17,7 +17,7 @@ You do not have to delete the content of the data set before you perform
 this operation.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$delete_dataset(
+\preformatted{svc$delete_dataset(
   datasetName = "string"
 )
 }

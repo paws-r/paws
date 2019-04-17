@@ -17,7 +17,7 @@ apigateway_create_resource(restApiId, parentId, pathPart)
 Creates a Resource resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_resource(
+\preformatted{svc$create_resource(
   restApiId = "string",
   parentId = "string",
   pathPart = "string"

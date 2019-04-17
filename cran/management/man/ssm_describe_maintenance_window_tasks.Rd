@@ -25,7 +25,7 @@ from a previous call.)}
 Lists the tasks in a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_window_tasks(
+\preformatted{svc$describe_maintenance_window_tasks(
   WindowId = "string",
   Filters = list(
     list(

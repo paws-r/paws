@@ -13,7 +13,7 @@ alexaforbusiness_get_profile(ProfileArn)
 Gets the details of a room profile by profile ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_profile(
+\preformatted{svc$get_profile(
   ProfileArn = "string"
 )
 }

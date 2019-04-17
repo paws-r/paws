@@ -19,7 +19,7 @@ idempotency.}
 Creates a skill group with a specified name and description.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_skill_group(
+\preformatted{svc$create_skill_group(
   SkillGroupName = "string",
   Description = "string",
   ClientRequestToken = "string"

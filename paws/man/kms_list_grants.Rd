@@ -40,7 +40,7 @@ To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the \code{KeyId} parameter.
 }
 \section{Request syntax}{
-\preformatted{kms$list_grants(
+\preformatted{svc$list_grants(
   Limit = 123,
   Marker = "string",
   KeyId = "string"
@@ -50,7 +50,7 @@ the key ARN in the value of the \code{KeyId} parameter.
 
 \examples{
 # The following example lists grants for the specified CMK.
-\donttest{kms$list_grants(
+\donttest{svc$list_grants(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

@@ -41,7 +41,7 @@ Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period.
 }
 \section{Request syntax}{
-\preformatted{shield$list_attacks(
+\preformatted{svc$list_attacks(
   ResourceArns = list(
     "string"
   ),

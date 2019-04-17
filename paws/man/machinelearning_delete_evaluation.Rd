@@ -22,7 +22,7 @@ Caution
 The results of the \code{DeleteEvaluation} operation are irreversible.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_evaluation(
+\preformatted{svc$delete_evaluation(
   EvaluationId = "string"
 )
 }

@@ -515,7 +515,7 @@ DB instance, call DescribeValidDBInstanceModifications before you call
 ModifyDBInstance.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_instance(
+\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,
   DBInstanceClass = "string",

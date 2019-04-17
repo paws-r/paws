@@ -49,7 +49,7 @@ example, a parameter list with two elements looks like this:
 \code{&amp;Attribute.2=second}
 }
 \section{Request syntax}{
-\preformatted{sqs$send_message_batch(
+\preformatted{svc$send_message_batch(
   QueueUrl = "string",
   Entries = list(
     list(

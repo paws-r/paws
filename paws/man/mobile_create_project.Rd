@@ -23,7 +23,7 @@ exported.}
 Creates an AWS Mobile Hub project.
 }
 \section{Request syntax}{
-\preformatted{mobile$create_project(
+\preformatted{svc$create_project(
   name = "string",
   region = "string",
   contents = raw,

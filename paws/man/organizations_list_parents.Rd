@@ -56,7 +56,7 @@ account.
 In the current release, a child can have only a single parent.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_parents(
+\preformatted{svc$list_parents(
   ChildId = "string",
   NextToken = "string",
   MaxResults = 123
@@ -67,7 +67,7 @@ In the current release, a child can have only a single parent.
 \examples{
 # The following example shows how to list the root or OUs that contain
 # account 444444444444:/n/n
-\donttest{organizations$list_parents(
+\donttest{svc$list_parents(
   ChildId = "444444444444"
 )}
 

@@ -40,7 +40,7 @@ have a lot of hosted zones, you can use the \code{maxitems} parameter to list
 them in groups of up to 100.
 }
 \section{Request syntax}{
-\preformatted{route53$list_hosted_zones(
+\preformatted{svc$list_hosted_zones(
   Marker = "string",
   MaxItems = "string",
   DelegationSetId = "string"

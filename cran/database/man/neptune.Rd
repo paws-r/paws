@@ -31,12 +31,6 @@ following some related topics from the user guide.
 
 \strong{Amazon Neptune API Reference}
 }
-\section{Example}{
-\preformatted{neptune <- paws::neptune()
-neptune$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -100,3 +94,9 @@ neptune$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_role_to_db_cluster(
+  Foo = 123
+)}
+
+}

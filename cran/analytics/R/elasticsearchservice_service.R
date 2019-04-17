@@ -15,11 +15,10 @@ NULL
 #' a current list of supported regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 #'
-#' @section Example:
-#' ```
-#' elasticsearchservice <- paws::elasticsearchservice()
-#' elasticsearchservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -39,7 +39,7 @@ ensure that your application is idempotent, so that receiving a message
 more than once does not cause issues.
 }
 \section{Request syntax}{
-\preformatted{sqs$delete_message(
+\preformatted{svc$delete_message(
   QueueUrl = "string",
   ReceiptHandle = "string"
 )

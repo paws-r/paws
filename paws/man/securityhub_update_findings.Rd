@@ -20,7 +20,7 @@ Updates the AWS Security Hub-aggregated findings specified by the filter
 attributes.
 }
 \section{Request syntax}{
-\preformatted{securityhub$update_findings(
+\preformatted{svc$update_findings(
   Filters = list(
     ProductArn = list(
       list(

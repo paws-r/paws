@@ -30,7 +30,7 @@ Modifies the maintenance settings of a cluster. For example, you can
 defer a maintenance window. You can also update or cancel a deferment.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_maintenance(
+\preformatted{svc$modify_cluster_maintenance(
   ClusterIdentifier = "string",
   DeferMaintenance = TRUE|FALSE,
   DeferMaintenanceIdentifier = "string",

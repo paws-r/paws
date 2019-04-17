@@ -47,7 +47,7 @@ in \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.htm
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$list_query_logging_configs(
+\preformatted{svc$list_query_logging_configs(
   HostedZoneId = "string",
   NextToken = "string",
   MaxResults = "string"

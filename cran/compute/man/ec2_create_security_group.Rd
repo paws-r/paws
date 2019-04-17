@@ -63,7 +63,7 @@ AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
 RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_security_group(
+\preformatted{svc$create_security_group(
   Description = "string",
   GroupName = "string",
   VpcId = "string",
@@ -74,7 +74,7 @@ RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 
 \examples{
 # This example creates a security group for the specified VPC.
-\donttest{ec2$create_security_group(
+\donttest{svc$create_security_group(
   Description = "My security group",
   GroupName = "my-security-group",
   VpcId = "vpc-1a2b3c4d"

@@ -51,7 +51,7 @@ supported instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/Us
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_host_reservation_offerings(
+\preformatted{svc$describe_host_reservation_offerings(
   Filter = list(
     list(
       Name = "string",

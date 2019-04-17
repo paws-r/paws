@@ -18,7 +18,7 @@ serverlessapplicationrepository_list_application_versions(ApplicationId,
 Lists versions for the specified application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$list_application_versions(
+\preformatted{svc$list_application_versions(
   ApplicationId = "string",
   MaxItems = 123,
   NextToken = "string"

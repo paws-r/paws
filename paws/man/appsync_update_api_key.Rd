@@ -20,7 +20,7 @@ represented as seconds since the epoch. For more information, see .}
 Updates an API key.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_api_key(
+\preformatted{svc$update_api_key(
   apiId = "string",
   id = "string",
   description = "string",

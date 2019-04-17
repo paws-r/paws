@@ -85,7 +85,7 @@ an Amazon S3 bucket. A maximum of five trails can exist in a region,
 irrespective of the region in which they were created.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$create_trail(
+\preformatted{svc$create_trail(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",

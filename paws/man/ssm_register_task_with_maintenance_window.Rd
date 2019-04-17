@@ -79,7 +79,7 @@ MaintenanceWindowTaskInvocationParameters.}
 Adds a new task to a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$register_task_with_maintenance_window(
+\preformatted{svc$register_task_with_maintenance_window(
   WindowId = "string",
   Targets = list(
     list(

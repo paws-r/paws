@@ -13,7 +13,7 @@ lightsail_get_load_balancer(loadBalancerName)
 Returns information about the specified Lightsail load balancer.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_load_balancer(
+\preformatted{svc$get_load_balancer(
   loadBalancerName = "string"
 )
 }

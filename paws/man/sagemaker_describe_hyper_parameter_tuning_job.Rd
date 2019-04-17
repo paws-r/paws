@@ -14,7 +14,7 @@ sagemaker_describe_hyper_parameter_tuning_job(
 Gets a description of a hyperparameter tuning job.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$describe_hyper_parameter_tuning_job(
+\preformatted{svc$describe_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string"
 )
 }

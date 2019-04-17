@@ -40,7 +40,7 @@ using sending authorization, see the \href{http://docs.aws.amazon.com/ses/latest
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$put_identity_policy(
+\preformatted{svc$put_identity_policy(
   Identity = "string",
   PolicyName = "string",
   Policy = "string"
@@ -51,7 +51,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example adds a sending authorization policy to an
 # identity:
-\donttest{ses$put_identity_policy(
+\donttest{svc$put_identity_policy(
   Identity = "example.com",
   Policy = "{\\"Version\\":\\"2008-10-17\\",\\"Statement\\":[{\\"Sid\\":\\"stmt1469123904194\\",...",
   PolicyName = "MyPolicy"

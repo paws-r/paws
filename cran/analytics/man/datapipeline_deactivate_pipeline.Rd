@@ -23,7 +23,7 @@ pipeline resumes from the last completed execution. Optionally, you can
 specify the date and time to resume the pipeline.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$deactivate_pipeline(
+\preformatted{svc$deactivate_pipeline(
   pipelineId = "string",
   cancelActive = TRUE|FALSE
 )

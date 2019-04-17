@@ -33,7 +33,7 @@ recover to a valid state.}
 Deletes a job execution.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_job_execution(
+\preformatted{svc$delete_job_execution(
   jobId = "string",
   thingName = "string",
   executionNumber = 123,

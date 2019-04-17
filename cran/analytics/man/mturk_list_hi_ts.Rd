@@ -17,7 +17,7 @@ operation returns HITs of any status, except for HITs that have been
 deleted of with the DeleteHIT operation or that have been auto-deleted.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_hi_ts(
+\preformatted{svc$list_hi_ts(
   NextToken = "string",
   MaxResults = 123
 )

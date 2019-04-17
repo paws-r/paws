@@ -22,7 +22,7 @@ contains a token that you can specify in your next request to fetch the
 next page of locations.
 }
 \section{Request syntax}{
-\preformatted{datasync$list_locations(
+\preformatted{svc$list_locations(
   MaxResults = 123,
   NextToken = "string"
 )

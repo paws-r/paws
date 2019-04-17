@@ -38,7 +38,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_virtual_mfa_devices(
+\preformatted{svc$list_virtual_mfa_devices(
   AssignmentStatus = "Assigned"|"Unassigned"|"Any",
   Marker = "string",
   MaxItems = 123
@@ -49,7 +49,7 @@ parameters.
 \examples{
 # The following command lists the virtual MFA devices that have been
 # configured for the current account.
-\donttest{iam$list_virtual_mfa_devices()}
+\donttest{svc$list_virtual_mfa_devices()}
 
 }
 \keyword{internal}

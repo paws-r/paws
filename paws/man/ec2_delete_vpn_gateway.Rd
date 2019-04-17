@@ -22,7 +22,7 @@ virtual private gateway if you plan to delete and recreate the VPN
 connection between your VPC and your network.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpn_gateway(
+\preformatted{svc$delete_vpn_gateway(
   VpnGatewayId = "string",
   DryRun = TRUE|FALSE
 )

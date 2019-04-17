@@ -22,7 +22,7 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
-\preformatted{ecr$initiate_layer_upload(
+\preformatted{svc$initiate_layer_upload(
   registryId = "string",
   repositoryName = "string"
 )

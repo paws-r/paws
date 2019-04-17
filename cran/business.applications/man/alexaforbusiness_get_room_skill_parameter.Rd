@@ -19,7 +19,7 @@ Required.}
 Gets room skill parameter details by room, skill, and parameter key ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_room_skill_parameter(
+\preformatted{svc$get_room_skill_parameter(
   RoomArn = "string",
   SkillId = "string",
   ParameterKey = "string"

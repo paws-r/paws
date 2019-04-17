@@ -13,7 +13,7 @@ glue_get_job(JobName)
 Retrieves an existing job definition.
 }
 \section{Request syntax}{
-\preformatted{glue$get_job(
+\preformatted{svc$get_job(
   JobName = "string"
 )
 }

@@ -22,7 +22,7 @@ disallow access from an Amazon EC2 security group that had been
 previously authorized.
 }
 \section{Request syntax}{
-\preformatted{elasticache$revoke_cache_security_group_ingress(
+\preformatted{svc$revoke_cache_security_group_ingress(
   CacheSecurityGroupName = "string",
   EC2SecurityGroupName = "string",
   EC2SecurityGroupOwnerId = "string"

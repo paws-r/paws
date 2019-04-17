@@ -17,7 +17,7 @@ You cannot associate more than one IAM instance profile with an
 instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_iam_instance_profile(
+\preformatted{svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Arn = "string",
     Name = "string"
@@ -30,7 +30,7 @@ instance.
 \examples{
 # This example associates an IAM instance profile named admin-role with
 # the specified instance.
-\donttest{ec2$associate_iam_instance_profile(
+\donttest{svc$associate_iam_instance_profile(
   IamInstanceProfile = list(
     Name = "admin-role"
   ),

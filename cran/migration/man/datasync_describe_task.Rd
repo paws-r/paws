@@ -13,7 +13,7 @@ datasync_describe_task(TaskArn)
 Returns metadata about a task.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_task(
+\preformatted{svc$describe_task(
   TaskArn = "string"
 )
 }

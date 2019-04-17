@@ -16,7 +16,7 @@ mediapackage_rotate_ingest_endpoint_credentials(Id, IngestEndpointId)
 Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$rotate_ingest_endpoint_credentials(
+\preformatted{svc$rotate_ingest_endpoint_credentials(
   Id = "string",
   IngestEndpointId = "string"
 )

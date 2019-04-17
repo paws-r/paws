@@ -19,7 +19,7 @@ in here to list more projects.}
 List domains with an app
 }
 \section{Request syntax}{
-\preformatted{amplify$list_domain_associations(
+\preformatted{svc$list_domain_associations(
   appId = "string",
   nextToken = "string",
   maxResults = 123

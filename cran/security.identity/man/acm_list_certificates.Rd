@@ -29,7 +29,7 @@ that only certificates that match a specific status be listed. You can
 also filter by specific attributes of the certificate.
 }
 \section{Request syntax}{
-\preformatted{acm$list_certificates(
+\preformatted{svc$list_certificates(
   CertificateStatuses = list(
     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
   ),

@@ -9,12 +9,6 @@ transcribeservice()
 \description{
 Operations and objects for transcribing speech to text.
 }
-\section{Example}{
-\preformatted{transcribeservice <- paws::transcribeservice()
-transcribeservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -30,3 +24,9 @@ transcribeservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_vocabulary(
+  Foo = 123
+)}
+
+}

@@ -18,7 +18,7 @@ provided, the AWS account ID is used by default.}
 Updates a connection definition in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$update_connection(
+\preformatted{svc$update_connection(
   CatalogId = "string",
   Name = "string",
   ConnectionInput = list(

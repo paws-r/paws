@@ -15,7 +15,7 @@ Returns the port states for a specific virtual private server, or
 \emph{instance}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_instance_port_states(
+\preformatted{svc$get_instance_port_states(
   instanceName = "string"
 )
 }

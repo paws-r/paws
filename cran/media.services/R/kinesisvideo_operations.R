@@ -64,7 +64,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$create_stream(
+#' svc$create_stream(
 #'   DeviceName = "string",
 #'   StreamName = "string",
 #'   MediaType = "string",
@@ -125,7 +125,7 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$delete_stream(
+#' svc$delete_stream(
 #'   StreamARN = "string",
 #'   CurrentVersion = "string"
 #' )
@@ -163,7 +163,7 @@ kinesisvideo_delete_stream <- function(StreamARN, CurrentVersion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$describe_stream(
+#' svc$describe_stream(
 #'   StreamName = "string",
 #'   StreamARN = "string"
 #' )
@@ -213,7 +213,7 @@ kinesisvideo_describe_stream <- function(StreamName = NULL, StreamARN = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$get_data_endpoint(
+#' svc$get_data_endpoint(
 #'   StreamName = "string",
 #'   StreamARN = "string",
 #'   APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"
@@ -260,7 +260,7 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$list_streams(
+#' svc$list_streams(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   StreamNameCondition = list(
@@ -308,7 +308,7 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$list_tags_for_stream(
+#' svc$list_tags_for_stream(
 #'   NextToken = "string",
 #'   StreamARN = "string",
 #'   StreamName = "string"
@@ -362,7 +362,7 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$tag_stream(
+#' svc$tag_stream(
 #'   StreamARN = "string",
 #'   StreamName = "string",
 #'   Tags = list(
@@ -408,7 +408,7 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$untag_stream(
+#' svc$untag_stream(
 #'   StreamARN = "string",
 #'   StreamName = "string",
 #'   TagKeyList = list(
@@ -481,7 +481,7 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$update_data_retention(
+#' svc$update_data_retention(
 #'   StreamName = "string",
 #'   StreamARN = "string",
 #'   CurrentVersion = "string",
@@ -551,7 +551,7 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisvideo$update_stream(
+#' svc$update_stream(
 #'   StreamName = "string",
 #'   StreamARN = "string",
 #'   CurrentVersion = "string",

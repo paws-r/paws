@@ -15,7 +15,7 @@ Given a device ID, returns the invokable methods associated with the
 device.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$get_device_methods(
+\preformatted{svc$get_device_methods(
   DeviceId = "string"
 )
 }

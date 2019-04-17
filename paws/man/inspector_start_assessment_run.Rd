@@ -21,7 +21,7 @@ template. For this API to function properly, you must not exceed the
 limit of running up to 500 concurrent agents per AWS account.
 }
 \section{Request syntax}{
-\preformatted{inspector$start_assessment_run(
+\preformatted{svc$start_assessment_run(
   assessmentTemplateArn = "string",
   assessmentRunName = "string"
 )
@@ -32,7 +32,7 @@ limit of running up to 500 concurrent agents per AWS account.
 # Starts the assessment run specified by the ARN of the assessment
 # template. For this API to function properly, you must not exceed the
 # limit of running up to 500 concurrent agents per AWS account.
-\donttest{inspector$start_assessment_run(
+\donttest{svc$start_assessment_run(
   assessmentRunName = "examplerun",
   assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/templa..."
 )}

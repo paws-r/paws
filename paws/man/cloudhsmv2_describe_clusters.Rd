@@ -38,7 +38,7 @@ When you receive a response with no \code{NextToken} (or an empty or null
 value), that means there are no more clusters to get.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$describe_clusters(
+\preformatted{svc$describe_clusters(
   Filters = list(
     list(
       "string"

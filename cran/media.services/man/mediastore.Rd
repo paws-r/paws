@@ -11,12 +11,6 @@ An AWS Elemental MediaStore container is a namespace that holds folders
 and objects. You use a container endpoint to create, read, and delete
 objects.
 }
-\section{Example}{
-\preformatted{mediastore <- paws::mediastore()
-mediastore$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,9 @@ mediastore$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_container(
+  Foo = 123
+)}
+
+}

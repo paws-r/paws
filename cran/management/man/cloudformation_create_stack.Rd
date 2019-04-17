@@ -211,7 +211,7 @@ successfully, the stack creation starts. You can check the status of the
 stack via the DescribeStacks API.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$create_stack(
+\preformatted{svc$create_stack(
   StackName = "string",
   TemplateBody = "string",
   TemplateURL = "string",

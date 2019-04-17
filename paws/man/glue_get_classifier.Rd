@@ -13,7 +13,7 @@ glue_get_classifier(Name)
 Retrieve a classifier by name.
 }
 \section{Request syntax}{
-\preformatted{glue$get_classifier(
+\preformatted{svc$get_classifier(
   Name = "string"
 )
 }

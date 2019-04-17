@@ -17,11 +17,10 @@ NULL
 #' register their products with Alexa for Business, and manage them as
 #' shared devices in their organization.
 #'
-#' @section Example:
-#' ```
-#' alexaforbusiness <- paws::alexaforbusiness()
-#' alexaforbusiness$operation()
-#' ```
+#' @examples
+#' \donttest{svc$approve_skill(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

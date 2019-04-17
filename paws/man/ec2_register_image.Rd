@@ -98,7 +98,7 @@ registration. If you make changes to an image, deregister the previous
 image and register the new image.
 }
 \section{Request syntax}{
-\preformatted{ec2$register_image(
+\preformatted{svc$register_image(
   ImageLocation = "string",
   Architecture = "i386"|"x86_64"|"arm64",
   BlockDeviceMappings = list(

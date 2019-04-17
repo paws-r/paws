@@ -32,7 +32,7 @@ The results can return an empty result page, but if you have a
 nextToken, the results are displayed on the next page.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_aggregate_config_rule_compliance_summary(
+\preformatted{svc$get_aggregate_config_rule_compliance_summary(
   ConfigurationAggregatorName = "string",
   Filters = list(
     AccountId = "string",

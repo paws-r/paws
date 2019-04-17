@@ -56,7 +56,7 @@ terminal state before the time expires, it will be automatically set to
 Creates a job.
 }
 \section{Request syntax}{
-\preformatted{iot$create_job(
+\preformatted{svc$create_job(
   jobId = "string",
   targets = list(
     "string"

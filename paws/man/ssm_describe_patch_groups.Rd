@@ -19,7 +19,7 @@ from a previous call.)}
 Lists all patch groups that have been registered with patch baselines.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_patch_groups(
+\preformatted{svc$describe_patch_groups(
   MaxResults = 123,
   Filters = list(
     list(

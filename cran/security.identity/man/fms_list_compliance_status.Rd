@@ -30,7 +30,7 @@ Use \code{PolicyComplianceStatus} to get a summary of which member accounts
 are protected by the specified policy.
 }
 \section{Request syntax}{
-\preformatted{fms$list_compliance_status(
+\preformatted{svc$list_compliance_status(
   PolicyId = "string",
   NextToken = "string",
   MaxResults = 123

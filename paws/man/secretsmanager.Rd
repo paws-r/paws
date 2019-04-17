@@ -70,12 +70,6 @@ Secrets Manager and its support for AWS CloudTrail, see \href{http://docs.aws.am
 in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
-\section{Example}{
-\preformatted{secretsmanager <- paws::secretsmanager()
-secretsmanager$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -100,3 +94,13 @@ secretsmanager$operation()
 }
 }
 
+\examples{
+# The following example shows how to cancel rotation for a secret. The
+# operation sets the RotationEnabled field to false and cancels all
+# scheduled rotations. To resume scheduled rotations, you must re-enable
+# rotation by calling the rotate-secret operation.
+\donttest{svc$cancel_rotate_secret(
+  SecretId = "MyTestDatabaseSecret"
+)}
+
+}

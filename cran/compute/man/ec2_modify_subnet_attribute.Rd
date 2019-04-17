@@ -29,7 +29,7 @@ Modifies a subnet attribute. You can only modify one attribute at a
 time.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_subnet_attribute(
+\preformatted{svc$modify_subnet_attribute(
   AssignIpv6AddressOnCreation = list(
     Value = TRUE|FALSE
   ),
@@ -44,7 +44,7 @@ time.
 \examples{
 # This example modifies the specified subnet so that all instances
 # launched into this subnet are assigned a public IP address.
-\donttest{ec2$modify_subnet_attribute(
+\donttest{svc$modify_subnet_attribute(
   MapPublicIpOnLaunch = list(
     Value = TRUE
   ),

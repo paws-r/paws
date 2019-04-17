@@ -16,12 +16,6 @@ operations that you can call programmatically and includes detailed
 information on data types and errors. For information about Cloud
 Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Directory Service} and the \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html}{Amazon Cloud Directory Developer Guide}.
 }
-\section{Example}{
-\preformatted{clouddirectory <- paws::clouddirectory()
-clouddirectory$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -94,3 +88,9 @@ clouddirectory$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_facet_to_object(
+  Foo = 123
+)}
+
+}

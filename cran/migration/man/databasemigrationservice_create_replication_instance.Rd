@@ -89,7 +89,7 @@ value is \code{true}.}
 Creates the replication instance using the specified parameters.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$create_replication_instance(
+\preformatted{svc$create_replication_instance(
   ReplicationInstanceIdentifier = "string",
   AllocatedStorage = 123,
   ReplicationInstanceClass = "string",
@@ -117,7 +117,7 @@ Creates the replication instance using the specified parameters.
 
 \examples{
 # Creates the replication instance using the specified parameters.
-\donttest{databasemigrationservice$create_replication_instance(
+\donttest{svc$create_replication_instance(
   AllocatedStorage = 123L,
   AutoMinorVersionUpgrade = TRUE,
   AvailabilityZone = "",

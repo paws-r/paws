@@ -62,7 +62,7 @@ Returns a list of the Amazon SageMaker notebook instances in the
 requester's account in an AWS Region.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_notebook_instances(
+\preformatted{svc$list_notebook_instances(
   NextToken = "string",
   MaxResults = 123,
   SortBy = "Name"|"CreationTime"|"Status",

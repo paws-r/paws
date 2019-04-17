@@ -33,7 +33,7 @@ the default database for a DB cluster, such as the character set for the
 default database defined by the \code{character_set_database} parameter.
 }
 \section{Request syntax}{
-\preformatted{docdb$modify_db_cluster_parameter_group(
+\preformatted{svc$modify_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   Parameters = list(
     list(

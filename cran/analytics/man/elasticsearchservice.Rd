@@ -16,12 +16,6 @@ The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 a current list of supported regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions}{Regions and Endpoints}.
 }
-\section{Example}{
-\preformatted{elasticsearchservice <- paws::elasticsearchservice()
-elasticsearchservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -51,3 +45,9 @@ elasticsearchservice$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags(
+  Foo = 123
+)}
+
+}

@@ -21,7 +21,7 @@ the availability status of a domain is pending, you must submit another
 request to determine the availability of the domain name.
 }
 \section{Request syntax}{
-\preformatted{route53domains$check_domain_availability(
+\preformatted{svc$check_domain_availability(
   DomainName = "string",
   IdnLangCode = "string"
 )

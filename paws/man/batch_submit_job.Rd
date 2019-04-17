@@ -69,7 +69,7 @@ Submits an AWS Batch job from a job definition. Parameters specified
 during SubmitJob override parameters defined in the job definition.
 }
 \section{Request syntax}{
-\preformatted{batch$submit_job(
+\preformatted{svc$submit_job(
   jobName = "string",
   jobQueue = "string",
   arrayProperties = list(
@@ -133,7 +133,7 @@ during SubmitJob override parameters defined in the job definition.
 \examples{
 # This example submits a simple container job called example to the
 # HighPriority job queue.
-\donttest{batch$submit_job(
+\donttest{svc$submit_job(
   jobDefinition = "sleep60",
   jobName = "example",
   jobQueue = "HighPriority"

@@ -26,7 +26,7 @@ query parameter value must be a single-valued list and contain the
 Lists information about a collection of Resource resources.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_resources(
+\preformatted{svc$get_resources(
   restApiId = "string",
   position = "string",
   limit = 123,

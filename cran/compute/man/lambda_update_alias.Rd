@@ -39,7 +39,7 @@ Updates the configuration of a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Request syntax}{
-\preformatted{lambda$update_alias(
+\preformatted{svc$update_alias(
   FunctionName = "string",
   Name = "string",
   FunctionVersion = "string",
@@ -56,7 +56,7 @@ Updates the configuration of a Lambda function
 
 \examples{
 # This operation updates a Lambda function alias
-\donttest{lambda$update_alias(
+\donttest{svc$update_alias(
   Description = "",
   FunctionName = "myFunction",
   FunctionVersion = "1",

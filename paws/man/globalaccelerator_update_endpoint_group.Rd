@@ -48,7 +48,7 @@ Update an endpoint group. To see an AWS CLI example of updating an
 endpoint group, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$update_endpoint_group(
+\preformatted{svc$update_endpoint_group(
   EndpointGroupArn = "string",
   EndpointConfigurations = list(
     list(

@@ -13,7 +13,7 @@ about using a password policy, go to \href{http://docs.aws.amazon.com/IAM/latest
 \examples{
 # The following command displays details about the password policy for the
 # current AWS account.
-\donttest{iam$get_account_password_policy()}
+\donttest{svc$get_account_password_policy()}
 
 }
 \keyword{internal}

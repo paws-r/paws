@@ -35,7 +35,7 @@ DescribeOrganization to see the status of policy types in the
 organization.
 }
 \section{Request syntax}{
-\preformatted{organizations$disable_policy_type(
+\preformatted{svc$disable_policy_type(
   RootId = "string",
   PolicyType = "SERVICE_CONTROL_POLICY"
 )
@@ -46,7 +46,7 @@ organization.
 # The following example shows how to disable the service control policy
 # (SCP) policy type in a root. The response shows that the PolicyTypes
 # response element no longer includes SERVICE_CONTROL_POLICY:/n/n
-\donttest{organizations$disable_policy_type(
+\donttest{svc$disable_policy_type(
   PolicyType = "SERVICE_CONTROL_POLICY",
   RootId = "r-examplerootid111"
 )}

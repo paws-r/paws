@@ -22,7 +22,7 @@ record sets for one domain name (such as example.com) or one subdomain
 name (such as www.example.com).
 }
 \section{Request syntax}{
-\preformatted{route53$create_traffic_policy(
+\preformatted{svc$create_traffic_policy(
   Name = "string",
   Document = "string",
   Comment = "string"

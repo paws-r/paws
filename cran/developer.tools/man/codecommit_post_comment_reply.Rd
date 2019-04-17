@@ -25,7 +25,7 @@ Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$post_comment_reply(
+\preformatted{svc$post_comment_reply(
   inReplyTo = "string",
   clientRequestToken = "string",
   content = "string"

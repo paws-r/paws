@@ -13,7 +13,7 @@ guardduty_delete_detector(DetectorId)
 Deletes a Amazon GuardDuty detector specified by the detector ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_detector(
+\preformatted{svc$delete_detector(
   DetectorId = "string"
 )
 }

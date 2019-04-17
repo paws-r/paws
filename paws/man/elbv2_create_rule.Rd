@@ -75,7 +75,7 @@ ModifyRule. To set the priorities of your rules, use SetRulePriorities.
 To delete a rule, use DeleteRule.
 }
 \section{Request syntax}{
-\preformatted{elbv2$create_rule(
+\preformatted{svc$create_rule(
   ListenerArn = "string",
   Conditions = list(
     list(
@@ -176,7 +176,7 @@ To delete a rule, use DeleteRule.
 # This example creates a rule that forwards requests to the specified
 # target group if the URL contains the specified pattern (for example,
 # /img/*).
-\donttest{elbv2$create_rule(
+\donttest{svc$create_rule(
   Actions = list(
     list(
       TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",

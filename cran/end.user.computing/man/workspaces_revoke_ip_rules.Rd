@@ -15,7 +15,7 @@ workspaces_revoke_ip_rules(GroupId, UserRules)
 Removes one or more rules from the specified IP access control group.
 }
 \section{Request syntax}{
-\preformatted{workspaces$revoke_ip_rules(
+\preformatted{svc$revoke_ip_rules(
   GroupId = "string",
   UserRules = list(
     "string"

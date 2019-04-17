@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' s3control$delete_public_access_block(
+#' svc$delete_public_access_block(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -55,7 +55,7 @@ s3control_delete_public_access_block <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' s3control$get_public_access_block(
+#' svc$get_public_access_block(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -96,7 +96,7 @@ s3control_get_public_access_block <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' s3control$put_public_access_block(
+#' svc$put_public_access_block(
 #'   PublicAccessBlockConfiguration = list(
 #'     BlockPublicAcls = TRUE|FALSE,
 #'     IgnorePublicAcls = TRUE|FALSE,

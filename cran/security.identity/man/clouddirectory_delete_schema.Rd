@@ -15,7 +15,7 @@ Deletes a given schema. Schemas in a development and published state can
 only be deleted.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$delete_schema(
+\preformatted{svc$delete_schema(
   SchemaArn = "string"
 )
 }

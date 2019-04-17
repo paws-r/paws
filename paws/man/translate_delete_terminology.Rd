@@ -13,7 +13,7 @@ translate_delete_terminology(Name)
 A synchronous action that deletes a custom terminology.
 }
 \section{Request syntax}{
-\preformatted{translate$delete_terminology(
+\preformatted{svc$delete_terminology(
   Name = "string"
 )
 }

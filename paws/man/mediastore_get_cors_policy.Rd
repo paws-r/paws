@@ -20,7 +20,7 @@ To use this operation, you must have permission to perform the
 this permission and can grant it to others.
 }
 \section{Request syntax}{
-\preformatted{mediastore$get_cors_policy(
+\preformatted{svc$get_cors_policy(
   ContainerName = "string"
 )
 }

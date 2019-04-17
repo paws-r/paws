@@ -31,7 +31,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$create_app(
+#' svc$create_app(
 #'   name = "string",
 #'   description = "string",
 #'   repository = "string",
@@ -103,7 +103,7 @@ amplify_create_app <- function(name, description = NULL, repository, platform, i
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$create_branch(
+#' svc$create_branch(
 #'   appId = "string",
 #'   branchName = "string",
 #'   description = "string",
@@ -158,7 +158,7 @@ amplify_create_branch <- function(appId, branchName, description = NULL, stage =
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$create_domain_association(
+#' svc$create_domain_association(
 #'   appId = "string",
 #'   domainName = "string",
 #'   enableAutoSubDomain = TRUE|FALSE,
@@ -201,7 +201,7 @@ amplify_create_domain_association <- function(appId, domainName, enableAutoSubDo
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$delete_app(
+#' svc$delete_app(
 #'   appId = "string"
 #' )
 #' ```
@@ -237,7 +237,7 @@ amplify_delete_app <- function(appId) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$delete_branch(
+#' svc$delete_branch(
 #'   appId = "string",
 #'   branchName = "string"
 #' )
@@ -274,7 +274,7 @@ amplify_delete_branch <- function(appId, branchName) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$delete_domain_association(
+#' svc$delete_domain_association(
 #'   appId = "string",
 #'   domainName = "string"
 #' )
@@ -312,7 +312,7 @@ amplify_delete_domain_association <- function(appId, domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$delete_job(
+#' svc$delete_job(
 #'   appId = "string",
 #'   branchName = "string",
 #'   jobId = "string"
@@ -349,7 +349,7 @@ amplify_delete_job <- function(appId, branchName, jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$get_app(
+#' svc$get_app(
 #'   appId = "string"
 #' )
 #' ```
@@ -385,7 +385,7 @@ amplify_get_app <- function(appId) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$get_branch(
+#' svc$get_branch(
 #'   appId = "string",
 #'   branchName = "string"
 #' )
@@ -422,7 +422,7 @@ amplify_get_branch <- function(appId, branchName) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$get_domain_association(
+#' svc$get_domain_association(
 #'   appId = "string",
 #'   domainName = "string"
 #' )
@@ -460,7 +460,7 @@ amplify_get_domain_association <- function(appId, domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$get_job(
+#' svc$get_job(
 #'   appId = "string",
 #'   branchName = "string",
 #'   jobId = "string"
@@ -499,7 +499,7 @@ amplify_get_job <- function(appId, branchName, jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$list_apps(
+#' svc$list_apps(
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -539,7 +539,7 @@ amplify_list_apps <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$list_branches(
+#' svc$list_branches(
 #'   appId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -580,7 +580,7 @@ amplify_list_branches <- function(appId, nextToken = NULL, maxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$list_domain_associations(
+#' svc$list_domain_associations(
 #'   appId = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -622,7 +622,7 @@ amplify_list_domain_associations <- function(appId, nextToken = NULL, maxResults
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$list_jobs(
+#' svc$list_jobs(
 #'   appId = "string",
 #'   branchName = "string",
 #'   nextToken = "string",
@@ -668,7 +668,7 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$start_job(
+#' svc$start_job(
 #'   appId = "string",
 #'   branchName = "string",
 #'   jobId = "string",
@@ -716,7 +716,7 @@ amplify_start_job <- function(appId, branchName, jobId = NULL, jobType, jobReaso
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$stop_job(
+#' svc$stop_job(
 #'   appId = "string",
 #'   branchName = "string",
 #'   jobId = "string"
@@ -765,7 +765,7 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$update_app(
+#' svc$update_app(
 #'   appId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -832,7 +832,7 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$update_branch(
+#' svc$update_branch(
 #'   appId = "string",
 #'   branchName = "string",
 #'   description = "string",
@@ -884,7 +884,7 @@ amplify_update_branch <- function(appId, branchName, description = NULL, framewo
 #'
 #' @section Request syntax:
 #' ```
-#' amplify$update_domain_association(
+#' svc$update_domain_association(
 #'   appId = "string",
 #'   domainName = "string",
 #'   enableAutoSubDomain = TRUE|FALSE,

@@ -18,7 +18,7 @@ representing a plan customer.}
 Gets a usage plan key of a given key identifier.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_usage_plan_key(
+\preformatted{svc$get_usage_plan_key(
   usagePlanId = "string",
   keyId = "string"
 )

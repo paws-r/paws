@@ -18,7 +18,7 @@ the new order. Any existing rules that you do not specify retain their
 current priority.
 }
 \section{Request syntax}{
-\preformatted{elbv2$set_rule_priorities(
+\preformatted{svc$set_rule_priorities(
   RulePriorities = list(
     list(
       RuleArn = "string",
@@ -31,7 +31,7 @@ current priority.
 
 \examples{
 # This example sets the priority of the specified rule.
-\donttest{elbv2$set_rule_priorities(
+\donttest{svc$set_rule_priorities(
   RulePriorities = list(
     list(
       Priority = 5L,

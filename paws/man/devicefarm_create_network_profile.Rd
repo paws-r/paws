@@ -48,7 +48,7 @@ percent.}
 Creates a network profile.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$create_network_profile(
+\preformatted{svc$create_network_profile(
   projectArn = "string",
   name = "string",
   description = "string",

@@ -12,11 +12,10 @@ NULL
 #' Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 #' Redshift, and Splunk.
 #'
-#' @section Example:
-#' ```
-#' firehose <- paws::firehose()
-#' firehose$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_delivery_stream(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

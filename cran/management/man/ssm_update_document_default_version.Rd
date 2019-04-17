@@ -17,7 +17,7 @@ version.}
 Set the default version of a document.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_document_default_version(
+\preformatted{svc$update_document_default_version(
   Name = "string",
   DocumentVersion = "string"
 )

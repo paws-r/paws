@@ -30,7 +30,7 @@ to change the status for Route 53 health checks, which you define using
 For more information, see HealthCheckCustomConfig.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$update_instance_custom_health_status(
+\preformatted{svc$update_instance_custom_health_status(
   ServiceId = "string",
   InstanceId = "string",
   Status = "HEALTHY"|"UNHEALTHY"

@@ -25,7 +25,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$describe_create_account_status(
+\preformatted{svc$describe_create_account_status(
   CreateAccountRequestId = "string"
 )
 }
@@ -37,7 +37,7 @@ account.
 # called only by a principal from the organization's master account. In
 # the example, the specified "createAccountRequestId" comes from the
 # response of the original call to "CreateAccount":
-\donttest{organizations$describe_create_account_status(
+\donttest{svc$describe_create_account_status(
   CreateAccountRequestId = "car-exampleaccountcreationrequestid"
 )}
 

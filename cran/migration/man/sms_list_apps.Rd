@@ -19,7 +19,7 @@ the returned \code{NextToken} value.}
 Returns a list of summaries for all applications.
 }
 \section{Request syntax}{
-\preformatted{sms$list_apps(
+\preformatted{svc$list_apps(
   appIds = list(
     "string"
   ),

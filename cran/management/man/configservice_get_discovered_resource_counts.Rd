@@ -69,7 +69,7 @@ resources. Wait a few minutes and then retry the
 GetDiscoveredResourceCounts action.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_discovered_resource_counts(
+\preformatted{svc$get_discovered_resource_counts(
   resourceTypes = list(
     "string"
   ),

@@ -22,7 +22,7 @@ Deletes a user's Secure Shell (SSH) public key.
 No response is returned from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$delete_ssh_public_key(
+\preformatted{svc$delete_ssh_public_key(
   ServerId = "string",
   SshPublicKeyId = "string",
   UserName = "string"

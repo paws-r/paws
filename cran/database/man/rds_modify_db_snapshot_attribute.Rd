@@ -57,7 +57,7 @@ snapshot, or whether a manual DB snapshot public or private, use the
 DescribeDBSnapshotAttributes API action.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_db_snapshot_attribute(
+\preformatted{svc$modify_db_snapshot_attribute(
   DBSnapshotIdentifier = "string",
   AttributeName = "string",
   ValuesToAdd = list(

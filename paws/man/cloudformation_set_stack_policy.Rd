@@ -24,7 +24,7 @@ as the stack. You can specify either the \code{StackPolicyBody} or the
 Sets a stack policy for a specified stack.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$set_stack_policy(
+\preformatted{svc$set_stack_policy(
   StackName = "string",
   StackPolicyBody = "string",
   StackPolicyURL = "string"

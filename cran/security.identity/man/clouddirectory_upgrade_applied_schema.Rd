@@ -28,7 +28,7 @@ multiple directories from one schema, you would need to call this API on
 each directory.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$upgrade_applied_schema(
+\preformatted{svc$upgrade_applied_schema(
   PublishedSchemaArn = "string",
   DirectoryArn = "string",
   DryRun = TRUE|FALSE

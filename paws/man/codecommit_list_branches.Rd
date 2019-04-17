@@ -15,7 +15,7 @@ codecommit_list_branches(repositoryName, nextToken)
 Gets information about one or more branches in a repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$list_branches(
+\preformatted{svc$list_branches(
   repositoryName = "string",
   nextToken = "string"
 )

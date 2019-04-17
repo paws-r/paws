@@ -59,7 +59,7 @@ determine the possible dimension values. Currently, you can group only
 by \code{SUBSCRIPTION_ID}.
 }
 \section{Request syntax}{
-\preformatted{costexplorer$get_reservation_utilization(
+\preformatted{svc$get_reservation_utilization(
   TimePeriod = list(
     Start = "string",
     End = "string"

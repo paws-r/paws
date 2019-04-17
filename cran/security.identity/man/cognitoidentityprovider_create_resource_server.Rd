@@ -23,7 +23,7 @@ be an HTTPS endpoint where the resource server is located. For example,
 Creates a new OAuth2.0 resource server and defines custom scopes in it.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$create_resource_server(
+\preformatted{svc$create_resource_server(
   UserPoolId = "string",
   Identifier = "string",
   Name = "string",

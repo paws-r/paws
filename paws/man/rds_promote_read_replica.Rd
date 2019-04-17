@@ -62,7 +62,7 @@ daily backups do not interfere with Read Replica promotion.
 }
 }
 \section{Request syntax}{
-\preformatted{rds$promote_read_replica(
+\preformatted{svc$promote_read_replica(
   DBInstanceIdentifier = "string",
   BackupRetentionPeriod = 123,
   PreferredBackupWindow = "string"

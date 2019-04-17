@@ -41,7 +41,7 @@ Lists notebook instance lifestyle configurations created with the
 CreateNotebookInstanceLifecycleConfig API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_notebook_instance_lifecycle_configs(
+\preformatted{svc$list_notebook_instance_lifecycle_configs(
   NextToken = "string",
   MaxResults = 123,
   SortBy = "Name"|"CreationTime"|"LastModifiedTime",

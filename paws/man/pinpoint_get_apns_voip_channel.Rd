@@ -13,7 +13,7 @@ pinpoint_get_apns_voip_channel(ApplicationId)
 Get an APNS VoIP channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_apns_voip_channel(
+\preformatted{svc$get_apns_voip_channel(
   ApplicationId = "string"
 )
 }

@@ -51,7 +51,7 @@ increase in the call rate limit, the shard limit for this API, or your
 overall shard limit, use the \href{https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis}{limits form}.
 }
 \section{Request syntax}{
-\preformatted{kinesis$update_shard_count(
+\preformatted{svc$update_shard_count(
   StreamName = "string",
   TargetShardCount = 123,
   ScalingType = "UNIFORM_SCALING"

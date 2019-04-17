@@ -25,7 +25,7 @@ The specified database subnet group must not be associated with any DB
 instances.
 }
 \section{Request syntax}{
-\preformatted{docdb$delete_db_subnet_group(
+\preformatted{svc$delete_db_subnet_group(
   DBSubnetGroupName = "string"
 )
 }

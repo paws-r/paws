@@ -16,7 +16,7 @@ Disassociates the Security Hub member accounts that are specified by the
 account IDs from their master account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$disassociate_members(
+\preformatted{svc$disassociate_members(
   AccountIds = list(
     "string"
   )

@@ -51,7 +51,7 @@ can be submitted as needed.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$accept_match(
+\preformatted{svc$accept_match(
   TicketId = "string",
   PlayerIds = list(
     "string"

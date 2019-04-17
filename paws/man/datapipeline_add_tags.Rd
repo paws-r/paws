@@ -15,7 +15,7 @@ datapipeline_add_tags(pipelineId, tags)
 Adds or modifies tags for the specified pipeline.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$add_tags(
+\preformatted{svc$add_tags(
   pipelineId = "string",
   tags = list(
     list(

@@ -67,7 +67,7 @@ File gateways don't support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_smb_file_share(
+\preformatted{svc$update_smb_file_share(
   FileShareARN = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",

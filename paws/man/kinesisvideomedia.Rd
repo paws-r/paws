@@ -9,12 +9,6 @@ kinesisvideomedia()
 \description{
 Amazon Kinesis Video Streams Media
 }
-\section{Example}{
-\preformatted{kinesisvideomedia <- paws::kinesisvideomedia()
-kinesisvideomedia$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -22,3 +16,9 @@ kinesisvideomedia$operation()
 }
 }
 
+\examples{
+\donttest{svc$get_media(
+  Foo = 123
+)}
+
+}

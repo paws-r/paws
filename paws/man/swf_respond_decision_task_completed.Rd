@@ -44,7 +44,7 @@ parameters. For more information, see \href{http://docs.aws.amazon.com/amazonswf
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$respond_decision_task_completed(
+\preformatted{svc$respond_decision_task_completed(
   taskToken = "string",
   decisions = list(
     list(

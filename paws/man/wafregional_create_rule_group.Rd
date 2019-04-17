@@ -35,7 +35,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{wafregional$create_rule_group(
+\preformatted{svc$create_rule_group(
   Name = "string",
   MetricName = "string",
   ChangeToken = "string"

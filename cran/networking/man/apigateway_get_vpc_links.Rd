@@ -18,7 +18,7 @@ Gets the VpcLinks collection under the caller's account in a selected
 region.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_vpc_links(
+\preformatted{svc$get_vpc_links(
   position = "string",
   limit = 123
 )

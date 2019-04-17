@@ -20,7 +20,7 @@ EC2-Classic instance. For more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$enable_vpc_classic_link_dns_support(
+\preformatted{svc$enable_vpc_classic_link_dns_support(
   VpcId = "string"
 )
 }

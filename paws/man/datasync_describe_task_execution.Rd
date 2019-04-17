@@ -13,7 +13,7 @@ datasync_describe_task_execution(TaskExecutionArn)
 Returns detailed metadata about a task that is being executed.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_task_execution(
+\preformatted{svc$describe_task_execution(
   TaskExecutionArn = "string"
 )
 }

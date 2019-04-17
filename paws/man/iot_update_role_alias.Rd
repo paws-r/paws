@@ -17,7 +17,7 @@ iot_update_role_alias(roleAlias, roleArn, credentialDurationSeconds)
 Updates a role alias.
 }
 \section{Request syntax}{
-\preformatted{iot$update_role_alias(
+\preformatted{svc$update_role_alias(
   roleAlias = "string",
   roleArn = "string",
   credentialDurationSeconds = 123

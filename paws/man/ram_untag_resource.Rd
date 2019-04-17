@@ -15,7 +15,7 @@ ram_untag_resource(resourceShareArn, tagKeys)
 Removes the specified tags from the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$untag_resource(
+\preformatted{svc$untag_resource(
   resourceShareArn = "string",
   tagKeys = list(
     "string"

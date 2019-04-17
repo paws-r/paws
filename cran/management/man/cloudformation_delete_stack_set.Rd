@@ -16,7 +16,7 @@ member stack instances must be deleted. For more information about how
 to do this, see DeleteStackInstances.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$delete_stack_set(
+\preformatted{svc$delete_stack_set(
   StackSetName = "string"
 )
 }

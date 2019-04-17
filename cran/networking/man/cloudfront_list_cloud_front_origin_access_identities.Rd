@@ -20,7 +20,7 @@ body.}
 Lists origin access identities.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_cloud_front_origin_access_identities(
+\preformatted{svc$list_cloud_front_origin_access_identities(
   Marker = "string",
   MaxItems = "string"
 )

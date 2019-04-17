@@ -20,7 +20,7 @@ Gets the user attribute verification code for the specified attribute
 name.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_user_attribute_verification_code(
+\preformatted{svc$get_user_attribute_verification_code(
   AccessToken = "string",
   AttributeName = "string"
 )

@@ -13,7 +13,7 @@ codedeploy_batch_get_on_premises_instances(instanceNames)
 Gets information about one or more on-premises instances.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_on_premises_instances(
+\preformatted{svc$batch_get_on_premises_instances(
   instanceNames = list(
     "string"
   )

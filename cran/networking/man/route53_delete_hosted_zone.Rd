@@ -45,7 +45,7 @@ associated with the current AWS account.
 }
 }
 \section{Request syntax}{
-\preformatted{route53$delete_hosted_zone(
+\preformatted{svc$delete_hosted_zone(
   Id = "string"
 )
 }

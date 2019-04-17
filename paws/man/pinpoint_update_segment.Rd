@@ -17,7 +17,7 @@ pinpoint_update_segment(ApplicationId, SegmentId, WriteSegmentRequest)
 Used to update a segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_segment(
+\preformatted{svc$update_segment(
   ApplicationId = "string",
   SegmentId = "string",
   WriteSegmentRequest = list(

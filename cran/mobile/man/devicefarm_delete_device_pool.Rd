@@ -15,7 +15,7 @@ Deletes a device pool given the pool ARN. Does not allow deletion of
 curated pools owned by the system.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_device_pool(
+\preformatted{svc$delete_device_pool(
   arn = "string"
 )
 }
@@ -23,7 +23,7 @@ curated pools owned by the system.
 
 \examples{
 # The following example deletes a specific device pool.
-\donttest{devicefarm$delete_device_pool(
+\donttest{svc$delete_device_pool(
   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
 )}
 

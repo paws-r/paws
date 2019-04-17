@@ -32,7 +32,7 @@ status transition is eventually consistent). When the update is complete
 (either \code{Failed} or \code{Successful}), the cluster status moves to \code{Active}.
 }
 \section{Request syntax}{
-\preformatted{eks$update_cluster_config(
+\preformatted{svc$update_cluster_config(
   name = "string",
   resourcesVpcConfig = list(
     subnetIds = list(

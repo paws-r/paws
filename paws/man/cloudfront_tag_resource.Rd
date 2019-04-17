@@ -15,7 +15,7 @@ cloudfront_tag_resource(Resource, Tags)
 Add tags to a CloudFront resource.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$tag_resource(
+\preformatted{svc$tag_resource(
   Resource = "string",
   Tags = list(
     Items = list(

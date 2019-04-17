@@ -18,7 +18,7 @@ Configures the access rules that control access to the domain's
 document and search endpoints. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for an Amazon CloudSearch Domain}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$update_service_access_policies(
+\preformatted{svc$update_service_access_policies(
   DomainName = "string",
   AccessPolicies = "string"
 )

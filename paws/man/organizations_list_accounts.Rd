@@ -39,7 +39,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_accounts(
+\preformatted{svc$list_accounts(
   NextToken = "string",
   MaxResults = 123
 )
@@ -49,7 +49,7 @@ account.
 \examples{
 # The following example shows you how to request a list of the accounts in
 # an organization:
-\donttest{organizations$list_accounts()}
+\donttest{svc$list_accounts()}
 
 }
 \keyword{internal}

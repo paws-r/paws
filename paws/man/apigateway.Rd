@@ -13,12 +13,6 @@ securely connect mobile and web applications to APIs that run on AWS
 Lambda, Amazon EC2, or other publicly addressable web services that are
 hosted outside of AWS.
 }
-\section{Example}{
-\preformatted{apigateway <- paws::apigateway()
-apigateway$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -145,3 +139,9 @@ apigateway$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_api_key(
+  Foo = 123
+)}
+
+}

@@ -16,7 +16,7 @@ or AWS account.}
 Deletes a deployment group.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$delete_deployment_group(
+\preformatted{svc$delete_deployment_group(
   applicationName = "string",
   deploymentGroupName = "string"
 )

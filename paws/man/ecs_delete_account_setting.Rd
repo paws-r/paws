@@ -29,7 +29,7 @@ whether the new ARN and resource ID format are disabled for new
 resources that are created.
 }
 \section{Request syntax}{
-\preformatted{ecs$delete_account_setting(
+\preformatted{svc$delete_account_setting(
   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
   principalArn = "string"
 )
@@ -39,14 +39,14 @@ resources that are created.
 \examples{
 # This example deletes the account setting for your user for the specified
 # resource type.
-\donttest{ecs$delete_account_setting(
+\donttest{svc$delete_account_setting(
   name = "serviceLongArnFormat"
 )}
 
 # This example deletes the account setting for a specific IAM user or IAM
 # role for the specified resource type. Only the root user can view or
 # modify the account settings for another user.
-\donttest{ecs$delete_account_setting(
+\donttest{svc$delete_account_setting(
   name = "containerInstanceLongArnFormat",
   principalArn = "arn:aws:iam::<aws_account_id>:user/principalName"
 )}

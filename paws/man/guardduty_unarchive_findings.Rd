@@ -16,7 +16,7 @@ guardduty_unarchive_findings(DetectorId, FindingIds)
 Unarchives Amazon GuardDuty findings specified by the list of finding IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$unarchive_findings(
+\preformatted{svc$unarchive_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"

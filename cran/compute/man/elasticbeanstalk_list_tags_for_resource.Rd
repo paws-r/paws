@@ -21,7 +21,7 @@ Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
 environments. For details about environment tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

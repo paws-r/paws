@@ -20,7 +20,7 @@ object.}
 Performs all the read operations in a batch.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$batch_read(
+\preformatted{svc$batch_read(
   DirectoryArn = "string",
   Operations = list(
     list(

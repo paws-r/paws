@@ -115,7 +115,7 @@ the value specified by \code{MaxRecords}.}
 Lists available reserved cache node offerings.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_reserved_cache_nodes_offerings(
+\preformatted{svc$describe_reserved_cache_nodes_offerings(
   ReservedCacheNodesOfferingId = "string",
   CacheNodeType = "string",
   Duration = "string",

@@ -24,7 +24,7 @@ result will be the API Gateway-generated default GatewayResponses
 collection for the supported response types.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_gateway_responses(
+\preformatted{svc$get_gateway_responses(
   restApiId = "string",
   position = "string",
   limit = 123

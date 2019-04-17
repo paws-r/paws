@@ -17,7 +17,7 @@ Deletes the workgroup with the specified name. The primary workgroup
 cannot be deleted.
 }
 \section{Request syntax}{
-\preformatted{athena$delete_work_group(
+\preformatted{svc$delete_work_group(
   WorkGroup = "string",
   RecursiveDeleteOption = TRUE|FALSE
 )

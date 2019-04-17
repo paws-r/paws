@@ -70,7 +70,7 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_parameter_groups(
+\preformatted{svc$describe_cluster_parameter_groups(
   ParameterGroupName = "string",
   MaxRecords = 123,
   Marker = "string",

@@ -18,7 +18,7 @@ identity was created and any associated linked logins.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$describe_identity(
+\preformatted{svc$describe_identity(
   IdentityId = "string"
 )
 }

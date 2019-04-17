@@ -15,7 +15,7 @@ apigatewayv2_get_route(ApiId, RouteId)
 Gets a Route.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_route(
+\preformatted{svc$get_route(
   ApiId = "string",
   RouteId = "string"
 )

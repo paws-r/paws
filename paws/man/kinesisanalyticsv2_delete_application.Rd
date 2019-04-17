@@ -16,7 +16,7 @@ Deletes the specified application. Kinesis Data Analytics halts
 application execution and deletes the application.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$delete_application(
+\preformatted{svc$delete_application(
   ApplicationName = "string",
   CreateTimestamp = as.POSIXct(
     "2015-01-01"

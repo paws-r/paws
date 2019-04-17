@@ -21,7 +21,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$configure_health_check(
+\preformatted{svc$configure_health_check(
   LoadBalancerName = "string",
   HealthCheck = list(
     Target = "string",
@@ -37,7 +37,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example specifies the health check settings used to evaluate the
 # health of your backend EC2 instances.
-\donttest{elb$configure_health_check(
+\donttest{svc$configure_health_check(
   HealthCheck = list(
     HealthyThreshold = 2L,
     Interval = 30L,

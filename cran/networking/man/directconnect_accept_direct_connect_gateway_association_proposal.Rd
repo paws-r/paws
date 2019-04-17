@@ -24,7 +24,7 @@ Accepts a proposal request to attach a virtual private gateway to a
 Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$accept_direct_connect_gateway_association_proposal(
+\preformatted{svc$accept_direct_connect_gateway_association_proposal(
   directConnectGatewayId = "string",
   proposalId = "string",
   associatedGatewayOwnerAccount = "string",

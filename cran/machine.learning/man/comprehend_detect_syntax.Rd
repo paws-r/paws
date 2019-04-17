@@ -18,7 +18,7 @@ Inspects text for syntax and the part of speech of words in the
 document. For more information, how-syntax.
 }
 \section{Request syntax}{
-\preformatted{comprehend$detect_syntax(
+\preformatted{svc$detect_syntax(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )

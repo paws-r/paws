@@ -23,7 +23,7 @@ code.}
 Represents a get integration response.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_integration_response(
+\preformatted{svc$get_integration_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

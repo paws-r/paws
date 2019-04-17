@@ -43,7 +43,7 @@ information, DNS server, and description. Modifying the DNS server
 resets existing client connections.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_client_vpn_endpoint(
+\preformatted{svc$modify_client_vpn_endpoint(
   ClientVpnEndpointId = "string",
   ServerCertificateArn = "string",
   ConnectionLogOptions = list(

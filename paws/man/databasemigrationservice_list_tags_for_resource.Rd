@@ -14,7 +14,7 @@ DMS resource.}
 Lists all tags for an AWS DMS resource.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }
@@ -22,7 +22,7 @@ Lists all tags for an AWS DMS resource.
 
 \examples{
 # Lists all tags for an AWS DMS resource.
-\donttest{databasemigrationservice$list_tags_for_resource(
+\donttest{svc$list_tags_for_resource(
   ResourceArn = ""
 )}
 

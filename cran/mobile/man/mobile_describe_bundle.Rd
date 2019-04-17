@@ -13,7 +13,7 @@ mobile_describe_bundle(bundleId)
 Get the bundle details for the requested bundle id.
 }
 \section{Request syntax}{
-\preformatted{mobile$describe_bundle(
+\preformatted{svc$describe_bundle(
   bundleId = "string"
 )
 }

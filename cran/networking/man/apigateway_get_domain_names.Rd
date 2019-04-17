@@ -16,7 +16,7 @@ and the maximum value is 500.}
 Represents a collection of DomainName resources.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_domain_names(
+\preformatted{svc$get_domain_names(
   position = "string",
   limit = 123
 )

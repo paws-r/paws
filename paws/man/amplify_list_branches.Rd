@@ -19,7 +19,7 @@ in here to list more branches.}
 Lists branches for an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$list_branches(
+\preformatted{svc$list_branches(
   appId = "string",
   nextToken = "string",
   maxResults = 123

@@ -28,7 +28,7 @@ request is not completed successfully, the domain registrant will be
 notified by email.
 }
 \section{Request syntax}{
-\preformatted{route53domains$update_domain_contact(
+\preformatted{svc$update_domain_contact(
   DomainName = "string",
   AdminContact = list(
     FirstName = "string",

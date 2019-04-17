@@ -23,7 +23,7 @@ internet and the VPC. For more information about your VPC and internet
 gateway, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$attach_internet_gateway(
+\preformatted{svc$attach_internet_gateway(
   DryRun = TRUE|FALSE,
   InternetGatewayId = "string",
   VpcId = "string"
@@ -34,7 +34,7 @@ gateway, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{
 \examples{
 # This example attaches the specified Internet gateway to the specified
 # VPC.
-\donttest{ec2$attach_internet_gateway(
+\donttest{svc$attach_internet_gateway(
   InternetGatewayId = "igw-c0a643a9",
   VpcId = "vpc-a01106c2"
 )}

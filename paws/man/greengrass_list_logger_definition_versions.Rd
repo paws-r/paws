@@ -18,7 +18,7 @@ greengrass_list_logger_definition_versions(LoggerDefinitionId,
 Lists the versions of a logger definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_logger_definition_versions(
+\preformatted{svc$list_logger_definition_versions(
   LoggerDefinitionId = "string",
   MaxResults = "string",
   NextToken = "string"

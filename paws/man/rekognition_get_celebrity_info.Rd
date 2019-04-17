@@ -26,7 +26,7 @@ This operation requires permissions to perform the
 \code{rekognition:GetCelebrityInfo} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$get_celebrity_info(
+\preformatted{svc$get_celebrity_info(
   Id = "string"
 )
 }

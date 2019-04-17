@@ -23,7 +23,7 @@ Lists the Device Defender security profiles attached to a target (thing
 group).
 }
 \section{Request syntax}{
-\preformatted{iot$list_security_profiles_for_target(
+\preformatted{svc$list_security_profiles_for_target(
   nextToken = "string",
   maxResults = 123,
   recursive = TRUE|FALSE,

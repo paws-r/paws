@@ -96,7 +96,7 @@ For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon R
 }
 }
 \section{Request syntax}{
-\preformatted{route53domains$register_domain(
+\preformatted{svc$register_domain(
   DomainName = "string",
   IdnLangCode = "string",
   DurationInYears = 123,

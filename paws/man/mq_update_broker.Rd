@@ -22,7 +22,7 @@ mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
 Adds a pending configuration change to a broker.
 }
 \section{Request syntax}{
-\preformatted{mq$update_broker(
+\preformatted{svc$update_broker(
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerId = "string",
   Configuration = list(

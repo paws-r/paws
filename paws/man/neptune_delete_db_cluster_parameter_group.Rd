@@ -21,7 +21,7 @@ Deletes a specified DB cluster parameter group. The DB cluster parameter
 group to be deleted can't be associated with any DB clusters.
 }
 \section{Request syntax}{
-\preformatted{neptune$delete_db_cluster_parameter_group(
+\preformatted{svc$delete_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string"
 )
 }

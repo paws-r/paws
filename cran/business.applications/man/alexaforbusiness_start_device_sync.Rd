@@ -20,7 +20,7 @@ Resets a device and its account to the known default settings, by
 clearing all information and settings set by previous users.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$start_device_sync(
+\preformatted{svc$start_device_sync(
   RoomArn = "string",
   DeviceArn = "string",
   Features = list(

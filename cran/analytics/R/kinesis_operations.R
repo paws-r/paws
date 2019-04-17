@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$add_tags_to_stream(
+#' svc$add_tags_to_stream(
 #'   StreamName = "string",
 #'   Tags = list(
 #'     "string"
@@ -113,7 +113,7 @@ kinesis_add_tags_to_stream <- function(StreamName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$create_stream(
+#' svc$create_stream(
 #'   StreamName = "string",
 #'   ShardCount = 123
 #' )
@@ -160,7 +160,7 @@ kinesis_create_stream <- function(StreamName, ShardCount) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$decrease_stream_retention_period(
+#' svc$decrease_stream_retention_period(
 #'   StreamName = "string",
 #'   RetentionPeriodHours = 123
 #' )
@@ -218,7 +218,7 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$delete_stream(
+#' svc$delete_stream(
 #'   StreamName = "string",
 #'   EnforceConsumerDeletion = TRUE|FALSE
 #' )
@@ -272,7 +272,7 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$deregister_stream_consumer(
+#' svc$deregister_stream_consumer(
 #'   StreamARN = "string",
 #'   ConsumerName = "string",
 #'   ConsumerARN = "string"
@@ -312,7 +312,7 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$describe_limits()
+#' svc$describe_limits()
 #' ```
 #'
 #' @keywords internal
@@ -368,7 +368,7 @@ kinesis_describe_limits <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$describe_stream(
+#' svc$describe_stream(
 #'   StreamName = "string",
 #'   Limit = 123,
 #'   ExclusiveStartShardId = "string"
@@ -420,7 +420,7 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$describe_stream_consumer(
+#' svc$describe_stream_consumer(
 #'   StreamARN = "string",
 #'   ConsumerName = "string",
 #'   ConsumerARN = "string"
@@ -463,7 +463,7 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$describe_stream_summary(
+#' svc$describe_stream_summary(
 #'   StreamName = "string"
 #' )
 #' ```
@@ -524,7 +524,7 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$disable_enhanced_monitoring(
+#' svc$disable_enhanced_monitoring(
 #'   StreamName = "string",
 #'   ShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
@@ -587,7 +587,7 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$enable_enhanced_monitoring(
+#' svc$enable_enhanced_monitoring(
 #'   StreamName = "string",
 #'   ShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
@@ -692,7 +692,7 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$get_records(
+#' svc$get_records(
 #'   ShardIterator = "string",
 #'   Limit = 123
 #' )
@@ -803,7 +803,7 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$get_shard_iterator(
+#' svc$get_shard_iterator(
 #'   StreamName = "string",
 #'   ShardId = "string",
 #'   ShardIteratorType = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
@@ -860,7 +860,7 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$increase_stream_retention_period(
+#' svc$increase_stream_retention_period(
 #'   StreamName = "string",
 #'   RetentionPeriodHours = 123
 #' )
@@ -954,7 +954,7 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$list_shards(
+#' svc$list_shards(
 #'   StreamName = "string",
 #'   NextToken = "string",
 #'   ExclusiveStartShardId = "string",
@@ -1035,7 +1035,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$list_stream_consumers(
+#' svc$list_stream_consumers(
 #'   StreamARN = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -1093,7 +1093,7 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$list_streams(
+#' svc$list_streams(
 #'   Limit = 123,
 #'   ExclusiveStartStreamName = "string"
 #' )
@@ -1137,7 +1137,7 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$list_tags_for_stream(
+#' svc$list_tags_for_stream(
 #'   StreamName = "string",
 #'   ExclusiveStartTagKey = "string",
 #'   Limit = 123
@@ -1219,7 +1219,7 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$merge_shards(
+#' svc$merge_shards(
 #'   StreamName = "string",
 #'   ShardToMerge = "string",
 #'   AdjacentShardToMerge = "string"
@@ -1323,7 +1323,7 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$put_record(
+#' svc$put_record(
 #'   StreamName = "string",
 #'   Data = raw,
 #'   PartitionKey = "string",
@@ -1429,7 +1429,7 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$put_records(
+#' svc$put_records(
 #'   Records = list(
 #'     list(
 #'       Data = raw,
@@ -1484,7 +1484,7 @@ kinesis_put_records <- function(Records, StreamName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$register_stream_consumer(
+#' svc$register_stream_consumer(
 #'   StreamARN = "string",
 #'   ConsumerName = "string"
 #' )
@@ -1528,7 +1528,7 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$remove_tags_from_stream(
+#' svc$remove_tags_from_stream(
 #'   StreamName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1627,7 +1627,7 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$split_shard(
+#' svc$split_shard(
 #'   StreamName = "string",
 #'   ShardToSplit = "string",
 #'   NewStartingHashKey = "string"
@@ -1702,7 +1702,7 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$start_stream_encryption(
+#' svc$start_stream_encryption(
 #'   StreamName = "string",
 #'   EncryptionType = "NONE"|"KMS",
 #'   KeyId = "string"
@@ -1777,7 +1777,7 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$stop_stream_encryption(
+#' svc$stop_stream_encryption(
 #'   StreamName = "string",
 #'   EncryptionType = "NONE"|"KMS",
 #'   KeyId = "string"
@@ -1855,7 +1855,7 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesis$update_shard_count(
+#' svc$update_shard_count(
 #'   StreamName = "string",
 #'   TargetShardCount = 123,
 #'   ScalingType = "UNIFORM_SCALING"

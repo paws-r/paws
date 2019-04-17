@@ -14,7 +14,7 @@ sent to the current member account, not including the currently accepted
 invitation.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_invitations_count()
+\preformatted{svc$get_invitations_count()
 }
 }
 

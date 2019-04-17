@@ -21,11 +21,10 @@ NULL
 #' [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
-#' @section Example:
-#' ```
-#' costexplorer <- paws::costexplorer()
-#' costexplorer$operation()
-#' ```
+#' @examples
+#' \donttest{svc$get_cost_and_usage(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

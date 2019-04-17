@@ -33,7 +33,7 @@ in the path. You can limit the maximum number of levels. You can also
 request the names of the parent folders.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_document_path(
+\preformatted{svc$get_document_path(
   AuthenticationToken = "string",
   DocumentId = "string",
   Limit = 123,

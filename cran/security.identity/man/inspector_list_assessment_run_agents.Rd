@@ -33,7 +33,7 @@ Lists the agents of the assessment runs that are specified by the ARNs
 of the assessment runs.
 }
 \section{Request syntax}{
-\preformatted{inspector$list_assessment_run_agents(
+\preformatted{svc$list_assessment_run_agents(
   assessmentRunArn = "string",
   filter = list(
     agentHealths = list(
@@ -52,7 +52,7 @@ of the assessment runs.
 \examples{
 # Lists the agents of the assessment runs that are specified by the ARNs
 # of the assessment runs.
-\donttest{inspector$list_assessment_run_agents(
+\donttest{svc$list_assessment_run_agents(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-...",
   maxResults = 123L
 )}

@@ -15,7 +15,7 @@ xray_delete_group(GroupName, GroupARN)
 Deletes a group resource.
 }
 \section{Request syntax}{
-\preformatted{xray$delete_group(
+\preformatted{svc$delete_group(
   GroupName = "string",
   GroupARN = "string"
 )

@@ -17,7 +17,7 @@ Lists the Amazon Chime Voice Connectors for the administrator's AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{chime$list_voice_connectors(
+\preformatted{svc$list_voice_connectors(
   NextToken = "string",
   MaxResults = 123
 )

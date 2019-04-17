@@ -48,7 +48,7 @@ Adds or updates a file in a branch in an AWS CodeCommit repository, and
 generates a commit for the addition in the specified branch.
 }
 \section{Request syntax}{
-\preformatted{codecommit$put_file(
+\preformatted{svc$put_file(
   repositoryName = "string",
   branchName = "string",
   fileContent = raw,

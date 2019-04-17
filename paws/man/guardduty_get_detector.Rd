@@ -13,7 +13,7 @@ guardduty_get_detector(DetectorId)
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_detector(
+\preformatted{svc$get_detector(
   DetectorId = "string"
 )
 }

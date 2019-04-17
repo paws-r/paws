@@ -27,7 +27,7 @@ Gets information about the specified provisioning artifact (also known
 as a version) for the specified product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_provisioning_artifact(
+\preformatted{svc$describe_provisioning_artifact(
   AcceptLanguage = "string",
   ProvisioningArtifactId = "string",
   ProductId = "string",

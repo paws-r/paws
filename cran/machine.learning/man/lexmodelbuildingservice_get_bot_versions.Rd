@@ -33,7 +33,7 @@ The \code{GetBotVersions} operation always returns at least one version, the
 This operation requires permissions for the \code{lex:GetBotVersions} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot_versions(
+\preformatted{svc$get_bot_versions(
   name = "string",
   nextToken = "string",
   maxResults = 123

@@ -36,7 +36,7 @@ If do not intend to use the gateway again, you must delete the gateway
 the gateway.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$shutdown_gateway(
+\preformatted{svc$shutdown_gateway(
   GatewayARN = "string"
 )
 }
@@ -45,7 +45,7 @@ the gateway.
 \examples{
 # This operation shuts down the gateway service component running in the
 # storage gateway's virtual machine (VM) and not the VM.
-\donttest{storagegateway$shutdown_gateway(
+\donttest{svc$shutdown_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
 )}
 

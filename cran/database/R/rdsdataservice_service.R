@@ -7,11 +7,10 @@ NULL
 #' @description
 #' AWS RDS DataService provides Http Endpoint to query RDS databases.
 #'
-#' @section Example:
-#' ```
-#' rdsdataservice <- paws::rdsdataservice()
-#' rdsdataservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$execute_sql(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

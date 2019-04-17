@@ -17,7 +17,7 @@ for more information.}
 Provisions a thing.
 }
 \section{Request syntax}{
-\preformatted{iot$register_thing(
+\preformatted{svc$register_thing(
   templateBody = "string",
   parameters = list(
     "string"

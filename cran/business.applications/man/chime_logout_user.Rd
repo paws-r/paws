@@ -17,7 +17,7 @@ Logs out the specified user from all of the devices they are currently
 logged into.
 }
 \section{Request syntax}{
-\preformatted{chime$logout_user(
+\preformatted{svc$logout_user(
   AccountId = "string",
   UserId = "string"
 )

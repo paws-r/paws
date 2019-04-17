@@ -17,7 +17,7 @@ credentials.}
 Permanently deletes the specified folder and its contents.
 }
 \section{Request syntax}{
-\preformatted{workdocs$delete_folder(
+\preformatted{svc$delete_folder(
   AuthenticationToken = "string",
   FolderId = "string"
 )

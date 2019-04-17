@@ -16,7 +16,7 @@ Adds to or modifies the tags of the given resource. Tags are metadata
 which can be used to manage a resource.
 }
 \section{Request syntax}{
-\preformatted{iot$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(

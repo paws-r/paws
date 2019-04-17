@@ -15,7 +15,7 @@ mediaconvert_tag_resource(Arn, Tags)
 Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$tag_resource(
+\preformatted{svc$tag_resource(
   Arn = "string",
   Tags = list(
     "string"

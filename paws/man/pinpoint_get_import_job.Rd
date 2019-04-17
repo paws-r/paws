@@ -15,7 +15,7 @@ pinpoint_get_import_job(ApplicationId, JobId)
 Returns information about an import job.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_import_job(
+\preformatted{svc$get_import_job(
   ApplicationId = "string",
   JobId = "string"
 )

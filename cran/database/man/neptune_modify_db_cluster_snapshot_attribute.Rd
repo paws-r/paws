@@ -58,7 +58,7 @@ cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 }
 \section{Request syntax}{
-\preformatted{neptune$modify_db_cluster_snapshot_attribute(
+\preformatted{svc$modify_db_cluster_snapshot_attribute(
   DBClusterSnapshotIdentifier = "string",
   AttributeName = "string",
   ValuesToAdd = list(

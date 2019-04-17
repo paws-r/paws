@@ -14,12 +14,6 @@ developers who need detailed information about the AWS Firewall Manager
 API actions, data types, and errors. For detailed information about AWS
 Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{AWS Firewall Manager Developer Guide}.
 }
-\section{Example}{
-\preformatted{fms <- paws::fms()
-fms$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -40,3 +34,9 @@ fms$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_admin_account(
+  Foo = 123
+)}
+
+}

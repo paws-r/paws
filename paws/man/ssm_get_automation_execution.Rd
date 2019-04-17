@@ -15,7 +15,7 @@ execution of an Automation document is initiated.}
 Get detailed information about a particular Automation execution.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_automation_execution(
+\preformatted{svc$get_automation_execution(
   AutomationExecutionId = "string"
 )
 }

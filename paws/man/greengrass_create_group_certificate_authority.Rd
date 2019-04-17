@@ -15,7 +15,7 @@ greengrass_create_group_certificate_authority(AmznClientToken, GroupId)
 Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_group_certificate_authority(
+\preformatted{svc$create_group_certificate_authority(
   AmznClientToken = "string",
   GroupId = "string"
 )

@@ -15,7 +15,7 @@ Returns the stack policy for a specified stack. If a stack doesn't have
 a policy, a null value is returned.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$get_stack_policy(
+\preformatted{svc$get_stack_policy(
   StackName = "string"
 )
 }

@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Amazon API Gateway V2
 #'
-#' @section Example:
-#' ```
-#' apigatewayv2 <- paws::apigatewayv2()
-#' apigatewayv2$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_api(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

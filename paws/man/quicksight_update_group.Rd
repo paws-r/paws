@@ -30,7 +30,7 @@ The response is a group object.
 \code{aws quicksight update-group --aws-account-id=111122223333 --namespace=default --group-name=Sales --description="Sales BI Dashboards" }
 }
 \section{Request syntax}{
-\preformatted{quicksight$update_group(
+\preformatted{svc$update_group(
   GroupName = "string",
   Description = "string",
   AwsAccountId = "string",

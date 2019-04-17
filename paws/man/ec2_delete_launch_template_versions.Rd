@@ -29,7 +29,7 @@ the launch template, you must delete the entire launch template using
 DeleteLaunchTemplate.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_launch_template_versions(
+\preformatted{svc$delete_launch_template_versions(
   DryRun = TRUE|FALSE,
   LaunchTemplateId = "string",
   LaunchTemplateName = "string",
@@ -42,7 +42,7 @@ DeleteLaunchTemplate.
 
 \examples{
 # This example deletes the specified launch template version.
-\donttest{ec2$delete_launch_template_versions(
+\donttest{svc$delete_launch_template_versions(
   LaunchTemplateId = "lt-0abcd290751193123",
   Versions = list(
     "1"

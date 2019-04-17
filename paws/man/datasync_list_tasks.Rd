@@ -16,7 +16,7 @@ list of tasks.}
 Returns a list of all the tasks.
 }
 \section{Request syntax}{
-\preformatted{datasync$list_tasks(
+\preformatted{svc$list_tasks(
   MaxResults = 123,
   NextToken = "string"
 )

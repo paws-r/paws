@@ -32,7 +32,7 @@ Returns information about replication instances for your account in the
 current region.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_replication_instances(
+\preformatted{svc$describe_replication_instances(
   Filters = list(
     list(
       Name = "string",
@@ -49,7 +49,7 @@ current region.
 
 \examples{
 # Returns the status of the refresh-schemas operation.
-\donttest{databasemigrationservice$describe_replication_instances(
+\donttest{svc$describe_replication_instances(
   Filters = list(
     list(
       Name = "string",

@@ -17,7 +17,7 @@ the next page of results in a paginated response.}
 Returns details about your AWS Config rules.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_config_rules(
+\preformatted{svc$describe_config_rules(
   ConfigRuleNames = list(
     "string"
   ),

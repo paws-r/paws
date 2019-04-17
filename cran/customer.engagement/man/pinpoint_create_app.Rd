@@ -13,7 +13,7 @@ pinpoint_create_app(CreateApplicationRequest)
 Creates or updates an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$create_app(
+\preformatted{svc$create_app(
   CreateApplicationRequest = list(
     Name = "string",
     tags = list(

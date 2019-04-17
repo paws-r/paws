@@ -18,7 +18,7 @@ Lists all of the Cognito identity pools registered for your account.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$list_identity_pools(
+\preformatted{svc$list_identity_pools(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -81,7 +81,7 @@ After 63 days, the data is further aggregated and is available with a
 resolution of 1 hour.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$get_metric_data(
+\preformatted{svc$get_metric_data(
   MetricDataQueries = list(
     list(
       Id = "string",

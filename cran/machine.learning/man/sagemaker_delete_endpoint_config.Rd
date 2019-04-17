@@ -15,7 +15,7 @@ deletes only the specified configuration. It does not delete endpoints
 created using the configuration.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_endpoint_config(
+\preformatted{svc$delete_endpoint_config(
   EndpointConfigName = "string"
 )
 }

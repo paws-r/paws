@@ -44,7 +44,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$detach_volume(
+\preformatted{svc$detach_volume(
   Device = "string",
   Force = TRUE|FALSE,
   InstanceId = "string",
@@ -57,7 +57,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example detaches the volume (``vol-049df61146c4d7901``) from the
 # instance it is attached to.
-\donttest{ec2$detach_volume(
+\donttest{svc$detach_volume(
   VolumeId = "vol-1234567890abcdef0"
 )}
 

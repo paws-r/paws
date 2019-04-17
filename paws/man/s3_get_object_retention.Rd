@@ -22,7 +22,7 @@ retrieve.}
 Retrieves an object's retention settings.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_retention(
+\preformatted{svc$get_object_retention(
   Bucket = "string",
   Key = "string",
   VersionId = "string",

@@ -16,7 +16,7 @@ guardduty_create_sample_findings(DetectorId, FindingTypes)
 Generates example findings of types specified by the list of finding types. If 'NULL' is specified for findingTypes, the API generates example findings of all supported finding types.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_sample_findings(
+\preformatted{svc$create_sample_findings(
   DetectorId = "string",
   FindingTypes = list(
     "string"

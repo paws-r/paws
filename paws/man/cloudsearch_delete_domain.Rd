@@ -16,7 +16,7 @@ has been deleted, it cannot be recovered. For more information, see
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$delete_domain(
+\preformatted{svc$delete_domain(
   DomainName = "string"
 )
 }

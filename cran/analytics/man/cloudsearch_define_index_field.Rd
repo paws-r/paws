@@ -23,7 +23,7 @@ new configuration replaces the old one. For more information, see
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$define_index_field(
+\preformatted{svc$define_index_field(
   DomainName = "string",
   IndexField = list(
     IndexFieldName = "string",

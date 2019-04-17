@@ -76,7 +76,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.ht
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$upload_multipart_part(
+\preformatted{svc$upload_multipart_part(
   accountId = "string",
   vaultName = "string",
   uploadId = "string",
@@ -90,7 +90,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example uploads the first 1 MiB (1024 x 1024 bytes) part of an
 # archive.
-\donttest{glacier$upload_multipart_part(
+\donttest{svc$upload_multipart_part(
   accountId = "-",
   body = "part1",
   checksum = "c06f7cd4baacb087002a99a5f48bf953",

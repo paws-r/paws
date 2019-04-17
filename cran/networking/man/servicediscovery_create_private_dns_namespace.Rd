@@ -32,7 +32,7 @@ that you can create using the same AWS account, see \href{http://docs.aws.amazon
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$create_private_dns_namespace(
+\preformatted{svc$create_private_dns_namespace(
   Name = "string",
   CreatorRequestId = "string",
   Description = "string",

@@ -22,7 +22,7 @@ next page of results in a paginated response.}
 List the tags for AWS Config resource.
 }
 \section{Request syntax}{
-\preformatted{configservice$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string",
   Limit = 123,
   NextToken = "string"

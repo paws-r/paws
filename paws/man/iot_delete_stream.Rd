@@ -13,7 +13,7 @@ iot_delete_stream(streamId)
 Deletes a stream.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_stream(
+\preformatted{svc$delete_stream(
   streamId = "string"
 )
 }

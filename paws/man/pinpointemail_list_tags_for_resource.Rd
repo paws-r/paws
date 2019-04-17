@@ -20,7 +20,7 @@ a general label that acts as a category for more specific tag values. A
 tag value acts as a descriptor within a tag key.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

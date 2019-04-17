@@ -33,7 +33,7 @@ specify a function version, only details that are specific to that
 version are returned.
 }
 \section{Request syntax}{
-\preformatted{lambda$get_function(
+\preformatted{svc$get_function(
   FunctionName = "string",
   Qualifier = "string"
 )
@@ -42,7 +42,7 @@ version are returned.
 
 \examples{
 # This operation retrieves a Lambda function's event source mapping
-\donttest{lambda$get_function(
+\donttest{svc$get_function(
   FunctionName = "myFunction",
   Qualifier = "1"
 )}

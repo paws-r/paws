@@ -20,7 +20,7 @@ You can use the \code{GetDataSource} operation to view the contents of the
 updated data element.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$update_data_source(
+\preformatted{svc$update_data_source(
   DataSourceId = "string",
   DataSourceName = "string"
 )

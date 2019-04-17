@@ -25,7 +25,7 @@ Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
 }
 \section{Request syntax}{
-\preformatted{ec2$accept_reserved_instances_exchange_quote(
+\preformatted{svc$accept_reserved_instances_exchange_quote(
   DryRun = TRUE|FALSE,
   ReservedInstanceIds = list(
     "string"

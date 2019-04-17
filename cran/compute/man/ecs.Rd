@@ -29,12 +29,6 @@ availability requirements. Amazon ECS eliminates the need for you to
 operate your own cluster management and configuration management systems
 or worry about scaling your management infrastructure.
 }
-\section{Example}{
-\preformatted{ecs <- paws::ecs()
-ecs$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -84,3 +78,10 @@ ecs$operation()
 }
 }
 
+\examples{
+# This example creates a cluster in your default region.
+\donttest{svc$create_cluster(
+  clusterName = "my_cluster"
+)}
+
+}

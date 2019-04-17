@@ -13,7 +13,7 @@ neptune_delete_event_subscription(SubscriptionName)
 Deletes an event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{neptune$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
 }

@@ -27,11 +27,10 @@ NULL
 #' find the product\'s technical documentation at
 #' [docs.aws.amazon.com](http://docs.aws.amazon.com/).
 #'
-#' @section Example:
-#' ```
-#' cloudformation <- paws::cloudformation()
-#' cloudformation$operation()
-#' ```
+#' @examples
+#' \donttest{svc$cancel_update_stack(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

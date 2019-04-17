@@ -15,7 +15,7 @@ Provides cluster-level details including status, hardware and software
 configuration, VPC settings, and so on.
 }
 \section{Request syntax}{
-\preformatted{emr$describe_cluster(
+\preformatted{svc$describe_cluster(
   ClusterId = "string"
 )
 }

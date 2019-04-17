@@ -37,7 +37,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{waf$create_xss_match_set(
+\preformatted{svc$create_xss_match_set(
   Name = "string",
   ChangeToken = "string"
 )
@@ -47,7 +47,7 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \examples{
 # The following example creates an XSS match set named
 # MySampleXssMatchSet.
-\donttest{waf$create_xss_match_set(
+\donttest{svc$create_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   Name = "MySampleXssMatchSet"
 )}

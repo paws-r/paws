@@ -23,7 +23,7 @@ importexport_update_job(JobId, Manifest, JobType, ValidateOnly,
 You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
 }
 \section{Request syntax}{
-\preformatted{importexport$update_job(
+\preformatted{svc$update_job(
   JobId = "string",
   Manifest = "string",
   JobType = "Import"|"Export",

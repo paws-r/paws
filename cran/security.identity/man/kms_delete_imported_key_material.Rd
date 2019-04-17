@@ -41,7 +41,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$delete_imported_key_material(
+\preformatted{svc$delete_imported_key_material(
   KeyId = "string"
 )
 }
@@ -50,7 +50,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 \examples{
 # The following example deletes the imported key material from the
 # specified customer master key (CMK).
-\donttest{kms$delete_imported_key_material(
+\donttest{svc$delete_imported_key_material(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

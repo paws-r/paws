@@ -21,7 +21,7 @@ ListQueryExecutionsInput\$WorkGroup. Query executions differ from named
 queries.
 }
 \section{Request syntax}{
-\preformatted{athena$batch_get_query_execution(
+\preformatted{svc$batch_get_query_execution(
   QueryExecutionIds = list(
     "string"
   )

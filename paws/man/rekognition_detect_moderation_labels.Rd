@@ -42,7 +42,7 @@ call Amazon Rekognition operations, passing image bytes is not
 supported. The image must be either a PNG or JPEG formatted file.
 }
 \section{Request syntax}{
-\preformatted{rekognition$detect_moderation_labels(
+\preformatted{svc$detect_moderation_labels(
   Image = list(
     Bytes = raw,
     S3Object = list(

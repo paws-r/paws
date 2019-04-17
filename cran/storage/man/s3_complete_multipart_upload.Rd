@@ -22,7 +22,7 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 Completes a multipart upload by assembling previously uploaded parts.
 }
 \section{Request syntax}{
-\preformatted{s3$complete_multipart_upload(
+\preformatted{svc$complete_multipart_upload(
   Bucket = "string",
   Key = "string",
   MultipartUpload = list(
@@ -41,7 +41,7 @@ Completes a multipart upload by assembling previously uploaded parts.
 
 \examples{
 # The following example completes a multipart upload.
-\donttest{s3$complete_multipart_upload(
+\donttest{svc$complete_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   MultipartUpload = list(

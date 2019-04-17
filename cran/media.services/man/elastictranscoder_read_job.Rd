@@ -14,7 +14,7 @@ information.}
 The ReadJob operation returns detailed information about a job.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$read_job(
+\preformatted{svc$read_job(
   Id = "string"
 )
 }

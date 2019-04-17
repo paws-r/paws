@@ -54,7 +54,7 @@ For more information about managing snapshot copy grants, go to \href{http://doc
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_snapshot_copy_grants(
+\preformatted{svc$describe_snapshot_copy_grants(
   SnapshotCopyGrantName = "string",
   MaxRecords = 123,
   Marker = "string",

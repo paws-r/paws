@@ -36,7 +36,7 @@ Creates a new custom vocabulary that you can use to change the way
 Amazon Transcribe handles transcription of an audio file.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$create_vocabulary(
+\preformatted{svc$create_vocabulary(
   VocabularyName = "string",
   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
   Phrases = list(

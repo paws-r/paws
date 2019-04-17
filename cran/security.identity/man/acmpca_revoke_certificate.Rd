@@ -41,7 +41,7 @@ information to the audit report. For more information, see
 CreateCertificateAuthorityAuditReport.
 }
 \section{Request syntax}{
-\preformatted{acmpca$revoke_certificate(
+\preformatted{svc$revoke_certificate(
   CertificateAuthorityArn = "string",
   CertificateSerial = "string",
   RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CERTIFICATE_AUTHORITY_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE"

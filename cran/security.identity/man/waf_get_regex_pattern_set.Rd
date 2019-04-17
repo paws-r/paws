@@ -15,7 +15,7 @@ ListRegexPatternSets.}
 Returns the RegexPatternSet specified by \code{RegexPatternSetId}.
 }
 \section{Request syntax}{
-\preformatted{waf$get_regex_pattern_set(
+\preformatted{svc$get_regex_pattern_set(
   RegexPatternSetId = "string"
 )
 }

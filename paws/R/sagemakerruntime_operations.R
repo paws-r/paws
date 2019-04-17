@@ -49,7 +49,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sagemakerruntime$invoke_endpoint(
+#' svc$invoke_endpoint(
 #'   EndpointName = "string",
 #'   Body = raw,
 #'   ContentType = "string",

@@ -18,7 +18,7 @@ limit of 20 ARNs. The format of a trail ARN is:
 Lists the tags for the trail in the current region.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$list_tags(
+\preformatted{svc$list_tags(
   ResourceIdList = list(
     "string"
   ),

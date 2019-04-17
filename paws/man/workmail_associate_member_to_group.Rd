@@ -17,7 +17,7 @@ workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 Adds a member (user or group) to the group's set.
 }
 \section{Request syntax}{
-\preformatted{workmail$associate_member_to_group(
+\preformatted{svc$associate_member_to_group(
   OrganizationId = "string",
   GroupId = "string",
   MemberId = "string"

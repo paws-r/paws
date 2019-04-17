@@ -27,7 +27,7 @@ servicecatalog_update_service_action(Id, Name, Definition, Description,
 Updates a self-service action.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$update_service_action(
+\preformatted{svc$update_service_action(
   Id = "string",
   Name = "string",
   Definition = list(

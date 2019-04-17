@@ -15,7 +15,7 @@ servicediscovery_get_instance(ServiceId, InstanceId)
 Gets information about a specified instance.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$get_instance(
+\preformatted{svc$get_instance(
   ServiceId = "string",
   InstanceId = "string"
 )

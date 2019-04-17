@@ -26,7 +26,7 @@ value.}
 Describes the running instances for the specified Spot Fleet.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_spot_fleet_instances(
+\preformatted{svc$describe_spot_fleet_instances(
   DryRun = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string",
@@ -38,7 +38,7 @@ Describes the running instances for the specified Spot Fleet.
 \examples{
 # This example lists the Spot Instances associated with the specified Spot
 # fleet.
-\donttest{ec2$describe_spot_fleet_instances(
+\donttest{svc$describe_spot_fleet_instances(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
 )}
 

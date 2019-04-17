@@ -19,7 +19,7 @@ Updates the settings for the specified user, such as phone number
 settings.
 }
 \section{Request syntax}{
-\preformatted{chime$update_user_settings(
+\preformatted{svc$update_user_settings(
   AccountId = "string",
   UserId = "string",
   UserSettings = list(

@@ -31,7 +31,7 @@ Balancers. To see an AWS CLI example of creating an accelerator, scroll
 down to \strong{Example}.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$create_accelerator(
+\preformatted{svc$create_accelerator(
   Name = "string",
   IpAddressType = "IPV4",
   Enabled = TRUE|FALSE,

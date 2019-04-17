@@ -27,11 +27,10 @@ NULL
 #' the [Amazon CloudWatch Events User
 #' Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 #'
-#' @section Example:
-#' ```
-#' cloudwatchevents <- paws::cloudwatchevents()
-#' cloudwatchevents$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_rule(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

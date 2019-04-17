@@ -37,7 +37,7 @@ multiple times, if the vault lock is in the \code{InProgress} state or if
 there is no policy associated with the vault.
 }
 \section{Request syntax}{
-\preformatted{glacier$abort_vault_lock(
+\preformatted{svc$abort_vault_lock(
   accountId = "string",
   vaultName = "string"
 )
@@ -47,7 +47,7 @@ there is no policy associated with the vault.
 \examples{
 # The example aborts the vault locking process if the vault lock is not in
 # the Locked state for the vault named examplevault.
-\donttest{glacier$abort_vault_lock(
+\donttest{svc$abort_vault_lock(
   accountId = "-",
   vaultName = "examplevault"
 )}

@@ -32,7 +32,7 @@ subsequent request to retrieve the next set of volumes. This operation
 is only supported in the cached volume and stored volume gateway types.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_volumes(
+\preformatted{svc$list_volumes(
   GatewayARN = "string",
   Marker = "string",
   Limit = 123
@@ -43,7 +43,7 @@ is only supported in the cached volume and stored volume gateway types.
 \examples{
 # Lists the iSCSI stored volumes of a gateway. Results are sorted by
 # volume ARN up to a maximum of 100 volumes.
-\donttest{storagegateway$list_volumes(
+\donttest{svc$list_volumes(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   Limit = 2L,
   Marker = "1"

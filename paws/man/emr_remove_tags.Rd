@@ -23,7 +23,7 @@ The following example removes the stack tag with value Prod from a
 cluster:
 }
 \section{Request syntax}{
-\preformatted{emr$remove_tags(
+\preformatted{svc$remove_tags(
   ResourceId = "string",
   TagKeys = list(
     "string"

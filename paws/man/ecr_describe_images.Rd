@@ -49,7 +49,7 @@ return a larger image size than the image sizes returned by
 DescribeImages.
 }
 \section{Request syntax}{
-\preformatted{ecr$describe_images(
+\preformatted{svc$describe_images(
   registryId = "string",
   repositoryName = "string",
   imageIds = list(

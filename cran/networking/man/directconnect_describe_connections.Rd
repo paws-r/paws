@@ -13,7 +13,7 @@ directconnect_describe_connections(connectionId)
 Displays the specified connection or all connections in this Region.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_connections(
+\preformatted{svc$describe_connections(
   connectionId = "string"
 )
 }

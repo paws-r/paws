@@ -23,7 +23,7 @@ in the \code{Marker} parameter and retrying the request.}
 Returns a list of all the available maintenance tracks.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_tracks(
+\preformatted{svc$describe_cluster_tracks(
   MaintenanceTrackName = "string",
   MaxRecords = 123,
   Marker = "string"

@@ -21,7 +21,7 @@ instance ARN, after instance/, such as
 Deletes a user account from Amazon Connect.
 }
 \section{Request syntax}{
-\preformatted{connect$delete_user(
+\preformatted{svc$delete_user(
   InstanceId = "string",
   UserId = "string"
 )

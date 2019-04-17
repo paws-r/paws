@@ -34,7 +34,7 @@ can remove a description for a security group rule by omitting the
 description parameter in the request.
 }
 \section{Request syntax}{
-\preformatted{ec2$update_security_group_rule_descriptions_egress(
+\preformatted{svc$update_security_group_rule_descriptions_egress(
   DryRun = TRUE|FALSE,
   GroupId = "string",
   GroupName = "string",
@@ -81,7 +81,7 @@ description parameter in the request.
 \examples{
 # This example updates the description for the specified security group
 # rule.
-\donttest{ec2$update_security_group_rule_descriptions_egress(
+\donttest{svc$update_security_group_rule_descriptions_egress(
   GroupId = "sg-123abc12",
   IpPermissions = list(
     list(

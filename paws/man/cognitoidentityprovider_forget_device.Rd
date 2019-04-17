@@ -15,7 +15,7 @@ cognitoidentityprovider_forget_device(AccessToken, DeviceKey)
 Forgets the specified device.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$forget_device(
+\preformatted{svc$forget_device(
   AccessToken = "string",
   DeviceKey = "string"
 )

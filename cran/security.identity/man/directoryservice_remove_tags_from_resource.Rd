@@ -15,7 +15,7 @@ directoryservice_remove_tags_from_resource(ResourceId, TagKeys)
 Removes tags from a directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$remove_tags_from_resource(
+\preformatted{svc$remove_tags_from_resource(
   ResourceId = "string",
   TagKeys = list(
     "string"

@@ -65,7 +65,7 @@ explicitly grants permissions. For more information on user permissions,
 see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$create_app(
+\preformatted{svc$create_app(
   StackId = "string",
   Shortname = "string",
   Name = "string",

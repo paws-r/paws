@@ -15,7 +15,7 @@ pinpoint_get_endpoint(ApplicationId, EndpointId)
 Returns information about an endpoint.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_endpoint(
+\preformatted{svc$get_endpoint(
   ApplicationId = "string",
   EndpointId = "string"
 )

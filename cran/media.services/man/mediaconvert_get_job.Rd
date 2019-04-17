@@ -13,7 +13,7 @@ mediaconvert_get_job(Id)
 Retrieve the JSON for a specific completed transcoding job.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$get_job(
+\preformatted{svc$get_job(
   Id = "string"
 )
 }

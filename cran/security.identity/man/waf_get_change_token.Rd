@@ -27,14 +27,14 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 \code{GetChangeTokenStatus} to determine the status of your change token.
 }
 \section{Request syntax}{
-\preformatted{waf$get_change_token()
+\preformatted{svc$get_change_token()
 }
 }
 
 \examples{
 # The following example returns a change token to use for a create, update
 # or delete operation.
-\donttest{waf$get_change_token()}
+\donttest{svc$get_change_token()}
 
 }
 \keyword{internal}

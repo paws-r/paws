@@ -50,7 +50,7 @@ object is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_game_session(
+\preformatted{svc$update_game_session(
   GameSessionId = "string",
   MaximumPlayerSessionCount = 123,
   Name = "string",

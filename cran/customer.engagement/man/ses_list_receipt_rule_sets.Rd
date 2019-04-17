@@ -23,7 +23,7 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$list_receipt_rule_sets(
+\preformatted{svc$list_receipt_rule_sets(
   NextToken = "string"
 )
 }
@@ -32,7 +32,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example lists the receipt rule sets that exist under an
 # AWS account:
-\donttest{ses$list_receipt_rule_sets(
+\donttest{svc$list_receipt_rule_sets(
   NextToken = ""
 )}
 

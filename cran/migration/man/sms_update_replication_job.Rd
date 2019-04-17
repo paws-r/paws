@@ -44,7 +44,7 @@ customer's default KMS key for EBS is used.}
 Updates the specified settings for the specified replication job.
 }
 \section{Request syntax}{
-\preformatted{sms$update_replication_job(
+\preformatted{svc$update_replication_job(
   replicationJobId = "string",
   frequency = 123,
   nextReplicationRunStartTime = as.POSIXct(

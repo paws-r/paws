@@ -33,7 +33,7 @@ information, see UpdateXssMatchSet.
 }
 }
 \section{Request syntax}{
-\preformatted{wafregional$delete_xss_match_set(
+\preformatted{svc$delete_xss_match_set(
   XssMatchSetId = "string",
   ChangeToken = "string"
 )
@@ -43,7 +43,7 @@ information, see UpdateXssMatchSet.
 \examples{
 # The following example deletes an XSS match set with the ID
 # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-\donttest{wafregional$delete_xss_match_set(
+\donttest{svc$delete_xss_match_set(
   ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
   XssMatchSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5"
 )}

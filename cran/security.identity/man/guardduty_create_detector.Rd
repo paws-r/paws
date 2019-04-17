@@ -18,7 +18,7 @@ guardduty_create_detector(ClientToken, Enable,
 Creates a single Amazon GuardDuty detector. A detector is an object that represents the GuardDuty service. A detector must be created in order for GuardDuty to become operational.
 }
 \section{Request syntax}{
-\preformatted{guardduty$create_detector(
+\preformatted{svc$create_detector(
   ClientToken = "string",
   Enable = TRUE|FALSE,
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"

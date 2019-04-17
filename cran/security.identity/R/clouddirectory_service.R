@@ -17,11 +17,10 @@ NULL
 #' Directory Developer
 #' Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
 #'
-#' @section Example:
-#' ```
-#' clouddirectory <- paws::clouddirectory()
-#' clouddirectory$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_facet_to_object(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

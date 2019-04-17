@@ -98,7 +98,7 @@ can be created by setting \code{ComputeStatistics} to \code{true} in
 \code{CreateDataSourceFromRedshift} operations.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_ml_model(
+\preformatted{svc$create_ml_model(
   MLModelId = "string",
   MLModelName = "string",
   MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",

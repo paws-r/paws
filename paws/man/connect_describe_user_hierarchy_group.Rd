@@ -23,7 +23,7 @@ Returns a \code{HierarchyGroup} object that includes information about a
 hierarchy group in your instance.
 }
 \section{Request syntax}{
-\preformatted{connect$describe_user_hierarchy_group(
+\preformatted{svc$describe_user_hierarchy_group(
   HierarchyGroupId = "string",
   InstanceId = "string"
 )

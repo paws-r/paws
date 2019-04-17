@@ -13,7 +13,7 @@ iot_disable_topic_rule(ruleName)
 Disables the rule.
 }
 \section{Request syntax}{
-\preformatted{iot$disable_topic_rule(
+\preformatted{svc$disable_topic_rule(
   ruleName = "string"
 )
 }

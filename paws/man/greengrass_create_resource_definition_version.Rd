@@ -18,7 +18,7 @@ greengrass_create_resource_definition_version(AmznClientToken,
 Creates a version of a resource definition that has already been defined.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_resource_definition_version(
+\preformatted{svc$create_resource_definition_version(
   AmznClientToken = "string",
   ResourceDefinitionId = "string",
   Resources = list(

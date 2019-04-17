@@ -22,7 +22,7 @@ obtain TLS certificates used by associated websites within the company
 network.
 }
 \section{Request syntax}{
-\preformatted{worklink$associate_website_certificate_authority(
+\preformatted{svc$associate_website_certificate_authority(
   FleetArn = "string",
   Certificate = "string",
   DisplayName = "string"

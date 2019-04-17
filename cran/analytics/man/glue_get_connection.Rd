@@ -23,7 +23,7 @@ connection properties.}
 Retrieves a connection definition from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_connection(
+\preformatted{svc$get_connection(
   CatalogId = "string",
   Name = "string",
   HidePassword = TRUE|FALSE

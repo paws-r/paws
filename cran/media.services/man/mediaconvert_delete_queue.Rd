@@ -13,7 +13,7 @@ mediaconvert_delete_queue(Name)
 Permanently delete a queue you have created.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$delete_queue(
+\preformatted{svc$delete_queue(
   Name = "string"
 )
 }

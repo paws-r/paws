@@ -38,7 +38,7 @@ Describes the VPC endpoint connections to your VPC endpoint services,
 including any endpoints that are pending your acceptance.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoint_connections(
+\preformatted{svc$describe_vpc_endpoint_connections(
   DryRun = TRUE|FALSE,
   Filters = list(
     list(

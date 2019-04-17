@@ -42,7 +42,7 @@ You can query against the following value types: numerical, text,
 Booleans, and timestamps.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$search(
+\preformatted{svc$search(
   Resource = "TrainingJob",
   SearchExpression = list(
     Filters = list(

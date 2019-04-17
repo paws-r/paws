@@ -13,7 +13,7 @@ sms_terminate_app(appId)
 Terminates the stack for an application.
 }
 \section{Request syntax}{
-\preformatted{sms$terminate_app(
+\preformatted{svc$terminate_app(
   appId = "string"
 )
 }

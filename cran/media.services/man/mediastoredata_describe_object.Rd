@@ -14,7 +14,7 @@ container. Format: \<folder name\>/\<folder name\>/\<file name\>}
 Gets the headers for an object at the specified path.
 }
 \section{Request syntax}{
-\preformatted{mediastoredata$describe_object(
+\preformatted{svc$describe_object(
   Path = "string"
 )
 }

@@ -22,7 +22,7 @@ function.
 For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html}{AWS CloudFormation Export Stack Output Values}.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$list_exports(
+\preformatted{svc$list_exports(
   NextToken = "string"
 )
 }

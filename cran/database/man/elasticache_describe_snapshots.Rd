@@ -49,7 +49,7 @@ with a particular cache cluster.
 This operation is valid for Redis only.
 }
 \section{Request syntax}{
-\preformatted{elasticache$describe_snapshots(
+\preformatted{svc$describe_snapshots(
   ReplicationGroupId = "string",
   CacheClusterId = "string",
   SnapshotName = "string",

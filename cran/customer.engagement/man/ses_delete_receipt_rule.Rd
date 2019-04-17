@@ -21,7 +21,7 @@ For information about managing receipt rules, see the \href{http://docs.aws.amaz
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$delete_receipt_rule(
+\preformatted{svc$delete_receipt_rule(
   RuleSetName = "string",
   RuleName = "string"
 )
@@ -30,7 +30,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example deletes a receipt rule:
-\donttest{ses$delete_receipt_rule(
+\donttest{svc$delete_receipt_rule(
   RuleName = "MyRule",
   RuleSetName = "MyRuleSet"
 )}

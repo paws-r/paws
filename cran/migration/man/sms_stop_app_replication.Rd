@@ -13,7 +13,7 @@ sms_stop_app_replication(appId)
 Stops replicating an application.
 }
 \section{Request syntax}{
-\preformatted{sms$stop_app_replication(
+\preformatted{svc$stop_app_replication(
   appId = "string"
 )
 }

@@ -15,7 +15,7 @@ Retrieves details for the specified Amazon Chime Voice Connector, such
 as timestamps, name, outbound host, and encryption requirements.
 }
 \section{Request syntax}{
-\preformatted{chime$get_voice_connector(
+\preformatted{svc$get_voice_connector(
   VoiceConnectorId = "string"
 )
 }

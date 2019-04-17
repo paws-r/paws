@@ -32,7 +32,7 @@ This operation requires permissions for the \code{lex:DeleteUtterances}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_utterances(
+\preformatted{svc$delete_utterances(
   botName = "string",
   userId = "string"
 )

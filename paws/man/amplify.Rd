@@ -10,12 +10,6 @@ amplify()
 Amplify is a fully managed continuous deployment and hosting service for
 modern web apps.
 }
-\section{Example}{
-\preformatted{amplify <- paws::amplify()
-amplify$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -42,3 +36,9 @@ amplify$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_app(
+  Foo = 123
+)}
+
+}

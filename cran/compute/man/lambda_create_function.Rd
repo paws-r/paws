@@ -107,7 +107,7 @@ response to events in other AWS services, create an event source mapping
 service. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html}{Invoking Functions}.
 }
 \section{Request syntax}{
-\preformatted{lambda$create_function(
+\preformatted{svc$create_function(
   FunctionName = "string",
   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
   Role = "string",
@@ -154,7 +154,7 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 
 \examples{
 # This example creates a Lambda function.
-\donttest{lambda$create_function(
+\donttest{svc$create_function(
   Code = structure(
     list(),
     .Names = character(

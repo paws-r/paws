@@ -23,7 +23,7 @@ Returns a \code{User} object that contains information about the user account
 specified by the \code{UserId}.
 }
 \section{Request syntax}{
-\preformatted{connect$describe_user(
+\preformatted{svc$describe_user(
   UserId = "string",
   InstanceId = "string"
 )

@@ -14,7 +14,7 @@ or AWS account.}
 Deletes an application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$delete_application(
+\preformatted{svc$delete_application(
   applicationName = "string"
 )
 }

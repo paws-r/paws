@@ -42,7 +42,7 @@ versions. Use the \code{RoutingConfig} parameter to specify a second version
 and the percentage of invocation requests that it receives.
 }
 \section{Request syntax}{
-\preformatted{lambda$create_alias(
+\preformatted{svc$create_alias(
   FunctionName = "string",
   Name = "string",
   FunctionVersion = "string",

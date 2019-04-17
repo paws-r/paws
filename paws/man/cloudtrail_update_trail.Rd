@@ -100,7 +100,7 @@ which the trail was created; otherwise, an \code{InvalidHomeRegionException}
 is thrown.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$update_trail(
+\preformatted{svc$update_trail(
   Name = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",

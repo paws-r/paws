@@ -24,7 +24,7 @@ If you want detailed information about a specific application, use
 DescribeApplication.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$list_applications(
+\preformatted{svc$list_applications(
   Limit = 123,
   NextToken = "string"
 )

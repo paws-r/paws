@@ -9,12 +9,6 @@ sagemakerruntime()
 \description{
 The Amazon SageMaker runtime API.
 }
-\section{Example}{
-\preformatted{sagemakerruntime <- paws::sagemakerruntime()
-sagemakerruntime$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -22,3 +16,9 @@ sagemakerruntime$operation()
 }
 }
 
+\examples{
+\donttest{svc$invoke_endpoint(
+  Foo = 123
+)}
+
+}

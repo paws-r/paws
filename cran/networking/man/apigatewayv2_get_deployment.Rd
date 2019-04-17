@@ -15,7 +15,7 @@ apigatewayv2_get_deployment(ApiId, DeploymentId)
 Gets a Deployment.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_deployment(
+\preformatted{svc$get_deployment(
   ApiId = "string",
   DeploymentId = "string"
 )

@@ -10,7 +10,7 @@ shield_get_subscription_state()
 Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}.
 }
 \section{Request syntax}{
-\preformatted{shield$get_subscription_state()
+\preformatted{svc$get_subscription_state()
 }
 }
 

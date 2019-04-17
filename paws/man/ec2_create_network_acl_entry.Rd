@@ -71,7 +71,7 @@ For more information about network ACLs, see \href{https://docs.aws.amazon.com/A
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_network_acl_entry(
+\preformatted{svc$create_network_acl_entry(
   CidrBlock = "string",
   DryRun = TRUE|FALSE,
   Egress = TRUE|FALSE,
@@ -96,7 +96,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example creates an entry for the specified network ACL. The rule
 # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
 # into any associated subnet.
-\donttest{ec2$create_network_acl_entry(
+\donttest{svc$create_network_acl_entry(
   CidrBlock = "0.0.0.0/0",
   Egress = FALSE,
   NetworkAclId = "acl-5fb85d36",

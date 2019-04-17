@@ -10,12 +10,6 @@ robomaker()
 This section provides documentation for the AWS RoboMaker API
 operations.
 }
-\section{Example}{
-\preformatted{robomaker <- paws::robomaker()
-robomaker$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -57,3 +51,9 @@ robomaker$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_describe_simulation_job(
+  Foo = 123
+)}
+
+}

@@ -23,7 +23,7 @@ Creates a subscriber. You must create the associated budget and
 notification before you create the subscriber.
 }
 \section{Request syntax}{
-\preformatted{budgets$create_subscriber(
+\preformatted{svc$create_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(

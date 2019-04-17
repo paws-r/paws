@@ -44,12 +44,6 @@ delete users, groups, and resources. This allows developers to perform
 the scenarios listed above, as well as give users the ability to grant
 access on a selective basis using the IAM model.
 }
-\section{Example}{
-\preformatted{workmail <- paws::workmail()
-workmail$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -87,3 +81,9 @@ workmail$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_delegate_to_resource(
+  Foo = 123
+)}
+
+}

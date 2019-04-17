@@ -34,12 +34,6 @@ All Elastic Load Balancing operations are \emph{idempotent}, which means that
 they complete at most one time. If you repeat an operation, it succeeds
 with a 200 OK response code.
 }
-\section{Example}{
-\preformatted{elb <- paws::elb()
-elb$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -75,3 +69,22 @@ elb$operation()
 }
 }
 
+\examples{
+# This example adds two tags to the specified load balancer.
+\donttest{svc$add_tags(
+  LoadBalancerNames = list(
+    "my-load-balancer"
+  ),
+  Tags = list(
+    list(
+      Key = "project",
+      Value = "lima"
+    ),
+    list(
+      Key = "department",
+      Value = "digital-media"
+    )
+  )
+)}
+
+}

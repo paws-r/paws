@@ -85,7 +85,7 @@ each supported operating system type, see
 \href{http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.
 }
 \section{Request syntax}{
-\preformatted{ssm$create_patch_baseline(
+\preformatted{svc$create_patch_baseline(
   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
   Name = "string",
   GlobalFilters = list(

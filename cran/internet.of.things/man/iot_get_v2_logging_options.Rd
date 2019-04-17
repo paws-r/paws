@@ -10,7 +10,7 @@ iot_get_v2_logging_options()
 Gets the fine grained logging options.
 }
 \section{Request syntax}{
-\preformatted{iot$get_v2_logging_options()
+\preformatted{svc$get_v2_logging_options()
 }
 }
 

@@ -45,7 +45,7 @@ If you are finished with your Spot Fleet for now, but will use it again
 later, you can set the target capacity to 0.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_spot_fleet_request(
+\preformatted{svc$modify_spot_fleet_request(
   ExcessCapacityTerminationPolicy = "noTermination"|"default",
   SpotFleetRequestId = "string",
   TargetCapacity = 123
@@ -56,14 +56,14 @@ later, you can set the target capacity to 0.
 \examples{
 # This example increases the target capacity of the specified Spot fleet
 # request.
-\donttest{ec2$modify_spot_fleet_request(
+\donttest{svc$modify_spot_fleet_request(
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 20L
 )}
 
 # This example decreases the target capacity of the specified Spot fleet
 # request without terminating any Spot Instances as a result.
-\donttest{ec2$modify_spot_fleet_request(
+\donttest{svc$modify_spot_fleet_request(
   ExcessCapacityTerminationPolicy = "NoTermination ",
   SpotFleetRequestId = "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE",
   TargetCapacity = 10L

@@ -13,7 +13,7 @@ serverlessapplicationrepository_delete_application(ApplicationId)
 Deletes the specified application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$delete_application(
+\preformatted{svc$delete_application(
   ApplicationId = "string"
 )
 }

@@ -33,7 +33,7 @@ The response includes a \code{VPCs} element with a \code{VPC} child element for
 each VPC that can be associated with the hosted zone.
 }
 \section{Request syntax}{
-\preformatted{route53$list_vpc_association_authorizations(
+\preformatted{svc$list_vpc_association_authorizations(
   HostedZoneId = "string",
   NextToken = "string",
   MaxResults = "string"

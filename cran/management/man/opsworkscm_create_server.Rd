@@ -176,7 +176,7 @@ addresses and address ranges only. To edit security group rules, open
 Security Groups in the navigation pane of the EC2 management console.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$create_server(
+\preformatted{svc$create_server(
   AssociatePublicIpAddress = TRUE|FALSE,
   DisableAutomatedBackup = TRUE|FALSE,
   Engine = "string",

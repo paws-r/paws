@@ -24,7 +24,7 @@ Attaches a typed link to a specified source and target object. For more
 information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$attach_typed_link(
+\preformatted{svc$attach_typed_link(
   DirectoryArn = "string",
   SourceObjectReference = list(
     Selector = "string"

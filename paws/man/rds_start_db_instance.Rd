@@ -22,7 +22,7 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora DB clusters, use StartDBCluster instead.
 }
 \section{Request syntax}{
-\preformatted{rds$start_db_instance(
+\preformatted{svc$start_db_instance(
   DBInstanceIdentifier = "string"
 )
 }

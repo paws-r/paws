@@ -17,7 +17,7 @@ repository.}
 Deletes specified tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{ecr$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

@@ -29,7 +29,7 @@ calls to GetCredentialsForIdentity action.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$set_identity_pool_roles(
+\preformatted{svc$set_identity_pool_roles(
   IdentityPoolId = "string",
   Roles = list(
     "string"

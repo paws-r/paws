@@ -22,7 +22,7 @@ otherwise, set to false.}
 Update an uploaded test specification (test spec).
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_upload(
+\preformatted{svc$update_upload(
   arn = "string",
   name = "string",
   contentType = "string",

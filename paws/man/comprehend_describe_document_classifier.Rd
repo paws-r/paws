@@ -14,7 +14,7 @@ The operation returns this identifier in its response.}
 Gets the properties associated with a document classifier.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_document_classifier(
+\preformatted{svc$describe_document_classifier(
   DocumentClassifierArn = "string"
 )
 }

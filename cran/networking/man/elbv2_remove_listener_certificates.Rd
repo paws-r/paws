@@ -23,7 +23,7 @@ To list the certificates for your listener, use
 DescribeListenerCertificates.
 }
 \section{Request syntax}{
-\preformatted{elbv2$remove_listener_certificates(
+\preformatted{svc$remove_listener_certificates(
   ListenerArn = "string",
   Certificates = list(
     list(

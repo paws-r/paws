@@ -12,14 +12,14 @@ Returns the number of unmetered iOS and/or unmetered Android devices
 that have been purchased by the account.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_account_settings()
+\preformatted{svc$get_account_settings()
 }
 }
 
 \examples{
 # The following example returns information about your Device Farm account
 # settings.
-\donttest{devicefarm$get_account_settings()}
+\donttest{svc$get_account_settings()}
 
 }
 \keyword{internal}

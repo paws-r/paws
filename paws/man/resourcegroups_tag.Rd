@@ -20,7 +20,7 @@ resource group are not changed if they are not specified in the request
 parameters.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$tag(
+\preformatted{svc$tag(
   Arn = "string",
   Tags = list(
     "string"

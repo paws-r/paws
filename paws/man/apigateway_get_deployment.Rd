@@ -27,7 +27,7 @@ example,
 Gets information about a Deployment resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_deployment(
+\preformatted{svc$get_deployment(
   restApiId = "string",
   deploymentId = "string",
   embed = list(

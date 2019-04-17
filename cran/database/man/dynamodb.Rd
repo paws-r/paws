@@ -27,12 +27,6 @@ your data is stored on solid state disks (SSDs) and automatically
 replicated across multiple Availability Zones in an AWS region,
 providing built-in high availability and data durability.
 }
-\section{Example}{
-\preformatted{dynamodb <- paws::dynamodb()
-dynamodb$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -75,3 +69,41 @@ dynamodb$operation()
 }
 }
 
+\examples{
+# This example reads multiple items from the Music table using a batch of
+# three GetItem requests.  Only the AlbumTitle attribute is returned.
+\donttest{svc$batch_get_item(
+  RequestItems = list(
+    Music = list(
+      Keys = list(
+        list(
+          Artist = list(
+            S = "No One You Know"
+          ),
+          SongTitle = list(
+            S = "Call Me Today"
+          )
+        ),
+        list(
+          Artist = list(
+            S = "Acme Band"
+          ),
+          SongTitle = list(
+            S = "Happy Day"
+          )
+        ),
+        list(
+          Artist = list(
+            S = "No One You Know"
+          ),
+          SongTitle = list(
+            S = "Scared of My Shadow"
+          )
+        )
+      ),
+      ProjectionExpression = "AlbumTitle"
+    )
+  )
+)}
+
+}

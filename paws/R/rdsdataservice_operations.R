@@ -19,7 +19,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' rdsdataservice$execute_sql(
+#' svc$execute_sql(
 #'   awsSecretStoreArn = "string",
 #'   database = "string",
 #'   dbClusterOrInstanceArn = "string",

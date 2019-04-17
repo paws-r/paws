@@ -25,7 +25,7 @@ servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
 Associates the specified principal ARN with the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$associate_principal_with_portfolio(
+\preformatted{svc$associate_principal_with_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PrincipalARN = "string",

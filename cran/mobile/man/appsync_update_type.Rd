@@ -19,7 +19,7 @@ appsync_update_type(apiId, typeName, definition, format)
 Updates a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_type(
+\preformatted{svc$update_type(
   apiId = "string",
   typeName = "string",
   definition = "string",

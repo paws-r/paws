@@ -14,7 +14,7 @@ Retrieves a JSON representation of the schema. See \href{https://docs.aws.amazon
 for more information.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_schema_as_json(
+\preformatted{svc$get_schema_as_json(
   SchemaArn = "string"
 )
 }

@@ -78,7 +78,7 @@ a custom resource provided by your own application or service.
 Deletes the specified Application Auto Scaling scheduled action.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$delete_scheduled_action(
+\preformatted{svc$delete_scheduled_action(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ScheduledActionName = "string",
   ResourceId = "string",

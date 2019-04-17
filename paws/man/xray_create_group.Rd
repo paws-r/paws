@@ -16,7 +16,7 @@ names must be unique.}
 Creates a group resource with a name and a filter expression.
 }
 \section{Request syntax}{
-\preformatted{xray$create_group(
+\preformatted{svc$create_group(
   GroupName = "string",
   FilterExpression = "string"
 )

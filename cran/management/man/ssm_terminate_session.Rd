@@ -16,7 +16,7 @@ Session Manager client and SSM Agent on the instance. A terminated
 session cannot be resumed.
 }
 \section{Request syntax}{
-\preformatted{ssm$terminate_session(
+\preformatted{svc$terminate_session(
   SessionId = "string"
 )
 }

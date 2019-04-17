@@ -23,7 +23,7 @@ addresses exceed the rate limit, the 10,000 addresses with the highest
 rates will be blocked.
 }
 \section{Request syntax}{
-\preformatted{waf$get_rate_based_rule_managed_keys(
+\preformatted{svc$get_rate_based_rule_managed_keys(
   RuleId = "string",
   NextMarker = "string"
 )

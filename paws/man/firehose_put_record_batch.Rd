@@ -85,7 +85,7 @@ your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }
 \section{Request syntax}{
-\preformatted{firehose$put_record_batch(
+\preformatted{svc$put_record_batch(
   DeliveryStreamName = "string",
   Records = list(
     list(

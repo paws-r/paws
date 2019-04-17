@@ -19,7 +19,7 @@ This operation supports all IAM permissions, including permission
 conditions that uses tags.
 }
 \section{Request syntax}{
-\preformatted{glue$batch_get_dev_endpoints(
+\preformatted{svc$batch_get_dev_endpoints(
   DevEndpointNames = list(
     "string"
   )

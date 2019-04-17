@@ -36,7 +36,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$update_policy(
+\preformatted{svc$update_policy(
   PolicyId = "string",
   Name = "string",
   Description = "string",
@@ -49,7 +49,7 @@ account.
 # The following example shows how to rename a policy and give it a new
 # description and new content. The output confirms the new name and
 # description text:/n/n
-\donttest{organizations$update_policy(
+\donttest{svc$update_policy(
   Description = "This description replaces the original.",
   Name = "Renamed-Policy",
   PolicyId = "p-examplepolicyid111"
@@ -58,7 +58,7 @@ account.
 # The following example shows how to replace the JSON text of the SCP from
 # the preceding example with a new JSON policy text string that allows S3
 # actions instead of EC2 actions:/n/n
-\donttest{organizations$update_policy(
+\donttest{svc$update_policy(
   Content = "{ \\\\\\"Version\\\\\\": \\\\\\"2012-10-17\\\\\\", \\\\\\"Statement\\\\\\": {\\\\\\"Effect\\\\\\": ...",
   PolicyId = "p-examplepolicyid111"
 )}

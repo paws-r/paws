@@ -104,7 +104,7 @@ If you no longer need a scalable target, you can deregister it using
 DeregisterScalableTarget.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$register_scalable_target(
+\preformatted{svc$register_scalable_target(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceId = "string",
   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property",
@@ -119,7 +119,7 @@ DeregisterScalableTarget.
 # This example registers a scalable target from an Amazon ECS service
 # called web-app that is running on the default cluster, with a minimum
 # desired count of 1 task and a maximum desired count of 10 tasks.
-\donttest{applicationautoscaling$register_scalable_target(
+\donttest{svc$register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "service/default/web-app",
@@ -130,7 +130,7 @@ DeregisterScalableTarget.
 
 # This example registers a scalable target from an Amazon EC2 Spot fleet
 # with a minimum target capacity of 1 and a maximum of 10.
-\donttest{applicationautoscaling$register_scalable_target(
+\donttest{svc$register_scalable_target(
   MaxCapacity = 10L,
   MinCapacity = 1L,
   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",

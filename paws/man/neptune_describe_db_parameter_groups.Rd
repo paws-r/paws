@@ -38,7 +38,7 @@ Returns a list of \code{DBParameterGroup} descriptions. If a
 description of the specified DB parameter group.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_db_parameter_groups(
+\preformatted{svc$describe_db_parameter_groups(
   DBParameterGroupName = "string",
   Filters = list(
     list(

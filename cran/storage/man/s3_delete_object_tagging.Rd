@@ -17,7 +17,7 @@ s3_delete_object_tagging(Bucket, Key, VersionId)
 Removes the tag-set from an existing object.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_object_tagging(
+\preformatted{svc$delete_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string"
@@ -29,7 +29,7 @@ Removes the tag-set from an existing object.
 # The following example removes tag set associated with the specified
 # object version. The request specifies both the object key and object
 # version.
-\donttest{s3$delete_object_tagging(
+\donttest{svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
@@ -38,7 +38,7 @@ Removes the tag-set from an existing object.
 # The following example removes tag set associated with the specified
 # object. If the bucket is versioning enabled, the operation removes tag
 # set from the latest object version.
-\donttest{s3$delete_object_tagging(
+\donttest{svc$delete_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

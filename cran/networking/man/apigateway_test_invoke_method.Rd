@@ -39,7 +39,7 @@ Simulate the execution of a Method in your RestApi with headers,
 parameters, and an incoming request body.
 }
 \section{Request syntax}{
-\preformatted{apigateway$test_invoke_method(
+\preformatted{svc$test_invoke_method(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

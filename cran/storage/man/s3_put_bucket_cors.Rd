@@ -17,7 +17,7 @@ s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5)
 Sets the CORS configuration for a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_cors(
+\preformatted{svc$put_bucket_cors(
   Bucket = "string",
   CORSConfiguration = list(
     CORSRules = list(
@@ -46,7 +46,7 @@ Sets the CORS configuration for a bucket.
 \examples{
 # The following example enables PUT, POST, and DELETE requests from
 # www.example.com, and enables GET requests from any domain.
-\donttest{s3$put_bucket_cors(
+\donttest{svc$put_bucket_cors(
   Bucket = "",
   CORSConfiguration = list(
     CORSRules = list(

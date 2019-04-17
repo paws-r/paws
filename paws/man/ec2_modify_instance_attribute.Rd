@@ -108,7 +108,7 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_instance_attribute(
+\preformatted{svc$modify_instance_attribute(
   SourceDestCheck = list(
     Value = TRUE|FALSE
   ),
@@ -164,7 +164,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example modifies the instance type of the specified stopped
 # instance.
-\donttest{ec2$modify_instance_attribute(
+\donttest{svc$modify_instance_attribute(
   InstanceId = "i-1234567890abcdef0",
   InstanceType = list(
     Value = "m5.large"
@@ -173,7 +173,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 # This example enables enhanced networking for the specified stopped
 # instance.
-\donttest{ec2$modify_instance_attribute(
+\donttest{svc$modify_instance_attribute(
   EnaSupport = list(
     Value = TRUE
   ),

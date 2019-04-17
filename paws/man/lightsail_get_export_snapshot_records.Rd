@@ -21,7 +21,7 @@ instance and its related resources with the
 \code{create cloud formation stack} operation.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_export_snapshot_records(
+\preformatted{svc$get_export_snapshot_records(
   pageToken = "string"
 )
 }

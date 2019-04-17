@@ -25,7 +25,7 @@ group removes the thing from the last dynamic group.}
 Adds a thing to a thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$add_thing_to_thing_group(
+\preformatted{svc$add_thing_to_thing_group(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingName = "string",

@@ -32,7 +32,7 @@ Stacks. For more information about how tagging works, see
 in the AWS OpsWorks User Guide.
 }
 \section{Request syntax}{
-\preformatted{opsworks$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

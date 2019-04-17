@@ -21,7 +21,7 @@ to delete the VPC. For more information, see \href{https://docs.aws.amazon.com/e
 in the \emph{Amazon EKS User Guide}.
 }
 \section{Request syntax}{
-\preformatted{eks$delete_cluster(
+\preformatted{svc$delete_cluster(
   name = "string"
 )
 }
@@ -30,7 +30,7 @@ in the \emph{Amazon EKS User Guide}.
 \examples{
 # This example command deletes a cluster named `devel` in your default
 # region.
-\donttest{eks$delete_cluster(
+\donttest{svc$delete_cluster(
   name = "devel"
 )}
 

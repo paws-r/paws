@@ -21,7 +21,7 @@ speech of the words in the document and returns information about them.
 For more information, see how-syntax.
 }
 \section{Request syntax}{
-\preformatted{comprehend$batch_detect_syntax(
+\preformatted{svc$batch_detect_syntax(
   TextList = list(
     "string"
   ),

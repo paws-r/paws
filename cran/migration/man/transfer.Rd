@@ -19,12 +19,6 @@ processing, analytics, machine learning, and archiving. Getting started
 with AWS Transfer for SFTP (AWS SFTP) is easy; there is no
 infrastructure to buy and setup.
 }
-\section{Example}{
-\preformatted{transfer <- paws::transfer()
-transfer$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,3 +43,9 @@ transfer$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_server(
+  Foo = 123
+)}
+
+}

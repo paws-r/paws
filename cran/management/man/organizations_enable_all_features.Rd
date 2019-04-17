@@ -43,7 +43,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$enable_all_features()
+\preformatted{svc$enable_all_features()
 }
 }
 
@@ -56,7 +56,7 @@ account.
 # accept the handshake, the organization administrator can finalize the
 # change to enable all features, and those with appropriate permissions
 # can create policies and apply them to roots, OUs, and accounts:/n/n
-\donttest{organizations$enable_all_features()}
+\donttest{svc$enable_all_features()}
 
 }
 \keyword{internal}

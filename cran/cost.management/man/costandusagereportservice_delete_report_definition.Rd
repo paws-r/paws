@@ -13,7 +13,7 @@ costandusagereportservice_delete_report_definition(ReportName)
 Deletes the specified report.
 }
 \section{Request syntax}{
-\preformatted{costandusagereportservice$delete_report_definition(
+\preformatted{svc$delete_report_definition(
   ReportName = "string"
 )
 }
@@ -22,7 +22,7 @@ Deletes the specified report.
 \examples{
 # The following example deletes the AWS Cost and Usage report named
 # ExampleReport.
-\donttest{costandusagereportservice$delete_report_definition(
+\donttest{svc$delete_report_definition(
   ReportName = "ExampleReport"
 )}
 

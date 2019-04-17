@@ -35,7 +35,7 @@ SQL is not enabled for this private beta release. Using SQL parameters
 (such as SqlApplicationConfiguration) will result in an error.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$create_application(
+\preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6",

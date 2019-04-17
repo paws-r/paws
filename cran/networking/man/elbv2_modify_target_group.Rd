@@ -64,7 +64,7 @@ targets in the specified target group.
 To monitor the health of the targets, use DescribeTargetHealth.
 }
 \section{Request syntax}{
-\preformatted{elbv2$modify_target_group(
+\preformatted{svc$modify_target_group(
   TargetGroupArn = "string",
   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
   HealthCheckPort = "string",
@@ -84,7 +84,7 @@ To monitor the health of the targets, use DescribeTargetHealth.
 \examples{
 # This example changes the configuration of the health checks used to
 # evaluate the health of the targets for the specified target group.
-\donttest{elbv2$modify_target_group(
+\donttest{svc$modify_target_group(
   HealthCheckPort = "443",
   HealthCheckProtocol = "HTTPS",
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https..."

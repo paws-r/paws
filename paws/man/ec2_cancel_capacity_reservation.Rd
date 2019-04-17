@@ -28,7 +28,7 @@ open Capacity Reservation that has matching attributes and sufficient
 capacity.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_capacity_reservation(
+\preformatted{svc$cancel_capacity_reservation(
   CapacityReservationId = "string",
   DryRun = TRUE|FALSE
 )

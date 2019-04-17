@@ -16,7 +16,7 @@ into.}
 Describes the user import job.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$describe_user_import_job(
+\preformatted{svc$describe_user_import_job(
   UserPoolId = "string",
   JobId = "string"
 )

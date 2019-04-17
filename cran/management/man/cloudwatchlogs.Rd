@@ -40,12 +40,6 @@ into the log service. You can then access the raw log data when you
 need it.
 }
 }
-\section{Example}{
-\preformatted{cloudwatchlogs <- paws::cloudwatchlogs()
-cloudwatchlogs$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -91,3 +85,9 @@ cloudwatchlogs$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_kms_key(
+  Foo = 123
+)}
+
+}

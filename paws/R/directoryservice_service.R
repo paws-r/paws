@@ -22,11 +22,10 @@ NULL
 #' about the AWS SDKs, including how to download and install them, see
 #' [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
 #'
-#' @section Example:
-#' ```
-#' directoryservice <- paws::directoryservice()
-#' directoryservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_shared_directory(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -24,7 +24,7 @@ about half an hour to become active. For more information, see
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudsearch$update_availability_options(
+\preformatted{svc$update_availability_options(
   DomainName = "string",
   MultiAZ = TRUE|FALSE
 )

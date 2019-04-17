@@ -17,7 +17,7 @@ the returned \code{NextToken} value.}
 Describes the connectors registered with the AWS SMS.
 }
 \section{Request syntax}{
-\preformatted{sms$get_connectors(
+\preformatted{svc$get_connectors(
   nextToken = "string",
   maxResults = 123
 )

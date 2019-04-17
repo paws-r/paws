@@ -48,7 +48,7 @@ with the token value that's returned from the previous call to
 \code{GetDocumentAnalysis}.
 }
 \section{Request syntax}{
-\preformatted{textract$get_document_analysis(
+\preformatted{svc$get_document_analysis(
   JobId = "string",
   MaxResults = 123,
   NextToken = "string"

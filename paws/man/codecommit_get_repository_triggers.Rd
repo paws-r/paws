@@ -13,7 +13,7 @@ codecommit_get_repository_triggers(repositoryName)
 Gets information about triggers configured for a repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_repository_triggers(
+\preformatted{svc$get_repository_triggers(
   repositoryName = "string"
 )
 }

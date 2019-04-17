@@ -19,7 +19,7 @@ version of the thing group being updated, the update will fail.}
 Update a thing group.
 }
 \section{Request syntax}{
-\preformatted{iot$update_thing_group(
+\preformatted{svc$update_thing_group(
   thingGroupName = "string",
   thingGroupProperties = list(
     thingGroupDescription = "string",

@@ -17,7 +17,7 @@ guardduty_get_findings(DetectorId, FindingIds, SortCriteria)
 Describes Amazon GuardDuty findings specified by finding IDs.
 }
 \section{Request syntax}{
-\preformatted{guardduty$get_findings(
+\preformatted{svc$get_findings(
   DetectorId = "string",
   FindingIds = list(
     "string"

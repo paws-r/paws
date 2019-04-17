@@ -19,7 +19,7 @@ Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 for a specified iSCSI target and initiator pair.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$delete_chap_credentials(
+\preformatted{svc$delete_chap_credentials(
   TargetARN = "string",
   InitiatorName = "string"
 )
@@ -29,7 +29,7 @@ for a specified iSCSI target and initiator pair.
 \examples{
 # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 # for a specified iSCSI target and initiator pair.
-\donttest{storagegateway$delete_chap_credentials(
+\donttest{svc$delete_chap_credentials(
   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
 )}

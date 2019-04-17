@@ -23,7 +23,7 @@ Marketplace. The list may be empty if no work team satisfies the filter
 specified in the \code{NameContains} parameter.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_subscribed_workteams(
+\preformatted{svc$list_subscribed_workteams(
   NameContains = "string",
   NextToken = "string",
   MaxResults = 123

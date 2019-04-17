@@ -23,7 +23,7 @@ or to delete a VPC peering connection request that you initiated, use
 DeleteVpcPeeringConnection.
 }
 \section{Request syntax}{
-\preformatted{ec2$reject_vpc_peering_connection(
+\preformatted{svc$reject_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )

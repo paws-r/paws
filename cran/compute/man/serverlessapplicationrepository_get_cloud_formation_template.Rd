@@ -19,7 +19,7 @@ Pattern:
 Gets the specified AWS CloudFormation template.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$get_cloud_formation_template(
+\preformatted{svc$get_cloud_formation_template(
   ApplicationId = "string",
   TemplateId = "string"
 )

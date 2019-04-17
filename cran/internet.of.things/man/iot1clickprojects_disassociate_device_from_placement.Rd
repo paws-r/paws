@@ -18,7 +18,7 @@ iot1clickprojects_disassociate_device_from_placement(projectName,
 Removes a physical device from a placement.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$disassociate_device_from_placement(
+\preformatted{svc$disassociate_device_from_placement(
   projectName = "string",
   placementName = "string",
   deviceTemplateName = "string"

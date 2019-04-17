@@ -34,7 +34,7 @@ MeterUsage is authenticated on the buyer's AWS account, generally when
 running from an EC2 instance on the AWS Marketplace.
 }
 \section{Request syntax}{
-\preformatted{marketplacemetering$meter_usage(
+\preformatted{svc$meter_usage(
   ProductCode = "string",
   Timestamp = as.POSIXct(
     "2015-01-01"

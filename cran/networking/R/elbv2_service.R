@@ -58,11 +58,23 @@ NULL
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
 #'
-#' @section Example:
-#' ```
-#' elbv2 <- paws::elbv2()
-#' elbv2$operation()
-#' ```
+#' @examples
+#' # This example adds the specified tags to the specified load balancer.
+#' \donttest{svc$add_tags(
+#'   ResourceArns = list(
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "project",
+#'       Value = "lima"
+#'     ),
+#'     list(
+#'       Key = "department",
+#'       Value = "digital-media"
+#'     )
+#'   )
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -19,7 +19,7 @@ in the order specified in this list.}
 Changes information about the BasePathMapping resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_base_path_mapping(
+\preformatted{svc$update_base_path_mapping(
   domainName = "string",
   basePath = "string",
   patchOperations = list(

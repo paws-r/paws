@@ -45,7 +45,7 @@ parameters. If there are no inline policies embedded with the specified
 role, the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{iam$list_role_policies(
+\preformatted{svc$list_role_policies(
   RoleName = "string",
   Marker = "string",
   MaxItems = 123

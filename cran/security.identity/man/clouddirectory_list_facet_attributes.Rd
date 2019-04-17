@@ -20,7 +20,7 @@ clouddirectory_list_facet_attributes(SchemaArn, Name, NextToken,
 Retrieves attributes attached to the facet.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_facet_attributes(
+\preformatted{svc$list_facet_attributes(
   SchemaArn = "string",
   Name = "string",
   NextToken = "string",

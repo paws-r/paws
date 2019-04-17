@@ -24,7 +24,7 @@ policy defines how an instance group dynamically adds and terminates EC2
 instances in response to the value of a CloudWatch metric.
 }
 \section{Request syntax}{
-\preformatted{emr$put_auto_scaling_policy(
+\preformatted{svc$put_auto_scaling_policy(
   ClusterId = "string",
   InstanceGroupId = "string",
   AutoScalingPolicy = list(

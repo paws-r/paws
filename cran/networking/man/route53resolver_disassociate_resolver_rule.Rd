@@ -23,7 +23,7 @@ forwarding DNS queries for the domain name that you specified in the
 resolver rule.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$disassociate_resolver_rule(
+\preformatted{svc$disassociate_resolver_rule(
   VPCId = "string",
   ResolverRuleId = "string"
 )

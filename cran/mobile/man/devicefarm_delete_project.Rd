@@ -17,7 +17,7 @@ Deletes an AWS Device Farm project, given the project ARN.
 \strong{Note} Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_project(
+\preformatted{svc$delete_project(
   arn = "string"
 )
 }
@@ -25,7 +25,7 @@ Deletes an AWS Device Farm project, given the project ARN.
 
 \examples{
 # The following example deletes a specific project.
-\donttest{devicefarm$delete_project(
+\donttest{svc$delete_project(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 )}
 

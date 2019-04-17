@@ -34,7 +34,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_key_pair(
+\preformatted{svc$create_key_pair(
   KeyName = "string",
   DryRun = TRUE|FALSE
 )
@@ -43,7 +43,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates a key pair named my-key-pair.
-\donttest{ec2$create_key_pair(
+\donttest{svc$create_key_pair(
   KeyName = "my-key-pair"
 )}
 

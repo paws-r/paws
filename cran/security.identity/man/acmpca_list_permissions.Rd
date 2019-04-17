@@ -31,7 +31,7 @@ CA. Permissions can be granted with the CreatePermission operation and
 revoked with the DeletePermission operation.
 }
 \section{Request syntax}{
-\preformatted{acmpca$list_permissions(
+\preformatted{svc$list_permissions(
   CertificateAuthorityArn = "string",
   NextToken = "string",
   MaxResults = 123

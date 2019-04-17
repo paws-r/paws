@@ -34,7 +34,7 @@ and customer address. IPv6 addresses are automatically assigned from the
 Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
 }
 \section{Request syntax}{
-\preformatted{directconnect$allocate_public_virtual_interface(
+\preformatted{svc$allocate_public_virtual_interface(
   connectionId = "string",
   ownerAccount = "string",
   newPublicVirtualInterfaceAllocation = list(

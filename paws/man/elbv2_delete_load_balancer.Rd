@@ -25,7 +25,7 @@ their target groups. If you no longer need these EC2 instances, you can
 stop or terminate them.
 }
 \section{Request syntax}{
-\preformatted{elbv2$delete_load_balancer(
+\preformatted{svc$delete_load_balancer(
   LoadBalancerArn = "string"
 )
 }
@@ -33,7 +33,7 @@ stop or terminate them.
 
 \examples{
 # This example deletes the specified load balancer.
-\donttest{elbv2$delete_load_balancer(
+\donttest{svc$delete_load_balancer(
   LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
 )}
 

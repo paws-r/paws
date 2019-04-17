@@ -17,7 +17,7 @@ mediapackage_list_origin_endpoints(ChannelId, MaxResults, NextToken)
 Returns a collection of OriginEndpoint records.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$list_origin_endpoints(
+\preformatted{svc$list_origin_endpoints(
   ChannelId = "string",
   MaxResults = 123,
   NextToken = "string"

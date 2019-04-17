@@ -17,7 +17,7 @@ greengrass_list_group_versions(GroupId, MaxResults, NextToken)
 Lists the versions of a group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_group_versions(
+\preformatted{svc$list_group_versions(
   GroupId = "string",
   MaxResults = "string",
   NextToken = "string"

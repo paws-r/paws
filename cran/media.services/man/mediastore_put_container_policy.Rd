@@ -27,7 +27,7 @@ container. If you enter \code{PutContainerPolicy} twice, the second command
 modifies the existing policy.
 }
 \section{Request syntax}{
-\preformatted{mediastore$put_container_policy(
+\preformatted{svc$put_container_policy(
   ContainerName = "string",
   Policy = "string"
 )

@@ -23,12 +23,6 @@ The AWS Cost and Usage Report API provides the following endpoint:
 \item cur.us-east-1.amazonaws.com
 }
 }
-\section{Example}{
-\preformatted{costandusagereportservice <- paws::costandusagereportservice()
-costandusagereportservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,11 @@ costandusagereportservice$operation()
 }
 }
 
+\examples{
+# The following example deletes the AWS Cost and Usage report named
+# ExampleReport.
+\donttest{svc$delete_report_definition(
+  ReportName = "ExampleReport"
+)}
+
+}

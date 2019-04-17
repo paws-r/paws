@@ -22,7 +22,7 @@ No response returns from this call.
 When you delete a user from a server, the user's information is lost.
 }
 \section{Request syntax}{
-\preformatted{transfer$delete_user(
+\preformatted{svc$delete_user(
   ServerId = "string",
   UserName = "string"
 )

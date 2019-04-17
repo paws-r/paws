@@ -15,7 +15,7 @@ cognitoidentityprovider_delete_resource_server(UserPoolId, Identifier)
 Deletes a resource server.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$delete_resource_server(
+\preformatted{svc$delete_resource_server(
   UserPoolId = "string",
   Identifier = "string"
 )

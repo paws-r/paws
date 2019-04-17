@@ -39,7 +39,7 @@ Returns a list of simulation applications. You can optionally provide
 filters to retrieve specific simulation applications.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_simulation_applications(
+\preformatted{svc$list_simulation_applications(
   versionQualifier = "string",
   nextToken = "string",
   maxResults = 123,

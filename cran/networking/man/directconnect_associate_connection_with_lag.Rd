@@ -33,7 +33,7 @@ associated with a different LAG, the hosted connections remain
 associated with the original LAG.
 }
 \section{Request syntax}{
-\preformatted{directconnect$associate_connection_with_lag(
+\preformatted{svc$associate_connection_with_lag(
   connectionId = "string",
   lagId = "string"
 )

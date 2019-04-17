@@ -19,7 +19,7 @@ iot_list_authorizers(pageSize, marker, ascendingOrder, status)
 Lists the authorizers registered in your account.
 }
 \section{Request syntax}{
-\preformatted{iot$list_authorizers(
+\preformatted{svc$list_authorizers(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE,

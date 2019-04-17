@@ -16,7 +16,7 @@ does not contain any tokens.}
 Returns summaries of the customer's non-deleted organizations.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_organizations(
+\preformatted{svc$list_organizations(
   NextToken = "string",
   MaxResults = 123
 )

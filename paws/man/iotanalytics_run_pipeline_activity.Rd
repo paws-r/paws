@@ -22,7 +22,7 @@ Simulates the results of running a pipeline activity on a message
 payload.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$run_pipeline_activity(
+\preformatted{svc$run_pipeline_activity(
   pipelineActivity = list(
     channel = list(
       name = "string",

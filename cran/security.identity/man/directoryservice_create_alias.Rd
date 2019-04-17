@@ -25,7 +25,7 @@ After an alias has been created, it cannot be deleted or reused, so this
 operation should only be used when absolutely necessary.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$create_alias(
+\preformatted{svc$create_alias(
   DirectoryId = "string",
   Alias = "string"
 )

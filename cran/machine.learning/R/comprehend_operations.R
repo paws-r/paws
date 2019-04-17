@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$batch_detect_dominant_language(
+#' svc$batch_detect_dominant_language(
 #'   TextList = list(
 #'     "string"
 #'   )
@@ -65,7 +65,7 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$batch_detect_entities(
+#' svc$batch_detect_entities(
 #'   TextList = list(
 #'     "string"
 #'   ),
@@ -107,7 +107,7 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$batch_detect_key_phrases(
+#' svc$batch_detect_key_phrases(
 #'   TextList = list(
 #'     "string"
 #'   ),
@@ -151,7 +151,7 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$batch_detect_sentiment(
+#' svc$batch_detect_sentiment(
 #'   TextList = list(
 #'     "string"
 #'   ),
@@ -196,7 +196,7 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$batch_detect_syntax(
+#' svc$batch_detect_syntax(
 #'   TextList = list(
 #'     "string"
 #'   ),
@@ -258,7 +258,7 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$create_document_classifier(
+#' svc$create_document_classifier(
 #'   DocumentClassifierName = "string",
 #'   DataAccessRoleArn = "string",
 #'   InputDataConfig = list(
@@ -324,7 +324,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$create_entity_recognizer(
+#' svc$create_entity_recognizer(
 #'   RecognizerName = "string",
 #'   DataAccessRoleArn = "string",
 #'   InputDataConfig = list(
@@ -389,7 +389,7 @@ comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleAr
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$delete_document_classifier(
+#' svc$delete_document_classifier(
 #'   DocumentClassifierArn = "string"
 #' )
 #' ```
@@ -433,7 +433,7 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$delete_entity_recognizer(
+#' svc$delete_entity_recognizer(
 #'   EntityRecognizerArn = "string"
 #' )
 #' ```
@@ -470,7 +470,7 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_document_classification_job(
+#' svc$describe_document_classification_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -506,7 +506,7 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_document_classifier(
+#' svc$describe_document_classifier(
 #'   DocumentClassifierArn = "string"
 #' )
 #' ```
@@ -543,7 +543,7 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_dominant_language_detection_job(
+#' svc$describe_dominant_language_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -580,7 +580,7 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_entities_detection_job(
+#' svc$describe_entities_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -617,7 +617,7 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_entity_recognizer(
+#' svc$describe_entity_recognizer(
 #'   EntityRecognizerArn = "string"
 #' )
 #' ```
@@ -654,7 +654,7 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_key_phrases_detection_job(
+#' svc$describe_key_phrases_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -691,7 +691,7 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_sentiment_detection_job(
+#' svc$describe_sentiment_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -727,7 +727,7 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$describe_topics_detection_job(
+#' svc$describe_topics_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -766,7 +766,7 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$detect_dominant_language(
+#' svc$detect_dominant_language(
 #'   Text = "string"
 #' )
 #' ```
@@ -805,7 +805,7 @@ comprehend_detect_dominant_language <- function(Text) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$detect_entities(
+#' svc$detect_entities(
 #'   Text = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 #' )
@@ -844,7 +844,7 @@ comprehend_detect_entities <- function(Text, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$detect_key_phrases(
+#' svc$detect_key_phrases(
 #'   Text = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 #' )
@@ -885,7 +885,7 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$detect_sentiment(
+#' svc$detect_sentiment(
 #'   Text = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 #' )
@@ -925,7 +925,7 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$detect_syntax(
+#' svc$detect_syntax(
 #'   Text = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 #' )
@@ -969,7 +969,7 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_document_classification_jobs(
+#' svc$list_document_classification_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1020,7 +1020,7 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_document_classifiers(
+#' svc$list_document_classifiers(
 #'   Filter = list(
 #'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
 #'     SubmitTimeBefore = as.POSIXct(
@@ -1073,7 +1073,7 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_dominant_language_detection_jobs(
+#' svc$list_dominant_language_detection_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1124,7 +1124,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_entities_detection_jobs(
+#' svc$list_entities_detection_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1183,7 +1183,7 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_entity_recognizers(
+#' svc$list_entity_recognizers(
 #'   Filter = list(
 #'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
 #'     SubmitTimeBefore = as.POSIXct(
@@ -1234,7 +1234,7 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_key_phrases_detection_jobs(
+#' svc$list_key_phrases_detection_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1285,7 +1285,7 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_sentiment_detection_jobs(
+#' svc$list_sentiment_detection_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1336,7 +1336,7 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$list_topics_detection_jobs(
+#' svc$list_topics_detection_jobs(
 #'   Filter = list(
 #'     JobName = "string",
 #'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
@@ -1402,7 +1402,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_document_classification_job(
+#' svc$start_document_classification_job(
 #'   JobName = "string",
 #'   DocumentClassifierArn = "string",
 #'   InputDataConfig = list(
@@ -1470,7 +1470,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_dominant_language_detection_job(
+#' svc$start_dominant_language_detection_job(
 #'   InputDataConfig = list(
 #'     S3Uri = "string",
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -1551,7 +1551,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_entities_detection_job(
+#' svc$start_entities_detection_job(
 #'   InputDataConfig = list(
 #'     S3Uri = "string",
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -1622,7 +1622,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_key_phrases_detection_job(
+#' svc$start_key_phrases_detection_job(
 #'   InputDataConfig = list(
 #'     S3Uri = "string",
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -1692,7 +1692,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_sentiment_detection_job(
+#' svc$start_sentiment_detection_job(
 #'   InputDataConfig = list(
 #'     S3Uri = "string",
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -1763,7 +1763,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$start_topics_detection_job(
+#' svc$start_topics_detection_job(
 #'   InputDataConfig = list(
 #'     S3Uri = "string",
 #'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
@@ -1822,7 +1822,7 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_dominant_language_detection_job(
+#' svc$stop_dominant_language_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -1869,7 +1869,7 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_entities_detection_job(
+#' svc$stop_entities_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -1916,7 +1916,7 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_key_phrases_detection_job(
+#' svc$stop_key_phrases_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -1963,7 +1963,7 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_sentiment_detection_job(
+#' svc$stop_sentiment_detection_job(
 #'   JobId = "string"
 #' )
 #' ```
@@ -2005,7 +2005,7 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_training_document_classifier(
+#' svc$stop_training_document_classifier(
 #'   DocumentClassifierArn = "string"
 #' )
 #' ```
@@ -2048,7 +2048,7 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 #'
 #' @section Request syntax:
 #' ```
-#' comprehend$stop_training_entity_recognizer(
+#' svc$stop_training_entity_recognizer(
 #'   EntityRecognizerArn = "string"
 #' )
 #' ```

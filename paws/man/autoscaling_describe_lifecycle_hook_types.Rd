@@ -18,7 +18,7 @@ The following hook types are supported:
 }
 \examples{
 # This example describes the available lifecycle hook types.
-\donttest{autoscaling$describe_lifecycle_hook_types()}
+\donttest{svc$describe_lifecycle_hook_types()}
 
 }
 \keyword{internal}

@@ -28,7 +28,7 @@ policy that explicitly grants permissions. For more information about
 user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
-\preformatted{opsworks$describe_raid_arrays(
+\preformatted{svc$describe_raid_arrays(
   InstanceId = "string",
   StackId = "string",
   RaidArrayIds = list(

@@ -34,7 +34,7 @@ form of merging the supplied definition into the existing API or
 overwriting the existing API.
 }
 \section{Request syntax}{
-\preformatted{apigateway$put_rest_api(
+\preformatted{svc$put_rest_api(
   restApiId = "string",
   mode = "merge"|"overwrite",
   failOnWarnings = TRUE|FALSE,

@@ -24,7 +24,7 @@ metadata for your table might not be available at that moment. Wait for
 a few seconds, and then try the \code{DescribeTable} request again.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_table(
+\preformatted{svc$describe_table(
   TableName = "string"
 )
 }
@@ -32,7 +32,7 @@ a few seconds, and then try the \code{DescribeTable} request again.
 
 \examples{
 # This example describes the Music table.
-\donttest{dynamodb$describe_table(
+\donttest{svc$describe_table(
   TableName = "Music"
 )}
 

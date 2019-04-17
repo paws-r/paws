@@ -13,7 +13,7 @@ s3_get_bucket_notification(Bucket)
 No longer used, see the GetBucketNotificationConfiguration operation.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_notification(
+\preformatted{svc$get_bucket_notification(
   Bucket = "string"
 )
 }
@@ -22,13 +22,13 @@ No longer used, see the GetBucketNotificationConfiguration operation.
 \examples{
 # The following example returns notification configuration set on a
 # bucket.
-\donttest{s3$get_bucket_notification(
+\donttest{svc$get_bucket_notification(
   Bucket = "examplebucket"
 )}
 
 # The following example returns notification configuration set on a
 # bucket.
-\donttest{s3$get_bucket_notification(
+\donttest{svc$get_bucket_notification(
   Bucket = "examplebucket"
 )}
 

@@ -13,7 +13,7 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids(agentIds)
 Instructs the specified agents or connectors to stop collecting data.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$stop_data_collection_by_agent_ids(
+\preformatted{svc$stop_data_collection_by_agent_ids(
   agentIds = list(
     "string"
   )

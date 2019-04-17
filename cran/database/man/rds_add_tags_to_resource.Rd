@@ -23,7 +23,7 @@ Amazon RDS.
 For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}.
 }
 \section{Request syntax}{
-\preformatted{rds$add_tags_to_resource(
+\preformatted{svc$add_tags_to_resource(
   ResourceName = "string",
   Tags = list(
     list(

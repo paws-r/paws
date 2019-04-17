@@ -30,7 +30,7 @@ If GetAttributes is called without being passed any attribute names, all
 the attributes for the item are returned.
 }
 \section{Request syntax}{
-\preformatted{simpledb$get_attributes(
+\preformatted{svc$get_attributes(
   DomainName = "string",
   ItemName = "string",
   AttributeNames = list(

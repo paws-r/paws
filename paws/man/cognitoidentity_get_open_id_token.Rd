@@ -26,7 +26,7 @@ The OpenId token is valid for 10 minutes.
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$get_open_id_token(
+\preformatted{svc$get_open_id_token(
   IdentityId = "string",
   Logins = list(
     "string"

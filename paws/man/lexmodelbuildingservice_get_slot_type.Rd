@@ -20,7 +20,7 @@ version.
 This operation requires permissions for the \code{lex:GetSlotType} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_slot_type(
+\preformatted{svc$get_slot_type(
   name = "string",
   version = "string"
 )
@@ -29,7 +29,7 @@ This operation requires permissions for the \code{lex:GetSlotType} action.
 
 \examples{
 # This example shows how to get information about a slot type.
-\donttest{lexmodelbuildingservice$get_slot_type(
+\donttest{svc$get_slot_type(
   version = "$LATEST",
   name = "DocPizzaCrustType"
 )}

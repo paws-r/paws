@@ -29,7 +29,7 @@ response with no \code{NextToken} (or an empty or null value), that means
 there are no more tags to get.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$list_tags(
+\preformatted{svc$list_tags(
   ResourceId = "string",
   NextToken = "string",
   MaxResults = 123

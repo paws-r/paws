@@ -28,7 +28,7 @@ Lists all provisioning artifacts (also known as versions) for the
 specified self-service action.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_provisioning_artifacts_for_service_action(
+\preformatted{svc$list_provisioning_artifacts_for_service_action(
   ServiceActionId = "string",
   PageSize = 123,
   PageToken = "string",

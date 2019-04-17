@@ -15,7 +15,7 @@ greengrass_list_logger_definitions(MaxResults, NextToken)
 Retrieves a list of logger definitions.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_logger_definitions(
+\preformatted{svc$list_logger_definitions(
   MaxResults = "string",
   NextToken = "string"
 )

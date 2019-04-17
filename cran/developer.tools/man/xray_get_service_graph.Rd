@@ -28,7 +28,7 @@ Downstream services can be other applications, AWS resources, HTTP web
 APIs, or SQL databases.
 }
 \section{Request syntax}{
-\preformatted{xray$get_service_graph(
+\preformatted{svc$get_service_graph(
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

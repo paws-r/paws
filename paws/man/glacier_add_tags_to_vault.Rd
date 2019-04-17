@@ -27,7 +27,7 @@ the vault under a specified key, the existing key value will be
 overwritten. For more information about tags, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon Glacier Resources}.
 }
 \section{Request syntax}{
-\preformatted{glacier$add_tags_to_vault(
+\preformatted{svc$add_tags_to_vault(
   accountId = "string",
   vaultName = "string",
   Tags = list(
@@ -39,7 +39,7 @@ overwritten. For more information about tags, see \href{http://docs.aws.amazon.c
 
 \examples{
 # The example adds two tags to a my-vault.
-\donttest{glacier$add_tags_to_vault(
+\donttest{svc$add_tags_to_vault(
   Tags = list(
     examplekey1 = "examplevalue1",
     examplekey2 = "examplevalue2"

@@ -26,7 +26,7 @@ Lists summary information about the instances that you registered by
 using a specified service.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$list_instances(
+\preformatted{svc$list_instances(
   ServiceId = "string",
   NextToken = "string",
   MaxResults = 123

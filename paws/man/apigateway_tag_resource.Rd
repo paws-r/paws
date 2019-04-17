@@ -18,7 +18,7 @@ start with \code{aws:}. The tag value can be up to 256 characters.}
 Adds or updates a tag on a given resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"

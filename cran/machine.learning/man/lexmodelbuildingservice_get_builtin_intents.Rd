@@ -32,7 +32,7 @@ This operation requires permission for the \code{lex:GetBuiltinIntents}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_builtin_intents(
+\preformatted{svc$get_builtin_intents(
   locale = "en-US"|"en-GB"|"de-DE",
   signatureContains = "string",
   nextToken = "string",

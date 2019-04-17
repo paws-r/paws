@@ -24,7 +24,7 @@ You cannot delete an application version that is associated with a
 running environment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$delete_application_version(
+\preformatted{svc$delete_application_version(
   ApplicationName = "string",
   VersionLabel = "string",
   DeleteSourceBundle = TRUE|FALSE
@@ -35,7 +35,7 @@ running environment.
 \examples{
 # The following operation deletes an application version named
 # 22a0-stage-150819_182129 for an application named my-app:
-\donttest{elasticbeanstalk$delete_application_version(
+\donttest{svc$delete_application_version(
   ApplicationName = "my-app",
   DeleteSourceBundle = TRUE,
   VersionLabel = "22a0-stage-150819_182129"

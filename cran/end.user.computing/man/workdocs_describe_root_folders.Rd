@@ -30,7 +30,7 @@ information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguid
 in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_root_folders(
+\preformatted{svc$describe_root_folders(
   AuthenticationToken = "string",
   Limit = 123,
   Marker = "string"

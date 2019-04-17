@@ -14,7 +14,7 @@ Updates phone number product types. Choose from Amazon Chime Business
 Calling and Amazon Chime Voice Connector product types.
 }
 \section{Request syntax}{
-\preformatted{chime$batch_update_phone_number(
+\preformatted{svc$batch_update_phone_number(
   UpdatePhoneNumberRequestItems = list(
     list(
       PhoneNumberId = "string",

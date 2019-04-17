@@ -31,7 +31,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$delete_rule(
+#' svc$delete_rule(
 #'   Name = "string",
 #'   Force = TRUE|FALSE
 #' )
@@ -69,7 +69,7 @@ cloudwatchevents_delete_rule <- function(Name, Force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$describe_event_bus()
+#' svc$describe_event_bus()
 #' ```
 #'
 #' @keywords internal
@@ -105,7 +105,7 @@ cloudwatchevents_describe_event_bus <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$describe_rule(
+#' svc$describe_rule(
 #'   Name = "string"
 #' )
 #' ```
@@ -144,7 +144,7 @@ cloudwatchevents_describe_rule <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$disable_rule(
+#' svc$disable_rule(
 #'   Name = "string"
 #' )
 #' ```
@@ -184,7 +184,7 @@ cloudwatchevents_disable_rule <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$enable_rule(
+#' svc$enable_rule(
 #'   Name = "string"
 #' )
 #' ```
@@ -224,7 +224,7 @@ cloudwatchevents_enable_rule <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$list_rule_names_by_target(
+#' svc$list_rule_names_by_target(
 #'   TargetArn = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -268,7 +268,7 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$list_rules(
+#' svc$list_rules(
 #'   NamePrefix = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -306,7 +306,7 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, NextToken = NULL, Lim
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceARN = "string"
 #' )
 #' ```
@@ -344,7 +344,7 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$list_targets_by_rule(
+#' svc$list_targets_by_rule(
 #'   Rule = "string",
 #'   NextToken = "string",
 #'   Limit = 123
@@ -385,7 +385,7 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, NextToken = NULL, Limit 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$put_events(
+#' svc$put_events(
 #'   Entries = list(
 #'     list(
 #'       Time = as.POSIXct(
@@ -485,7 +485,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$put_permission(
+#' svc$put_permission(
 #'   Action = "string",
 #'   Principal = "string",
 #'   StatementId = "string",
@@ -588,7 +588,7 @@ cloudwatchevents_put_permission <- function(Action, Principal, StatementId, Cond
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$put_rule(
+#' svc$put_rule(
 #'   Name = "string",
 #'   ScheduleExpression = "string",
 #'   EventPattern = "string",
@@ -747,7 +747,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$put_targets(
+#' svc$put_targets(
 #'   Rule = "string",
 #'   Targets = list(
 #'     list(
@@ -847,7 +847,7 @@ cloudwatchevents_put_targets <- function(Rule, Targets) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$remove_permission(
+#' svc$remove_permission(
 #'   StatementId = "string"
 #' )
 #' ```
@@ -898,7 +898,7 @@ cloudwatchevents_remove_permission <- function(StatementId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$remove_targets(
+#' svc$remove_targets(
 #'   Rule = "string",
 #'   Ids = list(
 #'     "string"
@@ -954,7 +954,7 @@ cloudwatchevents_remove_targets <- function(Rule, Ids, Force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$tag_resource(
+#' svc$tag_resource(
 #'   ResourceARN = "string",
 #'   Tags = list(
 #'     list(
@@ -1004,7 +1004,7 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$test_event_pattern(
+#' svc$test_event_pattern(
 #'   EventPattern = "string",
 #'   Event = "string"
 #' )
@@ -1042,7 +1042,7 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudwatchevents$untag_resource(
+#' svc$untag_resource(
 #'   ResourceARN = "string",
 #'   TagKeys = list(
 #'     "string"

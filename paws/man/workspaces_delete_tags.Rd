@@ -16,7 +16,7 @@ DescribeWorkspaces.}
 Deletes the specified tags from the specified WorkSpace.
 }
 \section{Request syntax}{
-\preformatted{workspaces$delete_tags(
+\preformatted{svc$delete_tags(
   ResourceId = "string",
   TagKeys = list(
     "string"

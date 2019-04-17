@@ -20,7 +20,7 @@ calculated health check.}
 Gets the reason that a specified health check failed most recently.
 }
 \section{Request syntax}{
-\preformatted{route53$get_health_check_last_failure_reason(
+\preformatted{svc$get_health_check_last_failure_reason(
   HealthCheckId = "string"
 )
 }

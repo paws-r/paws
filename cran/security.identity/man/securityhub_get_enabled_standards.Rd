@@ -22,7 +22,7 @@ from the previous response to continue listing data.}
 Lists and describes enabled standards.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_enabled_standards(
+\preformatted{svc$get_enabled_standards(
   StandardsSubscriptionArns = list(
     "string"
   ),

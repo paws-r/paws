@@ -24,7 +24,7 @@ Creates a new hardware security module (HSM) in the specified AWS
 CloudHSM cluster.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$create_hsm(
+\preformatted{svc$create_hsm(
   ClusterId = "string",
   AvailabilityZone = "string",
   IpAddress = "string"

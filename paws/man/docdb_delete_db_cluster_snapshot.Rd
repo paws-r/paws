@@ -20,7 +20,7 @@ operation is terminated.
 The DB cluster snapshot must be in the \code{available} state to be deleted.
 }
 \section{Request syntax}{
-\preformatted{docdb$delete_db_cluster_snapshot(
+\preformatted{svc$delete_db_cluster_snapshot(
   DBClusterSnapshotIdentifier = "string"
 )
 }

@@ -13,7 +13,7 @@ robomaker_cancel_simulation_job(job)
 Cancels the specified simulation job.
 }
 \section{Request syntax}{
-\preformatted{robomaker$cancel_simulation_job(
+\preformatted{svc$cancel_simulation_job(
   job = "string"
 )
 }

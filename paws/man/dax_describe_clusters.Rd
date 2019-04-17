@@ -43,7 +43,7 @@ If nodes are currently being removed from the DAX cluster, no endpoint
 information for the removed nodes is displayed.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_clusters(
+\preformatted{svc$describe_clusters(
   ClusterNames = list(
     "string"
   ),

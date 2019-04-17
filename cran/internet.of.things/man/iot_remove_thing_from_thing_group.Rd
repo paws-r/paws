@@ -20,7 +20,7 @@ iot_remove_thing_from_thing_group(thingGroupName, thingGroupArn,
 Remove the specified thing from the specified group.
 }
 \section{Request syntax}{
-\preformatted{iot$remove_thing_from_thing_group(
+\preformatted{svc$remove_thing_from_thing_group(
   thingGroupName = "string",
   thingGroupArn = "string",
   thingName = "string",

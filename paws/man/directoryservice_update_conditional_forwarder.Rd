@@ -23,7 +23,7 @@ Updates a conditional forwarder that has been set up for your AWS
 directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$update_conditional_forwarder(
+\preformatted{svc$update_conditional_forwarder(
   DirectoryId = "string",
   RemoteDomainName = "string",
   DnsIpAddrs = list(

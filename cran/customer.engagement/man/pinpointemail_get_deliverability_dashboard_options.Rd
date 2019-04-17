@@ -20,7 +20,7 @@ first day of a calendar month, AWS prorates the monthly charge based on
 how many days have elapsed in the current calendar month.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_deliverability_dashboard_options()
+\preformatted{svc$get_deliverability_dashboard_options()
 }
 }
 

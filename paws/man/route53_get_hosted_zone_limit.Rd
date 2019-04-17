@@ -29,7 +29,7 @@ in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
 \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
 }
 \section{Request syntax}{
-\preformatted{route53$get_hosted_zone_limit(
+\preformatted{svc$get_hosted_zone_limit(
   Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
   HostedZoneId = "string"
 )

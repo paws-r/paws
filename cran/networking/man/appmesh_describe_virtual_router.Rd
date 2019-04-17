@@ -15,7 +15,7 @@ appmesh_describe_virtual_router(meshName, virtualRouterName)
 Describes an existing virtual router.
 }
 \section{Request syntax}{
-\preformatted{appmesh$describe_virtual_router(
+\preformatted{svc$describe_virtual_router(
   meshName = "string",
   virtualRouterName = "string"
 )

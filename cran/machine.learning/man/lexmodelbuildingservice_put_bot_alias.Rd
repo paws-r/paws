@@ -38,7 +38,7 @@ see versioning-aliases.
 This operation requires permissions for the \code{lex:PutBotAlias} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$put_bot_alias(
+\preformatted{svc$put_bot_alias(
   name = "string",
   description = "string",
   botVersion = "string",

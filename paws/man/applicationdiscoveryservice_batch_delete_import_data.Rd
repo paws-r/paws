@@ -24,7 +24,7 @@ matched records that comes from the deleted records will also be
 deleted.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$batch_delete_import_data(
+\preformatted{svc$batch_delete_import_data(
   importTaskIds = list(
     "string"
   )

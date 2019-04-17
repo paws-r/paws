@@ -15,11 +15,10 @@ NULL
 #' see the [Code Signing for Amazon FreeRTOS Developer
 #' Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 #'
-#' @section Example:
-#' ```
-#' signer <- paws::signer()
-#' signer$operation()
-#' ```
+#' @examples
+#' \donttest{svc$cancel_signing_profile(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

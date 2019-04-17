@@ -24,7 +24,7 @@ definitions returned.}
 Retrieves a multiple function definitions from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_user_defined_functions(
+\preformatted{svc$get_user_defined_functions(
   CatalogId = "string",
   DatabaseName = "string",
   Pattern = "string",

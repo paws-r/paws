@@ -33,7 +33,7 @@ Returns a list of IAM users that are in the specified IAM group. You can
 paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$get_group(
+\preformatted{svc$get_group(
   GroupName = "string",
   Marker = "string",
   MaxItems = 123

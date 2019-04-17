@@ -50,7 +50,7 @@ in the \emph{IAM User Guide}. This topic also includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 }
 \section{Request syntax}{
-\preformatted{iam$list_server_certificates(
+\preformatted{svc$list_server_certificates(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123

@@ -101,7 +101,7 @@ Creates an application, optionally including an AWS SAM file to create
 the first application version in the same call.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$create_application(
+\preformatted{svc$create_application(
   Author = "string",
   Description = "string",
   HomePageUrl = "string",

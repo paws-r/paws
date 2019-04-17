@@ -16,7 +16,7 @@ kinesisanalyticsv2_create_application_snapshot(ApplicationName,
 Creates a snapshot of the application's state data.
 }
 \section{Request syntax}{
-\preformatted{kinesisanalyticsv2$create_application_snapshot(
+\preformatted{svc$create_application_snapshot(
   ApplicationName = "string",
   SnapshotName = "string"
 )

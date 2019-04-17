@@ -38,7 +38,7 @@ Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_certificates(
+\preformatted{svc$describe_certificates(
   CertificateIdentifier = "string",
   Filters = list(
     list(

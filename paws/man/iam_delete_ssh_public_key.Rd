@@ -29,7 +29,7 @@ CodeCommit repository, see \href{http://docs.aws.amazon.com/codecommit/latest/us
 in the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_ssh_public_key(
+\preformatted{svc$delete_ssh_public_key(
   UserName = "string",
   SSHPublicKeyId = "string"
 )

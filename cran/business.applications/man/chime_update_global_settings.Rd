@@ -17,7 +17,7 @@ Updates global settings for the administrator's AWS account, such as
 Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 }
 \section{Request syntax}{
-\preformatted{chime$update_global_settings(
+\preformatted{svc$update_global_settings(
   BusinessCalling = list(
     CdrBucket = "string"
   ),

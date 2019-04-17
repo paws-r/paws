@@ -20,7 +20,7 @@ customer.}
 Creates a usage plan key for adding an existing API key to a usage plan.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_usage_plan_key(
+\preformatted{svc$create_usage_plan_key(
   usagePlanId = "string",
   keyId = "string",
   keyType = "string"

@@ -15,7 +15,7 @@ default.}
 Retrieves the security configuration for a specified catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$get_data_catalog_encryption_settings(
+\preformatted{svc$get_data_catalog_encryption_settings(
   CatalogId = "string"
 )
 }

@@ -20,7 +20,7 @@ servicecatalog_delete_constraint(AcceptLanguage, Id)
 Deletes the specified constraint.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_constraint(
+\preformatted{svc$delete_constraint(
   AcceptLanguage = "string",
   Id = "string"
 )

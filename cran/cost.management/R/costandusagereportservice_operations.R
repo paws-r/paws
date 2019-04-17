@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' costandusagereportservice$delete_report_definition(
+#' svc$delete_report_definition(
 #'   ReportName = "string"
 #' )
 #' ```
@@ -22,7 +22,7 @@ NULL
 #' @examples
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
-#' \donttest{costandusagereportservice$delete_report_definition(
+#' \donttest{svc$delete_report_definition(
 #'   ReportName = "ExampleReport"
 #' )}
 #'
@@ -58,7 +58,7 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' costandusagereportservice$describe_report_definitions(
+#' svc$describe_report_definitions(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -67,7 +67,7 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #' @examples
 #' # The following example lists the AWS Cost and Usage reports for the
 #' # account.
-#' \donttest{costandusagereportservice$describe_report_definitions(
+#' \donttest{svc$describe_report_definitions(
 #'   MaxResults = 5L
 #' )}
 #'
@@ -102,7 +102,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' costandusagereportservice$put_report_definition(
+#' svc$put_report_definition(
 #'   ReportDefinition = list(
 #'     ReportName = "string",
 #'     TimeUnit = "HOURLY"|"DAILY",
@@ -126,7 +126,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #' @examples
 #' # The following example creates a AWS Cost and Usage report named
 #' # ExampleReport.
-#' \donttest{costandusagereportservice$put_report_definition(
+#' \donttest{svc$put_report_definition(
 #'   ReportDefinition = list(
 #'     AdditionalArtifacts = list(
 #'       "REDSHIFT",

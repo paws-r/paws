@@ -23,7 +23,7 @@ Disables the specified resource attachment from propagating routes to
 the specified propagation route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$disable_transit_gateway_route_table_propagation(
+\preformatted{svc$disable_transit_gateway_route_table_propagation(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE

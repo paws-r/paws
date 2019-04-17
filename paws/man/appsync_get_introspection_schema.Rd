@@ -15,7 +15,7 @@ appsync_get_introspection_schema(apiId, format)
 Retrieves the introspection schema for a GraphQL API.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_introspection_schema(
+\preformatted{svc$get_introspection_schema(
   apiId = "string",
   format = "SDL"|"JSON"
 )

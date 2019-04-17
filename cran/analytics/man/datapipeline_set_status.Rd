@@ -26,7 +26,7 @@ You cannot perform this operation on \code{FINISHED} pipelines and attempting
 to do so returns \code{InvalidRequestException}.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$set_status(
+\preformatted{svc$set_status(
   pipelineId = "string",
   objectIds = list(
     "string"

@@ -13,7 +13,7 @@ alexaforbusiness_delete_room(RoomArn)
 Deletes a room by the room ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_room(
+\preformatted{svc$delete_room(
   RoomArn = "string"
 )
 }

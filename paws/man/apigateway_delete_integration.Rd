@@ -18,7 +18,7 @@ identifier.}
 Represents a delete integration.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_integration(
+\preformatted{svc$delete_integration(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string"

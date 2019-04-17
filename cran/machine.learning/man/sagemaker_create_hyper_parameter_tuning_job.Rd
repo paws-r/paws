@@ -58,7 +58,7 @@ values that result in a model that performs the best, as measured by an
 objective metric that you choose.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_hyper_parameter_tuning_job(
+\preformatted{svc$create_hyper_parameter_tuning_job(
   HyperParameterTuningJobName = "string",
   HyperParameterTuningJobConfig = list(
     Strategy = "Bayesian"|"Random",

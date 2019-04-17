@@ -77,7 +77,7 @@ by calling the DescribeFileSystems operation, which returns the file
 system state along with other information.
 }
 \section{Request syntax}{
-\preformatted{fsx$create_file_system(
+\preformatted{svc$create_file_system(
   ClientRequestToken = "string",
   FileSystemType = "WINDOWS"|"LUSTRE",
   StorageCapacity = 123,
@@ -114,7 +114,7 @@ system state along with other information.
 
 \examples{
 # This operation creates a new file system.
-\donttest{fsx$create_file_system(
+\donttest{svc$create_file_system(
   ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
   FileSystemType = "WINDOWS",
   KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/0ff3ea8d-130e-4133-877f-93908b6fdbd6",

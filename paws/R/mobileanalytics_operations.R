@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mobileanalytics$put_events(
+#' svc$put_events(
 #'   events = list(
 #'     list(
 #'       eventType = "string",

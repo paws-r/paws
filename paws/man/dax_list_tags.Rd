@@ -18,7 +18,7 @@ List all of the tags for a DAX cluster. You can call \code{ListTags} up to 10
 times per second, per account.
 }
 \section{Request syntax}{
-\preformatted{dax$list_tags(
+\preformatted{svc$list_tags(
   ResourceName = "string",
   NextToken = "string"
 )

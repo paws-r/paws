@@ -38,7 +38,7 @@ In addition, the response contains these fields:
 }
 }
 \section{Request syntax}{
-\preformatted{support$describe_trusted_advisor_check_result(
+\preformatted{svc$describe_trusted_advisor_check_result(
   checkId = "string",
   language = "string"
 )

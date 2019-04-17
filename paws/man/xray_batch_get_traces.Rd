@@ -17,7 +17,7 @@ of segment documents that originates from a single request. Use
 \code{GetTraceSummaries} to get a list of trace IDs.
 }
 \section{Request syntax}{
-\preformatted{xray$batch_get_traces(
+\preformatted{svc$batch_get_traces(
   TraceIds = list(
     "string"
   ),

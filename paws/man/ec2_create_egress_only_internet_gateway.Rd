@@ -25,7 +25,7 @@ outside of your VPC from initiating an IPv6 connection with your
 instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_egress_only_internet_gateway(
+\preformatted{svc$create_egress_only_internet_gateway(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
   VpcId = "string"

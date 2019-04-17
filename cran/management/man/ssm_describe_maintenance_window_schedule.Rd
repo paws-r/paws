@@ -30,7 +30,7 @@ from a previous call.)}
 Retrieves information about upcoming executions of a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_maintenance_window_schedule(
+\preformatted{svc$describe_maintenance_window_schedule(
   WindowId = "string",
   Targets = list(
     list(

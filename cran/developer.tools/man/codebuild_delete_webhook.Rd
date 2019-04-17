@@ -19,7 +19,7 @@ rebuilding the source code every time a code change is pushed to the
 repository.
 }
 \section{Request syntax}{
-\preformatted{codebuild$delete_webhook(
+\preformatted{svc$delete_webhook(
   projectName = "string"
 )
 }

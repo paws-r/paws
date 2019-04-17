@@ -125,7 +125,7 @@ when making a call with the \code{CreatePlatformEndpoint} action.
 For more information about formatting messages, see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
 }
 \section{Request syntax}{
-\preformatted{sns$publish(
+\preformatted{svc$publish(
   TopicArn = "string",
   TargetArn = "string",
   PhoneNumber = "string",

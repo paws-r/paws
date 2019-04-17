@@ -28,7 +28,7 @@ object.
 This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
-\preformatted{iam$update_saml_provider(
+\preformatted{svc$update_saml_provider(
   SAMLMetadataDocument = "string",
   SAMLProviderArn = "string"
 )

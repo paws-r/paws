@@ -13,7 +13,7 @@ signer_get_signing_profile(profileName)
 Returns information on a specific signing profile.
 }
 \section{Request syntax}{
-\preformatted{signer$get_signing_profile(
+\preformatted{svc$get_signing_profile(
   profileName = "string"
 )
 }

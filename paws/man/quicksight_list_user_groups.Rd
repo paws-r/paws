@@ -36,7 +36,7 @@ The response is a one or more group objects.
 \code{aws quicksight list-user-groups -\\-user-name=Pat -\\-aws-account-id=111122223333 -\\-namespace=default -\\-region=us-east-1 }
 }
 \section{Request syntax}{
-\preformatted{quicksight$list_user_groups(
+\preformatted{svc$list_user_groups(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string",

@@ -24,7 +24,7 @@ Produces an assessment report that includes detailed and comprehensive
 results of a specified assessment run.
 }
 \section{Request syntax}{
-\preformatted{inspector$get_assessment_report(
+\preformatted{svc$get_assessment_report(
   assessmentRunArn = "string",
   reportFileFormat = "HTML"|"PDF",
   reportType = "FINDING"|"FULL"

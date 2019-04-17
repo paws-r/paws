@@ -53,7 +53,7 @@ that region. For more information, see \href{http://docs.aws.amazon.com/IAM/late
 in the \emph{AWS Identity and Access Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_endpoint(
+\preformatted{svc$create_endpoint(
   EndpointName = "string",
   EndpointConfigName = "string",
   Tags = list(

@@ -43,7 +43,7 @@ same group is dependent on it.}
 Terminates the specified environment.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$terminate_environment(
+\preformatted{svc$terminate_environment(
   EnvironmentId = "string",
   EnvironmentName = "string",
   TerminateResources = TRUE|FALSE,
@@ -55,7 +55,7 @@ Terminates the specified environment.
 \examples{
 # The following operation terminates an Elastic Beanstalk environment
 # named my-env:
-\donttest{elasticbeanstalk$terminate_environment(
+\donttest{svc$terminate_environment(
   EnvironmentName = "my-env"
 )}
 

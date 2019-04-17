@@ -65,7 +65,7 @@ Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.}
 Creates a build project.
 }
 \section{Request syntax}{
-\preformatted{codebuild$create_project(
+\preformatted{svc$create_project(
   name = "string",
   description = "string",
   source = list(

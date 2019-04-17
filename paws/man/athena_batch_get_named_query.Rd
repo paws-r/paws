@@ -23,7 +23,7 @@ unique query execution, and ListQueryExecutionsInput to get a list of
 query execution IDs.
 }
 \section{Request syntax}{
-\preformatted{athena$batch_get_named_query(
+\preformatted{svc$batch_get_named_query(
   NamedQueryIds = list(
     "string"
   )

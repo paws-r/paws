@@ -15,7 +15,7 @@ datasync_update_agent(AgentArn, Name)
 Updates the name of an agent.
 }
 \section{Request syntax}{
-\preformatted{datasync$update_agent(
+\preformatted{svc$update_agent(
   AgentArn = "string",
   Name = "string"
 )

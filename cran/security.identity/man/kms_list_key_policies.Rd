@@ -42,7 +42,7 @@ name is \code{default}. You cannot perform this operation on a CMK in a
 different AWS account.
 }
 \section{Request syntax}{
-\preformatted{kms$list_key_policies(
+\preformatted{svc$list_key_policies(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
@@ -52,7 +52,7 @@ different AWS account.
 
 \examples{
 # The following example lists key policies for the specified CMK.
-\donttest{kms$list_key_policies(
+\donttest{svc$list_key_policies(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 )}
 

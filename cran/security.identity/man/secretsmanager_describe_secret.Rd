@@ -47,7 +47,7 @@ secret, use GetSecretValue.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$describe_secret(
+\preformatted{svc$describe_secret(
   SecretId = "string"
 )
 }
@@ -55,7 +55,7 @@ secret, use GetSecretValue.
 
 \examples{
 # The following example shows how to get the details about a secret.
-\donttest{secretsmanager$describe_secret(
+\donttest{svc$describe_secret(
   SecretId = "MyTestDatabaseSecret"
 )}
 

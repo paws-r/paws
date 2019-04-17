@@ -20,7 +20,7 @@ pinpoint_get_campaign_versions(ApplicationId, CampaignId, PageSize,
 Returns information about your campaign versions.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_campaign_versions(
+\preformatted{svc$get_campaign_versions(
   ApplicationId = "string",
   CampaignId = "string",
   PageSize = "string",

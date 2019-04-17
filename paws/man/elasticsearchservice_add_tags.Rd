@@ -17,7 +17,7 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
 10 tags. See \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging}{Tagging Amazon Elasticsearch Service Domains for more information.}
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$add_tags(
+\preformatted{svc$add_tags(
   ARN = "string",
   TagList = list(
     list(

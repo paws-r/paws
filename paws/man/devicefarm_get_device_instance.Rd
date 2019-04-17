@@ -16,7 +16,7 @@ Returns information about a device instance belonging to a private
 device fleet.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_device_instance(
+\preformatted{svc$get_device_instance(
   arn = "string"
 )
 }

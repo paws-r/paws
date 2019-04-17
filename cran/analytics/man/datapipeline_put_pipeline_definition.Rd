@@ -37,7 +37,7 @@ Pipeline object definitions are passed to the \code{PutPipelineDefinition}
 action and returned by the GetPipelineDefinition action.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$put_pipeline_definition(
+\preformatted{svc$put_pipeline_definition(
   pipelineId = "string",
   pipelineObjects = list(
     list(

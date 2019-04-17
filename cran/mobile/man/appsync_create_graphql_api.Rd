@@ -22,7 +22,7 @@ appsync_create_graphql_api(name, logConfig, authenticationType,
 Creates a \code{GraphqlApi} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$create_graphql_api(
+\preformatted{svc$create_graphql_api(
   name = "string",
   logConfig = list(
     fieldLogLevel = "NONE"|"ERROR"|"ALL",

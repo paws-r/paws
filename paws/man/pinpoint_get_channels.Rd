@@ -13,7 +13,7 @@ pinpoint_get_channels(ApplicationId)
 Get all channels.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_channels(
+\preformatted{svc$get_channels(
   ApplicationId = "string"
 )
 }

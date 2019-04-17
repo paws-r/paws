@@ -14,7 +14,7 @@ configuration is retrieved.}
 Returns the server-side encryption configuration of a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_encryption(
+\preformatted{svc$get_bucket_encryption(
   Bucket = "string"
 )
 }

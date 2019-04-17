@@ -15,7 +15,7 @@ Retrieves the application launch configuration associated with an
 application.
 }
 \section{Request syntax}{
-\preformatted{sms$get_app_launch_configuration(
+\preformatted{svc$get_app_launch_configuration(
   appId = "string"
 )
 }

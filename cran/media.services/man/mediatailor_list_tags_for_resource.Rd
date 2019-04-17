@@ -16,7 +16,7 @@ Returns a list of the tags assigned to the specified playback
 configuration resource.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceArn = "string"
 )
 }

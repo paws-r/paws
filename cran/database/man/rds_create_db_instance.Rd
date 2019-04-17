@@ -689,7 +689,7 @@ default is false. For more information, see \href{https://docs.aws.amazon.com/Am
 Creates a new DB instance.
 }
 \section{Request syntax}{
-\preformatted{rds$create_db_instance(
+\preformatted{svc$create_db_instance(
   DBName = "string",
   DBInstanceIdentifier = "string",
   AllocatedStorage = 123,

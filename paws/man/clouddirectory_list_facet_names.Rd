@@ -17,7 +17,7 @@ clouddirectory_list_facet_names(SchemaArn, NextToken, MaxResults)
 Retrieves the names of facets that exist in a schema.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_facet_names(
+\preformatted{svc$list_facet_names(
   SchemaArn = "string",
   NextToken = "string",
   MaxResults = 123

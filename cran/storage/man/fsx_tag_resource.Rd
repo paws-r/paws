@@ -17,7 +17,7 @@ exists, the value is replaced by the one specified in this parameter.}
 Tags an Amazon FSx resource.
 }
 \section{Request syntax}{
-\preformatted{fsx$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(
@@ -31,7 +31,7 @@ Tags an Amazon FSx resource.
 
 \examples{
 # This operation tags an Amazon FSx resource.
-\donttest{fsx$tag_resource(
+\donttest{svc$tag_resource(
   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
   Tags = list(
     list(

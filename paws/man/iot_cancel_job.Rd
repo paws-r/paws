@@ -26,7 +26,7 @@ able to recover to a valid state.}
 Cancels a job.
 }
 \section{Request syntax}{
-\preformatted{iot$cancel_job(
+\preformatted{svc$cancel_job(
   jobId = "string",
   reasonCode = "string",
   comment = "string",

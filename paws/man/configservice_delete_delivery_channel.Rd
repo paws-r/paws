@@ -17,7 +17,7 @@ Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_delivery_channel(
+\preformatted{svc$delete_delivery_channel(
   DeliveryChannelName = "string"
 )
 }

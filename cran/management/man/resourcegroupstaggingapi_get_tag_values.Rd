@@ -21,7 +21,7 @@ Returns all tag values for the specified key in the specified region for
 the AWS account.
 }
 \section{Request syntax}{
-\preformatted{resourcegroupstaggingapi$get_tag_values(
+\preformatted{svc$get_tag_values(
   PaginationToken = "string",
   Key = "string"
 )

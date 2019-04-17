@@ -82,7 +82,7 @@ Returns a list of \code{MLModel} that match the search criteria in the
 request.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$describe_ml_models(
+\preformatted{svc$describe_ml_models(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"IAMUser"|"TrainingDataSourceId"|"RealtimeEndpointStatus"|"MLModelType"|"Algorithm"|"TrainingDataURI",
   EQ = "string",
   GT = "string",

@@ -17,7 +17,7 @@ list.}
 Gets information about unique problems.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_unique_problems(
+\preformatted{svc$list_unique_problems(
   arn = "string",
   nextToken = "string"
 )
@@ -27,7 +27,7 @@ Gets information about unique problems.
 \examples{
 # The following example returns information about unique problems, given a
 # specific Device Farm project.
-\donttest{devicefarm$list_unique_problems(
+\donttest{svc$list_unique_problems(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )}

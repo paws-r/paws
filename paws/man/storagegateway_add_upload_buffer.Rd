@@ -25,7 +25,7 @@ which you want to add upload buffer, and one or more disk IDs that you
 want to configure as upload buffer.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$add_upload_buffer(
+\preformatted{svc$add_upload_buffer(
   GatewayARN = "string",
   DiskIds = list(
     "string"
@@ -37,7 +37,7 @@ want to configure as upload buffer.
 \examples{
 # Configures one or more gateway local disks as upload buffer for a
 # specified gateway.
-\donttest{storagegateway$add_upload_buffer(
+\donttest{svc$add_upload_buffer(
   DiskIds = list(
     "pci-0000:03:00.0-scsi-0:0:0:0",
     "pci-0000:03:00.0-scsi-0:0:1:0"

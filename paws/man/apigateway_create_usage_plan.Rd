@@ -24,7 +24,7 @@ Creates a usage plan with the throttle and quota limits, as well as the
 associated API stages, specified in the payload.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_usage_plan(
+\preformatted{svc$create_usage_plan(
   name = "string",
   description = "string",
   apiStages = list(

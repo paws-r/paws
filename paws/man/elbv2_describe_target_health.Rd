@@ -15,7 +15,7 @@ elbv2_describe_target_health(TargetGroupArn, Targets)
 Describes the health of the specified targets or all of your targets.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_target_health(
+\preformatted{svc$describe_target_health(
   TargetGroupArn = "string",
   Targets = list(
     list(
@@ -32,13 +32,13 @@ Describes the health of the specified targets or all of your targets.
 # This example describes the health of the targets for the specified
 # target group. One target is healthy but the other is not specified in an
 # action, so it can't receive traffic from the load balancer.
-\donttest{elbv2$describe_target_health(
+\donttest{svc$describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
 )}
 
 # This example describes the health of the specified target. This target
 # is healthy.
-\donttest{elbv2$describe_target_health(
+\donttest{svc$describe_target_health(
   TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe...",
   Targets = list(
     list(

@@ -40,7 +40,7 @@ a marker that you can use to request the next set of results. You can
 also request initialized documents.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_folder_contents(
+\preformatted{svc$describe_folder_contents(
   AuthenticationToken = "string",
   FolderId = "string",
   Sort = "DATE"|"NAME",

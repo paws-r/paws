@@ -34,7 +34,7 @@ successful, the updated alias record is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_alias(
+\preformatted{svc$update_alias(
   AliasId = "string",
   Name = "string",
   Description = "string",

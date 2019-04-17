@@ -44,7 +44,7 @@ For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{
-\preformatted{elb$create_lb_cookie_stickiness_policy(
+\preformatted{svc$create_lb_cookie_stickiness_policy(
   LoadBalancerName = "string",
   PolicyName = "string",
   CookieExpirationPeriod = 123
@@ -55,7 +55,7 @@ in the \emph{Classic Load Balancers Guide}.
 \examples{
 # This example generates a stickiness policy with sticky session lifetimes
 # controlled by the specified expiration period.
-\donttest{elb$create_lb_cookie_stickiness_policy(
+\donttest{svc$create_lb_cookie_stickiness_policy(
   CookieExpirationPeriod = 60L,
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"

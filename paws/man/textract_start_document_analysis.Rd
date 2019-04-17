@@ -58,7 +58,7 @@ topic is \code{SUCCEEDED}. If so, call GetDocumentAnalysis, and pass the job
 identifier (\code{JobId}) from the initial call to \code{StartDocumentAnalysis}.
 }
 \section{Request syntax}{
-\preformatted{textract$start_document_analysis(
+\preformatted{svc$start_document_analysis(
   DocumentLocation = list(
     S3Object = list(
       Bucket = "string",

@@ -9,12 +9,6 @@ mturk()
 \description{
 Amazon Mechanical Turk API Reference
 }
-\section{Example}{
-\preformatted{mturk <- paws::mturk()
-mturk$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -60,3 +54,9 @@ mturk$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_qualification_request(
+  Foo = 123
+)}
+
+}

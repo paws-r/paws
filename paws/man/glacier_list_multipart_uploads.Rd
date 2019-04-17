@@ -60,7 +60,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$list_multipart_uploads(
+\preformatted{svc$list_multipart_uploads(
   accountId = "string",
   vaultName = "string",
   marker = "string",
@@ -72,7 +72,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 \examples{
 # The example lists all the in-progress multipart uploads for the vault
 # named examplevault.
-\donttest{glacier$list_multipart_uploads(
+\donttest{svc$list_multipart_uploads(
   accountId = "-",
   vaultName = "examplevault"
 )}

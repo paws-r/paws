@@ -28,7 +28,7 @@ given job.}
 Updates a job queue.
 }
 \section{Request syntax}{
-\preformatted{batch$update_job_queue(
+\preformatted{svc$update_job_queue(
   jobQueue = "string",
   state = "ENABLED"|"DISABLED",
   priority = 123,
@@ -44,7 +44,7 @@ Updates a job queue.
 
 \examples{
 # This example disables a job queue so that it can be deleted.
-\donttest{batch$update_job_queue(
+\donttest{svc$update_job_queue(
   jobQueue = "GPGPU",
   state = "DISABLED"
 )}

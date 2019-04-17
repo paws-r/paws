@@ -43,7 +43,7 @@ associated with the root resource record set name.
 }
 }
 \section{Request syntax}{
-\preformatted{route53$update_traffic_policy_instance(
+\preformatted{svc$update_traffic_policy_instance(
   Id = "string",
   TTL = 123,
   TrafficPolicyId = "string",

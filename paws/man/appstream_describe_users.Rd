@@ -21,7 +21,7 @@ Retrieves a list that describes one or more specified users in the user
 pool.
 }
 \section{Request syntax}{
-\preformatted{appstream$describe_users(
+\preformatted{svc$describe_users(
   AuthenticationType = "API"|"SAML"|"USERPOOL",
   MaxResults = 123,
   NextToken = "string"

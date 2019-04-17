@@ -21,7 +21,7 @@ image identifiers are provided. Otherwise, all images in the account are
 described.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_workspace_images(
+\preformatted{svc$describe_workspace_images(
   ImageIds = list(
     "string"
   ),

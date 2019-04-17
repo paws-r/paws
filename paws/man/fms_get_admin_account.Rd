@@ -12,7 +12,7 @@ Returns the AWS Organizations master account that is associated with AWS
 Firewall Manager as the AWS Firewall Manager administrator.
 }
 \section{Request syntax}{
-\preformatted{fms$get_admin_account()
+\preformatted{svc$get_admin_account()
 }
 }
 

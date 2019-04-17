@@ -47,7 +47,7 @@ mail, you must request a new certificate. For more information about
 setting up your contact email addresses, see \href{https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html}{Configure Email for your Domain}.
 }
 \section{Request syntax}{
-\preformatted{acm$resend_validation_email(
+\preformatted{svc$resend_validation_email(
   CertificateArn = "string",
   Domain = "string",
   ValidationDomain = "string"

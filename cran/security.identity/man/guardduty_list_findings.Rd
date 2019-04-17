@@ -22,7 +22,7 @@ guardduty_list_findings(DetectorId, FindingCriteria, MaxResults,
 Lists Amazon GuardDuty findings for the specified detector ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$list_findings(
+\preformatted{svc$list_findings(
   DetectorId = "string",
   FindingCriteria = list(
     Criterion = list(

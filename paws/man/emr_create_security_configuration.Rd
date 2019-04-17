@@ -19,7 +19,7 @@ Creates a security configuration, which is stored in the service and can
 be specified when a cluster is created.
 }
 \section{Request syntax}{
-\preformatted{emr$create_security_configuration(
+\preformatted{svc$create_security_configuration(
   Name = "string",
   SecurityConfiguration = "string"
 )

@@ -20,7 +20,7 @@ Creates or modifies the Public Access Block configuration for an Amazon
 Web Services account.
 }
 \section{Request syntax}{
-\preformatted{s3control$put_public_access_block(
+\preformatted{svc$put_public_access_block(
   PublicAccessBlockConfiguration = list(
     BlockPublicAcls = TRUE|FALSE,
     IgnorePublicAcls = TRUE|FALSE,

@@ -13,7 +13,7 @@ devicefarm_get_test(arn)
 Gets information about a test.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_test(
+\preformatted{svc$get_test(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a test.
 
 \examples{
 # The following example gets information about a specific test.
-\donttest{devicefarm$get_test(
+\donttest{svc$get_test(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
 )}
 

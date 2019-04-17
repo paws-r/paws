@@ -14,7 +14,7 @@ delete the LoggingConfiguration.}
 Permanently deletes the LoggingConfiguration from the specified web ACL.
 }
 \section{Request syntax}{
-\preformatted{waf$delete_logging_configuration(
+\preformatted{svc$delete_logging_configuration(
   ResourceArn = "string"
 )
 }

@@ -105,7 +105,7 @@ information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-u
 in the ElastiCache User Guide.
 }
 \section{Request syntax}{
-\preformatted{elasticache$copy_snapshot(
+\preformatted{svc$copy_snapshot(
   SourceSnapshotName = "string",
   TargetSnapshotName = "string",
   TargetBucket = "string"

@@ -18,7 +18,7 @@ Describes the data feed for Spot Instances. For more information, see
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_spot_datafeed_subscription(
+\preformatted{svc$describe_spot_datafeed_subscription(
   DryRun = TRUE|FALSE
 )
 }
@@ -27,7 +27,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \examples{
 # This example describes the Spot Instance datafeed subscription for your
 # AWS account.
-\donttest{ec2$describe_spot_datafeed_subscription()}
+\donttest{svc$describe_spot_datafeed_subscription()}
 
 }
 \keyword{internal}

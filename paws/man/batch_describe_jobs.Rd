@@ -13,7 +13,7 @@ batch_describe_jobs(jobs)
 Describes a list of AWS Batch jobs.
 }
 \section{Request syntax}{
-\preformatted{batch$describe_jobs(
+\preformatted{svc$describe_jobs(
   jobs = list(
     "string"
   )
@@ -23,7 +23,7 @@ Describes a list of AWS Batch jobs.
 
 \examples{
 # This example describes a job with the specified job ID.
-\donttest{batch$describe_jobs(
+\donttest{svc$describe_jobs(
   jobs = list(
     "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9"
   )

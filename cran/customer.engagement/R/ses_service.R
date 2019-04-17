@@ -17,11 +17,13 @@ NULL
 #' in the [Amazon SES Developer
 #' Guide](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 #'
-#' @section Example:
-#' ```
-#' ses <- paws::ses()
-#' ses$operation()
-#' ```
+#' @examples
+#' # The following example creates a receipt rule set by cloning an existing
+#' # one:
+#' \donttest{svc$clone_receipt_rule_set(
+#'   OriginalRuleSetName = "RuleSetToClone",
+#'   RuleSetName = "RuleSetToCreate"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

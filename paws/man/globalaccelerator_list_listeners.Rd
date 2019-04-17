@@ -20,7 +20,7 @@ previous call.}
 List the listeners for an accelerator.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$list_listeners(
+\preformatted{svc$list_listeners(
   AcceleratorArn = "string",
   MaxResults = 123,
   NextToken = "string"

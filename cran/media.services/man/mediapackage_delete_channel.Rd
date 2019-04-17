@@ -13,7 +13,7 @@ mediapackage_delete_channel(Id)
 Deletes an existing Channel.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$delete_channel(
+\preformatted{svc$delete_channel(
   Id = "string"
 )
 }

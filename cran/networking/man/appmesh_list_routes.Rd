@@ -28,7 +28,7 @@ results that returned the \code{nextToken} value.}
 Returns a list of existing routes in a service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$list_routes(
+\preformatted{svc$list_routes(
   limit = 123,
   meshName = "string",
   nextToken = "string",

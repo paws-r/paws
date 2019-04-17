@@ -12,12 +12,6 @@ of documents. Use these actions to determine the topics contained in
 your documents, the topics they discuss, the predominant sentiment
 expressed in them, the predominant language used, and more.
 }
-\section{Example}{
-\preformatted{comprehend <- paws::comprehend()
-comprehend$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -66,3 +60,9 @@ comprehend$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_detect_dominant_language(
+  Foo = 123
+)}
+
+}

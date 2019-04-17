@@ -33,7 +33,7 @@ are deleted or moved. Paths not leading to the directory root are
 ignored from the target object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_object_parent_paths(
+\preformatted{svc$list_object_parent_paths(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

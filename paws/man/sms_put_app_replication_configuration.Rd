@@ -16,7 +16,7 @@ sms_put_app_replication_configuration(appId,
 Creates or updates a replication configuration for an application.
 }
 \section{Request syntax}{
-\preformatted{sms$put_app_replication_configuration(
+\preformatted{svc$put_app_replication_configuration(
   appId = "string",
   serverGroupReplicationConfigurations = list(
     list(

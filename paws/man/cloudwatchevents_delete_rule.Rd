@@ -32,7 +32,7 @@ using the \code{Force} option, but you should do so only if you are sure the
 other service is not still using that rule.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$delete_rule(
+\preformatted{svc$delete_rule(
   Name = "string",
   Force = TRUE|FALSE
 )

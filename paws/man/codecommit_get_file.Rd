@@ -24,7 +24,7 @@ Returns the base-64 encoded contents of a specified file and its
 metadata.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_file(
+\preformatted{svc$get_file(
   repositoryName = "string",
   commitSpecifier = "string",
   filePath = "string"

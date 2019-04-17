@@ -77,11 +77,14 @@ NULL
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
-#' @section Example:
-#' ```
-#' secretsmanager <- paws::secretsmanager()
-#' secretsmanager$operation()
-#' ```
+#' @examples
+#' # The following example shows how to cancel rotation for a secret. The
+#' # operation sets the RotationEnabled field to false and cancels all
+#' # scheduled rotations. To resume scheduled rotations, you must re-enable
+#' # rotation by calling the rotate-secret operation.
+#' \donttest{svc$cancel_rotate_secret(
+#'   SecretId = "MyTestDatabaseSecret"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

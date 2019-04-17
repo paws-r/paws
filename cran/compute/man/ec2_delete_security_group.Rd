@@ -27,7 +27,7 @@ fails with \code{InvalidGroup.InUse} in EC2-Classic or \code{DependencyViolation
 in EC2-VPC.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_security_group(
+\preformatted{svc$delete_security_group(
   GroupId = "string",
   GroupName = "string",
   DryRun = TRUE|FALSE
@@ -37,7 +37,7 @@ in EC2-VPC.
 
 \examples{
 # This example deletes the specified security group.
-\donttest{ec2$delete_security_group(
+\donttest{svc$delete_security_group(
   GroupId = "sg-903004f8"
 )}
 

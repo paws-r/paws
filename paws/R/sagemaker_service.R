@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Provides APIs for creating and managing Amazon SageMaker resources.
 #'
-#' @section Example:
-#' ```
-#' sagemaker <- paws::sagemaker()
-#' sagemaker$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -18,7 +18,7 @@ element of the collection.}
 Gets the Authorizers for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_authorizers(
+\preformatted{svc$get_authorizers(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"

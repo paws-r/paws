@@ -37,7 +37,7 @@ Returns a list of \code{DBClusterParameterGroup} descriptions. If a
 only the description of the specified DB cluster parameter group.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_cluster_parameter_groups(
+\preformatted{svc$describe_db_cluster_parameter_groups(
   DBClusterParameterGroupName = "string",
   Filters = list(
     list(

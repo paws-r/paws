@@ -31,7 +31,7 @@ Manager supports JSON and YAML documents. JSON is the default format.}
 The document you want to update.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_document(
+\preformatted{svc$update_document(
   Content = "string",
   Attachments = list(
     list(

@@ -52,7 +52,7 @@ To modify the host ID, tenancy, placement group, or partition for an
 instance, the instance must be in the \code{stopped} state.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_instance_placement(
+\preformatted{svc$modify_instance_placement(
   Affinity = "default"|"host",
   GroupName = "string",
   HostId = "string",

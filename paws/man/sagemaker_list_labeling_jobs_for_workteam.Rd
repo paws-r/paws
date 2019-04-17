@@ -36,7 +36,7 @@ contains the specified string.}
 Gets a list of labeling jobs assigned to a specified work team.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_labeling_jobs_for_workteam(
+\preformatted{svc$list_labeling_jobs_for_workteam(
   WorkteamArn = "string",
   MaxResults = 123,
   NextToken = "string",

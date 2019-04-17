@@ -28,7 +28,7 @@ value.}
 Gets the associations for the specified resource share.
 }
 \section{Request syntax}{
-\preformatted{ram$get_resource_share_associations(
+\preformatted{svc$get_resource_share_associations(
   associationType = "PRINCIPAL"|"RESOURCE",
   resourceShareArns = list(
     "string"

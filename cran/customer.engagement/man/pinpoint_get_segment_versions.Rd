@@ -19,7 +19,7 @@ pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
 Returns information about your segment versions.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segment_versions(
+\preformatted{svc$get_segment_versions(
   ApplicationId = "string",
   PageSize = "string",
   SegmentId = "string",

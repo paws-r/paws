@@ -35,7 +35,7 @@ Use this API action to view information about a specific execution of a
 specific association.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_association_execution_targets(
+\preformatted{svc$describe_association_execution_targets(
   AssociationId = "string",
   ExecutionId = "string",
   Filters = list(

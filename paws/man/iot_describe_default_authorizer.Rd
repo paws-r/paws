@@ -10,7 +10,7 @@ iot_describe_default_authorizer()
 Describes the default authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_default_authorizer()
+\preformatted{svc$describe_default_authorizer()
 }
 }
 

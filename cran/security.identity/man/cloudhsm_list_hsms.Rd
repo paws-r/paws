@@ -28,7 +28,7 @@ response contains a token that you pass in the next call to \code{ListHsms}
 to retrieve the next set of items.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$list_hsms(
+\preformatted{svc$list_hsms(
   NextToken = "string"
 )
 }

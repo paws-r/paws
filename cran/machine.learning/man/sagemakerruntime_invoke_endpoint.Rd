@@ -49,7 +49,7 @@ URL does not contain the account ID, but Amazon SageMaker determines the
 account ID from the authentication token that is supplied by the caller.
 }
 \section{Request syntax}{
-\preformatted{sagemakerruntime$invoke_endpoint(
+\preformatted{svc$invoke_endpoint(
   EndpointName = "string",
   Body = raw,
   ContentType = "string",

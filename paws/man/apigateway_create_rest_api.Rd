@@ -45,7 +45,7 @@ the API.}
 Creates a new RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_rest_api(
+\preformatted{svc$create_rest_api(
   name = "string",
   description = "string",
   version = "string",

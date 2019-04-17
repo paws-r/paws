@@ -16,7 +16,7 @@ gateways and resources that are associated with the CIDR block before
 you can disassociate it.
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_subnet_cidr_block(
+\preformatted{svc$disassociate_subnet_cidr_block(
   AssociationId = "string"
 )
 }

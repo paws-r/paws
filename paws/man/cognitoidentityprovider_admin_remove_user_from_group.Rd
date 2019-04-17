@@ -21,7 +21,7 @@ Removes the specified user from the specified group.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_remove_user_from_group(
+\preformatted{svc$admin_remove_user_from_group(
   UserPoolId = "string",
   Username = "string",
   GroupName = "string"

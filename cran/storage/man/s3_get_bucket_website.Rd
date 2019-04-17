@@ -13,7 +13,7 @@ s3_get_bucket_website(Bucket)
 Returns the website configuration for a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_website(
+\preformatted{svc$get_bucket_website(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the website configuration for a bucket.
 
 \examples{
 # The following example retrieves website configuration of a bucket.
-\donttest{s3$get_bucket_website(
+\donttest{svc$get_bucket_website(
   Bucket = "examplebucket"
 )}
 

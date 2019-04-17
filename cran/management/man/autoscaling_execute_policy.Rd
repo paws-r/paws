@@ -41,7 +41,7 @@ Conditional: This parameter is required if the policy type is
 Executes the specified policy.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$execute_policy(
+\preformatted{svc$execute_policy(
   AutoScalingGroupName = "string",
   PolicyName = "string",
   HonorCooldown = TRUE|FALSE,
@@ -54,7 +54,7 @@ Executes the specified policy.
 \examples{
 # This example executes the specified Auto Scaling policy for the
 # specified Auto Scaling group.
-\donttest{autoscaling$execute_policy(
+\donttest{svc$execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
   HonorCooldown = TRUE,
   PolicyName = "ScaleIn"

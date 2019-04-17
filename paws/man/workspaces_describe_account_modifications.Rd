@@ -16,7 +16,7 @@ Retrieves a list that describes modifications to the configuration of
 bring your own license (BYOL) for the specified account.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_account_modifications(
+\preformatted{svc$describe_account_modifications(
   NextToken = "string"
 )
 }

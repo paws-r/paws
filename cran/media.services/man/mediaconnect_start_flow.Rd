@@ -13,7 +13,7 @@ mediaconnect_start_flow(FlowArn)
 Starts a flow.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$start_flow(
+\preformatted{svc$start_flow(
   FlowArn = "string"
 )
 }

@@ -27,7 +27,7 @@ Saving these separately helps prevent unauthorized parties from gaining
 access to the Snowball associated with that job.
 }
 \section{Request syntax}{
-\preformatted{snowball$get_job_unlock_code(
+\preformatted{svc$get_job_unlock_code(
   JobId = "string"
 )
 }
@@ -48,7 +48,7 @@ access to the Snowball associated with that job.
 # of the UnlockCode in the same location as the manifest file for that
 # job. Saving these separately helps prevent unauthorized parties from
 # gaining access to the Snowball associated with that job.
-\donttest{snowball$get_job_unlock_code(
+\donttest{svc$get_job_unlock_code(
   JobId = "JID123e4567-e89b-12d3-a456-426655440000"
 )}
 

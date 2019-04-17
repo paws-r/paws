@@ -13,7 +13,7 @@ lightsail_get_disk_snapshot(diskSnapshotName)
 Returns information about a specific block storage disk snapshot.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_disk_snapshot(
+\preformatted{svc$get_disk_snapshot(
   diskSnapshotName = "string"
 )
 }

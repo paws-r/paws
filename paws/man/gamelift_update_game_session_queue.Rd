@@ -47,7 +47,7 @@ destinations, provide a complete list of destinations.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_game_session_queue(
+\preformatted{svc$update_game_session_queue(
   Name = "string",
   TimeoutInSeconds = 123,
   PlayerLatencyPolicies = list(

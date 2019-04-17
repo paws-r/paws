@@ -27,7 +27,7 @@ Updates the configuration of the report delivery schedule with the
 specified schedule ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$update_business_report_schedule(
+\preformatted{svc$update_business_report_schedule(
   ScheduleArn = "string",
   S3BucketName = "string",
   S3KeyPrefix = "string",

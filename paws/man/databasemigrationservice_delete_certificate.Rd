@@ -13,7 +13,7 @@ databasemigrationservice_delete_certificate(CertificateArn)
 Deletes the specified certificate.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_certificate(
+\preformatted{svc$delete_certificate(
   CertificateArn = "string"
 )
 }
@@ -21,7 +21,7 @@ Deletes the specified certificate.
 
 \examples{
 # Deletes the specified certificate.
-\donttest{databasemigrationservice$delete_certificate(
+\donttest{svc$delete_certificate(
   CertificateArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUSM457DE6XFJCJQ"
 )}
 

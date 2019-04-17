@@ -52,7 +52,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$accept_match(
+#' svc$accept_match(
 #'   TicketId = "string",
 #'   PlayerIds = list(
 #'     "string"
@@ -125,7 +125,7 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_alias(
+#' svc$create_alias(
 #'   Name = "string",
 #'   Description = "string",
 #'   RoutingStrategy = list(
@@ -238,7 +238,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_build(
+#' svc$create_build(
 #'   Name = "string",
 #'   Version = "string",
 #'   StorageLocation = list(
@@ -451,7 +451,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_fleet(
+#' svc$create_fleet(
 #'   Name = "string",
 #'   Description = "string",
 #'   BuildId = "string",
@@ -614,7 +614,7 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId, ServerLaunc
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_game_session(
+#' svc$create_game_session(
 #'   FleetId = "string",
 #'   AliasId = "string",
 #'   MaximumPlayerSessionCount = 123,
@@ -721,7 +721,7 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_game_session_queue(
+#' svc$create_game_session_queue(
 #'   Name = "string",
 #'   TimeoutInSeconds = 123,
 #'   PlayerLatencyPolicies = list(
@@ -860,7 +860,7 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_matchmaking_configuration(
+#' svc$create_matchmaking_configuration(
 #'   Name = "string",
 #'   Description = "string",
 #'   GameSessionQueueArns = list(
@@ -960,7 +960,7 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_matchmaking_rule_set(
+#' svc$create_matchmaking_rule_set(
 #'   Name = "string",
 #'   RuleSetBody = "string"
 #' )
@@ -1024,7 +1024,7 @@ gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_player_session(
+#' svc$create_player_session(
 #'   GameSessionId = "string",
 #'   PlayerId = "string",
 #'   PlayerData = "string"
@@ -1092,7 +1092,7 @@ gamelift_create_player_session <- function(GameSessionId, PlayerId, PlayerData =
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_player_sessions(
+#' svc$create_player_sessions(
 #'   GameSessionId = "string",
 #'   PlayerIds = list(
 #'     "string"
@@ -1186,7 +1186,7 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_vpc_peering_authorization(
+#' svc$create_vpc_peering_authorization(
 #'   GameLiftAwsAccountId = "string",
 #'   PeerVpcId = "string"
 #' )
@@ -1271,7 +1271,7 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$create_vpc_peering_connection(
+#' svc$create_vpc_peering_connection(
 #'   FleetId = "string",
 #'   PeerVpcAwsAccountId = "string",
 #'   PeerVpcId = "string"
@@ -1324,7 +1324,7 @@ gamelift_create_vpc_peering_connection <- function(FleetId, PeerVpcAwsAccountId,
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_alias(
+#' svc$delete_alias(
 #'   AliasId = "string"
 #' )
 #' ```
@@ -1381,7 +1381,7 @@ gamelift_delete_alias <- function(AliasId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_build(
+#' svc$delete_build(
 #'   BuildId = "string"
 #' )
 #' ```
@@ -1465,7 +1465,7 @@ gamelift_delete_build <- function(BuildId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_fleet(
+#' svc$delete_fleet(
 #'   FleetId = "string"
 #' )
 #' ```
@@ -1511,7 +1511,7 @@ gamelift_delete_fleet <- function(FleetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_game_session_queue(
+#' svc$delete_game_session_queue(
 #'   Name = "string"
 #' )
 #' ```
@@ -1564,7 +1564,7 @@ gamelift_delete_game_session_queue <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_matchmaking_configuration(
+#' svc$delete_matchmaking_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -1626,7 +1626,7 @@ gamelift_delete_matchmaking_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_matchmaking_rule_set(
+#' svc$delete_matchmaking_rule_set(
 #'   Name = "string"
 #' )
 #' ```
@@ -1689,7 +1689,7 @@ gamelift_delete_matchmaking_rule_set <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_scaling_policy(
+#' svc$delete_scaling_policy(
 #'   Name = "string",
 #'   FleetId = "string"
 #' )
@@ -1749,7 +1749,7 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_vpc_peering_authorization(
+#' svc$delete_vpc_peering_authorization(
 #'   GameLiftAwsAccountId = "string",
 #'   PeerVpcId = "string"
 #' )
@@ -1810,7 +1810,7 @@ gamelift_delete_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$delete_vpc_peering_connection(
+#' svc$delete_vpc_peering_connection(
 #'   FleetId = "string",
 #'   VpcPeeringConnectionId = "string"
 #' )
@@ -1864,7 +1864,7 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_alias(
+#' svc$describe_alias(
 #'   AliasId = "string"
 #' )
 #' ```
@@ -1918,7 +1918,7 @@ gamelift_describe_alias <- function(AliasId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_build(
+#' svc$describe_build(
 #'   BuildId = "string"
 #' )
 #' ```
@@ -2015,7 +2015,7 @@ gamelift_describe_build <- function(BuildId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_ec2_instance_limits(
+#' svc$describe_ec2_instance_limits(
 #'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"
 #' )
 #' ```
@@ -2116,7 +2116,7 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_fleet_attributes(
+#' svc$describe_fleet_attributes(
 #'   FleetIds = list(
 #'     "string"
 #'   ),
@@ -2222,7 +2222,7 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_fleet_capacity(
+#' svc$describe_fleet_capacity(
 #'   FleetIds = list(
 #'     "string"
 #'   ),
@@ -2323,7 +2323,7 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_fleet_events(
+#' svc$describe_fleet_events(
 #'   FleetId = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -2417,7 +2417,7 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_fleet_port_settings(
+#' svc$describe_fleet_port_settings(
 #'   FleetId = "string"
 #' )
 #' ```
@@ -2516,7 +2516,7 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_fleet_utilization(
+#' svc$describe_fleet_utilization(
 #'   FleetIds = list(
 #'     "string"
 #'   ),
@@ -2599,7 +2599,7 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_game_session_details(
+#' svc$describe_game_session_details(
 #'   FleetId = "string",
 #'   GameSessionId = "string",
 #'   AliasId = "string",
@@ -2662,7 +2662,7 @@ gamelift_describe_game_session_details <- function(FleetId = NULL, GameSessionId
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_game_session_placement(
+#' svc$describe_game_session_placement(
 #'   PlacementId = "string"
 #' )
 #' ```
@@ -2716,7 +2716,7 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_game_session_queues(
+#' svc$describe_game_session_queues(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -2800,7 +2800,7 @@ gamelift_describe_game_session_queues <- function(Names = NULL, Limit = NULL, Ne
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_game_sessions(
+#' svc$describe_game_sessions(
 #'   FleetId = "string",
 #'   GameSessionId = "string",
 #'   AliasId = "string",
@@ -2854,7 +2854,7 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_instances(
+#' svc$describe_instances(
 #'   FleetId = "string",
 #'   InstanceId = "string",
 #'   Limit = 123,
@@ -2915,7 +2915,7 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_matchmaking(
+#' svc$describe_matchmaking(
 #'   TicketIds = list(
 #'     "string"
 #'   )
@@ -2985,7 +2985,7 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_matchmaking_configurations(
+#' svc$describe_matchmaking_configurations(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -3059,7 +3059,7 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_matchmaking_rule_sets(
+#' svc$describe_matchmaking_rule_sets(
 #'   Names = list(
 #'     "string"
 #'   ),
@@ -3151,7 +3151,7 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_player_sessions(
+#' svc$describe_player_sessions(
 #'   GameSessionId = "string",
 #'   PlayerId = "string",
 #'   PlayerSessionId = "string",
@@ -3238,7 +3238,7 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_runtime_configuration(
+#' svc$describe_runtime_configuration(
 #'   FleetId = "string"
 #' )
 #' ```
@@ -3330,7 +3330,7 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_scaling_policies(
+#' svc$describe_scaling_policies(
 #'   FleetId = "string",
 #'   StatusFilter = "ACTIVE"|"UPDATE_REQUESTED"|"UPDATING"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"ERROR",
 #'   Limit = 123,
@@ -3382,7 +3382,7 @@ gamelift_describe_scaling_policies <- function(FleetId, StatusFilter = NULL, Lim
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_vpc_peering_authorizations()
+#' svc$describe_vpc_peering_authorizations()
 #' ```
 #'
 #' @keywords internal
@@ -3435,7 +3435,7 @@ gamelift_describe_vpc_peering_authorizations <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$describe_vpc_peering_connections(
+#' svc$describe_vpc_peering_connections(
 #'   FleetId = "string"
 #' )
 #' ```
@@ -3499,7 +3499,7 @@ gamelift_describe_vpc_peering_connections <- function(FleetId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$get_game_session_log_url(
+#' svc$get_game_session_log_url(
 #'   GameSessionId = "string"
 #' )
 #' ```
@@ -3559,7 +3559,7 @@ gamelift_get_game_session_log_url <- function(GameSessionId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$get_instance_access(
+#' svc$get_instance_access(
 #'   FleetId = "string",
 #'   InstanceId = "string"
 #' )
@@ -3630,7 +3630,7 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$list_aliases(
+#' svc$list_aliases(
 #'   RoutingStrategyType = "SIMPLE"|"TERMINAL",
 #'   Name = "string",
 #'   Limit = 123,
@@ -3710,7 +3710,7 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$list_builds(
+#' svc$list_builds(
 #'   Status = "INITIALIZED"|"READY"|"FAILED",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -3803,7 +3803,7 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$list_fleets(
+#' svc$list_fleets(
 #'   BuildId = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -4014,7 +4014,7 @@ gamelift_list_fleets <- function(BuildId = NULL, Limit = NULL, NextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$put_scaling_policy(
+#' svc$put_scaling_policy(
 #'   Name = "string",
 #'   FleetId = "string",
 #'   ScalingAdjustment = 123,
@@ -4085,7 +4085,7 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$request_upload_credentials(
+#' svc$request_upload_credentials(
 #'   BuildId = "string"
 #' )
 #' ```
@@ -4132,7 +4132,7 @@ gamelift_request_upload_credentials <- function(BuildId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$resolve_alias(
+#' svc$resolve_alias(
 #'   AliasId = "string"
 #' )
 #' ```
@@ -4313,7 +4313,7 @@ gamelift_resolve_alias <- function(AliasId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$search_game_sessions(
+#' svc$search_game_sessions(
 #'   FleetId = "string",
 #'   AliasId = "string",
 #'   FilterExpression = "string",
@@ -4408,7 +4408,7 @@ gamelift_search_game_sessions <- function(FleetId = NULL, AliasId = NULL, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$start_fleet_actions(
+#' svc$start_fleet_actions(
 #'   FleetId = "string",
 #'   Actions = list(
 #'     "AUTO_SCALING"
@@ -4535,7 +4535,7 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$start_game_session_placement(
+#' svc$start_game_session_placement(
 #'   PlacementId = "string",
 #'   GameSessionQueueName = "string",
 #'   GameProperties = list(
@@ -4658,7 +4658,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$start_match_backfill(
+#' svc$start_match_backfill(
 #'   TicketId = "string",
 #'   ConfigurationName = "string",
 #'   GameSessionArn = "string",
@@ -4802,7 +4802,7 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$start_matchmaking(
+#' svc$start_matchmaking(
 #'   TicketId = "string",
 #'   ConfigurationName = "string",
 #'   Players = list(
@@ -4916,7 +4916,7 @@ gamelift_start_matchmaking <- function(TicketId = NULL, ConfigurationName, Playe
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$stop_fleet_actions(
+#' svc$stop_fleet_actions(
 #'   FleetId = "string",
 #'   Actions = list(
 #'     "AUTO_SCALING"
@@ -4976,7 +4976,7 @@ gamelift_stop_fleet_actions <- function(FleetId, Actions) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$stop_game_session_placement(
+#' svc$stop_game_session_placement(
 #'   PlacementId = "string"
 #' )
 #' ```
@@ -5023,7 +5023,7 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$stop_matchmaking(
+#' svc$stop_matchmaking(
 #'   TicketId = "string"
 #' )
 #' ```
@@ -5078,7 +5078,7 @@ gamelift_stop_matchmaking <- function(TicketId) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_alias(
+#' svc$update_alias(
 #'   AliasId = "string",
 #'   Name = "string",
 #'   Description = "string",
@@ -5144,7 +5144,7 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_build(
+#' svc$update_build(
 #'   BuildId = "string",
 #'   Name = "string",
 #'   Version = "string"
@@ -5250,7 +5250,7 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_fleet_attributes(
+#' svc$update_fleet_attributes(
 #'   FleetId = "string",
 #'   Name = "string",
 #'   Description = "string",
@@ -5364,7 +5364,7 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_fleet_capacity(
+#' svc$update_fleet_capacity(
 #'   FleetId = "string",
 #'   DesiredInstances = 123,
 #'   MinSize = 123,
@@ -5455,7 +5455,7 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_fleet_port_settings(
+#' svc$update_fleet_port_settings(
 #'   FleetId = "string",
 #'   InboundPermissionAuthorizations = list(
 #'     list(
@@ -5545,7 +5545,7 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_game_session(
+#' svc$update_game_session(
 #'   GameSessionId = "string",
 #'   MaximumPlayerSessionCount = 123,
 #'   Name = "string",
@@ -5615,7 +5615,7 @@ gamelift_update_game_session <- function(GameSessionId, MaximumPlayerSessionCoun
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_game_session_queue(
+#' svc$update_game_session_queue(
 #'   Name = "string",
 #'   TimeoutInSeconds = 123,
 #'   PlayerLatencyPolicies = list(
@@ -5727,7 +5727,7 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_matchmaking_configuration(
+#' svc$update_matchmaking_configuration(
 #'   Name = "string",
 #'   Description = "string",
 #'   GameSessionQueueArns = list(
@@ -5850,7 +5850,7 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$update_runtime_configuration(
+#' svc$update_runtime_configuration(
 #'   FleetId = "string",
 #'   RuntimeConfiguration = list(
 #'     ServerProcesses = list(
@@ -5922,7 +5922,7 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
 #'
 #' @section Request syntax:
 #' ```
-#' gamelift$validate_matchmaking_rule_set(
+#' svc$validate_matchmaking_rule_set(
 #'   RuleSetBody = "string"
 #' )
 #' ```

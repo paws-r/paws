@@ -17,7 +17,7 @@ container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
 }
 \section{Request syntax}{
-\preformatted{ecs$delete_cluster(
+\preformatted{svc$delete_cluster(
   cluster = "string"
 )
 }
@@ -25,7 +25,7 @@ deregister them with DeregisterContainerInstance.
 
 \examples{
 # This example deletes an empty cluster in your default region.
-\donttest{ecs$delete_cluster(
+\donttest{svc$delete_cluster(
   cluster = "my_cluster"
 )}
 

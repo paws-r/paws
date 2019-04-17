@@ -65,7 +65,7 @@ values.
 To modify the actions for the default rule, use ModifyListener.
 }
 \section{Request syntax}{
-\preformatted{elbv2$modify_rule(
+\preformatted{svc$modify_rule(
   RuleArn = "string",
   Conditions = list(
     list(
@@ -163,7 +163,7 @@ To modify the actions for the default rule, use ModifyListener.
 
 \examples{
 # This example modifies the condition for the specified rule.
-\donttest{elbv2$modify_rule(
+\donttest{svc$modify_rule(
   Conditions = list(
     list(
       Field = "path-pattern",

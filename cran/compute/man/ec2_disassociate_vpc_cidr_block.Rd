@@ -20,7 +20,7 @@ You cannot disassociate the CIDR block with which you originally created
 the VPC (the primary CIDR block).
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_vpc_cidr_block(
+\preformatted{svc$disassociate_vpc_cidr_block(
   AssociationId = "string"
 )
 }

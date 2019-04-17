@@ -22,12 +22,6 @@ For more information about AWS Auto Scaling, including information about
 granting IAM users required permissions for AWS Auto Scaling actions,
 see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html}{AWS Auto Scaling User Guide}.
 }
-\section{Example}{
-\preformatted{autoscalingplans <- paws::autoscalingplans()
-autoscalingplans$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -40,3 +34,9 @@ autoscalingplans$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_scaling_plan(
+  Foo = 123
+)}
+
+}

@@ -19,7 +19,7 @@ AWS service and region that were specified in the last request made with
 that key.
 }
 \section{Request syntax}{
-\preformatted{iam$get_access_key_last_used(
+\preformatted{svc$get_access_key_last_used(
   AccessKeyId = "string"
 )
 }

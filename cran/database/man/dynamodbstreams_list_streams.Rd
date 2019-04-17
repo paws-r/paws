@@ -26,7 +26,7 @@ will return only the streams ARNs for that table.
 You can call \code{ListStreams} at a maximum rate of 5 times per second.
 }
 \section{Request syntax}{
-\preformatted{dynamodbstreams$list_streams(
+\preformatted{svc$list_streams(
   TableName = "string",
   Limit = 123,
   ExclusiveStartStreamArn = "string"
@@ -36,7 +36,7 @@ You can call \code{ListStreams} at a maximum rate of 5 times per second.
 
 \examples{
 # The following example lists all of the stream ARNs.
-\donttest{dynamodbstreams$list_streams()}
+\donttest{svc$list_streams()}
 
 }
 \keyword{internal}

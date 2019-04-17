@@ -15,7 +15,7 @@ Retrieves the latest status of the last upgrade or upgrade eligibility
 check that was performed on the domain.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$get_upgrade_status(
+\preformatted{svc$get_upgrade_status(
   DomainName = "string"
 )
 }

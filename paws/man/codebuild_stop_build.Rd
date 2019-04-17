@@ -13,7 +13,7 @@ codebuild_stop_build(id)
 Attempts to stop running a build.
 }
 \section{Request syntax}{
-\preformatted{codebuild$stop_build(
+\preformatted{svc$stop_build(
   id = "string"
 )
 }

@@ -24,7 +24,7 @@ association. If you get the same exception again, delete the referring
 association until the \code{DeleteBotAlias} operation is successful.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_bot_alias(
+\preformatted{svc$delete_bot_alias(
   name = "string",
   botName = "string"
 )

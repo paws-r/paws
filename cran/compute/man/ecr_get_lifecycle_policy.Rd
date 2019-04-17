@@ -17,7 +17,7 @@ assumed.}
 Retrieves the specified lifecycle policy.
 }
 \section{Request syntax}{
-\preformatted{ecr$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   registryId = "string",
   repositoryName = "string"
 )

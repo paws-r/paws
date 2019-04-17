@@ -24,7 +24,7 @@ table before updating it. If \code{skipArchive} is set to true, however,
 Updates a metadata table in the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$update_table(
+\preformatted{svc$update_table(
   CatalogId = "string",
   DatabaseName = "string",
   TableInput = list(

@@ -13,7 +13,7 @@ alexaforbusiness_get_conference_provider(ConferenceProviderArn)
 Gets details about a specific conference provider.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_conference_provider(
+\preformatted{svc$get_conference_provider(
   ConferenceProviderArn = "string"
 )
 }

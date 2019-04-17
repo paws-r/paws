@@ -13,7 +13,7 @@ appstream_start_fleet(Name)
 Starts the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{appstream$start_fleet(
+\preformatted{svc$start_fleet(
   Name = "string"
 )
 }

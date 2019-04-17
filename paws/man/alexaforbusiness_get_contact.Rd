@@ -13,7 +13,7 @@ alexaforbusiness_get_contact(ContactArn)
 Gets the contact details by the contact ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_contact(
+\preformatted{svc$get_contact(
   ContactArn = "string"
 )
 }

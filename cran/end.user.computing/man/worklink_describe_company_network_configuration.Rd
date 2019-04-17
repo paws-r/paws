@@ -15,7 +15,7 @@ Describes the networking configuration to access the internal websites
 associated with the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_company_network_configuration(
+\preformatted{svc$describe_company_network_configuration(
   FleetArn = "string"
 )
 }

@@ -25,7 +25,7 @@ artifacts. Additionally, this API returns any secret values defined for
 the action.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$get_third_party_job_details(
+\preformatted{svc$get_third_party_job_details(
   jobId = "string",
   clientToken = "string"
 )

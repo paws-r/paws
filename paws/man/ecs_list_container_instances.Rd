@@ -49,7 +49,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$list_container_instances(
+\preformatted{svc$list_container_instances(
   cluster = "string",
   filter = "string",
   nextToken = "string",
@@ -62,7 +62,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \examples{
 # This example lists all of your available container instances in the
 # specified cluster in your default region.
-\donttest{ecs$list_container_instances(
+\donttest{svc$list_container_instances(
   cluster = "default"
 )}
 

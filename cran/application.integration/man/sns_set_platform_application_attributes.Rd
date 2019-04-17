@@ -47,7 +47,7 @@ For information on configuring attributes for message delivery status,
 see \href{http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
 }
 \section{Request syntax}{
-\preformatted{sns$set_platform_application_attributes(
+\preformatted{svc$set_platform_application_attributes(
   PlatformApplicationArn = "string",
   Attributes = list(
     "string"

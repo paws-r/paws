@@ -16,7 +16,7 @@ Returns the content of a comment made on a change, file, or commit in a
 repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_comment(
+\preformatted{svc$get_comment(
   commentId = "string"
 )
 }

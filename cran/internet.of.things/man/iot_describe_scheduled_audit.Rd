@@ -13,7 +13,7 @@ iot_describe_scheduled_audit(scheduledAuditName)
 Gets information about a scheduled audit.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_scheduled_audit(
+\preformatted{svc$describe_scheduled_audit(
   scheduledAuditName = "string"
 )
 }

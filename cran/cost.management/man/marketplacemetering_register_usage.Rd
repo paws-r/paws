@@ -58,7 +58,7 @@ entitlement checks at runtime.
 }
 }
 \section{Request syntax}{
-\preformatted{marketplacemetering$register_usage(
+\preformatted{svc$register_usage(
   ProductCode = "string",
   PublicKeyVersion = 123,
   Nonce = "string"

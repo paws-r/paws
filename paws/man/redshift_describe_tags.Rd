@@ -84,7 +84,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_tags(
+\preformatted{svc$describe_tags(
   ResourceName = "string",
   ResourceType = "string",
   MaxRecords = 123,

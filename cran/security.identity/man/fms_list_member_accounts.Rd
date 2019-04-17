@@ -30,7 +30,7 @@ The \code{ListMemberAccounts} must be submitted by the account that is set as
 the AWS Firewall Manager administrator.
 }
 \section{Request syntax}{
-\preformatted{fms$list_member_accounts(
+\preformatted{svc$list_member_accounts(
   NextToken = "string",
   MaxResults = 123
 )

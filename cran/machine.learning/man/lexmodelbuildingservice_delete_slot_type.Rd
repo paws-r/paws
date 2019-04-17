@@ -29,7 +29,7 @@ references and the \code{DeleteSlotType} call is successful.
 This operation requires permission for the \code{lex:DeleteSlotType} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_slot_type(
+\preformatted{svc$delete_slot_type(
   name = "string"
 )
 }

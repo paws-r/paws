@@ -21,7 +21,7 @@ Enable or disable collection of reputation metrics for emails that you
 send using a particular configuration set in a specific AWS Region.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_configuration_set_reputation_options(
+\preformatted{svc$put_configuration_set_reputation_options(
   ConfigurationSetName = "string",
   ReputationMetricsEnabled = TRUE|FALSE
 )

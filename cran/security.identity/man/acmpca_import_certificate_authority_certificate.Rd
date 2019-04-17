@@ -44,7 +44,7 @@ built.
 The chain must be PEM-encoded.
 }
 \section{Request syntax}{
-\preformatted{acmpca$import_certificate_authority_certificate(
+\preformatted{svc$import_certificate_authority_certificate(
   CertificateAuthorityArn = "string",
   Certificate = raw,
   CertificateChain = raw

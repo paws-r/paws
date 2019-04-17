@@ -19,7 +19,7 @@ idempotency.}
 Creates an address book with the specified details.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_address_book(
+\preformatted{svc$create_address_book(
   Name = "string",
   Description = "string",
   ClientRequestToken = "string"

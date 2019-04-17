@@ -43,7 +43,7 @@ For more information, see \href{http://docs.aws.amazon.com/awscloudtrail/latest/
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$get_event_selectors(
+\preformatted{svc$get_event_selectors(
   TrailName = "string"
 )
 }

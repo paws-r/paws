@@ -16,7 +16,7 @@ pinpointsmsvoice_list_configuration_sets(NextToken, PageSize)
 List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$list_configuration_sets(
+\preformatted{svc$list_configuration_sets(
   NextToken = "string",
   PageSize = "string"
 )

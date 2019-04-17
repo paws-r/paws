@@ -73,7 +73,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$encrypt(
+\preformatted{svc$encrypt(
   KeyId = "string",
   Plaintext = raw,
   EncryptionContext = list(
@@ -89,7 +89,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 \examples{
 # The following example encrypts data with the specified customer master
 # key (CMK).
-\donttest{kms$encrypt(
+\donttest{svc$encrypt(
   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
   Plaintext = "<binary data>"
 )}

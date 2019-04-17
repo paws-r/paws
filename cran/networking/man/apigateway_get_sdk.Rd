@@ -26,7 +26,7 @@ parameters named \code{groupId}, \code{artifactId}, \code{artifactVersion}, and
 Generates a client SDK for a RestApi and Stage.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_sdk(
+\preformatted{svc$get_sdk(
   restApiId = "string",
   stageName = "string",
   sdkType = "string",

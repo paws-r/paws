@@ -77,7 +77,7 @@ Returns a list of \code{DataSource} that match the search criteria in the
 request.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$describe_data_sources(
+\preformatted{svc$describe_data_sources(
   FilterVariable = "CreatedAt"|"LastUpdatedAt"|"Status"|"Name"|"DataLocationS3"|"IAMUser",
   EQ = "string",
   GT = "string",

@@ -26,7 +26,7 @@ For an inter-region VPC peering connection request, you must accept the
 VPC peering connection in the region of the accepter VPC.
 }
 \section{Request syntax}{
-\preformatted{ec2$accept_vpc_peering_connection(
+\preformatted{svc$accept_vpc_peering_connection(
   DryRun = TRUE|FALSE,
   VpcPeeringConnectionId = "string"
 )

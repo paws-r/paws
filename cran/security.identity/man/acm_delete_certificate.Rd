@@ -27,7 +27,7 @@ service. To delete a certificate that is in use, the certificate
 association must first be removed.
 }
 \section{Request syntax}{
-\preformatted{acm$delete_certificate(
+\preformatted{svc$delete_certificate(
   CertificateArn = "string"
 )
 }

@@ -10,7 +10,7 @@ iot_describe_event_configurations()
 Describes event configurations.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_event_configurations()
+\preformatted{svc$describe_event_configurations()
 }
 }
 

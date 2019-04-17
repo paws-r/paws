@@ -21,7 +21,7 @@ after a tape gateway is activated. This operation is only supported in
 the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_vtl_device_type(
+\preformatted{svc$update_vtl_device_type(
   VTLDeviceARN = "string",
   DeviceType = "string"
 )
@@ -31,7 +31,7 @@ the tape gateway type.
 \examples{
 # Updates the type of medium changer in a gateway-VTL after a gateway-VTL
 # is activated.
-\donttest{storagegateway$update_vtl_device_type(
+\donttest{svc$update_vtl_device_type(
   DeviceType = "Medium Changer",
   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/..."
 )}

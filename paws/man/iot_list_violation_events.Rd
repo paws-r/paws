@@ -29,7 +29,7 @@ alerts issued for a particular security profile, behavior or thing
 (device).
 }
 \section{Request syntax}{
-\preformatted{iot$list_violation_events(
+\preformatted{svc$list_violation_events(
   startTime = as.POSIXct(
     "2015-01-01"
   ),

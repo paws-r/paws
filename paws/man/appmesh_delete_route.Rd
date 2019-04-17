@@ -17,7 +17,7 @@ appmesh_delete_route(meshName, routeName, virtualRouterName)
 Deletes an existing route.
 }
 \section{Request syntax}{
-\preformatted{appmesh$delete_route(
+\preformatted{svc$delete_route(
   meshName = "string",
   routeName = "string",
   virtualRouterName = "string"

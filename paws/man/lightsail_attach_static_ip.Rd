@@ -15,7 +15,7 @@ lightsail_attach_static_ip(staticIpName, instanceName)
 Attaches a static IP address to a specific Amazon Lightsail instance.
 }
 \section{Request syntax}{
-\preformatted{lightsail$attach_static_ip(
+\preformatted{svc$attach_static_ip(
   staticIpName = "string",
   instanceName = "string"
 )

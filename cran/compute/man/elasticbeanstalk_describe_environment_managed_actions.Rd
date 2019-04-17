@@ -18,7 +18,7 @@ elasticbeanstalk_describe_environment_managed_actions(EnvironmentName,
 Lists an environment's upcoming and in-progress managed actions.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_environment_managed_actions(
+\preformatted{svc$describe_environment_managed_actions(
   EnvironmentName = "string",
   EnvironmentId = "string",
   Status = "Scheduled"|"Pending"|"Running"|"Unknown"

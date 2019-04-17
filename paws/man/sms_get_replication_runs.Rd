@@ -19,7 +19,7 @@ the returned \code{NextToken} value.}
 Describes the replication runs for the specified replication job.
 }
 \section{Request syntax}{
-\preformatted{sms$get_replication_runs(
+\preformatted{svc$get_replication_runs(
   replicationJobId = "string",
   nextToken = "string",
   maxResults = 123

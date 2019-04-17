@@ -60,7 +60,7 @@ issues are often caused by either a misconfigured firewall or a mistyped
 NFS server host name.
 }
 \section{Request syntax}{
-\preformatted{datasync$create_task(
+\preformatted{svc$create_task(
   SourceLocationArn = "string",
   DestinationLocationArn = "string",
   CloudWatchLogGroupArn = "string",

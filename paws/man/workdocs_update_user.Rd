@@ -35,7 +35,7 @@ Updates the specified attributes of the specified user, and grants or
 revokes administrative privileges to the Amazon WorkDocs site.
 }
 \section{Request syntax}{
-\preformatted{workdocs$update_user(
+\preformatted{svc$update_user(
   AuthenticationToken = "string",
   UserId = "string",
   GivenName = "string",

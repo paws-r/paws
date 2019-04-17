@@ -16,7 +16,7 @@ Information about the data that is collected for the specified
 assessment run.
 }
 \section{Request syntax}{
-\preformatted{inspector$get_telemetry_metadata(
+\preformatted{svc$get_telemetry_metadata(
   assessmentRunArn = "string"
 )
 }
@@ -25,7 +25,7 @@ assessment run.
 \examples{
 # Information about the data that is collected for the specified
 # assessment run.
-\donttest{inspector$get_telemetry_metadata(
+\donttest{svc$get_telemetry_metadata(
   assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
 )}
 

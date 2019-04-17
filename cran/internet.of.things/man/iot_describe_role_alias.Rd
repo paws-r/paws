@@ -13,7 +13,7 @@ iot_describe_role_alias(roleAlias)
 Describes a role alias.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_role_alias(
+\preformatted{svc$describe_role_alias(
   roleAlias = "string"
 )
 }

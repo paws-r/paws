@@ -19,7 +19,7 @@ store.}
 Lists all skills in the Alexa skill store by category.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_skills_store_skills_by_category(
+\preformatted{svc$list_skills_store_skills_by_category(
   CategoryId = 123,
   NextToken = "string",
   MaxResults = 123

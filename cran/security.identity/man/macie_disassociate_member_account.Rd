@@ -13,7 +13,7 @@ macie_disassociate_member_account(memberAccountId)
 Removes the specified member account from Amazon Macie.
 }
 \section{Request syntax}{
-\preformatted{macie$disassociate_member_account(
+\preformatted{svc$disassociate_member_account(
   memberAccountId = "string"
 )
 }

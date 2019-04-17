@@ -52,7 +52,7 @@ you need the same AWS Key Management Service (AWS KMS) permissions as
 when you created the encrypted file system.
 }
 \section{Request syntax}{
-\preformatted{efs$put_lifecycle_configuration(
+\preformatted{svc$put_lifecycle_configuration(
   FileSystemId = "string",
   LifecyclePolicies = list(
     list(
@@ -69,7 +69,7 @@ when you created the encrypted file system.
 # defines when files in an Amazon EFS file system are automatically
 # transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
 # A LifecycleConfiguration applies to all files in a file system.
-\donttest{efs$put_lifecycle_configuration(
+\donttest{svc$put_lifecycle_configuration(
   FileSystemId = "fs-01234567",
   LifecyclePolicies = list(
     list(

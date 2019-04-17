@@ -17,7 +17,7 @@ Updates the schema name with a new name. Only development schema names
 can be updated.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$update_schema(
+\preformatted{svc$update_schema(
   SchemaArn = "string",
   Name = "string"
 )

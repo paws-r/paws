@@ -51,7 +51,7 @@ for a VPC peering connection, use the DescribeVpcPeeringConnections
 command.
 }
 \section{Request syntax}{
-\preformatted{ec2$modify_vpc_peering_connection_options(
+\preformatted{svc$modify_vpc_peering_connection_options(
   AccepterPeeringConnectionOptions = list(
     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,

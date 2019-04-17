@@ -18,7 +18,7 @@ Creates a storage container to hold objects. A container is similar to a
 bucket in the Amazon S3 service.
 }
 \section{Request syntax}{
-\preformatted{mediastore$create_container(
+\preformatted{svc$create_container(
   ContainerName = "string"
 )
 }

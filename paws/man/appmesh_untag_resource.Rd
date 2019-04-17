@@ -15,7 +15,7 @@ appmesh_untag_resource(resourceArn, tagKeys)
 Deletes specified tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{appmesh$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

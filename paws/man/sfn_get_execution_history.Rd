@@ -41,7 +41,7 @@ an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.
 }
 \section{Request syntax}{
-\preformatted{sfn$get_execution_history(
+\preformatted{svc$get_execution_history(
   executionArn = "string",
   maxResults = 123,
   reverseOrder = TRUE|FALSE,

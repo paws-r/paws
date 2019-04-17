@@ -20,7 +20,7 @@ Directory with the same name and version as that of the published
 schema.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$apply_schema(
+\preformatted{svc$apply_schema(
   PublishedSchemaArn = "string",
   DirectoryArn = "string"
 )

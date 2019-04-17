@@ -15,7 +15,7 @@ appsync_delete_type(apiId, typeName)
 Deletes a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$delete_type(
+\preformatted{svc$delete_type(
   apiId = "string",
   typeName = "string"
 )

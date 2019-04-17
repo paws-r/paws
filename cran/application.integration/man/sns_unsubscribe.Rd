@@ -22,7 +22,7 @@ if the \code{Unsubscribe} request was unintended.
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$unsubscribe(
+\preformatted{svc$unsubscribe(
   SubscriptionArn = "string"
 )
 }

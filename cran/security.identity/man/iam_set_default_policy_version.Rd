@@ -32,7 +32,7 @@ For information about managed policies, see \href{http://docs.aws.amazon.com/IAM
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$set_default_policy_version(
+\preformatted{svc$set_default_policy_version(
   PolicyArn = "string",
   VersionId = "string"
 )

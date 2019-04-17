@@ -32,7 +32,7 @@ For more information about IAM roles, go to \href{http://docs.aws.amazon.com/IAM
 For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-\preformatted{iam$remove_role_from_instance_profile(
+\preformatted{svc$remove_role_from_instance_profile(
   InstanceProfileName = "string",
   RoleName = "string"
 )
@@ -42,7 +42,7 @@ For more information about instance profiles, go to \href{http://docs.aws.amazon
 \examples{
 # The following command removes the role named Test-Role from the instance
 # profile named ExampleInstanceProfile.
-\donttest{iam$remove_role_from_instance_profile(
+\donttest{svc$remove_role_from_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile",
   RoleName = "Test-Role"
 )}

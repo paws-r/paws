@@ -42,7 +42,7 @@ aren't configured with a per-function limit. For more information, see
 \href{https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html}{Managing Concurrency}.
 }
 \section{Request syntax}{
-\preformatted{lambda$put_function_concurrency(
+\preformatted{svc$put_function_concurrency(
   FunctionName = "string",
   ReservedConcurrentExecutions = 123
 )

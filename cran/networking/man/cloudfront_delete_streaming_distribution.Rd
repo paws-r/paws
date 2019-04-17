@@ -49,7 +49,7 @@ console, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperG
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_streaming_distribution(
+\preformatted{svc$delete_streaming_distribution(
   Id = "string",
   IfMatch = "string"
 )

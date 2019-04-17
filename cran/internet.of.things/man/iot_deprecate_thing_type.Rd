@@ -18,7 +18,7 @@ Deprecates a thing type. You can not associate new things with
 deprecated thing type.
 }
 \section{Request syntax}{
-\preformatted{iot$deprecate_thing_type(
+\preformatted{svc$deprecate_thing_type(
   thingTypeName = "string",
   undoDeprecate = TRUE|FALSE
 )

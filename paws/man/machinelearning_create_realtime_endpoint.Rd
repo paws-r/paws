@@ -15,7 +15,7 @@ the URI of the \code{MLModel}; that is, the location to send real-time
 prediction requests for the specified \code{MLModel}.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$create_realtime_endpoint(
+\preformatted{svc$create_realtime_endpoint(
   MLModelId = "string"
 )
 }

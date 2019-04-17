@@ -10,7 +10,7 @@ greengrass_disassociate_service_role_from_account()
 Disassociates the service role from your account. Without a service role, deployments will not work.
 }
 \section{Request syntax}{
-\preformatted{greengrass$disassociate_service_role_from_account()
+\preformatted{svc$disassociate_service_role_from_account()
 }
 }
 

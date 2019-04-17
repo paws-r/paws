@@ -37,7 +37,7 @@ before you purchase a reservation. This action results in the specified
 reservation being purchased and charged to your account.
 }
 \section{Request syntax}{
-\preformatted{ec2$purchase_host_reservation(
+\preformatted{svc$purchase_host_reservation(
   ClientToken = "string",
   CurrencyCode = "USD",
   HostIdSet = list(

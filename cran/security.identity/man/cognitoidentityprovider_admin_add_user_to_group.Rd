@@ -21,7 +21,7 @@ Adds the specified user to the specified group.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_add_user_to_group(
+\preformatted{svc$admin_add_user_to_group(
   UserPoolId = "string",
   Username = "string",
   GroupName = "string"

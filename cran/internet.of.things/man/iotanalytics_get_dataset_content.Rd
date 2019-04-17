@@ -18,7 +18,7 @@ specified, "\$LATEST\_SUCCEEDED" is the default.}
 Retrieves the contents of a data set as pre-signed URIs.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$get_dataset_content(
+\preformatted{svc$get_dataset_content(
   datasetName = "string",
   versionId = "string"
 )

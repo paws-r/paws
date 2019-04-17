@@ -25,7 +25,7 @@ associated with the project, but does delete the IAM roles that allowed
 access to the project.
 }
 \section{Request syntax}{
-\preformatted{codestar$delete_project(
+\preformatted{svc$delete_project(
   id = "string",
   clientRequestToken = "string",
   deleteStack = TRUE|FALSE

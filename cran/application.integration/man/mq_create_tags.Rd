@@ -15,7 +15,7 @@ mq_create_tags(ResourceArn, Tags)
 Add a tag to a resource.
 }
 \section{Request syntax}{
-\preformatted{mq$create_tags(
+\preformatted{svc$create_tags(
   ResourceArn = "string",
   Tags = list(
     "string"

@@ -15,7 +15,7 @@ apigatewayv2_delete_route(ApiId, RouteId)
 Deletes a Route.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_route(
+\preformatted{svc$delete_route(
   ApiId = "string",
   RouteId = "string"
 )

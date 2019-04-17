@@ -24,7 +24,7 @@ command to authenticate to a registry. The AWS CLI offers an
 \code{aws ecr get-login} command that simplifies the login process.
 }
 \section{Request syntax}{
-\preformatted{ecr$get_authorization_token(
+\preformatted{svc$get_authorization_token(
   registryIds = list(
     "string"
   )
@@ -34,7 +34,7 @@ command to authenticate to a registry. The AWS CLI offers an
 
 \examples{
 # This example gets an authorization token for your default registry.
-\donttest{ecr$get_authorization_token()}
+\donttest{svc$get_authorization_token()}
 
 }
 \keyword{internal}

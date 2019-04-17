@@ -37,7 +37,7 @@ can create a Read Replica or copy a DB snapshot from. This API action
 supports pagination.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_source_regions(
+\preformatted{svc$describe_source_regions(
   RegionName = "string",
   MaxRecords = 123,
   Marker = "string",

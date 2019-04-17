@@ -15,7 +15,7 @@ mediaconnect_tag_resource(ResourceArn, Tags)
 Associates the specified tags to a resource. If the request does not mention an existing tag associated with the resource, that tag is not changed.
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

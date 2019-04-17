@@ -24,12 +24,6 @@ For a list of region-specific endpoints that AWS Elastic Beanstalk
 supports, go to \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region}{Regions and Endpoints}
 in the \emph{Amazon Web Services Glossary}.
 }
-\section{Example}{
-\preformatted{elasticbeanstalk <- paws::elasticbeanstalk()
-elasticbeanstalk$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -80,3 +74,11 @@ elasticbeanstalk$operation()
 }
 }
 
+\examples{
+# The following code aborts a running application version deployment for
+# an environment named my-env:
+\donttest{svc$abort_environment_update(
+  EnvironmentName = "my-env"
+)}
+
+}

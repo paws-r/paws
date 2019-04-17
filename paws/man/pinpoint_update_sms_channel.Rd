@@ -15,7 +15,7 @@ pinpoint_update_sms_channel(ApplicationId, SMSChannelRequest)
 Update an SMS channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_sms_channel(
+\preformatted{svc$update_sms_channel(
   ApplicationId = "string",
   SMSChannelRequest = list(
     Enabled = TRUE|FALSE,

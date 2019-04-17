@@ -15,7 +15,7 @@ apigateway_get_request_validator(restApiId, requestValidatorId)
 Gets a RequestValidator of a given RestApi.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_request_validator(
+\preformatted{svc$get_request_validator(
   restApiId = "string",
   requestValidatorId = "string"
 )

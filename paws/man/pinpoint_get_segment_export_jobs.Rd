@@ -20,7 +20,7 @@ pinpoint_get_segment_export_jobs(ApplicationId, PageSize, SegmentId,
 Returns a list of export jobs for a specific segment.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_segment_export_jobs(
+\preformatted{svc$get_segment_export_jobs(
   ApplicationId = "string",
   PageSize = "string",
   SegmentId = "string",

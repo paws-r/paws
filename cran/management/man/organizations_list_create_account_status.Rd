@@ -43,7 +43,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_create_account_status(
+\preformatted{svc$list_create_account_status(
   States = list(
     "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
   ),
@@ -56,7 +56,7 @@ account.
 \examples{
 # The following example shows a user requesting a list of only the
 # completed account creation requests made for the current organization:
-\donttest{organizations$list_create_account_status(
+\donttest{svc$list_create_account_status(
   States = list(
     "SUCCEEDED"
   )
@@ -64,7 +64,7 @@ account.
 
 # The following example shows a user requesting a list of only the
 # in-progress account creation requests made for the current organization:
-\donttest{organizations$list_create_account_status(
+\donttest{svc$list_create_account_status(
   States = list(
     "IN_PROGRESS"
   )

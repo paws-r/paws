@@ -58,7 +58,7 @@ one output for the Kindle Fire and another output for the Apple iPhone
 (as opposed to the AWS Console).
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$create_job(
+\preformatted{svc$create_job(
   PipelineId = "string",
   Input = list(
     Key = "string",

@@ -17,7 +17,7 @@ Determines the details for the room from which a skill request was
 invoked. This operation is used by skill developers.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$resolve_room(
+\preformatted{svc$resolve_room(
   UserId = "string",
   SkillId = "string"
 )

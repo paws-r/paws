@@ -13,7 +13,7 @@ ssm_delete_maintenance_window(WindowId)
 Deletes a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_maintenance_window(
+\preformatted{svc$delete_maintenance_window(
   WindowId = "string"
 )
 }

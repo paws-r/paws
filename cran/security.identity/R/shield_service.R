@@ -15,11 +15,10 @@ NULL
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
-#' @section Example:
-#' ```
-#' shield <- paws::shield()
-#' shield$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_drt_log_bucket(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

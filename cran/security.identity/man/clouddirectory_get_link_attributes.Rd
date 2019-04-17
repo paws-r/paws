@@ -22,7 +22,7 @@ link.}
 Retrieves attributes that are associated with a typed link.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_link_attributes(
+\preformatted{svc$get_link_attributes(
   DirectoryArn = "string",
   TypedLinkSpecifier = list(
     TypedLinkFacet = list(

@@ -17,7 +17,7 @@ mq_describe_configuration_revision(ConfigurationId,
 Returns the specified configuration revision for the specified configuration.
 }
 \section{Request syntax}{
-\preformatted{mq$describe_configuration_revision(
+\preformatted{svc$describe_configuration_revision(
   ConfigurationId = "string",
   ConfigurationRevision = "string"
 )

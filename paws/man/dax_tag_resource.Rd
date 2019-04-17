@@ -16,7 +16,7 @@ Associates a set of tags with a DAX resource. You can call \code{TagResource}
 up to 5 times per second, per account.
 }
 \section{Request syntax}{
-\preformatted{dax$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceName = "string",
   Tags = list(
     list(

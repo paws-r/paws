@@ -36,7 +36,7 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 }
 \section{Request syntax}{
-\preformatted{iot$update_account_audit_configuration(
+\preformatted{svc$update_account_audit_configuration(
   roleArn = "string",
   auditNotificationTargetConfigurations = list(
     list(

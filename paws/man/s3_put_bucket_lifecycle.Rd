@@ -17,7 +17,7 @@ s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
 No longer used, see the PutBucketLifecycleConfiguration operation.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_lifecycle(
+\preformatted{svc$put_bucket_lifecycle(
   Bucket = "string",
   ContentMD5 = "string",
   LifecycleConfiguration = list(

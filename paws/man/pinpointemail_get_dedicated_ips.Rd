@@ -24,7 +24,7 @@ List the dedicated IP addresses that are associated with your Amazon
 Pinpoint account.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$get_dedicated_ips(
+\preformatted{svc$get_dedicated_ips(
   PoolName = "string",
   NextToken = "string",
   PageSize = 123

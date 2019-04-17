@@ -18,7 +18,7 @@ to delete.}
 Deletes the repository policy from a specified repository.
 }
 \section{Request syntax}{
-\preformatted{ecr$delete_repository_policy(
+\preformatted{svc$delete_repository_policy(
   registryId = "string",
   repositoryName = "string"
 )
@@ -28,7 +28,7 @@ Deletes the repository policy from a specified repository.
 \examples{
 # This example deletes the policy associated with the repository named
 # ubuntu in the current account.
-\donttest{ecr$delete_repository_policy(
+\donttest{svc$delete_repository_policy(
   repositoryName = "ubuntu"
 )}
 

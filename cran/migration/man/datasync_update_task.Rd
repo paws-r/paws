@@ -18,7 +18,7 @@ update.}
 Updates the metadata associated with a task.
 }
 \section{Request syntax}{
-\preformatted{datasync$update_task(
+\preformatted{svc$update_task(
   TaskArn = "string",
   Options = list(
     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"NONE",

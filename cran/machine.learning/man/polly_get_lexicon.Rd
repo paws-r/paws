@@ -15,7 +15,7 @@ Returns the content of the specified pronunciation lexicon stored in an
 AWS Region. For more information, see \href{http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{
-\preformatted{polly$get_lexicon(
+\preformatted{svc$get_lexicon(
   Name = "string"
 )
 }
@@ -24,7 +24,7 @@ AWS Region. For more information, see \href{http://docs.aws.amazon.com/polly/lat
 \examples{
 # Returns the content of the specified pronunciation lexicon stored in an
 # AWS Region.
-\donttest{polly$get_lexicon(
+\donttest{svc$get_lexicon(
   Name = ""
 )}
 

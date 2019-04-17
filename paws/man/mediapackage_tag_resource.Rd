@@ -15,7 +15,7 @@ mediapackage_tag_resource(ResourceArn, Tags)
 Tag resource
 }
 \section{Request syntax}{
-\preformatted{mediapackage$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

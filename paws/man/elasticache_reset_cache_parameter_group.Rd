@@ -30,7 +30,7 @@ specify the \code{ResetAllParameters} and \code{CacheParameterGroupName}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{elasticache$reset_cache_parameter_group(
+\preformatted{svc$reset_cache_parameter_group(
   CacheParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   ParameterNameValues = list(

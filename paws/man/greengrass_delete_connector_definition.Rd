@@ -13,7 +13,7 @@ greengrass_delete_connector_definition(ConnectorDefinitionId)
 Deletes a connector definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_connector_definition(
+\preformatted{svc$delete_connector_definition(
   ConnectorDefinitionId = "string"
 )
 }

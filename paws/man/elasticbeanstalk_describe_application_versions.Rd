@@ -29,7 +29,7 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 Retrieve a list of application versions.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_application_versions(
+\preformatted{svc$describe_application_versions(
   ApplicationName = "string",
   VersionLabels = list(
     "string"
@@ -43,7 +43,7 @@ Retrieve a list of application versions.
 \examples{
 # The following operation retrieves information about an application
 # version labeled v2:
-\donttest{elasticbeanstalk$describe_application_versions(
+\donttest{svc$describe_application_versions(
   ApplicationName = "my-app",
   VersionLabels = list(
     "v2"

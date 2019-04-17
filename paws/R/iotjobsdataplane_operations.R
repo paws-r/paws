@@ -22,7 +22,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' iotjobsdataplane$describe_job_execution(
+#' svc$describe_job_execution(
 #'   jobId = "string",
 #'   thingName = "string",
 #'   includeJobDocument = TRUE|FALSE,
@@ -60,7 +60,7 @@ iotjobsdataplane_describe_job_execution <- function(jobId, thingName, includeJob
 #'
 #' @section Request syntax:
 #' ```
-#' iotjobsdataplane$get_pending_job_executions(
+#' svc$get_pending_job_executions(
 #'   thingName = "string"
 #' )
 #' ```
@@ -109,7 +109,7 @@ iotjobsdataplane_get_pending_job_executions <- function(thingName) {
 #'
 #' @section Request syntax:
 #' ```
-#' iotjobsdataplane$start_next_pending_job_execution(
+#' svc$start_next_pending_job_execution(
 #'   thingName = "string",
 #'   statusDetails = list(
 #'     "string"
@@ -177,7 +177,7 @@ iotjobsdataplane_start_next_pending_job_execution <- function(thingName, statusD
 #'
 #' @section Request syntax:
 #' ```
-#' iotjobsdataplane$update_job_execution(
+#' svc$update_job_execution(
 #'   jobId = "string",
 #'   thingName = "string",
 #'   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",

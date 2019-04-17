@@ -20,7 +20,7 @@ returned to the VTS. This operation is only supported in the tape
 gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$cancel_retrieval(
+\preformatted{svc$cancel_retrieval(
   GatewayARN = "string",
   TapeARN = "string"
 )
@@ -30,7 +30,7 @@ gateway type.
 \examples{
 # Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 # a gateway after the retrieval process is initiated.
-\donttest{storagegateway$cancel_retrieval(
+\donttest{svc$cancel_retrieval(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   TapeARN = "arn:aws:storagegateway:us-east-1:999999999999:tape/AMZN01A2A4"
 )}

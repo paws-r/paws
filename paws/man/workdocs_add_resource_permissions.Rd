@@ -24,7 +24,7 @@ resource permissions are overwritten if the principals already have
 different permissions.
 }
 \section{Request syntax}{
-\preformatted{workdocs$add_resource_permissions(
+\preformatted{svc$add_resource_permissions(
   AuthenticationToken = "string",
   ResourceId = "string",
   Principals = list(

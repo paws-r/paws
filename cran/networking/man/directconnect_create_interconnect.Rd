@@ -45,7 +45,7 @@ AWS Direct Connect Partner.
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_interconnect(
+\preformatted{svc$create_interconnect(
   interconnectName = "string",
   bandwidth = "string",
   location = "string",

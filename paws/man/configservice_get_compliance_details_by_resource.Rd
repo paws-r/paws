@@ -27,7 +27,7 @@ resource, when each rule was last used, and whether the resource
 complies with each rule.
 }
 \section{Request syntax}{
-\preformatted{configservice$get_compliance_details_by_resource(
+\preformatted{svc$get_compliance_details_by_resource(
   ResourceType = "string",
   ResourceId = "string",
   ComplianceTypes = list(

@@ -44,7 +44,7 @@ Returns a list of resources (for example, DB instances) that have at
 least one pending maintenance action.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_pending_maintenance_actions(
+\preformatted{svc$describe_pending_maintenance_actions(
   ResourceIdentifier = "string",
   Filters = list(
     list(

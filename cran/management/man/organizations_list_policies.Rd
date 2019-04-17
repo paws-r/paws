@@ -41,7 +41,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_policies(
+\preformatted{svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY",
   NextToken = "string",
   MaxResults = 123
@@ -52,7 +52,7 @@ account.
 \examples{
 # The following example shows how to get a list of service control
 # policies (SCPs):/n/n
-\donttest{organizations$list_policies(
+\donttest{svc$list_policies(
   Filter = "SERVICE_CONTROL_POLICY"
 )}
 

@@ -32,7 +32,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Describes the ClassicLink status of one or more VPCs.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_classic_link(
+\preformatted{svc$describe_vpc_classic_link(
   Filters = list(
     list(
       Name = "string",

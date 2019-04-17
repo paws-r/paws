@@ -23,7 +23,7 @@ value that you can use to get another batch of \code{Rules}.}
 Returns an array of XssMatchSet objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_xss_match_sets(
+\preformatted{svc$list_xss_match_sets(
   NextMarker = "string",
   Limit = 123
 )
@@ -32,7 +32,7 @@ Returns an array of XssMatchSet objects.
 
 \examples{
 # The following example returns an array of up to 100 XSS match sets.
-\donttest{wafregional$list_xss_match_sets(
+\donttest{svc$list_xss_match_sets(
   Limit = 100L
 )}
 

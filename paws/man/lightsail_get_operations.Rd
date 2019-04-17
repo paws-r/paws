@@ -20,7 +20,7 @@ use the maximum (last) \code{statusChangedAt} value from the previous
 request.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_operations(
+\preformatted{svc$get_operations(
   pageToken = "string"
 )
 }

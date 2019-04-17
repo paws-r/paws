@@ -45,7 +45,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_instance_profiles(
+\preformatted{svc$list_instance_profiles(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123

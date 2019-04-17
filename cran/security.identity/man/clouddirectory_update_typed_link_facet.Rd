@@ -29,7 +29,7 @@ attributes, see \href{https://docs.aws.amazon.com/clouddirectory/latest/develope
 Updates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$update_typed_link_facet(
+\preformatted{svc$update_typed_link_facet(
   SchemaArn = "string",
   Name = "string",
   AttributeUpdates = list(

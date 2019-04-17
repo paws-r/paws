@@ -35,7 +35,7 @@ must call RebootDBInstance for every DB instance in your DB cluster that
 you want the updated static parameter to apply to.
 }
 \section{Request syntax}{
-\preformatted{neptune$reset_db_cluster_parameter_group(
+\preformatted{svc$reset_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(

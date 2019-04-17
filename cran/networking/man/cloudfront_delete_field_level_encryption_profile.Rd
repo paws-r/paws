@@ -16,7 +16,7 @@ profile to delete. For example: \code{E2QWRUHAPOMQZL}.}
 Remove a field-level encryption profile.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_field_level_encryption_profile(
+\preformatted{svc$delete_field_level_encryption_profile(
   Id = "string",
   IfMatch = "string"
 )

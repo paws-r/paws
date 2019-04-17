@@ -18,7 +18,7 @@ cognitoidentityprovider_list_identity_providers(UserPoolId, MaxResults,
 Lists information about all identity providers for a user pool.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_identity_providers(
+\preformatted{svc$list_identity_providers(
   UserPoolId = "string",
   MaxResults = 123,
   NextToken = "string"

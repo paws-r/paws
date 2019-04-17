@@ -16,7 +16,7 @@ Declines invitations that are sent to this AWS account (invitee) by the
 AWS accounts (inviters) that are specified by the account IDs.
 }
 \section{Request syntax}{
-\preformatted{securityhub$decline_invitations(
+\preformatted{svc$decline_invitations(
   AccountIds = list(
     "string"
   )

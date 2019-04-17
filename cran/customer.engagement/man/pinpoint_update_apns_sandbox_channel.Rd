@@ -16,7 +16,7 @@ pinpoint_update_apns_sandbox_channel(APNSSandboxChannelRequest,
 Update an APNS sandbox channel.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_apns_sandbox_channel(
+\preformatted{svc$update_apns_sandbox_channel(
   APNSSandboxChannelRequest = list(
     BundleId = "string",
     Certificate = "string",

@@ -17,7 +17,7 @@ specified events. If no events are specified, the counts of all affected
 entities are returned.
 }
 \section{Request syntax}{
-\preformatted{health$describe_entity_aggregates(
+\preformatted{svc$describe_entity_aggregates(
   eventArns = list(
     "string"
   )

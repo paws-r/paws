@@ -34,7 +34,7 @@ implementations. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/
 in the Step Functions Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{sfn$get_activity_task(
+\preformatted{svc$get_activity_task(
   activityArn = "string",
   workerName = "string"
 )

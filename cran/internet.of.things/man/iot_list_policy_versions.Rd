@@ -15,7 +15,7 @@ Lists the versions of the specified policy and identifies the default
 version.
 }
 \section{Request syntax}{
-\preformatted{iot$list_policy_versions(
+\preformatted{svc$list_policy_versions(
   policyName = "string"
 )
 }

@@ -46,7 +46,7 @@ Description.
 If a parameter is null, then the corresponding field is not modified.
 }
 \section{Request syntax}{
-\preformatted{ssm$update_maintenance_window_target(
+\preformatted{svc$update_maintenance_window_target(
   WindowId = "string",
   WindowTargetId = "string",
   Targets = list(

@@ -78,7 +78,7 @@ lot of traffic policy instances, you can use the \code{MaxItems} parameter to
 list them in groups of up to 100.
 }
 \section{Request syntax}{
-\preformatted{route53$list_traffic_policy_instances_by_policy(
+\preformatted{svc$list_traffic_policy_instances_by_policy(
   TrafficPolicyId = "string",
   TrafficPolicyVersion = 123,
   HostedZoneIdMarker = "string",

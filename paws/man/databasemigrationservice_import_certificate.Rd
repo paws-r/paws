@@ -21,7 +21,7 @@ and 0-9.}
 Uploads the specified certificate.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$import_certificate(
+\preformatted{svc$import_certificate(
   CertificateIdentifier = "string",
   CertificatePem = "string",
   CertificateWallet = raw,
@@ -37,7 +37,7 @@ Uploads the specified certificate.
 
 \examples{
 # Uploads the specified certificate.
-\donttest{databasemigrationservice$import_certificate(
+\donttest{svc$import_certificate(
   CertificateIdentifier = "",
   CertificatePem = ""
 )}

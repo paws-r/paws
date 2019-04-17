@@ -16,7 +16,7 @@ disassociate all virtual private gateways that are associated with the
 Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$delete_direct_connect_gateway(
+\preformatted{svc$delete_direct_connect_gateway(
   directConnectGatewayId = "string"
 )
 }

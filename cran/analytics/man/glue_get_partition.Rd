@@ -20,7 +20,7 @@ none is supplied, the AWS account ID is used by default.}
 Retrieves information about a specified partition.
 }
 \section{Request syntax}{
-\preformatted{glue$get_partition(
+\preformatted{svc$get_partition(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

@@ -29,7 +29,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$create_accelerator(
+#' svc$create_accelerator(
 #'   Name = "string",
 #'   IpAddressType = "IPV4",
 #'   Enabled = TRUE|FALSE,
@@ -100,7 +100,7 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, Ena
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$create_endpoint_group(
+#' svc$create_endpoint_group(
 #'   ListenerArn = "string",
 #'   EndpointGroupRegion = "string",
 #'   EndpointConfigurations = list(
@@ -181,7 +181,7 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$create_listener(
+#' svc$create_listener(
 #'   AcceleratorArn = "string",
 #'   PortRanges = list(
 #'     list(
@@ -227,7 +227,7 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$delete_accelerator(
+#' svc$delete_accelerator(
 #'   AcceleratorArn = "string"
 #' )
 #' ```
@@ -262,7 +262,7 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$delete_endpoint_group(
+#' svc$delete_endpoint_group(
 #'   EndpointGroupArn = "string"
 #' )
 #' ```
@@ -297,7 +297,7 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$delete_listener(
+#' svc$delete_listener(
 #'   ListenerArn = "string"
 #' )
 #' ```
@@ -333,7 +333,7 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$describe_accelerator(
+#' svc$describe_accelerator(
 #'   AcceleratorArn = "string"
 #' )
 #' ```
@@ -369,7 +369,7 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$describe_accelerator_attributes(
+#' svc$describe_accelerator_attributes(
 #'   AcceleratorArn = "string"
 #' )
 #' ```
@@ -404,7 +404,7 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn = N
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$describe_endpoint_group(
+#' svc$describe_endpoint_group(
 #'   EndpointGroupArn = "string"
 #' )
 #' ```
@@ -439,7 +439,7 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$describe_listener(
+#' svc$describe_listener(
 #'   ListenerArn = "string"
 #' )
 #' ```
@@ -477,7 +477,7 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$list_accelerators(
+#' svc$list_accelerators(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -518,7 +518,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$list_endpoint_groups(
+#' svc$list_endpoint_groups(
 #'   ListenerArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -560,7 +560,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$list_listeners(
+#' svc$list_listeners(
 #'   AcceleratorArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -607,7 +607,7 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$update_accelerator(
+#' svc$update_accelerator(
 #'   AcceleratorArn = "string",
 #'   Name = "string",
 #'   IpAddressType = "IPV4",
@@ -662,7 +662,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$update_accelerator_attributes(
+#' svc$update_accelerator_attributes(
 #'   AcceleratorArn = "string",
 #'   FlowLogsEnabled = TRUE|FALSE,
 #'   FlowLogsS3Bucket = "string",
@@ -728,7 +728,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$update_endpoint_group(
+#' svc$update_endpoint_group(
 #'   EndpointGroupArn = "string",
 #'   EndpointConfigurations = list(
 #'     list(
@@ -802,7 +802,7 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #'
 #' @section Request syntax:
 #' ```
-#' globalaccelerator$update_listener(
+#' svc$update_listener(
 #'   ListenerArn = "string",
 #'   PortRanges = list(
 #'     list(

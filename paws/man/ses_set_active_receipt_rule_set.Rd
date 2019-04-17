@@ -22,7 +22,7 @@ For information about managing receipt rule sets, see the \href{http://docs.aws.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$set_active_receipt_rule_set(
+\preformatted{svc$set_active_receipt_rule_set(
   RuleSetName = "string"
 )
 }
@@ -30,7 +30,7 @@ You can execute this operation no more than once per second.
 
 \examples{
 # The following example sets the active receipt rule set:
-\donttest{ses$set_active_receipt_rule_set(
+\donttest{svc$set_active_receipt_rule_set(
   RuleSetName = "RuleSetToActivate"
 )}
 

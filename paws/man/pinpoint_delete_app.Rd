@@ -13,7 +13,7 @@ pinpoint_delete_app(ApplicationId)
 Deletes an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_app(
+\preformatted{svc$delete_app(
   ApplicationId = "string"
 )
 }

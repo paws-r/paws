@@ -30,7 +30,7 @@ pools before you can create a work team.
 You cannot create more than 25 work teams in an account and region.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_workteam(
+\preformatted{svc$create_workteam(
   WorkteamName = "string",
   MemberDefinitions = list(
     list(

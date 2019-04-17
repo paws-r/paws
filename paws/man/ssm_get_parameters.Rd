@@ -18,7 +18,7 @@ Get details of a parameter. Don't confuse this API action with the
 GetParameter API action.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_parameters(
+\preformatted{svc$get_parameters(
   Names = list(
     "string"
   ),

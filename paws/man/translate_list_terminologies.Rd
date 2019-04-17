@@ -16,7 +16,7 @@ the NextToken to fetch the next group of custom terminologies.}
 Provides a list of custom terminologies associated with your account.
 }
 \section{Request syntax}{
-\preformatted{translate$list_terminologies(
+\preformatted{svc$list_terminologies(
   NextToken = "string",
   MaxResults = 123
 )

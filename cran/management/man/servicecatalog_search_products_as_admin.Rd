@@ -37,7 +37,7 @@ Gets information about the products for the specified portfolio or all
 products.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$search_products_as_admin(
+\preformatted{svc$search_products_as_admin(
   AcceptLanguage = "string",
   PortfolioId = "string",
   Filters = list(

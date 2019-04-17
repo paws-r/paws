@@ -42,7 +42,7 @@ response size of 1MB (up to 10,000 log events). You can get additional
 log events by specifying one of the tokens in a subsequent call.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$get_log_events(
+\preformatted{svc$get_log_events(
   logGroupName = "string",
   logStreamName = "string",
   startTime = 123,

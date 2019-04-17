@@ -27,12 +27,6 @@ access and use Step Functions using the console, the AWS SDKs, or an
 HTTP API. For more information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{AWS Step Functions Developer Guide}}
 .
 }
-\section{Example}{
-\preformatted{sfn <- paws::sfn()
-sfn$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -61,3 +55,9 @@ sfn$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_activity(
+  Foo = 123
+)}
+
+}

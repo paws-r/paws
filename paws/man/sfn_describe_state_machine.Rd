@@ -17,7 +17,7 @@ This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }
 \section{Request syntax}{
-\preformatted{sfn$describe_state_machine(
+\preformatted{svc$describe_state_machine(
   stateMachineArn = "string"
 )
 }

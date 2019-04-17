@@ -26,7 +26,7 @@ Updates the specified attributes of the specified folder. The user must
 have access to both the folder and its parent folder, if applicable.
 }
 \section{Request syntax}{
-\preformatted{workdocs$update_folder(
+\preformatted{svc$update_folder(
   AuthenticationToken = "string",
   FolderId = "string",
   Name = "string",

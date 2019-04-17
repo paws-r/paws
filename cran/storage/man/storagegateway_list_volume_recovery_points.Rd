@@ -21,7 +21,7 @@ source volume. To create a snapshot from a volume recovery point use the
 CreateSnapshotFromVolumeRecoveryPoint operation.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_volume_recovery_points(
+\preformatted{svc$list_volume_recovery_points(
   GatewayARN = "string"
 )
 }
@@ -30,7 +30,7 @@ CreateSnapshotFromVolumeRecoveryPoint operation.
 \examples{
 # Lists the recovery points for a specified gateway in which all data of
 # the volume is consistent and can be used to create a snapshot.
-\donttest{storagegateway$list_volume_recovery_points(
+\donttest{svc$list_volume_recovery_points(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

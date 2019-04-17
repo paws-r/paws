@@ -13,7 +13,7 @@ dlm_get_lifecycle_policy(PolicyId)
 Gets detailed information about the specified lifecycle policy.
 }
 \section{Request syntax}{
-\preformatted{dlm$get_lifecycle_policy(
+\preformatted{svc$get_lifecycle_policy(
   PolicyId = "string"
 )
 }

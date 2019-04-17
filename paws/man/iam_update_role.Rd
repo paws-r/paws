@@ -31,7 +31,7 @@ in the \emph{IAM User Guide}.}
 Updates the description or maximum session duration setting of a role.
 }
 \section{Request syntax}{
-\preformatted{iam$update_role(
+\preformatted{svc$update_role(
   RoleName = "string",
   Description = "string",
   MaxSessionDuration = 123

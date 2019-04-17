@@ -90,7 +90,7 @@ window has expired, use RestoreSecret.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$delete_secret(
+\preformatted{svc$delete_secret(
   SecretId = "string",
   RecoveryWindowInDays = 123,
   ForceDeleteWithoutRecovery = TRUE|FALSE
@@ -103,7 +103,7 @@ window has expired, use RestoreSecret.
 # your account in a deprecated and inaccessible state until the recovery
 # window ends. After the date and time in the DeletionDate response field
 # has passed, you can no longer recover this secret with restore-secret.
-\donttest{secretsmanager$delete_secret(
+\donttest{svc$delete_secret(
   RecoveryWindowInDays = 7L,
   SecretId = "MyTestDatabaseSecret1"
 )}

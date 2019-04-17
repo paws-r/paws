@@ -13,7 +13,7 @@ medialive_describe_input(InputId)
 Produces details about an input
 }
 \section{Request syntax}{
-\preformatted{medialive$describe_input(
+\preformatted{svc$describe_input(
   InputId = "string"
 )
 }

@@ -23,7 +23,7 @@ If the plan has launched resources or has scaling activities in
 progress, you must delete those resources separately.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$delete_scaling_plan(
+\preformatted{svc$delete_scaling_plan(
   ScalingPlanName = "string",
   ScalingPlanVersion = 123
 )

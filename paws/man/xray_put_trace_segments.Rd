@@ -56,7 +56,7 @@ hexadecimal digits.
 }
 }
 \section{Request syntax}{
-\preformatted{xray$put_trace_segments(
+\preformatted{svc$put_trace_segments(
   TraceSegmentDocuments = list(
     "string"
   )

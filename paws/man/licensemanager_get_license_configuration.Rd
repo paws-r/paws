@@ -13,7 +13,7 @@ licensemanager_get_license_configuration(LicenseConfigurationArn)
 Returns a detailed description of a license configuration.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$get_license_configuration(
+\preformatted{svc$get_license_configuration(
   LicenseConfigurationArn = "string"
 )
 }

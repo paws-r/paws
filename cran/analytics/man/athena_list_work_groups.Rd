@@ -15,7 +15,7 @@ athena_list_work_groups(NextToken, MaxResults)
 Lists available workgroups for the account.
 }
 \section{Request syntax}{
-\preformatted{athena$list_work_groups(
+\preformatted{svc$list_work_groups(
   NextToken = "string",
   MaxResults = 123
 )

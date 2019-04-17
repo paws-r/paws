@@ -15,7 +15,7 @@ guardduty_delete_filter(DetectorId, FilterName)
 Deletes the filter specified by the filter name.
 }
 \section{Request syntax}{
-\preformatted{guardduty$delete_filter(
+\preformatted{svc$delete_filter(
   DetectorId = "string",
   FilterName = "string"
 )

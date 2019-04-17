@@ -44,12 +44,6 @@ tasks such as the following automatically:
 }
 }
 }
-\section{Example}{
-\preformatted{sqs <- paws::sqs()
-sqs$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -76,3 +70,9 @@ sqs$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_permission(
+  Foo = 123
+)}
+
+}

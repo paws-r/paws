@@ -30,7 +30,7 @@ the end user with the code to change their password.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_reset_user_password(
+\preformatted{svc$admin_reset_user_password(
   UserPoolId = "string",
   Username = "string"
 )

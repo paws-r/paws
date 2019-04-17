@@ -25,7 +25,7 @@ results.}
 Returns a \code{UserSummaryList}, which is an array of \code{UserSummary} objects.
 }
 \section{Request syntax}{
-\preformatted{connect$list_users(
+\preformatted{svc$list_users(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123

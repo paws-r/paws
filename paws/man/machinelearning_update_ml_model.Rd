@@ -27,7 +27,7 @@ You can use the \code{GetMLModel} operation to view the contents of the
 updated data element.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$update_ml_model(
+\preformatted{svc$update_ml_model(
   MLModelId = "string",
   MLModelName = "string",
   ScoreThreshold = 123.0

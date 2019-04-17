@@ -31,7 +31,7 @@ For information on how to construct select expressions, see Using Select
 to Create Amazon SimpleDB Queries in the Developer Guide.
 }
 \section{Request syntax}{
-\preformatted{simpledb$select(
+\preformatted{svc$select(
   SelectExpression = "string",
   NextToken = "string",
   ConsistentRead = TRUE|FALSE

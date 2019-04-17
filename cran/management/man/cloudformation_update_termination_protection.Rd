@@ -26,7 +26,7 @@ termination protection is set on the root stack and cannot be changed
 directly on the nested stack.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$update_termination_protection(
+\preformatted{svc$update_termination_protection(
   EnableTerminationProtection = TRUE|FALSE,
   StackName = "string"
 )

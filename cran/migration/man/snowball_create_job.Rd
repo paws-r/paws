@@ -80,7 +80,7 @@ the \code{clusterId} value; the other job attributes are inherited from the
 cluster.
 }
 \section{Request syntax}{
-\preformatted{snowball$create_job(
+\preformatted{svc$create_job(
   JobType = "IMPORT"|"EXPORT"|"LOCAL_USE",
   Resources = list(
     S3Resources = list(
@@ -136,7 +136,7 @@ cluster.
 # you're creating a job for a node in a cluster, you only need to provide
 # the clusterId value; the other job attributes are inherited from the
 # cluster.
-\donttest{snowball$create_job(
+\donttest{svc$create_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
   Description = "My Job",
   JobType = "IMPORT",

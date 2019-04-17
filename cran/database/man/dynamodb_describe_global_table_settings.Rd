@@ -13,7 +13,7 @@ dynamodb_describe_global_table_settings(GlobalTableName)
 Describes region specific settings for a global table.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_global_table_settings(
+\preformatted{svc$describe_global_table_settings(
   GlobalTableName = "string"
 )
 }

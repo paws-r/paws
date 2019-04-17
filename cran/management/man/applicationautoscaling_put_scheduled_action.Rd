@@ -126,7 +126,7 @@ DeleteScheduledAction.
 Learn more about how to work with scheduled actions in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$put_scheduled_action(
+\preformatted{svc$put_scheduled_action(
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   Schedule = "string",
   ScheduledActionName = "string",

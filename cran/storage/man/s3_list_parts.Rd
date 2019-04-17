@@ -25,7 +25,7 @@ higher part numbers will be listed.}
 Lists the parts that have been uploaded for a specific multipart upload.
 }
 \section{Request syntax}{
-\preformatted{s3$list_parts(
+\preformatted{svc$list_parts(
   Bucket = "string",
   Key = "string",
   MaxParts = 123,
@@ -39,7 +39,7 @@ Lists the parts that have been uploaded for a specific multipart upload.
 \examples{
 # The following example lists parts uploaded for a specific multipart
 # upload.
-\donttest{s3$list_parts(
+\donttest{svc$list_parts(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."

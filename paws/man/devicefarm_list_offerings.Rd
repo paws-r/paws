@@ -21,7 +21,7 @@ if the user is not permitted to invoke the operation. Please contact
 able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_offerings(
+\preformatted{svc$list_offerings(
   nextToken = "string"
 )
 }
@@ -30,7 +30,7 @@ able to invoke this operation.
 \examples{
 # The following example returns information about available device
 # offerings.
-\donttest{devicefarm$list_offerings(
+\donttest{svc$list_offerings(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 )}
 

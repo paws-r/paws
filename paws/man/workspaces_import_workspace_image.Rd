@@ -26,7 +26,7 @@ licensed EC2 image that is in your AWS account, and you must own the
 image.
 }
 \section{Request syntax}{
-\preformatted{workspaces$import_workspace_image(
+\preformatted{svc$import_workspace_image(
   Ec2ImageId = "string",
   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
   ImageName = "string",

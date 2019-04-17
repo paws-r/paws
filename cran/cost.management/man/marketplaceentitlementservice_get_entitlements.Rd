@@ -30,7 +30,7 @@ results can be filtered based on customer identifier or product
 dimensions.
 }
 \section{Request syntax}{
-\preformatted{marketplaceentitlementservice$get_entitlements(
+\preformatted{svc$get_entitlements(
   ProductCode = "string",
   Filter = list(
     list(

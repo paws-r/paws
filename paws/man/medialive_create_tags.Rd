@@ -15,7 +15,7 @@ medialive_create_tags(ResourceArn, Tags)
 Create tags for a resource
 }
 \section{Request syntax}{
-\preformatted{medialive$create_tags(
+\preformatted{svc$create_tags(
   ResourceArn = "string",
   Tags = list(
     "string"

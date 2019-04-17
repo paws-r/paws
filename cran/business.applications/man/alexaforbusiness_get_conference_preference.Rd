@@ -10,7 +10,7 @@ alexaforbusiness_get_conference_preference()
 Retrieves the existing conference preferences.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$get_conference_preference()
+\preformatted{svc$get_conference_preference()
 }
 }
 

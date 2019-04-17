@@ -14,7 +14,7 @@ delete.}
 Deletes the specified log subscription.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$delete_log_subscription(
+\preformatted{svc$delete_log_subscription(
   DirectoryId = "string"
 )
 }

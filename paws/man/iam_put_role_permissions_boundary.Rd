@@ -31,7 +31,7 @@ effective permissions for a role are evaluated, see \href{http://docs.aws.amazon
 in the IAM User Guide.
 }
 \section{Request syntax}{
-\preformatted{iam$put_role_permissions_boundary(
+\preformatted{svc$put_role_permissions_boundary(
   RoleName = "string",
   PermissionsBoundary = "string"
 )

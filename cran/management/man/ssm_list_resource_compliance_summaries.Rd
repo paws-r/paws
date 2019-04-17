@@ -23,7 +23,7 @@ about compliant and non-compliant statuses and detailed compliance-item
 severity counts, according to the filter criteria you specify.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_resource_compliance_summaries(
+\preformatted{svc$list_resource_compliance_summaries(
   Filters = list(
     list(
       Key = "string",

@@ -21,7 +21,7 @@ cluster and the schedule.}
 Modifies a snapshot schedule for a cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_snapshot_schedule(
+\preformatted{svc$modify_cluster_snapshot_schedule(
   ClusterIdentifier = "string",
   ScheduleIdentifier = "string",
   DisassociateSchedule = TRUE|FALSE

@@ -20,7 +20,7 @@ Deletes the specified key pair, by removing the public key from Amazon
 EC2.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_key_pair(
+\preformatted{svc$delete_key_pair(
   KeyName = "string",
   DryRun = TRUE|FALSE
 )
@@ -29,7 +29,7 @@ EC2.
 
 \examples{
 # This example deletes the specified key pair.
-\donttest{ec2$delete_key_pair(
+\donttest{svc$delete_key_pair(
   KeyName = "my-key-pair"
 )}
 

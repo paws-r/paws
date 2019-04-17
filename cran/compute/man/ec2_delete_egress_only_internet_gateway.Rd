@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes an egress-only internet gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_egress_only_internet_gateway(
+\preformatted{svc$delete_egress_only_internet_gateway(
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayId = "string"
 )

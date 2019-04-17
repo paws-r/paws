@@ -42,7 +42,7 @@ access to the \code{UpdateOpenIDConnectProviderThumbprint} operation to
 highly privileged users.
 }
 \section{Request syntax}{
-\preformatted{iam$update_open_id_connect_provider_thumbprint(
+\preformatted{svc$update_open_id_connect_provider_thumbprint(
   OpenIDConnectProviderArn = "string",
   ThumbprintList = list(
     "string"

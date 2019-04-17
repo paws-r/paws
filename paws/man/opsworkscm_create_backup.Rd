@@ -31,7 +31,7 @@ is not in any of the following states: RUNNING, HEALTHY, or UNHEALTHY. A
 valid.
 }
 \section{Request syntax}{
-\preformatted{opsworkscm$create_backup(
+\preformatted{svc$create_backup(
   ServerName = "string",
   Description = "string"
 )

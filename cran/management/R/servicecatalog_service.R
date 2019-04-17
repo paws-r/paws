@@ -12,11 +12,10 @@ NULL
 #' Catalog
 #' Concepts](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 #'
-#' @section Example:
-#' ```
-#' servicecatalog <- paws::servicecatalog()
-#' servicecatalog$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_portfolio_share(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

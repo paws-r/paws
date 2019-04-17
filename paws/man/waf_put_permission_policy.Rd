@@ -40,7 +40,7 @@ An example of a valid policy parameter is shown in the Examples section
 below.
 }
 \section{Request syntax}{
-\preformatted{waf$put_permission_policy(
+\preformatted{svc$put_permission_policy(
   ResourceArn = "string",
   Policy = "string"
 )

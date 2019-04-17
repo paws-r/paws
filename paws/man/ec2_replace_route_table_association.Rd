@@ -30,7 +30,7 @@ table's association ID and the route table to be the new main route
 table.
 }
 \section{Request syntax}{
-\preformatted{ec2$replace_route_table_association(
+\preformatted{svc$replace_route_table_association(
   AssociationId = "string",
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
@@ -41,7 +41,7 @@ table.
 \examples{
 # This example associates the specified route table with the subnet for
 # the specified route table association.
-\donttest{ec2$replace_route_table_association(
+\donttest{svc$replace_route_table_association(
   AssociationId = "rtbassoc-781d0d1a",
   RouteTableId = "rtb-22574640"
 )}

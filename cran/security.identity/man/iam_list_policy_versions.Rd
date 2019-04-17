@@ -40,7 +40,7 @@ For more information about managed policies, see \href{http://docs.aws.amazon.co
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$list_policy_versions(
+\preformatted{svc$list_policy_versions(
   PolicyArn = "string",
   Marker = "string",
   MaxItems = 123

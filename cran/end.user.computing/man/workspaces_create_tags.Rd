@@ -16,7 +16,7 @@ DescribeWorkspaces.}
 Creates the specified tags for the specified WorkSpace.
 }
 \section{Request syntax}{
-\preformatted{workspaces$create_tags(
+\preformatted{svc$create_tags(
   ResourceId = "string",
   Tags = list(
     list(

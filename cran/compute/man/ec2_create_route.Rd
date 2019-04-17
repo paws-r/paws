@@ -64,7 +64,7 @@ For more information about route tables, see \href{https://docs.aws.amazon.com/A
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_route(
+\preformatted{svc$create_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DryRun = TRUE|FALSE,
@@ -84,7 +84,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 # This example creates a route for the specified route table. The route
 # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
 # gateway.
-\donttest{ec2$create_route(
+\donttest{svc$create_route(
   DestinationCidrBlock = "0.0.0.0/0",
   GatewayId = "igw-c0a643a9",
   RouteTableId = "rtb-22574640"

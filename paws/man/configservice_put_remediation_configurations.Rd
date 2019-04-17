@@ -19,7 +19,7 @@ configuration. The target (SSM document) must exist and have permissions
 to use the target.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_remediation_configurations(
+\preformatted{svc$put_remediation_configurations(
   RemediationConfigurations = list(
     list(
       ConfigRuleName = "string",

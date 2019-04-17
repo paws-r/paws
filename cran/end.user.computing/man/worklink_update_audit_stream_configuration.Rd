@@ -16,7 +16,7 @@ events.}
 Updates the audit stream configuration for the fleet.
 }
 \section{Request syntax}{
-\preformatted{worklink$update_audit_stream_configuration(
+\preformatted{svc$update_audit_stream_configuration(
   FleetArn = "string",
   AuditStreamArn = "string"
 )

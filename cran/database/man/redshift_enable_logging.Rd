@@ -42,7 +42,7 @@ Starts logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$enable_logging(
+\preformatted{svc$enable_logging(
   ClusterIdentifier = "string",
   BucketName = "string",
   S3KeyPrefix = "string"

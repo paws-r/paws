@@ -15,7 +15,7 @@ Lists the tags (metadata key/value pairs) which you have assigned to the
 resource.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }

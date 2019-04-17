@@ -75,7 +75,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$generate_data_key_without_plaintext(
+\preformatted{svc$generate_data_key_without_plaintext(
   KeyId = "string",
   EncryptionContext = list(
     "string"
@@ -93,7 +93,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 # The following example generates an encrypted copy of a 256-bit symmetric
 # data encryption key (data key). The data key is encrypted with the
 # specified customer master key (CMK).
-\donttest{kms$generate_data_key_without_plaintext(
+\donttest{svc$generate_data_key_without_plaintext(
   KeyId = "alias/ExampleAlias",
   KeySpec = "AES_256"
 )}

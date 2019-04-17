@@ -17,7 +17,7 @@ stream processor for a few seconds after calling
 \code{DeleteStreamProcessor}.
 }
 \section{Request syntax}{
-\preformatted{rekognition$delete_stream_processor(
+\preformatted{svc$delete_stream_processor(
   Name = "string"
 )
 }

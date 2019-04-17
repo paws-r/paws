@@ -48,7 +48,7 @@ attributes and the pool ARN. Rule updates are all-or-nothing, meaning
 they can only be updated as a whole (or not at all).
 }
 \section{Request syntax}{
-\preformatted{devicefarm$update_device_pool(
+\preformatted{svc$update_device_pool(
   arn = "string",
   name = "string",
   description = "string",
@@ -69,7 +69,7 @@ they can only be updated as a whole (or not at all).
 # The following example updates the specified device pool with a new name
 # and description. It also enables remote access of devices in the device
 # pool.
-\donttest{devicefarm$update_device_pool(
+\donttest{svc$update_device_pool(
   name = "NewName",
   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
   description = "NewDescription",

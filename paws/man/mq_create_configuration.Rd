@@ -19,7 +19,7 @@ mq_create_configuration(EngineType, EngineVersion, Name, Tags)
 Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 }
 \section{Request syntax}{
-\preformatted{mq$create_configuration(
+\preformatted{svc$create_configuration(
   EngineType = "ACTIVEMQ",
   EngineVersion = "string",
   Name = "string",

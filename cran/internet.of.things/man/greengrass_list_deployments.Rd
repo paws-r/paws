@@ -17,7 +17,7 @@ greengrass_list_deployments(GroupId, MaxResults, NextToken)
 Returns a history of deployments for the group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$list_deployments(
+\preformatted{svc$list_deployments(
   GroupId = "string",
   MaxResults = "string",
   NextToken = "string"

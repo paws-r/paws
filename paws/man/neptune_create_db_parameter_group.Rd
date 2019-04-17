@@ -54,7 +54,7 @@ the \emph{Parameter Groups} option of the Amazon Neptune console or the
 has been created or modified.
 }
 \section{Request syntax}{
-\preformatted{neptune$create_db_parameter_group(
+\preformatted{svc$create_db_parameter_group(
   DBParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",

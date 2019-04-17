@@ -27,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Removes an ingress authorization rule from a Client VPN endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$revoke_client_vpn_ingress(
+\preformatted{svc$revoke_client_vpn_ingress(
   ClientVpnEndpointId = "string",
   TargetNetworkCidr = "string",
   AccessGroupId = "string",

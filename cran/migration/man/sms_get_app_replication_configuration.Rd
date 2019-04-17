@@ -15,7 +15,7 @@ Retrieves an application replication configuration associatd with an
 application.
 }
 \section{Request syntax}{
-\preformatted{sms$get_app_replication_configuration(
+\preformatted{svc$get_app_replication_configuration(
   appId = "string"
 )
 }

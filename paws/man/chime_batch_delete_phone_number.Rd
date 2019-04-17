@@ -19,7 +19,7 @@ Phone numbers remain in the \strong{Deletion queue} for 7 days before they
 are deleted permanently.
 }
 \section{Request syntax}{
-\preformatted{chime$batch_delete_phone_number(
+\preformatted{svc$batch_delete_phone_number(
   PhoneNumberIds = list(
     "string"
   )

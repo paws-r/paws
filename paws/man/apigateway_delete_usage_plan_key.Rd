@@ -19,7 +19,7 @@ Deletes a usage plan key and remove the underlying API key from the
 associated usage plan.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_usage_plan_key(
+\preformatted{svc$delete_usage_plan_key(
   usagePlanId = "string",
   keyId = "string"
 )

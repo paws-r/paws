@@ -27,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a static route for the specified transit gateway route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_transit_gateway_route(
+\preformatted{svc$create_transit_gateway_route(
   DestinationCidrBlock = "string",
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",

@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_api(
+#' svc$create_api(
 #'   ApiKeySelectionExpression = "string",
 #'   Description = "string",
 #'   DisableSchemaValidation = TRUE|FALSE,
@@ -67,7 +67,7 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, Descriptio
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_api_mapping(
+#' svc$create_api_mapping(
 #'   ApiId = "string",
 #'   ApiMappingKey = "string",
 #'   DomainName = "string",
@@ -146,7 +146,7 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_authorizer(
+#' svc$create_authorizer(
 #'   ApiId = "string",
 #'   AuthorizerCredentialsArn = "string",
 #'   AuthorizerResultTtlInSeconds = 123,
@@ -195,7 +195,7 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_deployment(
+#' svc$create_deployment(
 #'   ApiId = "string",
 #'   Description = "string",
 #'   StageName = "string"
@@ -233,7 +233,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_domain_name(
+#' svc$create_domain_name(
 #'   DomainName = "string",
 #'   DomainNameConfigurations = list(
 #'     list(
@@ -361,7 +361,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_integration(
+#' svc$create_integration(
 #'   ApiId = "string",
 #'   ConnectionId = "string",
 #'   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -446,7 +446,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_integration_response(
+#' svc$create_integration_response(
 #'   ApiId = "string",
 #'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
 #'   IntegrationId = "string",
@@ -496,7 +496,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_model(
+#' svc$create_model(
 #'   ApiId = "string",
 #'   ContentType = "string",
 #'   Description = "string",
@@ -553,7 +553,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_route(
+#' svc$create_route(
 #'   ApiId = "string",
 #'   ApiKeyRequired = TRUE|FALSE,
 #'   AuthorizationScopes = list(
@@ -613,7 +613,7 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_route_response(
+#' svc$create_route_response(
 #'   ApiId = "string",
 #'   ModelSelectionExpression = "string",
 #'   ResponseModels = list(
@@ -671,7 +671,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$create_stage(
+#' svc$create_stage(
 #'   AccessLogSettings = list(
 #'     DestinationArn = "string",
 #'     Format = "string"
@@ -733,7 +733,7 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, ClientCer
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_api(
+#' svc$delete_api(
 #'   ApiId = "string"
 #' )
 #' ```
@@ -769,7 +769,7 @@ apigatewayv2_delete_api <- function(ApiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_api_mapping(
+#' svc$delete_api_mapping(
 #'   ApiMappingId = "string",
 #'   DomainName = "string"
 #' )
@@ -806,7 +806,7 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_authorizer(
+#' svc$delete_authorizer(
 #'   ApiId = "string",
 #'   AuthorizerId = "string"
 #' )
@@ -843,7 +843,7 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_deployment(
+#' svc$delete_deployment(
 #'   ApiId = "string",
 #'   DeploymentId = "string"
 #' )
@@ -879,7 +879,7 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_domain_name(
+#' svc$delete_domain_name(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -915,7 +915,7 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_integration(
+#' svc$delete_integration(
 #'   ApiId = "string",
 #'   IntegrationId = "string"
 #' )
@@ -954,7 +954,7 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_integration_response(
+#' svc$delete_integration_response(
 #'   ApiId = "string",
 #'   IntegrationId = "string",
 #'   IntegrationResponseId = "string"
@@ -992,7 +992,7 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_model(
+#' svc$delete_model(
 #'   ApiId = "string",
 #'   ModelId = "string"
 #' )
@@ -1029,7 +1029,7 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_route(
+#' svc$delete_route(
 #'   ApiId = "string",
 #'   RouteId = "string"
 #' )
@@ -1067,7 +1067,7 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_route_response(
+#' svc$delete_route_response(
 #'   ApiId = "string",
 #'   RouteId = "string",
 #'   RouteResponseId = "string"
@@ -1105,7 +1105,7 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$delete_stage(
+#' svc$delete_stage(
 #'   ApiId = "string",
 #'   StageName = "string"
 #' )
@@ -1141,7 +1141,7 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_api(
+#' svc$get_api(
 #'   ApiId = "string"
 #' )
 #' ```
@@ -1177,7 +1177,7 @@ apigatewayv2_get_api <- function(ApiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_api_mapping(
+#' svc$get_api_mapping(
 #'   ApiMappingId = "string",
 #'   DomainName = "string"
 #' )
@@ -1216,7 +1216,7 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_api_mappings(
+#' svc$get_api_mappings(
 #'   DomainName = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1255,7 +1255,7 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_apis(
+#' svc$get_apis(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -1292,7 +1292,7 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_authorizer(
+#' svc$get_authorizer(
 #'   ApiId = "string",
 #'   AuthorizerId = "string"
 #' )
@@ -1331,7 +1331,7 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_authorizers(
+#' svc$get_authorizers(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1369,7 +1369,7 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_deployment(
+#' svc$get_deployment(
 #'   ApiId = "string",
 #'   DeploymentId = "string"
 #' )
@@ -1408,7 +1408,7 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_deployments(
+#' svc$get_deployments(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1445,7 +1445,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_domain_name(
+#' svc$get_domain_name(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -1482,7 +1482,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_domain_names(
+#' svc$get_domain_names(
 #'   MaxResults = "string",
 #'   NextToken = "string"
 #' )
@@ -1519,7 +1519,7 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_integration(
+#' svc$get_integration(
 #'   ApiId = "string",
 #'   IntegrationId = "string"
 #' )
@@ -1558,7 +1558,7 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_integration_response(
+#' svc$get_integration_response(
 #'   ApiId = "string",
 #'   IntegrationId = "string",
 #'   IntegrationResponseId = "string"
@@ -1600,7 +1600,7 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_integration_responses(
+#' svc$get_integration_responses(
 #'   ApiId = "string",
 #'   IntegrationId = "string",
 #'   MaxResults = "string",
@@ -1641,7 +1641,7 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_integrations(
+#' svc$get_integrations(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1679,7 +1679,7 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_model(
+#' svc$get_model(
 #'   ApiId = "string",
 #'   ModelId = "string"
 #' )
@@ -1716,7 +1716,7 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_model_template(
+#' svc$get_model_template(
 #'   ApiId = "string",
 #'   ModelId = "string"
 #' )
@@ -1755,7 +1755,7 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_models(
+#' svc$get_models(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1793,7 +1793,7 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_route(
+#' svc$get_route(
 #'   ApiId = "string",
 #'   RouteId = "string"
 #' )
@@ -1831,7 +1831,7 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_route_response(
+#' svc$get_route_response(
 #'   ApiId = "string",
 #'   RouteId = "string",
 #'   RouteResponseId = "string"
@@ -1872,7 +1872,7 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_route_responses(
+#' svc$get_route_responses(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string",
@@ -1913,7 +1913,7 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_routes(
+#' svc$get_routes(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -1951,7 +1951,7 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_stage(
+#' svc$get_stage(
 #'   ApiId = "string",
 #'   StageName = "string"
 #' )
@@ -1990,7 +1990,7 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$get_stages(
+#' svc$get_stages(
 #'   ApiId = "string",
 #'   MaxResults = "string",
 #'   NextToken = "string"
@@ -2035,7 +2035,7 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_api(
+#' svc$update_api(
 #'   ApiId = "string",
 #'   ApiKeySelectionExpression = "string",
 #'   Description = "string",
@@ -2081,7 +2081,7 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Des
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_api_mapping(
+#' svc$update_api_mapping(
 #'   ApiId = "string",
 #'   ApiMappingId = "string",
 #'   ApiMappingKey = "string",
@@ -2163,7 +2163,7 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_authorizer(
+#' svc$update_authorizer(
 #'   ApiId = "string",
 #'   AuthorizerCredentialsArn = "string",
 #'   AuthorizerId = "string",
@@ -2213,7 +2213,7 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_deployment(
+#' svc$update_deployment(
 #'   ApiId = "string",
 #'   DeploymentId = "string",
 #'   Description = "string"
@@ -2251,7 +2251,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_domain_name(
+#' svc$update_domain_name(
 #'   DomainName = "string",
 #'   DomainNameConfigurations = list(
 #'     list(
@@ -2381,7 +2381,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_integration(
+#' svc$update_integration(
 #'   ApiId = "string",
 #'   ConnectionId = "string",
 #'   ConnectionType = "INTERNET"|"VPC_LINK",
@@ -2468,7 +2468,7 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_integration_response(
+#' svc$update_integration_response(
 #'   ApiId = "string",
 #'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
 #'   IntegrationId = "string",
@@ -2521,7 +2521,7 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_model(
+#' svc$update_model(
 #'   ApiId = "string",
 #'   ContentType = "string",
 #'   Description = "string",
@@ -2580,7 +2580,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_route(
+#' svc$update_route(
 #'   ApiId = "string",
 #'   ApiKeyRequired = TRUE|FALSE,
 #'   AuthorizationScopes = list(
@@ -2643,7 +2643,7 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_route_response(
+#' svc$update_route_response(
 #'   ApiId = "string",
 #'   ModelSelectionExpression = "string",
 #'   ResponseModels = list(
@@ -2702,7 +2702,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #'
 #' @section Request syntax:
 #' ```
-#' apigatewayv2$update_stage(
+#' svc$update_stage(
 #'   AccessLogSettings = list(
 #'     DestinationArn = "string",
 #'     Format = "string"

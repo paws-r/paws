@@ -25,7 +25,7 @@ Lists all of the tags associated with the Amazon Resource Number (ARN)
 you specify. The resource can be a user, server, or role.
 }
 \section{Request syntax}{
-\preformatted{transfer$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   Arn = "string",
   MaxResults = 123,
   NextToken = "string"

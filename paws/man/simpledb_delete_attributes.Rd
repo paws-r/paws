@@ -32,7 +32,7 @@ operation (read) immediately after a \code{DeleteAttributes} or PutAttributes
 operation (write) might not return updated item data.
 }
 \section{Request syntax}{
-\preformatted{simpledb$delete_attributes(
+\preformatted{svc$delete_attributes(
   DomainName = "string",
   ItemName = "string",
   Attributes = list(

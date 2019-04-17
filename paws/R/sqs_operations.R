@@ -70,7 +70,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$add_permission(
+#' svc$add_permission(
 #'   QueueUrl = "string",
 #'   Label = "string",
 #'   AWSAccountIds = list(
@@ -155,7 +155,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$change_message_visibility(
+#' svc$change_message_visibility(
 #'   QueueUrl = "string",
 #'   ReceiptHandle = "string",
 #'   VisibilityTimeout = 123
@@ -212,7 +212,7 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$change_message_visibility_batch(
+#' svc$change_message_visibility_batch(
 #'   QueueUrl = "string",
 #'   Entries = list(
 #'     list(
@@ -436,7 +436,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$create_queue(
+#' svc$create_queue(
 #'   QueueName = "string",
 #'   Attributes = list(
 #'     "string"
@@ -498,7 +498,7 @@ sqs_create_queue <- function(QueueName, Attributes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$delete_message(
+#' svc$delete_message(
 #'   QueueUrl = "string",
 #'   ReceiptHandle = "string"
 #' )
@@ -551,7 +551,7 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$delete_message_batch(
+#' svc$delete_message_batch(
 #'   QueueUrl = "string",
 #'   Entries = list(
 #'     list(
@@ -614,7 +614,7 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$delete_queue(
+#' svc$delete_queue(
 #'   QueueUrl = "string"
 #' )
 #' ```
@@ -764,7 +764,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$get_queue_attributes(
+#' svc$get_queue_attributes(
 #'   QueueUrl = "string",
 #'   AttributeNames = list(
 #'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
@@ -816,7 +816,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$get_queue_url(
+#' svc$get_queue_url(
 #'   QueueName = "string",
 #'   QueueOwnerAWSAccountId = "string"
 #' )
@@ -861,7 +861,7 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$list_dead_letter_source_queues(
+#' svc$list_dead_letter_source_queues(
 #'   QueueUrl = "string"
 #' )
 #' ```
@@ -925,7 +925,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$list_queue_tags(
+#' svc$list_queue_tags(
 #'   QueueUrl = "string"
 #' )
 #' ```
@@ -972,7 +972,7 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$list_queues(
+#' svc$list_queues(
 #'   QueueNamePrefix = "string"
 #' )
 #' ```
@@ -1022,7 +1022,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$purge_queue(
+#' svc$purge_queue(
 #'   QueueUrl = "string"
 #' )
 #' ```
@@ -1233,7 +1233,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$receive_message(
+#' svc$receive_message(
 #'   QueueUrl = "string",
 #'   AttributeNames = list(
 #'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
@@ -1292,7 +1292,7 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$remove_permission(
+#' svc$remove_permission(
 #'   QueueUrl = "string",
 #'   Label = "string"
 #' )
@@ -1448,7 +1448,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$send_message(
+#' svc$send_message(
 #'   QueueUrl = "string",
 #'   MessageBody = "string",
 #'   DelaySeconds = 123,
@@ -1535,7 +1535,7 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$send_message_batch(
+#' svc$send_message_batch(
 #'   QueueUrl = "string",
 #'   Entries = list(
 #'     list(
@@ -1722,7 +1722,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$set_queue_attributes(
+#' svc$set_queue_attributes(
 #'   QueueUrl = "string",
 #'   Attributes = list(
 #'     "string"
@@ -1790,7 +1790,7 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$tag_queue(
+#' svc$tag_queue(
 #'   QueueUrl = "string",
 #'   Tags = list(
 #'     "string"
@@ -1858,7 +1858,7 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' sqs$untag_queue(
+#' svc$untag_queue(
 #'   QueueUrl = "string",
 #'   TagKeys = list(
 #'     "string"

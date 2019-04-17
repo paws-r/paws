@@ -13,7 +13,7 @@ mediaconvert_get_job_template(Name)
 Retrieve the JSON for a specific job template.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$get_job_template(
+\preformatted{svc$get_job_template(
   Name = "string"
 )
 }

@@ -21,11 +21,10 @@ NULL
 #' the Amazon SWF programming model, see the *[Amazon SWF Developer
 #' Guide](http://docs.aws.amazon.com/amazonswf/latest/developerguide/)* .
 #'
-#' @section Example:
-#' ```
-#' swf <- paws::swf()
-#' swf$operation()
-#' ```
+#' @examples
+#' \donttest{svc$count_closed_workflow_executions(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

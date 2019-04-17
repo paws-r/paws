@@ -32,7 +32,7 @@ Lists the device event history, including device connection status, for
 up to 30 days.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$list_device_events(
+\preformatted{svc$list_device_events(
   DeviceArn = "string",
   EventType = "CONNECTION_STATUS"|"DEVICE_STATUS",
   NextToken = "string",

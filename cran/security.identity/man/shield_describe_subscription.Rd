@@ -12,7 +12,7 @@ Provides details about the AWS Shield Advanced subscription for an
 account.
 }
 \section{Request syntax}{
-\preformatted{shield$describe_subscription()
+\preformatted{svc$describe_subscription()
 }
 }
 

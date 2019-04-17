@@ -50,7 +50,7 @@ The response returns the \code{UserName} and \code{ServerId} values of the new
 user for that server.
 }
 \section{Request syntax}{
-\preformatted{transfer$create_user(
+\preformatted{svc$create_user(
   HomeDirectory = "string",
   Policy = "string",
   Role = "string",

@@ -65,7 +65,9 @@ NULL
 #' -   [GameDev Blog](https://gamedev.amazon.com/blogs/gamedev/) \\-- Stay
 #'     up to date with new features and techniques.
 #' 
-#' -   GameDev Forums \\-- Connect with the GameDev community.
+#' -   [GameDev
+#'     Forums](https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html)
+#'     \\-- Connect with the GameDev community.
 #' 
 #' -   [Release
 #'     notes](https://aws.amazon.com/releasenotes/Amazon-GameLift/) and
@@ -331,11 +333,10 @@ NULL
 #'     -   DeleteVpcPeeringConnection \\-- Delete a VPC peering connection
 #'         with a Amazon GameLift fleet.
 #'
-#' @section Example:
-#' ```
-#' gamelift <- paws::gamelift()
-#' gamelift$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_match(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

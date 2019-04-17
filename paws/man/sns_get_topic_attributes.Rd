@@ -14,7 +14,7 @@ Returns all of the properties of a topic. Topic properties returned
 might differ based on the authorization of the user.
 }
 \section{Request syntax}{
-\preformatted{sns$get_topic_attributes(
+\preformatted{svc$get_topic_attributes(
   TopicArn = "string"
 )
 }

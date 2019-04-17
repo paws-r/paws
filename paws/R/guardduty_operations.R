@@ -16,7 +16,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$accept_invitation(
+#' svc$accept_invitation(
 #'   DetectorId = "string",
 #'   InvitationId = "string",
 #'   MasterId = "string"
@@ -54,7 +54,7 @@ guardduty_accept_invitation <- function(DetectorId, InvitationId, MasterId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$archive_findings(
+#' svc$archive_findings(
 #'   DetectorId = "string",
 #'   FindingIds = list(
 #'     "string"
@@ -95,7 +95,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_detector(
+#' svc$create_detector(
 #'   ClientToken = "string",
 #'   Enable = TRUE|FALSE,
 #'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
@@ -139,7 +139,7 @@ guardduty_create_detector <- function(ClientToken = NULL, Enable, FindingPublish
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_filter(
+#' svc$create_filter(
 #'   Action = "NOOP"|"ARCHIVE",
 #'   ClientToken = "string",
 #'   Description = "string",
@@ -203,7 +203,7 @@ guardduty_create_filter <- function(Action = NULL, ClientToken = NULL, Descripti
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_ip_set(
+#' svc$create_ip_set(
 #'   Activate = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   DetectorId = "string",
@@ -245,7 +245,7 @@ guardduty_create_ip_set <- function(Activate, ClientToken = NULL, DetectorId, Fo
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_members(
+#' svc$create_members(
 #'   AccountDetails = list(
 #'     list(
 #'       AccountId = "string",
@@ -288,7 +288,7 @@ guardduty_create_members <- function(AccountDetails, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_sample_findings(
+#' svc$create_sample_findings(
 #'   DetectorId = "string",
 #'   FindingTypes = list(
 #'     "string"
@@ -332,7 +332,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$create_threat_intel_set(
+#' svc$create_threat_intel_set(
 #'   Activate = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   DetectorId = "string",
@@ -373,7 +373,7 @@ guardduty_create_threat_intel_set <- function(Activate, ClientToken = NULL, Dete
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$decline_invitations(
+#' svc$decline_invitations(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -410,7 +410,7 @@ guardduty_decline_invitations <- function(AccountIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_detector(
+#' svc$delete_detector(
 #'   DetectorId = "string"
 #' )
 #' ```
@@ -446,7 +446,7 @@ guardduty_delete_detector <- function(DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_filter(
+#' svc$delete_filter(
 #'   DetectorId = "string",
 #'   FilterName = "string"
 #' )
@@ -483,7 +483,7 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_ip_set(
+#' svc$delete_ip_set(
 #'   DetectorId = "string",
 #'   IpSetId = "string"
 #' )
@@ -520,7 +520,7 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_invitations(
+#' svc$delete_invitations(
 #'   AccountIds = list(
 #'     "string"
 #'   )
@@ -559,7 +559,7 @@ guardduty_delete_invitations <- function(AccountIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_members(
+#' svc$delete_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -598,7 +598,7 @@ guardduty_delete_members <- function(AccountIds, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$delete_threat_intel_set(
+#' svc$delete_threat_intel_set(
 #'   DetectorId = "string",
 #'   ThreatIntelSetId = "string"
 #' )
@@ -635,7 +635,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$disassociate_from_master_account(
+#' svc$disassociate_from_master_account(
 #'   DetectorId = "string"
 #' )
 #' ```
@@ -672,7 +672,7 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$disassociate_members(
+#' svc$disassociate_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -710,7 +710,7 @@ guardduty_disassociate_members <- function(AccountIds, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_detector(
+#' svc$get_detector(
 #'   DetectorId = "string"
 #' )
 #' ```
@@ -746,7 +746,7 @@ guardduty_get_detector <- function(DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_filter(
+#' svc$get_filter(
 #'   DetectorId = "string",
 #'   FilterName = "string"
 #' )
@@ -784,7 +784,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_findings(
+#' svc$get_findings(
 #'   DetectorId = "string",
 #'   FindingIds = list(
 #'     "string"
@@ -830,7 +830,7 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_findings_statistics(
+#' svc$get_findings_statistics(
 #'   DetectorId = "string",
 #'   FindingCriteria = list(
 #'     Criterion = list(
@@ -885,7 +885,7 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingCriteria = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_ip_set(
+#' svc$get_ip_set(
 #'   DetectorId = "string",
 #'   IpSetId = "string"
 #' )
@@ -920,7 +920,7 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_invitations_count()
+#' svc$get_invitations_count()
 #' ```
 #'
 #' @keywords internal
@@ -954,7 +954,7 @@ guardduty_get_invitations_count <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_master_account(
+#' svc$get_master_account(
 #'   DetectorId = "string"
 #' )
 #' ```
@@ -991,7 +991,7 @@ guardduty_get_master_account <- function(DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_members(
+#' svc$get_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -1030,7 +1030,7 @@ guardduty_get_members <- function(AccountIds, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$get_threat_intel_set(
+#' svc$get_threat_intel_set(
 #'   DetectorId = "string",
 #'   ThreatIntelSetId = "string"
 #' )
@@ -1073,7 +1073,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$invite_members(
+#' svc$invite_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -1115,7 +1115,7 @@ guardduty_invite_members <- function(AccountIds, DetectorId, DisableEmailNotific
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_detectors(
+#' svc$list_detectors(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1153,7 +1153,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_filters(
+#' svc$list_filters(
 #'   DetectorId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1195,7 +1195,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_findings(
+#' svc$list_findings(
 #'   DetectorId = "string",
 #'   FindingCriteria = list(
 #'     Criterion = list(
@@ -1254,7 +1254,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, MaxResul
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_ip_sets(
+#' svc$list_ip_sets(
 #'   DetectorId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1293,7 +1293,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_invitations(
+#' svc$list_invitations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1334,7 +1334,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_members(
+#' svc$list_members(
 #'   DetectorId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -1375,7 +1375,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$list_threat_intel_sets(
+#' svc$list_threat_intel_sets(
 #'   DetectorId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -1414,7 +1414,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$start_monitoring_members(
+#' svc$start_monitoring_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -1454,7 +1454,7 @@ guardduty_start_monitoring_members <- function(AccountIds, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$stop_monitoring_members(
+#' svc$stop_monitoring_members(
 #'   AccountIds = list(
 #'     "string"
 #'   ),
@@ -1494,7 +1494,7 @@ guardduty_stop_monitoring_members <- function(AccountIds, DetectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$unarchive_findings(
+#' svc$unarchive_findings(
 #'   DetectorId = "string",
 #'   FindingIds = list(
 #'     "string"
@@ -1535,7 +1535,7 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$update_detector(
+#' svc$update_detector(
 #'   DetectorId = "string",
 #'   Enable = TRUE|FALSE,
 #'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
@@ -1578,7 +1578,7 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$update_filter(
+#' svc$update_filter(
 #'   Action = "NOOP"|"ARCHIVE",
 #'   Description = "string",
 #'   DetectorId = "string",
@@ -1637,7 +1637,7 @@ guardduty_update_filter <- function(Action = NULL, Description = NULL, DetectorI
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$update_findings_feedback(
+#' svc$update_findings_feedback(
 #'   Comments = "string",
 #'   DetectorId = "string",
 #'   Feedback = "USEFUL"|"NOT_USEFUL",
@@ -1681,7 +1681,7 @@ guardduty_update_findings_feedback <- function(Comments = NULL, DetectorId, Feed
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$update_ip_set(
+#' svc$update_ip_set(
 #'   Activate = TRUE|FALSE,
 #'   DetectorId = "string",
 #'   IpSetId = "string",
@@ -1725,7 +1725,7 @@ guardduty_update_ip_set <- function(Activate = NULL, DetectorId, IpSetId, Locati
 #'
 #' @section Request syntax:
 #' ```
-#' guardduty$update_threat_intel_set(
+#' svc$update_threat_intel_set(
 #'   Activate = TRUE|FALSE,
 #'   DetectorId = "string",
 #'   Location = "string",

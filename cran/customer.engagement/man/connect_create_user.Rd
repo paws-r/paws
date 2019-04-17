@@ -60,7 +60,7 @@ instance ARN, after instance/, such as
 Creates a new user account in your Amazon Connect instance.
 }
 \section{Request syntax}{
-\preformatted{connect$create_user(
+\preformatted{svc$create_user(
   Username = "string",
   Password = "string",
   IdentityInfo = list(

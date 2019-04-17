@@ -17,7 +17,7 @@ output streams, the input parameters for the face recognition being
 performed, and the current status of the stream processor.
 }
 \section{Request syntax}{
-\preformatted{rekognition$describe_stream_processor(
+\preformatted{svc$describe_stream_processor(
   Name = "string"
 )
 }

@@ -26,7 +26,7 @@ request all queries, or limit it to queries of a specific log group or
 queries with a certain status.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$describe_queries(
+\preformatted{svc$describe_queries(
   logGroupName = "string",
   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
   maxResults = 123,

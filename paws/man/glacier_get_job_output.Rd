@@ -96,7 +96,7 @@ For conceptual information and the underlying REST API, see \href{http://docs.aw
 and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html}{Get Job Output}
 }
 \section{Request syntax}{
-\preformatted{glacier$get_job_output(
+\preformatted{svc$get_job_output(
   accountId = "string",
   vaultName = "string",
   jobId = "string",
@@ -108,7 +108,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get
 \examples{
 # The example downloads the output of a previously initiated inventory
 # retrieval job that is identified by the job ID.
-\donttest{glacier$get_job_output(
+\donttest{svc$get_job_output(
   accountId = "-",
   jobId = "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNH...",
   range = "",

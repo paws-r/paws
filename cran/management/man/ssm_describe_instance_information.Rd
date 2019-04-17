@@ -43,7 +43,7 @@ Management (IAM) role assigned to on-premises instances. This call does
 not return the IAM role for Amazon EC2 instances.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_instance_information(
+\preformatted{svc$describe_instance_information(
   InstanceInformationFilterList = list(
     list(
       key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",

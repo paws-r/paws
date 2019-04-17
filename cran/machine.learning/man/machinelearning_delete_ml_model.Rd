@@ -20,7 +20,7 @@ operation to verify that the status of the \code{MLModel} changed to DELETED.
 irreversible.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_ml_model(
+\preformatted{svc$delete_ml_model(
   MLModelId = "string"
 )
 }

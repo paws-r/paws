@@ -13,7 +13,7 @@ glue_stop_crawler(Name)
 If the specified crawler is running, stops the crawl.
 }
 \section{Request syntax}{
-\preformatted{glue$stop_crawler(
+\preformatted{svc$stop_crawler(
   Name = "string"
 )
 }

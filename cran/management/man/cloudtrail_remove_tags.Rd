@@ -18,7 +18,7 @@ format of a trail ARN is:
 Removes the specified tags from a trail.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$remove_tags(
+\preformatted{svc$remove_tags(
   ResourceId = "string",
   TagsList = list(
     list(

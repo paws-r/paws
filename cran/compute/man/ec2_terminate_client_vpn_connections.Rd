@@ -27,7 +27,7 @@ used to terminate a specific client connection, or up to five
 connections established by a specific user.
 }
 \section{Request syntax}{
-\preformatted{ec2$terminate_client_vpn_connections(
+\preformatted{svc$terminate_client_vpn_connections(
   ClientVpnEndpointId = "string",
   ConnectionId = "string",
   Username = "string",

@@ -31,7 +31,7 @@ names given a string, which can either be a domain name or simply a word
 or phrase (without spaces).
 }
 \section{Request syntax}{
-\preformatted{route53domains$get_domain_suggestions(
+\preformatted{svc$get_domain_suggestions(
   DomainName = "string",
   SuggestionCount = 123,
   OnlyAvailable = TRUE|FALSE

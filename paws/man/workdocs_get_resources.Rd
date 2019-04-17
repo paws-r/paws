@@ -27,7 +27,7 @@ Retrieves a collection of resources, including folders and documents.
 The only \code{CollectionType} supported is \code{SHARED_WITH_ME}.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_resources(
+\preformatted{svc$get_resources(
   AuthenticationToken = "string",
   UserId = "string",
   CollectionType = "SHARED_WITH_ME",

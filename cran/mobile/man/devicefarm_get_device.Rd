@@ -13,7 +13,7 @@ devicefarm_get_device(arn)
 Gets information about a unique device type.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_device(
+\preformatted{svc$get_device(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a unique device type.
 
 \examples{
 # The following example returns information about a specific device.
-\donttest{devicefarm$get_device(
+\donttest{svc$get_device(
   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
 )}
 

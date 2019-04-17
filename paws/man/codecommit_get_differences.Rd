@@ -42,7 +42,7 @@ Returns information about the differences in a valid commit specifier
 reference). Results can be limited to a specified path.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_differences(
+\preformatted{svc$get_differences(
   repositoryName = "string",
   beforeCommitSpecifier = "string",
   afterCommitSpecifier = "string",

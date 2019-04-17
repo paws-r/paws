@@ -33,7 +33,7 @@ all the stream names have been collected in the list.
 ListStreams has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$list_streams(
+\preformatted{svc$list_streams(
   Limit = 123,
   ExclusiveStartStreamName = "string"
 )

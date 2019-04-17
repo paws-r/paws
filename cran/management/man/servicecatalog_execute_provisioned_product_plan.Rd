@@ -27,7 +27,7 @@ Provisions or modifies a product based on the resource changes for the
 specified plan.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$execute_provisioned_product_plan(
+\preformatted{svc$execute_provisioned_product_plan(
   AcceptLanguage = "string",
   PlanId = "string",
   IdempotencyToken = "string"

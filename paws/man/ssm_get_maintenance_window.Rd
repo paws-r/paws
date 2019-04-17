@@ -13,7 +13,7 @@ ssm_get_maintenance_window(WindowId)
 Retrieves a Maintenance Window.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_maintenance_window(
+\preformatted{svc$get_maintenance_window(
   WindowId = "string"
 )
 }

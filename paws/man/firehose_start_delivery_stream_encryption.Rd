@@ -38,7 +38,7 @@ hours. For example, you reach the limit if you call
 a 24-hour period.
 }
 \section{Request syntax}{
-\preformatted{firehose$start_delivery_stream_encryption(
+\preformatted{svc$start_delivery_stream_encryption(
   DeliveryStreamName = "string"
 )
 }

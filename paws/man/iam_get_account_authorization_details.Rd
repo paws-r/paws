@@ -48,7 +48,7 @@ You can optionally filter the results using the \code{Filter} parameter. You
 can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$get_account_authorization_details(
+\preformatted{svc$get_account_authorization_details(
   Filter = list(
     "User"|"Role"|"Group"|"LocalManagedPolicy"|"AWSManagedPolicy"
   ),

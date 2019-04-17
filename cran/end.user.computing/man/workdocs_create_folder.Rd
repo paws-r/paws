@@ -19,7 +19,7 @@ credentials.}
 Creates a folder with the specified name and parent folder.
 }
 \section{Request syntax}{
-\preformatted{workdocs$create_folder(
+\preformatted{svc$create_folder(
   AuthenticationToken = "string",
   Name = "string",
   ParentFolderId = "string"

@@ -24,7 +24,7 @@ Returns a list of key-value pairs assigned to a target recovery point,
 backup plan, or backup vault.
 }
 \section{Request syntax}{
-\preformatted{backup$list_tags(
+\preformatted{svc$list_tags(
   ResourceArn = "string",
   NextToken = "string",
   MaxResults = 123

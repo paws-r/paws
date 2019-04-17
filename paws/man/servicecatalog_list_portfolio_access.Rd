@@ -20,7 +20,7 @@ servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId)
 Lists the account IDs that have access to the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_portfolio_access(
+\preformatted{svc$list_portfolio_access(
   AcceptLanguage = "string",
   PortfolioId = "string"
 )

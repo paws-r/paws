@@ -47,7 +47,7 @@ table, then you can pass the original name of the table as the
 original table with the table created from the snapshot.
 }
 \section{Request syntax}{
-\preformatted{redshift$restore_table_from_cluster_snapshot(
+\preformatted{svc$restore_table_from_cluster_snapshot(
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   SourceDatabaseName = "string",

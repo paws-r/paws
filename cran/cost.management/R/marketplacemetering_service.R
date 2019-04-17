@@ -51,11 +51,10 @@ NULL
 #' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
 #' .
 #'
-#' @section Example:
-#' ```
-#' marketplacemetering <- paws::marketplacemetering()
-#' marketplacemetering$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_meter_usage(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

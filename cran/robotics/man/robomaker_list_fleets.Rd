@@ -35,7 +35,7 @@ Returns a list of fleets. You can optionally provide filters to retrieve
 specific fleets.
 }
 \section{Request syntax}{
-\preformatted{robomaker$list_fleets(
+\preformatted{svc$list_fleets(
   nextToken = "string",
   maxResults = 123,
   filters = list(

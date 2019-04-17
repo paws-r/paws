@@ -31,7 +31,7 @@ tag-based access control via resource tags applied to the resource
 identified by relationalDatabaseName.
 }
 \section{Request syntax}{
-\preformatted{lightsail$get_relational_database_master_user_password(
+\preformatted{svc$get_relational_database_master_user_password(
   relationalDatabaseName = "string",
   passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
 )

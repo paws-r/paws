@@ -19,7 +19,7 @@ You must delete any migration tasks that are associated with the
 replication instance before you can delete it.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$delete_replication_instance(
+\preformatted{svc$delete_replication_instance(
   ReplicationInstanceArn = "string"
 )
 }
@@ -31,7 +31,7 @@ replication instance before you can delete it.
 # you can delete it.
 # 
 # 
-\donttest{databasemigrationservice$delete_replication_instance(
+\donttest{svc$delete_replication_instance(
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
 )}
 

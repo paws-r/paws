@@ -26,7 +26,7 @@ can be used to automatically configure supported third parties to call
 the generated webhook URL.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$put_webhook(
+\preformatted{svc$put_webhook(
   webhook = list(
     name = "string",
     targetPipeline = "string",

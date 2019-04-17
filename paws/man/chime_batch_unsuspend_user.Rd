@@ -25,7 +25,7 @@ returned to \code{Registered} status. Users who are not previously suspended
 are ignored.
 }
 \section{Request syntax}{
-\preformatted{chime$batch_unsuspend_user(
+\preformatted{svc$batch_unsuspend_user(
   AccountId = "string",
   UserIdList = list(
     "string"

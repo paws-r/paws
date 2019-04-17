@@ -35,7 +35,7 @@ in the \emph{AWS Resource Groups and Tag Editor User Guide}.
 }
 }
 \section{Request syntax}{
-\preformatted{resourcegroupstaggingapi$tag_resources(
+\preformatted{svc$tag_resources(
   ResourceARNList = list(
     "string"
   ),

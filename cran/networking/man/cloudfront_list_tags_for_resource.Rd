@@ -13,7 +13,7 @@ cloudfront_list_tags_for_resource(Resource)
 List tags for a CloudFront resource.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   Resource = "string"
 )
 }

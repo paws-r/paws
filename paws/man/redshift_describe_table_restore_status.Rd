@@ -36,7 +36,7 @@ Otherwise \code{DescribeTableRestoreStatus} returns the status of the table
 specified by \code{TableRestoreRequestId}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_table_restore_status(
+\preformatted{svc$describe_table_restore_status(
   ClusterIdentifier = "string",
   TableRestoreRequestId = "string",
   MaxRecords = 123,

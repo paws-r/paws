@@ -119,7 +119,7 @@ increasing your instance limits, see \href{https://docs.aws.amazon.com/AWSEC2/la
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_capacity_reservation(
+\preformatted{svc$create_capacity_reservation(
   ClientToken = "string",
   InstanceType = "string",
   InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",

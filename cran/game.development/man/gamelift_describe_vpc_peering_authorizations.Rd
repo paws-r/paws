@@ -24,7 +24,7 @@ account.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$describe_vpc_peering_authorizations()
+\preformatted{svc$describe_vpc_peering_authorizations()
 }
 }
 

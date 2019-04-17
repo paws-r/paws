@@ -22,7 +22,7 @@ get another batch of \code{Rules}.}
 Returns an array of RuleSummary objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_rules(
+\preformatted{svc$list_rules(
   NextMarker = "string",
   Limit = 123
 )
@@ -31,7 +31,7 @@ Returns an array of RuleSummary objects.
 
 \examples{
 # The following example returns an array of up to 100 rules.
-\donttest{wafregional$list_rules(
+\donttest{svc$list_rules(
   Limit = 100L
 )}
 

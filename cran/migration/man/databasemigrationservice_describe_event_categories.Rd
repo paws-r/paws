@@ -21,7 +21,7 @@ source types in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Even
 in the \emph{AWS Database Migration Service User Guide.}
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_event_categories(
+\preformatted{svc$describe_event_categories(
   SourceType = "string",
   Filters = list(
     list(

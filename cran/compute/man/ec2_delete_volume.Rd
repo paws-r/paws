@@ -25,7 +25,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_volume(
+\preformatted{svc$delete_volume(
   VolumeId = "string",
   DryRun = TRUE|FALSE
 )
@@ -36,7 +36,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 # This example deletes an available volume with the volume ID of
 # ``vol-049df61146c4d7901``. If the command succeeds, no output is
 # returned.
-\donttest{ec2$delete_volume(
+\donttest{svc$delete_volume(
   VolumeId = "vol-049df61146c4d7901"
 )}
 

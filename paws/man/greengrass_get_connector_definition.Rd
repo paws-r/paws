@@ -13,7 +13,7 @@ greengrass_get_connector_definition(ConnectorDefinitionId)
 Retrieves information about a connector definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_connector_definition(
+\preformatted{svc$get_connector_definition(
   ConnectorDefinitionId = "string"
 )
 }

@@ -27,7 +27,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_cluster_parameter_group(
+\preformatted{svc$delete_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string"
 )
 }

@@ -20,7 +20,7 @@ working on your HITs. For example, you can block a Worker who is
 producing poor quality work. You can block up to 100,000 Workers.
 }
 \section{Request syntax}{
-\preformatted{mturk$create_worker_block(
+\preformatted{svc$create_worker_block(
   WorkerId = "string",
   Reason = "string"
 )

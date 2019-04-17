@@ -19,7 +19,7 @@ to get further results.
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{
-\preformatted{sns$list_topics(
+\preformatted{svc$list_topics(
   NextToken = "string"
 )
 }

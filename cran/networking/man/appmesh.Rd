@@ -25,12 +25,6 @@ in the \emph{Amazon Elastic Container Service Developer Guide}. Kubernetes
 \code{kube-dns} and \code{coredns} are supported. For more information, see \href{https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/}{DNS for Services and Pods}
 in the Kubernetes documentation.
 }
-\section{Example}{
-\preformatted{appmesh <- paws::appmesh()
-appmesh$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -65,3 +59,9 @@ appmesh$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_mesh(
+  Foo = 123
+)}
+
+}

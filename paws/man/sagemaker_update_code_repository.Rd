@@ -21,7 +21,7 @@ format:
 Updates the specified Git repository with the specified values.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$update_code_repository(
+\preformatted{svc$update_code_repository(
   CodeRepositoryName = "string",
   GitConfig = list(
     SecretArn = "string"

@@ -13,7 +13,7 @@ appstream_delete_image_builder(Name)
 Deletes the specified image builder and releases the capacity.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_image_builder(
+\preformatted{svc$delete_image_builder(
   Name = "string"
 )
 }

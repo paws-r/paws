@@ -13,7 +13,7 @@ sms_delete_app_replication_configuration(appId)
 Deletes existing replication configuration for an application.
 }
 \section{Request syntax}{
-\preformatted{sms$delete_app_replication_configuration(
+\preformatted{svc$delete_app_replication_configuration(
   appId = "string"
 )
 }

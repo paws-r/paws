@@ -44,7 +44,7 @@ topic in the \emph{Amazon RDS User Guide} or by using the
 \strong{DescribeEventCategories} action.
 }
 \section{Request syntax}{
-\preformatted{rds$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

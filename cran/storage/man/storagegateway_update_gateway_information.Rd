@@ -26,7 +26,7 @@ contains the gateway ID rather than the gateway name. However, changing
 the name of the gateway has no effect on the gateway's ARN.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$update_gateway_information(
+\preformatted{svc$update_gateway_information(
   GatewayARN = "string",
   GatewayName = "string",
   GatewayTimezone = "string"
@@ -37,7 +37,7 @@ the name of the gateway has no effect on the gateway's ARN.
 \examples{
 # Updates a gateway's metadata, which includes the gateway's name and time
 # zone.
-\donttest{storagegateway$update_gateway_information(
+\donttest{svc$update_gateway_information(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
   GatewayName = "MyGateway2",
   GatewayTimezone = "GMT-12:00"

@@ -20,7 +20,7 @@ DeleteAssociation to disassociate all instances that are associated with
 the document.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_document(
+\preformatted{svc$delete_document(
   Name = "string"
 )
 }

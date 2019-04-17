@@ -36,7 +36,7 @@ based on tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_tags(
+\preformatted{svc$create_tags(
   DryRun = TRUE|FALSE,
   Resources = list(
     "string"
@@ -54,7 +54,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example adds the tag Stack=production to the specified image, or
 # overwrites an existing tag for the AMI where the tag key is Stack.
-\donttest{ec2$create_tags(
+\donttest{svc$create_tags(
   Resources = list(
     "ami-78a54011"
   ),

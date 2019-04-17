@@ -60,7 +60,7 @@ peering connection while the authorization is valid.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_vpc_peering_authorization(
+\preformatted{svc$create_vpc_peering_authorization(
   GameLiftAwsAccountId = "string",
   PeerVpcId = "string"
 )

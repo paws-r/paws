@@ -20,7 +20,7 @@ endpoint, meaning you don't need to use the
 API call.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_endpoint(
+\preformatted{svc$delete_endpoint(
   EndpointName = "string"
 )
 }

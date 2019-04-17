@@ -13,7 +13,7 @@ iotjobsdataplane_get_pending_job_executions(thingName)
 Gets the list of all jobs for a thing that are not in a terminal status.
 }
 \section{Request syntax}{
-\preformatted{iotjobsdataplane$get_pending_job_executions(
+\preformatted{svc$get_pending_job_executions(
   thingName = "string"
 )
 }

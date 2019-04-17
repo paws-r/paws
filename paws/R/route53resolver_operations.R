@@ -24,7 +24,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$associate_resolver_endpoint_ip_address(
+#' svc$associate_resolver_endpoint_ip_address(
 #'   ResolverEndpointId = "string",
 #'   IpAddress = list(
 #'     IpId = "string",
@@ -72,7 +72,7 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$associate_resolver_rule(
+#' svc$associate_resolver_rule(
 #'   ResolverRuleId = "string",
 #'   Name = "string",
 #'   VPCId = "string"
@@ -139,7 +139,7 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$create_resolver_endpoint(
+#' svc$create_resolver_endpoint(
 #'   CreatorRequestId = "string",
 #'   Name = "string",
 #'   SecurityGroupIds = list(
@@ -215,7 +215,7 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$create_resolver_rule(
+#' svc$create_resolver_rule(
 #'   CreatorRequestId = "string",
 #'   Name = "string",
 #'   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
@@ -273,7 +273,7 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$delete_resolver_endpoint(
+#' svc$delete_resolver_endpoint(
 #'   ResolverEndpointId = "string"
 #' )
 #' ```
@@ -310,7 +310,7 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$delete_resolver_rule(
+#' svc$delete_resolver_rule(
 #'   ResolverRuleId = "string"
 #' )
 #' ```
@@ -353,7 +353,7 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$disassociate_resolver_endpoint_ip_address(
+#' svc$disassociate_resolver_endpoint_ip_address(
 #'   ResolverEndpointId = "string",
 #'   IpAddress = list(
 #'     IpId = "string",
@@ -401,7 +401,7 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$disassociate_resolver_rule(
+#' svc$disassociate_resolver_rule(
 #'   VPCId = "string",
 #'   ResolverRuleId = "string"
 #' )
@@ -441,7 +441,7 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$get_resolver_endpoint(
+#' svc$get_resolver_endpoint(
 #'   ResolverEndpointId = "string"
 #' )
 #' ```
@@ -480,7 +480,7 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$get_resolver_rule(
+#' svc$get_resolver_rule(
 #'   ResolverRuleId = "string"
 #' )
 #' ```
@@ -519,7 +519,7 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$get_resolver_rule_association(
+#' svc$get_resolver_rule_association(
 #'   ResolverRuleAssociationId = "string"
 #' )
 #' ```
@@ -557,7 +557,7 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$get_resolver_rule_policy(
+#' svc$get_resolver_rule_policy(
 #'   Arn = "string"
 #' )
 #' ```
@@ -604,7 +604,7 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$list_resolver_endpoint_ip_addresses(
+#' svc$list_resolver_endpoint_ip_addresses(
 #'   ResolverEndpointId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -657,7 +657,7 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$list_resolver_endpoints(
+#' svc$list_resolver_endpoints(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Filters = list(
@@ -719,7 +719,7 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$list_resolver_rule_associations(
+#' svc$list_resolver_rule_associations(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Filters = list(
@@ -778,7 +778,7 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$list_resolver_rules(
+#' svc$list_resolver_rules(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Filters = list(
@@ -833,7 +833,7 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -875,7 +875,7 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$put_resolver_rule_policy(
+#' svc$put_resolver_rule_policy(
 #'   Arn = "string",
 #'   ResolverRulePolicy = "string"
 #' )
@@ -926,7 +926,7 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -982,7 +982,7 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1021,7 +1021,7 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$update_resolver_endpoint(
+#' svc$update_resolver_endpoint(
 #'   ResolverEndpointId = "string",
 #'   Name = "string"
 #' )
@@ -1060,7 +1060,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'
 #' @section Request syntax:
 #' ```
-#' route53resolver$update_resolver_rule(
+#' svc$update_resolver_rule(
 #'   ResolverRuleId = "string",
 #'   Config = list(
 #'     Name = "string",

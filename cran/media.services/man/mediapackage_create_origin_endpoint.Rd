@@ -41,7 +41,7 @@ If not specified, there will be no time delay in effect for the OriginEndpoint.}
 Creates a new OriginEndpoint record.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$create_origin_endpoint(
+\preformatted{svc$create_origin_endpoint(
   ChannelId = "string",
   CmafPackage = list(
     Encryption = list(

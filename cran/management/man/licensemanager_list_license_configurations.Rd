@@ -26,7 +26,7 @@ name, description, license type, and other license terms modeled from a
 license agreement.
 }
 \section{Request syntax}{
-\preformatted{licensemanager$list_license_configurations(
+\preformatted{svc$list_license_configurations(
   LicenseConfigurationArns = list(
     "string"
   ),

@@ -26,12 +26,6 @@ progress to AWS IoT. The Jobs service provides commands to track the
 progress of a job on a specific target and for all the targets of the
 job
 }
-\section{Example}{
-\preformatted{iotjobsdataplane <- paws::iotjobsdataplane()
-iotjobsdataplane$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -42,3 +36,9 @@ iotjobsdataplane$operation()
 }
 }
 
+\examples{
+\donttest{svc$describe_job_execution(
+  Foo = 123
+)}
+
+}

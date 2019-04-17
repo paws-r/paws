@@ -15,7 +15,7 @@ pinpoint_create_campaign(ApplicationId, WriteCampaignRequest)
 Creates or updates a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$create_campaign(
+\preformatted{svc$create_campaign(
   ApplicationId = "string",
   WriteCampaignRequest = list(
     AdditionalTreatments = list(

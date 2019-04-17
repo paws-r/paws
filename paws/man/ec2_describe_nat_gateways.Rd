@@ -36,7 +36,7 @@ value.}
 Describes one or more of your NAT gateways.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_nat_gateways(
+\preformatted{svc$describe_nat_gateways(
   Filter = list(
     list(
       Name = "string",
@@ -56,7 +56,7 @@ Describes one or more of your NAT gateways.
 
 \examples{
 # This example describes the NAT gateway for the specified VPC.
-\donttest{ec2$describe_nat_gateways(
+\donttest{svc$describe_nat_gateways(
   Filter = list(
     list(
       Name = "vpc-id",

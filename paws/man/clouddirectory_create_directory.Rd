@@ -22,7 +22,7 @@ the \code{QuickStartSchema}. For more information, see \href{https://docs.aws.am
 in the \emph{Amazon Cloud Directory Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$create_directory(
+\preformatted{svc$create_directory(
   Name = "string",
   SchemaArn = "string"
 )

@@ -23,7 +23,7 @@ it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_virtual_mfa_device(
+\preformatted{svc$delete_virtual_mfa_device(
   SerialNumber = "string"
 )
 }
@@ -32,7 +32,7 @@ DeactivateMFADevice.
 \examples{
 # The following delete-virtual-mfa-device command removes the specified
 # MFA device from the current AWS account.
-\donttest{iam$delete_virtual_mfa_device(
+\donttest{svc$delete_virtual_mfa_device(
   SerialNumber = "arn:aws:iam::123456789012:mfa/ExampleName"
 )}
 

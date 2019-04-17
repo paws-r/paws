@@ -19,12 +19,6 @@ endpoint.
 
 For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide}{Amazon CloudSearch Developer Guide}.
 }
-\section{Example}{
-\preformatted{cloudsearchdomain <- paws::cloudsearchdomain()
-cloudsearchdomain$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -34,3 +28,9 @@ cloudsearchdomain$operation()
 }
 }
 
+\examples{
+\donttest{svc$search(
+  Foo = 123
+)}
+
+}

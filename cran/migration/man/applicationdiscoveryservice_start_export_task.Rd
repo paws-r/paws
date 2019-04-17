@@ -43,7 +43,7 @@ data from AWS Discovery Agents. Export of summary data is limited to two
 exports per day.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$start_export_task(
+\preformatted{svc$start_export_task(
   exportDataFormat = list(
     "CSV"|"GRAPHML"
   ),

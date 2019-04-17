@@ -14,7 +14,7 @@ This API operation takes no request parameters and is called as is at
 the command prompt as shown in the example.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$get_discovery_summary()
+\preformatted{svc$get_discovery_summary()
 }
 }
 

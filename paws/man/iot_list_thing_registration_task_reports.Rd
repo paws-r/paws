@@ -20,7 +20,7 @@ iot_list_thing_registration_task_reports(taskId, reportType, nextToken,
 Information about the thing registration tasks.
 }
 \section{Request syntax}{
-\preformatted{iot$list_thing_registration_task_reports(
+\preformatted{svc$list_thing_registration_task_reports(
   taskId = "string",
   reportType = "ERRORS"|"RESULTS",
   nextToken = "string",

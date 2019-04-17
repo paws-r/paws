@@ -28,7 +28,7 @@ Gets a list of build IDs for the specified build project, with each
 build ID representing a single build.
 }
 \section{Request syntax}{
-\preformatted{codebuild$list_builds_for_project(
+\preformatted{svc$list_builds_for_project(
   projectName = "string",
   sortOrder = "ASCENDING"|"DESCENDING",
   nextToken = "string"

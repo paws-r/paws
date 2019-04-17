@@ -41,7 +41,7 @@ uses the acl subresource to set the access control list (ACL)
 permissions for an object that already exists in a bucket
 }
 \section{Request syntax}{
-\preformatted{s3$put_object_acl(
+\preformatted{svc$put_object_acl(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   AccessControlPolicy = list(
     Grants = list(
@@ -79,7 +79,7 @@ permissions for an object that already exists in a bucket
 # The following example adds grants to an object ACL. The first permission
 # grants user1 and user2 FULL_CONTROL and the AllUsers group READ
 # permission.
-\donttest{s3$put_object_acl(
+\donttest{svc$put_object_acl(
   AccessControlPolicy = structure(
     list(),
     .Names = character(

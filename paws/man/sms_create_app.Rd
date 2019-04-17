@@ -26,7 +26,7 @@ Creates an application. An application consists of one or more server
 groups. Each server group contain one or more servers.
 }
 \section{Request syntax}{
-\preformatted{sms$create_app(
+\preformatted{svc$create_app(
   name = "string",
   description = "string",
   roleName = "string",

@@ -42,7 +42,7 @@ closed or if the input is different, it will return a 400
 \code{ExecutionAlreadyExists} error. Names can be reused after 90 days.
 }
 \section{Request syntax}{
-\preformatted{sfn$start_execution(
+\preformatted{svc$start_execution(
   stateMachineArn = "string",
   name = "string",
   input = "string"

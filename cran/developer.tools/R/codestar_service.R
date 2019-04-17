@@ -60,11 +60,10 @@ NULL
 #' 
 #' -   `UpdateUserProfile`, which updates the profile for a user.
 #'
-#' @section Example:
-#' ```
-#' codestar <- paws::codestar()
-#' codestar$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_team_member(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

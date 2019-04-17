@@ -95,7 +95,7 @@ the game.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$start_matchmaking(
+\preformatted{svc$start_matchmaking(
   TicketId = "string",
   ConfigurationName = "string",
   Players = list(

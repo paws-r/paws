@@ -13,7 +13,7 @@ cloudformation_describe_stack_set(StackSetName)
 Returns the description of the specified stack set.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_set(
+\preformatted{svc$describe_stack_set(
   StackSetName = "string"
 )
 }

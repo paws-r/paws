@@ -20,7 +20,7 @@ token that is returned, until no more next tokens are returned.}
 Gets a list of AWS Cloud9 development environment identifiers.
 }
 \section{Request syntax}{
-\preformatted{cloud9$list_environments(
+\preformatted{svc$list_environments(
   nextToken = "string",
   maxResults = 123
 )
@@ -29,7 +29,7 @@ Gets a list of AWS Cloud9 development environment identifiers.
 
 \examples{
 # 
-\donttest{cloud9$list_environments()}
+\donttest{svc$list_environments()}
 
 }
 \keyword{internal}

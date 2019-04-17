@@ -18,7 +18,7 @@ currently in use (doesn't contain any active jobs). If the pipeline is
 currently in use, \code{DeletePipeline} returns an error.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   Id = "string"
 )
 }

@@ -49,7 +49,7 @@ information about managing clusters, go to \href{http://docs.aws.amazon.com/reds
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_orderable_cluster_options(
+\preformatted{svc$describe_orderable_cluster_options(
   ClusterVersion = "string",
   NodeType = "string",
   MaxRecords = 123,

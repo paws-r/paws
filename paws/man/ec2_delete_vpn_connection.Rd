@@ -29,7 +29,7 @@ using the new configuration information returned with the new VPN
 connection ID.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpn_connection(
+\preformatted{svc$delete_vpn_connection(
   VpnConnectionId = "string",
   DryRun = TRUE|FALSE
 )

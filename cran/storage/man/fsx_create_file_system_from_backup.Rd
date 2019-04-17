@@ -68,7 +68,7 @@ creation status by calling the DescribeFileSystems operation, which
 returns the file system state along with other information.
 }
 \section{Request syntax}{
-\preformatted{fsx$create_file_system_from_backup(
+\preformatted{svc$create_file_system_from_backup(
   BackupId = "string",
   ClientRequestToken = "string",
   SubnetIds = list(
@@ -97,7 +97,7 @@ returns the file system state along with other information.
 
 \examples{
 # This operation creates a new file system from backup.
-\donttest{fsx$create_file_system_from_backup(
+\donttest{svc$create_file_system_from_backup(
   BackupId = "backup-03e3c82e0183b7b6b",
   ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
   SecurityGroupIds = list(

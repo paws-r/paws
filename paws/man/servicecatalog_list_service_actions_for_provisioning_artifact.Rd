@@ -31,7 +31,7 @@ Returns a paginated list of self-service actions associated with the
 specified Product ID and Provisioning Artifact ID.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_service_actions_for_provisioning_artifact(
+\preformatted{svc$list_service_actions_for_provisioning_artifact(
   ProductId = "string",
   ProvisioningArtifactId = "string",
   PageSize = 123,

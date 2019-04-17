@@ -36,7 +36,7 @@ Used to enable or disable the custom Mail-From domain configuration for
 an email identity.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$put_email_identity_mail_from_attributes(
+\preformatted{svc$put_email_identity_mail_from_attributes(
   EmailIdentity = "string",
   MailFromDomain = "string",
   BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"

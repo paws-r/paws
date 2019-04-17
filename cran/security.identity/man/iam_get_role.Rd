@@ -28,7 +28,7 @@ you use Java, you can use the \code{decode} method of the
 SDKs provide similar functionality.
 }
 \section{Request syntax}{
-\preformatted{iam$get_role(
+\preformatted{svc$get_role(
   RoleName = "string"
 )
 }
@@ -36,7 +36,7 @@ SDKs provide similar functionality.
 
 \examples{
 # The following command gets information about the role named Test-Role.
-\donttest{iam$get_role(
+\donttest{svc$get_role(
   RoleName = "Test-Role"
 )}
 

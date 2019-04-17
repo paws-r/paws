@@ -47,7 +47,7 @@ Returns information about endpoints for an Amazon Aurora DB cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_cluster_endpoints(
+\preformatted{svc$describe_db_cluster_endpoints(
   DBClusterIdentifier = "string",
   DBClusterEndpointIdentifier = "string",
   Filters = list(

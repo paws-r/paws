@@ -29,7 +29,7 @@ Tag keys and values are case-sensitive. Tag keys must be unique per
 resource. If you specify more than one, separate them by commas.
 }
 \section{Request syntax}{
-\preformatted{athena$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(

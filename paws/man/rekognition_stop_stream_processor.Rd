@@ -15,7 +15,7 @@ Stops a running stream processor that was created by
 CreateStreamProcessor.
 }
 \section{Request syntax}{
-\preformatted{rekognition$stop_stream_processor(
+\preformatted{svc$stop_stream_processor(
   Name = "string"
 )
 }

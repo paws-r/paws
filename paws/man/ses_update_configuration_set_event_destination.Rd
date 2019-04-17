@@ -31,7 +31,7 @@ SNS).
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$update_configuration_set_event_destination(
+\preformatted{svc$update_configuration_set_event_destination(
   ConfigurationSetName = "string",
   EventDestination = list(
     Name = "string",

@@ -19,7 +19,7 @@ the server itself
 No response returns from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$delete_server(
+\preformatted{svc$delete_server(
   ServerId = "string"
 )
 }

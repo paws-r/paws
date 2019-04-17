@@ -23,7 +23,7 @@ how-it-works-detecting.
 asynchronously, use StartDocumentTextDetection.
 }
 \section{Request syntax}{
-\preformatted{textract$detect_document_text(
+\preformatted{svc$detect_document_text(
   Document = list(
     Bytes = raw,
     S3Object = list(

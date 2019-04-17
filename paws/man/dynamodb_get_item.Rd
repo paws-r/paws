@@ -91,7 +91,7 @@ application requires a strongly consistent read, set \code{ConsistentRead} to
 eventually consistent read, it always returns the last updated value.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$get_item(
+\preformatted{svc$get_item(
   TableName = "string",
   Key = list(
     list(
@@ -134,7 +134,7 @@ eventually consistent read, it always returns the last updated value.
 # This example retrieves an item from the Music table. The table has a
 # partition key and a sort key (Artist and SongTitle), so you must specify
 # both of these attributes.
-\donttest{dynamodb$get_item(
+\donttest{svc$get_item(
   Key = list(
     Artist = list(
       S = "Acme Band"

@@ -23,7 +23,7 @@ existing data.}
 Updates an existing virtual router in a specified service mesh.
 }
 \section{Request syntax}{
-\preformatted{appmesh$update_virtual_router(
+\preformatted{svc$update_virtual_router(
   clientToken = "string",
   meshName = "string",
   spec = list(

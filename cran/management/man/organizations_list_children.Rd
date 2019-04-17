@@ -57,7 +57,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_children(
+\preformatted{svc$list_children(
   ParentId = "string",
   ChildType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
   NextToken = "string",
@@ -69,7 +69,7 @@ account.
 \examples{
 # The following example shows how to request a list of the child OUs in a
 # parent root or OU:/n/n
-\donttest{organizations$list_children(
+\donttest{svc$list_children(
   ChildType = "ORGANIZATIONAL_UNIT",
   ParentId = "ou-examplerootid111-exampleouid111"
 )}

@@ -28,7 +28,7 @@ All \code{StartExecution} calls within a few seconds will use the updated
 \code{roleArn}.
 }
 \section{Request syntax}{
-\preformatted{sfn$update_state_machine(
+\preformatted{svc$update_state_machine(
   stateMachineArn = "string",
   definition = "string",
   roleArn = "string"

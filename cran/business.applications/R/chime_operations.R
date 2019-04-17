@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' chime$associate_phone_number_with_user(
+#' svc$associate_phone_number_with_user(
 #'   AccountId = "string",
 #'   UserId = "string",
 #'   E164PhoneNumber = "string"
@@ -58,7 +58,7 @@ chime_associate_phone_number_with_user <- function(AccountId, UserId, E164PhoneN
 #'
 #' @section Request syntax:
 #' ```
-#' chime$associate_phone_numbers_with_voice_connector(
+#' svc$associate_phone_numbers_with_voice_connector(
 #'   VoiceConnectorId = "string",
 #'   E164PhoneNumbers = list(
 #'     "string"
@@ -101,7 +101,7 @@ chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId,
 #'
 #' @section Request syntax:
 #' ```
-#' chime$batch_delete_phone_number(
+#' svc$batch_delete_phone_number(
 #'   PhoneNumberIds = list(
 #'     "string"
 #'   )
@@ -156,7 +156,7 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$batch_suspend_user(
+#' svc$batch_suspend_user(
 #'   AccountId = "string",
 #'   UserIdList = list(
 #'     "string"
@@ -206,7 +206,7 @@ chime_batch_suspend_user <- function(AccountId, UserIdList) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$batch_unsuspend_user(
+#' svc$batch_unsuspend_user(
 #'   AccountId = "string",
 #'   UserIdList = list(
 #'     "string"
@@ -245,7 +245,7 @@ chime_batch_unsuspend_user <- function(AccountId, UserIdList) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$batch_update_phone_number(
+#' svc$batch_update_phone_number(
 #'   UpdatePhoneNumberRequestItems = list(
 #'     list(
 #'       PhoneNumberId = "string",
@@ -289,7 +289,7 @@ chime_batch_update_phone_number <- function(UpdatePhoneNumberRequestItems) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$batch_update_user(
+#' svc$batch_update_user(
 #'   AccountId = "string",
 #'   UpdateUserRequestItems = list(
 #'     list(
@@ -335,7 +335,7 @@ chime_batch_update_user <- function(AccountId, UpdateUserRequestItems) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$create_account(
+#' svc$create_account(
 #'   Name = "string"
 #' )
 #' ```
@@ -372,7 +372,7 @@ chime_create_account <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$create_phone_number_order(
+#' svc$create_phone_number_order(
 #'   ProductType = "BusinessCalling"|"VoiceConnector",
 #'   E164PhoneNumbers = list(
 #'     "string"
@@ -416,7 +416,7 @@ chime_create_phone_number_order <- function(ProductType, E164PhoneNumbers) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$create_voice_connector(
+#' svc$create_voice_connector(
 #'   Name = "string",
 #'   RequireEncryption = TRUE|FALSE
 #' )
@@ -465,7 +465,7 @@ chime_create_voice_connector <- function(Name, RequireEncryption) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_account(
+#' svc$delete_account(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -505,7 +505,7 @@ chime_delete_account <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_phone_number(
+#' svc$delete_phone_number(
 #'   PhoneNumberId = "string"
 #' )
 #' ```
@@ -542,7 +542,7 @@ chime_delete_phone_number <- function(PhoneNumberId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_voice_connector(
+#' svc$delete_voice_connector(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -579,7 +579,7 @@ chime_delete_voice_connector <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_voice_connector_origination(
+#' svc$delete_voice_connector_origination(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -616,7 +616,7 @@ chime_delete_voice_connector_origination <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_voice_connector_termination(
+#' svc$delete_voice_connector_termination(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -656,7 +656,7 @@ chime_delete_voice_connector_termination <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$delete_voice_connector_termination_credentials(
+#' svc$delete_voice_connector_termination_credentials(
 #'   VoiceConnectorId = "string",
 #'   Usernames = list(
 #'     "string"
@@ -697,7 +697,7 @@ chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorI
 #'
 #' @section Request syntax:
 #' ```
-#' chime$disassociate_phone_number_from_user(
+#' svc$disassociate_phone_number_from_user(
 #'   AccountId = "string",
 #'   UserId = "string"
 #' )
@@ -737,7 +737,7 @@ chime_disassociate_phone_number_from_user <- function(AccountId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$disassociate_phone_numbers_from_voice_connector(
+#' svc$disassociate_phone_numbers_from_voice_connector(
 #'   VoiceConnectorId = "string",
 #'   E164PhoneNumbers = list(
 #'     "string"
@@ -777,7 +777,7 @@ chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnector
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_account(
+#' svc$get_account(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -817,7 +817,7 @@ chime_get_account <- function(AccountId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_account_settings(
+#' svc$get_account_settings(
 #'   AccountId = "string"
 #' )
 #' ```
@@ -886,7 +886,7 @@ chime_get_global_settings <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_phone_number(
+#' svc$get_phone_number(
 #'   PhoneNumberId = "string"
 #' )
 #' ```
@@ -924,7 +924,7 @@ chime_get_phone_number <- function(PhoneNumberId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_phone_number_order(
+#' svc$get_phone_number_order(
 #'   PhoneNumberOrderId = "string"
 #' )
 #' ```
@@ -965,7 +965,7 @@ chime_get_phone_number_order <- function(PhoneNumberOrderId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_user(
+#' svc$get_user(
 #'   AccountId = "string",
 #'   UserId = "string"
 #' )
@@ -1004,7 +1004,7 @@ chime_get_user <- function(AccountId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_user_settings(
+#' svc$get_user_settings(
 #'   AccountId = "string",
 #'   UserId = "string"
 #' )
@@ -1042,7 +1042,7 @@ chime_get_user_settings <- function(AccountId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_voice_connector(
+#' svc$get_voice_connector(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -1079,7 +1079,7 @@ chime_get_voice_connector <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_voice_connector_origination(
+#' svc$get_voice_connector_origination(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -1116,7 +1116,7 @@ chime_get_voice_connector_origination <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_voice_connector_termination(
+#' svc$get_voice_connector_termination(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -1155,7 +1155,7 @@ chime_get_voice_connector_termination <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$get_voice_connector_termination_health(
+#' svc$get_voice_connector_termination_health(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -1194,7 +1194,7 @@ chime_get_voice_connector_termination_health <- function(VoiceConnectorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$invite_users(
+#' svc$invite_users(
 #'   AccountId = "string",
 #'   UserEmailList = list(
 #'     "string"
@@ -1239,7 +1239,7 @@ chime_invite_users <- function(AccountId, UserEmailList) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_accounts(
+#' svc$list_accounts(
 #'   Name = "string",
 #'   UserEmail = "string",
 #'   NextToken = "string",
@@ -1280,7 +1280,7 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_phone_number_orders(
+#' svc$list_phone_number_orders(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1324,7 +1324,7 @@ chime_list_phone_number_orders <- function(NextToken = NULL, MaxResults = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_phone_numbers(
+#' svc$list_phone_numbers(
 #'   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
 #'   ProductType = "BusinessCalling"|"VoiceConnector",
 #'   FilterName = "AccountId"|"UserId"|"VoiceConnectorId",
@@ -1370,7 +1370,7 @@ chime_list_phone_numbers <- function(Status = NULL, ProductType = NULL, FilterNa
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_users(
+#' svc$list_users(
 #'   AccountId = "string",
 #'   UserEmail = "string",
 #'   MaxResults = 123,
@@ -1409,7 +1409,7 @@ chime_list_users <- function(AccountId, UserEmail = NULL, MaxResults = NULL, Nex
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_voice_connector_termination_credentials(
+#' svc$list_voice_connector_termination_credentials(
 #'   VoiceConnectorId = "string"
 #' )
 #' ```
@@ -1447,7 +1447,7 @@ chime_list_voice_connector_termination_credentials <- function(VoiceConnectorId)
 #'
 #' @section Request syntax:
 #' ```
-#' chime$list_voice_connectors(
+#' svc$list_voice_connectors(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1486,7 +1486,7 @@ chime_list_voice_connectors <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$logout_user(
+#' svc$logout_user(
 #'   AccountId = "string",
 #'   UserId = "string"
 #' )
@@ -1524,7 +1524,7 @@ chime_logout_user <- function(AccountId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$put_voice_connector_origination(
+#' svc$put_voice_connector_origination(
 #'   VoiceConnectorId = "string",
 #'   Origination = list(
 #'     Routes = list(
@@ -1573,7 +1573,7 @@ chime_put_voice_connector_origination <- function(VoiceConnectorId, Origination)
 #'
 #' @section Request syntax:
 #' ```
-#' chime$put_voice_connector_termination(
+#' svc$put_voice_connector_termination(
 #'   VoiceConnectorId = "string",
 #'   Termination = list(
 #'     CpsLimit = 123,
@@ -1623,7 +1623,7 @@ chime_put_voice_connector_termination <- function(VoiceConnectorId, Termination)
 #'
 #' @section Request syntax:
 #' ```
-#' chime$put_voice_connector_termination_credentials(
+#' svc$put_voice_connector_termination_credentials(
 #'   VoiceConnectorId = "string",
 #'   Credentials = list(
 #'     list(
@@ -1668,7 +1668,7 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
 #'
 #' @section Request syntax:
 #' ```
-#' chime$reset_personal_pin(
+#' svc$reset_personal_pin(
 #'   AccountId = "string",
 #'   UserId = "string"
 #' )
@@ -1706,7 +1706,7 @@ chime_reset_personal_pin <- function(AccountId, UserId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$restore_phone_number(
+#' svc$restore_phone_number(
 #'   PhoneNumberId = "string"
 #' )
 #' ```
@@ -1747,7 +1747,7 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$search_available_phone_numbers(
+#' svc$search_available_phone_numbers(
 #'   AreaCode = "string",
 #'   City = "string",
 #'   Country = "string",
@@ -1789,7 +1789,7 @@ chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_account(
+#' svc$update_account(
 #'   AccountId = "string",
 #'   Name = "string"
 #' )
@@ -1831,7 +1831,7 @@ chime_update_account <- function(AccountId, Name = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_account_settings(
+#' svc$update_account_settings(
 #'   AccountId = "string",
 #'   AccountSettings = list(
 #'     DisableRemoteControl = TRUE|FALSE,
@@ -1873,7 +1873,7 @@ chime_update_account_settings <- function(AccountId, AccountSettings) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_global_settings(
+#' svc$update_global_settings(
 #'   BusinessCalling = list(
 #'     CdrBucket = "string"
 #'   ),
@@ -1916,7 +1916,7 @@ chime_update_global_settings <- function(BusinessCalling, VoiceConnector) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_phone_number(
+#' svc$update_phone_number(
 #'   PhoneNumberId = "string",
 #'   ProductType = "BusinessCalling"|"VoiceConnector"
 #' )
@@ -1956,7 +1956,7 @@ chime_update_phone_number <- function(PhoneNumberId, ProductType = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_user(
+#' svc$update_user(
 #'   AccountId = "string",
 #'   UserId = "string",
 #'   LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial"
@@ -1997,7 +1997,7 @@ chime_update_user <- function(AccountId, UserId, LicenseType = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_user_settings(
+#' svc$update_user_settings(
 #'   AccountId = "string",
 #'   UserId = "string",
 #'   UserSettings = list(
@@ -2042,7 +2042,7 @@ chime_update_user_settings <- function(AccountId, UserId, UserSettings) {
 #'
 #' @section Request syntax:
 #' ```
-#' chime$update_voice_connector(
+#' svc$update_voice_connector(
 #'   VoiceConnectorId = "string",
 #'   Name = "string",
 #'   RequireEncryption = TRUE|FALSE

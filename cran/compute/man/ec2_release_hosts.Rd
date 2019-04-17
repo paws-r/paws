@@ -27,7 +27,7 @@ again.
 Released hosts still appear in a DescribeHosts response.
 }
 \section{Request syntax}{
-\preformatted{ec2$release_hosts(
+\preformatted{svc$release_hosts(
   HostIds = list(
     "string"
   )

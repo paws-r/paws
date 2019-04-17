@@ -45,7 +45,7 @@ fleet is deleted, you can no longer use that fleet.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_fleet(
+\preformatted{svc$delete_fleet(
   FleetId = "string"
 )
 }

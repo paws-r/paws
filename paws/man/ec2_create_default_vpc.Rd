@@ -31,7 +31,7 @@ a default VPC for my existing EC2 account. Is that possible?" in the
 \href{http://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_default_vpc(
+\preformatted{svc$create_default_vpc(
   DryRun = TRUE|FALSE
 )
 }

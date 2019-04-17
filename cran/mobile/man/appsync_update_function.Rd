@@ -31,7 +31,7 @@ value is 2018-05-29.}
 Updates a \code{Function} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$update_function(
+\preformatted{svc$update_function(
   apiId = "string",
   name = "string",
   description = "string",

@@ -15,7 +15,7 @@ services, task definitions, clusters, and container instances.}
 List the tags for an Amazon ECS resource.
 }
 \section{Request syntax}{
-\preformatted{ecs$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   resourceArn = "string"
 )
 }
@@ -23,7 +23,7 @@ List the tags for an Amazon ECS resource.
 
 \examples{
 # This example lists the tags for the 'dev' cluster.
-\donttest{ecs$list_tags_for_resource(
+\donttest{svc$list_tags_for_resource(
   resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev"
 )}
 

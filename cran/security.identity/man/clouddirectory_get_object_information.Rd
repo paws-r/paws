@@ -18,7 +18,7 @@ clouddirectory_get_object_information(DirectoryArn, ObjectReference,
 Retrieves metadata about an object.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_object_information(
+\preformatted{svc$get_object_information(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

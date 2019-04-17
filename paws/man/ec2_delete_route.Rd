@@ -25,7 +25,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Deletes the specified route from the specified route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_route(
+\preformatted{svc$delete_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
   DryRun = TRUE|FALSE,
@@ -36,7 +36,7 @@ Deletes the specified route from the specified route table.
 
 \examples{
 # This example deletes the specified route from the specified route table.
-\donttest{ec2$delete_route(
+\donttest{svc$delete_route(
   DestinationCidrBlock = "0.0.0.0/0",
   RouteTableId = "rtb-22574640"
 )}

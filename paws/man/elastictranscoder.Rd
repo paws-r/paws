@@ -11,12 +11,6 @@ AWS Elastic Transcoder Service
 
 The AWS Elastic Transcoder Service.
 }
-\section{Example}{
-\preformatted{elastictranscoder <- paws::elastictranscoder()
-elastictranscoder$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -40,3 +34,9 @@ elastictranscoder$operation()
 }
 }
 
+\examples{
+\donttest{svc$cancel_job(
+  Foo = 123
+)}
+
+}

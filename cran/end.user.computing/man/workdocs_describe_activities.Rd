@@ -46,7 +46,7 @@ within the parent folder (the indirect activity).}
 Describes the user activities in a specified time period.
 }
 \section{Request syntax}{
-\preformatted{workdocs$describe_activities(
+\preformatted{svc$describe_activities(
   AuthenticationToken = "string",
   StartTime = as.POSIXct(
     "2015-01-01"

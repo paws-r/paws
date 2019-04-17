@@ -16,7 +16,7 @@ or on-demand. If the audit is not in progress, an
 "InvalidRequestException" occurs.
 }
 \section{Request syntax}{
-\preformatted{iot$cancel_audit_task(
+\preformatted{svc$cancel_audit_task(
   taskId = "string"
 )
 }

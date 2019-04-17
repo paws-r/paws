@@ -13,7 +13,7 @@ codedeploy_batch_get_deployments(deploymentIds)
 Gets information about one or more deployments.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_deployments(
+\preformatted{svc$batch_get_deployments(
   deploymentIds = list(
     "string"
   )

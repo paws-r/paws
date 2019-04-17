@@ -37,7 +37,7 @@ amplify_update_branch(appId, branchName, description, framework, stage,
 Updates a branch for an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$update_branch(
+\preformatted{svc$update_branch(
   appId = "string",
   branchName = "string",
   description = "string",

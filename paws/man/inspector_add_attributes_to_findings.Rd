@@ -18,7 +18,7 @@ Assigns attributes (key and value pairs) to the findings that are
 specified by the ARNs of the findings.
 }
 \section{Request syntax}{
-\preformatted{inspector$add_attributes_to_findings(
+\preformatted{svc$add_attributes_to_findings(
   findingArns = list(
     "string"
   ),
@@ -35,7 +35,7 @@ specified by the ARNs of the findings.
 \examples{
 # Assigns attributes (key and value pairs) to the findings that are
 # specified by the ARNs of the findings.
-\donttest{inspector$add_attributes_to_findings(
+\donttest{svc$add_attributes_to_findings(
   attributes = list(
     list(
       key = "Example",

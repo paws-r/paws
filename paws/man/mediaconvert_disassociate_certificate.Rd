@@ -15,7 +15,7 @@ mediaconvert_disassociate_certificate(Arn)
 Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$disassociate_certificate(
+\preformatted{svc$disassociate_certificate(
   Arn = "string"
 )
 }

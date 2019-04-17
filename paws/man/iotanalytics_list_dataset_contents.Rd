@@ -26,7 +26,7 @@ the CreateDataset request. (timestamp)}
 Lists information about data set contents that have been created.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$list_dataset_contents(
+\preformatted{svc$list_dataset_contents(
   datasetName = "string",
   nextToken = "string",
   maxResults = 123,

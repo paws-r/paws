@@ -15,7 +15,7 @@ request, delete any objects in the container or in any folders in the
 container. You can delete only empty containers.
 }
 \section{Request syntax}{
-\preformatted{mediastore$delete_container(
+\preformatted{svc$delete_container(
   ContainerName = "string"
 )
 }

@@ -17,7 +17,7 @@ include any hyphens ('-') in the ID.}
 This operation purchases a provisioned capacity unit for an AWS account.
 }
 \section{Request syntax}{
-\preformatted{glacier$purchase_provisioned_capacity(
+\preformatted{svc$purchase_provisioned_capacity(
   accountId = "string"
 )
 }
@@ -25,7 +25,7 @@ This operation purchases a provisioned capacity unit for an AWS account.
 
 \examples{
 # The example purchases provisioned capacity unit for an AWS account.
-\donttest{glacier$purchase_provisioned_capacity(
+\donttest{svc$purchase_provisioned_capacity(
   accountId = "-"
 )}
 

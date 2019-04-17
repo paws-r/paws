@@ -15,7 +15,7 @@ appstream_associate_fleet(FleetName, StackName)
 Associates the specified fleet with the specified stack.
 }
 \section{Request syntax}{
-\preformatted{appstream$associate_fleet(
+\preformatted{svc$associate_fleet(
   FleetName = "string",
   StackName = "string"
 )

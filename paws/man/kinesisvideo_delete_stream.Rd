@@ -34,7 +34,7 @@ This operation requires permission for the \code{KinesisVideo:DeleteStream}
 action.
 }
 \section{Request syntax}{
-\preformatted{kinesisvideo$delete_stream(
+\preformatted{svc$delete_stream(
   StreamARN = "string",
   CurrentVersion = "string"
 )

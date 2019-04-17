@@ -16,7 +16,7 @@ must be greater than 10 else it wont be honored.}
 List all supported Elasticsearch versions
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$list_elasticsearch_versions(
+\preformatted{svc$list_elasticsearch_versions(
   MaxResults = 123,
   NextToken = "string"
 )

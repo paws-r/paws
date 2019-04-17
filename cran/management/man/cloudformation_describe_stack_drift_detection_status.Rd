@@ -33,7 +33,7 @@ has completed, use DescribeStackResourceDrifts to return drift
 information about the stack and its resources.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_drift_detection_status(
+\preformatted{svc$describe_stack_drift_detection_status(
   StackDriftDetectionId = "string"
 )
 }

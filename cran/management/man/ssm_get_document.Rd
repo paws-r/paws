@@ -22,7 +22,7 @@ either JSON or YAML. JSON is the default format.}
 Gets the contents of the specified Systems Manager document.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_document(
+\preformatted{svc$get_document(
   Name = "string",
   VersionName = "string",
   DocumentVersion = "string",

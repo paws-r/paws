@@ -24,7 +24,7 @@ query. The query uses the same format as a resource query in a
 CreateGroup or UpdateGroupQuery operation.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$search_resources(
+\preformatted{svc$search_resources(
   ResourceQuery = list(
     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"

@@ -30,7 +30,7 @@ The permission resource is
 \code{aws quicksight delete-user --aws-account-id=111122223333 --namespace=default --user-name=Pat }
 }
 \section{Request syntax}{
-\preformatted{quicksight$delete_user(
+\preformatted{svc$delete_user(
   UserName = "string",
   AwsAccountId = "string",
   Namespace = "string"

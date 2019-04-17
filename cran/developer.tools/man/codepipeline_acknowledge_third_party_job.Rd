@@ -22,7 +22,7 @@ Confirms a job worker has received the specified job. Only used for
 partner actions.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$acknowledge_third_party_job(
+\preformatted{svc$acknowledge_third_party_job(
   jobId = "string",
   nonce = "string",
   clientToken = "string"

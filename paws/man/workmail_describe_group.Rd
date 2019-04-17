@@ -15,7 +15,7 @@ workmail_describe_group(OrganizationId, GroupId)
 Returns the data available for the group.
 }
 \section{Request syntax}{
-\preformatted{workmail$describe_group(
+\preformatted{svc$describe_group(
   OrganizationId = "string",
   GroupId = "string"
 )

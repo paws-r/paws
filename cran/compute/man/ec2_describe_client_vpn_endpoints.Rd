@@ -27,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Describes one or more Client VPN endpoints in the account.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_client_vpn_endpoints(
+\preformatted{svc$describe_client_vpn_endpoints(
   ClientVpnEndpointIds = list(
     "string"
   ),

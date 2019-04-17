@@ -31,7 +31,7 @@ request that used that token.}
 Posts a comment on the comparison between two commits.
 }
 \section{Request syntax}{
-\preformatted{codecommit$post_comment_for_compared_commit(
+\preformatted{svc$post_comment_for_compared_commit(
   repositoryName = "string",
   beforeCommitId = "string",
   afterCommitId = "string",

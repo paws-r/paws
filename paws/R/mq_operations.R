@@ -31,7 +31,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mq$create_broker(
+#' svc$create_broker(
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerName = "string",
 #'   Configuration = list(
@@ -108,7 +108,7 @@ mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' mq$create_configuration(
+#' svc$create_configuration(
 #'   EngineType = "ACTIVEMQ",
 #'   EngineVersion = "string",
 #'   Name = "string",
@@ -149,7 +149,7 @@ mq_create_configuration <- function(EngineType = NULL, EngineVersion = NULL, Nam
 #'
 #' @section Request syntax:
 #' ```
-#' mq$create_tags(
+#' svc$create_tags(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -191,7 +191,7 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$create_user(
+#' svc$create_user(
 #'   BrokerId = "string",
 #'   ConsoleAccess = TRUE|FALSE,
 #'   Groups = list(
@@ -232,7 +232,7 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #'
 #' @section Request syntax:
 #' ```
-#' mq$delete_broker(
+#' svc$delete_broker(
 #'   BrokerId = "string"
 #' )
 #' ```
@@ -268,7 +268,7 @@ mq_delete_broker <- function(BrokerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$delete_tags(
+#' svc$delete_tags(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -307,7 +307,7 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$delete_user(
+#' svc$delete_user(
 #'   BrokerId = "string",
 #'   Username = "string"
 #' )
@@ -343,7 +343,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$describe_broker(
+#' svc$describe_broker(
 #'   BrokerId = "string"
 #' )
 #' ```
@@ -378,7 +378,7 @@ mq_describe_broker <- function(BrokerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$describe_configuration(
+#' svc$describe_configuration(
 #'   ConfigurationId = "string"
 #' )
 #' ```
@@ -416,7 +416,7 @@ mq_describe_configuration <- function(ConfigurationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$describe_configuration_revision(
+#' svc$describe_configuration_revision(
 #'   ConfigurationId = "string",
 #'   ConfigurationRevision = "string"
 #' )
@@ -453,7 +453,7 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 #'
 #' @section Request syntax:
 #' ```
-#' mq$describe_user(
+#' svc$describe_user(
 #'   BrokerId = "string",
 #'   Username = "string"
 #' )
@@ -490,7 +490,7 @@ mq_describe_user <- function(BrokerId, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$list_brokers(
+#' svc$list_brokers(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -528,7 +528,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$list_configuration_revisions(
+#' svc$list_configuration_revisions(
 #'   ConfigurationId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -566,7 +566,7 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' mq$list_configurations(
+#' svc$list_configurations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -602,7 +602,7 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$list_tags(
+#' svc$list_tags(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -639,7 +639,7 @@ mq_list_tags <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$list_users(
+#' svc$list_users(
 #'   BrokerId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -676,7 +676,7 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$reboot_broker(
+#' svc$reboot_broker(
 #'   BrokerId = "string"
 #' )
 #' ```
@@ -716,7 +716,7 @@ mq_reboot_broker <- function(BrokerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mq$update_broker(
+#' svc$update_broker(
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerId = "string",
 #'   Configuration = list(
@@ -763,7 +763,7 @@ mq_update_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerId, Configura
 #'
 #' @section Request syntax:
 #' ```
-#' mq$update_configuration(
+#' svc$update_configuration(
 #'   ConfigurationId = "string",
 #'   Data = "string",
 #'   Description = "string"
@@ -804,7 +804,7 @@ mq_update_configuration <- function(ConfigurationId, Data = NULL, Description = 
 #'
 #' @section Request syntax:
 #' ```
-#' mq$update_user(
+#' svc$update_user(
 #'   BrokerId = "string",
 #'   ConsoleAccess = TRUE|FALSE,
 #'   Groups = list(

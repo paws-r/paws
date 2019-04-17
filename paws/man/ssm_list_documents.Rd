@@ -24,7 +24,7 @@ from a previous call.)}
 Describes one or more of your Systems Manager documents.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_documents(
+\preformatted{svc$list_documents(
   DocumentFilterList = list(
     list(
       key = "Name"|"Owner"|"PlatformTypes"|"DocumentType",

@@ -17,7 +17,7 @@ Starts the specified pipeline. Specifically, it begins processing the
 latest commit to the source location specified as part of the pipeline.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$start_pipeline_execution(
+\preformatted{svc$start_pipeline_execution(
   name = "string",
   clientRequestToken = "string"
 )

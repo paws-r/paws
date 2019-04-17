@@ -99,7 +99,7 @@ the \code{error} state (for example, when a volume is incapable of accepting
 I/O.)
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_volume_status(
+\preformatted{svc$describe_volume_status(
   Filters = list(
     list(
       Name = "string",
@@ -121,7 +121,7 @@ I/O.)
 \examples{
 # This example describes the status for the volume
 # ``vol-1234567890abcdef0``.
-\donttest{ec2$describe_volume_status(
+\donttest{svc$describe_volume_status(
   VolumeIds = list(
     "vol-1234567890abcdef0"
   )
@@ -129,7 +129,7 @@ I/O.)
 
 # This example describes the status for all volumes that are impaired. In
 # this example output, there are no impaired volumes.
-\donttest{ec2$describe_volume_status(
+\donttest{svc$describe_volume_status(
   Filters = list(
     list(
       Name = "volume-status.status",

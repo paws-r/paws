@@ -39,12 +39,6 @@ To delete an endpoint, use the following AWS CLI command:
 
 \code{delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]}
 }
-\section{Example}{
-\preformatted{route53resolver <- paws::route53resolver()
-route53resolver$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -73,3 +67,9 @@ route53resolver$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_resolver_endpoint_ip_address(
+  Foo = 123
+)}
+
+}

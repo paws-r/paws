@@ -33,7 +33,7 @@ have alphanumeric and underscore characters, and the values must match
 Creates a Stage for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_stage(
+\preformatted{svc$create_stage(
   AccessLogSettings = list(
     DestinationArn = "string",
     Format = "string"

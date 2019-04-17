@@ -20,7 +20,7 @@ Describes the specified the load balancers. If no load balancers are
 specified, the call describes all of your load balancers.
 }
 \section{Request syntax}{
-\preformatted{elb$describe_load_balancers(
+\preformatted{svc$describe_load_balancers(
   LoadBalancerNames = list(
     "string"
   ),
@@ -32,7 +32,7 @@ specified, the call describes all of your load balancers.
 
 \examples{
 # This example describes the specified load balancer.
-\donttest{elb$describe_load_balancers(
+\donttest{svc$describe_load_balancers(
   LoadBalancerNames = list(
     "my-load-balancer"
   )

@@ -25,7 +25,7 @@ This is a control plane operation. See
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{
-\preformatted{iot$create_thing_group(
+\preformatted{svc$create_thing_group(
   thingGroupName = "string",
   parentGroupName = "string",
   thingGroupProperties = list(

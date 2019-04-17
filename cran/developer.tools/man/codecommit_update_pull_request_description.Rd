@@ -17,7 +17,7 @@ content will replace the existing description.}
 Replaces the contents of the description of a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_pull_request_description(
+\preformatted{svc$update_pull_request_description(
   pullRequestId = "string",
   description = "string"
 )

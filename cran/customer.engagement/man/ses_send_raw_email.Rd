@@ -196,7 +196,7 @@ in the \emph{Amazon SES Developer Guide.}
 }
 }
 \section{Request syntax}{
-\preformatted{ses$send_raw_email(
+\preformatted{svc$send_raw_email(
   Source = "string",
   Destinations = list(
     "string"
@@ -220,7 +220,7 @@ in the \emph{Amazon SES Developer Guide.}
 
 \examples{
 # The following example sends an email with an attachment:
-\donttest{ses$send_raw_email(
+\donttest{svc$send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(

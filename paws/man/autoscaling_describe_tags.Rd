@@ -30,7 +30,7 @@ for a particular tag only if it matches all the filters. If there's no
 match, no special message is returned.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_tags(
+\preformatted{svc$describe_tags(
   Filters = list(
     list(
       Name = "string",
@@ -47,7 +47,7 @@ match, no special message is returned.
 
 \examples{
 # This example describes the tags for the specified Auto Scaling group.
-\donttest{autoscaling$describe_tags(
+\donttest{svc$describe_tags(
   Filters = list(
     list(
       Name = "auto-scaling-group",

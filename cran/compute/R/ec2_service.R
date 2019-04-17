@@ -23,11 +23,12 @@ NULL
 #' 
 #' -   [Amazon VPC documentation](http://aws.amazon.com/documentation/vpc)
 #'
-#' @section Example:
-#' ```
-#' ec2 <- paws::ec2()
-#' ec2$operation()
-#' ```
+#' @examples
+#' # This example allocates an Elastic IP address to use with an instance in
+#' # a VPC.
+#' \donttest{svc$allocate_address(
+#'   Domain = "vpc"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

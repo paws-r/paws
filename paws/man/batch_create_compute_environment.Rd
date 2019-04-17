@@ -79,7 +79,7 @@ compute resources. To use a new AMI for your AWS Batch jobs:
 }
 }
 \section{Request syntax}{
-\preformatted{batch$create_compute_environment(
+\preformatted{svc$create_compute_environment(
   computeEnvironmentName = "string",
   type = "MANAGED"|"UNMANAGED",
   state = "ENABLED"|"DISABLED",
@@ -121,7 +121,7 @@ compute resources. To use a new AMI for your AWS Batch jobs:
 # This example creates a managed compute environment with specific C4
 # instance types that are launched on demand. The compute environment is
 # called C4OnDemand.
-\donttest{batch$create_compute_environment(
+\donttest{svc$create_compute_environment(
   type = "MANAGED",
   computeEnvironmentName = "C4OnDemand",
   computeResources = list(
@@ -158,7 +158,7 @@ compute resources. To use a new AMI for your AWS Batch jobs:
 # type that is launched when the Spot bid price is at or below 20\% of the
 # On-Demand price for the instance type. The compute environment is called
 # M4Spot.
-\donttest{batch$create_compute_environment(
+\donttest{svc$create_compute_environment(
   type = "MANAGED",
   computeEnvironmentName = "M4Spot",
   computeResources = list(

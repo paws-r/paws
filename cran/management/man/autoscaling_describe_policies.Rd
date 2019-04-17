@@ -28,7 +28,7 @@ value is \code{50} and the maximum value is \code{100}.}
 Describes the policies for the specified Auto Scaling group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_policies(
+\preformatted{svc$describe_policies(
   AutoScalingGroupName = "string",
   PolicyNames = list(
     "string"
@@ -45,7 +45,7 @@ Describes the policies for the specified Auto Scaling group.
 \examples{
 # This example describes the policies for the specified Auto Scaling
 # group.
-\donttest{autoscaling$describe_policies(
+\donttest{svc$describe_policies(
   AutoScalingGroupName = "my-auto-scaling-group"
 )}
 

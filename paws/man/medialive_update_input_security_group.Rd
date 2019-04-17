@@ -18,7 +18,7 @@ medialive_update_input_security_group(InputSecurityGroupId, Tags,
 Update an Input Security Group's Whilelists.
 }
 \section{Request syntax}{
-\preformatted{medialive$update_input_security_group(
+\preformatted{svc$update_input_security_group(
   InputSecurityGroupId = "string",
   Tags = list(
     "string"

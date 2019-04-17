@@ -40,7 +40,7 @@ If you are using an unmanaged compute environment, you can use the
 that you should launch your Amazon ECS container instances into.
 }
 \section{Request syntax}{
-\preformatted{batch$describe_compute_environments(
+\preformatted{svc$describe_compute_environments(
   computeEnvironments = list(
     "string"
   ),
@@ -52,7 +52,7 @@ that you should launch your Amazon ECS container instances into.
 
 \examples{
 # This example describes the P2OnDemand compute environment.
-\donttest{batch$describe_compute_environments(
+\donttest{svc$describe_compute_environments(
   computeEnvironments = list(
     "P2OnDemand"
   )

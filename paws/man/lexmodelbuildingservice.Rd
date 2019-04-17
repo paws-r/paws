@@ -13,12 +13,6 @@ Amazon Lex is an AWS service for building conversational voice and text
 interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
 }
-\section{Example}{
-\preformatted{lexmodelbuildingservice <- paws::lexmodelbuildingservice()
-lexmodelbuildingservice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -61,3 +55,11 @@ lexmodelbuildingservice$operation()
 }
 }
 
+\examples{
+# This example shows how to get configuration information for a bot.
+\donttest{svc$get_bot(
+  name = "DocOrderPizza",
+  versionOrAlias = "$LATEST"
+)}
+
+}

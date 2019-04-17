@@ -34,7 +34,7 @@ not saved.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$get_game_session_log_url(
+\preformatted{svc$get_game_session_log_url(
   GameSessionId = "string"
 )
 }

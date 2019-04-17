@@ -13,7 +13,7 @@ pinpoint_delete_event_stream(ApplicationId)
 Deletes the event stream for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_event_stream(
+\preformatted{svc$delete_event_stream(
   ApplicationId = "string"
 )
 }

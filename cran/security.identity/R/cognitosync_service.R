@@ -28,11 +28,10 @@ NULL
 #' and the [Developer Guide for
 #' iOS](http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
 #'
-#' @section Example:
-#' ```
-#' cognitosync <- paws::cognitosync()
-#' cognitosync$operation()
-#' ```
+#' @examples
+#' \donttest{svc$bulk_publish(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

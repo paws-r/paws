@@ -20,7 +20,7 @@ alias and the current primary email), and the email provided in the
 input is promoted as the primary.
 }
 \section{Request syntax}{
-\preformatted{workmail$update_primary_email_address(
+\preformatted{svc$update_primary_email_address(
   OrganizationId = "string",
   EntityId = "string",
   Email = "string"

@@ -15,7 +15,7 @@ mediapackage_list_channels(MaxResults, NextToken)
 Returns a collection of Channels.
 }
 \section{Request syntax}{
-\preformatted{mediapackage$list_channels(
+\preformatted{svc$list_channels(
   MaxResults = 123,
   NextToken = "string"
 )

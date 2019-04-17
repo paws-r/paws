@@ -31,7 +31,7 @@ terminated within the last 60 minutes for the specified Client VPN
 endpoint.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_client_vpn_connections(
+\preformatted{svc$describe_client_vpn_connections(
   ClientVpnEndpointId = "string",
   Filters = list(
     list(

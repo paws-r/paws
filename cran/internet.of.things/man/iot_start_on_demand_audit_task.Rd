@@ -17,7 +17,7 @@ select which checks are enabled.}
 Starts an on-demand Device Defender audit.
 }
 \section{Request syntax}{
-\preformatted{iot$start_on_demand_audit_task(
+\preformatted{svc$start_on_demand_audit_task(
   targetCheckNames = list(
     "string"
   )

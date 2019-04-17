@@ -87,11 +87,11 @@ NULL
 #' 
 #' -   GenerateDataKeyWithoutPlaintext
 #'
-#' @section Example:
-#' ```
-#' kms <- paws::kms()
-#' kms$operation()
-#' ```
+#' @examples
+#' # The following example cancels deletion of the specified CMK.
+#' \donttest{svc$cancel_key_deletion(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

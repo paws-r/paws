@@ -13,7 +13,7 @@ appstream_stop_fleet(Name)
 Stops the specified fleet.
 }
 \section{Request syntax}{
-\preformatted{appstream$stop_fleet(
+\preformatted{svc$stop_fleet(
   Name = "string"
 )
 }

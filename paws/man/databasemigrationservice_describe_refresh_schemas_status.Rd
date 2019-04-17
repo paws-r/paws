@@ -14,7 +14,7 @@ endpoint.}
 Returns the status of the RefreshSchemas operation.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_refresh_schemas_status(
+\preformatted{svc$describe_refresh_schemas_status(
   EndpointArn = "string"
 )
 }
@@ -22,7 +22,7 @@ Returns the status of the RefreshSchemas operation.
 
 \examples{
 # Returns the status of the refresh-schemas operation.
-\donttest{databasemigrationservice$describe_refresh_schemas_status(
+\donttest{svc$describe_refresh_schemas_status(
   EndpointArn = ""
 )}
 

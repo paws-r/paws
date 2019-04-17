@@ -13,7 +13,7 @@ codedeploy_batch_get_applications(applicationNames)
 Gets information about one or more applications.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$batch_get_applications(
+\preformatted{svc$batch_get_applications(
   applicationNames = list(
     "string"
   )

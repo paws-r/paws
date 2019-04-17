@@ -32,7 +32,7 @@ to have access to the notebook instance. For more information, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$create_presigned_notebook_instance_url(
+\preformatted{svc$create_presigned_notebook_instance_url(
   NotebookInstanceName = "string",
   SessionExpirationDurationInSeconds = 123
 )

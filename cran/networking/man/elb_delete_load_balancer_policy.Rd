@@ -16,7 +16,7 @@ Deletes the specified policy from the specified load balancer. This
 policy must not be enabled for any listeners.
 }
 \section{Request syntax}{
-\preformatted{elb$delete_load_balancer_policy(
+\preformatted{svc$delete_load_balancer_policy(
   LoadBalancerName = "string",
   PolicyName = "string"
 )
@@ -26,7 +26,7 @@ policy must not be enabled for any listeners.
 \examples{
 # This example deletes the specified policy from the specified load
 # balancer. The policy must not be enabled on any listener.
-\donttest{elb$delete_load_balancer_policy(
+\donttest{svc$delete_load_balancer_policy(
   LoadBalancerName = "my-load-balancer",
   PolicyName = "my-duration-cookie-policy"
 )}

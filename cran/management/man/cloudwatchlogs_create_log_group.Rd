@@ -40,7 +40,7 @@ not exist or the CMK is disabled, you will receive an
 \code{InvalidParameterException} error.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$create_log_group(
+\preformatted{svc$create_log_group(
   logGroupName = "string",
   kmsKeyId = "string",
   tags = list(

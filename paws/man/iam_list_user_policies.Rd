@@ -45,7 +45,7 @@ parameters. If there are no inline policies embedded with the specified
 user, the operation returns an empty list.
 }
 \section{Request syntax}{
-\preformatted{iam$list_user_policies(
+\preformatted{svc$list_user_policies(
   UserName = "string",
   Marker = "string",
   MaxItems = 123

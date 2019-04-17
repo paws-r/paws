@@ -16,7 +16,7 @@ cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch)
 Delete an origin access identity.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_cloud_front_origin_access_identity(
+\preformatted{svc$delete_cloud_front_origin_access_identity(
   Id = "string",
   IfMatch = "string"
 )

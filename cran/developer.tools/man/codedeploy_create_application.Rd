@@ -16,7 +16,7 @@ applicable IAM user or AWS account.}
 Creates an application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$create_application(
+\preformatted{svc$create_application(
   applicationName = "string",
   computePlatform = "Server"|"Lambda"|"ECS"
 )

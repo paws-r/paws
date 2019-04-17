@@ -26,7 +26,7 @@ in the \emph{IAM User Guide}. This topic includes a list of AWS services that
 can use the server certificates that you manage with IAM.
 }
 \section{Request syntax}{
-\preformatted{iam$get_server_certificate(
+\preformatted{svc$get_server_certificate(
   ServerCertificateName = "string"
 )
 }

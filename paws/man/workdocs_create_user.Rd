@@ -33,7 +33,7 @@ Creates a user in a Simple AD or Microsoft AD directory. The status of a
 newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 }
 \section{Request syntax}{
-\preformatted{workdocs$create_user(
+\preformatted{svc$create_user(
   OrganizationId = "string",
   Username = "string",
   EmailAddress = "string",

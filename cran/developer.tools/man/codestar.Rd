@@ -51,12 +51,6 @@ across all projects.
 \item \code{UpdateUserProfile}, which updates the profile for a user.
 }
 }
-\section{Example}{
-\preformatted{codestar <- paws::codestar()
-codestar$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -81,3 +75,9 @@ codestar$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_team_member(
+  Foo = 123
+)}
+
+}

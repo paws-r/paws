@@ -130,11 +130,14 @@ NULL
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
-#' @section Example:
-#' ```
-#' organizations <- paws::organizations()
-#' organizations$operation()
-#' ```
+#' @examples
+#' # Bill is the owner of an organization, and he invites Juan's account
+#' # (222222222222) to join his organization. The following example shows
+#' # Juan's account accepting the handshake and thus agreeing to the
+#' # invitation.
+#' \donttest{svc$accept_handshake(
+#'   HandshakeId = "h-examplehandshakeid111"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -22,7 +22,7 @@ Describes the notification actions associated with the specified Auto
 Scaling group.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$describe_notification_configurations(
+\preformatted{svc$describe_notification_configurations(
   AutoScalingGroupNames = list(
     "string"
   ),
@@ -35,7 +35,7 @@ Scaling group.
 \examples{
 # This example describes the notification configurations for the specified
 # Auto Scaling group.
-\donttest{autoscaling$describe_notification_configurations(
+\donttest{svc$describe_notification_configurations(
   AutoScalingGroupNames = list(
     "my-auto-scaling-group"
   )

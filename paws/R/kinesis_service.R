@@ -10,11 +10,10 @@ NULL
 #' Amazon Kinesis Data Streams is a managed service that scales elastically
 #' for real-time processing of streaming big data.
 #'
-#' @section Example:
-#' ```
-#' kinesis <- paws::kinesis()
-#' kinesis$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_stream(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

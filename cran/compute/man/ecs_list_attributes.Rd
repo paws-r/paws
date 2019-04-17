@@ -49,7 +49,7 @@ see which container instances in a cluster are running a Linux AMI
 (\code{ecs.os-type=linux}).
 }
 \section{Request syntax}{
-\preformatted{ecs$list_attributes(
+\preformatted{svc$list_attributes(
   cluster = "string",
   targetType = "container-instance",
   attributeName = "string",

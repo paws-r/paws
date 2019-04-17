@@ -22,7 +22,7 @@ Sets all the user settings for a specified user name. Works on any user.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_set_user_settings(
+\preformatted{svc$admin_set_user_settings(
   UserPoolId = "string",
   Username = "string",
   MFAOptions = list(

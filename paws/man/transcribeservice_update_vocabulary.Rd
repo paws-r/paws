@@ -35,7 +35,7 @@ operation overwrites all of the existing information with the values
 that you provide in the request.
 }
 \section{Request syntax}{
-\preformatted{transcribeservice$update_vocabulary(
+\preformatted{svc$update_vocabulary(
   VocabularyName = "string",
   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
   Phrases = list(

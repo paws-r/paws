@@ -23,7 +23,7 @@ servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
 Disassociates the specified product from the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$disassociate_product_from_portfolio(
+\preformatted{svc$disassociate_product_from_portfolio(
   AcceptLanguage = "string",
   ProductId = "string",
   PortfolioId = "string"

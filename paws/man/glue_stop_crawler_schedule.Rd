@@ -15,7 +15,7 @@ Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but
 does not stop the crawler if it is already running.
 }
 \section{Request syntax}{
-\preformatted{glue$stop_crawler_schedule(
+\preformatted{svc$stop_crawler_schedule(
   CrawlerName = "string"
 )
 }

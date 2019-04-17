@@ -18,7 +18,7 @@ created.}
 Creates a version of a robot application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$create_robot_application_version(
+\preformatted{svc$create_robot_application_version(
   application = "string",
   currentRevisionId = "string"
 )

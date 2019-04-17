@@ -28,7 +28,7 @@ can be used by the cluster to access other AWS services.
 A cluster can have up to 10 IAM roles associated at any time.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_iam_roles(
+\preformatted{svc$modify_cluster_iam_roles(
   ClusterIdentifier = "string",
   AddIamRoles = list(
     "string"

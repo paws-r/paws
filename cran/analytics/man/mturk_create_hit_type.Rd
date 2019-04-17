@@ -51,7 +51,7 @@ existing HIT type, the HIT type ID of the existing type will be
 returned.
 }
 \section{Request syntax}{
-\preformatted{mturk$create_hit_type(
+\preformatted{svc$create_hit_type(
   AutoApprovalDelayInSeconds = 123,
   AssignmentDurationInSeconds = 123,
   Reward = "string",

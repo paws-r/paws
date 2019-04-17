@@ -13,7 +13,7 @@ cloudfront_get_cloud_front_origin_access_identity_config(Id)
 Get the configuration information about an origin access identity.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_cloud_front_origin_access_identity_config(
+\preformatted{svc$get_cloud_front_origin_access_identity_config(
   Id = "string"
 )
 }

@@ -190,7 +190,7 @@ If the output is long, you can use the \code{MaxItems} and \code{Marker}
 parameters to paginate the results.
 }
 \section{Request syntax}{
-\preformatted{iam$simulate_principal_policy(
+\preformatted{svc$simulate_principal_policy(
   PolicySourceArn = "string",
   PolicyInputList = list(
     "string"

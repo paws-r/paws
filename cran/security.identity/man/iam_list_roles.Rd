@@ -44,7 +44,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_roles(
+\preformatted{svc$list_roles(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123

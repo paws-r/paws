@@ -17,7 +17,7 @@ identities that you want to delete.
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentity$delete_identities(
+\preformatted{svc$delete_identities(
   IdentityIdsToDelete = list(
     "string"
   )

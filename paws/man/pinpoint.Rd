@@ -9,12 +9,6 @@ pinpoint()
 \description{
 Amazon Pinpoint
 }
-\section{Example}{
-\preformatted{pinpoint <- paws::pinpoint()
-pinpoint$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -98,3 +92,9 @@ pinpoint$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_app(
+  Foo = 123
+)}
+
+}

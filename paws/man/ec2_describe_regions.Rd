@@ -28,7 +28,7 @@ Describes one or more regions that are currently available to you.
 For a list of the regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_regions(
+\preformatted{svc$describe_regions(
   Filters = list(
     list(
       Name = "string",
@@ -47,7 +47,7 @@ For a list of the regions supported by Amazon EC2, see \href{https://docs.aws.am
 
 \examples{
 # This example describes all the regions that are available to you.
-\donttest{ec2$describe_regions()}
+\donttest{svc$describe_regions()}
 
 }
 \keyword{internal}

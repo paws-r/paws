@@ -16,7 +16,7 @@ Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 endpoint.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_vpce_configuration(
+\preformatted{svc$delete_vpce_configuration(
   arn = "string"
 )
 }

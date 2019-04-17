@@ -22,7 +22,7 @@ You can check the state of a rule by using the \code{DescribeConfigRules}
 request.
 }
 \section{Request syntax}{
-\preformatted{configservice$delete_config_rule(
+\preformatted{svc$delete_config_rule(
   ConfigRuleName = "string"
 )
 }

@@ -25,7 +25,7 @@ Returns information about merge conflicts between the before and after
 commit IDs for a pull request in a repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$get_merge_conflicts(
+\preformatted{svc$get_merge_conflicts(
   repositoryName = "string",
   destinationCommitSpecifier = "string",
   sourceCommitSpecifier = "string",

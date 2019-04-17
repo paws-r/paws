@@ -13,7 +13,7 @@ devicefarm_get_job(arn)
 Gets information about a job.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_job(
+\preformatted{svc$get_job(
   arn = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets information about a job.
 
 \examples{
 # The following example returns information about a specific job.
-\donttest{devicefarm$get_job(
+\donttest{svc$get_job(
   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
 )}
 

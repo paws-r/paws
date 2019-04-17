@@ -16,7 +16,7 @@ users. Also, any reservations made for application streaming sessions
 for the stack are released.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_stack(
+\preformatted{svc$delete_stack(
   Name = "string"
 )
 }

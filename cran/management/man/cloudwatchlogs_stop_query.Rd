@@ -16,7 +16,7 @@ has already ended, the operation returns an error indicating that the
 specified query is not running.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$stop_query(
+\preformatted{svc$stop_query(
   queryId = "string"
 )
 }

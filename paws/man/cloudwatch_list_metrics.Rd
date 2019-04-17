@@ -29,7 +29,7 @@ appears. Statistics about the metric, however, are available sooner
 using GetMetricData or GetMetricStatistics.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$list_metrics(
+\preformatted{svc$list_metrics(
   Namespace = "string",
   MetricName = "string",
   Dimensions = list(

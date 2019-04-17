@@ -24,7 +24,7 @@ overwrites any existing tags that correspond to the specified tag keys.
 AddTagsToStream has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$add_tags_to_stream(
+\preformatted{svc$add_tags_to_stream(
   StreamName = "string",
   Tags = list(
     "string"

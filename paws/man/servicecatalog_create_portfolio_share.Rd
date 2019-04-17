@@ -33,7 +33,7 @@ the master account of an Organization. AWSOrganizationsAccess must be
 enabled in order to create a portfolio share to an organization node.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_portfolio_share(
+\preformatted{svc$create_portfolio_share(
   AcceptLanguage = "string",
   PortfolioId = "string",
   AccountId = "string",

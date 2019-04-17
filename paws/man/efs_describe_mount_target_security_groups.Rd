@@ -25,7 +25,7 @@ target's network interface.
 }
 }
 \section{Request syntax}{
-\preformatted{efs$describe_mount_target_security_groups(
+\preformatted{svc$describe_mount_target_security_groups(
   MountTargetId = "string"
 )
 }
@@ -34,7 +34,7 @@ target's network interface.
 \examples{
 # This operation describes all of the security groups for a file system's
 # mount target.
-\donttest{efs$describe_mount_target_security_groups(
+\donttest{svc$describe_mount_target_security_groups(
   MountTargetId = "fsmt-12340abc"
 )}
 

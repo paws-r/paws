@@ -33,7 +33,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$create_license_configuration(
+#' svc$create_license_configuration(
 #'   Name = "string",
 #'   Description = "string",
 #'   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
@@ -82,7 +82,7 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$delete_license_configuration(
+#' svc$delete_license_configuration(
 #'   LicenseConfigurationArn = "string"
 #' )
 #' ```
@@ -117,7 +117,7 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$get_license_configuration(
+#' svc$get_license_configuration(
 #'   LicenseConfigurationArn = "string"
 #' )
 #' ```
@@ -151,7 +151,7 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$get_service_settings()
+#' svc$get_service_settings()
 #' ```
 #'
 #' @keywords internal
@@ -193,7 +193,7 @@ licensemanager_get_service_settings <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_associations_for_license_configuration(
+#' svc$list_associations_for_license_configuration(
 #'   LicenseConfigurationArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -240,7 +240,7 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_license_configurations(
+#' svc$list_license_configurations(
 #'   LicenseConfigurationArns = list(
 #'     "string"
 #'   ),
@@ -293,7 +293,7 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_license_specifications_for_resource(
+#' svc$list_license_specifications_for_resource(
 #'   ResourceArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -334,7 +334,7 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_resource_inventory(
+#' svc$list_resource_inventory(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Filters = list(
@@ -377,7 +377,7 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -422,7 +422,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$list_usage_for_license_configuration(
+#' svc$list_usage_for_license_configuration(
 #'   LicenseConfigurationArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -468,7 +468,7 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     list(
@@ -510,7 +510,7 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -561,7 +561,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$update_license_configuration(
+#' svc$update_license_configuration(
 #'   LicenseConfigurationArn = "string",
 #'   LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
 #'   LicenseRules = list(
@@ -612,7 +612,7 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$update_license_specifications_for_resource(
+#' svc$update_license_specifications_for_resource(
 #'   ResourceArn = "string",
 #'   AddLicenseSpecifications = list(
 #'     list(
@@ -662,7 +662,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #'
 #' @section Request syntax:
 #' ```
-#' licensemanager$update_service_settings(
+#' svc$update_service_settings(
 #'   S3BucketArn = "string",
 #'   SnsTopicArn = "string",
 #'   OrganizationConfiguration = list(

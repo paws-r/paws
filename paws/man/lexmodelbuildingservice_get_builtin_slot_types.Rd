@@ -33,7 +33,7 @@ This operation requires permission for the \code{lex:GetBuiltInSlotTypes}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_builtin_slot_types(
+\preformatted{svc$get_builtin_slot_types(
   locale = "en-US"|"en-GB"|"de-DE",
   signatureContains = "string",
   nextToken = "string",

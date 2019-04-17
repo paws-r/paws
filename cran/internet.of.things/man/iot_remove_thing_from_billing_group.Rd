@@ -20,7 +20,7 @@ iot_remove_thing_from_billing_group(billingGroupName, billingGroupArn,
 Removes the given thing from the billing group.
 }
 \section{Request syntax}{
-\preformatted{iot$remove_thing_from_billing_group(
+\preformatted{svc$remove_thing_from_billing_group(
   billingGroupName = "string",
   billingGroupArn = "string",
   thingName = "string",

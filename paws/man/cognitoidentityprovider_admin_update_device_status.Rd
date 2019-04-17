@@ -23,7 +23,7 @@ Updates the device status as an administrator.
 Requires developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$admin_update_device_status(
+\preformatted{svc$admin_update_device_status(
   UserPoolId = "string",
   Username = "string",
   DeviceKey = "string",

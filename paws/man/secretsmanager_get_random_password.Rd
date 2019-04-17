@@ -63,7 +63,7 @@ To run this command, you must have the following permissions:
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$get_random_password(
+\preformatted{svc$get_random_password(
   PasswordLength = 123,
   ExcludeCharacters = "string",
   ExcludeNumbers = TRUE|FALSE,
@@ -81,7 +81,7 @@ To run this command, you must have the following permissions:
 # password. This example includes the optional flags to require spaces and
 # at least one character of each included type. It specifies a length of
 # 20 characters.
-\donttest{secretsmanager$get_random_password(
+\donttest{svc$get_random_password(
   IncludeSpace = TRUE,
   PasswordLength = 20L,
   RequireEachIncludedType = TRUE

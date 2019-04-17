@@ -18,7 +18,7 @@ the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from
 Updates the status of a pull request.
 }
 \section{Request syntax}{
-\preformatted{codecommit$update_pull_request_status(
+\preformatted{svc$update_pull_request_status(
   pullRequestId = "string",
   pullRequestStatus = "OPEN"|"CLOSED"
 )

@@ -45,7 +45,7 @@ groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$authorize_cluster_security_group_ingress(
+\preformatted{svc$authorize_cluster_security_group_ingress(
   ClusterSecurityGroupName = "string",
   CIDRIP = "string",
   EC2SecurityGroupName = "string",

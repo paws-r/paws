@@ -26,7 +26,7 @@ NextToken parameter, and specify the NextToken value.}
 Returns a list of existing resource groups in your account.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$list_groups(
+\preformatted{svc$list_groups(
   Filters = list(
     list(
       Name = "resource-type",

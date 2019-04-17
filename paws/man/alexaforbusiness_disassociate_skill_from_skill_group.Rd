@@ -16,7 +16,7 @@ alexaforbusiness_disassociate_skill_from_skill_group(SkillGroupArn,
 Disassociates a skill from a skill group.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$disassociate_skill_from_skill_group(
+\preformatted{svc$disassociate_skill_from_skill_group(
   SkillGroupArn = "string",
   SkillId = "string"
 )

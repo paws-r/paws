@@ -15,7 +15,7 @@ Gets the properties associated with a dominant language detection job.
 Use this operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_dominant_language_detection_job(
+\preformatted{svc$describe_dominant_language_detection_job(
   JobId = "string"
 )
 }

@@ -24,7 +24,7 @@ Returns the web ACL for the specified resource, either an application
 load balancer or Amazon API Gateway stage.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_web_acl_for_resource(
+\preformatted{svc$get_web_acl_for_resource(
   ResourceArn = "string"
 )
 }

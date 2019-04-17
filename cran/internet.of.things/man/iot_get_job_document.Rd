@@ -13,7 +13,7 @@ iot_get_job_document(jobId)
 Gets a job document.
 }
 \section{Request syntax}{
-\preformatted{iot$get_job_document(
+\preformatted{svc$get_job_document(
   jobId = "string"
 )
 }

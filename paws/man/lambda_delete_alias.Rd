@@ -27,7 +27,7 @@ Deletes a Lambda function
 \href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
 }
 \section{Request syntax}{
-\preformatted{lambda$delete_alias(
+\preformatted{svc$delete_alias(
   FunctionName = "string",
   Name = "string"
 )
@@ -36,7 +36,7 @@ Deletes a Lambda function
 
 \examples{
 # This operation deletes a Lambda function alias
-\donttest{lambda$delete_alias(
+\donttest{svc$delete_alias(
   FunctionName = "myFunction",
   Name = "alias"
 )}

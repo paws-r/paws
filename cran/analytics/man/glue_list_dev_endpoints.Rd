@@ -26,7 +26,7 @@ group. If you choose to use tags filtering, only resources with the tag
 will be retrieved.
 }
 \section{Request syntax}{
-\preformatted{glue$list_dev_endpoints(
+\preformatted{svc$list_dev_endpoints(
   NextToken = "string",
   MaxResults = 123,
   Tags = list(

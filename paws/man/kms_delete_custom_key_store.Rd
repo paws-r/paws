@@ -46,7 +46,7 @@ integration of AWS KMS with the isolation and control of a single-tenant
 key store.
 }
 \section{Request syntax}{
-\preformatted{kms$delete_custom_key_store(
+\preformatted{svc$delete_custom_key_store(
   CustomKeyStoreId = "string"
 )
 }

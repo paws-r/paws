@@ -95,7 +95,7 @@ either complete or abort multipart upload, Amazon S3 frees up the parts
 storage and stops charging you for the parts storage.
 }
 \section{Request syntax}{
-\preformatted{s3$create_multipart_upload(
+\preformatted{svc$create_multipart_upload(
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
   Bucket = "string",
   CacheControl = "string",
@@ -134,7 +134,7 @@ storage and stops charging you for the parts storage.
 
 \examples{
 # The following example initiates a multipart upload.
-\donttest{s3$create_multipart_upload(
+\donttest{svc$create_multipart_upload(
   Bucket = "examplebucket",
   Key = "largeobject"
 )}

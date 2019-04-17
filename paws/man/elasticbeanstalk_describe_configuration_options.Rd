@@ -36,7 +36,7 @@ default values, and an indication of the required action on a running
 environment if an option value is changed.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_configuration_options(
+\preformatted{svc$describe_configuration_options(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string",
@@ -56,7 +56,7 @@ environment if an option value is changed.
 \examples{
 # The following operation retrieves descriptions of all available
 # configuration options for an environment named my-env:
-\donttest{elasticbeanstalk$describe_configuration_options(
+\donttest{svc$describe_configuration_options(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
 )}

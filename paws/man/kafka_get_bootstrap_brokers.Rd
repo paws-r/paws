@@ -13,7 +13,7 @@ kafka_get_bootstrap_brokers(ClusterArn)
 A list of brokers that a client application can use to bootstrap.
 }
 \section{Request syntax}{
-\preformatted{kafka$get_bootstrap_brokers(
+\preformatted{svc$get_bootstrap_brokers(
   ClusterArn = "string"
 )
 }

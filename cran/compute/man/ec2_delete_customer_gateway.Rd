@@ -19,7 +19,7 @@ Deletes the specified customer gateway. You must delete the VPN
 connection before you can delete the customer gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_customer_gateway(
+\preformatted{svc$delete_customer_gateway(
   CustomerGatewayId = "string",
   DryRun = TRUE|FALSE
 )
@@ -28,7 +28,7 @@ connection before you can delete the customer gateway.
 
 \examples{
 # This example deletes the specified customer gateway.
-\donttest{ec2$delete_customer_gateway(
+\donttest{svc$delete_customer_gateway(
   CustomerGatewayId = "cgw-0e11f167"
 )}
 

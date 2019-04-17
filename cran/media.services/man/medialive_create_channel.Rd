@@ -34,7 +34,7 @@ creating multiple resources.}
 Creates a new channel
 }
 \section{Request syntax}{
-\preformatted{medialive$create_channel(
+\preformatted{svc$create_channel(
   Destinations = list(
     list(
       Id = "string",

@@ -26,7 +26,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$accept_qualification_request(
+#' svc$accept_qualification_request(
 #'   QualificationRequestId = "string",
 #'   IntegerValue = 123
 #' )
@@ -90,7 +90,7 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$approve_assignment(
+#' svc$approve_assignment(
 #'   AssignmentId = "string",
 #'   RequesterFeedback = "string",
 #'   OverrideRejection = TRUE|FALSE
@@ -150,7 +150,7 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$associate_qualification_with_worker(
+#' svc$associate_qualification_with_worker(
 #'   QualificationTypeId = "string",
 #'   WorkerId = "string",
 #'   IntegerValue = 123,
@@ -213,7 +213,7 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_additional_assignments_for_hit(
+#' svc$create_additional_assignments_for_hit(
 #'   HITId = "string",
 #'   NumberOfAdditionalAssignments = 123,
 #'   UniqueRequestToken = "string"
@@ -354,7 +354,7 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_hit(
+#' svc$create_hit(
 #'   MaxAssignments = 123,
 #'   AutoApprovalDelayInSeconds = 123,
 #'   LifetimeInSeconds = 123,
@@ -493,7 +493,7 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_hit_type(
+#' svc$create_hit_type(
 #'   AutoApprovalDelayInSeconds = 123,
 #'   AssignmentDurationInSeconds = 123,
 #'   Reward = "string",
@@ -621,7 +621,7 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_hit_with_hit_type(
+#' svc$create_hit_with_hit_type(
 #'   HITTypeId = "string",
 #'   MaxAssignments = 123,
 #'   LifetimeInSeconds = 123,
@@ -759,7 +759,7 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_qualification_type(
+#' svc$create_qualification_type(
 #'   Name = "string",
 #'   Keywords = "string",
 #'   Description = "string",
@@ -809,7 +809,7 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$create_worker_block(
+#' svc$create_worker_block(
 #'   WorkerId = "string",
 #'   Reason = "string"
 #' )
@@ -865,7 +865,7 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$delete_hit(
+#' svc$delete_hit(
 #'   HITId = "string"
 #' )
 #' ```
@@ -914,7 +914,7 @@ mturk_delete_hit <- function(HITId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$delete_qualification_type(
+#' svc$delete_qualification_type(
 #'   QualificationTypeId = "string"
 #' )
 #' ```
@@ -957,7 +957,7 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$delete_worker_block(
+#' svc$delete_worker_block(
 #'   WorkerId = "string",
 #'   Reason = "string"
 #' )
@@ -1002,7 +1002,7 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$disassociate_qualification_from_worker(
+#' svc$disassociate_qualification_from_worker(
 #'   WorkerId = "string",
 #'   QualificationTypeId = "string",
 #'   Reason = "string"
@@ -1039,7 +1039,7 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_account_balance()
+#' svc$get_account_balance()
 #' ```
 #'
 #' @keywords internal
@@ -1074,7 +1074,7 @@ mturk_get_account_balance <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_assignment(
+#' svc$get_assignment(
 #'   AssignmentId = "string"
 #' )
 #' ```
@@ -1122,7 +1122,7 @@ mturk_get_assignment <- function(AssignmentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_file_upload_url(
+#' svc$get_file_upload_url(
 #'   AssignmentId = "string",
 #'   QuestionIdentifier = "string"
 #' )
@@ -1158,7 +1158,7 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_hit(
+#' svc$get_hit(
 #'   HITId = "string"
 #' )
 #' ```
@@ -1203,7 +1203,7 @@ mturk_get_hit <- function(HITId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_qualification_score(
+#' svc$get_qualification_score(
 #'   QualificationTypeId = "string",
 #'   WorkerId = "string"
 #' )
@@ -1241,7 +1241,7 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$get_qualification_type(
+#' svc$get_qualification_type(
 #'   QualificationTypeId = "string"
 #' )
 #' ```
@@ -1302,7 +1302,7 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_assignments_for_hit(
+#' svc$list_assignments_for_hit(
 #'   HITId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
@@ -1353,7 +1353,7 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_bonus_payments(
+#' svc$list_bonus_payments(
 #'   HITId = "string",
 #'   AssignmentId = "string",
 #'   NextToken = "string",
@@ -1394,7 +1394,7 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_hi_ts(
+#' svc$list_hi_ts(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1437,7 +1437,7 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_hi_ts_for_qualification_type(
+#' svc$list_hi_ts_for_qualification_type(
 #'   QualificationTypeId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1481,7 +1481,7 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_qualification_requests(
+#' svc$list_qualification_requests(
 #'   QualificationTypeId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -1532,7 +1532,7 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_qualification_types(
+#' svc$list_qualification_types(
 #'   Query = "string",
 #'   MustBeRequestable = TRUE|FALSE,
 #'   MustBeOwnedByCaller = TRUE|FALSE,
@@ -1588,7 +1588,7 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_review_policy_results_for_hit(
+#' svc$list_review_policy_results_for_hit(
 #'   HITId = "string",
 #'   PolicyLevels = list(
 #'     "Assignment"|"HIT"
@@ -1639,7 +1639,7 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_reviewable_hi_ts(
+#' svc$list_reviewable_hi_ts(
 #'   HITTypeId = "string",
 #'   Status = "Reviewable"|"Reviewing",
 #'   NextToken = "string",
@@ -1680,7 +1680,7 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_worker_blocks(
+#' svc$list_worker_blocks(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -1722,7 +1722,7 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$list_workers_with_qualification_type(
+#' svc$list_workers_with_qualification_type(
 #'   QualificationTypeId = "string",
 #'   Status = "Granted"|"Revoked",
 #'   NextToken = "string",
@@ -1770,7 +1770,7 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$notify_workers(
+#' svc$notify_workers(
 #'   Subject = "string",
 #'   MessageText = "string",
 #'   WorkerIds = list(
@@ -1823,7 +1823,7 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$reject_assignment(
+#' svc$reject_assignment(
 #'   AssignmentId = "string",
 #'   RequesterFeedback = "string"
 #' )
@@ -1867,7 +1867,7 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$reject_qualification_request(
+#' svc$reject_qualification_request(
 #'   QualificationRequestId = "string",
 #'   Reason = "string"
 #' )
@@ -1926,7 +1926,7 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$send_bonus(
+#' svc$send_bonus(
 #'   WorkerId = "string",
 #'   BonusAmount = "string",
 #'   AssignmentId = "string",
@@ -1978,7 +1978,7 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$send_test_event_notification(
+#' svc$send_test_event_notification(
 #'   Notification = list(
 #'     Destination = "string",
 #'     Transport = "Email"|"SQS"|"SNS",
@@ -2025,7 +2025,7 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$update_expiration_for_hit(
+#' svc$update_expiration_for_hit(
 #'   HITId = "string",
 #'   ExpireAt = as.POSIXct(
 #'     "2015-01-01"
@@ -2073,7 +2073,7 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$update_hit_review_status(
+#' svc$update_hit_review_status(
 #'   HITId = "string",
 #'   Revert = TRUE|FALSE
 #' )
@@ -2115,7 +2115,7 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$update_hit_type_of_hit(
+#' svc$update_hit_type_of_hit(
 #'   HITId = "string",
 #'   HITTypeId = "string"
 #' )
@@ -2168,7 +2168,7 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$update_notification_settings(
+#' svc$update_notification_settings(
 #'   HITTypeId = "string",
 #'   Notification = list(
 #'     Destination = "string",
@@ -2281,7 +2281,7 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
 #'
 #' @section Request syntax:
 #' ```
-#' mturk$update_qualification_type(
+#' svc$update_qualification_type(
 #'   QualificationTypeId = "string",
 #'   Description = "string",
 #'   QualificationTypeStatus = "Active"|"Inactive",

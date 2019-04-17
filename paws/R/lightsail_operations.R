@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$allocate_static_ip(
+#' svc$allocate_static_ip(
 #'   staticIpName = "string"
 #' )
 #' ```
@@ -59,7 +59,7 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$attach_disk(
+#' svc$attach_disk(
 #'   diskName = "string",
 #'   instanceName = "string",
 #'   diskPath = "string"
@@ -114,7 +114,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$attach_instances_to_load_balancer(
+#' svc$attach_instances_to_load_balancer(
 #'   loadBalancerName = "string",
 #'   instanceNames = list(
 #'     "string"
@@ -169,7 +169,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$attach_load_balancer_tls_certificate(
+#' svc$attach_load_balancer_tls_certificate(
 #'   loadBalancerName = "string",
 #'   certificateName = "string"
 #' )
@@ -206,7 +206,7 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$attach_static_ip(
+#' svc$attach_static_ip(
 #'   staticIpName = "string",
 #'   instanceName = "string"
 #' )
@@ -249,7 +249,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$close_instance_public_ports(
+#' svc$close_instance_public_ports(
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
@@ -294,7 +294,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$copy_snapshot(
+#' svc$copy_snapshot(
 #'   sourceSnapshotName = "string",
 #'   targetSnapshotName = "string",
 #'   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
@@ -344,7 +344,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName, targetSnapshotName, sour
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_cloud_formation_stack(
+#' svc$create_cloud_formation_stack(
 #'   instances = list(
 #'     list(
 #'       sourceName = "string",
@@ -407,7 +407,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_disk(
+#' svc$create_disk(
 #'   diskName = "string",
 #'   availabilityZone = "string",
 #'   sizeInGb = 123,
@@ -476,7 +476,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_disk_from_snapshot(
+#' svc$create_disk_from_snapshot(
 #'   diskName = "string",
 #'   diskSnapshotName = "string",
 #'   availabilityZone = "string",
@@ -565,7 +565,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName, avai
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_disk_snapshot(
+#' svc$create_disk_snapshot(
 #'   diskName = "string",
 #'   diskSnapshotName = "string",
 #'   instanceName = "string",
@@ -621,7 +621,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_domain(
+#' svc$create_domain(
 #'   domainName = "string",
 #'   tags = list(
 #'     list(
@@ -674,7 +674,7 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_domain_entry(
+#' svc$create_domain_entry(
 #'   domainName = "string",
 #'   domainEntry = list(
 #'     id = "string",
@@ -731,7 +731,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_instance_snapshot(
+#' svc$create_instance_snapshot(
 #'   instanceSnapshotName = "string",
 #'   instanceName = "string",
 #'   tags = list(
@@ -815,7 +815,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_instances(
+#' svc$create_instances(
 #'   instanceNames = list(
 #'     "string"
 #'   ),
@@ -899,7 +899,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_instances_from_snapshot(
+#' svc$create_instances_from_snapshot(
 #'   instanceNames = list(
 #'     "string"
 #'   ),
@@ -963,7 +963,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_key_pair(
+#' svc$create_key_pair(
 #'   keyPairName = "string",
 #'   tags = list(
 #'     list(
@@ -1042,7 +1042,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_load_balancer(
+#' svc$create_load_balancer(
 #'   loadBalancerName = "string",
 #'   instancePort = 123,
 #'   healthCheckPath = "string",
@@ -1117,7 +1117,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_load_balancer_tls_certificate(
+#' svc$create_load_balancer_tls_certificate(
 #'   loadBalancerName = "string",
 #'   certificateName = "string",
 #'   certificateDomainName = "string",
@@ -1272,7 +1272,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_relational_database(
+#' svc$create_relational_database(
 #'   relationalDatabaseName = "string",
 #'   availabilityZone = "string",
 #'   relationalDatabaseBlueprintId = "string",
@@ -1393,7 +1393,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_relational_database_from_snapshot(
+#' svc$create_relational_database_from_snapshot(
 #'   relationalDatabaseName = "string",
 #'   availabilityZone = "string",
 #'   publiclyAccessible = TRUE|FALSE,
@@ -1462,7 +1462,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$create_relational_database_snapshot(
+#' svc$create_relational_database_snapshot(
 #'   relationalDatabaseName = "string",
 #'   relationalDatabaseSnapshotName = "string",
 #'   tags = list(
@@ -1512,7 +1512,7 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_disk(
+#' svc$delete_disk(
 #'   diskName = "string"
 #' )
 #' ```
@@ -1561,7 +1561,7 @@ lightsail_delete_disk <- function(diskName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_disk_snapshot(
+#' svc$delete_disk_snapshot(
 #'   diskSnapshotName = "string"
 #' )
 #' ```
@@ -1601,7 +1601,7 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_domain(
+#' svc$delete_domain(
 #'   domainName = "string"
 #' )
 #' ```
@@ -1643,7 +1643,7 @@ lightsail_delete_domain <- function(domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_domain_entry(
+#' svc$delete_domain_entry(
 #'   domainName = "string",
 #'   domainEntry = list(
 #'     id = "string",
@@ -1695,7 +1695,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_instance(
+#' svc$delete_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -1735,7 +1735,7 @@ lightsail_delete_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_instance_snapshot(
+#' svc$delete_instance_snapshot(
 #'   instanceSnapshotName = "string"
 #' )
 #' ```
@@ -1775,7 +1775,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_key_pair(
+#' svc$delete_key_pair(
 #'   keyPairName = "string"
 #' )
 #' ```
@@ -1822,7 +1822,7 @@ lightsail_delete_key_pair <- function(keyPairName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_known_host_keys(
+#' svc$delete_known_host_keys(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -1866,7 +1866,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_load_balancer(
+#' svc$delete_load_balancer(
 #'   loadBalancerName = "string"
 #' )
 #' ```
@@ -1915,7 +1915,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_load_balancer_tls_certificate(
+#' svc$delete_load_balancer_tls_certificate(
 #'   loadBalancerName = "string",
 #'   certificateName = "string",
 #'   force = TRUE|FALSE
@@ -1978,7 +1978,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_relational_database(
+#' svc$delete_relational_database(
 #'   relationalDatabaseName = "string",
 #'   skipFinalSnapshot = TRUE|FALSE,
 #'   finalRelationalDatabaseSnapshotName = "string"
@@ -2021,7 +2021,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$delete_relational_database_snapshot(
+#' svc$delete_relational_database_snapshot(
 #'   relationalDatabaseSnapshotName = "string"
 #' )
 #' ```
@@ -2064,7 +2064,7 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$detach_disk(
+#' svc$detach_disk(
 #'   diskName = "string"
 #' )
 #' ```
@@ -2110,7 +2110,7 @@ lightsail_detach_disk <- function(diskName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$detach_instances_from_load_balancer(
+#' svc$detach_instances_from_load_balancer(
 #'   loadBalancerName = "string",
 #'   instanceNames = list(
 #'     "string"
@@ -2150,7 +2150,7 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$detach_static_ip(
+#' svc$detach_static_ip(
 #'   staticIpName = "string"
 #' )
 #' ```
@@ -2183,7 +2183,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$download_default_key_pair()
+#' svc$download_default_key_pair()
 #' ```
 #'
 #' @keywords internal
@@ -2236,7 +2236,7 @@ lightsail_download_default_key_pair <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$export_snapshot(
+#' svc$export_snapshot(
 #'   sourceSnapshotName = "string"
 #' )
 #' ```
@@ -2271,7 +2271,7 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_active_names(
+#' svc$get_active_names(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2313,7 +2313,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_blueprints(
+#' svc$get_blueprints(
 #'   includeInactive = TRUE|FALSE,
 #'   pageToken = "string"
 #' )
@@ -2353,7 +2353,7 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_bundles(
+#' svc$get_bundles(
 #'   includeInactive = TRUE|FALSE,
 #'   pageToken = "string"
 #' )
@@ -2395,7 +2395,7 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_cloud_formation_stack_records(
+#' svc$get_cloud_formation_stack_records(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2430,7 +2430,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_disk(
+#' svc$get_disk(
 #'   diskName = "string"
 #' )
 #' ```
@@ -2465,7 +2465,7 @@ lightsail_get_disk <- function(diskName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_disk_snapshot(
+#' svc$get_disk_snapshot(
 #'   diskSnapshotName = "string"
 #' )
 #' ```
@@ -2507,7 +2507,7 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_disk_snapshots(
+#' svc$get_disk_snapshots(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2549,7 +2549,7 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_disks(
+#' svc$get_disks(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2584,7 +2584,7 @@ lightsail_get_disks <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_domain(
+#' svc$get_domain(
 #'   domainName = "string"
 #' )
 #' ```
@@ -2620,7 +2620,7 @@ lightsail_get_domain <- function(domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_domains(
+#' svc$get_domains(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2662,7 +2662,7 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_export_snapshot_records(
+#' svc$get_export_snapshot_records(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2699,7 +2699,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance(
+#' svc$get_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -2742,7 +2742,7 @@ lightsail_get_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_access_details(
+#' svc$get_instance_access_details(
 #'   instanceName = "string",
 #'   protocol = "ssh"|"rdp"
 #' )
@@ -2787,7 +2787,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_metric_data(
+#' svc$get_instance_metric_data(
 #'   instanceName = "string",
 #'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System",
 #'   period = 123,
@@ -2836,7 +2836,7 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_port_states(
+#' svc$get_instance_port_states(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -2871,7 +2871,7 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_snapshot(
+#' svc$get_instance_snapshot(
 #'   instanceSnapshotName = "string"
 #' )
 #' ```
@@ -2907,7 +2907,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_snapshots(
+#' svc$get_instance_snapshots(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -2943,7 +2943,7 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instance_state(
+#' svc$get_instance_state(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -2981,7 +2981,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_instances(
+#' svc$get_instances(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3016,7 +3016,7 @@ lightsail_get_instances <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_key_pair(
+#' svc$get_key_pair(
 #'   keyPairName = "string"
 #' )
 #' ```
@@ -3052,7 +3052,7 @@ lightsail_get_key_pair <- function(keyPairName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_key_pairs(
+#' svc$get_key_pairs(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3087,7 +3087,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_load_balancer(
+#' svc$get_load_balancer(
 #'   loadBalancerName = "string"
 #' )
 #' ```
@@ -3238,7 +3238,7 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_load_balancer_metric_data(
+#' svc$get_load_balancer_metric_data(
 #'   loadBalancerName = "string",
 #'   metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
 #'   period = 123,
@@ -3294,7 +3294,7 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_load_balancer_tls_certificates(
+#' svc$get_load_balancer_tls_certificates(
 #'   loadBalancerName = "string"
 #' )
 #' ```
@@ -3334,7 +3334,7 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_load_balancers(
+#' svc$get_load_balancers(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3371,7 +3371,7 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_operation(
+#' svc$get_operation(
 #'   operationId = "string"
 #' )
 #' ```
@@ -3412,7 +3412,7 @@ lightsail_get_operation <- function(operationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_operations(
+#' svc$get_operations(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3450,7 +3450,7 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_operations_for_resource(
+#' svc$get_operations_for_resource(
 #'   resourceName = "string",
 #'   pageToken = "string"
 #' )
@@ -3494,7 +3494,7 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_regions(
+#' svc$get_regions(
 #'   includeAvailabilityZones = TRUE|FALSE,
 #'   includeRelationalDatabaseAvailabilityZones = TRUE|FALSE
 #' )
@@ -3530,7 +3530,7 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database(
+#' svc$get_relational_database(
 #'   relationalDatabaseName = "string"
 #' )
 #' ```
@@ -3570,7 +3570,7 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_blueprints(
+#' svc$get_relational_database_blueprints(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3610,7 +3610,7 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_bundles(
+#' svc$get_relational_database_bundles(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -3654,7 +3654,7 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_events(
+#' svc$get_relational_database_events(
 #'   relationalDatabaseName = "string",
 #'   durationInMinutes = 123,
 #'   pageToken = "string"
@@ -3723,7 +3723,7 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_log_events(
+#' svc$get_relational_database_log_events(
 #'   relationalDatabaseName = "string",
 #'   logStreamName = "string",
 #'   startTime = as.POSIXct(
@@ -3769,7 +3769,7 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_log_streams(
+#' svc$get_relational_database_log_streams(
 #'   relationalDatabaseName = "string"
 #' )
 #' ```
@@ -3820,7 +3820,7 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_master_user_password(
+#' svc$get_relational_database_master_user_password(
 #'   relationalDatabaseName = "string",
 #'   passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
 #' )
@@ -3883,7 +3883,7 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_metric_data(
+#' svc$get_relational_database_metric_data(
 #'   relationalDatabaseName = "string",
 #'   metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
 #'   period = 123,
@@ -3940,7 +3940,7 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_parameters(
+#' svc$get_relational_database_parameters(
 #'   relationalDatabaseName = "string",
 #'   pageToken = "string"
 #' )
@@ -3979,7 +3979,7 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_snapshot(
+#' svc$get_relational_database_snapshot(
 #'   relationalDatabaseSnapshotName = "string"
 #' )
 #' ```
@@ -4017,7 +4017,7 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_database_snapshots(
+#' svc$get_relational_database_snapshots(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -4053,7 +4053,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_relational_databases(
+#' svc$get_relational_databases(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -4088,7 +4088,7 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_static_ip(
+#' svc$get_static_ip(
 #'   staticIpName = "string"
 #' )
 #' ```
@@ -4124,7 +4124,7 @@ lightsail_get_static_ip <- function(staticIpName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$get_static_ips(
+#' svc$get_static_ips(
 #'   pageToken = "string"
 #' )
 #' ```
@@ -4160,7 +4160,7 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$import_key_pair(
+#' svc$import_key_pair(
 #'   keyPairName = "string",
 #'   publicKeyBase64 = "string"
 #' )
@@ -4194,7 +4194,7 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$is_vpc_peered()
+#' svc$is_vpc_peered()
 #' ```
 #'
 #' @keywords internal
@@ -4234,7 +4234,7 @@ lightsail_is_vpc_peered <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$open_instance_public_ports(
+#' svc$open_instance_public_ports(
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
@@ -4272,7 +4272,7 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$peer_vpc()
+#' svc$peer_vpc()
 #' ```
 #'
 #' @keywords internal
@@ -4313,7 +4313,7 @@ lightsail_peer_vpc <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$put_instance_public_ports(
+#' svc$put_instance_public_ports(
 #'   portInfos = list(
 #'     list(
 #'       fromPort = 123,
@@ -4360,7 +4360,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$reboot_instance(
+#' svc$reboot_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -4400,7 +4400,7 @@ lightsail_reboot_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$reboot_relational_database(
+#' svc$reboot_relational_database(
 #'   relationalDatabaseName = "string"
 #' )
 #' ```
@@ -4435,7 +4435,7 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$release_static_ip(
+#' svc$release_static_ip(
 #'   staticIpName = "string"
 #' )
 #' ```
@@ -4482,7 +4482,7 @@ lightsail_release_static_ip <- function(staticIpName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$start_instance(
+#' svc$start_instance(
 #'   instanceName = "string"
 #' )
 #' ```
@@ -4523,7 +4523,7 @@ lightsail_start_instance <- function(instanceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$start_relational_database(
+#' svc$start_relational_database(
 #'   relationalDatabaseName = "string"
 #' )
 #' ```
@@ -4575,7 +4575,7 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$stop_instance(
+#' svc$stop_instance(
 #'   instanceName = "string",
 #'   force = TRUE|FALSE
 #' )
@@ -4619,7 +4619,7 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$stop_relational_database(
+#' svc$stop_relational_database(
 #'   relationalDatabaseName = "string",
 #'   relationalDatabaseSnapshotName = "string"
 #' )
@@ -4665,7 +4665,7 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$tag_resource(
+#' svc$tag_resource(
 #'   resourceName = "string",
 #'   tags = list(
 #'     list(
@@ -4704,7 +4704,7 @@ lightsail_tag_resource <- function(resourceName, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$unpeer_vpc()
+#' svc$unpeer_vpc()
 #' ```
 #'
 #' @keywords internal
@@ -4745,7 +4745,7 @@ lightsail_unpeer_vpc <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$untag_resource(
+#' svc$untag_resource(
 #'   resourceName = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -4790,7 +4790,7 @@ lightsail_untag_resource <- function(resourceName, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$update_domain_entry(
+#' svc$update_domain_entry(
 #'   domainName = "string",
 #'   domainEntry = list(
 #'     id = "string",
@@ -4845,7 +4845,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$update_load_balancer_attribute(
+#' svc$update_load_balancer_attribute(
 #'   loadBalancerName = "string",
 #'   attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
 #'   attributeValue = "string"
@@ -4959,7 +4959,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$update_relational_database(
+#' svc$update_relational_database(
 #'   relationalDatabaseName = "string",
 #'   masterUserPassword = "string",
 #'   rotateMasterUserPassword = TRUE|FALSE,
@@ -5019,7 +5019,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #'
 #' @section Request syntax:
 #' ```
-#' lightsail$update_relational_database_parameters(
+#' svc$update_relational_database_parameters(
 #'   relationalDatabaseName = "string",
 #'   parameters = list(
 #'     list(

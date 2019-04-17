@@ -13,7 +13,7 @@ iot_delete_scheduled_audit(scheduledAuditName)
 Deletes a scheduled audit.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_scheduled_audit(
+\preformatted{svc$delete_scheduled_audit(
   scheduledAuditName = "string"
 )
 }

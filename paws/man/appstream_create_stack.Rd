@@ -45,7 +45,7 @@ consists of an associated fleet, user access policies, and storage
 configurations.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_stack(
+\preformatted{svc$create_stack(
   Name = "string",
   Description = "string",
   DisplayName = "string",

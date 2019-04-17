@@ -16,7 +16,7 @@ Permanently deletes the specified Elasticsearch domain and all of its
 data. Once a domain is deleted, it cannot be recovered.
 }
 \section{Request syntax}{
-\preformatted{elasticsearchservice$delete_elasticsearch_domain(
+\preformatted{svc$delete_elasticsearch_domain(
   DomainName = "string"
 )
 }

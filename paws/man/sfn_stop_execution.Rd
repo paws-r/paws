@@ -17,7 +17,7 @@ sfn_stop_execution(executionArn, error, cause)
 Stops an execution.
 }
 \section{Request syntax}{
-\preformatted{sfn$stop_execution(
+\preformatted{svc$stop_execution(
   executionArn = "string",
   error = "string",
   cause = "string"

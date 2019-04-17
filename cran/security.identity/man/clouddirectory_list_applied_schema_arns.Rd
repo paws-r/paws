@@ -22,7 +22,7 @@ Lists schema major versions applied to a directory. If \code{SchemaArn} is
 provided, lists the minor version.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_applied_schema_arns(
+\preformatted{svc$list_applied_schema_arns(
   DirectoryArn = "string",
   SchemaArn = "string",
   NextToken = "string",

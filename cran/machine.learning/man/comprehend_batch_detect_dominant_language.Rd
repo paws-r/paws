@@ -19,7 +19,7 @@ documents. For a list of languages that Amazon Comprehend can detect,
 see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 }
 \section{Request syntax}{
-\preformatted{comprehend$batch_detect_dominant_language(
+\preformatted{svc$batch_detect_dominant_language(
   TextList = list(
     "string"
   )

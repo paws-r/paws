@@ -45,7 +45,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_users(
+\preformatted{svc$list_users(
   PathPrefix = "string",
   Marker = "string",
   MaxItems = 123
@@ -55,7 +55,7 @@ parameters.
 
 \examples{
 # The following command lists the IAM users in the current account.
-\donttest{iam$list_users()}
+\donttest{svc$list_users()}
 
 }
 \keyword{internal}

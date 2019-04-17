@@ -35,7 +35,7 @@ Creates a new, empty pipeline. Use PutPipelineDefinition to populate the
 pipeline.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$create_pipeline(
+\preformatted{svc$create_pipeline(
   name = "string",
   uniqueId = "string",
   description = "string",

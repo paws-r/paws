@@ -32,7 +32,7 @@ the \code{GetDeliverabilityTestReport} operation to view the results of the
 test.
 }
 \section{Request syntax}{
-\preformatted{pinpointemail$create_deliverability_test_report(
+\preformatted{svc$create_deliverability_test_report(
   ReportName = "string",
   FromEmailAddress = "string",
   Content = list(

@@ -20,7 +20,7 @@ disassociate it from any job queues with the UpdateJobQueue API
 operation.
 }
 \section{Request syntax}{
-\preformatted{batch$delete_compute_environment(
+\preformatted{svc$delete_compute_environment(
   computeEnvironment = "string"
 )
 }
@@ -28,7 +28,7 @@ operation.
 
 \examples{
 # This example deletes the P2OnDemand compute environment.
-\donttest{batch$delete_compute_environment(
+\donttest{svc$delete_compute_environment(
   computeEnvironment = "P2OnDemand"
 )}
 

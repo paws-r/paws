@@ -22,7 +22,7 @@ that is already associated with the ML object, \code{AddTags} updates the
 tag's value.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$add_tags(
+\preformatted{svc$add_tags(
   Tags = list(
     list(
       Key = "string",

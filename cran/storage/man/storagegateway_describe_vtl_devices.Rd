@@ -33,7 +33,7 @@ device information.
 This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_vtl_devices(
+\preformatted{svc$describe_vtl_devices(
   GatewayARN = "string",
   VTLDeviceARNs = list(
     "string"
@@ -47,7 +47,7 @@ This operation is only supported in the tape gateway type.
 \examples{
 # Returns a description of virtual tape library (VTL) devices for the
 # specified gateway.
-\donttest{storagegateway$describe_vtl_devices(
+\donttest{svc$describe_vtl_devices(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   Limit = 123L,
   Marker = "1",

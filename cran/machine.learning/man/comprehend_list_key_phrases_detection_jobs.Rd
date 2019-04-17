@@ -21,7 +21,7 @@ one filter at a time.}
 Get a list of key phrase detection jobs that you have submitted.
 }
 \section{Request syntax}{
-\preformatted{comprehend$list_key_phrases_detection_jobs(
+\preformatted{svc$list_key_phrases_detection_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",

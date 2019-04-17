@@ -24,7 +24,7 @@ instance ARN, after instance/, such as
 Assigns the specified routing profile to a user.
 }
 \section{Request syntax}{
-\preformatted{connect$update_user_routing_profile(
+\preformatted{svc$update_user_routing_profile(
   RoutingProfileId = "string",
   UserId = "string",
   InstanceId = "string"

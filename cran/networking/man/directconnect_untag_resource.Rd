@@ -15,7 +15,7 @@ directconnect_untag_resource(resourceArn, tagKeys)
 Removes one or more tags from the specified AWS Direct Connect resource.
 }
 \section{Request syntax}{
-\preformatted{directconnect$untag_resource(
+\preformatted{svc$untag_resource(
   resourceArn = "string",
   tagKeys = list(
     "string"

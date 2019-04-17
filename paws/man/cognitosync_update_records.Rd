@@ -45,7 +45,7 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$update_records(
+\preformatted{svc$update_records(
   IdentityPoolId = "string",
   IdentityId = "string",
   DatasetName = "string",

@@ -34,7 +34,7 @@ maximum write capacity units.
 }
 }
 \section{Request syntax}{
-\preformatted{dynamodb$update_global_table(
+\preformatted{svc$update_global_table(
   GlobalTableName = "string",
   ReplicaUpdates = list(
     list(

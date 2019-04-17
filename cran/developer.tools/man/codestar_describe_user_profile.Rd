@@ -15,7 +15,7 @@ Describes a user in AWS CodeStar and the user attributes across all
 projects.
 }
 \section{Request syntax}{
-\preformatted{codestar$describe_user_profile(
+\preformatted{svc$describe_user_profile(
   userArn = "string"
 )
 }

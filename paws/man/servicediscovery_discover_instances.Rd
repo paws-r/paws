@@ -29,7 +29,7 @@ key/value pairs will be returned.}
 Discovers registered instances for a specified namespace and service.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$discover_instances(
+\preformatted{svc$discover_instances(
   NamespaceName = "string",
   ServiceName = "string",
   MaxResults = 123,

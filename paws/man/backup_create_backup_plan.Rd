@@ -29,7 +29,7 @@ If you call \code{CreateBackupPlan} with a plan that already exists, the
 existing \code{backupPlanId} is returned.
 }
 \section{Request syntax}{
-\preformatted{backup$create_backup_plan(
+\preformatted{svc$create_backup_plan(
   BackupPlan = list(
     BackupPlanName = "string",
     Rules = list(

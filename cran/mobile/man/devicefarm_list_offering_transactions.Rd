@@ -21,7 +21,7 @@ operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-de
 believe that you should be able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$list_offering_transactions(
+\preformatted{svc$list_offering_transactions(
   nextToken = "string"
 )
 }
@@ -30,7 +30,7 @@ believe that you should be able to invoke this operation.
 \examples{
 # The following example returns information about Device Farm offering
 # transactions.
-\donttest{devicefarm$list_offering_transactions(
+\donttest{svc$list_offering_transactions(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 )}
 

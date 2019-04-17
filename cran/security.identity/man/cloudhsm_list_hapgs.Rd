@@ -27,7 +27,7 @@ response contains a token that you pass in the next call to \code{ListHapgs}
 to retrieve the next set of items.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$list_hapgs(
+\preformatted{svc$list_hapgs(
   NextToken = "string"
 )
 }

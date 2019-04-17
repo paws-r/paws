@@ -65,12 +65,6 @@ accessed or managed within the endpoint in which they are created.
 All API operations allow for five requests per second with a burst of 10
 requests per second.
 }
-\section{Example}{
-\preformatted{opsworkscm <- paws::opsworkscm()
-opsworkscm$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -93,3 +87,9 @@ opsworkscm$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_node(
+  Foo = 123
+)}
+
+}

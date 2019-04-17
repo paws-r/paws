@@ -25,7 +25,7 @@ Deleting the last subscriber to a notification also deletes the
 notification.
 }
 \section{Request syntax}{
-\preformatted{budgets$delete_subscriber(
+\preformatted{svc$delete_subscriber(
   AccountId = "string",
   BudgetName = "string",
   Notification = list(

@@ -18,7 +18,7 @@ mediaconvert_describe_endpoints(MaxResults, Mode, NextToken)
 Send an request with an empty body to the regional API endpoint to get your account API endpoint.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$describe_endpoints(
+\preformatted{svc$describe_endpoints(
   MaxResults = 123,
   Mode = "DEFAULT"|"GET_ONLY",
   NextToken = "string"

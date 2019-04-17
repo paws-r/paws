@@ -24,7 +24,7 @@ volumes from an on-premises gateway to a gateway hosted on an Amazon EC2
 instance.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$detach_volume(
+\preformatted{svc$detach_volume(
   VolumeARN = "string",
   ForceDetach = TRUE|FALSE
 )

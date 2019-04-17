@@ -45,7 +45,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.htm
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$list_vaults(
+\preformatted{svc$list_vaults(
   accountId = "string",
   marker = "string",
   limit = "string"
@@ -55,7 +55,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example lists all vaults owned by the specified AWS account.
-\donttest{glacier$list_vaults(
+\donttest{svc$list_vaults(
   accountId = "-",
   limit = "",
   marker = ""

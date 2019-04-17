@@ -16,7 +16,7 @@ additional results.}
 Lists the search indices.
 }
 \section{Request syntax}{
-\preformatted{iot$list_indices(
+\preformatted{svc$list_indices(
   nextToken = "string",
   maxResults = 123
 )

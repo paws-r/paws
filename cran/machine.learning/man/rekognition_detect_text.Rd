@@ -54,7 +54,7 @@ For more information, see DetectText in the Amazon Rekognition Developer
 Guide.
 }
 \section{Request syntax}{
-\preformatted{rekognition$detect_text(
+\preformatted{svc$detect_text(
   Image = list(
     Bytes = raw,
     S3Object = list(

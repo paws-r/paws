@@ -13,7 +13,7 @@ cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 Create a new distribution with tags.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_distribution_with_tags(
+\preformatted{svc$create_distribution_with_tags(
   DistributionConfigWithTags = list(
     DistributionConfig = list(
       CallerReference = "string",

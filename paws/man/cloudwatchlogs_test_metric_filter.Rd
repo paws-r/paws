@@ -18,7 +18,7 @@ event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$test_metric_filter(
+\preformatted{svc$test_metric_filter(
   filterPattern = "string",
   logEventMessages = list(
     "string"

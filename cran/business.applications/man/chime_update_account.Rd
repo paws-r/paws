@@ -16,7 +16,7 @@ Updates account details for the specified Amazon Chime account.
 Currently, only account name updates are supported for this action.
 }
 \section{Request syntax}{
-\preformatted{chime$update_account(
+\preformatted{svc$update_account(
   AccountId = "string",
   Name = "string"
 )

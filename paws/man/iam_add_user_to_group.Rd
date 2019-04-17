@@ -23,7 +23,7 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 Adds the specified user to the specified group.
 }
 \section{Request syntax}{
-\preformatted{iam$add_user_to_group(
+\preformatted{svc$add_user_to_group(
   GroupName = "string",
   UserName = "string"
 )
@@ -33,7 +33,7 @@ Adds the specified user to the specified group.
 \examples{
 # The following command adds an IAM user named Bob to the IAM group named
 # Admins:
-\donttest{iam$add_user_to_group(
+\donttest{svc$add_user_to_group(
   GroupName = "Admins",
   UserName = "Bob"
 )}

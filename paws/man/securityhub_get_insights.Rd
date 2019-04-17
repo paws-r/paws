@@ -20,7 +20,7 @@ from the previous response to continue listing data.}
 Lists and describes insights that are specified by insight ARNs.
 }
 \section{Request syntax}{
-\preformatted{securityhub$get_insights(
+\preformatted{svc$get_insights(
   InsightArns = list(
     "string"
   ),

@@ -27,7 +27,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$create_http_namespace(
+#' svc$create_http_namespace(
 #'   Name = "string",
 #'   CreatorRequestId = "string",
 #'   Description = "string"
@@ -81,7 +81,7 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$create_private_dns_namespace(
+#' svc$create_private_dns_namespace(
 #'   Name = "string",
 #'   CreatorRequestId = "string",
 #'   Description = "string",
@@ -133,7 +133,7 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$create_public_dns_namespace(
+#' svc$create_public_dns_namespace(
 #'   Name = "string",
 #'   CreatorRequestId = "string",
 #'   Description = "string"
@@ -225,7 +225,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$create_service(
+#' svc$create_service(
 #'   Name = "string",
 #'   NamespaceId = "string",
 #'   CreatorRequestId = "string",
@@ -282,7 +282,7 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$delete_namespace(
+#' svc$delete_namespace(
 #'   Id = "string"
 #' )
 #' ```
@@ -318,7 +318,7 @@ servicediscovery_delete_namespace <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$delete_service(
+#' svc$delete_service(
 #'   Id = "string"
 #' )
 #' ```
@@ -356,7 +356,7 @@ servicediscovery_delete_service <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$deregister_instance(
+#' svc$deregister_instance(
 #'   ServiceId = "string",
 #'   InstanceId = "string"
 #' )
@@ -404,7 +404,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$discover_instances(
+#' svc$discover_instances(
 #'   NamespaceName = "string",
 #'   ServiceName = "string",
 #'   MaxResults = 123,
@@ -446,7 +446,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$get_instance(
+#' svc$get_instance(
 #'   ServiceId = "string",
 #'   InstanceId = "string"
 #' )
@@ -506,7 +506,7 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$get_instances_health_status(
+#' svc$get_instances_health_status(
 #'   ServiceId = "string",
 #'   Instances = list(
 #'     "string"
@@ -546,7 +546,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$get_namespace(
+#' svc$get_namespace(
 #'   Id = "string"
 #' )
 #' ```
@@ -586,7 +586,7 @@ servicediscovery_get_namespace <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$get_operation(
+#' svc$get_operation(
 #'   OperationId = "string"
 #' )
 #' ```
@@ -621,7 +621,7 @@ servicediscovery_get_operation <- function(OperationId) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$get_service(
+#' svc$get_service(
 #'   Id = "string"
 #' )
 #' ```
@@ -667,7 +667,7 @@ servicediscovery_get_service <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$list_instances(
+#' svc$list_instances(
 #'   ServiceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -724,7 +724,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$list_namespaces(
+#' svc$list_namespaces(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -788,7 +788,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$list_operations(
+#' svc$list_operations(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -853,7 +853,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$list_services(
+#' svc$list_services(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -1053,7 +1053,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$register_instance(
+#' svc$register_instance(
 #'   ServiceId = "string",
 #'   InstanceId = "string",
 #'   CreatorRequestId = "string",
@@ -1107,7 +1107,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$update_instance_custom_health_status(
+#' svc$update_instance_custom_health_status(
 #'   ServiceId = "string",
 #'   InstanceId = "string",
 #'   Status = "HEALTHY"|"UNHEALTHY"
@@ -1165,7 +1165,7 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #'
 #' @section Request syntax:
 #' ```
-#' servicediscovery$update_service(
+#' svc$update_service(
 #'   Id = "string",
 #'   Service = list(
 #'     Description = "string",

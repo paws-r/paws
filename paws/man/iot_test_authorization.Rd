@@ -31,7 +31,7 @@ authorization behavior of devices that connect to the AWS IoT device
 gateway.
 }
 \section{Request syntax}{
-\preformatted{iot$test_authorization(
+\preformatted{svc$test_authorization(
   principal = "string",
   cognitoIdentityPoolId = "string",
   authInfos = list(

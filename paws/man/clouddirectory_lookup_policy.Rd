@@ -30,7 +30,7 @@ are ignored. For more information, see
 \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies}{Policies}.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$lookup_policy(
+\preformatted{svc$lookup_policy(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

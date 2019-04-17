@@ -73,7 +73,7 @@ For more information about AWS DMS tasks, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide}.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$modify_replication_task(
+\preformatted{svc$modify_replication_task(
   ReplicationTaskArn = "string",
   ReplicationTaskIdentifier = "string",
   MigrationType = "full-load"|"cdc"|"full-load-and-cdc",

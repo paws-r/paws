@@ -14,7 +14,7 @@ delete.}
 Deletes a network profile.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$delete_network_profile(
+\preformatted{svc$delete_network_profile(
   arn = "string"
 )
 }

@@ -20,7 +20,7 @@ will be billed for Setup, Teardown, and any tests that were in progress
 or already completed.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$stop_run(
+\preformatted{svc$stop_run(
   arn = "string"
 )
 }
@@ -28,7 +28,7 @@ or already completed.
 
 \examples{
 # The following example stops a specific test run.
-\donttest{devicefarm$stop_run(
+\donttest{svc$stop_run(
   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 )}
 

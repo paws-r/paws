@@ -34,7 +34,7 @@ tag value that you specify replaces the previous value for that tag.
 You can associate as many as 50 tags with a resource.
 }
 \section{Request syntax}{
-\preformatted{cloudwatch$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceARN = "string",
   Tags = list(
     list(

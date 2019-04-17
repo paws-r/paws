@@ -13,7 +13,7 @@ appstream_expire_session(SessionId)
 Immediately stops the specified streaming session.
 }
 \section{Request syntax}{
-\preformatted{appstream$expire_session(
+\preformatted{svc$expire_session(
   SessionId = "string"
 )
 }

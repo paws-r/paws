@@ -43,7 +43,7 @@ Example: \code{my-option-group}}
 Copies the specified option group.
 }
 \section{Request syntax}{
-\preformatted{rds$copy_option_group(
+\preformatted{svc$copy_option_group(
   SourceOptionGroupIdentifier = "string",
   TargetOptionGroupIdentifier = "string",
   TargetOptionGroupDescription = "string",

@@ -9,11 +9,10 @@ NULL
 #' into machine-readable text. This is the API reference documentation for
 #' Amazon Textract.
 #'
-#' @section Example:
-#' ```
-#' textract <- paws::textract()
-#' textract$operation()
-#' ```
+#' @examples
+#' \donttest{svc$analyze_document(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

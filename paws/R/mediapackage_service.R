@@ -7,11 +7,10 @@ NULL
 #' @description
 #' AWS Elemental MediaPackage
 #'
-#' @section Example:
-#' ```
-#' mediapackage <- paws::mediapackage()
-#' mediapackage$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_channel(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

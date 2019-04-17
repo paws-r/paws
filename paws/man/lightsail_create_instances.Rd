@@ -60,7 +60,7 @@ The \code{create instances} operation supports tag-based access control via
 request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$create_instances(
+\preformatted{svc$create_instances(
   instanceNames = list(
     "string"
   ),

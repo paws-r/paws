@@ -16,7 +16,7 @@ Adds \href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags}
 to a function.
 }
 \section{Request syntax}{
-\preformatted{lambda$tag_resource(
+\preformatted{svc$tag_resource(
   Resource = "string",
   Tags = list(
     "string"

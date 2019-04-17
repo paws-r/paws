@@ -14,7 +14,7 @@ DDoS Response team (DRT) to access your AWS account while assisting with
 attack mitigation.
 }
 \section{Request syntax}{
-\preformatted{shield$describe_drt_access()
+\preformatted{svc$describe_drt_access()
 }
 }
 

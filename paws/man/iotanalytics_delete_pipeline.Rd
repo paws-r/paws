@@ -13,7 +13,7 @@ iotanalytics_delete_pipeline(pipelineName)
 Deletes the specified pipeline.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$delete_pipeline(
+\preformatted{svc$delete_pipeline(
   pipelineName = "string"
 )
 }

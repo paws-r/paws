@@ -15,7 +15,7 @@ appstream_delete_user(UserName, AuthenticationType)
 Deletes a user from the user pool.
 }
 \section{Request syntax}{
-\preformatted{appstream$delete_user(
+\preformatted{svc$delete_user(
   UserName = "string",
   AuthenticationType = "API"|"SAML"|"USERPOOL"
 )

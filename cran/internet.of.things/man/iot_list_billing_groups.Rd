@@ -17,7 +17,7 @@ iot_list_billing_groups(nextToken, maxResults, namePrefixFilter)
 Lists the billing groups you have created.
 }
 \section{Request syntax}{
-\preformatted{iot$list_billing_groups(
+\preformatted{svc$list_billing_groups(
   nextToken = "string",
   maxResults = 123,
   namePrefixFilter = "string"

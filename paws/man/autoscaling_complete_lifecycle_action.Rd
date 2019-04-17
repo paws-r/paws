@@ -51,7 +51,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$complete_lifecycle_action(
+\preformatted{svc$complete_lifecycle_action(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleActionToken = "string",
@@ -64,7 +64,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example notifies Auto Scaling that the specified lifecycle action
 # is complete so that it can finish launching or terminating the instance.
-\donttest{autoscaling$complete_lifecycle_action(
+\donttest{svc$complete_lifecycle_action(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionResult = "CONTINUE",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",

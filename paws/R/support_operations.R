@@ -29,7 +29,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' support$add_attachments_to_set(
+#' svc$add_attachments_to_set(
 #'   attachmentSetId = "string",
 #'   attachments = list(
 #'     list(
@@ -87,7 +87,7 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #'
 #' @section Request syntax:
 #' ```
-#' support$add_communication_to_case(
+#' svc$add_communication_to_case(
 #'   caseId = "string",
 #'   communicationBody = "string",
 #'   ccEmailAddresses = list(
@@ -201,7 +201,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'
 #' @section Request syntax:
 #' ```
-#' support$create_case(
+#' svc$create_case(
 #'   subject = "string",
 #'   serviceCode = "string",
 #'   severityCode = "string",
@@ -251,7 +251,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_attachment(
+#' svc$describe_attachment(
 #'   attachmentId = "string"
 #' )
 #' ```
@@ -320,7 +320,7 @@ support_describe_attachment <- function(attachmentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_cases(
+#' svc$describe_cases(
 #'   caseIdList = list(
 #'     "string"
 #'   ),
@@ -387,7 +387,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_communications(
+#' svc$describe_communications(
 #'   caseId = "string",
 #'   beforeTime = "string",
 #'   afterTime = "string",
@@ -444,7 +444,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_services(
+#' svc$describe_services(
 #'   serviceCodeList = list(
 #'     "string"
 #'   ),
@@ -488,7 +488,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_severity_levels(
+#' svc$describe_severity_levels(
 #'   language = "string"
 #' )
 #' ```
@@ -533,7 +533,7 @@ support_describe_severity_levels <- function(language = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_trusted_advisor_check_refresh_statuses(
+#' svc$describe_trusted_advisor_check_refresh_statuses(
 #'   checkIds = list(
 #'     "string"
 #'   )
@@ -595,7 +595,7 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_trusted_advisor_check_result(
+#' svc$describe_trusted_advisor_check_result(
 #'   checkId = "string",
 #'   language = "string"
 #' )
@@ -636,7 +636,7 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_trusted_advisor_check_summaries(
+#' svc$describe_trusted_advisor_check_summaries(
 #'   checkIds = list(
 #'     "string"
 #'   )
@@ -681,7 +681,7 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$describe_trusted_advisor_checks(
+#' svc$describe_trusted_advisor_checks(
 #'   language = "string"
 #' )
 #' ```
@@ -736,7 +736,7 @@ support_describe_trusted_advisor_checks <- function(language) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$refresh_trusted_advisor_check(
+#' svc$refresh_trusted_advisor_check(
 #'   checkId = "string"
 #' )
 #' ```
@@ -775,7 +775,7 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #'
 #' @section Request syntax:
 #' ```
-#' support$resolve_case(
+#' svc$resolve_case(
 #'   caseId = "string"
 #' )
 #' ```

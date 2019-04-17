@@ -17,7 +17,7 @@ glue_create_script(DagNodes, DagEdges, Language)
 Transforms a directed acyclic graph (DAG) into code.
 }
 \section{Request syntax}{
-\preformatted{glue$create_script(
+\preformatted{svc$create_script(
   DagNodes = list(
     list(
       Id = "string",

@@ -26,7 +26,7 @@ results, use null.}
 Lists all principal ARNs associated with the specified portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_principals_for_portfolio(
+\preformatted{svc$list_principals_for_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PageSize = 123,

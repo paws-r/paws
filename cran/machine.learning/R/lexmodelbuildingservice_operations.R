@@ -34,7 +34,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$create_bot_version(
+#' svc$create_bot_version(
 #'   name = "string",
 #'   checksum = "string"
 #' )
@@ -92,7 +92,7 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$create_intent_version(
+#' svc$create_intent_version(
 #'   name = "string",
 #'   checksum = "string"
 #' )
@@ -150,7 +150,7 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$create_slot_type_version(
+#' svc$create_slot_type_version(
 #'   name = "string",
 #'   checksum = "string"
 #' )
@@ -197,7 +197,7 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_bot(
+#' svc$delete_bot(
 #'   name = "string"
 #' )
 #' ```
@@ -241,7 +241,7 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_bot_alias(
+#' svc$delete_bot_alias(
 #'   name = "string",
 #'   botName = "string"
 #' )
@@ -286,7 +286,7 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_bot_channel_association(
+#' svc$delete_bot_channel_association(
 #'   name = "string",
 #'   botName = "string",
 #'   botAlias = "string"
@@ -330,7 +330,7 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_bot_version(
+#' svc$delete_bot_version(
 #'   name = "string",
 #'   version = "string"
 #' )
@@ -381,7 +381,7 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_intent(
+#' svc$delete_intent(
 #'   name = "string"
 #' )
 #' ```
@@ -423,7 +423,7 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_intent_version(
+#' svc$delete_intent_version(
 #'   name = "string",
 #'   version = "string"
 #' )
@@ -474,7 +474,7 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_slot_type(
+#' svc$delete_slot_type(
 #'   name = "string"
 #' )
 #' ```
@@ -516,7 +516,7 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_slot_type_version(
+#' svc$delete_slot_type_version(
 #'   name = "string",
 #'   version = "string"
 #' )
@@ -569,7 +569,7 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$delete_utterances(
+#' svc$delete_utterances(
 #'   botName = "string",
 #'   userId = "string"
 #' )
@@ -609,7 +609,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot(
+#' svc$get_bot(
 #'   name = "string",
 #'   versionOrAlias = "string"
 #' )
@@ -617,7 +617,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'
 #' @examples
 #' # This example shows how to get configuration information for a bot.
-#' \donttest{lexmodelbuildingservice$get_bot(
+#' \donttest{svc$get_bot(
 #'   name = "DocOrderPizza",
 #'   versionOrAlias = "$LATEST"
 #' )}
@@ -656,7 +656,7 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot_alias(
+#' svc$get_bot_alias(
 #'   name = "string",
 #'   botName = "string"
 #' )
@@ -704,7 +704,7 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot_aliases(
+#' svc$get_bot_aliases(
 #'   botName = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
@@ -752,7 +752,7 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot_channel_association(
+#' svc$get_bot_channel_association(
 #'   name = "string",
 #'   botName = "string",
 #'   botAlias = "string"
@@ -806,7 +806,7 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot_channel_associations(
+#' svc$get_bot_channel_associations(
 #'   botName = "string",
 #'   botAlias = "string",
 #'   nextToken = "string",
@@ -862,7 +862,7 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bot_versions(
+#' svc$get_bot_versions(
 #'   name = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -918,7 +918,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_bots(
+#' svc$get_bots(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   nameContains = "string"
@@ -927,7 +927,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #'
 #' @examples
 #' # This example shows how to get a list of all of the bots in your account.
-#' \donttest{lexmodelbuildingservice$get_bots(
+#' \donttest{svc$get_bots(
 #'   maxResults = 5L,
 #'   nextToken = ""
 #' )}
@@ -968,7 +968,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_builtin_intent(
+#' svc$get_builtin_intent(
 #'   signature = "string"
 #' )
 #' ```
@@ -1019,7 +1019,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_builtin_intents(
+#' svc$get_builtin_intents(
 #'   locale = "en-US"|"en-GB"|"de-DE",
 #'   signatureContains = "string",
 #'   nextToken = "string",
@@ -1074,7 +1074,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_builtin_slot_types(
+#' svc$get_builtin_slot_types(
 #'   locale = "en-US"|"en-GB"|"de-DE",
 #'   signatureContains = "string",
 #'   nextToken = "string",
@@ -1116,7 +1116,7 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_export(
+#' svc$get_export(
 #'   name = "string",
 #'   version = "string",
 #'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
@@ -1156,7 +1156,7 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_import(
+#' svc$get_import(
 #'   importId = "string"
 #' )
 #' ```
@@ -1196,7 +1196,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_intent(
+#' svc$get_intent(
 #'   name = "string",
 #'   version = "string"
 #' )
@@ -1204,7 +1204,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #'
 #' @examples
 #' # This example shows how to get information about an intent.
-#' \donttest{lexmodelbuildingservice$get_intent(
+#' \donttest{svc$get_intent(
 #'   version = "$LATEST",
 #'   name = "DocOrderPizza"
 #' )}
@@ -1257,7 +1257,7 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_intent_versions(
+#' svc$get_intent_versions(
 #'   name = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1312,7 +1312,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_intents(
+#' svc$get_intents(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   nameContains = "string"
@@ -1322,7 +1322,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @examples
 #' # This example shows how to get a list of all of the intents in your
 #' # account.
-#' \donttest{lexmodelbuildingservice$get_intents(
+#' \donttest{svc$get_intents(
 #'   maxResults = 10L,
 #'   nextToken = ""
 #' )}
@@ -1362,7 +1362,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_slot_type(
+#' svc$get_slot_type(
 #'   name = "string",
 #'   version = "string"
 #' )
@@ -1370,7 +1370,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #'
 #' @examples
 #' # This example shows how to get information about a slot type.
-#' \donttest{lexmodelbuildingservice$get_slot_type(
+#' \donttest{svc$get_slot_type(
 #'   version = "$LATEST",
 #'   name = "DocPizzaCrustType"
 #' )}
@@ -1424,7 +1424,7 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_slot_type_versions(
+#' svc$get_slot_type_versions(
 #'   name = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1480,7 +1480,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_slot_types(
+#' svc$get_slot_types(
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   nameContains = "string"
@@ -1490,7 +1490,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @examples
 #' # This example shows how to get a list of all of the slot types in your
 #' # account.
-#' \donttest{lexmodelbuildingservice$get_slot_types(
+#' \donttest{svc$get_slot_types(
 #'   maxResults = 10L,
 #'   nextToken = ""
 #' )}
@@ -1552,7 +1552,7 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$get_utterances_view(
+#' svc$get_utterances_view(
 #'   botName = "string",
 #'   botVersions = list(
 #'     "string"
@@ -1705,7 +1705,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$put_bot(
+#' svc$put_bot(
 #'   name = "string",
 #'   description = "string",
 #'   intents = list(
@@ -1747,7 +1747,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'
 #' @examples
 #' # This example shows how to create a bot for ordering pizzas.
-#' \donttest{lexmodelbuildingservice$put_bot(
+#' \donttest{svc$put_bot(
 #'   name = "DocOrderPizzaBot",
 #'   abortStatement = list(
 #'     messages = list(
@@ -1837,7 +1837,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$put_bot_alias(
+#' svc$put_bot_alias(
 #'   name = "string",
 #'   description = "string",
 #'   botVersion = "string",
@@ -2024,7 +2024,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$put_intent(
+#' svc$put_intent(
 #'   name = "string",
 #'   description = "string",
 #'   slots = list(
@@ -2128,7 +2128,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'
 #' @examples
 #' # This example shows how to create an intent for ordering pizzas.
-#' \donttest{lexmodelbuildingservice$put_intent(
+#' \donttest{svc$put_intent(
 #'   name = "DocOrderPizza",
 #'   conclusionStatement = list(
 #'     messages = list(
@@ -2348,7 +2348,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$put_slot_type(
+#' svc$put_slot_type(
 #'   name = "string",
 #'   description = "string",
 #'   enumerationValues = list(
@@ -2368,7 +2368,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @examples
 #' # This example shows how to create a slot type that describes pizza
 #' # sauces.
-#' \donttest{lexmodelbuildingservice$put_slot_type(
+#' \donttest{svc$put_slot_type(
 #'   name = "PizzaSauceType",
 #'   description = "Available pizza sauces",
 #'   enumerationValues = list(
@@ -2431,7 +2431,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #'
 #' @section Request syntax:
 #' ```
-#' lexmodelbuildingservice$start_import(
+#' svc$start_import(
 #'   payload = raw,
 #'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
 #'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"

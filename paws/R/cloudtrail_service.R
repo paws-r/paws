@@ -29,11 +29,10 @@ NULL
 #' for information about the data that is included with each AWS API call
 #' listed in the log files.
 #'
-#' @section Example:
-#' ```
-#' cloudtrail <- paws::cloudtrail()
-#' cloudtrail$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

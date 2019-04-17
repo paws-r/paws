@@ -23,7 +23,7 @@ Retrieves the fleet ID that a specified alias is currently pointing to.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$resolve_alias(
+\preformatted{svc$resolve_alias(
   AliasId = "string"
 )
 }

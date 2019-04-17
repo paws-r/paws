@@ -19,7 +19,7 @@ Sets a metrics configuration (specified by the metrics configuration ID)
 for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_metrics_configuration(
+\preformatted{svc$put_bucket_metrics_configuration(
   Bucket = "string",
   Id = "string",
   MetricsConfiguration = list(

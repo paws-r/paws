@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$copy_backup_to_region(
+#' svc$copy_backup_to_region(
 #'   DestinationRegion = "string",
 #'   BackupId = "string"
 #' )
@@ -62,7 +62,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$create_cluster(
+#' svc$create_cluster(
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
@@ -110,7 +110,7 @@ cloudhsmv2_create_cluster <- function(SubnetIds, HsmType, SourceBackupId = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$create_hsm(
+#' svc$create_hsm(
 #'   ClusterId = "string",
 #'   AvailabilityZone = "string",
 #'   IpAddress = "string"
@@ -150,7 +150,7 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$delete_backup(
+#' svc$delete_backup(
 #'   BackupId = "string"
 #' )
 #' ```
@@ -189,7 +189,7 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$delete_cluster(
+#' svc$delete_cluster(
 #'   ClusterId = "string"
 #' )
 #' ```
@@ -233,7 +233,7 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$delete_hsm(
+#' svc$delete_hsm(
 #'   ClusterId = "string",
 #'   HsmId = "string",
 #'   EniId = "string",
@@ -298,7 +298,7 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$describe_backups(
+#' svc$describe_backups(
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   Filters = list(
@@ -362,7 +362,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$describe_clusters(
+#' svc$describe_clusters(
 #'   Filters = list(
 #'     list(
 #'       "string"
@@ -419,7 +419,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$initialize_cluster(
+#' svc$initialize_cluster(
 #'   ClusterId = "string",
 #'   SignedCert = "string",
 #'   TrustAnchor = "string"
@@ -469,7 +469,7 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$list_tags(
+#' svc$list_tags(
 #'   ResourceId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -510,7 +510,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$restore_backup(
+#' svc$restore_backup(
 #'   BackupId = "string"
 #' )
 #' ```
@@ -549,7 +549,7 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$tag_resource(
+#' svc$tag_resource(
 #'   ResourceId = "string",
 #'   TagList = list(
 #'     list(
@@ -595,7 +595,7 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudhsmv2$untag_resource(
+#' svc$untag_resource(
 #'   ResourceId = "string",
 #'   TagKeyList = list(
 #'     "string"

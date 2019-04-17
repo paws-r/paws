@@ -23,7 +23,7 @@ default subnet per Availability Zone. For more information, see
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_default_subnet(
+\preformatted{svc$create_default_subnet(
   AvailabilityZone = "string",
   DryRun = TRUE|FALSE
 )

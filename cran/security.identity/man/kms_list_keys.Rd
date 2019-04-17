@@ -24,7 +24,7 @@ Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and region.
 }
 \section{Request syntax}{
-\preformatted{kms$list_keys(
+\preformatted{svc$list_keys(
   Limit = 123,
   Marker = "string"
 )
@@ -33,7 +33,7 @@ account and region.
 
 \examples{
 # The following example lists CMKs.
-\donttest{kms$list_keys()}
+\donttest{svc$list_keys()}
 
 }
 \keyword{internal}

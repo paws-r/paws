@@ -16,7 +16,7 @@ and the maximum value is 500.}
 Lists the RestApis resources for your collection.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_rest_apis(
+\preformatted{svc$get_rest_apis(
   position = "string",
   limit = 123
 )

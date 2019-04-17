@@ -28,7 +28,7 @@ mediaconvert_create_job_template(AccelerationSettings, Category,
 Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$create_job_template(
+\preformatted{svc$create_job_template(
   AccelerationSettings = list(
     Mode = "DISABLED"|"ENABLED"
   ),

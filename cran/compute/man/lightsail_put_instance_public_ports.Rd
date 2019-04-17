@@ -22,7 +22,7 @@ control via resource tags applied to the resource identified by
 instanceName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$put_instance_public_ports(
+\preformatted{svc$put_instance_public_ports(
   portInfos = list(
     list(
       fromPort = 123,

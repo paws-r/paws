@@ -23,7 +23,7 @@ Associates the specified attachment with the specified transit gateway
 route table. You can associate only one route table with an attachment.
 }
 \section{Request syntax}{
-\preformatted{ec2$associate_transit_gateway_route_table(
+\preformatted{svc$associate_transit_gateway_route_table(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE

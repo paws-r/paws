@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Assess, monitor, manage, and remediate security issues across your AWS infrastructure, applications, and data.
 #'
-#' @section Example:
-#' ```
-#' guardduty <- paws::guardduty()
-#' guardduty$operation()
-#' ```
+#' @examples
+#' \donttest{svc$accept_invitation(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

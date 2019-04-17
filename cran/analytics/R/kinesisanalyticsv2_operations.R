@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$add_application_cloud_watch_logging_option(
+#' svc$add_application_cloud_watch_logging_option(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   CloudWatchLoggingOption = list(
@@ -74,7 +74,7 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$add_application_input(
+#' svc$add_application_input(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   Input = list(
@@ -165,7 +165,7 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$add_application_input_processing_configuration(
+#' svc$add_application_input_processing_configuration(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   InputId = "string",
@@ -236,7 +236,7 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$add_application_output(
+#' svc$add_application_output(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   Output = list(
@@ -305,7 +305,7 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$add_application_reference_data_source(
+#' svc$add_application_reference_data_source(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   ReferenceDataSource = list(
@@ -386,7 +386,7 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$create_application(
+#' svc$create_application(
 #'   ApplicationName = "string",
 #'   ApplicationDescription = "string",
 #'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6",
@@ -568,7 +568,7 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$create_application_snapshot(
+#' svc$create_application_snapshot(
 #'   ApplicationName = "string",
 #'   SnapshotName = "string"
 #' )
@@ -606,7 +606,7 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application(
+#' svc$delete_application(
 #'   ApplicationName = "string",
 #'   CreateTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -652,7 +652,7 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application_cloud_watch_logging_option(
+#' svc$delete_application_cloud_watch_logging_option(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   CloudWatchLoggingOptionId = "string"
@@ -696,7 +696,7 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application_input_processing_configuration(
+#' svc$delete_application_input_processing_configuration(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   InputId = "string"
@@ -747,7 +747,7 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application_output(
+#' svc$delete_application_output(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   OutputId = "string"
@@ -799,7 +799,7 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application_reference_data_source(
+#' svc$delete_application_reference_data_source(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   ReferenceId = "string"
@@ -840,7 +840,7 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$delete_application_snapshot(
+#' svc$delete_application_snapshot(
 #'   ApplicationName = "string",
 #'   SnapshotName = "string",
 #'   SnapshotCreationTimestamp = as.POSIXct(
@@ -887,7 +887,7 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$describe_application(
+#' svc$describe_application(
 #'   ApplicationName = "string",
 #'   IncludeAdditionalDetails = TRUE|FALSE
 #' )
@@ -926,7 +926,7 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$describe_application_snapshot(
+#' svc$describe_application_snapshot(
 #'   ApplicationName = "string",
 #'   SnapshotName = "string"
 #' )
@@ -984,7 +984,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$discover_input_schema(
+#' svc$discover_input_schema(
 #'   ResourceARN = "string",
 #'   ServiceExecutionRole = "string",
 #'   InputStartingPositionConfiguration = list(
@@ -1038,7 +1038,7 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$list_application_snapshots(
+#' svc$list_application_snapshots(
 #'   ApplicationName = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
@@ -1085,7 +1085,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$list_applications(
+#' svc$list_applications(
 #'   Limit = 123,
 #'   NextToken = "string"
 #' )
@@ -1128,7 +1128,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$start_application(
+#' svc$start_application(
 #'   ApplicationName = "string",
 #'   RunConfiguration = list(
 #'     SqlRunConfigurations = list(
@@ -1179,7 +1179,7 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$stop_application(
+#' svc$stop_application(
 #'   ApplicationName = "string"
 #' )
 #' ```
@@ -1234,7 +1234,7 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName) {
 #'
 #' @section Request syntax:
 #' ```
-#' kinesisanalyticsv2$update_application(
+#' svc$update_application(
 #'   ApplicationName = "string",
 #'   CurrentApplicationVersionId = 123,
 #'   ApplicationConfigurationUpdate = list(

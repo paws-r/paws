@@ -15,7 +15,7 @@ Returns current applied schema version ARN, including the minor version
 in use.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$get_applied_schema_version(
+\preformatted{svc$get_applied_schema_version(
   SchemaArn = "string"
 )
 }

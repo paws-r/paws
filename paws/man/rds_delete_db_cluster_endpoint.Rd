@@ -19,7 +19,7 @@ cluster.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_db_cluster_endpoint(
+\preformatted{svc$delete_db_cluster_endpoint(
   DBClusterEndpointIdentifier = "string"
 )
 }

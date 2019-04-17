@@ -30,7 +30,7 @@ Describes one or more association proposals for connection between a
 virtual private gateway and a Direct Connect gateway.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_direct_connect_gateway_association_proposals(
+\preformatted{svc$describe_direct_connect_gateway_association_proposals(
   directConnectGatewayId = "string",
   proposalId = "string",
   associatedGatewayId = "string",

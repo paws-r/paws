@@ -13,7 +13,7 @@ directconnect_describe_lags(lagId)
 Describes all your link aggregation groups (LAG) or the specified LAG.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_lags(
+\preformatted{svc$describe_lags(
   lagId = "string"
 )
 }

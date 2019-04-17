@@ -15,7 +15,7 @@ This operation disables automatic renewal of domain registration for the
 specified domain.
 }
 \section{Request syntax}{
-\preformatted{route53domains$disable_domain_auto_renew(
+\preformatted{svc$disable_domain_auto_renew(
   DomainName = "string"
 )
 }

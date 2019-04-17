@@ -15,7 +15,7 @@ pinpoint_update_gcm_channel(ApplicationId, GCMChannelRequest)
 Use to update the GCM channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$update_gcm_channel(
+\preformatted{svc$update_gcm_channel(
   ApplicationId = "string",
   GCMChannelRequest = list(
     ApiKey = "string",

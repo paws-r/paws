@@ -23,7 +23,7 @@ the information required to join streaming instances to an Active
 Directory domain.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_directory_config(
+\preformatted{svc$create_directory_config(
   DirectoryName = "string",
   OrganizationalUnitDistinguishedNames = list(
     "string"

@@ -20,7 +20,7 @@ Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.
 }
 \section{Request syntax}{
-\preformatted{ec2$enable_volume_io(
+\preformatted{svc$enable_volume_io(
   DryRun = TRUE|FALSE,
   VolumeId = "string"
 )
@@ -29,7 +29,7 @@ because the data on the volume was potentially inconsistent.
 
 \examples{
 # This example enables I/O on volume ``vol-1234567890abcdef0``.
-\donttest{ec2$enable_volume_io(
+\donttest{svc$enable_volume_io(
   VolumeId = "vol-1234567890abcdef0"
 )}
 

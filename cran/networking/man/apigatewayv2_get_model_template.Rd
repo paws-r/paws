@@ -15,7 +15,7 @@ apigatewayv2_get_model_template(ApiId, ModelId)
 Gets a model template.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_model_template(
+\preformatted{svc$get_model_template(
   ApiId = "string",
   ModelId = "string"
 )

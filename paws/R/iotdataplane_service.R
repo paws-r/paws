@@ -15,11 +15,10 @@ NULL
 #' persistent representation of your things and their state in the AWS
 #' cloud.
 #'
-#' @section Example:
-#' ```
-#' iotdataplane <- paws::iotdataplane()
-#' iotdataplane$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_thing_shadow(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

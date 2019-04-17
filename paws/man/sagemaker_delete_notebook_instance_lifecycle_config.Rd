@@ -14,7 +14,7 @@ sagemaker_delete_notebook_instance_lifecycle_config(
 Deletes a notebook instance lifecycle configuration.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$delete_notebook_instance_lifecycle_config(
+\preformatted{svc$delete_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName = "string"
 )
 }

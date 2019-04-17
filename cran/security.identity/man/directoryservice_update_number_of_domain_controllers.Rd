@@ -22,7 +22,7 @@ once the requested number of domain controllers is updated. During this
 time, you cannot make another update request.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$update_number_of_domain_controllers(
+\preformatted{svc$update_number_of_domain_controllers(
   DirectoryId = "string",
   DesiredNumber = 123
 )

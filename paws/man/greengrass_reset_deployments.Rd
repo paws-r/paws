@@ -17,7 +17,7 @@ greengrass_reset_deployments(AmznClientToken, Force, GroupId)
 Resets a group's deployments.
 }
 \section{Request syntax}{
-\preformatted{greengrass$reset_deployments(
+\preformatted{svc$reset_deployments(
   AmznClientToken = "string",
   Force = TRUE|FALSE,
   GroupId = "string"

@@ -35,7 +35,7 @@ You can also specify a maximum number of return results with the \emph{Limit}
 parameter.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_snapshots(
+\preformatted{svc$describe_snapshots(
   DirectoryId = "string",
   SnapshotIds = list(
     "string"

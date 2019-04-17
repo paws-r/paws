@@ -23,7 +23,7 @@ value that you can use to get another batch of \code{RegexMatchSet} objects.}
 Returns an array of RegexMatchSetSummary objects.
 }
 \section{Request syntax}{
-\preformatted{waf$list_regex_match_sets(
+\preformatted{svc$list_regex_match_sets(
   NextMarker = "string",
   Limit = 123
 )

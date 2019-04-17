@@ -19,7 +19,7 @@ For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.co
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{
-\preformatted{athena$delete_named_query(
+\preformatted{svc$delete_named_query(
   NamedQueryId = "string"
 )
 }

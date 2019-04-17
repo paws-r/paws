@@ -22,7 +22,7 @@ Associates an AWS Identity and Access Management (IAM) role with a DB
 instance.
 }
 \section{Request syntax}{
-\preformatted{rds$add_role_to_db_instance(
+\preformatted{svc$add_role_to_db_instance(
   DBInstanceIdentifier = "string",
   RoleArn = "string",
   FeatureName = "string"

@@ -15,7 +15,7 @@ written to. Only enabled directories can be disabled. Disabled
 directories may be reenabled.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$disable_directory(
+\preformatted{svc$disable_directory(
   DirectoryArn = "string"
 )
 }

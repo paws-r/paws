@@ -210,7 +210,7 @@ by \code{ReplicationSourceIdentifier} is encrypted, you must also specify the
 \code{PreSignedUrl} parameter.
 }
 \section{Request syntax}{
-\preformatted{neptune$create_db_cluster(
+\preformatted{svc$create_db_cluster(
   AvailabilityZones = list(
     "string"
   ),

@@ -14,7 +14,7 @@ ARN contains the certificate ID.)}
 Deletes a registered CA certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_ca_certificate(
+\preformatted{svc$delete_ca_certificate(
   certificateId = "string"
 )
 }

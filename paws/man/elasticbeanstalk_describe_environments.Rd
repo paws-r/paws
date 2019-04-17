@@ -47,7 +47,7 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 Returns descriptions for existing environments.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$describe_environments(
+\preformatted{svc$describe_environments(
   ApplicationName = "string",
   VersionLabel = "string",
   EnvironmentIds = list(
@@ -69,7 +69,7 @@ Returns descriptions for existing environments.
 \examples{
 # The following operation retrieves information about an environment named
 # my-env:
-\donttest{elasticbeanstalk$describe_environments(
+\donttest{svc$describe_environments(
   EnvironmentNames = list(
     "my-env"
   )

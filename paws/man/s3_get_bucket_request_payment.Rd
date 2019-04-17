@@ -13,7 +13,7 @@ s3_get_bucket_request_payment(Bucket)
 Returns the request payment configuration of a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_request_payment(
+\preformatted{svc$get_bucket_request_payment(
   Bucket = "string"
 )
 }
@@ -21,7 +21,7 @@ Returns the request payment configuration of a bucket.
 
 \examples{
 # The following example retrieves bucket versioning configuration.
-\donttest{s3$get_bucket_request_payment(
+\donttest{svc$get_bucket_request_payment(
   Bucket = "examplebucket"
 )}
 

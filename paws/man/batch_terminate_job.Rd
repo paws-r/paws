@@ -20,7 +20,7 @@ Terminates a job in a job queue. Jobs that are in the \code{STARTING} or
 cancelled.
 }
 \section{Request syntax}{
-\preformatted{batch$terminate_job(
+\preformatted{svc$terminate_job(
   jobId = "string",
   reason = "string"
 )
@@ -29,7 +29,7 @@ cancelled.
 
 \examples{
 # This example terminates a job with the specified job ID.
-\donttest{batch$terminate_job(
+\donttest{svc$terminate_job(
   jobId = "61e743ed-35e4-48da-b2de-5c8333821c84",
   reason = "Terminating job."
 )}

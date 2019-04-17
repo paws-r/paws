@@ -17,7 +17,7 @@ contains any HSMs, use DescribeClusters. To delete an HSM, use
 DeleteHsm.
 }
 \section{Request syntax}{
-\preformatted{cloudhsmv2$delete_cluster(
+\preformatted{svc$delete_cluster(
   ClusterId = "string"
 )
 }

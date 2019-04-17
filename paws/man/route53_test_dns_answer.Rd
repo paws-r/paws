@@ -48,7 +48,7 @@ address of a DNS resolver, an EDNS0 client subnet IP address, and a
 subnet mask.
 }
 \section{Request syntax}{
-\preformatted{route53$test_dns_answer(
+\preformatted{svc$test_dns_answer(
   HostedZoneId = "string",
   RecordName = "string",
   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",

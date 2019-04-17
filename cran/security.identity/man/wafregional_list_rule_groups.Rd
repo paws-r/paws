@@ -23,7 +23,7 @@ can use to get another batch of \code{RuleGroups}.}
 Returns an array of RuleGroup objects.
 }
 \section{Request syntax}{
-\preformatted{wafregional$list_rule_groups(
+\preformatted{svc$list_rule_groups(
   NextMarker = "string",
   Limit = 123
 )

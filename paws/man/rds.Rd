@@ -49,12 +49,6 @@ some related topics from the user guide.
 \item For more information about how to use the Query API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html}{Using the Query API}.
 }
 }
-\section{Example}{
-\preformatted{rds <- paws::rds()
-rds$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -170,3 +164,9 @@ rds$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_role_to_db_cluster(
+  Foo = 123
+)}
+
+}

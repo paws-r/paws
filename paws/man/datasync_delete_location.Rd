@@ -13,7 +13,7 @@ datasync_delete_location(LocationArn)
 Deletes the configuration of a location used by AWS DataSync.
 }
 \section{Request syntax}{
-\preformatted{datasync$delete_location(
+\preformatted{svc$delete_location(
   LocationArn = "string"
 )
 }

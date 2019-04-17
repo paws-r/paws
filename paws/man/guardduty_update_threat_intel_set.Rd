@@ -22,7 +22,7 @@ guardduty_update_threat_intel_set(Activate, DetectorId, Location, Name,
 Updates the ThreatIntelSet specified by ThreatIntelSet ID.
 }
 \section{Request syntax}{
-\preformatted{guardduty$update_threat_intel_set(
+\preformatted{svc$update_threat_intel_set(
   Activate = TRUE|FALSE,
   DetectorId = "string",
   Location = "string",

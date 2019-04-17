@@ -20,7 +20,7 @@ context of the specified object. For example, a task runner can evaluate
 SQL queries stored in Amazon S3.
 }
 \section{Request syntax}{
-\preformatted{datapipeline$evaluate_expression(
+\preformatted{svc$evaluate_expression(
   pipelineId = "string",
   objectId = "string",
   expression = "string"

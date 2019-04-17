@@ -36,7 +36,7 @@ see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging 
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$list_role_tags(
+\preformatted{svc$list_role_tags(
   RoleName = "string",
   Marker = "string",
   MaxItems = 123
@@ -46,7 +46,7 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following example shows how to list the tags attached to a role.
-\donttest{iam$list_role_tags(
+\donttest{svc$list_role_tags(
   RoleName = "taggedrole1"
 )}
 

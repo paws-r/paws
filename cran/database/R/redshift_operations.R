@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$accept_reserved_node_exchange(
+#' svc$accept_reserved_node_exchange(
 #'   ReservedNodeId = "string",
 #'   TargetReservedNodeOfferingId = "string"
 #' )
@@ -90,7 +90,7 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$authorize_cluster_security_group_ingress(
+#' svc$authorize_cluster_security_group_ingress(
 #'   ClusterSecurityGroupName = "string",
 #'   CIDRIP = "string",
 #'   EC2SecurityGroupName = "string",
@@ -144,7 +144,7 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$authorize_snapshot_access(
+#' svc$authorize_snapshot_access(
 #'   SnapshotIdentifier = "string",
 #'   SnapshotClusterIdentifier = "string",
 #'   AccountWithRestoreAccess = "string"
@@ -181,7 +181,7 @@ redshift_authorize_snapshot_access <- function(SnapshotIdentifier, SnapshotClust
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$batch_delete_cluster_snapshots(
+#' svc$batch_delete_cluster_snapshots(
 #'   Identifiers = list(
 #'     list(
 #'       SnapshotIdentifier = "string",
@@ -233,7 +233,7 @@ redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$batch_modify_cluster_snapshots(
+#' svc$batch_modify_cluster_snapshots(
 #'   SnapshotIdentifierList = list(
 #'     "string"
 #'   ),
@@ -273,7 +273,7 @@ redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, Manu
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$cancel_resize(
+#' svc$cancel_resize(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -357,7 +357,7 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$copy_cluster_snapshot(
+#' svc$copy_cluster_snapshot(
 #'   SourceSnapshotIdentifier = "string",
 #'   SourceSnapshotClusterIdentifier = "string",
 #'   TargetSnapshotIdentifier = "string",
@@ -638,7 +638,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_cluster(
+#' svc$create_cluster(
 #'   DBName = "string",
 #'   ClusterIdentifier = "string",
 #'   ClusterType = "string",
@@ -749,7 +749,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_cluster_parameter_group(
+#' svc$create_cluster_parameter_group(
 #'   ParameterGroupName = "string",
 #'   ParameterGroupFamily = "string",
 #'   Description = "string",
@@ -813,7 +813,7 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_cluster_security_group(
+#' svc$create_cluster_security_group(
 #'   ClusterSecurityGroupName = "string",
 #'   Description = "string",
 #'   Tags = list(
@@ -883,7 +883,7 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_cluster_snapshot(
+#' svc$create_cluster_snapshot(
 #'   SnapshotIdentifier = "string",
 #'   ClusterIdentifier = "string",
 #'   ManualSnapshotRetentionPeriod = 123,
@@ -950,7 +950,7 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_cluster_subnet_group(
+#' svc$create_cluster_subnet_group(
 #'   ClusterSubnetGroupName = "string",
 #'   Description = "string",
 #'   SubnetIds = list(
@@ -1060,7 +1060,7 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_event_subscription(
+#' svc$create_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -1127,7 +1127,7 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_hsm_client_certificate(
+#' svc$create_hsm_client_certificate(
 #'   HsmClientCertificateIdentifier = "string",
 #'   Tags = list(
 #'     list(
@@ -1191,7 +1191,7 @@ redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_hsm_configuration(
+#' svc$create_hsm_configuration(
 #'   HsmConfigurationIdentifier = "string",
 #'   Description = "string",
 #'   HsmIpAddress = "string",
@@ -1264,7 +1264,7 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_snapshot_copy_grant(
+#' svc$create_snapshot_copy_grant(
 #'   SnapshotCopyGrantName = "string",
 #'   KmsKeyId = "string",
 #'   Tags = list(
@@ -1315,7 +1315,7 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_snapshot_schedule(
+#' svc$create_snapshot_schedule(
 #'   ScheduleDefinitions = list(
 #'     "string"
 #'   ),
@@ -1376,7 +1376,7 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$create_tags(
+#' svc$create_tags(
 #'   ResourceName = "string",
 #'   Tags = list(
 #'     list(
@@ -1472,7 +1472,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_cluster(
+#' svc$delete_cluster(
 #'   ClusterIdentifier = "string",
 #'   SkipFinalClusterSnapshot = TRUE|FALSE,
 #'   FinalClusterSnapshotIdentifier = "string",
@@ -1518,7 +1518,7 @@ redshift_delete_cluster <- function(ClusterIdentifier, SkipFinalClusterSnapshot 
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_cluster_parameter_group(
+#' svc$delete_cluster_parameter_group(
 #'   ParameterGroupName = "string"
 #' )
 #' ```
@@ -1561,7 +1561,7 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_cluster_security_group(
+#' svc$delete_cluster_security_group(
 #'   ClusterSecurityGroupName = "string"
 #' )
 #' ```
@@ -1615,7 +1615,7 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_cluster_snapshot(
+#' svc$delete_cluster_snapshot(
 #'   SnapshotIdentifier = "string",
 #'   SnapshotClusterIdentifier = "string"
 #' )
@@ -1651,7 +1651,7 @@ redshift_delete_cluster_snapshot <- function(SnapshotIdentifier, SnapshotCluster
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_cluster_subnet_group(
+#' svc$delete_cluster_subnet_group(
 #'   ClusterSubnetGroupName = "string"
 #' )
 #' ```
@@ -1687,7 +1687,7 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_event_subscription(
+#' svc$delete_event_subscription(
 #'   SubscriptionName = "string"
 #' )
 #' ```
@@ -1722,7 +1722,7 @@ redshift_delete_event_subscription <- function(SubscriptionName) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_hsm_client_certificate(
+#' svc$delete_hsm_client_certificate(
 #'   HsmClientCertificateIdentifier = "string"
 #' )
 #' ```
@@ -1757,7 +1757,7 @@ redshift_delete_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_hsm_configuration(
+#' svc$delete_hsm_configuration(
 #'   HsmConfigurationIdentifier = "string"
 #' )
 #' ```
@@ -1792,7 +1792,7 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_snapshot_copy_grant(
+#' svc$delete_snapshot_copy_grant(
 #'   SnapshotCopyGrantName = "string"
 #' )
 #' ```
@@ -1827,7 +1827,7 @@ redshift_delete_snapshot_copy_grant <- function(SnapshotCopyGrantName) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_snapshot_schedule(
+#' svc$delete_snapshot_schedule(
 #'   ScheduleIdentifier = "string"
 #' )
 #' ```
@@ -1865,7 +1865,7 @@ redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$delete_tags(
+#' svc$delete_tags(
 #'   ResourceName = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -1903,7 +1903,7 @@ redshift_delete_tags <- function(ResourceName, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_account_attributes(
+#' svc$describe_account_attributes(
 #'   AttributeNames = list(
 #'     "string"
 #'   )
@@ -1962,7 +1962,7 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_db_revisions(
+#' svc$describe_cluster_db_revisions(
 #'   ClusterIdentifier = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -2052,7 +2052,7 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_parameter_groups(
+#' svc$describe_cluster_parameter_groups(
 #'   ParameterGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -2132,7 +2132,7 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_parameters(
+#' svc$describe_cluster_parameters(
 #'   ParameterGroupName = "string",
 #'   Source = "string",
 #'   MaxRecords = 123,
@@ -2223,7 +2223,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_security_groups(
+#' svc$describe_cluster_security_groups(
 #'   ClusterSecurityGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -2341,7 +2341,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_snapshots(
+#' svc$describe_cluster_snapshots(
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
 #'   SnapshotType = "string",
@@ -2443,7 +2443,7 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_subnet_groups(
+#' svc$describe_cluster_subnet_groups(
 #'   ClusterSubnetGroupName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -2494,7 +2494,7 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_tracks(
+#' svc$describe_cluster_tracks(
 #'   MaintenanceTrackName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -2564,7 +2564,7 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_cluster_versions(
+#' svc$describe_cluster_versions(
 #'   ClusterVersion = "string",
 #'   ClusterParameterGroupFamily = "string",
 #'   MaxRecords = 123,
@@ -2654,7 +2654,7 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_clusters(
+#' svc$describe_clusters(
 #'   ClusterIdentifier = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -2721,7 +2721,7 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_default_cluster_parameters(
+#' svc$describe_default_cluster_parameters(
 #'   ParameterGroupFamily = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -2766,7 +2766,7 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_event_categories(
+#' svc$describe_event_categories(
 #'   SourceType = "string"
 #' )
 #' ```
@@ -2846,7 +2846,7 @@ redshift_describe_event_categories <- function(SourceType = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_event_subscriptions(
+#' svc$describe_event_subscriptions(
 #'   SubscriptionName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -2960,7 +2960,7 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_events(
+#' svc$describe_events(
 #'   SourceIdentifier = "string",
 #'   SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot",
 #'   StartTime = as.POSIXct(
@@ -3050,7 +3050,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_hsm_client_certificates(
+#' svc$describe_hsm_client_certificates(
 #'   HsmClientCertificateIdentifier = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -3138,7 +3138,7 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_hsm_configurations(
+#' svc$describe_hsm_configurations(
 #'   HsmConfigurationIdentifier = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -3185,7 +3185,7 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_logging_status(
+#' svc$describe_logging_status(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -3254,7 +3254,7 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_orderable_cluster_options(
+#' svc$describe_orderable_cluster_options(
 #'   ClusterVersion = "string",
 #'   NodeType = "string",
 #'   MaxRecords = 123,
@@ -3322,7 +3322,7 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_reserved_node_offerings(
+#' svc$describe_reserved_node_offerings(
 #'   ReservedNodeOfferingId = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -3374,7 +3374,7 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_reserved_nodes(
+#' svc$describe_reserved_nodes(
 #'   ReservedNodeId = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -3423,7 +3423,7 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_resize(
+#' svc$describe_resize(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -3496,7 +3496,7 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_snapshot_copy_grants(
+#' svc$describe_snapshot_copy_grants(
 #'   SnapshotCopyGrantName = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string",
@@ -3555,7 +3555,7 @@ redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_snapshot_schedules(
+#' svc$describe_snapshot_schedules(
 #'   ClusterIdentifier = "string",
 #'   ScheduleIdentifier = "string",
 #'   TagKeys = list(
@@ -3651,7 +3651,7 @@ redshift_describe_storage <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_table_restore_status(
+#' svc$describe_table_restore_status(
 #'   ClusterIdentifier = "string",
 #'   TableRestoreRequestId = "string",
 #'   MaxRecords = 123,
@@ -3765,7 +3765,7 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$describe_tags(
+#' svc$describe_tags(
 #'   ResourceName = "string",
 #'   ResourceType = "string",
 #'   MaxRecords = 123,
@@ -3813,7 +3813,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$disable_logging(
+#' svc$disable_logging(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -3859,7 +3859,7 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$disable_snapshot_copy(
+#' svc$disable_snapshot_copy(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -3924,7 +3924,7 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$enable_logging(
+#' svc$enable_logging(
 #'   ClusterIdentifier = "string",
 #'   BucketName = "string",
 #'   S3KeyPrefix = "string"
@@ -3986,7 +3986,7 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$enable_snapshot_copy(
+#' svc$enable_snapshot_copy(
 #'   ClusterIdentifier = "string",
 #'   DestinationRegion = "string",
 #'   RetentionPeriod = 123,
@@ -4128,7 +4128,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$get_cluster_credentials(
+#' svc$get_cluster_credentials(
 #'   DbUser = "string",
 #'   DbName = "string",
 #'   ClusterIdentifier = "string",
@@ -4178,7 +4178,7 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$get_reserved_node_exchange_offerings(
+#' svc$get_reserved_node_exchange_offerings(
 #'   ReservedNodeId = "string",
 #'   MaxRecords = 123,
 #'   Marker = "string"
@@ -4424,7 +4424,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster(
+#' svc$modify_cluster(
 #'   ClusterIdentifier = "string",
 #'   ClusterType = "string",
 #'   NodeType = "string",
@@ -4490,7 +4490,7 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_db_revision(
+#' svc$modify_cluster_db_revision(
 #'   ClusterIdentifier = "string",
 #'   RevisionTarget = "string"
 #' )
@@ -4538,7 +4538,7 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_iam_roles(
+#' svc$modify_cluster_iam_roles(
 #'   ClusterIdentifier = "string",
 #'   AddIamRoles = list(
 #'     "string"
@@ -4591,7 +4591,7 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_maintenance(
+#' svc$modify_cluster_maintenance(
 #'   ClusterIdentifier = "string",
 #'   DeferMaintenance = TRUE|FALSE,
 #'   DeferMaintenanceIdentifier = "string",
@@ -4649,7 +4649,7 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_parameter_group(
+#' svc$modify_cluster_parameter_group(
 #'   ParameterGroupName = "string",
 #'   Parameters = list(
 #'     list(
@@ -4707,7 +4707,7 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_snapshot(
+#' svc$modify_cluster_snapshot(
 #'   SnapshotIdentifier = "string",
 #'   ManualSnapshotRetentionPeriod = 123,
 #'   Force = TRUE|FALSE
@@ -4750,7 +4750,7 @@ redshift_modify_cluster_snapshot <- function(SnapshotIdentifier, ManualSnapshotR
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_snapshot_schedule(
+#' svc$modify_cluster_snapshot_schedule(
 #'   ClusterIdentifier = "string",
 #'   ScheduleIdentifier = "string",
 #'   DisassociateSchedule = TRUE|FALSE
@@ -4794,7 +4794,7 @@ redshift_modify_cluster_snapshot_schedule <- function(ClusterIdentifier, Schedul
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_cluster_subnet_group(
+#' svc$modify_cluster_subnet_group(
 #'   ClusterSubnetGroupName = "string",
 #'   Description = "string",
 #'   SubnetIds = list(
@@ -4864,7 +4864,7 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_event_subscription(
+#' svc$modify_event_subscription(
 #'   SubscriptionName = "string",
 #'   SnsTopicArn = "string",
 #'   SourceType = "string",
@@ -4947,7 +4947,7 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_snapshot_copy_retention_period(
+#' svc$modify_snapshot_copy_retention_period(
 #'   ClusterIdentifier = "string",
 #'   RetentionPeriod = 123,
 #'   Manual = TRUE|FALSE
@@ -4989,7 +4989,7 @@ redshift_modify_snapshot_copy_retention_period <- function(ClusterIdentifier, Re
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$modify_snapshot_schedule(
+#' svc$modify_snapshot_schedule(
 #'   ScheduleIdentifier = "string",
 #'   ScheduleDefinitions = list(
 #'     "string"
@@ -5042,7 +5042,7 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$purchase_reserved_node_offering(
+#' svc$purchase_reserved_node_offering(
 #'   ReservedNodeOfferingId = "string",
 #'   NodeCount = 123
 #' )
@@ -5085,7 +5085,7 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$reboot_cluster(
+#' svc$reboot_cluster(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```
@@ -5136,7 +5136,7 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$reset_cluster_parameter_group(
+#' svc$reset_cluster_parameter_group(
 #'   ParameterGroupName = "string",
 #'   ResetAllParameters = TRUE|FALSE,
 #'   Parameters = list(
@@ -5211,7 +5211,7 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$resize_cluster(
+#' svc$resize_cluster(
 #'   ClusterIdentifier = "string",
 #'   ClusterType = "string",
 #'   NodeType = "string",
@@ -5413,7 +5413,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$restore_from_cluster_snapshot(
+#' svc$restore_from_cluster_snapshot(
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
 #'   SnapshotClusterIdentifier = "string",
@@ -5504,7 +5504,7 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$restore_table_from_cluster_snapshot(
+#' svc$restore_table_from_cluster_snapshot(
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
 #'   SourceDatabaseName = "string",
@@ -5567,7 +5567,7 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$revoke_cluster_security_group_ingress(
+#' svc$revoke_cluster_security_group_ingress(
 #'   ClusterSecurityGroupName = "string",
 #'   CIDRIP = "string",
 #'   EC2SecurityGroupName = "string",
@@ -5620,7 +5620,7 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$revoke_snapshot_access(
+#' svc$revoke_snapshot_access(
 #'   SnapshotIdentifier = "string",
 #'   SnapshotClusterIdentifier = "string",
 #'   AccountWithRestoreAccess = "string"
@@ -5661,7 +5661,7 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterI
 #'
 #' @section Request syntax:
 #' ```
-#' redshift$rotate_encryption_key(
+#' svc$rotate_encryption_key(
 #'   ClusterIdentifier = "string"
 #' )
 #' ```

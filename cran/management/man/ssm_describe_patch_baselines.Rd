@@ -22,7 +22,7 @@ from a previous call.)}
 Lists the patch baselines in your AWS account.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_patch_baselines(
+\preformatted{svc$describe_patch_baselines(
   Filters = list(
     list(
       Key = "string",

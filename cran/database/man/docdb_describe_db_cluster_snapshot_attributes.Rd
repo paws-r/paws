@@ -25,7 +25,7 @@ of values for the \code{restore} attribute, then the manual DB cluster
 snapshot is public and can be copied or restored by all AWS accounts.
 }
 \section{Request syntax}{
-\preformatted{docdb$describe_db_cluster_snapshot_attributes(
+\preformatted{svc$describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier = "string"
 )
 }

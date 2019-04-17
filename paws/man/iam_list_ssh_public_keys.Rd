@@ -47,7 +47,7 @@ Although each user is limited to a small number of keys, you can still
 paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_ssh_public_keys(
+\preformatted{svc$list_ssh_public_keys(
   UserName = "string",
   Marker = "string",
   MaxItems = 123

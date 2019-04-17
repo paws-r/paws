@@ -39,7 +39,7 @@ This operation requires permissions for the \code{lex:CreateSlotTypeVersion}
 action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$create_slot_type_version(
+\preformatted{svc$create_slot_type_version(
   name = "string",
   checksum = "string"
 )

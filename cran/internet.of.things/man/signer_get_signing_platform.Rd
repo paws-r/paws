@@ -13,7 +13,7 @@ signer_get_signing_platform(platformId)
 Returns information on a specific signing platform.
 }
 \section{Request syntax}{
-\preformatted{signer$get_signing_platform(
+\preformatted{svc$get_signing_platform(
   platformId = "string"
 )
 }

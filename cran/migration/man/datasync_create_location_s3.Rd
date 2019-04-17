@@ -32,7 +32,7 @@ For more information, see Configuring Amazon S3 Location Settings in the
 \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
-\preformatted{datasync$create_location_s3(
+\preformatted{svc$create_location_s3(
   Subdirectory = "string",
   S3BucketArn = "string",
   S3Config = list(

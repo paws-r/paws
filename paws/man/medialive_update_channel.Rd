@@ -28,7 +28,7 @@ medialive_update_channel(ChannelId, Destinations, EncoderSettings,
 Updates a channel.
 }
 \section{Request syntax}{
-\preformatted{medialive$update_channel(
+\preformatted{svc$update_channel(
   ChannelId = "string",
   Destinations = list(
     list(

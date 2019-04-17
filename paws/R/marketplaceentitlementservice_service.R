@@ -18,11 +18,10 @@ NULL
 #' 
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
-#' @section Example:
-#' ```
-#' marketplaceentitlementservice <- paws::marketplaceentitlementservice()
-#' marketplaceentitlementservice$operation()
-#' ```
+#' @examples
+#' \donttest{svc$get_entitlements(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -16,7 +16,7 @@ supported push notification services, such as APNS and GCM. For more
 information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
-\preformatted{sns$get_platform_application_attributes(
+\preformatted{svc$get_platform_application_attributes(
   PlatformApplicationArn = "string"
 )
 }

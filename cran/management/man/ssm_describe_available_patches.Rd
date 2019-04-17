@@ -18,7 +18,7 @@ from a previous call.)}
 Lists all patches that could possibly be included in a patch baseline.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_available_patches(
+\preformatted{svc$describe_available_patches(
   Filters = list(
     list(
       Key = "string",

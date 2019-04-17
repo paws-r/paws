@@ -13,7 +13,7 @@ s3_get_bucket_accelerate_configuration(Bucket)
 Returns the accelerate configuration of a bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_bucket_accelerate_configuration(
+\preformatted{svc$get_bucket_accelerate_configuration(
   Bucket = "string"
 )
 }

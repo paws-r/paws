@@ -22,7 +22,7 @@ Lists the active violations for a given Device Defender security
 profile.
 }
 \section{Request syntax}{
-\preformatted{iot$list_active_violations(
+\preformatted{svc$list_active_violations(
   thingName = "string",
   securityProfileName = "string",
   nextToken = "string",

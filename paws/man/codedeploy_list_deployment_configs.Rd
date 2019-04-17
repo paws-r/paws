@@ -15,7 +15,7 @@ the list.}
 Lists the deployment configurations with the IAM user or AWS account.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_deployment_configs(
+\preformatted{svc$list_deployment_configs(
   nextToken = "string"
 )
 }

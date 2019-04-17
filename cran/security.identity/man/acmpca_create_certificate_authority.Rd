@@ -48,7 +48,7 @@ successful, this operation returns the Amazon Resource Name (ARN) of the
 CA.
 }
 \section{Request syntax}{
-\preformatted{acmpca$create_certificate_authority(
+\preformatted{svc$create_certificate_authority(
   CertificateAuthorityConfiguration = list(
     KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",

@@ -23,7 +23,7 @@ certificate that was used to sign the device certificate being
 registered.
 }
 \section{Request syntax}{
-\preformatted{iot$register_certificate(
+\preformatted{svc$register_certificate(
   certificatePem = "string",
   caCertificatePem = "string",
   setAsActive = TRUE|FALSE,

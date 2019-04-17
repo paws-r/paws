@@ -28,7 +28,7 @@ not completed successfully, the domain registrant will be notified by
 email.
 }
 \section{Request syntax}{
-\preformatted{route53domains$update_domain_nameservers(
+\preformatted{svc$update_domain_nameservers(
   DomainName = "string",
   FIAuthKey = "string",
   Nameservers = list(

@@ -22,7 +22,7 @@ Qualification type calls this operation to poll for pending requests,
 and accepts them using the AcceptQualification operation.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_qualification_requests(
+\preformatted{svc$list_qualification_requests(
   QualificationTypeId = "string",
   NextToken = "string",
   MaxResults = 123

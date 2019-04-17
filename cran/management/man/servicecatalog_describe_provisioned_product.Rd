@@ -20,7 +20,7 @@ servicecatalog_describe_provisioned_product(AcceptLanguage, Id)
 Gets information about the specified provisioned product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_provisioned_product(
+\preformatted{svc$describe_provisioned_product(
   AcceptLanguage = "string",
   Id = "string"
 )

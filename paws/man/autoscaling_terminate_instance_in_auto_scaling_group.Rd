@@ -23,7 +23,7 @@ This call simply makes a termination request. The instance is not
 terminated immediately.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$terminate_instance_in_auto_scaling_group(
+\preformatted{svc$terminate_instance_in_auto_scaling_group(
   InstanceId = "string",
   ShouldDecrementDesiredCapacity = TRUE|FALSE
 )
@@ -34,7 +34,7 @@ terminated immediately.
 # This example terminates the specified instance from the specified Auto
 # Scaling group without updating the size of the group. Auto Scaling
 # launches a replacement instance after the specified instance terminates.
-\donttest{autoscaling$terminate_instance_in_auto_scaling_group(
+\donttest{svc$terminate_instance_in_auto_scaling_group(
   InstanceId = "i-93633f9b",
   ShouldDecrementDesiredCapacity = FALSE
 )}

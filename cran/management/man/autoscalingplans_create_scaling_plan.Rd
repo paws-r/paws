@@ -20,7 +20,7 @@ per application source.}
 Creates a scaling plan.
 }
 \section{Request syntax}{
-\preformatted{autoscalingplans$create_scaling_plan(
+\preformatted{svc$create_scaling_plan(
   ScalingPlanName = "string",
   ApplicationSource = list(
     CloudFormationStackARN = "string",

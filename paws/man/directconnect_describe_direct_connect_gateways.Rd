@@ -25,7 +25,7 @@ Lists all your Direct Connect gateways or only the specified Direct
 Connect gateway. Deleted Direct Connect gateways are not returned.
 }
 \section{Request syntax}{
-\preformatted{directconnect$describe_direct_connect_gateways(
+\preformatted{svc$describe_direct_connect_gateways(
   directConnectGatewayId = "string",
   maxResults = 123,
   nextToken = "string"

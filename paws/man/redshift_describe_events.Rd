@@ -84,7 +84,7 @@ providing the name as a parameter. By default, the past hour of events
 are returned.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_events(
+\preformatted{svc$describe_events(
   SourceIdentifier = "string",
   SourceType = "cluster"|"cluster-parameter-group"|"cluster-security-group"|"cluster-snapshot",
   StartTime = as.POSIXct(

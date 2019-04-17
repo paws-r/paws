@@ -20,7 +20,7 @@ Deletes the association between configuration items and one or more
 tags. This API accepts a list of multiple configuration items.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$delete_tags(
+\preformatted{svc$delete_tags(
   configurationIds = list(
     "string"
   ),

@@ -23,7 +23,7 @@ This operation is asynchronous and returns before the WorkSpaces have
 been completely terminated.
 }
 \section{Request syntax}{
-\preformatted{workspaces$terminate_workspaces(
+\preformatted{svc$terminate_workspaces(
   TerminateWorkspaceRequests = list(
     list(
       WorkspaceId = "string"

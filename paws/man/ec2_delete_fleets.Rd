@@ -29,7 +29,7 @@ the instances continue to run until they are interrupted or you
 terminate them manually.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_fleets(
+\preformatted{svc$delete_fleets(
   DryRun = TRUE|FALSE,
   FleetIds = list(
     "string"

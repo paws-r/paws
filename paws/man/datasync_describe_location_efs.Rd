@@ -15,7 +15,7 @@ Returns metadata, such as the path information about an Amazon EFS
 location.
 }
 \section{Request syntax}{
-\preformatted{datasync$describe_location_efs(
+\preformatted{svc$describe_location_efs(
   LocationArn = "string"
 )
 }

@@ -43,7 +43,7 @@ The default value is \code{NONE}.}
 Update a listener.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$update_listener(
+\preformatted{svc$update_listener(
   ListenerArn = "string",
   PortRanges = list(
     list(

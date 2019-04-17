@@ -24,7 +24,7 @@ To delete a queue, specify the queue name.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_game_session_queue(
+\preformatted{svc$delete_game_session_queue(
   Name = "string"
 )
 }

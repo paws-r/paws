@@ -26,7 +26,7 @@ the instances in the activation, and the number of instances activated
 by this registration.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_activations(
+\preformatted{svc$describe_activations(
   Filters = list(
     list(
       FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",

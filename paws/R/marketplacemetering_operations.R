@@ -29,7 +29,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' marketplacemetering$batch_meter_usage(
+#' svc$batch_meter_usage(
 #'   UsageRecords = list(
 #'     list(
 #'       Timestamp = as.POSIXct(
@@ -90,7 +90,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #'
 #' @section Request syntax:
 #' ```
-#' marketplacemetering$meter_usage(
+#' svc$meter_usage(
 #'   ProductCode = "string",
 #'   Timestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -172,7 +172,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #'
 #' @section Request syntax:
 #' ```
-#' marketplacemetering$register_usage(
+#' svc$register_usage(
 #'   ProductCode = "string",
 #'   PublicKeyVersion = 123,
 #'   Nonce = "string"
@@ -216,7 +216,7 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #'
 #' @section Request syntax:
 #' ```
-#' marketplacemetering$resolve_customer(
+#' svc$resolve_customer(
 #'   RegistrationToken = "string"
 #' )
 #' ```

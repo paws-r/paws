@@ -21,7 +21,7 @@ jobs in the list.}
 Lists the user import jobs.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$list_user_import_jobs(
+\preformatted{svc$list_user_import_jobs(
   UserPoolId = "string",
   MaxResults = 123,
   PaginationToken = "string"

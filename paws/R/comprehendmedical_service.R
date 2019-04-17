@@ -8,11 +8,10 @@ NULL
 #' Comprehend Medical extracts structured information from unstructured
 #' clinical text. Use these actions to gain insight in your documents.
 #'
-#' @section Example:
-#' ```
-#' comprehendmedical <- paws::comprehendmedical()
-#' comprehendmedical$operation()
-#' ```
+#' @examples
+#' \donttest{svc$detect_entities(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

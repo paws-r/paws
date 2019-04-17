@@ -39,7 +39,7 @@ Creates a Deployment resource, which makes a specified RestApi callable
 over the internet.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_deployment(
+\preformatted{svc$create_deployment(
   restApiId = "string",
   stageName = "string",
   stageDescription = "string",

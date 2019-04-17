@@ -12,12 +12,6 @@ Amazon Kinesis Data Streams Service API Reference
 Amazon Kinesis Data Streams is a managed service that scales elastically
 for real-time processing of streaming big data.
 }
-\section{Example}{
-\preformatted{kinesis <- paws::kinesis()
-kinesis$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -51,3 +45,9 @@ kinesis$operation()
 }
 }
 
+\examples{
+\donttest{svc$add_tags_to_stream(
+  Foo = 123
+)}
+
+}

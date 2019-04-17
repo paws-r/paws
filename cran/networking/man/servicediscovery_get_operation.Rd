@@ -19,7 +19,7 @@ To get a list of operations that match specified criteria, see
 ListOperations.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$get_operation(
+\preformatted{svc$get_operation(
   OperationId = "string"
 )
 }

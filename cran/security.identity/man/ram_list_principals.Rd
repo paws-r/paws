@@ -28,7 +28,7 @@ value.}
 Lists the principals with access to the specified resource.
 }
 \section{Request syntax}{
-\preformatted{ram$list_principals(
+\preformatted{svc$list_principals(
   resourceOwner = "SELF"|"OTHER-ACCOUNTS",
   resourceArn = "string",
   principals = list(

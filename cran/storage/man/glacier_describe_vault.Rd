@@ -41,7 +41,7 @@ and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{glacier$describe_vault(
+\preformatted{svc$describe_vault(
   accountId = "string",
   vaultName = "string"
 )
@@ -50,7 +50,7 @@ in the \emph{Amazon Glacier Developer Guide}.
 
 \examples{
 # The example retrieves data about a vault named my-vault.
-\donttest{glacier$describe_vault(
+\donttest{svc$describe_vault(
   accountId = "-",
   vaultName = "my-vault"
 )}

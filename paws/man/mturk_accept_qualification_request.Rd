@@ -27,7 +27,7 @@ A successful request for the \code{AcceptQualificationRequest} operation
 returns with no errors and an empty body.
 }
 \section{Request syntax}{
-\preformatted{mturk$accept_qualification_request(
+\preformatted{svc$accept_qualification_request(
   QualificationRequestId = "string",
   IntegerValue = 123
 )

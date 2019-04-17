@@ -40,7 +40,7 @@ account does not have enough funds to pay for both the bonus and the
 fees.
 }
 \section{Request syntax}{
-\preformatted{mturk$send_bonus(
+\preformatted{svc$send_bonus(
   WorkerId = "string",
   BonusAmount = "string",
   AssignmentId = "string",

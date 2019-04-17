@@ -15,7 +15,7 @@ Delete Markers) in the bucket must be deleted before the bucket itself
 can be deleted.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket(
+\preformatted{svc$delete_bucket(
   Bucket = "string"
 )
 }
@@ -23,7 +23,7 @@ can be deleted.
 
 \examples{
 # The following example deletes the specified bucket.
-\donttest{s3$delete_bucket(
+\donttest{svc$delete_bucket(
   Bucket = "forrandall2"
 )}
 

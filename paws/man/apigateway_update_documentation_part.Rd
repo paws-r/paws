@@ -19,7 +19,7 @@ in the order specified in this list.}
 Update documentation part
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_documentation_part(
+\preformatted{svc$update_documentation_part(
   restApiId = "string",
   documentationPartId = "string",
   patchOperations = list(

@@ -13,7 +13,7 @@ greengrass_delete_device_definition(DeviceDefinitionId)
 Deletes a device definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$delete_device_definition(
+\preformatted{svc$delete_device_definition(
   DeviceDefinitionId = "string"
 )
 }

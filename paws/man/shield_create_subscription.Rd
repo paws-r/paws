@@ -20,7 +20,7 @@ automatically renewed at the end of the existing subscription period.
 You can change this by submitting an \code{UpdateSubscription} request.
 }
 \section{Request syntax}{
-\preformatted{shield$create_subscription()
+\preformatted{svc$create_subscription()
 }
 }
 

@@ -20,7 +20,7 @@ Cancels a bundling operation for an instance store-backed Windows
 instance.
 }
 \section{Request syntax}{
-\preformatted{ec2$cancel_bundle_task(
+\preformatted{svc$cancel_bundle_task(
   BundleId = "string",
   DryRun = TRUE|FALSE
 )

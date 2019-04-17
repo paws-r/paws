@@ -23,7 +23,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$add_tags(
+#' svc$add_tags(
 #'   ResourceId = "string",
 #'   TagsList = list(
 #'     list(
@@ -133,7 +133,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$create_trail(
+#' svc$create_trail(
 #'   Name = "string",
 #'   S3BucketName = "string",
 #'   S3KeyPrefix = "string",
@@ -183,7 +183,7 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$delete_trail(
+#' svc$delete_trail(
 #'   Name = "string"
 #' )
 #' ```
@@ -244,7 +244,7 @@ cloudtrail_delete_trail <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$describe_trails(
+#' svc$describe_trails(
 #'   trailNameList = list(
 #'     "string"
 #'   ),
@@ -315,7 +315,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$get_event_selectors(
+#' svc$get_event_selectors(
 #'   TrailName = "string"
 #' )
 #' ```
@@ -359,7 +359,7 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$get_trail_status(
+#' svc$get_trail_status(
 #'   Name = "string"
 #' )
 #' ```
@@ -409,7 +409,7 @@ cloudtrail_get_trail_status <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$list_public_keys(
+#' svc$list_public_keys(
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -454,7 +454,7 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$list_tags(
+#' svc$list_tags(
 #'   ResourceIdList = list(
 #'     "string"
 #'   ),
@@ -538,7 +538,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$lookup_events(
+#' svc$lookup_events(
 #'   LookupAttributes = list(
 #'     list(
 #'       AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
@@ -641,7 +641,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$put_event_selectors(
+#' svc$put_event_selectors(
 #'   TrailName = "string",
 #'   EventSelectors = list(
 #'     list(
@@ -694,7 +694,7 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$remove_tags(
+#' svc$remove_tags(
 #'   ResourceId = "string",
 #'   TagsList = list(
 #'     list(
@@ -742,7 +742,7 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$start_logging(
+#' svc$start_logging(
 #'   Name = "string"
 #' )
 #' ```
@@ -789,7 +789,7 @@ cloudtrail_start_logging <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$stop_logging(
+#' svc$stop_logging(
 #'   Name = "string"
 #' )
 #' ```
@@ -908,7 +908,7 @@ cloudtrail_stop_logging <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' cloudtrail$update_trail(
+#' svc$update_trail(
 #'   Name = "string",
 #'   S3BucketName = "string",
 #'   S3KeyPrefix = "string",

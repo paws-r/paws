@@ -38,7 +38,7 @@ required parameter in Tags[\emph{N}]:\emph{Value}". Tag the provisioned product
 with the value \code{sc-tagoption-conflict-portfolioId-productId}.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$describe_provisioning_parameters(
+\preformatted{svc$describe_provisioning_parameters(
   AcceptLanguage = "string",
   ProductId = "string",
   ProvisioningArtifactId = "string",

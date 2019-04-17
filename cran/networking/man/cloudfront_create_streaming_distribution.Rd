@@ -43,7 +43,7 @@ you're specifying in the \code{Quantity} element and the number of values
 specified.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$create_streaming_distribution(
+\preformatted{svc$create_streaming_distribution(
   StreamingDistributionConfig = list(
     CallerReference = "string",
     S3Origin = list(

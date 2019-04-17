@@ -13,7 +13,7 @@ ssm_delete_parameter(Name)
 Delete a parameter from the system.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_parameter(
+\preformatted{svc$delete_parameter(
   Name = "string"
 )
 }

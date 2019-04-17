@@ -15,7 +15,7 @@ This operation is useful to determine if a bucket exists and you have
 permission to access it.
 }
 \section{Request syntax}{
-\preformatted{s3$head_bucket(
+\preformatted{svc$head_bucket(
   Bucket = "string"
 )
 }
@@ -23,7 +23,7 @@ permission to access it.
 
 \examples{
 # This operation checks to see if a bucket exists.
-\donttest{s3$head_bucket(
+\donttest{svc$head_bucket(
   Bucket = "acl1"
 )}
 

@@ -176,7 +176,7 @@ in the \emph{Amazon Aurora User Guide.}
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$restore_db_cluster_to_point_in_time(
+\preformatted{svc$restore_db_cluster_to_point_in_time(
   DBClusterIdentifier = "string",
   RestoreType = "string",
   SourceDBClusterIdentifier = "string",

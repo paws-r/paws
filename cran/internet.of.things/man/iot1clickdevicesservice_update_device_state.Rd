@@ -17,7 +17,7 @@ Using a Boolean value (true or false), this operation enables or
 disables the device given a device ID.
 }
 \section{Request syntax}{
-\preformatted{iot1clickdevicesservice$update_device_state(
+\preformatted{svc$update_device_state(
   DeviceId = "string",
   Enabled = TRUE|FALSE
 )

@@ -22,7 +22,7 @@ mediaconnect_create_flow(AvailabilityZone, Entitlements, Name, Outputs,
 Creates a new flow. The request must include one source. The request optionally can include outputs (up to 20) and entitlements (up to 50).
 }
 \section{Request syntax}{
-\preformatted{mediaconnect$create_flow(
+\preformatted{svc$create_flow(
   AvailabilityZone = "string",
   Entitlements = list(
     list(

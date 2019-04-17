@@ -144,11 +144,10 @@ NULL
 #' User
 #' Guide](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 #'
-#' @section Example:
-#' ```
-#' codecommit <- paws::codecommit()
-#' codecommit$operation()
-#' ```
+#' @examples
+#' \donttest{svc$batch_get_repositories(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

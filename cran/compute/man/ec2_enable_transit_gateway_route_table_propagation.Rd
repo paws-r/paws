@@ -23,7 +23,7 @@ Enables the specified attachment to propagate routes to the specified
 propagation route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$enable_transit_gateway_route_table_propagation(
+\preformatted{svc$enable_transit_gateway_route_table_propagation(
   TransitGatewayRouteTableId = "string",
   TransitGatewayAttachmentId = "string",
   DryRun = TRUE|FALSE

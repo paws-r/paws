@@ -20,7 +20,7 @@ system shows \code{Failed} in the \emph{Description} field.}
 Instructs the specified agents or connectors to start collecting data.
 }
 \section{Request syntax}{
-\preformatted{applicationdiscoveryservice$start_data_collection_by_agent_ids(
+\preformatted{svc$start_data_collection_by_agent_ids(
   agentIds = list(
     "string"
   )

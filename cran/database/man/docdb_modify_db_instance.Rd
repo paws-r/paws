@@ -91,7 +91,7 @@ configuration parameters by specifying these parameters and the new
 values in the request.
 }
 \section{Request syntax}{
-\preformatted{docdb$modify_db_instance(
+\preformatted{svc$modify_db_instance(
   DBInstanceIdentifier = "string",
   DBInstanceClass = "string",
   ApplyImmediately = TRUE|FALSE,

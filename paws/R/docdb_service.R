@@ -7,11 +7,10 @@ NULL
 #' @description
 #' Amazon DocumentDB API documentation
 #'
-#' @section Example:
-#' ```
-#' docdb <- paws::docdb()
-#' docdb$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_tags_to_resource(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

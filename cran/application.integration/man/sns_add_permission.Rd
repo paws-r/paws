@@ -25,7 +25,7 @@ Adds a statement to a topic's access control policy, granting access
 for the specified AWS accounts to the specified actions.
 }
 \section{Request syntax}{
-\preformatted{sns$add_permission(
+\preformatted{svc$add_permission(
   TopicArn = "string",
   Label = "string",
   AWSAccountId = list(

@@ -25,7 +25,7 @@ be no larger than 1MB.}
 Applies a schema extension to a Microsoft AD directory.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$start_schema_extension(
+\preformatted{svc$start_schema_extension(
   DirectoryId = "string",
   CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
   LdifContent = "string",

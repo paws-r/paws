@@ -20,7 +20,7 @@ guardduty_update_findings_feedback(Comments, DetectorId, Feedback,
 Marks specified Amazon GuardDuty findings as useful or not useful.
 }
 \section{Request syntax}{
-\preformatted{guardduty$update_findings_feedback(
+\preformatted{svc$update_findings_feedback(
   Comments = "string",
   DetectorId = "string",
   Feedback = "USEFUL"|"NOT_USEFUL",

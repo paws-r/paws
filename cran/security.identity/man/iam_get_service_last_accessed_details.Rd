@@ -69,7 +69,7 @@ policy to attempt to access the service
 By default, the list is sorted by service namespace.
 }
 \section{Request syntax}{
-\preformatted{iam$get_service_last_accessed_details(
+\preformatted{svc$get_service_last_accessed_details(
   JobId = "string",
   MaxItems = 123,
   Marker = "string"
@@ -80,7 +80,7 @@ By default, the list is sorted by service namespace.
 \examples{
 # The following operation gets details about the report with the job ID:
 # examplef-1305-c245-eba4-71fe298bcda7
-\donttest{iam$get_service_last_accessed_details(
+\donttest{svc$get_service_last_accessed_details(
   JobId = "examplef-1305-c245-eba4-71fe298bcda7"
 )}
 

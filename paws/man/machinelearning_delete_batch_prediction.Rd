@@ -22,7 +22,7 @@ GetBatchPrediction operation to verify that the status of the
 irreversible.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$delete_batch_prediction(
+\preformatted{svc$delete_batch_prediction(
   BatchPredictionId = "string"
 )
 }

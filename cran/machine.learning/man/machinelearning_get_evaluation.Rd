@@ -17,7 +17,7 @@ Returns an \code{Evaluation} that includes metadata as well as the current
 status of the \code{Evaluation}.
 }
 \section{Request syntax}{
-\preformatted{machinelearning$get_evaluation(
+\preformatted{svc$get_evaluation(
   EvaluationId = "string"
 )
 }

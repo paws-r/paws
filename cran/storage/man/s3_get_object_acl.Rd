@@ -19,7 +19,7 @@ s3_get_object_acl(Bucket, Key, VersionId, RequestPayer)
 Returns the access control list (ACL) of an object.
 }
 \section{Request syntax}{
-\preformatted{s3$get_object_acl(
+\preformatted{svc$get_object_acl(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -30,7 +30,7 @@ Returns the access control list (ACL) of an object.
 
 \examples{
 # The following example retrieves access control list (ACL) of an object.
-\donttest{s3$get_object_acl(
+\donttest{svc$get_object_acl(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
 )}

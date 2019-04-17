@@ -22,7 +22,7 @@ DetachPrincipalPolicy API to detach all policies. Next, use the
 UpdateCertificate API to set the certificate to the INACTIVE status.
 }
 \section{Request syntax}{
-\preformatted{iot$delete_certificate(
+\preformatted{svc$delete_certificate(
   certificateId = "string",
   forceDelete = TRUE|FALSE
 )

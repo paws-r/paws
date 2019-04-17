@@ -14,7 +14,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$delete_playback_configuration(
+#' svc$delete_playback_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -49,7 +49,7 @@ mediatailor_delete_playback_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$get_playback_configuration(
+#' svc$get_playback_configuration(
 #'   Name = "string"
 #' )
 #' ```
@@ -92,7 +92,7 @@ mediatailor_get_playback_configuration <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$list_playback_configurations(
+#' svc$list_playback_configurations(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -131,7 +131,7 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   ResourceArn = "string"
 #' )
 #' ```
@@ -191,7 +191,7 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$put_playback_configuration(
+#' svc$put_playback_configuration(
 #'   AdDecisionServerUrl = "string",
 #'   CdnConfiguration = list(
 #'     AdSegmentUrlPrefix = "string",
@@ -244,7 +244,7 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, C
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$tag_resource(
+#' svc$tag_resource(
 #'   ResourceArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -286,7 +286,7 @@ mediatailor_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediatailor$untag_resource(
+#' svc$untag_resource(
 #'   ResourceArn = "string",
 #'   TagKeys = list(
 #'     "string"

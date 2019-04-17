@@ -17,7 +17,7 @@ Spanish ("es"). All documents must be in the same language.}
 Detects the key noun phrases found in the text.
 }
 \section{Request syntax}{
-\preformatted{comprehend$detect_key_phrases(
+\preformatted{svc$detect_key_phrases(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )

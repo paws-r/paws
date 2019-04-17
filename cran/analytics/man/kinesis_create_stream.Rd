@@ -64,7 +64,7 @@ returned in \code{StreamStatus}.
 CreateStream has a limit of five transactions per second per account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$create_stream(
+\preformatted{svc$create_stream(
   StreamName = "string",
   ShardCount = 123
 )

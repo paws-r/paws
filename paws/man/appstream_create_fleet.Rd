@@ -91,7 +91,7 @@ Creates a fleet. A fleet consists of streaming instances that run a
 specified image.
 }
 \section{Request syntax}{
-\preformatted{appstream$create_fleet(
+\preformatted{svc$create_fleet(
   Name = "string",
   ImageName = "string",
   ImageArn = "string",

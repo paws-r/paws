@@ -16,7 +16,7 @@ modifications you can make to your DB instance. You can use this
 information when you call ModifyDBInstance.
 }
 \section{Request syntax}{
-\preformatted{neptune$describe_valid_db_instance_modifications(
+\preformatted{svc$describe_valid_db_instance_modifications(
   DBInstanceIdentifier = "string"
 )
 }

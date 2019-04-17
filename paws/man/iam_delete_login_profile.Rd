@@ -27,7 +27,7 @@ them. For more information about making keys inactive or deleting them,
 see UpdateAccessKey and DeleteAccessKey.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_login_profile(
+\preformatted{svc$delete_login_profile(
   UserName = "string"
 )
 }
@@ -35,7 +35,7 @@ see UpdateAccessKey and DeleteAccessKey.
 
 \examples{
 # The following command deletes the password for the IAM user named Bob.
-\donttest{iam$delete_login_profile(
+\donttest{svc$delete_login_profile(
   UserName = "Bob"
 )}
 

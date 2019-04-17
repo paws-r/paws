@@ -17,7 +17,7 @@ de-register managed instances. You must manually de-register managed
 instances.
 }
 \section{Request syntax}{
-\preformatted{ssm$delete_activation(
+\preformatted{svc$delete_activation(
   ActivationId = "string"
 )
 }

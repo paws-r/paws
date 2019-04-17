@@ -20,7 +20,7 @@ on a resource are not changed if they are not specified in the request
 parameters.
 }
 \section{Request syntax}{
-\preformatted{ecr$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     list(

@@ -17,7 +17,7 @@ apigatewayv2_create_deployment(ApiId, Description, StageName)
 Creates a Deployment for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$create_deployment(
+\preformatted{svc$create_deployment(
   ApiId = "string",
   Description = "string",
   StageName = "string"

@@ -58,7 +58,7 @@ call. It can be used to return the next set of applications in the list.}
 Lists information about revisions for an application.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$list_application_revisions(
+\preformatted{svc$list_application_revisions(
   applicationName = "string",
   sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
   sortOrder = "ascending"|"descending",

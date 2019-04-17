@@ -17,7 +17,7 @@ The default value is 100.}
 Retrieves information about data sets.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$list_datasets(
+\preformatted{svc$list_datasets(
   nextToken = "string",
   maxResults = 123
 )

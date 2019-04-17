@@ -43,7 +43,7 @@ returns a single page of results. You can use the parameters of the
 operation to control sorting and pagination.
 }
 \section{Request syntax}{
-\preformatted{mturk$list_assignments_for_hit(
+\preformatted{svc$list_assignments_for_hit(
   HITId = "string",
   NextToken = "string",
   MaxResults = 123,

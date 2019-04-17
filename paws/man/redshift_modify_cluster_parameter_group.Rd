@@ -28,7 +28,7 @@ For more information about parameters and parameter groups, go to
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$modify_cluster_parameter_group(
+\preformatted{svc$modify_cluster_parameter_group(
   ParameterGroupName = "string",
   Parameters = list(
     list(

@@ -17,7 +17,7 @@ iot_list_role_aliases(pageSize, marker, ascendingOrder)
 Lists the role aliases registered in your account.
 }
 \section{Request syntax}{
-\preformatted{iot$list_role_aliases(
+\preformatted{svc$list_role_aliases(
   pageSize = 123,
   marker = "string",
   ascendingOrder = TRUE|FALSE

@@ -133,7 +133,7 @@ instances only after the \code{RestoreDBClusterToPointInTime} action has
 completed and the DB cluster is available.
 }
 \section{Request syntax}{
-\preformatted{neptune$restore_db_cluster_to_point_in_time(
+\preformatted{svc$restore_db_cluster_to_point_in_time(
   DBClusterIdentifier = "string",
   RestoreType = "string",
   SourceDBClusterIdentifier = "string",

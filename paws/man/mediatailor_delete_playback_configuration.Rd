@@ -13,7 +13,7 @@ mediatailor_delete_playback_configuration(Name)
 Deletes the playback configuration for the specified name.
 }
 \section{Request syntax}{
-\preformatted{mediatailor$delete_playback_configuration(
+\preformatted{svc$delete_playback_configuration(
   Name = "string"
 )
 }

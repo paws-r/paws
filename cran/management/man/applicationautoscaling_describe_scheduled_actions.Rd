@@ -99,7 +99,7 @@ PutScheduledAction. If you are no longer using a scheduled action, you
 can delete it using DeleteScheduledAction.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$describe_scheduled_actions(
+\preformatted{svc$describe_scheduled_actions(
   ScheduledActionNames = list(
     "string"
   ),

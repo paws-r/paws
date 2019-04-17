@@ -15,7 +15,7 @@ Gets the properties associated with a sentiment detection job. Use this
 operation to get the status of a detection job.
 }
 \section{Request syntax}{
-\preformatted{comprehend$describe_sentiment_detection_job(
+\preformatted{svc$describe_sentiment_detection_job(
   JobId = "string"
 )
 }

@@ -15,7 +15,7 @@ explicitly request this metric when calling EnableMetricsCollection.
 }
 \examples{
 # This example describes the available metric collection types.
-\donttest{autoscaling$describe_metric_collection_types()}
+\donttest{svc$describe_metric_collection_types()}
 
 }
 \keyword{internal}

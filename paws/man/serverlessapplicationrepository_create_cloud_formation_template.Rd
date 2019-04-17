@@ -18,7 +18,7 @@ serverlessapplicationrepository_create_cloud_formation_template(
 Creates an AWS CloudFormation template.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$create_cloud_formation_template(
+\preformatted{svc$create_cloud_formation_template(
   ApplicationId = "string",
   SemanticVersion = "string"
 )

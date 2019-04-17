@@ -56,7 +56,7 @@ to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{swf$register_domain(
+\preformatted{svc$register_domain(
   name = "string",
   description = "string",
   workflowExecutionRetentionPeriodInDays = "string"

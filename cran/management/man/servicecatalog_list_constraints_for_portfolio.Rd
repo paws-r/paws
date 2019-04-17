@@ -28,7 +28,7 @@ results, use null.}
 Lists the constraints for the specified portfolio and product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_constraints_for_portfolio(
+\preformatted{svc$list_constraints_for_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   ProductId = "string",

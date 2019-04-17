@@ -20,7 +20,7 @@ greengrass_create_core_definition(AmznClientToken, InitialVersion, Name,
 Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
 }
 \section{Request syntax}{
-\preformatted{greengrass$create_core_definition(
+\preformatted{svc$create_core_definition(
   AmznClientToken = "string",
   InitialVersion = list(
     Cores = list(

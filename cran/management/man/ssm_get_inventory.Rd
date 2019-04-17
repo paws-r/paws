@@ -29,7 +29,7 @@ next set of results.}
 Query inventory information.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_inventory(
+\preformatted{svc$get_inventory(
   Filters = list(
     list(
       Key = "string",

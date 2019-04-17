@@ -24,7 +24,7 @@ Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
 and version IDs.
 }
 \section{Request syntax}{
-\preformatted{backup$list_backup_plan_versions(
+\preformatted{svc$list_backup_plan_versions(
   BackupPlanId = "string",
   NextToken = "string",
   MaxResults = 123

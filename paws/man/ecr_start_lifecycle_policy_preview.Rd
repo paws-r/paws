@@ -22,7 +22,7 @@ Starts a preview of the specified lifecycle policy. This allows you to
 see the results before creating the lifecycle policy.
 }
 \section{Request syntax}{
-\preformatted{ecr$start_lifecycle_policy_preview(
+\preformatted{svc$start_lifecycle_policy_preview(
   registryId = "string",
   repositoryName = "string",
   lifecyclePolicyText = "string"

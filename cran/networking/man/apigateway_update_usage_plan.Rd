@@ -16,7 +16,7 @@ in the order specified in this list.}
 Updates a usage plan of a given plan Id.
 }
 \section{Request syntax}{
-\preformatted{apigateway$update_usage_plan(
+\preformatted{svc$update_usage_plan(
   usagePlanId = "string",
   patchOperations = list(
     list(

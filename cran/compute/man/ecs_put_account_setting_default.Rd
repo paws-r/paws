@@ -25,7 +25,7 @@ set. Enabling this setting is required to use new Amazon ECS features
 such as resource tagging.
 }
 \section{Request syntax}{
-\preformatted{ecs$put_account_setting_default(
+\preformatted{svc$put_account_setting_default(
   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
   value = "string"
 )
@@ -37,7 +37,7 @@ such as resource tagging.
 # resource for all IAM users or roles on an account. These changes apply
 # to the entire AWS account, unless an IAM user or role explicitly
 # overrides these settings for themselves.
-\donttest{ecs$put_account_setting_default(
+\donttest{svc$put_account_setting_default(
   name = "serviceLongArnFormat",
   value = "enabled"
 )}

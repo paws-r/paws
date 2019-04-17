@@ -22,7 +22,7 @@ with the \code{NextToken} provided by the operation returns up to
 call.
 }
 \section{Request syntax}{
-\preformatted{simpledb$list_domains(
+\preformatted{svc$list_domains(
   MaxNumberOfDomains = 123,
   NextToken = "string"
 )

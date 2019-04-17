@@ -31,7 +31,7 @@ returned for each repeated request.}
 Creates a portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_portfolio(
+\preformatted{svc$create_portfolio(
   AcceptLanguage = "string",
   DisplayName = "string",
   Description = "string",

@@ -25,12 +25,6 @@ You can request an increase to the throttling limits by submitting a
 \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase}{Amazon Connect service limits increase form}.
 You must be signed in to your AWS account to access the form.
 }
-\section{Example}{
-\preformatted{connect <- paws::connect()
-connect$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -58,3 +52,9 @@ connect$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_user(
+  Foo = 123
+)}
+
+}

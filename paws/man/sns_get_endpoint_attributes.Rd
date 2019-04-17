@@ -16,7 +16,7 @@ push notification services, such as GCM and APNS. For more information,
 see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
-\preformatted{sns$get_endpoint_attributes(
+\preformatted{svc$get_endpoint_attributes(
   EndpointArn = "string"
 )
 }

@@ -35,7 +35,7 @@ operation suspends all policies for the fleet.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$delete_scaling_policy(
+\preformatted{svc$delete_scaling_policy(
   Name = "string",
   FleetId = "string"
 )

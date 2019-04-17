@@ -26,7 +26,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Modifies an existing high-availability partition group.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$modify_hapg(
+\preformatted{svc$modify_hapg(
   HapgArn = "string",
   Label = "string",
   PartitionSerialList = list(

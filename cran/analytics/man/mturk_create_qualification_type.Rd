@@ -75,7 +75,7 @@ The \code{CreateQualificationType} operation creates a new Qualification
 type, which is represented by a \code{QualificationType} data structure.
 }
 \section{Request syntax}{
-\preformatted{mturk$create_qualification_type(
+\preformatted{svc$create_qualification_type(
   Name = "string",
   Keywords = "string",
   Description = "string",

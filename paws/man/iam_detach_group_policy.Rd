@@ -29,7 +29,7 @@ policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-man
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$detach_group_policy(
+\preformatted{svc$detach_group_policy(
   GroupName = "string",
   PolicyArn = "string"
 )

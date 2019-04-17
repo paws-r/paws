@@ -53,7 +53,7 @@ identified by instanceSnapshotName. For more information, see the
 \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$create_instances_from_snapshot(
+\preformatted{svc$create_instances_from_snapshot(
   instanceNames = list(
     "string"
   ),

@@ -18,7 +18,7 @@ element of the collection.}
 Gets the Routes for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_routes(
+\preformatted{svc$get_routes(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"

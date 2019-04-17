@@ -19,7 +19,7 @@ mediaconvert_update_preset(Category, Description, Name, Settings)
 Modify one of your existing presets.
 }
 \section{Request syntax}{
-\preformatted{mediaconvert$update_preset(
+\preformatted{svc$update_preset(
   Category = "string",
   Description = "string",
   Name = "string",

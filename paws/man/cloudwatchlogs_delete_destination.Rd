@@ -16,7 +16,7 @@ subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$delete_destination(
+\preformatted{svc$delete_destination(
   destinationName = "string"
 )
 }

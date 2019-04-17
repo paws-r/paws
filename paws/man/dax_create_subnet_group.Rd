@@ -17,7 +17,7 @@ dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
 Creates a new subnet group.
 }
 \section{Request syntax}{
-\preformatted{dax$create_subnet_group(
+\preformatted{svc$create_subnet_group(
   SubnetGroupName = "string",
   Description = "string",
   SubnetIds = list(

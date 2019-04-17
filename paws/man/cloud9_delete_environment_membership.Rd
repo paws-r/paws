@@ -17,7 +17,7 @@ Deletes an environment member from an AWS Cloud9 development
 environment.
 }
 \section{Request syntax}{
-\preformatted{cloud9$delete_environment_membership(
+\preformatted{svc$delete_environment_membership(
   environmentId = "string",
   userArn = "string"
 )
@@ -26,7 +26,7 @@ environment.
 
 \examples{
 # 
-\donttest{cloud9$delete_environment_membership(
+\donttest{svc$delete_environment_membership(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
 )}

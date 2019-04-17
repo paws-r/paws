@@ -19,7 +19,7 @@ specific information about them such as entity category, location, and
 confidence score on that information .
 }
 \section{Request syntax}{
-\preformatted{comprehendmedical$detect_entities(
+\preformatted{svc$detect_entities(
   Text = "string"
 )
 }

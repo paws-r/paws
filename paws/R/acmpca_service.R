@@ -42,11 +42,10 @@ NULL
 #' PCA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
 #' in the ACM PCA user guide.
 #'
-#' @section Example:
-#' ```
-#' acmpca <- paws::acmpca()
-#' acmpca$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_certificate_authority(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

@@ -27,7 +27,7 @@ Creates a new DB subnet group. DB subnet groups must contain at least
 one subnet in at least two Availability Zones in the AWS Region.
 }
 \section{Request syntax}{
-\preformatted{docdb$create_db_subnet_group(
+\preformatted{svc$create_db_subnet_group(
   DBSubnetGroupName = "string",
   DBSubnetGroupDescription = "string",
   SubnetIds = list(

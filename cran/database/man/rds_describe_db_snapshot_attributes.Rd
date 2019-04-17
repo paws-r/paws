@@ -27,7 +27,7 @@ DB snapshot, or to make the manual DB snapshot public or private, use
 the ModifyDBSnapshotAttribute API action.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_snapshot_attributes(
+\preformatted{svc$describe_db_snapshot_attributes(
   DBSnapshotIdentifier = "string"
 )
 }

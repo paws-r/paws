@@ -25,7 +25,7 @@ The NotifyWorkers operation will send a notification email to a Worker
 only if you have previously approved or rejected work from the Worker.
 }
 \section{Request syntax}{
-\preformatted{mturk$notify_workers(
+\preformatted{svc$notify_workers(
   Subject = "string",
   MessageText = "string",
   WorkerIds = list(

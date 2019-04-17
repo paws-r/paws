@@ -28,7 +28,7 @@ Retrieves a list of the reusable delegation sets that are associated
 with the current AWS account.
 }
 \section{Request syntax}{
-\preformatted{route53$list_reusable_delegation_sets(
+\preformatted{svc$list_reusable_delegation_sets(
   Marker = "string",
   MaxItems = "string"
 )

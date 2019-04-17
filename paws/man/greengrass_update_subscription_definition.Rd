@@ -16,7 +16,7 @@ greengrass_update_subscription_definition(Name,
 Updates a subscription definition.
 }
 \section{Request syntax}{
-\preformatted{greengrass$update_subscription_definition(
+\preformatted{svc$update_subscription_definition(
   Name = "string",
   SubscriptionDefinitionId = "string"
 )

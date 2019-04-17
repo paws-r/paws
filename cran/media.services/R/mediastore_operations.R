@@ -19,7 +19,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$create_container(
+#' svc$create_container(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -56,7 +56,7 @@ mediastore_create_container <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$delete_container(
+#' svc$delete_container(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -93,7 +93,7 @@ mediastore_delete_container <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$delete_container_policy(
+#' svc$delete_container_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -134,7 +134,7 @@ mediastore_delete_container_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$delete_cors_policy(
+#' svc$delete_cors_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -170,7 +170,7 @@ mediastore_delete_cors_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$delete_lifecycle_policy(
+#' svc$delete_lifecycle_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -211,7 +211,7 @@ mediastore_delete_lifecycle_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$describe_container(
+#' svc$describe_container(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -249,7 +249,7 @@ mediastore_describe_container <- function(ContainerName = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$get_container_policy(
+#' svc$get_container_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -290,7 +290,7 @@ mediastore_get_container_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$get_cors_policy(
+#' svc$get_cors_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -326,7 +326,7 @@ mediastore_get_cors_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$get_lifecycle_policy(
+#' svc$get_lifecycle_policy(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -376,7 +376,7 @@ mediastore_get_lifecycle_policy <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$list_containers(
+#' svc$list_containers(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -425,7 +425,7 @@ mediastore_list_containers <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$put_container_policy(
+#' svc$put_container_policy(
 #'   ContainerName = "string",
 #'   Policy = "string"
 #' )
@@ -479,7 +479,7 @@ mediastore_put_container_policy <- function(ContainerName, Policy) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$put_cors_policy(
+#' svc$put_cors_policy(
 #'   ContainerName = "string",
 #'   CorsPolicy = list(
 #'     list(
@@ -540,7 +540,7 @@ mediastore_put_cors_policy <- function(ContainerName, CorsPolicy) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$put_lifecycle_policy(
+#' svc$put_lifecycle_policy(
 #'   ContainerName = "string",
 #'   LifecyclePolicy = "string"
 #' )
@@ -578,7 +578,7 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$start_access_logging(
+#' svc$start_access_logging(
 #'   ContainerName = "string"
 #' )
 #' ```
@@ -616,7 +616,7 @@ mediastore_start_access_logging <- function(ContainerName) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediastore$stop_access_logging(
+#' svc$stop_access_logging(
 #'   ContainerName = "string"
 #' )
 #' ```

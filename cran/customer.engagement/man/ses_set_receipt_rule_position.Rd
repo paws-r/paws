@@ -24,7 +24,7 @@ For information about managing receipt rules, see the \href{http://docs.aws.amaz
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$set_receipt_rule_position(
+\preformatted{svc$set_receipt_rule_position(
   RuleSetName = "string",
   RuleName = "string",
   After = "string"
@@ -35,7 +35,7 @@ You can execute this operation no more than once per second.
 \examples{
 # The following example sets the position of a receipt rule in a receipt
 # rule set:
-\donttest{ses$set_receipt_rule_position(
+\donttest{svc$set_receipt_rule_position(
   After = "PutRuleAfterThisRule",
   RuleName = "RuleToReposition",
   RuleSetName = "MyRuleSet"

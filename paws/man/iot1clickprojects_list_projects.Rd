@@ -18,7 +18,7 @@ Lists the AWS IoT 1-Click project(s) associated with your AWS account
 and region.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$list_projects(
+\preformatted{svc$list_projects(
   nextToken = "string",
   maxResults = 123
 )

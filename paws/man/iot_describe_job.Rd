@@ -13,7 +13,7 @@ iot_describe_job(jobId)
 Describes a job.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_job(
+\preformatted{svc$describe_job(
   jobId = "string"
 )
 }

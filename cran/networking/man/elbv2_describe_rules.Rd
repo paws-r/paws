@@ -21,7 +21,7 @@ Describes the specified rules or the rules for the specified listener.
 You must specify either a listener or one or more rules.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_rules(
+\preformatted{svc$describe_rules(
   ListenerArn = "string",
   RuleArns = list(
     "string"
@@ -34,7 +34,7 @@ You must specify either a listener or one or more rules.
 
 \examples{
 # This example describes the specified rule.
-\donttest{elbv2$describe_rules(
+\donttest{svc$describe_rules(
   RuleArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-rule/app/my-load-balancer/..."
   )

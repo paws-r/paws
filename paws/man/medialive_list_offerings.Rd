@@ -33,7 +33,7 @@ medialive_list_offerings(ChannelConfiguration, Codec, MaxResults,
 List offerings available for purchase.
 }
 \section{Request syntax}{
-\preformatted{medialive$list_offerings(
+\preformatted{svc$list_offerings(
   ChannelConfiguration = "string",
   Codec = "string",
   MaxResults = 123,

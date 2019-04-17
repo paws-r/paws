@@ -26,7 +26,7 @@ This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora clusters, use StopDBCluster instead.
 }
 \section{Request syntax}{
-\preformatted{rds$stop_db_instance(
+\preformatted{svc$stop_db_instance(
   DBInstanceIdentifier = "string",
   DBSnapshotIdentifier = "string"
 )

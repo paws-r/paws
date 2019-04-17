@@ -25,7 +25,7 @@ values that are provided. To clear a value, pass the empty string (i.e.,
 \code{""}).
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$update_project(
+\preformatted{svc$update_project(
   projectName = "string",
   description = "string",
   placementTemplate = list(

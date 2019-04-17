@@ -14,7 +14,7 @@ consists of the detailed metadata and data file information.}
 Creates a new report using the description that you provide.
 }
 \section{Request syntax}{
-\preformatted{costandusagereportservice$put_report_definition(
+\preformatted{svc$put_report_definition(
   ReportDefinition = list(
     ReportName = "string",
     TimeUnit = "HOURLY"|"DAILY",
@@ -39,7 +39,7 @@ Creates a new report using the description that you provide.
 \examples{
 # The following example creates a AWS Cost and Usage report named
 # ExampleReport.
-\donttest{costandusagereportservice$put_report_definition(
+\donttest{svc$put_report_definition(
   ReportDefinition = list(
     AdditionalArtifacts = list(
       "REDSHIFT",

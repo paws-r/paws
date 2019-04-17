@@ -42,7 +42,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' textract$analyze_document(
+#' svc$analyze_document(
 #'   Document = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -96,7 +96,7 @@ textract_analyze_document <- function(Document, FeatureTypes) {
 #'
 #' @section Request syntax:
 #' ```
-#' textract$detect_document_text(
+#' svc$detect_document_text(
 #'   Document = list(
 #'     Bytes = raw,
 #'     S3Object = list(
@@ -170,7 +170,7 @@ textract_detect_document_text <- function(Document) {
 #'
 #' @section Request syntax:
 #' ```
-#' textract$get_document_analysis(
+#' svc$get_document_analysis(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -244,7 +244,7 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'
 #' @section Request syntax:
 #' ```
-#' textract$get_document_text_detection(
+#' svc$get_document_text_detection(
 #'   JobId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -320,7 +320,7 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'
 #' @section Request syntax:
 #' ```
-#' textract$start_document_analysis(
+#' svc$start_document_analysis(
 #'   DocumentLocation = list(
 #'     S3Object = list(
 #'       Bucket = "string",
@@ -398,7 +398,7 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #'
 #' @section Request syntax:
 #' ```
-#' textract$start_document_text_detection(
+#' svc$start_document_text_detection(
 #'   DocumentLocation = list(
 #'     S3Object = list(
 #'       Bucket = "string",

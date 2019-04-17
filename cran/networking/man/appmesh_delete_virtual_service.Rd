@@ -15,7 +15,7 @@ appmesh_delete_virtual_service(meshName, virtualServiceName)
 Deletes an existing virtual service.
 }
 \section{Request syntax}{
-\preformatted{appmesh$delete_virtual_service(
+\preformatted{svc$delete_virtual_service(
   meshName = "string",
   virtualServiceName = "string"
 )

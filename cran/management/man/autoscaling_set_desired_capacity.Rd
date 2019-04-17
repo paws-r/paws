@@ -26,7 +26,7 @@ For more information about desired capacity, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$set_desired_capacity(
+\preformatted{svc$set_desired_capacity(
   AutoScalingGroupName = "string",
   DesiredCapacity = 123,
   HonorCooldown = TRUE|FALSE
@@ -37,7 +37,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example sets the desired capacity for the specified Auto Scaling
 # group.
-\donttest{autoscaling$set_desired_capacity(
+\donttest{svc$set_desired_capacity(
   AutoScalingGroupName = "my-auto-scaling-group",
   DesiredCapacity = 2L,
   HonorCooldown = TRUE

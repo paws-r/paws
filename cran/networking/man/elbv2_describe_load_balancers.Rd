@@ -26,7 +26,7 @@ describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 }
 \section{Request syntax}{
-\preformatted{elbv2$describe_load_balancers(
+\preformatted{svc$describe_load_balancers(
   LoadBalancerArns = list(
     "string"
   ),
@@ -41,7 +41,7 @@ DescribeLoadBalancerAttributes.
 
 \examples{
 # This example describes the specified load balancer.
-\donttest{elbv2$describe_load_balancers(
+\donttest{svc$describe_load_balancers(
   LoadBalancerArns = list(
     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
   )

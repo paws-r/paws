@@ -19,7 +19,7 @@ about aliases, see versioning-aliases.
 This operation requires permissions for the \code{lex:GetBotAlias} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_bot_alias(
+\preformatted{svc$get_bot_alias(
   name = "string",
   botName = "string"
 )

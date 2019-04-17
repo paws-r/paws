@@ -37,7 +37,7 @@ For more information about using notifications with Amazon SES, see the
 \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ses$set_identity_headers_in_notifications_enabled(
+\preformatted{svc$set_identity_headers_in_notifications_enabled(
   Identity = "string",
   NotificationType = "Bounce"|"Complaint"|"Delivery",
   Enabled = TRUE|FALSE
@@ -48,7 +48,7 @@ For more information about using notifications with Amazon SES, see the
 \examples{
 # The following example configures Amazon SES to include the original
 # email headers in the Amazon SNS bounce notifications for an identity:
-\donttest{ses$set_identity_headers_in_notifications_enabled(
+\donttest{svc$set_identity_headers_in_notifications_enabled(
   Enabled = TRUE,
   Identity = "user@example.com",
   NotificationType = "Bounce"

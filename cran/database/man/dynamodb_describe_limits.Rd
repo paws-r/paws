@@ -71,14 +71,14 @@ throttling errors if you call it more than once in a minute.
 The \code{DescribeLimits} Request element has no content.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$describe_limits()
+\preformatted{svc$describe_limits()
 }
 }
 
 \examples{
 # The following example returns the maximum read and write capacity units
 # per table, and for the AWS account, in the current AWS region.
-\donttest{dynamodb$describe_limits()}
+\donttest{svc$describe_limits()}
 
 }
 \keyword{internal}

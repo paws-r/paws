@@ -17,7 +17,7 @@ Deletes a branch from a repository, unless that branch is the default
 branch for the repository.
 }
 \section{Request syntax}{
-\preformatted{codecommit$delete_branch(
+\preformatted{svc$delete_branch(
   repositoryName = "string",
   branchName = "string"
 )

@@ -16,7 +16,7 @@ distribution. For example: \code{E2QWRUHAPOMQZL}.}
 Delete a distribution.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$delete_distribution(
+\preformatted{svc$delete_distribution(
   Id = "string",
   IfMatch = "string"
 )

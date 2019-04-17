@@ -50,7 +50,7 @@ parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_cluster_parameter_group(
+\preformatted{svc$create_cluster_parameter_group(
   ParameterGroupName = "string",
   ParameterGroupFamily = "string",
   Description = "string",

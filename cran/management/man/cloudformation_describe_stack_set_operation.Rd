@@ -16,7 +16,7 @@ operation.}
 Returns the description of the specified stack set operation.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$describe_stack_set_operation(
+\preformatted{svc$describe_stack_set_operation(
   StackSetName = "string",
   OperationId = "string"
 )

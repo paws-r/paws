@@ -32,11 +32,12 @@ NULL
 #' 
 #' -   https://api.pricing.ap-south-1.amazonaws.com
 #'
-#' @section Example:
-#' ```
-#' pricing <- paws::pricing()
-#' pricing$operation()
-#' ```
+#' @examples
+#' \donttest{svc$describe_services(
+#'   FormatVersion = "aws_v1",
+#'   MaxResults = 1L,
+#'   ServiceCode = "AmazonEC2"
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

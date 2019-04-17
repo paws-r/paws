@@ -17,7 +17,7 @@ apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
 Updates a Deployment.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$update_deployment(
+\preformatted{svc$update_deployment(
   ApiId = "string",
   DeploymentId = "string",
   Description = "string"

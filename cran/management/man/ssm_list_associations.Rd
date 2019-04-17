@@ -23,7 +23,7 @@ Lists the associations for the specified Systems Manager document or
 instance.
 }
 \section{Request syntax}{
-\preformatted{ssm$list_associations(
+\preformatted{svc$list_associations(
   AssociationFilterList = list(
     list(
       key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName",

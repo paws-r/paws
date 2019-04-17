@@ -16,7 +16,7 @@ supported for directories.}
 An API operation for removing tags from a resource.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$untag_resource(
+\preformatted{svc$untag_resource(
   ResourceArn = "string",
   TagKeys = list(
     "string"

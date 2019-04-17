@@ -14,11 +14,10 @@ NULL
 #' 
 #' For more information, see the Amazon Cognito Documentation.
 #'
-#' @section Example:
-#' ```
-#' cognitoidentityprovider <- paws::cognitoidentityprovider()
-#' cognitoidentityprovider$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_custom_attributes(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

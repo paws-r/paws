@@ -24,7 +24,7 @@ transition to the service. This is used when a service uses the
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$update_service_primary_task_set(
+\preformatted{svc$update_service_primary_task_set(
   cluster = "string",
   service = "string",
   primaryTaskSet = "string"

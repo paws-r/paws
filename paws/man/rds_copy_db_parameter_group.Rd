@@ -40,7 +40,7 @@ Example: \code{my-db-parameter-group}}
 Copies the specified DB parameter group.
 }
 \section{Request syntax}{
-\preformatted{rds$copy_db_parameter_group(
+\preformatted{svc$copy_db_parameter_group(
   SourceDBParameterGroupIdentifier = "string",
   TargetDBParameterGroupIdentifier = "string",
   TargetDBParameterGroupDescription = "string",

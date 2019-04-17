@@ -42,7 +42,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_availability_zones(
+\preformatted{svc$describe_availability_zones(
   Filters = list(
     list(
       Name = "string",
@@ -65,7 +65,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example describes the Availability Zones that are available to you.
 # The response includes Availability Zones only for the current region.
-\donttest{ec2$describe_availability_zones()}
+\donttest{svc$describe_availability_zones()}
 
 }
 \keyword{internal}

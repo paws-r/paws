@@ -38,7 +38,7 @@ parameters are shown in unencoded form here for clarity but must be URL
 encoded to be included as a part of a real HTML request.
 }
 \section{Request syntax}{
-\preformatted{iam$get_context_keys_for_custom_policy(
+\preformatted{svc$get_context_keys_for_custom_policy(
   PolicyInputList = list(
     "string"
   )

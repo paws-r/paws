@@ -75,7 +75,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developergui
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$start_task(
+\preformatted{svc$start_task(
   cluster = "string",
   taskDefinition = "string",
   overrides = list(

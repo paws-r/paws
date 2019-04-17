@@ -19,7 +19,7 @@ Gets a summary of all AWS CodePipeline action types associated with your
 account.
 }
 \section{Request syntax}{
-\preformatted{codepipeline$list_action_types(
+\preformatted{svc$list_action_types(
   actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
   nextToken = "string"
 )

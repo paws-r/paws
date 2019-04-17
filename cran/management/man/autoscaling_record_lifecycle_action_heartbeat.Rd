@@ -48,7 +48,7 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/user
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
-\preformatted{autoscaling$record_lifecycle_action_heartbeat(
+\preformatted{svc$record_lifecycle_action_heartbeat(
   LifecycleHookName = "string",
   AutoScalingGroupName = "string",
   LifecycleActionToken = "string",
@@ -60,7 +60,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 \examples{
 # This example records a lifecycle action heartbeat to keep the instance
 # in a pending state.
-\donttest{autoscaling$record_lifecycle_action_heartbeat(
+\donttest{svc$record_lifecycle_action_heartbeat(
   AutoScalingGroupName = "my-auto-scaling-group",
   LifecycleActionToken = "bcd2f1b8-9a78-44d3-8a7a-4dd07d7cf635",
   LifecycleHookName = "my-lifecycle-hook"

@@ -19,7 +19,7 @@ Logs.
 For more information about DNS query logs, see CreateQueryLoggingConfig.
 }
 \section{Request syntax}{
-\preformatted{route53$delete_query_logging_config(
+\preformatted{svc$delete_query_logging_config(
   Id = "string"
 )
 }

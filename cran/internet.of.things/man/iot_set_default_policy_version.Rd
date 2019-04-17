@@ -19,7 +19,7 @@ which the policy is attached. To list the principals the policy is
 attached to, use the ListPrincipalPolicy API.
 }
 \section{Request syntax}{
-\preformatted{iot$set_default_policy_version(
+\preformatted{svc$set_default_policy_version(
   policyName = "string",
   policyVersionId = "string"
 )

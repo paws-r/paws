@@ -25,7 +25,7 @@ The account that you associate with AWS Firewall Manager is called the
 AWS Firewall Manager administrator account.
 }
 \section{Request syntax}{
-\preformatted{fms$associate_admin_account(
+\preformatted{svc$associate_admin_account(
   AdminAccount = "string"
 )
 }

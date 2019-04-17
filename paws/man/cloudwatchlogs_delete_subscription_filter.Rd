@@ -15,7 +15,7 @@ cloudwatchlogs_delete_subscription_filter(logGroupName, filterName)
 Deletes the specified subscription filter.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$delete_subscription_filter(
+\preformatted{svc$delete_subscription_filter(
   logGroupName = "string",
   filterName = "string"
 )

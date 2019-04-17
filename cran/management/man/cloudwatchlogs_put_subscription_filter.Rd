@@ -67,7 +67,7 @@ name in \code{filterName}. Otherwise, the call fails because you cannot
 associate a second filter with a log group.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$put_subscription_filter(
+\preformatted{svc$put_subscription_filter(
   logGroupName = "string",
   filterName = "string",
   filterPattern = "string",

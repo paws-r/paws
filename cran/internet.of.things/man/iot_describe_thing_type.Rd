@@ -13,7 +13,7 @@ iot_describe_thing_type(thingTypeName)
 Gets information about the specified thing type.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_thing_type(
+\preformatted{svc$describe_thing_type(
   thingTypeName = "string"
 )
 }

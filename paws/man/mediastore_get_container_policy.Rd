@@ -14,7 +14,7 @@ Retrieves the access policy for the specified container. For information
 about the data that is included in an access policy, see the \href{https://aws.amazon.com/documentation/iam/}{AWS Identity and Access Management User Guide}.
 }
 \section{Request syntax}{
-\preformatted{mediastore$get_container_policy(
+\preformatted{svc$get_container_policy(
   ContainerName = "string"
 )
 }

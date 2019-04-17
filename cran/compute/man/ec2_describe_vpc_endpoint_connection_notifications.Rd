@@ -39,7 +39,7 @@ Describes the connection notifications for VPC endpoints and VPC
 endpoint services.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_vpc_endpoint_connection_notifications(
+\preformatted{svc$describe_vpc_endpoint_connection_notifications(
   DryRun = TRUE|FALSE,
   ConnectionNotificationId = "string",
   Filters = list(

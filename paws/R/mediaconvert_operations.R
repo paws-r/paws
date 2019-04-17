@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$associate_certificate(
+#' svc$associate_certificate(
 #'   Arn = "string"
 #' )
 #' ```
@@ -50,7 +50,7 @@ mediaconvert_associate_certificate <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$cancel_job(
+#' svc$cancel_job(
 #'   Id = "string"
 #' )
 #' ```
@@ -95,7 +95,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$create_job(
+#' svc$create_job(
 #'   AccelerationSettings = list(
 #'     Mode = "DISABLED"|"ENABLED"
 #'   ),
@@ -994,7 +994,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$create_job_template(
+#' svc$create_job_template(
 #'   AccelerationSettings = list(
 #'     Mode = "DISABLED"|"ENABLED"
 #'   ),
@@ -1878,7 +1878,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$create_preset(
+#' svc$create_preset(
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
@@ -2403,7 +2403,7 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$create_queue(
+#' svc$create_queue(
 #'   Description = "string",
 #'   Name = "string",
 #'   PricingPlan = "ON_DEMAND"|"RESERVED",
@@ -2448,7 +2448,7 @@ mediaconvert_create_queue <- function(Description = NULL, Name, PricingPlan = NU
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$delete_job_template(
+#' svc$delete_job_template(
 #'   Name = "string"
 #' )
 #' ```
@@ -2483,7 +2483,7 @@ mediaconvert_delete_job_template <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$delete_preset(
+#' svc$delete_preset(
 #'   Name = "string"
 #' )
 #' ```
@@ -2518,7 +2518,7 @@ mediaconvert_delete_preset <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$delete_queue(
+#' svc$delete_queue(
 #'   Name = "string"
 #' )
 #' ```
@@ -2556,7 +2556,7 @@ mediaconvert_delete_queue <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$describe_endpoints(
+#' svc$describe_endpoints(
 #'   MaxResults = 123,
 #'   Mode = "DEFAULT"|"GET_ONLY",
 #'   NextToken = "string"
@@ -2595,7 +2595,7 @@ mediaconvert_describe_endpoints <- function(MaxResults = NULL, Mode = NULL, Next
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$disassociate_certificate(
+#' svc$disassociate_certificate(
 #'   Arn = "string"
 #' )
 #' ```
@@ -2630,7 +2630,7 @@ mediaconvert_disassociate_certificate <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$get_job(
+#' svc$get_job(
 #'   Id = "string"
 #' )
 #' ```
@@ -2665,7 +2665,7 @@ mediaconvert_get_job <- function(Id) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$get_job_template(
+#' svc$get_job_template(
 #'   Name = "string"
 #' )
 #' ```
@@ -2700,7 +2700,7 @@ mediaconvert_get_job_template <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$get_preset(
+#' svc$get_preset(
 #'   Name = "string"
 #' )
 #' ```
@@ -2735,7 +2735,7 @@ mediaconvert_get_preset <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$get_queue(
+#' svc$get_queue(
 #'   Name = "string"
 #' )
 #' ```
@@ -2775,7 +2775,7 @@ mediaconvert_get_queue <- function(Name) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$list_job_templates(
+#' svc$list_job_templates(
 #'   Category = "string",
 #'   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
 #'   MaxResults = 123,
@@ -2818,7 +2818,7 @@ mediaconvert_list_job_templates <- function(Category = NULL, ListBy = NULL, MaxR
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$list_jobs(
+#' svc$list_jobs(
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Order = "ASCENDING"|"DESCENDING",
@@ -2862,7 +2862,7 @@ mediaconvert_list_jobs <- function(MaxResults = NULL, NextToken = NULL, Order = 
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$list_presets(
+#' svc$list_presets(
 #'   Category = "string",
 #'   ListBy = "NAME"|"CREATION_DATE"|"SYSTEM",
 #'   MaxResults = 123,
@@ -2904,7 +2904,7 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$list_queues(
+#' svc$list_queues(
 #'   ListBy = "NAME"|"CREATION_DATE",
 #'   MaxResults = 123,
 #'   NextToken = "string",
@@ -2942,7 +2942,7 @@ mediaconvert_list_queues <- function(ListBy = NULL, MaxResults = NULL, NextToken
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   Arn = "string"
 #' )
 #' ```
@@ -2978,7 +2978,7 @@ mediaconvert_list_tags_for_resource <- function(Arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$tag_resource(
+#' svc$tag_resource(
 #'   Arn = "string",
 #'   Tags = list(
 #'     "string"
@@ -3017,7 +3017,7 @@ mediaconvert_tag_resource <- function(Arn, Tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$untag_resource(
+#' svc$untag_resource(
 #'   Arn = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -3062,7 +3062,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$update_job_template(
+#' svc$update_job_template(
 #'   AccelerationSettings = list(
 #'     Mode = "DISABLED"|"ENABLED"
 #'   ),
@@ -3942,7 +3942,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$update_preset(
+#' svc$update_preset(
 #'   Category = "string",
 #'   Description = "string",
 #'   Name = "string",
@@ -4463,7 +4463,7 @@ mediaconvert_update_preset <- function(Category = NULL, Description = NULL, Name
 #'
 #' @section Request syntax:
 #' ```
-#' mediaconvert$update_queue(
+#' svc$update_queue(
 #'   Description = "string",
 #'   Name = "string",
 #'   ReservationPlanSettings = list(

@@ -28,7 +28,7 @@ results, use null.}
 Lists the specified requests or all performed requests.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_record_history(
+\preformatted{svc$list_record_history(
   AcceptLanguage = "string",
   AccessLevelFilter = list(
     Key = "Account"|"Role"|"User",

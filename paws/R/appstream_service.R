@@ -23,11 +23,10 @@ NULL
 #' -   [Amazon AppStream 2.0
 #'     documentation](http://aws.amazon.com/documentation/appstream2)
 #'
-#' @section Example:
-#' ```
-#' appstream <- paws::appstream()
-#' appstream$operation()
-#' ```
+#' @examples
+#' \donttest{svc$associate_fleet(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

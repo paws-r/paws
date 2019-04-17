@@ -41,7 +41,7 @@ users.
 The response returns the \code{ServerId} value for the newly created server.
 }
 \section{Request syntax}{
-\preformatted{transfer$create_server(
+\preformatted{svc$create_server(
   EndpointDetails = list(
     VpcEndpointId = "string"
   ),

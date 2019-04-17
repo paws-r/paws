@@ -22,7 +22,7 @@ operation is only supported in the cached volume, stored volume and tape
 gateway type.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$list_tags_for_resource(
+\preformatted{svc$list_tags_for_resource(
   ResourceARN = "string",
   Marker = "string",
   Limit = 123
@@ -32,7 +32,7 @@ gateway type.
 
 \examples{
 # Lists the tags that have been added to the specified resource.
-\donttest{storagegateway$list_tags_for_resource(
+\donttest{svc$list_tags_for_resource(
   Limit = 1L,
   Marker = "1",
   ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B"

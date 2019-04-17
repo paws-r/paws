@@ -15,11 +15,10 @@ NULL
 #' Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
 #'
-#' @section Example:
-#' ```
-#' dlm <- paws::dlm()
-#' dlm$operation()
-#' ```
+#' @examples
+#' \donttest{svc$create_lifecycle_policy(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

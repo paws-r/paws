@@ -28,7 +28,7 @@ access to a specified product, and is necessary when provisioning a
 product. A path also determines the constraints put on the product.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_launch_paths(
+\preformatted{svc$list_launch_paths(
   AcceptLanguage = "string",
   ProductId = "string",
   PageSize = 123,

@@ -17,7 +17,7 @@ apigatewayv2_delete_route_response(ApiId, RouteId, RouteResponseId)
 Deletes a RouteResponse.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$delete_route_response(
+\preformatted{svc$delete_route_response(
   ApiId = "string",
   RouteId = "string",
   RouteResponseId = "string"

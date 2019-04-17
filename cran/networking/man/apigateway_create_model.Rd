@@ -24,7 +24,7 @@ created.}
 Adds a new Model resource to an existing RestApi resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$create_model(
+\preformatted{svc$create_model(
   restApiId = "string",
   name = "string",
   description = "string",

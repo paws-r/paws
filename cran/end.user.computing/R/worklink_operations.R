@@ -21,7 +21,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$associate_website_certificate_authority(
+#' svc$associate_website_certificate_authority(
 #'   FleetArn = "string",
 #'   Certificate = "string",
 #'   DisplayName = "string"
@@ -65,7 +65,7 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$create_fleet(
+#' svc$create_fleet(
 #'   FleetName = "string",
 #'   DisplayName = "string",
 #'   OptimizeForEndUserLocation = TRUE|FALSE
@@ -103,7 +103,7 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$delete_fleet(
+#' svc$delete_fleet(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -140,7 +140,7 @@ worklink_delete_fleet <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_audit_stream_configuration(
+#' svc$describe_audit_stream_configuration(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -177,7 +177,7 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_company_network_configuration(
+#' svc$describe_company_network_configuration(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -213,7 +213,7 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_device(
+#' svc$describe_device(
 #'   FleetArn = "string",
 #'   DeviceId = "string"
 #' )
@@ -249,7 +249,7 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_device_policy_configuration(
+#' svc$describe_device_policy_configuration(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -286,7 +286,7 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_fleet_metadata(
+#' svc$describe_fleet_metadata(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -321,7 +321,7 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_identity_provider_configuration(
+#' svc$describe_identity_provider_configuration(
 #'   FleetArn = "string"
 #' )
 #' ```
@@ -357,7 +357,7 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$describe_website_certificate_authority(
+#' svc$describe_website_certificate_authority(
 #'   FleetArn = "string",
 #'   WebsiteCaId = "string"
 #' )
@@ -395,7 +395,7 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$disassociate_website_certificate_authority(
+#' svc$disassociate_website_certificate_authority(
 #'   FleetArn = "string",
 #'   WebsiteCaId = "string"
 #' )
@@ -434,7 +434,7 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$list_devices(
+#' svc$list_devices(
 #'   FleetArn = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -473,7 +473,7 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$list_fleets(
+#' svc$list_fleets(
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -515,7 +515,7 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$list_website_certificate_authorities(
+#' svc$list_website_certificate_authorities(
 #'   FleetArn = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -554,7 +554,7 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$sign_out_user(
+#' svc$sign_out_user(
 #'   FleetArn = "string",
 #'   Username = "string"
 #' )
@@ -592,7 +592,7 @@ worklink_sign_out_user <- function(FleetArn, Username) {
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$update_audit_stream_configuration(
+#' svc$update_audit_stream_configuration(
 #'   FleetArn = "string",
 #'   AuditStreamArn = "string"
 #' )
@@ -633,7 +633,7 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$update_company_network_configuration(
+#' svc$update_company_network_configuration(
 #'   FleetArn = "string",
 #'   VpcId = "string",
 #'   SubnetIds = list(
@@ -678,7 +678,7 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$update_device_policy_configuration(
+#' svc$update_device_policy_configuration(
 #'   FleetArn = "string",
 #'   DeviceCaCertificate = "string"
 #' )
@@ -720,7 +720,7 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$update_fleet_metadata(
+#' svc$update_fleet_metadata(
 #'   FleetArn = "string",
 #'   DisplayName = "string",
 #'   OptimizeForEndUserLocation = TRUE|FALSE
@@ -761,7 +761,7 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 #'
 #' @section Request syntax:
 #' ```
-#' worklink$update_identity_provider_configuration(
+#' svc$update_identity_provider_configuration(
 #'   FleetArn = "string",
 #'   IdentityProviderType = "SAML",
 #'   IdentityProviderSamlMetadata = "string"

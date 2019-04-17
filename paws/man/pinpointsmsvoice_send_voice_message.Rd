@@ -22,7 +22,7 @@ pinpointsmsvoice_send_voice_message(CallerId, ConfigurationSetName,
 Create a new voice message and send it to a recipient's phone number.
 }
 \section{Request syntax}{
-\preformatted{pinpointsmsvoice$send_voice_message(
+\preformatted{svc$send_voice_message(
   CallerId = "string",
   ConfigurationSetName = "string",
   Content = list(

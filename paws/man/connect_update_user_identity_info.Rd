@@ -25,7 +25,7 @@ Updates the identity information for the specified user in a
 \code{UserIdentityInfo} object, including email, first name, and last name.
 }
 \section{Request syntax}{
-\preformatted{connect$update_user_identity_info(
+\preformatted{svc$update_user_identity_info(
   IdentityInfo = list(
     FirstName = "string",
     LastName = "string",

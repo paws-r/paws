@@ -27,12 +27,6 @@ Amazon EBS volume.
 For more information about the features of Amazon CloudWatch Events, see
 the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events}{Amazon CloudWatch Events User Guide}.
 }
-\section{Example}{
-\preformatted{cloudwatchevents <- paws::cloudwatchevents()
-cloudwatchevents$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -57,3 +51,9 @@ cloudwatchevents$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_rule(
+  Foo = 123
+)}
+
+}

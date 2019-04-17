@@ -23,7 +23,7 @@ string representation of an integer. Each version is incremented by 1.}
 Retrieves a specified version of a table.
 }
 \section{Request syntax}{
-\preformatted{glue$get_table_version(
+\preformatted{svc$get_table_version(
   CatalogId = "string",
   DatabaseName = "string",
   TableName = "string",

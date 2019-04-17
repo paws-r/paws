@@ -40,7 +40,7 @@ MaxRecords.}
 Returns a list of DB log files for the DB instance.
 }
 \section{Request syntax}{
-\preformatted{rds$describe_db_log_files(
+\preformatted{svc$describe_db_log_files(
   DBInstanceIdentifier = "string",
   FilenameContains = "string",
   FileLastWritten = 123,

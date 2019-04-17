@@ -19,7 +19,7 @@ is an opaque value that Amazon S3 understands.}
 Returns a list of inventory configurations for the bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$list_bucket_inventory_configurations(
+\preformatted{svc$list_bucket_inventory_configurations(
   Bucket = "string",
   ContinuationToken = "string"
 )

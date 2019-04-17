@@ -43,7 +43,7 @@ details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-stat
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{kms$decrypt(
+\preformatted{svc$decrypt(
   CiphertextBlob = raw,
   EncryptionContext = list(
     "string"
@@ -58,7 +58,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 \examples{
 # The following example decrypts data that was encrypted with a customer
 # master key (CMK) in AWS KMS.
-\donttest{kms$decrypt(
+\donttest{svc$decrypt(
   CiphertextBlob = "<binary data>"
 )}
 

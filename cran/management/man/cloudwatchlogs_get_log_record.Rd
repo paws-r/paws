@@ -23,7 +23,7 @@ Additionally, the entire unparsed log event is returned within
 \code{@message}.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$get_log_record(
+\preformatted{svc$get_log_record(
   logRecordPointer = "string"
 )
 }

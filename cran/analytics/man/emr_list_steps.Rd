@@ -21,7 +21,7 @@ Provides a list of steps for the cluster in reverse order unless you
 specify stepIds with the request.
 }
 \section{Request syntax}{
-\preformatted{emr$list_steps(
+\preformatted{svc$list_steps(
   ClusterId = "string",
   StepStates = list(
     "PENDING"|"CANCEL_PENDING"|"RUNNING"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED"

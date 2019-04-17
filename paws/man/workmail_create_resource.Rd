@@ -19,7 +19,7 @@ is created.}
 Creates a new Amazon WorkMail resource.
 }
 \section{Request syntax}{
-\preformatted{workmail$create_resource(
+\preformatted{svc$create_resource(
   OrganizationId = "string",
   Name = "string",
   Type = "ROOM"|"EQUIPMENT"

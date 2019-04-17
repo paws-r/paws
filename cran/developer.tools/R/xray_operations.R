@@ -17,7 +17,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' xray$batch_get_traces(
+#' svc$batch_get_traces(
 #'   TraceIds = list(
 #'     "string"
 #'   ),
@@ -57,7 +57,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$create_group(
+#' svc$create_group(
 #'   GroupName = "string",
 #'   FilterExpression = "string"
 #' )
@@ -101,7 +101,7 @@ xray_create_group <- function(GroupName, FilterExpression = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$create_sampling_rule(
+#' svc$create_sampling_rule(
 #'   SamplingRule = list(
 #'     RuleName = "string",
 #'     RuleARN = "string",
@@ -153,7 +153,7 @@ xray_create_sampling_rule <- function(SamplingRule) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$delete_group(
+#' svc$delete_group(
 #'   GroupName = "string",
 #'   GroupARN = "string"
 #' )
@@ -192,7 +192,7 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$delete_sampling_rule(
+#' svc$delete_sampling_rule(
 #'   RuleName = "string",
 #'   RuleARN = "string"
 #' )
@@ -226,7 +226,7 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_encryption_config()
+#' svc$get_encryption_config()
 #' ```
 #'
 #' @keywords internal
@@ -260,7 +260,7 @@ xray_get_encryption_config <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_group(
+#' svc$get_group(
 #'   GroupName = "string",
 #'   GroupARN = "string"
 #' )
@@ -296,7 +296,7 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_groups(
+#' svc$get_groups(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -331,7 +331,7 @@ xray_get_groups <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_sampling_rules(
+#' svc$get_sampling_rules(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -368,7 +368,7 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_sampling_statistic_summaries(
+#' svc$get_sampling_statistic_summaries(
 #'   NextToken = "string"
 #' )
 #' ```
@@ -405,7 +405,7 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_sampling_targets(
+#' svc$get_sampling_targets(
 #'   SamplingStatisticsDocuments = list(
 #'     list(
 #'       RuleName = "string",
@@ -462,7 +462,7 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_service_graph(
+#' svc$get_service_graph(
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -506,7 +506,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_trace_graph(
+#' svc$get_trace_graph(
 #'   TraceIds = list(
 #'     "string"
 #'   ),
@@ -571,7 +571,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$get_trace_summaries(
+#' svc$get_trace_summaries(
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -628,7 +628,7 @@ xray_get_trace_summaries <- function(StartTime, EndTime, Sampling = NULL, Filter
 #'
 #' @section Request syntax:
 #' ```
-#' xray$put_encryption_config(
+#' svc$put_encryption_config(
 #'   KeyId = "string",
 #'   Type = "NONE"|"KMS"
 #' )
@@ -668,7 +668,7 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$put_telemetry_records(
+#' svc$put_telemetry_records(
 #'   TelemetryRecords = list(
 #'     list(
 #'       Timestamp = as.POSIXct(
@@ -772,7 +772,7 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #'
 #' @section Request syntax:
 #' ```
-#' xray$put_trace_segments(
+#' svc$put_trace_segments(
 #'   TraceSegmentDocuments = list(
 #'     "string"
 #'   )
@@ -812,7 +812,7 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #'
 #' @section Request syntax:
 #' ```
-#' xray$update_group(
+#' svc$update_group(
 #'   GroupName = "string",
 #'   GroupARN = "string",
 #'   FilterExpression = "string"
@@ -849,7 +849,7 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 #'
 #' @section Request syntax:
 #' ```
-#' xray$update_sampling_rule(
+#' svc$update_sampling_rule(
 #'   SamplingRuleUpdate = list(
 #'     RuleName = "string",
 #'     RuleARN = "string",

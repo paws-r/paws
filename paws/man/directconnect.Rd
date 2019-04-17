@@ -18,12 +18,6 @@ path. A connection provides access to all AWS Regions except the China
 Regions can only be accessed through locations associated with those
 Regions.
 }
-\section{Example}{
-\preformatted{directconnect <- paws::directconnect()
-directconnect$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -80,3 +74,9 @@ directconnect$operation()
 }
 }
 
+\examples{
+\donttest{svc$accept_direct_connect_gateway_association_proposal(
+  Foo = 123
+)}
+
+}

@@ -21,7 +21,7 @@ updated rule contains a trace quota that the service can use instead of
 borrowing from the reservoir.
 }
 \section{Request syntax}{
-\preformatted{xray$create_sampling_rule(
+\preformatted{svc$create_sampling_rule(
   SamplingRule = list(
     RuleName = "string",
     RuleARN = "string",

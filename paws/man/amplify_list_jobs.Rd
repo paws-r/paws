@@ -21,7 +21,7 @@ in here to list more steps.}
 List Jobs for a branch, part of an Amplify App.
 }
 \section{Request syntax}{
-\preformatted{amplify$list_jobs(
+\preformatted{svc$list_jobs(
   appId = "string",
   branchName = "string",
   nextToken = "string",

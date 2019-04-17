@@ -13,7 +13,7 @@ codebuild_batch_get_builds(ids)
 Gets information about builds.
 }
 \section{Request syntax}{
-\preformatted{codebuild$batch_get_builds(
+\preformatted{svc$batch_get_builds(
   ids = list(
     "string"
   )
@@ -24,7 +24,7 @@ Gets information about builds.
 \examples{
 # The following example gets information about builds with the specified
 # build IDs.
-\donttest{codebuild$batch_get_builds(
+\donttest{svc$batch_get_builds(
   ids = list(
     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"

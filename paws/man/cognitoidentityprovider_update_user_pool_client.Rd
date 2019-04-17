@@ -87,7 +87,7 @@ set to the default value. You can get a list of the current user pool
 app client settings with .
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_user_pool_client(
+\preformatted{svc$update_user_pool_client(
   UserPoolId = "string",
   ClientId = "string",
   ClientName = "string",

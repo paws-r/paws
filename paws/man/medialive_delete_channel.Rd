@@ -13,7 +13,7 @@ medialive_delete_channel(ChannelId)
 Starts deletion of channel. The associated outputs are also deleted.
 }
 \section{Request syntax}{
-\preformatted{medialive$delete_channel(
+\preformatted{svc$delete_channel(
   ChannelId = "string"
 )
 }

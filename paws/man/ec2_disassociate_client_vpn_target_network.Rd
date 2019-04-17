@@ -32,7 +32,7 @@ following happens:
 }
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_client_vpn_target_network(
+\preformatted{svc$disassociate_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   AssociationId = "string",
   DryRun = TRUE|FALSE

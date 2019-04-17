@@ -24,7 +24,7 @@ indicates whether the deployment is in process or has failed. The draft
 configuration remains in existence until it is deleted with this action.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$delete_environment_configuration(
+\preformatted{svc$delete_environment_configuration(
   ApplicationName = "string",
   EnvironmentName = "string"
 )
@@ -34,7 +34,7 @@ configuration remains in existence until it is deleted with this action.
 \examples{
 # The following operation deletes a draft configuration for an environment
 # named my-env:
-\donttest{elasticbeanstalk$delete_environment_configuration(
+\donttest{svc$delete_environment_configuration(
   ApplicationName = "my-app",
   EnvironmentName = "my-env"
 )}

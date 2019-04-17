@@ -49,7 +49,7 @@ create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnE
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$create_user(
+\preformatted{svc$create_user(
   Path = "string",
   UserName = "string",
   PermissionsBoundary = "string",
@@ -66,7 +66,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following create-user command creates an IAM user named Bob in the
 # current account.
-\donttest{iam$create_user(
+\donttest{svc$create_user(
   UserName = "Bob"
 )}
 

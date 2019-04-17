@@ -31,7 +31,7 @@ and, optionally, as many as 23 additional activities in the
 \code{pipelineActivities} array.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$create_pipeline(
+\preformatted{svc$create_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(

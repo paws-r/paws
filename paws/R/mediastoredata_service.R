@@ -9,11 +9,10 @@ NULL
 #' the Amazon S3 service. Objects are the fundamental entities that are
 #' stored in AWS Elemental MediaStore.
 #'
-#' @section Example:
-#' ```
-#' mediastoredata <- paws::mediastoredata()
-#' mediastoredata$operation()
-#' ```
+#' @examples
+#' \donttest{svc$delete_object(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

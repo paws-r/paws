@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Gets information about a Deployments collection.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_deployments(
+\preformatted{svc$get_deployments(
   restApiId = "string",
   position = "string",
   limit = 123

@@ -24,7 +24,7 @@ You cannot delete a product if it was shared with you or is associated
 with a portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$delete_product(
+\preformatted{svc$delete_product(
   AcceptLanguage = "string",
   Id = "string"
 )

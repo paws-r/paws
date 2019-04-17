@@ -26,7 +26,7 @@ applications running on the instance.
 For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_instance_profile(
+\preformatted{svc$delete_instance_profile(
   InstanceProfileName = "string"
 )
 }
@@ -35,7 +35,7 @@ For more information about instance profiles, go to \href{http://docs.aws.amazon
 \examples{
 # The following command deletes the instance profile named
 # ExampleInstanceProfile
-\donttest{iam$delete_instance_profile(
+\donttest{svc$delete_instance_profile(
   InstanceProfileName = "ExampleInstanceProfile"
 )}
 

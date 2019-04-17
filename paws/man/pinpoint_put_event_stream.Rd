@@ -15,7 +15,7 @@ pinpoint_put_event_stream(ApplicationId, WriteEventStream)
 Use to create or update the event stream for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$put_event_stream(
+\preformatted{svc$put_event_stream(
   ApplicationId = "string",
   WriteEventStream = list(
     DestinationStreamArn = "string",

@@ -14,7 +14,7 @@ container. Format: \<folder name\>/\<folder name\>/\<file name\>}
 Deletes an object at the specified path.
 }
 \section{Request syntax}{
-\preformatted{mediastoredata$delete_object(
+\preformatted{svc$delete_object(
   Path = "string"
 )
 }

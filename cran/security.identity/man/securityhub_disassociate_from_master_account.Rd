@@ -12,7 +12,7 @@ Disassociates the current Security Hub member account from its master
 account.
 }
 \section{Request syntax}{
-\preformatted{securityhub$disassociate_from_master_account()
+\preformatted{svc$disassociate_from_master_account()
 }
 }
 

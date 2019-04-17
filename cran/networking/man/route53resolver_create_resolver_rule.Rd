@@ -43,7 +43,7 @@ forward to your network, and the IP addresses of the DNS resolvers in
 your network.
 }
 \section{Request syntax}{
-\preformatted{route53resolver$create_resolver_rule(
+\preformatted{svc$create_resolver_rule(
   CreatorRequestId = "string",
   Name = "string",
   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",

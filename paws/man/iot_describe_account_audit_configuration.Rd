@@ -13,7 +13,7 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 }
 \section{Request syntax}{
-\preformatted{iot$describe_account_audit_configuration()
+\preformatted{svc$describe_account_audit_configuration()
 }
 }
 

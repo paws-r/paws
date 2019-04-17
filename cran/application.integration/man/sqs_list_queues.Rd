@@ -24,7 +24,7 @@ information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/late
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{sqs$list_queues(
+\preformatted{svc$list_queues(
   QueueNamePrefix = "string"
 )
 }

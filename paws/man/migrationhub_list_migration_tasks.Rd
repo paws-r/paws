@@ -29,7 +29,7 @@ discovered resource.
 }
 }
 \section{Request syntax}{
-\preformatted{migrationhub$list_migration_tasks(
+\preformatted{svc$list_migration_tasks(
   NextToken = "string",
   MaxResults = 123,
   ResourceName = "string"

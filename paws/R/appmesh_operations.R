@@ -28,7 +28,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$create_mesh(
+#' svc$create_mesh(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -95,7 +95,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$create_route(
+#' svc$create_route(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   routeName = "string",
@@ -197,7 +197,7 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$create_virtual_node(
+#' svc$create_virtual_node(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -297,7 +297,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$create_virtual_router(
+#' svc$create_virtual_router(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -368,7 +368,7 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, ta
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$create_virtual_service(
+#' svc$create_virtual_service(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -425,7 +425,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, spec, t
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$delete_mesh(
+#' svc$delete_mesh(
 #'   meshName = "string"
 #' )
 #' ```
@@ -462,7 +462,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$delete_route(
+#' svc$delete_route(
 #'   meshName = "string",
 #'   routeName = "string",
 #'   virtualRouterName = "string"
@@ -503,7 +503,7 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$delete_virtual_node(
+#' svc$delete_virtual_node(
 #'   meshName = "string",
 #'   virtualNodeName = "string"
 #' )
@@ -543,7 +543,7 @@ appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$delete_virtual_router(
+#' svc$delete_virtual_router(
 #'   meshName = "string",
 #'   virtualRouterName = "string"
 #' )
@@ -580,7 +580,7 @@ appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$delete_virtual_service(
+#' svc$delete_virtual_service(
 #'   meshName = "string",
 #'   virtualServiceName = "string"
 #' )
@@ -616,7 +616,7 @@ appmesh_delete_virtual_service <- function(meshName, virtualServiceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$describe_mesh(
+#' svc$describe_mesh(
 #'   meshName = "string"
 #' )
 #' ```
@@ -653,7 +653,7 @@ appmesh_describe_mesh <- function(meshName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$describe_route(
+#' svc$describe_route(
 #'   meshName = "string",
 #'   routeName = "string",
 #'   virtualRouterName = "string"
@@ -691,7 +691,7 @@ appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$describe_virtual_node(
+#' svc$describe_virtual_node(
 #'   meshName = "string",
 #'   virtualNodeName = "string"
 #' )
@@ -728,7 +728,7 @@ appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$describe_virtual_router(
+#' svc$describe_virtual_router(
 #'   meshName = "string",
 #'   virtualRouterName = "string"
 #' )
@@ -765,7 +765,7 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$describe_virtual_service(
+#' svc$describe_virtual_service(
 #'   meshName = "string",
 #'   virtualServiceName = "string"
 #' )
@@ -815,7 +815,7 @@ appmesh_describe_virtual_service <- function(meshName, virtualServiceName) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_meshes(
+#' svc$list_meshes(
 #'   limit = 123,
 #'   nextToken = "string"
 #' )
@@ -863,7 +863,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_routes(
+#' svc$list_routes(
 #'   limit = 123,
 #'   meshName = "string",
 #'   nextToken = "string",
@@ -914,7 +914,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, nextToken = NULL, virtua
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_tags_for_resource(
+#' svc$list_tags_for_resource(
 #'   limit = 123,
 #'   nextToken = "string",
 #'   resourceArn = "string"
@@ -963,7 +963,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_virtual_nodes(
+#' svc$list_virtual_nodes(
 #'   limit = 123,
 #'   meshName = "string",
 #'   nextToken = "string"
@@ -1012,7 +1012,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_virtual_routers(
+#' svc$list_virtual_routers(
 #'   limit = 123,
 #'   meshName = "string",
 #'   nextToken = "string"
@@ -1061,7 +1061,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$list_virtual_services(
+#' svc$list_virtual_services(
 #'   limit = 123,
 #'   meshName = "string",
 #'   nextToken = "string"
@@ -1105,7 +1105,7 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, nextToken = NU
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     list(
@@ -1147,7 +1147,7 @@ appmesh_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -1189,7 +1189,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$update_mesh(
+#' svc$update_mesh(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -1239,7 +1239,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$update_route(
+#' svc$update_route(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   routeName = "string",
@@ -1309,7 +1309,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$update_virtual_node(
+#' svc$update_virtual_node(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -1391,7 +1391,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$update_virtual_router(
+#' svc$update_virtual_router(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(
@@ -1445,7 +1445,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
 #'
 #' @section Request syntax:
 #' ```
-#' appmesh$update_virtual_service(
+#' svc$update_virtual_service(
 #'   clientToken = "string",
 #'   meshName = "string",
 #'   spec = list(

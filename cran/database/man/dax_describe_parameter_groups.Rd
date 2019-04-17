@@ -27,7 +27,7 @@ name is specified, the list will contain only the descriptions for that
 group.
 }
 \section{Request syntax}{
-\preformatted{dax$describe_parameter_groups(
+\preformatted{svc$describe_parameter_groups(
   ParameterGroupNames = list(
     "string"
   ),

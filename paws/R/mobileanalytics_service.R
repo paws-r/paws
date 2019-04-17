@@ -8,11 +8,10 @@ NULL
 #' Amazon Mobile Analytics is a service for collecting, visualizing, and
 #' understanding app usage data at scale.
 #'
-#' @section Example:
-#' ```
-#' mobileanalytics <- paws::mobileanalytics()
-#' mobileanalytics$operation()
-#' ```
+#' @examples
+#' \donttest{svc$put_events(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

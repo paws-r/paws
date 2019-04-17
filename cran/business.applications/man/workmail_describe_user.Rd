@@ -15,7 +15,7 @@ workmail_describe_user(OrganizationId, UserId)
 Provides information regarding the user.
 }
 \section{Request syntax}{
-\preformatted{workmail$describe_user(
+\preformatted{svc$describe_user(
   OrganizationId = "string",
   UserId = "string"
 )

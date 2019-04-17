@@ -26,7 +26,7 @@ This action can potentially start a workflow to install the new
 certificate on the client's HSMs.
 }
 \section{Request syntax}{
-\preformatted{cloudhsm$modify_luna_client(
+\preformatted{svc$modify_luna_client(
   ClientArn = "string",
   Certificate = "string"
 )

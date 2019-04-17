@@ -40,7 +40,7 @@ You can see a list of the event categories for a given SourceType by
 using the \strong{DescribeEventCategories} action.
 }
 \section{Request syntax}{
-\preformatted{neptune$modify_event_subscription(
+\preformatted{svc$modify_event_subscription(
   SubscriptionName = "string",
   SnsTopicArn = "string",
   SourceType = "string",

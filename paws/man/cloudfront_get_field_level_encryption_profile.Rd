@@ -13,7 +13,7 @@ cloudfront_get_field_level_encryption_profile(Id)
 Get the field-level encryption profile information.
 }
 \section{Request syntax}{
-\preformatted{cloudfront$get_field_level_encryption_profile(
+\preformatted{svc$get_field_level_encryption_profile(
   Id = "string"
 )
 }

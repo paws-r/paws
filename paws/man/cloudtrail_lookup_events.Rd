@@ -58,7 +58,7 @@ available for lookup if CloudTrail logging was not enabled when the
 events occurred.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$lookup_events(
+\preformatted{svc$lookup_events(
   LookupAttributes = list(
     list(
       AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",

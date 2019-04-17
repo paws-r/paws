@@ -176,7 +176,7 @@ the fleet actions are restarted.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$put_scaling_policy(
+\preformatted{svc$put_scaling_policy(
   Name = "string",
   FleetId = "string",
   ScalingAdjustment = 123,

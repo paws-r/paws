@@ -81,7 +81,7 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_volumes(
+\preformatted{svc$describe_volumes(
   Filters = list(
     list(
       Name = "string",
@@ -102,12 +102,12 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example describes all of your volumes in the default region.
-\donttest{ec2$describe_volumes()}
+\donttest{svc$describe_volumes()}
 
 # This example describes all volumes that are both attached to the
 # instance with the ID i-1234567890abcdef0 and set to delete when the
 # instance terminates.
-\donttest{ec2$describe_volumes(
+\donttest{svc$describe_volumes(
   Filters = list(
     list(
       Name = "attachment.instance-id",

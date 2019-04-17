@@ -14,7 +14,7 @@ Deletes a specified service. If the service still contains one or more
 registered instances, the request fails.
 }
 \section{Request syntax}{
-\preformatted{servicediscovery$delete_service(
+\preformatted{svc$delete_service(
   Id = "string"
 )
 }

@@ -18,7 +18,7 @@ Authorizes the aggregator account and region to collect data from the
 source account and region.
 }
 \section{Request syntax}{
-\preformatted{configservice$put_aggregation_authorization(
+\preformatted{svc$put_aggregation_authorization(
   AuthorizedAccountId = "string",
   AuthorizedAwsRegion = "string"
 )

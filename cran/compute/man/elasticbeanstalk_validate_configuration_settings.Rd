@@ -32,7 +32,7 @@ This action returns a list of messages indicating any errors or warnings
 associated with the selection of option values.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$validate_configuration_settings(
+\preformatted{svc$validate_configuration_settings(
   ApplicationName = "string",
   TemplateName = "string",
   EnvironmentName = "string",
@@ -51,7 +51,7 @@ associated with the selection of option values.
 \examples{
 # The following operation validates a CloudWatch custom metrics config
 # document:
-\donttest{elasticbeanstalk$validate_configuration_settings(
+\donttest{svc$validate_configuration_settings(
   ApplicationName = "my-app",
   EnvironmentName = "my-env",
   OptionSettings = list(

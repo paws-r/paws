@@ -32,7 +32,7 @@ Guide}:
 }
 }
 \section{Request syntax}{
-\preformatted{elb$modify_load_balancer_attributes(
+\preformatted{svc$modify_load_balancer_attributes(
   LoadBalancerName = "string",
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
@@ -65,7 +65,7 @@ Guide}:
 \examples{
 # This example enables cross-zone load balancing for the specified load
 # balancer.
-\donttest{elb$modify_load_balancer_attributes(
+\donttest{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     CrossZoneLoadBalancing = list(
       Enabled = TRUE
@@ -76,7 +76,7 @@ Guide}:
 
 # This example enables connection draining for the specified load
 # balancer.
-\donttest{elb$modify_load_balancer_attributes(
+\donttest{svc$modify_load_balancer_attributes(
   LoadBalancerAttributes = list(
     ConnectionDraining = list(
       Enabled = TRUE,

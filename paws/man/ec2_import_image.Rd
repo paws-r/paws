@@ -98,7 +98,7 @@ Amazon Machine Image (AMI). For more information, see \href{https://docs.aws.ama
 in the \emph{VM Import/Export User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$import_image(
+\preformatted{svc$import_image(
   Architecture = "string",
   ClientData = list(
     Comment = "string",

@@ -9,12 +9,6 @@ pinpointsmsvoice()
 \description{
 Pinpoint SMS and Voice Messaging public facing APIs
 }
-\section{Example}{
-\preformatted{pinpointsmsvoice <- paws::pinpointsmsvoice()
-pinpointsmsvoice$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -29,3 +23,9 @@ pinpointsmsvoice$operation()
 }
 }
 
+\examples{
+\donttest{svc$create_configuration_set(
+  Foo = 123
+)}
+
+}

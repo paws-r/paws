@@ -40,7 +40,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }
 \section{Request syntax}{
-\preformatted{iam$list_mfa_devices(
+\preformatted{svc$list_mfa_devices(
   UserName = "string",
   Marker = "string",
   MaxItems = 123

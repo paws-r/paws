@@ -144,7 +144,7 @@ conditions are met. If those conditions are met, DynamoDB performs the
 delete. Otherwise, the item is not deleted.
 }
 \section{Request syntax}{
-\preformatted{dynamodb$delete_item(
+\preformatted{svc$delete_item(
   TableName = "string",
   Key = list(
     list(
@@ -260,7 +260,7 @@ delete. Otherwise, the item is not deleted.
 
 \examples{
 # This example deletes an item from the Music table.
-\donttest{dynamodb$delete_item(
+\donttest{svc$delete_item(
   Key = list(
     Artist = list(
       S = "No One You Know"

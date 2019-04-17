@@ -17,7 +17,7 @@ must already be detached or destroyed first.
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
-\preformatted{rds$delete_global_cluster(
+\preformatted{svc$delete_global_cluster(
   GlobalClusterIdentifier = "string"
 )
 }

@@ -21,7 +21,7 @@ executing on a specific target. Maintenance Windows report status for
 all invocations.
 }
 \section{Request syntax}{
-\preformatted{ssm$get_maintenance_window_execution_task_invocation(
+\preformatted{svc$get_maintenance_window_execution_task_invocation(
   WindowExecutionId = "string",
   TaskId = "string",
   InvocationId = "string"

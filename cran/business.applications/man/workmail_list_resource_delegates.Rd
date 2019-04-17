@@ -23,7 +23,7 @@ Lists the delegates associated with a resource. Users and groups can be
 resource delegates and answer requests on behalf of the resource.
 }
 \section{Request syntax}{
-\preformatted{workmail$list_resource_delegates(
+\preformatted{svc$list_resource_delegates(
   OrganizationId = "string",
   ResourceId = "string",
   NextToken = "string",

@@ -13,7 +13,7 @@ alexaforbusiness_delete_device(DeviceArn)
 Removes a device from Alexa For Business.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_device(
+\preformatted{svc$delete_device(
   DeviceArn = "string"
 )
 }

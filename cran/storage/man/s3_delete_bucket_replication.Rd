@@ -18,7 +18,7 @@ about replication configuration, see Cross-Region Replication (CRR) in
 the \emph{Amazon S3 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{s3$delete_bucket_replication(
+\preformatted{svc$delete_bucket_replication(
   Bucket = "string"
 )
 }
@@ -26,7 +26,7 @@ the \emph{Amazon S3 Developer Guide}.
 
 \examples{
 # The following example deletes replication configuration set on bucket.
-\donttest{s3$delete_bucket_replication(
+\donttest{svc$delete_bucket_replication(
   Bucket = "example"
 )}
 

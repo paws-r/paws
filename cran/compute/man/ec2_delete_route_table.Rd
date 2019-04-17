@@ -20,7 +20,7 @@ from any subnets before you can delete it. You can't delete the main
 route table.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_route_table(
+\preformatted{svc$delete_route_table(
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
 )
@@ -29,7 +29,7 @@ route table.
 
 \examples{
 # This example deletes the specified route table.
-\donttest{ec2$delete_route_table(
+\donttest{svc$delete_route_table(
   RouteTableId = "rtb-22574640"
 )}
 

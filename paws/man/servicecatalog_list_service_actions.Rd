@@ -23,7 +23,7 @@ results, use null.}
 Lists all self-service actions.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_service_actions(
+\preformatted{svc$list_service_actions(
   AcceptLanguage = "string",
   PageSize = 123,
   PageToken = "string"

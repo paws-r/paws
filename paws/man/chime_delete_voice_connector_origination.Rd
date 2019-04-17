@@ -15,7 +15,7 @@ Deletes the origination settings for the specified Amazon Chime Voice
 Connector.
 }
 \section{Request syntax}{
-\preformatted{chime$delete_voice_connector_origination(
+\preformatted{svc$delete_voice_connector_origination(
   VoiceConnectorId = "string"
 )
 }

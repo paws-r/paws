@@ -16,7 +16,7 @@ Returns a list of tags that are associated with a resource, specified by
 an ARN.
 }
 \section{Request syntax}{
-\preformatted{resourcegroups$get_tags(
+\preformatted{svc$get_tags(
   Arn = "string"
 )
 }

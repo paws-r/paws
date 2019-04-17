@@ -54,7 +54,7 @@ Fleet records are not listed in any particular order.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$list_fleets(
+\preformatted{svc$list_fleets(
   BuildId = "string",
   Limit = 123,
   NextToken = "string"

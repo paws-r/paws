@@ -41,7 +41,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$batch_delete_attributes(
+#' svc$batch_delete_attributes(
 #'   DomainName = "string",
 #'   Items = list(
 #'     list(
@@ -139,7 +139,7 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$batch_put_attributes(
+#' svc$batch_put_attributes(
 #'   DomainName = "string",
 #'   Items = list(
 #'     list(
@@ -197,7 +197,7 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$create_domain(
+#' svc$create_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -247,7 +247,7 @@ simpledb_create_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$delete_attributes(
+#' svc$delete_attributes(
 #'   DomainName = "string",
 #'   ItemName = "string",
 #'   Attributes = list(
@@ -300,7 +300,7 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$delete_domain(
+#' svc$delete_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -339,7 +339,7 @@ simpledb_delete_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$domain_metadata(
+#' svc$domain_metadata(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -387,7 +387,7 @@ simpledb_domain_metadata <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$get_attributes(
+#' svc$get_attributes(
 #'   DomainName = "string",
 #'   ItemName = "string",
 #'   AttributeNames = list(
@@ -435,7 +435,7 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$list_domains(
+#' svc$list_domains(
 #'   MaxNumberOfDomains = 123,
 #'   NextToken = "string"
 #' )
@@ -512,7 +512,7 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$put_attributes(
+#' svc$put_attributes(
 #'   DomainName = "string",
 #'   ItemName = "string",
 #'   Attributes = list(
@@ -575,7 +575,7 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #'
 #' @section Request syntax:
 #' ```
-#' simpledb$select(
+#' svc$select(
 #'   SelectExpression = "string",
 #'   NextToken = "string",
 #'   ConsistentRead = TRUE|FALSE

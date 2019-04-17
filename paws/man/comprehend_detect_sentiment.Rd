@@ -19,7 +19,7 @@ Inspects text and returns an inference of the prevailing sentiment
 (\code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}).
 }
 \section{Request syntax}{
-\preformatted{comprehend$detect_sentiment(
+\preformatted{svc$detect_sentiment(
   Text = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
 )

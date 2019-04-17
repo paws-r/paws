@@ -21,7 +21,7 @@ will be returned.}
 Lists the active log subscriptions for the AWS account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$list_log_subscriptions(
+\preformatted{svc$list_log_subscriptions(
   DirectoryId = "string",
   NextToken = "string",
   Limit = 123

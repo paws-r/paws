@@ -14,7 +14,7 @@ you want to retrieve.}
 Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
 }
 \section{Request syntax}{
-\preformatted{s3$get_public_access_block(
+\preformatted{svc$get_public_access_block(
   Bucket = "string"
 )
 }

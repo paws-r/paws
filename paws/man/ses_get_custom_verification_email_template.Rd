@@ -23,7 +23,7 @@ in the \emph{Amazon SES Developer Guide}.
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{
-\preformatted{ses$get_custom_verification_email_template(
+\preformatted{svc$get_custom_verification_email_template(
   TemplateName = "string"
 )
 }

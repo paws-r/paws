@@ -15,7 +15,7 @@ emr_describe_step(ClusterId, StepId)
 Provides more detail about the cluster step.
 }
 \section{Request syntax}{
-\preformatted{emr$describe_step(
+\preformatted{svc$describe_step(
   ClusterId = "string",
   StepId = "string"
 )

@@ -25,7 +25,7 @@ This operation requires permission for the
 \code{lex:DeleteBotChannelAssociation} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$delete_bot_channel_association(
+\preformatted{svc$delete_bot_channel_association(
   name = "string",
   botName = "string",
   botAlias = "string"

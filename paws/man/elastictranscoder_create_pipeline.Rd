@@ -209,7 +209,7 @@ The CreatePipeline operation creates a pipeline with settings that you
 specify.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$create_pipeline(
+\preformatted{svc$create_pipeline(
   Name = "string",
   InputBucket = "string",
   OutputBucket = "string",

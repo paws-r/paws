@@ -19,7 +19,7 @@ Disassociates an Identity and Access Management (IAM) role from a DB
 cluster.
 }
 \section{Request syntax}{
-\preformatted{neptune$remove_role_from_db_cluster(
+\preformatted{svc$remove_role_from_db_cluster(
   DBClusterIdentifier = "string",
   RoleArn = "string"
 )

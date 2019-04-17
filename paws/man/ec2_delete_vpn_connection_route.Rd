@@ -19,7 +19,7 @@ The static route allows traffic to be routed from the virtual private
 gateway to the VPN customer gateway.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_vpn_connection_route(
+\preformatted{svc$delete_vpn_connection_route(
   DestinationCidrBlock = "string",
   VpnConnectionId = "string"
 )

@@ -18,7 +18,7 @@ element of the collection.}
 Gets the Models for an API.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_models(
+\preformatted{svc$get_models(
   ApiId = "string",
   MaxResults = "string",
   NextToken = "string"

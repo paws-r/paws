@@ -25,7 +25,7 @@ Disassociates a previously associated principal ARN from a specified
 portfolio.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$disassociate_principal_from_portfolio(
+\preformatted{svc$disassociate_principal_from_portfolio(
   AcceptLanguage = "string",
   PortfolioId = "string",
   PrincipalARN = "string"

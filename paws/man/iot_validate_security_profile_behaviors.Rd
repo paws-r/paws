@@ -14,7 +14,7 @@ an alert.}
 Validates a Device Defender security profile behaviors specification.
 }
 \section{Request syntax}{
-\preformatted{iot$validate_security_profile_behaviors(
+\preformatted{svc$validate_security_profile_behaviors(
   behaviors = list(
     list(
       name = "string",

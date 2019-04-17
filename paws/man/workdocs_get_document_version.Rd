@@ -25,7 +25,7 @@ for the source document.}
 Retrieves version metadata for the specified document.
 }
 \section{Request syntax}{
-\preformatted{workdocs$get_document_version(
+\preformatted{svc$get_document_version(
   AuthenticationToken = "string",
   DocumentId = "string",
   VersionId = "string",

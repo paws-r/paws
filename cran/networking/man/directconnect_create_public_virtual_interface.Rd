@@ -23,7 +23,7 @@ When creating an IPv6 public virtual interface (\code{addressFamily} is
 auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_public_virtual_interface(
+\preformatted{svc$create_public_virtual_interface(
   connectionId = "string",
   newPublicVirtualInterface = list(
     virtualInterfaceName = "string",

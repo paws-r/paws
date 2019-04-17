@@ -42,7 +42,7 @@ but has not yet associated with a CMK. Aliases that AWS creates in your
 account, including predefined aliases, do not count against your \href{http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases limit}.
 }
 \section{Request syntax}{
-\preformatted{kms$list_aliases(
+\preformatted{svc$list_aliases(
   KeyId = "string",
   Limit = 123,
   Marker = "string"
@@ -52,7 +52,7 @@ account, including predefined aliases, do not count against your \href{http://do
 
 \examples{
 # The following example lists aliases.
-\donttest{kms$list_aliases()}
+\donttest{svc$list_aliases()}
 
 }
 \keyword{internal}

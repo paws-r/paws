@@ -27,7 +27,7 @@ Returns all of the \code{ObjectIdentifiers} to which a given policy is
 attached.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_policy_attachments(
+\preformatted{svc$list_policy_attachments(
   DirectoryArn = "string",
   PolicyReference = list(
     Selector = "string"

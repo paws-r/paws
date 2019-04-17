@@ -44,7 +44,7 @@ drift on any nested stacks belonging to that stack. Perform
 \code{DetectStackDrift} directly on the nested stack itself.
 }
 \section{Request syntax}{
-\preformatted{cloudformation$detect_stack_drift(
+\preformatted{svc$detect_stack_drift(
   StackName = "string",
   LogicalResourceIds = list(
     "string"

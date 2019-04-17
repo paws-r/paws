@@ -17,7 +17,7 @@ iot_list_thing_registration_tasks(nextToken, maxResults, status)
 List bulk thing provisioning tasks.
 }
 \section{Request syntax}{
-\preformatted{iot$list_thing_registration_tasks(
+\preformatted{svc$list_thing_registration_tasks(
   nextToken = "string",
   maxResults = 123,
   status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling"

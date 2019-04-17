@@ -16,7 +16,7 @@ Cancels the specified export task.
 The task must be in the \code{PENDING} or \code{RUNNING} state.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchlogs$cancel_export_task(
+\preformatted{svc$cancel_export_task(
   taskId = "string"
 )
 }

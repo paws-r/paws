@@ -15,7 +15,7 @@ Retrieves a list that describes one or more specified Amazon WorkSpaces
 clients.
 }
 \section{Request syntax}{
-\preformatted{workspaces$describe_client_properties(
+\preformatted{svc$describe_client_properties(
   ResourceIds = list(
     "string"
   )

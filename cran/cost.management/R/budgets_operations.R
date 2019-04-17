@@ -20,7 +20,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$create_budget(
+#' svc$create_budget(
 #'   AccountId = "string",
 #'   Budget = list(
 #'     BudgetName = "string",
@@ -129,7 +129,7 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$create_notification(
+#' svc$create_notification(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(
@@ -185,7 +185,7 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$create_subscriber(
+#' svc$create_subscriber(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(
@@ -237,7 +237,7 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$delete_budget(
+#' svc$delete_budget(
 #'   AccountId = "string",
 #'   BudgetName = "string"
 #' )
@@ -279,7 +279,7 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$delete_notification(
+#' svc$delete_notification(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(
@@ -330,7 +330,7 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$delete_subscriber(
+#' svc$delete_subscriber(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(
@@ -379,7 +379,7 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$describe_budget(
+#' svc$describe_budget(
 #'   AccountId = "string",
 #'   BudgetName = "string"
 #' )
@@ -422,7 +422,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$describe_budget_performance_history(
+#' svc$describe_budget_performance_history(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   TimePeriod = list(
@@ -473,7 +473,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$describe_budgets(
+#' svc$describe_budgets(
 #'   AccountId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -517,7 +517,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$describe_notifications_for_budget(
+#' svc$describe_notifications_for_budget(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   MaxResults = 123,
@@ -563,7 +563,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$describe_subscribers_for_notification(
+#' svc$describe_subscribers_for_notification(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(
@@ -613,7 +613,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$update_budget(
+#' svc$update_budget(
 #'   AccountId = "string",
 #'   NewBudget = list(
 #'     BudgetName = "string",
@@ -701,7 +701,7 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$update_notification(
+#' svc$update_notification(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   OldNotification = list(
@@ -757,7 +757,7 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #'
 #' @section Request syntax:
 #' ```
-#' budgets$update_subscriber(
+#' svc$update_subscriber(
 #'   AccountId = "string",
 #'   BudgetName = "string",
 #'   Notification = list(

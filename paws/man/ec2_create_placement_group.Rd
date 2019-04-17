@@ -39,7 +39,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGu
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$create_placement_group(
+\preformatted{svc$create_placement_group(
   DryRun = TRUE|FALSE,
   GroupName = "string",
   Strategy = "cluster"|"spread"|"partition",
@@ -50,7 +50,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 \examples{
 # This example creates a placement group with the specified name.
-\donttest{ec2$create_placement_group(
+\donttest{svc$create_placement_group(
   GroupName = "my-cluster",
   Strategy = "cluster"
 )}

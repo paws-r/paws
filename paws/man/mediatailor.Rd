@@ -19,12 +19,6 @@ same as you do through the console. For example, you specify ad
 insertion behavior and mapping information for the origin server and the
 ad decision server (ADS).
 }
-\section{Example}{
-\preformatted{mediatailor <- paws::mediatailor()
-mediatailor$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -38,3 +32,9 @@ mediatailor$operation()
 }
 }
 
+\examples{
+\donttest{svc$delete_playback_configuration(
+  Foo = 123
+)}
+
+}

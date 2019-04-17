@@ -13,7 +13,7 @@ mq_delete_broker(BrokerId)
 Deletes a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
-\preformatted{mq$delete_broker(
+\preformatted{svc$delete_broker(
   BrokerId = "string"
 )
 }

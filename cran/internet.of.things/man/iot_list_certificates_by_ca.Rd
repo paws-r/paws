@@ -22,7 +22,7 @@ ascending order, based on the creation date.}
 List the device certificates signed by the specified CA certificate.
 }
 \section{Request syntax}{
-\preformatted{iot$list_certificates_by_ca(
+\preformatted{svc$list_certificates_by_ca(
   caCertificateId = "string",
   pageSize = 123,
   marker = "string",

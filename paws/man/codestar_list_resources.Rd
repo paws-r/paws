@@ -19,7 +19,7 @@ results.}
 Lists resources associated with a project in AWS CodeStar.
 }
 \section{Request syntax}{
-\preformatted{codestar$list_resources(
+\preformatted{svc$list_resources(
   projectId = "string",
   nextToken = "string",
   maxResults = 123

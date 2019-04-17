@@ -26,7 +26,7 @@ To specify which gateway to start, use the Amazon Resource Name (ARN) of
 the gateway in your request.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$start_gateway(
+\preformatted{svc$start_gateway(
   GatewayARN = "string"
 )
 }
@@ -34,7 +34,7 @@ the gateway in your request.
 
 \examples{
 # Starts a gateway service that was previously shut down.
-\donttest{storagegateway$start_gateway(
+\donttest{svc$start_gateway(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
 )}
 

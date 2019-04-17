@@ -25,7 +25,7 @@ entities.
 No response is returned from this call.
 }
 \section{Request syntax}{
-\preformatted{transfer$untag_resource(
+\preformatted{svc$untag_resource(
   Arn = "string",
   TagKeys = list(
     "string"

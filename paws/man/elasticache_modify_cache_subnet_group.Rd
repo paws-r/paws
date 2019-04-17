@@ -24,7 +24,7 @@ Example: \code{mysubnetgroup}}
 Modifies an existing cache subnet group.
 }
 \section{Request syntax}{
-\preformatted{elasticache$modify_cache_subnet_group(
+\preformatted{svc$modify_cache_subnet_group(
   CacheSubnetGroupName = "string",
   CacheSubnetGroupDescription = "string",
   SubnetIds = list(

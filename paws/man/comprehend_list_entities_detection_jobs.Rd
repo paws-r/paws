@@ -20,7 +20,7 @@ one filter at a time.}
 Gets a list of the entity detection jobs that you have submitted.
 }
 \section{Request syntax}{
-\preformatted{comprehend$list_entities_detection_jobs(
+\preformatted{svc$list_entities_detection_jobs(
   Filter = list(
     JobName = "string",
     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",

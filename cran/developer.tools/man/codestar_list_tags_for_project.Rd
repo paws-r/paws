@@ -17,7 +17,7 @@ codestar_list_tags_for_project(id, nextToken, maxResults)
 Gets the tags for a project.
 }
 \section{Request syntax}{
-\preformatted{codestar$list_tags_for_project(
+\preformatted{svc$list_tags_for_project(
   id = "string",
   nextToken = "string",
   maxResults = 123

@@ -22,7 +22,7 @@ value.}
 Gets the policies for the specifies resources.
 }
 \section{Request syntax}{
-\preformatted{ram$get_resource_policies(
+\preformatted{svc$get_resource_policies(
   resourceArns = list(
     "string"
   ),

@@ -15,7 +15,7 @@ Provides basic information for the specified fleet, excluding identity
 provider, networking, and device configuration details.
 }
 \section{Request syntax}{
-\preformatted{worklink$describe_fleet_metadata(
+\preformatted{svc$describe_fleet_metadata(
   FleetArn = "string"
 )
 }

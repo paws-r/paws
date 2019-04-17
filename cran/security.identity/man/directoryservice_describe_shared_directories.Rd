@@ -21,7 +21,7 @@ call to DescribeSharedDirectories. Pass null if this is the first call.}
 Returns the shared directories in your account.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$describe_shared_directories(
+\preformatted{svc$describe_shared_directories(
   OwnerDirectoryId = "string",
   SharedDirectoryIds = list(
     "string"

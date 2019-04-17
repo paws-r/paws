@@ -79,7 +79,7 @@ Launches an environment for the specified application using the
 specified configuration.
 }
 \section{Request syntax}{
-\preformatted{elasticbeanstalk$create_environment(
+\preformatted{svc$create_environment(
   ApplicationName = "string",
   EnvironmentName = "string",
   GroupName = "string",
@@ -122,7 +122,7 @@ specified configuration.
 \examples{
 # The following operation creates a new environment for version v1 of a
 # java application named my-app:
-\donttest{elasticbeanstalk$create_environment(
+\donttest{svc$create_environment(
   ApplicationName = "my-app",
   CNAMEPrefix = "my-app",
   EnvironmentName = "my-env",

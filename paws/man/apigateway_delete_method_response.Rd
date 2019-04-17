@@ -20,7 +20,7 @@ apigateway_delete_method_response(restApiId, resourceId, httpMethod,
 Deletes an existing MethodResponse resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_method_response(
+\preformatted{svc$delete_method_response(
   restApiId = "string",
   resourceId = "string",
   httpMethod = "string",

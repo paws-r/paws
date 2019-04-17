@@ -18,7 +18,7 @@ and the maximum value is 500.}
 Gets all the usage plans of the caller's account.
 }
 \section{Request syntax}{
-\preformatted{apigateway$get_usage_plans(
+\preformatted{svc$get_usage_plans(
   position = "string",
   keyId = "string",
   limit = 123

@@ -40,7 +40,7 @@ jobs whose name contains the specified string.}
 Lists training jobs.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_training_jobs(
+\preformatted{svc$list_training_jobs(
   NextToken = "string",
   MaxResults = 123,
   CreationTimeAfter = as.POSIXct(

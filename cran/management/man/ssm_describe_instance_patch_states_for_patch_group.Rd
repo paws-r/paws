@@ -30,7 +30,7 @@ Retrieves the high-level patch state for the instances in the specified
 patch group.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_instance_patch_states_for_patch_group(
+\preformatted{svc$describe_instance_patch_states_for_patch_group(
   PatchGroup = "string",
   Filters = list(
     list(

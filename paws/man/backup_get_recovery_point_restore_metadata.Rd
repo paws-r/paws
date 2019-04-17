@@ -30,7 +30,7 @@ the recovery point was created and now requires additional or different
 information in order to be restored.
 }
 \section{Request syntax}{
-\preformatted{backup$get_recovery_point_restore_metadata(
+\preformatted{svc$get_recovery_point_restore_metadata(
   BackupVaultName = "string",
   RecoveryPointArn = "string"
 )

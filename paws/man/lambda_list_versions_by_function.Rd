@@ -32,7 +32,7 @@ Returns a list of
 with the version-specific configuration of each.
 }
 \section{Request syntax}{
-\preformatted{lambda$list_versions_by_function(
+\preformatted{svc$list_versions_by_function(
   FunctionName = "string",
   Marker = "string",
   MaxItems = 123
@@ -42,7 +42,7 @@ with the version-specific configuration of each.
 
 \examples{
 # This operation retrieves a Lambda function versions
-\donttest{lambda$list_versions_by_function(
+\donttest{svc$list_versions_by_function(
   FunctionName = "myFunction",
   Marker = "",
   MaxItems = 123L

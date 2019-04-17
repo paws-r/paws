@@ -27,7 +27,7 @@ Returns information about the replication instance types that can be
 created in the specified region.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$describe_orderable_replication_instances(
+\preformatted{svc$describe_orderable_replication_instances(
   MaxRecords = 123,
   Marker = "string"
 )
@@ -37,7 +37,7 @@ created in the specified region.
 \examples{
 # Returns information about the replication instance types that can be
 # created in the specified region.
-\donttest{databasemigrationservice$describe_orderable_replication_instances(
+\donttest{svc$describe_orderable_replication_instances(
   Marker = "",
   MaxRecords = 123L
 )}

@@ -33,7 +33,7 @@ Lists models created with the
 API.
 }
 \section{Request syntax}{
-\preformatted{sagemaker$list_models(
+\preformatted{svc$list_models(
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",

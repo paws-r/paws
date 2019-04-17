@@ -23,7 +23,7 @@ RemoveTagsFromStream has a limit of five transactions per second per
 account.
 }
 \section{Request syntax}{
-\preformatted{kinesis$remove_tags_from_stream(
+\preformatted{svc$remove_tags_from_stream(
   StreamName = "string",
   TagKeys = list(
     "string"

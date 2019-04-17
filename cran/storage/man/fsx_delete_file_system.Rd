@@ -38,7 +38,7 @@ The data in a deleted file system is also deleted and can't be
 recovered by any means.
 }
 \section{Request syntax}{
-\preformatted{fsx$delete_file_system(
+\preformatted{svc$delete_file_system(
   FileSystemId = "string",
   ClientRequestToken = "string",
   WindowsConfiguration = list(
@@ -56,7 +56,7 @@ recovered by any means.
 
 \examples{
 # This operation deletes an Amazon FSx file system.
-\donttest{fsx$delete_file_system(
+\donttest{svc$delete_file_system(
   FileSystemId = "fs-0498eed5fe91001ec"
 )}
 

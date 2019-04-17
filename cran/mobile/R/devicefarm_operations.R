@@ -26,7 +26,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_device_pool(
+#' svc$create_device_pool(
 #'   projectArn = "string",
 #'   name = "string",
 #'   description = "string",
@@ -44,7 +44,7 @@ NULL
 #' @examples
 #' # The following example creates a new device pool named MyDevicePool
 #' # inside an existing project.
-#' \donttest{devicefarm$create_device_pool(
+#' \donttest{svc$create_device_pool(
 #'   name = "MyDevicePool",
 #'   description = "My Android devices",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
@@ -94,7 +94,7 @@ devicefarm_create_device_pool <- function(projectArn, name, description = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_instance_profile(
+#' svc$create_instance_profile(
 #'   name = "string",
 #'   description = "string",
 #'   packageCleanup = TRUE|FALSE,
@@ -159,7 +159,7 @@ devicefarm_create_instance_profile <- function(name, description = NULL, package
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_network_profile(
+#' svc$create_network_profile(
 #'   projectArn = "string",
 #'   name = "string",
 #'   description = "string",
@@ -208,7 +208,7 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_project(
+#' svc$create_project(
 #'   name = "string",
 #'   defaultJobTimeoutMinutes = 123
 #' )
@@ -216,7 +216,7 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 #'
 #' @examples
 #' # The following example creates a new project named MyProject.
-#' \donttest{devicefarm$create_project(
+#' \donttest{svc$create_project(
 #'   name = "MyProject"
 #' )}
 #'
@@ -292,7 +292,7 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_remote_access_session(
+#' svc$create_remote_access_session(
 #'   projectArn = "string",
 #'   deviceArn = "string",
 #'   instanceArn = "string",
@@ -315,7 +315,7 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #'
 #' @examples
 #' # The following example creates a remote access session named MySession.
-#' \donttest{devicefarm$create_remote_access_session(
+#' \donttest{svc$create_remote_access_session(
 #'   name = "MySession",
 #'   configuration = list(
 #'     billingMethod = "METERED"
@@ -444,7 +444,7 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_upload(
+#' svc$create_upload(
 #'   projectArn = "string",
 #'   name = "string",
 #'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
@@ -455,7 +455,7 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #' @examples
 #' # The following example creates a new Appium Python test package upload
 #' # inside an existing project.
-#' \donttest{devicefarm$create_upload(
+#' \donttest{svc$create_upload(
 #'   name = "MyAppiumPythonUpload",
 #'   type = "APPIUM_PYTHON_TEST_PACKAGE",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
@@ -501,7 +501,7 @@ devicefarm_create_upload <- function(projectArn, name, type, contentType = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$create_vpce_configuration(
+#' svc$create_vpce_configuration(
 #'   vpceConfigurationName = "string",
 #'   vpceServiceName = "string",
 #'   serviceDnsName = "string",
@@ -541,14 +541,14 @@ devicefarm_create_vpce_configuration <- function(vpceConfigurationName, vpceServ
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_device_pool(
+#' svc$delete_device_pool(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes a specific device pool.
-#' \donttest{devicefarm$delete_device_pool(
+#' \donttest{svc$delete_device_pool(
 #'   arn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID"
 #' )}
 #'
@@ -585,7 +585,7 @@ devicefarm_delete_device_pool <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_instance_profile(
+#' svc$delete_instance_profile(
 #'   arn = "string"
 #' )
 #' ```
@@ -621,7 +621,7 @@ devicefarm_delete_instance_profile <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_network_profile(
+#' svc$delete_network_profile(
 #'   arn = "string"
 #' )
 #' ```
@@ -659,14 +659,14 @@ devicefarm_delete_network_profile <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_project(
+#' svc$delete_project(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes a specific project.
-#' \donttest{devicefarm$delete_project(
+#' \donttest{svc$delete_project(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -701,14 +701,14 @@ devicefarm_delete_project <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_remote_access_session(
+#' svc$delete_remote_access_session(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes a specific remote access session.
-#' \donttest{devicefarm$delete_remote_access_session(
+#' \donttest{svc$delete_remote_access_session(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -744,14 +744,14 @@ devicefarm_delete_remote_access_session <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_run(
+#' svc$delete_run(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes a specific test run.
-#' \donttest{devicefarm$delete_run(
+#' \donttest{svc$delete_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -786,14 +786,14 @@ devicefarm_delete_run <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_upload(
+#' svc$delete_upload(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example deletes a specific upload.
-#' \donttest{devicefarm$delete_upload(
+#' \donttest{svc$delete_upload(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -830,7 +830,7 @@ devicefarm_delete_upload <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$delete_vpce_configuration(
+#' svc$delete_vpce_configuration(
 #'   arn = "string"
 #' )
 #' ```
@@ -865,13 +865,13 @@ devicefarm_delete_vpce_configuration <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_account_settings()
+#' svc$get_account_settings()
 #' ```
 #'
 #' @examples
 #' # The following example returns information about your Device Farm account
 #' # settings.
-#' \donttest{devicefarm$get_account_settings()}
+#' \donttest{svc$get_account_settings()}
 #'
 #' @keywords internal
 #'
@@ -903,14 +903,14 @@ devicefarm_get_account_settings <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_device(
+#' svc$get_device(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example returns information about a specific device.
-#' \donttest{devicefarm$get_device(
+#' \donttest{svc$get_device(
 #'   arn = "arn:aws:devicefarm:us-west-2::device:123EXAMPLE"
 #' )}
 #'
@@ -947,7 +947,7 @@ devicefarm_get_device <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_device_instance(
+#' svc$get_device_instance(
 #'   arn = "string"
 #' )
 #' ```
@@ -982,7 +982,7 @@ devicefarm_get_device_instance <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_device_pool(
+#' svc$get_device_pool(
 #'   arn = "string"
 #' )
 #' ```
@@ -990,7 +990,7 @@ devicefarm_get_device_instance <- function(arn) {
 #' @examples
 #' # The following example returns information about a specific device pool,
 #' # given a project ARN.
-#' \donttest{devicefarm$get_device_pool(
+#' \donttest{svc$get_device_pool(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1069,7 +1069,7 @@ devicefarm_get_device_pool <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_device_pool_compatibility(
+#' svc$get_device_pool_compatibility(
 #'   devicePoolArn = "string",
 #'   appArn = "string",
 #'   testType = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
@@ -1121,7 +1121,7 @@ devicefarm_get_device_pool <- function(arn) {
 #' @examples
 #' # The following example returns information about the compatibility of a
 #' # specific device pool, given its ARN.
-#' \donttest{devicefarm$get_device_pool_compatibility(
+#' \donttest{svc$get_device_pool_compatibility(
 #'   appArn = "arn:aws:devicefarm:us-west-2::app:123-456-EXAMPLE-GUID",
 #'   devicePoolArn = "arn:aws:devicefarm:us-west-2::devicepool:123-456-EXAMPLE-GUID",
 #'   testType = "APPIUM_PYTHON"
@@ -1157,7 +1157,7 @@ devicefarm_get_device_pool_compatibility <- function(devicePoolArn, appArn = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_instance_profile(
+#' svc$get_instance_profile(
 #'   arn = "string"
 #' )
 #' ```
@@ -1192,14 +1192,14 @@ devicefarm_get_instance_profile <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_job(
+#' svc$get_job(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example returns information about a specific job.
-#' \donttest{devicefarm$get_job(
+#' \donttest{svc$get_job(
 #'   arn = "arn:aws:devicefarm:us-west-2::job:123-456-EXAMPLE-GUID"
 #' )}
 #'
@@ -1234,7 +1234,7 @@ devicefarm_get_job <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_network_profile(
+#' svc$get_network_profile(
 #'   arn = "string"
 #' )
 #' ```
@@ -1277,7 +1277,7 @@ devicefarm_get_network_profile <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_offering_status(
+#' svc$get_offering_status(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1285,7 +1285,7 @@ devicefarm_get_network_profile <- function(arn) {
 #' @examples
 #' # The following example returns information about Device Farm offerings
 #' # available to your account.
-#' \donttest{devicefarm$get_offering_status(
+#' \donttest{svc$get_offering_status(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -1319,14 +1319,14 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_project(
+#' svc$get_project(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets information about a specific project.
-#' \donttest{devicefarm$get_project(
+#' \donttest{svc$get_project(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
 #' )}
 #'
@@ -1361,14 +1361,14 @@ devicefarm_get_project <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_remote_access_session(
+#' svc$get_remote_access_session(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets a specific remote access session.
-#' \donttest{devicefarm$get_remote_access_session(
+#' \donttest{svc$get_remote_access_session(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1402,14 +1402,14 @@ devicefarm_get_remote_access_session <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_run(
+#' svc$get_run(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets information about a specific test run.
-#' \donttest{devicefarm$get_run(
+#' \donttest{svc$get_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/..."
 #' )}
 #'
@@ -1443,14 +1443,14 @@ devicefarm_get_run <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_suite(
+#' svc$get_suite(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets information about a specific test suite.
-#' \donttest{devicefarm$get_suite(
+#' \donttest{svc$get_suite(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:suite:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1484,14 +1484,14 @@ devicefarm_get_suite <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_test(
+#' svc$get_test(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets information about a specific test.
-#' \donttest{devicefarm$get_test(
+#' \donttest{svc$get_test(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:test:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1525,14 +1525,14 @@ devicefarm_get_test <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_upload(
+#' svc$get_upload(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example gets information about a specific upload.
-#' \donttest{devicefarm$get_upload(
+#' \donttest{svc$get_upload(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:upload:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1569,7 +1569,7 @@ devicefarm_get_upload <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$get_vpce_configuration(
+#' svc$get_vpce_configuration(
 #'   arn = "string"
 #' )
 #' ```
@@ -1610,7 +1610,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$install_to_remote_access_session(
+#' svc$install_to_remote_access_session(
 #'   remoteAccessSessionArn = "string",
 #'   appArn = "string"
 #' )
@@ -1619,7 +1619,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #' @examples
 #' # The following example installs a specific app to a device in a specific
 #' # remote access session.
-#' \donttest{devicefarm$install_to_remote_access_session(
+#' \donttest{svc$install_to_remote_access_session(
 #'   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
 #'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
 #' )}
@@ -1666,7 +1666,7 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_artifacts(
+#' svc$list_artifacts(
 #'   arn = "string",
 #'   type = "SCREENSHOT"|"FILE"|"LOG",
 #'   nextToken = "string"
@@ -1675,7 +1675,7 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #'
 #' @examples
 #' # The following example lists screenshot artifacts for a specific run.
-#' \donttest{devicefarm$list_artifacts(
+#' \donttest{svc$list_artifacts(
 #'   type = "SCREENSHOT",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
@@ -1716,7 +1716,7 @@ devicefarm_list_artifacts <- function(arn, type, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_device_instances(
+#' svc$list_device_instances(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1764,7 +1764,7 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_device_pools(
+#' svc$list_device_pools(
 #'   arn = "string",
 #'   type = "CURATED"|"PRIVATE",
 #'   nextToken = "string"
@@ -1774,7 +1774,7 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 #' @examples
 #' # The following example returns information about the private device pools
 #' # in a specific project.
-#' \donttest{devicefarm$list_device_pools(
+#' \donttest{svc$list_device_pools(
 #'   type = "PRIVATE",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
@@ -1879,7 +1879,7 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_devices(
+#' svc$list_devices(
 #'   arn = "string",
 #'   nextToken = "string",
 #'   filters = list(
@@ -1897,7 +1897,7 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about the available devices in
 #' # a specific project.
-#' \donttest{devicefarm$list_devices(
+#' \donttest{svc$list_devices(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -1935,7 +1935,7 @@ devicefarm_list_devices <- function(arn = NULL, nextToken = NULL, filters = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_instance_profiles(
+#' svc$list_instance_profiles(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1974,7 +1974,7 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_jobs(
+#' svc$list_jobs(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -1983,7 +1983,7 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @examples
 #' # The following example returns information about jobs in a specific
 #' # project.
-#' \donttest{devicefarm$list_jobs(
+#' \donttest{svc$list_jobs(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -2023,7 +2023,7 @@ devicefarm_list_jobs <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_network_profiles(
+#' svc$list_network_profiles(
 #'   arn = "string",
 #'   type = "CURATED"|"PRIVATE",
 #'   nextToken = "string"
@@ -2066,7 +2066,7 @@ devicefarm_list_network_profiles <- function(arn, type = NULL, nextToken = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_offering_promotions(
+#' svc$list_offering_promotions(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -2109,7 +2109,7 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_offering_transactions(
+#' svc$list_offering_transactions(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -2117,7 +2117,7 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about Device Farm offering
 #' # transactions.
-#' \donttest{devicefarm$list_offering_transactions(
+#' \donttest{svc$list_offering_transactions(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -2159,7 +2159,7 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_offerings(
+#' svc$list_offerings(
 #'   nextToken = "string"
 #' )
 #' ```
@@ -2167,7 +2167,7 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about available device
 #' # offerings.
-#' \donttest{devicefarm$list_offerings(
+#' \donttest{svc$list_offerings(
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
 #'
@@ -2206,7 +2206,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_projects(
+#' svc$list_projects(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2215,7 +2215,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #' @examples
 #' # The following example returns information about the specified project in
 #' # Device Farm.
-#' \donttest{devicefarm$list_projects(
+#' \donttest{svc$list_projects(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAM...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2254,7 +2254,7 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_remote_access_sessions(
+#' svc$list_remote_access_sessions(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2263,7 +2263,7 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about a specific Device Farm
 #' # remote access session.
-#' \donttest{devicefarm$list_remote_access_sessions(
+#' \donttest{svc$list_remote_access_sessions(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 #' )}
@@ -2302,7 +2302,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_runs(
+#' svc$list_runs(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2310,7 +2310,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #'
 #' @examples
 #' # The following example returns information about a specific test run.
-#' \donttest{devicefarm$list_runs(
+#' \donttest{svc$list_runs(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2348,7 +2348,7 @@ devicefarm_list_runs <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_samples(
+#' svc$list_samples(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2357,7 +2357,7 @@ devicefarm_list_runs <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about samples, given a
 #' # specific Device Farm project.
-#' \donttest{devicefarm$list_samples(
+#' \donttest{svc$list_samples(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2395,7 +2395,7 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_suites(
+#' svc$list_suites(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2404,7 +2404,7 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about suites, given a specific
 #' # Device Farm project.
-#' \donttest{devicefarm$list_suites(
+#' \donttest{svc$list_suites(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2442,7 +2442,7 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_tests(
+#' svc$list_tests(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2451,7 +2451,7 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about tests, given a specific
 #' # Device Farm project.
-#' \donttest{devicefarm$list_tests(
+#' \donttest{svc$list_tests(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2489,7 +2489,7 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_unique_problems(
+#' svc$list_unique_problems(
 #'   arn = "string",
 #'   nextToken = "string"
 #' )
@@ -2498,7 +2498,7 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about unique problems, given a
 #' # specific Device Farm project.
-#' \donttest{devicefarm$list_unique_problems(
+#' \donttest{svc$list_unique_problems(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2618,7 +2618,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_uploads(
+#' svc$list_uploads(
 #'   arn = "string",
 #'   type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
 #'   nextToken = "string"
@@ -2628,7 +2628,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' @examples
 #' # The following example returns information about uploads, given a
 #' # specific Device Farm project.
-#' \donttest{devicefarm$list_uploads(
+#' \donttest{svc$list_uploads(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )}
@@ -2669,7 +2669,7 @@ devicefarm_list_uploads <- function(arn, type = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$list_vpce_configurations(
+#' svc$list_vpce_configurations(
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -2712,7 +2712,7 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$purchase_offering(
+#' svc$purchase_offering(
 #'   offeringId = "string",
 #'   quantity = 123,
 #'   offeringPromotionId = "string"
@@ -2721,7 +2721,7 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #'
 #' @examples
 #' # The following example purchases a specific device slot offering.
-#' \donttest{devicefarm$purchase_offering(
+#' \donttest{svc$purchase_offering(
 #'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
 #'   quantity = 1L
 #' )}
@@ -2762,7 +2762,7 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$renew_offering(
+#' svc$renew_offering(
 #'   offeringId = "string",
 #'   quantity = 123
 #' )
@@ -2770,7 +2770,7 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #'
 #' @examples
 #' # The following example renews a specific device slot offering.
-#' \donttest{devicefarm$renew_offering(
+#' \donttest{svc$renew_offering(
 #'   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
 #'   quantity = 1L
 #' )}
@@ -2820,7 +2820,7 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$schedule_run(
+#' svc$schedule_run(
 #'   projectArn = "string",
 #'   appArn = "string",
 #'   devicePoolArn = "string",
@@ -2891,7 +2891,7 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #'
 #' @examples
 #' # The following example schedules a test run named MyRun.
-#' \donttest{devicefarm$schedule_run(
+#' \donttest{svc$schedule_run(
 #'   name = "MyRun",
 #'   devicePoolArn = "arn:aws:devicefarm:us-west-2:123456789101:pool:EXAMPLE-GUID-123-456",
 #'   projectArn = "arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456",
@@ -2938,7 +2938,7 @@ devicefarm_schedule_run <- function(projectArn, appArn = NULL, devicePoolArn = N
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$stop_job(
+#' svc$stop_job(
 #'   arn = "string"
 #' )
 #' ```
@@ -2974,7 +2974,7 @@ devicefarm_stop_job <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$stop_remote_access_session(
+#' svc$stop_remote_access_session(
 #'   arn = "string"
 #' )
 #' ```
@@ -3016,14 +3016,14 @@ devicefarm_stop_remote_access_session <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$stop_run(
+#' svc$stop_run(
 #'   arn = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' # The following example stops a specific test run.
-#' \donttest{devicefarm$stop_run(
+#' \donttest{svc$stop_run(
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:EXAMPLE-GUID-123-456"
 #' )}
 #'
@@ -3060,7 +3060,7 @@ devicefarm_stop_run <- function(arn) {
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_device_instance(
+#' svc$update_device_instance(
 #'   arn = "string",
 #'   profileArn = "string",
 #'   labels = list(
@@ -3129,7 +3129,7 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_device_pool(
+#' svc$update_device_pool(
 #'   arn = "string",
 #'   name = "string",
 #'   description = "string",
@@ -3149,7 +3149,7 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' # The following example updates the specified device pool with a new name
 #' # and description. It also enables remote access of devices in the device
 #' # pool.
-#' \donttest{devicefarm$update_device_pool(
+#' \donttest{svc$update_device_pool(
 #'   name = "NewName",
 #'   arn = "arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-12345EXAMPLE",
 #'   description = "NewDescription",
@@ -3204,7 +3204,7 @@ devicefarm_update_device_pool <- function(arn, name = NULL, description = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_instance_profile(
+#' svc$update_instance_profile(
 #'   arn = "string",
 #'   name = "string",
 #'   description = "string",
@@ -3272,7 +3272,7 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_network_profile(
+#' svc$update_network_profile(
 #'   arn = "string",
 #'   name = "string",
 #'   description = "string",
@@ -3324,7 +3324,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_project(
+#' svc$update_project(
 #'   arn = "string",
 #'   name = "string",
 #'   defaultJobTimeoutMinutes = 123
@@ -3333,7 +3333,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #'
 #' @examples
 #' # The following example updates the specified project with a new name.
-#' \donttest{devicefarm$update_project(
+#' \donttest{svc$update_project(
 #'   name = "NewName",
 #'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
 #' )}
@@ -3374,7 +3374,7 @@ devicefarm_update_project <- function(arn, name = NULL, defaultJobTimeoutMinutes
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_upload(
+#' svc$update_upload(
 #'   arn = "string",
 #'   name = "string",
 #'   contentType = "string",
@@ -3424,7 +3424,7 @@ devicefarm_update_upload <- function(arn, name = NULL, contentType = NULL, editC
 #'
 #' @section Request syntax:
 #' ```
-#' devicefarm$update_vpce_configuration(
+#' svc$update_vpce_configuration(
 #'   arn = "string",
 #'   vpceConfigurationName = "string",
 #'   vpceServiceName = "string",

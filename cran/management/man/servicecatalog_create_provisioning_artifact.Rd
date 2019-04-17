@@ -33,7 +33,7 @@ You cannot create a provisioning artifact for a product that was shared
 with you.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$create_provisioning_artifact(
+\preformatted{svc$create_provisioning_artifact(
   AcceptLanguage = "string",
   ProductId = "string",
   Parameters = list(

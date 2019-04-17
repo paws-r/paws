@@ -10,7 +10,7 @@ codebuild_list_source_credentials()
 Returns a list of \code{SourceCredentialsInfo} objects.
 }
 \section{Request syntax}{
-\preformatted{codebuild$list_source_credentials()
+\preformatted{svc$list_source_credentials()
 }
 }
 

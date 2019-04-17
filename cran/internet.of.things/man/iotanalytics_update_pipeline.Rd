@@ -27,7 +27,7 @@ and a \code{datastore} activity and, optionally, as many as 23 additional
 activities in the \code{pipelineActivities} array.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$update_pipeline(
+\preformatted{svc$update_pipeline(
   pipelineName = "string",
   pipelineActivities = list(
     list(

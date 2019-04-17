@@ -13,7 +13,7 @@ appstream_stop_image_builder(Name)
 Stops the specified image builder.
 }
 \section{Request syntax}{
-\preformatted{appstream$stop_image_builder(
+\preformatted{svc$stop_image_builder(
   Name = "string"
 )
 }

@@ -15,7 +15,7 @@ valid for 72 hours or until you call this operation again, whichever
 comes first.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$send_invitation(
+\preformatted{svc$send_invitation(
   UserArn = "string"
 )
 }

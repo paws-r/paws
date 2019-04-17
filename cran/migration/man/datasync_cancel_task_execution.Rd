@@ -24,7 +24,7 @@ successfully complete the transfer when you start the next task
 execution.
 }
 \section{Request syntax}{
-\preformatted{datasync$cancel_task_execution(
+\preformatted{svc$cancel_task_execution(
   TaskExecutionArn = "string"
 )
 }

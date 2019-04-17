@@ -13,7 +13,7 @@ serverlessapplicationrepository_get_application_policy(ApplicationId)
 Retrieves the policy for the application.
 }
 \section{Request syntax}{
-\preformatted{serverlessapplicationrepository$get_application_policy(
+\preformatted{svc$get_application_policy(
   ApplicationId = "string"
 )
 }

@@ -13,7 +13,7 @@ robomaker_describe_fleet(fleet)
 Describes a fleet.
 }
 \section{Request syntax}{
-\preformatted{robomaker$describe_fleet(
+\preformatted{svc$describe_fleet(
   fleet = "string"
 )
 }

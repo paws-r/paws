@@ -14,7 +14,7 @@ deleted.}
 Deletes an Amazon Redshift event notification subscription.
 }
 \section{Request syntax}{
-\preformatted{redshift$delete_event_subscription(
+\preformatted{svc$delete_event_subscription(
   SubscriptionName = "string"
 )
 }

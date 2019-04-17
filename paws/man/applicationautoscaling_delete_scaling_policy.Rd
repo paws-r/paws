@@ -86,7 +86,7 @@ To create a scaling policy or update an existing one, see
 PutScalingPolicy.
 }
 \section{Request syntax}{
-\preformatted{applicationautoscaling$delete_scaling_policy(
+\preformatted{svc$delete_scaling_policy(
   PolicyName = "string",
   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource",
   ResourceId = "string",
@@ -98,7 +98,7 @@ PutScalingPolicy.
 \examples{
 # This example deletes a scaling policy for the Amazon ECS service called
 # web-app, which is running in the default cluster.
-\donttest{applicationautoscaling$delete_scaling_policy(
+\donttest{svc$delete_scaling_policy(
   PolicyName = "web-app-cpu-lt-25",
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",

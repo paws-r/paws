@@ -49,7 +49,7 @@ set for the default database defined by the \code{character_set_database}
 parameter.
 }
 \section{Request syntax}{
-\preformatted{docdb$create_db_cluster_parameter_group(
+\preformatted{svc$create_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   DBParameterGroupFamily = "string",
   Description = "string",

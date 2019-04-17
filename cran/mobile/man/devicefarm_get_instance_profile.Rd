@@ -13,7 +13,7 @@ devicefarm_get_instance_profile(arn)
 Returns information about the specified instance profile.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_instance_profile(
+\preformatted{svc$get_instance_profile(
   arn = "string"
 )
 }

@@ -24,7 +24,7 @@ This operation requires permissions to perform the
 \code{rekognition:ListCollections} action.
 }
 \section{Request syntax}{
-\preformatted{rekognition$list_collections(
+\preformatted{svc$list_collections(
   NextToken = "string",
   MaxResults = 123
 )
@@ -33,7 +33,7 @@ This operation requires permissions to perform the
 
 \examples{
 # This operation returns a list of Rekognition collections.
-\donttest{rekognition$list_collections()}
+\donttest{svc$list_collections()}
 
 }
 \keyword{internal}

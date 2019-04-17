@@ -30,7 +30,7 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 }
 \section{Request syntax}{
-\preformatted{ec2$disassociate_address(
+\preformatted{svc$disassociate_address(
   AssociationId = "string",
   PublicIp = "string",
   DryRun = TRUE|FALSE
@@ -41,13 +41,13 @@ once, Amazon EC2 doesn't return an error.
 \examples{
 # This example disassociates an Elastic IP address from an instance in a
 # VPC.
-\donttest{ec2$disassociate_address(
+\donttest{svc$disassociate_address(
   AssociationId = "eipassoc-2bebb745"
 )}
 
 # This example disassociates an Elastic IP address from an instance in
 # EC2-Classic.
-\donttest{ec2$disassociate_address(
+\donttest{svc$disassociate_address(
   PublicIp = "198.51.100.0"
 )}
 

@@ -49,7 +49,7 @@ virtual tape. Use the AddCache operation to add cache storage to a
 gateway.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$create_tape_with_barcode(
+\preformatted{svc$create_tape_with_barcode(
   GatewayARN = "string",
   TapeSizeInBytes = 123,
   TapeBarcode = "string",
@@ -62,7 +62,7 @@ gateway.
 
 \examples{
 # Creates a virtual tape by using your own barcode.
-\donttest{storagegateway$create_tape_with_barcode(
+\donttest{svc$create_tape_with_barcode(
   GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
   TapeBarcode = "TEST12345",
   TapeSizeInBytes = 107374182400

@@ -64,7 +64,7 @@ that you specified; the response merely indicates the last time that the
 price changed.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_spot_price_history(
+\preformatted{svc$describe_spot_price_history(
   Filters = list(
     list(
       Name = "string",
@@ -96,7 +96,7 @@ price changed.
 \examples{
 # This example returns the Spot Price history for m1.xlarge, Linux/UNIX
 # (Amazon VPC) instances for a particular day in January.
-\donttest{ec2$describe_spot_price_history(
+\donttest{svc$describe_spot_price_history(
   EndTime = "2014-01-06T08:09:10",
   InstanceTypes = list(
     "m1.xlarge"

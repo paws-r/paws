@@ -18,7 +18,7 @@ Returns the body of a backup plan in JSON format, in addition to plan
 metadata.
 }
 \section{Request syntax}{
-\preformatted{backup$get_backup_plan(
+\preformatted{svc$get_backup_plan(
   BackupPlanId = "string",
   VersionId = "string"
 )

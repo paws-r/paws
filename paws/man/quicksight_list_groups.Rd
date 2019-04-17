@@ -30,7 +30,7 @@ The response is a list of group objects.
 \code{aws quicksight list-groups -\\-aws-account-id=111122223333 -\\-namespace=default }
 }
 \section{Request syntax}{
-\preformatted{quicksight$list_groups(
+\preformatted{svc$list_groups(
   AwsAccountId = "string",
   NextToken = "string",
   MaxResults = 123,

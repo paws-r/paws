@@ -11,11 +11,10 @@ NULL
 #' file analysis, machine learning, scientific simulation, and data
 #' warehousing.
 #'
-#' @section Example:
-#' ```
-#' emr <- paws::emr()
-#' emr$operation()
-#' ```
+#' @examples
+#' \donttest{svc$add_instance_fleet(
+#'   Foo = 123
+#' )}
 #'
 #' @section Operations:
 #' \tabular{ll}{

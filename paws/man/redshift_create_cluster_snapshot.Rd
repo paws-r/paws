@@ -41,7 +41,7 @@ For more information about working with snapshots, go to \href{http://docs.aws.a
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_cluster_snapshot(
+\preformatted{svc$create_cluster_snapshot(
   SnapshotIdentifier = "string",
   ClusterIdentifier = "string",
   ManualSnapshotRetentionPeriod = 123,

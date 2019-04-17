@@ -14,7 +14,7 @@ about the user.}
 Gets the user attributes and metadata for a user.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$get_user(
+\preformatted{svc$get_user(
   AccessToken = "string"
 )
 }

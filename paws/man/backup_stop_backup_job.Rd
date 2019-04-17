@@ -13,7 +13,7 @@ backup_stop_backup_job(BackupJobId)
 Attempts to cancel a job to create a one-time backup of a resource.
 }
 \section{Request syntax}{
-\preformatted{backup$stop_backup_job(
+\preformatted{svc$stop_backup_job(
   BackupJobId = "string"
 )
 }

@@ -47,7 +47,7 @@ managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/w
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_cluster_versions(
+\preformatted{svc$describe_cluster_versions(
   ClusterVersion = "string",
   ClusterParameterGroupFamily = "string",
   MaxRecords = 123,

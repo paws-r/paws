@@ -45,7 +45,7 @@ or removed from the rule's scope.
 }
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_compliance_by_config_rule(
+\preformatted{svc$describe_compliance_by_config_rule(
   ConfigRuleNames = list(
     "string"
   ),

@@ -22,7 +22,7 @@ Sets the versioning state of an existing bucket. To set the versioning
 state, you must be the bucket owner.
 }
 \section{Request syntax}{
-\preformatted{s3$put_bucket_versioning(
+\preformatted{svc$put_bucket_versioning(
   Bucket = "string",
   ContentMD5 = "string",
   MFA = "string",
@@ -37,7 +37,7 @@ state, you must be the bucket owner.
 \examples{
 # The following example sets versioning configuration on bucket. The
 # configuration enables versioning on the bucket.
-\donttest{s3$put_bucket_versioning(
+\donttest{svc$put_bucket_versioning(
   Bucket = "examplebucket",
   VersioningConfiguration = list(
     MFADelete = "Disabled",

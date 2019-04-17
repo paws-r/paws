@@ -13,7 +13,7 @@ iotanalytics_describe_pipeline(pipelineName)
 Retrieves information about a pipeline.
 }
 \section{Request syntax}{
-\preformatted{iotanalytics$describe_pipeline(
+\preformatted{svc$describe_pipeline(
   pipelineName = "string"
 )
 }

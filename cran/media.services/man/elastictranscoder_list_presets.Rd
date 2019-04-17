@@ -23,7 +23,7 @@ with Elastic Transcoder and the presets that you've added in an AWS
 region.
 }
 \section{Request syntax}{
-\preformatted{elastictranscoder$list_presets(
+\preformatted{svc$list_presets(
   Ascending = "string",
   PageToken = "string"
 )

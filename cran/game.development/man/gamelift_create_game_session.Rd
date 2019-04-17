@@ -101,7 +101,7 @@ the log files.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_game_session(
+\preformatted{svc$create_game_session(
   FleetId = "string",
   AliasId = "string",
   MaximumPlayerSessionCount = 123,

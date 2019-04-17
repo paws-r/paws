@@ -13,7 +13,7 @@ greengrass_get_associated_role(GroupId)
 Retrieves the role associated with a particular group.
 }
 \section{Request syntax}{
-\preformatted{greengrass$get_associated_role(
+\preformatted{svc$get_associated_role(
   GroupId = "string"
 )
 }

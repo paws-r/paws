@@ -27,7 +27,7 @@ You cannot authorize ingress from an Amazon EC2 security group in one
 region to an ElastiCache cluster in another region.
 }
 \section{Request syntax}{
-\preformatted{elasticache$authorize_cache_security_group_ingress(
+\preformatted{svc$authorize_cache_security_group_ingress(
   CacheSecurityGroupName = "string",
   EC2SecurityGroupName = "string",
   EC2SecurityGroupOwnerId = "string"

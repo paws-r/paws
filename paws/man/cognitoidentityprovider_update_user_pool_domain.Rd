@@ -57,7 +57,7 @@ For more information about adding a custom domain to your user pool, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{Using Your Own Domain for the Hosted UI}.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$update_user_pool_domain(
+\preformatted{svc$update_user_pool_domain(
   Domain = "string",
   UserPoolId = "string",
   CustomDomainConfig = list(

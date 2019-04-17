@@ -17,7 +17,7 @@ previous call.}
 List the accelerators for an AWS account.
 }
 \section{Request syntax}{
-\preformatted{globalaccelerator$list_accelerators(
+\preformatted{svc$list_accelerators(
   MaxResults = 123,
   NextToken = "string"
 )

@@ -13,7 +13,7 @@ cloud9_describe_environment_status(environmentId)
 Gets status information for an AWS Cloud9 development environment.
 }
 \section{Request syntax}{
-\preformatted{cloud9$describe_environment_status(
+\preformatted{svc$describe_environment_status(
   environmentId = "string"
 )
 }
@@ -21,7 +21,7 @@ Gets status information for an AWS Cloud9 development environment.
 
 \examples{
 # 
-\donttest{cloud9$describe_environment_status(
+\donttest{svc$describe_environment_status(
   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
 )}
 

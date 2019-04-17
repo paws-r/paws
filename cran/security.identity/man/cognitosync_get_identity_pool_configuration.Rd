@@ -20,7 +20,7 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 }
 \section{Request syntax}{
-\preformatted{cognitosync$get_identity_pool_configuration(
+\preformatted{svc$get_identity_pool_configuration(
   IdentityPoolId = "string"
 )
 }

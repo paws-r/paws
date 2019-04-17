@@ -59,7 +59,7 @@ the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGu
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
-\preformatted{iam$put_role_policy(
+\preformatted{svc$put_role_policy(
   RoleName = "string",
   PolicyName = "string",
   PolicyDocument = "string"
@@ -70,7 +70,7 @@ in the \emph{IAM User Guide}.
 \examples{
 # The following command adds a permissions policy to the role named
 # Test-Role.
-\donttest{iam$put_role_policy(
+\donttest{svc$put_role_policy(
   PolicyDocument = "{\\"Version\\":\\"2012-10-17\\",\\"Statement\\":{\\"Effect\\":\\"Allow\\",...",
   PolicyName = "S3AccessPolicy",
   RoleName = "S3Access"

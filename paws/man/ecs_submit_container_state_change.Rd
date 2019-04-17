@@ -32,7 +32,7 @@ for use outside of the agent.
 Sent to acknowledge that a container changed states.
 }
 \section{Request syntax}{
-\preformatted{ecs$submit_container_state_change(
+\preformatted{svc$submit_container_state_change(
   cluster = "string",
   task = "string",
   containerName = "string",

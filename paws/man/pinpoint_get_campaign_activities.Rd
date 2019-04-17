@@ -20,7 +20,7 @@ pinpoint_get_campaign_activities(ApplicationId, CampaignId, PageSize,
 Returns information about the activity performed by a campaign.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_campaign_activities(
+\preformatted{svc$get_campaign_activities(
   ApplicationId = "string",
   CampaignId = "string",
   PageSize = "string",

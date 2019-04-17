@@ -72,7 +72,7 @@ includes only on-premises instances identified by all the tag groups.}
 Changes information about a deployment group.
 }
 \section{Request syntax}{
-\preformatted{codedeploy$update_deployment_group(
+\preformatted{svc$update_deployment_group(
   applicationName = "string",
   currentDeploymentGroupName = "string",
   newDeploymentGroupName = "string",

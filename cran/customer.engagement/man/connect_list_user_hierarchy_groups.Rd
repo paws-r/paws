@@ -29,7 +29,7 @@ Returns a \code{UserHierarchyGroupSummaryList}, which is an array of
 hierarchy groups in your instance.
 }
 \section{Request syntax}{
-\preformatted{connect$list_user_hierarchy_groups(
+\preformatted{svc$list_user_hierarchy_groups(
   InstanceId = "string",
   NextToken = "string",
   MaxResults = 123

@@ -20,7 +20,7 @@ operation. Please contact \href{mailto:aws-devicefarm-support@amazon.com}{aws-de
 believe that you should be able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$renew_offering(
+\preformatted{svc$renew_offering(
   offeringId = "string",
   quantity = 123
 )
@@ -29,7 +29,7 @@ believe that you should be able to invoke this operation.
 
 \examples{
 # The following example renews a specific device slot offering.
-\donttest{devicefarm$renew_offering(
+\donttest{svc$renew_offering(
   offeringId = "D68B3C05-1BA6-4360-BC69-12345EXAMPLE",
   quantity = 1L
 )}

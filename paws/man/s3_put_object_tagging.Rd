@@ -21,7 +21,7 @@ s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging)
 Sets the supplied tag-set to an object that already exists in a bucket
 }
 \section{Request syntax}{
-\preformatted{s3$put_object_tagging(
+\preformatted{svc$put_object_tagging(
   Bucket = "string",
   Key = "string",
   VersionId = "string",
@@ -40,7 +40,7 @@ Sets the supplied tag-set to an object that already exists in a bucket
 
 \examples{
 # The following example adds tags to an existing object.
-\donttest{s3$put_object_tagging(
+\donttest{svc$put_object_tagging(
   Bucket = "examplebucket",
   Key = "HappyFace.jpg",
   Tagging = list(

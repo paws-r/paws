@@ -19,7 +19,7 @@ the returned \code{NextToken} value.}
 Describes the specified replication job or all of your replication jobs.
 }
 \section{Request syntax}{
-\preformatted{sms$get_replication_jobs(
+\preformatted{svc$get_replication_jobs(
   replicationJobId = "string",
   nextToken = "string",
   maxResults = 123

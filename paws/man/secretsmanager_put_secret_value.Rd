@@ -178,7 +178,7 @@ secret, use GetSecretValue.
 }
 }
 \section{Request syntax}{
-\preformatted{secretsmanager$put_secret_value(
+\preformatted{svc$put_secret_value(
   SecretId = "string",
   ClientRequestToken = "string",
   SecretBinary = raw,
@@ -193,7 +193,7 @@ secret, use GetSecretValue.
 \examples{
 # The following example shows how to create a new version of the secret.
 # Alternatively, you can use the update-secret command.
-\donttest{secretsmanager$put_secret_value(
+\donttest{svc$put_secret_value(
   ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
   SecretId = "MyTestDatabaseSecret",
   SecretString = "{\\"username\\":\\"david\\",\\"password\\":\\"BnQw!XDWgaEeT9XGTT29\\"}"

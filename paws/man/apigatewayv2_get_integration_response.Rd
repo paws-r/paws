@@ -18,7 +18,7 @@ apigatewayv2_get_integration_response(ApiId, IntegrationId,
 Gets an IntegrationResponses.
 }
 \section{Request syntax}{
-\preformatted{apigatewayv2$get_integration_response(
+\preformatted{svc$get_integration_response(
   ApiId = "string",
   IntegrationId = "string",
   IntegrationResponseId = "string"

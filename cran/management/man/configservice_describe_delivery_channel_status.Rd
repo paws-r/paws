@@ -19,7 +19,7 @@ Currently, you can specify only one delivery channel per region in your
 account.
 }
 \section{Request syntax}{
-\preformatted{configservice$describe_delivery_channel_status(
+\preformatted{svc$describe_delivery_channel_status(
   DeliveryChannelNames = list(
     "string"
   )

@@ -21,7 +21,7 @@ other credential).
 \strong{Note:} This API is deprecated. Please use AttachPolicy instead.
 }
 \section{Request syntax}{
-\preformatted{iot$attach_principal_policy(
+\preformatted{svc$attach_principal_policy(
   policyName = "string",
   principal = "string"
 )

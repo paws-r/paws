@@ -26,7 +26,7 @@ Retrieves a list of all active sessions (both connected and
 disconnected) or terminated sessions from the past 30 days.
 }
 \section{Request syntax}{
-\preformatted{ssm$describe_sessions(
+\preformatted{svc$describe_sessions(
   State = "Active"|"History",
   MaxResults = 123,
   NextToken = "string",

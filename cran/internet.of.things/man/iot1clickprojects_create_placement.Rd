@@ -19,7 +19,7 @@ location or function) for the placement.}
 Creates an empty placement.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$create_placement(
+\preformatted{svc$create_placement(
   placementName = "string",
   projectName = "string",
   attributes = list(

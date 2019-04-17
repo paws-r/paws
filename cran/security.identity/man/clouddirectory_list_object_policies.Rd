@@ -26,7 +26,7 @@ object.}
 Returns policies attached to an object in pagination fashion.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$list_object_policies(
+\preformatted{svc$list_object_policies(
   DirectoryArn = "string",
   ObjectReference = list(
     Selector = "string"

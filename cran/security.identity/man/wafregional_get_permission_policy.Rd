@@ -14,7 +14,7 @@ get the policy.}
 Returns the IAM policy attached to the RuleGroup.
 }
 \section{Request syntax}{
-\preformatted{wafregional$get_permission_policy(
+\preformatted{svc$get_permission_policy(
   ResourceArn = "string"
 )
 }

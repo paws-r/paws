@@ -74,7 +74,7 @@ Commit time example: \--cdc-stop-position "commit\_time:
 Creates a replication task using the specified parameters.
 }
 \section{Request syntax}{
-\preformatted{databasemigrationservice$create_replication_task(
+\preformatted{svc$create_replication_task(
   ReplicationTaskIdentifier = "string",
   SourceEndpointArn = "string",
   TargetEndpointArn = "string",
@@ -99,7 +99,7 @@ Creates a replication task using the specified parameters.
 
 \examples{
 # Creates a replication task using the specified parameters.
-\donttest{databasemigrationservice$create_replication_task(
+\donttest{svc$create_replication_task(
   CdcStartTime = "2016-12-14T18:25:43Z",
   MigrationType = "full-load",
   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",

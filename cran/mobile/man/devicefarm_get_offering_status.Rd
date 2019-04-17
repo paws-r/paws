@@ -21,7 +21,7 @@ invoke the operation. Please contact \href{mailto:aws-devicefarm-support@amazon.
 if you believe that you should be able to invoke this operation.
 }
 \section{Request syntax}{
-\preformatted{devicefarm$get_offering_status(
+\preformatted{svc$get_offering_status(
   nextToken = "string"
 )
 }
@@ -30,7 +30,7 @@ if you believe that you should be able to invoke this operation.
 \examples{
 # The following example returns information about Device Farm offerings
 # available to your account.
-\donttest{devicefarm$get_offering_status(
+\donttest{svc$get_offering_status(
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE="
 )}
 

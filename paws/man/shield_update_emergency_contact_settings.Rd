@@ -16,7 +16,7 @@ Updates the details of the list of email addresses that the DRT can use
 to contact you during a suspected attack.
 }
 \section{Request syntax}{
-\preformatted{shield$update_emergency_contact_settings(
+\preformatted{svc$update_emergency_contact_settings(
   EmergencyContactList = list(
     list(
       EmailAddress = "string"

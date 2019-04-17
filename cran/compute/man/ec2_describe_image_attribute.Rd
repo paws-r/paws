@@ -26,7 +26,7 @@ Describes the specified attribute of the specified AMI. You can specify
 only one attribute at a time.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_image_attribute(
+\preformatted{svc$describe_image_attribute(
   Attribute = "description"|"kernel"|"ramdisk"|"launchPermission"|"productCodes"|"blockDeviceMapping"|"sriovNetSupport",
   ImageId = "string",
   DryRun = TRUE|FALSE
@@ -36,7 +36,7 @@ only one attribute at a time.
 
 \examples{
 # This example describes the launch permissions for the specified AMI.
-\donttest{ec2$describe_image_attribute(
+\donttest{svc$describe_image_attribute(
   Attribute = "launchPermission",
   ImageId = "ami-5731123e"
 )}

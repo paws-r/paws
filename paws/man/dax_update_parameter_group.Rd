@@ -18,7 +18,7 @@ parameters in a single request by submitting a list parameter name and
 value pairs.
 }
 \section{Request syntax}{
-\preformatted{dax$update_parameter_group(
+\preformatted{svc$update_parameter_group(
   ParameterGroupName = "string",
   ParameterNameValues = list(
     list(

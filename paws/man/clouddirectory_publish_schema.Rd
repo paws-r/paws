@@ -27,7 +27,7 @@ Publishes a development schema with a major version and a recommended
 minor version.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$publish_schema(
+\preformatted{svc$publish_schema(
   DevelopmentSchemaArn = "string",
   Version = "string",
   MinorVersion = "string",

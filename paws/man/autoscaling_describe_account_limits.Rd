@@ -18,7 +18,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \examples{
 # This example describes the Auto Scaling limits for your AWS account.
-\donttest{autoscaling$describe_account_limits()}
+\donttest{svc$describe_account_limits()}
 
 }
 \keyword{internal}

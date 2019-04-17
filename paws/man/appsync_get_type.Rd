@@ -17,7 +17,7 @@ appsync_get_type(apiId, typeName, format)
 Retrieves a \code{Type} object.
 }
 \section{Request syntax}{
-\preformatted{appsync$get_type(
+\preformatted{svc$get_type(
   apiId = "string",
   typeName = "string",
   format = "SDL"|"JSON"

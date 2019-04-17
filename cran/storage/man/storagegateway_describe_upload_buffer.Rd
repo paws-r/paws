@@ -20,7 +20,7 @@ space, and it includes the amount of upload buffer space allocated and
 used.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_upload_buffer(
+\preformatted{svc$describe_upload_buffer(
   GatewayARN = "string"
 )
 }
@@ -29,13 +29,13 @@ used.
 \examples{
 # Returns information about the upload buffer of a gateway including disk
 # IDs and the amount of upload buffer space allocated/used.
-\donttest{storagegateway$describe_upload_buffer(
+\donttest{svc$describe_upload_buffer(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 
 # Returns information about the upload buffer of a gateway including disk
 # IDs and the amount of upload buffer space allocated and used.
-\donttest{storagegateway$describe_upload_buffer(
+\donttest{svc$describe_upload_buffer(
   GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
 )}
 

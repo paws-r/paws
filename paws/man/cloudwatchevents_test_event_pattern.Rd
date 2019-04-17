@@ -23,7 +23,7 @@ creating event patterns so that they match the ARN syntax in the event
 you want to match.
 }
 \section{Request syntax}{
-\preformatted{cloudwatchevents$test_event_pattern(
+\preformatted{svc$test_event_pattern(
   EventPattern = "string",
   Event = "string"
 )

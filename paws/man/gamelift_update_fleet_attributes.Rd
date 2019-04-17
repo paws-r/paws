@@ -70,7 +70,7 @@ returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$update_fleet_attributes(
+\preformatted{svc$update_fleet_attributes(
   FleetId = "string",
   Name = "string",
   Description = "string",

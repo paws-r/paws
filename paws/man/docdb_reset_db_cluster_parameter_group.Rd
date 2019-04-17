@@ -33,7 +33,7 @@ immediately and static parameters are set to \code{pending-reboot} to take
 effect on the next DB instance reboot.
 }
 \section{Request syntax}{
-\preformatted{docdb$reset_db_cluster_parameter_group(
+\preformatted{svc$reset_db_cluster_parameter_group(
   DBClusterParameterGroupName = "string",
   ResetAllParameters = TRUE|FALSE,
   Parameters = list(

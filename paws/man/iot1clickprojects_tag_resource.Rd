@@ -18,7 +18,7 @@ Creates or modifies tags for a resource. Tags are key/value pairs
 see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.
 }
 \section{Request syntax}{
-\preformatted{iot1clickprojects$tag_resource(
+\preformatted{svc$tag_resource(
   resourceArn = "string",
   tags = list(
     "string"

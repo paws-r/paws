@@ -13,7 +13,7 @@ pinpoint_delete_voice_channel(ApplicationId)
 Delete an Voice channel
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_voice_channel(
+\preformatted{svc$delete_voice_channel(
   ApplicationId = "string"
 )
 }

@@ -25,7 +25,7 @@ Adds one or more custom properties to the specified resource (a folder,
 document, or version).
 }
 \section{Request syntax}{
-\preformatted{workdocs$create_custom_metadata(
+\preformatted{svc$create_custom_metadata(
   AuthenticationToken = "string",
   ResourceId = "string",
   VersionId = "string",

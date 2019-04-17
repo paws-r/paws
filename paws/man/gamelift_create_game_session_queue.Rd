@@ -74,7 +74,7 @@ a new queue object is returned.
 }
 }
 \section{Request syntax}{
-\preformatted{gamelift$create_game_session_queue(
+\preformatted{svc$create_game_session_queue(
   Name = "string",
   TimeoutInSeconds = 123,
   PlayerLatencyPolicies = list(

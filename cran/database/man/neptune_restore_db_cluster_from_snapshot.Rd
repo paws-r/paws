@@ -104,7 +104,7 @@ the original source DB cluster, except that the new DB cluster is
 created with the default security group.
 }
 \section{Request syntax}{
-\preformatted{neptune$restore_db_cluster_from_snapshot(
+\preformatted{svc$restore_db_cluster_from_snapshot(
   AvailabilityZones = list(
     "string"
   ),

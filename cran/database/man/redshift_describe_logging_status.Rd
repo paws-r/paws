@@ -17,7 +17,7 @@ Describes whether information, such as queries and connection attempts,
 is being logged for the specified Amazon Redshift cluster.
 }
 \section{Request syntax}{
-\preformatted{redshift$describe_logging_status(
+\preformatted{svc$describe_logging_status(
   ClusterIdentifier = "string"
 )
 }

@@ -15,7 +15,7 @@ glue_update_trigger(Name, TriggerUpdate)
 Updates a trigger definition.
 }
 \section{Request syntax}{
-\preformatted{glue$update_trigger(
+\preformatted{svc$update_trigger(
   Name = "string",
   TriggerUpdate = list(
     Name = "string",

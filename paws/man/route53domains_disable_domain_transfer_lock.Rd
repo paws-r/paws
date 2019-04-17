@@ -20,7 +20,7 @@ completion of the action. If the request is not completed successfully,
 the domain registrant will be notified by email.
 }
 \section{Request syntax}{
-\preformatted{route53domains$disable_domain_transfer_lock(
+\preformatted{svc$disable_domain_transfer_lock(
   DomainName = "string"
 )
 }

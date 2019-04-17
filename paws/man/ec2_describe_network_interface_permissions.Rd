@@ -33,7 +33,7 @@ by default.}
 Describes the permissions for your network interfaces.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_network_interface_permissions(
+\preformatted{svc$describe_network_interface_permissions(
   NetworkInterfacePermissionIds = list(
     "string"
   ),

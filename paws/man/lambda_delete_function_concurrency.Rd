@@ -24,7 +24,7 @@ the function name, it is limited to 64 characters in length.}
 Removes a concurrent execution limit from a function.
 }
 \section{Request syntax}{
-\preformatted{lambda$delete_function_concurrency(
+\preformatted{svc$delete_function_concurrency(
   FunctionName = "string"
 )
 }

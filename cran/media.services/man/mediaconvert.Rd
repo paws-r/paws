@@ -9,12 +9,6 @@ mediaconvert()
 \description{
 AWS Elemental MediaConvert
 }
-\section{Example}{
-\preformatted{mediaconvert <- paws::mediaconvert()
-mediaconvert$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -46,3 +40,9 @@ mediaconvert$operation()
 }
 }
 
+\examples{
+\donttest{svc$associate_certificate(
+  Foo = 123
+)}
+
+}

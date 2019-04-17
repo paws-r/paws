@@ -25,7 +25,7 @@ Modifies an existing DB subnet group. DB subnet groups must contain at
 least one subnet in at least two Availability Zones in the AWS Region.
 }
 \section{Request syntax}{
-\preformatted{docdb$modify_db_subnet_group(
+\preformatted{svc$modify_db_subnet_group(
   DBSubnetGroupName = "string",
   DBSubnetGroupDescription = "string",
   SubnetIds = list(

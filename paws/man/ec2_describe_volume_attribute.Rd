@@ -25,7 +25,7 @@ For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AW
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_volume_attribute(
+\preformatted{svc$describe_volume_attribute(
   Attribute = "autoEnableIO"|"productCodes",
   VolumeId = "string",
   DryRun = TRUE|FALSE
@@ -36,7 +36,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \examples{
 # This example describes the ``autoEnableIo`` attribute of the volume with
 # the ID ``vol-049df61146c4d7901``.
-\donttest{ec2$describe_volume_attribute(
+\donttest{svc$describe_volume_attribute(
   Attribute = "autoEnableIO",
   VolumeId = "vol-049df61146c4d7901"
 )}

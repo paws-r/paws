@@ -33,7 +33,7 @@ purposes.}
 Describes one or more of your job queues.
 }
 \section{Request syntax}{
-\preformatted{batch$describe_job_queues(
+\preformatted{svc$describe_job_queues(
   jobQueues = list(
     "string"
   ),
@@ -45,7 +45,7 @@ Describes one or more of your job queues.
 
 \examples{
 # This example describes the HighPriority job queue.
-\donttest{batch$describe_job_queues(
+\donttest{svc$describe_job_queues(
   jobQueues = list(
     "HighPriority"
   )

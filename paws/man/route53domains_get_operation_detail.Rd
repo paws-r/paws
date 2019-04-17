@@ -17,7 +17,7 @@ This operation returns the current status of an operation that is not
 completed.
 }
 \section{Request syntax}{
-\preformatted{route53domains$get_operation_detail(
+\preformatted{svc$get_operation_detail(
   OperationId = "string"
 )
 }

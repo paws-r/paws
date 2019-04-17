@@ -36,7 +36,7 @@ The following resource types support longer IDs: \code{bundle} \|
 \code{vpc-peering-connection} \| \code{vpn-connection} \| \code{vpn-gateway}.
 }
 \section{Request syntax}{
-\preformatted{ec2$describe_aggregate_id_format(
+\preformatted{svc$describe_aggregate_id_format(
   DryRun = TRUE|FALSE
 )
 }

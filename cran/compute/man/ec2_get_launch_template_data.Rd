@@ -19,7 +19,7 @@ Retrieves the configuration data of the specified instance. You can use
 this data to create a launch template.
 }
 \section{Request syntax}{
-\preformatted{ec2$get_launch_template_data(
+\preformatted{svc$get_launch_template_data(
   DryRun = TRUE|FALSE,
   InstanceId = "string"
 )
@@ -28,7 +28,7 @@ this data to create a launch template.
 
 \examples{
 # This example gets the launch template data for the specified instance.
-\donttest{ec2$get_launch_template_data(
+\donttest{svc$get_launch_template_data(
   InstanceId = "0123d646e8048babc"
 )}
 

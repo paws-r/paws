@@ -17,7 +17,7 @@ shares from a file gateway. This operation is only supported for file
 gateways.
 }
 \section{Request syntax}{
-\preformatted{storagegateway$describe_smb_file_shares(
+\preformatted{svc$describe_smb_file_shares(
   FileShareARNList = list(
     "string"
   )

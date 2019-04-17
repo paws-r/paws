@@ -34,7 +34,7 @@ You can use this action up to 5 times per second, per account. A user
 pool can have as many as 50 tags.
 }
 \section{Request syntax}{
-\preformatted{cognitoidentityprovider$tag_resource(
+\preformatted{svc$tag_resource(
   ResourceArn = "string",
   Tags = list(
     "string"

@@ -22,7 +22,7 @@ via resource tags applied to the resource identified by
 loadBalancerName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
-\preformatted{lightsail$delete_load_balancer(
+\preformatted{svc$delete_load_balancer(
   loadBalancerName = "string"
 )
 }

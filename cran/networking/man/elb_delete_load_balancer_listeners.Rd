@@ -15,7 +15,7 @@ elb_delete_load_balancer_listeners(LoadBalancerName, LoadBalancerPorts)
 Deletes the specified listeners from the specified load balancer.
 }
 \section{Request syntax}{
-\preformatted{elb$delete_load_balancer_listeners(
+\preformatted{svc$delete_load_balancer_listeners(
   LoadBalancerName = "string",
   LoadBalancerPorts = list(
     123
@@ -27,7 +27,7 @@ Deletes the specified listeners from the specified load balancer.
 \examples{
 # This example deletes the listener for the specified port from the
 # specified load balancer.
-\donttest{elb$delete_load_balancer_listeners(
+\donttest{svc$delete_load_balancer_listeners(
   LoadBalancerName = "my-load-balancer",
   LoadBalancerPorts = list(
     80L

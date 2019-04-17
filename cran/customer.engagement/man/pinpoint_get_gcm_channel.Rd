@@ -13,7 +13,7 @@ pinpoint_get_gcm_channel(ApplicationId)
 Returns information about the GCM channel for an app.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$get_gcm_channel(
+\preformatted{svc$get_gcm_channel(
   ApplicationId = "string"
 )
 }

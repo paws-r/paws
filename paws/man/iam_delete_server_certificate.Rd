@@ -34,7 +34,7 @@ information, go to
 in the \emph{Elastic Load Balancing API Reference}.
 }
 \section{Request syntax}{
-\preformatted{iam$delete_server_certificate(
+\preformatted{svc$delete_server_certificate(
   ServerCertificateName = "string"
 )
 }

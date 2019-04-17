@@ -13,7 +13,7 @@ glue_get_trigger(Name)
 Retrieves the definition of a trigger.
 }
 \section{Request syntax}{
-\preformatted{glue$get_trigger(
+\preformatted{svc$get_trigger(
   Name = "string"
 )
 }

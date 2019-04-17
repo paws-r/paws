@@ -38,7 +38,7 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{waf$create_geo_match_set(
+\preformatted{svc$create_geo_match_set(
   Name = "string",
   ChangeToken = "string"
 )

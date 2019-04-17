@@ -18,7 +18,7 @@ trails (replicated trails in other regions) of a trail that is enabled
 in all regions.
 }
 \section{Request syntax}{
-\preformatted{cloudtrail$delete_trail(
+\preformatted{svc$delete_trail(
   Name = "string"
 )
 }

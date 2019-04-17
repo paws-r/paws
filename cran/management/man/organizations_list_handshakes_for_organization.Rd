@@ -54,7 +54,7 @@ This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{
-\preformatted{organizations$list_handshakes_for_organization(
+\preformatted{svc$list_handshakes_for_organization(
   Filter = list(
     ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
     ParentHandshakeId = "string"
@@ -68,7 +68,7 @@ account.
 \examples{
 # The following example shows you how to get a list of handshakes
 # associated with the current organization:
-\donttest{organizations$list_handshakes_for_organization()}
+\donttest{svc$list_handshakes_for_organization()}
 
 }
 \keyword{internal}

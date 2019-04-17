@@ -15,7 +15,7 @@ apigateway_delete_stage(restApiId, stageName)
 Deletes a Stage resource.
 }
 \section{Request syntax}{
-\preformatted{apigateway$delete_stage(
+\preformatted{svc$delete_stage(
   restApiId = "string",
   stageName = "string"
 )

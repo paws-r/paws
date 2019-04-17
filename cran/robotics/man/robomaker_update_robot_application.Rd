@@ -20,7 +20,7 @@ robomaker_update_robot_application(application, sources,
 Updates a robot application.
 }
 \section{Request syntax}{
-\preformatted{robomaker$update_robot_application(
+\preformatted{svc$update_robot_application(
   application = "string",
   sources = list(
     list(

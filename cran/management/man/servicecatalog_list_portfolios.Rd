@@ -23,7 +23,7 @@ results, use null.}
 Lists all portfolios in the catalog.
 }
 \section{Request syntax}{
-\preformatted{servicecatalog$list_portfolios(
+\preformatted{svc$list_portfolios(
   AcceptLanguage = "string",
   PageToken = "string",
   PageSize = 123

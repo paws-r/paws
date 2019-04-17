@@ -25,7 +25,7 @@ alexaforbusiness_create_conference_provider(ConferenceProviderName,
 Adds a new conference provider under the user's AWS account.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$create_conference_provider(
+\preformatted{svc$create_conference_provider(
   ConferenceProviderName = "string",
   ConferenceProviderType = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
   IPDialIn = list(

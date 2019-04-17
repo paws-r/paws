@@ -18,7 +18,7 @@ exclusions (ExclusionPreview) that Inspector can detect before it runs
 the assessment.
 }
 \section{Request syntax}{
-\preformatted{inspector$create_exclusions_preview(
+\preformatted{svc$create_exclusions_preview(
   assessmentTemplateArn = "string"
 )
 }

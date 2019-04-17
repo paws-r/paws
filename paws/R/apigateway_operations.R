@@ -29,7 +29,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_api_key(
+#' svc$create_api_key(
 #'   name = "string",
 #'   description = "string",
 #'   enabled = TRUE|FALSE,
@@ -142,7 +142,7 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_authorizer(
+#' svc$create_authorizer(
 #'   restApiId = "string",
 #'   name = "string",
 #'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
@@ -197,7 +197,7 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_base_path_mapping(
+#' svc$create_base_path_mapping(
 #'   domainName = "string",
 #'   basePath = "string",
 #'   restApiId = "string",
@@ -253,7 +253,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_deployment(
+#' svc$create_deployment(
 #'   restApiId = "string",
 #'   stageName = "string",
 #'   stageDescription = "string",
@@ -309,7 +309,7 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_documentation_part(
+#' svc$create_documentation_part(
 #'   restApiId = "string",
 #'   location = list(
 #'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
@@ -356,7 +356,7 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_documentation_version(
+#' svc$create_documentation_version(
 #'   restApiId = "string",
 #'   documentationVersion = "string",
 #'   stageName = "string",
@@ -421,7 +421,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_domain_name(
+#' svc$create_domain_name(
 #'   domainName = "string",
 #'   certificateName = "string",
 #'   certificateBody = "string",
@@ -476,7 +476,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_model(
+#' svc$create_model(
 #'   restApiId = "string",
 #'   name = "string",
 #'   description = "string",
@@ -521,7 +521,7 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_request_validator(
+#' svc$create_request_validator(
 #'   restApiId = "string",
 #'   name = "string",
 #'   validateRequestBody = TRUE|FALSE,
@@ -561,7 +561,7 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_resource(
+#' svc$create_resource(
 #'   restApiId = "string",
 #'   parentId = "string",
 #'   pathPart = "string"
@@ -621,7 +621,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_rest_api(
+#' svc$create_rest_api(
 #'   name = "string",
 #'   description = "string",
 #'   version = "string",
@@ -689,7 +689,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_stage(
+#' svc$create_stage(
 #'   restApiId = "string",
 #'   stageName = "string",
 #'   deploymentId = "string",
@@ -752,7 +752,7 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_usage_plan(
+#' svc$create_usage_plan(
 #'   name = "string",
 #'   description = "string",
 #'   apiStages = list(
@@ -814,7 +814,7 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_usage_plan_key(
+#' svc$create_usage_plan_key(
 #'   usagePlanId = "string",
 #'   keyId = "string",
 #'   keyType = "string"
@@ -860,7 +860,7 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$create_vpc_link(
+#' svc$create_vpc_link(
 #'   name = "string",
 #'   description = "string",
 #'   targetArns = list(
@@ -899,7 +899,7 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_api_key(
+#' svc$delete_api_key(
 #'   apiKey = "string"
 #' )
 #' ```
@@ -940,7 +940,7 @@ apigateway_delete_api_key <- function(apiKey) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_authorizer(
+#' svc$delete_authorizer(
 #'   restApiId = "string",
 #'   authorizerId = "string"
 #' )
@@ -978,7 +978,7 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_base_path_mapping(
+#' svc$delete_base_path_mapping(
 #'   domainName = "string",
 #'   basePath = "string"
 #' )
@@ -1015,7 +1015,7 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_client_certificate(
+#' svc$delete_client_certificate(
 #'   clientCertificateId = "string"
 #' )
 #' ```
@@ -1052,7 +1052,7 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_deployment(
+#' svc$delete_deployment(
 #'   restApiId = "string",
 #'   deploymentId = "string"
 #' )
@@ -1089,7 +1089,7 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_documentation_part(
+#' svc$delete_documentation_part(
 #'   restApiId = "string",
 #'   documentationPartId = "string"
 #' )
@@ -1127,7 +1127,7 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_documentation_version(
+#' svc$delete_documentation_version(
 #'   restApiId = "string",
 #'   documentationVersion = "string"
 #' )
@@ -1163,7 +1163,7 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_domain_name(
+#' svc$delete_domain_name(
 #'   domainName = "string"
 #' )
 #' ```
@@ -1224,7 +1224,7 @@ apigateway_delete_domain_name <- function(domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_gateway_response(
+#' svc$delete_gateway_response(
 #'   restApiId = "string",
 #'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
 #' )
@@ -1263,7 +1263,7 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_integration(
+#' svc$delete_integration(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string"
@@ -1307,7 +1307,7 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_integration_response(
+#' svc$delete_integration_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -1347,7 +1347,7 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_method(
+#' svc$delete_method(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string"
@@ -1388,7 +1388,7 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_method_response(
+#' svc$delete_method_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -1427,7 +1427,7 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_model(
+#' svc$delete_model(
 #'   restApiId = "string",
 #'   modelName = "string"
 #' )
@@ -1464,7 +1464,7 @@ apigateway_delete_model <- function(restApiId, modelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_request_validator(
+#' svc$delete_request_validator(
 #'   restApiId = "string",
 #'   requestValidatorId = "string"
 #' )
@@ -1501,7 +1501,7 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_resource(
+#' svc$delete_resource(
 #'   restApiId = "string",
 #'   resourceId = "string"
 #' )
@@ -1537,7 +1537,7 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_rest_api(
+#' svc$delete_rest_api(
 #'   restApiId = "string"
 #' )
 #' ```
@@ -1573,7 +1573,7 @@ apigateway_delete_rest_api <- function(restApiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_stage(
+#' svc$delete_stage(
 #'   restApiId = "string",
 #'   stageName = "string"
 #' )
@@ -1609,7 +1609,7 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_usage_plan(
+#' svc$delete_usage_plan(
 #'   usagePlanId = "string"
 #' )
 #' ```
@@ -1649,7 +1649,7 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_usage_plan_key(
+#' svc$delete_usage_plan_key(
 #'   usagePlanId = "string",
 #'   keyId = "string"
 #' )
@@ -1686,7 +1686,7 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$delete_vpc_link(
+#' svc$delete_vpc_link(
 #'   vpcLinkId = "string"
 #' )
 #' ```
@@ -1722,7 +1722,7 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$flush_stage_authorizers_cache(
+#' svc$flush_stage_authorizers_cache(
 #'   restApiId = "string",
 #'   stageName = "string"
 #' )
@@ -1759,7 +1759,7 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$flush_stage_cache(
+#' svc$flush_stage_cache(
 #'   restApiId = "string",
 #'   stageName = "string"
 #' )
@@ -1795,7 +1795,7 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$generate_client_certificate(
+#' svc$generate_client_certificate(
 #'   description = "string"
 #' )
 #' ```
@@ -1828,7 +1828,7 @@ apigateway_generate_client_certificate <- function(description = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_account()
+#' svc$get_account()
 #' ```
 #'
 #' @keywords internal
@@ -1863,7 +1863,7 @@ apigateway_get_account <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_api_key(
+#' svc$get_api_key(
 #'   apiKey = "string",
 #'   includeValue = TRUE|FALSE
 #' )
@@ -1907,7 +1907,7 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_api_keys(
+#' svc$get_api_keys(
 #'   position = "string",
 #'   limit = 123,
 #'   nameQuery = "string",
@@ -1952,7 +1952,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_authorizer(
+#' svc$get_authorizer(
 #'   restApiId = "string",
 #'   authorizerId = "string"
 #' )
@@ -1996,7 +1996,7 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_authorizers(
+#' svc$get_authorizers(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2038,7 +2038,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_base_path_mapping(
+#' svc$get_base_path_mapping(
 #'   domainName = "string",
 #'   basePath = "string"
 #' )
@@ -2077,7 +2077,7 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_base_path_mappings(
+#' svc$get_base_path_mappings(
 #'   domainName = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2115,7 +2115,7 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_client_certificate(
+#' svc$get_client_certificate(
 #'   clientCertificateId = "string"
 #' )
 #' ```
@@ -2152,7 +2152,7 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_client_certificates(
+#' svc$get_client_certificates(
 #'   position = "string",
 #'   limit = 123
 #' )
@@ -2200,7 +2200,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_deployment(
+#' svc$get_deployment(
 #'   restApiId = "string",
 #'   deploymentId = "string",
 #'   embed = list(
@@ -2242,7 +2242,7 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_deployments(
+#' svc$get_deployments(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2280,7 +2280,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_documentation_part(
+#' svc$get_documentation_part(
 #'   restApiId = "string",
 #'   documentationPartId = "string"
 #' )
@@ -2326,7 +2326,7 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_documentation_parts(
+#' svc$get_documentation_parts(
 #'   restApiId = "string",
 #'   type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
 #'   nameQuery = "string",
@@ -2369,7 +2369,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_documentation_version(
+#' svc$get_documentation_version(
 #'   restApiId = "string",
 #'   documentationVersion = "string"
 #' )
@@ -2408,7 +2408,7 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_documentation_versions(
+#' svc$get_documentation_versions(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2447,7 +2447,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_domain_name(
+#' svc$get_domain_name(
 #'   domainName = "string"
 #' )
 #' ```
@@ -2484,7 +2484,7 @@ apigateway_get_domain_name <- function(domainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_domain_names(
+#' svc$get_domain_names(
 #'   position = "string",
 #'   limit = 123
 #' )
@@ -2536,7 +2536,7 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_export(
+#' svc$get_export(
 #'   restApiId = "string",
 #'   stageName = "string",
 #'   exportType = "string",
@@ -2602,7 +2602,7 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_gateway_response(
+#' svc$get_gateway_response(
 #'   restApiId = "string",
 #'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
 #' )
@@ -2647,7 +2647,7 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_gateway_responses(
+#' svc$get_gateway_responses(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2686,7 +2686,7 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_integration(
+#' svc$get_integration(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string"
@@ -2730,7 +2730,7 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_integration_response(
+#' svc$get_integration_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -2770,7 +2770,7 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_method(
+#' svc$get_method(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string"
@@ -2811,7 +2811,7 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_method_response(
+#' svc$get_method_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -2853,7 +2853,7 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_model(
+#' svc$get_model(
 #'   restApiId = "string",
 #'   modelName = "string",
 #'   flatten = TRUE|FALSE
@@ -2893,7 +2893,7 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_model_template(
+#' svc$get_model_template(
 #'   restApiId = "string",
 #'   modelName = "string"
 #' )
@@ -2932,7 +2932,7 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_models(
+#' svc$get_models(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -2970,7 +2970,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_request_validator(
+#' svc$get_request_validator(
 #'   restApiId = "string",
 #'   requestValidatorId = "string"
 #' )
@@ -3009,7 +3009,7 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_request_validators(
+#' svc$get_request_validators(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123
@@ -3054,7 +3054,7 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_resource(
+#' svc$get_resource(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   embed = list(
@@ -3103,7 +3103,7 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_resources(
+#' svc$get_resources(
 #'   restApiId = "string",
 #'   position = "string",
 #'   limit = 123,
@@ -3143,7 +3143,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_rest_api(
+#' svc$get_rest_api(
 #'   restApiId = "string"
 #' )
 #' ```
@@ -3180,7 +3180,7 @@ apigateway_get_rest_api <- function(restApiId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_rest_apis(
+#' svc$get_rest_apis(
 #'   position = "string",
 #'   limit = 123
 #' )
@@ -3226,7 +3226,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_sdk(
+#' svc$get_sdk(
 #'   restApiId = "string",
 #'   stageName = "string",
 #'   sdkType = "string",
@@ -3266,7 +3266,7 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_sdk_type(
+#' svc$get_sdk_type(
 #'   id = "string"
 #' )
 #' ```
@@ -3303,7 +3303,7 @@ apigateway_get_sdk_type <- function(id) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_sdk_types(
+#' svc$get_sdk_types(
 #'   position = "string",
 #'   limit = 123
 #' )
@@ -3340,7 +3340,7 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_stage(
+#' svc$get_stage(
 #'   restApiId = "string",
 #'   stageName = "string"
 #' )
@@ -3377,7 +3377,7 @@ apigateway_get_stage <- function(restApiId, stageName) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_stages(
+#' svc$get_stages(
 #'   restApiId = "string",
 #'   deploymentId = "string"
 #' )
@@ -3418,7 +3418,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_tags(
+#' svc$get_tags(
 #'   resourceArn = "string",
 #'   position = "string",
 #'   limit = 123
@@ -3462,7 +3462,7 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_usage(
+#' svc$get_usage(
 #'   usagePlanId = "string",
 #'   keyId = "string",
 #'   startDate = "string",
@@ -3502,7 +3502,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_usage_plan(
+#' svc$get_usage_plan(
 #'   usagePlanId = "string"
 #' )
 #' ```
@@ -3541,7 +3541,7 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_usage_plan_key(
+#' svc$get_usage_plan_key(
 #'   usagePlanId = "string",
 #'   keyId = "string"
 #' )
@@ -3586,7 +3586,7 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_usage_plan_keys(
+#' svc$get_usage_plan_keys(
 #'   usagePlanId = "string",
 #'   position = "string",
 #'   limit = 123,
@@ -3627,7 +3627,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_usage_plans(
+#' svc$get_usage_plans(
 #'   position = "string",
 #'   keyId = "string",
 #'   limit = 123
@@ -3665,7 +3665,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_vpc_link(
+#' svc$get_vpc_link(
 #'   vpcLinkId = "string"
 #' )
 #' ```
@@ -3704,7 +3704,7 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$get_vpc_links(
+#' svc$get_vpc_links(
 #'   position = "string",
 #'   limit = 123
 #' )
@@ -3746,7 +3746,7 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$import_api_keys(
+#' svc$import_api_keys(
 #'   body = raw,
 #'   format = "csv",
 #'   failOnWarnings = TRUE|FALSE
@@ -3793,7 +3793,7 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$import_documentation_parts(
+#' svc$import_documentation_parts(
 #'   restApiId = "string",
 #'   mode = "merge"|"overwrite",
 #'   failOnWarnings = TRUE|FALSE,
@@ -3862,7 +3862,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$import_rest_api(
+#' svc$import_rest_api(
 #'   failOnWarnings = TRUE|FALSE,
 #'   parameters = list(
 #'     "string"
@@ -3933,7 +3933,7 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_gateway_response(
+#' svc$put_gateway_response(
 #'   restApiId = "string",
 #'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
 #'   statusCode = "string",
@@ -4067,7 +4067,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_integration(
+#' svc$put_integration(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -4157,7 +4157,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_integration_response(
+#' svc$put_integration_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -4240,7 +4240,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_method(
+#' svc$put_method(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -4311,7 +4311,7 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_method_response(
+#' svc$put_method_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -4372,7 +4372,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$put_rest_api(
+#' svc$put_rest_api(
 #'   restApiId = "string",
 #'   mode = "merge"|"overwrite",
 #'   failOnWarnings = TRUE|FALSE,
@@ -4417,7 +4417,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$tag_resource(
+#' svc$tag_resource(
 #'   resourceArn = "string",
 #'   tags = list(
 #'     "string"
@@ -4480,7 +4480,7 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$test_invoke_authorizer(
+#' svc$test_invoke_authorizer(
 #'   restApiId = "string",
 #'   authorizerId = "string",
 #'   headers = list(
@@ -4550,7 +4550,7 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$test_invoke_method(
+#' svc$test_invoke_method(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -4603,7 +4603,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$untag_resource(
+#' svc$untag_resource(
 #'   resourceArn = "string",
 #'   tagKeys = list(
 #'     "string"
@@ -4642,7 +4642,7 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_account(
+#' svc$update_account(
 #'   patchOperations = list(
 #'     list(
 #'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
@@ -4686,7 +4686,7 @@ apigateway_update_account <- function(patchOperations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_api_key(
+#' svc$update_api_key(
 #'   apiKey = "string",
 #'   patchOperations = list(
 #'     list(
@@ -4737,7 +4737,7 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_authorizer(
+#' svc$update_authorizer(
 #'   restApiId = "string",
 #'   authorizerId = "string",
 #'   patchOperations = list(
@@ -4785,7 +4785,7 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_base_path_mapping(
+#' svc$update_base_path_mapping(
 #'   domainName = "string",
 #'   basePath = "string",
 #'   patchOperations = list(
@@ -4833,7 +4833,7 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_client_certificate(
+#' svc$update_client_certificate(
 #'   clientCertificateId = "string",
 #'   patchOperations = list(
 #'     list(
@@ -4880,7 +4880,7 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_deployment(
+#' svc$update_deployment(
 #'   restApiId = "string",
 #'   deploymentId = "string",
 #'   patchOperations = list(
@@ -4928,7 +4928,7 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_documentation_part(
+#' svc$update_documentation_part(
 #'   restApiId = "string",
 #'   documentationPartId = "string",
 #'   patchOperations = list(
@@ -4977,7 +4977,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_documentation_version(
+#' svc$update_documentation_version(
 #'   restApiId = "string",
 #'   documentationVersion = "string",
 #'   patchOperations = list(
@@ -5023,7 +5023,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_domain_name(
+#' svc$update_domain_name(
 #'   domainName = "string",
 #'   patchOperations = list(
 #'     list(
@@ -5095,7 +5095,7 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_gateway_response(
+#' svc$update_gateway_response(
 #'   restApiId = "string",
 #'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
 #'   patchOperations = list(
@@ -5145,7 +5145,7 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_integration(
+#' svc$update_integration(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -5199,7 +5199,7 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_integration_response(
+#' svc$update_integration_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -5250,7 +5250,7 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_method(
+#' svc$update_method(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -5301,7 +5301,7 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_method_response(
+#' svc$update_method_response(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   httpMethod = "string",
@@ -5350,7 +5350,7 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_model(
+#' svc$update_model(
 #'   restApiId = "string",
 #'   modelName = "string",
 #'   patchOperations = list(
@@ -5398,7 +5398,7 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_request_validator(
+#' svc$update_request_validator(
 #'   restApiId = "string",
 #'   requestValidatorId = "string",
 #'   patchOperations = list(
@@ -5445,7 +5445,7 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_resource(
+#' svc$update_resource(
 #'   restApiId = "string",
 #'   resourceId = "string",
 #'   patchOperations = list(
@@ -5491,7 +5491,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_rest_api(
+#' svc$update_rest_api(
 #'   restApiId = "string",
 #'   patchOperations = list(
 #'     list(
@@ -5537,7 +5537,7 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_stage(
+#' svc$update_stage(
 #'   restApiId = "string",
 #'   stageName = "string",
 #'   patchOperations = list(
@@ -5587,7 +5587,7 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_usage(
+#' svc$update_usage(
 #'   usagePlanId = "string",
 #'   keyId = "string",
 #'   patchOperations = list(
@@ -5633,7 +5633,7 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_usage_plan(
+#' svc$update_usage_plan(
 #'   usagePlanId = "string",
 #'   patchOperations = list(
 #'     list(
@@ -5679,7 +5679,7 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' apigateway$update_vpc_link(
+#' svc$update_vpc_link(
 #'   vpcLinkId = "string",
 #'   patchOperations = list(
 #'     list(

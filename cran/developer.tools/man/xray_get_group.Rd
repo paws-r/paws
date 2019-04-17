@@ -15,7 +15,7 @@ xray_get_group(GroupName, GroupARN)
 Retrieves group resource details.
 }
 \section{Request syntax}{
-\preformatted{xray$get_group(
+\preformatted{svc$get_group(
   GroupName = "string",
   GroupARN = "string"
 )

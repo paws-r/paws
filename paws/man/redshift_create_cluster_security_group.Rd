@@ -34,7 +34,7 @@ For information about managing security groups, go to \href{http://docs.aws.amaz
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
-\preformatted{redshift$create_cluster_security_group(
+\preformatted{svc$create_cluster_security_group(
   ClusterSecurityGroupName = "string",
   Description = "string",
   Tags = list(

@@ -13,7 +13,7 @@ alexaforbusiness_delete_skill_group(SkillGroupArn)
 Deletes a skill group by skill group ARN.
 }
 \section{Request syntax}{
-\preformatted{alexaforbusiness$delete_skill_group(
+\preformatted{svc$delete_skill_group(
   SkillGroupArn = "string"
 )
 }

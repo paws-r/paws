@@ -16,7 +16,7 @@ CloudWatch Logs. These access logs are not saved and are not
 retrievable.
 }
 \section{Request syntax}{
-\preformatted{mediastore$stop_access_logging(
+\preformatted{svc$stop_access_logging(
   ContainerName = "string"
 )
 }

@@ -19,7 +19,7 @@ exist in.}
 Detaches the specified object from the specified index.
 }
 \section{Request syntax}{
-\preformatted{clouddirectory$detach_from_index(
+\preformatted{svc$detach_from_index(
   DirectoryArn = "string",
   IndexReference = list(
     Selector = "string"

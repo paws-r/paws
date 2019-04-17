@@ -18,7 +18,7 @@ Deletes an existing trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 }
 \section{Request syntax}{
-\preformatted{directoryservice$delete_trust(
+\preformatted{svc$delete_trust(
   TrustId = "string",
   DeleteAssociatedConditionalForwarder = TRUE|FALSE
 )

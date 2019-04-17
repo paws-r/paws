@@ -14,7 +14,7 @@ Sets the default authorizer. This will be used if a websocket connection
 is made without specifying an authorizer.
 }
 \section{Request syntax}{
-\preformatted{iot$set_default_authorizer(
+\preformatted{svc$set_default_authorizer(
   authorizerName = "string"
 )
 }

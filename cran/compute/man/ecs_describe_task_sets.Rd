@@ -22,7 +22,7 @@ more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/develope
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{ecs$describe_task_sets(
+\preformatted{svc$describe_task_sets(
   cluster = "string",
   service = "string",
   taskSets = list(

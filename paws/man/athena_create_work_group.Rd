@@ -27,7 +27,7 @@ workgroup as you create it.}
 Creates a workgroup with the specified name.
 }
 \section{Request syntax}{
-\preformatted{athena$create_work_group(
+\preformatted{svc$create_work_group(
   Name = "string",
   Configuration = list(
     ResultConfiguration = list(

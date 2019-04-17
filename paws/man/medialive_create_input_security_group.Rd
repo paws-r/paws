@@ -15,7 +15,7 @@ medialive_create_input_security_group(Tags, WhitelistRules)
 Creates a Input Security Group
 }
 \section{Request syntax}{
-\preformatted{medialive$create_input_security_group(
+\preformatted{svc$create_input_security_group(
   Tags = list(
     "string"
   ),

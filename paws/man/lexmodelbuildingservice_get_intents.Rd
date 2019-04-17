@@ -35,7 +35,7 @@ about the \code{$LATEST} version of all intents.
 The operation requires permission for the \code{lex:GetIntents} action.
 }
 \section{Request syntax}{
-\preformatted{lexmodelbuildingservice$get_intents(
+\preformatted{svc$get_intents(
   nextToken = "string",
   maxResults = 123,
   nameContains = "string"
@@ -46,7 +46,7 @@ The operation requires permission for the \code{lex:GetIntents} action.
 \examples{
 # This example shows how to get a list of all of the intents in your
 # account.
-\donttest{lexmodelbuildingservice$get_intents(
+\donttest{svc$get_intents(
   maxResults = 10L,
   nextToken = ""
 )}

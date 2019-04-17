@@ -15,7 +15,7 @@ pinpoint_delete_user_endpoints(ApplicationId, UserId)
 Deletes endpoints that are associated with a User ID.
 }
 \section{Request syntax}{
-\preformatted{pinpoint$delete_user_endpoints(
+\preformatted{svc$delete_user_endpoints(
   ApplicationId = "string",
   UserId = "string"
 )

@@ -17,7 +17,7 @@ assumed.}
 Deletes the specified lifecycle policy.
 }
 \section{Request syntax}{
-\preformatted{ecr$delete_lifecycle_policy(
+\preformatted{svc$delete_lifecycle_policy(
   registryId = "string",
   repositoryName = "string"
 )

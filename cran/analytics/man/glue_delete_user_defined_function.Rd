@@ -18,7 +18,7 @@ If none is supplied, the AWS account ID is used by default.}
 Deletes an existing function definition from the Data Catalog.
 }
 \section{Request syntax}{
-\preformatted{glue$delete_user_defined_function(
+\preformatted{svc$delete_user_defined_function(
   CatalogId = "string",
   DatabaseName = "string",
   FunctionName = "string"

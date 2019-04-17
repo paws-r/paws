@@ -29,7 +29,7 @@ the call. For information, see \href{http://docs.aws.amazon.com/systems-manager/
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
-\preformatted{ssm$start_session(
+\preformatted{svc$start_session(
   Target = "string",
   DocumentName = "string",
   Parameters = list(

@@ -35,7 +35,7 @@ are also displayed on the domain dashboard in the Amazon CloudSearch
 console.
 }
 \section{Request syntax}{
-\preformatted{cloudsearchdomain$suggest(
+\preformatted{svc$suggest(
   query = "string",
   suggester = "string",
   size = 123

@@ -36,7 +36,7 @@ hosts the specified LAG. If there are no available ports on the
 endpoint, the request fails and no connection is created.
 }
 \section{Request syntax}{
-\preformatted{directconnect$create_connection(
+\preformatted{svc$create_connection(
   location = "string",
   bandwidth = "string",
   connectionName = "string",

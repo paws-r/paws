@@ -102,7 +102,7 @@ request, see
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
-\preformatted{route53$change_resource_record_sets(
+\preformatted{svc$change_resource_record_sets(
   HostedZoneId = "string",
   ChangeBatch = list(
     Comment = "string",
@@ -146,7 +146,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 \examples{
 # The following example creates a resource record set that routes Internet
 # traffic to a resource with an IP address of 192.0.2.44.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -171,7 +171,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # The following example creates two weighted resource record sets. The
 # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
 # and the other resource will get the rest of the traffic for example.com.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -214,7 +214,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 
 # The following example creates an alias resource record set that routes
 # traffic to a CloudFront distribution.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -239,7 +239,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # that route traffic to ELB load balancers. The resource with a Weight of
 # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
 # get the rest of the traffic for example.com.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -280,7 +280,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # route traffic to EC2 instances. Traffic for example.com is routed either
 # to the Ohio region or the Oregon region, depending on the latency
 # between the user and those regions.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -325,7 +325,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # that route traffic for example.com to ELB load balancers. Requests are
 # routed either to the Ohio region or the Oregon region, depending on the
 # latency between the user and those regions.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -367,7 +367,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # routed to the primary resource, in the Ohio region. If that resource is
 # unavailable, traffic is routed to the secondary resource, in the Oregon
 # region.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -413,7 +413,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # is generally routed to the primary resource, in the Ohio region. If that
 # resource is unavailable, traffic is routed to the secondary resource, in
 # the Oregon region.
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -455,7 +455,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # running on EC2 instances. Traffic is routed to one of four IP addresses,
 # for North America (NA), for South America (SA), for Europe (EU), and for
 # all other locations (*).
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(
@@ -536,7 +536,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 # sets that route traffic to ELB load balancers. Traffic is routed to one
 # of four IP addresses, for North America (NA), for South America (SA),
 # for Europe (EU), and for all other locations (*).
-\donttest{route53$change_resource_record_sets(
+\donttest{svc$change_resource_record_sets(
   ChangeBatch = list(
     Changes = list(
       list(

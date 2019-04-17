@@ -21,7 +21,7 @@ of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
 }
 \section{Request syntax}{
-\preformatted{ec2$delete_dhcp_options(
+\preformatted{svc$delete_dhcp_options(
   DhcpOptionsId = "string",
   DryRun = TRUE|FALSE
 )
@@ -30,7 +30,7 @@ default set of options with the VPC.
 
 \examples{
 # This example deletes the specified DHCP options set.
-\donttest{ec2$delete_dhcp_options(
+\donttest{svc$delete_dhcp_options(
   DhcpOptionsId = "dopt-d9070ebb"
 )}
 

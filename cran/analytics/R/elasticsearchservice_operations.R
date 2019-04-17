@@ -18,7 +18,7 @@ NULL
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$add_tags(
+#' svc$add_tags(
 #'   ARN = "string",
 #'   TagList = list(
 #'     list(
@@ -63,7 +63,7 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$cancel_elasticsearch_service_software_update(
+#' svc$cancel_elasticsearch_service_software_update(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -136,7 +136,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$create_elasticsearch_domain(
+#' svc$create_elasticsearch_domain(
 #'   DomainName = "string",
 #'   ElasticsearchVersion = "string",
 #'   ElasticsearchClusterConfig = list(
@@ -226,7 +226,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$delete_elasticsearch_domain(
+#' svc$delete_elasticsearch_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -301,7 +301,7 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_elasticsearch_domain(
+#' svc$describe_elasticsearch_domain(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -340,7 +340,7 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_elasticsearch_domain_config(
+#' svc$describe_elasticsearch_domain_config(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -379,7 +379,7 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_elasticsearch_domains(
+#' svc$describe_elasticsearch_domains(
 #'   DomainNames = list(
 #'     "string"
 #'   )
@@ -425,7 +425,7 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_elasticsearch_instance_type_limits(
+#' svc$describe_elasticsearch_instance_type_limits(
 #'   DomainName = "string",
 #'   InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
 #'   ElasticsearchVersion = "string"
@@ -469,7 +469,7 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_reserved_elasticsearch_instance_offerings(
+#' svc$describe_reserved_elasticsearch_instance_offerings(
 #'   ReservedElasticsearchInstanceOfferingId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -515,7 +515,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$describe_reserved_elasticsearch_instances(
+#' svc$describe_reserved_elasticsearch_instances(
 #'   ReservedElasticsearchInstanceId = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -554,7 +554,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$get_compatible_elasticsearch_versions(
+#' svc$get_compatible_elasticsearch_versions(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -594,7 +594,7 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$get_upgrade_history(
+#' svc$get_upgrade_history(
 #'   DomainName = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -633,7 +633,7 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$get_upgrade_status(
+#' svc$get_upgrade_status(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -711,7 +711,7 @@ elasticsearchservice_list_domain_names <- function() {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$list_elasticsearch_instance_types(
+#' svc$list_elasticsearch_instance_types(
 #'   ElasticsearchVersion = "string",
 #'   DomainName = "string",
 #'   MaxResults = 123,
@@ -751,7 +751,7 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$list_elasticsearch_versions(
+#' svc$list_elasticsearch_versions(
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -788,7 +788,7 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$list_tags(
+#' svc$list_tags(
 #'   ARN = "string"
 #' )
 #' ```
@@ -826,7 +826,7 @@ elasticsearchservice_list_tags <- function(ARN) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$purchase_reserved_elasticsearch_instance_offering(
+#' svc$purchase_reserved_elasticsearch_instance_offering(
 #'   ReservedElasticsearchInstanceOfferingId = "string",
 #'   ReservationName = "string",
 #'   InstanceCount = 123
@@ -868,7 +868,7 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$remove_tags(
+#' svc$remove_tags(
 #'   ARN = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -908,7 +908,7 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$start_elasticsearch_service_software_update(
+#' svc$start_elasticsearch_service_software_update(
 #'   DomainName = "string"
 #' )
 #' ```
@@ -969,7 +969,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$update_elasticsearch_domain_config(
+#' svc$update_elasticsearch_domain_config(
 #'   DomainName = "string",
 #'   ElasticsearchClusterConfig = list(
 #'     InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
@@ -1054,7 +1054,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
 #'
 #' @section Request syntax:
 #' ```
-#' elasticsearchservice$upgrade_elasticsearch_domain(
+#' svc$upgrade_elasticsearch_domain(
 #'   DomainName = "string",
 #'   TargetVersion = "string",
 #'   PerformCheckOnly = TRUE|FALSE

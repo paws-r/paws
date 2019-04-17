@@ -24,7 +24,7 @@ example, after your delivery stream is created, call
 and therefore ready for data to be sent to it.
 }
 \section{Request syntax}{
-\preformatted{firehose$describe_delivery_stream(
+\preformatted{svc$describe_delivery_stream(
   DeliveryStreamName = "string",
   Limit = 123,
   ExclusiveStartDestinationId = "string"

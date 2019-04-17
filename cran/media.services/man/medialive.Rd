@@ -9,12 +9,6 @@ medialive()
 \description{
 API for AWS Elemental MediaLive
 }
-\section{Example}{
-\preformatted{medialive <- paws::medialive()
-medialive$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -49,3 +43,9 @@ medialive$operation()
 }
 }
 
+\examples{
+\donttest{svc$batch_update_schedule(
+  Foo = 123
+)}
+
+}

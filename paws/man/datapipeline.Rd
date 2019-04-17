@@ -31,12 +31,6 @@ progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
 }
-\section{Example}{
-\preformatted{datapipeline <- paws::datapipeline()
-datapipeline$operation()
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
@@ -62,3 +56,9 @@ datapipeline$operation()
 }
 }
 
+\examples{
+\donttest{svc$activate_pipeline(
+  Foo = 123
+)}
+
+}
