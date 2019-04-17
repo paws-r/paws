@@ -12,38 +12,48 @@ make_cran <- function(sdk_dir, out_dir) {
   categories <- yaml::read_yaml(path)
 
   for (category in categories) {
-    name <- category$name
-    cat(paste0(name, "\n"))
-    services <- category$services
-    title <- category$title
-    description <- category$description
-
-    if (is.null(name) || is.null(title) || is.null(description)) {
-      stop("missing name, title, or description")
-    }
-
-    if (length(services) == 0) next
-
-    package_dir <- file.path(out_dir, name)
-    if (dir.exists(package_dir)) unlink(package_dir, recursive = TRUE)
-
-    write_skeleton_category(package_dir)
-    write_description_category(package_dir, name, title, description, get_version(sdk_dir))
-    for (service in services) {
-      copy_files(service, from = sdk_dir, to = package_dir)
-    }
-    write_documentation(package_dir)
+    make_category(category, sdk_dir, out_dir)
   }
+}
+
+# Make a package for the given AWS service category (e.g. compute, storage).
+make_category <- function(category, sdk_dir, out_dir) {
+  name <- category$name
+  services <- category$services
+  title <- category$title
+  description <- category$description
+
+  if (is.null(name) || is.null(title) || is.null(description)) {
+    stop("missing name, title, or description")
+  }
+
+  if (length(services) == 0) return()
+
+  package_dir <- file.path(out_dir, name)
+  if (dir.exists(package_dir)) {
+    files <- list.files(package_dir, full.names = TRUE)
+    keep <- "cran-comments.md"
+    delete <- grep(keep, files, invert = TRUE, val = TRUE)
+    unlink(delete, recursive = TRUE)
+  }
+
+  write_skeleton_category(package_dir)
+  write_description_category(package_dir, name, title, description, get_version(sdk_dir))
+  for (service in services) {
+    copy_files(service, from = sdk_dir, to = package_dir)
+  }
+  write_documentation(package_dir)
 }
 
 #-------------------------------------------------------------------------------
 
 # Create the skeleton for category package.
 write_skeleton_category <- function(path) {
-  dir.create(path)
+  if (!dir.exists(path)) dir.create(path)
   for (dir in c("man", "R", "tests/testthat")) {
     dir.create(file.path(path, dir), recursive = TRUE)
   }
+  file.copy(system_file(file.path("templates", ".Rbuildignore")), ".")
 }
 
 # Write the DESCRIPTION file for a category package.
