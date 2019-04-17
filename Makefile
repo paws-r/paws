@@ -1,6 +1,6 @@
 IN_DIR := ./vendor/aws-sdk-js
 OUT_DIR := ./paws
-SINGLE_DIR := ./service
+CRAN_DIR := ./cran
 
 # Make R use the user's package library by setting the R user home path (R_USER)
 # to the folder containing their package library. On Windows, it is in
@@ -36,7 +36,7 @@ build-full: deps codegen
 
 build-cran: build-full
 	@echo "build CRAN packages"
-	@Rscript -e "library(make.paws); make_cran('${IN_DIR}', '${OUT_DIR}', '${SINGLE_DIR}')"
+	@Rscript -e "library(make.paws); make_cran('${OUT_DIR}', '${CRAN_DIR}')"
 
 unit: test-common test-codegen
 
