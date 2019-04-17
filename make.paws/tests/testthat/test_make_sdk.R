@@ -100,6 +100,10 @@ test_that("make_cran", {
   dir.create(path_cran)
   expect_error(make_cran(path_out, path_cran), NA)
   expect_true(file.exists(file.path(path_cran, "compute")))
+
+  # Should continue to work a second time.
+  expect_error(make_cran(path_out, path_cran), NA)
+  expect_true(file.exists(file.path(path_cran, "compute")))
 })
 
 test_that("list_apis", {
