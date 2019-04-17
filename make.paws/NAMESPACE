@@ -1,5 +1,5 @@
 export(make_sdk)
-export(make_single)
+export(make_cran)
 importFrom(paws.common,is_empty)
 importFrom(paws.common,tag_add)
 importFrom(paws.common,tag_del)

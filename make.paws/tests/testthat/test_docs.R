@@ -113,7 +113,7 @@ test_that("make_doc_request", {
   expected <- paste(
     "#' @section Request syntax:",
     "#' ```",
-    "#' api$operation(",
+    "#' svc$operation(",
     "#'   Foo = \"string\",",
     "#'   Bar = list(",
     "#'     Baz = 123,",
@@ -195,7 +195,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description",
-    "#' \\donttest{api$operation(",
+    "#' \\donttest{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -227,10 +227,10 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description1",
-    "#' \\donttest{api$operation()}",
+    "#' \\donttest{svc$operation()}",
     "#' ",
     "#' # Description2",
-    "#' \\donttest{api$operation(",
+    "#' \\donttest{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -258,7 +258,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{api$operation(",
+    "#' \\donttest{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = 123",
@@ -286,7 +286,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # Description, with a comma",
-    "#' \\donttest{api$operation(",
+    "#' \\donttest{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"a,b,c\"",
@@ -314,7 +314,7 @@ test_that("make_doc_examples", {
   expected <- paste(
     "#' @examples",
     "#' # A very long string",
-    "#' \\donttest{api$operation(",
+    "#' \\donttest{svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
     "#'     Qux = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",

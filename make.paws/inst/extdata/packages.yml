@@ -1,0 +1,350 @@
+---
+- name: compute
+  services:
+    - batch
+    - ec2
+    - ecr
+    - ecs
+    - eks
+    - elasticbeanstalk
+    - lambda
+    - lightsail
+    - serverlessapplicationrepository
+  title: Amazon Web Services Compute APIs
+  description: >-
+    Interface to Amazon Web Services' compute APIs, including
+    'Elastic Compute Cloud' (EC2), 'Lambda' serverless compute, containers,
+    batch processing, and more <https://aws.amazon.com/>.
+
+- name: storage
+  services:
+    - backup
+    - dlm
+    - efs
+    - fsx
+    - glacier
+    - s3
+    - s3control
+    - storagegateway
+  title: Amazon Web Services Storage APIs
+  description: >-
+    Interface to Amazon Web Services' storage APIs, including 'Simple Storage
+    Service' (S3) and more <https://aws.amazon.com/>.
+
+- name: database
+  services:
+    - dax
+    - docdb
+    - dynamodb
+    - dynamodbstreams
+    - elasticache
+    - neptune
+    - rds
+    - rdsdataservice
+    - redshift
+    - simpledb
+  title: Amazon Web Services Database APIs
+  description: >-
+    Interface to Amazon Web Services' database APIs, including 'Relational
+    Database Service' (RDS), 'DynamoDB' NoSQL database, and more. 
+    <https://aws.amazon.com/>.
+
+- name: migration
+  services:
+    - applicationdiscoveryservice
+    - databasemigrationservice
+    - datasync
+    - importexport
+    - migrationhub
+    - sms
+    - snowball
+    - transfer
+  title: Amazon Web Services Migration & Transfer APIs
+  description: >-
+    Interface to Amazon Web Services' migration & transfer APIs, including
+    file and database migration to AWS, and managed SFTP service.
+    <https://aws.amazon.com/>.
+
+- name: networking
+  services:
+    - apigateway
+    - apigatewaymanagementapi
+    - apigatewayv2
+    - appmesh
+    - cloudfront
+    - directconnect
+    - elb
+    - elbv2
+    - globalaccelerator
+    - route53
+    - route53domains
+    - route53resolver
+    - servicediscovery
+  title: Amazon Web Services Networking & Content Delivery APIs
+  description: >-
+    Interface to Amazon Web Services' networking and content delivery APIs,
+    including 'Route 53' DNS service, 'CloudFront' content delivery,
+    API endpoints, load balancing, and more <https://aws.amazon.com/>.
+
+- name: developer.tools
+  services:
+    - cloud9
+    - codebuild
+    - codecommit
+    - codedeploy
+    - codepipeline
+    - codestar
+    - xray
+  title: Amazon Web Services Developer Tools APIs
+  description: >-
+    Interface to Amazon Web Services' developer tools APIs, including version
+    control, continuous integration and deployment, and more.
+    <https://aws.amazon.com/products/developer-tools/>.
+
+- name: robotics
+  services:
+    - robomaker
+  title: Amazon Web Services Robotics APIs
+  description: >-
+    Interface to Amazon Web Services' robotics APIs, including the RobotMaker
+    API for developing, testing, and deploying intelligent robotics
+    applications <https://aws.amazon.com/>.
+
+- name: blockchain
+  services:
+  title: Amazon Web Services Blockchain APIs
+  description: ""
+
+- name: satellite
+  services:
+  title: Amazon Web Services Satellite APIs
+  description: ""
+
+- name: management
+  services:
+    - applicationautoscaling
+    - autoscaling
+    - autoscalingplans
+    - cloudformation
+    - cloudtrail
+    - cloudwatch
+    - cloudwatchevents
+    - cloudwatchlogs
+    - configservice
+    - health
+    - licensemanager
+    - opsworks
+    - opsworkscm
+    - organizations
+    - pi
+    - resourcegroups
+    - resourcegroupstaggingapi
+    - servicecatalog
+    - ssm
+    - support
+  title: Amazon Web Services Management & Governance APIs
+  description: >-
+    Interface to Amazon Web Services' management and governance APIs, including
+    'CloudWatch' application and infrastructure monitoring, 'Auto Scaling'
+    for automatically scaling resources, and more <https://aws.amazon.com/>.
+
+- name: media.services
+  services:
+    - elastictranscoder
+    - kinesisvideo
+    - kinesisvideoarchivedmedia
+    - kinesisvideomedia
+    - mediaconnect
+    - mediaconvert
+    - medialive
+    - mediapackage
+    - mediastore
+    - mediastoredata
+    - mediatailor
+  title: Amazon Web Services Media Services APIs
+  description: >-
+    Interface to Amazon Web Services' media services APIs, including
+    'Kinesis' video stream capture and processing, format conversion,
+    and more <https://aws.amazon.com/media-services/>.
+
+- name: machine.learning
+  services:
+    - comprehend
+    - comprehendmedical
+    - lexmodelbuildingservice
+    - lexruntimeservice
+    - machinelearning
+    - polly
+    - rekognition
+    - sagemaker
+    - sagemakerruntime
+    - textract
+    - transcribeservice
+    - translate
+  title: Amazon Web Services Machine Learning APIs
+  description: >-
+    Interface to Amazon Web Services' machine learning APIs, including
+    'SageMaker' managed machine learning service, natural language processing,
+    chatbots, speech recognition, translation, and more.
+    <https://aws.amazon.com/machine-learning/>.
+
+- name: analytics
+  services:
+    - athena
+    - cloudsearch
+    - cloudsearchdomain
+    - datapipeline
+    - elasticsearchservice
+    - emr
+    - firehose
+    - glue
+    - kafka
+    - kinesis
+    - kinesisanalytics
+    - kinesisanalyticsv2
+    - mturk
+    - quicksight
+  title: Amazon Web Services Analytics APIs
+  description: >-
+    Interface to Amazon Web Services' analytics APIs, including 'Elastic
+    MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch' 
+    search engine, and more <https://aws.amazon.com/>.
+
+- name: security.identity
+  services:
+    - acm
+    - acmpca
+    - clouddirectory
+    - cloudhsm
+    - cloudhsmv2
+    - cognitoidentity
+    - cognitoidentityprovider
+    - cognitosync
+    - directoryservice
+    - fms
+    - guardduty
+    - iam
+    - inspector
+    - kms
+    - macie
+    - ram
+    - secretsmanager
+    - securityhub
+    - shield
+    - sts
+    - waf
+    - wafregional
+  title: Amazon Web Services Security, Identity, & Compliance APIs
+  description: >-
+    Interface to Amazon Web Services' security, identity, and compliance APIs,
+    including 'Identity & Access Management' (IAM) service for managing access
+     to AWS services and resources, and more <https://aws.amazon.com/>.
+
+- name: mobile
+  services:
+    - amplify
+    - appsync
+    - devicefarm
+    - mobile
+    - mobileanalytics
+  title: Amazon Web Services Mobile APIs
+  description: >-
+    Interface to Amazon Web Services' mobile APIs, including 'Amplify' library
+    for mobile applications, 'AppSync' serverless back-end for mobile
+    applications, and more <https://aws.amazon.com/>.
+
+- name: ar.vr
+  services:
+  title: Amazon Web Services AR & VR APIs
+  description: ""
+
+- name: application.integration
+  services:
+    - mq
+    - sfn
+    - sns
+    - sqs
+    - swf
+  title: Amazon Web Services Application Integration APIs
+  description: >-
+    Interface to Amazon Web Services' application integration APIs, including
+    'Simple Notification Service' (SNS) pub/sub messaging service,
+    'Simple Queue Service' (SQS) message queueing service, and more.
+    <https://aws.amazon.com/>.
+
+- name: cost.management
+  services:
+    - budgets
+    - costandusagereportservice
+    - costexplorer
+    - marketplacecommerceanalytics
+    - marketplaceentitlementservice
+    - marketplacemetering
+    - pricing
+  title: Amazon Web Services Cost Management APIs
+  description: >-
+    Interface to Amazon Web Services' cost management APIs, including
+    cost and usage reports, budgets, pricing, and more.
+    <https://aws.amazon.com/>.
+
+- name: customer.engagement
+  services:
+    - connect
+    - pinpoint
+    - pinpointemail
+    - pinpointsmsvoice
+    - ses
+  title: Amazon Web Services Customer Engagement APIs
+  description: >-
+    Interface to Amazon Web Services' customer engagement APIs, including
+    'Simple Email Service', 'Connect' contact center service, and more.
+    <https://aws.amazon.com/>.
+
+- name: business.applications
+  services:
+    - alexaforbusiness
+    - chime
+    - workmail
+  title: Amazon Web Services Business Applications APIs
+  description: >-
+    Interface to Amazon Web Services' business applications APIs, including
+    online meetings and video conferencing, email and calendar service,
+    and more <https://aws.amazon.com/>.
+
+- name: end.user.computing
+  services:
+    - appstream
+    - workdocs
+    - worklink
+    - workspaces
+  title: Amazon Web Services End User Computing APIs
+  description: >-
+    Interface to Amazon Web Services' end user computing APIs, including 
+    collaborative document editing, mobile intranet, and more.
+    <https://aws.amazon.com/>.
+
+- name: internet.of.things
+  services:
+    - greengrass
+    - iot
+    - iot1clickdevicesservice
+    - iot1clickprojects
+    - iotanalytics
+    - iotdataplane
+    - iotjobsdataplane
+    - signer
+  title: Amazon Web Services Internet of Things APIs
+  description: >-
+    Interface to Amazon Web Services' internet of things (IoT) APIs, including
+    data collection, management, and analysis for IoT devices.
+    <https://aws.amazon.com/iot/>.
+
+
+- name: game.development
+  services:
+    - gamelift
+  title: Amazon Web Services Game Development APIs
+  description: >-
+    Interface to Amazon Web Services' game development APIs, including 
+    <https://aws.amazon.com/gametech/>.
+...

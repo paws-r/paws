@@ -1,0 +1,65 @@
+Package: paws.machine.learning
+Title: Amazon Web Services Machine Learning APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' machine learning
+    APIs, including 'SageMaker' managed machine learning service, natural
+    language processing, chatbots, speech recognition, translation, and
+    more. <https://aws.amazon.com/machine-learning/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'comprehend_service.R'
+    'comprehend_interfaces.R'
+    'comprehend_operations.R'
+    'comprehendmedical_service.R'
+    'comprehendmedical_interfaces.R'
+    'comprehendmedical_operations.R'
+    'lexmodelbuildingservice_service.R'
+    'lexmodelbuildingservice_interfaces.R'
+    'lexmodelbuildingservice_operations.R'
+    'lexruntimeservice_service.R'
+    'lexruntimeservice_interfaces.R'
+    'lexruntimeservice_operations.R'
+    'machinelearning_service.R'
+    'machinelearning_interfaces.R'
+    'machinelearning_operations.R'
+    'polly_service.R'
+    'polly_interfaces.R'
+    'polly_operations.R'
+    'rekognition_service.R'
+    'rekognition_interfaces.R'
+    'rekognition_operations.R'
+    'sagemaker_service.R'
+    'sagemaker_interfaces.R'
+    'sagemaker_operations.R'
+    'sagemakerruntime_service.R'
+    'sagemakerruntime_interfaces.R'
+    'sagemakerruntime_operations.R'
+    'textract_service.R'
+    'textract_interfaces.R'
+    'textract_operations.R'
+    'transcribeservice_service.R'
+    'transcribeservice_interfaces.R'
+    'transcribeservice_operations.R'
+    'translate_service.R'
+    'translate_interfaces.R'
+    'translate_operations.R'

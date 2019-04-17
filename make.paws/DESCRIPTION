@@ -23,7 +23,8 @@ Imports:
     rmarkdown,
     roxygen2,
     stringr,
-    xml2
+    xml2,
+    yaml
 Suggests: 
     covr,
     formatR,
@@ -36,7 +37,7 @@ Collate:
     'templates.R'
     'interfaces.R'
     'make_sdk.R'
-    'make_single.R'
+    'cran.R'
     'names.R'
     'operations.R'
     'process_api.R'

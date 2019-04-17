@@ -90,7 +90,7 @@ make_doc_params <- function(operation, api) {
 # Return a string showing the operation's request syntax,
 # including all parameters.
 make_doc_request <- function(operation, api) {
-  func <- sprintf("%s$%s", package_name(api), get_operation_name(operation))
+  func <- sprintf("svc$%s", get_operation_name(operation))
   shape_name <- operation$input$shape
   if (!is.null(shape_name)) {
     shape <- make_shape(list(shape = shape_name), api)
@@ -152,7 +152,7 @@ make_doc_example <- function(example, op_name) {
 
 # Make all operation examples provided in the operation object.
 make_doc_examples <- function(operation, api) {
-  func <- sprintf("%s$%s", package_name(api), get_operation_name(operation))
+  func <- sprintf("svc$%s", get_operation_name(operation))
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
   if (length(examples) == 0) return(NULL)
   result <- paste(examples, collapse = "\n\n")

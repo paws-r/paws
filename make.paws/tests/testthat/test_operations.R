@@ -50,7 +50,7 @@ test_that("make_operation", {
     #'
     #' @section Request syntax:
     #' ```
-    #' api$operation(
+    #' svc$operation(
     #'   Input1 = \"string\",
     #'   Input2 = \"string\",
     #'   Input3 = 123

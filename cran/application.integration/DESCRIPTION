@@ -1,0 +1,44 @@
+Package: paws.application.integration
+Title: Amazon Web Services Application Integration APIs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services' application
+    integration APIs, including 'Simple Notification Service' (SNS)
+    pub/sub messaging service, 'Simple Queue Service' (SQS) message
+    queueing service, and more. <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+Imports: 
+    paws.common
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
+RoxygenNote: 6.1.1
+Collate: 
+    'mq_service.R'
+    'mq_interfaces.R'
+    'mq_operations.R'
+    'sfn_service.R'
+    'sfn_interfaces.R'
+    'sfn_operations.R'
+    'sns_service.R'
+    'sns_interfaces.R'
+    'sns_operations.R'
+    'sqs_service.R'
+    'sqs_interfaces.R'
+    'sqs_operations.R'
+    'swf_service.R'
+    'swf_interfaces.R'
+    'swf_operations.R'

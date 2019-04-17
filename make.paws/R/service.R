@@ -86,17 +86,33 @@ service_description <- function(api) {
 }
 
 # Returns an example showing how to use the service.
-# It was necessary to separate this from the template because the template
-# can't contain ` characters.
 service_example <- function(api) {
   service <- package_name(api)
-  glue::glue(gsub("^ +", "",
-  "@section Example:
-  #' ```
-  #' {service} <- paws::{service}()
-  #' {service}$operation()
-  #' ```
-  "))
+  example <- make_doc_examples(get_example(api), api)
+  example <- gsub("^#' ", "", example) # Delete extra leading Roxygen comment.
+  example <- gsub("#' #\\n", "", example) # Delete empty comment.
+  find <- sprintf("donttest\\{%s", service)
+  replace <- sprintf("donttest\\{svc <- %s()\n#' svc", service)
+  gsub(find, replace, example) # Add service client object to the example.
+}
+
+# Get the first example, or if none, the first operation without required
+# arguments, or if none, the first operation.
+get_example <- function(api) {
+  for (op in api$operations) {
+    if (!is.null(op$examples)) {
+      op$examples <- op$examples[1]
+      return(op)
+    }
+  }
+  for (op in api$operations) {
+    if (!has_required_params(op, api)) {
+      op$examples <- list(list(input = list()))
+    }
+  }
+  op <- api$operations[[1]]
+  op$examples <- list(list(input = list(Foo = 123)))
+  op
 }
 
 # Returns a list of the API's operations with links to their docs.
