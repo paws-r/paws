@@ -13,8 +13,8 @@
   title: Amazon Web Services Compute APIs
   description: >-
     Interface to Amazon Web Services' compute APIs, including
-    'Elastic Compute Cloud' ('EC2'), 'Lambda' serverless compute, containers,
-    batch processing, and more <https://aws.amazon.com/>.
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
+    containers, batch processing, and more <https://aws.amazon.com/>.
 
 - name: storage
   services:
