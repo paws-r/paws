@@ -61,7 +61,8 @@ expressed in them, the predominant language used, and more.
 }
 
 \examples{
-\donttest{svc$batch_detect_dominant_language(
+\donttest{svc <- comprehend()
+svc$batch_detect_dominant_language(
   Foo = 123
 )}
 

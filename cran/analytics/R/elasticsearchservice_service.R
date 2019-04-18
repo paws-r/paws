@@ -16,7 +16,8 @@ NULL
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 #'
 #' @examples
-#' \donttest{svc$add_tags(
+#' \donttest{svc <- elasticsearchservice()
+#' svc$add_tags(
 #'   Foo = 123
 #' )}
 #'

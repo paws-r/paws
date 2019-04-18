@@ -78,7 +78,8 @@ about the AWS SDKs, including how to download and install them, see
 }
 
 \examples{
-\donttest{svc$accept_shared_directory(
+\donttest{svc <- directoryservice()
+svc$accept_shared_directory(
   Foo = 123
 )}
 

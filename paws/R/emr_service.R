@@ -12,7 +12,8 @@ NULL
 #' warehousing.
 #'
 #' @examples
-#' \donttest{svc$add_instance_fleet(
+#' \donttest{svc <- emr()
+#' svc$add_instance_fleet(
 #'   Foo = 123
 #' )}
 #'

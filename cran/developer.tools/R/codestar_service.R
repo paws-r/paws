@@ -61,7 +61,8 @@ NULL
 #' -   `UpdateUserProfile`, which updates the profile for a user.
 #'
 #' @examples
-#' \donttest{svc$associate_team_member(
+#' \donttest{svc <- codestar()
+#' svc$associate_team_member(
 #'   Foo = 123
 #' )}
 #'

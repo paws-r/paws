@@ -15,7 +15,8 @@ NULL
 #' contains up to eight healthy records.
 #'
 #' @examples
-#' \donttest{svc$create_http_namespace(
+#' \donttest{svc <- servicediscovery()
+#' svc$create_http_namespace(
 #'   Foo = 123
 #' )}
 #'

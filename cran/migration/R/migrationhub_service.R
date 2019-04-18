@@ -10,7 +10,8 @@ NULL
 #' providing a programmatic interface to Migration Hub.
 #'
 #' @examples
-#' \donttest{svc$associate_created_artifact(
+#' \donttest{svc <- migrationhub()
+#' svc$associate_created_artifact(
 #'   Foo = 123
 #' )}
 #'

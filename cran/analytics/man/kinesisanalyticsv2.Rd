@@ -37,7 +37,8 @@ Documentation for Kinesis Data Analytics API v2
 }
 
 \examples{
-\donttest{svc$add_application_cloud_watch_logging_option(
+\donttest{svc <- kinesisanalyticsv2()
+svc$add_application_cloud_watch_logging_option(
   Foo = 123
 )}
 

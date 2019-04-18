@@ -9,7 +9,8 @@ NULL
 #' operations.
 #'
 #' @examples
-#' \donttest{svc$batch_describe_simulation_job(
+#' \donttest{svc <- robomaker()
+#' svc$batch_describe_simulation_job(
 #'   Foo = 123
 #' )}
 #'

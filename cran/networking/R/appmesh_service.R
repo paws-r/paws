@@ -27,7 +27,8 @@ NULL
 #' in the Kubernetes documentation.
 #'
 #' @examples
-#' \donttest{svc$create_mesh(
+#' \donttest{svc <- appmesh()
+#' svc$create_mesh(
 #'   Foo = 123
 #' )}
 #'

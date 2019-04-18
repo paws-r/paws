@@ -49,7 +49,8 @@ resource share.
 }
 
 \examples{
-\donttest{svc$accept_resource_share_invitation(
+\donttest{svc <- ram()
+svc$accept_resource_share_invitation(
   Foo = 123
 )}
 

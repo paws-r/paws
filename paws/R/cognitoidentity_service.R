@@ -28,7 +28,8 @@ NULL
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
 #' @examples
-#' \donttest{svc$create_identity_pool(
+#' \donttest{svc <- cognitoidentity()
+#' svc$create_identity_pool(
 #'   Foo = 123
 #' )}
 #'

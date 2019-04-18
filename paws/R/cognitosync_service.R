@@ -29,7 +29,8 @@ NULL
 #' iOS](http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
 #'
 #' @examples
-#' \donttest{svc$bulk_publish(
+#' \donttest{svc <- cognitosync()
+#' svc$bulk_publish(
 #'   Foo = 123
 #' )}
 #'

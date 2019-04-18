@@ -51,7 +51,8 @@ performance, and operational health.
 }
 
 \examples{
-\donttest{svc$delete_alarms(
+\donttest{svc <- cloudwatch()
+svc$delete_alarms(
   Foo = 123
 )}
 

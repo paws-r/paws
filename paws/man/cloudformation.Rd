@@ -80,7 +80,8 @@ find the product's technical documentation at
 }
 
 \examples{
-\donttest{svc$cancel_update_stack(
+\donttest{svc <- cloudformation()
+svc$cancel_update_stack(
   Foo = 123
 )}
 

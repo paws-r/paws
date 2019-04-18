@@ -21,7 +21,8 @@ NULL
 #'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
-#' \donttest{svc$create_cluster(
+#' \donttest{svc <- eks()
+#' svc$create_cluster(
 #'   version = "1.10",
 #'   name = "prod",
 #'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",

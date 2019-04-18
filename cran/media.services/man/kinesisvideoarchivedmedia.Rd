@@ -19,7 +19,8 @@ Amazon Kinesis Video Streams Archived Media
 }
 
 \examples{
-\donttest{svc$get_hls_streaming_session_url(
+\donttest{svc <- kinesisvideoarchivedmedia()
+svc$get_hls_streaming_session_url(
   Foo = 123
 )}
 

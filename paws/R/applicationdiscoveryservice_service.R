@@ -70,7 +70,8 @@ NULL
 #' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/).
 #'
 #' @examples
-#' \donttest{svc$associate_configuration_items_to_application(
+#' \donttest{svc <- applicationdiscoveryservice()
+#' svc$associate_configuration_items_to_application(
 #'   Foo = 123
 #' )}
 #'

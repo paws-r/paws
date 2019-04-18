@@ -88,7 +88,8 @@ basis using the IAM model.
 }
 
 \examples{
-\donttest{svc$abort_document_version_upload(
+\donttest{svc <- workdocs()
+svc$abort_document_version_upload(
   Foo = 123
 )}
 

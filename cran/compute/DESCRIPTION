@@ -12,8 +12,8 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services' compute APIs,
-    including 'Elastic Compute Cloud' (EC2), 'Lambda' serverless compute,
+Description: Interface to Amazon Web Services' compute APIs, including
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' serverless compute,
     containers, batch processing, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
@@ -22,8 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
-    "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.1.1
 Collate: 
     'batch_service.R'

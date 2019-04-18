@@ -72,7 +72,8 @@ NULL
 #'
 #' @examples
 #' # Activates the gateway you previously deployed on your host.
-#' \donttest{svc$activate_gateway(
+#' \donttest{svc <- storagegateway()
+#' svc$activate_gateway(
 #'   ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
 #'   GatewayName = "My_Gateway",
 #'   GatewayRegion = "us-east-1",

@@ -103,7 +103,8 @@ shared devices in their organization.
 }
 
 \examples{
-\donttest{svc$approve_skill(
+\donttest{svc <- alexaforbusiness()
+svc$approve_skill(
   Foo = 123
 )}
 

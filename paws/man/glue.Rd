@@ -114,7 +114,8 @@ Defines the public endpoint for the AWS Glue service.
 }
 
 \examples{
-\donttest{svc$batch_create_partition(
+\donttest{svc <- glue()
+svc$batch_create_partition(
   Foo = 123
 )}
 

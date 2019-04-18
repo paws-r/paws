@@ -26,7 +26,8 @@ NULL
 #' point.
 #'
 #' @examples
-#' \donttest{svc$describe_dimension_keys(
+#' \donttest{svc <- pi()
+#' svc$describe_dimension_keys(
 #'   Foo = 123
 #' )}
 #'

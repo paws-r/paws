@@ -52,7 +52,8 @@ NULL
 #' in the *Amazon Chime Administration Guide*.
 #'
 #' @examples
-#' \donttest{svc$associate_phone_number_with_user(
+#' \donttest{svc <- chime()
+#' svc$associate_phone_number_with_user(
 #'   Foo = 123
 #' )}
 #'

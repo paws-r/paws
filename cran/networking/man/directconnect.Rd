@@ -75,7 +75,8 @@ Regions.
 }
 
 \examples{
-\donttest{svc$accept_direct_connect_gateway_association_proposal(
+\donttest{svc <- directconnect()
+svc$accept_direct_connect_gateway_association_proposal(
   Foo = 123
 )}
 

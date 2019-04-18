@@ -122,7 +122,8 @@ For more information, see the Amazon Cognito Documentation.
 }
 
 \examples{
-\donttest{svc$add_custom_attributes(
+\donttest{svc <- cognitoidentityprovider()
+svc$add_custom_attributes(
   Foo = 123
 )}
 

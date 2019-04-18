@@ -21,10 +21,9 @@ NULL
 #' -   Data retention must be greater than 0.
 #' 
 #' -   The video track of each fragment must contain codec private data in
-#'     the Advanced Video Coding (AVC) for H.264 format ([MPEG-4
-#'     specification ISO/IEC
-#'     14496-15](https://www.iso.org/standard/55980.html)). For information
-#'     about adapting stream data to a given format, see [NAL Adaptation
+#'     the Advanced Video Coding (AVC) for H.264 format (MPEG-4
+#'     specification ISO/IEC 14496-15). For information about adapting
+#'     stream data to a given format, see [NAL Adaptation
 #'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec

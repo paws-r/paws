@@ -8,7 +8,8 @@ NULL
 #' AWS RDS DataService provides Http Endpoint to query RDS databases.
 #'
 #' @examples
-#' \donttest{svc$execute_sql(
+#' \donttest{svc <- rdsdataservice()
+#' svc$execute_sql(
 #'   Foo = 123
 #' )}
 #'

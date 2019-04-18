@@ -8,7 +8,8 @@ NULL
 #' Stub description
 #'
 #' @examples
-#' \donttest{svc$claim_devices_by_claim_code(
+#' \donttest{svc <- iot1clickdevicesservice()
+#' svc$claim_devices_by_claim_code(
 #'   Foo = 123
 #' )}
 #'

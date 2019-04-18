@@ -9,7 +9,8 @@ NULL
 #' set of languages.
 #'
 #' @examples
-#' \donttest{svc$delete_terminology(
+#' \donttest{svc <- translate()
+#' svc$delete_terminology(
 #'   Foo = 123
 #' )}
 #'

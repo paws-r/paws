@@ -59,7 +59,8 @@ The HTTP endpoint for the AWS Health API is:
 }
 
 \examples{
-\donttest{svc$describe_affected_entities(
+\donttest{svc <- health()
+svc$describe_affected_entities(
   Foo = 123
 )}
 

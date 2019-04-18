@@ -23,7 +23,8 @@ if applicable.
 }
 
 \examples{
-\donttest{svc$post_to_connection(
+\donttest{svc <- apigatewaymanagementapi()
+svc$post_to_connection(
   Foo = 123
 )}
 

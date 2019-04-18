@@ -8,7 +8,8 @@ NULL
 #' Amazon Pinpoint
 #'
 #' @examples
-#' \donttest{svc$create_app(
+#' \donttest{svc <- pinpoint()
+#' svc$create_app(
 #'   Foo = 123
 #' )}
 #'

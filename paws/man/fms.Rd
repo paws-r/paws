@@ -35,7 +35,8 @@ Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/
 }
 
 \examples{
-\donttest{svc$associate_admin_account(
+\donttest{svc <- fms()
+svc$associate_admin_account(
   Foo = 123
 )}
 

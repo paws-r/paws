@@ -91,7 +91,8 @@ NULL
 #' possible.
 #'
 #' @examples
-#' \donttest{svc$assign_instance(
+#' \donttest{svc <- opsworks()
+#' svc$assign_instance(
 #'   Foo = 123
 #' )}
 #'

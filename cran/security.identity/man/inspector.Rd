@@ -57,7 +57,8 @@ information, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/ins
 \examples{
 # Assigns attributes (key and value pairs) to the findings that are
 # specified by the ARNs of the findings.
-\donttest{svc$add_attributes_to_findings(
+\donttest{svc <- inspector()
+svc$add_attributes_to_findings(
   attributes = list(
     list(
       key = "Example",

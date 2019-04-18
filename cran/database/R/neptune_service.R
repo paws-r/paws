@@ -30,7 +30,8 @@ NULL
 #' **Amazon Neptune API Reference**
 #'
 #' @examples
-#' \donttest{svc$add_role_to_db_cluster(
+#' \donttest{svc <- neptune()
+#' svc$add_role_to_db_cluster(
 #'   Foo = 123
 #' )}
 #'

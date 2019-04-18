@@ -16,7 +16,8 @@ NULL
 #' content on mobile devices.
 #'
 #' @examples
-#' \donttest{svc$associate_website_certificate_authority(
+#' \donttest{svc <- worklink()
+#' svc$associate_website_certificate_authority(
 #'   Foo = 123
 #' )}
 #'

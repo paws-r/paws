@@ -75,7 +75,8 @@ wearable devices.
 }
 
 \examples{
-\donttest{svc$batch_put_message(
+\donttest{svc <- iotanalytics()
+svc$batch_put_message(
   Foo = 123
 )}
 

@@ -91,8 +91,8 @@ service_example <- function(api) {
   example <- make_doc_examples(get_example(api), api)
   example <- gsub("^#' ", "", example) # Delete extra leading Roxygen comment.
   example <- gsub("#' #\\n", "", example) # Delete empty comment.
-  find <- sprintf("donttest\\{%s", service)
-  replace <- sprintf("donttest\\{svc <- %s()\n#' svc", service)
+  find <- "donttest\\{"
+  replace <- sprintf("donttest\\{svc <- %s()\n#' ", service)
   gsub(find, replace, example) # Add service client object to the example.
 }
 

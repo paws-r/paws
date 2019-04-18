@@ -105,7 +105,8 @@ Amazon Simple Storage Service
 
 \examples{
 # The following example aborts a multipart upload.
-\donttest{svc$abort_multipart_upload(
+\donttest{svc <- s3()
+svc$abort_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
   UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."

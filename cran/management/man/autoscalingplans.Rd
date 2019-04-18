@@ -35,7 +35,8 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 }
 
 \examples{
-\donttest{svc$create_scaling_plan(
+\donttest{svc <- autoscalingplans()
+svc$create_scaling_plan(
   Foo = 123
 )}
 

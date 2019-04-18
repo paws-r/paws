@@ -23,7 +23,8 @@ NULL
 #' [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
 #'
 #' @examples
-#' \donttest{svc$accept_shared_directory(
+#' \donttest{svc <- directoryservice()
+#' svc$accept_shared_directory(
 #'   Foo = 123
 #' )}
 #'

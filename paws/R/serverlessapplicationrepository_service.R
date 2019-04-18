@@ -40,7 +40,8 @@ NULL
 #'     applications.
 #'
 #' @examples
-#' \donttest{svc$create_application(
+#' \donttest{svc <- serverlessapplicationrepository()
+#' svc$create_application(
 #'   Foo = 123
 #' )}
 #'

@@ -71,7 +71,8 @@ with a 200 OK response code.
 
 \examples{
 # This example adds two tags to the specified load balancer.
-\donttest{svc$add_tags(
+\donttest{svc <- elb()
+svc$add_tags(
   LoadBalancerNames = list(
     "my-load-balancer"
   ),

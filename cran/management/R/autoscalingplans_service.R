@@ -22,7 +22,8 @@ NULL
 #' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 #'
 #' @examples
-#' \donttest{svc$create_scaling_plan(
+#' \donttest{svc <- autoscalingplans()
+#' svc$create_scaling_plan(
 #'   Foo = 123
 #' )}
 #'

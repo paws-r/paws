@@ -55,7 +55,8 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
 }
 
 \examples{
-\donttest{svc$create_identity_pool(
+\donttest{svc <- cognitoidentity()
+svc$create_identity_pool(
   Foo = 123
 )}
 

@@ -51,7 +51,8 @@ regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/ra
 }
 
 \examples{
-\donttest{svc$build_suggesters(
+\donttest{svc <- cloudsearch()
+svc$build_suggesters(
   Foo = 123
 )}
 

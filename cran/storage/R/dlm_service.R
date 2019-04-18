@@ -16,7 +16,8 @@ NULL
 #' in the *Amazon EC2 User Guide*.
 #'
 #' @examples
-#' \donttest{svc$create_lifecycle_policy(
+#' \donttest{svc <- dlm()
+#' svc$create_lifecycle_policy(
 #'   Foo = 123
 #' )}
 #'

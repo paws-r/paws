@@ -51,7 +51,8 @@ NULL
 #' -   https://health.us-east-1.amazonaws.com
 #'
 #' @examples
-#' \donttest{svc$describe_affected_entities(
+#' \donttest{svc <- health()
+#' svc$describe_affected_entities(
 #'   Foo = 123
 #' )}
 #'

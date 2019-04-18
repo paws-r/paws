@@ -86,7 +86,8 @@ need it.
 }
 
 \examples{
-\donttest{svc$associate_kms_key(
+\donttest{svc <- cloudwatchlogs()
+svc$associate_kms_key(
   Foo = 123
 )}
 

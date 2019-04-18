@@ -14,7 +14,8 @@ NULL
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 #'
 #' @examples
-#' \donttest{svc$associate_admin_account(
+#' \donttest{svc <- fms()
+#' svc$associate_admin_account(
 #'   Foo = 123
 #' )}
 #'

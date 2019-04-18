@@ -352,7 +352,8 @@ with a Amazon GameLift fleet.
 }
 
 \examples{
-\donttest{svc$accept_match(
+\donttest{svc <- gamelift()
+svc$accept_match(
   Foo = 123
 )}
 

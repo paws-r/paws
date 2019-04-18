@@ -165,7 +165,8 @@ For information about how to use AWS CodeCommit, see the \href{http://docs.aws.a
 }
 
 \examples{
-\donttest{svc$batch_get_repositories(
+\donttest{svc <- codecommit()
+svc$batch_get_repositories(
   Foo = 123
 )}
 

@@ -23,7 +23,8 @@ NULL
 #' Services](http://aws.amazon.com/tools/).
 #'
 #' @examples
-#' \donttest{svc$add_permission(
+#' \donttest{svc <- sns()
+#' svc$add_permission(
 #'   Foo = 123
 #' )}
 #'

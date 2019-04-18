@@ -50,7 +50,8 @@ security issues. For more information, see \url{AWS Security Hub UserGuide}.
 }
 
 \examples{
-\donttest{svc$accept_invitation(
+\donttest{svc <- securityhub()
+svc$accept_invitation(
   Foo = 123
 )}
 

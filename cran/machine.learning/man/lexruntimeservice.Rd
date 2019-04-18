@@ -29,7 +29,8 @@ operations, see the build-time API, .
 }
 
 \examples{
-\donttest{svc$post_content(
+\donttest{svc <- lexruntimeservice()
+svc$post_content(
   Foo = 123
 )}
 

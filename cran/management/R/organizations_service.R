@@ -135,7 +135,8 @@ NULL
 #' # (222222222222) to join his organization. The following example shows
 #' # Juan's account accepting the handshake and thus agreeing to the
 #' # invitation.
-#' \donttest{svc$accept_handshake(
+#' \donttest{svc <- organizations()
+#' svc$accept_handshake(
 #'   HandshakeId = "h-examplehandshakeid111"
 #' )}
 #'

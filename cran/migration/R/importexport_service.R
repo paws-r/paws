@@ -14,7 +14,8 @@ NULL
 #' upgrading your connectivity.
 #'
 #' @examples
-#' \donttest{svc$cancel_job(
+#' \donttest{svc <- importexport()
+#' svc$cancel_job(
 #'   Foo = 123
 #' )}
 #'

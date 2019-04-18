@@ -11,7 +11,8 @@ NULL
 #' samples to make use of those resources.
 #'
 #' @examples
-#' \donttest{svc$create_project(
+#' \donttest{svc <- mobile()
+#' svc$create_project(
 #'   Foo = 123
 #' )}
 #'

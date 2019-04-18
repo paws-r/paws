@@ -361,7 +361,8 @@ following resources:
 \examples{
 # This example allocates an Elastic IP address to use with an instance in
 # a VPC.
-\donttest{svc$allocate_address(
+\donttest{svc <- ec2()
+svc$allocate_address(
   Domain = "vpc"
 )}
 

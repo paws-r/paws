@@ -28,7 +28,8 @@ NULL
 #' .
 #'
 #' @examples
-#' \donttest{svc$create_activity(
+#' \donttest{svc <- sfn()
+#' svc$create_activity(
 #'   Foo = 123
 #' )}
 #'

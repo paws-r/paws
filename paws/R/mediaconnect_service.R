@@ -8,7 +8,8 @@ NULL
 #' API for AWS Elemental MediaConnect
 #'
 #' @examples
-#' \donttest{svc$add_flow_outputs(
+#' \donttest{svc <- mediaconnect()
+#' svc$add_flow_outputs(
 #'   Foo = 123
 #' )}
 #'

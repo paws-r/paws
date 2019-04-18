@@ -138,7 +138,8 @@ NULL
 #'     success.
 #'
 #' @examples
-#' \donttest{svc$acknowledge_job(
+#' \donttest{svc <- codepipeline()
+#' svc$acknowledge_job(
 #'   Foo = 123
 #' )}
 #'

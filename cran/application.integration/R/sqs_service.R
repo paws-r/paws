@@ -53,7 +53,8 @@ NULL
 #'         Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
 #' @examples
-#' \donttest{svc$add_permission(
+#' \donttest{svc <- sqs()
+#' svc$add_permission(
 #'   Foo = 123
 #' )}
 #'

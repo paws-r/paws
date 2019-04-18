@@ -37,7 +37,8 @@ job
 }
 
 \examples{
-\donttest{svc$describe_job_execution(
+\donttest{svc <- iotjobsdataplane()
+svc$describe_job_execution(
   Foo = 123
 )}
 

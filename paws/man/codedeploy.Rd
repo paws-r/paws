@@ -128,7 +128,8 @@ deployment, and to get details about Amazon ECS service deployments.
 }
 
 \examples{
-\donttest{svc$add_tags_to_on_premises_instances(
+\donttest{svc <- codedeploy()
+svc$add_tags_to_on_premises_instances(
   Foo = 123
 )}
 

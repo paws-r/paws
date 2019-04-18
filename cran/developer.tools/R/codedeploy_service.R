@@ -86,7 +86,8 @@ NULL
 #'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
 #'
 #' @examples
-#' \donttest{svc$add_tags_to_on_premises_instances(
+#' \donttest{svc <- codedeploy()
+#' svc$add_tags_to_on_premises_instances(
 #'   Foo = 123
 #' )}
 #'

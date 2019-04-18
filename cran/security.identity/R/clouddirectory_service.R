@@ -18,7 +18,8 @@ NULL
 #' Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
 #'
 #' @examples
-#' \donttest{svc$add_facet_to_object(
+#' \donttest{svc <- clouddirectory()
+#' svc$add_facet_to_object(
 #'   Foo = 123
 #' )}
 #'

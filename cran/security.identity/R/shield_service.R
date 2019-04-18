@@ -16,7 +16,8 @@ NULL
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @examples
-#' \donttest{svc$associate_drt_log_bucket(
+#' \donttest{svc <- shield()
+#' svc$associate_drt_log_bucket(
 #'   Foo = 123
 #' )}
 #'

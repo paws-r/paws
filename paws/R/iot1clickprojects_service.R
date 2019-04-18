@@ -8,7 +8,8 @@ NULL
 #' The AWS IoT 1-Click Projects API Reference
 #'
 #' @examples
-#' \donttest{svc$associate_device_with_placement(
+#' \donttest{svc <- iot1clickprojects()
+#' svc$associate_device_with_placement(
 #'   Foo = 123
 #' )}
 #'

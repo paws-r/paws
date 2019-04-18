@@ -30,7 +30,8 @@ NULL
 #' listed in the log files.
 #'
 #' @examples
-#' \donttest{svc$add_tags(
+#' \donttest{svc <- cloudtrail()
+#' svc$add_tags(
 #'   Foo = 123
 #' )}
 #'

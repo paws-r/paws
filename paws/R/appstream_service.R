@@ -24,7 +24,8 @@ NULL
 #'     documentation](http://aws.amazon.com/documentation/appstream2)
 #'
 #' @examples
-#' \donttest{svc$associate_fleet(
+#' \donttest{svc <- appstream()
+#' svc$associate_fleet(
 #'   Foo = 123
 #' )}
 #'

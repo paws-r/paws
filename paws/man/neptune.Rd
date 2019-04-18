@@ -95,7 +95,8 @@ following some related topics from the user guide.
 }
 
 \examples{
-\donttest{svc$add_role_to_db_cluster(
+\donttest{svc <- neptune()
+svc$add_role_to_db_cluster(
   Foo = 123
 )}
 

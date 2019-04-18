@@ -51,7 +51,8 @@ Microsoft Windows and Amazon Linux desktops for your users.
 }
 
 \examples{
-\donttest{svc$associate_ip_groups(
+\donttest{svc <- workspaces()
+svc$associate_ip_groups(
   Foo = 123
 )}
 

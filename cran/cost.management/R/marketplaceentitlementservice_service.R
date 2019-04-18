@@ -19,7 +19,8 @@ NULL
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
 #' @examples
-#' \donttest{svc$get_entitlements(
+#' \donttest{svc <- marketplaceentitlementservice()
+#' svc$get_entitlements(
 #'   Foo = 123
 #' )}
 #'

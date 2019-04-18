@@ -23,7 +23,8 @@ stored in AWS Elemental MediaStore.
 }
 
 \examples{
-\donttest{svc$delete_object(
+\donttest{svc <- mediastoredata()
+svc$delete_object(
   Foo = 123
 )}
 

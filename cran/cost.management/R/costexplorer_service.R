@@ -22,7 +22,8 @@ NULL
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
 #' @examples
-#' \donttest{svc$get_cost_and_usage(
+#' \donttest{svc <- costexplorer()
+#' svc$get_cost_and_usage(
 #'   Foo = 123
 #' )}
 #'

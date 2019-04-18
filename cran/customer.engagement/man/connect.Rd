@@ -53,7 +53,8 @@ You must be signed in to your AWS account to access the form.
 }
 
 \examples{
-\donttest{svc$create_user(
+\donttest{svc <- connect()
+svc$create_user(
   Foo = 123
 )}
 

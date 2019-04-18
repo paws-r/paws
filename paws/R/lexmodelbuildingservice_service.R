@@ -13,7 +13,8 @@ NULL
 #'
 #' @examples
 #' # This example shows how to get configuration information for a bot.
-#' \donttest{svc$get_bot(
+#' \donttest{svc <- lexmodelbuildingservice()
+#' svc$get_bot(
 #'   name = "DocOrderPizza",
 #'   versionOrAlias = "$LATEST"
 #' )}

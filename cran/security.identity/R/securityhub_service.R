@@ -14,7 +14,8 @@ NULL
 #' Guide]().
 #'
 #' @examples
-#' \donttest{svc$accept_invitation(
+#' \donttest{svc <- securityhub()
+#' svc$accept_invitation(
 #'   Foo = 123
 #' )}
 #'

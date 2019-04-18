@@ -8,7 +8,8 @@ NULL
 #' Assess, monitor, manage, and remediate security issues across your AWS infrastructure, applications, and data.
 #'
 #' @examples
-#' \donttest{svc$accept_invitation(
+#' \donttest{svc <- guardduty()
+#' svc$accept_invitation(
 #'   Foo = 123
 #' )}
 #'

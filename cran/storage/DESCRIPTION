@@ -12,9 +12,8 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services' storage APIs,
-    including 'Simple Storage Service' (S3) and more
-    <https://aws.amazon.com/>.
+Description: Interface to Amazon Web Services' storage APIs, including
+    'Simple Storage Service' ('S3') and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common
@@ -22,8 +21,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
-    "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.1.1
 Collate: 
     'backup_service.R'

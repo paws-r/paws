@@ -33,7 +33,8 @@ objects.
 }
 
 \examples{
-\donttest{svc$create_container(
+\donttest{svc <- mediastore()
+svc$create_container(
   Foo = 123
 )}
 

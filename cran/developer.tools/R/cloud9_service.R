@@ -45,7 +45,8 @@ NULL
 #'
 #' @examples
 #' # 
-#' \donttest{svc$create_environment_ec2(
+#' \donttest{svc <- cloud9()
+#' svc$create_environment_ec2(
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
 #'   description = "This is my demonstration environment.",

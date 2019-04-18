@@ -74,7 +74,8 @@ To learn more about AppStream 2.0, see the following resources:
 }
 
 \examples{
-\donttest{svc$associate_fleet(
+\donttest{svc <- appstream()
+svc$associate_fleet(
   Foo = 123
 )}
 

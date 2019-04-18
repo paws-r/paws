@@ -71,7 +71,8 @@ tasks such as the following automatically:
 }
 
 \examples{
-\donttest{svc$add_permission(
+\donttest{svc <- sqs()
+svc$add_permission(
   Foo = 123
 )}
 

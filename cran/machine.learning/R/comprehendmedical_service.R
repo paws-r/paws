@@ -9,7 +9,8 @@ NULL
 #' clinical text. Use these actions to gain insight in your documents.
 #'
 #' @examples
-#' \donttest{svc$detect_entities(
+#' \donttest{svc <- comprehendmedical()
+#' svc$detect_entities(
 #'   Foo = 123
 #' )}
 #'
