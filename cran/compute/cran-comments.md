@@ -11,10 +11,13 @@ There were no ERRORs or WARNINGs.
 
 There were two NOTEs:
 
-> > checking CRAN incoming feasibility ... NOTE
->   Maintainer: ‘David Kretch <david.kretch@gmail.com>’
->   
->   New submission
+> checking CRAN incoming feasibility ... NOTE
+  Maintainer: 'David Kretch <david.kretch@gmail.com>'
+  
+  New submission
+  
+  Possibly mis-spelled words in DESCRIPTION:
+    APIs (2:36, 15:56)
 
 ## Downstream dependencies
 
