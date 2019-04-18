@@ -62,7 +62,8 @@ NULL
 #'
 #' @examples
 #' # 
-#' \donttest{svc$assume_role(
+#' \donttest{svc <- sts()
+#' svc$assume_role(
 #'   DurationSeconds = 3600L,
 #'   ExternalId = "123ABC",
 #'   Policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":...",

@@ -57,7 +57,8 @@ NULL
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
 #'
 #' @examples
-#' \donttest{svc$add_role_to_db_cluster(
+#' \donttest{svc <- rds()
+#' svc$add_role_to_db_cluster(
 #'   Foo = 123
 #' )}
 #'

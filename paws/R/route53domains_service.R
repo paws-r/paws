@@ -9,7 +9,8 @@ NULL
 #' related operations.
 #'
 #' @examples
-#' \donttest{svc$check_domain_availability(
+#' \donttest{svc <- route53domains()
+#' svc$check_domain_availability(
 #'   Foo = 123
 #' )}
 #'

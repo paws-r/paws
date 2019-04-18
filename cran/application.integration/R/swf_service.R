@@ -22,7 +22,8 @@ NULL
 #' Guide](http://docs.aws.amazon.com/amazonswf/latest/developerguide/)* .
 #'
 #' @examples
-#' \donttest{svc$count_closed_workflow_executions(
+#' \donttest{svc <- swf()
+#' svc$count_closed_workflow_executions(
 #'   Foo = 123
 #' )}
 #'

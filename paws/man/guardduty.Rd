@@ -58,7 +58,8 @@ Assess, monitor, manage, and remediate security issues across your AWS infrastru
 }
 
 \examples{
-\donttest{svc$accept_invitation(
+\donttest{svc <- guardduty()
+svc$accept_invitation(
   Foo = 123
 )}
 

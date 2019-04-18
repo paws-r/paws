@@ -43,7 +43,8 @@ NULL
 #' -   Searching AWS resources based on a resource query
 #'
 #' @examples
-#' \donttest{svc$create_group(
+#' \donttest{svc <- resourcegroups()
+#' svc$create_group(
 #'   Foo = 123
 #' )}
 #'

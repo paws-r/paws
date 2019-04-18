@@ -60,7 +60,8 @@ the Amazon SWF programming model, see the \emph{\href{http://docs.aws.amazon.com
 }
 
 \examples{
-\donttest{svc$count_closed_workflow_executions(
+\donttest{svc <- swf()
+svc$count_closed_workflow_executions(
   Foo = 123
 )}
 

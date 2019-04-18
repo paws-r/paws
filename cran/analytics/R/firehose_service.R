@@ -13,7 +13,8 @@ NULL
 #' Redshift, and Splunk.
 #'
 #' @examples
-#' \donttest{svc$create_delivery_stream(
+#' \donttest{svc <- firehose()
+#' svc$create_delivery_stream(
 #'   Foo = 123
 #' )}
 #'

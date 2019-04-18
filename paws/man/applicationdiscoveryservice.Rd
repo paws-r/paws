@@ -98,7 +98,8 @@ This guide is intended for use with the \href{http://docs.aws.amazon.com/applica
 }
 
 \examples{
-\donttest{svc$associate_configuration_items_to_application(
+\donttest{svc <- applicationdiscoveryservice()
+svc$associate_configuration_items_to_application(
   Foo = 123
 )}
 

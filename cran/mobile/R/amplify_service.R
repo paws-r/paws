@@ -9,7 +9,8 @@ NULL
 #' modern web apps.
 #'
 #' @examples
-#' \donttest{svc$create_app(
+#' \donttest{svc <- amplify()
+#' svc$create_app(
 #'   Foo = 123
 #' )}
 #'

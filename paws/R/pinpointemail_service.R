@@ -23,7 +23,8 @@ NULL
 #' -   **EU (Ireland)**: `email.eu-west-1.amazonaws.com`
 #'
 #' @examples
-#' \donttest{svc$create_configuration_set(
+#' \donttest{svc <- pinpointemail()
+#' svc$create_configuration_set(
 #'   Foo = 123
 #' )}
 #'

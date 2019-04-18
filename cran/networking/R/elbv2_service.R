@@ -60,7 +60,8 @@ NULL
 #'
 #' @examples
 #' # This example adds the specified tags to the specified load balancer.
-#' \donttest{svc$add_tags(
+#' \donttest{svc <- elbv2()
+#' svc$add_tags(
 #'   ResourceArns = list(
 #'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
 #'   ),

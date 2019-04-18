@@ -17,7 +17,8 @@ Amazon Kinesis Video Streams Media
 }
 
 \examples{
-\donttest{svc$get_media(
+\donttest{svc <- kinesisvideomedia()
+svc$get_media(
   Foo = 123
 )}
 

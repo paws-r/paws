@@ -11,7 +11,8 @@ NULL
 #' for real-time processing of streaming big data.
 #'
 #' @examples
-#' \donttest{svc$add_tags_to_stream(
+#' \donttest{svc <- kinesis()
+#' svc$add_tags_to_stream(
 #'   Foo = 123
 #' )}
 #'

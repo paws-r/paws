@@ -11,7 +11,8 @@ NULL
 #' features, see the *Amazon CloudFront Developer Guide*.
 #'
 #' @examples
-#' \donttest{svc$create_cloud_front_origin_access_identity(
+#' \donttest{svc <- cloudfront()
+#' svc$create_cloud_front_origin_access_identity(
 #'   Foo = 123
 #' )}
 #'

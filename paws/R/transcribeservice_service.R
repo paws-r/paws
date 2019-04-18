@@ -8,7 +8,8 @@ NULL
 #' Operations and objects for transcribing speech to text.
 #'
 #' @examples
-#' \donttest{svc$create_vocabulary(
+#' \donttest{svc <- transcribeservice()
+#' svc$create_vocabulary(
 #'   Foo = 123
 #' )}
 #'

@@ -47,7 +47,8 @@ a programming interface that you can use to manage AWS DataSync.
 }
 
 \examples{
-\donttest{svc$cancel_task_execution(
+\donttest{svc <- datasync()
+svc$cancel_task_execution(
   Foo = 123
 )}
 

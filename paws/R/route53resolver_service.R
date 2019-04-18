@@ -40,7 +40,8 @@ NULL
 #' `delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]`
 #'
 #' @examples
-#' \donttest{svc$associate_resolver_endpoint_ip_address(
+#' \donttest{svc <- route53resolver()
+#' svc$associate_resolver_endpoint_ip_address(
 #'   Foo = 123
 #' )}
 #'

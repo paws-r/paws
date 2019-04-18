@@ -44,7 +44,8 @@ API for AWS Elemental MediaLive
 }
 
 \examples{
-\donttest{svc$batch_update_schedule(
+\donttest{svc <- medialive()
+svc$batch_update_schedule(
   Foo = 123
 )}
 

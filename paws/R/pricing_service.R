@@ -33,7 +33,8 @@ NULL
 #' -   https://api.pricing.ap-south-1.amazonaws.com
 #'
 #' @examples
-#' \donttest{svc$describe_services(
+#' \donttest{svc <- pricing()
+#' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
 #'   ServiceCode = "AmazonEC2"

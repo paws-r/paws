@@ -40,7 +40,8 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
 }
 
 \examples{
-\donttest{svc$associate_drt_log_bucket(
+\donttest{svc <- shield()
+svc$associate_drt_log_bucket(
   Foo = 123
 )}
 

@@ -30,7 +30,8 @@ NULL
 #'
 #' @examples
 #' # This example creates a cluster in your default region.
-#' \donttest{svc$create_cluster(
+#' \donttest{svc <- ecs()
+#' svc$create_cluster(
 #'   clusterName = "my_cluster"
 #' )}
 #'

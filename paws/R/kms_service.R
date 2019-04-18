@@ -89,7 +89,8 @@ NULL
 #'
 #' @examples
 #' # The following example cancels deletion of the specified CMK.
-#' \donttest{svc$cancel_key_deletion(
+#' \donttest{svc <- kms()
+#' svc$cancel_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )}
 #'

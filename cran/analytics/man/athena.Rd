@@ -51,7 +51,8 @@ in the \emph{Amazon Athena User Guide}.
 }
 
 \examples{
-\donttest{svc$batch_get_named_query(
+\donttest{svc <- athena()
+svc$batch_get_named_query(
   Foo = 123
 )}
 

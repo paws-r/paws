@@ -43,7 +43,8 @@ realize significant improvements in read performance.
 }
 
 \examples{
-\donttest{svc$create_cluster(
+\donttest{svc <- dax()
+svc$create_cluster(
   Foo = 123
 )}
 

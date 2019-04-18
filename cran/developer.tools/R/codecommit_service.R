@@ -145,7 +145,8 @@ NULL
 #' Guide](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 #'
 #' @examples
-#' \donttest{svc$batch_get_repositories(
+#' \donttest{svc <- codecommit()
+#' svc$batch_get_repositories(
 #'   Foo = 123
 #' )}
 #'

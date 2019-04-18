@@ -16,7 +16,8 @@ NULL
 #' cloud.
 #'
 #' @examples
-#' \donttest{svc$delete_thing_shadow(
+#' \donttest{svc <- iotdataplane()
+#' svc$delete_thing_shadow(
 #'   Foo = 123
 #' )}
 #'

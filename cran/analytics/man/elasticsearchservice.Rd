@@ -46,7 +46,8 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 }
 
 \examples{
-\donttest{svc$add_tags(
+\donttest{svc <- elasticsearchservice()
+svc$add_tags(
   Foo = 123
 )}
 

@@ -93,7 +93,8 @@ in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{
 \examples{
 # The following example creates a receipt rule set by cloning an existing
 # one:
-\donttest{svc$clone_receipt_rule_set(
+\donttest{svc <- ses()
+svc$clone_receipt_rule_set(
   OriginalRuleSetName = "RuleSetToClone",
   RuleSetName = "RuleSetToCreate"
 )}

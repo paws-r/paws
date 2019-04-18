@@ -16,7 +16,8 @@ NULL
 #' Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 #'
 #' @examples
-#' \donttest{svc$cancel_signing_profile(
+#' \donttest{svc <- signer()
+#' svc$cancel_signing_profile(
 #'   Foo = 123
 #' )}
 #'

@@ -130,7 +130,8 @@ how to set this up, see the \href{http://lightsail.aws.amazon.com/ls/docs/how-to
 }
 
 \examples{
-\donttest{svc$allocate_static_ip(
+\donttest{svc <- lightsail()
+svc$allocate_static_ip(
   Foo = 123
 )}
 

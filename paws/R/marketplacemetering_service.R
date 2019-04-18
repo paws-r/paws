@@ -52,7 +52,8 @@ NULL
 #' .
 #'
 #' @examples
-#' \donttest{svc$batch_meter_usage(
+#' \donttest{svc <- marketplacemetering()
+#' svc$batch_meter_usage(
 #'   Foo = 123
 #' )}
 #'

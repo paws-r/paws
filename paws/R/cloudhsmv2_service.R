@@ -10,7 +10,8 @@ NULL
 #' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 #'
 #' @examples
-#' \donttest{svc$copy_backup_to_region(
+#' \donttest{svc <- cloudhsmv2()
+#' svc$copy_backup_to_region(
 #'   Foo = 123
 #' )}
 #'

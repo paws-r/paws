@@ -60,7 +60,8 @@ in the \emph{AWS Resource Groups and Tag Editor User Guide}.
 }
 
 \examples{
-\donttest{svc$get_resources(
+\donttest{svc <- resourcegroupstaggingapi()
+svc$get_resources(
   Foo = 123
 )}
 

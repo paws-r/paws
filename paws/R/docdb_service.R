@@ -8,7 +8,8 @@ NULL
 #' Amazon DocumentDB API documentation
 #'
 #' @examples
-#' \donttest{svc$add_tags_to_resource(
+#' \donttest{svc <- docdb()
+#' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}
 #'

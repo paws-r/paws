@@ -140,7 +140,8 @@ hosted outside of AWS.
 }
 
 \examples{
-\donttest{svc$create_api_key(
+\donttest{svc <- apigateway()
+svc$create_api_key(
   Foo = 123
 )}
 

@@ -38,7 +38,8 @@ Amazon QuickSight.
 }
 
 \examples{
-\donttest{svc$create_group(
+\donttest{svc <- quicksight()
+svc$create_group(
   Foo = 123
 )}
 

@@ -37,7 +37,8 @@ For information about costs associated with the Cost Explorer API, see
 }
 
 \examples{
-\donttest{svc$get_cost_and_usage(
+\donttest{svc <- costexplorer()
+svc$get_cost_and_usage(
   Foo = 123
 )}
 

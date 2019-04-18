@@ -74,7 +74,8 @@ NULL
 #' requests per second.
 #'
 #' @examples
-#' \donttest{svc$associate_node(
+#' \donttest{svc <- opsworkscm()
+#' svc$associate_node(
 #'   Foo = 123
 #' )}
 #'

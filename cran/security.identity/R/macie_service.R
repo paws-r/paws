@@ -14,7 +14,8 @@ NULL
 #' Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
 #'
 #' @examples
-#' \donttest{svc$associate_member_account(
+#' \donttest{svc <- macie()
+#' svc$associate_member_account(
 #'   Foo = 123
 #' )}
 #'

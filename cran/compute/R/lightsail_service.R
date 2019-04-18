@@ -22,7 +22,8 @@ NULL
 #' Guide](http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 #'
 #' @examples
-#' \donttest{svc$allocate_static_ip(
+#' \donttest{svc <- lightsail()
+#' svc$allocate_static_ip(
 #'   Foo = 123
 #' )}
 #'

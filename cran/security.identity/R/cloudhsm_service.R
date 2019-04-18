@@ -22,7 +22,8 @@ NULL
 #' Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
 #'
 #' @examples
-#' \donttest{svc$add_tags_to_resource(
+#' \donttest{svc <- cloudhsm()
+#' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}
 #'

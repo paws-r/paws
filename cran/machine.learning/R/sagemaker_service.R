@@ -8,7 +8,8 @@ NULL
 #' Provides APIs for creating and managing Amazon SageMaker resources.
 #'
 #' @examples
-#' \donttest{svc$add_tags(
+#' \donttest{svc <- sagemaker()
+#' svc$add_tags(
 #'   Foo = 123
 #' )}
 #'

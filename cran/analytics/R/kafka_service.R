@@ -8,7 +8,8 @@ NULL
 #' The operations for managing an Amazon MSK cluster.
 #'
 #' @examples
-#' \donttest{svc$create_cluster(
+#' \donttest{svc <- kafka()
+#' svc$create_cluster(
 #'   Foo = 123
 #' )}
 #'

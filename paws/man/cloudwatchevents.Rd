@@ -52,7 +52,8 @@ the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events}{Amazon Clo
 }
 
 \examples{
-\donttest{svc$delete_rule(
+\donttest{svc <- cloudwatchevents()
+svc$delete_rule(
   Foo = 123
 )}
 

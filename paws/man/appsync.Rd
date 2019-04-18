@@ -50,7 +50,8 @@ sources using GraphQL from your application.
 }
 
 \examples{
-\donttest{svc$create_api_key(
+\donttest{svc <- appsync()
+svc$create_api_key(
   Foo = 123
 )}
 

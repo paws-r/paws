@@ -62,7 +62,8 @@ reporting and auditing.
 }
 
 \examples{
-\donttest{svc$create_backup_plan(
+\donttest{svc <- backup()
+svc$create_backup_plan(
   Foo = 123
 )}
 

@@ -30,7 +30,8 @@ NULL
 #' service.
 #'
 #' @examples
-#' \donttest{svc$activate_pipeline(
+#' \donttest{svc <- datapipeline()
+#' svc$activate_pipeline(
 #'   Foo = 123
 #' )}
 #'

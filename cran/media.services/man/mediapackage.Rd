@@ -31,7 +31,8 @@ AWS Elemental MediaPackage
 }
 
 \examples{
-\donttest{svc$create_channel(
+\donttest{svc <- mediapackage()
+svc$create_channel(
   Foo = 123
 )}
 

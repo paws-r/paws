@@ -52,7 +52,8 @@ This is the Amazon Rekognition API reference.
 \examples{
 # This operation compares the largest face detected in the source image
 # with each face detected in the target image.
-\donttest{svc$compare_faces(
+\donttest{svc <- rekognition()
+svc$compare_faces(
   SimilarityThreshold = 90L,
   SourceImage = list(
     S3Object = list(

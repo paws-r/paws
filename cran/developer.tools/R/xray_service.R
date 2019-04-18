@@ -9,7 +9,8 @@ NULL
 #' maps and other data created by processing those traces.
 #'
 #' @examples
-#' \donttest{svc$batch_get_traces(
+#' \donttest{svc <- xray()
+#' svc$batch_get_traces(
 #'   Foo = 123
 #' )}
 #'

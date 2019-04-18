@@ -65,7 +65,8 @@ NULL
 #' Advisor for results of checks on your resources.
 #'
 #' @examples
-#' \donttest{svc$add_attachments_to_set(
+#' \donttest{svc <- support()
+#' svc$add_attachments_to_set(
 #'   Foo = 123
 #' )}
 #'

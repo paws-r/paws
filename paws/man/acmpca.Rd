@@ -70,7 +70,8 @@ in the ACM PCA user guide.
 }
 
 \examples{
-\donttest{svc$create_certificate_authority(
+\donttest{svc <- acmpca()
+svc$create_certificate_authority(
   Foo = 123
 )}
 

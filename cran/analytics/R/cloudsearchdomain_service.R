@@ -19,7 +19,8 @@ NULL
 #' Guide](http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 #'
 #' @examples
-#' \donttest{svc$search(
+#' \donttest{svc <- cloudsearchdomain()
+#' svc$search(
 #'   Foo = 123
 #' )}
 #'

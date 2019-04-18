@@ -7,7 +7,8 @@ NULL
 #' 
 #'
 #' @examples
-#' \donttest{svc$add_application_cloud_watch_logging_option(
+#' \donttest{svc <- kinesisanalytics()
+#' svc$add_application_cloud_watch_logging_option(
 #'   Foo = 123
 #' )}
 #'

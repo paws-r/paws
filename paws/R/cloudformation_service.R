@@ -28,7 +28,8 @@ NULL
 #' [docs.aws.amazon.com](http://docs.aws.amazon.com/).
 #'
 #' @examples
-#' \donttest{svc$cancel_update_stack(
+#' \donttest{svc <- cloudformation()
+#' svc$cancel_update_stack(
 #'   Foo = 123
 #' )}
 #'

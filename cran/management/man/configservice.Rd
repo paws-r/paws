@@ -91,7 +91,8 @@ in the \emph{AWS Config Developer Guide}.
 }
 
 \examples{
-\donttest{svc$batch_get_aggregate_resource_config(
+\donttest{svc <- configservice()
+svc$batch_get_aggregate_resource_config(
   Foo = 123
 )}
 

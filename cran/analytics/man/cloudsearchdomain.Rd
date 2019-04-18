@@ -29,7 +29,8 @@ For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/lates
 }
 
 \examples{
-\donttest{svc$search(
+\donttest{svc <- cloudsearchdomain()
+svc$search(
   Foo = 123
 )}
 

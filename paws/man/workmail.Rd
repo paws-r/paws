@@ -82,7 +82,8 @@ access on a selective basis using the IAM model.
 }
 
 \examples{
-\donttest{svc$associate_delegate_to_resource(
+\donttest{svc <- workmail()
+svc$associate_delegate_to_resource(
   Foo = 123
 )}
 

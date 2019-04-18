@@ -29,7 +29,8 @@ capacity in a multi-tenant database.
 }
 
 \examples{
-\donttest{svc$get_entitlements(
+\donttest{svc <- marketplaceentitlementservice()
+svc$get_entitlements(
   Foo = 123
 )}
 

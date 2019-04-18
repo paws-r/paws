@@ -29,7 +29,8 @@ For more information about AWS CloudHSM, see \href{http://aws.amazon.com/cloudhs
 }
 
 \examples{
-\donttest{svc$copy_backup_to_region(
+\donttest{svc <- cloudhsmv2()
+svc$copy_backup_to_region(
   Foo = 123
 )}
 

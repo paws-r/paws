@@ -8,7 +8,8 @@ NULL
 #' AWS S3 Control provides access to Amazon S3 control plane operations.
 #'
 #' @examples
-#' \donttest{svc$delete_public_access_block(
+#' \donttest{svc <- s3control()
+#' svc$delete_public_access_block(
 #'   Foo = 123
 #' )}
 #'

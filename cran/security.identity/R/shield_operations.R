@@ -485,7 +485,9 @@ shield_describe_subscription <- function() {
 #' S3 bucket containing your flow logs.
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
-#' the Business Support plan or the [Enterprise Support
+#' the [Business Support
+#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
+#' [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
 #' However, if you are not subscribed to one of these support plans, but
 #' had been previously and had granted the DRT access to your account, you

@@ -94,7 +94,8 @@ NULL
 #'     performance testing within a Region.
 #'
 #' @examples
-#' \donttest{svc$create_accelerator(
+#' \donttest{svc <- globalaccelerator()
+#' svc$create_accelerator(
 #'   Foo = 123
 #' )}
 #'

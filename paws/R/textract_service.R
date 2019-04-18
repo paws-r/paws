@@ -10,7 +10,8 @@ NULL
 #' Amazon Textract.
 #'
 #' @examples
-#' \donttest{svc$analyze_document(
+#' \donttest{svc <- textract()
+#' svc$analyze_document(
 #'   Foo = 123
 #' )}
 #'

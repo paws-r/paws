@@ -31,7 +31,8 @@ NULL
 #' Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
 #'
 #' @examples
-#' \donttest{svc$add_tags_to_resource(
+#' \donttest{svc <- ssm()
+#' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}
 #'

@@ -39,7 +39,8 @@ more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 }
 
 \examples{
-\donttest{svc$create_license_configuration(
+\donttest{svc <- licensemanager()
+svc$create_license_configuration(
   Foo = 123
 )}
 

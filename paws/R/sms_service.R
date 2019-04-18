@@ -27,7 +27,8 @@ NULL
 #'     Guide](https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
 #'
 #' @examples
-#' \donttest{svc$create_app(
+#' \donttest{svc <- sms()
+#' svc$create_app(
 #'   Foo = 123
 #' )}
 #'

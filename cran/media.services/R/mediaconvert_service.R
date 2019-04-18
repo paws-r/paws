@@ -8,7 +8,8 @@ NULL
 #' AWS Elemental MediaConvert
 #'
 #' @examples
-#' \donttest{svc$associate_certificate(
+#' \donttest{svc <- mediaconvert()
+#' svc$associate_certificate(
 #'   Foo = 123
 #' )}
 #'

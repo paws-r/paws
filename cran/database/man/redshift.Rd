@@ -120,7 +120,8 @@ make up your data warehouse.
 }
 
 \examples{
-\donttest{svc$accept_reserved_node_exchange(
+\donttest{svc <- redshift()
+svc$accept_reserved_node_exchange(
   Foo = 123
 )}
 

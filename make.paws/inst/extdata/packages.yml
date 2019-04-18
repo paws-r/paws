@@ -13,7 +13,7 @@
   title: Amazon Web Services Compute APIs
   description: >-
     Interface to Amazon Web Services' compute APIs, including
-    'Elastic Compute Cloud' (EC2), 'Lambda' serverless compute, containers,
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' serverless compute, containers,
     batch processing, and more <https://aws.amazon.com/>.
 
 - name: storage
@@ -29,7 +29,7 @@
   title: Amazon Web Services Storage APIs
   description: >-
     Interface to Amazon Web Services' storage APIs, including 'Simple Storage
-    Service' (S3) and more <https://aws.amazon.com/>.
+    Service' ('S3') and more <https://aws.amazon.com/>.
 
 - name: database
   services:
@@ -46,7 +46,7 @@
   title: Amazon Web Services Database APIs
   description: >-
     Interface to Amazon Web Services' database APIs, including 'Relational
-    Database Service' (RDS), 'DynamoDB' NoSQL database, and more. 
+    Database Service' ('RDS'), 'DynamoDB' NoSQL database, and more.
     <https://aws.amazon.com/>.
 
 - name: migration
@@ -207,7 +207,7 @@
   title: Amazon Web Services Analytics APIs
   description: >-
     Interface to Amazon Web Services' analytics APIs, including 'Elastic
-    MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch' 
+    MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
 - name: security.identity
@@ -319,7 +319,7 @@
     - workspaces
   title: Amazon Web Services End User Computing APIs
   description: >-
-    Interface to Amazon Web Services' end user computing APIs, including 
+    Interface to Amazon Web Services' end user computing APIs, including
     collaborative document editing, mobile intranet, and more.
     <https://aws.amazon.com/>.
 
@@ -345,6 +345,6 @@
     - gamelift
   title: Amazon Web Services Game Development APIs
   description: >-
-    Interface to Amazon Web Services' game development APIs, including 
+    Interface to Amazon Web Services' game development APIs, including
     <https://aws.amazon.com/gametech/>.
 ...

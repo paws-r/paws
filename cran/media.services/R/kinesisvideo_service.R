@@ -7,7 +7,8 @@ NULL
 #' 
 #'
 #' @examples
-#' \donttest{svc$create_stream(
+#' \donttest{svc <- kinesisvideo()
+#' svc$create_stream(
 #'   Foo = 123
 #' )}
 #'

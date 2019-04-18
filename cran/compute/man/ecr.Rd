@@ -49,7 +49,8 @@ Docker CLI to author and manage images.
 \examples{
 # This example deletes images with the tags precise and trusty in a
 # repository called ubuntu in the default registry for an account.
-\donttest{svc$batch_delete_image(
+\donttest{svc <- ecr()
+svc$batch_delete_image(
   imageIds = list(
     list(
       imageTag = "precise"

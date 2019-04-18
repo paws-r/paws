@@ -18,7 +18,8 @@ NULL
 #' ad decision server (ADS).
 #'
 #' @examples
-#' \donttest{svc$delete_playback_configuration(
+#' \donttest{svc <- mediatailor()
+#' svc$delete_playback_configuration(
 #'   Foo = 123
 #' )}
 #'

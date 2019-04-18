@@ -13,7 +13,8 @@ NULL
 #' Concepts](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 #'
 #' @examples
-#' \donttest{svc$accept_portfolio_share(
+#' \donttest{svc <- servicecatalog()
+#' svc$accept_portfolio_share(
 #'   Foo = 123
 #' )}
 #'

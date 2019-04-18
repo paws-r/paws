@@ -33,7 +33,8 @@ the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Man
 }
 
 \examples{
-\donttest{svc$add_tags_to_certificate(
+\donttest{svc <- acm()
+svc$add_tags_to_certificate(
   Foo = 123
 )}
 

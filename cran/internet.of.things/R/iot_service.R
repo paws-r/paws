@@ -21,7 +21,8 @@ NULL
 #' Services](https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 #'
 #' @examples
-#' \donttest{svc$accept_certificate_transfer(
+#' \donttest{svc <- iot()
+#' svc$accept_certificate_transfer(
 #'   Foo = 123
 #' )}
 #'
