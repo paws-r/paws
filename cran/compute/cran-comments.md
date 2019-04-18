@@ -9,7 +9,7 @@
 
 There were no ERRORs or WARNINGs.
 
-There were two NOTEs:
+There was one NOTE:
 
 > checking CRAN incoming feasibility ... NOTE
   Maintainer: 'David Kretch <david.kretch@gmail.com>'
