@@ -96,14 +96,26 @@ test_that("make_sdk", {
 })
 
 test_that("make_cran", {
+  categories <- list(
+    list(
+      name = "bar",
+      title = "Bar",
+      description = "Bar.",
+      services = list(
+        "foo"
+      )
+    )
+  )
   path_cran <- file.path(path, "cran")
   dir.create(path_cran)
-  expect_error(make_cran(path_out, path_cran), NA)
-  expect_true(file.exists(file.path(path_cran, "compute")))
+  expect_error(make_cran(path_out, path_cran, categories), NA)
+  expect_true(file.exists(file.path(path_cran, "paws")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar")))
 
   # Should continue to work a second time.
-  expect_error(make_cran(path_out, path_cran), NA)
-  expect_true(file.exists(file.path(path_cran, "compute")))
+  expect_error(make_cran(path_out, path_cran, categories), NA)
+  expect_true(file.exists(file.path(path_cran, "paws")))
+  expect_true(file.exists(file.path(path_cran, "paws.bar")))
 })
 
 test_that("list_apis", {

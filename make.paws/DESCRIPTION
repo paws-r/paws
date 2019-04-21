@@ -36,8 +36,10 @@ Collate:
     'docs.R'
     'templates.R'
     'interfaces.R'
+    'package.R'
     'make_sdk.R'
-    'cran.R'
+    'cran_category.R'
+    'cran_collection.R'
     'names.R'
     'operations.R'
     'process_api.R'
@@ -47,3 +49,4 @@ Collate:
     'tests.R'
     'text.R'
     'utils.R'
+paws.compute,paws.storage,paws.database,paws.migration,paws.networking,paws.developer.tools,paws.robotics,paws.blockchain,paws.satellite,paws.management,paws.media.services,paws.machine.learning,paws.analytics,paws.security.identity,paws.mobile,paws.ar.vr,paws.application.integration,paws.cost.management,paws.customer.engagement,paws.business.applications,paws.end.user.computing,paws.internet.of.things,paws.game.development: ../cran/paws/DESCRIPTION
