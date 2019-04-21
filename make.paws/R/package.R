@@ -8,7 +8,7 @@ write_skeleton_category <- function(path) {
   }
   package <- methods::getPackageName()
   rbuildignore <- system_file("templates/Rbuildignore", package = package)
-  file.copy(rbuildignore, path)
+  file.copy(rbuildignore, file.path(path, ".Rbuildignore"))
 }
 
 # Write the DESCRIPTION file for a category package.
