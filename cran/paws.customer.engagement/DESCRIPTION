@@ -14,7 +14,7 @@ Authors@R:
              role = "cph"))
 Description: Interface to Amazon Web Services' customer engagement APIs,
     including 'Simple Email Service', 'Connect' contact center service,
-    and more. <https://aws.amazon.com/>.
+    and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common

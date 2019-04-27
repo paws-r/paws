@@ -46,7 +46,7 @@
   title: Amazon Web Services Database APIs
   description: >-
     Interface to Amazon Web Services' database APIs, including 'Relational
-    Database Service' ('RDS'), 'DynamoDB' NoSQL database, and more.
+    Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
 
 - name: migration
@@ -62,7 +62,7 @@
   title: Amazon Web Services Migration & Transfer APIs
   description: >-
     Interface to Amazon Web Services' migration & transfer APIs, including
-    file and database migration to AWS, and managed SFTP service.
+    file and database migration to Amazon Web Services
     <https://aws.amazon.com/>.
 
 - name: networking
@@ -83,8 +83,8 @@
   title: Amazon Web Services Networking & Content Delivery APIs
   description: >-
     Interface to Amazon Web Services' networking and content delivery APIs,
-    including 'Route 53' DNS service, 'CloudFront' content delivery,
-    API endpoints, load balancing, and more <https://aws.amazon.com/>.
+    including 'Route 53' Domain Name System service, 'CloudFront' content
+    delivery, load balancing, and more <https://aws.amazon.com/>.
 
 - name: developer.tools
   services:
@@ -98,7 +98,7 @@
   title: Amazon Web Services Developer Tools APIs
   description: >-
     Interface to Amazon Web Services' developer tools APIs, including version
-    control, continuous integration and deployment, and more.
+    control, continuous integration and deployment, and more
     <https://aws.amazon.com/products/developer-tools/>.
 
 - name: robotics
@@ -106,7 +106,7 @@
     - robomaker
   title: Amazon Web Services Robotics APIs
   description: >-
-    Interface to Amazon Web Services' robotics APIs, including the RobotMaker
+    Interface to Amazon Web Services' robotics APIs, including the 'RobotMaker'
     API for developing, testing, and deploying intelligent robotics
     applications <https://aws.amazon.com/>.
 
@@ -185,7 +185,7 @@
   description: >-
     Interface to Amazon Web Services' machine learning APIs, including
     'SageMaker' managed machine learning service, natural language processing,
-    chatbots, speech recognition, translation, and more.
+    speech recognition, translation, and more
     <https://aws.amazon.com/machine-learning/>.
 
 - name: analytics
@@ -237,8 +237,8 @@
   title: Amazon Web Services Security, Identity, & Compliance APIs
   description: >-
     Interface to Amazon Web Services' security, identity, and compliance APIs,
-    including 'Identity & Access Management' (IAM) service for managing access
-     to AWS services and resources, and more <https://aws.amazon.com/>.
+    including the 'Identity & Access Management' ('IAM') service for managing
+    access to services and resources, and more <https://aws.amazon.com/>.
 
 - name: mobile
   services:
@@ -249,8 +249,8 @@
     - mobileanalytics
   title: Amazon Web Services Mobile APIs
   description: >-
-    Interface to Amazon Web Services' mobile APIs, including 'Amplify' library
-    for mobile applications, 'AppSync' serverless back-end for mobile
+    Interface to Amazon Web Services' mobile APIs, including the 'Amplify'
+    library for mobile applications, 'AppSync' back-end for mobile
     applications, and more <https://aws.amazon.com/>.
 
 - name: ar.vr
@@ -268,8 +268,8 @@
   title: Amazon Web Services Application Integration APIs
   description: >-
     Interface to Amazon Web Services' application integration APIs, including
-    'Simple Notification Service' (SNS) pub/sub messaging service,
-    'Simple Queue Service' (SQS) message queueing service, and more.
+    'Simple Queue Service' ('SQS') message queue, 'Simple Notification 
+    Service' ('SNS') publish/subscribe messaging, and more
     <https://aws.amazon.com/>.
 
 - name: cost.management
@@ -284,7 +284,7 @@
   title: Amazon Web Services Cost Management APIs
   description: >-
     Interface to Amazon Web Services' cost management APIs, including
-    cost and usage reports, budgets, pricing, and more.
+    cost and usage reports, budgets, pricing, and more
     <https://aws.amazon.com/>.
 
 - name: customer.engagement
@@ -297,7 +297,7 @@
   title: Amazon Web Services Customer Engagement APIs
   description: >-
     Interface to Amazon Web Services' customer engagement APIs, including
-    'Simple Email Service', 'Connect' contact center service, and more.
+    'Simple Email Service', 'Connect' contact center service, and more
     <https://aws.amazon.com/>.
 
 - name: business.applications
@@ -320,7 +320,7 @@
   title: Amazon Web Services End User Computing APIs
   description: >-
     Interface to Amazon Web Services' end user computing APIs, including
-    collaborative document editing, mobile intranet, and more.
+    collaborative document editing, mobile intranet, and more
     <https://aws.amazon.com/>.
 
 - name: internet.of.things
@@ -335,8 +335,8 @@
     - signer
   title: Amazon Web Services Internet of Things APIs
   description: >-
-    Interface to Amazon Web Services' internet of things (IoT) APIs, including
-    data collection, management, and analysis for IoT devices.
+    Interface to Amazon Web Services' internet of things ('IoT') APIs,
+    including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
 
 
@@ -346,5 +346,5 @@
   title: Amazon Web Services Game Development APIs
   description: >-
     Interface to Amazon Web Services' game development APIs, including
-    <https://aws.amazon.com/gametech/>.
+    'GameLift' game server hosting <https://aws.amazon.com/gametech/>.
 ...

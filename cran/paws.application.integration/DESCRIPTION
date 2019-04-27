@@ -13,9 +13,9 @@ Authors@R:
       person(given = "Amazon.com, Inc.",
              role = "cph"))
 Description: Interface to Amazon Web Services' application integration
-    APIs, including 'Simple Notification Service' (SNS) pub/sub messaging
-    service, 'Simple Queue Service' (SQS) message queueing service, and
-    more. <https://aws.amazon.com/>.
+    APIs, including 'Simple Queue Service' ('SQS') message queue, 'Simple
+    Notification Service' ('SNS') publish/subscribe messaging, and more
+    <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common
