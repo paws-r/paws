@@ -14,8 +14,8 @@ Authors@R:
              role = "cph"))
 Description: Interface to Amazon Web Services' machine learning APIs,
     including 'SageMaker' managed machine learning service, natural
-    language processing, chatbots, speech recognition, translation, and
-    more. <https://aws.amazon.com/machine-learning/>.
+    language processing, speech recognition, translation, and more
+    <https://aws.amazon.com/machine-learning/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common

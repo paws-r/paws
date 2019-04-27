@@ -13,8 +13,8 @@ Authors@R:
       person(given = "Amazon.com, Inc.",
              role = "cph"))
 Description: Interface to Amazon Web Services' security, identity, and
-    compliance APIs, including 'Identity & Access Management' (IAM)
-    service for managing access to AWS services and resources, and more
+    compliance APIs, including the 'Identity & Access Management' ('IAM')
+    service for managing access to services and resources, and more
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 

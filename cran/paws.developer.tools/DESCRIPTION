@@ -14,7 +14,7 @@ Authors@R:
              role = "cph"))
 Description: Interface to Amazon Web Services' developer tools APIs,
     including version control, continuous integration and deployment, and
-    more. <https://aws.amazon.com/products/developer-tools/>.
+    more <https://aws.amazon.com/products/developer-tools/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common

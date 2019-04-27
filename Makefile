@@ -34,7 +34,7 @@ build-full: deps codegen
 	@echo "build the AWS SDK package"
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')"
 
-build-cran: build-full
+build-cran: codegen
 	@echo "build CRAN packages"
 	@Rscript -e "library(make.paws); make_cran('${OUT_DIR}', '${CRAN_DIR}')"
 
