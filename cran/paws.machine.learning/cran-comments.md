@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Deleted an extra single quote in the description.
+
 ## Test environments
 * local Windows install, R 3.5.1
 * R-hub (devel and release)
