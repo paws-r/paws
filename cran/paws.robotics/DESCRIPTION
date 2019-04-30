@@ -12,9 +12,9 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services' robotics APIs, including
-    the 'RobotMaker' API for developing, testing, and deploying
-    intelligent robotics applications <https://aws.amazon.com/>.
+Description: Interface to Amazon Web Services robotics APIs, including the
+    'RobotMaker' API for developing, testing, and deploying intelligent
+    robotics applications <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common

@@ -12,7 +12,7 @@
     - serverlessapplicationrepository
   title: Amazon Web Services Compute APIs
   description: >-
-    Interface to Amazon Web Services' compute APIs, including
+    Interface to Amazon Web Services compute APIs, including
     'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
     containers, batch processing, and more <https://aws.amazon.com/>.
 
@@ -28,7 +28,7 @@
     - storagegateway
   title: Amazon Web Services Storage APIs
   description: >-
-    Interface to Amazon Web Services' storage APIs, including 'Simple Storage
+    Interface to Amazon Web Services storage APIs, including 'Simple Storage
     Service' ('S3') and more <https://aws.amazon.com/>.
 
 - name: database
@@ -45,7 +45,7 @@
     - simpledb
   title: Amazon Web Services Database APIs
   description: >-
-    Interface to Amazon Web Services' database APIs, including 'Relational
+    Interface to Amazon Web Services database APIs, including 'Relational
     Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
 
@@ -61,7 +61,7 @@
     - transfer
   title: Amazon Web Services Migration & Transfer APIs
   description: >-
-    Interface to Amazon Web Services' migration & transfer APIs, including
+    Interface to Amazon Web Services migration & transfer APIs, including
     file and database migration to Amazon Web Services
     <https://aws.amazon.com/>.
 
@@ -82,7 +82,7 @@
     - servicediscovery
   title: Amazon Web Services Networking & Content Delivery APIs
   description: >-
-    Interface to Amazon Web Services' networking and content delivery APIs,
+    Interface to Amazon Web Services networking and content delivery APIs,
     including 'Route 53' Domain Name System service, 'CloudFront' content
     delivery, load balancing, and more <https://aws.amazon.com/>.
 
@@ -97,7 +97,7 @@
     - xray
   title: Amazon Web Services Developer Tools APIs
   description: >-
-    Interface to Amazon Web Services' developer tools APIs, including version
+    Interface to Amazon Web Services developer tools APIs, including version
     control, continuous integration and deployment, and more
     <https://aws.amazon.com/products/developer-tools/>.
 
@@ -106,7 +106,7 @@
     - robomaker
   title: Amazon Web Services Robotics APIs
   description: >-
-    Interface to Amazon Web Services' robotics APIs, including the 'RobotMaker'
+    Interface to Amazon Web Services robotics APIs, including the 'RobotMaker'
     API for developing, testing, and deploying intelligent robotics
     applications <https://aws.amazon.com/>.
 
@@ -144,7 +144,7 @@
     - support
   title: Amazon Web Services Management & Governance APIs
   description: >-
-    Interface to Amazon Web Services' management and governance APIs, including
+    Interface to Amazon Web Services management and governance APIs, including
     'CloudWatch' application and infrastructure monitoring, 'Auto Scaling'
     for automatically scaling resources, and more <https://aws.amazon.com/>.
 
@@ -163,7 +163,7 @@
     - mediatailor
   title: Amazon Web Services Media Services APIs
   description: >-
-    Interface to Amazon Web Services' media services APIs, including
+    Interface to Amazon Web Services media services APIs, including
     'Kinesis' video stream capture and processing, format conversion,
     and more <https://aws.amazon.com/media-services/>.
 
@@ -183,7 +183,7 @@
     - translate
   title: Amazon Web Services Machine Learning APIs
   description: >-
-    Interface to Amazon Web Services' machine learning APIs, including
+    Interface to Amazon Web Services machine learning APIs, including
     'SageMaker' managed machine learning service, natural language processing,
     speech recognition, translation, and more
     <https://aws.amazon.com/machine-learning/>.
@@ -206,7 +206,7 @@
     - quicksight
   title: Amazon Web Services Analytics APIs
   description: >-
-    Interface to Amazon Web Services' analytics APIs, including 'Elastic
+    Interface to Amazon Web Services analytics APIs, including 'Elastic
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
@@ -236,7 +236,7 @@
     - wafregional
   title: Amazon Web Services Security, Identity, & Compliance APIs
   description: >-
-    Interface to Amazon Web Services' security, identity, and compliance APIs,
+    Interface to Amazon Web Services security, identity, and compliance APIs,
     including the 'Identity & Access Management' ('IAM') service for managing
     access to services and resources, and more <https://aws.amazon.com/>.
 
@@ -249,7 +249,7 @@
     - mobileanalytics
   title: Amazon Web Services Mobile APIs
   description: >-
-    Interface to Amazon Web Services' mobile APIs, including the 'Amplify'
+    Interface to Amazon Web Services mobile APIs, including the 'Amplify'
     library for mobile applications, 'AppSync' back-end for mobile
     applications, and more <https://aws.amazon.com/>.
 
@@ -267,7 +267,7 @@
     - swf
   title: Amazon Web Services Application Integration APIs
   description: >-
-    Interface to Amazon Web Services' application integration APIs, including
+    Interface to Amazon Web Services application integration APIs, including
     'Simple Queue Service' ('SQS') message queue, 'Simple Notification 
     Service' ('SNS') publish/subscribe messaging, and more
     <https://aws.amazon.com/>.
@@ -283,7 +283,7 @@
     - pricing
   title: Amazon Web Services Cost Management APIs
   description: >-
-    Interface to Amazon Web Services' cost management APIs, including
+    Interface to Amazon Web Services cost management APIs, including
     cost and usage reports, budgets, pricing, and more
     <https://aws.amazon.com/>.
 
@@ -296,7 +296,7 @@
     - ses
   title: Amazon Web Services Customer Engagement APIs
   description: >-
-    Interface to Amazon Web Services' customer engagement APIs, including
+    Interface to Amazon Web Services customer engagement APIs, including
     'Simple Email Service', 'Connect' contact center service, and more
     <https://aws.amazon.com/>.
 
@@ -307,7 +307,7 @@
     - workmail
   title: Amazon Web Services Business Applications APIs
   description: >-
-    Interface to Amazon Web Services' business applications APIs, including
+    Interface to Amazon Web Services business applications APIs, including
     online meetings and video conferencing, email and calendar service,
     and more <https://aws.amazon.com/>.
 
@@ -319,7 +319,7 @@
     - workspaces
   title: Amazon Web Services End User Computing APIs
   description: >-
-    Interface to Amazon Web Services' end user computing APIs, including
+    Interface to Amazon Web Services end user computing APIs, including
     collaborative document editing, mobile intranet, and more
     <https://aws.amazon.com/>.
 
@@ -335,7 +335,7 @@
     - signer
   title: Amazon Web Services Internet of Things APIs
   description: >-
-    Interface to Amazon Web Services' internet of things ('IoT') APIs,
+    Interface to Amazon Web Services internet of things ('IoT') APIs,
     including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
 
@@ -345,6 +345,6 @@
     - gamelift
   title: Amazon Web Services Game Development APIs
   description: >-
-    Interface to Amazon Web Services' game development APIs, including
+    Interface to Amazon Web Services game development APIs, including
     'GameLift' game server hosting <https://aws.amazon.com/gametech/>.
 ...
