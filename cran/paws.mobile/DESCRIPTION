@@ -12,7 +12,7 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services' mobile APIs, including the
+Description: Interface to Amazon Web Services mobile APIs, including the
     'Amplify' library for mobile applications, 'AppSync' back-end for
     mobile applications, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
