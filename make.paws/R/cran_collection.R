@@ -15,7 +15,7 @@ make_cran <- function(sdk_dir, out_dir, categories = NULL) {
 }
 
 # Make the package which collects all the category packages.
-make_collection <- function(sdk_dir, out_dir, categories) {
+make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
   package <- "paws"
   package_dir <- file.path(out_dir, package)
   write_skeleton_category(package_dir)
@@ -27,6 +27,10 @@ make_collection <- function(sdk_dir, out_dir, categories) {
     version = get_version(sdk_dir),
     imports = c()
   )
+  if (only_cran) {
+    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
+    categories <- categories[sapply(categories, get_category_package_name) %in% cran]
+  }
   write_source_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
   write_imports_collection(package_dir, get_category_packages(categories))
