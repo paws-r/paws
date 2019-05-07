@@ -20,23 +20,8 @@ Imports:
     paws.compute,
     paws.storage,
     paws.database,
-    paws.migration,
-    paws.networking,
-    paws.developer.tools,
-    paws.robotics,
-    paws.management,
-    paws.media.services,
-    paws.machine.learning,
-    paws.analytics,
     paws.security.identity,
-    paws.mobile,
-    paws.application.integration,
-    paws.cost.management,
-    paws.customer.engagement,
-    paws.business.applications,
-    paws.end.user.computing,
-    paws.internet.of.things,
-    paws.game.development
+    paws.application.integration
 Suggests: 
     testthat
 Encoding: UTF-8
