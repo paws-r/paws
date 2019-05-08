@@ -4,11 +4,12 @@
 \name{paws-package}
 \alias{paws}
 \alias{paws-package}
-\title{paws: An Amazon Web Services Software Development Kit}
+\title{paws: Amazon Web Services Software Development Kit}
 \description{
-R interface to Amazon Web Services <https://aws.amazon.com>.
-    This package supports a wide variety of services, including compute,
-    storage, database, machine learning, and more.
+Interface to Amazon Web Services <https://aws.amazon.com>,
+    including storage, database, and compute services, such as 'Simple Storage 
+    Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda' 
+    functions-as-a-service.
 }
 \seealso{
 Useful links:
