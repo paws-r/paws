@@ -13,11 +13,6 @@ Maintainer: 'David Kretch <david.kretch@gmail.com>'
 
 New submission
 
-Possibly mis-spelled words in DESCRIPTION:
-  APIs (2:38, 15:58)
-  Analytics (2:28)
-  analytics (15:48)
-
 ## Downstream dependencies
 
 None.
