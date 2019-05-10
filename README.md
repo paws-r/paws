@@ -1,6 +1,8 @@
 
 # Paws, an AWS SDK for R <img src="docs/logo.png" align="right" height="150" />
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
 [![Build
 Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
 [![AppVeyor Build
@@ -17,13 +19,13 @@ Disclaimer: Paws is not a product of or supported by Amazon Web Services.
 
 ## Installation
 
-Paws is currently available on GitHub. Install it using:
+Install Paws using:
 
 ``` r
-remotes::install_github("paws-r/paws/paws")
+install.packages("paws")
 ```
 
-It takes several minutes to install. We're sorry; please be patient.
+Not all AWS services are available on CRAN yet. We are working on it.
 
 ## Credentials
 
