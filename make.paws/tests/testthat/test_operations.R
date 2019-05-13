@@ -1,7 +1,5 @@
 context("Make operations")
 
-code <- function(x) paste(deparse(substitute(x)), collapse = "\n")
-
 test_that("make_operation", {
   operation <- list(
     name = "Operation",
