@@ -1,15 +1,5 @@
 context("Make tests")
 
-# Allow us to capture code to compare it against a function's output.
-code <- function(x) {
-  text <- deparse(substitute(x))
-  if (text[1] == "{") {
-    text <- text[-1]
-    text <- text[-length(text)]
-  }
-  result <- paste(text, collapse = "\n")
-}
-
 # Format code so differences in style don't affect comparisons.
 format_test_code <- function(code) {
   formatted <- formatR::tidy_source(text = code, output = FALSE)
@@ -27,11 +17,11 @@ test_that("make_test no arguments", {
     name = "foo"
   )
   a <- make_test(operation, api, NULL, NA)
-  e <- code({
-    test_that("foo", {
+  e <-
+    'test_that("foo", {
       expect_error(svc$foo(), NA)
     })
-  })
+  '
   actual <- format_test_code(a)
   expected <- format_test_code(e)
   expect_equal(actual, expected)
@@ -47,11 +37,11 @@ test_that("make_test with arguments", {
     name = "foo"
   )
   a <- make_test(operation, api, list('"bar"', 123), NA)
-  e <- code({
-    test_that("foo", {
+  e <-
+    'test_that("foo", {
       expect_error(svc$foo("bar", 123), NA)
     })
-  })
+  '
   actual <- format_test_code(a)
   expected <- format_test_code(e)
   expect_equal(actual, expected)
@@ -102,8 +92,8 @@ test_that("make_tests", {
     )
   )
   a <- make_tests(api)
-  e <- code({
-    context("api")
+  e <-
+    'context("api")
 
     svc <- paws::api()
 
@@ -118,10 +108,8 @@ test_that("make_tests", {
     test_that("list_bar", {
       expect_error(svc$list_bar(), NA)
     })
-  })
+  '
   actual <- format_test_code(a)
   expected <- format_test_code(e)
-  expected <- sapply(expected, function(x) c(x, "")) # re-insert blank lines.
-  expected <- expected[-length(expected)] # no trailing blank line.
   expect_equal(actual, expected)
 })
