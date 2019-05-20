@@ -25,8 +25,6 @@ Install Paws using:
 install.packages("paws")
 ```
 
-Not all AWS services are available on CRAN yet. We are working on it.
-
 ## Credentials
 
 You'll need to set up your AWS credentials and region. Paws supports R
