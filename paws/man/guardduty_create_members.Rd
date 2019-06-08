@@ -5,25 +5,29 @@
 \title{Creates member accounts of the current AWS account by specifying a list
 of AWS account IDs}
 \usage{
-guardduty_create_members(AccountDetails, DetectorId)
+guardduty_create_members(DetectorId, AccountDetails)
 }
 \arguments{
-\item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you
+want to associate member accounts.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.}
+\item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
+want to associate with the master GuardDuty account.}
 }
 \description{
-Creates member accounts of the current AWS account by specifying a list of AWS account IDs. The current AWS account can then invite these members to manage GuardDuty in their accounts.
+Creates member accounts of the current AWS account by specifying a list
+of AWS account IDs. The current AWS account can then invite these
+members to manage GuardDuty in their accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$create_members(
+  DetectorId = "string",
   AccountDetails = list(
     list(
       AccountId = "string",
       Email = "string"
     )
-  ),
-  DetectorId = "string"
+  )
 )
 }
 }

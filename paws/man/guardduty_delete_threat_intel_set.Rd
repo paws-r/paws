@@ -7,9 +7,9 @@
 guardduty_delete_threat_intel_set(DetectorId, ThreatIntelSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to delete.}
+\item{DetectorId}{[required] The unique ID of the detector the threatIntelSet is associated with.}
 
-\item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to delete.}
+\item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet you want to delete.}
 }
 \description{
 Deletes ThreatIntelSet specified by the ThreatIntelSet ID.

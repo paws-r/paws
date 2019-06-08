@@ -18,7 +18,7 @@ servicecatalog_update_provisioned_product(AcceptLanguage,
 \item \code{zh} - Chinese
 }}
 
-\item{ProvisionedProductName}{The updated name of the provisioned product. You cannot specify both
+\item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
 \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
 \item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both

@@ -7,11 +7,12 @@
 kms_update_alias(AliasName, TargetKeyId)
 }
 \arguments{
-\item{AliasName}{[required] String that contains the name of the alias to be modified. The name must
-start with the word "alias" followed by a forward slash (alias/).
-Aliases that begin with "alias/aws" are reserved.}
+\item{AliasName}{[required] Specifies the name of the alias to change. This value must begin with
+\code{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.}
 
-\item{TargetKeyId}{[required] Unique identifier of the customer master key to be mapped to the alias.
+\item{TargetKeyId}{[required] Unique identifier of the customer master key (CMK) to be mapped to the
+alias. When the update operation completes, the alias will point to this
+CMK.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -42,15 +43,14 @@ delete the aliases of a CMK without affecting the CMK. Also, aliases do
 not appear in the response from the DescribeKey operation. To get the
 aliases of all CMKs in the account, use the ListAliases operation.
 
-An alias name can contain only alphanumeric characters, forward slashes
-(/), underscores (\_), and dashes (-). An alias must start with the word
-\code{alias} followed by a forward slash (\code{alias/}). The alias name can
-contain only alphanumeric characters, forward slashes (/), underscores
-(\_), and dashes (-). Alias names cannot begin with \code{aws}; that alias
-name prefix is reserved by Amazon Web Services (AWS).
+The alias name must begin with \code{alias/} followed by a name, such as
+\code{alias/ExampleAlias}. It can contain only alphanumeric characters,
+forward slashes (/), underscores (\_), and dashes (-). The alias name
+cannot begin with \code{alias/aws/}. The \code{alias/aws/} prefix is reserved for
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMKs}.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

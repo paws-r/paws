@@ -25,7 +25,7 @@ want in the response. The default value is 10. The maximum value is 500.}
 }
 \description{
 Lists the ARNs of the assessment targets within this AWS account. For
-more information about assessment targets, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
+more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_assessment_targets(

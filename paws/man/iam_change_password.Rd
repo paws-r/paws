@@ -28,7 +28,7 @@ AWS account root user password is not affected by this operation.
 }
 \details{
 To change the password for a different user, see UpdateLoginProfile. For
-more information about modifying passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
+more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_create_player_session}
 \alias{gamelift_create_player_session}
-\title{Adds a player to a game session and creates a player session record}
+\title{Reserves an open player slot in an active game session}
 \usage{
 gamelift_create_player_session(GameSessionId, PlayerId, PlayerData)
 }
@@ -15,17 +15,19 @@ gamelift_create_player_session(GameSessionId, PlayerId, PlayerData)
 not use this data, so it can be formatted as needed for use in the game.}
 }
 \description{
-Adds a player to a game session and creates a player session record.
-Before a player can be added, a game session must have an \code{ACTIVE}
-status, have a creation policy of \code{ALLOW_ALL}, and have an open player
-slot. To add a group of players to a game session, use
-CreatePlayerSessions.
+Reserves an open player slot in an active game session. Before a player
+can be added, a game session must have an \code{ACTIVE} status, have a
+creation policy of \code{ALLOW_ALL}, and have an open player slot. To add a
+group of players to a game session, use CreatePlayerSessions. When the
+player connects to the game server and references a player session ID,
+the game server contacts the Amazon GameLift service to validate the
+player reservation and accept the player.
 }
 \details{
 To create a player session, specify a game session ID, player ID, and
-optionally a string of player data. If successful, the player is added
-to the game session and a new PlayerSession object is returned. Player
-sessions cannot be updated.
+optionally a string of player data. If successful, a slot is reserved in
+the game session for the player and a new PlayerSession object is
+returned. Player sessions cannot be updated.
 
 \emph{Available in Amazon GameLift Local.}
 \itemize{

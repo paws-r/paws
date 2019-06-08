@@ -2,16 +2,17 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_describe_tags}
 \alias{workspaces_describe_tags}
-\title{Describes the specified tags for the specified WorkSpace}
+\title{Describes the specified tags for the specified WorkSpaces resource}
 \usage{
 workspaces_describe_tags(ResourceId)
 }
 \arguments{
-\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use
-DescribeWorkspaces.}
+\item{ResourceId}{[required] The identifier of the WorkSpaces resource. The supported resource types
+are WorkSpaces, registered directories, images, custom bundles, and IP
+access control groups.}
 }
 \description{
-Describes the specified tags for the specified WorkSpace.
+Describes the specified tags for the specified WorkSpaces resource.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_tags(

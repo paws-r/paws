@@ -28,8 +28,9 @@ NULL
 #'   Description = "string",
 #'   State = "ENABLED"|"DISABLED",
 #'   PolicyDetails = list(
+#'     PolicyType = "EBS_SNAPSHOT_MANAGEMENT",
 #'     ResourceTypes = list(
-#'       "VOLUME"
+#'       "VOLUME"|"INSTANCE"
 #'     ),
 #'     TargetTags = list(
 #'       list(
@@ -47,6 +48,12 @@ NULL
 #'             Value = "string"
 #'           )
 #'         ),
+#'         VariableTags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         CreateRule = list(
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
@@ -58,6 +65,9 @@ NULL
 #'           Count = 123
 #'         )
 #'       )
+#'     ),
+#'     Parameters = list(
+#'       ExcludeBootVolume = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -152,7 +162,7 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #'   ),
 #'   State = "ENABLED"|"DISABLED"|"ERROR",
 #'   ResourceTypes = list(
-#'     "VOLUME"
+#'     "VOLUME"|"INSTANCE"
 #'   ),
 #'   TargetTags = list(
 #'     "string"
@@ -242,8 +252,9 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #'   State = "ENABLED"|"DISABLED",
 #'   Description = "string",
 #'   PolicyDetails = list(
+#'     PolicyType = "EBS_SNAPSHOT_MANAGEMENT",
 #'     ResourceTypes = list(
-#'       "VOLUME"
+#'       "VOLUME"|"INSTANCE"
 #'     ),
 #'     TargetTags = list(
 #'       list(
@@ -261,6 +272,12 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #'             Value = "string"
 #'           )
 #'         ),
+#'         VariableTags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
 #'         CreateRule = list(
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
@@ -272,6 +289,9 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #'           Count = 123
 #'         )
 #'       )
+#'     ),
+#'     Parameters = list(
+#'       ExcludeBootVolume = TRUE|FALSE
 #'     )
 #'   )
 #' )

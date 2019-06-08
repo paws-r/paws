@@ -8,7 +8,7 @@ iam_create_virtual_mfa_device(Path, VirtualMFADeviceName)
 }
 \arguments{
 \item{Path}{The path for the virtual MFA device. For more information about paths,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -32,19 +32,19 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 Creates a new virtual MFA device for the AWS account. After creating the
 virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
 user. For more information about creating and working with virtual MFA
-devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device}
+devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device}
 in the \emph{IAM User Guide}.
 }
 \details{
 For information about limits on the number of MFA devices you can
-create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on Entities}
+create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on Entities}
 in the \emph{IAM User Guide}.
 
 The seed information contained in the QR code and the Base32 string
-should be treated like any other secret access information, such as your
-AWS access keys or your passwords. After you provision your virtual
-device, you should ensure that the information is destroyed following
-secure procedures.
+should be treated like any other secret access information. In other
+words, protect the seed information as you would your AWS access keys or
+your passwords. After you provision your virtual device, you should
+ensure that the information is destroyed following secure procedures.
 }
 \section{Request syntax}{
 \preformatted{svc$create_virtual_mfa_device(

@@ -31,6 +31,15 @@ can subscribe to be notified through an Amazon CloudWatch event when
 your RefreshCache operation completes. For more information, see
 \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting Notified About File Operations}.
 }
+\details{
+When this API is called, it only initiates the refresh operation. When
+the API call completes and returns a success code, it doesn't
+necessarily mean that the file refresh has completed. You should use the
+refresh-complete notification to determine that the operation has
+completed before you check for new files on the gateway file share. You
+can subscribe to be notified through an CloudWatch event when your
+\code{RefreshCache} operation completes.
+}
 \section{Request syntax}{
 \preformatted{svc$refresh_cache(
   FileShareARN = "string",

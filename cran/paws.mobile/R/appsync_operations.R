@@ -189,13 +189,17 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #'
 #' @usage
 #' appsync_create_graphql_api(name, logConfig, authenticationType,
-#'   userPoolConfig, openIDConnectConfig)
+#'   userPoolConfig, openIDConnectConfig, tags,
+#'   additionalAuthenticationProviders)
 #'
 #' @param name &#91;required&#93; A user-supplied name for the `GraphqlApi`.
 #' @param logConfig The Amazon CloudWatch Logs configuration.
-#' @param authenticationType &#91;required&#93; The authentication type: API key, AWS IAM, or Amazon Cognito user pools.
+#' @param authenticationType &#91;required&#93; The authentication type: API key, AWS IAM, OIDC, or Amazon Cognito user
+#' pools.
 #' @param userPoolConfig The Amazon Cognito user pool configuration.
 #' @param openIDConnectConfig The OpenID Connect configuration.
+#' @param tags A `TagMap` object.
+#' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
 #'
 #' @section Request syntax:
 #' ```
@@ -217,6 +221,25 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #'     clientId = "string",
 #'     iatTTL = 123,
 #'     authTTL = 123
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   additionalAuthenticationProviders = list(
+#'     list(
+#'       authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'       openIDConnectConfig = list(
+#'         issuer = "string",
+#'         clientId = "string",
+#'         iatTTL = 123,
+#'         authTTL = 123
+#'       ),
+#'       userPoolConfig = list(
+#'         userPoolId = "string",
+#'         awsRegion = "string",
+#'         appIdClientRegex = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -224,14 +247,14 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #' @keywords internal
 #'
 #' @rdname appsync_create_graphql_api
-appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationType, userPoolConfig = NULL, openIDConnectConfig = NULL) {
+appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationType, userPoolConfig = NULL, openIDConnectConfig = NULL, tags = NULL, additionalAuthenticationProviders = NULL) {
   op <- new_operation(
     name = "CreateGraphqlApi",
     http_method = "POST",
     http_path = "/v1/apis",
     paginator = list()
   )
-  input <- .appsync$create_graphql_api_input(name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig)
+  input <- .appsync$create_graphql_api_input(name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, tags = tags, additionalAuthenticationProviders = additionalAuthenticationProviders)
   output <- .appsync$create_graphql_api_output()
   svc <- .appsync$service()
   request <- new_request(svc, op, input, output)
@@ -688,30 +711,33 @@ appsync_get_graphql_api <- function(apiId) {
 #' Retrieves the introspection schema for a GraphQL API.
 #'
 #' @usage
-#' appsync_get_introspection_schema(apiId, format)
+#' appsync_get_introspection_schema(apiId, format, includeDirectives)
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param format &#91;required&#93; The schema format: SDL or JSON.
+#' @param includeDirectives A flag that specifies whether the schema introspection should contain
+#' directives.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_introspection_schema(
 #'   apiId = "string",
-#'   format = "SDL"|"JSON"
+#'   format = "SDL"|"JSON",
+#'   includeDirectives = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appsync_get_introspection_schema
-appsync_get_introspection_schema <- function(apiId, format) {
+appsync_get_introspection_schema <- function(apiId, format, includeDirectives = NULL) {
   op <- new_operation(
     name = "GetIntrospectionSchema",
     http_method = "GET",
     http_path = "/v1/apis/{apiId}/schema",
     paginator = list()
   )
-  input <- .appsync$get_introspection_schema_input(apiId = apiId, format = format)
+  input <- .appsync$get_introspection_schema_input(apiId = apiId, format = format, includeDirectives = includeDirectives)
   output <- .appsync$get_introspection_schema_output()
   svc <- .appsync$service()
   request <- new_request(svc, op, input, output)
@@ -1087,6 +1113,41 @@ appsync_list_resolvers_by_function <- function(apiId, functionId, nextToken = NU
 }
 .appsync$operations$list_resolvers_by_function <- appsync_list_resolvers_by_function
 
+#' Lists the tags for a resource
+#'
+#' Lists the tags for a resource.
+#'
+#' @usage
+#' appsync_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_list_tags_for_resource
+appsync_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .appsync$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .appsync$list_tags_for_resource_output()
+  svc <- .appsync$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$list_tags_for_resource <- appsync_list_tags_for_resource
+
 #' Lists the types for a given API
 #'
 #' Lists the types for a given API.
@@ -1168,6 +1229,84 @@ appsync_start_schema_creation <- function(apiId, definition) {
   return(response)
 }
 .appsync$operations$start_schema_creation <- appsync_start_schema_creation
+
+#' Tags a resource with user-supplied tags
+#'
+#' Tags a resource with user-supplied tags.
+#'
+#' @usage
+#' appsync_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
+#' @param tags &#91;required&#93; A `TagMap` object.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_tag_resource
+appsync_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .appsync$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .appsync$tag_resource_output()
+  svc <- .appsync$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$tag_resource <- appsync_tag_resource
+
+#' Untags a resource
+#'
+#' Untags a resource.
+#'
+#' @usage
+#' appsync_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
+#' @param tagKeys &#91;required&#93; A list of `TagKey` objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appsync_untag_resource
+appsync_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .appsync$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .appsync$untag_resource_output()
+  svc <- .appsync$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appsync$operations$untag_resource <- appsync_untag_resource
 
 #' Updates an API key
 #'
@@ -1352,7 +1491,7 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'
 #' @usage
 #' appsync_update_graphql_api(apiId, name, logConfig, authenticationType,
-#'   userPoolConfig, openIDConnectConfig)
+#'   userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders)
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param name &#91;required&#93; The new name for the `GraphqlApi` object.
@@ -1361,6 +1500,7 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #' @param userPoolConfig The new Amazon Cognito user pool configuration for the `GraphqlApi`
 #' object.
 #' @param openIDConnectConfig The OpenID Connect configuration for the `GraphqlApi` object.
+#' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
 #'
 #' @section Request syntax:
 #' ```
@@ -1383,6 +1523,22 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'     clientId = "string",
 #'     iatTTL = 123,
 #'     authTTL = 123
+#'   ),
+#'   additionalAuthenticationProviders = list(
+#'     list(
+#'       authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'       openIDConnectConfig = list(
+#'         issuer = "string",
+#'         clientId = "string",
+#'         iatTTL = 123,
+#'         authTTL = 123
+#'       ),
+#'       userPoolConfig = list(
+#'         userPoolId = "string",
+#'         awsRegion = "string",
+#'         appIdClientRegex = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1390,14 +1546,14 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #' @keywords internal
 #'
 #' @rdname appsync_update_graphql_api
-appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authenticationType = NULL, userPoolConfig = NULL, openIDConnectConfig = NULL) {
+appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authenticationType = NULL, userPoolConfig = NULL, openIDConnectConfig = NULL, additionalAuthenticationProviders = NULL) {
   op <- new_operation(
     name = "UpdateGraphqlApi",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}",
     paginator = list()
   )
-  input <- .appsync$update_graphql_api_input(apiId = apiId, name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig)
+  input <- .appsync$update_graphql_api_input(apiId = apiId, name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, additionalAuthenticationProviders = additionalAuthenticationProviders)
   output <- .appsync$update_graphql_api_output()
   svc <- .appsync$service()
   request <- new_request(svc, op, input, output)

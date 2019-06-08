@@ -41,7 +41,7 @@ global secondary index.
 \item \code{Delete} - remove a global secondary index from the table.
 }
 
-For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html}{Managing Global Secondary Indexes}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html}{Managing Global Secondary Indexes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{Represents the DynamoDB Streams configuration for the table.

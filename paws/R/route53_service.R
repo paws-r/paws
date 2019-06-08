@@ -4,7 +4,9 @@ NULL
 
 #' Amazon Route 53
 #'
-#' 
+#' @description
+#' Amazon Route 53 is a highly available and scalable Domain Name System
+#' (DNS) web service.
 #'
 #' @examples
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the

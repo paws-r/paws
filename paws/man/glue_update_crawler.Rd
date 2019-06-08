@@ -11,8 +11,8 @@ glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
 
-\item{Role}{The IAM role (or ARN of an IAM role) used by the new crawler to access
-customer resources.}
+\item{Role}{The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
+by the new crawler to access customer resources.}
 
 \item{DatabaseName}{The AWS Glue database where results are stored, such as:
 \code{arn:aws:daylight:us-east-1::database/sometable/*}.}
@@ -21,8 +21,9 @@ customer resources.}
 
 \item{Targets}{A list of targets to crawl.}
 
-\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
-For example, to run something every day at 12:15 UTC, you would specify:
+\item{Schedule}{A \code{cron} expression used to specify the schedule. For more information,
+see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
+For example, to run something every day at 12:15 UTC, specify
 \code{cron(15 12 * * ? *)}.}
 
 \item{Classifiers}{A list of custom classifiers that the user has registered. By default,
@@ -32,14 +33,14 @@ classification.}
 
 \item{TablePrefix}{The table prefix used for catalog tables that are created.}
 
-\item{SchemaChangePolicy}{Policy for the crawler's update and deletion behavior.}
+\item{SchemaChangePolicy}{The policy for the crawler's update and deletion behavior.}
 
-\item{Configuration}{Crawler configuration information. This versioned JSON string allows
+\item{Configuration}{The crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
 see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
 
-\item{CrawlerSecurityConfiguration}{The name of the SecurityConfiguration structure to be used by this
-Crawler.}
+\item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this
+crawler.}
 }
 \description{
 Updates a crawler. If a crawler is running, you must stop it using
@@ -72,6 +73,14 @@ Updates a crawler. If a crawler is running, you must stop it using
     DynamoDBTargets = list(
       list(
         Path = "string"
+      )
+    ),
+    CatalogTargets = list(
+      list(
+        DatabaseName = "string",
+        Tables = list(
+          "string"
+        )
       )
     )
   ),

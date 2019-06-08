@@ -20,6 +20,16 @@ failed deliveries to HTTP/S endpoints.
 subscriptions.
 \item \code{Policy} -- The policy that defines who can access your topic. By
 default, only the topic owner can publish or subscribe to the topic.
+}
+
+The following attribute applies only to
+\href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side-encryption}:
+\itemize{
+\item \code{KmsMasterKeyId} - The ID of an AWS-managed customer master key
+(CMK) for Amazon SNS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
+For more examples, see
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
+in the \emph{AWS Key Management Service API Reference}.
 }}
 
 \item{AttributeValue}{The new value for the attribute.}

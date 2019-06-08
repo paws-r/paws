@@ -2,13 +2,13 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instance_status}
 \alias{ec2_describe_instance_status}
-\title{Describes the status of one or more instances}
+\title{Describes the status of the specified instances or all of your instances}
 \usage{
 ec2_describe_instance_status(Filters, InstanceIds, MaxResults,
   NextToken, DryRun, IncludeAllInstances)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone of the instance.
 \item \code{event.code} - The code for the scheduled event (\code{instance-reboot}
@@ -45,7 +45,7 @@ name is \code{reachability} (\code{passed} \| \code{failed} \| \code{initializin
 \code{not-applicable}).
 }}
 
-\item{InstanceIds}{One or more instance IDs.
+\item{InstanceIds}{The instance IDs.
 
 Default: Describes all your instances.
 
@@ -69,9 +69,9 @@ includes the health status for running instances only.
 Default: \code{false}}
 }
 \description{
-Describes the status of one or more instances. By default, only running
-instances are described, unless you specifically indicate to return the
-status of all instances.
+Describes the status of the specified instances or all of your
+instances. By default, only running instances are described, unless you
+specifically indicate to return the status of all instances.
 }
 \details{
 Instance status includes the following components:

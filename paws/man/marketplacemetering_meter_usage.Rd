@@ -12,8 +12,9 @@ marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
 The product code should be the same as the one used during the
 publishing of a new product.}
 
-\item{Timestamp}{[required] Timestamp of the hour, recorded in UTC. The seconds and milliseconds
-portions of the timestamp will be ignored.}
+\item{Timestamp}{[required] Timestamp, in UTC, for which the usage is being reported. Your
+application can meter usage for up to one hour in the past. Make sure
+the timestamp value is not before the start of the software usage.}
 
 \item{UsageDimension}{[required] It will be one of the fcp dimension name provided during the publishing
 of the product.}

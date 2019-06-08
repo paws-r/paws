@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_scheduled_instances}
 \alias{ec2_describe_scheduled_instances}
-\title{Describes one or more of your Scheduled Instances}
+\title{Describes the specified Scheduled Instances or all your Scheduled
+Instances}
 \usage{
 ec2_describe_scheduled_instances(DryRun, Filters, MaxResults, NextToken,
   ScheduledInstanceIds, SlotStartTimeRange)
@@ -13,7 +14,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone (for example,
 \code{us-west-2a}).
@@ -30,12 +31,13 @@ value.}
 
 \item{NextToken}{The token for the next set of results.}
 
-\item{ScheduledInstanceIds}{One or more Scheduled Instance IDs.}
+\item{ScheduledInstanceIds}{The Scheduled Instance IDs.}
 
 \item{SlotStartTimeRange}{The time period for the first schedule to start.}
 }
 \description{
-Describes one or more of your Scheduled Instances.
+Describes the specified Scheduled Instances or all your Scheduled
+Instances.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_instances(

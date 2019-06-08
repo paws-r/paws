@@ -19,10 +19,11 @@ account. For more information about different account types, see
 in the \emph{Amazon Chime Administration Guide}.
 }
 \details{
-Users suspended from a \code{Team} account are dissociated from the account,
-but they can continue to use Amazon Chime as free users. To remove the
-suspension from suspended \code{Team} account users, invite them to the
-\code{Team} account again. You can use the InviteUsers action to do so.
+Users suspended from a \code{Team} account are dissasociated from the
+account, but they can continue to use Amazon Chime as free users. To
+remove the suspension from suspended \code{Team} account users, invite them
+to the \code{Team} account again. You can use the InviteUsers action to do
+so.
 
 Users suspended from an \code{EnterpriseLWA} account are immediately signed
 out of Amazon Chime and can no longer sign in. To remove the suspension

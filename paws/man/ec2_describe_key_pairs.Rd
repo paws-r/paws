@@ -2,18 +2,18 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_key_pairs}
 \alias{ec2_describe_key_pairs}
-\title{Describes one or more of your key pairs}
+\title{Describes the specified key pairs or all of your key pairs}
 \usage{
 ec2_describe_key_pairs(Filters, KeyNames, DryRun)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{fingerprint} - The fingerprint of the key pair.
 \item \code{key-name} - The name of the key pair.
 }}
 
-\item{KeyNames}{One or more key pair names.
+\item{KeyNames}{The key pair names.
 
 Default: Describes all your key pairs.}
 
@@ -23,7 +23,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of your key pairs.
+Describes the specified key pairs or all of your key pairs.
 }
 \details{
 For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}

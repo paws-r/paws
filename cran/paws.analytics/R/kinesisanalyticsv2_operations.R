@@ -362,27 +362,30 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' Creates an Amazon Kinesis Data Analytics application
 #'
 #' Creates an Amazon Kinesis Data Analytics application. For information
-#' about creating a Kinesis Data Analytics application, see Creating an
-#' Application.
-#' 
-#' SQL is not enabled for this private beta release. Using SQL parameters
-#' (such as SqlApplicationConfiguration) will result in an error.
+#' about creating a Kinesis Data Analytics application, see [Creating an
+#' Application](https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_create_application(ApplicationName,
 #'   ApplicationDescription, RuntimeEnvironment, ServiceExecutionRole,
-#'   ApplicationConfiguration, CloudWatchLoggingOptions)
+#'   ApplicationConfiguration, CloudWatchLoggingOptions, Tags)
 #'
 #' @param ApplicationName &#91;required&#93; The name of your application (for example, `sample-app`).
 #' @param ApplicationDescription A summary description of the application.
-#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application (`SQL-1.0` or
-#' `JAVA-8-FLINK-1.5`).
+#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application (`SQL-1.0` or `FLINK-1_6`).
 #' @param ServiceExecutionRole &#91;required&#93; The IAM role used by the application to access Kinesis data streams,
 #' Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
 #' external resources.
 #' @param ApplicationConfiguration Use this parameter to configure the application.
 #' @param CloudWatchLoggingOptions Use this parameter to configure an Amazon CloudWatch log stream to
 #' monitor application configuration errors.
+#' @param Tags A list of one or more tags to assign to the application. A tag is a
+#' key-value pair that identifies an application. Note that the maximum
+#' number of application tags includes system tags. The maximum number of
+#' user-defined application tags is 50. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -532,6 +535,12 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'     list(
 #'       LogStreamARN = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -539,14 +548,14 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_create_application
-kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDescription = NULL, RuntimeEnvironment, ServiceExecutionRole, ApplicationConfiguration = NULL, CloudWatchLoggingOptions = NULL) {
+kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDescription = NULL, RuntimeEnvironment, ServiceExecutionRole, ApplicationConfiguration = NULL, CloudWatchLoggingOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, RuntimeEnvironment = RuntimeEnvironment, ServiceExecutionRole = ServiceExecutionRole, ApplicationConfiguration = ApplicationConfiguration, CloudWatchLoggingOptions = CloudWatchLoggingOptions)
+  input <- .kinesisanalyticsv2$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, RuntimeEnvironment = RuntimeEnvironment, ServiceExecutionRole = ServiceExecutionRole, ApplicationConfiguration = ApplicationConfiguration, CloudWatchLoggingOptions = CloudWatchLoggingOptions, Tags = Tags)
   output <- .kinesisanalyticsv2$create_application_output()
   svc <- .kinesisanalyticsv2$service()
   request <- new_request(svc, op, input, output)
@@ -1110,14 +1119,46 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 }
 .kinesisanalyticsv2$operations$list_applications <- kinesisanalyticsv2_list_applications
 
+#' Retrieves the list of key-value tags assigned to the application
+#'
+#' Retrieves the list of key-value tags assigned to the application.
+#'
+#' @usage
+#' kinesisanalyticsv2_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the application for which to retrieve tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_list_tags_for_resource
+kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .kinesisanalyticsv2$list_tags_for_resource_output()
+  svc <- .kinesisanalyticsv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$list_tags_for_resource <- kinesisanalyticsv2_list_tags_for_resource
+
 #' Starts the specified Amazon Kinesis Data Analytics application
 #'
 #' Starts the specified Amazon Kinesis Data Analytics application. After
 #' creating an application, you must exclusively call this operation to
 #' start your application.
-#' 
-#' SQL is not enabled for this private beta. Using SQL parameters (such as
-#' RunConfiguration\\$SqlRunConfigurations) will result in an error.
 #'
 #' @usage
 #' kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration)
@@ -1203,6 +1244,90 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName) {
 }
 .kinesisanalyticsv2$operations$stop_application <- kinesisanalyticsv2_stop_application
 
+#' Adds one or more key-value tags to a Kinesis Analytics application
+#'
+#' Adds one or more key-value tags to a Kinesis Analytics application. Note
+#' that the maximum number of application tags includes system tags. The
+#' maximum number of user-defined application tags is 50.
+#'
+#' @usage
+#' kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the application to assign the tags.
+#' @param Tags &#91;required&#93; The key-value tags to assign to the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_tag_resource
+kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .kinesisanalyticsv2$tag_resource_output()
+  svc <- .kinesisanalyticsv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$tag_resource <- kinesisanalyticsv2_tag_resource
+
+#' Removes one or more tags from a Kinesis Analytics application
+#'
+#' Removes one or more tags from a Kinesis Analytics application.
+#'
+#' @usage
+#' kinesisanalyticsv2_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Analytics application from which to remove the
+#' tags.
+#' @param TagKeys &#91;required&#93; A list of keys of tags to remove from the specified application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalyticsv2_untag_resource
+kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalyticsv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .kinesisanalyticsv2$untag_resource_output()
+  svc <- .kinesisanalyticsv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalyticsv2$operations$untag_resource <- kinesisanalyticsv2_untag_resource
+
 #' Updates an existing Amazon Kinesis Data Analytics application
 #'
 #' Updates an existing Amazon Kinesis Data Analytics application. Using
@@ -1211,9 +1336,6 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName) {
 #' 
 #' Kinesis Data Analytics updates the `ApplicationVersionId` each time you
 #' update your application.
-#' 
-#' SQL is not enabled for this private beta. Using SQL parameters (such as
-#' SqlApplicationConfigurationUpdate) will result in an error.
 #'
 #' @usage
 #' kinesisanalyticsv2_update_application(ApplicationName,

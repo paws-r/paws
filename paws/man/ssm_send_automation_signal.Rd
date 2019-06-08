@@ -11,11 +11,25 @@ ssm_send_automation_signal(AutomationExecutionId, SignalType, Payload)
 \item{AutomationExecutionId}{[required] The unique identifier for an existing Automation execution that you want
 to send the signal to.}
 
-\item{SignalType}{[required] The type of signal. Valid signal types include the following: Approve
-and Reject}
+\item{SignalType}{[required] The type of signal to send to an Automation execution.}
 
 \item{Payload}{The data sent with the signal. The data schema depends on the type of
-signal used in the request.}
+signal used in the request.
+
+For \code{Approve} and \code{Reject} signal types, the payload is an optional
+comment that you can send with the signal type. For example:
+
+\code{Comment="Looks good"}
+
+For \code{StartStep} and \code{Resume} signal types, you must send the name of the
+Automation step to start or resume as the payload. For example:
+
+\code{StepName="step1"}
+
+For the \code{StopStep} signal type, you must send the step execution ID as
+the payload. For example:
+
+\code{StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"}}
 }
 \description{
 Sends a signal to an Automation execution to change the current behavior

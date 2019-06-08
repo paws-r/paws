@@ -16,27 +16,26 @@ Constraints:
 \item Must match the name of an existing DB instance.
 }}
 
-\item{SkipFinalSnapshot}{A value that indicates whether a final DB snapshot is created before the
-DB instance is deleted. If \code{true} is specified, no DB snapshot is
-created. If \code{false} is specified, a DB snapshot is created before the DB
-instance is deleted.
+\item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
+snapshot before the DB instance is deleted. If skip is specified, no DB
+snapshot is created. If skip is not specified, a DB snapshot is created
+before the DB instance is deleted. By default, skip is not specified,
+and the DB snapshot is created.
 
-When a DB instance is in a failure state and has a status of \code{failed},
-\code{incompatible-restore}, or \code{incompatible-network}, you can only delete
-it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
+Note that when a DB instance is in a failure state and has a status of
+'failed', 'incompatible-restore', or 'incompatible-network', it
+can only be deleted when skip is specified.
 
-Specify \code{true} when deleting a Read Replica.
+Specify skip when deleting a Read Replica.
 
-The \code{FinalDBSnapshotIdentifier} parameter must be specified if
-\code{SkipFinalSnapshot} is \code{false}.
+The FinalDBSnapshotIdentifier parameter must be specified if skip is not
+specified.}
 
-Default: \code{false}}
+\item{FinalDBSnapshotIdentifier}{The \code{DBSnapshotIdentifier} of the new \code{DBSnapshot} created when the
+\code{SkipFinalSnapshot} parameter is disabled.
 
-\item{FinalDBSnapshotIdentifier}{The \code{DBSnapshotIdentifier} of the new DB snapshot created when
-\code{SkipFinalSnapshot} is set to \code{false}.
-
-Specifying this parameter and also setting the \code{SkipFinalShapshot}
-parameter to \code{true} results in an error.
+Specifying this parameter and also specifying to skip final DB snapshot
+creation in SkipFinalShapshot results in an error.
 
 Constraints:
 \itemize{
@@ -48,7 +47,8 @@ Constraints:
 
 \item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately
 after the DB instance is deleted. This parameter isn't case-sensitive.
-This parameter defaults to \code{true}.}
+The default is to remove automated backups immediately after the DB
+instance is deleted.}
 }
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB
@@ -64,7 +64,8 @@ The action can't be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of
 \code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can
-only delete it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
+only delete it when you skip creation of the final snapshot with the
+\code{SkipFinalSnapshot} parameter.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster, you
 can't delete the DB instance if both of the following conditions are
@@ -76,7 +77,7 @@ cluster.
 }
 
 To delete a DB instance in this case, first call the
-PromoteReadReplicaDBCluster API action to promote the DB cluster so
+\code{PromoteReadReplicaDBCluster} API action to promote the DB cluster so
 it's no longer a Read Replica. After the promotion completes, then call
 the \code{DeleteDBInstance} API action to delete the final instance in the DB
 cluster.

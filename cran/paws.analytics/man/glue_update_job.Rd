@@ -7,7 +7,7 @@
 glue_update_job(JobName, JobUpdate)
 }
 \arguments{
-\item{JobName}{[required] Name of the job definition to update.}
+\item{JobName}{[required] The name of the job definition to update.}
 
 \item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
 }
@@ -26,7 +26,8 @@ Updates an existing job definition.
     ),
     Command = list(
       Name = "string",
-      ScriptLocation = "string"
+      ScriptLocation = "string",
+      PythonVersion = "string"
     ),
     DefaultArguments = list(
       "string"
@@ -40,10 +41,12 @@ Updates an existing job definition.
     AllocatedCapacity = 123,
     Timeout = 123,
     MaxCapacity = 123.0,
+    WorkerType = "Standard"|"G.1X"|"G.2X",
+    NumberOfWorkers = 123,
+    SecurityConfiguration = "string",
     NotificationProperty = list(
       NotifyDelayAfter = 123
-    ),
-    SecurityConfiguration = "string"
+    )
   )
 )
 }

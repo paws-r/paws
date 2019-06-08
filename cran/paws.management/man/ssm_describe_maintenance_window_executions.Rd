@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_window_executions}
 \alias{ssm_describe_maintenance_window_executions}
-\title{Lists the executions of a Maintenance Window}
+\title{Lists the executions of a maintenance window}
 \usage{
 ssm_describe_maintenance_window_executions(WindowId, Filters,
   MaxResults, NextToken)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window whose executions should be retrieved.}
+\item{WindowId}{[required] The ID of the maintenance window whose executions should be retrieved.}
 
 \item{Filters}{Each entry in the array is a structure containing:
 
@@ -27,9 +27,9 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Lists the executions of a Maintenance Window. This includes information
-about when the Maintenance Window was scheduled to be active, and
-information about tasks registered and run with the Maintenance Window.
+Lists the executions of a maintenance window. This includes information
+about when the maintenance window was scheduled to be active, and
+information about tasks registered and run with the maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_executions(

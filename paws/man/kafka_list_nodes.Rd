@@ -7,17 +7,16 @@
 kafka_list_nodes(ClusterArn, MaxResults, NextToken)
 }
 \arguments{
-\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
+\item{ClusterArn}{[required]
+<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
 
-\item{MaxResults}{The maximum number of clusters to return in the response. If there are
-more clusters, the response includes a NextToken parameter.}
+\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
 
-\item{NextToken}{The paginated results marker. When the result of a ListClusters
-operation is truncated, the call returns NextToken in the response. To
-get another batch of clusters, provide this token in your next request.}
+\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+To get the next batch, provide this token in your next request.</p>}
 }
 \description{
-Returns a list of the broker nodes in the cluster.
+<p>Returns a list of the broker nodes in the cluster.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$list_nodes(

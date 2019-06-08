@@ -50,7 +50,7 @@ thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -68,15 +68,14 @@ When you create the IAM OIDC provider, you specify the following:
 \item A list of client IDs (also known as audiences) that identify the
 application or applications that are allowed to authenticate using
 the OIDC provider
-\item A list of thumbprints of the server certificate(s) that the IdP
-uses.
+\item A list of thumbprints of the server certificate(s) that the IdP uses
 }
 
 You get all of this information from the OIDC IdP that you want to use
 to access AWS.
 
-Because trust for the OIDC provider is derived from the IAM provider
-that this operation creates, it is best to limit access to the
+The trust for the OIDC provider is derived from the IAM provider that
+this operation creates. Therefore, it is best to limit access to the
 CreateOpenIDConnectProvider operation to highly privileged users.
 }
 \section{Request syntax}{

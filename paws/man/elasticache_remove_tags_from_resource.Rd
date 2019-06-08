@@ -12,7 +12,7 @@ tags removed, for example
 \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or
 \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
 \item{TagKeys}{[required] A list of \code{TagKeys} identifying the tags you want removed from the named
 resource.}

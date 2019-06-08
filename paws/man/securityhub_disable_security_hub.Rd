@@ -2,12 +2,12 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_security_hub}
 \alias{securityhub_disable_security_hub}
-\title{Disables the AWS Security Hub Service}
+\title{Disables the Security Hub service}
 \usage{
 securityhub_disable_security_hub()
 }
 \description{
-Disables the AWS Security Hub Service.
+Disables the Security Hub service.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_security_hub()

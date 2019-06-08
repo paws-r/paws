@@ -19,9 +19,9 @@ be returned.}
 }
 \description{
 Returns information about any jobs for AWS CodePipeline to act upon.
-PollForJobs is only valid for action types with "Custom" in the owner
-field. If the action type contains "AWS" or "ThirdParty" in the
-owner field, the PollForJobs action returns an error.
+\code{PollForJobs} is only valid for action types with "Custom" in the
+owner field. If the action type contains "AWS" or "ThirdParty" in
+the owner field, the \code{PollForJobs} action returns an error.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials

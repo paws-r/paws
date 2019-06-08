@@ -2,15 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_security_groups}
 \alias{ec2_describe_security_groups}
-\title{Describes one or more of your security groups}
+\title{Describes the specified security groups or all of your security groups}
 \usage{
 ec2_describe_security_groups(Filters, GroupIds, GroupNames, DryRun,
   NextToken, MaxResults)
 }
 \arguments{
-\item{Filters}{One or more filters. If using multiple filters for rules, the results
-include security groups for which any combination of rules - not
-necessarily a single rule - match all filters.
+\item{Filters}{The filters. If using multiple filters for rules, the results include
+security groups for which any combination of rules - not necessarily a
+single rule - match all filters.
 \itemize{
 \item \code{description} - The description of the security group.
 \item \code{egress.ip-permission.cidr} - An IPv4 CIDR block for an outbound
@@ -64,12 +64,12 @@ regardless of the tag value.
 created.
 }}
 
-\item{GroupIds}{One or more security group IDs. Required for security groups in a
+\item{GroupIds}{The IDs of the security groups. Required for security groups in a
 nondefault VPC.
 
 Default: Describes all your security groups.}
 
-\item{GroupNames}{[EC2-Classic and default VPC only] One or more security group names.
+\item{GroupNames}{[EC2-Classic and default VPC only] The names of the security groups.
 You can specify either the security group name or the security group ID.
 For security groups in a nondefault VPC, use the \code{group-name} filter to
 describe security groups by name.
@@ -89,7 +89,7 @@ the remaining results, make another request with the returned
 parameter is not specified, then all results are returned.}
 }
 \description{
-Describes one or more of your security groups.
+Describes the specified security groups or all of your security groups.
 }
 \details{
 A security group is for use with instances either in the EC2-Classic

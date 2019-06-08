@@ -17,7 +17,7 @@ software that is used as your organization's IdP.}
 
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to update.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
 \description{
@@ -25,7 +25,7 @@ Updates the metadata document for an existing SAML provider resource
 object.
 }
 \details{
-This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_saml_provider(

@@ -2,8 +2,7 @@
 % Please edit documentation in R/pinpointemail_operations.R
 \name{pinpointemail_tag_resource}
 \alias{pinpointemail_tag_resource}
-\title{Add one or more tags (keys and values) to one or more specified
-resources}
+\title{Add one or more tags (keys and values) to a specified resource}
 \usage{
 pinpointemail_tag_resource(ResourceArn, Tags)
 }
@@ -17,11 +16,11 @@ maximum length of a tag key is 128 characters. The maximum length of a
 tag value is 256 characters.}
 }
 \description{
-Add one or more tags (keys and values) to one or more specified
-resources. A \emph{tag}Â is a label that you optionally define and associate
-with a resource in Amazon Pinpoint. Tags can help you categorize and
-manage resources in different ways, such as by purpose, owner,
-environment, or other criteria. A resource can have as many as 50 tags.
+Add one or more tags (keys and values) to a specified resource. A
+\emph{tag}Â is a label that you optionally define and associate with a
+resource in Amazon Pinpoint. Tags can help you categorize and manage
+resources in different ways, such as by purpose, owner, environment, or
+other criteria. A resource can have as many as 50 tags.
 }
 \details{
 Each tag consists of a requiredÂ \emph{tag key}Â and an associatedÂ \emph{tag value},

@@ -65,7 +65,7 @@ NULL
 
 .kinesisanalytics$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationName = structure(logical(0), tags = list(type = "string")), ApplicationDescription = structure(logical(0), tags = list(type = "string")), Inputs = structure(list(structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), InputProcessingConfiguration = structure(list(InputLambdaProcessor = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamsInput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseInput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputParallelism = structure(list(Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InputSchema = structure(list(RecordFormat = structure(list(RecordFormatType = structure(logical(0), tags = list(type = "string")), MappingParameters = structure(list(JSONMappingParameters = structure(list(RecordRowPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CSVMappingParameters = structure(list(RecordRowDelimiter = structure(logical(0), tags = list(type = "string")), RecordColumnDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RecordEncoding = structure(logical(0), tags = list(type = "string")), RecordColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Mapping = structure(logical(0), tags = list(type = "string")), SqlType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Outputs = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), KinesisStreamsOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LambdaOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationSchema = structure(list(RecordFormatType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), CloudWatchLoggingOptions = structure(list(structure(list(LogStreamARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationName = structure(logical(0), tags = list(type = "string")), ApplicationDescription = structure(logical(0), tags = list(type = "string")), Inputs = structure(list(structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), InputProcessingConfiguration = structure(list(InputLambdaProcessor = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamsInput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseInput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputParallelism = structure(list(Count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InputSchema = structure(list(RecordFormat = structure(list(RecordFormatType = structure(logical(0), tags = list(type = "string")), MappingParameters = structure(list(JSONMappingParameters = structure(list(RecordRowPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CSVMappingParameters = structure(list(RecordRowDelimiter = structure(logical(0), tags = list(type = "string")), RecordColumnDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), RecordEncoding = structure(logical(0), tags = list(type = "string")), RecordColumns = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Mapping = structure(logical(0), tags = list(type = "string")), SqlType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Outputs = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), KinesisStreamsOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LambdaOutput = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationSchema = structure(list(RecordFormatType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), CloudWatchLoggingOptions = structure(list(structure(list(LogStreamARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationCode = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,6 +171,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kinesisanalytics$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisanalytics$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kinesisanalytics$start_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationName = structure(logical(0), tags = list(type = "string")), InputConfigurations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), InputStartingPositionConfiguration = structure(list(InputStartingPosition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -190,6 +202,30 @@ NULL
 }
 
 .kinesisanalytics$stop_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisanalytics$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisanalytics$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisanalytics$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisanalytics$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

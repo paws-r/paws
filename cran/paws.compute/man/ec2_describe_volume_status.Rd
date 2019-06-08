@@ -8,7 +8,7 @@ ec2_describe_volume_status(Filters, MaxResults, NextToken, VolumeIds,
   DryRun)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{action.code} - The action code for the event (for example,
 \code{enable-volume-io}).
@@ -47,7 +47,7 @@ request. When the results of the request exceed \code{MaxResults}, this value
 can be used to retrieve the next page of results. This value is \code{null}
 when there are no more results to return.}
 
-\item{VolumeIds}{One or more volume IDs.
+\item{VolumeIds}{The IDs of the volumes.
 
 Default: Describes all your volumes.}
 

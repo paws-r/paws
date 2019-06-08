@@ -7,7 +7,7 @@
 iam_create_group(Path, GroupName)
 }
 \arguments{
-\item{Path}{The path to the group. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\item{Path}{The path to the group. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -22,19 +22,16 @@ lowercased letters.}
 
 \item{GroupName}{[required] The name of the group to create. Do not include the path in this value.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-.
-The group name must be unique within the account. Group names are not
-distinguished by case. For example, you cannot create groups named both
-"ADMINS" and "admins".}
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Creates a new group.
 }
 \details{
 For information about the number of groups you can create, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

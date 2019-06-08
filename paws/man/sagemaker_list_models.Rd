@@ -24,8 +24,8 @@ the training job whose name contains the specified string.}
 \item{CreationTimeBefore}{A filter that returns only models created before the specified time
 (timestamp).}
 
-\item{CreationTimeAfter}{A filter that returns only models created after the specified time
-(timestamp).}
+\item{CreationTimeAfter}{A filter that returns only models with a creation time greater than or
+equal to the specified time (timestamp).}
 }
 \description{
 Lists models created with the

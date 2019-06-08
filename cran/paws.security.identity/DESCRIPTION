@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: Amazon Web Services Security, Identity, & Compliance APIs
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

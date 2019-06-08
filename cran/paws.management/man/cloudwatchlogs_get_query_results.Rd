@@ -11,10 +11,13 @@ cloudwatchlogs_get_query_results(queryId)
 }
 \description{
 Returns the results from the specified query. If the query is in
-progress, partial results of that current execution are returned. Only
-the fields requested in the query are returned.
+progress, partial results of that current execution are returned.
 }
 \details{
+Only the fields requested in the query are returned, along with a \code{@ptr}
+field which is the identifier for the log record. You can use the value
+of \code{@ptr} in a operation to get the full log record.
+
 \code{GetQueryResults} does not start a query execution. To run a query, use
 .
 }

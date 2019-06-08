@@ -11,7 +11,7 @@ sagemaker_create_compilation_job(CompilationJobName, RoleArn,
 \item{CompilationJobName}{[required] A name for the model compilation job. The name must be unique within the
 AWS Region and within your AWS account.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IIAMAM role that enables Amazon
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that enables Amazon
 SageMaker to perform tasks on your behalf.
 
 During model compilation, Amazon SageMaker needs your permission to:
@@ -75,7 +75,7 @@ compilation jobs, use ListCompilationJobs.
   ),
   OutputConfig = list(
     S3OutputLocation = "string",
-    TargetDevice = "ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"
+    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"
   ),
   StoppingCondition = list(
     MaxRuntimeInSeconds = 123

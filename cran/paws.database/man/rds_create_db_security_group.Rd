@@ -23,7 +23,7 @@ Example: \code{mysecuritygroup}}
 
 \item{DBSecurityGroupDescription}{[required] The description for the DB security group.}
 
-\item{Tags}{}
+\item{Tags}{Tags to assign to the DB security group.}
 }
 \description{
 Creates a new DB security group. DB security groups control access to a

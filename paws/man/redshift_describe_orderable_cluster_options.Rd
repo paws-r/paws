@@ -45,7 +45,7 @@ you can specify, and the node types you can request. The node types
 differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
 specific region and specify values when creating a cluster. For more
-information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

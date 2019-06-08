@@ -19,8 +19,7 @@ the available offerings matching the specified DB instance class.}
 \item{LicenseModel}{The license model filter value. Specify this parameter to show only the
 available offerings matching the specified license model.}
 
-\item{Vpc}{The VPC filter value. Specify this parameter to show only the available
-VPC or non-VPC offerings.}
+\item{Vpc}{A value that indicates whether to show only VPC or non-VPC offerings.}
 
 \item{Filters}{This parameter is not currently supported.}
 

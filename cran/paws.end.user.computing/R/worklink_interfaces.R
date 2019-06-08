@@ -3,6 +3,30 @@
 #' @include worklink_service.R
 NULL
 
+.worklink$associate_domain_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), AcmCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$associate_domain_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$associate_website_authorization_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), AuthorizationProviderType = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$associate_website_authorization_provider_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AuthorizationProviderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .worklink$associate_website_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), Certificate = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -87,6 +111,18 @@ NULL
   return(populate(args, shape))
 }
 
+.worklink$describe_domain_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$describe_domain_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), DomainStatus = structure(logical(0), tags = list(type = "string")), AcmCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .worklink$describe_fleet_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -123,6 +159,30 @@ NULL
   return(populate(args, shape))
 }
 
+.worklink$disassociate_domain_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$disassociate_domain_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$disassociate_website_authorization_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), AuthorizationProviderId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$disassociate_website_authorization_provider_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .worklink$disassociate_website_certificate_authority_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), WebsiteCaId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -147,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.worklink$list_domains_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$list_domains_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Domains = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), DomainStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .worklink$list_fleets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -159,6 +231,18 @@ NULL
   return(populate(args, shape))
 }
 
+.worklink$list_website_authorization_providers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$list_website_authorization_providers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WebsiteAuthorizationProviders = structure(list(structure(list(AuthorizationProviderId = structure(logical(0), tags = list(type = "string")), AuthorizationProviderType = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .worklink$list_website_certificate_authorities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +252,30 @@ NULL
 .worklink$list_website_certificate_authorities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(WebsiteCertificateAuthorities = structure(list(structure(list(WebsiteCaId = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$restore_domain_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$restore_domain_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$revoke_domain_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$revoke_domain_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -214,6 +322,18 @@ NULL
 }
 
 .worklink$update_device_policy_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$update_domain_metadata_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FleetArn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.worklink$update_domain_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

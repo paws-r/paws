@@ -23,7 +23,7 @@ validate this parameter is a string of any of the characters in the
 ASCII character range.}
 }
 \description{
-Renames the specified organizational unit (OU). The ID and ARN do not
+Renames the specified organizational unit (OU). The ID and ARN don't
 change. The child OUs and accounts remain in place, and any attached
 policies of the OU remain attached.
 }

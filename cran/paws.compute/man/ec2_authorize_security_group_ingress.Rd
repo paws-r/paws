@@ -2,19 +2,26 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_authorize_security_group_ingress}
 \alias{ec2_authorize_security_group_ingress}
-\title{Adds one or more ingress rules to a security group}
+\title{Adds the specified ingress rules to a security group}
 \usage{
 ec2_authorize_security_group_ingress(CidrIp, FromPort, GroupId,
   GroupName, IpPermissions, IpProtocol, SourceSecurityGroupName,
   SourceSecurityGroupOwnerId, ToPort, DryRun)
 }
 \arguments{
-\item{CidrIp}{The CIDR IPv4 address range. You can't specify this parameter when
-specifying a source security group.}
+\item{CidrIp}{The IPv4 address range, in CIDR format. You can't specify this
+parameter when specifying a source security group. To specify an IPv6
+address range, use a set of IP permissions.
 
-\item{FromPort}{The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
-type number. For the ICMP/ICMPv6 type number, use \code{-1} to specify all
-types. If you specify all ICMP/ICMPv6 types, you must specify all codes.}
+Alternatively, use a set of IP permissions to specify multiple rules and
+a description for the rule.}
+
+\item{FromPort}{The start of port range for the TCP and UDP protocols, or an ICMP type
+number. For the ICMP type number, use \code{-1} to specify all types. If you
+specify all ICMP types, you must specify all codes.
+
+Alternatively, use a set of IP permissions to specify multiple rules and
+a description for the rule.}
 
 \item{GroupId}{The ID of the security group. You must specify either the security group
 ID or the security group name in the request. For security groups in a
@@ -24,16 +31,17 @@ nondefault VPC, you must specify the security group ID.}
 specify either the security group ID or the security group name in the
 request.}
 
-\item{IpPermissions}{One or more sets of IP permissions. Can be used to specify multiple
-rules in a single command.}
+\item{IpPermissions}{The sets of IP permissions.}
 
 \item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}).
-(VPC only) Use \code{-1} to specify all protocols. If you specify \code{-1}, or a
-protocol number other than \code{tcp}, \code{udp}, \code{icmp}, or \code{58} (ICMPv6),
-traffic on all ports is allowed, regardless of any ports you specify.
-For \code{tcp}, \code{udp}, and \code{icmp}, you must specify a port range. For
-protocol \code{58} (ICMPv6), you can optionally specify a port range; if you
-don't, traffic for all types and codes is allowed.}
+To specify \code{icmpv6}, use a set of IP permissions.
+
+[VPC only] Use \code{-1} to specify all protocols. If you specify \code{-1} or a
+protocol other than \code{tcp}, \code{udp}, or \code{icmp}, traffic on all ports is
+allowed, regardless of any ports you specify.
+
+Alternatively, use a set of IP permissions to specify multiple rules and
+a description for the rule.}
 
 \item{SourceSecurityGroupName}{[EC2-Classic, default VPC] The name of the source security group. You
 can't specify this parameter in combination with the following
@@ -51,9 +59,12 @@ of the port range. Creates rules that grant full ICMP, UDP, and TCP
 access. To create a rule with a specific IP protocol and port range, use
 a set of IP permissions instead.}
 
-\item{ToPort}{The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
-code number. For the ICMP/ICMPv6 code number, use \code{-1} to specify all
-codes. If you specify all ICMP/ICMPv6 types, you must specify all codes.}
+\item{ToPort}{The end of port range for the TCP and UDP protocols, or an ICMP code
+number. For the ICMP code number, use \code{-1} to specify all codes. If you
+specify all ICMP types, you must specify all codes.
+
+Alternatively, use a set of IP permissions to specify multiple rules and
+a description for the rule.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -61,26 +72,22 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Adds one or more ingress rules to a security group.
+Adds the specified ingress rules to a security group.
 }
 \details{
+An inbound rule permits instances to receive traffic from the specified
+IPv4 or IPv6 CIDR address ranges, or from the instances associated with
+the specified destination security groups.
+
+You specify a protocol for each rule (for example, TCP). For TCP and
+UDP, you must also specify the destination port or port range. For
+ICMP/ICMPv6, you must also specify the ICMP/ICMPv6 type and code. You
+can use -1 to mean all types or all codes.
+
 Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
-[EC2-Classic] This action gives one or more IPv4 CIDR address ranges
-permission to access a security group in your account, or gives one or
-more security groups (called the \emph{source groups}) permission to access a
-security group for your account. A source group can be for your own AWS
-account, or another. You can have up to 100 rules per group.
-
-[EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address
-ranges permission to access a security group in your VPC, or gives one
-or more other security groups (called the \emph{source groups}) permission to
-access a security group for your VPC. The security groups must all be
-for the same VPC or a peer VPC in a VPC peering connection. For more
-information about VPC security group limits, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html}{Amazon VPC Limits}.
-
-You can optionally specify a description for the security group rule.
+For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
 \preformatted{svc$authorize_security_group_ingress(

@@ -8,18 +8,18 @@ master account}
 securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
 }
 \arguments{
-\item{OnlyAssociated}{Specifies what member accounts the response includes based on their
-relationship status with the master account. The default value is TRUE.
-If onlyAssociated is set to TRUE, the response includes member accounts
-whose relationship status with the master is set to ENABLED or DISABLED.
-If onlyAssociated is set to FALSE, the response includes all existing
-member accounts.}
+\item{OnlyAssociated}{Specifies which member accounts the response includes based on their
+relationship status with the master account. The default value is
+\code{TRUE}. If \code{onlyAssociated} is set to \code{TRUE}, the response includes
+member accounts whose relationship status with the master is set to
+\code{ENABLED} or \code{DISABLED}. If \code{onlyAssociated} is set to \code{FALSE}, the
+response includes all existing member accounts.}
 
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of items that you want in the response.}
 
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first
-call to the ListMembers operation. For subsequent calls to the
-operation, fill nextToken in the request with the value of NextToken
+\item{NextToken}{Paginates results. Set the value of this parameter to \code{NULL} on your
+first call to the \code{ListMembers} operation. For subsequent calls to the
+operation, fill \code{nextToken} in the request with the value of \code{nextToken}
 from the previous response to continue listing data.}
 }
 \description{

@@ -23,9 +23,14 @@ NULL
 #'       Destination = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
-#'         KeyType = "static-key",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
 #'         RoleArn = "string",
-#'         SecretArn = "string"
+#'         SecretArn = "string",
+#'         Url = "string"
 #'       ),
 #'       MaxLatency = 123,
 #'       Name = "string",
@@ -80,9 +85,14 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'       Description = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
-#'         KeyType = "static-key",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
 #'         RoleArn = "string",
-#'         SecretArn = "string"
+#'         SecretArn = "string",
+#'         Url = "string"
 #'       ),
 #'       Name = "string",
 #'       Subscribers = list(
@@ -97,9 +107,14 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'       Destination = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
-#'         KeyType = "static-key",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
 #'         RoleArn = "string",
-#'         SecretArn = "string"
+#'         SecretArn = "string",
+#'         Url = "string"
 #'       ),
 #'       MaxLatency = 123,
 #'       Name = "string",
@@ -112,9 +127,14 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'   Source = list(
 #'     Decryption = list(
 #'       Algorithm = "aes128"|"aes192"|"aes256",
-#'       KeyType = "static-key",
+#'       ConstantInitializationVector = "string",
+#'       DeviceId = "string",
+#'       KeyType = "speke"|"static-key",
+#'       Region = "string",
+#'       ResourceId = "string",
 #'       RoleArn = "string",
-#'       SecretArn = "string"
+#'       SecretArn = "string",
+#'       Url = "string"
 #'     ),
 #'     Description = "string",
 #'     EntitlementArn = "string",
@@ -236,9 +256,14 @@ mediaconnect_describe_flow <- function(FlowArn) {
 #'       Description = "string",
 #'       Encryption = list(
 #'         Algorithm = "aes128"|"aes192"|"aes256",
-#'         KeyType = "static-key",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
 #'         RoleArn = "string",
-#'         SecretArn = "string"
+#'         SecretArn = "string",
+#'         Url = "string"
 #'       ),
 #'       Name = "string",
 #'       Subscribers = list(
@@ -344,14 +369,14 @@ mediaconnect_list_flows <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .mediaconnect$operations$list_flows <- mediaconnect_list_flows
 
-#' Lists all tags associated with the resource
+#' List all tags on an AWS Elemental MediaConnect resource
 #'
-#' Lists all tags associated with the resource.
+#' List all tags on an AWS Elemental MediaConnect resource
 #'
 #' @usage
 #' mediaconnect_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to view tags for.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -523,14 +548,15 @@ mediaconnect_stop_flow <- function(FlowArn) {
 }
 .mediaconnect$operations$stop_flow <- mediaconnect_stop_flow
 
-#' Associates the specified tags to a resource
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
 #'
-#' Associates the specified tags to a resource. If the request does not mention an existing tag associated with the resource, that tag is not changed.
+#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
 #' @usage
 #' mediaconnect_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add tags to.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.
 #' @param Tags &#91;required&#93; A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
 #'
 #' @section Request syntax:
@@ -562,14 +588,14 @@ mediaconnect_tag_resource <- function(ResourceArn, Tags) {
 }
 .mediaconnect$operations$tag_resource <- mediaconnect_tag_resource
 
-#' Deletes the specified tags from a resource
+#' Deletes specified tags from a resource
 #'
-#' Deletes the specified tags from a resource.
+#' Deletes specified tags from a resource.
 #'
 #' @usage
 #' mediaconnect_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove tags from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @section Request syntax:
@@ -621,9 +647,14 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Description = "string",
 #'   Encryption = list(
 #'     Algorithm = "aes128"|"aes192"|"aes256",
-#'     KeyType = "static-key",
+#'     ConstantInitializationVector = "string",
+#'     DeviceId = "string",
+#'     KeyType = "speke"|"static-key",
+#'     Region = "string",
+#'     ResourceId = "string",
 #'     RoleArn = "string",
-#'     SecretArn = "string"
+#'     SecretArn = "string",
+#'     Url = "string"
 #'   ),
 #'   EntitlementArn = "string",
 #'   FlowArn = "string",
@@ -679,9 +710,14 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'   Destination = "string",
 #'   Encryption = list(
 #'     Algorithm = "aes128"|"aes192"|"aes256",
-#'     KeyType = "static-key",
+#'     ConstantInitializationVector = "string",
+#'     DeviceId = "string",
+#'     KeyType = "speke"|"static-key",
+#'     Region = "string",
+#'     ResourceId = "string",
 #'     RoleArn = "string",
-#'     SecretArn = "string"
+#'     SecretArn = "string",
+#'     Url = "string"
 #'   ),
 #'   FlowArn = "string",
 #'   MaxLatency = 123,
@@ -738,9 +774,14 @@ mediaconnect_update_flow_output <- function(Description = NULL, Destination = NU
 #' svc$update_flow_source(
 #'   Decryption = list(
 #'     Algorithm = "aes128"|"aes192"|"aes256",
-#'     KeyType = "static-key",
+#'     ConstantInitializationVector = "string",
+#'     DeviceId = "string",
+#'     KeyType = "speke"|"static-key",
+#'     Region = "string",
+#'     ResourceId = "string",
 #'     RoleArn = "string",
-#'     SecretArn = "string"
+#'     SecretArn = "string",
+#'     Url = "string"
 #'   ),
 #'   Description = "string",
 #'   EntitlementArn = "string",

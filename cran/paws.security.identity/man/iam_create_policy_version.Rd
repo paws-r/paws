@@ -10,11 +10,16 @@ iam_create_policy_version(PolicyArn, PolicyDocument, SetAsDefault)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy to which you want to
 add a new version.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for this
 new version of the policy.
+
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+to JSON format before submitting it to IAM.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
 this parameter is a string of characters consisting of the following:
@@ -33,7 +38,7 @@ When this parameter is \code{true}, the new policy version becomes the
 operative version. That is, it becomes the version that is in effect for
 the IAM users, groups, and roles that the policy is attached to.
 
-For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -48,7 +53,7 @@ Optionally, you can set the new version as the policy's default
 version. The default version is the version that is in effect for the
 IAM users, groups, and roles to which the policy is attached.
 
-For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

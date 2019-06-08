@@ -11,7 +11,7 @@ ec2_modify_instance_event_start_time(DryRun, InstanceId,
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation.}}
+Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceId}{[required] The ID of the instance with the scheduled event.}
 

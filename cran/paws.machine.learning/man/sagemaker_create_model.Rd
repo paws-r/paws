@@ -27,10 +27,12 @@ must have the \code{iam:PassRole} permission.}
 \item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
-\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to
-connect to. Control access to and from your model container by
-configuring the VPC. \code{VpcConfig} is used in hosting services and in
-batch transform. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud}
+\item{VpcConfig}{A
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html}{VpcConfig}
+object that specifies the VPC that you want your model to connect to.
+Control access to and from your model container by configuring the VPC.
+\code{VpcConfig} is used in hosting services and in batch transform. For more
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud}
 and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can

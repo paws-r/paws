@@ -55,7 +55,7 @@ Amazon Simple Storage Service
 \link[=s3_get_object]{get_object} \tab Retrieves objects from Amazon S3 \cr
 \link[=s3_get_object_acl]{get_object_acl} \tab Returns the access control list (ACL) of an object \cr
 \link[=s3_get_object_legal_hold]{get_object_legal_hold} \tab Gets an object's current Legal Hold status \cr
-\link[=s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the Object Lock configuration for a bucket \cr
+\link[=s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the object lock configuration for a bucket \cr
 \link[=s3_get_object_retention]{get_object_retention} \tab Retrieves an object's retention settings \cr
 \link[=s3_get_object_tagging]{get_object_tagging} \tab Returns the tag-set of an object \cr
 \link[=s3_get_object_torrent]{get_object_torrent} \tab Return torrent files from a bucket \cr
@@ -83,7 +83,7 @@ Amazon Simple Storage Service
 \link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket \cr
 \link[=s3_put_bucket_notification]{put_bucket_notification} \tab No longer used, see the PutBucketNotificationConfiguration operation \cr
 \link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab Enables notifications of specified events for a bucket \cr
-\link[=s3_put_bucket_policy]{put_bucket_policy} \tab Replaces a policy on a bucket \cr
+\link[=s3_put_bucket_policy]{put_bucket_policy} \tab Applies an Amazon S3 bucket policy to an Amazon S3 bucket \cr
 \link[=s3_put_bucket_replication]{put_bucket_replication} \tab Creates a replication configuration or replaces an existing one \cr
 \link[=s3_put_bucket_request_payment]{put_bucket_request_payment} \tab Sets the request payment configuration for a bucket \cr
 \link[=s3_put_bucket_tagging]{put_bucket_tagging} \tab Sets the tags for a bucket \cr
@@ -92,7 +92,7 @@ Amazon Simple Storage Service
 \link[=s3_put_object]{put_object} \tab Adds an object to a bucket \cr
 \link[=s3_put_object_acl]{put_object_acl} \tab uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket \cr
 \link[=s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a Legal Hold configuration to the specified object \cr
-\link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket \cr
+\link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an object lock configuration on the specified bucket \cr
 \link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object \cr
 \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket \cr
 \link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket \cr

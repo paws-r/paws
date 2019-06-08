@@ -13,7 +13,7 @@ be added, for example
 \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 ElastiCache resources are \emph{cluster} and \emph{snapshot}.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
 \item{Tags}{[required] A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.}
@@ -30,7 +30,7 @@ allocation report as a comma-separated value (CSV) file with your usage
 and costs aggregated by your tags. You can apply tags that represent
 business categories (such as cost centers, application names, or owners)
 to organize your costs across multiple services. For more information,
-see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Using Cost Allocation Tags in Amazon ElastiCache}
+see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Using Cost Allocation Tags in Amazon ElastiCache}
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{

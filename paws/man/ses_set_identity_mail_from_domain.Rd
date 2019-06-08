@@ -16,7 +16,7 @@ specified custom MAIL FROM domain.}
 The MAIL FROM domain must 1) be a subdomain of the verified identity, 2)
 not be used in a "From" address if the MAIL FROM domain is the
 destination of email feedback forwarding (for more information, see the
-\href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html}{Amazon SES Developer Guide}),
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html}{Amazon SES Developer Guide}),
 and 3) not be used to receive emails. A value of \code{null} disables the
 custom MAIL FROM setting for the identity.}
 
@@ -38,7 +38,7 @@ identity (an email address or a domain).
 To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or
-update an SPF record. For more information, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html}{Amazon SES Developer Guide}.
+update an SPF record. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

@@ -4,19 +4,25 @@
 \alias{s3_put_bucket_replication}
 \title{Creates a replication configuration or replaces an existing one}
 \usage{
-s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration)
+s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration,
+  Token)
 }
 \arguments{
 \item{Bucket}{[required]}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit.}
 
 \item{ReplicationConfiguration}{[required]}
+
+\item{Token}{A token that allows Amazon S3 object lock to be enabled for an existing
+bucket.}
 }
 \description{
 Creates a replication configuration or replaces an existing one. For
-more information, see Cross-Region Replication (CRR) in the \emph{Amazon S3
-Developer Guide}.
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the
+\emph{Amazon S3 Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_replication(
@@ -67,7 +73,8 @@ Developer Guide}.
         )
       )
     )
-  )
+  ),
+  Token = "string"
 )
 }
 }

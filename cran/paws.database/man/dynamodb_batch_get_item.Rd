@@ -36,7 +36,7 @@ attribute name. For example, consider the following attribute name:
 
 The name of this attribute conflicts with a reserved word, so it
 cannot be used directly in an expression. (For the complete list of
-reserved words, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
+reserved words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
@@ -52,7 +52,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
 \item \code{Keys} - An array of primary key attribute values that define
 specific items in the table. For each primary key, you must provide
@@ -69,11 +69,11 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they
 will not appear in the result.
 
-For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
 \item \code{AttributesToGet} - This is a legacy parameter. Use
 \code{ProjectionExpression} instead. For more information, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html}{AttributesToGet}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html}{AttributesToGet}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }}
 
@@ -118,7 +118,7 @@ throttling on the individual tables. If you delay the batch operation
 using exponential backoff, the individual requests in the batch are much
 more likely to succeed.
 
-For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations}{Batch Operations and Error Handling}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations}{Batch Operations and Error Handling}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 By default, \code{BatchGetItem} performs eventually consistent reads on every
@@ -135,7 +135,7 @@ the \code{ProjectionExpression} parameter.
 
 If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
-according to the type of read. For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations}{Capacity Units Calculations}
+according to the type of read. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations}{Capacity Units Calculations}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{

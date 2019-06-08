@@ -62,7 +62,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' instance types of the compute resources within the environment. This is
 #' based on the compute resource specification that you define or the
 #' [launch
-#' template](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+#' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 #' that you specify when you create the compute environment. You can choose
 #' to use Amazon EC2 On-Demand Instances or Spot Instances in your managed
 #' compute environment. You can optionally set a maximum price so that Spot
@@ -76,14 +76,14 @@ batch_cancel_job <- function(jobId, reason) {
 #' such as using a custom AMI, but you must ensure that your AMI meets the
 #' Amazon ECS container instance AMI specification. For more information,
 #' see [Container Instance
-#' AMIs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
+#' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
 #' in the *Amazon Elastic Container Service Developer Guide*. After you
 #' have created your unmanaged compute environment, you can use the
 #' DescribeComputeEnvironments operation to find the Amazon ECS cluster
 #' that is associated with it. Then, manually launch your container
 #' instances into that Amazon ECS cluster. For more information, see
 #' [Launching an Amazon ECS Container
-#' Instance](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+#' Instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' AWS Batch does not upgrade the AMIs in a compute environment after it is
@@ -108,13 +108,16 @@ batch_cancel_job <- function(jobId, reason) {
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. Up to 128 letters (uppercase and
 #' lowercase), numbers, hyphens, and underscores are allowed.
 #' @param type &#91;required&#93; The type of the compute environment. For more information, see [Compute
-#' Environments](http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+#' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 #' in the *AWS Batch User Guide*.
 #' @param state The state of the compute environment. If the state is `ENABLED`, then
 #' the compute environment accepts jobs from a queue and can scale out
 #' automatically based on queues.
 #' @param computeResources Details of the compute resources managed by the compute environment.
-#' This parameter is required for managed compute environments.
+#' This parameter is required for managed compute environments. For more
+#' information, see [Compute
+#' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+#' in the *AWS Batch User Guide*.
 #' @param serviceRole &#91;required&#93; The full Amazon Resource Name (ARN) of the IAM role that allows AWS
 #' Batch to make calls to other AWS services on your behalf.
 #' 
@@ -575,8 +578,8 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' batch_describe_job_definitions(jobDefinitions, maxResults,
 #'   jobDefinitionName, status, nextToken)
 #'
-#' @param jobDefinitions A space-separated list of up to 100 job definition names or full Amazon
-#' Resource Name (ARN) entries.
+#' @param jobDefinitions A list of up to 100 job definition names or full Amazon Resource Name
+#' (ARN) entries.
 #' @param maxResults The maximum number of results returned by `DescribeJobDefinitions` in
 #' paginated output. When this parameter is used, `DescribeJobDefinitions`
 #' only returns `maxResults` results in a single page along with a
@@ -707,7 +710,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #' @usage
 #' batch_describe_jobs(jobs)
 #'
-#' @param jobs &#91;required&#93; A space-separated list of up to 100 job IDs.
+#' @param jobs &#91;required&#93; A list of up to 100 job IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -857,7 +860,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' @param nodeProperties An object with various properties specific to multi-node parallel jobs.
 #' If you specify node properties for a job, it becomes a multi-node
 #' parallel job. For more information, see [Multi-node Parallel
-#' Jobs](http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
+#' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
 #' in the *AWS Batch User Guide*. If the job definition\'s `type` parameter
 #' is `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
@@ -871,7 +874,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' The minimum value for the timeout is 60 seconds. Any timeout
 #' configuration that is specified during a SubmitJob operation overrides
 #' the timeout configuration defined here. For more information, see [Job
-#' Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+#' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -921,7 +924,13 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'       )
 #'     ),
 #'     user = "string",
-#'     instanceType = "string"
+#'     instanceType = "string",
+#'     resourceRequirements = list(
+#'       list(
+#'         value = "string",
+#'         type = "GPU"
+#'       )
+#'     )
 #'   ),
 #'   nodeProperties = list(
 #'     numNodes = 123,
@@ -968,7 +977,13 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'             )
 #'           ),
 #'           user = "string",
-#'           instanceType = "string"
+#'           instanceType = "string",
+#'           resourceRequirements = list(
+#'             list(
+#'               value = "string",
+#'               type = "GPU"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -1036,7 +1051,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' array. The array size can be between 2 and 10,000. If you specify array
 #' properties for a job, it becomes an array job. For more information, see
 #' [Array
-#' Jobs](http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html)
+#' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html)
 #' in the *AWS Batch User Guide*.
 #' @param dependsOn A list of dependencies for the job. A job can depend upon a maximum of
 #' 20 jobs. You can specify a `SEQUENTIAL` type dependency without
@@ -1072,7 +1087,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' configuration overrides any timeout configuration specified in the job
 #' definition. For array jobs, child jobs have the same timeout
 #' configuration as the parent job. For more information, see [Job
-#' Timeouts](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+#' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1105,9 +1120,16 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'         name = "string",
 #'         value = "string"
 #'       )
+#'     ),
+#'     resourceRequirements = list(
+#'       list(
+#'         value = "string",
+#'         type = "GPU"
+#'       )
 #'     )
 #'   ),
 #'   nodeOverrides = list(
+#'     numNodes = 123,
 #'     nodePropertyOverrides = list(
 #'       list(
 #'         targetNodes = "string",
@@ -1122,6 +1144,12 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'             list(
 #'               name = "string",
 #'               value = "string"
+#'             )
+#'           ),
+#'           resourceRequirements = list(
+#'             list(
+#'               value = "string",
+#'               type = "GPU"
 #'             )
 #'           )
 #'         )

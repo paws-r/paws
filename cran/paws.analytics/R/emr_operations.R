@@ -202,7 +202,7 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' to connect to the master node and submitting queries directly to the
 #' software running on the master node, such as Hive and Hadoop. For more
 #' information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 #' in the *Amazon EMR Management Guide*.
 #' 
 #' A step specifies the location of a JAR file stored either on the master
@@ -276,7 +276,7 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps) {
 #' Adds tags to an Amazon EMR resource. Tags make it easier to associate
 #' clusters in various ways, such as grouping clusters to track your Amazon
 #' EMR resource allocation costs. For more information, see [Tag
-#' Clusters](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+#' Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #'
 #' @usage
 #' emr_add_tags(ResourceId, Tags)
@@ -378,7 +378,7 @@ emr_cancel_steps <- function(ClusterId = NULL, StepIds = NULL) {
 #' @param Name &#91;required&#93; The name of the security configuration.
 #' @param SecurityConfiguration &#91;required&#93; The security configuration details in JSON format. For JSON parameters
 #' and examples, see [Use Security Configurations to Set Up Cluster
-#' Security](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
+#' Security](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html)
 #' in the *Amazon EMR Management Guide*.
 #'
 #' @section Request syntax:
@@ -1018,6 +1018,15 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'           ),
 #'           InstanceTerminationTimeout = 123
 #'         )
+#'       ),
+#'       Configurations = list(
+#'         list(
+#'           Classification = "string",
+#'           Configurations = list(),
+#'           Properties = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1173,7 +1182,7 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 #' associate clusters in various ways, such as grouping clusters to track
 #' your Amazon EMR resource allocation costs. For more information, see
 #' [Tag
-#' Clusters](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
+#' Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #' 
 #' The following example removes the stack tag with value Prod from a
 #' cluster:
@@ -1237,7 +1246,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' SSH shell to connect to the master node and submitting queries directly
 #' to the software running on the master node, such as Hive and Hadoop. For
 #' more information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
 #' in the *Amazon EMR Management Guide*.
 #' 
 #' For long running clusters, we recommend that you periodically store your
@@ -1268,9 +1277,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' labels are in the form `emr-x.x.x`, where x.x.x is an Amazon EMR release
 #' version, for example, `emr-5.14.0`. For more information about Amazon
 #' EMR release versions and included application versions and features, see
-#' <http://docs.aws.amazon.com/emr/latest/ReleaseGuide/>. The release label
-#' applies only to Amazon EMR releases versions 4.x and later. Earlier
-#' versions use `AmiVersion`.
+#' <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>. The release
+#' label applies only to Amazon EMR releases versions 4.x and later.
+#' Earlier versions use `AmiVersion`.
 #' @param Instances &#91;required&#93; A specification of the number and type of Amazon EC2 instances.
 #' @param Steps A list of steps to run.
 #' @param BootstrapActions A list of bootstrap actions to run before Hadoop starts on the cluster
@@ -1280,7 +1289,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' A list of strings that indicates third-party software to use. For more
 #' information, see the [Amazon EMR Developer
-#' Guide](http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+#' Guide](https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 #' Currently supported values are:
 #' 
 #' -   \"mapr-m3\" - launch the job flow using MapR M3 Edition.
@@ -1294,7 +1303,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' argument list to the corresponding installation script as bootstrap
 #' action arguments. For more information, see \"Launch a Job Flow on the
 #' MapR Distribution for Hadoop\" in the [Amazon EMR Developer
-#' Guide](http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
+#' Guide](https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 #' Supported values are:
 #' 
 #' -   \"mapr-m3\" - launch the cluster using MapR M3 Edition.
@@ -1320,7 +1329,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' applications for Amazon EMR to install and configure when launching the
 #' cluster. For a list of applications available for each Amazon EMR
 #' release version, see the [Amazon EMR Release
-#' Guide](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
+#' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 #' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations
 #' supplied for the EMR cluster you are creating.
 #' @param VisibleToAllUsers Whether the cluster is visible to all IAM users of the AWS account
@@ -1359,17 +1368,17 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this AMI when
 #' it launches cluster EC2 instances. For more information about custom
 #' AMIs in Amazon EMR, see [Using a Custom
-#' AMI](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
+#' AMI](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
 #' in the *Amazon EMR Management Guide*. If omitted, the cluster uses the
 #' base Linux AMI for the `ReleaseLabel` specified. For Amazon EMR versions
 #' 2.x and 3.x, use `AmiVersion` instead.
 #' 
 #' For information about creating a custom AMI, see [Creating an Amazon
 #' EBS-Backed Linux
-#' AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+#' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 #' in the *Amazon Elastic Compute Cloud User Guide for Linux Instances*.
 #' For information about finding an AMI ID, see [Finding a Linux
-#' AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
+#' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
 #' @param EbsRootVolumeSize The size, in GiB, of the EBS root device volume of the Linux AMI that is
 #' used for each EC2 instance. Available in Amazon EMR version 4.x and
 #' later.
@@ -1382,7 +1391,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param KerberosAttributes Attributes for Kerberos configuration when Kerberos authentication is
 #' enabled using a security configuration. For more information see [Use
 #' Kerberos
-#' Authentication](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
+#' Authentication](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
 #' in the *EMR Management Guide*.
 #'
 #' @section Request syntax:
@@ -1664,7 +1673,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, AdditionalInfo = NULL, AmiVers
 #' value to `false`.
 #' 
 #' For more information, see[Managing Cluster
-#' Termination](http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
+#' Termination](https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
 #' in the *Amazon EMR Management Guide*.
 #'
 #' @usage

@@ -5,7 +5,8 @@
 \title{Creates an entity recognizer using submitted files}
 \usage{
 comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
-  InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId)
+  Tags, InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId,
+  VpcConfig)
 }
 \arguments{
 \item{RecognizerName}{[required] The name given to the newly created recognizer. Recognizer names can be
@@ -15,6 +16,11 @@ account/region.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 role that grants Amazon Comprehend read access to your input data.}
+
+\item{Tags}{Tags to be associated with the entity recognizer being created. A tag is
+a key-value pair that adds as a metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added
+to a resource to indicate its use by the sales department.}
 
 \item{InputDataConfig}{[required] Specifies the format and location of the input data. The S3 bucket
 containing the input data must be located in the same region as the
@@ -35,6 +41,10 @@ either of the following formats:
 \item Amazon Resource Name (ARN) of a KMS Key:
 \code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
 }}
+
+\item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your custom entity
+recognizer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \description{
 Creates an entity recognizer using submitted files. After your
@@ -45,6 +55,12 @@ using the API.
 \preformatted{svc$create_entity_recognizer(
   RecognizerName = "string",
   DataAccessRoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
   InputDataConfig = list(
     EntityTypes = list(
       list(
@@ -63,7 +79,15 @@ using the API.
   ),
   ClientRequestToken = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-  VolumeKmsKeyId = "string"
+  VolumeKmsKeyId = "string",
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  )
 )
 }
 }

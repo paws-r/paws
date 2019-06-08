@@ -33,7 +33,7 @@ The output contains duplicates.}
 
 \item{Description}{[required] The description for the DB parameter group.}
 
-\item{Tags}{}
+\item{Tags}{Tags to assign to the DB parameter group.}
 }
 \description{
 Creates a new DB parameter group.

@@ -18,7 +18,7 @@ for \code{DbUser} doesn't exist and \code{Autocreate} is \code{False}, then the
 command succeeds but the connection attempt will fail because the user
 doesn't exist in the database.
 
-For more information, see \href{http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html}{CREATE USER}
+For more information, see \href{https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html}{CREATE USER}
 in the Amazon Redshift Database Developer Guide.
 
 Constraints:
@@ -86,14 +86,14 @@ returns the database user name prefixed with \code{IAM:} if \code{AutoCreate} is
 one or more database user groups that the user will join at log on. By
 default, the temporary credentials expire in 900 seconds. You can
 optionally specify a duration between 900 seconds (15 minutes) and 3600
-seconds (60 minutes). For more information, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials}
+seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials}
 in the Amazon Redshift Cluster Management Guide.
 }
 \details{
 The AWS Identity and Access Management (IAM)user or role that executes
 GetClusterCredentials must have an IAM policy attached that allows
 access to all necessary actions and resources. For more information
-about permissions, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources}{Resource Policies for GetClusterCredentials}
+about permissions, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources}{Resource Policies for GetClusterCredentials}
 in the Amazon Redshift Cluster Management Guide.
 
 If the \code{DbGroups} parameter is specified, the IAM policy must allow the

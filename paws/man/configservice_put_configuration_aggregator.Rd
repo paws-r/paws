@@ -6,7 +6,7 @@
 source accounts and regions}
 \usage{
 configservice_put_configuration_aggregator(ConfigurationAggregatorName,
-  AccountAggregationSources, OrganizationAggregationSource)
+  AccountAggregationSources, OrganizationAggregationSource, Tags)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -14,6 +14,8 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 \item{AccountAggregationSources}{A list of AccountAggregationSource object.}
 
 \item{OrganizationAggregationSource}{An OrganizationAggregationSource object.}
+
+\item{Tags}{}
 }
 \description{
 Creates and updates the configuration aggregator with the selected
@@ -49,6 +51,12 @@ between AWS Config and AWS Organizations.
       "string"
     ),
     AllAwsRegions = TRUE|FALSE
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

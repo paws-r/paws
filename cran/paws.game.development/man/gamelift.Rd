@@ -17,265 +17,32 @@ automatically scale your resources to meet player demand and manage
 costs, and (4) track in-depth metrics on game server performance and
 player usage.
 
-The Amazon GameLift service API includes two important function sets:
-\itemize{
-\item \strong{Manage game sessions and player access} \-- Retrieve information
-on available game sessions; create new game sessions; send player
-requests to join a game session.
-\item \strong{Configure and manage game server resources} \-- Manage builds,
-fleets, queues, and aliases; set auto-scaling policies; retrieve
-logs and metrics.
-}
+When setting up hosting resources, you can deploy your custom game
+server or use the Amazon GameLift Realtime Servers. Realtime Servers
+gives you the ability to quickly stand up lightweight, efficient game
+servers with the core Amazon GameLift infrastructure already built in.
+
+\strong{Get Amazon GameLift Tools and Resources}
 
 This reference guide describes the low-level service API for Amazon
-GameLift. You can use the API functionality with these tools:
+GameLift and provides links to language-specific SDK reference topics.
+See also \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-components.html}{Amazon GameLift Tools and Resources}.
+
+\strong{API Summary}
+
+The Amazon GameLift service API includes two key sets of actions:
 \itemize{
-\item The Amazon Web Services software development kit (\href{http://aws.amazon.com/tools/#sdk}{AWS SDK}) is available in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients}{multiple languages}
-including C++ and C\#. Use the SDK to access the API
-programmatically from an application, such as a game client.
-\item The \href{https://docs.aws.amazon.com/cli/latest/userguide/}{AWS command-line interface} (CLI)
-tool is primarily useful for handling administrative actions, such
-as setting up and managing Amazon GameLift settings and resources.
-You can use the AWS CLI to manage all of your AWS services.
-\item The \href{https://console.aws.amazon.com/gamelift/home}{AWS Management Console} for Amazon
-GameLift provides a web interface to manage your Amazon GameLift
-settings and resources. The console includes a dashboard for
-tracking key resources, including builds and fleets, and displays
-usage and performance metrics for your games as customizable graphs.
-\item Amazon GameLift Local is a tool for testing your game's integration
-with Amazon GameLift before deploying it on the service. This tools
-supports a subset of key API actions, which can be called from
-either the AWS CLI or programmatically. See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/integration-testing-local.html}{Testing an Integration}.
+\item Manage game sessions and player access \-- Integrate this
+functionality into game client services in order to create new game
+sessions, retrieve information on existing game sessions; reserve a
+player slot in a game session, request matchmaking, etc.
+\item Configure and manage game server resources \-- Manage your Amazon
+GameLift hosting resources, including builds, scripts, fleets,
+queues, and aliases. Set up matchmakers, configure auto-scaling,
+retrieve game logs, and get hosting and game metrics.
 }
 
-\strong{Learn more}
-\itemize{
-\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/}{Developer Guide}
-\-- Read about Amazon GameLift features and how to use them.
-\item \href{https://gamedev.amazon.com/forums/tutorials}{Tutorials} \-- Get
-started fast with walkthroughs and sample projects.
-\item \href{https://gamedev.amazon.com/blogs/gamedev/}{GameDev Blog} \-- Stay
-up to date with new features and techniques.
-\item \href{https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html}{GameDev Forums}
-\-- Connect with the GameDev community.
-\item \href{https://aws.amazon.com/releasenotes/Amazon-GameLift/}{Release notes} and
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html}{document history}
-\-- Stay current with updates to the Amazon GameLift service, SDKs,
-and documentation.
-}
-
-\strong{API SUMMARY}
-
-This list offers a functional overview of the Amazon GameLift service
-API.
-
-\strong{Managing Games and Players}
-
-Use these actions to start new game sessions, find existing game
-sessions, track game session status and other information, and enable
-player access to game sessions.
-\itemize{
-\item \strong{Discover existing game sessions}
-\itemize{
-\item SearchGameSessions \-- Retrieve all available game sessions or
-search for game sessions that match a set of criteria.
-}
-\item \strong{Start new game sessions}
-\itemize{
-\item Start new games with Queues to find the best available hosting
-resources across multiple regions, minimize player latency, and
-balance game session activity for efficiency and cost
-effectiveness.
-\itemize{
-\item StartGameSessionPlacement \-- Request a new game session
-placement and add one or more players to it.
-\item DescribeGameSessionPlacement \-- Get details on a placement
-request, including status.
-\item StopGameSessionPlacement \-- Cancel a placement request.
-}
-\item CreateGameSession \-- Start a new game session on a specific
-fleet. \emph{Available in Amazon GameLift Local.}
-}
-\item \strong{Match players to game sessions with FlexMatch matchmaking}
-\itemize{
-\item StartMatchmaking \-- Request matchmaking for one players or a
-group who want to play together.
-\item StartMatchBackfill - Request additional player matches to fill
-empty slots in an existing game session.
-\item DescribeMatchmaking \-- Get details on a matchmaking request,
-including status.
-\item AcceptMatch \-- Register that a player accepts a proposed match,
-for matches that require player acceptance.
-\item StopMatchmaking \-- Cancel a matchmaking request.
-}
-\item \strong{Manage game session data}
-\itemize{
-\item DescribeGameSessions \-- Retrieve metadata for one or more game
-sessions, including length of time active and current player
-count. \emph{Available in Amazon GameLift Local.}
-\item DescribeGameSessionDetails \-- Retrieve metadata and the game
-session protection setting for one or more game sessions.
-\item UpdateGameSession \-- Change game session settings, such as
-maximum player count and join policy.
-\item GetGameSessionLogUrl \-- Get the location of saved logs for a
-game session.
-}
-\item \strong{Manage player sessions}
-\itemize{
-\item CreatePlayerSession \-- Send a request for a player to join a
-game session. \emph{Available in Amazon GameLift Local.}
-\item CreatePlayerSessions \-- Send a request for multiple players to
-join a game session. \emph{Available in Amazon GameLift Local.}
-\item DescribePlayerSessions \-- Get details on player activity,
-including status, playing time, and player data. \emph{Available in
-Amazon GameLift Local.}
-}
-}
-
-\strong{Setting Up and Managing Game Servers}
-
-When setting up Amazon GameLift resources for your game, you first
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{create a game build}
-and upload it to Amazon GameLift. You can then use these actions to
-configure and manage a fleet of resources to run your game servers,
-scale capacity to meet player demand, access performance and utilization
-metrics, and more.
-\itemize{
-\item \strong{Manage game builds}
-\itemize{
-\item CreateBuild \-- Create a new build using files stored in an
-Amazon S3 bucket. To create a build and upload files from a
-local path, use the AWS CLI command \code{upload-build}.
-\item ListBuilds \-- Get a list of all builds uploaded to a Amazon
-GameLift region.
-\item DescribeBuild \-- Retrieve information associated with a build.
-\item UpdateBuild \-- Change build metadata, including build name and
-version.
-\item DeleteBuild \-- Remove a build from Amazon GameLift.
-}
-\item \strong{Manage fleets}
-\itemize{
-\item CreateFleet \-- Configure and activate a new fleet to run a
-build's game servers.
-\item ListFleets \-- Get a list of all fleet IDs in a Amazon GameLift
-region (all statuses).
-\item DeleteFleet \-- Terminate a fleet that is no longer running game
-servers or hosting players.
-\item View / update fleet configurations.
-\itemize{
-\item DescribeFleetAttributes / UpdateFleetAttributes \-- View or
-change a fleet's metadata and settings for game session
-protection and resource creation limits.
-\item DescribeFleetPortSettings / UpdateFleetPortSettings \-- View
-or change the inbound permissions (IP address and port
-setting ranges) allowed for a fleet.
-\item DescribeRuntimeConfiguration / UpdateRuntimeConfiguration
-\-- View or change what server processes (and how many) to
-run on each instance in a fleet.
-}
-}
-\item \strong{Control fleet capacity}
-\itemize{
-\item DescribeEC2InstanceLimits \-- Retrieve maximum number of
-instances allowed for the current AWS account and the current
-usage level.
-\item DescribeFleetCapacity / UpdateFleetCapacity \-- Retrieve the
-capacity settings and the current number of instances in a
-fleet; adjust fleet capacity settings to scale up or down.
-\item Autoscale \-- Manage auto-scaling rules and apply them to a
-fleet.
-\itemize{
-\item PutScalingPolicy \-- Create a new auto-scaling policy, or
-update an existing one.
-\item DescribeScalingPolicies \-- Retrieve an existing
-auto-scaling policy.
-\item DeleteScalingPolicy \-- Delete an auto-scaling policy and
-stop it from affecting a fleet's capacity.
-\item StartFleetActions \-- Restart a fleet's auto-scaling
-policies.
-\item StopFleetActions \-- Suspend a fleet's auto-scaling
-policies.
-}
-}
-\item \strong{Manage game session queues}
-\itemize{
-\item CreateGameSessionQueue \-- Create a queue for processing
-requests for new game sessions.
-\item DescribeGameSessionQueues \-- Retrieve game session queues
-defined in a Amazon GameLift region.
-\item UpdateGameSessionQueue \-- Change the configuration of a game
-session queue.
-\item DeleteGameSessionQueue \-- Remove a game session queue from the
-region.
-}
-\item \strong{Manage FlexMatch resources}
-\itemize{
-\item CreateMatchmakingConfiguration \-- Create a matchmaking
-configuration with instructions for building a player group and
-placing in a new game session.
-\item DescribeMatchmakingConfigurations \-- Retrieve matchmaking
-configurations defined a Amazon GameLift region.
-\item UpdateMatchmakingConfiguration \-- Change settings for
-matchmaking configuration. queue.
-\item DeleteMatchmakingConfiguration \-- Remove a matchmaking
-configuration from the region.
-\item CreateMatchmakingRuleSet \-- Create a set of rules to use when
-searching for player matches.
-\item DescribeMatchmakingRuleSets \-- Retrieve matchmaking rule sets
-defined in a Amazon GameLift region.
-\item ValidateMatchmakingRuleSet \-- Verify syntax for a set of
-matchmaking rules.
-\item DeleteMatchmakingRuleSet \-- Remove a matchmaking rule set from
-the region.
-}
-\item \strong{Access fleet activity statistics}
-\itemize{
-\item DescribeFleetUtilization \-- Get current data on the number of
-server processes, game sessions, and players currently active on
-a fleet.
-\item DescribeFleetEvents \-- Get a fleet's logged events for a
-specified time span.
-\item DescribeGameSessions \-- Retrieve metadata associated with one
-or more game sessions, including length of time active and
-current player count.
-}
-\item \strong{Remotely access an instance}
-\itemize{
-\item DescribeInstances \-- Get information on each instance in a
-fleet, including instance ID, IP address, and status.
-\item GetInstanceAccess \-- Request access credentials needed to
-remotely connect to a specified instance in a fleet.
-}
-\item \strong{Manage fleet aliases}
-\itemize{
-\item CreateAlias \-- Define a new alias and optionally assign it to a
-fleet.
-\item ListAliases \-- Get all fleet aliases defined in a Amazon
-GameLift region.
-\item DescribeAlias \-- Retrieve information on an existing alias.
-\item UpdateAlias \-- Change settings for a alias, such as redirecting
-it from one fleet to another.
-\item DeleteAlias \-- Remove an alias from the region.
-\item ResolveAlias \-- Get the fleet ID that a specified alias points
-to.
-}
-\item \strong{Manage VPC peering connections for fleets}
-\itemize{
-\item CreateVpcPeeringAuthorization \-- Authorize a peering connection
-to one of your VPCs.
-\item DescribeVpcPeeringAuthorizations \-- Retrieve valid peering
-connection authorizations.
-\item DeleteVpcPeeringAuthorization \-- Delete a peering connection
-authorization.
-\item CreateVpcPeeringConnection \-- Establish a peering connection
-between the VPC for a Amazon GameLift fleet and one of your
-VPCs.
-\item DescribeVpcPeeringConnections \-- Retrieve information on active
-or pending VPC peering connections with a Amazon GameLift fleet.
-\item DeleteVpcPeeringConnection \-- Delete a VPC peering connection
-with a Amazon GameLift fleet.
-}
-}
+\strong{\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html}{Task-based list of API actions}}
 }
 \section{Operations}{
 
@@ -288,8 +55,9 @@ with a Amazon GameLift fleet.
 \link[=gamelift_create_game_session_queue]{create_game_session_queue} \tab Establishes a new queue for processing requests to place new game sessions \cr
 \link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration} \tab Defines a new matchmaking configuration for use with FlexMatch \cr
 \link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set} \tab Creates a new rule set for FlexMatch matchmaking \cr
-\link[=gamelift_create_player_session]{create_player_session} \tab Adds a player to a game session and creates a player session record \cr
-\link[=gamelift_create_player_sessions]{create_player_sessions} \tab Adds a group of players to a game session \cr
+\link[=gamelift_create_player_session]{create_player_session} \tab Reserves an open player slot in an active game session \cr
+\link[=gamelift_create_player_sessions]{create_player_sessions} \tab Reserves open slots in a game session for a group of players \cr
+\link[=gamelift_create_script]{create_script} \tab Creates a new script record for your Realtime Servers script \cr
 \link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization} \tab Requests authorization to create or delete a peer connection between the VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in your AWS account \cr
 \link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection} \tab Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC for your Amazon GameLift fleet \cr
 \link[=gamelift_delete_alias]{delete_alias} \tab Deletes an alias \cr
@@ -299,6 +67,7 @@ with a Amazon GameLift fleet.
 \link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration} \tab Permanently removes a FlexMatch matchmaking configuration \cr
 \link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set} \tab Deletes an existing matchmaking rule set \cr
 \link[=gamelift_delete_scaling_policy]{delete_scaling_policy} \tab Deletes a fleet scaling policy \cr
+\link[=gamelift_delete_script]{delete_script} \tab Deletes a Realtime script \cr
 \link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization} \tab Cancels a pending VPC peering authorization for the specified VPC \cr
 \link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection} \tab Removes a VPC peering connection \cr
 \link[=gamelift_describe_alias]{describe_alias} \tab Retrieves properties for an alias \cr
@@ -320,6 +89,7 @@ with a Amazon GameLift fleet.
 \link[=gamelift_describe_player_sessions]{describe_player_sessions} \tab Retrieves properties for one or more player sessions \cr
 \link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration} \tab Retrieves the current run-time configuration for the specified fleet \cr
 \link[=gamelift_describe_scaling_policies]{describe_scaling_policies} \tab Retrieves all scaling policies applied to a fleet \cr
+\link[=gamelift_describe_script]{describe_script} \tab Retrieves properties for a Realtime script \cr
 \link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations} \tab Retrieves valid VPC peering authorizations that are pending for the AWS account \cr
 \link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections} \tab Retrieves information on VPC peering connections \cr
 \link[=gamelift_get_game_session_log_url]{get_game_session_log_url} \tab Retrieves the location of stored game session logs for a specified game session \cr
@@ -327,6 +97,7 @@ with a Amazon GameLift fleet.
 \link[=gamelift_list_aliases]{list_aliases} \tab Retrieves all aliases for this AWS account \cr
 \link[=gamelift_list_builds]{list_builds} \tab Retrieves build records for all builds associated with the AWS account in use \cr
 \link[=gamelift_list_fleets]{list_fleets} \tab Retrieves a collection of fleet records for this AWS account \cr
+\link[=gamelift_list_scripts]{list_scripts} \tab Retrieves script records for all Realtime scripts that are associated with the AWS account in use \cr
 \link[=gamelift_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for a fleet \cr
 \link[=gamelift_request_upload_credentials]{request_upload_credentials} \tab Retrieves a fresh set of credentials for use when uploading a new set of game build files to Amazon GameLift's Amazon S3 \cr
 \link[=gamelift_resolve_alias]{resolve_alias} \tab Retrieves the fleet ID that a specified alias is currently pointing to \cr
@@ -347,6 +118,7 @@ with a Amazon GameLift fleet.
 \link[=gamelift_update_game_session_queue]{update_game_session_queue} \tab Updates settings for a game session queue, which determines how new game session requests in the queue are processed \cr
 \link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration} \tab Updates settings for a FlexMatch matchmaking configuration \cr
 \link[=gamelift_update_runtime_configuration]{update_runtime_configuration} \tab Updates the current run-time configuration for the specified fleet, which tells Amazon GameLift how to launch server processes on instances in the fleet \cr
+\link[=gamelift_update_script]{update_script} \tab Updates Realtime script metadata and content \cr
 \link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set} \tab Validates the syntax of a matchmaking rule or rule set
 }
 }

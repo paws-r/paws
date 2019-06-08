@@ -24,9 +24,8 @@ shard in a Redis (cluster mode enabled) replication group. The
 \code{ConfigureShard} has three members: \code{NewReplicaCount}, \code{NodeGroupId},
 and \code{PreferredAvailabilityZones}.}
 
-\item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is increased immediately. If
-\code{False}, the number of replica nodes is increased during the next
-maintenance window.}
+\item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is increased immediately.
+\code{ApplyImmediately=False} is not currently supported.}
 }
 \description{
 Dynamically increases the number of replics in a Redis (cluster mode

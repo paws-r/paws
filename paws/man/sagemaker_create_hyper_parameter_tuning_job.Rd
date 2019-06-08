@@ -20,7 +20,7 @@ including the search strategy, the objective metric used to evaluate
 training jobs, ranges of parameters to search, and resource limits for
 the tuning job. For more information, see automatic-model-tuning}
 
-\item{TrainingJobDefinition}{[required] The HyperParameterTrainingJobDefinition object that describes the
+\item{TrainingJobDefinition}{The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static
 hyperparameters, input data configuration, output data configuration,
 resource configuration, and stopping condition.}

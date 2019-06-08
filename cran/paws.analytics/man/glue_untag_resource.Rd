@@ -7,7 +7,8 @@
 glue_untag_resource(ResourceArn, TagsToRemove)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN of the resource from which to remove the tags.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to remove the
+tags.}
 
 \item{TagsToRemove}{[required] Tags to remove from this resource.}
 }

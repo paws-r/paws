@@ -2,18 +2,17 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_generate_data_key_without_plaintext}
 \alias{kms_generate_data_key_without_plaintext}
-\title{Returns a data encryption key encrypted under a customer master key
-(CMK)}
+\title{Generates a unique data key}
 \usage{
 kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
   KeySpec, NumberOfBytes, GrantTokens)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the customer master key (CMK) under which to generate
-and encrypt the data encryption key.
+\item{KeyId}{[required] The identifier of the customer master key (CMK) that encrypts the data
+key.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
+name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
 To specify a CMK in a different AWS account, you must use the key ARN or
 alias ARN.
 
@@ -31,47 +30,48 @@ get the alias name and alias ARN, use ListAliases.}
 
 \item{EncryptionContext}{A set of key-value pairs that represents additional authenticated data.
 
-For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html}{Encryption Context}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{KeySpec}{The length of the data encryption key. Use \code{AES_128} to generate a
-128-bit symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.}
+\item{KeySpec}{The length of the data key. Use \code{AES_128} to generate a 128-bit
+symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.}
 
-\item{NumberOfBytes}{The length of the data encryption key in bytes. For example, use the
-value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
-common key lengths (128-bit and 256-bit symmetric keys), we recommend
-that you use the \code{KeySpec} field instead of this one.}
+\item{NumberOfBytes}{The length of the data key in bytes. For example, use the value 64 to
+generate a 512-bit data key (64 bytes is 512 bits). For common key
+lengths (128-bit and 256-bit symmetric keys), we recommend that you use
+the \code{KeySpec} field instead of this one.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Returns a data encryption key encrypted under a customer master key
-(CMK). This operation is identical to GenerateDataKey but returns only
-the encrypted copy of the data key.
+Generates a unique data key. This operation returns a data key that is
+encrypted under a customer master key (CMK) that you specify.
+\code{GenerateDataKeyWithoutPlaintext} is identical to GenerateDataKey except
+that returns only the encrypted copy of the data key.
 }
 \details{
-To perform this operation on a CMK in a different AWS account, specify
-the key ARN or alias ARN in the value of the KeyId parameter.
+Like \code{GenerateDataKey}, \code{GenerateDataKeyWithoutPlaintext} returns a
+unique data key for each request. The bytes in the key are not related
+to the caller or CMK that is used to encrypt the data key.
 
-This operation is useful in a system that has multiple components with
-different degrees of trust. For example, consider a system that stores
-encrypted data in containers. Each container stores the encrypted data
-and an encrypted copy of the data key. One component of the system,
-called the \emph{control plane}, creates new containers. When it creates a
-new container, it uses this operation
-(\code{GenerateDataKeyWithoutPlaintext}) to get an encrypted data key and
-then stores it in the container. Later, a different component of the
-system, called the \emph{data plane}, puts encrypted data into the
-containers. To do this, it passes the encrypted data key to the Decrypt
-operation, then uses the returned plaintext data key to encrypt data,
-and finally stores the encrypted data in the container. In this system,
-the control plane never sees the plaintext data key.
+This operation is useful for systems that need to encrypt data at some
+point, but not immediately. When you need to encrypt the data, you call
+the Decrypt operation on the encrypted copy of the key.
+
+It's also useful in distributed systems with different levels of trust.
+For example, you might store encrypted data in containers. One component
+of your system creates new containers and stores an encrypted data key
+with each container. Then, a different component puts the data into the
+containers. That component first decrypts the data key, uses the
+plaintext data key to encrypt data, puts the encrypted data into the
+container, and then destroys the plaintext data key. In this system, the
+component that creates the containers never sees the plaintext data key.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

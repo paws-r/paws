@@ -16,7 +16,7 @@ Deletes an Amazon Redshift security group.
 You cannot delete a security group that is associated with any clusters.
 You cannot delete the default security group.
 
-For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
+For information about managing security groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

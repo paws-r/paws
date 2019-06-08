@@ -21,7 +21,7 @@ that has been configured for Systems Manager.
 This reference is intended to be used with the \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/}{AWS Systems Manager User Guide}.
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Systems Manager Prerequisites}
+For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting Up AWS Systems Manager}
 in the \emph{AWS Systems Manager User Guide}.
 
 For information about other API actions you can perform on Amazon EC2
@@ -33,27 +33,28 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \tabular{ll}{
 \link[=ssm_add_tags_to_resource]{add_tags_to_resource} \tab Adds or overwrites one or more tags for the specified resource \cr
 \link[=ssm_cancel_command]{cancel_command} \tab Attempts to cancel the command specified by the Command ID \cr
-\link[=ssm_cancel_maintenance_window_execution]{cancel_maintenance_window_execution} \tab Stops a Maintenance Window execution that is already in progress and cancels any tasks in the window that have not already starting running \cr
+\link[=ssm_cancel_maintenance_window_execution]{cancel_maintenance_window_execution} \tab Stops a maintenance window execution that is already in progress and cancels any tasks in the window that have not already starting running \cr
 \link[=ssm_create_activation]{create_activation} \tab Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command \cr
 \link[=ssm_create_association]{create_association} \tab Associates the specified Systems Manager document with the specified instances or targets \cr
 \link[=ssm_create_association_batch]{create_association_batch} \tab Associates the specified Systems Manager document with the specified instances or targets \cr
 \link[=ssm_create_document]{create_document} \tab Creates a Systems Manager document \cr
-\link[=ssm_create_maintenance_window]{create_maintenance_window} \tab Creates a new Maintenance Window \cr
+\link[=ssm_create_maintenance_window]{create_maintenance_window} \tab Creates a new maintenance window \cr
+\link[=ssm_create_ops_item]{create_ops_item} \tab Creates a new OpsItem \cr
 \link[=ssm_create_patch_baseline]{create_patch_baseline} \tab Creates a patch baseline \cr
 \link[=ssm_create_resource_data_sync]{create_resource_data_sync} \tab Creates a resource data sync configuration to a single bucket in Amazon S3 \cr
 \link[=ssm_delete_activation]{delete_activation} \tab Deletes an activation \cr
 \link[=ssm_delete_association]{delete_association} \tab Disassociates the specified Systems Manager document from the specified instance \cr
 \link[=ssm_delete_document]{delete_document} \tab Deletes the Systems Manager document and all instance associations to the document \cr
 \link[=ssm_delete_inventory]{delete_inventory} \tab Delete a custom inventory type, or the data associated with a custom Inventory type \cr
-\link[=ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a Maintenance Window \cr
+\link[=ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a maintenance window \cr
 \link[=ssm_delete_parameter]{delete_parameter} \tab Delete a parameter from the system \cr
 \link[=ssm_delete_parameters]{delete_parameters} \tab Delete a list of parameters \cr
 \link[=ssm_delete_patch_baseline]{delete_patch_baseline} \tab Deletes a patch baseline \cr
 \link[=ssm_delete_resource_data_sync]{delete_resource_data_sync} \tab Deletes a Resource Data Sync configuration \cr
 \link[=ssm_deregister_managed_instance]{deregister_managed_instance} \tab Removes the server or virtual machine from the list of registered servers \cr
 \link[=ssm_deregister_patch_baseline_for_patch_group]{deregister_patch_baseline_for_patch_group} \tab Removes a patch group from a patch baseline \cr
-\link[=ssm_deregister_target_from_maintenance_window]{deregister_target_from_maintenance_window} \tab Removes a target from a Maintenance Window \cr
-\link[=ssm_deregister_task_from_maintenance_window]{deregister_task_from_maintenance_window} \tab Removes a task from a Maintenance Window \cr
+\link[=ssm_deregister_target_from_maintenance_window]{deregister_target_from_maintenance_window} \tab Removes a target from a maintenance window \cr
+\link[=ssm_deregister_task_from_maintenance_window]{deregister_task_from_maintenance_window} \tab Removes a task from a maintenance window \cr
 \link[=ssm_describe_activations]{describe_activations} \tab Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration\cr
 \link[=ssm_describe_association]{describe_association} \tab Describes the association for the specified target or instance \cr
 \link[=ssm_describe_association_execution_targets]{describe_association_execution_targets} \tab Use this API action to view information about a specific execution of a specific association \cr
@@ -71,18 +72,20 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_describe_instance_patch_states_for_patch_group]{describe_instance_patch_states_for_patch_group} \tab Retrieves the high-level patch state for the instances in the specified patch group \cr
 \link[=ssm_describe_instance_patches]{describe_instance_patches} \tab Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance \cr
 \link[=ssm_describe_inventory_deletions]{describe_inventory_deletions} \tab Describes a specific delete inventory operation \cr
-\link[=ssm_describe_maintenance_window_execution_task_invocations]{describe_maintenance_window_execution_task_invocations} \tab Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution \cr
-\link[=ssm_describe_maintenance_window_execution_tasks]{describe_maintenance_window_execution_tasks} \tab For a given Maintenance Window execution, lists the tasks that were executed \cr
-\link[=ssm_describe_maintenance_window_executions]{describe_maintenance_window_executions} \tab Lists the executions of a Maintenance Window \cr
-\link[=ssm_describe_maintenance_window_schedule]{describe_maintenance_window_schedule} \tab Retrieves information about upcoming executions of a Maintenance Window \cr
-\link[=ssm_describe_maintenance_window_targets]{describe_maintenance_window_targets} \tab Lists the targets registered with the Maintenance Window \cr
-\link[=ssm_describe_maintenance_window_tasks]{describe_maintenance_window_tasks} \tab Lists the tasks in a Maintenance Window \cr
-\link[=ssm_describe_maintenance_windows]{describe_maintenance_windows} \tab Retrieves the Maintenance Windows in an AWS account \cr
-\link[=ssm_describe_maintenance_windows_for_target]{describe_maintenance_windows_for_target} \tab Retrieves information about the Maintenance Windows targets or tasks that an instance is associated with \cr
+\link[=ssm_describe_maintenance_window_execution_task_invocations]{describe_maintenance_window_execution_task_invocations} \tab Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution \cr
+\link[=ssm_describe_maintenance_window_execution_tasks]{describe_maintenance_window_execution_tasks} \tab For a given maintenance window execution, lists the tasks that were run \cr
+\link[=ssm_describe_maintenance_window_executions]{describe_maintenance_window_executions} \tab Lists the executions of a maintenance window \cr
+\link[=ssm_describe_maintenance_window_schedule]{describe_maintenance_window_schedule} \tab Retrieves information about upcoming executions of a maintenance window \cr
+\link[=ssm_describe_maintenance_window_targets]{describe_maintenance_window_targets} \tab Lists the targets registered with the maintenance window \cr
+\link[=ssm_describe_maintenance_window_tasks]{describe_maintenance_window_tasks} \tab Lists the tasks in a maintenance window \cr
+\link[=ssm_describe_maintenance_windows]{describe_maintenance_windows} \tab Retrieves the maintenance windows in an AWS account \cr
+\link[=ssm_describe_maintenance_windows_for_target]{describe_maintenance_windows_for_target} \tab Retrieves information about the maintenance window targets or tasks that an instance is associated with \cr
+\link[=ssm_describe_ops_items]{describe_ops_items} \tab Query a set of OpsItems \cr
 \link[=ssm_describe_parameters]{describe_parameters} \tab Get information about a parameter \cr
 \link[=ssm_describe_patch_baselines]{describe_patch_baselines} \tab Lists the patch baselines in your AWS account \cr
 \link[=ssm_describe_patch_group_state]{describe_patch_group_state} \tab Returns high-level aggregated patch compliance state for a patch group \cr
 \link[=ssm_describe_patch_groups]{describe_patch_groups} \tab Lists all patch groups that have been registered with patch baselines \cr
+\link[=ssm_describe_patch_properties]{describe_patch_properties} \tab Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches \cr
 \link[=ssm_describe_sessions]{describe_sessions} \tab Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days \cr
 \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution \cr
 \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin \cr
@@ -92,11 +95,13 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_get_document]{get_document} \tab Gets the contents of the specified Systems Manager document \cr
 \link[=ssm_get_inventory]{get_inventory} \tab Query inventory information \cr
 \link[=ssm_get_inventory_schema]{get_inventory_schema} \tab Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type \cr
-\link[=ssm_get_maintenance_window]{get_maintenance_window} \tab Retrieves a Maintenance Window \cr
-\link[=ssm_get_maintenance_window_execution]{get_maintenance_window_execution} \tab Retrieves details about a specific task executed as part of a Maintenance Window execution \cr
-\link[=ssm_get_maintenance_window_execution_task]{get_maintenance_window_execution_task} \tab Retrieves the details about a specific task executed as part of a Maintenance Window execution \cr
+\link[=ssm_get_maintenance_window]{get_maintenance_window} \tab Retrieves a maintenance window \cr
+\link[=ssm_get_maintenance_window_execution]{get_maintenance_window_execution} \tab Retrieves details about a specific task run as part of a maintenance window execution \cr
+\link[=ssm_get_maintenance_window_execution_task]{get_maintenance_window_execution_task} \tab Retrieves the details about a specific task run as part of a maintenance window execution \cr
 \link[=ssm_get_maintenance_window_execution_task_invocation]{get_maintenance_window_execution_task_invocation} \tab Retrieves a task invocation \cr
-\link[=ssm_get_maintenance_window_task]{get_maintenance_window_task} \tab Lists the tasks in a Maintenance Window \cr
+\link[=ssm_get_maintenance_window_task]{get_maintenance_window_task} \tab Lists the tasks in a maintenance window \cr
+\link[=ssm_get_ops_item]{get_ops_item} \tab Get information about an OpsItem by using the ID \cr
+\link[=ssm_get_ops_summary]{get_ops_summary} \tab View a summary of OpsItems based on specified filters and aggregators \cr
 \link[=ssm_get_parameter]{get_parameter} \tab Get information about a parameter by using the parameter name \cr
 \link[=ssm_get_parameter_history]{get_parameter_history} \tab Query a list of all parameters used by the AWS account \cr
 \link[=ssm_get_parameters]{get_parameters} \tab Get details of a parameter \cr
@@ -123,26 +128,27 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_put_parameter]{put_parameter} \tab Add a parameter to the system \cr
 \link[=ssm_register_default_patch_baseline]{register_default_patch_baseline} \tab Defines the default patch baseline \cr
 \link[=ssm_register_patch_baseline_for_patch_group]{register_patch_baseline_for_patch_group} \tab Registers a patch baseline for a patch group \cr
-\link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window} \tab Registers a target with a Maintenance Window \cr
-\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window} \tab Adds a new task to a Maintenance Window \cr
+\link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window} \tab Registers a target with a maintenance window \cr
+\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window} \tab Adds a new task to a maintenance window \cr
 \link[=ssm_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes all tags from the specified resource \cr
 \link[=ssm_reset_service_setting]{reset_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
 \link[=ssm_resume_session]{resume_session} \tab Reconnects a session to an instance after it has been disconnected \cr
 \link[=ssm_send_automation_signal]{send_automation_signal} \tab Sends a signal to an Automation execution to change the current behavior or status of the execution \cr
-\link[=ssm_send_command]{send_command} \tab Executes commands on one or more managed instances \cr
-\link[=ssm_start_associations_once]{start_associations_once} \tab Use this API action to execute an association immediately and only one time \cr
+\link[=ssm_send_command]{send_command} \tab Runs commands on one or more managed instances \cr
+\link[=ssm_start_associations_once]{start_associations_once} \tab Use this API action to run an association immediately and only one time \cr
 \link[=ssm_start_automation_execution]{start_automation_execution} \tab Initiates execution of an Automation document \cr
 \link[=ssm_start_session]{start_session} \tab Initiates a connection to a target (for example, an instance) for a Session Manager session \cr
-\link[=ssm_stop_automation_execution]{stop_automation_execution} \tab Stop an Automation that is currently executing \cr
+\link[=ssm_stop_automation_execution]{stop_automation_execution} \tab Stop an Automation that is currently running \cr
 \link[=ssm_terminate_session]{terminate_session} \tab Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the instance \cr
 \link[=ssm_update_association]{update_association} \tab Updates an association \cr
 \link[=ssm_update_association_status]{update_association_status} \tab Updates the status of the Systems Manager document associated with the specified instance \cr
 \link[=ssm_update_document]{update_document} \tab The document you want to update \cr
 \link[=ssm_update_document_default_version]{update_document_default_version} \tab Set the default version of a document \cr
-\link[=ssm_update_maintenance_window]{update_maintenance_window} \tab Updates an existing Maintenance Window \cr
-\link[=ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing Maintenance Window \cr
-\link[=ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a Maintenance Window \cr
+\link[=ssm_update_maintenance_window]{update_maintenance_window} \tab Updates an existing maintenance window \cr
+\link[=ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing maintenance window \cr
+\link[=ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a maintenance window \cr
 \link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance \cr
+\link[=ssm_update_ops_item]{update_ops_item} \tab Edit or change an OpsItem \cr
 \link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline \cr
 \link[=ssm_update_service_setting]{update_service_setting} \tab ServiceSetting is an account-level setting for an AWS service
 }

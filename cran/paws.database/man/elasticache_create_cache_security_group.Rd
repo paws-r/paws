@@ -27,7 +27,7 @@ Cache security groups are only used when you are creating a cluster
 outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are
 creating a cluster inside of a VPC, use a cache subnet group instead.
 For more information, see
-\href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html}{CreateCacheSubnetGroup}.
+\href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html}{CreateCacheSubnetGroup}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_cache_security_group(

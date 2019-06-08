@@ -17,9 +17,9 @@ Route 53 to send query logs to. This is the format of the ARN:
 arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log\_group\_name}
 
 To get the ARN for a log group, you can use the CloudWatch console, the
-\href{http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html}{DescribeLogGroups}
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html}{DescribeLogGroups}
 API action, the
-\href{http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html}{describe-log-groups}
+\href{https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html}{describe-log-groups}
 command, or the applicable command in one of the AWS SDKs.}
 }
 \description{
@@ -119,13 +119,13 @@ queries are submitted for a resource record set, and depending on
 the TTL for that resource record set, query logs might contain
 information about only one query out of every several thousand
 queries that are submitted to DNS. For more information about how
-DNS works, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html}{Routing Internet Traffic to Your Website or Web Application}
+DNS works, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html}{Routing Internet Traffic to Your Website or Web Application}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Log File Format
 
 :   For a list of the values in each query log and the format of each
-value, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
+value, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Pricing
@@ -136,7 +136,7 @@ How to Stop Logging
 
 :   If you want Route 53 to stop sending query logs to CloudWatch Logs,
 delete the query logging configuration. For more information, see
-DeleteQueryLoggingConfig.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html}{DeleteQueryLoggingConfig}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_query_logging_config(

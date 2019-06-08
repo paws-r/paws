@@ -18,8 +18,8 @@ Valid values are \code{true} or \code{false}. The default value is \code{true}.}
 \item{DisableAutomatedBackup}{Enable or disable scheduled backups. Valid values are \code{true} or \code{false}.
 The default value is \code{true}.}
 
-\item{Engine}{The configuration management engine to use. Valid values include \code{Chef}
-and \code{Puppet}.}
+\item{Engine}{The configuration management engine to use. Valid values include
+\code{ChefAutomate} and \code{Puppet}.}
 
 \item{EngineModel}{The engine model of the server. Valid values in this release include
 \code{Monolithic} for Puppet and \code{Single} for Chef.}
@@ -32,18 +32,18 @@ Puppet server, the valid value is \code{2017}.}
 
 \strong{Attributes accepted in a Chef createServer request:}
 \itemize{
-\item \code{CHEF_PIVOTAL_KEY}: A base64-encoded RSA public key. The
+\item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
 corresponding private key is required to access the Chef API. When
-no CHEF\_PIVOTAL\_KEY is set, a private key is generated and
-returned in the response.
-\item \code{CHEF_DELIVERY_ADMIN_PASSWORD}: The password for the administrative
-user in the Chef Automate GUI. The password length is a minimum of
-eight characters, and a maximum of 32. The password can contain
-letters, numbers, and special characters (!/@\#\$\%\^&+=\_). The
-password must contain at least one lower case letter, one upper case
-letter, one number, and one special character. When no
-CHEF\_DELIVERY\_ADMIN\_PASSWORD is set, one is generated and
-returned in the response.
+no CHEF\_AUTOMATE\_PIVOTAL\_KEY is set, a private key is generated
+and returned in the response.
+\item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
+user in the Chef Automate web-based dashboard. The password length
+is a minimum of eight characters, and a maximum of 32. The password
+can contain letters, numbers, and special characters
+(!/@\#\$\%\^&+=\_). The password must contain at least one lower case
+letter, one upper case letter, one number, and one special
+character. When no CHEF\_AUTOMATE\_ADMIN\_PASSWORD is set, one is
+generated and returned in the response.
 }
 
 \strong{Attributes accepted in a Puppet createServer request:}
@@ -55,8 +55,8 @@ repository (for example,
 ssh://git\@your.git-repo.com:user/control-repo.git). Specifying an
 r10k remote opens TCP port 8170.
 \item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git
-repository, add PUPPET\_R10K\_PRIVATE\_KEY to specify an SSH URL and
-a PEM-encoded private SSH key.
+repository, add PUPPET\_R10K\_PRIVATE\_KEY to specify a PEM-encoded
+private SSH key.
 }}
 
 \item{BackupRetentionCount}{The number of automated backups that you want to keep. Whenever a new
@@ -76,9 +76,7 @@ https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks
 This template creates a CloudFormation stack that includes the instance
 profile you need.}
 
-\item{InstanceType}{[required] The Amazon EC2 instance type to use. For example, \code{m4.large}.
-Recommended instance types include \code{t2.medium} and greater, \code{m4.*}, or
-\code{c4.xlarge} and greater.}
+\item{InstanceType}{[required] The Amazon EC2 instance type to use. For example, \code{m5.large}.}
 
 \item{KeyPair}{The Amazon EC2 key pair to set for the instance. This parameter is
 optional; if desired, you may specify this parameter to connect to your

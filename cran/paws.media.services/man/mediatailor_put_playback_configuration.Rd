@@ -52,7 +52,8 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
     ContentSegmentUrlPrefix = "string"
   ),
   DashConfiguration = list(
-    MpdLocation = "string"
+    MpdLocation = "string",
+    OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
   ),
   Name = "string",
   SlateAdUrl = "string",

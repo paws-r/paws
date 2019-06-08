@@ -22,7 +22,7 @@ see ListExports.
 }
 \details{
 For more information about importing an exported output value, see the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{Fn::ImportValue}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{Fn::ImportValue}
 function.
 }
 \section{Request syntax}{

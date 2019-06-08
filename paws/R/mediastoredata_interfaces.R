@@ -53,7 +53,7 @@ NULL
 
 .mediastoredata$put_object_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Body = structure(logical(0), tags = list(type = "blob", streaming = TRUE)), Path = structure(logical(0), tags = list(location = "uri", locationName = "Path", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string"))), tags = list(type = "structure", payload = "Body"))
+  shape <- structure(list(Body = structure(logical(0), tags = list(type = "blob", streaming = TRUE)), Path = structure(logical(0), tags = list(location = "uri", locationName = "Path", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), StorageClass = structure(logical(0), tags = list(location = "header", locationName = "x-amz-storage-class", type = "string")), UploadAvailability = structure(logical(0), tags = list(location = "header", locationName = "x-amz-upload-availability", type = "string"))), tags = list(type = "structure", payload = "Body"))
   return(populate(args, shape))
 }
 

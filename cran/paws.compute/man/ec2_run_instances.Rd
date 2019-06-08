@@ -17,22 +17,17 @@ ec2_run_instances(BlockDeviceMappings, ImageId, InstanceType,
   HibernationOptions, LicenseSpecifications)
 }
 \arguments{
-\item{BlockDeviceMappings}{One or more block device mapping entries. You can't specify both a
-snapshot ID and an encryption value. This is because only blank volumes
-can be encrypted on creation. If a snapshot is the basis for a volume,
-it is not blank and its encryption status is used for the volume
-encryption status.}
+\item{BlockDeviceMappings}{The block device mapping entries.}
 
-\item{ImageId}{The ID of the AMI, which you can get by calling DescribeImages. An AMI
-is required to launch an instance and must be specified here or in a
-launch template.}
+\item{ImageId}{The ID of the AMI. An AMI ID is required to launch an instance and must
+be specified here or in a launch template.}
 
 \item{InstanceType}{The instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Default: \code{m1.small}}
 
-\item{Ipv6AddressCount}{[EC2-VPC] A number of IPv6 addresses to associate with the primary
+\item{Ipv6AddressCount}{[EC2-VPC] The number of IPv6 addresses to associate with the primary
 network interface. Amazon EC2 chooses the IPv6 addresses from the range
 of your subnet. You cannot specify this option and the option to assign
 specific IPv6 addresses in the same request. You can specify this option
@@ -41,11 +36,11 @@ if you've specified a minimum number of instances to launch.
 You cannot specify this option and the network interfaces option in the
 same request.}
 
-\item{Ipv6Addresses}{[EC2-VPC] Specify one or more IPv6 addresses from the range of the
-subnet to associate with the primary network interface. You cannot
-specify this option and the option to assign a number of IPv6 addresses
-in the same request. You cannot specify this option if you've specified
-a minimum number of instances to launch.
+\item{Ipv6Addresses}{[EC2-VPC] The IPv6 addresses from the range of the subnet to associate
+with the primary network interface. You cannot specify this option and
+the option to assign a number of IPv6 addresses in the same request. You
+cannot specify this option if you've specified a minimum number of
+instances to launch.
 
 You cannot specify this option and the network interfaces option in the
 same request.}
@@ -57,8 +52,10 @@ more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html}{PV-GRUB}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{KeyName}{The name of the key pair. You can create a key pair using CreateKeyPair
-or ImportKeyPair.
+\item{KeyName}{The name of the key pair. You can create a key pair using
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html}{CreateKeyPair}
+or
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html}{ImportKeyPair}.
 
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
@@ -82,30 +79,31 @@ specified instance type. For more information about the default limits,
 and how to request an increase, see \href{http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2}{How many instances can I run in Amazon EC2}
 in the Amazon EC2 General FAQ.}
 
-\item{Monitoring}{The monitoring for the instance.}
+\item{Monitoring}{Specifies whether detailed monitoring is enabled for the instance.}
 
 \item{Placement}{The placement for the instance.}
 
-\item{RamdiskId}{The ID of the RAM disk.
+\item{RamdiskId}{The ID of the RAM disk to select. Some kernels require additional
+drivers at launch. Check the kernel requirements for information about
+whether you need to specify a RAM disk. To find kernel requirements, go
+to the AWS Resource Center and search for the kernel ID.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html}{PV-GRUB}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{SecurityGroupIds}{One or more security group IDs. You can create a security group using
-CreateSecurityGroup.
+\item{SecurityGroupIds}{The IDs of the security groups. You can create a security group using
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html}{CreateSecurityGroup}.
 
-Default: Amazon EC2 uses the default security group.
+If you specify a network interface, you must specify any security groups
+as part of the network interface.}
 
-You cannot specify this option and the network interfaces option in the
-same request.}
-
-\item{SecurityGroups}{[EC2-Classic, default VPC] One or more security group names. For a
+\item{SecurityGroups}{[EC2-Classic, default VPC] The names of the security groups. For a
 nondefault VPC, you must use security group IDs instead.
 
-You cannot specify this option and the network interfaces option in the
-same request.
+If you specify a network interface, you must specify any security groups
+as part of the network interface.
 
 Default: Amazon EC2 uses the default security group.}
 
@@ -119,7 +117,7 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html}{Ru
 (Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data}{Adding User Data}
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise, you
-must provide base64-encoded text.}
+must provide base64-encoded text. User data is limited to 16 KB.}
 
 \item{AdditionalInfo}{Reserved.}
 
@@ -130,7 +128,8 @@ Constraints: Maximum 64 ASCII characters}
 
 \item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
 using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
-this attribute to \code{false} after launch, use ModifyInstanceAttribute.
+this attribute after launch, use
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html}{ModifyInstanceAttribute}.
 Alternatively, if you set \code{InstanceInitiatedShutdownBehavior} to
 \code{terminate}, you can terminate the instance by running the shutdown
 command from the instance.
@@ -158,10 +157,9 @@ system shutdown).
 
 Default: \code{stop}}
 
-\item{NetworkInterfaces}{One or more network interfaces.
-
-You cannot specify this option and the network interfaces option in the
-same request.}
+\item{NetworkInterfaces}{The network interfaces to associate with the instance. If you specify a
+network interface, you must specify any security groups as part of the
+network interface.}
 
 \item{PrivateIpAddress}{[EC2-VPC] The primary IPv4 address. You must specify a value from the
 IPv4 address range of the subnet.
@@ -175,14 +173,21 @@ than one instance in the request.
 You cannot specify this option and the network interfaces option in the
 same request.}
 
-\item{ElasticGpuSpecification}{An elastic GPU to associate with the instance.}
+\item{ElasticGpuSpecification}{An elastic GPU to associate with the instance. An Elastic GPU is a GPU
+resource that you can attach to your Windows instance to accelerate the
+graphics performance of your applications. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon EC2 Elastic GPUs}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{ElasticInferenceAccelerators}{An elastic inference accelerator.}
+\item{ElasticInferenceAccelerators}{An elastic inference accelerator to associate with the instance. Elastic
+inference accelerators are a resource you can attach to your Amazon EC2
+instances to accelerate your Deep Learning (DL) inference workloads.}
 
 \item{TagSpecifications}{The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all
 instances or volumes that are created during launch. To tag a resource
-after it has been created, see CreateTags.}
+after it has been created, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html}{CreateTags}.}
 
 \item{LaunchTemplate}{The launch template to use to launch the instances. Any parameters that
 you specify in RunInstances override the same parameters in the launch
@@ -195,9 +200,11 @@ For RunInstances, persistent Spot Instance requests are only supported
 when \strong{InstanceInterruptionBehavior} is set to either \code{hibernate} or
 \code{stop}.}
 
-\item{CreditSpecification}{The credit option for CPU usage of the instance. Valid values are
-\code{standard} and \code{unlimited}. To change this attribute after launch, use
-ModifyInstanceCreditSpecification. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances}
+\item{CreditSpecification}{The credit option for CPU usage of the T2 or T3 instance. Valid values
+are \code{standard} and \code{unlimited}. To change this attribute after launch,
+use
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html}{ModifyInstanceCreditSpecification}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Default: \code{standard} (T2 instances) or \code{unlimited} (T3 instances)}
@@ -287,7 +294,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
     )
   ),
   ImageId = "string",
-  InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
+  InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.12xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.12xlarge"|"r5a.24xlarge"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.12xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.18xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.18xlarge"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.12xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.12xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.12xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge",
   Ipv6AddressCount = 123,
   Ipv6Addresses = list(
     list(
@@ -353,7 +360,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
         )
       ),
       SecondaryPrivateIpAddressCount = 123,
-      SubnetId = "string"
+      SubnetId = "string",
+      InterfaceType = "string"
     )
   ),
   PrivateIpAddress = "string",

@@ -3,17 +3,188 @@
 #' @include s3control_service.R
 NULL
 
-#' Removes the Public Access Block configuration for an Amazon Web Services
-#' account
+#' Creates an Amazon S3 batch operations job
 #'
-#' Removes the Public Access Block configuration for an Amazon Web Services
-#' account.
+#' Creates an Amazon S3 batch operations job.
+#'
+#' @usage
+#' s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
+#'   ClientRequestToken, Manifest, Description, Priority, RoleArn)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param ConfirmationRequired Indicates whether confirmation is required before Amazon S3 runs the
+#' job. Confirmation is only required for jobs created through the Amazon
+#' S3 console.
+#' @param Operation &#91;required&#93; The operation that you want this job to perform on each object listed in
+#' the manifest. For more information about the available operations, see
+#' [Available
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html)
+#' in the *Amazon Simple Storage Service Developer Guide*.
+#' @param Report &#91;required&#93; Configuration parameters for the optional job-completion report.
+#' @param ClientRequestToken &#91;required&#93; An idempotency token to ensure that you don\'t accidentally submit the
+#' same request twice. You can use any string up to the maximum length.
+#' @param Manifest &#91;required&#93; Configuration parameters for the manifest.
+#' @param Description A description for this job. You can use any string within the permitted
+#' length. Descriptions don\'t need to be unique and can be used for
+#' multiple jobs.
+#' @param Priority &#91;required&#93; The numerical priority for this job. Higher numbers indicate higher
+#' priority.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for the Identity and Access Management
+#' (IAM) Role that batch operations will use to execute this job\'s
+#' operation on each object in the manifest.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_job(
+#'   AccountId = "string",
+#'   ConfirmationRequired = TRUE|FALSE,
+#'   Operation = list(
+#'     LambdaInvoke = list(
+#'       FunctionArn = "string"
+#'     ),
+#'     S3PutObjectCopy = list(
+#'       TargetResource = "string",
+#'       CannedAccessControlList = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
+#'       AccessControlGrants = list(
+#'         list(
+#'           Grantee = list(
+#'             TypeIdentifier = "id"|"emailAddress"|"uri",
+#'             Identifier = "string",
+#'             DisplayName = "string"
+#'           ),
+#'           Permission = "FULL_CONTROL"|"READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"
+#'         )
+#'       ),
+#'       MetadataDirective = "COPY"|"REPLACE",
+#'       ModifiedSinceConstraint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NewObjectMetadata = list(
+#'         CacheControl = "string",
+#'         ContentDisposition = "string",
+#'         ContentEncoding = "string",
+#'         ContentLanguage = "string",
+#'         UserMetadata = list(
+#'           "string"
+#'         ),
+#'         ContentLength = 123,
+#'         ContentMD5 = "string",
+#'         ContentType = "string",
+#'         HttpExpiresDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RequesterCharged = TRUE|FALSE,
+#'         SSEAlgorithm = "AES256"|"KMS"
+#'       ),
+#'       NewObjectTagging = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       RedirectLocation = "string",
+#'       RequesterPays = TRUE|FALSE,
+#'       StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"GLACIER"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE",
+#'       UnModifiedSinceConstraint = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SSEAwsKmsKeyId = "string",
+#'       TargetKeyPrefix = "string",
+#'       ObjectLockLegalHoldStatus = "OFF"|"ON",
+#'       ObjectLockMode = "COMPLIANCE"|"GOVERNANCE",
+#'       ObjectLockRetainUntilDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     S3PutObjectAcl = list(
+#'       AccessControlPolicy = list(
+#'         AccessControlList = list(
+#'           Owner = list(
+#'             ID = "string",
+#'             DisplayName = "string"
+#'           ),
+#'           Grants = list(
+#'             list(
+#'               Grantee = list(
+#'                 TypeIdentifier = "id"|"emailAddress"|"uri",
+#'                 Identifier = "string",
+#'                 DisplayName = "string"
+#'               ),
+#'               Permission = "FULL_CONTROL"|"READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"
+#'             )
+#'           )
+#'         ),
+#'         CannedAccessControlList = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"
+#'       )
+#'     ),
+#'     S3PutObjectTagging = list(
+#'       TagSet = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     S3InitiateRestoreObject = list(
+#'       ExpirationInDays = 123,
+#'       GlacierJobTier = "BULK"|"STANDARD"
+#'     )
+#'   ),
+#'   Report = list(
+#'     Bucket = "string",
+#'     Format = "Report_CSV_20180820",
+#'     Enabled = TRUE|FALSE,
+#'     Prefix = "string",
+#'     ReportScope = "AllTasks"|"FailedTasksOnly"
+#'   ),
+#'   ClientRequestToken = "string",
+#'   Manifest = list(
+#'     Spec = list(
+#'       Format = "S3BatchOperations_CSV_20180820"|"S3InventoryReport_CSV_20161130",
+#'       Fields = list(
+#'         "Ignore"|"Bucket"|"Key"|"VersionId"
+#'       )
+#'     ),
+#'     Location = list(
+#'       ObjectArn = "string",
+#'       ObjectVersionId = "string",
+#'       ETag = "string"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   Priority = 123,
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_job
+s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operation, Report, ClientRequestToken, Manifest, Description = NULL, Priority, RoleArn) {
+  op <- new_operation(
+    name = "CreateJob",
+    http_method = "POST",
+    http_path = "/v20180820/jobs",
+    paginator = list()
+  )
+  input <- .s3control$create_job_input(AccountId = AccountId, ConfirmationRequired = ConfirmationRequired, Operation = Operation, Report = Report, ClientRequestToken = ClientRequestToken, Manifest = Manifest, Description = Description, Priority = Priority, RoleArn = RoleArn)
+  output <- .s3control$create_job_output()
+  svc <- .s3control$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_job <- s3control_create_job
+
+#' Deletes the block public access configuration for the specified account
+#'
+#' Deletes the block public access configuration for the specified account.
 #'
 #' @usage
 #' s3control_delete_public_access_block(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The Account ID for the Amazon Web Services account whose Public Access
-#' Block configuration you want to remove.
+#' @param AccountId &#91;required&#93; The account ID for the AWS account whose block public access
+#' configuration you want to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -41,17 +212,53 @@ s3control_delete_public_access_block <- function(AccountId) {
 }
 .s3control$operations$delete_public_access_block <- s3control_delete_public_access_block
 
-#' Retrieves the Public Access Block configuration for an Amazon Web
-#' Services account
+#' Retrieves the configuration parameters and status for a batch operations
+#' job
 #'
-#' Retrieves the Public Access Block configuration for an Amazon Web
-#' Services account.
+#' Retrieves the configuration parameters and status for a batch operations
+#' job.
+#'
+#' @usage
+#' s3control_describe_job(AccountId, JobId)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param JobId &#91;required&#93; The ID for the job whose information you want to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_job(
+#'   AccountId = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_describe_job
+s3control_describe_job <- function(AccountId, JobId) {
+  op <- new_operation(
+    name = "DescribeJob",
+    http_method = "GET",
+    http_path = "/v20180820/jobs/{id}",
+    paginator = list()
+  )
+  input <- .s3control$describe_job_input(AccountId = AccountId, JobId = JobId)
+  output <- .s3control$describe_job_output()
+  svc <- .s3control$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$describe_job <- s3control_describe_job
+
+#' Get public access block
+#'
+#' 
 #'
 #' @usage
 #' s3control_get_public_access_block(AccountId)
 #'
-#' @param AccountId &#91;required&#93; The Account ID for the Amazon Web Services account whose Public Access
-#' Block configuration you want to retrieve.
+#' @param AccountId &#91;required&#93; 
 #'
 #' @section Request syntax:
 #' ```
@@ -79,20 +286,67 @@ s3control_get_public_access_block <- function(AccountId) {
 }
 .s3control$operations$get_public_access_block <- s3control_get_public_access_block
 
-#' Creates or modifies the Public Access Block configuration for an Amazon
-#' Web Services account
+#' Lists current jobs and jobs that have ended within the last 30 days for
+#' the AWS account making the request
 #'
-#' Creates or modifies the Public Access Block configuration for an Amazon
-#' Web Services account.
+#' Lists current jobs and jobs that have ended within the last 30 days for
+#' the AWS account making the request.
+#'
+#' @usage
+#' s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param JobStatuses The `List Jobs` request returns jobs that match the statuses listed in
+#' this element.
+#' @param NextToken A pagination token to request the next page of results. Use the token
+#' that Amazon S3 returned in the `NextToken` element of the
+#' `ListJobsResult` from the previous `List Jobs` request.
+#' @param MaxResults The maximum number of jobs that Amazon S3 will include in the
+#' `List Jobs` response. If there are more jobs than this number, the
+#' response will include a pagination token in the `NextToken` field to
+#' enable you to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_jobs(
+#'   AccountId = "string",
+#'   JobStatuses = list(
+#'     "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_jobs
+s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListJobs",
+    http_method = "GET",
+    http_path = "/v20180820/jobs",
+    paginator = list()
+  )
+  input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .s3control$list_jobs_output()
+  svc <- .s3control$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_jobs <- s3control_list_jobs
+
+#' Put public access block
+#'
+#' 
 #'
 #' @usage
 #' s3control_put_public_access_block(PublicAccessBlockConfiguration,
 #'   AccountId)
 #'
-#' @param PublicAccessBlockConfiguration &#91;required&#93; The Public Access Block configuration that you want to apply to this
-#' Amazon Web Services account.
-#' @param AccountId &#91;required&#93; The Account ID for the Amazon Web Services account whose Public Access
-#' Block configuration you want to set.
+#' @param PublicAccessBlockConfiguration &#91;required&#93; 
+#' @param AccountId &#91;required&#93; 
 #'
 #' @section Request syntax:
 #' ```
@@ -125,3 +379,86 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
   return(response)
 }
 .s3control$operations$put_public_access_block <- s3control_put_public_access_block
+
+#' Updates an existing job's priority
+#'
+#' Updates an existing job\'s priority.
+#'
+#' @usage
+#' s3control_update_job_priority(AccountId, JobId, Priority)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param JobId &#91;required&#93; The ID for the job whose priority you want to update.
+#' @param Priority &#91;required&#93; The priority you want to assign to this job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_job_priority(
+#'   AccountId = "string",
+#'   JobId = "string",
+#'   Priority = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_update_job_priority
+s3control_update_job_priority <- function(AccountId, JobId, Priority) {
+  op <- new_operation(
+    name = "UpdateJobPriority",
+    http_method = "POST",
+    http_path = "/v20180820/jobs/{id}/priority",
+    paginator = list()
+  )
+  input <- .s3control$update_job_priority_input(AccountId = AccountId, JobId = JobId, Priority = Priority)
+  output <- .s3control$update_job_priority_output()
+  svc <- .s3control$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$update_job_priority <- s3control_update_job_priority
+
+#' Updates the status for the specified job
+#'
+#' Updates the status for the specified job. Use this operation to confirm
+#' that you want to run a job or to cancel an existing job.
+#'
+#' @usage
+#' s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
+#'   StatusUpdateReason)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param JobId &#91;required&#93; The ID of the job whose status you want to update.
+#' @param RequestedJobStatus &#91;required&#93; The status that you want to move the specified job to.
+#' @param StatusUpdateReason A description of the reason why you want to change the specified job\'s
+#' status. This field can be any string up to the maximum length.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_job_status(
+#'   AccountId = "string",
+#'   JobId = "string",
+#'   RequestedJobStatus = "Cancelled"|"Ready",
+#'   StatusUpdateReason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_update_job_status
+s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, StatusUpdateReason = NULL) {
+  op <- new_operation(
+    name = "UpdateJobStatus",
+    http_method = "POST",
+    http_path = "/v20180820/jobs/{id}/status",
+    paginator = list()
+  )
+  input <- .s3control$update_job_status_input(AccountId = AccountId, JobId = JobId, RequestedJobStatus = RequestedJobStatus, StatusUpdateReason = StatusUpdateReason)
+  output <- .s3control$update_job_status_output()
+  svc <- .s3control$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$update_job_status <- s3control_update_job_status

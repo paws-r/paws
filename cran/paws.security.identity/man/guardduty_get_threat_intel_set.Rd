@@ -7,9 +7,9 @@
 guardduty_get_threat_intel_set(DetectorId, ThreatIntelSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to describe.}
+\item{DetectorId}{[required] The unique ID of the detector the threatIntelSet is associated with.}
 
-\item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to describe.}
+\item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet you want to get.}
 }
 \description{
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.

@@ -25,8 +25,8 @@ name contains the specified string.}
 \item{CreationTimeBefore}{A filter that returns only endpoints that were created before the
 specified time (timestamp).}
 
-\item{CreationTimeAfter}{A filter that returns only endpoints that were created after the
-specified time (timestamp).}
+\item{CreationTimeAfter}{A filter that returns only endpoints with a creation time greater than
+or equal to the specified time (timestamp).}
 
 \item{LastModifiedTimeBefore}{A filter that returns only endpoints that were modified before the
 specified timestamp.}

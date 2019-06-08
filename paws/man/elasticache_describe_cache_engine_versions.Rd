@@ -17,8 +17,8 @@ Example: \code{1.4.14}}
 \item{CacheParameterGroupFamily}{The name of a specific cache parameter group family to return details
 for.
 
-Valid values are: \code{memcached1.4} \| \code{redis2.6} \| \code{redis2.8} \|
-\code{redis3.2} \| \code{redis4.0}
+Valid values are: \code{memcached1.4} \| \code{memcached1.5} \| \code{redis2.6} \|
+\code{redis2.8} \| \code{redis3.2} \| \code{redis4.0} \| \code{redis5.0} \|
 
 Constraints:
 \itemize{

@@ -10,8 +10,8 @@ ssm_remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
 \item{ResourceType}{[required] The type of resource of which you want to remove a tag.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the the name of the managed instance
-in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+managed instances. You must specify the name of the managed instance in
+the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{ResourceId}{[required] The resource ID for which you want to remove tags. Use the ID of the
 resource. Here are some examples:
@@ -25,8 +25,8 @@ PatchBaseline: pb-012345abcde
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the the name of the managed instance
-in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+managed instances. You must specify the name of the managed instance in
+the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{TagKeys}{[required] Tag keys that you want to remove from the specified resource.}
 }
@@ -35,7 +35,7 @@ Removes all tags from the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
   ResourceId = "string",
   TagKeys = list(
     "string"

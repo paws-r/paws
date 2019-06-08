@@ -4,12 +4,16 @@
 \alias{datasync_start_task_execution}
 \title{Starts a specific invocation of a task}
 \usage{
-datasync_start_task_execution(TaskArn, OverrideOptions)
+datasync_start_task_execution(TaskArn, OverrideOptions, Includes)
 }
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to start.}
 
 \item{OverrideOptions}{}
+
+\item{Includes}{A filter that determines which files to include in the transfer during a
+task execution based on the specified pattern in the filter. When
+multiple include filters are set, they are interpreted as an OR.}
 }
 \description{
 Starts a specific invocation of a task. A \code{TaskExecution} value
@@ -20,8 +24,9 @@ represents an individual run of a task. Each task can have at most one
 \code{TaskExecution} has the following transition phases: INITIALIZING \|
 PREPARING \| TRANSFERRING \| VERIFYING \| SUCCESS/FAILURE.
 
-For detailed information, see \emph{Task Execution} in Components and
-Terminology in the \emph{AWS DataSync User Guide}.
+For detailed information, see \emph{Task Execution} in
+"https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-works.html\#terminology"
+(Components and Terminology) in the \emph{AWS DataSync User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_task_execution(
@@ -36,6 +41,12 @@ Terminology in the \emph{AWS DataSync User Guide}.
     PreserveDevices = "NONE"|"PRESERVE",
     PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
     BytesPerSecond = 123
+  ),
+  Includes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
   )
 )
 }

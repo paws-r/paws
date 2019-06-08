@@ -39,12 +39,12 @@ stored in IAM.
 }
 \details{
 For more information about working with server certificates, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic also includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 
 You should understand the implications of changing a server
-certificate's path or name. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts}{Renaming a Server Certificate}
+certificate's path or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts}{Renaming a Server Certificate}
 in the \emph{IAM User Guide}.
 
 The person making the request (the principal), must have permission to
@@ -53,7 +53,7 @@ example, to change the certificate named \code{ProductionCert} to \code{ProdCert
 the principal must have a policy that allows them to update both
 certificates. If the principal has permission to update the
 \code{ProductionCert} group, but not the \code{ProdCert} certificate, then the
-update fails. For more information about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}
+update fails. For more information about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

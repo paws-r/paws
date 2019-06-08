@@ -2,8 +2,8 @@
 % Please edit documentation in R/appstream_operations.R
 \name{appstream_describe_sessions}
 \alias{appstream_describe_sessions}
-\title{Retrieves a list that describes the active streaming sessions for a
-specified stack and fleet}
+\title{Retrieves a list that describes the streaming sessions for a specified
+stack and fleet}
 \usage{
 appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
   Limit, AuthenticationType)
@@ -22,16 +22,15 @@ this operation. If this value is null, it retrieves the first page.}
 maximum value is 50.}
 
 \item{AuthenticationType}{The authentication method. Specify \code{API} for a user authenticated using
-a streaming URL, \code{SAML} for a SAML 2.0-federated user, or \code{USERPOOL} for
-a user in the AppStream 2.0 user pool. The default is to authenticate
-users using a streaming URL.}
+a streaming URL or \code{SAML} for a SAML federated user. The default is to
+authenticate users using a streaming URL.}
 }
 \description{
-Retrieves a list that describes the active streaming sessions for a
-specified stack and fleet. If a value for \code{UserId} is provided for the
-stack and fleet, only streaming sessions for that user are described. If
-an authentication type is not provided, the default is to authenticate
-users using a streaming URL.
+Retrieves a list that describes the streaming sessions for a specified
+stack and fleet. If a UserId is provided for the stack and fleet, only
+streaming sessions for that user are described. If an authentication
+type is not provided, the default is to authenticate users using a
+streaming URL.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_sessions(

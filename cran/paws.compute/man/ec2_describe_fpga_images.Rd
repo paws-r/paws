@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_fpga_images}
 \alias{ec2_describe_fpga_images}
-\title{Describes one or more available Amazon FPGA Images (AFIs)}
+\title{Describes the Amazon FPGA Images (AFIs) available to you}
 \usage{
 ec2_describe_fpga_images(DryRun, FpgaImageIds, Owners, Filters,
   NextToken, MaxResults)
@@ -13,13 +13,13 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{FpgaImageIds}{One or more AFI IDs.}
+\item{FpgaImageIds}{The AFI IDs.}
 
 \item{Owners}{Filters the AFI by owner. Specify an AWS account ID, \code{self} (owner is
 the sender of the request), or an AWS owner alias (valid values are
 \code{amazon} \| \code{aws-marketplace}).}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{create-time} - The creation time of the AFI.
 \item \code{fpga-image-id} - The FPGA image identifier (AFI ID).
@@ -47,7 +47,7 @@ regardless of the tag value.
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Describes one or more available Amazon FPGA Images (AFIs). These include
+Describes the Amazon FPGA Images (AFIs) available to you. These include
 public AFIs, private AFIs that you own, and AFIs owned by other AWS
 accounts for which you have load permissions.
 }

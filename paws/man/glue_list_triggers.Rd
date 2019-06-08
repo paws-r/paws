@@ -11,8 +11,8 @@ glue_list_triggers(NextToken, DependentJobName, MaxResults, Tags)
 \item{NextToken}{A continuation token, if this is a continuation request.}
 
 \item{DependentJobName}{The name of the job for which to retrieve triggers. The trigger that can
-start this job will be returned, and if there is no such trigger, all
-triggers will be returned.}
+start this job is returned. If there is no such trigger, all triggers
+are returned.}
 
 \item{MaxResults}{The maximum size of a list to return.}
 
@@ -24,10 +24,10 @@ resources with the specified tag. This operation allows you to see which
 resources are available in your account, and their names.
 }
 \details{
-This operation takes the optional \code{Tags} field which you can use as a
+This operation takes the optional \code{Tags} field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 }
 \section{Request syntax}{
 \preformatted{svc$list_triggers(

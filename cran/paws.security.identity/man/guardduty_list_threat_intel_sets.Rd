@@ -8,14 +8,19 @@ detector ID}
 guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
 }
 \arguments{
-\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSets you want to list.}
+\item{DetectorId}{[required] The unique ID of the detector the threatIntelSet is associated with.}
 
-\item{MaxResults}{You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 7. The maximum value is 7.}
+\item{MaxResults}{You can use this parameter to indicate the maximum number of items you
+want in the response. The default value is 50. The maximum value is 50.}
 
-\item{NextToken}{Pagination token to start retrieving threat intel sets from.}
+\item{NextToken}{You can use this parameter when paginating results. Set the value of
+this parameter to null on your first call to the list action. For
+subsequent calls to the action fill nextToken in the request with the
+value of NextToken from the previous response to continue listing data.}
 }
 \description{
-Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
+Lists the ThreatIntelSets of the GuardDuty service specified by the
+detector ID.
 }
 \section{Request syntax}{
 \preformatted{svc$list_threat_intel_sets(

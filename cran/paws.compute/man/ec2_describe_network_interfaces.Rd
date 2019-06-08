@@ -66,7 +66,7 @@ so on).
 \item \code{requester-managed} - Indicates whether the network interface is
 being managed by an AWS service (for example, AWS Management
 Console, Auto Scaling, and so on).
-\item \code{source-desk-check} - Indicates whether the network interface
+\item \code{source-dest-check} - Indicates whether the network interface
 performs source/destination checking. A value of \code{true} means
 checking is enabled, and \code{false} means checking is disabled. The
 value must be \code{false} for the network interface to perform network

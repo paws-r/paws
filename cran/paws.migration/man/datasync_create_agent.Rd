@@ -16,14 +16,17 @@ The redirect URL returned in the response provides you the activation
 key for your agent in the query string parameter \code{activationKey}. It
 might also include other activation-related parameters; however, these
 are merely defaults. The arguments you pass to this API call determine
-the actual configuration of your agent. For more information, see
-Activating a Sync Agent in the \emph{AWS DataSync User Guide.}}
+the actual configuration of your agent.
+
+For more information, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html\#activating-agent"
+(Activating a Agent) in the \emph{AWS DataSync User Guide.}}
 
 \item{AgentName}{The name you configured for your agent. This value is a text reference
 that is used to identify the agent in the console.}
 
-\item{Tags}{The key-value pair that represents the tag you want to associate with
-the agent. The value can be an empty string. This value helps you
+\item{Tags}{The key-value pair that represents the tag that you want to associate
+with the agent. The value can be an empty string. This value helps you
 manage, filter, and search for your agents.
 
 Valid characters for key and value are letters, spaces, and numbers
@@ -42,8 +45,11 @@ Your tasks are created in this AWS Region.
 You can use an agent for more than one location. If a task uses multiple
 agents, all of them need to have status AVAILABLE for the task to run.
 If you use multiple agents for a source location, the status of all the
-agents must be AVAILABLE for the task to run. For more information, see
-Activating a Sync Agent in the \emph{AWS DataSync User Guide.}
+agents must be AVAILABLE for the task to run.
+
+For more information, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html\#activating-agent"
+(Activating an Agent) in the \emph{AWS DataSync User Guide.}
 
 Agents are automatically updated by AWS on a regular basis, using a
 mechanism that ensures minimal interruption to your tasks.

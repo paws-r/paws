@@ -2,45 +2,56 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_put_account_setting}
 \alias{ecs_put_account_setting}
-\title{Modifies the ARN and resource ID format of a resource type for a
-specified IAM user, IAM role, or the root user for an account}
+\title{Modifies an account setting}
 \usage{
 ecs_put_account_setting(name, value, principalArn)
 }
 \arguments{
-\item{name}{[required] The resource name for which to enable the new format. If
+\item{name}{[required] The resource name for which to modify the account setting. If
 \code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS
 services is affected. If \code{taskLongArnFormat} is specified, the ARN and
 resource ID for your Amazon ECS tasks is affected. If
 \code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
-for your Amazon ECS container instances is affected.}
+for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
+is specified, the ENI limit for your Amazon ECS container instances is
+affected.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
 values are \code{enabled} and \code{disabled}.}
 
 \item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the
-root user. If you specify the root user, it modifies the ARN and
-resource ID format for all IAM users, IAM roles, and the root user of
-the account unless an IAM user or role explicitly overrides these
-settings for themselves. If this field is omitted, the settings are
-changed only for the authenticated user.}
+root user. If you specify the root user, it modifies the account setting
+for all IAM users, IAM roles, and the root user of the account unless an
+IAM user or role explicitly overrides these settings. If this field is
+omitted, the setting is changed only for the authenticated user.}
 }
 \description{
-Modifies the ARN and resource ID format of a resource type for a
-specified IAM user, IAM role, or the root user for an account. If the
-account setting for the root user is changed, it sets the default
-setting for all of the IAM users and roles for which no individual
-account setting has been set. The opt-in and opt-out account setting can
-be set for each Amazon ECS resource separately. The ARN and resource ID
-format of a resource will be defined by the opt-in status of the IAM
-user or role that created the resource. Enabling this setting is
-required to use new Amazon ECS features such as resource tagging. For
-more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html}{Amazon Resource Names (ARNs) and IDs}
+Modifies an account setting. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html}{Account Settings}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+}
+\details{
+When \code{serviceLongArnFormat}, \code{taskLongArnFormat}, or
+\code{containerInstanceLongArnFormat} are specified, the ARN and resource ID
+format of the resource type for a specified IAM user, IAM role, or the
+root user for an account is changed. If you change the account setting
+for the root user, the default settings for all of the IAM users and
+roles for which no individual account setting has been specified are
+reset. The opt-in and opt-out account setting can be specified for each
+Amazon ECS resource separately. The ARN and resource ID format of a
+resource will be defined by the opt-in status of the IAM user or role
+that created the resource. You must enable this setting to use Amazon
+ECS features such as resource tagging.
+
+When \code{awsvpcTrunking} is specified, the elastic network interface (ENI)
+limit for any new container instances that support the feature is
+changed. If \code{awsvpcTrunking} is enabled, any new container instances
+that support the feature are launched have the increased ENI limits
+available to them. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html}{Elastic Network Interface Trunking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_account_setting(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
   value = "string",
   principalArn = "string"
 )

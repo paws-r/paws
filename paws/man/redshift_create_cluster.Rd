@@ -20,7 +20,7 @@ created.
 
 To create additional databases after the cluster is created, connect to
 the cluster with a SQL client and use SQL commands to create a database.
-For more information, go to \href{http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html}{Create a Database}
+For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html}{Create a Database}
 in the Amazon Redshift Database Developer Guide.
 
 Default: \code{dev}
@@ -30,7 +30,7 @@ Constraints:
 \item Must contain 1 to 64 alphanumeric characters.
 \item Must contain only lowercase letters.
 \item Cannot be a word that is reserved by the service. A list of reserved
-words can be found in \href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
+words can be found in \href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 
@@ -60,7 +60,7 @@ Valid Values: \code{multi-node} \| \code{single-node}
 Default: \code{multi-node}}
 
 \item{NodeType}{[required] The node type to be provisioned for the cluster. For information about
-node types, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
+node types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{ds2.xlarge} \| \code{ds2.8xlarge} \| \code{ds2.xlarge} \|
@@ -76,7 +76,7 @@ Constraints:
 \code{PUBLIC}.
 \item First character must be a letter.
 \item Cannot be a reserved word. A list of reserved words can be found in
-\href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
+\href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 
@@ -127,7 +127,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per region, occurring on a random day of the week. For more
-information about the time blocks for each region, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows}{Maintenance Windows}
+information about the time blocks for each region, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows}{Maintenance Windows}
 in Amazon Redshift Cluster Management Guide.
 
 Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
@@ -137,7 +137,7 @@ Constraints: Minimum 30-minute window.}
 \item{ClusterParameterGroupName}{The name of the parameter group to be associated with this cluster.
 
 Default: The default Amazon Redshift cluster parameter group. For
-information about the default parameter group, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Working with Amazon Redshift Parameter Groups}
+information about the default parameter group, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Working with Amazon Redshift Parameter Groups}
 
 Constraints:
 \itemize{
@@ -194,7 +194,7 @@ Default: \code{true}}
 when the \strong{ClusterType} parameter is specified as \code{multi-node}.
 
 For information about determining how many nodes you need, go to
-\href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
+\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 If you don't specify this parameter, you get a single-node cluster.
@@ -222,7 +222,7 @@ keys in an HSM.}
 
 Constraints: The cluster must be provisioned in EC2-VPC and
 publicly-accessible through an Internet gateway. For more information
-about provisioning clusters in EC2-VPC, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms}{Supported Platforms to Launch Your Cluster}
+about provisioning clusters in EC2-VPC, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms}{Supported Platforms to Launch Your Cluster}
 in the Amazon Redshift Cluster Management Guide.}
 
 \item{Tags}{A list of tag instances.}
@@ -232,7 +232,7 @@ you want to use to encrypt data in the cluster.}
 
 \item{EnhancedVpcRouting}{An option that specifies whether to create the cluster with enhanced VPC
 routing enabled. To create a cluster that uses enhanced VPC routing, the
-cluster must be in a VPC. For more information, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html}{Enhanced VPC Routing}
+cluster must be in a VPC. For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html}{Enhanced VPC Routing}
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is \code{true}, enhanced VPC routing is enabled.
@@ -261,7 +261,7 @@ Creates a new cluster.
 To create a cluster in Virtual Private Cloud (VPC), you must provide a
 cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the cluster.
-For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

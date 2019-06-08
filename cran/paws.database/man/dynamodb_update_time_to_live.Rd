@@ -41,7 +41,7 @@ As items are deleted, they are removed from any Local Secondary Index
 and Global Secondary Index immediately in the same eventually consistent
 way as a standard delete operation.
 
-For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html}{Time To Live}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html}{Time To Live}
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Request syntax}{

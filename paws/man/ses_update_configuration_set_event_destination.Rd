@@ -19,7 +19,7 @@ Updates the event destination of a configuration set. Event destinations
 are associated with configuration sets, which enable you to publish
 email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or
 Amazon Simple Notification Service (Amazon SNS). For information about
-using configuration sets, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
+using configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
 in the \emph{Amazon SES Developer Guide.}
 }
 \details{

@@ -67,6 +67,7 @@ NULL
 #'  \link[=workmail_describe_user]{describe_user} \tab Provides information regarding the user \cr
 #'  \link[=workmail_disassociate_delegate_from_resource]{disassociate_delegate_from_resource} \tab Removes a member from the resource's set of delegates \cr
 #'  \link[=workmail_disassociate_member_from_group]{disassociate_member_from_group} \tab Removes a member from a group \cr
+#'  \link[=workmail_get_mailbox_details]{get_mailbox_details} \tab Requests a user's mailbox details for a specified organization and user \cr
 #'  \link[=workmail_list_aliases]{list_aliases} \tab Creates a paginated call to list the aliases associated with a given entity \cr
 #'  \link[=workmail_list_group_members]{list_group_members} \tab Returns an overview of the members of a group \cr
 #'  \link[=workmail_list_groups]{list_groups} \tab Returns summaries of the organization's groups \cr
@@ -78,6 +79,7 @@ NULL
 #'  \link[=workmail_put_mailbox_permissions]{put_mailbox_permissions} \tab Sets permissions for a user, group, or resource \cr
 #'  \link[=workmail_register_to_work_mail]{register_to_work_mail} \tab Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities\cr
 #'  \link[=workmail_reset_password]{reset_password} \tab Allows the administrator to reset the password for a user \cr
+#'  \link[=workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user \cr
 #'  \link[=workmail_update_primary_email_address]{update_primary_email_address} \tab Updates the primary email for a user, group, or resource \cr
 #'  \link[=workmail_update_resource]{update_resource} \tab Updates data for the resource 
 #' }

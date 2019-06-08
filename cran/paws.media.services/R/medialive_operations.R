@@ -134,10 +134,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #' Creates a new channel
 #'
 #' @usage
-#' medialive_create_channel(Destinations, EncoderSettings,
+#' medialive_create_channel(ChannelClass, Destinations, EncoderSettings,
 #'   InputAttachments, InputSpecification, LogLevel, Name, RequestId,
 #'   Reserved, RoleArn, Tags)
 #'
+#' @param ChannelClass The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
 #' @param Destinations 
 #' @param EncoderSettings 
 #' @param InputAttachments List of input attachments for channel.
@@ -153,6 +154,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
+#'   ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
 #'   Destinations = list(
 #'     list(
 #'       Id = "string",
@@ -879,14 +881,14 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #' @keywords internal
 #'
 #' @rdname medialive_create_channel
-medialive_create_channel <- function(Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL) {
+medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/prod/channels",
     paginator = list()
   )
-  input <- .medialive$create_channel_input(Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags)
+  input <- .medialive$create_channel_input(ChannelClass = ChannelClass, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags)
   output <- .medialive$create_channel_output()
   svc <- .medialive$service()
   request <- new_request(svc, op, input, output)
@@ -1200,6 +1202,41 @@ medialive_delete_reservation <- function(ReservationId) {
   return(response)
 }
 .medialive$operations$delete_reservation <- medialive_delete_reservation
+
+#' Delete all schedule actions on a channel
+#'
+#' Delete all schedule actions on a channel.
+#'
+#' @usage
+#' medialive_delete_schedule(ChannelId)
+#'
+#' @param ChannelId &#91;required&#93; Id of the channel whose schedule is being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_schedule(
+#'   ChannelId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_delete_schedule
+medialive_delete_schedule <- function(ChannelId) {
+  op <- new_operation(
+    name = "DeleteSchedule",
+    http_method = "DELETE",
+    http_path = "/prod/channels/{channelId}/schedule",
+    paginator = list()
+  )
+  input <- .medialive$delete_schedule_input(ChannelId = ChannelId)
+  output <- .medialive$delete_schedule_output()
+  svc <- .medialive$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$delete_schedule <- medialive_delete_schedule
 
 #' Removes tags for a resource
 #'
@@ -1570,10 +1607,11 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #' List offerings available for purchase.
 #'
 #' @usage
-#' medialive_list_offerings(ChannelConfiguration, Codec, MaxResults,
-#'   MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType,
-#'   SpecialFeature, VideoQuality)
+#' medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
+#'   MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution,
+#'   ResourceType, SpecialFeature, VideoQuality)
 #'
+#' @param ChannelClass Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
 #' @param ChannelConfiguration Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)
 #' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
 #' @param MaxResults 
@@ -1588,6 +1626,7 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_offerings(
+#'   ChannelClass = "string",
 #'   ChannelConfiguration = "string",
 #'   Codec = "string",
 #'   MaxResults = 123,
@@ -1604,14 +1643,14 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname medialive_list_offerings
-medialive_list_offerings <- function(ChannelConfiguration = NULL, Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
+medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration = NULL, Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
   op <- new_operation(
     name = "ListOfferings",
     http_method = "GET",
     http_path = "/prod/offerings",
     paginator = list()
   )
-  input <- .medialive$list_offerings_input(ChannelConfiguration = ChannelConfiguration, Codec = Codec, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
+  input <- .medialive$list_offerings_input(ChannelClass = ChannelClass, ChannelConfiguration = ChannelConfiguration, Codec = Codec, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
   output <- .medialive$list_offerings_output()
   svc <- .medialive$service()
   request <- new_request(svc, op, input, output)
@@ -1625,10 +1664,11 @@ medialive_list_offerings <- function(ChannelConfiguration = NULL, Codec = NULL, 
 #' List purchased reservations.
 #'
 #' @usage
-#' medialive_list_reservations(Codec, MaxResults, MaximumBitrate,
-#'   MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature,
-#'   VideoQuality)
+#' medialive_list_reservations(ChannelClass, Codec, MaxResults,
+#'   MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType,
+#'   SpecialFeature, VideoQuality)
 #'
+#' @param ChannelClass Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
 #' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
 #' @param MaxResults 
 #' @param MaximumBitrate Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
@@ -1642,6 +1682,7 @@ medialive_list_offerings <- function(ChannelConfiguration = NULL, Codec = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$list_reservations(
+#'   ChannelClass = "string",
 #'   Codec = "string",
 #'   MaxResults = 123,
 #'   MaximumBitrate = "string",
@@ -1657,14 +1698,14 @@ medialive_list_offerings <- function(ChannelConfiguration = NULL, Codec = NULL, 
 #' @keywords internal
 #'
 #' @rdname medialive_list_reservations
-medialive_list_reservations <- function(Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
+medialive_list_reservations <- function(ChannelClass = NULL, Codec = NULL, MaxResults = NULL, MaximumBitrate = NULL, MaximumFramerate = NULL, NextToken = NULL, Resolution = NULL, ResourceType = NULL, SpecialFeature = NULL, VideoQuality = NULL) {
   op <- new_operation(
     name = "ListReservations",
     http_method = "GET",
     http_path = "/prod/reservations",
     paginator = list()
   )
-  input <- .medialive$list_reservations_input(Codec = Codec, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
+  input <- .medialive$list_reservations_input(ChannelClass = ChannelClass, Codec = Codec, MaxResults = MaxResults, MaximumBitrate = MaximumBitrate, MaximumFramerate = MaximumFramerate, NextToken = NextToken, Resolution = Resolution, ResourceType = ResourceType, SpecialFeature = SpecialFeature, VideoQuality = VideoQuality)
   output <- .medialive$list_reservations_output()
   svc <- .medialive$service()
   request <- new_request(svc, op, input, output)
@@ -1713,13 +1754,15 @@ medialive_list_tags_for_resource <- function(ResourceArn) {
 #' Purchase an offering and create a reservation.
 #'
 #' @usage
-#' medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start)
+#' medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start,
+#'   Tags)
 #'
 #' @param Count &#91;required&#93; Number of resources
 #' @param Name Name for the new reservation
 #' @param OfferingId &#91;required&#93; Offering to purchase, e.g. '87654321'
 #' @param RequestId Unique request ID to be specified. This is needed to prevent retries from creating multiple resources.
 #' @param Start Requested reservation start time (UTC) in ISO-8601 format. The specified time must be between the first day of the current month and one year from now. If no value is given, the default is now.
+#' @param Tags A collection of key-value pairs
 #'
 #' @section Request syntax:
 #' ```
@@ -1728,21 +1771,24 @@ medialive_list_tags_for_resource <- function(ResourceArn) {
 #'   Name = "string",
 #'   OfferingId = "string",
 #'   RequestId = "string",
-#'   Start = "string"
+#'   Start = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname medialive_purchase_offering
-medialive_purchase_offering <- function(Count, Name = NULL, OfferingId, RequestId = NULL, Start = NULL) {
+medialive_purchase_offering <- function(Count, Name = NULL, OfferingId, RequestId = NULL, Start = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PurchaseOffering",
     http_method = "POST",
     http_path = "/prod/offerings/{offeringId}/purchase",
     paginator = list()
   )
-  input <- .medialive$purchase_offering_input(Count = Count, Name = Name, OfferingId = OfferingId, RequestId = RequestId, Start = Start)
+  input <- .medialive$purchase_offering_input(Count = Count, Name = Name, OfferingId = OfferingId, RequestId = RequestId, Start = Start, Tags = Tags)
   output <- .medialive$purchase_offering_output()
   svc <- .medialive$service()
   request <- new_request(svc, op, input, output)
@@ -2579,6 +2625,62 @@ medialive_update_channel <- function(ChannelId, Destinations = NULL, EncoderSett
 }
 .medialive$operations$update_channel <- medialive_update_channel
 
+#' Changes the class of the channel
+#'
+#' Changes the class of the channel.
+#'
+#' @usage
+#' medialive_update_channel_class(ChannelClass, ChannelId, Destinations)
+#'
+#' @param ChannelClass &#91;required&#93; The channel class that you wish to update this channel to use.
+#' @param ChannelId &#91;required&#93; Channel Id of the channel whose class should be updated.
+#' @param Destinations A list of output destinations for this channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel_class(
+#'   ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+#'   ChannelId = "string",
+#'   Destinations = list(
+#'     list(
+#'       Id = "string",
+#'       MediaPackageSettings = list(
+#'         list(
+#'           ChannelId = "string"
+#'         )
+#'       ),
+#'       Settings = list(
+#'         list(
+#'           PasswordParam = "string",
+#'           StreamName = "string",
+#'           Url = "string",
+#'           Username = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_update_channel_class
+medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations = NULL) {
+  op <- new_operation(
+    name = "UpdateChannelClass",
+    http_method = "PUT",
+    http_path = "/prod/channels/{channelId}/channelClass",
+    paginator = list()
+  )
+  input <- .medialive$update_channel_class_input(ChannelClass = ChannelClass, ChannelId = ChannelId, Destinations = Destinations)
+  output <- .medialive$update_channel_class_output()
+  svc <- .medialive$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$update_channel_class <- medialive_update_channel_class
+
 #' Updates an input
 #'
 #' Updates an input.
@@ -2692,3 +2794,40 @@ medialive_update_input_security_group <- function(InputSecurityGroupId, Tags = N
   return(response)
 }
 .medialive$operations$update_input_security_group <- medialive_update_input_security_group
+
+#' Update reservation
+#'
+#' Update reservation.
+#'
+#' @usage
+#' medialive_update_reservation(Name, ReservationId)
+#'
+#' @param Name Name of the reservation
+#' @param ReservationId &#91;required&#93; Unique reservation ID, e.g. '1234567'
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_reservation(
+#'   Name = "string",
+#'   ReservationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_update_reservation
+medialive_update_reservation <- function(Name = NULL, ReservationId) {
+  op <- new_operation(
+    name = "UpdateReservation",
+    http_method = "PUT",
+    http_path = "/prod/reservations/{reservationId}",
+    paginator = list()
+  )
+  input <- .medialive$update_reservation_input(Name = Name, ReservationId = ReservationId)
+  output <- .medialive$update_reservation_output()
+  svc <- .medialive$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$update_reservation <- medialive_update_reservation

@@ -87,6 +87,15 @@ Updates the settings of a data set.
         iotEventsDestinationConfiguration = list(
           inputName = "string",
           roleArn = "string"
+        ),
+        s3DestinationConfiguration = list(
+          bucket = "string",
+          key = "string",
+          glueConfiguration = list(
+            tableName = "string",
+            databaseName = "string"
+          ),
+          roleArn = "string"
         )
       )
     )

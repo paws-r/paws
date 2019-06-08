@@ -2,12 +2,12 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_security_hub}
 \alias{securityhub_enable_security_hub}
-\title{Enables the AWS Security Hub service}
+\title{Enables the Security Hub service}
 \usage{
 securityhub_enable_security_hub()
 }
 \description{
-Enables the AWS Security Hub service.
+Enables the Security Hub service.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_security_hub()

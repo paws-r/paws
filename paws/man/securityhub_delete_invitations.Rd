@@ -2,17 +2,17 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_invitations}
 \alias{securityhub_delete_invitations}
-\title{Deletes invitations that are sent to this AWS account (invitee) by the
+\title{Deletes invitations that were sent to theis AWS account (invitee) by the
 AWS accounts (inviters) that are specified by their account IDs}
 \usage{
 securityhub_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of account IDs specifying accounts whose invitations to Security
-Hub you want to delete.}
+\item{AccountIds}{A list of account IDs that specify accounts whose invitations to
+Security Hub you want to delete.}
 }
 \description{
-Deletes invitations that are sent to this AWS account (invitee) by the
+Deletes invitations that were sent to theis AWS account (invitee) by the
 AWS accounts (inviters) that are specified by their account IDs.
 }
 \section{Request syntax}{

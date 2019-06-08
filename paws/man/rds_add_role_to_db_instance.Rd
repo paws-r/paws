@@ -15,11 +15,15 @@ instance, for example \code{arn:aws:iam::123456789012:role/AccessRole}.}
 
 \item{FeatureName}{[required] The name of the feature for the DB instance that the IAM role is to be
 associated with. For the list of supported feature names, see
-DBEngineVersion.}
+\code{DBEngineVersion}.}
 }
 \description{
 Associates an AWS Identity and Access Management (IAM) role with a DB
 instance.
+}
+\details{
+To add a role to a DB instance, the status of the DB instance must be
+\code{available}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_role_to_db_instance(

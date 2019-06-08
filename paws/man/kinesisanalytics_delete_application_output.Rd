@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_delete_application_output}
 \alias{kinesisanalytics_delete_application_output}
-\title{Deletes output destination configuration from your application
-configuration}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_output(ApplicationName,
   CurrentApplicationVersionId, OutputId)
@@ -12,24 +12,33 @@ kinesisanalytics_delete_application_output(ApplicationName,
 \item{ApplicationName}{[required] Amazon Kinesis Analytics application name.}
 
 \item{CurrentApplicationVersionId}{[required] Amazon Kinesis Analytics application version. You can use the
-DescribeApplication operation to get the current application version. If
-the version specified is not the current version, the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to get the current application version. If the version
+specified is not the current version, the
 \code{ConcurrentModificationException} is returned.}
 
 \item{OutputId}{[required] The ID of the configuration to delete. Each output configuration that is
 added to the application, either when the application is created or
-later using the AddApplicationOutput operation, has a unique ID. You
-need to provide the ID to uniquely identify the output configuration
-that you want to delete from the application configuration. You can use
-the DescribeApplication operation to get the specific \code{OutputId}.}
+later using the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationOutput.html}{AddApplicationOutput}
+operation, has a unique ID. You need to provide the ID to uniquely
+identify the output configuration that you want to delete from the
+application configuration. You can use the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to get the specific \code{OutputId}.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Deletes output destination configuration from your application
 configuration. Amazon Kinesis Analytics will no longer write data from
 the corresponding in-application stream to the external output
 destination.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplicationOutput} action.
 }

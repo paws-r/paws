@@ -61,6 +61,7 @@ devices in the cloud.
 \link[=devicefarm_list_runs]{list_runs} \tab Gets information about runs, given an AWS Device Farm project ARN \cr
 \link[=devicefarm_list_samples]{list_samples} \tab Gets information about samples, given an AWS Device Farm job ARN \cr
 \link[=devicefarm_list_suites]{list_suites} \tab Gets information about test suites for a given job \cr
+\link[=devicefarm_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an AWS Device Farm resource \cr
 \link[=devicefarm_list_tests]{list_tests} \tab Gets information about tests in a given test suite \cr
 \link[=devicefarm_list_unique_problems]{list_unique_problems} \tab Gets information about unique problems \cr
 \link[=devicefarm_list_uploads]{list_uploads} \tab Gets information about uploads, given an AWS Device Farm project ARN \cr
@@ -71,6 +72,8 @@ devices in the cloud.
 \link[=devicefarm_stop_job]{stop_job} \tab Initiates a stop request for the current job \cr
 \link[=devicefarm_stop_remote_access_session]{stop_remote_access_session} \tab Ends a specified remote access session \cr
 \link[=devicefarm_stop_run]{stop_run} \tab Initiates a stop request for the current test run \cr
+\link[=devicefarm_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
+\link[=devicefarm_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource \cr
 \link[=devicefarm_update_device_instance]{update_device_instance} \tab Updates information about an existing private device instance \cr
 \link[=devicefarm_update_device_pool]{update_device_pool} \tab Modifies the name, description, and rules in a device pool given the attributes and the pool ARN \cr
 \link[=devicefarm_update_instance_profile]{update_instance_profile} \tab Updates information about an existing private device instance profile \cr

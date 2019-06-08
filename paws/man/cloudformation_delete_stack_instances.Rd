@@ -24,7 +24,7 @@ operation.}
 delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{The unique identifier for this stack set operation.
 

@@ -35,7 +35,10 @@ the user to the SFTP server.}
 metadata attached to users for any purpose.}
 
 \item{UserName}{[required] A unique string that identifies a user and is associated with a server
-as specified by the \code{ServerId}.}
+as specified by the \code{ServerId}. This user name must be a minimum of 3
+and a maximum of 32 characters long. The following are valid characters:
+a-z, A-Z, 0-9, underscore, and hyphen. The user name can't start with a
+hyphen.}
 }
 \description{
 Adds a user and associate them with an existing Secure File Transfer

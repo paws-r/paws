@@ -9,14 +9,18 @@ ec2_register_image(ImageLocation, Architecture, BlockDeviceMappings,
   RamdiskId, RootDeviceName, SriovNetSupport, VirtualizationType)
 }
 \arguments{
-\item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage.}
+\item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage. The specified
+bucket must have the \code{aws-exec-read} canned access control list (ACL) to
+ensure that it can be accessed by Amazon EC2. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl}{Canned ACLs}
+in the \emph{Amazon S3 Service Developer Guide}.}
 
 \item{Architecture}{The architecture of the AMI.
 
 Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed
 AMIs, the architecture specified in the manifest file.}
 
-\item{BlockDeviceMappings}{One or more block device mapping entries.}
+\item{BlockDeviceMappings}{The block device mapping entries.}
 
 \item{Description}{A description for your AMI.}
 

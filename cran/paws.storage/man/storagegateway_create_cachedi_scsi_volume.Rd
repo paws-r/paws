@@ -6,7 +6,7 @@
 \usage{
 storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
   SnapshotId, TargetName, SourceVolumeARN, NetworkInterfaceId,
-  ClientToken, KMSEncrypted, KMSKey)
+  ClientToken, KMSEncrypted, KMSKey, Tags)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -50,6 +50,14 @@ or false to use a key managed by Amazon S3. Optional.}
 \item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
 server side encryption. This value can only be set when KMSEncrypted is
 true. Optional.}
+
+\item{Tags}{A list of up to 50 tags that can be assigned to a cached volume. Each
+tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a cached volume on a specified cached volume gateway. This
@@ -83,7 +91,13 @@ bytes.
   NetworkInterfaceId = "string",
   ClientToken = "string",
   KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string"
+  KMSKey = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

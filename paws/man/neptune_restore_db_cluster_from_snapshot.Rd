@@ -7,7 +7,8 @@
 neptune_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
-  Tags, KmsKeyId, EnableIAMDatabaseAuthentication)
+  Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
+  DBClusterParameterGroupName)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the
@@ -58,7 +59,7 @@ DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
-\item{DatabaseName}{The database name for the restored DB cluster.}
+\item{DatabaseName}{Not supported.}
 
 \item{OptionGroupName}{The name of the option group to use for the restored DB cluster.}
 
@@ -89,6 +90,15 @@ not encrypted, then the restored DB cluster is not encrypted.
 accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
+
+\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the new DB
+cluster.
+
+Constraints:
+\itemize{
+\item If supplied, must match the name of an existing
+DBClusterParameterGroup.
+}}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -126,7 +136,8 @@ created with the default security group.
     )
   ),
   KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  DBClusterParameterGroupName = "string"
 )
 }
 }

@@ -24,14 +24,17 @@ shared devices in their organization.
 \tabular{ll}{
 \link[=alexaforbusiness_approve_skill]{approve_skill} \tab Associates a skill with the organization under the customer's AWS account \cr
 \link[=alexaforbusiness_associate_contact_with_address_book]{associate_contact_with_address_book} \tab Associates a contact with a given address book \cr
+\link[=alexaforbusiness_associate_device_with_network_profile]{associate_device_with_network_profile} \tab Associates a device with the specified network profile \cr
 \link[=alexaforbusiness_associate_device_with_room]{associate_device_with_room} \tab Associates a device with a given room \cr
 \link[=alexaforbusiness_associate_skill_group_with_room]{associate_skill_group_with_room} \tab Associates a skill group with a given room \cr
 \link[=alexaforbusiness_associate_skill_with_skill_group]{associate_skill_with_skill_group} \tab Associates a skill with a skill group \cr
 \link[=alexaforbusiness_associate_skill_with_users]{associate_skill_with_users} \tab Makes a private skill available for enrolled users to enable on their devices \cr
 \link[=alexaforbusiness_create_address_book]{create_address_book} \tab Creates an address book with the specified details \cr
-\link[=alexaforbusiness_create_business_report_schedule]{create_business_report_schedule} \tab Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval\cr
+\link[=alexaforbusiness_create_business_report_schedule]{create_business_report_schedule} \tab Creates a recurring schedule for usage reports to deliver to the specified S3 location with a specified daily or weekly interval \cr
 \link[=alexaforbusiness_create_conference_provider]{create_conference_provider} \tab Adds a new conference provider under the user's AWS account \cr
 \link[=alexaforbusiness_create_contact]{create_contact} \tab Creates a contact with the specified details \cr
+\link[=alexaforbusiness_create_gateway_group]{create_gateway_group} \tab Creates a gateway group with the specified details \cr
+\link[=alexaforbusiness_create_network_profile]{create_network_profile} \tab Creates a network profile with the specified details \cr
 \link[=alexaforbusiness_create_profile]{create_profile} \tab Creates a new room profile with the specified details \cr
 \link[=alexaforbusiness_create_room]{create_room} \tab Creates a room with the specified details \cr
 \link[=alexaforbusiness_create_skill_group]{create_skill_group} \tab Creates a skill group with a specified name and description \cr
@@ -41,6 +44,9 @@ shared devices in their organization.
 \link[=alexaforbusiness_delete_conference_provider]{delete_conference_provider} \tab Deletes a conference provider \cr
 \link[=alexaforbusiness_delete_contact]{delete_contact} \tab Deletes a contact by the contact ARN \cr
 \link[=alexaforbusiness_delete_device]{delete_device} \tab Removes a device from Alexa For Business \cr
+\link[=alexaforbusiness_delete_device_usage_data]{delete_device_usage_data} \tab When this action is called for a specified shared device, it allows authorized users to delete the device's entire previous history of voice input data\cr
+\link[=alexaforbusiness_delete_gateway_group]{delete_gateway_group} \tab Deletes a gateway group \cr
+\link[=alexaforbusiness_delete_network_profile]{delete_network_profile} \tab Deletes a network profile by the network profile ARN \cr
 \link[=alexaforbusiness_delete_profile]{delete_profile} \tab Deletes a room profile by the profile ARN \cr
 \link[=alexaforbusiness_delete_room]{delete_room} \tab Deletes a room by the room ARN \cr
 \link[=alexaforbusiness_delete_room_skill_parameter]{delete_room_skill_parameter} \tab Deletes room skill parameter details by room, skill, and parameter key ID \cr
@@ -58,7 +64,10 @@ shared devices in their organization.
 \link[=alexaforbusiness_get_conference_provider]{get_conference_provider} \tab Gets details about a specific conference provider \cr
 \link[=alexaforbusiness_get_contact]{get_contact} \tab Gets the contact details by the contact ARN \cr
 \link[=alexaforbusiness_get_device]{get_device} \tab Gets the details of a device by device ARN \cr
+\link[=alexaforbusiness_get_gateway]{get_gateway} \tab Retrieves the details of a gateway \cr
+\link[=alexaforbusiness_get_gateway_group]{get_gateway_group} \tab Retrieves the details of a gateway group \cr
 \link[=alexaforbusiness_get_invitation_configuration]{get_invitation_configuration} \tab Retrieves the configured values for the user enrollment invitation email template \cr
+\link[=alexaforbusiness_get_network_profile]{get_network_profile} \tab Gets the network profile details by the network profile ARN \cr
 \link[=alexaforbusiness_get_profile]{get_profile} \tab Gets the details of a room profile by profile ARN \cr
 \link[=alexaforbusiness_get_room]{get_room} \tab Gets room details by room ARN \cr
 \link[=alexaforbusiness_get_room_skill_parameter]{get_room_skill_parameter} \tab Gets room skill parameter details by room, skill, and parameter key ARN \cr
@@ -66,6 +75,8 @@ shared devices in their organization.
 \link[=alexaforbusiness_list_business_report_schedules]{list_business_report_schedules} \tab Lists the details of the schedules that a user configured \cr
 \link[=alexaforbusiness_list_conference_providers]{list_conference_providers} \tab Lists conference providers under a specific AWS account \cr
 \link[=alexaforbusiness_list_device_events]{list_device_events} \tab Lists the device event history, including device connection status, for up to 30 days \cr
+\link[=alexaforbusiness_list_gateway_groups]{list_gateway_groups} \tab Retrieves a list of gateway group summaries \cr
+\link[=alexaforbusiness_list_gateways]{list_gateways} \tab Retrieves a list of gateway summaries \cr
 \link[=alexaforbusiness_list_skills]{list_skills} \tab Lists all enabled skills in a specific skill group \cr
 \link[=alexaforbusiness_list_skills_store_categories]{list_skills_store_categories} \tab Lists all categories in the Alexa skill store \cr
 \link[=alexaforbusiness_list_skills_store_skills_by_category]{list_skills_store_skills_by_category} \tab Lists all skills in the Alexa skill store by category \cr
@@ -82,12 +93,14 @@ shared devices in their organization.
 \link[=alexaforbusiness_search_address_books]{search_address_books} \tab Searches address books and lists the ones that meet a set of filter and sort criteria \cr
 \link[=alexaforbusiness_search_contacts]{search_contacts} \tab Searches contacts and lists the ones that meet a set of filter and sort criteria \cr
 \link[=alexaforbusiness_search_devices]{search_devices} \tab Searches devices and lists the ones that meet a set of filter criteria \cr
+\link[=alexaforbusiness_search_network_profiles]{search_network_profiles} \tab Searches network profiles and lists the ones that meet a set of filter and sort criteria \cr
 \link[=alexaforbusiness_search_profiles]{search_profiles} \tab Searches room profiles and lists the ones that meet a set of filter criteria \cr
 \link[=alexaforbusiness_search_rooms]{search_rooms} \tab Searches rooms and lists the ones that meet a set of filter and sort criteria \cr
 \link[=alexaforbusiness_search_skill_groups]{search_skill_groups} \tab Searches skill groups and lists the ones that meet a set of filter and sort criteria \cr
 \link[=alexaforbusiness_search_users]{search_users} \tab Searches users and lists the ones that meet a set of filter and sort criteria \cr
+\link[=alexaforbusiness_send_announcement]{send_announcement} \tab Triggers an asynchronous flow to send text, SSML, or audio announcements to rooms that are identified by a search or filter \cr
 \link[=alexaforbusiness_send_invitation]{send_invitation} \tab Sends an enrollment invitation email with a URL to a user \cr
-\link[=alexaforbusiness_start_device_sync]{start_device_sync} \tab Resets a device and its account to the known default settings, by clearing all information and settings set by previous users \cr
+\link[=alexaforbusiness_start_device_sync]{start_device_sync} \tab Resets a device and its account to the known default settings \cr
 \link[=alexaforbusiness_start_smart_home_appliance_discovery]{start_smart_home_appliance_discovery} \tab Initiates the discovery of any smart home appliances associated with the room \cr
 \link[=alexaforbusiness_tag_resource]{tag_resource} \tab Adds metadata tags to a specified resource \cr
 \link[=alexaforbusiness_untag_resource]{untag_resource} \tab Removes metadata tags from a specified resource \cr
@@ -96,6 +109,9 @@ shared devices in their organization.
 \link[=alexaforbusiness_update_conference_provider]{update_conference_provider} \tab Updates an existing conference provider's settings \cr
 \link[=alexaforbusiness_update_contact]{update_contact} \tab Updates the contact details by the contact ARN \cr
 \link[=alexaforbusiness_update_device]{update_device} \tab Updates the device name by device ARN \cr
+\link[=alexaforbusiness_update_gateway]{update_gateway} \tab Updates the details of a gateway \cr
+\link[=alexaforbusiness_update_gateway_group]{update_gateway_group} \tab Updates the details of a gateway group \cr
+\link[=alexaforbusiness_update_network_profile]{update_network_profile} \tab Updates a network profile by the network profile ARN \cr
 \link[=alexaforbusiness_update_profile]{update_profile} \tab Updates an existing room profile by room profile ARN \cr
 \link[=alexaforbusiness_update_room]{update_room} \tab Updates room details by room ARN \cr
 \link[=alexaforbusiness_update_skill_group]{update_skill_group} \tab Updates skill group details by skill group ARN

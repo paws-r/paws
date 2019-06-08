@@ -25,7 +25,7 @@ group family.}
 
 \item{Description}{[required] The description for the DB cluster parameter group.}
 
-\item{Tags}{}
+\item{Tags}{The tags to be assigned to the new DB cluster parameter group.}
 }
 \description{
 Creates a new DB cluster parameter group.

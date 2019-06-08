@@ -15,7 +15,8 @@ you can specify either the instance ID or the network interface ID, but
 not both. The operation fails if you specify an instance ID unless
 exactly one network interface is attached.}
 
-\item{PublicIp}{The Elastic IP address. This is required for EC2-Classic.}
+\item{PublicIp}{The Elastic IP address to associate with the instance. This is required
+for EC2-Classic.}
 
 \item{AllowReassociation}{[EC2-VPC] For a VPC in an EC2-Classic account, specify true to allow
 an Elastic IP address that is already associated with an instance or
@@ -31,7 +32,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[EC2-VPC] The ID of the network interface. If the instance has more
-than one network interface, you must specify a network interface ID.}
+than one network interface, you must specify a network interface ID.
+
+For EC2-VPC, you can specify either the instance ID or the network
+interface ID, but not both.}
 
 \item{PrivateIpAddress}{[EC2-VPC] The primary or secondary private IP address to associate
 with the Elastic IP address. If no private IP address is specified, the

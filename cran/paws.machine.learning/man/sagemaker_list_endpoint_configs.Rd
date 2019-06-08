@@ -24,8 +24,8 @@ endpoint configurations whose name contains the specified string.}
 \item{CreationTimeBefore}{A filter that returns only endpoint configurations created before the
 specified time (timestamp).}
 
-\item{CreationTimeAfter}{A filter that returns only endpoint configurations created after the
-specified time (timestamp).}
+\item{CreationTimeAfter}{A filter that returns only endpoint configurations with a creation time
+greater than or equal to the specified time (timestamp).}
 }
 \description{
 Lists endpoint configurations.

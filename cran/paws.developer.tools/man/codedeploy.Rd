@@ -86,7 +86,7 @@ deployment, and to get details about Amazon ECS service deployments.
 \link[=codedeploy_batch_get_applications]{batch_get_applications} \tab Gets information about one or more applications \cr
 \link[=codedeploy_batch_get_deployment_groups]{batch_get_deployment_groups} \tab Gets information about one or more deployment groups \cr
 \link[=codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances} \tab This method works, but is deprecated \cr
-\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of targets associated with a deployment \cr
+\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment \cr
 \link[=codedeploy_batch_get_deployments]{batch_get_deployments} \tab Gets information about one or more deployments \cr
 \link[=codedeploy_batch_get_on_premises_instances]{batch_get_on_premises_instances} \tab Gets information about one or more on-premises instances \cr
 \link[=codedeploy_continue_deployment]{continue_deployment} \tab For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse\cr
@@ -116,12 +116,15 @@ deployment, and to get details about Amazon ECS service deployments.
 \link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account \cr
 \link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts \cr
 \link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances \cr
+\link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified ARN \cr
 \link[=codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function \cr
 \link[=codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application \cr
 \link[=codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance \cr
 \link[=codedeploy_remove_tags_from_on_premises_instances]{remove_tags_from_on_premises_instances} \tab Removes one or more tags from one or more on-premises instances \cr
 \link[=codedeploy_skip_wait_time_for_instance_termination]{skip_wait_time_for_instance_termination} \tab In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete \cr
 \link[=codedeploy_stop_deployment]{stop_deployment} \tab Attempts to stop an ongoing deployment \cr
+\link[=codedeploy_tag_resource]{tag_resource} \tab Associates the list of tags in the input Tags parameter with the resource identified by the ResourceArn input parameter \cr
+\link[=codedeploy_untag_resource]{untag_resource} \tab Disassociates a resource from a list of tags \cr
 \link[=codedeploy_update_application]{update_application} \tab Changes the name of an application \cr
 \link[=codedeploy_update_deployment_group]{update_deployment_group} \tab Changes information about a deployment group
 }

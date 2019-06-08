@@ -39,7 +39,7 @@ policies that are attached to your roles.
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with
 Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 
 This operation can be called only from the organization's master
 account.

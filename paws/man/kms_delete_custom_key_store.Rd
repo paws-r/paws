@@ -11,21 +11,21 @@ kms_delete_custom_key_store(CustomKeyStoreId)
 of a custom key store, use the DescribeCustomKeyStores operation.}
 }
 \description{
-Deletes a \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}.
+Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
 This operation does not delete the AWS CloudHSM cluster that is
 associated with the custom key store, or affect any users or keys in the
 cluster.
 }
 \details{
 The custom key store that you delete cannot contain any AWS KMS
-\href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
 Before deleting the key store, verify that you will never need to use
 any of the CMKs in the key store for any cryptographic operations. Then,
 use ScheduleKeyDeletion to delete the AWS KMS customer master keys
 (CMKs) from the key store. When the scheduled waiting period expires,
 the \code{ScheduleKeyDeletion} operation deletes the CMKs. Then it makes a
 best effort to delete the key material from the associated cluster.
-However, you might need to manually \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
+However, you might need to manually \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
 from the cluster and its backups.
 
 After all CMKs are deleted from AWS KMS, use DisconnectCustomKeyStore to
@@ -40,7 +40,7 @@ disconnected custom key store at any time.
 
 If the operation succeeds, it returns a JSON object with no properties.
 
-This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
+This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.

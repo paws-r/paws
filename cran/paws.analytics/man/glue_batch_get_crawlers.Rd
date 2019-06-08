@@ -7,7 +7,7 @@
 glue_batch_get_crawlers(CrawlerNames)
 }
 \arguments{
-\item{CrawlerNames}{[required] A list of crawler names, which may be the names returned from the
+\item{CrawlerNames}{[required] A list of crawler names, which might be the names returned from the
 \code{ListCrawlers} operation.}
 }
 \description{

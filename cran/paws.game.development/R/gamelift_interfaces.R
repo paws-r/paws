@@ -29,25 +29,25 @@ NULL
 
 .gamelift$create_build_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OperatingSystem = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OperatingSystem = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .gamelift$create_build_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Build = structure(list(BuildId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), OperatingSystem = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), UploadCredentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Build = structure(list(BuildId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), OperatingSystem = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), UploadCredentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .gamelift$create_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EC2InstanceType = structure(logical(0), tags = list(type = "string")), EC2InboundPermissions = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), IpRange = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), RuntimeConfiguration = structure(list(ServerProcesses = structure(list(structure(list(LaunchPath = structure(logical(0), tags = list(type = "string")), Parameters = structure(logical(0), tags = list(type = "string")), ConcurrentExecutions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxConcurrentGameSessionActivations = structure(logical(0), tags = list(type = "integer")), GameSessionActivationTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PeerVpcAwsAccountId = structure(logical(0), tags = list(type = "string")), PeerVpcId = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ScriptId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EC2InstanceType = structure(logical(0), tags = list(type = "string")), EC2InboundPermissions = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), IpRange = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), RuntimeConfiguration = structure(list(ServerProcesses = structure(list(structure(list(LaunchPath = structure(logical(0), tags = list(type = "string")), Parameters = structure(logical(0), tags = list(type = "string")), ConcurrentExecutions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxConcurrentGameSessionActivations = structure(logical(0), tags = list(type = "integer")), GameSessionActivationTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PeerVpcAwsAccountId = structure(logical(0), tags = list(type = "string")), PeerVpcId = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .gamelift$create_fleet_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetAttributes = structure(list(FleetId = structure(logical(0), tags = list(type = "string")), FleetArn = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(logical(0), tags = list(type = "string")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StoppedActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(FleetAttributes = structure(list(FleetId = structure(logical(0), tags = list(type = "string")), FleetArn = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ScriptId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(logical(0), tags = list(type = "string")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StoppedActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -120,6 +120,18 @@ NULL
 .gamelift$create_player_sessions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PlayerSessions = structure(list(structure(list(PlayerSessionId = structure(logical(0), tags = list(type = "string")), PlayerId = structure(logical(0), tags = list(type = "string")), GameSessionId = structure(logical(0), tags = list(type = "string")), FleetId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), PlayerData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$create_script_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ZipFile = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$create_script_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Script = structure(list(ScriptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -223,6 +235,16 @@ NULL
   list()
 }
 
+.gamelift$delete_script_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ScriptId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$delete_script_output <- function(...) {
+  list()
+}
+
 .gamelift$delete_vpc_peering_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GameLiftAwsAccountId = structure(logical(0), tags = list(type = "string")), PeerVpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -291,7 +313,7 @@ NULL
 
 .gamelift$describe_fleet_attributes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FleetAttributes = structure(list(structure(list(FleetId = structure(logical(0), tags = list(type = "string")), FleetArn = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(logical(0), tags = list(type = "string")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StoppedActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FleetAttributes = structure(list(structure(list(FleetId = structure(logical(0), tags = list(type = "string")), FleetArn = structure(logical(0), tags = list(type = "string")), FleetType = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), TerminationTime = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), BuildId = structure(logical(0), tags = list(type = "string")), ScriptId = structure(logical(0), tags = list(type = "string")), ServerLaunchPath = structure(logical(0), tags = list(type = "string")), ServerLaunchParameters = structure(logical(0), tags = list(type = "string")), LogPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NewGameSessionProtectionPolicy = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(logical(0), tags = list(type = "string")), ResourceCreationLimitPolicy = structure(list(NewGameSessionsPerCreator = structure(logical(0), tags = list(type = "integer")), PolicyPeriodInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), MetricGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StoppedActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -475,6 +497,18 @@ NULL
   return(populate(args, shape))
 }
 
+.gamelift$describe_script_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ScriptId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$describe_script_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Script = structure(list(ScriptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .gamelift$describe_vpc_peering_authorizations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -549,13 +583,25 @@ NULL
 
 .gamelift$list_fleets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BuildId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(BuildId = structure(logical(0), tags = list(type = "string")), ScriptId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .gamelift$list_fleets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$list_scripts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$list_scripts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Scripts = structure(list(structure(list(ScriptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -579,7 +625,7 @@ NULL
 
 .gamelift$request_upload_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UploadCredentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(UploadCredentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -796,6 +842,18 @@ NULL
 .gamelift$update_runtime_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RuntimeConfiguration = structure(list(ServerProcesses = structure(list(structure(list(LaunchPath = structure(logical(0), tags = list(type = "string")), Parameters = structure(logical(0), tags = list(type = "string")), ConcurrentExecutions = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxConcurrentGameSessionActivations = structure(logical(0), tags = list(type = "integer")), GameSessionActivationTimeoutSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$update_script_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ScriptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ZipFile = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.gamelift$update_script_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Script = structure(list(ScriptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), SizeOnDisk = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StorageLocation = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

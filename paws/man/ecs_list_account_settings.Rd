@@ -2,8 +2,7 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_list_account_settings}
 \alias{ecs_list_account_settings}
-\title{Lists the account settings for an Amazon ECS resource for a specified
-principal}
+\title{Lists the account settings for a specified principal}
 \usage{
 ecs_list_account_settings(name, value, principalArn, effectiveSettings,
   nextToken, maxResults)
@@ -20,9 +19,9 @@ only for the authenticated user.}
 
 \item{effectiveSettings}{Specifies whether to return the effective settings. If \code{true}, the
 account settings for the root user or the default setting for the
-\code{principalArn}. If \code{false}, the account settings for the \code{principalArn}
-are returned if they are set. Otherwise, no account settings are
-returned.}
+\code{principalArn} are returned. If \code{false}, the account settings for the
+\code{principalArn} are returned if they are set. Otherwise, no account
+settings are returned.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{ListAccountSettings} request where \code{maxResults} was used and the
@@ -43,12 +42,11 @@ and 10. If this parameter is not used, then \code{ListAccountSettings}
 returns up to 10 results and a \code{nextToken} value if applicable.}
 }
 \description{
-Lists the account settings for an Amazon ECS resource for a specified
-principal.
+Lists the account settings for a specified principal.
 }
 \section{Request syntax}{
 \preformatted{svc$list_account_settings(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
   value = "string",
   principalArn = "string",
   effectiveSettings = TRUE|FALSE,

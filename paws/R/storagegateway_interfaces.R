@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$assign_tape_pool_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TapeARN = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$assign_tape_pool_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TapeARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$attach_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TargetName = structure(logical(0), tags = list(type = "string")), VolumeARN = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), DiskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -101,7 +113,7 @@ NULL
 
 .storagegateway$create_cachedi_scsi_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), VolumeSizeInBytes = structure(logical(0), tags = list(type = "long")), SnapshotId = structure(logical(0), tags = list(type = "string")), TargetName = structure(logical(0), tags = list(type = "string")), SourceVolumeARN = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), VolumeSizeInBytes = structure(logical(0), tags = list(type = "long")), SnapshotId = structure(logical(0), tags = list(type = "string")), TargetName = structure(logical(0), tags = list(type = "string")), SourceVolumeARN = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,7 +137,7 @@ NULL
 
 .storagegateway$create_smb_file_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Authentication = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), SMBACLEnabled = structure(logical(0), tags = list(type = "boolean")), AdminUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Authentication = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +149,7 @@ NULL
 
 .storagegateway$create_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), SnapshotDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), SnapshotDescription = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -161,7 +173,7 @@ NULL
 
 .storagegateway$create_storedi_scsi_volume_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DiskId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), PreserveExistingData = structure(logical(0), tags = list(type = "boolean")), TargetName = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DiskId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), PreserveExistingData = structure(logical(0), tags = list(type = "boolean")), TargetName = structure(logical(0), tags = list(type = "string")), NetworkInterfaceId = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,7 +185,7 @@ NULL
 
 .storagegateway$create_tape_with_barcode_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TapeSizeInBytes = structure(logical(0), tags = list(type = "long")), TapeBarcode = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TapeSizeInBytes = structure(logical(0), tags = list(type = "long")), TapeBarcode = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -185,7 +197,7 @@ NULL
 
 .storagegateway$create_tapes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TapeSizeInBytes = structure(logical(0), tags = list(type = "long")), ClientToken = structure(logical(0), tags = list(type = "string")), NumTapesToCreate = structure(logical(0), tags = list(type = "integer")), TapeBarcodePrefix = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TapeSizeInBytes = structure(logical(0), tags = list(type = "long")), ClientToken = structure(logical(0), tags = list(type = "string")), NumTapesToCreate = structure(logical(0), tags = list(type = "integer")), TapeBarcodePrefix = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -335,7 +347,7 @@ NULL
 
 .storagegateway$describe_chap_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChapCredentials = structure(list(structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateInitiator = structure(logical(0), tags = list(type = "string")), InitiatorName = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ChapCredentials = structure(list(structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateInitiator = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InitiatorName = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateTarget = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -347,7 +359,7 @@ NULL
 
 .storagegateway$describe_gateway_information_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayId = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string")), GatewayState = structure(logical(0), tags = list(type = "string")), GatewayNetworkInterfaces = structure(list(structure(list(Ipv4Address = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GatewayType = structure(logical(0), tags = list(type = "string")), NextUpdateAvailabilityDate = structure(logical(0), tags = list(type = "string")), LastSoftwareUpdate = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayId = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), GatewayTimezone = structure(logical(0), tags = list(type = "string")), GatewayState = structure(logical(0), tags = list(type = "string")), GatewayNetworkInterfaces = structure(list(structure(list(Ipv4Address = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), Ipv6Address = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GatewayType = structure(logical(0), tags = list(type = "string")), NextUpdateAvailabilityDate = structure(logical(0), tags = list(type = "string")), LastSoftwareUpdate = structure(logical(0), tags = list(type = "string")), Ec2InstanceId = structure(logical(0), tags = list(type = "string")), Ec2InstanceRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VPCEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -359,7 +371,7 @@ NULL
 
 .storagegateway$describe_maintenance_start_time_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer")), Timezone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -383,7 +395,7 @@ NULL
 
 .storagegateway$describe_smb_file_shares_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SMBFileShareInfoList = structure(list(structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), FileShareId = structure(logical(0), tags = list(type = "string")), FileShareStatus = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Authentication = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SMBFileShareInfoList = structure(list(structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), FileShareId = structure(logical(0), tags = list(type = "string")), FileShareStatus = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), SMBACLEnabled = structure(logical(0), tags = list(type = "boolean")), AdminUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Authentication = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,7 +407,7 @@ NULL
 
 .storagegateway$describe_smb_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SMBGuestPasswordSet = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), SMBGuestPasswordSet = structure(logical(0), tags = list(type = "boolean")), SMBSecurityStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -551,7 +563,7 @@ NULL
 
 .storagegateway$list_gateways_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Gateways = structure(list(structure(list(GatewayId = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayType = structure(logical(0), tags = list(type = "string")), GatewayOperationalState = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Gateways = structure(list(structure(list(GatewayId = structure(logical(0), tags = list(type = "string")), GatewayARN = structure(logical(0), tags = list(type = "string")), GatewayType = structure(logical(0), tags = list(type = "string")), GatewayOperationalState = structure(logical(0), tags = list(type = "string")), GatewayName = structure(logical(0), tags = list(type = "string")), Ec2InstanceId = structure(logical(0), tags = list(type = "string")), Ec2InstanceRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -761,7 +773,7 @@ NULL
 
 .storagegateway$update_chap_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateInitiator = structure(logical(0), tags = list(type = "string")), InitiatorName = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateInitiator = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InitiatorName = structure(logical(0), tags = list(type = "string")), SecretToAuthenticateTarget = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -797,7 +809,7 @@ NULL
 
 .storagegateway$update_maintenance_start_time_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), HourOfDay = structure(logical(0), tags = list(type = "integer")), MinuteOfHour = structure(logical(0), tags = list(type = "integer")), DayOfWeek = structure(logical(0), tags = list(type = "integer")), DayOfMonth = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -821,7 +833,7 @@ NULL
 
 .storagegateway$update_smb_file_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), KMSEncrypted = structure(logical(0), tags = list(type = "boolean")), KMSKey = structure(logical(0), tags = list(type = "string")), DefaultStorageClass = structure(logical(0), tags = list(type = "string")), ObjectACL = structure(logical(0), tags = list(type = "string")), ReadOnly = structure(logical(0), tags = list(type = "boolean")), GuessMIMETypeEnabled = structure(logical(0), tags = list(type = "boolean")), RequesterPays = structure(logical(0), tags = list(type = "boolean")), SMBACLEnabled = structure(logical(0), tags = list(type = "boolean")), AdminUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ValidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InvalidUserList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -831,9 +843,21 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$update_smb_security_strategy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), SMBSecurityStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$update_smb_security_strategy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$update_snapshot_schedule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), StartAt = structure(logical(0), tags = list(type = "integer")), RecurrenceInHours = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(VolumeARN = structure(logical(0), tags = list(type = "string")), StartAt = structure(logical(0), tags = list(type = "integer")), RecurrenceInHours = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

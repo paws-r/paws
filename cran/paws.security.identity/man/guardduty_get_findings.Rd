@@ -7,7 +7,8 @@
 guardduty_get_findings(DetectorId, FindingIds, SortCriteria)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to retrieve.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
+findings you want to retrieve.}
 
 \item{FindingIds}{[required] IDs of the findings that you want to retrieve.}
 

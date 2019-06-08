@@ -221,14 +221,15 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #'
 #' @param Name Descriptive label that is associated with a build. Build names do not
 #' need to be unique. You can use UpdateBuild to change this value later.
-#' @param Version Version that is associated with this build. Version strings do not need
-#' to be unique. You can use UpdateBuild to change this value later.
+#' @param Version Version that is associated with a build or script. Version strings do
+#' not need to be unique. You can use UpdateBuild to change this value
+#' later.
 #' @param StorageLocation Information indicating where your game build files are stored. Use this
 #' parameter only when creating a build with files stored in an Amazon S3
 #' bucket that you own. The storage location must specify an Amazon S3
-#' bucket name and key, as well as a role ARN that you set up to allow
-#' Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be
-#' in the same region that you want to create a new build in.
+#' bucket name and key, as well as a the ARN for a role that you set up to
+#' allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket
+#' must be in the same region that you want to create a new build in.
 #' @param OperatingSystem Operating system that the game server binaries are built to run on. This
 #' value determines the type of fleet resources that you can use for this
 #' build. If your game build contains multiple executables, they all must
@@ -244,7 +245,8 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy) {
 #'   StorageLocation = list(
 #'     Bucket = "string",
 #'     Key = "string",
-#'     RoleArn = "string"
+#'     RoleArn = "string",
+#'     ObjectVersion = "string"
 #'   ),
 #'   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"
 #' )
@@ -271,18 +273,24 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 
 #' Creates a new fleet to run your game servers
 #'
-#' Creates a new fleet to run your game servers. A fleet is a set of Amazon
-#' Elastic Compute Cloud (Amazon EC2) instances, each of which can run
-#' multiple server processes to host game sessions. You set up a fleet to
-#' use instances with certain hardware specifications (see [Amazon EC2
-#' Instance Types](http://aws.amazon.com/ec2/instance-types/)), and deploy
-#' your game build to the fleet.
+#' Creates a new fleet to run your game servers. whether they are custom
+#' game builds or Realtime Servers with game-specific script. A fleet is a
+#' set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of
+#' which can host multiple game sessions. When creating a fleet, you choose
+#' the hardware specifications, set some configuration options, and specify
+#' the game server to deploy on the new fleet.
 #' 
 #' To create a new fleet, you must provide the following: (1) a fleet name,
-#' (2) an EC2 instance type, (3) the build ID for your game build, and (4)
-#' a run-time configuration, which specifies the server processes to run on
-#' each instance in the fleet. If fleet type is not set, the new fleet will
-#' use on-demand instances by default.
+#' (2) an EC2 instance type and fleet type (spot or on-demand), (3) the
+#' build ID for your game build or script ID if using Realtime Servers, and
+#' (4) a run-time configuration, which determines how game servers will run
+#' on each instance in the fleet.
+#' 
+#' When creating a Realtime Servers fleet, we recommend using a minimal
+#' version of the Realtime script (see this [working code
+#' example](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples)).
+#' This will make it much easier to troubleshoot any fleet creation issues.
+#' Once the fleet is active, you can update your Realtime script as needed.
 #' 
 #' If the `CreateFleet` call is successful, Amazon GameLift performs the
 #' following tasks. You can track the process of a fleet by checking the
@@ -296,8 +304,8 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'     Sets the fleet\'s target capacity to 1 (desired instances), which
 #'     triggers Amazon GameLift to start one new EC2 instance.
 #' 
-#' -   Downloads the game build to the new instance and installs it.
-#'     Statuses: `DOWNLOADING`, `VALIDATING`, `BUILDING`.
+#' -   Downloads the game build or Realtime script to the new instance and
+#'     installs it. Statuses: `DOWNLOADING`, `VALIDATING`, `BUILDING`.
 #' 
 #' -   Starts launching server processes on the instance. If the fleet is
 #'     configured to run multiple server processes per instance, Amazon
@@ -310,7 +318,10 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' **Learn more**
 #' 
 #' [Working with
-#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
+#' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html)
+#' 
+#' [Debug Fleet Creation
+#' Issues](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html)
 #' 
 #' **Related operations**
 #' 
@@ -353,8 +364,8 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'     -   StopFleetActions
 #'
 #' @usage
-#' gamelift_create_fleet(Name, Description, BuildId, ServerLaunchPath,
-#'   ServerLaunchParameters, LogPaths, EC2InstanceType,
+#' gamelift_create_fleet(Name, Description, BuildId, ScriptId,
+#'   ServerLaunchPath, ServerLaunchParameters, LogPaths, EC2InstanceType,
 #'   EC2InboundPermissions, NewGameSessionProtectionPolicy,
 #'   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
 #'   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
@@ -362,9 +373,13 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' @param Name &#91;required&#93; Descriptive label that is associated with a fleet. Fleet names do not
 #' need to be unique.
 #' @param Description Human-readable description of a fleet.
-#' @param BuildId &#91;required&#93; Unique identifier for a build to be deployed on the new fleet. The build
-#' must have been successfully uploaded to Amazon GameLift and be in a
-#' `READY` status. This fleet setting cannot be changed once the fleet is
+#' @param BuildId Unique identifier for a build to be deployed on the new fleet. The
+#' custom game server build must have been successfully uploaded to Amazon
+#' GameLift and be in a `READY` status. This fleet setting cannot be
+#' changed once the fleet is created.
+#' @param ScriptId Unique identifier for a Realtime script to be deployed on the new fleet.
+#' The Realtime script must have been successfully uploaded to Amazon
+#' GameLift. This fleet setting cannot be changed once the fleet is
 #' created.
 #' @param ServerLaunchPath This parameter is no longer used. Instead, specify a server launch path
 #' using the `RuntimeConfiguration` parameter. (Requests that specify a
@@ -387,10 +402,12 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for
 #' detailed descriptions.
 #' @param EC2InboundPermissions Range of IP addresses and port settings that permit inbound traffic to
-#' access server processes running on the fleet. If no inbound permissions
-#' are set, including both IP address range and port range, the server
-#' processes in the fleet cannot accept connections. You can specify one or
-#' more sets of permissions for a fleet.
+#' access game sessions that running on the fleet. For fleets using a
+#' custom game build, this parameter is required before game sessions
+#' running on the fleet can accept connections. For Realtime Servers
+#' fleets, Amazon GameLift automatically sets TCP and UDP ranges for use by
+#' the Realtime servers. You can specify multiple permission settings or
+#' add more by updating the fleet.
 #' @param NewGameSessionProtectionPolicy Game session protection policy to apply to all instances in this fleet.
 #' If this parameter is not set, instances in this fleet default to no
 #' protection. You can change a fleet\'s protection policy using
@@ -404,17 +421,13 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' -   **FullProtection** \\-- If the game session is in an `ACTIVE` status,
 #'     it cannot be terminated during a scale-down event.
 #' @param RuntimeConfiguration Instructions for launching server processes on each instance in the
-#' fleet. The run-time configuration for a fleet has a collection of server
-#' process configurations, one for each type of server process to run on an
-#' instance. A server process configuration specifies the location of the
-#' server executable, launch parameters, and the number of concurrent
-#' processes with that configuration to maintain on each instance. A
-#' CreateFleet request must include a run-time configuration with at least
-#' one server process configuration; otherwise the request fails with an
-#' invalid request exception. (This parameter replaces the parameters
-#' `ServerLaunchPath` and `ServerLaunchParameters`; requests that contain
-#' values for these parameters instead of a run-time configuration will
-#' continue to work.)
+#' fleet. Server processes run either a custom game build executable or a
+#' Realtime Servers script. The run-time configuration lists the types of
+#' server processes to run on an instance and includes the following
+#' configuration settings: the server executable or launch script file,
+#' launch parameters, and the number of processes to run concurrently on
+#' each instance. A CreateFleet request must include a run-time
+#' configuration with at least one server process configuration.
 #' @param ResourceCreationLimitPolicy Policy that limits the number of game sessions an individual player can
 #' create over a span of time for this fleet.
 #' @param MetricGroups Name of an Amazon CloudWatch metric group to add this fleet to. A metric
@@ -433,20 +446,17 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' @param FleetType Indicates whether to use on-demand instances or spot instances for this
 #' fleet. If empty, the default is ON\\_DEMAND. Both categories of instances
-#' use identical hardware and configurations, based on the instance type
-#' selected for this fleet. You can acquire on-demand instances at any time
-#' for a fixed price and keep them as long as you need them. Spot instances
-#' have lower prices, but spot pricing is variable, and while in use they
-#' can be interrupted (with a two-minute notification). Learn more about
-#' Amazon GameLift spot instances with at [Set up Access to External
-#' Services](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html).
+#' use identical hardware and configurations based on the instance type
+#' selected for this fleet. Learn more about [On-Demand versus Spot
+#' Instances](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot).
 #' @param InstanceRoleArn Unique identifier for an AWS IAM role that manages access to your AWS
-#' services. Any application that runs on an instance in this fleet can
-#' assume the role, including install scripts, server processs, daemons
-#' (background processes). Create a role or look up a role\'s ARN using the
-#' [IAM dashboard](https://console.aws.amazon.com/iam/) in the AWS
-#' Management Console. Learn more about using on-box credentials for your
-#' game servers at [Access external resources from a game
+#' services. With an instance role ARN set, any application that runs on an
+#' instance in this fleet can assume the role, including install scripts,
+#' server processes, daemons (background processes). Create a role or look
+#' up a role\'s ARN using the [IAM
+#' dashboard](https://console.aws.amazon.com/iam/) in the AWS Management
+#' Console. Learn more about using on-box credentials for your game servers
+#' at [Access external resources from a game
 #' server](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
 #'
 #' @section Request syntax:
@@ -455,6 +465,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   Name = "string",
 #'   Description = "string",
 #'   BuildId = "string",
+#'   ScriptId = "string",
 #'   ServerLaunchPath = "string",
 #'   ServerLaunchParameters = "string",
 #'   LogPaths = list(
@@ -498,14 +509,14 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' @keywords internal
 #'
 #' @rdname gamelift_create_fleet
-gamelift_create_fleet <- function(Name, Description = NULL, BuildId, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL) {
+gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, ScriptId = NULL, ServerLaunchPath = NULL, ServerLaunchParameters = NULL, LogPaths = NULL, EC2InstanceType, EC2InboundPermissions = NULL, NewGameSessionProtectionPolicy = NULL, RuntimeConfiguration = NULL, ResourceCreationLimitPolicy = NULL, MetricGroups = NULL, PeerVpcAwsAccountId = NULL, PeerVpcId = NULL, FleetType = NULL, InstanceRoleArn = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn)
+  input <- .gamelift$create_fleet_input(Name = Name, Description = Description, BuildId = BuildId, ScriptId = ScriptId, ServerLaunchPath = ServerLaunchPath, ServerLaunchParameters = ServerLaunchParameters, LogPaths = LogPaths, EC2InstanceType = EC2InstanceType, EC2InboundPermissions = EC2InboundPermissions, NewGameSessionProtectionPolicy = NewGameSessionProtectionPolicy, RuntimeConfiguration = RuntimeConfiguration, ResourceCreationLimitPolicy = ResourceCreationLimitPolicy, MetricGroups = MetricGroups, PeerVpcAwsAccountId = PeerVpcAwsAccountId, PeerVpcId = PeerVpcId, FleetType = FleetType, InstanceRoleArn = InstanceRoleArn)
   output <- .gamelift$create_fleet_output()
   svc <- .gamelift$service()
   request <- new_request(svc, op, input, output)
@@ -985,18 +996,20 @@ gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody) {
 }
 .gamelift$operations$create_matchmaking_rule_set <- gamelift_create_matchmaking_rule_set
 
-#' Adds a player to a game session and creates a player session record
+#' Reserves an open player slot in an active game session
 #'
-#' Adds a player to a game session and creates a player session record.
-#' Before a player can be added, a game session must have an `ACTIVE`
-#' status, have a creation policy of `ALLOW_ALL`, and have an open player
-#' slot. To add a group of players to a game session, use
-#' CreatePlayerSessions.
+#' Reserves an open player slot in an active game session. Before a player
+#' can be added, a game session must have an `ACTIVE` status, have a
+#' creation policy of `ALLOW_ALL`, and have an open player slot. To add a
+#' group of players to a game session, use CreatePlayerSessions. When the
+#' player connects to the game server and references a player session ID,
+#' the game server contacts the Amazon GameLift service to validate the
+#' player reservation and accept the player.
 #' 
 #' To create a player session, specify a game session ID, player ID, and
-#' optionally a string of player data. If successful, the player is added
-#' to the game session and a new PlayerSession object is returned. Player
-#' sessions cannot be updated.
+#' optionally a string of player data. If successful, a slot is reserved in
+#' the game session for the player and a new PlayerSession object is
+#' returned. Player sessions cannot be updated.
 #' 
 #' *Available in Amazon GameLift Local.*
 #' 
@@ -1050,18 +1063,20 @@ gamelift_create_player_session <- function(GameSessionId, PlayerId, PlayerData =
 }
 .gamelift$operations$create_player_session <- gamelift_create_player_session
 
-#' Adds a group of players to a game session
+#' Reserves open slots in a game session for a group of players
 #'
-#' Adds a group of players to a game session. This action is useful with a
-#' team matching feature. Before players can be added, a game session must
-#' have an `ACTIVE` status, have a creation policy of `ALLOW_ALL`, and have
-#' an open player slot. To add a single player to a game session, use
-#' CreatePlayerSession.
+#' Reserves open slots in a game session for a group of players. Before
+#' players can be added, a game session must have an `ACTIVE` status, have
+#' a creation policy of `ALLOW_ALL`, and have an open player slot. To add a
+#' single player to a game session, use CreatePlayerSession. When a player
+#' connects to the game server and references a player session ID, the game
+#' server contacts the Amazon GameLift service to validate the player
+#' reservation and accept the player.
 #' 
 #' To create player sessions, specify a game session ID, a list of player
-#' IDs, and optionally a set of player data strings. If successful, the
-#' players are added to the game session and a set of new PlayerSession
-#' objects is returned. Player sessions cannot be updated.
+#' IDs, and optionally a set of player data strings. If successful, a slot
+#' is reserved in the game session for each player and a set of new
+#' PlayerSession objects is returned. Player sessions cannot be updated.
 #' 
 #' *Available in Amazon GameLift Local.*
 #' 
@@ -1121,6 +1136,113 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
   return(response)
 }
 .gamelift$operations$create_player_sessions <- gamelift_create_player_sessions
+
+#' Creates a new script record for your Realtime Servers script
+#'
+#' Creates a new script record for your Realtime Servers script. Realtime
+#' scripts are JavaScript that provide configuration settings and optional
+#' custom game logic for your game. The script is deployed when you create
+#' a Realtime Servers fleet to host your game sessions. Script logic is
+#' executed during an active game session.
+#' 
+#' To create a new script record, specify a script name and provide the
+#' script file(s). The script files and all dependencies must be zipped
+#' into a single file. You can pull the zip file from either of these
+#' locations:
+#' 
+#' -   A locally available directory. Use the *ZipFile* parameter for this
+#'     option.
+#' 
+#' -   An Amazon Simple Storage Service (Amazon S3) bucket under your AWS
+#'     account. Use the *StorageLocation* parameter for this option.
+#'     You\'ll need to have an Identity Access Management (IAM) role that
+#'     allows the Amazon GameLift service to access your S3 bucket.
+#' 
+#' If the call is successful, a new script record is created with a unique
+#' script ID. If the script file is provided as a local file, the file is
+#' uploaded to an Amazon GameLift-owned S3 bucket and the script record\'s
+#' storage location reflects this location. If the script file is provided
+#' as an S3 bucket, Amazon GameLift accesses the file at this storage
+#' location as needed for deployment.
+#' 
+#' **Learn more**
+#' 
+#' [Amazon GameLift Realtime
+#' Servers](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+#' 
+#' [Set Up a Role for Amazon GameLift
+#' Access](https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateScript
+#' 
+#' -   ListScripts
+#' 
+#' -   DescribeScript
+#' 
+#' -   UpdateScript
+#' 
+#' -   DeleteScript
+#'
+#' @usage
+#' gamelift_create_script(Name, Version, StorageLocation, ZipFile)
+#'
+#' @param Name Descriptive label that is associated with a script. Script names do not
+#' need to be unique. You can use UpdateScript to change this value later.
+#' @param Version Version that is associated with a build or script. Version strings do
+#' not need to be unique. You can use UpdateScript to change this value
+#' later.
+#' @param StorageLocation Location of the Amazon S3 bucket where a zipped file containing your
+#' Realtime scripts is stored. The storage location must specify the Amazon
+#' S3 bucket name, the zip file name (the \"key\"), and a role ARN that
+#' allows Amazon GameLift to access the Amazon S3 storage location. The S3
+#' bucket must be in the same region where you want to create a new script.
+#' By default, Amazon GameLift uploads the latest version of the zip file;
+#' if you have S3 object versioning turned on, you can use the
+#' `ObjectVersion` parameter to specify an earlier version.
+#' @param ZipFile Data object containing your Realtime scripts and dependencies as a zip
+#' file. The zip file can have one or multiple files. Maximum size of a zip
+#' file is 5 MB.
+#' 
+#' When using the AWS CLI tool to create a script, this parameter is set to
+#' the zip file name. It must be prepended with the string \"fileb://\" to
+#' indicate that the file data is a binary object. For example:
+#' `--zip-file fileb://myRealtimeScript.zip`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_script(
+#'   Name = "string",
+#'   Version = "string",
+#'   StorageLocation = list(
+#'     Bucket = "string",
+#'     Key = "string",
+#'     RoleArn = "string",
+#'     ObjectVersion = "string"
+#'   ),
+#'   ZipFile = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_create_script
+gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation = NULL, ZipFile = NULL) {
+  op <- new_operation(
+    name = "CreateScript",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$create_script_input(Name = Name, Version = Version, StorageLocation = StorageLocation, ZipFile = ZipFile)
+  output <- .gamelift$create_script_output()
+  svc <- .gamelift$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$create_script <- gamelift_create_script
 
 #' Requests authorization to create or delete a peer connection between the
 #' VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in
@@ -1713,6 +1835,66 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
   return(response)
 }
 .gamelift$operations$delete_scaling_policy <- gamelift_delete_scaling_policy
+
+#' Deletes a Realtime script
+#'
+#' Deletes a Realtime script. This action permanently deletes the script
+#' record. If script files were uploaded, they are also deleted (files
+#' stored in an S3 bucket are not deleted).
+#' 
+#' To delete a script, specify the script ID. Before deleting a script, be
+#' sure to terminate all fleets that are deployed with the script being
+#' deleted. Fleet instances periodically check for script updates, and if
+#' the script record no longer exists, the instance will go into an error
+#' state and be unable to host game sessions.
+#' 
+#' **Learn more**
+#' 
+#' [Amazon GameLift Realtime
+#' Servers](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateScript
+#' 
+#' -   ListScripts
+#' 
+#' -   DescribeScript
+#' 
+#' -   UpdateScript
+#' 
+#' -   DeleteScript
+#'
+#' @usage
+#' gamelift_delete_script(ScriptId)
+#'
+#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_script(
+#'   ScriptId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_delete_script
+gamelift_delete_script <- function(ScriptId) {
+  op <- new_operation(
+    name = "DeleteScript",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$delete_script_input(ScriptId = ScriptId)
+  output <- .gamelift$delete_script_output()
+  svc <- .gamelift$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$delete_script <- gamelift_delete_script
 
 #' Cancels a pending VPC peering authorization for the specified VPC
 #'
@@ -3357,6 +3539,61 @@ gamelift_describe_scaling_policies <- function(FleetId, StatusFilter = NULL, Lim
 }
 .gamelift$operations$describe_scaling_policies <- gamelift_describe_scaling_policies
 
+#' Retrieves properties for a Realtime script
+#'
+#' Retrieves properties for a Realtime script.
+#' 
+#' To request a script record, specify the script ID. If successful, an
+#' object containing the script properties is returned.
+#' 
+#' **Learn more**
+#' 
+#' [Amazon GameLift Realtime
+#' Servers](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateScript
+#' 
+#' -   ListScripts
+#' 
+#' -   DescribeScript
+#' 
+#' -   UpdateScript
+#' 
+#' -   DeleteScript
+#'
+#' @usage
+#' gamelift_describe_script(ScriptId)
+#'
+#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to retrieve properties for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_script(
+#'   ScriptId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_describe_script
+gamelift_describe_script <- function(ScriptId) {
+  op <- new_operation(
+    name = "DescribeScript",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$describe_script_input(ScriptId = ScriptId)
+  output <- .gamelift$describe_script_output()
+  svc <- .gamelift$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$describe_script <- gamelift_describe_script
+
 #' Retrieves valid VPC peering authorizations that are pending for the AWS
 #' account
 #'
@@ -3739,14 +3976,15 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' Retrieves a collection of fleet records for this AWS account
 #'
 #' Retrieves a collection of fleet records for this AWS account. You can
-#' filter the result set by build ID. Use the pagination parameters to
-#' retrieve results in sequential pages.
+#' filter the result set to find only those fleets that are deployed with a
+#' specific build or script. Use the pagination parameters to retrieve
+#' results in sequential pages.
 #' 
-#' Fleet records are not listed in any particular order.
+#' Fleet records are not listed in a particular order.
 #' 
 #' **Learn more**
 #' 
-#' [Working with
+#' [Set Up
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html).
 #' 
 #' **Related operations**
@@ -3790,11 +4028,14 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #'     -   StopFleetActions
 #'
 #' @usage
-#' gamelift_list_fleets(BuildId, Limit, NextToken)
+#' gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 #'
 #' @param BuildId Unique identifier for a build to return fleets for. Use this parameter
 #' to return only fleets using the specified build. To retrieve all fleets,
 #' leave this parameter empty.
+#' @param ScriptId Unique identifier for a Realtime script to return fleets for. Use this
+#' parameter to return only fleets using the specified script. To retrieve
+#' all fleets, leave this parameter empty.
 #' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
 #' to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
@@ -3805,6 +4046,7 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' ```
 #' svc$list_fleets(
 #'   BuildId = "string",
+#'   ScriptId = "string",
 #'   Limit = 123,
 #'   NextToken = "string"
 #' )
@@ -3813,14 +4055,14 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname gamelift_list_fleets
-gamelift_list_fleets <- function(BuildId = NULL, Limit = NULL, NextToken = NULL) {
+gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFleets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$list_fleets_input(BuildId = BuildId, Limit = Limit, NextToken = NextToken)
+  input <- .gamelift$list_fleets_input(BuildId = BuildId, ScriptId = ScriptId, Limit = Limit, NextToken = NextToken)
   output <- .gamelift$list_fleets_output()
   svc <- .gamelift$service()
   request <- new_request(svc, op, input, output)
@@ -3828,6 +4070,65 @@ gamelift_list_fleets <- function(BuildId = NULL, Limit = NULL, NextToken = NULL)
   return(response)
 }
 .gamelift$operations$list_fleets <- gamelift_list_fleets
+
+#' Retrieves script records for all Realtime scripts that are associated
+#' with the AWS account in use
+#'
+#' Retrieves script records for all Realtime scripts that are associated
+#' with the AWS account in use.
+#' 
+#' **Learn more**
+#' 
+#' [Amazon GameLift Realtime
+#' Servers](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateScript
+#' 
+#' -   ListScripts
+#' 
+#' -   DescribeScript
+#' 
+#' -   UpdateScript
+#' 
+#' -   DeleteScript
+#'
+#' @usage
+#' gamelift_list_scripts(Limit, NextToken)
+#'
+#' @param Limit Maximum number of results to return. Use this parameter with `NextToken`
+#' to get results as a set of sequential pages.
+#' @param NextToken Token that indicates the start of the next sequential page of results.
+#' Use the token that is returned with a previous call to this action. To
+#' start at the beginning of the result set, do not specify a value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_scripts(
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_list_scripts
+gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListScripts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$list_scripts_input(Limit = Limit, NextToken = NextToken)
+  output <- .gamelift$list_scripts_output()
+  svc <- .gamelift$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$list_scripts <- gamelift_list_scripts
 
 #' Creates or updates a scaling policy for a fleet
 #'
@@ -5139,8 +5440,8 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #' @param BuildId &#91;required&#93; Unique identifier for a build to update.
 #' @param Name Descriptive label that is associated with a build. Build names do not
 #' need to be unique.
-#' @param Version Version that is associated with this build. Version strings do not need
-#' to be unique.
+#' @param Version Version that is associated with a build or script. Version strings do
+#' not need to be unique.
 #'
 #' @section Request syntax:
 #' ```
@@ -5780,17 +6081,15 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' status.
 #' 
 #' To update run-time configuration, specify the fleet ID and provide a
-#' `RuntimeConfiguration` object with the updated collection of server
-#' process configurations.
+#' `RuntimeConfiguration` object with an updated set of server process
+#' configurations.
 #' 
 #' Each instance in a Amazon GameLift fleet checks regularly for an updated
 #' run-time configuration and changes how it launches server processes to
 #' comply with the latest version. Existing server processes are not
-#' affected by the update; they continue to run until they end, while
-#' Amazon GameLift simply adds new server processes to fit the current
-#' run-time configuration. As a result, the run-time configuration changes
-#' are applied gradually as existing processes shut down and new processes
-#' are launched in Amazon GameLift\'s normal process recycling activity.
+#' affected by the update; run-time configuration changes are applied
+#' gradually as existing processes shut down and new processes are launched
+#' during Amazon GameLift\'s normal process recycling activity.
 #' 
 #' **Learn more**
 #' 
@@ -5842,11 +6141,13 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #'
 #' @param FleetId &#91;required&#93; Unique identifier for a fleet to update run-time configuration for.
 #' @param RuntimeConfiguration &#91;required&#93; Instructions for launching server processes on each instance in the
-#' fleet. The run-time configuration for a fleet has a collection of server
-#' process configurations, one for each type of server process to run on an
-#' instance. A server process configuration specifies the location of the
-#' server executable, launch parameters, and the number of concurrent
-#' processes with that configuration to maintain on each instance.
+#' fleet. Server processes run either a custom game build executable or a
+#' Realtime Servers script. The run-time configuration lists the types of
+#' server processes to run on an instance and includes the following
+#' configuration settings: the server executable or launch script file,
+#' launch parameters, and the number of processes to run concurrently on
+#' each instance. A CreateFleet request must include a run-time
+#' configuration with at least one server process configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -5884,6 +6185,101 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
   return(response)
 }
 .gamelift$operations$update_runtime_configuration <- gamelift_update_runtime_configuration
+
+#' Updates Realtime script metadata and content
+#'
+#' Updates Realtime script metadata and content.
+#' 
+#' To update script metadata, specify the script ID and provide updated
+#' name and/or version values.
+#' 
+#' To update script content, provide an updated zip file by pointing to
+#' either a local file or an Amazon S3 bucket location. You can use either
+#' method regardless of how the original script was uploaded. Use the
+#' *Version* parameter to track updates to the script.
+#' 
+#' If the call is successful, the updated metadata is stored in the script
+#' record and a revised script is uploaded to the Amazon GameLift service.
+#' Once the script is updated and acquired by a fleet instance, the new
+#' version is used for all new game sessions.
+#' 
+#' **Learn more**
+#' 
+#' [Amazon GameLift Realtime
+#' Servers](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateScript
+#' 
+#' -   ListScripts
+#' 
+#' -   DescribeScript
+#' 
+#' -   UpdateScript
+#' 
+#' -   DeleteScript
+#'
+#' @usage
+#' gamelift_update_script(ScriptId, Name, Version, StorageLocation,
+#'   ZipFile)
+#'
+#' @param ScriptId &#91;required&#93; Unique identifier for a Realtime script to update.
+#' @param Name Descriptive label that is associated with a script. Script names do not
+#' need to be unique.
+#' @param Version Version that is associated with a build or script. Version strings do
+#' not need to be unique.
+#' @param StorageLocation Location of the Amazon S3 bucket where a zipped file containing your
+#' Realtime scripts is stored. The storage location must specify the Amazon
+#' S3 bucket name, the zip file name (the \"key\"), and a role ARN that
+#' allows Amazon GameLift to access the Amazon S3 storage location. The S3
+#' bucket must be in the same region where you want to create a new script.
+#' By default, Amazon GameLift uploads the latest version of the zip file;
+#' if you have S3 object versioning turned on, you can use the
+#' `ObjectVersion` parameter to specify an earlier version.
+#' @param ZipFile Data object containing your Realtime scripts and dependencies as a zip
+#' file. The zip file can have one or multiple files. Maximum size of a zip
+#' file is 5 MB.
+#' 
+#' When using the AWS CLI tool to create a script, this parameter is set to
+#' the zip file name. It must be prepended with the string \"fileb://\" to
+#' indicate that the file data is a binary object. For example:
+#' `--zip-file fileb://myRealtimeScript.zip`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_script(
+#'   ScriptId = "string",
+#'   Name = "string",
+#'   Version = "string",
+#'   StorageLocation = list(
+#'     Bucket = "string",
+#'     Key = "string",
+#'     RoleArn = "string",
+#'     ObjectVersion = "string"
+#'   ),
+#'   ZipFile = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_update_script
+gamelift_update_script <- function(ScriptId, Name = NULL, Version = NULL, StorageLocation = NULL, ZipFile = NULL) {
+  op <- new_operation(
+    name = "UpdateScript",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$update_script_input(ScriptId = ScriptId, Name = Name, Version = Version, StorageLocation = StorageLocation, ZipFile = ZipFile)
+  output <- .gamelift$update_script_output()
+  svc <- .gamelift$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$update_script <- gamelift_update_script
 
 #' Validates the syntax of a matchmaking rule or rule set
 #'

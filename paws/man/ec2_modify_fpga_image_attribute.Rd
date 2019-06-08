@@ -21,15 +21,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{OperationType}{The operation type.}
 
-\item{UserIds}{One or more AWS account IDs. This parameter is valid only when modifying
-the \code{loadPermission} attribute.}
-
-\item{UserGroups}{One or more user groups. This parameter is valid only when modifying the
+\item{UserIds}{The AWS account IDs. This parameter is valid only when modifying the
 \code{loadPermission} attribute.}
 
-\item{ProductCodes}{One or more product codes. After you add a product code to an AFI, it
-can't be removed. This parameter is valid only when modifying the
-\code{productCodes} attribute.}
+\item{UserGroups}{The user groups. This parameter is valid only when modifying the
+\code{loadPermission} attribute.}
+
+\item{ProductCodes}{The product codes. After you add a product code to an AFI, it can't be
+removed. This parameter is valid only when modifying the \code{productCodes}
+attribute.}
 
 \item{LoadPermission}{The load permission for the AFI.}
 

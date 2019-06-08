@@ -12,15 +12,16 @@ gamelift_create_build(Name, Version, StorageLocation, OperatingSystem)
 \item{Name}{Descriptive label that is associated with a build. Build names do not
 need to be unique. You can use UpdateBuild to change this value later.}
 
-\item{Version}{Version that is associated with this build. Version strings do not need
-to be unique. You can use UpdateBuild to change this value later.}
+\item{Version}{Version that is associated with a build or script. Version strings do
+not need to be unique. You can use UpdateBuild to change this value
+later.}
 
 \item{StorageLocation}{Information indicating where your game build files are stored. Use this
 parameter only when creating a build with files stored in an Amazon S3
 bucket that you own. The storage location must specify an Amazon S3
-bucket name and key, as well as a role ARN that you set up to allow
-Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be
-in the same region that you want to create a new build in.}
+bucket name and key, as well as a the ARN for a role that you set up to
+allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket
+must be in the same region that you want to create a new build in.}
 
 \item{OperatingSystem}{Operating system that the game server binaries are built to run on. This
 value determines the type of fleet resources that you can use for this
@@ -89,7 +90,8 @@ DescribeBuild to check the status of your build. A build must be in
   StorageLocation = list(
     Bucket = "string",
     Key = "string",
-    RoleArn = "string"
+    RoleArn = "string",
+    ObjectVersion = "string"
   ),
   OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"
 )

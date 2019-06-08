@@ -7,21 +7,21 @@ with the AWS account}
 \usage{
 codepipeline_create_custom_action_type(category, provider, version,
   settings, configurationProperties, inputArtifactDetails,
-  outputArtifactDetails)
+  outputArtifactDetails, tags)
 }
 \arguments{
 \item{category}{[required] The category of the custom action, such as a build action or a test
 action.
 
-Although Source and Approval are listed as valid values, they are not
-currently functional. These values are reserved for future use.}
+Although \code{Source} and \code{Approval} are listed as valid values, they are
+not currently functional. These values are reserved for future use.}
 
 \item{provider}{[required] The provider of the service used in the custom action, such as AWS
 CodeDeploy.}
 
 \item{version}{[required] The version identifier of the custom action.}
 
-\item{settings}{Returns information about the settings for an action type.}
+\item{settings}{URLs that provide users information about this custom action.}
 
 \item{configurationProperties}{The configuration properties for the custom action.
 
@@ -33,6 +33,8 @@ and not secret. For more information, see \href{https://docs.aws.amazon.com/code
 \item{inputArtifactDetails}{[required] The details of the input artifact for the action, such as its commit ID.}
 
 \item{outputArtifactDetails}{[required] The details of the output artifact of the action, such as its commit ID.}
+
+\item{tags}{The tags for the custom action.}
 }
 \description{
 Creates a new custom action that can be used in all pipelines associated
@@ -67,6 +69,12 @@ with the AWS account. Only used for custom actions.
   outputArtifactDetails = list(
     minimumCount = 123,
     maximumCount = 123
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
   )
 )
 }

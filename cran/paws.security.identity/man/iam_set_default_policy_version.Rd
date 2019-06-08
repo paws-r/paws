@@ -11,12 +11,12 @@ iam_set_default_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy whose default version
 you want to set.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] The version of the policy to set as the default (operative) version.
 
-For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -28,7 +28,7 @@ This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.
 
-For information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

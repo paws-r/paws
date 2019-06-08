@@ -17,10 +17,10 @@ NULL
 #' 
 #'     The user who calls the API for an invitation to join must have the
 #'     `organizations:AcceptHandshake` permission. If you enabled all
-#'     features in the organization, then the user must also have the
-#'     `iam:CreateServiceLinkedRole` permission so that Organizations can
-#'     create the required service-linked role named
-#'     *AWSServiceRoleForOrganizations*. For more information, see [AWS
+#'     features in the organization, the user must also have the
+#'     `iam:CreateServiceLinkedRole` permission so that AWS Organizations
+#'     can create the required service-linked role named
+#'     `AWSServiceRoleForOrganizations`. For more information, see [AWS
 #'     Organizations and Service-Linked
 #'     Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles)
 #'     in the *AWS Organizations User Guide*.
@@ -31,14 +31,14 @@ NULL
 #'     For more information about invitations, see [Inviting an AWS Account
 #'     to Join Your
 #'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
-#'     in the *AWS Organizations User Guide*. For more information about
+#'     in the *AWS Organizations User Guide.* For more information about
 #'     requests to enable all features in the organization, see [Enabling
 #'     All Features in Your
 #'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #' 
 #' After you accept a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that it is deleted.
+#' relevant APIs for only 30 days. After that, it\'s deleted.
 #'
 #' @usage
 #' organizations_accept_handshake(HandshakeId)
@@ -96,29 +96,28 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'     influence for a policy depends on what you attach the policy to:
 #' 
 #'     -   If you attach an SCP to a root, it affects all accounts in the
-#'         organization.
+#'         organization
 #' 
 #'     -   If you attach an SCP to an OU, it affects all accounts in that
-#'         OU and in any child OUs.
+#'         OU and in any child OUs
 #' 
-#'     -   If you attach the policy directly to an account, then it affects
-#'         only that account.
+#'     -   If you attach the policy directly to an account, it affects only
+#'         that account
 #' 
 #'     SCPs are JSON policies that specify the maximum permissions for an
 #'     organization or organizational unit (OU). When you attach one SCP to
 #'     a higher level root or OU, and you also attach a different SCP to a
 #'     child OU or to an account, the child policy can further restrict
 #'     only the permissions that pass through the parent filter and are
-#'     available to the child. An SCP that is attached to a child cannot
-#'     grant a permission that is not already granted by the parent. For
+#'     available to the child. An SCP that is attached to a child can\'t
+#'     grant a permission that the paren\'t hasn\'t already granted. For
 #'     example, imagine that the parent SCP allows permissions A, B, C, D,
 #'     and E. The child SCP allows C, D, E, F, and G. The result is that
 #'     the accounts affected by the child SCP are allowed to use only C, D,
-#'     and E. They cannot use A or B because they were filtered out by the
-#'     child OU. They also cannot use F and G because they were filtered
-#'     out by the parent OU. They cannot be granted back by the child SCP;
-#'     child SCPs can only filter the permissions they receive from the
-#'     parent SCP.
+#'     and E. They can\'t use A or B because the child OU filtered them
+#'     out. They also can\'t use F and G because the parent OU filtered
+#'     them out. They can\'t be granted back by the child SCP; child SCPs
+#'     can only filter the permissions they receive from the parent SCP.
 #' 
 #'     AWS Organizations attaches a default SCP named `\"FullAWSAccess` to
 #'     every root, OU, and account. This default SCP allows all services
@@ -127,10 +126,10 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'     policy, you must replace it with a policy that specifies the
 #'     permissions that you want to allow in that OU or account.
 #' 
-#'     For more information about how Organizations policies permissions
-#'     work, see [Using Service Control
+#'     For more information about how AWS Organizations policies
+#'     permissions work, see [Using Service Control
 #'     Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -217,7 +216,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' can no longer respond to that handshake.
 #' 
 #' After you cancel a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that it is deleted.
+#' relevant APIs for only 30 days. After that, it\'s deleted.
 #'
 #' @usage
 #' organizations_cancel_handshake(HandshakeId)
@@ -280,7 +279,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     provide as a parameter to the DescribeCreateAccountStatus operation.
 #' 
 #' -   Check the AWS CloudTrail log for the `CreateAccountResult` event.
-#'     For information on using AWS CloudTrail with Organizations, see
+#'     For information on using AWS CloudTrail with AWS Organizations, see
 #'     [Monitoring the Activity in Your
 #'     Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
 #'     in the *AWS Organizations User Guide.*
@@ -328,7 +327,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     then try again. If the error persists, contact [AWS
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
-#' -   Using CreateAccount to create multiple temporary accounts isn\'t
+#' -   Using `CreateAccount` to create multiple temporary accounts isn\'t
 #'     recommended. You can only close an account from the Billing and Cost
 #'     Management Console, and you must be signed in as the root user. For
 #'     information on the requirements and process for closing an account,
@@ -372,7 +371,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' in the *AWS Organizations User Guide*, and steps 2 and 3 in [Tutorial:
 #' Delegate Access Across AWS Accounts Using IAM
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-#' in the *IAM User Guide*.
+#' in the *IAM User Guide.*
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
 #' validate this parameter is a string of characters that can consist of
@@ -434,10 +433,207 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 }
 .organizations$operations$create_account <- organizations_create_account
 
+#' This action is available if all of the following are true: - You're
+#' authorized to create accounts in the AWS GovCloud (US) Region
+#'
+#' This action is available if all of the following are true:
+#' 
+#' -   You\'re authorized to create accounts in the AWS GovCloud (US)
+#'     Region. For more information on the AWS GovCloud (US) Region, see
+#'     the [*AWS GovCloud User
+#'     Guide*.](http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html)
+#' 
+#' -   You already have an account in the AWS GovCloud (US) Region that is
+#'     associated with your master account in the commercial Region.
+#' 
+#' -   You call this action from the master account of your organization in
+#'     the commercial Region.
+#' 
+#' -   You have the `organizations:CreateGovCloudAccount` permission. AWS
+#'     Organizations creates the required service-linked role named
+#'     `AWSServiceRoleForOrganizations`. For more information, see [AWS
+#'     Organizations and Service-Linked
+#'     Roles](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
+#'     in the *AWS Organizations User Guide.*
+#' 
+#' AWS automatically enables AWS CloudTrail for AWS GovCloud (US) accounts,
+#' but you should also do the following:
+#' 
+#' -   Verify that AWS CloudTrail is enabled to store logs.
+#' 
+#' -   Create an S3 bucket for AWS CloudTrail log storage.
+#' 
+#'     For more information, see [Verifying AWS CloudTrail Is
+#'     Enabled](http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/verifying-cloudtrail.html)
+#'     in the *AWS GovCloud User Guide*.
+#' 
+#' You call this action from the master account of your organization in the
+#' commercial Region to create a standalone AWS account in the AWS GovCloud
+#' (US) Region. After the account is created, the master account of an
+#' organization in the AWS GovCloud (US) Region can invite it to that
+#' organization. For more information on inviting standalone accounts in
+#' the AWS GovCloud (US) to join an organization, see [AWS
+#' Organizations](http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
+#' in the *AWS GovCloud User Guide.*
+#' 
+#' Calling `CreateGovCloudAccount` is an asynchronous request that AWS
+#' performs in the background. Because `CreateGovCloudAccount` operates
+#' asynchronously, it can return a successful completion message even
+#' though account initialization might still be in progress. You might need
+#' to wait a few minutes before you can successfully access the account. To
+#' check the status of the request, do one of the following:
+#' 
+#' -   Use the `OperationId` response element from this operation to
+#'     provide as a parameter to the DescribeCreateAccountStatus operation.
+#' 
+#' -   Check the AWS CloudTrail log for the `CreateAccountResult` event.
+#'     For information on using AWS CloudTrail with Organizations, see
+#'     [Monitoring the Activity in Your
+#'     Organization](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html)
+#'     in the *AWS Organizations User Guide.*
+#' 
+#' When you call the `CreateGovCloudAccount` action, you create two
+#' accounts: a standalone account in the AWS GovCloud (US) Region and an
+#' associated account in the commercial Region for billing and support
+#' purposes. The account in the commercial Region is automatically a member
+#' of the organization whose credentials made the request. Both accounts
+#' are associated with the same email address.
+#' 
+#' A role is created in the new account in the commercial Region that
+#' allows the master account in the organization in the commercial Region
+#' to assume it. An AWS GovCloud (US) account is then created and
+#' associated with the commercial account that you just created. A role is
+#' created in the new AWS GovCloud (US) account that can be assumed by the
+#' AWS GovCloud (US) account that is associated with the master account of
+#' the commercial organization. For more information and to view a diagram
+#' that explains how account access works, see [AWS
+#' Organizations](http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
+#' in the *AWS GovCloud User Guide.*
+#' 
+#' For more information about creating accounts, see [Creating an AWS
+#' Account in Your
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+#' in the *AWS Organizations User Guide.*
+#' 
+#' -   When you create an account in an organization using the AWS
+#'     Organizations console, API, or CLI commands, the information
+#'     required for the account to operate as a standalone account, such as
+#'     a payment method and signing the end user license agreement (EULA)
+#'     is *not* automatically collected. If you must remove an account from
+#'     your organization later, you can do so only after you provide the
+#'     missing information. Follow the steps at [To leave an organization
+#'     as a member
+#'     account](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+#'     in the *AWS Organizations User Guide.*
+#' 
+#' -   If you get an exception that indicates that you exceeded your
+#'     account limits for the organization, contact [AWS
+#'     Support](https://console.aws.amazon.com/support/home#/).
+#' 
+#' -   If you get an exception that indicates that the operation failed
+#'     because your organization is still initializing, wait one hour and
+#'     then try again. If the error persists, contact [AWS
+#'     Support](https://console.aws.amazon.com/support/home#/).
+#' 
+#' -   Using `CreateGovCloudAccount` to create multiple temporary accounts
+#'     isn\'t recommended. You can only close an account from the AWS
+#'     Billing and Cost Management console, and you must be signed in as
+#'     the root user. For information on the requirements and process for
+#'     closing an account, see [Closing an AWS
+#'     Account](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+#'     in the *AWS Organizations User Guide*.
+#' 
+#' When you create a member account with this operation, you can choose
+#' whether to create the account with the **IAM User and Role Access to
+#' Billing Information** switch enabled. If you enable it, IAM users and
+#' roles that have appropriate permissions can view billing information for
+#' the account. If you disable it, only the account root user can access
+#' billing information. For information about how to disable this switch
+#' for an account, see [Granting Access to Your Billing Information and
+#' Tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
+#'
+#' @usage
+#' organizations_create_gov_cloud_account(Email, AccountName, RoleName,
+#'   IamUserAccessToBilling)
+#'
+#' @param Email &#91;required&#93; The email address of the owner to assign to the new member account in
+#' the commercial Region. This email address must not already be associated
+#' with another AWS account. You must use a valid email address to complete
+#' account creation. You can\'t access the root user of the account or
+#' remove an account that was created with an invalid email address. Like
+#' all request parameters for `CreateGovCloudAccount`, the request for the
+#' email address for the AWS GovCloud (US) account originates from the
+#' commercial Region, not from the AWS GovCloud (US) Region.
+#' @param AccountName &#91;required&#93; The friendly name of the member account.
+#' @param RoleName (Optional)
+#' 
+#' The name of an IAM role that AWS Organizations automatically
+#' preconfigures in the new member accounts in both the AWS GovCloud (US)
+#' Region and in the commercial Region. This role trusts the master
+#' account, allowing users in the master account to assume the role, as
+#' permitted by the master account administrator. The role has
+#' administrator permissions in the new member account.
+#' 
+#' If you don\'t specify this parameter, the role name defaults to
+#' `OrganizationAccountAccessRole`.
+#' 
+#' For more information about how to use this role to access the member
+#' account, see [Accessing and Administering the Member Accounts in Your
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#' in the *AWS Organizations User Guide* and steps 2 and 3 in [Tutorial:
+#' Delegate Access Across AWS Accounts Using IAM
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#' in the *IAM User Guide.*
+#' 
+#' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
+#' validate this parameter is a string of characters that can consist of
+#' uppercase letters, lowercase letters, digits with no spaces, and any of
+#' the following characters: =,.@-
+#' @param IamUserAccessToBilling If set to `ALLOW`, the new linked account in the commercial Region
+#' enables IAM users to access account billing information *if* they have
+#' the required permissions. If set to `DENY`, only the root user of the
+#' new account can access account billing information. For more
+#' information, see [Activating Access to the Billing and Cost Management
+#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+#' in the *AWS Billing and Cost Management User Guide.*
+#' 
+#' If you don\'t specify this parameter, the value defaults to `ALLOW`, and
+#' IAM users and roles with the required permissions can access billing
+#' information for the new account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_gov_cloud_account(
+#'   Email = "string",
+#'   AccountName = "string",
+#'   RoleName = "string",
+#'   IamUserAccessToBilling = "ALLOW"|"DENY"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_create_gov_cloud_account
+organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName = NULL, IamUserAccessToBilling = NULL) {
+  op <- new_operation(
+    name = "CreateGovCloudAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$create_gov_cloud_account_input(Email = Email, AccountName = AccountName, RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling)
+  output <- .organizations$create_gov_cloud_account_output()
+  svc <- .organizations$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$create_gov_cloud_account <- organizations_create_gov_cloud_account
+
 #' Creates an AWS organization
 #'
 #' Creates an AWS organization. The account whose user is calling the
-#' CreateOrganization operation automatically becomes the [master
+#' `CreateOrganization` operation automatically becomes the [master
 #' account](https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
 #' of the new organization.
 #' 
@@ -450,8 +646,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' policies automatically enabled in the root. If you instead choose to
 #' create the organization supporting only the consolidated billing
 #' features by setting the `FeatureSet` parameter to
-#' `CONSOLIDATED_BILLING\"`, then no policy types are enabled by default
-#' and you cannot use organization policies.
+#' `CONSOLIDATED_BILLING\"`, no policy types are enabled by default, and
+#' you can\'t use organization policies.
 #'
 #' @usage
 #' organizations_create_organization(FeatureSet)
@@ -459,18 +655,21 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' @param FeatureSet Specifies the feature set supported by the new organization. Each
 #' feature set supports different levels of functionality.
 #' 
-#' -   *CONSOLIDATED\\_BILLING*: All member accounts have their bills
+#' -   `CONSOLIDATED_BILLING`: All member accounts have their bills
 #'     consolidated to and paid by the master account. For more
 #'     information, see [Consolidated
 #'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #' 
-#' -   *ALL*: In addition to all the features supported by the consolidated
+#'     The consolidated billing feature subset isn\'t available for
+#'     organizations in the AWS GovCloud (US) Region.
+#' 
+#' -   `ALL`: In addition to all the features supported by the consolidated
 #'     billing feature set, the master account can also apply any type of
 #'     policy to any member account in the organization. For more
 #'     information, see [All
 #'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #'
 #' @section Request syntax:
 #' ```
@@ -527,7 +726,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' 
 #' For more information about OUs, see [Managing Organizational
 #' Units](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -535,8 +734,8 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' @usage
 #' organizations_create_organizational_unit(ParentId, Name)
 #'
-#' @param ParentId &#91;required&#93; The unique identifier (ID) of the parent root or OU in which you want to
-#' create the new OU.
+#' @param ParentId &#91;required&#93; The unique identifier (ID) of the parent root or OU that you want to
+#' create the new OU in.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
@@ -611,7 +810,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #' roles. For more information about the SCP syntax, see [Service Control
 #' Policy
 #' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' @param Description &#91;required&#93; An optional description to assign to the policy.
 #' @param Name &#91;required&#93; The friendly name to assign to the policy.
 #' 
@@ -676,10 +875,10 @@ organizations_create_policy <- function(Content, Description, Name, Type) {
 #' This operation can be called only from the account that received the
 #' handshake. The originator of the handshake can use CancelHandshake
 #' instead. The originator can\'t reactivate a declined request, but can
-#' re-initiate the process with a new handshake request.
+#' reinitiate the process with a new handshake request.
 #' 
 #' After you decline a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that it is deleted.
+#' relevant APIs for only 30 days. After that, it\'s deleted.
 #'
 #' @usage
 #' organizations_decline_handshake(HandshakeId)
@@ -870,9 +1069,11 @@ organizations_delete_policy <- function(PolicyId) {
 }
 .organizations$operations$delete_policy <- organizations_delete_policy
 
-#' Retrieves Organizations-related information about the specified account
+#' Retrieves AWS Organizations-related information about the specified
+#' account
 #'
-#' Retrieves Organizations-related information about the specified account.
+#' Retrieves AWS Organizations-related information about the specified
+#' account.
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -982,9 +1183,9 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' handshake ID comes from the response to the original
 #' InviteAccountToOrganization operation that generated the handshake.
 #' 
-#' You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for
-#' only 30 days after they change to that state. They are then deleted and
-#' no longer accessible.
+#' You can access handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED`
+#' for only 30 days after they change to that state. They\'re then deleted
+#' and no longer accessible.
 #' 
 #' This operation can be called from any account in the organization.
 #'
@@ -1043,8 +1244,8 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' 
 #' This operation can be called from any account in the organization.
 #' 
-#' Even if a policy type is shown as available in the organization, it can
-#' be disabled separately at the root level with DisablePolicyType. Use
+#' Even if a policy type is shown as available in the organization, you can
+#' disable it separately at the root level with DisablePolicyType. Use
 #' ListRoots to see the status of policy types for a specified root.
 #'
 #' @usage
@@ -1191,14 +1392,14 @@ organizations_describe_policy <- function(PolicyId) {
 #' 
 #' **Note:** Every root, OU, and account must have at least one SCP
 #' attached. If you want to replace the default `FullAWSAccess` policy with
-#' one that limits the permissions that can be delegated, then you must
-#' attach the replacement policy before you can remove the default one.
-#' This is the authorization strategy of
+#' one that limits the permissions that can be delegated, you must attach
+#' the replacement policy before you can remove the default one. This is
+#' the authorization strategy of
 #' [whitelisting](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
 #' If you instead attach a second SCP and leave the `FullAWSAccess` SCP
 #' still attached, and specify `"Effect": "Deny"` in the second SCP to
 #' override the `"Effect": "Allow"` in the `FullAWSAccess` policy (or any
-#' other attached SCP), then you are using the authorization strategy of
+#' other attached SCP), you\'re using the authorization strategy of
 #' [blacklisting](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 #' 
 #' This operation can be called only from the organization\'s master
@@ -1213,8 +1414,8 @@ organizations_describe_policy <- function(PolicyId) {
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
 #' string requires \"p-\" followed by from 8 to 128 lower-case letters or
 #' digits.
-#' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account from which you
-#' want to detach the policy. You can get the ID from the ListRoots,
+#' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
+#' detach the policy from. You can get the ID from the ListRoots,
 #' ListOrganizationalUnitsForParent, or ListAccounts operations.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID
@@ -1294,7 +1495,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' Organizations, including the list of services that work with
 #' Organizations, see [Integrating AWS Organizations with Other AWS
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -1418,7 +1619,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' For more information about enabling services to integrate with AWS
 #' Organizations, see [Integrating AWS Organizations with Other AWS
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' 
 #' This operation can be called only from the organization\'s master
 #' account and only if the organization has [enabled all
@@ -1466,7 +1667,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' advanced account administration features that AWS Organizations
 #' supports. For more information, see [Enabling All Features in Your
 #' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' 
 #' This operation is required only for organizations that were created
 #' explicitly with only the consolidated billing features enabled. Calling
@@ -1599,24 +1800,24 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' member account
 #'
 #' Sends an invitation to another account to join your organization as a
-#' member account. Organizations sends email on your behalf to the email
-#' address that is associated with the other account\'s owner. The
+#' member account. AWS Organizations sends email on your behalf to the
+#' email address that is associated with the other account\'s owner. The
 #' invitation is implemented as a Handshake whose details are in the
 #' response.
 #' 
 #' -   You can invite AWS accounts only from the same seller as the master
 #'     account. For example, if your organization\'s master account was
 #'     created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller
-#'     in India, then you can only invite other AISPL accounts to your
-#'     organization. You can\'t combine accounts from AISPL and AWS, or any
-#'     other AWS seller. For more information, see [Consolidated Billing in
+#'     in India, you can invite only other AISPL accounts to your
+#'     organization. You can\'t combine accounts from AISPL and AWS or from
+#'     any other AWS seller. For more information, see [Consolidated
+#'     Billing in
 #'     India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
 #' 
 #' -   If you receive an exception that indicates that you exceeded your
 #'     account limits for the organization or that the operation failed
 #'     because your organization is still initializing, wait one hour and
-#'     then try again. If the error persists after an hour, then contact
-#'     [AWS Customer
+#'     then try again. If the error persists after an hour, contact [AWS
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
 #' This operation can be called only from the organization\'s master
@@ -1636,9 +1837,9 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' 
 #' `--target Id=123456789012,Type=ACCOUNT`
 #' 
-#' If you specify `"Type": "ACCOUNT"`, then you must provide the AWS
-#' account ID number as the `Id`. If you specify `"Type": "EMAIL"`, then
-#' you must specify the email address that is associated with the account.
+#' If you specify `"Type": "ACCOUNT"`, you must provide the AWS account ID
+#' number as the `Id`. If you specify `"Type": "EMAIL"`, you must specify
+#' the email address that is associated with the account.
 #' 
 #' `--target Id=diego@example.com,Type=EMAIL`
 #' @param Notes Additional information that you want to include in the generated email
@@ -1708,21 +1909,21 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL) {
 #'     using the AWS Organizations console, API, or CLI commands, the
 #'     information required of standalone accounts is *not* automatically
 #'     collected. For each account that you want to make standalone, you
-#'     must accept the End User License Agreement (EULA), choose a support
+#'     must accept the end user license agreement (EULA), choose a support
 #'     plan, provide and verify the required contact information, and
 #'     provide a current payment method. AWS uses the payment method to
 #'     charge for any billable (not free tier) AWS activity that occurs
-#'     while the account is not attached to an organization. Follow the
+#'     while the account isn\'t attached to an organization. Follow the
 #'     steps at [To leave an organization when all required account
 #'     information has not yet been
 #'     provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
-#'     in the *AWS Organizations User Guide*.
+#'     in the *AWS Organizations User Guide.*
 #' 
 #' -   You can leave an organization only after you enable IAM user access
 #'     to billing in your account. For more information, see [Activating
 #'     Access to the Billing and Cost Management
 #'     Console](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
-#'     in the *AWS Billing and Cost Management User Guide*.
+#'     in the *AWS Billing and Cost Management User Guide.*
 #'
 #' @usage
 #' organizations_leave_organization()
@@ -1767,7 +1968,7 @@ organizations_leave_organization <- function() {
 #' Organizations, including the list of services that currently work with
 #' Organizations, see [Integrating AWS Organizations with Other AWS
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -1888,8 +2089,8 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' Lists the accounts in an organization that are contained by the
 #' specified target root or organizational unit (OU). If you specify the
-#' root, you get a list of all the accounts that are not in any OU. If you
-#' specify an OU, you get a list of all the accounts in only that OU, and
+#' root, you get a list of all the accounts that aren\'t in any OU. If you
+#' specify an OU, you get a list of all the accounts in only that OU and
 #' not in any child OUs. To get a list of all accounts in the organization,
 #' use the ListAccounts operation.
 #' 
@@ -2062,7 +2263,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' organizations_list_create_account_status(States, NextToken, MaxResults)
 #'
 #' @param States A list of one or more states that you want included in the response. If
-#' this parameter is not present, then all requests are included in the
+#' this parameter isn\'t present, all requests are included in the
 #' response.
 #' @param NextToken Use this parameter if you receive a `NextToken` response in a previous
 #' request that indicates that there is more output available. Set it to
@@ -2132,9 +2333,9 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' Lists the current handshakes that are associated with the account of the
 #' requesting user.
 #' 
-#' Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+#' Handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED` appear in the
 #' results of this API for only 30 days after changing to that state. After
-#' that they are deleted and no longer accessible.
+#' that, they\'re deleted and no longer accessible.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2214,9 +2415,9 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' operation returns a list of handshake structures. Each structure
 #' contains details and status about a handshake.
 #' 
-#' Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+#' Handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED` appear in the
 #' results of this API for only 30 days after changing to that state. After
-#' that they are deleted and no longer accessible.
+#' that, they\'re deleted and no longer accessible.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2394,7 +2595,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' organizations_list_parents(ChildId, NextToken, MaxResults)
 #'
 #' @param ChildId &#91;required&#93; The unique identifier (ID) of the OU or account whose parent containers
-#' you want to list. Do not specify a root.
+#' you want to list. Don\'t specify a root.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a child ID
 #' string requires one of the following:
@@ -2629,7 +2830,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' account.
 #' 
 #' Policy types can be enabled and disabled in roots. This is distinct from
-#' whether they are available in the organization. When you enable all
+#' whether they\'re available in the organization. When you enable all
 #' features, you make policy types available for use in that organization.
 #' Individual policy types can then be enabled and disabled in a root. To
 #' see the availability of a policy type in an organization, use
@@ -2685,11 +2886,53 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .organizations$operations$list_roots <- organizations_list_roots
 
-#' Lists all the roots, organizaitonal units (OUs), and accounts to which
-#' the specified policy is attached
+#' Lists tags for the specified resource
 #'
-#' Lists all the roots, organizaitonal units (OUs), and accounts to which
-#' the specified policy is attached.
+#' Lists tags for the specified resource.
+#' 
+#' Currently, you can list tags on an account in AWS Organizations.
+#'
+#' @usage
+#' organizations_list_tags_for_resource(ResourceId, NextToken)
+#'
+#' @param ResourceId &#91;required&#93; The ID of the resource that you want to retrieve tags for.
+#' @param NextToken Use this parameter if you receive a `NextToken` response in a previous
+#' request that indicates that there is more output available. Set it to
+#' the value of the previous call\'s `NextToken` response to indicate where
+#' the output should continue from.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_list_tags_for_resource
+organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken)
+  output <- .organizations$list_tags_for_resource_output()
+  svc <- .organizations$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$list_tags_for_resource <- organizations_list_tags_for_resource
+
+#' Lists all the roots, organizational units (OUs), and accounts that the
+#' specified policy is attached to
+#'
+#' Lists all the roots, organizational units (OUs), and accounts that the
+#' specified policy is attached to.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2703,8 +2946,8 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' @usage
 #' organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
 #'
-#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy for which you want to know its
-#' attachments.
+#' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy whose attachments you want to
+#' know.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
 #' string requires \"p-\" followed by from 8 to 128 lower-case letters or
@@ -2844,11 +3087,11 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #'
 #' Removes the specified account from the organization.
 #' 
-#' The removed account becomes a stand-alone account that is not a member
-#' of any organization. It is no longer subject to any policies and is
+#' The removed account becomes a standalone account that isn\'t a member of
+#' any organization. It\'s no longer subject to any policies and is
 #' responsible for its own bill payments. The organization\'s master
 #' account is no longer charged for any expenses accrued by the member
-#' account after it is removed from the organization.
+#' account after it\'s removed from the organization.
 #' 
 #' This operation can be called only from the organization\'s master
 #' account. Member accounts can remove themselves with LeaveOrganization
@@ -2859,16 +3102,16 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' account. When you create an account in an organization using the AWS
 #' Organizations console, API, or CLI commands, the information required of
 #' standalone accounts is *not* automatically collected. For an account
-#' that you want to make standalone, you must accept the End User License
-#' Agreement (EULA), choose a support plan, provide and verify the required
+#' that you want to make standalone, you must accept the end user license
+#' agreement (EULA), choose a support plan, provide and verify the required
 #' contact information, and provide a current payment method. AWS uses the
 #' payment method to charge for any billable (not free tier) AWS activity
-#' that occurs while the account is not attached to an organization. To
-#' remove an account that does not yet have this information, you must sign
+#' that occurs while the account isn\'t attached to an organization. To
+#' remove an account that doesn\'t yet have this information, you must sign
 #' in as the member account and follow the steps at [To leave an
 #' organization when all required account information has not yet been
 #' provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #'
 #' @usage
 #' organizations_remove_account_from_organization(AccountId)
@@ -2912,9 +3155,94 @@ organizations_remove_account_from_organization <- function(AccountId) {
 }
 .organizations$operations$remove_account_from_organization <- organizations_remove_account_from_organization
 
+#' Adds one or more tags to the specified resource
+#'
+#' Adds one or more tags to the specified resource.
+#' 
+#' Currently, you can tag and untag accounts in AWS Organizations.
+#'
+#' @usage
+#' organizations_tag_resource(ResourceId, Tags)
+#'
+#' @param ResourceId &#91;required&#93; The ID of the resource to add a tag to.
+#' @param Tags &#91;required&#93; The tag to add to the specified resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_tag_resource
+organizations_tag_resource <- function(ResourceId, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
+  output <- .organizations$tag_resource_output()
+  svc <- .organizations$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$tag_resource <- organizations_tag_resource
+
+#' Removes a tag from the specified resource
+#'
+#' Removes a tag from the specified resource.
+#' 
+#' Currently, you can tag and untag accounts in AWS Organizations.
+#'
+#' @usage
+#' organizations_untag_resource(ResourceId, TagKeys)
+#'
+#' @param ResourceId &#91;required&#93; The ID of the resource to remove the tag from.
+#' @param TagKeys &#91;required&#93; The tag to remove from the specified resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceId = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_untag_resource
+organizations_untag_resource <- function(ResourceId, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
+  output <- .organizations$untag_resource_output()
+  svc <- .organizations$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$untag_resource <- organizations_untag_resource
+
 #' Renames the specified organizational unit (OU)
 #'
-#' Renames the specified organizational unit (OU). The ID and ARN do not
+#' Renames the specified organizational unit (OU). The ID and ARN don\'t
 #' change. The child OUs and accounts remain in place, and any attached
 #' policies of the OU remain attached.
 #' 
@@ -2976,8 +3304,8 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' Updates an existing policy with a new name, description, or content
 #'
 #' Updates an existing policy with a new name, description, or content. If
-#' any parameter is not supplied, that value remains unchanged. Note that
-#' you cannot change a policy\'s type.
+#' you don\'t supply any parameter, that value remains unchanged. You
+#' can\'t change a policy\'s type.
 #' 
 #' This operation can be called only from the organization\'s master
 #' account.
@@ -3000,7 +3328,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' formatted JSON that complies with the syntax for the policy\'s type. For
 #' more information, see [Service Control Policy
 #' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *AWS Organizations User Guide.*
 #'
 #' @section Request syntax:
 #' ```

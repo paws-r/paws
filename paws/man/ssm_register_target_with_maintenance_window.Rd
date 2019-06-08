@@ -2,30 +2,40 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_register_target_with_maintenance_window}
 \alias{ssm_register_target_with_maintenance_window}
-\title{Registers a target with a Maintenance Window}
+\title{Registers a target with a maintenance window}
 \usage{
 ssm_register_target_with_maintenance_window(WindowId, ResourceType,
   Targets, OwnerInformation, Name, Description, ClientToken)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window the target should be registered with.}
+\item{WindowId}{[required] The ID of the maintenance window the target should be registered with.}
 
-\item{ResourceType}{[required] The type of target being registered with the Maintenance Window.}
+\item{ResourceType}{[required] The type of target being registered with the maintenance window.}
 
-\item{Targets}{[required] The targets (either instances or tags).
+\item{Targets}{[required] The targets to register with the maintenance window. In other words, the
+instances to run commands on when the maintenance window runs.
 
-Specify instances using the following format:
+You can specify targets using either instance IDs or tags that have been
+applied to instances.
 
-\code{Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;}
+\strong{Example 1}: Specify instance IDs
 
-Specify tags using either of the following formats:
+\code{Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> }
 
-\code{Key=tag:&lt;tag-key&gt;,Values=&lt;tag-value-1&gt;,&lt;tag-value-2&gt;}
+\strong{Example 2}: Use tag key-pairs applied to instances
 
-\code{Key=tag-key,Values=&lt;tag-key-1&gt;,&lt;tag-key-2&gt;}}
+\code{Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> }
+
+\strong{Example 3}: Use tag-keys applied to instances
+
+\code{Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> }
+
+For more information about these examples formats, including the best
+use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register Targets with a Maintenance Window}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{OwnerInformation}{User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance Window.}
+raised while running tasks for these targets in this maintenance window.}
 
 \item{Name}{An optional name for the target.}
 
@@ -34,7 +44,7 @@ raised while running tasks for these targets in this Maintenance Window.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \description{
-Registers a target with a Maintenance Window.
+Registers a target with a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$register_target_with_maintenance_window(

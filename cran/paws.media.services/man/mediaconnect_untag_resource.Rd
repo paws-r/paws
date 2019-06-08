@@ -2,17 +2,17 @@
 % Please edit documentation in R/mediaconnect_operations.R
 \name{mediaconnect_untag_resource}
 \alias{mediaconnect_untag_resource}
-\title{Deletes the specified tags from a resource}
+\title{Deletes specified tags from a resource}
 \usage{
 mediaconnect_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.}
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }
 \description{
-Deletes the specified tags from a resource.
+Deletes specified tags from a resource.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -9,7 +9,7 @@ codepipeline_put_job_failure_result(jobId, failureDetails)
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job that failed. This is the same
-ID returned from PollForJobs.}
+ID returned from \code{PollForJobs}.}
 
 \item{failureDetails}{[required] The details about the failure of a job.}
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_window_tasks}
 \alias{ssm_describe_maintenance_window_tasks}
-\title{Lists the tasks in a Maintenance Window}
+\title{Lists the tasks in a maintenance window}
 \usage{
 ssm_describe_maintenance_window_tasks(WindowId, Filters, MaxResults,
   NextToken)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window whose tasks should be retrieved.}
+\item{WindowId}{[required] The ID of the maintenance window whose tasks should be retrieved.}
 
 \item{Filters}{Optional filters used to narrow down the scope of the returned tasks.
 The supported filter keys are WindowTaskId, TaskArn, Priority, and
@@ -22,7 +22,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Lists the tasks in a Maintenance Window.
+Lists the tasks in a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_tasks(

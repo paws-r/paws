@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_create_key}
 \alias{kms_create_key}
-\title{Creates a customer master key (CMK) in the caller's AWS account}
+\title{Creates a customer managed customer master key (CMK) in your AWS account}
 \usage{
 kms_create_key(Policy, Description, KeyUsage, Origin, CustomKeyStoreId,
   BypassPolicyLockoutSafetyCheck, Tags)
@@ -16,20 +16,20 @@ If you provide a key policy, it must meet the following criteria:
 policy must allow the principal that is making the \code{CreateKey}
 request to make a subsequent PutKeyPolicy request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
-information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section of the \emph{AWS Key Management Service Developer Guide}.
+information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
+section of the \strong{AWS Key Management Service Developer Guide} .
 \item Each statement in the key policy must contain one or more
 principals. The principals in the key policy must exist and be
 visible to AWS KMS. When you create a new AWS principal (for
 example, an IAM user or role), you might need to enforce a delay
 before including the new principal in a key policy because the new
 principal might not be immediately visible to AWS KMS. For more
-information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{AWS Identity and Access Management User Guide}.
 }
 
 If you do not provide a key policy, AWS KMS attaches a default key
-policy to the CMK. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default Key Policy}
+policy to the CMK. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default Key Policy}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The key policy size limit is 32 kilobytes (32768 bytes).}
@@ -39,11 +39,11 @@ The key policy size limit is 32 kilobytes (32768 bytes).}
 Use a description that helps you decide whether the CMK is appropriate
 for a task.}
 
-\item{KeyUsage}{The intended use of the CMK.
+\item{KeyUsage}{The cryptographic operations for which you can use the CMK. The only
+valid value is \code{ENCRYPT_DECRYPT}, which means you can use the CMK to
+encrypt and decrypt data.}
 
-You can use CMKs only for symmetric encryption and decryption.}
-
-\item{Origin}{The source of the CMK's key material. You cannot change the origin
+\item{Origin}{The source of the key material for the CMK. You cannot change the origin
 after you create the CMK.
 
 The default is \code{AWS_KMS}, which means AWS KMS creates the key material
@@ -52,16 +52,16 @@ in its own key store.
 When the parameter value is \code{EXTERNAL}, AWS KMS creates a CMK without
 key material so that you can import key material from your existing key
 management infrastructure. For more information about importing key
-material into AWS KMS, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
+material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-When the parameter value is \code{AWS_CLOUDHSM}, AWS KMS creates the CMK in a
-AWS KMS \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}
+When the parameter value is \code{AWS_CLOUDHSM}, AWS KMS creates the CMK in
+an AWS KMS \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 and creates its key material in the associated AWS CloudHSM cluster. You
 must also use the \code{CustomKeyStoreId} parameter to identify the custom
 key store.}
 
-\item{CustomKeyStoreId}{Creates the CMK in the specified \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}
+\item{CustomKeyStoreId}{Creates the CMK in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 and the key material in its associated AWS CloudHSM cluster. To create a
 CMK in a custom key store, you must also specify the \code{Origin} parameter
 with a value of \code{AWS_CLOUDHSM}. The AWS CloudHSM cluster that is
@@ -74,7 +74,7 @@ operation.
 The response includes the custom key store ID and the ID of the AWS
 CloudHSM cluster.
 
-This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
+This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.}
@@ -85,8 +85,8 @@ check.
 Setting this value to true increases the risk that the CMK becomes
 unmanageable. Do not set this value to true indiscriminately.
 
-For more information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section in the \emph{AWS Key Management Service Developer Guide}.
+For more information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
+section in the \strong{AWS Key Management Service Developer Guide} .
 
 Use this parameter only when you include a policy in the request and you
 intend to prevent the principal that is making the request from making a
@@ -103,29 +103,23 @@ can omit this parameter and instead tag the CMK after it is created
 using TagResource.}
 }
 \description{
-Creates a customer master key (CMK) in the caller's AWS account.
+Creates a customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master key}
+(CMK) in your AWS account.
 }
 \details{
-You can use a CMK to encrypt small amounts of data (4 KiB or less)
-directly, but CMKs are more commonly used to encrypt data keys, which
-are used to encrypt raw data. For more information about data keys and
-the difference between CMKs and data keys, see the following:
-\itemize{
-\item The GenerateDataKey operation
-\item \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html}{AWS Key Management Service Concepts}
-in the \emph{AWS Key Management Service Developer Guide}
-}
+You can use a CMK to encrypt small amounts of data (up to 4096 bytes)
+directly. But CMKs are more commonly used to encrypt the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data keys}
+that are used to encrypt data.
 
-If you plan to \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{import key material},
-use the \code{Origin} parameter with a value of \code{EXTERNAL} to create a CMK
-with no key material.
+To create a CMK for imported key material, use the \code{Origin} parameter
+with a value of \code{EXTERNAL}.
 
-To create a CMK in a \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store},
-use \code{CustomKeyStoreId} parameter to specify the custom key store. You
-must also use the \code{Origin} parameter with a value of \code{AWS_CLOUDHSM}. The
-AWS CloudHSM cluster that is associated with the custom key store must
-have at least two active HSMs, each in a different Availability Zone in
-the Region.
+To create a CMK in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},
+use the \code{CustomKeyStoreId} parameter to specify the custom key store.
+You must also use the \code{Origin} parameter with a value of \code{AWS_CLOUDHSM}.
+The AWS CloudHSM cluster that is associated with the custom key store
+must have at least two active HSMs in different Availability Zones in
+the AWS Region.
 
 You cannot use this operation to create a CMK in a different AWS
 account.

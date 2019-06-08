@@ -2,18 +2,19 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_members}
 \alias{securityhub_create_members}
-\title{Creates member Security Hub accounts in the current AWS account (which
-becomes the master Security Hub account) that has Security Hub enabled}
+\title{Creates Security Hub member accounts associated with the account used
+for this action, which becomes the Security Hub Master account}
 \usage{
 securityhub_create_members(AccountDetails)
 }
 \arguments{
-\item{AccountDetails}{A list of account ID and email address pairs of the accounts that you
-want to associate with the master Security Hub account.}
+\item{AccountDetails}{A list of account ID and email address pairs of the accounts to
+associate with the Security Hub master account.}
 }
 \description{
-Creates member Security Hub accounts in the current AWS account (which
-becomes the master Security Hub account) that has Security Hub enabled.
+Creates Security Hub member accounts associated with the account used
+for this action, which becomes the Security Hub Master account. Security
+Hub must be enabled in the account used to make this request.
 }
 \section{Request syntax}{
 \preformatted{svc$create_members(

@@ -5,7 +5,7 @@
 \title{Creates a new work team for labeling your data}
 \usage{
 sagemaker_create_workteam(WorkteamName, MemberDefinitions, Description,
-  Tags)
+  NotificationConfiguration, Tags)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team. Use this name to identify the work team.}
@@ -18,6 +18,9 @@ All of the \code{CognitoMemberDefinition} objects that make up the member
 definition must have the same \code{ClientId} and \code{UserPool} values.}
 
 \item{Description}{[required] A description of the work team.}
+
+\item{NotificationConfiguration}{Configures notification of workers regarding available or expiring work
+items.}
 
 \item{Tags}{}
 }
@@ -42,6 +45,9 @@ You cannot create more than 25 work teams in an account and region.
     )
   ),
   Description = "string",
+  NotificationConfiguration = list(
+    NotificationTopicArn = "string"
+  ),
   Tags = list(
     list(
       Key = "string",

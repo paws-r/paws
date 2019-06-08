@@ -23,7 +23,7 @@ ID.}
 use this data. The data must be in UTF-8 format and less than 2KB.}
 
 \item{Attributes}{For a list of attributes, see
-\href{http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html}{SetEndpointAttributes}.}
+\href{https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html}{SetEndpointAttributes}.}
 }
 \description{
 Creates an endpoint for a device and mobile app on one of the supported
@@ -35,12 +35,12 @@ returned when using \code{CreatePlatformEndpoint} can then be used by the
 action for subscription to a topic. The \code{CreatePlatformEndpoint} action
 is idempotent, so if the requester already owns an endpoint with the
 same device token and attributes, that endpoint's ARN is returned
-without creating a new endpoint. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
+without creating a new endpoint. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \details{
 When using \code{CreatePlatformEndpoint} with Baidu, two attributes must be
 provided: ChannelId and UserId. The token field must also contain the
-ChannelId. For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html}{Creating an Amazon SNS Endpoint for Baidu}.
+ChannelId. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html}{Creating an Amazon SNS Endpoint for Baidu}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_platform_endpoint(

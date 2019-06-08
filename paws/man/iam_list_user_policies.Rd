@@ -37,7 +37,7 @@ user.
 An IAM user can also have managed policies attached to it. To list the
 managed policies that are attached to a user, use
 ListAttachedUserPolicies. For more information about policies, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}

@@ -27,7 +27,7 @@ be associated with.}
 
 \item{OptionGroupDescription}{[required] The description of the option group.}
 
-\item{Tags}{}
+\item{Tags}{Tags to assign to the option group.}
 }
 \description{
 Creates a new option group. You can create up to 20 option groups.

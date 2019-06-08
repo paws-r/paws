@@ -17,10 +17,8 @@ If you enable the IPv6 addressing feature for your subnet, your network
 interface or instance only receives an IPv6 address if it's created
 using version \code{2016-11-15} or later of the Amazon EC2 API.}
 
-\item{MapPublicIpOnLaunch}{Specify \code{true} to indicate that network interfaces created in the
-specified subnet should be assigned a public IPv4 address. This includes
-a network interface that's created when launching an instance into the
-subnet (the instance therefore receives a public IPv4 address).}
+\item{MapPublicIpOnLaunch}{Specify \code{true} to indicate that ENIs attached to instances created in
+the specified subnet should be assigned a public IPv4 address.}
 
 \item{SubnetId}{[required] The ID of the subnet.}
 }

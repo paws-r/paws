@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_copy_image}
 \alias{ec2_copy_image}
-\title{Initiates the copy of an AMI from the specified source region to the
-current region}
+\title{Initiates the copy of an AMI from the specified source Region to the
+current Region}
 \usage{
 ec2_copy_image(ClientToken, Description, Encrypted, KmsKeyId, Name,
   SourceImageId, SourceRegion, DryRun)
@@ -13,7 +13,7 @@ ec2_copy_image(ClientToken, Description, Encrypted, KmsKeyId, Name,
 the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{Description}{A description for the new AMI in the destination region.}
+\item{Description}{A description for the new AMI in the destination Region.}
 
 \item{Encrypted}{Specifies whether the destination snapshots of the copied image should
 be encrypted. You can encrypt a copy of an unencrypted snapshot, but you
@@ -29,33 +29,29 @@ parameter is only required if you want to use a non-default CMK; if this
 parameter is not specified, the default CMK for EBS is used. If a
 \code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
 
-The CMK identifier may be provided in any of the following formats:
+To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
+name, or alias ARN. When using an alias name, prefix it with "alias/".
+For example:
 \itemize{
-\item Key ID
-\item Key alias, in the form \code{alias/<i>ExampleAlias</i> }
-\item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
-followed by the region of the CMK, the AWS account ID of the CMK
-owner, the \code{key} namespace, and then the CMK ID. For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
-\item ARN using key alias. The alias ARN contains the \code{arn:aws:kms}
-namespace, followed by the region of the CMK, the AWS account ID of
-the CMK owner, the \code{alias} namespace, and then the CMK alias. For
-example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN:
+\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Alias name: \code{alias/ExampleAlias}
+\item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
 AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call
 may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
-The specified CMK must exist in the region that the snapshot is being
+The specified CMK must exist in the Region that the snapshot is being
 copied to.}
 
-\item{Name}{[required] The name of the new AMI in the destination region.}
+\item{Name}{[required] The name of the new AMI in the destination Region.}
 
 \item{SourceImageId}{[required] The ID of the AMI to copy.}
 
-\item{SourceRegion}{[required] The name of the region that contains the AMI to copy.}
+\item{SourceRegion}{[required] The name of the Region that contains the AMI to copy.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -63,8 +59,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Initiates the copy of an AMI from the specified source region to the
-current region. You specify the destination region by using its endpoint
+Initiates the copy of an AMI from the specified source Region to the
+current Region. You specify the destination Region by using its endpoint
 when making the request.
 }
 \details{

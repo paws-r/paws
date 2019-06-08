@@ -2,12 +2,12 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_placement_groups}
 \alias{ec2_describe_placement_groups}
-\title{Describes one or more of your placement groups}
+\title{Describes the specified placement groups or all of your placement groups}
 \usage{
 ec2_describe_placement_groups(Filters, DryRun, GroupNames)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{group-name} - The name of the placement group.
 \item \code{state} - The state of the placement group (\code{pending} \| \code{available}
@@ -21,14 +21,14 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{GroupNames}{One or more placement group names.
+\item{GroupNames}{The names of the placement groups.
 
 Default: Describes all your placement groups, or only those otherwise
 specified.}
 }
 \description{
-Describes one or more of your placement groups. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
+Describes the specified placement groups or all of your placement
+groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

@@ -7,7 +7,7 @@
 glue_get_crawler(Name)
 }
 \arguments{
-\item{Name}{[required] Name of the crawler to retrieve metadata for.}
+\item{Name}{[required] The name of the crawler to retrieve metadata for.}
 }
 \description{
 Retrieves metadata for a specified crawler.

@@ -99,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssm$create_ops_item_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), OperationalData = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Notifications = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Priority = structure(logical(0), tags = list(type = "integer")), RelatedOpsItems = structure(list(structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Source = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$create_ops_item_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssm$create_patch_baseline_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperatingSystem = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), GlobalFilters = structure(list(PatchFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ApprovalRules = structure(list(PatchRules = structure(list(structure(list(PatchFilterGroup = structure(list(PatchFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ComplianceLevel = structure(logical(0), tags = list(type = "string")), ApproveAfterDays = structure(logical(0), tags = list(box = TRUE, type = "integer")), EnableNonSecurity = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ApprovedPatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ApprovedPatchesComplianceLevel = structure(logical(0), tags = list(type = "string")), ApprovedPatchesEnableNonSecurity = structure(logical(0), tags = list(box = TRUE, type = "boolean")), RejectedPatches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RejectedPatchesAction = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Sources = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Products = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Configuration = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -443,7 +455,7 @@ NULL
 
 .ssm$describe_instance_patch_states_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstancePatchStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PatchGroup = structure(logical(0), tags = list(type = "string")), BaselineId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), InstallOverrideList = structure(logical(0), tags = list(type = "string")), OwnerInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InstalledCount = structure(logical(0), tags = list(type = "integer")), InstalledOtherCount = structure(logical(0), tags = list(type = "integer")), InstalledRejectedCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), MissingCount = structure(logical(0), tags = list(type = "integer")), FailedCount = structure(logical(0), tags = list(type = "integer")), NotApplicableCount = structure(logical(0), tags = list(type = "integer")), OperationStartTime = structure(logical(0), tags = list(type = "timestamp")), OperationEndTime = structure(logical(0), tags = list(type = "timestamp")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstancePatchStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PatchGroup = structure(logical(0), tags = list(type = "string")), BaselineId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), InstallOverrideList = structure(logical(0), tags = list(type = "string")), OwnerInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InstalledCount = structure(logical(0), tags = list(type = "integer")), InstalledOtherCount = structure(logical(0), tags = list(type = "integer")), InstalledRejectedCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), MissingCount = structure(logical(0), tags = list(type = "integer")), FailedCount = structure(logical(0), tags = list(type = "integer")), UnreportedNotApplicableCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), NotApplicableCount = structure(logical(0), tags = list(type = "integer")), OperationStartTime = structure(logical(0), tags = list(type = "timestamp")), OperationEndTime = structure(logical(0), tags = list(type = "timestamp")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -455,7 +467,7 @@ NULL
 
 .ssm$describe_instance_patch_states_for_patch_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstancePatchStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PatchGroup = structure(logical(0), tags = list(type = "string")), BaselineId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), InstallOverrideList = structure(logical(0), tags = list(type = "string")), OwnerInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InstalledCount = structure(logical(0), tags = list(type = "integer")), InstalledOtherCount = structure(logical(0), tags = list(type = "integer")), InstalledRejectedCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), MissingCount = structure(logical(0), tags = list(type = "integer")), FailedCount = structure(logical(0), tags = list(type = "integer")), NotApplicableCount = structure(logical(0), tags = list(type = "integer")), OperationStartTime = structure(logical(0), tags = list(type = "timestamp")), OperationEndTime = structure(logical(0), tags = list(type = "timestamp")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstancePatchStates = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PatchGroup = structure(logical(0), tags = list(type = "string")), BaselineId = structure(logical(0), tags = list(type = "string")), SnapshotId = structure(logical(0), tags = list(type = "string")), InstallOverrideList = structure(logical(0), tags = list(type = "string")), OwnerInformation = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), InstalledCount = structure(logical(0), tags = list(type = "integer")), InstalledOtherCount = structure(logical(0), tags = list(type = "integer")), InstalledRejectedCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), MissingCount = structure(logical(0), tags = list(type = "integer")), FailedCount = structure(logical(0), tags = list(type = "integer")), UnreportedNotApplicableCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), NotApplicableCount = structure(logical(0), tags = list(type = "integer")), OperationStartTime = structure(logical(0), tags = list(type = "timestamp")), OperationEndTime = structure(logical(0), tags = list(type = "timestamp")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -579,6 +591,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssm$describe_ops_items_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpsItemFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$describe_ops_items_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), OpsItemSummaries = structure(list(structure(list(CreatedBy = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedBy = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), Priority = structure(logical(0), tags = list(type = "integer")), Source = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), OpsItemId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), OperationalData = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssm$describe_parameters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ParameterFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Option = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -587,7 +611,7 @@ NULL
 
 .ssm$describe_parameters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedUser = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedUser = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "long")), Tier = structure(logical(0), tags = list(type = "string")), Policies = structure(list(structure(list(PolicyText = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), PolicyStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -611,7 +635,7 @@ NULL
 
 .ssm$describe_patch_group_state_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledOtherPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledRejectedPatches = structure(logical(0), tags = list(box = TRUE, type = "integer")), InstancesWithMissingPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithFailedPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithNotApplicablePatches = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledOtherPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithInstalledRejectedPatches = structure(logical(0), tags = list(box = TRUE, type = "integer")), InstancesWithMissingPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithFailedPatches = structure(logical(0), tags = list(type = "integer")), InstancesWithNotApplicablePatches = structure(logical(0), tags = list(type = "integer")), InstancesWithUnreportedNotApplicablePatches = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -624,6 +648,18 @@ NULL
 .ssm$describe_patch_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Mappings = structure(list(structure(list(PatchGroup = structure(logical(0), tags = list(type = "string")), BaselineIdentity = structure(list(BaselineId = structure(logical(0), tags = list(type = "string")), BaselineName = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(logical(0), tags = list(type = "string")), BaselineDescription = structure(logical(0), tags = list(type = "string")), DefaultBaseline = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$describe_patch_properties_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperatingSystem = structure(logical(0), tags = list(type = "string")), Property = structure(logical(0), tags = list(type = "string")), PatchSet = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$describe_patch_properties_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Properties = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -795,6 +831,30 @@ NULL
   return(populate(args, shape))
 }
 
+.ssm$get_ops_item_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$get_ops_item_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpsItem = structure(list(CreatedBy = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), LastModifiedBy = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), Notifications = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Priority = structure(logical(0), tags = list(type = "integer")), RelatedOpsItems = structure(list(structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), OpsItemId = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Source = structure(logical(0), tags = list(type = "string")), OperationalData = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$get_ops_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Aggregators = structure(list(structure(list(AggregatorType = structure(logical(0), tags = list(type = "string")), TypeName = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Aggregators = structure(logical(0), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$get_ops_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entities = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Data = structure(list(structure(list(Content = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssm$get_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), WithDecryption = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))
@@ -815,7 +875,7 @@ NULL
 
 .ssm$get_parameter_history_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedUser = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "long")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Parameters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedUser = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "long")), Labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tier = structure(logical(0), tags = list(type = "string")), Policies = structure(list(structure(list(PolicyText = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), PolicyStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1073,7 +1133,7 @@ NULL
 
 .ssm$put_parameter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Overwrite = structure(logical(0), tags = list(box = TRUE, type = "boolean")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Overwrite = structure(logical(0), tags = list(box = TRUE, type = "boolean")), AllowedPattern = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tier = structure(logical(0), tags = list(type = "string")), Policies = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1342,6 +1402,18 @@ NULL
 }
 
 .ssm$update_managed_instance_role_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$update_ops_item_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), OperationalData = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), OperationalDataToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Notifications = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Priority = structure(logical(0), tags = list(type = "integer")), RelatedOpsItems = structure(list(structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), OpsItemId = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$update_ops_item_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -4,25 +4,35 @@
 \alias{kafka_create_cluster}
 \title{Creates a new MSK cluster}
 \usage{
-kafka_create_cluster(BrokerNodeGroupInfo, ClusterName, EncryptionInfo,
-  EnhancedMonitoring, KafkaVersion, NumberOfBrokerNodes)
+kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
+  ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
+  KafkaVersion, NumberOfBrokerNodes, Tags)
 }
 \arguments{
-\item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
+\item{BrokerNodeGroupInfo}{[required]
+<p>Information about the broker nodes in the cluster.</p>}
 
-\item{ClusterName}{[required] The name of the cluster.}
+\item{ClientAuthentication}{<p>Includes all client authentication related information.</p>}
 
-\item{EncryptionInfo}{Includes all encryption-related information.}
+\item{ClusterName}{[required]
+<p>The name of the cluster.</p>}
 
-\item{EnhancedMonitoring}{Specifies the level of monitoring for the MSK cluster. The possible
-values are DEFAULT, PER\_BROKER, and PER\_TOPIC\_PER\_BROKER.}
+\item{ConfigurationInfo}{<p>Represents the configuration that you want MSK to use for the brokers in a cluster.</p>}
 
-\item{KafkaVersion}{[required] The version of Apache Kafka.}
+\item{EncryptionInfo}{<p>Includes all encryption-related information.</p>}
 
-\item{NumberOfBrokerNodes}{[required] The number of Kafka broker nodes in the Amazon MSK cluster.}
+\item{EnhancedMonitoring}{<p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>}
+
+\item{KafkaVersion}{[required]
+<p>The version of Apache Kafka.</p>}
+
+\item{NumberOfBrokerNodes}{[required]
+<p>The number of broker nodes in the cluster.</p>}
+
+\item{Tags}{<p>Create tags when creating the cluster.</p>}
 }
 \description{
-Creates a new MSK cluster.
+<p>Creates a new MSK cluster.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$create_cluster(
@@ -41,15 +51,33 @@ Creates a new MSK cluster.
       )
     )
   ),
+  ClientAuthentication = list(
+    Tls = list(
+      CertificateAuthorityArnList = list(
+        "string"
+      )
+    )
+  ),
   ClusterName = "string",
+  ConfigurationInfo = list(
+    Arn = "string",
+    Revision = 123
+  ),
   EncryptionInfo = list(
     EncryptionAtRest = list(
       DataVolumeKMSKeyId = "string"
+    ),
+    EncryptionInTransit = list(
+      ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+      InCluster = TRUE|FALSE
     )
   ),
   EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
   KafkaVersion = "string",
-  NumberOfBrokerNodes = 123
+  NumberOfBrokerNodes = 123,
+  Tags = list(
+    "string"
+  )
 )
 }
 }

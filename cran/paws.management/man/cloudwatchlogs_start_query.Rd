@@ -31,6 +31,10 @@ use.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
+
+Queries time out after 15 minutes of execution. If your queries are
+timing out, reduce the time range being searched, or partition your
+query into a number of queries.
 }
 \section{Request syntax}{
 \preformatted{svc$start_query(

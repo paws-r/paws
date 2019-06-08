@@ -3,7 +3,7 @@
 \name{textract_get_document_analysis}
 \alias{textract_get_document_analysis}
 \title{Gets the results for an Amazon Textract asynchronous operation that
-analyzes text in a document image}
+analyzes text in a document}
 \usage{
 textract_get_document_analysis(JobId, MaxResults, NextToken)
 }
@@ -23,7 +23,7 @@ blocks.}
 }
 \description{
 Gets the results for an Amazon Textract asynchronous operation that
-analyzes text in a document image.
+analyzes text in a document.
 }
 \details{
 You start asynchronous text analysis by calling StartDocumentAnalysis,
@@ -36,8 +36,23 @@ published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
 \code{GetDocumentAnalysis}, and pass the job identifier (\code{JobId}) from the
 initial call to \code{StartDocumentAnalysis}.
 
-\code{GetDocumentAnalysis} returns an array of Block objects. For more
-information, see how-it-works-analyzing.
+\code{GetDocumentAnalysis} returns an array of Block objects. The following
+types of information are returned:
+\itemize{
+\item Words and lines that are related to nearby lines and words. The
+related information is returned in two Block objects each of type
+\code{KEY_VALUE_SET}: a KEY Block object and a VALUE Block object. For
+example, \emph{Name: Ana Silva Carolina} contains a key and value.
+\emph{Name:} is the key. \emph{Ana Silva Carolina} is the value.
+\item Table and table cell data. A TABLE Block object contains information
+about a detected table. A CELL Block object is returned for each
+cell in a table.
+\item Selectable elements such as checkboxes and radio buttons. A
+SELECTION\_ELEMENT Block object contains information about a
+selectable element.
+\item Lines and words of text. A LINE Block object contains one or more
+WORD Block objects.
+}
 
 Use the \code{MaxResults} parameter to limit the number of blocks returned.
 If there are more results than specified in \code{MaxResults}, the value of
@@ -46,6 +61,8 @@ getting the next set of results. To get the next page of results, call
 \code{GetDocumentAnalysis}, and populate the \code{NextToken} request parameter
 with the token value that's returned from the previous call to
 \code{GetDocumentAnalysis}.
+
+For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_document_analysis(

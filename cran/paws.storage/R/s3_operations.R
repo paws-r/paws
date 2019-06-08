@@ -14,9 +14,9 @@ NULL
 #' @usage
 #' s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer)
 #'
-#' @param Bucket &#91;required&#93; 
-#' @param Key &#91;required&#93; 
-#' @param UploadId &#91;required&#93; 
+#' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
+#' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
+#' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
 #' @param RequestPayer 
 #'
 #' @section Request syntax:
@@ -205,8 +205,8 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param Tagging The tag-set for the object destination object this value must be used in
 #' conjunction with the TaggingDirective. The tag-set must be encoded as
 #' URL Query parameters
-#' @param ObjectLockMode The Object Lock mode that you want to apply to the copied object.
-#' @param ObjectLockRetainUntilDate The date and time when you want the copied object\'s Object Lock to
+#' @param ObjectLockMode The object lock mode that you want to apply to the copied object.
+#' @param ObjectLockRetainUntilDate The date and time when you want the copied object\'s object lock to
 #' expire.
 #' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a Legal Hold to the copied object.
 #'
@@ -308,8 +308,8 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' @param GrantWrite Allows grantee to create, overwrite, and delete any object in the
 #' bucket.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable bucket.
-#' @param ObjectLockEnabledForBucket Specifies whether you want S3 Object Lock to be enabled for the new
-#' bucket.
+#' @param ObjectLockEnabledForBucket Specifies whether you want Amazon S3 object lock to be enabled for the
+#' new bucket.
 #'
 #' @section Request syntax:
 #' ```
@@ -329,6 +329,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' ```
 #'
 #' @examples
+#' # The following example creates a bucket.
+#' \donttest{svc$create_bucket(
+#'   Bucket = "examplebucket"
+#' )}
+#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' \donttest{svc$create_bucket(
@@ -336,11 +341,6 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
 #'   )
-#' )}
-#' 
-#' # The following example creates a bucket.
-#' \donttest{svc$create_bucket(
-#'   Bucket = "examplebucket"
 #' )}
 #'
 #' @keywords internal
@@ -422,9 +422,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters
-#' @param ObjectLockMode Specifies the Object Lock mode that you want to apply to the uploaded
+#' @param ObjectLockMode Specifies the object lock mode that you want to apply to the uploaded
 #' object.
-#' @param ObjectLockRetainUntilDate Specifies the date and time when you want the Object Lock to expire.
+#' @param ObjectLockRetainUntilDate Specifies the date and time when you want the object lock to expire.
 #' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a Legal Hold to the uploaded object.
 #'
 #' @section Request syntax:
@@ -539,12 +539,17 @@ s3_delete_bucket <- function(Bucket) {
 #'
 #' Deletes an analytics configuration for the bucket (specified by the
 #' analytics configuration ID).
+#' 
+#' To use this operation, you must have permissions to perform the
+#' s3:PutAnalyticsConfiguration action. The bucket owner has this
+#' permission by default. The bucket owner can grant this permission to
+#' others.
 #'
 #' @usage
 #' s3_delete_bucket_analytics_configuration(Bucket, Id)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is deleted.
-#' @param Id &#91;required&#93; The identifier used to represent an analytics configuration.
+#' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -955,7 +960,7 @@ s3_delete_bucket_website <- function(Bucket) {
 #' space, and the value that is displayed on your authentication device.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param RequestPayer 
-#' @param BypassGovernanceRetention Indicates whether S3 Object Lock should bypass Governance-mode
+#' @param BypassGovernanceRetention Indicates whether Amazon S3 object lock should bypass governance-mode
 #' restrictions to process this operation.
 #'
 #' @section Request syntax:
@@ -971,16 +976,16 @@ s3_delete_bucket_website <- function(Bucket) {
 #' ```
 #'
 #' @examples
-#' # The following example deletes an object from a non-versioned bucket.
-#' \donttest{svc$delete_object(
-#'   Bucket = "ExampleBucket",
-#'   Key = "HappyFace.jpg"
-#' )}
-#' 
 #' # The following example deletes an object from an S3 bucket.
 #' \donttest{svc$delete_object(
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey.jpg"
+#' )}
+#' 
+#' # The following example deletes an object from a non-versioned bucket.
+#' \donttest{svc$delete_object(
+#'   Bucket = "ExampleBucket",
+#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -1024,20 +1029,20 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #'
 #' @examples
 #' # The following example removes tag set associated with the specified
+#' # object. If the bucket is versioning enabled, the operation removes tag
+#' # set from the latest object version.
+#' \donttest{svc$delete_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )}
+#' 
+#' # The following example removes tag set associated with the specified
 #' # object version. The request specifies both the object key and object
 #' # version.
 #' \donttest{svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )}
-#' 
-#' # The following example removes tag set associated with the specified
-#' # object. If the bucket is versioning enabled, the operation removes tag
-#' # set from the latest object version.
-#' \donttest{svc$delete_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -1075,7 +1080,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' space, and the value that is displayed on your authentication device.
 #' @param RequestPayer 
 #' @param BypassGovernanceRetention Specifies whether you want to delete this object even if it has a
-#' Governance-type Object Lock in place. You must have sufficient
+#' Governance-type object lock in place. You must have sufficient
 #' permissions to perform this operation.
 #'
 #' @section Request syntax:
@@ -1273,7 +1278,7 @@ s3_get_bucket_acl <- function(Bucket) {
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is
 #' retrieved.
-#' @param Id &#91;required&#93; The identifier used to represent an analytics configuration.
+#' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -2070,18 +2075,18 @@ s3_get_bucket_website <- function(Bucket) {
 #' ```
 #'
 #' @examples
-#' # The following example retrieves an object for an S3 bucket.
-#' \donttest{svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )}
-#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' \donttest{svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
+#' )}
+#' 
+#' # The following example retrieves an object for an S3 bucket.
+#' \donttest{svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -2195,16 +2200,16 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 }
 .s3$operations$get_object_legal_hold <- s3_get_object_legal_hold
 
-#' Gets the Object Lock configuration for a bucket
+#' Gets the object lock configuration for a bucket
 #'
-#' Gets the Object Lock configuration for a bucket. The rule specified in
-#' the Object Lock configuration will be applied by default to every new
+#' Gets the object lock configuration for a bucket. The rule specified in
+#' the object lock configuration will be applied by default to every new
 #' object placed in the specified bucket.
 #'
 #' @usage
 #' s3_get_object_lock_configuration(Bucket)
 #'
-#' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to retrieve.
+#' @param Bucket &#91;required&#93; The bucket whose object lock configuration you want to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -2297,18 +2302,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' ```
 #'
 #' @examples
+#' # The following example retrieves tag set of an object.
+#' \donttest{svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )}
+#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' \donttest{svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )}
-#' 
-#' # The following example retrieves tag set of an object.
-#' \donttest{svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -2744,12 +2749,6 @@ s3_list_buckets <- function() {
 #' ```
 #'
 #' @examples
-#' # The following example lists in-progress multipart uploads on a specific
-#' # bucket.
-#' \donttest{svc$list_multipart_uploads(
-#'   Bucket = "examplebucket"
-#' )}
-#' 
 #' # The following example specifies the upload-id-marker and key-marker from
 #' # previous truncated response to retrieve next setup of multipart uploads.
 #' \donttest{svc$list_multipart_uploads(
@@ -2757,6 +2756,12 @@ s3_list_buckets <- function() {
 #'   KeyMarker = "nextkeyfrompreviousresponse",
 #'   MaxUploads = "2",
 #'   UploadIdMarker = "valuefrompreviousresponse"
+#' )}
+#' 
+#' # The following example lists in-progress multipart uploads on a specific
+#' # bucket.
+#' \donttest{svc$list_multipart_uploads(
+#'   Bucket = "examplebucket"
 #' )}
 #'
 #' @keywords internal
@@ -3075,7 +3080,8 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #'   GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP)
 #'
 #' @param ACL The canned ACL to apply to the bucket.
-#' @param AccessControlPolicy 
+#' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per
+#' grantee.
 #' @param Bucket &#91;required&#93; 
 #' @param ContentMD5 
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
@@ -3160,7 +3166,7 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #'   AnalyticsConfiguration)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which an analytics configuration is stored.
-#' @param Id &#91;required&#93; The identifier used to represent an analytics configuration.
+#' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
 #' @param AnalyticsConfiguration &#91;required&#93; The configuration and any analyses for the analytics filter.
 #'
 #' @section Request syntax:
@@ -3330,11 +3336,15 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL) {
 #' s3_put_bucket_encryption(Bucket, ContentMD5,
 #'   ServerSideEncryptionConfiguration)
 #'
-#' @param Bucket &#91;required&#93; The name of the bucket for which the server-side encryption
-#' configuration is set.
+#' @param Bucket &#91;required&#93; Specifies default encryption for a bucket using server-side encryption
+#' with Amazon S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS).
+#' For information about the Amazon S3 default encryption feature, see
+#' [Amazon S3 Default Bucket
+#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
+#' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the server-side encryption
 #' configuration. This parameter is auto-populated when using the command
-#' from the CLI
+#' from the CLI.
 #' @param ServerSideEncryptionConfiguration &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3951,10 +3961,9 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 }
 .s3$operations$put_bucket_notification_configuration <- s3_put_bucket_notification_configuration
 
-#' Replaces a policy on a bucket
+#' Applies an Amazon S3 bucket policy to an Amazon S3 bucket
 #'
-#' Replaces a policy on a bucket. If the bucket already has a policy, the
-#' one in this request completely replaces it.
+#' Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 #'
 #' @usage
 #' s3_put_bucket_policy(Bucket, ContentMD5, ConfirmRemoveSelfBucketAccess,
@@ -4005,15 +4014,21 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #' Creates a replication configuration or replaces an existing one
 #'
 #' Creates a replication configuration or replaces an existing one. For
-#' more information, see Cross-Region Replication (CRR) in the *Amazon S3
-#' Developer Guide*.
+#' more information, see [Cross-Region Replication
+#' (CRR)](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+#' *Amazon S3 Developer Guide*.
 #'
 #' @usage
-#' s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration)
+#' s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration,
+#'   Token)
 #'
 #' @param Bucket &#91;required&#93; 
-#' @param ContentMD5 
+#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' header as a message integrity check to verify that the request body was
+#' not corrupted in transit.
 #' @param ReplicationConfiguration &#91;required&#93; 
+#' @param Token A token that allows Amazon S3 object lock to be enabled for an existing
+#' bucket.
 #'
 #' @section Request syntax:
 #' ```
@@ -4065,7 +4080,8 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   Token = "string"
 #' )
 #' ```
 #'
@@ -4091,14 +4107,14 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_replication
-s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConfiguration) {
+s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConfiguration, Token = NULL) {
   op <- new_operation(
     name = "PutBucketReplication",
     http_method = "PUT",
     http_path = "/{Bucket}?replication",
     paginator = list()
   )
-  input <- .s3$put_bucket_replication_input(Bucket = Bucket, ContentMD5 = ContentMD5, ReplicationConfiguration = ReplicationConfiguration)
+  input <- .s3$put_bucket_replication_input(Bucket = Bucket, ContentMD5 = ContentMD5, ReplicationConfiguration = ReplicationConfiguration, Token = Token)
   output <- .s3$put_bucket_replication_output()
   svc <- .s3$service()
   request <- new_request(svc, op, input, output)
@@ -4392,7 +4408,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
-#' is auto-populated when using the command from the CLI
+#' is auto-populated when using the command from the CLI. This parameted is
+#' required if object lock parameters are specified.
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param Expires The date and time at which the object is no longer cacheable.
 #' @param GrantFullControl Gives the grantee READ, READ\\_ACP, and WRITE\\_ACP permissions on the
@@ -4426,8 +4443,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters. (For example, \"Key1=Value1\")
-#' @param ObjectLockMode The Object Lock mode that you want to apply to this object.
-#' @param ObjectLockRetainUntilDate The date and time when you want this object\'s Object Lock to expire.
+#' @param ObjectLockMode The object lock mode that you want to apply to this object.
+#' @param ObjectLockRetainUntilDate The date and time when you want this object\'s object lock to expire.
 #' @param ObjectLockLegalHoldStatus The Legal Hold status that you want to apply to the specified object.
 #'
 #' @section Request syntax:
@@ -4472,14 +4489,24 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' ```
 #'
 #' @examples
-#' # The following example uploads an object. The request specifies optional
-#' # object tags. The bucket is versioned, therefore S3 returns version ID of
-#' # the newly created object.
+#' # The following example uploads and object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
 #' \donttest{svc$put_object(
-#'   Body = "c:\\HappyFace.jpg",
+#'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
 #'   Tagging = "key1=value1&key2=value2"
+#' )}
+#' 
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
+#' \donttest{svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey"
 #' )}
 #' 
 #' # The following example uploads and object. The request specifies optional
@@ -4491,25 +4518,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject"
-#' )}
-#' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
-#' \donttest{svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey"
-#' )}
-#' 
-#' # The following example uploads an object. The request specifies optional
-#' # request headers to directs S3 to use specific storage class and use
-#' # server-side encryption.
-#' \donttest{svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   ServerSideEncryption = "AES256",
-#'   StorageClass = "STANDARD_IA"
 #' )}
 #' 
 #' # The following example uploads an object to a versioning-enabled bucket.
@@ -4534,15 +4542,24 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   )
 #' )}
 #' 
-#' # The following example uploads and object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
+#' # The following example uploads an object. The request specifies optional
+#' # request headers to directs S3 to use specific storage class and use
+#' # server-side encryption.
 #' \donttest{svc$put_object(
-#'   Body = "filetoupload",
+#'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
+#'   Key = "HappyFace.jpg",
 #'   ServerSideEncryption = "AES256",
+#'   StorageClass = "STANDARD_IA"
+#' )}
+#' 
+#' # The following example uploads an object. The request specifies optional
+#' # object tags. The bucket is versioned, therefore S3 returns version ID of
+#' # the newly created object.
+#' \donttest{svc$put_object(
+#'   Body = "c:\\HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
 #'   Tagging = "key1=value1&key2=value2"
 #' )}
 #'
@@ -4577,7 +4594,8 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #'   Key, RequestPayer, VersionId)
 #'
 #' @param ACL The canned ACL to apply to the object.
-#' @param AccessControlPolicy 
+#' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per
+#' grantee.
 #' @param Bucket &#91;required&#93; 
 #' @param ContentMD5 
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
@@ -4711,22 +4729,23 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 }
 .s3$operations$put_object_legal_hold <- s3_put_object_legal_hold
 
-#' Places an Object Lock configuration on the specified bucket
+#' Places an object lock configuration on the specified bucket
 #'
-#' Places an Object Lock configuration on the specified bucket. The rule
-#' specified in the Object Lock configuration will be applied by default to
+#' Places an object lock configuration on the specified bucket. The rule
+#' specified in the object lock configuration will be applied by default to
 #' every new object placed in the specified bucket.
 #'
 #' @usage
 #' s3_put_object_lock_configuration(Bucket, ObjectLockConfiguration,
 #'   RequestPayer, Token, ContentMD5)
 #'
-#' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to create or
+#' @param Bucket &#91;required&#93; The bucket whose object lock configuration you want to create or
 #' replace.
-#' @param ObjectLockConfiguration The Object Lock configuration that you want to apply to the specified
+#' @param ObjectLockConfiguration The object lock configuration that you want to apply to the specified
 #' bucket.
 #' @param RequestPayer 
-#' @param Token A token to allow Object Lock to be enabled for an existing bucket.
+#' @param Token A token to allow Amazon S3 object lock to be enabled for an existing
+#' bucket.
 #' @param ContentMD5 The MD5 hash for the request body.
 #'
 #' @section Request syntax:
@@ -5199,7 +5218,9 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data.
+#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
+#' is auto-populated when using the command from the CLI. This parameted is
+#' required if object lock parameters are specified.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param PartNumber &#91;required&#93; Part number of part being uploaded. This is a positive integer between 1
 #' and 10,000.
@@ -5345,6 +5366,16 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' ```
 #'
 #' @examples
+#' # The following example uploads a part of a multipart upload by copying
+#' # data from an existing object as data source.
+#' \donttest{svc$upload_part_copy(
+#'   Bucket = "examplebucket",
+#'   CopySource = "/bucketname/sourceobjectkey",
+#'   Key = "examplelargeobject",
+#'   PartNumber = "1",
+#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
+#' )}
+#' 
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
 #' \donttest{svc$upload_part_copy(
@@ -5353,16 +5384,6 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'   CopySourceRange = "bytes=1-100000",
 #'   Key = "examplelargeobject",
 #'   PartNumber = "2",
-#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
-#' )}
-#' 
-#' # The following example uploads a part of a multipart upload by copying
-#' # data from an existing object as data source.
-#' \donttest{svc$upload_part_copy(
-#'   Bucket = "examplebucket",
-#'   CopySource = "/bucketname/sourceobjectkey",
-#'   Key = "examplelargeobject",
-#'   PartNumber = "1",
 #'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP..."
 #' )}
 #'

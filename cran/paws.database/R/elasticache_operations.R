@@ -16,7 +16,7 @@ NULL
 #' business categories (such as cost centers, application names, or owners)
 #' to organize your costs across multiple services. For more information,
 #' see [Using Cost Allocation Tags in Amazon
-#' ElastiCache](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
+#' ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 #' in the *ElastiCache User Guide*.
 #'
 #' @usage
@@ -30,7 +30,7 @@ NULL
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; A list of cost allocation tags to be added to this resource. A tag is a
 #' key-value pair. A tag key must be accompanied by a tag value.
 #'
@@ -114,6 +114,89 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 }
 .elasticache$operations$authorize_cache_security_group_ingress <- elasticache_authorize_cache_security_group_ingress
 
+#' Apply the service update
+#'
+#' Apply the service update. For more information on service updates and
+#' applying them, see Applying Service Updates.
+#'
+#' @usage
+#' elasticache_batch_apply_update_action(ReplicationGroupIds,
+#'   ServiceUpdateName)
+#'
+#' @param ReplicationGroupIds &#91;required&#93; The replication group IDs
+#' @param ServiceUpdateName &#91;required&#93; The unique ID of the service update
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_apply_update_action(
+#'   ReplicationGroupIds = list(
+#'     "string"
+#'   ),
+#'   ServiceUpdateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_batch_apply_update_action
+elasticache_batch_apply_update_action <- function(ReplicationGroupIds, ServiceUpdateName) {
+  op <- new_operation(
+    name = "BatchApplyUpdateAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$batch_apply_update_action_input(ReplicationGroupIds = ReplicationGroupIds, ServiceUpdateName = ServiceUpdateName)
+  output <- .elasticache$batch_apply_update_action_output()
+  svc <- .elasticache$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$batch_apply_update_action <- elasticache_batch_apply_update_action
+
+#' Stop the service update
+#'
+#' Stop the service update. For more information on service updates and
+#' stopping them, see [Stopping Service
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html).
+#'
+#' @usage
+#' elasticache_batch_stop_update_action(ReplicationGroupIds,
+#'   ServiceUpdateName)
+#'
+#' @param ReplicationGroupIds &#91;required&#93; The replication group IDs
+#' @param ServiceUpdateName &#91;required&#93; The unique ID of the service update
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_stop_update_action(
+#'   ReplicationGroupIds = list(
+#'     "string"
+#'   ),
+#'   ServiceUpdateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_batch_stop_update_action
+elasticache_batch_stop_update_action <- function(ReplicationGroupIds, ServiceUpdateName) {
+  op <- new_operation(
+    name = "BatchStopUpdateAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$batch_stop_update_action_input(ReplicationGroupIds = ReplicationGroupIds, ServiceUpdateName = ServiceUpdateName)
+  output <- .elasticache$batch_stop_update_action_output()
+  svc <- .elasticache$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$batch_stop_update_action <- elasticache_batch_stop_update_action
+
 #' Makes a copy of an existing snapshot
 #'
 #' Makes a copy of an existing snapshot.
@@ -126,9 +209,9 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' who has the ability to use the `CopySnapshot` operation. For more
 #' information about using IAM to control the use of ElastiCache
 #' operations, see [Exporting
-#' Snapshots](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
+#' Snapshots](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 #' and [Authentication & Access
-#' Control](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html).
+#' Control](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html).
 #' 
 #' You could receive the following error messages.
 #' 
@@ -138,14 +221,14 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The S3 bucket \%s does not exist.
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The S3 bucket \%s is not owned by the
@@ -153,7 +236,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The authenticated user does not have sufficient
@@ -174,7 +257,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' 
 #'     **Solution:** Add List and Read permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted WRITE
@@ -182,7 +265,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' 
 #'     **Solution:** Add Upload/Delete permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted READ\\_ACP
@@ -190,7 +273,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' 
 #'     **Solution:** Add View Permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
 #'     in the ElastiCache User Guide.
 #'
 #' @usage
@@ -207,11 +290,11 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' When using this parameter to export a snapshot, be sure Amazon
 #' ElastiCache has the needed permissions to this S3 bucket. For more
 #' information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#' Bucket](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+#' Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 #' in the *Amazon ElastiCache User Guide*.
 #' 
 #' For more information, see [Exporting a
-#' Snapshot](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
+#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html)
 #' in the *Amazon ElastiCache User Guide*.
 #'
 #' @section Request syntax:
@@ -332,14 +415,15 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'     -   Current generation:
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
-#' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'         `cache.m5.24xlarge`
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'         `cache.t2.medium`
 #' 
 #'     -   Previous generation: (not recommended)
 #' 
@@ -347,6 +431,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
 #'         `cache.m1.large`, `cache.m1.xlarge`
+#' 
+#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
 #' -   Compute optimized:
 #' 
@@ -358,10 +445,11 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'     -   Current generation:
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'         `cache.r5.24xlarge`
 #' 
-#'         **R4 node types;** `cache.r4.large`, `cache.r4.xlarge`,
+#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
@@ -370,30 +458,22 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
 #' 
-#' **Notes:**
+#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
-#' -   All T2 instances are created in an Amazon Virtual Private Cloud
-#'     (Amazon VPC).
+#' **Additional node type info**
 #' 
-#' -   Redis (cluster mode disabled): Redis backup/restore is not supported
-#'     on T1 and T2 instances.
+#' -   All current generation instance types are created in Amazon VPC by
+#'     default.
 #' 
-#' -   Redis (cluster mode enabled): Backup/restore is not supported on T1
+#' -   Redis append-only files (AOF) are not supported for T1 or T2
 #'     instances.
 #' 
-#' -   Redis Append-only files (AOF) functionality is not supported for T1
-#'     or T2 instances.
+#' -   Redis Multi-AZ with automatic failover is not supported on T1
+#'     instances.
 #' 
-#' For a complete listing of node types and specifications, see:
-#' 
-#' -   [Amazon ElastiCache Product Features and
-#'     Details](http://aws.amazon.com/elasticache/details)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Redis](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+#' -   Redis configuration variables `appendonly` and `appendfsync` are not
+#'     supported on Redis version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for this cluster.
 #' 
 #' Valid values for this parameter are: `memcached` \\| `redis`
@@ -403,7 +483,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster or
 #' replication group and create it anew with the earlier engine version.
@@ -419,7 +499,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' If you\'re going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of security group names to associate with this cluster.
 #' 
 #' Use this parameter only when you are creating a cluster outside of an
@@ -582,11 +662,11 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' newly created CacheParameterGroup you can change the values of specific
 #' parameters. For more information, see:
 #' 
-#' -   [ModifyCacheParameterGroup](http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
+#' -   [ModifyCacheParameterGroup](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
 #'     in the ElastiCache API Reference.
 #' 
 #' -   [Parameters and Parameter
-#'     Groups](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
+#'     Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
 #'     in the ElastiCache User Guide.
 #'
 #' @usage
@@ -597,8 +677,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
 #' group can be used with.
 #' 
-#' Valid values are: `memcached1.4` \\| `redis2.6` \\| `redis2.8` \\|
-#' `redis3.2` \\| `redis4.0`
+#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
+#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
 #' @param Description &#91;required&#93; A user-specified description for the cache parameter group.
 #'
 #' @section Request syntax:
@@ -638,7 +718,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are
 #' creating a cluster inside of a VPC, use a cache subnet group instead.
 #' For more information, see
-#' [CreateCacheSubnetGroup](http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html).
+#' [CreateCacheSubnetGroup](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html).
 #'
 #' @usage
 #' elasticache_create_cache_security_group(CacheSecurityGroupName,
@@ -757,7 +837,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' shards), you can avail yourself of ElastiCache for Redis\' enhanced
 #' backup and restore. For more information, see [Restoring From a Backup
 #' with Cluster
-#' Resizing](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
+#' Resizing](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
 #' in the *ElastiCache User Guide*.
 #' 
 #' This operation is valid for Redis only.
@@ -806,7 +886,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' -   Redis versions earlier than 2.8.6.
 #' 
-#' -   Redis (cluster mode disabled): T1 and T2 cache node types.
+#' -   Redis (cluster mode disabled): T1 node types.
 #' 
 #' -   Redis (cluster mode enabled): T1 node types.
 #' @param NumCacheClusters The number of clusters this replication group initially has.
@@ -866,14 +946,15 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #'     -   Current generation:
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
-#' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'         `cache.m5.24xlarge`
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'         `cache.t2.medium`
 #' 
 #'     -   Previous generation: (not recommended)
 #' 
@@ -881,6 +962,9 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
 #'         `cache.m1.large`, `cache.m1.xlarge`
+#' 
+#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
 #' -   Compute optimized:
 #' 
@@ -892,10 +976,11 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #'     -   Current generation:
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'         `cache.r5.24xlarge`
 #' 
-#'         **R4 node types;** `cache.r4.large`, `cache.r4.xlarge`,
+#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
@@ -904,30 +989,22 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
 #' 
-#' **Notes:**
+#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
-#' -   All T2 instances are created in an Amazon Virtual Private Cloud
-#'     (Amazon VPC).
+#' **Additional node type info**
 #' 
-#' -   Redis (cluster mode disabled): Redis backup/restore is not supported
-#'     on T1 and T2 instances.
+#' -   All current generation instance types are created in Amazon VPC by
+#'     default.
 #' 
-#' -   Redis (cluster mode enabled): Backup/restore is not supported on T1
+#' -   Redis append-only files (AOF) are not supported for T1 or T2
 #'     instances.
 #' 
-#' -   Redis Append-only files (AOF) functionality is not supported for T1
-#'     or T2 instances.
+#' -   Redis Multi-AZ with automatic failover is not supported on T1
+#'     instances.
 #' 
-#' For a complete listing of node types and specifications, see:
-#' 
-#' -   [Amazon ElastiCache Product Features and
-#'     Details](http://aws.amazon.com/elasticache/details)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Redis](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+#' -   Redis configuration variables `appendonly` and `appendfsync` are not
+#'     supported on Redis version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for the clusters in this
 #' replication group.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
@@ -936,7 +1013,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
 #' in the *ElastiCache User Guide*, but you cannot downgrade to an earlier
 #' engine version. If you want to use an earlier engine version, you must
 #' delete the existing cluster or replication group and create it anew with
@@ -944,6 +1021,10 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @param CacheParameterGroupName The name of the parameter group to associate with this replication
 #' group. If this argument is omitted, the default cache parameter group
 #' for the specified engine is used.
+#' 
+#' If you are restoring to an engine version that is different than the
+#' original, you must specify the default version of that version. For
+#' example, `CacheParameterGroupName=default.redis4.0`.
 #' 
 #' If you are running Redis version 3.2.4 or later, only one node group
 #' (shard), and want to use a default parameter group, we recommend that
@@ -959,7 +1040,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' If you\'re going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of cache security group names to associate with this replication
 #' group.
 #' @param SecurityGroupIds One or more Amazon VPC security groups associated with this replication
@@ -967,8 +1048,10 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' Use this parameter only when you are creating a replication group in an
 #' Amazon Virtual Private Cloud (Amazon VPC).
-#' @param Tags A list of cost allocation tags to be added to this resource. A tag is a
-#' key-value pair.
+#' @param Tags A list of cost allocation tags to be added to this resource. Tags are
+#' comma-separated key,value pairs (e.g. Key=`myKey`, Value=`myKeyValue`.
+#' You can include multiple tags as shown following: Key=`myKey`,
+#' Value=`myKeyValue` Key=`mySecondKey`, Value=`mySecondKeyValue`.
 #' @param SnapshotArns A list of Amazon Resource Names (ARN) that uniquely identify the Redis
 #' RDB snapshot files stored in Amazon S3. The snapshot files are used to
 #' populate the new replication group. The Amazon S3 object name in the ARN
@@ -1242,9 +1325,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' and `PreferredAvailabilityZones`.
 #' @param ReplicasToRemove A list of the node ids to remove from the replication group or node
 #' group (shard).
-#' @param ApplyImmediately &#91;required&#93; If `True`, the number of replica nodes is decreased immediately. If
-#' `False`, the number of replica nodes is decreased during the next
-#' maintenance window.
+#' @param ApplyImmediately &#91;required&#93; If `True`, the number of replica nodes is decreased immediately.
+#' `ApplyImmediately=False` is not currently supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -1294,12 +1376,17 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' ElastiCache immediately begins deleting the cluster; you cannot cancel
 #' or revert this operation.
 #' 
-#' This operation cannot be used to delete a cluster that is the last read
-#' replica of a replication group or node group (shard) that has Multi-AZ
-#' mode enabled or a cluster from a Redis (cluster mode enabled)
-#' replication group.
+#' This operation is not valid for:
 #' 
-#' This operation is not valid for Redis (cluster mode enabled) clusters.
+#' -   Redis (cluster mode enabled) clusters
+#' 
+#' -   A cluster that is the last read replica of a replication group
+#' 
+#' -   A node group (shard) that has Multi-AZ mode enabled
+#' 
+#' -   A cluster from a Redis (cluster mode enabled) replication group
+#' 
+#' -   A cluster that is not in the `available` state
 #'
 #' @usage
 #' elasticache_delete_cache_cluster(CacheClusterId,
@@ -1651,8 +1738,8 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' @param CacheParameterGroupFamily The name of a specific cache parameter group family to return details
 #' for.
 #' 
-#' Valid values are: `memcached1.4` \\| `redis2.6` \\| `redis2.8` \\|
-#' `redis3.2` \\| `redis4.0`
+#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
+#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
 #' 
 #' Constraints:
 #' 
@@ -1816,7 +1903,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
 #'
 #' Returns a list of cache security group descriptions. If a cache security
 #' group name is specified, the list contains only the description of that
-#' group.
+#' group. This applicable only when you have ElastiCache in Classic setup
 #'
 #' @usage
 #' elasticache_describe_cache_security_groups(CacheSecurityGroupName,
@@ -1867,6 +1954,8 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 #'
 #' Returns a list of cache subnet group descriptions. If a subnet group
 #' name is specified, the list contains only the description of that group.
+#' This is applicable only when you have ElastiCache in VPC setup. All
+#' ElastiCache clusters now launch in VPC by default.
 #'
 #' @usage
 #' elasticache_describe_cache_subnet_groups(CacheSubnetGroupName,
@@ -1925,8 +2014,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #'
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family.
 #' 
-#' Valid values are: `memcached1.4` \\| `redis2.6` \\| `redis2.8` \\|
-#' `redis3.2` \\| `redis4.0`
+#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
+#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -2127,14 +2216,15 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
-#' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'         `cache.m5.24xlarge`
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'         `cache.t2.medium`
 #' 
 #'     -   Previous generation: (not recommended)
 #' 
@@ -2142,6 +2232,9 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
 #'         `cache.m1.large`, `cache.m1.xlarge`
+#' 
+#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
 #' -   Compute optimized:
 #' 
@@ -2153,10 +2246,11 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'         `cache.r5.24xlarge`
 #' 
-#'         **R4 node types;** `cache.r4.large`, `cache.r4.xlarge`,
+#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
@@ -2165,30 +2259,22 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
 #' 
-#' **Notes:**
+#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
-#' -   All T2 instances are created in an Amazon Virtual Private Cloud
-#'     (Amazon VPC).
+#' **Additional node type info**
 #' 
-#' -   Redis (cluster mode disabled): Redis backup/restore is not supported
-#'     on T1 and T2 instances.
+#' -   All current generation instance types are created in Amazon VPC by
+#'     default.
 #' 
-#' -   Redis (cluster mode enabled): Backup/restore is not supported on T1
+#' -   Redis append-only files (AOF) are not supported for T1 or T2
 #'     instances.
 #' 
-#' -   Redis Append-only files (AOF) functionality is not supported for T1
-#'     or T2 instances.
+#' -   Redis Multi-AZ with automatic failover is not supported on T1
+#'     instances.
 #' 
-#' For a complete listing of node types and specifications, see:
-#' 
-#' -   [Amazon ElastiCache Product Features and
-#'     Details](http://aws.amazon.com/elasticache/details)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Redis](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+#' -   Redis configuration variables `appendonly` and `appendfsync` are not
+#'     supported on Redis version 2.8.22 and later.
 #' @param Duration The duration filter value, specified in years or seconds. Use this
 #' parameter to show only reservations for this duration.
 #' 
@@ -2271,14 +2357,15 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
-#' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'         `cache.m5.24xlarge`
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'         `cache.t2.medium`
 #' 
 #'     -   Previous generation: (not recommended)
 #' 
@@ -2286,6 +2373,9 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
 #'         `cache.m1.large`, `cache.m1.xlarge`
+#' 
+#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
 #' -   Compute optimized:
 #' 
@@ -2297,10 +2387,11 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'         `cache.r5.24xlarge`
 #' 
-#'         **R4 node types;** `cache.r4.large`, `cache.r4.xlarge`,
+#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
@@ -2309,30 +2400,22 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
 #' 
-#' **Notes:**
+#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
-#' -   All T2 instances are created in an Amazon Virtual Private Cloud
-#'     (Amazon VPC).
+#' **Additional node type info**
 #' 
-#' -   Redis (cluster mode disabled): Redis backup/restore is not supported
-#'     on T1 and T2 instances.
+#' -   All current generation instance types are created in Amazon VPC by
+#'     default.
 #' 
-#' -   Redis (cluster mode enabled): Backup/restore is not supported on T1
+#' -   Redis append-only files (AOF) are not supported for T1 or T2
 #'     instances.
 #' 
-#' -   Redis Append-only files (AOF) functionality is not supported for T1
-#'     or T2 instances.
+#' -   Redis Multi-AZ with automatic failover is not supported on T1
+#'     instances.
 #' 
-#' For a complete listing of node types and specifications, see:
-#' 
-#' -   [Amazon ElastiCache Product Features and
-#'     Details](http://aws.amazon.com/elasticache/details)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
-#' 
-#' -   [Cache Node Type-Specific Parameters for
-#'     Redis](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific)
+#' -   Redis configuration variables `appendonly` and `appendfsync` are not
+#'     supported on Redis version 2.8.22 and later.
 #' @param Duration Duration filter value, specified in years or seconds. Use this parameter
 #' to show only reservations for a given duration.
 #' 
@@ -2387,6 +2470,53 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
   return(response)
 }
 .elasticache$operations$describe_reserved_cache_nodes_offerings <- elasticache_describe_reserved_cache_nodes_offerings
+
+#' Returns details of the service updates
+#'
+#' Returns details of the service updates
+#'
+#' @usage
+#' elasticache_describe_service_updates(ServiceUpdateName,
+#'   ServiceUpdateStatus, MaxRecords, Marker)
+#'
+#' @param ServiceUpdateName The unique ID of the service update
+#' @param ServiceUpdateStatus The status of the service update
+#' @param MaxRecords The maximum number of records to include in the response
+#' @param Marker An optional marker returned from a prior request. Use this marker for
+#' pagination of results from this operation. If this parameter is
+#' specified, the response includes only records beyond the marker, up to
+#' the value specified by `MaxRecords`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_service_updates(
+#'   ServiceUpdateName = "string",
+#'   ServiceUpdateStatus = list(
+#'     "available"|"cancelled"|"expired"
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_describe_service_updates
+elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, ServiceUpdateStatus = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceUpdates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .elasticache$describe_service_updates_output()
+  svc <- .elasticache$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$describe_service_updates <- elasticache_describe_service_updates
 
 #' Returns information about cluster or replication group snapshots
 #'
@@ -2458,6 +2588,74 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 }
 .elasticache$operations$describe_snapshots <- elasticache_describe_snapshots
 
+#' Returns details of the update actions
+#'
+#' Returns details of the update actions
+#'
+#' @usage
+#' elasticache_describe_update_actions(ServiceUpdateName,
+#'   ReplicationGroupIds, ServiceUpdateStatus, ServiceUpdateTimeRange,
+#'   UpdateActionStatus, ShowNodeLevelUpdateStatus, MaxRecords, Marker)
+#'
+#' @param ServiceUpdateName The unique ID of the service update
+#' @param ReplicationGroupIds The replication group IDs
+#' @param ServiceUpdateStatus The status of the service update
+#' @param ServiceUpdateTimeRange The range of time specified to search for service updates that are in
+#' available status
+#' @param UpdateActionStatus The status of the update action.
+#' @param ShowNodeLevelUpdateStatus Dictates whether to include node level update status in the response
+#' @param MaxRecords The maximum number of records to include in the response
+#' @param Marker An optional marker returned from a prior request. Use this marker for
+#' pagination of results from this operation. If this parameter is
+#' specified, the response includes only records beyond the marker, up to
+#' the value specified by `MaxRecords`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_update_actions(
+#'   ServiceUpdateName = "string",
+#'   ReplicationGroupIds = list(
+#'     "string"
+#'   ),
+#'   ServiceUpdateStatus = list(
+#'     "available"|"cancelled"|"expired"
+#'   ),
+#'   ServiceUpdateTimeRange = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   UpdateActionStatus = list(
+#'     "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"
+#'   ),
+#'   ShowNodeLevelUpdateStatus = TRUE|FALSE,
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_describe_update_actions
+elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, ReplicationGroupIds = NULL, ServiceUpdateStatus = NULL, ServiceUpdateTimeRange = NULL, UpdateActionStatus = NULL, ShowNodeLevelUpdateStatus = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeUpdateActions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .elasticache$describe_update_actions_output()
+  svc <- .elasticache$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$describe_update_actions <- elasticache_describe_update_actions
+
 #' Dynamically increases the number of replics in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
@@ -2482,9 +2680,8 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 #' shard in a Redis (cluster mode enabled) replication group. The
 #' `ConfigureShard` has three members: `NewReplicaCount`, `NodeGroupId`,
 #' and `PreferredAvailabilityZones`.
-#' @param ApplyImmediately &#91;required&#93; If `True`, the number of replica nodes is increased immediately. If
-#' `False`, the number of replica nodes is increased during the next
-#' maintenance window.
+#' @param ApplyImmediately &#91;required&#93; If `True`, the number of replica nodes is increased immediately.
+#' `ApplyImmediately=False` is not currently supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -2592,7 +2789,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' 
 #' You can have a maximum of 50 cost allocation tags on an ElastiCache
 #' resource. For more information, see [Monitoring Costs with
-#' Tags](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
+#' Tags](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 #'
 #' @usage
 #' elasticache_list_tags_for_resource(ResourceName)
@@ -2604,7 +2801,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -2708,7 +2905,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' For instructions on how to move existing Memcached nodes to different
 #' Availability Zones, see the **Availability Zone Considerations** section
 #' of [Cache Node Considerations for
-#' Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
 #' @param NewAvailabilityZones The list of Availability Zones where the new Memcached cache nodes are
 #' created.
 #' 
@@ -2743,7 +2940,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' different Availability Zones. For guidance on how to move existing
 #' Memcached nodes to different Availability Zones, see the **Availability
 #' Zone Considerations** section of [Cache Node Considerations for
-#' Memcached](http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
 #' 
 #' **Impact of new add/remove requests upon pending requests**
 #' 
@@ -2850,7 +3047,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster and
 #' create it anew with the earlier engine version.
@@ -3019,11 +3216,11 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' to change a cluster\'s node type or engine version. For more
 #' information, see:
 #' 
-#' -   [Scaling for Amazon ElastiCache for Redis---Redis (cluster mode
-#'     enabled)](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
+#' -   [Scaling for Amazon ElastiCache for Redis (cluster mode
+#'     enabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
 #'     in the ElastiCache User Guide
 #' 
-#' -   [ModifyReplicationGroupShardConfiguration](http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
+#' -   [ModifyReplicationGroupShardConfiguration](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
 #'     in the ElastiCache API Reference
 #' 
 #' This operation is valid for Redis only.
@@ -3057,7 +3254,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' -   Redis versions earlier than 2.8.6.
 #' 
-#' -   Redis (cluster mode disabled): T1 and T2 cache node types.
+#' -   Redis (cluster mode disabled): T1 node types.
 #' 
 #' -   Redis (cluster mode enabled): T1 node types.
 #' @param CacheSecurityGroupNames A list of cache security group names to authorize for the clusters in
@@ -3126,7 +3323,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing replication
 #' group and create it anew with the earlier engine version.
@@ -3227,14 +3424,16 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' You can specify this parameter only if the value of `NodeGroupCount` is
 #' greater than the current number of node groups (shards).
 #' @param NodeGroupsToRemove If the value of `NodeGroupCount` is less than the current number of node
-#' groups (shards), the `NodeGroupsToRemove` or `NodeGroupsToRetain` is a
-#' required list of node group ids to remove from or retain in the cluster.
+#' groups (shards), then either `NodeGroupsToRemove` or
+#' `NodeGroupsToRetain` is required. `NodeGroupsToRemove` is a list of
+#' `NodeGroupId`s to remove from the cluster.
 #' 
 #' ElastiCache for Redis will attempt to remove all node groups listed by
 #' `NodeGroupsToRemove` from the cluster.
 #' @param NodeGroupsToRetain If the value of `NodeGroupCount` is less than the current number of node
-#' groups (shards), the `NodeGroupsToRemove` or `NodeGroupsToRetain` is a
-#' required list of node group ids to remove from or retain in the cluster.
+#' groups (shards), then either `NodeGroupsToRemove` or
+#' `NodeGroupsToRetain` is required. `NodeGroupsToRetain` is a list of
+#' `NodeGroupId`s to retain in the cluster.
 #' 
 #' ElastiCache for Redis will attempt to remove all node groups except
 #' those listed by `NodeGroupsToRetain` from the cluster.
@@ -3405,7 +3604,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param TagKeys &#91;required&#93; A list of `TagKeys` identifying the tags you want removed from the named
 #' resource.
 #'
@@ -3583,14 +3782,14 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'     For more information see:
 #' 
 #'     -   [Viewing ElastiCache
-#'         Events](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
+#'         Events](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
 #'         in the *ElastiCache User Guide*
 #' 
-#'     -   [DescribeEvents](http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
+#'     -   [DescribeEvents](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
 #'         in the ElastiCache API Reference
 #' 
 #' Also see, [Testing Multi-AZ with Automatic
-#' Failover](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
+#' Failover](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 #' in the *ElastiCache User Guide*.
 #'
 #' @usage

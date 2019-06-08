@@ -3,7 +3,7 @@
 \name{sns_create_platform_application}
 \alias{sns_create_platform_application}
 \title{Creates a platform application object for one of the supported push
-notification services, such as APNS and GCM, to which devices and mobile
+notification services, such as APNS and FCM, to which devices and mobile
 apps may register}
 \usage{
 sns_create_platform_application(Name, Platform, Attributes)
@@ -18,11 +18,11 @@ APNS (Apple Push Notification Service), APNS\_SANDBOX, and GCM (Google
 Cloud Messaging).}
 
 \item{Attributes}{[required] For a list of attributes, see
-\href{http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html}{SetPlatformApplicationAttributes}}
+\href{https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html}{SetPlatformApplicationAttributes}}
 }
 \description{
 Creates a platform application object for one of the supported push
-notification services, such as APNS and GCM, to which devices and mobile
+notification services, such as APNS and FCM, to which devices and mobile
 apps may register. You must specify PlatformPrincipal and
 PlatformCredential attributes when using the \code{CreatePlatformApplication}
 action. The PlatformPrincipal is received from the notification service.
@@ -41,15 +41,15 @@ MPNS, PlatformCredential is "private key". For Baidu,
 PlatformCredential is "secret key". The PlatformApplicationArn that is
 returned when using \code{CreatePlatformApplication} is then used as an
 attribute for the \code{CreatePlatformEndpoint} action. For more information,
-see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
+see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 For more information about obtaining the PlatformPrincipal and
 PlatformCredential for each of the supported push notification services,
-see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html}{Getting Started with Apple Push Notification Service},
-\href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html}{Getting Started with Amazon Device Messaging},
-\href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html}{Getting Started with Baidu Cloud Push},
-\href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html}{Getting Started with Google Cloud Messaging for Android},
-\href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html}{Getting Started with MPNS},
-or \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html}{Getting Started with WNS}.
+see \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html}{Getting Started with Apple Push Notification Service},
+\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html}{Getting Started with Amazon Device Messaging},
+\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html}{Getting Started with Baidu Cloud Push},
+\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html}{Getting Started with Google Cloud Messaging for Android},
+\href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html}{Getting Started with MPNS},
+or \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html}{Getting Started with WNS}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_platform_application(

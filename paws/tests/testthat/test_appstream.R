@@ -33,3 +33,11 @@ test_that("describe_images", {
 test_that("describe_stacks", {
   expect_error(svc$describe_stacks(), NA)
 })
+
+test_that("describe_usage_report_subscriptions", {
+  expect_error(svc$describe_usage_report_subscriptions(), NA)
+})
+
+test_that("describe_usage_report_subscriptions", {
+  expect_error(svc$describe_usage_report_subscriptions(MaxResults = 20), NA)
+})

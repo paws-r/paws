@@ -5,19 +5,42 @@ NULL
 
 #' Creates a new MSK cluster
 #'
-#' Creates a new MSK cluster.
+#' 
+#'             <p>Creates a new MSK cluster.</p>
+#'          
 #'
 #' @usage
-#' kafka_create_cluster(BrokerNodeGroupInfo, ClusterName, EncryptionInfo,
-#'   EnhancedMonitoring, KafkaVersion, NumberOfBrokerNodes)
+#' kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
+#'   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
+#'   KafkaVersion, NumberOfBrokerNodes, Tags)
 #'
-#' @param BrokerNodeGroupInfo &#91;required&#93; Information about the broker nodes in the cluster.
-#' @param ClusterName &#91;required&#93; The name of the cluster.
-#' @param EncryptionInfo Includes all encryption-related information.
-#' @param EnhancedMonitoring Specifies the level of monitoring for the MSK cluster. The possible
-#' values are DEFAULT, PER\\_BROKER, and PER\\_TOPIC\\_PER\\_BROKER.
-#' @param KafkaVersion &#91;required&#93; The version of Apache Kafka.
-#' @param NumberOfBrokerNodes &#91;required&#93; The number of Kafka broker nodes in the Amazon MSK cluster.
+#' @param BrokerNodeGroupInfo &#91;required&#93; 
+#'             <p>Information about the broker nodes in the cluster.</p>
+#'          
+#' @param ClientAuthentication 
+#'             <p>Includes all client authentication related information.</p>
+#'          
+#' @param ClusterName &#91;required&#93; 
+#'             <p>The name of the cluster.</p>
+#'          
+#' @param ConfigurationInfo 
+#'             <p>Represents the configuration that you want MSK to use for the brokers in a cluster.</p>
+#'          
+#' @param EncryptionInfo 
+#'             <p>Includes all encryption-related information.</p>
+#'          
+#' @param EnhancedMonitoring 
+#'             <p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>
+#'          
+#' @param KafkaVersion &#91;required&#93; 
+#'             <p>The version of Apache Kafka.</p>
+#'          
+#' @param NumberOfBrokerNodes &#91;required&#93; 
+#'             <p>The number of broker nodes in the cluster.</p>
+#'          
+#' @param Tags 
+#'             <p>Create tags when creating the cluster.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -37,29 +60,47 @@ NULL
 #'       )
 #'     )
 #'   ),
+#'   ClientAuthentication = list(
+#'     Tls = list(
+#'       CertificateAuthorityArnList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   ClusterName = "string",
+#'   ConfigurationInfo = list(
+#'     Arn = "string",
+#'     Revision = 123
+#'   ),
 #'   EncryptionInfo = list(
 #'     EncryptionAtRest = list(
 #'       DataVolumeKMSKeyId = "string"
+#'     ),
+#'     EncryptionInTransit = list(
+#'       ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+#'       InCluster = TRUE|FALSE
 #'     )
 #'   ),
 #'   EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
 #'   KafkaVersion = "string",
-#'   NumberOfBrokerNodes = 123
+#'   NumberOfBrokerNodes = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kafka_create_cluster
-kafka_create_cluster <- function(BrokerNodeGroupInfo, ClusterName, EncryptionInfo = NULL, EnhancedMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes) {
+kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes, Tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/v1/clusters",
     paginator = list()
   )
-  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClusterName = ClusterName, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, KafkaVersion = KafkaVersion, NumberOfBrokerNodes = NumberOfBrokerNodes)
+  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, KafkaVersion = KafkaVersion, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
   output <- .kafka$create_cluster_output()
   svc <- .kafka$service()
   request <- new_request(svc, op, input, output)
@@ -68,17 +109,77 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClusterName, EncryptionInf
 }
 .kafka$operations$create_cluster <- kafka_create_cluster
 
+#' Creates a new MSK configuration
+#'
+#' 
+#'             <p>Creates a new MSK configuration.</p>
+#'          
+#'
+#' @usage
+#' kafka_create_configuration(Description, KafkaVersions, Name,
+#'   ServerProperties)
+#'
+#' @param Description 
+#'             <p>The description of the configuration.</p>
+#'          
+#' @param KafkaVersions &#91;required&#93; 
+#'             <p>The versions of Apache Kafka with which you can use this MSK configuration.</p>
+#'          
+#' @param Name &#91;required&#93; 
+#'             <p>The name of the configuration.</p>
+#'          
+#' @param ServerProperties &#91;required&#93; 
+#'             <p>Contents of the <filename>server.properties</filename> file. When using the API, you must ensure that the contents of the file are base64 encoded. 
+#'                When using the AWS Management Console, the SDK, or the AWS CLI, the contents of <filename>server.properties</filename> can be in plaintext.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_configuration(
+#'   Description = "string",
+#'   KafkaVersions = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ServerProperties = raw
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_configuration
+kafka_create_configuration <- function(Description = NULL, KafkaVersions, Name, ServerProperties) {
+  op <- new_operation(
+    name = "CreateConfiguration",
+    http_method = "POST",
+    http_path = "/v1/configurations",
+    paginator = list()
+  )
+  input <- .kafka$create_configuration_input(Description = Description, KafkaVersions = KafkaVersions, Name = Name, ServerProperties = ServerProperties)
+  output <- .kafka$create_configuration_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_configuration <- kafka_create_configuration
+
 #' Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 #' the request
 #'
-#' Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
-#' the request.
+#' 
+#'             <p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
+#'          
 #'
 #' @usage
 #' kafka_delete_cluster(ClusterArn, CurrentVersion)
 #'
-#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
-#' @param CurrentVersion The current version of the MSK cluster.
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param CurrentVersion 
+#'             <p>The current version of the MSK cluster.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -110,13 +211,16 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 #' Returns a description of the MSK cluster whose Amazon Resource Name
 #' (ARN) is specified in the request
 #'
-#' Returns a description of the MSK cluster whose Amazon Resource Name
-#' (ARN) is specified in the request.
+#' 
+#'             <p>Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.</p>
+#'          
 #'
 #' @usage
 #' kafka_describe_cluster(ClusterArn)
 #'
-#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -144,14 +248,139 @@ kafka_describe_cluster <- function(ClusterArn) {
 }
 .kafka$operations$describe_cluster <- kafka_describe_cluster
 
+#' Returns a description of the cluster operation specified by the ARN
+#'
+#' 
+#'             <p>Returns a description of the cluster operation specified by the ARN.</p>
+#'          
+#'
+#' @usage
+#' kafka_describe_cluster_operation(ClusterOperationArn)
+#'
+#' @param ClusterOperationArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the MSK cluster operation.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_cluster_operation(
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_cluster_operation
+kafka_describe_cluster_operation <- function(ClusterOperationArn) {
+  op <- new_operation(
+    name = "DescribeClusterOperation",
+    http_method = "GET",
+    http_path = "/v1/operations/{clusterOperationArn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_cluster_operation_input(ClusterOperationArn = ClusterOperationArn)
+  output <- .kafka$describe_cluster_operation_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_cluster_operation <- kafka_describe_cluster_operation
+
+#' Returns a description of this MSK configuration
+#'
+#' 
+#'             <p>Returns a description of this MSK configuration.</p>
+#'          
+#'
+#' @usage
+#' kafka_describe_configuration(Arn)
+#'
+#' @param Arn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration and all of its revisions.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_configuration(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_configuration
+kafka_describe_configuration <- function(Arn) {
+  op <- new_operation(
+    name = "DescribeConfiguration",
+    http_method = "GET",
+    http_path = "/v1/configurations/{arn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_configuration_input(Arn = Arn)
+  output <- .kafka$describe_configuration_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_configuration <- kafka_describe_configuration
+
+#' Returns a description of this revision of the configuration
+#'
+#' 
+#'             <p>Returns a description of this revision of the configuration.</p>
+#'          
+#'
+#' @usage
+#' kafka_describe_configuration_revision(Arn, Revision)
+#'
+#' @param Arn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration and all of its revisions.</p>
+#'          
+#' @param Revision &#91;required&#93; 
+#'             <p>A string that uniquely identifies a revision of an MSK configuration.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_configuration_revision(
+#'   Arn = "string",
+#'   Revision = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_configuration_revision
+kafka_describe_configuration_revision <- function(Arn, Revision) {
+  op <- new_operation(
+    name = "DescribeConfigurationRevision",
+    http_method = "GET",
+    http_path = "/v1/configurations/{arn}/revisions/{revision}",
+    paginator = list()
+  )
+  input <- .kafka$describe_configuration_revision_input(Arn = Arn, Revision = Revision)
+  output <- .kafka$describe_configuration_revision_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_configuration_revision <- kafka_describe_configuration_revision
+
 #' A list of brokers that a client application can use to bootstrap
 #'
-#' A list of brokers that a client application can use to bootstrap.
+#' 
+#'             <p>A list of brokers that a client application can use to bootstrap.</p>
+#'          
 #'
 #' @usage
 #' kafka_get_bootstrap_brokers(ClusterArn)
 #'
-#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -179,20 +408,74 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 }
 .kafka$operations$get_bootstrap_brokers <- kafka_get_bootstrap_brokers
 
-#' Returns a list of clusters in an account
+#' Returns a list of all the operations that have been performed on the
+#' specified MSK cluster
 #'
-#' Returns a list of clusters in an account.
+#' 
+#'             <p>Returns a list of all the operations that have been performed on the specified MSK cluster.</p>
+#'          
+#'
+#' @usage
+#' kafka_list_cluster_operations(ClusterArn, MaxResults, NextToken)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#'          
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+#'             To get the next batch, provide this token in your next request.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cluster_operations(
+#'   ClusterArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_cluster_operations
+kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListClusterOperations",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/operations",
+    paginator = list()
+  )
+  input <- .kafka$list_cluster_operations_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_cluster_operations_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_cluster_operations <- kafka_list_cluster_operations
+
+#' Returns a list of all the MSK clusters in the current Region
+#'
+#' 
+#'             <p>Returns a list of all the MSK clusters in the current Region.</p>
+#'          
 #'
 #' @usage
 #' kafka_list_clusters(ClusterNameFilter, MaxResults, NextToken)
 #'
-#' @param ClusterNameFilter Specify a prefix of the name of the clusters that you want to list. The
-#' service lists all the clusters whose names start with this prefix.
-#' @param MaxResults The maximum number of clusters to return in the response. If there are
-#' more clusters, the response includes a NextToken parameter.
-#' @param NextToken The paginated results marker. When the result of a ListClusters
-#' operation is truncated, the call returns NextToken in the response. To
-#' get another batch of clusters, provide this token in your next request.
+#' @param ClusterNameFilter 
+#'             <p>Specify a prefix of the name of the clusters that you want to list. The service lists all the clusters whose names start with this prefix.</p>
+#'          
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#'          
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+#'             To get the next batch, provide this token in your next request.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -222,19 +505,117 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 }
 .kafka$operations$list_clusters <- kafka_list_clusters
 
+#' Returns a list of all the MSK configurations in this Region
+#'
+#' 
+#'             <p>Returns a list of all the MSK configurations in this Region.</p>
+#'          
+#'
+#' @usage
+#' kafka_list_configuration_revisions(Arn, MaxResults, NextToken)
+#'
+#' @param Arn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration and all of its revisions.</p>
+#'          
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#'          
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+#'             To get the next batch, provide this token in your next request.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configuration_revisions(
+#'   Arn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_configuration_revisions
+kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationRevisions",
+    http_method = "GET",
+    http_path = "/v1/configurations/{arn}/revisions",
+    paginator = list()
+  )
+  input <- .kafka$list_configuration_revisions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_configuration_revisions_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_configuration_revisions <- kafka_list_configuration_revisions
+
+#' Returns a list of all the MSK configurations in this Region
+#'
+#' 
+#'             <p>Returns a list of all the MSK configurations in this Region.</p>
+#'          
+#'
+#' @usage
+#' kafka_list_configurations(MaxResults, NextToken)
+#'
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#'          
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+#'             To get the next batch, provide this token in your next request.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configurations(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_configurations
+kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurations",
+    http_method = "GET",
+    http_path = "/v1/configurations",
+    paginator = list()
+  )
+  input <- .kafka$list_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_configurations_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_configurations <- kafka_list_configurations
+
 #' Returns a list of the broker nodes in the cluster
 #'
-#' Returns a list of the broker nodes in the cluster.
+#' 
+#'             <p>Returns a list of the broker nodes in the cluster.</p>
+#'          
 #'
 #' @usage
 #' kafka_list_nodes(ClusterArn, MaxResults, NextToken)
 #'
-#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
-#' @param MaxResults The maximum number of clusters to return in the response. If there are
-#' more clusters, the response includes a NextToken parameter.
-#' @param NextToken The paginated results marker. When the result of a ListClusters
-#' operation is truncated, the call returns NextToken in the response. To
-#' get another batch of clusters, provide this token in your next request.
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#'          
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+#'             To get the next batch, provide this token in your next request.</p>
+#'          
 #'
 #' @section Request syntax:
 #' ```
@@ -263,3 +644,256 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .kafka$operations$list_nodes <- kafka_list_nodes
+
+#' Returns a list of the tags associated with the specified resource
+#'
+#' 
+#'             <p>Returns a list of the tags associated with the specified resource.</p>
+#'          
+#'
+#' @usage
+#' kafka_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the resource that's associated with the tags.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_tags_for_resource
+kafka_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafka$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .kafka$list_tags_for_resource_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_tags_for_resource <- kafka_list_tags_for_resource
+
+#' Adds tags to the specified MSK resource
+#'
+#' 
+#'             <p>Adds tags to the specified MSK resource.</p>
+#'          
+#'
+#' @usage
+#' kafka_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the resource that's associated with the tags.</p>
+#'          
+#' @param Tags &#91;required&#93; 
+#'             <p>The key-value pair for the resource tag.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_tag_resource
+kafka_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafka$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .kafka$tag_resource_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$tag_resource <- kafka_tag_resource
+
+#' Removes the tags associated with the keys that are provided in the query
+#'
+#' 
+#'             <p>Removes the tags associated with the keys that are provided in the query.</p>
+#'          
+#'
+#' @usage
+#' kafka_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the resource that's associated with the tags.</p>
+#'          
+#' @param TagKeys &#91;required&#93; 
+#'             <p>Tag keys must be unique for a given cluster. In addition, the following restrictions apply:</p>
+#'             <ul>
+#'                <li>
+#'                   <p>Each tag key must be unique. If you add a tag with a key that's already in
+#'                   use, your new tag overwrites the existing key-value pair. </p>
+#'                </li>
+#'                <li>
+#'                   <p>You can't start a tag key with aws: because this prefix is reserved for use
+#'                   by  AWS.  AWS creates tags that begin with this prefix on your behalf, but
+#'                   you can't edit or delete them.</p>
+#'                </li>
+#'                <li>
+#'                   <p>Tag keys must be between 1 and 128 Unicode characters in length.</p>
+#'                </li>
+#'                <li>
+#'                   <p>Tag keys must consist of the following characters: Unicode letters, digits,
+#'                   white space, and the following special characters: _ . / = + -
+#'                      @.</p>
+#'                </li>
+#'             </ul>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_untag_resource
+kafka_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafka$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .kafka$untag_resource_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$untag_resource <- kafka_untag_resource
+
+#' Updates the EBS storage associated with MSK brokers
+#'
+#' 
+#'             <p>Updates the EBS storage associated with MSK brokers.</p>
+#'          
+#'
+#' @usage
+#' kafka_update_broker_storage(ClusterArn, CurrentVersion,
+#'   TargetBrokerEBSVolumeInfo)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param CurrentVersion &#91;required&#93; 
+#'             <p>The version of cluster to update from. A successful operation will then generate a new version.</p>
+#'          
+#' @param TargetBrokerEBSVolumeInfo &#91;required&#93; 
+#'             <p>Describes the target volume size and the ID of the broker to apply the update to.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_broker_storage(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   TargetBrokerEBSVolumeInfo = list(
+#'     list(
+#'       KafkaBrokerNodeId = "string",
+#'       VolumeSizeGB = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_broker_storage
+kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBrokerEBSVolumeInfo) {
+  op <- new_operation(
+    name = "UpdateBrokerStorage",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/nodes/storage",
+    paginator = list()
+  )
+  input <- .kafka$update_broker_storage_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetBrokerEBSVolumeInfo = TargetBrokerEBSVolumeInfo)
+  output <- .kafka$update_broker_storage_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_broker_storage <- kafka_update_broker_storage
+
+#' Updates the cluster with the configuration that is specified in the
+#' request body
+#'
+#' 
+#'             <p>Updates the cluster with the configuration that is specified in the request body.</p>
+#'          
+#'
+#' @usage
+#' kafka_update_cluster_configuration(ClusterArn, ConfigurationInfo,
+#'   CurrentVersion)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+#'          
+#' @param ConfigurationInfo &#91;required&#93; 
+#'             <p>Represents the configuration that you want MSK to use for the brokers in a cluster.</p>
+#'          
+#' @param CurrentVersion &#91;required&#93; 
+#'             <p>The version of the cluster that needs to be updated.</p>
+#'          
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_cluster_configuration(
+#'   ClusterArn = "string",
+#'   ConfigurationInfo = list(
+#'     Arn = "string",
+#'     Revision = 123
+#'   ),
+#'   CurrentVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_cluster_configuration
+kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, CurrentVersion) {
+  op <- new_operation(
+    name = "UpdateClusterConfiguration",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/configuration",
+    paginator = list()
+  )
+  input <- .kafka$update_cluster_configuration_input(ClusterArn = ClusterArn, ConfigurationInfo = ConfigurationInfo, CurrentVersion = CurrentVersion)
+  output <- .kafka$update_cluster_configuration_output()
+  svc <- .kafka$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_cluster_configuration <- kafka_update_cluster_configuration

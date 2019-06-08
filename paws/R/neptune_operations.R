@@ -110,7 +110,7 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are added to. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
 #' [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon Neptune resource.
 #'
 #' @section Request syntax:
@@ -158,7 +158,7 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to. For information about creating an ARN,
 #' see [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' @param ApplyAction &#91;required&#93; The pending maintenance action to apply to this resource.
 #' 
 #' Valid values: `system-update`, `db-upgrade`
@@ -216,7 +216,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source DB cluster
 #' parameter group. For information about creating an ARN, see
 #' [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' 
 #' Constraints:
 #' 
@@ -244,7 +244,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' 
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
-#' @param Tags 
+#' @param Tags The tags to be assigned to the copied DB cluster parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -288,63 +288,7 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
 #' (ARN) of the shared DB cluster snapshot.
 #' 
-#' You can copy an encrypted DB cluster snapshot from another AWS Region.
-#' In that case, the AWS Region where you call the `CopyDBClusterSnapshot`
-#' action is the destination AWS Region for the encrypted DB cluster
-#' snapshot to be copied to. To copy an encrypted DB cluster snapshot from
-#' another AWS Region, you must provide the following values:
-#' 
-#' -   `KmsKeyId` - The AWS Key Management System (AWS KMS) key identifier
-#'     for the key to use to encrypt the copy of the DB cluster snapshot in
-#'     the destination AWS Region.
-#' 
-#' -   `PreSignedUrl` - A URL that contains a Signature Version 4 signed
-#'     request for the `CopyDBClusterSnapshot` action to be called in the
-#'     source AWS Region where the DB cluster snapshot is copied from. The
-#'     pre-signed URL must be a valid request for the
-#'     `CopyDBClusterSnapshot` API action that can be executed in the
-#'     source AWS Region that contains the encrypted DB cluster snapshot to
-#'     be copied.
-#' 
-#'     The pre-signed URL request must contain the following parameter
-#'     values:
-#' 
-#'     -   `KmsKeyId` - The KMS key identifier for the key to use to
-#'         encrypt the copy of the DB cluster snapshot in the destination
-#'         AWS Region. This is the same identifier for both the
-#'         `CopyDBClusterSnapshot` action that is called in the destination
-#'         AWS Region, and the action contained in the pre-signed URL.
-#' 
-#'     -   `DestinationRegion` - The name of the AWS Region that the DB
-#'         cluster snapshot will be created in.
-#' 
-#'     -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'         identifier for the encrypted DB cluster snapshot to be copied.
-#'         This identifier must be in the Amazon Resource Name (ARN) format
-#'         for the source AWS Region. For example, if you are copying an
-#'         encrypted DB cluster snapshot from the us-west-2 AWS Region,
-#'         then your `SourceDBClusterSnapshotIdentifier` looks like the
-#'         following example:
-#'         `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:neptune-cluster1-snapshot-20161115`.
-#' 
-#'     To learn how to generate a Signature Version 4 signed request, see
-#'     [Authenticating Requests: Using Query Parameters (AWS Signature
-#'     Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-#'     and [Signature Version 4 Signing
-#'     Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-#' 
-#' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
-#'     copy of the DB cluster snapshot in the destination AWS Region.
-#' 
-#' -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'     identifier for the encrypted DB cluster snapshot to be copied. This
-#'     identifier must be in the ARN format for the source AWS Region and
-#'     is the same value as the `SourceDBClusterSnapshotIdentifier` in the
-#'     pre-signed URL.
-#' 
-#' To cancel the copy operation once it is in progress, delete the target
-#' DB cluster snapshot identified by `TargetDBClusterSnapshotIdentifier`
-#' while that DB cluster snapshot is in \"copying\" status.
+#' You can\'t copy from one AWS Region to another.
 #'
 #' @usage
 #' neptune_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
@@ -354,18 +298,13 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter is not
 #' case-sensitive.
 #' 
-#' You can\'t copy an encrypted, shared DB cluster snapshot from one AWS
-#' Region to another.
+#' You can\'t copy from one AWS Region to another.
 #' 
 #' Constraints:
 #' 
 #' -   Must specify a valid system snapshot in the \"available\" state.
 #' 
-#' -   If the source snapshot is in the same AWS Region as the copy,
-#'     specify a valid DB snapshot identifier.
-#' 
-#' -   If the source snapshot is in a different AWS Region than the copy,
-#'     specify a valid DB cluster snapshot ARN.
+#' -   Specify a valid DB snapshot identifier.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new DB cluster snapshot to create from the source
@@ -397,48 +336,13 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' If you copy an encrypted DB cluster snapshot that is shared from another
 #' AWS account, then you must specify a value for `KmsKeyId`.
 #' 
-#' To copy an encrypted DB cluster snapshot to another AWS Region, you must
-#' set `KmsKeyId` to the KMS key ID you want to use to encrypt the copy of
-#' the DB cluster snapshot in the destination AWS Region. KMS encryption
-#' keys are specific to the AWS Region that they are created in, and you
-#' can\'t use encryption keys from one AWS Region in another AWS Region.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' `CopyDBClusterSnapshot` API action in the AWS Region that contains the
-#' source DB cluster snapshot to copy. The `PreSignedUrl` parameter must be
-#' used when copying an encrypted DB cluster snapshot from another AWS
-#' Region.
-#' 
-#' The pre-signed URL must be a valid request for the
-#' `CopyDBSClusterSnapshot` API action that can be executed in the source
-#' AWS Region that contains the encrypted DB cluster snapshot to be copied.
-#' The pre-signed URL request must contain the following parameter values:
-#' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the copy of the DB cluster snapshot in the destination AWS
-#'     Region. This is the same identifier for both the
-#'     `CopyDBClusterSnapshot` action that is called in the destination AWS
-#'     Region, and the action contained in the pre-signed URL.
-#' 
-#' -   `DestinationRegion` - The name of the AWS Region that the DB cluster
-#'     snapshot will be created in.
-#' 
-#' -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'     identifier for the encrypted DB cluster snapshot to be copied. This
-#'     identifier must be in the Amazon Resource Name (ARN) format for the
-#'     source AWS Region. For example, if you are copying an encrypted DB
-#'     cluster snapshot from the us-west-2 AWS Region, then your
-#'     `SourceDBClusterSnapshotIdentifier` looks like the following
-#'     example:
-#'     `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:neptune-cluster1-snapshot-20161115`.
-#' 
-#' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
-#' 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-#' and [Signature Version 4 Signing
-#' Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' KMS encryption keys are specific to the AWS Region that they are created
+#' in, and you can\'t use encryption keys from one AWS Region in another
+#' AWS Region.
+#' @param PreSignedUrl Not currently supported.
 #' @param CopyTags True to copy all tags from the source DB cluster snapshot to the target
 #' DB cluster snapshot, and otherwise false. The default is false.
-#' @param Tags 
+#' @param Tags The tags to assign to the new DB cluster snapshot copy.
 #'
 #' @section Request syntax:
 #' ```
@@ -487,7 +391,7 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #'
 #' @param SourceDBParameterGroupIdentifier &#91;required&#93; The identifier or ARN for the source DB parameter group. For information
 #' about creating an ARN, see [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' 
 #' Constraints:
 #' 
@@ -499,17 +403,17 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' 
 #' Constraints:
 #' 
-#' -   Cannot be null, empty, or blank
+#' -   Cannot be null, empty, or blank.
 #' 
-#' -   Must contain from 1 to 255 letters, numbers, or hyphens
+#' -   Must contain from 1 to 255 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter
+#' -   First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-db-parameter-group`
 #' @param TargetDBParameterGroupDescription &#91;required&#93; A description for the copied DB parameter group.
-#' @param Tags 
+#' @param Tags The tags to be assigned to the copied DB parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -551,9 +455,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' You can use the `ReplicationSourceIdentifier` parameter to create the DB
 #' cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-#' instance. For cross-region replication where the DB cluster identified
-#' by `ReplicationSourceIdentifier` is encrypted, you must also specify the
-#' `PreSignedUrl` parameter.
+#' instance.
 #'
 #' @usage
 #' neptune_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
@@ -641,7 +543,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each AWS Region. To see the time blocks available, see
 #' [Adjusting the Preferred Maintenance
-#' Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Constraints:
@@ -662,7 +564,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' block of time for each AWS Region, occurring on a random day of the
 #' week. To see the time blocks available, see [Adjusting the Preferred
 #' Maintenance
-#' Window](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
+#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -670,7 +572,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' Constraints: Minimum 30-minute window.
 #' @param ReplicationSourceIdentifier The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 #' if this DB cluster is created as a Read Replica.
-#' @param Tags 
+#' @param Tags The tags to assign to the new DB cluster.
 #' @param StorageEncrypted Specifies whether the DB cluster is encrypted.
 #' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
 #' 
@@ -698,40 +600,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' Region, you must set `KmsKeyId` to a KMS key ID that is valid in the
 #' destination AWS Region. This key is used to encrypt the Read Replica in
 #' that AWS Region.
-#' @param PreSignedUrl A URL that contains a Signature Version 4 signed request for the
-#' `CreateDBCluster` action to be called in the source AWS Region where the
-#' DB cluster is replicated from. You only need to specify `PreSignedUrl`
-#' when you are performing cross-region replication from an encrypted DB
-#' cluster.
-#' 
-#' The pre-signed URL must be a valid request for the `CreateDBCluster` API
-#' action that can be executed in the source AWS Region that contains the
-#' encrypted DB cluster to be copied.
-#' 
-#' The pre-signed URL request must contain the following parameter values:
-#' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the copy of the DB cluster in the destination AWS Region.
-#'     This should refer to the same KMS key for both the `CreateDBCluster`
-#'     action that is called in the destination AWS Region, and the action
-#'     contained in the pre-signed URL.
-#' 
-#' -   `DestinationRegion` - The name of the AWS Region that Read Replica
-#'     will be created in.
-#' 
-#' -   `ReplicationSourceIdentifier` - The DB cluster identifier for the
-#'     encrypted DB cluster to be copied. This identifier must be in the
-#'     Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are copying an encrypted DB cluster from the
-#'     us-west-2 AWS Region, then your `ReplicationSourceIdentifier` would
-#'     look like Example:
-#'     `arn:aws:rds:us-west-2:123456789012:cluster:neptune-cluster1`.
-#' 
-#' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
-#' 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-#' and [Signature Version 4 Signing
-#' Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' @param PreSignedUrl This parameter is not currently supported.
 #' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
@@ -840,7 +709,7 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' engine and engine version compatible with that DB cluster parameter
 #' group family.
 #' @param Description &#91;required&#93; The description for the DB cluster parameter group.
-#' @param Tags 
+#' @param Tags The tags to be assigned to the new DB cluster parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -958,9 +827,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
 #'   PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports)
 #'
-#' @param DBName The database name.
-#' 
-#' Type: String
+#' @param DBName Not supported.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -1001,7 +868,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group\'s
 #' VPC.
-#' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in.
+#' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in
 #' 
 #' Default: A random, system-chosen Availability Zone in the endpoint\'s
 #' AWS Region.
@@ -1086,8 +953,8 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Not applicable. The character set is managed by the DB cluster. For more
 #' information, see CreateDBCluster.
-#' @param PubliclyAccessible This parameter is not supported.
-#' @param Tags 
+#' @param PubliclyAccessible This flag should no longer be used.
+#' @param Tags The tags to assign to the new instance.
 #' @param DBClusterIdentifier The identifier of the DB cluster that the instance will belong to.
 #' 
 #' For information on creating a DB cluster, see CreateDBCluster.
@@ -1283,7 +1150,7 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #' applied only to a DB instance running a database engine and engine
 #' version compatible with that DB parameter group family.
 #' @param Description &#91;required&#93; The description for the DB parameter group.
-#' @param Tags 
+#' @param Tags The tags to be assigned to the new DB parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -1337,7 +1204,7 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #' Example: `mySubnetgroup`
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 Subnet IDs for the DB subnet group.
-#' @param Tags 
+#' @param Tags The tags to be assigned to the new DB subnet group.
 #'
 #' @section Request syntax:
 #' ```
@@ -1442,7 +1309,7 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #'     be supplied.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription, set to
 #' **false** to create the subscription but not active it.
-#' @param Tags 
+#' @param Tags The tags to be applied to the new event subscription.
 #'
 #' @section Request syntax:
 #' ```
@@ -1657,15 +1524,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' If the specified DB instance is part of a DB cluster, you can\'t delete
 #' the DB instance if both of the following conditions are true:
 #' 
-#' -   The DB cluster is a Read Replica of another DB cluster.
-#' 
 #' -   The DB instance is the only instance in the DB cluster.
-#' 
-#' To delete a DB instance in this case, first call the
-#' PromoteReadReplicaDBCluster API action to promote the DB cluster so
-#' it\'s no longer a Read Replica. After the promotion completes, then call
-#' the `DeleteDBInstance` API action to delete the final instance in the DB
-#' cluster.
 #'
 #' @usage
 #' neptune_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
@@ -3195,7 +3054,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
 #' [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' @param Filters This parameter is not currently supported.
 #'
 #' @section Request syntax:
@@ -3619,12 +3478,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' the next failure reboot.
 #' 
 #' Default: `false`
-#' @param MasterUserPassword The new password for the master user. The password can include any
-#' printable ASCII character except \"/\", \"\"\", or \"@\".
-#' 
-#' Not applicable.
-#' 
-#' Default: Uses existing setting
+#' @param MasterUserPassword Not applicable.
 #' @param DBParameterGroupName The name of the DB parameter group to apply to the DB instance. Changing
 #' this setting doesn\'t result in an outage. The parameter group name
 #' itself is changed immediately, but the actual parameter changes are not
@@ -3636,11 +3490,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints: The DB parameter group must be in the same DB parameter
 #' group family as this DB instance.
-#' @param BackupRetentionPeriod The number of days to retain automated backups. Setting this parameter
-#' to a positive number enables backups. Setting this parameter to 0
-#' disables automated backups.
-#' 
-#' Not applicable. The retention period for automated backups is managed by
+#' @param BackupRetentionPeriod Not applicable. The retention period for automated backups is managed by
 #' the DB cluster. For more information, see ModifyDBCluster.
 #' 
 #' Default: Uses existing setting
@@ -3703,10 +3553,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' this parameter is set to `true` during the maintenance window, and a
 #' newer minor version is available, and Neptune has enabled auto patching
 #' for that engine version.
-#' @param LicenseModel The license model for the DB instance.
-#' 
-#' Valid values: `license-included` \\| `bring-your-own-license` \\|
-#' `general-public-license`
+#' @param LicenseModel Not supported.
 #' @param Iops The new Provisioned IOPS (I/O operations per second) value for the
 #' instance.
 #' 
@@ -3743,30 +3590,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
-#' @param StorageType Specifies the storage type to be associated with the DB instance.
-#' 
-#' If you specify Provisioned IOPS (`io1`), you must also include a value
-#' for the `Iops` parameter.
-#' 
-#' If you choose to migrate your DB instance from using standard storage to
-#' using Provisioned IOPS, or from using Provisioned IOPS to using standard
-#' storage, the process can take time. The duration of the migration
-#' depends on several factors such as database load, storage size, storage
-#' type (standard or Provisioned IOPS), amount of IOPS provisioned (if
-#' any), and the number of prior scale storage operations. Typical
-#' migration times are under 24 hours, but the process can take up to
-#' several days in some cases. During the migration, the DB instance is
-#' available for use, but might experience performance degradation. While
-#' the migration takes place, nightly backups for the instance are
-#' suspended. No other Amazon Neptune operations can take place for the
-#' instance, including modifying the instance, rebooting the instance,
-#' deleting the instance, creating a Read Replica for the instance, and
-#' creating a DB snapshot of the instance.
-#' 
-#' Valid values: `standard | gp2 | io1`
-#' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
+#' @param StorageType Not supported.
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -3792,7 +3616,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' regardless of the value of the `ApplyImmediately` parameter.
 #' 
 #' Default: `8182`
-#' @param PubliclyAccessible This parameter is not supported.
+#' @param PubliclyAccessible This flag should no longer be used.
 #' @param MonitoringRoleArn The ARN for the IAM role that permits Neptune to send enhanced
 #' monitoring metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`.
@@ -3816,11 +3640,8 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' by the DB cluster. For more information, see ModifyDBCluster.
 #' 
 #' Default: `false`
-#' @param EnablePerformanceInsights True to enable Performance Insights for the DB instance, and otherwise
-#' false.
-#' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
-#' The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-#' the KMS key alias for the KMS encryption key.
+#' @param EnablePerformanceInsights Not supported.
+#' @param PerformanceInsightsKMSKeyId Not supported.
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
 #' CloudWatch Logs for a specific DB instance or DB cluster.
 #'
@@ -4090,21 +3911,14 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 }
 .neptune$operations$modify_event_subscription <- neptune_modify_event_subscription
 
-#' Promotes a Read Replica DB cluster to a standalone DB cluster
+#' Not supported
 #'
-#' Promotes a Read Replica DB cluster to a standalone DB cluster.
+#' Not supported.
 #'
 #' @usage
 #' neptune_promote_read_replica_db_cluster(DBClusterIdentifier)
 #'
-#' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster Read Replica to promote. This parameter
-#' is not case-sensitive.
-#' 
-#' Constraints:
-#' 
-#' -   Must match the identifier of an existing DBCluster Read Replica.
-#' 
-#' Example: `my-cluster-replica1`
+#' @param DBClusterIdentifier &#91;required&#93; Not supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -4279,7 +4093,7 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are removed from. This value
 #' is an Amazon Resource Name (ARN). For information about creating an ARN,
 #' see [Constructing an Amazon Resource Name
-#' (ARN)](http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
+#' (ARN)](https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing).
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
 #'
 #' @section Request syntax:
@@ -4470,7 +4284,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' neptune_restore_db_cluster_from_snapshot(AvailabilityZones,
 #'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
 #'   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
-#'   Tags, KmsKeyId, EnableIAMDatabaseAuthentication)
+#'   Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
+#'   DBClusterParameterGroupName)
 #'
 #' @param AvailabilityZones Provides the list of EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -4513,7 +4328,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' DBSubnetGroup.
 #' 
 #' Example: `mySubnetgroup`
-#' @param DatabaseName The database name for the restored DB cluster.
+#' @param DatabaseName Not supported.
 #' @param OptionGroupName The name of the option group to use for the restored DB cluster.
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster will belong to.
 #' @param Tags The tags to be assigned to the restored DB cluster.
@@ -4539,6 +4354,13 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with the new DB
+#' cluster.
+#' 
+#' Constraints:
+#' 
+#' -   If supplied, must match the name of an existing
+#'     DBClusterParameterGroup.
 #'
 #' @section Request syntax:
 #' ```
@@ -4564,21 +4386,22 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #'     )
 #'   ),
 #'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE
+#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_from_snapshot
-neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL) {
+neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, DBClusterParameterGroupName = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication)
+  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$restore_db_cluster_from_snapshot_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)
@@ -4607,7 +4430,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
 #'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
 #'   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-#'   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication)
+#'   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
+#'   DBClusterParameterGroupName)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
 #' 
@@ -4618,20 +4442,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' -   First character must be a letter
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens
-#' @param RestoreType The type of restore to be performed. You can specify one of the
-#' following values:
-#' 
-#' -   `full-copy` - The new DB cluster is restored as a full copy of the
-#'     source DB cluster.
-#' 
-#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
-#'     source DB cluster.
-#' 
-#' Constraints: You can\'t specify `copy-on-write` if the engine version of
-#' the source DB cluster is earlier than 1.11.
-#' 
-#' If you don\'t specify a `RestoreType` value, then the new DB cluster is
-#' restored as a full copy of the source DB cluster.
+#' @param RestoreType The type of restore to be performed. The only type of restore currently
+#' supported is `full-copy` (the default).
 #' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source DB cluster from which to restore.
 #' 
 #' Constraints:
@@ -4674,7 +4486,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' Example: `mySubnetgroup`
 #' @param OptionGroupName The name of the option group for the new DB cluster.
 #' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster belongs to.
-#' @param Tags 
+#' @param Tags The tags to be applied to the restored DB cluster.
 #' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
 #' from an encrypted DB cluster.
 #' 
@@ -4705,6 +4517,13 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with the new DB
+#' cluster.
+#' 
+#' Constraints:
+#' 
+#' -   If supplied, must match the name of an existing
+#'     DBClusterParameterGroup.
 #'
 #' @section Request syntax:
 #' ```
@@ -4729,21 +4548,22 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #'     )
 #'   ),
 #'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE
+#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_to_point_in_time
-neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL) {
+neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, DBClusterParameterGroupName = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication)
+  input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$restore_db_cluster_to_point_in_time_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)

@@ -2,15 +2,15 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_insight}
 \alias{securityhub_delete_insight}
-\title{Deletes an insight that is specified by the insight ARN}
+\title{Deletes the insight specified by the InsightArn}
 \usage{
 securityhub_delete_insight(InsightArn)
 }
 \arguments{
-\item{InsightArn}{[required] The ARN of the insight that you want to delete.}
+\item{InsightArn}{[required] The ARN of the insight to delete.}
 }
 \description{
-Deletes an insight that is specified by the insight ARN.
+Deletes the insight specified by the \code{InsightArn}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_insight(

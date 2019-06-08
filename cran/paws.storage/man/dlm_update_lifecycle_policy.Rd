@@ -31,8 +31,9 @@ Updates the specified lifecycle policy.
   State = "ENABLED"|"DISABLED",
   Description = "string",
   PolicyDetails = list(
+    PolicyType = "EBS_SNAPSHOT_MANAGEMENT",
     ResourceTypes = list(
-      "VOLUME"
+      "VOLUME"|"INSTANCE"
     ),
     TargetTags = list(
       list(
@@ -50,6 +51,12 @@ Updates the specified lifecycle policy.
             Value = "string"
           )
         ),
+        VariableTags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
         CreateRule = list(
           Interval = 123,
           IntervalUnit = "HOURS",
@@ -61,6 +68,9 @@ Updates the specified lifecycle policy.
           Count = 123
         )
       )
+    ),
+    Parameters = list(
+      ExcludeBootVolume = TRUE|FALSE
     )
   )
 )

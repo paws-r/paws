@@ -15,7 +15,7 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
 Deletes the specified role. The role must not have any policies
-attached. For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
+attached. For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
 }
 \details{
 Make sure that you do not have any Amazon EC2 instances running with the

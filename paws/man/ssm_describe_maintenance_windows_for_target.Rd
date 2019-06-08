@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_windows_for_target}
 \alias{ssm_describe_maintenance_windows_for_target}
-\title{Retrieves information about the Maintenance Windows targets or tasks
-that an instance is associated with}
+\title{Retrieves information about the maintenance window targets or tasks that
+an instance is associated with}
 \usage{
 ssm_describe_maintenance_windows_for_target(Targets, ResourceType,
   MaxResults, NextToken)
@@ -22,8 +22,8 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Retrieves information about the Maintenance Windows targets or tasks
-that an instance is associated with.
+Retrieves information about the maintenance window targets or tasks that
+an instance is associated with.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_windows_for_target(

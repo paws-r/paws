@@ -34,7 +34,7 @@ customer master key (CMK) from AWS Key Management Service (AWS KMS) to
 encrypt copied snapshots in a destination region.
 }
 \details{
-For more information about managing snapshot copy grants, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption}
+For more information about managing snapshot copy grants, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

@@ -2,12 +2,12 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_volumes}
 \alias{ec2_describe_volumes}
-\title{Describes the specified EBS volumes}
+\title{Describes the specified EBS volumes or all of your EBS volumes}
 \usage{
 ec2_describe_volumes(Filters, VolumeIds, DryRun, MaxResults, NextToken)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{attachment.attach-time} - The time stamp when the attachment
 initiated.
@@ -22,7 +22,8 @@ attached to.
 \item \code{availability-zone} - The Availability Zone in which the volume was
 created.
 \item \code{create-time} - The time stamp when the volume was created.
-\item \code{encrypted} - The encryption status of the volume.
+\item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} \|
+\code{false})
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The status of the volume (\code{creating} \| \code{available} \|
@@ -42,7 +43,7 @@ Throughput Optimized HDD, \code{sc1} for Cold HDD, or \code{standard} for
 Magnetic volumes.
 }}
 
-\item{VolumeIds}{One or more volume IDs.}
+\item{VolumeIds}{The volume IDs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -67,7 +68,7 @@ of the previous results that returned the \code{NextToken} value. This value
 is \code{null} when there are no more results to return.}
 }
 \description{
-Describes the specified EBS volumes.
+Describes the specified EBS volumes or all of your EBS volumes.
 }
 \details{
 If you are describing a long list of volumes, you can paginate the

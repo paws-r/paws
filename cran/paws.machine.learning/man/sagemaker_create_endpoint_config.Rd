@@ -13,10 +13,10 @@ sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
 request.}
 
-\item{ProductionVariants}{[required] An array of \code{ProductionVariant} objects, one for each model that you
-want to host at this endpoint.}
+\item{ProductionVariants}{[required] An list of \code{ProductionVariant} objects, one for each model that you want
+to host at this endpoint.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+\item{Tags}{A list of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that

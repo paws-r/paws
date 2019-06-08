@@ -20,7 +20,7 @@ for which you want to get a list of tags.}
 Lists tags for up to 10 health checks or hosted zones.
 }
 \details{
-For information about using tags for cost allocation, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+For information about using tags for cost allocation, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{

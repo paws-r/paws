@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_delete_application_cloud_watch_logging_option}
 \alias{kinesisanalytics_delete_application_cloud_watch_logging_option}
-\title{Deletes a CloudWatch log stream from an application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_cloud_watch_logging_option(
   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
@@ -14,12 +15,19 @@ kinesisanalytics_delete_application_cloud_watch_logging_option(
 
 \item{CloudWatchLoggingOptionId}{[required] The \code{CloudWatchLoggingOptionId} of the CloudWatch logging option to
 delete. You can get the \code{CloudWatchLoggingOptionId} by using the
-DescribeApplication operation.}
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Deletes a CloudWatch log stream from an application. For more
 information about using CloudWatch log streams with Amazon Kinesis
-Analytics applications, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
+Analytics applications, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_application_cloud_watch_logging_option(

@@ -66,10 +66,7 @@ App callback URLs such as myapp://example are also supported.}
 
 \item{AllowedOAuthFlows}{Set to \code{code} to initiate a code grant flow, which provides an
 authorization code as the response. This code can be exchanged for
-access tokens with the token endpoint.
-
-Set to \code{token} to specify that the client should get the access token
-(and, optionally, ID token, based on scopes) directly.}
+access tokens with the token endpoint.}
 
 \item{AllowedOAuthScopes}{A list of allowed \code{OAuth} scopes. Currently supported values are
 \code{"phone"}, \code{"email"}, \code{"openid"}, and \code{"Cognito"}.}

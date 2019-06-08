@@ -23,7 +23,7 @@ instance profile you are about to delete. Deleting a role or instance
 profile that is associated with a running instance will break any
 applications running on the instance.
 
-For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance_profile(

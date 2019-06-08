@@ -9,10 +9,9 @@ ec2_create_image(BlockDeviceMappings, Description, DryRun, InstanceId,
   Name, NoReboot)
 }
 \arguments{
-\item{BlockDeviceMappings}{Information about one or more block device mappings. This parameter
-cannot be used to modify the encryption status of existing volumes or
-snapshots. To create an AMI with encrypted snapshots, use the CopyImage
-action.}
+\item{BlockDeviceMappings}{The block device mappings. This parameter cannot be used to modify the
+encryption status of existing volumes or snapshots. To create an AMI
+with encrypted snapshots, use the CopyImage action.}
 
 \item{Description}{A description for the new image.}
 

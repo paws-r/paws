@@ -4,10 +4,13 @@
 \alias{iotanalytics_update_channel}
 \title{Updates the settings of a channel}
 \usage{
-iotanalytics_update_channel(channelName, retentionPeriod)
+iotanalytics_update_channel(channelName, channelStorage,
+  retentionPeriod)
 }
 \arguments{
 \item{channelName}{[required] The name of the channel to be updated.}
+
+\item{channelStorage}{Where channel data is stored.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the channel.}
 }
@@ -17,6 +20,14 @@ Updates the settings of a channel.
 \section{Request syntax}{
 \preformatted{svc$update_channel(
   channelName = "string",
+  channelStorage = list(
+    serviceManagedS3 = list(),
+    customerManagedS3 = list(
+      bucket = "string",
+      keyPrefix = "string",
+      roleArn = "string"
+    )
+  ),
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123

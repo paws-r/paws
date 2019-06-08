@@ -7,11 +7,11 @@
 s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer)
 }
 \arguments{
-\item{Bucket}{[required]}
+\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
 
-\item{Key}{[required]}
+\item{Key}{[required] Key of the object for which the multipart upload was initiated.}
 
-\item{UploadId}{[required]}
+\item{UploadId}{[required] Upload ID that identifies the multipart upload.}
 
 \item{RequestPayer}{}
 }

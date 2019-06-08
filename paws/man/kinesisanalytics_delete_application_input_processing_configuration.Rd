@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_delete_application_input_processing_configuration}
 \alias{kinesisanalytics_delete_application_input_processing_configuration}
-\title{Deletes an InputProcessingConfiguration from an input}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_input_processing_configuration(
   ApplicationName, CurrentApplicationVersionId, InputId)
@@ -14,10 +15,20 @@ kinesisanalytics_delete_application_input_processing_configuration(
 
 \item{InputId}{[required] The ID of the input configuration from which to delete the input
 processing configuration. You can get a list of the input IDs for an
-application by using the DescribeApplication operation.}
+application by using the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation.}
 }
 \description{
-Deletes an InputProcessingConfiguration from an input.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
+Deletes an
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html}{InputProcessingConfiguration}
+from an input.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_application_input_processing_configuration(

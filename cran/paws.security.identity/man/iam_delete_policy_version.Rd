@@ -10,7 +10,7 @@ iam_delete_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to
 delete a version.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] The policy version to delete.
@@ -20,7 +20,7 @@ consists of the lowercase letter 'v' followed by one or two digits,
 and optionally followed by a period '.' and a string of letters and
 digits.
 
-For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -32,7 +32,7 @@ delete the default version from a policy, use DeletePolicy. To find out
 which version of a policy is marked as the default version, use
 ListPolicyVersions.
 
-For information about versions for managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For information about versions for managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

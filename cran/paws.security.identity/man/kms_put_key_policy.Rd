@@ -31,7 +31,7 @@ The key policy must meet the following criteria:
 policy must allow the principal that is making the \code{PutKeyPolicy}
 request to make a subsequent \code{PutKeyPolicy} request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
-information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
+information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
 section of the \emph{AWS Key Management Service Developer Guide}.
 \item Each statement in the key policy must contain one or more
 principals. The principals in the key policy must exist and be
@@ -39,7 +39,7 @@ visible to AWS KMS. When you create a new AWS principal (for
 example, an IAM user or role), you might need to enforce a delay
 before including the new principal in a key policy because the new
 principal might not be immediately visible to AWS KMS. For more
-information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{AWS Identity and Access Management User Guide}.
 }
 
@@ -51,7 +51,7 @@ check.
 Setting this value to true increases the risk that the CMK becomes
 unmanageable. Do not set this value to true indiscriminately.
 
-For more information, refer to the scenario in the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
+For more information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
 section in the \emph{AWS Key Management Service Developer Guide}.
 
 Use this parameter only when you intend to prevent the principal that is
@@ -65,7 +65,7 @@ Attaches a key policy to the specified customer master key (CMK). You
 cannot perform this operation on a CMK in a different AWS account.
 }
 \details{
-For more information about key policies, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key Policies}
+For more information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key Policies}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

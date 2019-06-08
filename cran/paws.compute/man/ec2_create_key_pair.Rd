@@ -24,11 +24,11 @@ private key. If a key with the specified name already exists, Amazon EC2
 returns an error.
 }
 \details{
-You can have up to five thousand key pairs per region.
+You can have up to five thousand key pairs per Region.
 
-The key pair returned to you is available only in the region in which
+The key pair returned to you is available only in the Region in which
 you create it. If you prefer, you can create your own key pair using a
-third-party tool and upload it to any region using ImportKeyPair.
+third-party tool and upload it to any Region using ImportKeyPair.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

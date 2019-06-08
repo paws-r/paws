@@ -6,8 +6,8 @@
 documents}
 \usage{
 comprehend_create_document_classifier(DocumentClassifierName,
-  DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode,
-  VolumeKmsKeyId)
+  DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
+  ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig)
 }
 \arguments{
 \item{DocumentClassifierName}{[required] The name of the document classifier.}
@@ -15,7 +15,15 @@ comprehend_create_document_classifier(DocumentClassifierName,
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 role that grants Amazon Comprehend read access to your input data.}
 
+\item{Tags}{Tags to be associated with the document classifier being created. A tag
+is a key-value pair that adds as a metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added
+to a resource to indicate its use by the sales department.}
+
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
+
+\item{OutputDataConfig}{Enables the addition of output results configuration parameters for
+custom classifier jobs.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
 request token, Amazon Comprehend generates one.}
@@ -32,6 +40,10 @@ either of the following formats:
 \item Amazon Resource Name (ARN) of a KMS Key:
 \code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
 }}
+
+\item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your custom classifier.
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \description{
 Creates a new document classifier that you can use to categorize
@@ -45,12 +57,30 @@ how-document-classification.
 \preformatted{svc$create_document_classifier(
   DocumentClassifierName = "string",
   DataAccessRoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
   InputDataConfig = list(
     S3Uri = "string"
   ),
+  OutputDataConfig = list(
+    S3Uri = "string",
+    KmsKeyId = "string"
+  ),
   ClientRequestToken = "string",
   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-  VolumeKmsKeyId = "string"
+  VolumeKmsKeyId = "string",
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  )
 )
 }
 }

@@ -55,7 +55,7 @@ a value for that parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 cluster snapshot, or whether a manual DB cluster snapshot public or
-private, use the DescribeDBClusterSnapshotAttributes API action.
+private, use the \code{DescribeDBClusterSnapshotAttributes} API action.
 
 This action only applies to Aurora DB clusters.
 }

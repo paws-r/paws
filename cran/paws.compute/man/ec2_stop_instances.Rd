@@ -7,7 +7,7 @@
 ec2_stop_instances(InstanceIds, Hibernate, DryRun, Force)
 }
 \arguments{
-\item{InstanceIds}{[required] One or more instance IDs.}
+\item{InstanceIds}{[required] The IDs of the instances.}
 
 \item{Hibernate}{Hibernates the instance if the instance was enabled for hibernation at
 launch. If the instance cannot hibernate successfully, a normal shutdown

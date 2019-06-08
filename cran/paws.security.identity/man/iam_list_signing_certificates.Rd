@@ -31,8 +31,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Returns information about the signing certificates associated with the
-specified IAM user. If there none exists, the operation returns an empty
-list.
+specified IAM user. If none exists, the operation returns an empty list.
 }
 \details{
 Although each user is limited to a small number of signing certificates,

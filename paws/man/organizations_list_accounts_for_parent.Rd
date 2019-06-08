@@ -30,8 +30,8 @@ receive all of the results.}
 \description{
 Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU). If you specify the
-root, you get a list of all the accounts that are not in any OU. If you
-specify an OU, you get a list of all the accounts in only that OU, and
+root, you get a list of all the accounts that aren't in any OU. If you
+specify an OU, you get a list of all the accounts in only that OU and
 not in any child OUs. To get a list of all accounts in the organization,
 use the ListAccounts operation.
 }

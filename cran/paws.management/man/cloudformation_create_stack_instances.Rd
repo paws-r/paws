@@ -48,7 +48,7 @@ instance are not updated, but retain their overridden value.
 
 You can only override the parameter \emph{values} that are specified in the
 stack set; to add or delete a parameter itself, use
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
 to update the stack set template.}
 
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set

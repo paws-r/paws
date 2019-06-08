@@ -15,9 +15,10 @@ use the same token with multiple \code{StartDocumentTextDetection} requests,
 the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the
 same job from being accidentally started more than once.}
 
-\item{JobTag}{A unique identifier you specify to identify the job in the completion
-status that's published to the Amazon Simple Notification Service
-(Amazon SNS) topic.}
+\item{JobTag}{An identifier you specify that's included in the completion
+notification that's published to the Amazon SNS topic. For example, you
+can use \code{JobTag} to identify the type of document, such as a tax form or
+a receipt, that the completion notification corresponds to.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN that you want Amazon Textract to publish the
 completion status of the operation to.}
@@ -27,9 +28,10 @@ Starts the asynchronous detection of text in a document. Amazon Textract
 can detect lines of text and the words that make up a line of text.
 }
 \details{
-Amazon Textract can detect text in document images and PDF files that
-are stored in an Amazon S3 bucket. Use DocumentLocation to specify the
-bucket name and the file name of the document image.
+\code{StartDocumentTextDetection} can analyze text in documents that are in
+JPG, PNG, and PDF format. The documents are stored in an Amazon S3
+bucket. Use DocumentLocation to specify the bucket name and file name of
+the document.
 
 \code{StartTextDetection} returns a job identifier (\code{JobId}) that you use to
 get the results of the operation. When text detection is finished,
@@ -41,8 +43,7 @@ topic is \code{SUCCEEDED}. If so, call GetDocumentTextDetection, and pass the
 job identifier (\code{JobId}) from the initial call to
 \code{StartDocumentTextDetection}.
 
-For more information, see Document Text Detection in the Amazon Textract
-Developer Guide.
+For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_document_text_detection(

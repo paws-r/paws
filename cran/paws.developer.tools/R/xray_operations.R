@@ -494,6 +494,62 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 }
 .xray$operations$get_service_graph <- xray_get_service_graph
 
+#' Get an aggregation of service statistics defined by a specific time
+#' range
+#'
+#' Get an aggregation of service statistics defined by a specific time
+#' range.
+#'
+#' @usage
+#' xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
+#'   GroupARN, EntitySelectorExpression, Period, NextToken)
+#'
+#' @param StartTime &#91;required&#93; The start of the time frame for which to aggregate statistics.
+#' @param EndTime &#91;required&#93; The end of the time frame for which to aggregate statistics.
+#' @param GroupName The case-sensitive name of the group for which to pull statistics from.
+#' @param GroupARN The ARN of the group for which to pull statistics from.
+#' @param EntitySelectorExpression A filter expression defining entities that will be aggregated for
+#' statistics. Supports ID, service, and edge functions. If no selector
+#' expression is specified, edge statistics are returned.
+#' @param Period Aggregation period in seconds.
+#' @param NextToken Pagination token. Not used.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_time_series_service_statistics(
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   GroupName = "string",
+#'   GroupARN = "string",
+#'   EntitySelectorExpression = "string",
+#'   Period = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_time_series_service_statistics
+xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupName = NULL, GroupARN = NULL, EntitySelectorExpression = NULL, Period = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetTimeSeriesServiceStatistics",
+    http_method = "POST",
+    http_path = "/TimeSeriesServiceStatistics",
+    paginator = list()
+  )
+  input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, NextToken = NextToken)
+  output <- .xray$get_time_series_service_statistics_output()
+  svc <- .xray$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_time_series_service_statistics <- xray_get_time_series_service_statistics
+
 #' Retrieves a service graph for one or more specific trace IDs
 #'
 #' Retrieves a service graph for one or more specific trace IDs.
@@ -554,16 +610,20 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' 
 #' For a full list of indexed fields and keywords that you can use in
 #' filter expressions, see [Using Filter
-#' Expressions](http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
+#' Expressions](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
 #' in the *AWS X-Ray Developer Guide*.
 #'
 #' @usage
-#' xray_get_trace_summaries(StartTime, EndTime, Sampling, FilterExpression,
-#'   NextToken)
+#' xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
+#'   SamplingStrategy, FilterExpression, NextToken)
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to retrieve traces.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to retrieve traces.
+#' @param TimeRangeType A parameter to indicate whether to query trace summaries by TraceId or
+#' Event time.
 #' @param Sampling Set to `true` to get summaries for only a subset of available traces.
+#' @param SamplingStrategy A paramater to indicate whether to enable sampling on trace summaries.
+#' Input parameters are Name and Value.
 #' @param FilterExpression Specify a filter expression to retrieve trace summaries for services or
 #' requests that meet certain requirements.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
@@ -578,7 +638,12 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'   EndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   TimeRangeType = "TraceId"|"Event",
 #'   Sampling = TRUE|FALSE,
+#'   SamplingStrategy = list(
+#'     Name = "PartialScan"|"FixedRate",
+#'     Value = 123.0
+#'   ),
 #'   FilterExpression = "string",
 #'   NextToken = "string"
 #' )
@@ -587,14 +652,14 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_trace_summaries
-xray_get_trace_summaries <- function(StartTime, EndTime, Sampling = NULL, FilterExpression = NULL, NextToken = NULL) {
+xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, Sampling = NULL, SamplingStrategy = NULL, FilterExpression = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTraceSummaries",
     http_method = "POST",
     http_path = "/TraceSummaries",
     paginator = list()
   )
-  input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, Sampling = Sampling, FilterExpression = FilterExpression, NextToken = NextToken)
+  input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, TimeRangeType = TimeRangeType, Sampling = Sampling, SamplingStrategy = SamplingStrategy, FilterExpression = FilterExpression, NextToken = NextToken)
   output <- .xray$get_trace_summaries_output()
   svc <- .xray$service()
   request <- new_request(svc, op, input, output)

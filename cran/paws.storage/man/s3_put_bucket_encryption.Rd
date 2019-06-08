@@ -9,12 +9,15 @@ s3_put_bucket_encryption(Bucket, ContentMD5,
   ServerSideEncryptionConfiguration)
 }
 \arguments{
-\item{Bucket}{[required] The name of the bucket for which the server-side encryption
-configuration is set.}
+\item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
+with Amazon S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS).
+For information about the Amazon S3 default encryption feature, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
 configuration. This parameter is auto-populated when using the command
-from the CLI}
+from the CLI.}
 
 \item{ServerSideEncryptionConfiguration}{[required]}
 }

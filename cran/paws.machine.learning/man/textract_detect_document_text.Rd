@@ -9,18 +9,28 @@ textract_detect_document_text(Document)
 \arguments{
 \item{Document}{[required] The input document as base64-encoded bytes or an Amazon S3 object. If
 you use the AWS CLI to call Amazon Textract operations, you can't pass
-image bytes. The document must be an image in JPG or PNG format.}
+image bytes. The document must be an image in JPG or PNG format.
+
+If you are using an AWS SDK to call Amazon Textract, you might not need
+to base64-encode image bytes passed using the \code{Bytes} field.}
 }
 \description{
 Detects text in the input document. Amazon Textract can detect lines of
 text and the words that make up a line of text. The input document must
 be an image in JPG or PNG format. \code{DetectDocumentText} returns the
-detected text in an array of Block objects. For more information, see
-how-it-works-detecting.
+detected text in an array of Block objects.
 }
 \details{
+Each document page has as an associated \code{Block} of type PAGE. Each PAGE
+\code{Block} object is the parent of LINE \code{Block} objects that represent the
+lines of detected text on a page. A LINE \code{Block} object is a parent for
+each word that makes up the line. Words are represented by \code{Block}
+objects of type WORD.
+
 \code{DetectDocumentText} is a synchronous operation. To analyze documents
 asynchronously, use StartDocumentTextDetection.
+
+For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_document_text(

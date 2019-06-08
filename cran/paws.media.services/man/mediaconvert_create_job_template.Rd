@@ -8,7 +8,7 @@ mediaconvert_create_job_template(AccelerationSettings, Category,
   Description, Name, Queue, Settings, StatusUpdateInterval, Tags)
 }
 \arguments{
-\item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature please contact AWS customer support.}
+\item{AccelerationSettings}{Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
 
 \item{Category}{Optional. A category for the job template you are creating}
 
@@ -244,6 +244,7 @@ Create a new job template. For information about job templates see the User Guid
               )
             ),
             Encryption = list(
+              PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
               SpekeKeyProvider = list(
                 CertificateArn = "string",
                 ResourceId = "string",

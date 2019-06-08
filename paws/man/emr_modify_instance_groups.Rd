@@ -39,6 +39,15 @@ will either succeed or fail atomically.
           ),
           InstanceTerminationTimeout = 123
         )
+      ),
+      Configurations = list(
+        list(
+          Classification = "string",
+          Configurations = list(),
+          Properties = list(
+            "string"
+          )
+        )
       )
     )
   )

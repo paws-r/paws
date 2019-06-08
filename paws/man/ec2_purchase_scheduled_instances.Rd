@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_purchase_scheduled_instances}
 \alias{ec2_purchase_scheduled_instances}
-\title{Purchases one or more Scheduled Instances with the specified schedule}
+\title{Purchases the Scheduled Instances with the specified schedule}
 \usage{
 ec2_purchase_scheduled_instances(ClientToken, DryRun, PurchaseRequests)
 }
@@ -15,10 +15,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{PurchaseRequests}{[required] One or more purchase requests.}
+\item{PurchaseRequests}{[required] The purchase requests.}
 }
 \description{
-Purchases one or more Scheduled Instances with the specified schedule.
+Purchases the Scheduled Instances with the specified schedule.
 }
 \details{
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity

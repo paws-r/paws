@@ -4,11 +4,13 @@
 \alias{medialive_list_offerings}
 \title{List offerings available for purchase}
 \usage{
-medialive_list_offerings(ChannelConfiguration, Codec, MaxResults,
-  MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType,
-  SpecialFeature, VideoQuality)
+medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
+  MaxResults, MaximumBitrate, MaximumFramerate, NextToken, Resolution,
+  ResourceType, SpecialFeature, VideoQuality)
 }
 \arguments{
+\item{ChannelClass}{Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'}
+
 \item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)}
 
 \item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}
@@ -34,6 +36,7 @@ List offerings available for purchase.
 }
 \section{Request syntax}{
 \preformatted{svc$list_offerings(
+  ChannelClass = "string",
   ChannelConfiguration = "string",
   Codec = "string",
   MaxResults = 123,

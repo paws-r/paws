@@ -26,10 +26,12 @@ Read Replica. Each DB instance can have up to five Read Replicas.
 
 Constraints:
 \itemize{
-\item Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL
-DB instance.
+\item Must be the identifier of an existing MySQL, MariaDB, Oracle, or
+PostgreSQL DB instance.
 \item Can specify a DB instance that is a MySQL Read Replica only if the
 source is running MySQL 5.6 or later.
+\item For the limitations of Oracle Read Replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Read Replica Limitations with Oracle}
+in the \emph{Amazon RDS User Guide}.
 \item Can specify a DB instance that is a PostgreSQL DB instance only if
 the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
 for cross-region replication).
@@ -51,7 +53,7 @@ in the \emph{Amazon RDS User Guide.}
 
 Default: Inherits from the source DB instance.}
 
-\item{AvailabilityZone}{The Amazon EC2 Availability Zone that the Read Replica is created in.
+\item{AvailabilityZone}{The Availability Zone (AZ) where the Read Replica will be created.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -64,7 +66,8 @@ Default: Inherits from the source DB instance
 
 Valid Values: \code{1150-65535}}
 
-\item{MultiAZ}{Specifies whether the Read Replica is in a Multi-AZ deployment.
+\item{MultiAZ}{A value that indicates whether the Read Replica is in a Multi-AZ
+deployment.
 
 You can create a Read Replica as a Multi-AZ DB instance. RDS creates a
 standby of your replica in another Availability Zone for failover
@@ -72,8 +75,8 @@ support for the replica. Creating your Read Replica as a Multi-AZ DB
 instance is independent of whether the source database is a Multi-AZ DB
 instance.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor engine upgrades are applied automatically to the
-Read Replica during the maintenance window.
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
+automatically to the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance}
 
@@ -81,13 +84,14 @@ Default: Inherits from the source DB instance}
 be initially allocated for the DB instance.}
 
 \item{OptionGroupName}{The option group the DB instance is associated with. If omitted, the
-default option group for the engine specified is used.}
+option group associated with the source instance is used.}
 
-\item{PubliclyAccessible}{Specifies the accessibility options for the DB instance. A value of true
-specifies an Internet-facing instance with a publicly resolvable DNS
-name, which resolves to a public IP address. A value of false specifies
-an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.}
+\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a public
+IP address. When the DB instance is not publicly accessible, it is an
+internal instance with a DNS name that resolves to a private IP address.
+For more information, see CreateDBInstance.}
 
 \item{Tags}{}
 
@@ -126,11 +130,10 @@ Valid values: \code{standard | gp2 | io1}
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise
-\code{standard}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the Read Replica to snapshots of the Read
-Replica, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the Read Replica to
+snapshots of the Read Replica. By default, tags are not copied.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the Read Replica. To disable collecting
@@ -216,8 +219,9 @@ and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -225,19 +229,22 @@ engines
 \item For MySQL 5.6, minor version 5.6.34 or higher
 \item For MySQL 5.7, minor version 5.7.16 or higher
 \item Aurora MySQL 5.6 or higher
-}
+}}
 
-Default: \code{false}}
-
-\item{EnablePerformanceInsights}{True to enable Performance Insights for the read replica, and otherwise
-false.
+\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the
+Read Replica.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.}
+the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
+Amazon RDS uses your default encryption key. AWS KMS creates the default
+encryption key for your AWS account. Your AWS account has a different
+default encryption key for each AWS Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -250,20 +257,21 @@ in the \emph{Amazon RDS User Guide}.}
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that specifies that the DB instance class of the DB instance
+\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.}
 
-\item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
 Creates a new DB instance that acts as a Read Replica for an existing
 source DB instance. You can create a Read Replica for a DB instance
-running MySQL, MariaDB, or PostgreSQL. For more information, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with PostgreSQL, MySQL, and MariaDB Read Replicas}
+running MySQL, MariaDB, Oracle, or PostgreSQL. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with Read Replicas}
 in the \emph{Amazon RDS User Guide}.
 }
 \details{

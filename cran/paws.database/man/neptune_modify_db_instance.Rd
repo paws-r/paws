@@ -83,12 +83,7 @@ the next failure reboot.
 
 Default: \code{false}}
 
-\item{MasterUserPassword}{The new password for the master user. The password can include any
-printable ASCII character except "/", """, or "@".
-
-Not applicable.
-
-Default: Uses existing setting}
+\item{MasterUserPassword}{Not applicable.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
 this setting doesn't result in an outage. The parameter group name
@@ -102,11 +97,7 @@ Default: Uses existing setting
 Constraints: The DB parameter group must be in the same DB parameter
 group family as this DB instance.}
 
-\item{BackupRetentionPeriod}{The number of days to retain automated backups. Setting this parameter
-to a positive number enables backups. Setting this parameter to 0
-disables automated backups.
-
-Not applicable. The retention period for automated backups is managed by
+\item{BackupRetentionPeriod}{Not applicable. The retention period for automated backups is managed by
 the DB cluster. For more information, see ModifyDBCluster.
 
 Default: Uses existing setting}
@@ -174,10 +165,7 @@ this parameter is set to \code{true} during the maintenance window, and a
 newer minor version is available, and Neptune has enabled auto patching
 for that engine version.}
 
-\item{LicenseModel}{The license model for the DB instance.
-
-Valid values: \code{license-included} \| \code{bring-your-own-license} \|
-\code{general-public-license}}
+\item{LicenseModel}{Not supported.}
 
 \item{Iops}{The new Provisioned IOPS (I/O operations per second) value for the
 instance.
@@ -217,30 +205,7 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB instance.
-
-If you specify Provisioned IOPS (\code{io1}), you must also include a value
-for the \code{Iops} parameter.
-
-If you choose to migrate your DB instance from using standard storage to
-using Provisioned IOPS, or from using Provisioned IOPS to using standard
-storage, the process can take time. The duration of the migration
-depends on several factors such as database load, storage size, storage
-type (standard or Provisioned IOPS), amount of IOPS provisioned (if
-any), and the number of prior scale storage operations. Typical
-migration times are under 24 hours, but the process can take up to
-several days in some cases. During the migration, the DB instance is
-available for use, but might experience performance degradation. While
-the migration takes place, nightly backups for the instance are
-suspended. No other Amazon Neptune operations can take place for the
-instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
-creating a DB snapshot of the instance.
-
-Valid values: \code{standard | gp2 | io1}
-
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise
-\code{standard}}
+\item{StorageType}{Not supported.}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.}
@@ -274,7 +239,7 @@ regardless of the value of the \code{ApplyImmediately} parameter.
 
 Default: \code{8182}}
 
-\item{PubliclyAccessible}{This parameter is not supported.}
+\item{PubliclyAccessible}{This flag should no longer be used.}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits Neptune to send enhanced
 monitoring metrics to Amazon CloudWatch Logs. For example,
@@ -303,12 +268,9 @@ by the DB cluster. For more information, see ModifyDBCluster.
 
 Default: \code{false}}
 
-\item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
-false.}
+\item{EnablePerformanceInsights}{Not supported.}
 
-\item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.}
+\item{PerformanceInsightsKMSKeyId}{Not supported.}
 
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance or DB cluster.}

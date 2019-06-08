@@ -46,9 +46,9 @@ public.
 
 If you don't specify a \code{SnapshotType} value, then both automated and
 manual DB cluster snapshots are returned. You can include shared DB
-cluster snapshots with these results by setting the \code{IncludeShared}
-parameter to \code{true}. You can include public DB cluster snapshots with
-these results by setting the \code{IncludePublic} parameter to \code{true}.
+cluster snapshots with these results by enabling the \code{IncludeShared}
+parameter. You can include public DB cluster snapshots with these
+results by enabling the \code{IncludePublic} parameter.
 
 The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
@@ -72,17 +72,18 @@ Constraints: Minimum 20, maximum 100.}
 the response includes only records beyond the marker, up to the value
 specified by \code{MaxRecords}.}
 
-\item{IncludeShared}{True to include shared manual DB cluster snapshots from other AWS
-accounts that this AWS account has been given permission to copy or
-restore, and otherwise false. The default is \code{false}.
+\item{IncludeShared}{A value that indicates whether to include shared manual DB cluster
+snapshots from other AWS accounts that this AWS account has been given
+permission to copy or restore. By default, these snapshots are not
+included.
 
 You can give an AWS account permission to restore a manual DB cluster
 snapshot from another AWS account by the
-ModifyDBClusterSnapshotAttribute API action.}
+\code{ModifyDBClusterSnapshotAttribute} API action.}
 
-\item{IncludePublic}{True to include manual DB cluster snapshots that are public and can be
-copied or restored by any AWS account, and otherwise false. The default
-is \code{false}. The default is false.
+\item{IncludePublic}{A value that indicates whether to include manual DB cluster snapshots
+that are public and can be copied or restored by any AWS account. By
+default, the public snapshots are not included.
 
 You can share a manual DB cluster snapshot as public by using the
 ModifyDBClusterSnapshotAttribute API action.}

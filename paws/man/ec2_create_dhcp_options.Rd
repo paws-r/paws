@@ -32,7 +32,7 @@ in \code{domain-name}, you must set \code{domain-name-servers} to a custom DNS
 server.
 \item \code{domain-name} - If you're using AmazonProvidedDNS in \code{us-east-1},
 specify \code{ec2.internal}. If you're using AmazonProvidedDNS in
-another region, specify \code{region.compute.internal} (for example,
+another Region, specify \code{region.compute.internal} (for example,
 \code{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
 (for example, \code{MyCompany.com}). This value is used to complete
 unqualified DNS hostnames. \strong{Important}: Some Linux operating

@@ -12,8 +12,8 @@ gamelift_update_build(BuildId, Name, Version)
 \item{Name}{Descriptive label that is associated with a build. Build names do not
 need to be unique.}
 
-\item{Version}{Version that is associated with this build. Version strings do not need
-to be unique.}
+\item{Version}{Version that is associated with a build or script. Version strings do
+not need to be unique.}
 }
 \description{
 Updates metadata in a build record, including the build name and

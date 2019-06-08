@@ -12,7 +12,7 @@ list of tags, for example
 \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or
 \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 }
 \description{
 Lists all cost allocation tags currently on the named resource. A
@@ -25,7 +25,7 @@ If the cluster is not in the \emph{available} state, \code{ListTagsForResource}
 returns an error.
 
 You can have a maximum of 50 cost allocation tags on an ElastiCache
-resource. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.
+resource. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

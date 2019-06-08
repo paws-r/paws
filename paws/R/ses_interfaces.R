@@ -257,7 +257,7 @@ NULL
 
 .ses$describe_configuration_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSet = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EventDestinations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IAMRoleARN = structure(logical(0), tags = list(type = "string")), DeliveryStreamARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SNSDestination = structure(list(TopicARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReputationOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean")), ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSet = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EventDestinations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IAMRoleARN = structure(logical(0), tags = list(type = "string")), DeliveryStreamARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SNSDestination = structure(list(TopicARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), TrackingOptions = structure(list(CustomRedirectDomain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReputationOptions = structure(list(SendingEnabled = structure(logical(0), tags = list(type = "boolean")), ReputationMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), LastFreshStart = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -490,6 +490,18 @@ NULL
 .ses$list_verified_email_addresses_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VerifiedEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ses$put_configuration_set_delivery_options_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), DeliveryOptions = structure(list(TlsPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ses$put_configuration_set_delivery_options_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

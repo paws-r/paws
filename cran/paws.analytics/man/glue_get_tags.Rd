@@ -7,7 +7,8 @@
 glue_get_tags(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon ARN of the resource for which to retrieve tags.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to retrieve
+tags.}
 }
 \description{
 Retrieves a list of tags associated with a resource.

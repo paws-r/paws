@@ -40,7 +40,7 @@ action, and view the resource status reason.
 
 Specify this property to skip rolling back resources that AWS
 CloudFormation can't successfully roll back. We recommend that you
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{troubleshoot}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{troubleshoot}
 resources before skipping them. AWS CloudFormation sets the status of
 the specified resources to \code{UPDATE_COMPLETE} and continues to roll back
 the stack. After the rollback is complete, the state of the skipped
@@ -64,7 +64,7 @@ be in one of the following states: \code{DELETE_IN_PROGRESS},
 
 Don't confuse a child stack's name with its corresponding logical ID
 defined in the parent stack. For an example of a continue update
-rollback operation with nested stacks, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks}{Using ResourcesToSkip to recover a nested stacks hierarchy}.}
+rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks}{Using ResourcesToSkip to recover a nested stacks hierarchy}.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{ContinueUpdateRollback} request. Specify
 this token if you plan to retry requests so that AWS CloudFormation
@@ -75,7 +75,7 @@ ensure that AWS CloudFormation successfully received them.}
 \description{
 For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state,
 continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state.
-Depending on the cause of the failure, you can manually \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error}
+Depending on the cause of the failure, you can manually \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error}
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state),
 and then try to update the stack again.

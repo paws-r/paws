@@ -17,10 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{EndTime}{The time at which the reported instance health state ended.}
 
-\item{Instances}{[required] One or more instances.}
+\item{Instances}{[required] The instances.}
 
-\item{ReasonCodes}{[required] One or more reason codes that describe the health state of your
-instance.
+\item{ReasonCodes}{[required] The reason codes that describe the health state of your instance.
 \itemize{
 \item \code{instance-stuck-in-state}: My instance is stuck in a state.
 \item \code{unresponsive}: My instance is unresponsive.

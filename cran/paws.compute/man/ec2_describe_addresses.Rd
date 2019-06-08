@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_addresses}
 \alias{ec2_describe_addresses}
-\title{Describes one or more of your Elastic IP addresses}
+\title{Describes the specified Elastic IP addresses or all of your Elastic IP
+addresses}
 \usage{
 ec2_describe_addresses(Filters, PublicIps, AllocationIds, DryRun)
 }
@@ -35,9 +36,7 @@ regardless of the tag value.
 
 Default: Describes all your Elastic IP addresses.}
 
-\item{AllocationIds}{[EC2-VPC] One or more allocation IDs.
-
-Default: Describes all your Elastic IP addresses.}
+\item{AllocationIds}{[EC2-VPC] Information about the allocation IDs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -45,7 +44,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of your Elastic IP addresses.
+Describes the specified Elastic IP addresses or all of your Elastic IP
+addresses.
 }
 \details{
 An Elastic IP address is for use in either the EC2-Classic platform or

@@ -42,9 +42,9 @@ successfully delivered messages.
 \description{
 Sets the attributes of the platform application object for the supported
 push notification services, such as APNS and GCM. For more information,
-see \href{http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
+see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 For information on configuring attributes for message delivery status,
-see \href{http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
+see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_platform_application_attributes(

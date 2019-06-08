@@ -46,8 +46,8 @@ search results
 \link[=resourcegroups_delete_group]{delete_group} \tab Deletes a specified resource group \cr
 \link[=resourcegroups_get_group]{get_group} \tab Returns information about a specified resource group \cr
 \link[=resourcegroups_get_group_query]{get_group_query} \tab Returns the resource query associated with the specified resource group \cr
-\link[=resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource, specified by an ARN \cr
-\link[=resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of resources that are members of a specified resource group\cr
+\link[=resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource group, specified by an ARN\cr
+\link[=resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of resources that are members of a specified resource group \cr
 \link[=resourcegroups_list_groups]{list_groups} \tab Returns a list of existing resource groups in your account \cr
 \link[=resourcegroups_search_resources]{search_resources} \tab Returns a list of AWS resource identifiers that matches a specified query \cr
 \link[=resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified ARN \cr

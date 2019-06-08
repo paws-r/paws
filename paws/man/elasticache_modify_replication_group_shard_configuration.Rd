@@ -32,15 +32,17 @@ You can specify this parameter only if the value of \code{NodeGroupCount} is
 greater than the current number of node groups (shards).}
 
 \item{NodeGroupsToRemove}{If the value of \code{NodeGroupCount} is less than the current number of node
-groups (shards), the \code{NodeGroupsToRemove} or \code{NodeGroupsToRetain} is a
-required list of node group ids to remove from or retain in the cluster.
+groups (shards), then either \code{NodeGroupsToRemove} or
+\code{NodeGroupsToRetain} is required. \code{NodeGroupsToRemove} is a list of
+\code{NodeGroupId}s to remove from the cluster.
 
 ElastiCache for Redis will attempt to remove all node groups listed by
 \code{NodeGroupsToRemove} from the cluster.}
 
 \item{NodeGroupsToRetain}{If the value of \code{NodeGroupCount} is less than the current number of node
-groups (shards), the \code{NodeGroupsToRemove} or \code{NodeGroupsToRetain} is a
-required list of node group ids to remove from or retain in the cluster.
+groups (shards), then either \code{NodeGroupsToRemove} or
+\code{NodeGroupsToRetain} is required. \code{NodeGroupsToRetain} is a list of
+\code{NodeGroupId}s to retain in the cluster.
 
 ElastiCache for Redis will attempt to remove all node groups except
 those listed by \code{NodeGroupsToRetain} from the cluster.}

@@ -26,34 +26,34 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \item{GranteePrincipal}{[required] The principal that is given permission to perform the operations that
 the grant permits.
 
-To specify the principal, use the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, IAM roles, federated users, and assumed role users. For
-examples of the ARN syntax to use for specifying a principal, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
+examples of the ARN syntax to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{AWS General Reference}.}
 
 \item{RetiringPrincipal}{The principal that is given permission to retire the grant by using
 RetireGrant operation.
 
-To specify the principal, use the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, federated users, and assumed role users. For examples of the
-ARN syntax to use for specifying a principal, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
+ARN syntax to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{AWS General Reference}.}
 
 \item{Operations}{[required] A list of operations that the grant permits.}
 
-\item{Constraints}{A structure that you can use to allow certain operations in the grant
-only when the desired encryption context is present. For more
-information about encryption context, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.}
+\item{Constraints}{Allows a cryptographic operation only when the encryption context
+matches or includes the encryption context specified in this structure.
+For more information about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+in the \strong{AWS Key Management Service Developer Guide} .}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for identifying the grant. Use this value to prevent
+\item{Name}{A friendly name for identifying the grant. Use this value to prevent the
 unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all \code{CreateGrant} requests result in a new
@@ -69,19 +69,25 @@ when a duplicate \code{GrantId} is returned. All grant tokens obtained in
 this way can be used interchangeably.}
 }
 \description{
-Adds a grant to a customer master key (CMK). The grant specifies who can
-use the CMK and under what conditions. When setting permissions, grants
-are an alternative to key policies.
+Adds a grant to a customer master key (CMK). The grant allows the
+grantee principal to use the CMK when the conditions specified in the
+grant are met. When setting permissions, grants are an alternative to
+key policies.
 }
 \details{
+To create a grant that allows a cryptographic operation only when the
+encryption context in the operation request matches or includes a
+specified encryption context, use the \code{Constraints} parameter. For
+details, see GrantConstraints.
+
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the \code{KeyId} parameter. For more information
 about grants, see
-\href{http://docs.aws.amazon.com/kms/latest/developerguide/grants.html}{Grants}
-in the \emph{AWS Key Management Service Developer Guide}.
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html}{Grants}
+in the \strong{AWS Key Management Service Developer Guide} .
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

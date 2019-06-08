@@ -7,7 +7,7 @@
 datasync_create_location_s3(Subdirectory, S3BucketArn, S3Config, Tags)
 }
 \arguments{
-\item{Subdirectory}{[required] A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3
+\item{Subdirectory}{A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3
 is used to read data from the S3 source location or write data to the S3
 destination.}
 
@@ -28,8 +28,11 @@ Identity and Access Management (IAM) role that has the required
 permissions. You can set up the required permissions by creating an IAM
 policy that grants the required permissions and attaching the policy to
 the role. An example of such a policy is shown in the examples section.
-For more information, see Configuring Amazon S3 Location Settings in the
-\emph{AWS DataSync User Guide}.
+
+For more information, see
+"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html\#create-s3-location"
+(Configuring Amazon S3 Location Settings) in the \emph{AWS DataSync User
+Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_s3(

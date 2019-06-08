@@ -16,7 +16,7 @@ deregister. The ARN contains the \code{arn:aws:ecs} namespace, followed by
 the Region of the container instance, the AWS account ID of the
 container instance owner, the \code{container-instance} namespace, and then
 the container instance ID. For example,
-\code{arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> }.}
+\code{arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID}.}
 
 \item{force}{Forces the deregistration of the container instance. If you have tasks
 running on the container instance when you deregister it with the

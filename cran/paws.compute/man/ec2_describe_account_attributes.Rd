@@ -7,7 +7,7 @@
 ec2_describe_account_attributes(AttributeNames, DryRun)
 }
 \arguments{
-\item{AttributeNames}{One or more account attribute names.}
+\item{AttributeNames}{The account attribute names.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

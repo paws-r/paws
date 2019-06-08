@@ -2,19 +2,19 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_accept_invitation}
 \alias{securityhub_accept_invitation}
-\title{Accepts the invitation to be monitored by a master SecurityHub account}
+\title{Accepts the invitation to be monitored by a Security Hub master account}
 \usage{
 securityhub_accept_invitation(MasterId, InvitationId)
 }
 \arguments{
-\item{MasterId}{The account ID of the master Security Hub account whose invitation
+\item{MasterId}{The account ID of the Security Hub master account whose invitation
 you're accepting.}
 
-\item{InvitationId}{The ID of the invitation that is sent to the AWS account by the Security
-Hub master account.}
+\item{InvitationId}{The ID of the invitation that the Security Hub master account sends to
+the AWS account.}
 }
 \description{
-Accepts the invitation to be monitored by a master SecurityHub account.
+Accepts the invitation to be monitored by a Security Hub master account.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_invitation(

@@ -25,7 +25,7 @@ DeclineHandshake instead. After a handshake is canceled, the recipient
 can no longer respond to that handshake.
 
 After you cancel a handshake, it continues to appear in the results of
-relevant APIs for only 30 days. After that it is deleted.
+relevant APIs for only 30 days. After that, it's deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_handshake(

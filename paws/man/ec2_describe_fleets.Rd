@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_fleets}
 \alias{ec2_describe_fleets}
-\title{Describes one or more of your EC2 Fleets}
+\title{Describes the specified EC2 Fleets or all your EC2 Fleets}
 \usage{
 ec2_describe_fleets(DryRun, MaxResults, NextToken, FleetIds, Filters)
 }
@@ -21,7 +21,7 @@ value.}
 
 \item{FleetIds}{The ID of the EC2 Fleets.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{activity-status} - The progress of the EC2 Fleet ( \code{error} \|
 \code{pending-fulfillment} \| \code{pending-termination} \| \code{fulfilled}).
@@ -37,7 +37,7 @@ replace unhealthy instances (\code{true} \| \code{false}).
 }}
 }
 \description{
-Describes one or more of your EC2 Fleets.
+Describes the specified EC2 Fleets or all your EC2 Fleets.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_fleets(

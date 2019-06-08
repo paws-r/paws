@@ -166,17 +166,17 @@ resourcegroups_get_group_query <- function(GroupName) {
 }
 .resourcegroups$operations$get_group_query <- resourcegroups_get_group_query
 
-#' Returns a list of tags that are associated with a resource, specified by
-#' an ARN
+#' Returns a list of tags that are associated with a resource group,
+#' specified by an ARN
 #'
-#' Returns a list of tags that are associated with a resource, specified by
-#' an ARN.
+#' Returns a list of tags that are associated with a resource group,
+#' specified by an ARN.
 #'
 #' @usage
 #' resourcegroups_get_tags(Arn)
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource for which you want a list of tags. The resource
-#' must exist within the account you are using.
+#' @param Arn &#91;required&#93; The ARN of the resource group for which you want a list of tags. The
+#' resource must exist within the account you are using.
 #'
 #' @section Request syntax:
 #' ```

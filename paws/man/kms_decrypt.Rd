@@ -11,11 +11,11 @@ kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens)
 
 \item{EncryptionContext}{The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For
-more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html}{Encryption Context}.}
+more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
@@ -29,17 +29,16 @@ encrypted by using any of the following operations:
 \item Encrypt
 }
 
-Note that if a caller has been granted access permissions to all keys
-(through, for example, IAM user policies that grant \code{Decrypt} permission
-on all resources), then ciphertext encrypted by using keys in other
-accounts where the key grants access to the caller can be decrypted. To
-remedy this, we recommend that you do not grant \code{Decrypt} access in an
-IAM user policy. Instead grant \code{Decrypt} access only in key policies. If
-you must grant \code{Decrypt} access in an IAM user policy, you should scope
-the resource to specific keys or to specific trusted accounts.
+Whenever possible, use key policies to give users permission to call the
+Decrypt operation on the CMK, instead of IAM policies. Otherwise, you
+might create an IAM user policy that gives the user Decrypt permission
+on all CMKs. This user could decrypt ciphertext that was encrypted by
+CMKs in other accounts if the key policy for the cross-account CMK
+permits it. If you must use an IAM policy for \code{Decrypt} permissions,
+limit the user to particular CMKs or particular trusted accounts.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

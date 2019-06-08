@@ -46,7 +46,12 @@ from a previous call.)}
 responses that contain events from multiple log streams within the log
 group, interleaved in a single response. If the value is false, all the
 matched log events in the first log stream are searched first, then
-those in the next log stream, and so on. The default is false.}
+those in the next log stream, and so on. The default is false.
+
+\strong{IMPORTANT:} Starting on June 17, 2019, this parameter will be ignored
+and the value will be assumed to be true. The response from this
+operation will always interleave events from multiple log streams within
+a log group.}
 }
 \description{
 Lists log events from the specified log group. You can list all the log

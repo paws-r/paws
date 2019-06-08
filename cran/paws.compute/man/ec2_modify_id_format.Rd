@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_id_format}
 \alias{ec2_modify_id_format}
-\title{Modifies the ID format for the specified resource on a per-region basis}
+\title{Modifies the ID format for the specified resource on a per-Region basis}
 \usage{
 ec2_modify_id_format(Resource, UseLongIds)
 }
@@ -24,7 +24,7 @@ types that are currently within their opt-in period for longer IDs.}
 \item{UseLongIds}{[required] Indicate whether the resource should use longer IDs (17-character IDs).}
 }
 \description{
-Modifies the ID format for the specified resource on a per-region basis.
+Modifies the ID format for the specified resource on a per-Region basis.
 You can specify that resources should receive longer IDs (17-character
 IDs) when they are created.
 }

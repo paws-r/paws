@@ -29,9 +29,10 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 
-\item{Marker}{An optional pagination token provided by a previous DescribeCertificates
-request. If this parameter is specified, the response includes only
-records beyond the marker, up to the value specified by \code{MaxRecords}.}
+\item{Marker}{An optional pagination token provided by a previous
+\code{DescribeCertificates} request. If this parameter is specified, the
+response includes only records beyond the marker, up to the value
+specified by \code{MaxRecords}.}
 }
 \description{
 Lists the set of CA certificates provided by Amazon RDS for this AWS

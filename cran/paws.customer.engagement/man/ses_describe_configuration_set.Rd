@@ -14,7 +14,7 @@ ses_describe_configuration_set(ConfigurationSetName,
 }
 \description{
 Returns the details of the specified configuration set. For information
-about using configuration sets, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 }
 \details{
 You can execute this operation no more than once per second.
@@ -23,7 +23,7 @@ You can execute this operation no more than once per second.
 \preformatted{svc$describe_configuration_set(
   ConfigurationSetName = "string",
   ConfigurationSetAttributeNames = list(
-    "eventDestinations"|"trackingOptions"|"reputationOptions"
+    "eventDestinations"|"trackingOptions"|"deliveryOptions"|"reputationOptions"
   )
 )
 }

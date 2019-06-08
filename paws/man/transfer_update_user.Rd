@@ -31,7 +31,10 @@ user account is assigned to.}
 
 \item{UserName}{[required] A unique string that identifies a user and is associated with a server
 as specified by the ServerId. This is the string that will be used by
-your user when they log in to your SFTP server.}
+your user when they log in to your SFTP server. This user name is a
+minimum of 3 and a maximum of 32 characters long. The following are
+valid characters: a-z, A-Z, 0-9, underscore, and hyphen. The user name
+can't start with a hyphen.}
 }
 \description{
 Assigns new properties to a user. Parameters you pass modify any or all

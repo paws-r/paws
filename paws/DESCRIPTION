@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(
     person(given = "David", family = "Kretch", role = c("aut", "cre"), email = "david.kretch@gmail.com"),
     person(given = "Adam", family = "Banker", role = "aut", email = "adam.banker39@gmail.com"),
@@ -249,6 +249,9 @@ Collate:
     'greengrass_service.R'
     'greengrass_interfaces.R'
     'greengrass_operations.R'
+    'groundstation_service.R'
+    'groundstation_interfaces.R'
+    'groundstation_operations.R'
     'guardduty_service.R'
     'guardduty_interfaces.R'
     'guardduty_operations.R'
@@ -279,9 +282,18 @@ Collate:
     'iotdataplane_service.R'
     'iotdataplane_interfaces.R'
     'iotdataplane_operations.R'
+    'iotevents_service.R'
+    'iotevents_interfaces.R'
+    'iotevents_operations.R'
+    'ioteventsdata_service.R'
+    'ioteventsdata_interfaces.R'
+    'ioteventsdata_operations.R'
     'iotjobsdataplane_service.R'
     'iotjobsdataplane_interfaces.R'
     'iotjobsdataplane_operations.R'
+    'iotthingsgraph_service.R'
+    'iotthingsgraph_interfaces.R'
+    'iotthingsgraph_operations.R'
     'kafka_service.R'
     'kafka_interfaces.R'
     'kafka_operations.R'
@@ -327,6 +339,9 @@ Collate:
     'macie_service.R'
     'macie_interfaces.R'
     'macie_operations.R'
+    'managedblockchain_service.R'
+    'managedblockchain_interfaces.R'
+    'managedblockchain_operations.R'
     'marketplacecommerceanalytics_service.R'
     'marketplacecommerceanalytics_interfaces.R'
     'marketplacecommerceanalytics_operations.R'
@@ -348,6 +363,9 @@ Collate:
     'mediapackage_service.R'
     'mediapackage_interfaces.R'
     'mediapackage_operations.R'
+    'mediapackagevod_service.R'
+    'mediapackagevod_interfaces.R'
+    'mediapackagevod_operations.R'
     'mediastore_service.R'
     'mediastore_interfaces.R'
     'mediastore_operations.R'

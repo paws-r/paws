@@ -71,7 +71,8 @@ value. You can get a list of the current user pool settings with .
       RequireUppercase = TRUE|FALSE,
       RequireLowercase = TRUE|FALSE,
       RequireNumbers = TRUE|FALSE,
-      RequireSymbols = TRUE|FALSE
+      RequireSymbols = TRUE|FALSE,
+      TemporaryPasswordValidityDays = 123
     )
   ),
   LambdaConfig = list(
@@ -108,7 +109,8 @@ value. You can get a list of the current user pool settings with .
   ),
   EmailConfiguration = list(
     SourceArn = "string",
-    ReplyToEmailAddress = "string"
+    ReplyToEmailAddress = "string",
+    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
   ),
   SmsConfiguration = list(
     SnsCallerArn = "string",

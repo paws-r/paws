@@ -28,14 +28,14 @@ to. You can see a list of the categories for a given SourceType in the
 topic in the \emph{Amazon RDS User Guide} or by using the
 \strong{DescribeEventCategories} action.}
 
-\item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
+\item{Enabled}{A value that indicates whether to activate the subscription.}
 }
 \description{
 Modifies an existing RDS event notification subscription. Note that you
 can't modify the source identifiers using this call; to change source
 identifiers for a subscription, use the
-AddSourceIdentifierToSubscription and
-RemoveSourceIdentifierFromSubscription calls.
+\code{AddSourceIdentifierToSubscription} and
+\code{RemoveSourceIdentifierFromSubscription} calls.
 }
 \details{
 You can see a list of the event categories for a given SourceType in the

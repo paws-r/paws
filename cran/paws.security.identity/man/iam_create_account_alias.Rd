@@ -15,7 +15,7 @@ finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
 Creates an alias for your AWS account. For information about using an
-AWS account alias, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID}
+AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

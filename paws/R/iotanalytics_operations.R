@@ -113,9 +113,11 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #' pipeline.
 #'
 #' @usage
-#' iotanalytics_create_channel(channelName, retentionPeriod, tags)
+#' iotanalytics_create_channel(channelName, channelStorage,
+#'   retentionPeriod, tags)
 #'
 #' @param channelName &#91;required&#93; The name of the channel.
+#' @param channelStorage Where channel data is stored.
 #' @param retentionPeriod How long, in days, message data is kept for the channel.
 #' @param tags Metadata which can be used to manage the channel.
 #'
@@ -123,6 +125,14 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #' ```
 #' svc$create_channel(
 #'   channelName = "string",
+#'   channelStorage = list(
+#'     serviceManagedS3 = list(),
+#'     customerManagedS3 = list(
+#'       bucket = "string",
+#'       keyPrefix = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
@@ -139,14 +149,14 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #' @keywords internal
 #'
 #' @rdname iotanalytics_create_channel
-iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tags = NULL) {
+iotanalytics_create_channel <- function(channelName, channelStorage = NULL, retentionPeriod = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/channels",
     paginator = list()
   )
-  input <- .iotanalytics$create_channel_input(channelName = channelName, retentionPeriod = retentionPeriod, tags = tags)
+  input <- .iotanalytics$create_channel_input(channelName = channelName, channelStorage = channelStorage, retentionPeriod = retentionPeriod, tags = tags)
   output <- .iotanalytics$create_channel_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -248,6 +258,15 @@ iotanalytics_create_channel <- function(channelName, retentionPeriod = NULL, tag
 #'         iotEventsDestinationConfiguration = list(
 #'           inputName = "string",
 #'           roleArn = "string"
+#'         ),
+#'         s3DestinationConfiguration = list(
+#'           bucket = "string",
+#'           key = "string",
+#'           glueConfiguration = list(
+#'             tableName = "string",
+#'             databaseName = "string"
+#'           ),
+#'           roleArn = "string"
 #'         )
 #'       )
 #'     )
@@ -330,9 +349,11 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #' Creates a data store, which is a repository for messages.
 #'
 #' @usage
-#' iotanalytics_create_datastore(datastoreName, retentionPeriod, tags)
+#' iotanalytics_create_datastore(datastoreName, datastoreStorage,
+#'   retentionPeriod, tags)
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store.
+#' @param datastoreStorage Where data store data is stored.
 #' @param retentionPeriod How long, in days, message data is kept for the data store.
 #' @param tags Metadata which can be used to manage the data store.
 #'
@@ -340,6 +361,14 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #' ```
 #' svc$create_datastore(
 #'   datastoreName = "string",
+#'   datastoreStorage = list(
+#'     serviceManagedS3 = list(),
+#'     customerManagedS3 = list(
+#'       bucket = "string",
+#'       keyPrefix = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
@@ -356,14 +385,14 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #' @keywords internal
 #'
 #' @rdname iotanalytics_create_datastore
-iotanalytics_create_datastore <- function(datastoreName, retentionPeriod = NULL, tags = NULL) {
+iotanalytics_create_datastore <- function(datastoreName, datastoreStorage = NULL, retentionPeriod = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDatastore",
     http_method = "POST",
     http_path = "/datastores",
     paginator = list()
   )
-  input <- .iotanalytics$create_datastore_input(datastoreName = datastoreName, retentionPeriod = retentionPeriod, tags = tags)
+  input <- .iotanalytics$create_datastore_input(datastoreName = datastoreName, datastoreStorage = datastoreStorage, retentionPeriod = retentionPeriod, tags = tags)
   output <- .iotanalytics$create_datastore_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -1470,15 +1499,25 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the settings of a channel.
 #'
 #' @usage
-#' iotanalytics_update_channel(channelName, retentionPeriod)
+#' iotanalytics_update_channel(channelName, channelStorage,
+#'   retentionPeriod)
 #'
 #' @param channelName &#91;required&#93; The name of the channel to be updated.
+#' @param channelStorage Where channel data is stored.
 #' @param retentionPeriod How long, in days, message data is kept for the channel.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_channel(
 #'   channelName = "string",
+#'   channelStorage = list(
+#'     serviceManagedS3 = list(),
+#'     customerManagedS3 = list(
+#'       bucket = "string",
+#'       keyPrefix = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
@@ -1489,14 +1528,14 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname iotanalytics_update_channel
-iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
+iotanalytics_update_channel <- function(channelName, channelStorage = NULL, retentionPeriod = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "PUT",
     http_path = "/channels/{channelName}",
     paginator = list()
   )
-  input <- .iotanalytics$update_channel_input(channelName = channelName, retentionPeriod = retentionPeriod)
+  input <- .iotanalytics$update_channel_input(channelName = channelName, channelStorage = channelStorage, retentionPeriod = retentionPeriod)
   output <- .iotanalytics$update_channel_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -1585,6 +1624,15 @@ iotanalytics_update_channel <- function(channelName, retentionPeriod = NULL) {
 #'         iotEventsDestinationConfiguration = list(
 #'           inputName = "string",
 #'           roleArn = "string"
+#'         ),
+#'         s3DestinationConfiguration = list(
+#'           bucket = "string",
+#'           key = "string",
+#'           glueConfiguration = list(
+#'             tableName = "string",
+#'             databaseName = "string"
+#'           ),
+#'           roleArn = "string"
 #'         )
 #'       )
 #'     )
@@ -1624,10 +1672,12 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #' Updates the settings of a data store.
 #'
 #' @usage
-#' iotanalytics_update_datastore(datastoreName, retentionPeriod)
+#' iotanalytics_update_datastore(datastoreName, retentionPeriod,
+#'   datastoreStorage)
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store to be updated.
 #' @param retentionPeriod How long, in days, message data is kept for the data store.
+#' @param datastoreStorage Where data store data is stored.
 #'
 #' @section Request syntax:
 #' ```
@@ -1636,6 +1686,14 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #'   retentionPeriod = list(
 #'     unlimited = TRUE|FALSE,
 #'     numberOfDays = 123
+#'   ),
+#'   datastoreStorage = list(
+#'     serviceManagedS3 = list(),
+#'     customerManagedS3 = list(
+#'       bucket = "string",
+#'       keyPrefix = "string",
+#'       roleArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1643,14 +1701,14 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #' @keywords internal
 #'
 #' @rdname iotanalytics_update_datastore
-iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL) {
+iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL, datastoreStorage = NULL) {
   op <- new_operation(
     name = "UpdateDatastore",
     http_method = "PUT",
     http_path = "/datastores/{datastoreName}",
     paginator = list()
   )
-  input <- .iotanalytics$update_datastore_input(datastoreName = datastoreName, retentionPeriod = retentionPeriod)
+  input <- .iotanalytics$update_datastore_input(datastoreName = datastoreName, retentionPeriod = retentionPeriod, datastoreStorage = datastoreStorage)
   output <- .iotanalytics$update_datastore_output()
   svc <- .iotanalytics$service()
   request <- new_request(svc, op, input, output)

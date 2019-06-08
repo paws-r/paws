@@ -17,7 +17,7 @@ NULL
 #'   TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions,
 #'   Tags)
 #'
-#' @param ConfigurationSetName The name of the configuration set.
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #' @param TrackingOptions An object that defines the open and click tracking options for emails
 #' that you send using the configuration set.
 #' @param DeliveryOptions An object that defines the dedicated IP pool that is used to send emails
@@ -27,8 +27,8 @@ NULL
 #' configuration set.
 #' @param SendingOptions An object that defines whether or not Amazon Pinpoint can send email
 #' that you send using the configuration set.
-#' @param Tags An object that defines the tags (keys and values) that you want to
-#' associate with the configuration set.
+#' @param Tags An array of objects that define the tags (keys and values) that you want
+#' to associate with the configuration set.
 #'
 #' @section Request syntax:
 #' ```
@@ -38,6 +38,7 @@ NULL
 #'     CustomRedirectDomain = "string"
 #'   ),
 #'   DeliveryOptions = list(
+#'     TlsPolicy = "REQUIRE"|"OPTIONAL",
 #'     SendingPoolName = "string"
 #'   ),
 #'   ReputationOptions = list(
@@ -61,7 +62,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_configuration_set
-pinpointemail_create_configuration_set <- function(ConfigurationSetName = NULL, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL) {
+pinpointemail_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
     http_method = "POST",
@@ -220,8 +221,8 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' sent from.
 #' @param Content &#91;required&#93; The HTML body of the message that you sent when you performed the
 #' predictive inbox placement test.
-#' @param Tags An object that defines the tags (keys and values) that you want to
-#' associate with the predictive inbox placement test.
+#' @param Tags An array of objects that define the tags (keys and values) that you want
+#' to associate with the predictive inbox placement test.
 #'
 #' @section Request syntax:
 #' ```
@@ -301,8 +302,8 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #' pinpointemail_create_email_identity(EmailIdentity, Tags)
 #'
 #' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
-#' @param Tags An object that defines the tags (keys and values) that you want to
-#' associate with the email identity.
+#' @param Tags An array of objects that define the tags (keys and values) that you want
+#' to associate with the email identity.
 #'
 #' @section Request syntax:
 #' ```
@@ -749,18 +750,21 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 }
 .pinpointemail$operations$get_dedicated_ips <- pinpointemail_get_dedicated_ips
 
-#' Show the status of the Deliverability dashboard
+#' Retrieve information about the status of the Deliverability dashboard
+#' for your Amazon Pinpoint account
 #'
-#' Show the status of the Deliverability dashboard. When the Deliverability
-#' dashboard is enabled, you gain access to reputation metrics for the
-#' domains that you use to send email using Amazon Pinpoint. You also gain
-#' the ability to perform predictive inbox placement tests.
+#' Retrieve information about the status of the Deliverability dashboard
+#' for your Amazon Pinpoint account. When the Deliverability dashboard is
+#' enabled, you gain access to reputation, deliverability, and other
+#' metrics for the domains that you use to send email using Amazon
+#' Pinpoint. You also gain the ability to perform predictive inbox
+#' placement tests.
 #' 
-#' When you use the Deliverability dashboard, you pay a monthly charge of
-#' USD\\$1,250.00, in addition to any other fees that you accrue by using
-#' Amazon Pinpoint. If you enable the Deliverability dashboard after the
-#' first day of a calendar month, AWS prorates the monthly charge based on
-#' how many days have elapsed in the current calendar month.
+#' When you use the Deliverability dashboard, you pay a monthly
+#' subscription charge, in addition to any other fees that you accrue by
+#' using Amazon Pinpoint. For more information about the features and cost
+#' of a Deliverability dashboard subscription, see [Amazon Pinpoint
+#' Pricing](http://aws.amazon.com/pinpoint/pricing/).
 #'
 #' @usage
 #' pinpointemail_get_deliverability_dashboard_options()
@@ -823,6 +827,48 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
   return(response)
 }
 .pinpointemail$operations$get_deliverability_test_report <- pinpointemail_get_deliverability_test_report
+
+#' Retrieve all the deliverability data for a specific campaign
+#'
+#' Retrieve all the deliverability data for a specific campaign. This data
+#' is available for a campaign only if the campaign sent email by using a
+#' domain that the Deliverability dashboard is enabled for
+#' (`PutDeliverabilityDashboardOption` operation).
+#'
+#' @usage
+#' pinpointemail_get_domain_deliverability_campaign(CampaignId)
+#'
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign. Amazon Pinpoint automatically
+#' generates and assigns this identifier to a campaign. This value is not
+#' the same as the campaign identifier that Amazon Pinpoint assigns to
+#' campaigns that you create and manage by using the Amazon Pinpoint API or
+#' the Amazon Pinpoint console.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_domain_deliverability_campaign(
+#'   CampaignId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointemail_get_domain_deliverability_campaign
+pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
+  op <- new_operation(
+    name = "GetDomainDeliverabilityCampaign",
+    http_method = "GET",
+    http_path = "/v1/email/deliverability-dashboard/campaigns/{CampaignId}",
+    paginator = list()
+  )
+  input <- .pinpointemail$get_domain_deliverability_campaign_input(CampaignId = CampaignId)
+  output <- .pinpointemail$get_domain_deliverability_campaign_output()
+  svc <- .pinpointemail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointemail$operations$get_domain_deliverability_campaign <- pinpointemail_get_domain_deliverability_campaign
 
 #' Retrieve inbox placement and engagement rates for the domains that you
 #' use to send email
@@ -1052,6 +1098,67 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 }
 .pinpointemail$operations$list_deliverability_test_reports <- pinpointemail_list_deliverability_test_reports
 
+#' Retrieve deliverability data for all the campaigns that used a specific
+#' domain to send email during a specified time range
+#'
+#' Retrieve deliverability data for all the campaigns that used a specific
+#' domain to send email during a specified time range. This data is
+#' available for a domain only if you enabled the Deliverability dashboard
+#' (`PutDeliverabilityDashboardOption` operation) for the domain.
+#'
+#' @usage
+#' pinpointemail_list_domain_deliverability_campaigns(StartDate, EndDate,
+#'   SubscribedDomain, NextToken, PageSize)
+#'
+#' @param StartDate &#91;required&#93; The first day, in Unix time format, that you want to obtain
+#' deliverability data for.
+#' @param EndDate &#91;required&#93; The last day, in Unix time format, that you want to obtain
+#' deliverability data for. This value has to be less than or equal to 30
+#' days after the value of the `StartDate` parameter.
+#' @param SubscribedDomain &#91;required&#93; The domain to obtain deliverability data for.
+#' @param NextToken A token that's returned from a previous call to the
+#' `ListDomainDeliverabilityCampaigns` operation. This token indicates the
+#' position of a campaign in the list of campaigns.
+#' @param PageSize The maximum number of results to include in response to a single call to
+#' the `ListDomainDeliverabilityCampaigns` operation. If the number of
+#' results is larger than the number that you specify in this parameter,
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domain_deliverability_campaigns(
+#'   StartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SubscribedDomain = "string",
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointemail_list_domain_deliverability_campaigns
+pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDate, SubscribedDomain, NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListDomainDeliverabilityCampaigns",
+    http_method = "GET",
+    http_path = "/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
+    paginator = list()
+  )
+  input <- .pinpointemail$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
+  output <- .pinpointemail$list_domain_deliverability_campaigns_output()
+  svc <- .pinpointemail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointemail$operations$list_domain_deliverability_campaigns <- pinpointemail_list_domain_deliverability_campaigns
+
 #' Returns a list of all of the email identities that are associated with
 #' your Amazon Pinpoint account
 #'
@@ -1101,10 +1208,10 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 .pinpointemail$operations$list_email_identities <- pinpointemail_list_email_identities
 
 #' Retrieve a list of the tags (keys and values) that are associated with a
-#' specific resource
+#' specified resource
 #'
 #' Retrieve a list of the tags (keys and values) that are associated with a
-#' specific resource. AÂ *tag*Â is a label that you optionally define and
+#' specified resource. AÂ *tag*Â is a label that you optionally define and
 #' associate with a resource in Amazon Pinpoint. Each tag consists of a
 #' requiredÂ *tag key*Â and an optional associatedÂ *tag value*. A tag key is
 #' a general label that acts as a category for more specific tag values. A
@@ -1230,10 +1337,12 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #'
 #' @usage
 #' pinpointemail_put_configuration_set_delivery_options(
-#'   ConfigurationSetName, SendingPoolName)
+#'   ConfigurationSetName, TlsPolicy, SendingPoolName)
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to associate with a
 #' dedicated IP pool.
+#' @param TlsPolicy Whether Amazon Pinpoint should require that incoming email is delivered
+#' over a connection encrypted with Transport Layer Security (TLS).
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
 #'
@@ -1241,6 +1350,7 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' ```
 #' svc$put_configuration_set_delivery_options(
 #'   ConfigurationSetName = "string",
+#'   TlsPolicy = "REQUIRE"|"OPTIONAL",
 #'   SendingPoolName = "string"
 #' )
 #' ```
@@ -1248,14 +1358,14 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_configuration_set_delivery_options
-pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSetName, SendingPoolName = NULL) {
+pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSetName, TlsPolicy = NULL, SendingPoolName = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetDeliveryOptions",
     http_method = "PUT",
     http_path = "/v1/email/configuration-sets/{ConfigurationSetName}/delivery-options",
     paginator = list()
   )
-  input <- .pinpointemail$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, SendingPoolName = SendingPoolName)
+  input <- .pinpointemail$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, TlsPolicy = TlsPolicy, SendingPoolName = SendingPoolName)
   output <- .pinpointemail$put_configuration_set_delivery_options_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -1475,43 +1585,62 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 }
 .pinpointemail$operations$put_dedicated_ip_warmup_attributes <- pinpointemail_put_dedicated_ip_warmup_attributes
 
-#' Enable or disable the Deliverability dashboard
+#' Enable or disable the Deliverability dashboard for your Amazon Pinpoint
+#' account
 #'
-#' Enable or disable the Deliverability dashboard. When you enable the
-#' Deliverability dashboard, you gain access to reputation metrics for the
-#' domains that you use to send email using Amazon Pinpoint. You also gain
-#' the ability to perform predictive inbox placement tests.
+#' Enable or disable the Deliverability dashboard for your Amazon Pinpoint
+#' account. When you enable the Deliverability dashboard, you gain access
+#' to reputation, deliverability, and other metrics for the domains that
+#' you use to send email using Amazon Pinpoint. You also gain the ability
+#' to perform predictive inbox placement tests.
 #' 
-#' When you use the Deliverability dashboard, you pay a monthly charge of
-#' USD\\$1,250.00, in addition to any other fees that you accrue by using
-#' Amazon Pinpoint. If you enable the Deliverability dashboard after the
-#' first day of a calendar month, we prorate the monthly charge based on
-#' how many days have elapsed in the current calendar month.
+#' When you use the Deliverability dashboard, you pay a monthly
+#' subscription charge, in addition to any other fees that you accrue by
+#' using Amazon Pinpoint. For more information about the features and cost
+#' of a Deliverability dashboard subscription, see [Amazon Pinpoint
+#' Pricing](http://aws.amazon.com/pinpoint/pricing/).
 #'
 #' @usage
-#' pinpointemail_put_deliverability_dashboard_option(DashboardEnabled)
+#' pinpointemail_put_deliverability_dashboard_option(DashboardEnabled,
+#'   SubscribedDomains)
 #'
-#' @param DashboardEnabled &#91;required&#93; Indicates whether the Deliverability dashboard is enabled. If the value
-#' is `true`, then the dashboard is enabled.
+#' @param DashboardEnabled &#91;required&#93; Specifies whether to enable the Deliverability dashboard for your Amazon
+#' Pinpoint account. To enable the dashboard, set this value to `true`.
+#' @param SubscribedDomains An array of objects, one for each verified domain that you use to send
+#' email and enabled the Deliverability dashboard for.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_deliverability_dashboard_option(
-#'   DashboardEnabled = TRUE|FALSE
+#'   DashboardEnabled = TRUE|FALSE,
+#'   SubscribedDomains = list(
+#'     list(
+#'       Domain = "string",
+#'       SubscriptionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxPlacementTrackingOption = list(
+#'         Global = TRUE|FALSE,
+#'         TrackedIsps = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_deliverability_dashboard_option
-pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled) {
+pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, SubscribedDomains = NULL) {
   op <- new_operation(
     name = "PutDeliverabilityDashboardOption",
     http_method = "PUT",
     http_path = "/v1/email/deliverability-dashboard",
     paginator = list()
   )
-  input <- .pinpointemail$put_deliverability_dashboard_option_input(DashboardEnabled = DashboardEnabled)
+  input <- .pinpointemail$put_deliverability_dashboard_option_input(DashboardEnabled = DashboardEnabled, SubscribedDomains = SubscribedDomains)
   output <- .pinpointemail$put_deliverability_dashboard_option_output()
   svc <- .pinpointemail$service()
   request <- new_request(svc, op, input, output)
@@ -1793,14 +1922,13 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 }
 .pinpointemail$operations$send_email <- pinpointemail_send_email
 
-#' Add one or more tags (keys and values) to one or more specified
-#' resources
+#' Add one or more tags (keys and values) to a specified resource
 #'
-#' Add one or more tags (keys and values) to one or more specified
-#' resources. A *tag*Â is a label that you optionally define and associate
-#' with a resource in Amazon Pinpoint. Tags can help you categorize and
-#' manage resources in different ways, such as by purpose, owner,
-#' environment, or other criteria. A resource can have as many as 50 tags.
+#' Add one or more tags (keys and values) to a specified resource. A
+#' *tag*Â is a label that you optionally define and associate with a
+#' resource in Amazon Pinpoint. Tags can help you categorize and manage
+#' resources in different ways, such as by purpose, owner, environment, or
+#' other criteria. A resource can have as many as 50 tags.
 #' 
 #' Each tag consists of a requiredÂ *tag key*Â and an associatedÂ *tag value*,
 #' both of which you define. A tag key is a general label that acts as a

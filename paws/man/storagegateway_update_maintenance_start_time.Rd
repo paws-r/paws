@@ -6,7 +6,7 @@
 day and time of the week}
 \usage{
 storagegateway_update_maintenance_start_time(GatewayARN, HourOfDay,
-  MinuteOfHour, DayOfWeek)
+  MinuteOfHour, DayOfWeek, DayOfMonth)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -19,8 +19,15 @@ zone of the gateway.}
 where \emph{mm} is the minute (00 to 59). The minute of the hour is in the
 time zone of the gateway.}
 
-\item{DayOfWeek}{[required] The maintenance start time day of the week represented as an ordinal
-number from 0 to 6, where 0 represents Sunday and 6 Saturday.}
+\item{DayOfWeek}{The day of the week component of the maintenance start time week
+represented as an ordinal number from 0 to 6, where 0 represents Sunday
+and 6 Saturday.}
+
+\item{DayOfMonth}{The day of the month component of the maintenance start time represented
+as an ordinal number from 1 to 28, where 1 represents the first day of
+the month and 28 represents the last day of the month.
+
+This value is only available for tape and volume gateways.}
 }
 \description{
 Updates a gateway's weekly maintenance start time information,
@@ -32,7 +39,8 @@ your gateway's time zone.
   GatewayARN = "string",
   HourOfDay = 123,
   MinuteOfHour = 123,
-  DayOfWeek = 123
+  DayOfWeek = 123,
+  DayOfMonth = 123
 )
 }
 }

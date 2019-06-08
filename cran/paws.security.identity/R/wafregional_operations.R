@@ -320,9 +320,11 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can\'t change
 #' the name of a `RateBasedRule` after you create it.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RateBasedRule`.
-#' The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the
-#' name can\'t contain whitespace. You can\'t change the name of the metric
-#' after you create the `RateBasedRule`.
+#' The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+#' maximum length 128 and minimum length one. It can\'t contain whitespace
+#' or metric names reserved for AWS WAF, including \"All\" and
+#' \"Default\\_Action.\" You can\'t change the name of the metric after you
+#' create the `RateBasedRule`.
 #' @param RateKey &#91;required&#93; The field that AWS WAF uses to determine if requests are likely arriving
 #' from a single source and thus subject to rate monitoring. The only valid
 #' value for `RateKey` is `IP`. `IP` indicates that requests that arrive
@@ -537,9 +539,11 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @param Name &#91;required&#93; A friendly name or description of the Rule. You can\'t change the name
 #' of a `Rule` after you create it.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name
-#' can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-#' can\'t contain white space. You can\'t change the name of the metric
-#' after you create the `Rule`.
+#' can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
+#' length 128 and minimum length one. It can\'t contain whitespace or
+#' metric names reserved for AWS WAF, including \"All\" and
+#' \"Default\\_Action.\" You can\'t change the name of the metric after you
+#' create the `Rule`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
 #' @section Request syntax:
@@ -603,9 +607,11 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken) {
 #' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can\'t change
 #' `Name` after you create a `RuleGroup`.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RuleGroup`. The
-#' name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-#' can\'t contain whitespace. You can\'t change the name of the metric
-#' after you create the `RuleGroup`.
+#' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+#' maximum length 128 and minimum length one. It can\'t contain whitespace
+#' or metric names reserved for AWS WAF, including \"All\" and
+#' \"Default\\_Action.\" You can\'t change the name of the metric after you
+#' create the `RuleGroup`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
 #' @section Request syntax:
@@ -820,10 +826,12 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can\'t change `Name`
 #' after you create the `WebACL`.
-#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`. The
-#' name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-#' can\'t contain white space. You can\'t change `MetricName` after you
-#' create the `WebACL`.
+#' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`.The
+#' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+#' maximum length 128 and minimum length one. It can\'t contain whitespace
+#' or metric names reserved for AWS WAF, including \"All\" and
+#' \"Default\\_Action.\" You can\'t change `MetricName` after you create the
+#' `WebACL`.
 #' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn\'t match
 #' the criteria specified in any of the `Rule` objects that are associated
 #' with the `WebACL`.
@@ -3382,6 +3390,9 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'     Create the data firehose with a PUT source and in the region that
 #'     you are operating. However, if you are capturing logs for Amazon
 #'     CloudFront, always create the firehose in US East (N. Virginia).
+#' 
+#'     Do not create the data firehose using a `Kinesis stream` as your
+#'     source.
 #' 
 #' 2.  Associate that firehose to your web ACL using a
 #'     `PutLoggingConfiguration` request.

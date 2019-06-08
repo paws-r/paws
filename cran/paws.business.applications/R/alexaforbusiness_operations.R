@@ -79,6 +79,44 @@ alexaforbusiness_associate_contact_with_address_book <- function(ContactArn, Add
 }
 .alexaforbusiness$operations$associate_contact_with_address_book <- alexaforbusiness_associate_contact_with_address_book
 
+#' Associates a device with the specified network profile
+#'
+#' Associates a device with the specified network profile.
+#'
+#' @usage
+#' alexaforbusiness_associate_device_with_network_profile(DeviceArn,
+#'   NetworkProfileArn)
+#'
+#' @param DeviceArn &#91;required&#93; The device ARN.
+#' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile to associate with a device.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_device_with_network_profile(
+#'   DeviceArn = "string",
+#'   NetworkProfileArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_associate_device_with_network_profile
+alexaforbusiness_associate_device_with_network_profile <- function(DeviceArn, NetworkProfileArn) {
+  op <- new_operation(
+    name = "AssociateDeviceWithNetworkProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$associate_device_with_network_profile_input(DeviceArn = DeviceArn, NetworkProfileArn = NetworkProfileArn)
+  output <- .alexaforbusiness$associate_device_with_network_profile_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$associate_device_with_network_profile <- alexaforbusiness_associate_device_with_network_profile
+
 #' Associates a device with a given room
 #'
 #' Associates a device with a given room. This applies all the settings
@@ -435,6 +473,112 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
   return(response)
 }
 .alexaforbusiness$operations$create_contact <- alexaforbusiness_create_contact
+
+#' Creates a gateway group with the specified details
+#'
+#' Creates a gateway group with the specified details.
+#'
+#' @usage
+#' alexaforbusiness_create_gateway_group(Name, Description,
+#'   ClientRequestToken)
+#'
+#' @param Name &#91;required&#93; The name of the gateway group.
+#' @param Description The description of the gateway group.
+#' @param ClientRequestToken &#91;required&#93; A unique, user-specified identifier for the request that ensures
+#' idempotency.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_gateway_group(
+#'   Name = "string",
+#'   Description = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_create_gateway_group
+alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateGatewayGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$create_gateway_group_input(Name = Name, Description = Description, ClientRequestToken = ClientRequestToken)
+  output <- .alexaforbusiness$create_gateway_group_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$create_gateway_group <- alexaforbusiness_create_gateway_group
+
+#' Creates a network profile with the specified details
+#'
+#' Creates a network profile with the specified details.
+#'
+#' @usage
+#' alexaforbusiness_create_network_profile(NetworkProfileName, Description,
+#'   Ssid, SecurityType, EapMethod, CurrentPassword, NextPassword,
+#'   CertificateAuthorityArn, TrustAnchors, ClientRequestToken)
+#'
+#' @param NetworkProfileName &#91;required&#93; The name of the network profile associated with a device.
+#' @param Description Detailed information about a device\'s network profile.
+#' @param Ssid &#91;required&#93; The SSID of the Wi-Fi network.
+#' @param SecurityType &#91;required&#93; The security type of the Wi-Fi network. This can be WPA2\\_ENTERPRISE,
+#' WPA2\\_PSK, WPA\\_PSK, WEP, or OPEN.
+#' @param EapMethod The authentication standard that is used in the EAP framework.
+#' Currently, EAP\\_TLS is supported.
+#' @param CurrentPassword The current password of the Wi-Fi network.
+#' @param NextPassword The next, or subsequent, password of the Wi-Fi network. This password is
+#' asynchronously transmitted to the device and is used when the password
+#' of the network changes to NextPassword.
+#' @param CertificateAuthorityArn The ARN of the Private Certificate Authority (PCA) created in AWS
+#' Certificate Manager (ACM). This is used to issue certificates to the
+#' devices.
+#' @param TrustAnchors The root certificates of your authentication server that is installed on
+#' your devices and used to trust your authentication server during EAP
+#' negotiation.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_network_profile(
+#'   NetworkProfileName = "string",
+#'   Description = "string",
+#'   Ssid = "string",
+#'   SecurityType = "OPEN"|"WEP"|"WPA_PSK"|"WPA2_PSK"|"WPA2_ENTERPRISE",
+#'   EapMethod = "EAP_TLS",
+#'   CurrentPassword = "string",
+#'   NextPassword = "string",
+#'   CertificateAuthorityArn = "string",
+#'   TrustAnchors = list(
+#'     "string"
+#'   ),
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_create_network_profile
+alexaforbusiness_create_network_profile <- function(NetworkProfileName, Description = NULL, Ssid, SecurityType, EapMethod = NULL, CurrentPassword = NULL, NextPassword = NULL, CertificateAuthorityArn = NULL, TrustAnchors = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateNetworkProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$create_network_profile_input(NetworkProfileName = NetworkProfileName, Description = Description, Ssid = Ssid, SecurityType = SecurityType, EapMethod = EapMethod, CurrentPassword = CurrentPassword, NextPassword = NextPassword, CertificateAuthorityArn = CertificateAuthorityArn, TrustAnchors = TrustAnchors, ClientRequestToken = ClientRequestToken)
+  output <- .alexaforbusiness$create_network_profile_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$create_network_profile <- alexaforbusiness_create_network_profile
 
 #' Creates a new room profile with the specified details
 #'
@@ -812,6 +956,118 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
   return(response)
 }
 .alexaforbusiness$operations$delete_device <- alexaforbusiness_delete_device
+
+#' When this action is called for a specified shared device, it allows
+#' authorized users to delete the device's entire previous history of voice
+#' input data
+#'
+#' When this action is called for a specified shared device, it allows
+#' authorized users to delete the device\'s entire previous history of
+#' voice input data. This action can be called once every 24 hours for a
+#' specific shared device.
+#'
+#' @usage
+#' alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
+#'
+#' @param DeviceArn &#91;required&#93; The ARN of the device.
+#' @param DeviceUsageType &#91;required&#93; The type of usage data to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_device_usage_data(
+#'   DeviceArn = "string",
+#'   DeviceUsageType = "VOICE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_delete_device_usage_data
+alexaforbusiness_delete_device_usage_data <- function(DeviceArn, DeviceUsageType) {
+  op <- new_operation(
+    name = "DeleteDeviceUsageData",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$delete_device_usage_data_input(DeviceArn = DeviceArn, DeviceUsageType = DeviceUsageType)
+  output <- .alexaforbusiness$delete_device_usage_data_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$delete_device_usage_data <- alexaforbusiness_delete_device_usage_data
+
+#' Deletes a gateway group
+#'
+#' Deletes a gateway group.
+#'
+#' @usage
+#' alexaforbusiness_delete_gateway_group(GatewayGroupArn)
+#'
+#' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_gateway_group(
+#'   GatewayGroupArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_delete_gateway_group
+alexaforbusiness_delete_gateway_group <- function(GatewayGroupArn) {
+  op <- new_operation(
+    name = "DeleteGatewayGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$delete_gateway_group_input(GatewayGroupArn = GatewayGroupArn)
+  output <- .alexaforbusiness$delete_gateway_group_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$delete_gateway_group <- alexaforbusiness_delete_gateway_group
+
+#' Deletes a network profile by the network profile ARN
+#'
+#' Deletes a network profile by the network profile ARN.
+#'
+#' @usage
+#' alexaforbusiness_delete_network_profile(NetworkProfileArn)
+#'
+#' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_network_profile(
+#'   NetworkProfileArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_delete_network_profile
+alexaforbusiness_delete_network_profile <- function(NetworkProfileArn) {
+  op <- new_operation(
+    name = "DeleteNetworkProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$delete_network_profile_input(NetworkProfileArn = NetworkProfileArn)
+  output <- .alexaforbusiness$delete_network_profile_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$delete_network_profile <- alexaforbusiness_delete_network_profile
 
 #' Deletes a room profile by the profile ARN
 #'
@@ -1432,6 +1688,76 @@ alexaforbusiness_get_device <- function(DeviceArn = NULL) {
 }
 .alexaforbusiness$operations$get_device <- alexaforbusiness_get_device
 
+#' Retrieves the details of a gateway
+#'
+#' Retrieves the details of a gateway.
+#'
+#' @usage
+#' alexaforbusiness_get_gateway(GatewayArn)
+#'
+#' @param GatewayArn &#91;required&#93; The ARN of the gateway to get.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_gateway(
+#'   GatewayArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_get_gateway
+alexaforbusiness_get_gateway <- function(GatewayArn) {
+  op <- new_operation(
+    name = "GetGateway",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$get_gateway_input(GatewayArn = GatewayArn)
+  output <- .alexaforbusiness$get_gateway_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$get_gateway <- alexaforbusiness_get_gateway
+
+#' Retrieves the details of a gateway group
+#'
+#' Retrieves the details of a gateway group.
+#'
+#' @usage
+#' alexaforbusiness_get_gateway_group(GatewayGroupArn)
+#'
+#' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to get.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_gateway_group(
+#'   GatewayGroupArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_get_gateway_group
+alexaforbusiness_get_gateway_group <- function(GatewayGroupArn) {
+  op <- new_operation(
+    name = "GetGatewayGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$get_gateway_group_input(GatewayGroupArn = GatewayGroupArn)
+  output <- .alexaforbusiness$get_gateway_group_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$get_gateway_group <- alexaforbusiness_get_gateway_group
+
 #' Retrieves the configured values for the user enrollment invitation email
 #' template
 #'
@@ -1464,6 +1790,41 @@ alexaforbusiness_get_invitation_configuration <- function() {
   return(response)
 }
 .alexaforbusiness$operations$get_invitation_configuration <- alexaforbusiness_get_invitation_configuration
+
+#' Gets the network profile details by the network profile ARN
+#'
+#' Gets the network profile details by the network profile ARN.
+#'
+#' @usage
+#' alexaforbusiness_get_network_profile(NetworkProfileArn)
+#'
+#' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_profile(
+#'   NetworkProfileArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_get_network_profile
+alexaforbusiness_get_network_profile <- function(NetworkProfileArn) {
+  op <- new_operation(
+    name = "GetNetworkProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$get_network_profile_input(NetworkProfileArn = NetworkProfileArn)
+  output <- .alexaforbusiness$get_network_profile_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$get_network_profile <- alexaforbusiness_get_network_profile
 
 #' Gets the details of a room profile by profile ARN
 #'
@@ -1740,6 +2101,88 @@ alexaforbusiness_list_device_events <- function(DeviceArn, EventType = NULL, Nex
   return(response)
 }
 .alexaforbusiness$operations$list_device_events <- alexaforbusiness_list_device_events
+
+#' Retrieves a list of gateway group summaries
+#'
+#' Retrieves a list of gateway group summaries. Use GetGatewayGroup to
+#' retrieve details of a specific gateway group.
+#'
+#' @usage
+#' alexaforbusiness_list_gateway_groups(NextToken, MaxResults)
+#'
+#' @param NextToken The token used to paginate though multiple pages of gateway group
+#' summaries.
+#' @param MaxResults The maximum number of gateway group summaries to return. The default is
+#' 50.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_gateway_groups(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_list_gateway_groups
+alexaforbusiness_list_gateway_groups <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGatewayGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$list_gateway_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .alexaforbusiness$list_gateway_groups_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$list_gateway_groups <- alexaforbusiness_list_gateway_groups
+
+#' Retrieves a list of gateway summaries
+#'
+#' Retrieves a list of gateway summaries. Use GetGateway to retrieve
+#' details of a specific gateway. An optional gateway group ARN can be
+#' provided to only retrieve gateway summaries of gateways that are
+#' associated with that gateway group ARN.
+#'
+#' @usage
+#' alexaforbusiness_list_gateways(GatewayGroupArn, NextToken, MaxResults)
+#'
+#' @param GatewayGroupArn The gateway group ARN for which to list gateways.
+#' @param NextToken The token used to paginate though multiple pages of gateway summaries.
+#' @param MaxResults The maximum number of gateway summaries to return. The default is 50.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_gateways(
+#'   GatewayGroupArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_list_gateways
+alexaforbusiness_list_gateways <- function(GatewayGroupArn = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGateways",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$list_gateways_input(GatewayGroupArn = GatewayGroupArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .alexaforbusiness$list_gateways_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$list_gateways <- alexaforbusiness_list_gateways
 
 #' Lists all enabled skills in a specific skill group
 #'
@@ -2441,11 +2884,13 @@ alexaforbusiness_search_contacts <- function(Filters = NULL, SortCriteria = NULL
 #' in the response so that the remaining results can be retrieved.
 #' @param Filters The filters to use to list a specified set of devices. Supported filter
 #' keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
-#' DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-#' (ONLINE and OFFLINE).
+#' DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+#' (ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature,
+#' and FailureCode.
 #' @param SortCriteria The sort order to use in listing the specified set of devices. Supported
 #' sort keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-#' DeviceSerialNumber, and ConnectionStatus.
+#' DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+#' NetworkProfileArn, Feature, and FailureCode.
 #'
 #' @section Request syntax:
 #' ```
@@ -2487,6 +2932,69 @@ alexaforbusiness_search_devices <- function(NextToken = NULL, MaxResults = NULL,
   return(response)
 }
 .alexaforbusiness$operations$search_devices <- alexaforbusiness_search_devices
+
+#' Searches network profiles and lists the ones that meet a set of filter
+#' and sort criteria
+#'
+#' Searches network profiles and lists the ones that meet a set of filter
+#' and sort criteria.
+#'
+#' @usage
+#' alexaforbusiness_search_network_profiles(NextToken, MaxResults, Filters,
+#'   SortCriteria)
+#'
+#' @param NextToken An optional token returned from a prior request. Use this token for
+#' pagination of results from this action. If this parameter is specified,
+#' the response includes only results beyond the token, up to the value
+#' specified by MaxResults.
+#' @param MaxResults The maximum number of results to include in the response. If more
+#' results exist than the specified MaxResults value, a token is included
+#' in the response so that the remaining results can be retrieved.
+#' @param Filters The filters to use to list a specified set of network profiles. Valid
+#' filters are NetworkProfileName, Ssid, and SecurityType.
+#' @param SortCriteria The sort order to use to list the specified set of network profiles.
+#' Valid sort criteria includes NetworkProfileName, Ssid, and SecurityType.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_network_profiles(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   SortCriteria = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "ASC"|"DESC"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_search_network_profiles
+alexaforbusiness_search_network_profiles <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchNetworkProfiles",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$search_network_profiles_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, SortCriteria = SortCriteria)
+  output <- .alexaforbusiness$search_network_profiles_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$search_network_profiles <- alexaforbusiness_search_network_profiles
 
 #' Searches room profiles and lists the ones that meet a set of filter
 #' criteria
@@ -2743,6 +3251,81 @@ alexaforbusiness_search_users <- function(NextToken = NULL, MaxResults = NULL, F
 }
 .alexaforbusiness$operations$search_users <- alexaforbusiness_search_users
 
+#' Triggers an asynchronous flow to send text, SSML, or audio announcements
+#' to rooms that are identified by a search or filter
+#'
+#' Triggers an asynchronous flow to send text, SSML, or audio announcements
+#' to rooms that are identified by a search or filter.
+#'
+#' @usage
+#' alexaforbusiness_send_announcement(RoomFilters, Content,
+#'   TimeToLiveInSeconds, ClientRequestToken)
+#'
+#' @param RoomFilters &#91;required&#93; The filters to use to send an announcement to a specified list of rooms.
+#' The supported filter keys are RoomName, ProfileName, RoomArn, and
+#' ProfileArn. To send to all rooms, specify an empty RoomFilters list.
+#' @param Content &#91;required&#93; The announcement content. This can contain only one of the three
+#' possible announcement types (text, SSML or audio).
+#' @param TimeToLiveInSeconds The time to live for an announcement. Default is 300. If delivery
+#' doesn\'t occur within this time, the announcement is not delivered.
+#' @param ClientRequestToken &#91;required&#93; The unique, user-specified identifier for the request that ensures
+#' idempotency.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_announcement(
+#'   RoomFilters = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Content = list(
+#'     TextList = list(
+#'       list(
+#'         Locale = "en-US",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     SsmlList = list(
+#'       list(
+#'         Locale = "en-US",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AudioList = list(
+#'       list(
+#'         Locale = "en-US",
+#'         Location = "string"
+#'       )
+#'     )
+#'   ),
+#'   TimeToLiveInSeconds = 123,
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_send_announcement
+alexaforbusiness_send_announcement <- function(RoomFilters, Content, TimeToLiveInSeconds = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "SendAnnouncement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$send_announcement_input(RoomFilters = RoomFilters, Content = Content, TimeToLiveInSeconds = TimeToLiveInSeconds, ClientRequestToken = ClientRequestToken)
+  output <- .alexaforbusiness$send_announcement_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$send_announcement <- alexaforbusiness_send_announcement
+
 #' Sends an enrollment invitation email with a URL to a user
 #'
 #' Sends an enrollment invitation email with a URL to a user. The URL is
@@ -2780,11 +3363,25 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 }
 .alexaforbusiness$operations$send_invitation <- alexaforbusiness_send_invitation
 
-#' Resets a device and its account to the known default settings, by
-#' clearing all information and settings set by previous users
+#' Resets a device and its account to the known default settings
 #'
-#' Resets a device and its account to the known default settings, by
-#' clearing all information and settings set by previous users.
+#' Resets a device and its account to the known default settings. This
+#' clears all information and settings set by previous users in the
+#' following ways:
+#' 
+#' -   Bluetooth - This unpairs all bluetooth devices paired with your echo
+#'     device.
+#' 
+#' -   Volume - This resets the echo device\'s volume to the default value.
+#' 
+#' -   Notifications - This clears all notifications from your echo device.
+#' 
+#' -   Lists - This clears all to-do items from your echo device.
+#' 
+#' -   Settings - This internally syncs the room\'s profile (if the device
+#'     is assigned to a room), contacts, address books, delegation access
+#'     for account linking, and communications (if enabled on the room
+#'     profile).
 #'
 #' @usage
 #' alexaforbusiness_start_device_sync(RoomArn, DeviceArn, Features)
@@ -2800,7 +3397,7 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 #'   RoomArn = "string",
 #'   DeviceArn = "string",
 #'   Features = list(
-#'     "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"ALL"
+#'     "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"NETWORK_PROFILE"|"SETTINGS"|"ALL"
 #'   )
 #' )
 #' ```
@@ -3168,6 +3765,148 @@ alexaforbusiness_update_device <- function(DeviceArn = NULL, DeviceName = NULL) 
   return(response)
 }
 .alexaforbusiness$operations$update_device <- alexaforbusiness_update_device
+
+#' Updates the details of a gateway
+#'
+#' Updates the details of a gateway. If any optional field is not provided,
+#' the existing corresponding value is left unmodified.
+#'
+#' @usage
+#' alexaforbusiness_update_gateway(GatewayArn, Name, Description,
+#'   SoftwareVersion)
+#'
+#' @param GatewayArn &#91;required&#93; The ARN of the gateway to update.
+#' @param Name The updated name of the gateway.
+#' @param Description The updated description of the gateway.
+#' @param SoftwareVersion The updated software version of the gateway. The gateway automatically
+#' updates its software version during normal operation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_gateway(
+#'   GatewayArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   SoftwareVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_update_gateway
+alexaforbusiness_update_gateway <- function(GatewayArn, Name = NULL, Description = NULL, SoftwareVersion = NULL) {
+  op <- new_operation(
+    name = "UpdateGateway",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$update_gateway_input(GatewayArn = GatewayArn, Name = Name, Description = Description, SoftwareVersion = SoftwareVersion)
+  output <- .alexaforbusiness$update_gateway_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$update_gateway <- alexaforbusiness_update_gateway
+
+#' Updates the details of a gateway group
+#'
+#' Updates the details of a gateway group. If any optional field is not
+#' provided, the existing corresponding value is left unmodified.
+#'
+#' @usage
+#' alexaforbusiness_update_gateway_group(GatewayGroupArn, Name,
+#'   Description)
+#'
+#' @param GatewayGroupArn &#91;required&#93; The ARN of the gateway group to update.
+#' @param Name The updated name of the gateway group.
+#' @param Description The updated description of the gateway group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_gateway_group(
+#'   GatewayGroupArn = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_update_gateway_group
+alexaforbusiness_update_gateway_group <- function(GatewayGroupArn, Name = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateGatewayGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$update_gateway_group_input(GatewayGroupArn = GatewayGroupArn, Name = Name, Description = Description)
+  output <- .alexaforbusiness$update_gateway_group_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$update_gateway_group <- alexaforbusiness_update_gateway_group
+
+#' Updates a network profile by the network profile ARN
+#'
+#' Updates a network profile by the network profile ARN.
+#'
+#' @usage
+#' alexaforbusiness_update_network_profile(NetworkProfileArn,
+#'   NetworkProfileName, Description, CurrentPassword, NextPassword,
+#'   CertificateAuthorityArn, TrustAnchors)
+#'
+#' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
+#' @param NetworkProfileName The name of the network profile associated with a device.
+#' @param Description Detailed information about a device\'s network profile.
+#' @param CurrentPassword The current password of the Wi-Fi network.
+#' @param NextPassword The next, or subsequent, password of the Wi-Fi network. This password is
+#' asynchronously transmitted to the device and is used when the password
+#' of the network changes to NextPassword.
+#' @param CertificateAuthorityArn The ARN of the Private Certificate Authority (PCA) created in AWS
+#' Certificate Manager (ACM). This is used to issue certificates to the
+#' devices.
+#' @param TrustAnchors The root certificate(s) of your authentication server that will be
+#' installed on your devices and used to trust your authentication server
+#' during EAP negotiation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_network_profile(
+#'   NetworkProfileArn = "string",
+#'   NetworkProfileName = "string",
+#'   Description = "string",
+#'   CurrentPassword = "string",
+#'   NextPassword = "string",
+#'   CertificateAuthorityArn = "string",
+#'   TrustAnchors = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname alexaforbusiness_update_network_profile
+alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkProfileName = NULL, Description = NULL, CurrentPassword = NULL, NextPassword = NULL, CertificateAuthorityArn = NULL, TrustAnchors = NULL) {
+  op <- new_operation(
+    name = "UpdateNetworkProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .alexaforbusiness$update_network_profile_input(NetworkProfileArn = NetworkProfileArn, NetworkProfileName = NetworkProfileName, Description = Description, CurrentPassword = CurrentPassword, NextPassword = NextPassword, CertificateAuthorityArn = CertificateAuthorityArn, TrustAnchors = TrustAnchors)
+  output <- .alexaforbusiness$update_network_profile_output()
+  svc <- .alexaforbusiness$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.alexaforbusiness$operations$update_network_profile <- alexaforbusiness_update_network_profile
 
 #' Updates an existing room profile by room profile ARN
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_stop_automation_execution}
 \alias{ssm_stop_automation_execution}
-\title{Stop an Automation that is currently executing}
+\title{Stop an Automation that is currently running}
 \usage{
 ssm_stop_automation_execution(AutomationExecutionId, Type)
 }
@@ -13,7 +13,7 @@ ssm_stop_automation_execution(AutomationExecutionId, Type)
 Complete. The default type is Cancel.}
 }
 \description{
-Stop an Automation that is currently executing.
+Stop an Automation that is currently running.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_automation_execution(

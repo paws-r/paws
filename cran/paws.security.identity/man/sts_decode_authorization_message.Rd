@@ -15,26 +15,27 @@ Decodes additional information about the authorization status of a
 request from an encoded message returned in response to an AWS request.
 }
 \details{
-For example, if a user is not authorized to perform an action that he or
-she has requested, the request returns a \code{Client.UnauthorizedOperation}
-response (an HTTP 403 response). Some AWS actions additionally return an
-encoded message that can provide details about this authorization
-failure.
+For example, if a user is not authorized to perform an operation that he
+or she has requested, the request returns a
+\code{Client.UnauthorizedOperation} response (an HTTP 403 response). Some AWS
+operations additionally return an encoded message that can provide
+details about this authorization failure.
 
-Only certain AWS actions return an encoded authorization message. The
-documentation for an individual action indicates whether that action
-returns an encoded message in addition to returning an HTTP code.
+Only certain AWS operations return an encoded authorization message. The
+documentation for an individual operation indicates whether that
+operation returns an encoded message in addition to returning an HTTP
+code.
 
 The message is encoded because the details of the authorization status
 can constitute privileged information that the user who requested the
-action should not see. To decode an authorization status message, a user
-must be granted permissions via an IAM policy to request the
+operation should not see. To decode an authorization status message, a
+user must be granted permissions via an IAM policy to request the
 \code{DecodeAuthorizationMessage} (\code{sts:DecodeAuthorizationMessage}) action.
 
 The decoded message includes the following type of information:
 \itemize{
 \item Whether the request was denied due to an explicit deny or due to the
-absence of an explicit allow. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow}{Determining Whether a Request is Allowed or Denied}
+absence of an explicit allow. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow}{Determining Whether a Request is Allowed or Denied}
 in the \emph{IAM User Guide}.
 \item The principal who made the request.
 \item The requested action.

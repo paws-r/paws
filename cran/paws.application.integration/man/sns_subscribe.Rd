@@ -29,7 +29,7 @@ function.
 protocol:
 \itemize{
 \item For the \code{http} protocol, the endpoint is an URL beginning with
-"http://"
+"https://"
 \item For the \code{https} protocol, the endpoint is a URL beginning with
 "https://"
 \item For the \code{email} protocol, the endpoint is an email address

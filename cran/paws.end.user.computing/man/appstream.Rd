@@ -9,9 +9,9 @@ appstream()
 \description{
 Amazon AppStream 2.0
 
-This is the \emph{Amazon AppStream 2.0 API Reference}. This reference
-provides descriptions and syntax for each of the actions and data types
-in AppStream 2.0. AppStream 2.0 is a fully managed application streaming
+This is the \emph{Amazon AppStream 2.0 API Reference}. It provides
+descriptions and syntax for each of the actions and data types in
+AppStream 2.0. AppStream 2.0 is a fully managed application streaming
 service. You centrally manage your desktop applications on AppStream 2.0
 and securely deliver them to any computer. AppStream 2.0 manages the AWS
 resources required to host and run your applications, scales
@@ -36,6 +36,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_create_image_builder_streaming_url]{create_image_builder_streaming_url} \tab Creates a URL to start an image builder streaming session \cr
 \link[=appstream_create_stack]{create_stack} \tab Creates a stack to start streaming applications to users \cr
 \link[=appstream_create_streaming_url]{create_streaming_url} \tab Creates a temporary URL to start an AppStream 2 \cr
+\link[=appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription \cr
 \link[=appstream_create_user]{create_user} \tab Creates a new user in the user pool \cr
 \link[=appstream_delete_directory_config]{delete_directory_config} \tab Deletes the specified Directory Config object from AppStream 2 \cr
 \link[=appstream_delete_fleet]{delete_fleet} \tab Deletes the specified fleet \cr
@@ -43,14 +44,16 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_delete_image_builder]{delete_image_builder} \tab Deletes the specified image builder and releases the capacity \cr
 \link[=appstream_delete_image_permissions]{delete_image_permissions} \tab Deletes permissions for the specified private image \cr
 \link[=appstream_delete_stack]{delete_stack} \tab Deletes the specified stack \cr
+\link[=appstream_delete_usage_report_subscription]{delete_usage_report_subscription} \tab Disables usage report generation \cr
 \link[=appstream_delete_user]{delete_user} \tab Deletes a user from the user pool \cr
 \link[=appstream_describe_directory_configs]{describe_directory_configs} \tab Retrieves a list that describes one or more specified Directory Config objects for AppStream 2 \cr
 \link[=appstream_describe_fleets]{describe_fleets} \tab Retrieves a list that describes one or more specified fleets, if the fleet names are provided \cr
 \link[=appstream_describe_image_builders]{describe_image_builders} \tab Retrieves a list that describes one or more specified image builders, if the image builder names are provided\cr
 \link[=appstream_describe_image_permissions]{describe_image_permissions} \tab Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own \cr
 \link[=appstream_describe_images]{describe_images} \tab Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided \cr
-\link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the active streaming sessions for a specified stack and fleet \cr
+\link[=appstream_describe_sessions]{describe_sessions} \tab Retrieves a list that describes the streaming sessions for a specified stack and fleet \cr
 \link[=appstream_describe_stacks]{describe_stacks} \tab Retrieves a list that describes one or more specified stacks, if the stack names are provided \cr
+\link[=appstream_describe_usage_report_subscriptions]{describe_usage_report_subscriptions} \tab Retrieves a list that describes one or more usage report subscriptions \cr
 \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects \cr
 \link[=appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool \cr
 \link[=appstream_disable_user]{disable_user} \tab Disables the specified user in the user pool \cr

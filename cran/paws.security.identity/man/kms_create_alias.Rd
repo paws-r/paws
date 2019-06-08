@@ -2,33 +2,25 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_create_alias}
 \alias{kms_create_alias}
-\title{Creates a display name for a customer master key (CMK)}
+\title{Creates a display name for a customer managed customer master key (CMK)}
 \usage{
 kms_create_alias(AliasName, TargetKeyId)
 }
 \arguments{
-\item{AliasName}{[required] String that contains the display name. The name must start with the word
-"alias" followed by a forward slash (alias/). Aliases that begin with
-"alias/AWS" are reserved.}
+\item{AliasName}{[required] Specifies the alias name. This value must begin with \code{alias/} followed
+by a name, such as \code{alias/ExampleAlias}. The alias name cannot begin
+with \code{alias/aws/}. The \code{alias/aws/} prefix is reserved for AWS managed
+CMKs.}
 
-\item{TargetKeyId}{[required] Identifies the CMK for which you are creating the alias. This value
-cannot be an alias.
-
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
-
-For example:
-\itemize{
-\item Key ID: \code{1234abcd-12ab-34cd-56ef-1234567890ab}
-\item Key ARN:
-\code{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
-}
-
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+\item{TargetKeyId}{[required] Identifies the CMK to which the alias refers. Specify the key ID or the
+Amazon Resource Name (ARN) of the CMK. You cannot specify another alias.
+For help finding the key ID and ARN, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn}{Finding the Key ID and ARN}
+in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Creates a display name for a customer master key (CMK). You can use an
-alias to identify a CMK in selected operations, such as Encrypt and
-GenerateDataKey.
+Creates a display name for a customer managed customer master key (CMK).
+You can use an alias to identify a CMK in selected operations, such as
+Encrypt and GenerateDataKey.
 }
 \details{
 Each CMK can have multiple aliases, but each alias points to only one
@@ -41,11 +33,11 @@ the aliases of a CMK without affecting the CMK. Also, aliases do not
 appear in the response from the DescribeKey operation. To get the
 aliases of all CMKs, use the ListAliases operation.
 
-An alias must start with the word \code{alias} followed by a forward slash
-(\code{alias/}). The alias name can contain only alphanumeric characters,
-forward slashes (/), underscores (\_), and dashes (-). Alias names
-cannot begin with \code{aws}; that alias name prefix is reserved by Amazon
-Web Services (AWS).
+The alias name must begin with \code{alias/} followed by a name, such as
+\code{alias/ExampleAlias}. It can contain only alphanumeric characters,
+forward slashes (/), underscores (\_), and dashes (-). The alias name
+cannot begin with \code{alias/aws/}. The \code{alias/aws/} prefix is reserved for
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMKs}.
 
 The alias and the CMK it is mapped to must be in the same AWS account
 and the same region. You cannot perform this operation on an alias in a
@@ -54,7 +46,7 @@ different AWS account.
 To map an existing alias to a different CMK, call UpdateAlias.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

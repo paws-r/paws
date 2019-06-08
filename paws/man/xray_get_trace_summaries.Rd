@@ -5,15 +5,21 @@
 \title{Retrieves IDs and metadata for traces available for a specified time
 frame using an optional filter}
 \usage{
-xray_get_trace_summaries(StartTime, EndTime, Sampling, FilterExpression,
-  NextToken)
+xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
+  SamplingStrategy, FilterExpression, NextToken)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to retrieve traces.}
 
 \item{EndTime}{[required] The end of the time frame for which to retrieve traces.}
 
+\item{TimeRangeType}{A parameter to indicate whether to query trace summaries by TraceId or
+Event time.}
+
 \item{Sampling}{Set to \code{true} to get summaries for only a subset of available traces.}
+
+\item{SamplingStrategy}{A paramater to indicate whether to enable sampling on trace summaries.
+Input parameters are Name and Value.}
 
 \item{FilterExpression}{Specify a filter expression to retrieve trace summaries for services or
 requests that meet certain requirements.}
@@ -40,7 +46,7 @@ This filter expression finds traces that have an annotation named
 \code{annotation.account = "12345"}
 
 For a full list of indexed fields and keywords that you can use in
-filter expressions, see \href{http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html}{Using Filter Expressions}
+filter expressions, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html}{Using Filter Expressions}
 in the \emph{AWS X-Ray Developer Guide}.
 }
 \section{Request syntax}{
@@ -51,7 +57,12 @@ in the \emph{AWS X-Ray Developer Guide}.
   EndTime = as.POSIXct(
     "2015-01-01"
   ),
+  TimeRangeType = "TraceId"|"Event",
   Sampling = TRUE|FALSE,
+  SamplingStrategy = list(
+    Name = "PartialScan"|"FixedRate",
+    Value = 123.0
+  ),
   FilterExpression = "string",
   NextToken = "string"
 )

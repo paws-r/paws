@@ -21,7 +21,7 @@ configuration.}
 
 \item{OptionsToRemove}{Options in this list are removed from the option group.}
 
-\item{ApplyImmediately}{Indicates whether the changes should be applied immediately, or during
+\item{ApplyImmediately}{A value that indicates whether to apply the change immediately or during
 the next maintenance window for each instance associated with the option
 group.}
 }

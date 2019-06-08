@@ -31,7 +31,7 @@ the deployment and the ordering of stopping and starting tasks.}
 \item{networkConfiguration}{The network configuration for the service. This parameter is required
 for task definitions that use the \code{awsvpc} network mode to receive their
 own elastic network interface, and it is not supported for other network
-modes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 Updating a service to add a subnet to a list of existing subnets does

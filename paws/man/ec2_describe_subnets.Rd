@@ -4,7 +4,7 @@
 \alias{ec2_describe_subnets}
 \title{Describes one or more of your subnets}
 \usage{
-ec2_describe_subnets(Filters, SubnetIds, DryRun)
+ec2_describe_subnets(Filters, SubnetIds, DryRun, NextToken, MaxResults)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -51,6 +51,12 @@ Default: Describes all your subnets.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your subnets.
@@ -72,7 +78,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   SubnetIds = list(
     "string"
   ),
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

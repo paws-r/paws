@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_maintenance_window_task}
 \alias{ssm_update_maintenance_window_task}
-\title{Modifies a task assigned to a Maintenance Window}
+\title{Modifies a task assigned to a maintenance window}
 \usage{
 ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
   TaskArn, ServiceRoleArn, TaskParameters, TaskInvocationParameters,
@@ -10,7 +10,7 @@ ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
   Replace)
 }
 \arguments{
-\item{WindowId}{[required] The Maintenance Window ID that contains the task to modify.}
+\item{WindowId}{[required] The maintenance window ID that contains the task to modify.}
 
 \item{WindowTaskId}{[required] The task ID to modify.}
 
@@ -20,25 +20,25 @@ are specified using Key=tag\_name,Values=tag\_value.}
 
 \item{TaskArn}{The task ARN to modify.}
 
-\item{ServiceRoleArn}{The IAM service role ARN to modify. The system assumes this role during
-task execution.
+\item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
+running a maintenance window task. If you do not specify a service role
+ARN, Systems Manager uses your account's service-linked role. If no
+service-linked role for Systems Manager exists in your account, it is
+created when you run \code{RegisterTaskWithMaintenanceWindow}.
 
-If you do not specify a service role ARN, Systems Manager will use your
-account's service-linked role for Systems Manager by default. If no
-service-linked role for Systems Manager exists in your account, it will
-be created when you run \code{RegisterTaskWithMaintenanceWindow} without
-specifying a service role ARN.
-
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager}
-and \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?}
-in the \emph{AWS Systems Manager User Guide}.}
+For more information, see the following topics in the in the \emph{AWS
+Systems Manager User Guide}:
+\itemize{
+\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager}
+\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?}
+}}
 
 \item{TaskParameters}{The parameters to modify.
 
 \code{TaskParameters} has been deprecated. To specify parameters to pass to a
 task when it runs, instead use the \code{Parameters} option in the
 \code{TaskInvocationParameters} structure. For information about how Systems
-Manager handles these options for the supported Maintenance Window task
+Manager handles these options for the supported maintenance window task
 types, see MaintenanceWindowTaskInvocationParameters.
 
 The map has the following format:
@@ -65,7 +65,7 @@ of errors that are allowed before the task stops being scheduled.}
 logs, instead use the \code{OutputS3BucketName} and \code{OutputS3KeyPrefix}
 options in the \code{TaskInvocationParameters} structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.}
 
 \item{Name}{The new task name to specify.}
@@ -77,7 +77,7 @@ RegisterTaskWithMaintenanceWndow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
 \description{
-Modifies a task assigned to a Maintenance Window. You can't change the
+Modifies a task assigned to a maintenance window. You can't change the
 task type, but you can change the following values:
 }
 \details{

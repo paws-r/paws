@@ -2,23 +2,20 @@
 % Please edit documentation in R/kafka_operations.R
 \name{kafka_list_clusters}
 \alias{kafka_list_clusters}
-\title{Returns a list of clusters in an account}
+\title{Returns a list of all the MSK clusters in the current Region}
 \usage{
 kafka_list_clusters(ClusterNameFilter, MaxResults, NextToken)
 }
 \arguments{
-\item{ClusterNameFilter}{Specify a prefix of the name of the clusters that you want to list. The
-service lists all the clusters whose names start with this prefix.}
+\item{ClusterNameFilter}{<p>Specify a prefix of the name of the clusters that you want to list. The service lists all the clusters whose names start with this prefix.</p>}
 
-\item{MaxResults}{The maximum number of clusters to return in the response. If there are
-more clusters, the response includes a NextToken parameter.}
+\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
 
-\item{NextToken}{The paginated results marker. When the result of a ListClusters
-operation is truncated, the call returns NextToken in the response. To
-get another batch of clusters, provide this token in your next request.}
+\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
+To get the next batch, provide this token in your next request.</p>}
 }
 \description{
-Returns a list of clusters in an account.
+<p>Returns a list of all the MSK clusters in the current Region.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$list_clusters(

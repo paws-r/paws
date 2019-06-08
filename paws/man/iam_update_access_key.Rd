@@ -29,13 +29,13 @@ or vice versa. This operation can be used to disable a user's key as
 part of a key rotation workflow.
 }
 \details{
-If the \code{UserName} field is not specified, the user name is determined
+If the \code{UserName} is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request. This
 operation works for access keys under the AWS account. Consequently, you
 can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 
-For information about rotating keys, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html}{Managing Keys and Certificates}
+For information about rotating keys, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html}{Managing Keys and Certificates}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

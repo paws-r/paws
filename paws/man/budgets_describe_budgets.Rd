@@ -19,6 +19,12 @@ next set of results that you want to retrieve.}
 \description{
 Lists the budgets that are associated with an account.
 }
+\details{
+The Request Syntax section shows the \code{BudgetLimit} syntax. For
+\code{PlannedBudgetLimits}, see the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples}{Examples}
+section.
+}
 \section{Request syntax}{
 \preformatted{svc$describe_budgets(
   AccountId = "string",

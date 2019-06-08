@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_list_applications}
 \alias{kinesisanalytics_list_applications}
-\title{Returns a list of Amazon Kinesis Analytics applications in your account}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_list_applications(Limit, ExclusiveStartApplicationName)
 }
@@ -16,6 +17,12 @@ application name from the previous response to get the next page of
 applications.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Returns a list of Amazon Kinesis Analytics applications in your account.
 For each application, the response includes the application name, Amazon
 Resource Name (ARN), and status. If the response returns the
@@ -23,10 +30,9 @@ Resource Name (ARN), and status. If the response returns the
 adding the \code{ExclusiveStartApplicationName} in the request body, and set
 the value of this to the last application name from the previous
 response.
-}
-\details{
+
 If you want detailed information about a specific application, use
-DescribeApplication.
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:ListApplications} action.

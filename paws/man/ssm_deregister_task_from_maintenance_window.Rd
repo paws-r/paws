@@ -2,17 +2,17 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_deregister_task_from_maintenance_window}
 \alias{ssm_deregister_task_from_maintenance_window}
-\title{Removes a task from a Maintenance Window}
+\title{Removes a task from a maintenance window}
 \usage{
 ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window the task should be removed from.}
+\item{WindowId}{[required] The ID of the maintenance window the task should be removed from.}
 
-\item{WindowTaskId}{[required] The ID of the task to remove from the Maintenance Window.}
+\item{WindowTaskId}{[required] The ID of the task to remove from the maintenance window.}
 }
 \description{
-Removes a task from a Maintenance Window.
+Removes a task from a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_task_from_maintenance_window(

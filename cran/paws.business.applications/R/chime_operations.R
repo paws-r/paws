@@ -136,10 +136,11 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #' Accounts](https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
 #' in the *Amazon Chime Administration Guide*.
 #' 
-#' Users suspended from a `Team` account are dissociated from the account,
-#' but they can continue to use Amazon Chime as free users. To remove the
-#' suspension from suspended `Team` account users, invite them to the
-#' `Team` account again. You can use the InviteUsers action to do so.
+#' Users suspended from a `Team` account are dissasociated from the
+#' account, but they can continue to use Amazon Chime as free users. To
+#' remove the suspension from suspended `Team` account users, invite them
+#' to the `Team` account again. You can use the InviteUsers action to do
+#' so.
 #' 
 #' Users suspended from an `EnterpriseLWA` account are immediately signed
 #' out of Amazon Chime and can no longer sign in. To remove the suspension
@@ -236,7 +237,8 @@ chime_batch_unsuspend_user <- function(AccountId, UserIdList) {
 #' Updates phone number product types
 #'
 #' Updates phone number product types. Choose from Amazon Chime Business
-#' Calling and Amazon Chime Voice Connector product types.
+#' Calling and Amazon Chime Voice Connector product types. For toll-free
+#' numbers, you can use only the Amazon Chime Voice Connector product type.
 #'
 #' @usage
 #' chime_batch_update_phone_number(UpdatePhoneNumberRequestItems)
@@ -359,10 +361,51 @@ chime_create_account <- function(Name) {
 }
 .chime$operations$create_account <- chime_create_account
 
+#' Creates a bot for an Amazon Chime Enterprise account
+#'
+#' Creates a bot for an Amazon Chime Enterprise account.
+#'
+#' @usage
+#' chime_create_bot(AccountId, DisplayName, Domain)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param DisplayName &#91;required&#93; The bot display name.
+#' @param Domain The domain of the Amazon Chime Enterprise account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_bot(
+#'   AccountId = "string",
+#'   DisplayName = "string",
+#'   Domain = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_bot
+chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
+  op <- new_operation(
+    name = "CreateBot",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/bots",
+    paginator = list()
+  )
+  input <- .chime$create_bot_input(AccountId = AccountId, DisplayName = DisplayName, Domain = Domain)
+  output <- .chime$create_bot_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_bot <- chime_create_bot
+
 #' Creates an order for phone numbers to be provisioned
 #'
 #' Creates an order for phone numbers to be provisioned. Choose from Amazon
 #' Chime Business Calling and Amazon Chime Voice Connector product types.
+#' For toll-free numbers, you can use only the Amazon Chime Voice Connector
+#' product type.
 #'
 #' @usage
 #' chime_create_phone_number_order(ProductType, E164PhoneNumbers)
@@ -488,6 +531,45 @@ chime_delete_account <- function(AccountId) {
   return(response)
 }
 .chime$operations$delete_account <- chime_delete_account
+
+#' Deletes the events configuration that allows a bot to receive outgoing
+#' events
+#'
+#' Deletes the events configuration that allows a bot to receive outgoing
+#' events.
+#'
+#' @usage
+#' chime_delete_events_configuration(AccountId, BotId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_events_configuration(
+#'   AccountId = "string",
+#'   BotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_events_configuration
+chime_delete_events_configuration <- function(AccountId, BotId) {
+  op <- new_operation(
+    name = "DeleteEventsConfiguration",
+    http_method = "DELETE",
+    http_path = "/accounts/{accountId}/bots/{botId}/events-configuration",
+    paginator = list()
+  )
+  input <- .chime$delete_events_configuration_input(AccountId = AccountId, BotId = BotId)
+  output <- .chime$delete_events_configuration_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_events_configuration <- chime_delete_events_configuration
 
 #' Moves the specified phone number into the DELETION QUEUE
 #'
@@ -840,6 +922,84 @@ chime_get_account_settings <- function(AccountId) {
   return(response)
 }
 .chime$operations$get_account_settings <- chime_get_account_settings
+
+#' Retrieves details for the specified bot, such as bot email address, bot
+#' type, status, and display name
+#'
+#' Retrieves details for the specified bot, such as bot email address, bot
+#' type, status, and display name.
+#'
+#' @usage
+#' chime_get_bot(AccountId, BotId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_bot(
+#'   AccountId = "string",
+#'   BotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_bot
+chime_get_bot <- function(AccountId, BotId) {
+  op <- new_operation(
+    name = "GetBot",
+    http_method = "GET",
+    http_path = "/accounts/{accountId}/bots/{botId}",
+    paginator = list()
+  )
+  input <- .chime$get_bot_input(AccountId = AccountId, BotId = BotId)
+  output <- .chime$get_bot_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_bot <- chime_get_bot
+
+#' Gets details for an events configuration that allows a bot to receive
+#' outgoing events, such as an HTTPS endpoint or Lambda function ARN
+#'
+#' Gets details for an events configuration that allows a bot to receive
+#' outgoing events, such as an HTTPS endpoint or Lambda function ARN.
+#'
+#' @usage
+#' chime_get_events_configuration(AccountId, BotId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_events_configuration(
+#'   AccountId = "string",
+#'   BotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_events_configuration
+chime_get_events_configuration <- function(AccountId, BotId) {
+  op <- new_operation(
+    name = "GetEventsConfiguration",
+    http_method = "GET",
+    http_path = "/accounts/{accountId}/bots/{botId}/events-configuration",
+    paginator = list()
+  )
+  input <- .chime$get_events_configuration_input(AccountId = AccountId, BotId = BotId)
+  output <- .chime$get_events_configuration_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_events_configuration <- chime_get_events_configuration
 
 #' Retrieves global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
@@ -1266,6 +1426,47 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 }
 .chime$operations$list_accounts <- chime_list_accounts
 
+#' Lists the bots associated with the administrator's Amazon Chime
+#' Enterprise account ID
+#'
+#' Lists the bots associated with the administrator\'s Amazon Chime
+#' Enterprise account ID.
+#'
+#' @usage
+#' chime_list_bots(AccountId, MaxResults, NextToken)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param MaxResults The maximum number of results to return in a single call. Default is 10.
+#' @param NextToken The token to use to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_bots(
+#'   AccountId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_bots
+chime_list_bots <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListBots",
+    http_method = "GET",
+    http_path = "/accounts/{accountId}/bots",
+    paginator = list()
+  )
+  input <- .chime$list_bots_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_bots_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_bots <- chime_list_bots
+
 #' Lists the phone number orders for the administrator's Amazon Chime
 #' account
 #'
@@ -1511,6 +1712,51 @@ chime_logout_user <- function(AccountId, UserId) {
 }
 .chime$operations$logout_user <- chime_logout_user
 
+#' Creates an events configuration that allows a bot to receive outgoing
+#' events sent by Amazon Chime
+#'
+#' Creates an events configuration that allows a bot to receive outgoing
+#' events sent by Amazon Chime. Choose either an HTTPS endpoint or a Lambda
+#' function ARN. For more information, see Bot.
+#'
+#' @usage
+#' chime_put_events_configuration(AccountId, BotId,
+#'   OutboundEventsHTTPSEndpoint, LambdaFunctionArn)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#' @param OutboundEventsHTTPSEndpoint HTTPS endpoint that allows the bot to receive outgoing events.
+#' @param LambdaFunctionArn Lambda function ARN that allows the bot to receive outgoing events.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_events_configuration(
+#'   AccountId = "string",
+#'   BotId = "string",
+#'   OutboundEventsHTTPSEndpoint = "string",
+#'   LambdaFunctionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_events_configuration
+chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPSEndpoint = NULL, LambdaFunctionArn = NULL) {
+  op <- new_operation(
+    name = "PutEventsConfiguration",
+    http_method = "PUT",
+    http_path = "/accounts/{accountId}/bots/{botId}/events-configuration",
+    paginator = list()
+  )
+  input <- .chime$put_events_configuration_input(AccountId = AccountId, BotId = BotId, OutboundEventsHTTPSEndpoint = OutboundEventsHTTPSEndpoint, LambdaFunctionArn = LambdaFunctionArn)
+  output <- .chime$put_events_configuration_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_events_configuration <- chime_put_events_configuration
+
 #' Adds origination settings for the specified Amazon Chime Voice Connector
 #'
 #' Adds origination settings for the specified Amazon Chime Voice
@@ -1653,6 +1899,43 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
 }
 .chime$operations$put_voice_connector_termination_credentials <- chime_put_voice_connector_termination_credentials
 
+#' Regenerates the security token for a bot
+#'
+#' Regenerates the security token for a bot.
+#'
+#' @usage
+#' chime_regenerate_security_token(AccountId, BotId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$regenerate_security_token(
+#'   AccountId = "string",
+#'   BotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_regenerate_security_token
+chime_regenerate_security_token <- function(AccountId, BotId) {
+  op <- new_operation(
+    name = "RegenerateSecurityToken",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/bots/{botId}?operation=regenerate-security-token",
+    paginator = list()
+  )
+  input <- .chime$regenerate_security_token_input(AccountId = AccountId, BotId = BotId)
+  output <- .chime$regenerate_security_token_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$regenerate_security_token <- chime_regenerate_security_token
+
 #' Resets the personal meeting PIN for the specified user on an Amazon
 #' Chime account
 #'
@@ -1736,12 +2019,13 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 #'
 #' @usage
 #' chime_search_available_phone_numbers(AreaCode, City, Country, State,
-#'   MaxResults, NextToken)
+#'   TollFreePrefix, MaxResults, NextToken)
 #'
 #' @param AreaCode The area code used to filter results.
 #' @param City The city used to filter results.
 #' @param Country The country used to filter results.
 #' @param State The state used to filter results.
+#' @param TollFreePrefix The toll-free prefix that you use to filter results.
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
@@ -1752,6 +2036,7 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 #'   City = "string",
 #'   Country = "string",
 #'   State = "string",
+#'   TollFreePrefix = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1760,14 +2045,14 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 #' @keywords internal
 #'
 #' @rdname chime_search_available_phone_numbers
-chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, Country = NULL, State = NULL, MaxResults = NULL, NextToken = NULL) {
+chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, Country = NULL, State = NULL, TollFreePrefix = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "SearchAvailablePhoneNumbers",
     http_method = "GET",
     http_path = "/search?type=phone-numbers",
     paginator = list()
   )
-  input <- .chime$search_available_phone_numbers_input(AreaCode = AreaCode, City = City, Country = Country, State = State, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .chime$search_available_phone_numbers_input(AreaCode = AreaCode, City = City, Country = Country, State = State, TollFreePrefix = TollFreePrefix, MaxResults = MaxResults, NextToken = NextToken)
   output <- .chime$search_available_phone_numbers_output()
   svc <- .chime$service()
   request <- new_request(svc, op, input, output)
@@ -1859,6 +2144,47 @@ chime_update_account_settings <- function(AccountId, AccountSettings) {
 }
 .chime$operations$update_account_settings <- chime_update_account_settings
 
+#' Updates the status of the specified bot, such as starting or stopping
+#' the bot from running in your Amazon Chime Enterprise account
+#'
+#' Updates the status of the specified bot, such as starting or stopping
+#' the bot from running in your Amazon Chime Enterprise account.
+#'
+#' @usage
+#' chime_update_bot(AccountId, BotId, Disabled)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param BotId &#91;required&#93; The bot ID.
+#' @param Disabled When true, stops the specified bot from running in your account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_bot(
+#'   AccountId = "string",
+#'   BotId = "string",
+#'   Disabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_bot
+chime_update_bot <- function(AccountId, BotId, Disabled = NULL) {
+  op <- new_operation(
+    name = "UpdateBot",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/bots/{botId}",
+    paginator = list()
+  )
+  input <- .chime$update_bot_input(AccountId = AccountId, BotId = BotId, Disabled = Disabled)
+  output <- .chime$update_bot_output()
+  svc <- .chime$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_bot <- chime_update_bot
+
 #' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
 #'
@@ -1906,7 +2232,8 @@ chime_update_global_settings <- function(BusinessCalling, VoiceConnector) {
 #' phone number ID
 #'
 #' Updates phone number details, such as product type, for the specified
-#' phone number ID.
+#' phone number ID. For toll-free numbers, you can use only the Amazon
+#' Chime Voice Connector product type.
 #'
 #' @usage
 #' chime_update_phone_number(PhoneNumberId, ProductType)

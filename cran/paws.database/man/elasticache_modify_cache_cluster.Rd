@@ -76,7 +76,7 @@ existing Memcached nodes remain in their current Availability Zone.
 Only newly created nodes are located in different Availability Zones.
 For instructions on how to move existing Memcached nodes to different
 Availability Zones, see the \strong{Availability Zone Considerations} section
-of \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html}{Cache Node Considerations for Memcached}.}
+of \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html}{Cache Node Considerations for Memcached}.}
 
 \item{NewAvailabilityZones}{The list of Availability Zones where the new Memcached cache nodes are
 created.
@@ -110,7 +110,7 @@ If \code{cross-az} is specified, existing Memcached nodes remain in their
 current Availability Zone. Only newly created nodes can be located in
 different Availability Zones. For guidance on how to move existing
 Memcached nodes to different Availability Zones, see the \strong{Availability
-Zone Considerations} section of \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html}{Cache Node Considerations for Memcached}.
+Zone Considerations} section of \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html}{Cache Node Considerations for Memcached}.
 
 \strong{Impact of new add/remove requests upon pending requests}
 \itemize{
@@ -212,7 +212,7 @@ Default: \code{false}}
 
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the cache nodes.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.}

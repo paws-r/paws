@@ -2,9 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_discover_input_schema}
 \alias{kinesisanalytics_discover_input_schema}
-\title{Infers a schema by evaluating sample records on the specified streaming
-source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
-stream) or S3 object}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_discover_input_schema(ResourceARN, RoleARN,
   InputStartingPositionConfiguration, S3Configuration,
@@ -22,19 +21,26 @@ records from the specified streaming source discovery purposes.}
 \item{S3Configuration}{Specify this parameter to discover a schema from data in an Amazon S3
 object.}
 
-\item{InputProcessingConfiguration}{The InputProcessingConfiguration to use to preprocess the records before
-discovering the schema of the records.}
+\item{InputProcessingConfiguration}{The
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html}{InputProcessingConfiguration}
+to use to preprocess the records before discovering the schema of the
+records.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Infers a schema by evaluating sample records on the specified streaming
 source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
 stream) or S3 object. In the response, the operation returns the
 inferred schema and also the sample records that the operation used to
 infer the schema.
-}
-\details{
+
 You can use the inferred schema when configuring a streaming source for
-your application. For conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
+your application. For conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
 Note that when you create an application using the Amazon Kinesis
 Analytics console, the console uses this operation to infer a schema and
 show it in the console user interface.

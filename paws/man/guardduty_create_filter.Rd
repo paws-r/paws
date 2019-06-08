@@ -4,51 +4,65 @@
 \alias{guardduty_create_filter}
 \title{Creates a filter using the specified finding criteria}
 \usage{
-guardduty_create_filter(Action, ClientToken, Description, DetectorId,
-  FindingCriteria, Name, Rank)
+guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
+  FindingCriteria, ClientToken)
 }
 \arguments{
-\item{Action}{Specifies the action that is to be applied to the findings that match the filter.}
-
-\item{ClientToken}{The idempotency token for the create request.}
-
-\item{Description}{The description of the filter.}
-
-\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
-
-\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
+want to create a filter.}
 
 \item{Name}{[required] The name of the filter.}
 
-\item{Rank}{Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.}
+\item{Description}{The description of the filter.}
+
+\item{Action}{Specifies the action that is to be applied to the findings that match
+the filter.}
+
+\item{Rank}{Specifies the position of the filter in the list of current filters.
+Also specifies the order in which this filter is applied to the
+findings.}
+
+\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
+
+\item{ClientToken}{The idempotency token for the create request.}
 }
 \description{
 Creates a filter using the specified finding criteria.
 }
 \section{Request syntax}{
 \preformatted{svc$create_filter(
-  Action = "NOOP"|"ARCHIVE",
-  ClientToken = "string",
-  Description = "string",
   DetectorId = "string",
+  Name = "string",
+  Description = "string",
+  Action = "NOOP"|"ARCHIVE",
+  Rank = 123,
   FindingCriteria = list(
     Criterion = list(
       list(
         Eq = list(
           "string"
         ),
+        Neq = list(
+          "string"
+        ),
         Gt = 123,
         Gte = 123,
         Lt = 123,
         Lte = 123,
-        Neq = list(
+        Equals = list(
           "string"
-        )
+        ),
+        NotEquals = list(
+          "string"
+        ),
+        GreaterThan = 123,
+        GreaterThanOrEqual = 123,
+        LessThan = 123,
+        LessThanOrEqual = 123
       )
     )
   ),
-  Name = "string",
-  Rank = 123
+  ClientToken = "string"
 )
 }
 }

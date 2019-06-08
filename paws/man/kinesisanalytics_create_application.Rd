@@ -2,11 +2,12 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_create_application}
 \alias{kinesisanalytics_create_application}
-\title{Creates an Amazon Kinesis Analytics application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_create_application(ApplicationName,
   ApplicationDescription, Inputs, Outputs, CloudWatchLoggingOptions,
-  ApplicationCode)
+  ApplicationCode, Tags)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of your Amazon Kinesis Analytics application (for example,
@@ -52,14 +53,14 @@ IAM role that Amazon Kinesis Analytics can assume to write to the stream
 or Lambda function on your behalf.}
 
 \item{CloudWatchLoggingOptions}{Use this parameter to configure a CloudWatch log stream to monitor
-application configuration errors. For more information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.}
+application configuration errors. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.}
 
 \item{ApplicationCode}{One or more SQL statements that read input data, transform it, and
 generate output. For example, you can write a SQL statement that reads
 data from one in-application stream, generates a running average of the
 number of advertisement clicks by vendor, and insert resulting rows in
 another in-application stream using pumps. For more information about
-the typical pattern, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html}{Application Code}.
+the typical pattern, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html}{Application Code}.
 
 You can provide such series of SQL statements, where output of one
 statement can be used as the input for the next statement. You store
@@ -69,15 +70,26 @@ Note that the application code must create the streams with names
 specified in the \code{Outputs}. For example, if your \code{Outputs} defines
 output streams named \code{ExampleOutputStream1} and \code{ExampleOutputStream2},
 then your application code must create these streams.}
+
+\item{Tags}{A list of one or more tags to assign to the application. A tag is a
+key-value pair that identifies an application. Note that the maximum
+number of application tags includes system tags. The maximum number of
+user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management Guide}.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Creates an Amazon Kinesis Analytics application. You can configure each
 application with one streaming source as input, application code to
 process the input, and up to three destinations where you want Amazon
 Kinesis Analytics to write the output data from your application. For an
-overview, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html}{How it Works}.
-}
-\details{
+overview, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html}{How it Works}.
+
 In the input configuration, you map the streaming source to an
 in-application stream, which you can think of as a constantly updating
 table. In the mapping, you must provide a schema for the in-application
@@ -98,7 +110,7 @@ these permissions by creating IAM roles. This operation requires
 permissions to perform the \code{kinesisanalytics:CreateApplication} action.
 
 For introductory exercises to create an Amazon Kinesis Analytics
-application, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html}{Getting Started}.
+application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html}{Getting Started}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_application(
@@ -174,7 +186,13 @@ application, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/ge
       RoleARN = "string"
     )
   ),
-  ApplicationCode = "string"
+  ApplicationCode = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

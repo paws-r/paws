@@ -8,8 +8,8 @@ batch_describe_job_definitions(jobDefinitions, maxResults,
   jobDefinitionName, status, nextToken)
 }
 \arguments{
-\item{jobDefinitions}{A space-separated list of up to 100 job definition names or full Amazon
-Resource Name (ARN) entries.}
+\item{jobDefinitions}{A list of up to 100 job definition names or full Amazon Resource Name
+(ARN) entries.}
 
 \item{maxResults}{The maximum number of results returned by \code{DescribeJobDefinitions} in
 paginated output. When this parameter is used, \code{DescribeJobDefinitions}

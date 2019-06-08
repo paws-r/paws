@@ -47,8 +47,7 @@ backtrack status values:
 }
 
 The results list includes information about only the backtracks
-identified by these values. For more information about backtrack
-status values, see DBClusterBacktrack.
+identified by these values.
 }}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
@@ -61,8 +60,8 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 
 \item{Marker}{An optional pagination token provided by a previous
-DescribeDBClusterBacktracks request. If this parameter is specified, the
-response includes only records beyond the marker, up to the value
+\code{DescribeDBClusterBacktracks} request. If this parameter is specified,
+the response includes only records beyond the marker, up to the value
 specified by \code{MaxRecords}.}
 }
 \description{

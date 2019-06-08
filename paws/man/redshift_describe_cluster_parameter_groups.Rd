@@ -56,7 +56,7 @@ retrieve the description of a specific parameter group.
 }
 \details{
 For more information about parameters and parameter groups, go to
-\href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
+\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 If you specify both tag keys and tag values in the same request, Amazon

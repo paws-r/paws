@@ -38,7 +38,7 @@ NULL
 #' ```
 #' svc$create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
 #'   Phrases = list(
 #'     "string"
 #'   ),
@@ -350,7 +350,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' ```
 #' svc$start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
 #'   Media = list(
@@ -419,7 +419,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' ```
 #' svc$update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
 #'   Phrases = list(
 #'     "string"
 #'   ),

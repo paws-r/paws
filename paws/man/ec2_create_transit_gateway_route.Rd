@@ -16,7 +16,7 @@ on the most specific match.}
 
 \item{TransitGatewayAttachmentId}{The ID of the attachment.}
 
-\item{Blackhole}{Indicates whether traffic matching this route is to be dropped.}
+\item{Blackhole}{Indicates whether to drop traffic that matches this route.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

@@ -2,16 +2,15 @@
 % Please edit documentation in R/iot1clickdevicesservice_operations.R
 \name{iot1clickdevicesservice_list_tags_for_resource}
 \alias{iot1clickdevicesservice_list_tags_for_resource}
-\title{List all tags on an AWS IoT 1-Click resource}
+\title{Lists the tags associated with the specified resource ARN}
 \usage{
 iot1clickdevicesservice_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The AWS IoT 1-Click resource with tags to be listed. This value is an
-Amazon Resource Name (ARN).}
+\item{ResourceArn}{[required] The ARN of the resource.}
 }
 \description{
-List all tags on an AWS IoT 1-Click resource.
+Lists the tags associated with the specified resource ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

@@ -54,7 +54,7 @@ stack set; to add or delete a parameter itself, use \code{UpdateStackSet} to
 update the stack set template. If you add a parameter to a template,
 before you can override the parameter value specified in the stack set
 you must first use
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
 to update all stack instances with the updated template and parameter
 value specified in the stack set. Once a stack instance has been updated
 with the new parameter, you can then override the parameter value using
@@ -82,18 +82,18 @@ stack in a specific account and region.
 \details{
 You can only update stack instances in regions and accounts where they
 already exist; to create additional stack instances, use
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.
 
 During stack set updates, any parameters overridden for a stack instance
 are not updated, but retain their overridden value.
 
 You can only update the parameter \emph{values} that are specified in the
 stack set; to add or delete a parameter itself, use
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
 to update the stack set template. If you add a parameter to a template,
 before you can override the parameter value specified in the stack set
 you must first use
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
 to update all stack instances with the updated template and parameter
 value specified in the stack set. Once a stack instance has been updated
 with the new parameter, you can then override the parameter value using

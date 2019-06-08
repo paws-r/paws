@@ -2,12 +2,12 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_conversion_tasks}
 \alias{ec2_describe_conversion_tasks}
-\title{Describes one or more of your conversion tasks}
+\title{Describes the specified conversion tasks or all your conversion tasks}
 \usage{
 ec2_describe_conversion_tasks(ConversionTaskIds, DryRun)
 }
 \arguments{
-\item{ConversionTaskIds}{One or more conversion task IDs.}
+\item{ConversionTaskIds}{The conversion task IDs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -15,8 +15,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of your conversion tasks. For more information,
-see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
+Describes the specified conversion tasks or all your conversion tasks.
+For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
 }
 \details{
 For information about the import manifest referenced by this API action,

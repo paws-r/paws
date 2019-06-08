@@ -33,22 +33,22 @@ Constraints:
 
 Example: \code{my-cluster2}}
 
-\item{ApplyImmediately}{A value that specifies whether the modifications in this request and any
+\item{ApplyImmediately}{A value that indicates whether the modifications in this request and any
 pending modifications are asynchronously applied as soon as possible,
 regardless of the \code{PreferredMaintenanceWindow} setting for the DB
-cluster. If this parameter is set to \code{false}, changes to the DB cluster
-are applied during the next maintenance window.
+cluster. If this parameter is disabled, changes to the DB cluster are
+applied during the next maintenance window.
 
 The \code{ApplyImmediately} parameter only affects the
 \code{EnableIAMDatabaseAuthentication}, \code{MasterUserPassword}, and
-\code{NewDBClusterIdentifier} values. If you set the \code{ApplyImmediately}
-parameter value to false, then changes to the
-\code{EnableIAMDatabaseAuthentication}, \code{MasterUserPassword}, and
-\code{NewDBClusterIdentifier} values are applied during the next maintenance
-window. All other changes are applied immediately, regardless of the
-value of the \code{ApplyImmediately} parameter.
+\code{NewDBClusterIdentifier} values. If the \code{ApplyImmediately} parameter is
+disabled, then changes to the \code{EnableIAMDatabaseAuthentication},
+\code{MasterUserPassword}, and \code{NewDBClusterIdentifier} values are applied
+during the next maintenance window. All other changes are applied
+immediately, regardless of the value of the \code{ApplyImmediately}
+parameter.
 
-Default: \code{false}}
+By default, this parameter is disabled.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must
 specify a minimum value of 1.
@@ -78,11 +78,11 @@ Constraints: Must contain from 8 to 41 characters.}
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
 specified option group. Changing this parameter doesn't result in an
 outage except in the following case, and the change is applied during
-the next maintenance window unless the \code{ApplyImmediately} parameter is
-set to \code{true} for this request. If the parameter change results in an
-option group that enables OEM, this change can cause a brief
-(sub-second) period during which new connections are rejected but
-existing connections are not interrupted.
+the next maintenance window unless the \code{ApplyImmediately} is enabled for
+this request. If the parameter change results in an option group that
+enables OEM, this change can cause a brief (sub-second) period during
+which new connections are rejected but existing connections are not
+interrupted.
 
 Permanent options can't be removed from an option group. The option
 group can't be removed from a DB cluster once it is associated with a
@@ -119,10 +119,9 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -140,22 +139,18 @@ CloudWatch Logs for a specific DB cluster.}
 
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
 Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the ApplyImmediately parameter
-is set to true.
+during the next maintenance window unless \code{ApplyImmediately} is enabled.
 
-For a list of valid engine versions, see CreateDBCluster, or call
-DescribeDBEngineVersions.}
+For a list of valid engine versions, use DescribeDBEngineVersions.}
 
 \item{ScalingConfiguration}{The scaling properties of the DB cluster. You can only modify scaling
 properties for DB clusters in \code{serverless} DB engine mode.}
 
-\item{DeletionProtection}{Indicates if the DB cluster has deletion protection enabled. The
-database can't be deleted when this value is set to true.}
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 
-\item{EnableHttpEndpoint}{HTTP endpoint functionality is in beta for Aurora Serverless and is
-subject to change.
-
-A value that indicates whether to enable the HTTP endpoint for an Aurora
+\item{EnableHttpEndpoint}{A value that indicates whether to enable the HTTP endpoint for an Aurora
 Serverless DB cluster. By default, the HTTP endpoint is disabled.
 
 When enabled, the HTTP endpoint provides a connectionless web service
@@ -163,11 +158,11 @@ API for running SQL queries on the Aurora Serverless DB cluster. You can
 also query your database from inside the RDS console with the query
 editor.
 
-For more information about Aurora Serverless, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the DB cluster to snapshots of the DB
-cluster, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
+snapshots of the DB cluster. The default is not to copy them.}
 }
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or
@@ -209,7 +204,8 @@ This action only applies to Aurora DB clusters.
     MinCapacity = 123,
     MaxCapacity = 123,
     AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
+    SecondsUntilAutoPause = 123,
+    TimeoutAction = "string"
   ),
   DeletionProtection = TRUE|FALSE,
   EnableHttpEndpoint = TRUE|FALSE,

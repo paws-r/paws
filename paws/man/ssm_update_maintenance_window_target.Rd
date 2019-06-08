@@ -2,20 +2,20 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_maintenance_window_target}
 \alias{ssm_update_maintenance_window_target}
-\title{Modifies the target of an existing Maintenance Window}
+\title{Modifies the target of an existing maintenance window}
 \usage{
 ssm_update_maintenance_window_target(WindowId, WindowTargetId, Targets,
   OwnerInformation, Name, Description, Replace)
 }
 \arguments{
-\item{WindowId}{[required] The Maintenance Window ID with which to modify the target.}
+\item{WindowId}{[required] The maintenance window ID with which to modify the target.}
 
 \item{WindowTargetId}{[required] The target ID to modify.}
 
 \item{Targets}{The targets to add or replace.}
 
 \item{OwnerInformation}{User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this Maintenance Window.}
+raised while running tasks for these targets in this maintenance window.}
 
 \item{Name}{A name for the update.}
 
@@ -26,7 +26,7 @@ RegisterTargetWithMaintenanceWindow action are also required for this
 API request. Optional fields that are not specified are set to null.}
 }
 \description{
-Modifies the target of an existing Maintenance Window. You can't change
+Modifies the target of an existing maintenance window. You can't change
 the target type, but you can change the following:
 }
 \details{

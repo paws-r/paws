@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_update_security_group_rule_descriptions_egress}
 \alias{ec2_update_security_group_rule_descriptions_egress}
-\title{[EC2-VPC only] Updates the description of an egress (outbound)
+\title{[VPC only] Updates the description of an egress (outbound)
 security group rule}
 \usage{
 ec2_update_security_group_rule_descriptions_egress(DryRun, GroupId,
@@ -24,8 +24,8 @@ the security group ID or the security group name in the request.}
 \item{IpPermissions}{[required] The IP permissions for the security group rule.}
 }
 \description{
-[EC2-VPC only] Updates the description of an egress (outbound)
-security group rule. You can replace an existing description, or add a
+[VPC only] Updates the description of an egress (outbound) security
+group rule. You can replace an existing description, or add a
 description to a rule that did not have one previously.
 }
 \details{

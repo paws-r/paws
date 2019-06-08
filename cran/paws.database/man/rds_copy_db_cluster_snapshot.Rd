@@ -97,8 +97,9 @@ and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{CopyTags}{True to copy all tags from the source DB cluster snapshot to the target
-DB cluster snapshot, and otherwise false. The default is false.}
+\item{CopyTags}{A value that indicates whether to copy all tags from the source DB
+cluster snapshot to the target DB cluster snapshot. By default, tags are
+not copied.}
 
 \item{Tags}{}
 

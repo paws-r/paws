@@ -15,12 +15,15 @@ history.}
 
 \item{maxResults}{The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned nextToken
-value. The action execution history is limited to the most recent 12
-months, based on action execution start times. Default value is 100.}
+value. Action execution history is retained for up to 12 months, based
+on action execution start times. Default value is 100.
 
-\item{nextToken}{The token that was returned from the previous ListActionExecutions call,
-which can be used to return the next set of action executions in the
-list.}
+Detailed execution history is available for executions run on or after
+February 21, 2019.}
+
+\item{nextToken}{The token that was returned from the previous \code{ListActionExecutions}
+call, which can be used to return the next set of action executions in
+the list.}
 }
 \description{
 Lists the action executions that have occurred in a pipeline.

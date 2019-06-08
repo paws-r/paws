@@ -13,7 +13,7 @@ To find the ID of a custom key store, use the DescribeCustomKeyStores
 operation.}
 }
 \description{
-Connects or reconnects a \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}
+Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 to its associated AWS CloudHSM cluster.
 }
 \details{
@@ -23,8 +23,11 @@ disconnect and reconnect a custom key store at any time.
 
 To connect a custom key store, its associated AWS CloudHSM cluster must
 have at least one active HSM. To get the number of active HSMs in a
-cluster, use the DescribeClusters operation. To add HSMs to the cluster,
-use the CreateHsm operation.
+cluster, use the
+\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
+operation. To add HSMs to the cluster, use the
+\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html}{CreateHsm}
+operation.
 
 The connection process can take an extended amount of time to complete;
 up to 20 minutes. This operation starts the connection process, but it
@@ -37,7 +40,7 @@ use the DescribeCustomKeyStores operation.
 During the connection process, AWS KMS finds the AWS CloudHSM cluster
 that is associated with the custom key store, creates the connection
 infrastructure, connects to the cluster, logs into the AWS CloudHSM
-client as the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user}
+client as the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user}
 (CU), and rotates its password.
 
 The \code{ConnectCustomKeyStore} operation might fail for various reasons. To
@@ -51,7 +54,7 @@ UpdateCustomKeyStore operation if necessary, and then use
 \code{ConnectCustomKeyStore} again.
 
 If you are having trouble connecting or disconnecting a custom key
-store, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
+store, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

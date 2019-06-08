@@ -2,17 +2,18 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instances}
 \alias{ec2_describe_instances}
-\title{Describes one or more of your instances}
+\title{Describes the specified instances or all of your instances}
 \usage{
 ec2_describe_instances(Filters, InstanceIds, DryRun, MaxResults,
   NextToken)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{affinity} - The affinity setting for an instance running on a
 Dedicated Host (\code{default} \| \code{host}).
-\item \code{architecture} - The instance architecture (\code{i386} \| \code{x86_64}).
+\item \code{architecture} - The instance architecture (\code{i386} \| \code{x86_64} \|
+\code{arm64}).
 \item \code{availability-zone} - The Availability Zone of the instance.
 \item \code{block-device-mapping.attach-time} - The attach time for an EBS
 volume mapped to the instance, for example,
@@ -137,8 +138,8 @@ interface.
 instance.
 \item \code{placement-partition-number} - The partition in which the instance
 is located.
-\item \code{platform} - The platform. Use \code{windows} if you have Windows
-instances; otherwise, leave blank.
+\item \code{platform} - The platform. To list only Windows instances, use
+\code{windows}.
 \item \code{private-dns-name} - The private IPv4 DNS name of the instance.
 \item \code{private-ip-address} - The private IPv4 address of the instance.
 \item \code{product-code} - The product code associated with the AMI used to
@@ -188,7 +189,7 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC that the instance is running in.
 }}
 
-\item{InstanceIds}{One or more instance IDs.
+\item{InstanceIds}{The instance IDs.
 
 Default: Describes all your instances.}
 
@@ -205,7 +206,7 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes one or more of your instances.
+Describes the specified instances or all of your instances.
 }
 \details{
 If you specify one or more instance IDs, Amazon EC2 returns information

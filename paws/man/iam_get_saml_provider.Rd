@@ -11,7 +11,7 @@ iam_get_saml_provider(SAMLProviderArn)
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider resource object in
 IAM to get information about.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
 \description{
@@ -19,7 +19,7 @@ Returns the SAML provider metadocument that was uploaded when the IAM
 SAML provider resource object was created or updated.
 }
 \details{
-This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_saml_provider(

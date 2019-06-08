@@ -37,9 +37,9 @@ Lists the current handshakes that are associated with the account of the
 requesting user.
 }
 \details{
-Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+Handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED} appear in the
 results of this API for only 30 days after changing to that state. After
-that they are deleted and no longer accessible.
+that, they're deleted and no longer accessible.
 
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \code{List*} operation. These operations can occasionally return an

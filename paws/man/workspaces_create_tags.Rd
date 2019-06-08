@@ -2,18 +2,19 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_create_tags}
 \alias{workspaces_create_tags}
-\title{Creates the specified tags for the specified WorkSpace}
+\title{Creates the specified tags for the specified WorkSpaces resource}
 \usage{
 workspaces_create_tags(ResourceId, Tags)
 }
 \arguments{
-\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use
-DescribeWorkspaces.}
+\item{ResourceId}{[required] The identifier of the WorkSpaces resource. The supported resource types
+are WorkSpaces, registered directories, images, custom bundles, and IP
+access control groups.}
 
-\item{Tags}{[required] The tags. Each WorkSpace can have a maximum of 50 tags.}
+\item{Tags}{[required] The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \description{
-Creates the specified tags for the specified WorkSpace.
+Creates the specified tags for the specified WorkSpaces resource.
 }
 \section{Request syntax}{
 \preformatted{svc$create_tags(

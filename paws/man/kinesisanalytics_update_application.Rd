@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_update_application}
 \alias{kinesisanalytics_update_application}
-\title{Updates an existing Amazon Kinesis Analytics application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_update_application(ApplicationName,
   CurrentApplicationVersionId, ApplicationUpdate)
@@ -10,17 +11,23 @@ kinesisanalytics_update_application(ApplicationName,
 \arguments{
 \item{ApplicationName}{[required] Name of the Amazon Kinesis Analytics application to update.}
 
-\item{CurrentApplicationVersionId}{[required] The current application version ID. You can use the DescribeApplication
+\item{CurrentApplicationVersionId}{[required] The current application version ID. You can use the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
 operation to get this value.}
 
 \item{ApplicationUpdate}{[required] Describes application updates.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Updates an existing Amazon Kinesis Analytics application. Using this
 API, you can update application code, input configuration, and output
 configuration.
-}
-\details{
+
 Note that Amazon Kinesis Analytics updates the
 \code{CurrentApplicationVersionId} each time you update your application.
 

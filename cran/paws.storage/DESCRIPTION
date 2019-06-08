@@ -1,6 +1,6 @@
 Package: paws.storage
 Title: Amazon Web Services Storage APIs
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

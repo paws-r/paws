@@ -7,7 +7,8 @@
 appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
-  EnableDefaultInternetAccess, DomainJoinInfo, AttributesToDelete)
+  EnableDefaultInternetAccess, DomainJoinInfo,
+  IdleDisconnectTimeoutInSeconds, AttributesToDelete)
 }
 \arguments{
 \item{ImageName}{The name of the image used to create the fleet.}
@@ -45,15 +46,21 @@ instance types are available:
 
 \item{VpcConfig}{The VPC configuration for the fleet.}
 
-\item{MaxUserDurationInSeconds}{The maximum time that a streaming session can run, in seconds. Specify a
-value between 600 and 360000. By default, the value is 900 seconds (15
-minutes).}
+\item{MaxUserDurationInSeconds}{The maximum amount of time that a streaming session can remain active,
+in seconds. If users are still connected to a streaming instance five
+minutes before this limit is reached, they are prompted to save any open
+documents before being disconnected. After this time elapses, the
+instance is terminated and replaced by a new instance.
 
-\item{DisconnectTimeoutInSeconds}{The time after disconnection when a session is considered to have ended,
-in seconds. If a user who was disconnected reconnects within this time
-interval, the user is connected to their previous session. Specify a
-value between 60 and 360000. By default, the value is 900 seconds (15
-minutes).}
+Specify a value between 600 and 360000.}
+
+\item{DisconnectTimeoutInSeconds}{The amount of time that a streaming session remains active after users
+disconnect. If users try to reconnect to the streaming session after a
+disconnection or network interruption within this time interval, they
+are connected to their previous session. Otherwise, they are connected
+to a new session with a new streaming instance.
+
+Specify a value between 60 and 360000.}
 
 \item{DeleteVpcConfig}{Deletes the VPC association for the specified fleet.}
 
@@ -66,6 +73,31 @@ minutes).}
 \item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join
 the fleet to a Microsoft Active Directory domain.}
 
+\item{IdleDisconnectTimeoutInSeconds}{The amount of time that users can be idle (inactive) before they are
+disconnected from their streaming session and the
+\code{DisconnectTimeoutInSeconds} time interval begins. Users are notified
+before they are disconnected due to inactivity. If users try to
+reconnect to the streaming session before the time interval specified in
+\code{DisconnectTimeoutInSeconds} elapses, they are connected to their
+previous session. Users are considered idle when they stop providing
+keyboard or mouse input during their streaming session. File uploads and
+downloads, audio in, audio out, and pixels changing do not qualify as
+user activity. If users continue to be idle after the time interval in
+\code{IdleDisconnectTimeoutInSeconds} elapses, they are disconnected.
+
+To prevent users from being disconnected due to inactivity, specify a
+value of 0. Otherwise, specify a value between 60 and 3600. The default
+value is 900.
+
+If you enable this feature, we recommend that you specify a value that
+corresponds exactly to a whole number of minutes (for example, 60, 120,
+and 180). If you don't do this, the value is rounded to the nearest
+minute. For example, if you specify a value of 70, users are
+disconnected after 1 minute of inactivity. If you specify a value that
+is at the midpoint between two different minutes, the value is rounded
+up. For example, if you specify a value of 90, users are disconnected
+after 2 minutes of inactivity.}
+
 \item{AttributesToDelete}{The fleet attributes to delete.}
 }
 \description{
@@ -74,8 +106,9 @@ Updates the specified fleet.
 \details{
 If the fleet is in the \code{STOPPED} state, you can update any attribute
 except the fleet name. If the fleet is in the \code{RUNNING} state, you can
-update the \code{DisplayName} and \code{ComputeCapacity} attributes. If the fleet
-is in the \code{STARTING} or \code{STOPPING} state, you can't update it.
+update the \code{DisplayName}, \code{ComputeCapacity}, \code{ImageARN}, \code{ImageName},
+and \code{DisconnectTimeoutInSeconds} attributes. If the fleet is in the
+\code{STARTING} or \code{STOPPING} state, you can't update it.
 }
 \section{Request syntax}{
 \preformatted{svc$update_fleet(
@@ -104,6 +137,7 @@ is in the \code{STARTING} or \code{STOPPING} state, you can't update it.
     DirectoryName = "string",
     OrganizationalUnitDistinguishedName = "string"
   ),
+  IdleDisconnectTimeoutInSeconds = 123,
   AttributesToDelete = list(
     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
   )

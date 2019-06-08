@@ -27,16 +27,16 @@ standalone account. When you create an account in an organization
 using the AWS Organizations console, API, or CLI commands, the
 information required of standalone accounts is \emph{not} automatically
 collected. For each account that you want to make standalone, you
-must accept the End User License Agreement (EULA), choose a support
+must accept the end user license agreement (EULA), choose a support
 plan, provide and verify the required contact information, and
 provide a current payment method. AWS uses the payment method to
 charge for any billable (not free tier) AWS activity that occurs
-while the account is not attached to an organization. Follow the
+while the account isn't attached to an organization. Follow the
 steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 \item You can leave an organization only after you enable IAM user access
 to billing in your account. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
-in the \emph{AWS Billing and Cost Management User Guide}.
+in the \emph{AWS Billing and Cost Management User Guide.}
 }
 }
 \examples{

@@ -19,12 +19,14 @@ in the response so that the remaining results can be retrieved.}
 
 \item{Filters}{The filters to use to list a specified set of devices. Supported filter
 keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName,
-DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-(ONLINE and OFFLINE).}
+DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+(ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature,
+and FailureCode.}
 
 \item{SortCriteria}{The sort order to use in listing the specified set of devices. Supported
 sort keys are DeviceName, DeviceStatus, RoomName, DeviceType,
-DeviceSerialNumber, and ConnectionStatus.}
+DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+NetworkProfileArn, Feature, and FailureCode.}
 }
 \description{
 Searches devices and lists the ones that meet a set of filter criteria.

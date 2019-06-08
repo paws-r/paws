@@ -10,9 +10,11 @@ guardduty_update_detector(DetectorId, Enable,
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to update.}
 
-\item{Enable}{Updated boolean value for the detector that specifies whether the detector is enabled.}
+\item{Enable}{Updated boolean value for the detector that specifies whether the
+detector is enabled.}
 
-\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates published.}
+\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates
+published.}
 }
 \description{
 Updates an Amazon GuardDuty detector specified by the detectorId.

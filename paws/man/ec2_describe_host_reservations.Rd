@@ -9,7 +9,7 @@ ec2_describe_host_reservations(Filter, HostReservationIdSet, MaxResults,
   NextToken)
 }
 \arguments{
-\item{Filter}{One or more filters.
+\item{Filter}{The filters.
 \itemize{
 \item \code{instance-family} - The instance family (for example, \code{m4}).
 \item \code{payment-option} - The payment option (\code{NoUpfront} \|
@@ -26,7 +26,7 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 
-\item{HostReservationIdSet}{One or more host reservation IDs.}
+\item{HostReservationIdSet}{The host reservation IDs.}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with

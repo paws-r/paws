@@ -144,7 +144,7 @@ mq_create_configuration <- function(EngineType = NULL, EngineVersion = NULL, Nam
 #' @usage
 #' mq_create_tags(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param Tags The key-value pair for the resource tag.
 #'
 #' @section Request syntax:
@@ -256,14 +256,14 @@ mq_delete_broker <- function(BrokerId) {
 }
 .mq$operations$delete_broker <- mq_delete_broker
 
-#' Remove a tag from a resource
+#' Removes a tag from a resource
 #'
-#' Remove a tag from a resource.
+#' Removes a tag from a resource.
 #'
 #' @usage
 #' mq_delete_tags(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param TagKeys &#91;required&#93; An array of tag keys to delete
 #'
 #' @section Request syntax:
@@ -366,6 +366,87 @@ mq_describe_broker <- function(BrokerId) {
   return(response)
 }
 .mq$operations$describe_broker <- mq_describe_broker
+
+#' Describe available engine types and versions
+#'
+#' Describe available engine types and versions.
+#'
+#' @usage
+#' mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
+#'
+#' @param EngineType Filter response by engine type.
+#' @param MaxResults The maximum number of engine types that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_broker_engine_types(
+#'   EngineType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mq_describe_broker_engine_types
+mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeBrokerEngineTypes",
+    http_method = "GET",
+    http_path = "/v1/broker-engine-types",
+    paginator = list()
+  )
+  input <- .mq$describe_broker_engine_types_input(EngineType = EngineType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mq$describe_broker_engine_types_output()
+  svc <- .mq$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$describe_broker_engine_types <- mq_describe_broker_engine_types
+
+#' Describe available broker instance options
+#'
+#' Describe available broker instance options.
+#'
+#' @usage
+#' mq_describe_broker_instance_options(EngineType, HostInstanceType,
+#'   MaxResults, NextToken)
+#'
+#' @param EngineType Filter response by engine type.
+#' @param HostInstanceType Filter response by host instance type.
+#' @param MaxResults The maximum number of instance options that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
+#' @param NextToken The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_broker_instance_options(
+#'   EngineType = "string",
+#'   HostInstanceType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mq_describe_broker_instance_options
+mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeBrokerInstanceOptions",
+    http_method = "GET",
+    http_path = "/v1/broker-instance-options",
+    paginator = list()
+  )
+  input <- .mq$describe_broker_instance_options_input(EngineType = EngineType, HostInstanceType = HostInstanceType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mq$describe_broker_instance_options_output()
+  svc <- .mq$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$describe_broker_instance_options <- mq_describe_broker_instance_options
 
 #' Returns information about the specified configuration
 #'
@@ -598,7 +679,7 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @usage
 #' mq_list_tags(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; the Amazon Resource Name (ARN)
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #'
 #' @section Request syntax:
 #' ```

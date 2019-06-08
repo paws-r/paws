@@ -7,28 +7,39 @@
 kinesisanalytics()
 }
 \description{
-Amazon Kinesis Analytics
+\strong{Overview}
+
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+
+This is the \emph{Amazon Kinesis Analytics v1 API Reference}. The Amazon
+Kinesis Analytics Developer Guide provides additional information.
 }
 \section{Operations}{
 
 \tabular{ll}{
-\link[=kinesisanalytics_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option} \tab Adds a CloudWatch log stream to monitor application configuration errors \cr
-\link[=kinesisanalytics_add_application_input]{add_application_input} \tab Adds a streaming source to your Amazon Kinesis application \cr
-\link[=kinesisanalytics_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab Adds an InputProcessingConfiguration to an application \cr
-\link[=kinesisanalytics_add_application_output]{add_application_output} \tab Adds an external destination to your Amazon Kinesis Analytics application \cr
-\link[=kinesisanalytics_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing application \cr
-\link[=kinesisanalytics_create_application]{create_application} \tab Creates an Amazon Kinesis Analytics application \cr
-\link[=kinesisanalytics_delete_application]{delete_application} \tab Deletes the specified application \cr
-\link[=kinesisanalytics_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab Deletes a CloudWatch log stream from an application \cr
-\link[=kinesisanalytics_delete_application_input_processing_configuration]{delete_application_input_processing_configuration} \tab Deletes an InputProcessingConfiguration from an input \cr
-\link[=kinesisanalytics_delete_application_output]{delete_application_output} \tab Deletes output destination configuration from your application configuration \cr
-\link[=kinesisanalytics_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified application configuration \cr
-\link[=kinesisanalytics_describe_application]{describe_application} \tab Returns information about a specific Amazon Kinesis Analytics application \cr
-\link[=kinesisanalytics_discover_input_schema]{discover_input_schema} \tab Infers a schema by evaluating sample records on the specified streaming source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream) or S3 object\cr
-\link[=kinesisanalytics_list_applications]{list_applications} \tab Returns a list of Amazon Kinesis Analytics applications in your account \cr
-\link[=kinesisanalytics_start_application]{start_application} \tab Starts the specified Amazon Kinesis Analytics application \cr
-\link[=kinesisanalytics_stop_application]{stop_application} \tab Stops the application from processing input data \cr
-\link[=kinesisanalytics_update_application]{update_application} \tab Updates an existing Amazon Kinesis Analytics application
+\link[=kinesisanalytics_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_add_application_input]{add_application_input} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_add_application_output]{add_application_output} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_add_application_reference_data_source]{add_application_reference_data_source} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_create_application]{create_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_delete_application]{delete_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_delete_application_input_processing_configuration]{delete_application_input_processing_configuration} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_delete_application_output]{delete_application_output} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_delete_application_reference_data_source]{delete_application_reference_data_source} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_describe_application]{describe_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_discover_input_schema]{discover_input_schema} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_list_applications]{list_applications} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application \cr
+\link[=kinesisanalytics_start_application]{start_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_stop_application]{stop_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
+\link[=kinesisanalytics_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Analytics application \cr
+\link[=kinesisanalytics_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Analytics application \cr
+\link[=kinesisanalytics_update_application]{update_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications
 }
 }
 

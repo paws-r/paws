@@ -7,10 +7,12 @@
 codedeploy_batch_get_applications(applicationNames)
 }
 \arguments{
-\item{applicationNames}{[required] A list of application names separated by spaces.}
+\item{applicationNames}{[required] A list of application names separated by spaces. The maximum number of
+application names you can specify is 25.}
 }
 \description{
-Gets information about one or more applications.
+Gets information about one or more applications. The maximum number of
+applications that can be returned is 25.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_applications(

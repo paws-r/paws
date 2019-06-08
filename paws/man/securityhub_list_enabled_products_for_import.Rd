@@ -2,20 +2,23 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_enabled_products_for_import}
 \alias{securityhub_list_enabled_products_for_import}
-\title{Lists all Security Hub-integrated third-party findings providers}
+\title{Lists all findings-generating solutions (products) whose findings you
+have subscribed to receive in Security Hub}
 \usage{
 securityhub_list_enabled_products_for_import(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first
-call to the ListEnabledProductsForImport operation. For subsequent calls
-to the operation, fill nextToken in the request with the value of
-NextToken from the previous response to continue listing data.}
+\item{NextToken}{Paginates results. On your first call to the
+\code{ListEnabledProductsForImport} operation, set the value of this
+parameter to \code{NULL}. For subsequent calls to the operation, fill
+\code{nextToken} in the request with the value of \code{NextToken} from the
+previous response to continue listing data.}
 
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of items that you want in the response.}
 }
 \description{
-Lists all Security Hub-integrated third-party findings providers.
+Lists all findings-generating solutions (products) whose findings you
+have subscribed to receive in Security Hub.
 }
 \section{Request syntax}{
 \preformatted{svc$list_enabled_products_for_import(

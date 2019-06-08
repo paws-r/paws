@@ -71,8 +71,8 @@ can't use encryption keys from one AWS Region in another AWS Region.}
 
 \item{Tags}{}
 
-\item{CopyTags}{True to copy all tags from the source DB snapshot to the target DB
-snapshot, and otherwise false. The default is false.}
+\item{CopyTags}{A value that indicates whether to copy all tags from the source DB
+snapshot to the target DB snapshot. By default, tags are not copied.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the
 \code{CopyDBSnapshot} API action in the source AWS Region that contains the

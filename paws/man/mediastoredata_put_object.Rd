@@ -5,7 +5,7 @@
 \title{Uploads an object to the specified path}
 \usage{
 mediastoredata_put_object(Body, Path, ContentType, CacheControl,
-  StorageClass)
+  StorageClass, UploadAvailability)
 }
 \arguments{
 \item{Body}{[required] The bytes to be stored.}
@@ -48,10 +48,21 @@ Headers with a custom user-defined value are also accepted.}
 \item{StorageClass}{Indicates the storage class of a \code{Put} request. Defaults to
 high-performance temporal storage class, and objects are persisted into
 durable storage shortly after being received.}
+
+\item{UploadAvailability}{Indicates the availability of an object while it is still uploading. If
+the value is set to \code{streaming}, the object is available for downloading
+after some initial buffering but before the object is uploaded
+completely. If the value is set to \code{standard}, the object is available
+for downloading only when it is uploaded completely. The default value
+for this header is \code{standard}.
+
+To use this header, you must also set the HTTP \code{Transfer-Encoding}
+header to \code{chunked}.}
 }
 \description{
 Uploads an object to the specified path. Object sizes are limited to 25
-MB.
+MB for standard upload availability and 10 MB for streaming upload
+availability.
 }
 \section{Request syntax}{
 \preformatted{svc$put_object(
@@ -59,7 +70,8 @@ MB.
   Path = "string",
   ContentType = "string",
   CacheControl = "string",
-  StorageClass = "TEMPORAL"
+  StorageClass = "TEMPORAL",
+  UploadAvailability = "STANDARD"|"STREAMING"
 )
 }
 }

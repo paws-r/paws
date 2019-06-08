@@ -14,7 +14,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{Path}{The path to the instance profile. For more information about paths, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -29,11 +29,11 @@ lowercased letters.}
 }
 \description{
 Creates a new instance profile. For information about instance profiles,
-go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \details{
 For information about the number of instance profiles you can create,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

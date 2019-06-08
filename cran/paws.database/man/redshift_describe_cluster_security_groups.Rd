@@ -55,7 +55,7 @@ of a security group is specified, the response will contain only
 information about only that security group.
 }
 \details{
-For information about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
+For information about managing security groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 If you specify both tag keys and tag values in the same request, Amazon

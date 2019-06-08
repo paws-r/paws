@@ -13,19 +13,36 @@ route53_delete_hosted_zone(Id)
 Deletes a hosted zone.
 }
 \details{
-If the name servers for the hosted zone are associated with a domain and
-if you want to make the domain unavailable on the Internet, we recommend
-that you delete the name servers from the domain to prevent future DNS
-queries from possibly being misrouted. If the domain is registered with
-Amazon Route 53, see \code{UpdateDomainNameservers}. If the domain is
-registered with another registrar, use the method provided by the
-registrar to delete name servers for the domain.
+If the hosted zone was created by another service, such as AWS Cloud
+Map, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service}{Deleting Public Hosted Zones That Were Created by Another Service}
+in the \emph{Amazon Route 53 Developer Guide} for information about how to
+delete it. (The process is the same for public and private hosted zones
+that were created by another service.)
 
-Some domain registries don't allow you to remove all of the name
-servers for a domain. If the registry for your domain requires one or
-more name servers, we recommend that you delete the hosted zone only if
-you transfer DNS service to another service provider, and you replace
-the name servers for the domain with name servers from the new provider.
+If you want to keep your domain registration but you want to stop
+routing internet traffic to your website or web application, we
+recommend that you delete resource record sets in the hosted zone
+instead of deleting the hosted zone.
+
+If you delete a hosted zone, you can't undelete it. You must create a
+new hosted zone and update the name servers for your domain
+registration, which can require up to 48 hours to take effect. (If you
+delegated responsibility for a subdomain to a hosted zone and you delete
+the child hosted zone, you must update the name servers in the parent
+hosted zone.) In addition, if you delete a hosted zone, someone could
+hijack the domain and route traffic to their own resources using your
+domain name.
+
+If you want to avoid the monthly charge for the hosted zone, you can
+transfer DNS service for the domain to a free DNS service. When you
+transfer DNS service, you have to update the name servers for the domain
+registration. If the domain is registered with Route 53, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html}{UpdateDomainNameservers}
+for information about how to replace Route 53 name servers with name
+servers for the new DNS service. If the domain is registered with
+another registrar, use the method provided by the registrar to update
+name servers for the domain registration. For more information, perform
+an internet search on "free DNS service."
 
 You can delete a hosted zone only if it contains only the default SOA
 record and NS resource record sets. If the hosted zone contains other
@@ -33,7 +50,8 @@ resource record sets, you must delete them before you can delete the
 hosted zone. If you try to delete a hosted zone that contains other
 resource record sets, the request fails, and Route 53 returns a
 \code{HostedZoneNotEmpty} error. For information about deleting records from
-your hosted zone, see ChangeResourceRecordSets.
+your hosted zone, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html}{ChangeResourceRecordSets}.
 
 To verify that the hosted zone has been deleted, do one of the
 following:

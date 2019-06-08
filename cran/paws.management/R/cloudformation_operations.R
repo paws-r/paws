@@ -54,7 +54,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' For a specified stack that is in the `UPDATE_ROLLBACK_FAILED` state,
 #' continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE` state.
 #' Depending on the cause of the failure, you can manually [fix the
-#' error](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
+#' error](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
 #' and continue the rollback. By continuing the rollback, you can return
 #' your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE` state),
 #' and then try to update the stack again.
@@ -100,7 +100,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' 
 #' Specify this property to skip rolling back resources that AWS
 #' CloudFormation can\'t successfully roll back. We recommend that you
-#' [troubleshoot](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
+#' [troubleshoot](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed)
 #' resources before skipping them. AWS CloudFormation sets the status of
 #' the specified resources to `UPDATE_COMPLETE` and continues to roll back
 #' the stack. After the rollback is complete, the state of the skipped
@@ -126,7 +126,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' defined in the parent stack. For an example of a continue update
 #' rollback operation with nested stacks, see [Using ResourcesToSkip to
 #' recover a nested stacks
-#' hierarchy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
+#' hierarchy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
 #' @param ClientRequestToken A unique identifier for this `ContinueUpdateRollback` request. Specify
 #' this token if you plan to retry requests so that AWS CloudFormation
 #' knows that you\'re not attempting to continue the rollback to a stack
@@ -243,19 +243,19 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'     you review all permissions associated with them and edit their
 #'     permissions if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 #' 
-#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
@@ -300,7 +300,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' Management (IAM) uses this parameter for condition keys in IAM policies
 #' for AWS CloudFormation. For more information, see [Controlling Access
 #' with AWS Identity and Access
-#' Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
+#' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
 #' in the AWS CloudFormation User Guide.
 #' @param RoleARN The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 #' (IAM) role that AWS CloudFormation assumes when executing the change
@@ -342,7 +342,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' If you create a change set for a new stack, AWS Cloudformation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
 #' will be in the
-#' [`REVIEW_IN_PROGRESS`](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+#' [`REVIEW_IN_PROGRESS`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
 #' state until you execute the change set.
 #' 
 #' By default, AWS CloudFormation specifies `UPDATE`. You can\'t use the
@@ -437,7 +437,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information, go to
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
@@ -445,14 +445,14 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that is located in an Amazon S3
 #' bucket. For more information, go to the [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
 #' @param Parameters A list of `Parameter` structures that specify input parameters for the
 #' stack. For more information, see the
-#' [Parameter](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+#' [Parameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 #' data type.
 #' @param DisableRollback Set to `true` to disable rollback of the stack if stack creation failed.
 #' You can specify either `DisableRollback` or `OnFailure`, but not both.
@@ -494,19 +494,19 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'     you review all permissions associated with them and edit their
 #'     permissions if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 #' 
-#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
@@ -561,7 +561,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' Management (IAM) uses this parameter for AWS CloudFormation-specific
 #' condition keys in IAM policies. For more information, see [Controlling
 #' Access with AWS Identity and Access
-#' Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
+#' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
 #' @param RoleARN The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 #' (IAM) role that AWS CloudFormation assumes to create the stack. AWS
 #' CloudFormation uses the role\'s credentials to make calls on your
@@ -581,7 +581,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' Default: `ROLLBACK`
 #' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
 #' [Prevent Updates to Stack
-#' Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 #' in the *AWS CloudFormation User Guide*. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
@@ -741,7 +741,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' 
 #' You can only override the parameter *values* that are specified in the
 #' stack set; to add or delete a parameter itself, use
-#' [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 #' to update the stack set template.
 #' @param OperationPreferences Preferences for how AWS CloudFormation performs this stack set
 #' operation.
@@ -829,7 +829,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' @param TemplateBody The structure that contains the template body, with a minimum length of
 #' 1 byte and a maximum length of 51,200 bytes. For more information, see
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
@@ -837,7 +837,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' @param TemplateURL The location of the file that contains the template body. The URL must
 #' point to a template (maximum size: 460,800 bytes) that\'s located in an
 #' Amazon S3 bucket. For more information, see [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
@@ -870,19 +870,19 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #'     you review all permissions associated with them and edit their
 #'     permissions if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 #' 
-#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
@@ -1133,7 +1133,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' existing, saved stack to a new stack set.
 #' 
 #' For more information, see [Stack set operation
-#' options](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId The unique identifier for this stack set operation.
 #' 
 #' If you don\'t specify an operation ID, the SDK generates one
@@ -1232,7 +1232,10 @@ cloudformation_delete_stack_set <- function(StackSetName) {
 #' number of stacks that you can create in your account
 #'
 #' Retrieves your account\'s AWS CloudFormation limits, such as the maximum
-#' number of stacks that you can create in your account.
+#' number of stacks that you can create in your account. For more
+#' information about account limits, see [AWS CloudFormation
+#' Limits](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html)
+#' in the *AWS CloudFormation User Guide*.
 #'
 #' @usage
 #' cloudformation_describe_account_limits(NextToken)
@@ -1272,7 +1275,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' Returns the inputs for the change set and a list of changes that AWS
 #' CloudFormation will make if you execute the change set. For more
 #' information, see [Updating Stacks Using Change
-#' Sets](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+#' Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
 #' in the AWS CloudFormation User Guide.
 #'
 #' @usage
@@ -1323,7 +1326,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #' more of its resources have drifted. For more information on stack and
 #' resource drift, see [Detecting Unregulated Configuration Changes to
 #' Stacks and
-#' Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
 #' Use DetectStackDrift to initiate a stack drift detection operation.
 #' `DetectStackDrift` returns a `StackDriftDetectionId` you can use to
@@ -1375,7 +1378,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' Returns all stack related events for a specified stack in reverse
 #' chronological order. For more information about a stack\'s event
 #' history, go to
-#' [Stacks](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
+#' [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' You can list events for stacks that have failed to create or have been
@@ -1533,7 +1536,7 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' support drift detection are not checked, and so not included. For a list
 #' of resources that support drift detection, see [Resources that Support
 #' Drift
-#' Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 #' 
 #' Use DetectStackResourceDrift to detect drift on individual resources, or
 #' DetectStackDrift to detect drift on all supported resources for a given
@@ -1614,7 +1617,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' returned result. For more information about resources, the
 #' `LogicalResourceId` and `PhysicalResourceId`, go to the [AWS
 #' CloudFormation User
-#' Guide](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+#' Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' 
 #' A `ValidationError` is returned if you specify both `StackName` and
 #' `PhysicalResourceId` in the same request.
@@ -1817,7 +1820,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' drifted if one or more of its resources differ from their expected
 #' template configurations. For more information, see [Detecting
 #' Unregulated Configuration Changes to Stacks and
-#' Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
 #' Use `DetectStackDrift` to detect drift on all supported resources for a
 #' given stack, or DetectStackResourceDrift to detect drift on individual
@@ -1825,7 +1828,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' 
 #' For a list of stack resources that currently support drift detection,
 #' see [Resources that Support Drift
-#' Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 #' 
 #' `DetectStackDrift` can take up to several minutes, depending on the
 #' number of resources contained within the stack. Use
@@ -1885,7 +1888,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' properties explicitly defined in the stack template are checked for
 #' drift. For more information about stack and resource drift, see
 #' [Detecting Unregulated Configuration Changes to Stacks and
-#' Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
 #' Use `DetectStackResourceDrift` to detect drift on individual resources,
 #' or DetectStackDrift to detect drift on all resources in a given stack
@@ -1894,7 +1897,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' Resources that do not currently support drift detection cannot be
 #' checked. For a list of resources that support drift detection, see
 #' [Resources that Support Drift
-#' Detection](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
 #'
 #' @usage
 #' cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
@@ -1942,7 +1945,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. (For more information, go to
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.)
 #' 
 #' Conditional: You must pass `TemplateBody` or `TemplateURL`. If both are
@@ -1950,7 +1953,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template that is located in an Amazon S3 bucket. For more information,
 #' go to [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
@@ -2171,7 +2174,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information about
 #' templates, see [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -2179,7 +2182,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that is located in an Amazon S3
 #' bucket. For more information about templates, see [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -2272,11 +2275,11 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' Lists all exported output values in the account and region in which you
 #' call this action. Use this action to see the exported output values that
 #' you can import into other stacks. To import values, use the
-#' [`Fn::ImportValue`](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+#' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 #' function.
 #' 
 #' For more information, see [AWS CloudFormation Export Stack Output
-#' Values](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
+#' Values](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html).
 #'
 #' @usage
 #' cloudformation_list_exports(NextToken)
@@ -2318,7 +2321,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #' see ListExports.
 #' 
 #' For more information about importing an exported output value, see the
-#' [`Fn::ImportValue`](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+#' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 #' function.
 #'
 #' @usage
@@ -2671,7 +2674,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #' @param StackName &#91;required&#93; The name or unique stack ID that you want to associate a policy with.
 #' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
 #' [Prevent Updates to Stack
-#' Resources](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 #' in the AWS CloudFormation User Guide. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
@@ -2814,7 +2817,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' 
 #' For more information about creating an update template, updating a
 #' stack, and monitoring the progress of the update, see [Updating a
-#' Stack](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
+#' Stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html).
 #'
 #' @usage
 #' cloudformation_update_stack(StackName, TemplateBody, TemplateURL,
@@ -2827,7 +2830,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. (For more information, go to
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.)
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -2836,7 +2839,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template that is located in an Amazon S3 bucket. For more information,
 #' go to [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -2868,7 +2871,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' be used.
 #' @param Parameters A list of `Parameter` structures that specify input parameters for the
 #' stack. For more information, see the
-#' [Parameter](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+#' [Parameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
 #' data type.
 #' @param Capabilities In some cases, you must explicity acknowledge that your stack template
 #' contains certain capabilities in order for AWS CloudFormation to update
@@ -2897,19 +2900,19 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #'     you review all permissions associated with them and edit their
 #'     permissions if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 #' 
-#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
@@ -2958,7 +2961,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' (IAM) uses this parameter for AWS CloudFormation-specific condition keys
 #' in IAM policies. For more information, see [Controlling Access with AWS
 #' Identity and Access
-#' Management](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
+#' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
 #' @param RoleARN The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 #' (IAM) role that AWS CloudFormation assumes to update the stack. AWS
 #' CloudFormation uses the role\'s credentials to make calls on your
@@ -3096,18 +3099,18 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' 
 #' You can only update stack instances in regions and accounts where they
 #' already exist; to create additional stack instances, use
-#' [CreateStackInstances](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
+#' [CreateStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
 #' 
 #' During stack set updates, any parameters overridden for a stack instance
 #' are not updated, but retain their overridden value.
 #' 
 #' You can only update the parameter *values* that are specified in the
 #' stack set; to add or delete a parameter itself, use
-#' [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 #' to update the stack set template. If you add a parameter to a template,
 #' before you can override the parameter value specified in the stack set
 #' you must first use
-#' [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 #' to update all stack instances with the updated template and parameter
 #' value specified in the stack set. Once a stack instance has been updated
 #' with the new parameter, you can then override the parameter value using
@@ -3161,7 +3164,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' update the stack set template. If you add a parameter to a template,
 #' before you can override the parameter value specified in the stack set
 #' you must first use
-#' [UpdateStackSet](http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
+#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
 #' to update all stack instances with the updated template and parameter
 #' value specified in the stack set. Once a stack instance has been updated
 #' with the new parameter, you can then override the parameter value using
@@ -3252,7 +3255,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' @param TemplateBody The structure that contains the template body, with a minimum length of
 #' 1 byte and a maximum length of 51,200 bytes. For more information, see
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -3260,7 +3263,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' @param TemplateURL The location of the file that contains the template body. The URL must
 #' point to a template (maximum size: 460,800 bytes) that is located in an
 #' Amazon S3 bucket. For more information, see [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -3298,19 +3301,19 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #'     you review all permissions associated with them and edit their
 #'     permissions if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
+#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
+#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
+#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html)
 #' 
-#'     -   [AWS::IAM::Role](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
+#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
+#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
@@ -3370,16 +3373,15 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Define
-#' Permissions for Multiple
-#' Administrators](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' the same administrator account. For more information, see [Granting
+#' Permissions for Stack Set
+#' Operations](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 #' in the *AWS CloudFormation User Guide*.
 #' 
-#' If you specify a customized administrator role, AWS CloudFormation uses
-#' that role to update the stack. If you do not specify a customized
-#' administrator role, AWS CloudFormation performs the update using the
-#' role previously associated with the stack set, so long as you have
-#' permissions to perform operations on the stack set.
+#' If you specified a customized administrator role when you created the
+#' stack set, you must specify a customized administrator role, even if it
+#' is the same customized administrator role used with this stack set
+#' previously.
 #' @param ExecutionRoleName The name of the IAM execution role to use to update the stack set. If
 #' you do not specify an execution role, AWS CloudFormation uses the
 #' `AWSCloudFormationStackSetExecutionRole` role for the stack set
@@ -3565,7 +3567,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information, go to
 #' [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
@@ -3573,7 +3575,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that is located in an Amazon S3
 #' bucket. For more information, go to [Template
-#' Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are

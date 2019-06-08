@@ -3,7 +3,7 @@
 \name{directconnect_describe_direct_connect_gateway_association_proposals}
 \alias{directconnect_describe_direct_connect_gateway_association_proposals}
 \title{Describes one or more association proposals for connection between a
-virtual private gateway and a Direct Connect gateway}
+virtual private gateway or transit gateway and a Direct Connect gateway}
 \usage{
 directconnect_describe_direct_connect_gateway_association_proposals(
   directConnectGatewayId, proposalId, associatedGatewayId, maxResults,
@@ -14,7 +14,7 @@ directconnect_describe_direct_connect_gateway_association_proposals(
 
 \item{proposalId}{The ID of the proposal.}
 
-\item{associatedGatewayId}{The ID of the associated virtual private gateway.}
+\item{associatedGatewayId}{The ID of the associated gateway.}
 
 \item{maxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}
@@ -27,7 +27,7 @@ returned.}
 }
 \description{
 Describes one or more association proposals for connection between a
-virtual private gateway and a Direct Connect gateway.
+virtual private gateway or transit gateway and a Direct Connect gateway.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_direct_connect_gateway_association_proposals(

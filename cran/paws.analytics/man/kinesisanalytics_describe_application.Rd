@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_describe_application}
 \alias{kinesisanalytics_describe_application}
-\title{Returns information about a specific Amazon Kinesis Analytics
-application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_describe_application(ApplicationName)
 }
@@ -11,12 +11,19 @@ kinesisanalytics_describe_application(ApplicationName)
 \item{ApplicationName}{[required] Name of the application.}
 }
 \description{
-Returns information about a specific Amazon Kinesis Analytics
-application.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
 }
 \details{
+Returns information about a specific Amazon Kinesis Analytics
+application.
+
 If you want to retrieve a list of all applications in your account, use
-the ListApplications operation.
+the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_ListApplications.html}{ListApplications}
+operation.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:DescribeApplication} action. You can use

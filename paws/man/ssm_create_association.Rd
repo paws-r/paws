@@ -12,8 +12,7 @@ ssm_create_association(Name, DocumentVersion, InstanceId, Parameters,
 }
 \arguments{
 \item{Name}{[required] The name of the SSM document that contains the configuration information
-for the instance. You can specify Command, Policy, or Automation
-documents.
+for the instance. You can specify Command or Automation documents.
 
 You can specify AWS-predefined documents, documents you created, or a
 document that is shared with you from another account.
@@ -36,7 +35,7 @@ specific version or the default version.}
 
 \item{InstanceId}{The instance ID.}
 
-\item{Parameters}{The parameters for the documents runtime configuration.}
+\item{Parameters}{The parameters for the runtime configuration of the document.}
 
 \item{Targets}{The targets (either instances or tags) for the association.}
 
@@ -72,10 +71,10 @@ time. You can specify a number, for example 10, or a percentage of the
 target set, for example 10\%. The default value is 100\%, which means all
 targets run the association at the same time.
 
-If a new instance starts and attempts to execute an association while
-Systems Manager is executing MaxConcurrency associations, the
-association is allowed to run. During the next association interval, the
-new instance will process its association within the limit specified for
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
 MaxConcurrency.}
 
 \item{ComplianceSeverity}{The severity level to assign to the association.}

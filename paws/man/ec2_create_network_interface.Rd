@@ -6,7 +6,7 @@
 \usage{
 ec2_create_network_interface(Description, DryRun, Groups,
   Ipv6AddressCount, Ipv6Addresses, PrivateIpAddress, PrivateIpAddresses,
-  SecondaryPrivateIpAddressCount, SubnetId)
+  SecondaryPrivateIpAddressCount, InterfaceType, SubnetId)
 }
 \arguments{
 \item{Description}{A description for the network interface.}
@@ -46,6 +46,13 @@ The number of IP addresses you can assign to a network interface varies
 by instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
+\item{InterfaceType}{Indicates the type of network interface. To create an Elastic Fabric
+Adapter (EFA), specify \code{efa}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html}{Elastic Fabric Adapter}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+If you are not creating an EFA, specify \code{interface} or omit this
+parameter.}
+
 \item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 }
 \description{
@@ -76,6 +83,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     )
   ),
   SecondaryPrivateIpAddressCount = 123,
+  InterfaceType = "efa",
   SubnetId = "string"
 )
 }

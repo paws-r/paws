@@ -10,7 +10,7 @@ codepipeline_put_job_success_result(jobId, currentRevision,
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job that succeeded. This is the
-same ID returned from PollForJobs.}
+same ID returned from \code{PollForJobs}.}
 
 \item{currentRevision}{The ID of the current revision of the artifact successfully worked upon
 by the job.}

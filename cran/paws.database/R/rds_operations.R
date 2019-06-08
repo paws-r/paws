@@ -15,32 +15,36 @@ NULL
 #' This action only applies to Aurora DB clusters.
 #'
 #' @usage
-#' rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
+#' rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn, FeatureName)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to associate the IAM role with.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
 #' Aurora DB cluster, for example
 #' `arn:aws:iam::123456789012:role/AuroraAccessRole`.
+#' @param FeatureName The name of the feature for the DB cluster that the IAM role is to be
+#' associated with. For the list of supported feature names, see
+#' DBEngineVersion.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$add_role_to_db_cluster(
 #'   DBClusterIdentifier = "string",
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   FeatureName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_add_role_to_db_cluster
-rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn) {
+rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "AddRoleToDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn)
+  input <- .rds$add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$add_role_to_db_cluster_output()
   svc <- .rds$service()
   request <- new_request(svc, op, input, output)
@@ -54,6 +58,9 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #'
 #' Associates an AWS Identity and Access Management (IAM) role with a DB
 #' instance.
+#' 
+#' To add a role to a DB instance, the status of the DB instance must be
+#' `available`.
 #'
 #' @usage
 #' rds_add_role_to_db_instance(DBInstanceIdentifier, RoleArn, FeatureName)
@@ -63,7 +70,7 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #' instance, for example `arn:aws:iam::123456789012:role/AccessRole`.
 #' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be
 #' associated with. For the list of supported feature names, see
-#' DBEngineVersion.
+#' `DBEngineVersion`.
 #'
 #' @section Request syntax:
 #' ```
@@ -215,7 +222,7 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 #' @param ApplyAction &#91;required&#93; The pending maintenance action to apply to this resource.
 #' 
-#' Valid values: `system-update`, `db-upgrade`
+#' Valid values: `system-update`, `db-upgrade`, `hardware-maintenance`
 #' @param OptInType &#91;required&#93; A value that specifies the type of opt-in request, or undoes an opt-in
 #' request. An opt-in request of type `immediate` can\'t be undone.
 #' 
@@ -370,12 +377,14 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' -   Can\'t contain a timestamp set in the future.
 #' 
 #' Example: `2017-07-08T18:00Z`
-#' @param Force A value that, if specified, forces the DB cluster to backtrack when
+#' @param Force A value that indicates whether to force the DB cluster to backtrack when
 #' binary logging is enabled. Otherwise, an error occurs when binary
 #' logging is enabled.
-#' @param UseEarliestTimeOnPointInTimeUnavailable If *BacktrackTo* is set to a timestamp earlier than the earliest
-#' backtrack time, this value backtracks the DB cluster to the earliest
-#' possible backtrack time. Otherwise, an error occurs.
+#' @param UseEarliestTimeOnPointInTimeUnavailable A value that indicates whether to backtrack the DB cluster to the
+#' earliest possible backtrack time when *BacktrackTo* is set to a
+#' timestamp earlier than the earliest backtrack time. When this parameter
+#' is disabled and *BacktrackTo* is set to a timestamp earlier than the
+#' earliest backtrack time, an error occurs.
 #'
 #' @section Request syntax:
 #' ```
@@ -660,8 +669,9 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' 
 #' If you supply a value for this operation\'s `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
-#' @param CopyTags True to copy all tags from the source DB cluster snapshot to the target
-#' DB cluster snapshot, and otherwise false. The default is false.
+#' @param CopyTags A value that indicates whether to copy all tags from the source DB
+#' cluster snapshot to the target DB cluster snapshot. By default, tags are
+#' not copied.
 #' @param Tags 
 #' @param SourceRegion The ID of the region that contains the snapshot to be copied.
 #'
@@ -849,8 +859,8 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' keys are specific to the AWS Region that they are created in, and you
 #' can\'t use encryption keys from one AWS Region in another AWS Region.
 #' @param Tags 
-#' @param CopyTags True to copy all tags from the source DB snapshot to the target DB
-#' snapshot, and otherwise false. The default is false.
+#' @param CopyTags A value that indicates whether to copy all tags from the source DB
+#' snapshot to the target DB snapshot. By default, tags are not copied.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
 #' `CopyDBSnapshot` API action in the source AWS Region that contains the
 #' source DB snapshot to copy.
@@ -1049,13 +1059,12 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #'   DeletionProtection, GlobalClusterIdentifier, CopyTagsToSnapshot,
 #'   SourceRegion)
 #'
-#' @param AvailabilityZones A list of EC2 Availability Zones that instances in the DB cluster can be
-#' created in. For information on AWS Regions and Availability Zones, see
+#' @param AvailabilityZones A list of Availability Zones (AZs) where instances in the DB cluster can
+#' be created. For information on AWS Regions and Availability Zones, see
 #' [Choosing the Regions and Availability
 #' Zones](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
 #' in the *Amazon Aurora User Guide*.
-#' @param BackupRetentionPeriod The number of days for which automated backups are retained. You must
-#' specify a minimum value of 1.
+#' @param BackupRetentionPeriod The number of days for which automated backups are retained.
 #' 
 #' Default: 1
 #' 
@@ -1166,8 +1175,8 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' Constraints: Minimum 30-minute window.
 #' @param ReplicationSourceIdentifier The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 #' if this DB cluster is created as a Read Replica.
-#' @param Tags 
-#' @param StorageEncrypted Specifies whether the DB cluster is encrypted.
+#' @param Tags Tags to assign to the DB cluster.
+#' @param StorageEncrypted A value that indicates whether the DB cluster is encrypted.
 #' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
@@ -1182,7 +1191,7 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #'     then Amazon RDS will use the encryption key used to encrypt the
 #'     source. Otherwise, Amazon RDS will use your default encryption key.
 #' 
-#' -   If the `StorageEncrypted` parameter is true and
+#' -   If the `StorageEncrypted` parameter is enabled and
 #'     `ReplicationSourceIdentifier` is not specified, then Amazon RDS will
 #'     use your default encryption key.
 #' 
@@ -1230,10 +1239,9 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' 
 #' If you supply a value for this operation\'s `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -1253,13 +1261,13 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' `serverless`, `parallelquery`, or `global`.
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties
 #' of the DB cluster.
-#' @param DeletionProtection Indicates if the DB cluster should have deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true. The default
-#' is false.
+#' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled.
 #' @param GlobalClusterIdentifier The global cluster ID of an Aurora cluster that becomes the primary
 #' cluster in the new global database cluster.
-#' @param CopyTagsToSnapshot True to copy all tags from the DB cluster to snapshots of the DB
-#' cluster, and otherwise false. The default is false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB cluster to
+#' snapshots of the DB cluster. The default is not to copy them.
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
 #' @section Request syntax:
@@ -1305,7 +1313,8 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #'     MinCapacity = 123,
 #'     MaxCapacity = 123,
 #'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123
+#'     SecondsUntilAutoPause = 123,
+#'     TimeoutAction = "string"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
 #'   GlobalClusterIdentifier = "string",
@@ -1401,10 +1410,10 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' A DB cluster parameter group is initially created with the default
 #' parameters for the database engine used by instances in the DB cluster.
 #' To provide custom values for any of the parameters, you must modify the
-#' group after creating it using ModifyDBClusterParameterGroup. Once
+#' group after creating it using `ModifyDBClusterParameterGroup`. Once
 #' you\'ve created a DB cluster parameter group, you need to associate it
-#' with your DB cluster using ModifyDBCluster. When you associate a new DB
-#' cluster parameter group with a running DB cluster, you need to reboot
+#' with your DB cluster using `ModifyDBCluster`. When you associate a new
+#' DB cluster parameter group with a running DB cluster, you need to reboot
 #' the DB instances in the DB cluster without failover for the new DB
 #' cluster parameter group and associated settings to take effect.
 #' 
@@ -1418,7 +1427,7 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' default database defined by the `character_set_database` parameter. You
 #' can use the *Parameter Groups* option of the [Amazon RDS
 #' console](https://console.aws.amazon.com/rds/) or the
-#' DescribeDBClusterParameters command to verify that your DB cluster
+#' `DescribeDBClusterParameters` action to verify that your DB cluster
 #' parameter group has been created or modified.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
@@ -1452,7 +1461,7 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' 
 #' Example: `aurora-postgresql9.6`
 #' @param Description &#91;required&#93; The description for the DB cluster parameter group.
-#' @param Tags 
+#' @param Tags Tags to assign to the DB cluster parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -1579,8 +1588,6 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param DBName The meaning of this parameter differs according to the database engine
 #' you use.
 #' 
-#' Type: String
-#' 
 #' **MySQL**
 #' 
 #' The name of the database to create when the DB instance is created. If
@@ -1675,10 +1682,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' following:
 #' 
 #' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -1688,10 +1695,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' following:
 #' 
 #' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -1701,10 +1708,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' following:
 #' 
 #' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -1714,10 +1721,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' following:
 #' 
 #' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 32768.
+#'     to 65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 10 to 3072.
 #' 
@@ -1790,7 +1797,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The name for the master user is managed by the DB
-#' cluster. For more information, see CreateDBCluster.
+#' cluster.
 #' 
 #' **MariaDB**
 #' 
@@ -1855,7 +1862,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The password for the master user is managed by the DB
-#' cluster. For more information, see CreateDBCluster.
+#' cluster.
 #' 
 #' **MariaDB**
 #' 
@@ -1885,11 +1892,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The associated list of EC2 VPC security groups is
-#' managed by the DB cluster. For more information, see CreateDBCluster.
+#' managed by the DB cluster.
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group\'s
 #' VPC.
-#' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in. For
+#' @param AvailabilityZone The Availability Zone (AZ) where the database will be created. For
 #' information on AWS Regions and Availability Zones, see [Regions and
 #' Availability
 #' Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -1899,9 +1906,9 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Example: `us-east-1d`
 #' 
-#' Constraint: The AvailabilityZone parameter can\'t be specified if the
-#' MultiAZ parameter is set to `true`. The specified Availability Zone must
-#' be in the same AWS Region as the current endpoint.
+#' Constraint: The `AvailabilityZone` parameter can\'t be specified if the
+#' DB instance is a Multi-AZ deployment. The specified Availability Zone
+#' must be in the same AWS Region as the current endpoint.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
 #' 
 #' If there is no DB subnet group, then it is a non-VPC DB instance.
@@ -1937,7 +1944,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The retention period for automated backups is managed by
-#' the DB cluster. For more information, see CreateDBCluster.
+#' the DB cluster.
 #' 
 #' Default: 1
 #' 
@@ -1955,7 +1962,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The daily time range for creating automated backups is
-#' managed by the DB cluster. For more information, see CreateDBCluster.
+#' managed by the DB cluster.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each AWS Region. To see the time blocks available, see
@@ -2018,12 +2025,13 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Valid Values: `1150-65535`
 #' 
 #' Type: Integer
-#' @param MultiAZ A value that specifies whether the DB instance is a Multi-AZ deployment.
-#' You can\'t set the AvailabilityZone parameter if the MultiAZ parameter
-#' is set to true.
+#' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
+#' You can\'t set the `AvailabilityZone` parameter if the DB instance is a
+#' Multi-AZ deployment.
 #' @param EngineVersion The version number of the database engine to use.
 #' 
-#' For a list of valid engine versions, call DescribeDBEngineVersions.
+#' For a list of valid engine versions, use the `DescribeDBEngineVersions`
+#' action.
 #' 
 #' The following are the database engines and links to information about
 #' the major and minor versions that are available with Amazon RDS. Not
@@ -2032,8 +2040,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The version number of the database engine to be used by
-#' the DB instance is managed by the DB cluster. For more information, see
-#' CreateDBCluster.
+#' the DB instance is managed by the DB cluster.
 #' 
 #' **MariaDB**
 #' 
@@ -2064,10 +2071,9 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' See [Supported PostgreSQL Database
 #' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
 #' in the *Amazon RDS User Guide.*
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the DB
-#' instance during the maintenance window.
-#' 
-#' Default: `true`
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
+#' automatically to the DB instance during the maintenance window. By
+#' default, minor engine upgrades are applied automatically.
 #' @param LicenseModel License model information for this DB instance.
 #' 
 #' Valid values: `license-included` \\| `bring-your-own-license` \\|
@@ -2093,12 +2099,12 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The character set is managed by the DB cluster. For more
-#' information, see CreateDBCluster.
-#' @param PubliclyAccessible Specifies the accessibility options for the DB instance. A value of true
-#' specifies an Internet-facing instance with a publicly resolvable DNS
-#' name, which resolves to a public IP address. A value of false specifies
-#' an internal instance with a DNS name that resolves to a private IP
-#' address.
+#' information, see `CreateDBCluster`.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
 #' 
 #' Default: The default behavior varies depending on whether
 #' `DBSubnetGroupName` is specified.
@@ -2120,12 +2126,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   If the subnets are part of a VPC that has an Internet gateway
 #'     attached to it, the DB instance is public.
-#' @param Tags 
+#' @param Tags Tags to assign to the DB instance.
 #' @param DBClusterIdentifier The identifier of the DB cluster that the instance will belong to.
-#' 
-#' For information on creating a DB cluster, see CreateDBCluster.
-#' 
-#' Type: String
 #' @param StorageType Specifies the storage type to be associated with the DB instance.
 #' 
 #' Valid values: `standard | gp2 | io1`
@@ -2133,20 +2135,18 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' If you specify `io1`, you must also include a value for the `Iops`
 #' parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
 #' device.
-#' @param StorageEncrypted Specifies whether the DB instance is encrypted.
+#' @param StorageEncrypted A value that indicates whether the DB instance is encrypted. By default,
+#' it is not encrypted.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The encryption for DB instances is managed by the DB
-#' cluster. For more information, see CreateDBCluster.
-#' 
-#' Default: false
+#' cluster.
 #' @param KmsKeyId The AWS KMS key identifier for an encrypted DB instance.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
@@ -2158,22 +2158,29 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The KMS key identifier is managed by the DB cluster. For
-#' more information, see CreateDBCluster.
+#' more information, see `CreateDBCluster`.
 #' 
-#' If the `StorageEncrypted` parameter is true, and you do not specify a
-#' value for the `KmsKeyId` parameter, then Amazon RDS will use your
-#' default encryption key. AWS KMS creates the default encryption key for
-#' your AWS account. Your AWS account has a different default encryption
-#' key for each AWS Region.
-#' @param Domain Specify the Active Directory Domain to create the instance in.
-#' @param CopyTagsToSnapshot True to copy all tags from the DB instance to snapshots of the DB
-#' instance, and otherwise false. The default is false.
+#' If `StorageEncrypted` is enabled, and you do not specify a value for the
+#' `KmsKeyId` parameter, then Amazon RDS will use your default encryption
+#' key. AWS KMS creates the default encryption key for your AWS account.
+#' Your AWS account has a different default encryption key for each AWS
+#' Region.
+#' @param Domain For an Amazon RDS DB instance that\'s running Microsoft SQL Server, this
+#' parameter specifies the Active Directory directory ID to create the
+#' instance in. Amazon RDS uses Windows Authentication to authenticate
+#' users that connect to the DB instance. For more information, see [Using
+#' Windows Authentication with an Amazon RDS DB Instance Running Microsoft
+#' SQL
+#' Server](https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html)
+#' in the *Amazon RDS User Guide*.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. Copying tags to snapshots is managed by the DB cluster.
 #' Setting this value for an Aurora DB instance has no effect on the DB
-#' cluster setting. For more information, see CreateDBCluster.
+#' cluster setting.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB instance. To disable collecting
 #' Enhanced Monitoring metrics, specify 0. The default is 0.
@@ -2205,8 +2212,9 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param Timezone The time zone of the DB instance. The time zone parameter is currently
 #' supported only by [Microsoft SQL
 #' Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone).
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines:
@@ -2214,17 +2222,15 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. Mapping AWS IAM accounts to database accounts is managed
-#' by the DB cluster. For more information, see CreateDBCluster.
+#' by the DB cluster.
 #' 
 #' **MySQL**
 #' 
 #' -   For MySQL 5.6, minor version 5.6.34 or higher
 #' 
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
-#' 
-#' Default: `false`
-#' @param EnablePerformanceInsights True to enable Performance Insights for the DB instance, and otherwise
-#' false.
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' instance.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -2232,6 +2238,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
 #' The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
 #' the KMS key alias for the KMS encryption key.
+#' 
+#' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default encryption key. AWS KMS creates the default
+#' encryption key for your AWS account. Your AWS account has a different
+#' default encryption key for each AWS Region.
 #' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
 #' values are 7 or 731 (2 years).
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
@@ -2242,9 +2253,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' in the *Amazon Relational Database Service User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled.
-#' The database can\'t be deleted when this value is set to true. The
-#' default is false. For more information, see [Deleting a DB
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
+#' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #'
 #' @section Request syntax:
@@ -2338,8 +2350,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'
 #' Creates a new DB instance that acts as a Read Replica for an existing
 #' source DB instance. You can create a Read Replica for a DB instance
-#' running MySQL, MariaDB, or PostgreSQL. For more information, see
-#' [Working with PostgreSQL, MySQL, and MariaDB Read
+#' running MySQL, MariaDB, Oracle, or PostgreSQL. For more information, see
+#' [Working with Read
 #' Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 #' in the *Amazon RDS User Guide*.
 #' 
@@ -2374,11 +2386,16 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' Constraints:
 #' 
-#' -   Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL
-#'     DB instance.
+#' -   Must be the identifier of an existing MySQL, MariaDB, Oracle, or
+#'     PostgreSQL DB instance.
 #' 
 #' -   Can specify a DB instance that is a MySQL Read Replica only if the
 #'     source is running MySQL 5.6 or later.
+#' 
+#' -   For the limitations of Oracle Read Replicas, see [Read Replica
+#'     Limitations with
+#'     Oracle](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html)
+#'     in the *Amazon RDS User Guide*.
 #' 
 #' -   Can specify a DB instance that is a PostgreSQL DB instance only if
 #'     the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
@@ -2403,7 +2420,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' in the *Amazon RDS User Guide.*
 #' 
 #' Default: Inherits from the source DB instance.
-#' @param AvailabilityZone The Amazon EC2 Availability Zone that the Read Replica is created in.
+#' @param AvailabilityZone The Availability Zone (AZ) where the Read Replica will be created.
 #' 
 #' Default: A random, system-chosen Availability Zone in the endpoint\'s
 #' AWS Region.
@@ -2414,26 +2431,28 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Default: Inherits from the source DB instance
 #' 
 #' Valid Values: `1150-65535`
-#' @param MultiAZ Specifies whether the Read Replica is in a Multi-AZ deployment.
+#' @param MultiAZ A value that indicates whether the Read Replica is in a Multi-AZ
+#' deployment.
 #' 
 #' You can create a Read Replica as a Multi-AZ DB instance. RDS creates a
 #' standby of your replica in another Availability Zone for failover
 #' support for the replica. Creating your Read Replica as a Multi-AZ DB
 #' instance is independent of whether the source database is a Multi-AZ DB
 #' instance.
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the
-#' Read Replica during the maintenance window.
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
+#' automatically to the Read Replica during the maintenance window.
 #' 
 #' Default: Inherits from the source DB instance
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' be initially allocated for the DB instance.
 #' @param OptionGroupName The option group the DB instance is associated with. If omitted, the
-#' default option group for the engine specified is used.
-#' @param PubliclyAccessible Specifies the accessibility options for the DB instance. A value of true
-#' specifies an Internet-facing instance with a publicly resolvable DNS
-#' name, which resolves to a public IP address. A value of false specifies
-#' an internal instance with a DNS name that resolves to a private IP
-#' address. For more information, see CreateDBInstance.
+#' option group associated with the source instance is used.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
+#' For more information, see CreateDBInstance.
 #' @param Tags 
 #' @param DBSubnetGroupName Specifies a DB subnet group for the DB instance. The new DB instance is
 #' created in the VPC associated with the DB subnet group. If no DB subnet
@@ -2470,10 +2489,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' If you specify `io1`, you must also include a value for the `Iops`
 #' parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
-#' @param CopyTagsToSnapshot True to copy all tags from the Read Replica to snapshots of the Read
-#' Replica, and otherwise false. The default is false.
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the Read Replica to
+#' snapshots of the Read Replica. By default, tags are not copied.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the Read Replica. To disable collecting
 #' Enhanced Monitoring metrics, specify 0. The default is 0.
@@ -2558,8 +2576,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' If you supply a value for this operation\'s `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines
@@ -2569,10 +2588,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
 #' 
 #' -   Aurora MySQL 5.6 or higher
-#' 
-#' Default: `false`
-#' @param EnablePerformanceInsights True to enable Performance Insights for the read replica, and otherwise
-#' false.
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the
+#' Read Replica.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -2580,6 +2597,11 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
 #' The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
 #' the KMS key alias for the KMS encryption key.
+#' 
+#' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default encryption key. AWS KMS creates the default
+#' encryption key for your AWS account. Your AWS account has a different
+#' default encryption key for each AWS Region.
 #' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
 #' values are 7 or 731 (2 years).
 #' @param EnableCloudwatchLogsExports The list of logs that the new DB instance is to export to CloudWatch
@@ -2589,11 +2611,12 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' in the *Amazon RDS User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance
+#' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
-#' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled.
-#' The database can\'t be deleted when this value is set to true. The
-#' default is false. For more information, see [Deleting a DB
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
+#' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
@@ -2717,7 +2740,7 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' 
 #' The output contains duplicates.
 #' @param Description &#91;required&#93; The description for the DB parameter group.
-#' @param Tags 
+#' @param Tags Tags to assign to the DB parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -2780,7 +2803,7 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #' 
 #' Example: `mysecuritygroup`
 #' @param DBSecurityGroupDescription &#91;required&#93; The description for the DB security group.
-#' @param Tags 
+#' @param Tags Tags to assign to the DB security group.
 #'
 #' @section Request syntax:
 #' ```
@@ -2895,7 +2918,7 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 #' Example: `mySubnetgroup`
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 Subnet IDs for the DB subnet group.
-#' @param Tags 
+#' @param Tags Tags to assign to the DB subnet group.
 #'
 #' @section Request syntax:
 #' ```
@@ -3000,8 +3023,9 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' 
 #' -   If the source type is a DB snapshot, a `DBSnapshotIdentifier` must
 #'     be supplied.
-#' @param Enabled A Boolean value; set to **true** to activate the subscription, set to
-#' **false** to create the subscription but not active it.
+#' @param Enabled A value that indicates whether to activate the subscription. If the
+#' event notification subscription is not activated, the subscription is
+#' created but not active.
 #' @param Tags 
 #'
 #' @section Request syntax:
@@ -3071,7 +3095,7 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #' @param Engine Provides the name of the database engine to be used for this DB cluster.
 #' @param EngineVersion The engine version of the Aurora global database.
 #' @param DeletionProtection The deletion protection setting for the new global database. The global
-#' database can\'t be deleted when this value is set to true.
+#' database can\'t be deleted when deletion protection is enabled.
 #' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you
 #' do not provide a name, Amazon Aurora will not create a database in the
 #' global database cluster you are creating.
@@ -3133,7 +3157,7 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' @param MajorEngineVersion &#91;required&#93; Specifies the major version of the engine that this option group should
 #' be associated with.
 #' @param OptionGroupDescription &#91;required&#93; The description of the option group.
-#' @param Tags 
+#' @param Tags Tags to assign to the option group.
 #'
 #' @section Request syntax:
 #' ```
@@ -3193,20 +3217,21 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' Constraints:
 #' 
 #' -   Must match an existing DBClusterIdentifier.
-#' @param SkipFinalSnapshot Determines whether a final DB cluster snapshot is created before the DB
-#' cluster is deleted. If `true` is specified, no DB cluster snapshot is
-#' created. If `false` is specified, a DB cluster snapshot is created
-#' before the DB cluster is deleted.
+#' @param SkipFinalSnapshot A value that indicates whether to skip the creation of a final DB
+#' cluster snapshot before the DB cluster is deleted. If skip is specified,
+#' no DB cluster snapshot is created. If skip is not specified, a DB
+#' cluster snapshot is created before the DB cluster is deleted. By
+#' default, skip is not specified, and the DB cluster snapshot is created.
+#' By default, this parameter is disabled.
 #' 
 #' You must specify a `FinalDBSnapshotIdentifier` parameter if
-#' `SkipFinalSnapshot` is `false`.
-#' 
-#' Default: `false`
+#' `SkipFinalSnapshot` is disabled.
 #' @param FinalDBSnapshotIdentifier The DB cluster snapshot identifier of the new DB cluster snapshot
-#' created when `SkipFinalSnapshot` is set to `false`.
+#' created when `SkipFinalSnapshot` is disabled.
 #' 
-#' Specifying this parameter and also setting the `SkipFinalShapshot`
-#' parameter to true results in an error.
+#' Specifying this parameter and also skipping the creation of a final DB
+#' cluster snapshot with the `SkipFinalShapshot` parameter results in an
+#' error.
 #' 
 #' Constraints:
 #' 
@@ -3395,7 +3420,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' Note that when a DB instance is in a failure state and has a status of
 #' `failed`, `incompatible-restore`, or `incompatible-network`, you can
-#' only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
+#' only delete it when you skip creation of the final snapshot with the
+#' `SkipFinalSnapshot` parameter.
 #' 
 #' If the specified DB instance is part of an Amazon Aurora DB cluster, you
 #' can\'t delete the DB instance if both of the following conditions are
@@ -3407,7 +3433,7 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' -   The DB instance is the only instance in the DB cluster.
 #' 
 #' To delete a DB instance in this case, first call the
-#' PromoteReadReplicaDBCluster API action to promote the DB cluster so
+#' `PromoteReadReplicaDBCluster` API action to promote the DB cluster so
 #' it\'s no longer a Read Replica. After the promotion completes, then call
 #' the `DeleteDBInstance` API action to delete the final instance in the DB
 #' cluster.
@@ -3422,26 +3448,25 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' Constraints:
 #' 
 #' -   Must match the name of an existing DB instance.
-#' @param SkipFinalSnapshot A value that indicates whether a final DB snapshot is created before the
-#' DB instance is deleted. If `true` is specified, no DB snapshot is
-#' created. If `false` is specified, a DB snapshot is created before the DB
-#' instance is deleted.
+#' @param SkipFinalSnapshot A value that indicates whether to skip the creation of a final DB
+#' snapshot before the DB instance is deleted. If skip is specified, no DB
+#' snapshot is created. If skip is not specified, a DB snapshot is created
+#' before the DB instance is deleted. By default, skip is not specified,
+#' and the DB snapshot is created.
 #' 
-#' When a DB instance is in a failure state and has a status of `failed`,
-#' `incompatible-restore`, or `incompatible-network`, you can only delete
-#' it when the `SkipFinalSnapshot` parameter is set to `true`.
+#' Note that when a DB instance is in a failure state and has a status of
+#' \'failed\', \'incompatible-restore\', or \'incompatible-network\', it
+#' can only be deleted when skip is specified.
 #' 
-#' Specify `true` when deleting a Read Replica.
+#' Specify skip when deleting a Read Replica.
 #' 
-#' The `FinalDBSnapshotIdentifier` parameter must be specified if
-#' `SkipFinalSnapshot` is `false`.
+#' The FinalDBSnapshotIdentifier parameter must be specified if skip is not
+#' specified.
+#' @param FinalDBSnapshotIdentifier The `DBSnapshotIdentifier` of the new `DBSnapshot` created when the
+#' `SkipFinalSnapshot` parameter is disabled.
 #' 
-#' Default: `false`
-#' @param FinalDBSnapshotIdentifier The `DBSnapshotIdentifier` of the new DB snapshot created when
-#' `SkipFinalSnapshot` is set to `false`.
-#' 
-#' Specifying this parameter and also setting the `SkipFinalShapshot`
-#' parameter to `true` results in an error.
+#' Specifying this parameter and also specifying to skip final DB snapshot
+#' creation in SkipFinalShapshot results in an error.
 #' 
 #' Constraints:
 #' 
@@ -3454,7 +3479,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' -   Can\'t be specified when deleting a Read Replica.
 #' @param DeleteAutomatedBackups A value that indicates whether to remove automated backups immediately
 #' after the DB instance is deleted. This parameter isn\'t case-sensitive.
-#' This parameter defaults to `true`.
+#' The default is to remove automated backups immediately after the DB
+#' instance is deleted.
 #'
 #' @section Request syntax:
 #' ```
@@ -3877,9 +3903,10 @@ rds_describe_account_attributes <- function() {
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#' @param Marker An optional pagination token provided by a previous DescribeCertificates
-#' request. If this parameter is specified, the response includes only
-#' records beyond the marker, up to the value specified by `MaxRecords`.
+#' @param Marker An optional pagination token provided by a previous
+#' `DescribeCertificates` request. If this parameter is specified, the
+#' response includes only records beyond the marker, up to the value
+#' specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -3972,8 +3999,7 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #'     -   `pending`
 #' 
 #'     The results list includes information about only the backtracks
-#'     identified by these values. For more information about backtrack
-#'     status values, see DBClusterBacktrack.
+#'     identified by these values.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that the remaining
@@ -3983,8 +4009,8 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' DescribeDBClusterBacktracks request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
+#' `DescribeDBClusterBacktracks` request. If this parameter is specified,
+#' the response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
 #'
 #' @section Request syntax:
@@ -4058,8 +4084,8 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' DescribeDBClusterEndpoints request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
+#' `DescribeDBClusterEndpoints` request. If this parameter is specified,
+#' the response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
 #'
 #' @section Request syntax:
@@ -4263,7 +4289,7 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #' 
 #' To add or remove access for an AWS account to copy or restore a manual
 #' DB cluster snapshot, or to make the manual DB cluster snapshot public or
-#' private, use the ModifyDBClusterSnapshotAttribute API action.
+#' private, use the `ModifyDBClusterSnapshotAttribute` API action.
 #' 
 #' This action only applies to Aurora DB clusters.
 #'
@@ -4351,9 +4377,9 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' 
 #' If you don\'t specify a `SnapshotType` value, then both automated and
 #' manual DB cluster snapshots are returned. You can include shared DB
-#' cluster snapshots with these results by setting the `IncludeShared`
-#' parameter to `true`. You can include public DB cluster snapshots with
-#' these results by setting the `IncludePublic` parameter to `true`.
+#' cluster snapshots with these results by enabling the `IncludeShared`
+#' parameter. You can include public DB cluster snapshots with these
+#' results by enabling the `IncludePublic` parameter.
 #' 
 #' The `IncludeShared` and `IncludePublic` parameters don\'t apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
@@ -4373,16 +4399,17 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' `DescribeDBClusterSnapshots` request. If this parameter is specified,
 #' the response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
-#' @param IncludeShared True to include shared manual DB cluster snapshots from other AWS
-#' accounts that this AWS account has been given permission to copy or
-#' restore, and otherwise false. The default is `false`.
+#' @param IncludeShared A value that indicates whether to include shared manual DB cluster
+#' snapshots from other AWS accounts that this AWS account has been given
+#' permission to copy or restore. By default, these snapshots are not
+#' included.
 #' 
 #' You can give an AWS account permission to restore a manual DB cluster
 #' snapshot from another AWS account by the
-#' ModifyDBClusterSnapshotAttribute API action.
-#' @param IncludePublic True to include manual DB cluster snapshots that are public and can be
-#' copied or restored by any AWS account, and otherwise false. The default
-#' is `false`. The default is false.
+#' `ModifyDBClusterSnapshotAttribute` API action.
+#' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
+#' that are public and can be copied or restored by any AWS account. By
+#' default, the public snapshots are not included.
 #' 
 #' You can share a manual DB cluster snapshot as public by using the
 #' ModifyDBClusterSnapshotAttribute API action.
@@ -4464,7 +4491,7 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#' @param Marker An optional pagination token provided by a previous DescribeDBClusters
+#' @param Marker An optional pagination token provided by a previous `DescribeDBClusters`
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
@@ -4511,7 +4538,7 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' @usage
 #' rds_describe_db_engine_versions(Engine, EngineVersion,
 #'   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
-#'   ListSupportedCharacterSets, ListSupportedTimezones)
+#'   ListSupportedCharacterSets, ListSupportedTimezones, IncludeAll)
 #'
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
@@ -4534,14 +4561,23 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#' @param DefaultOnly Indicates that only the default version of the specified engine or
-#' engine and major version combination is returned.
-#' @param ListSupportedCharacterSets If this parameter is specified and the requested engine supports the
+#' @param DefaultOnly A value that indicates whether only the default version of the specified
+#' engine or engine and major version combination is returned.
+#' @param ListSupportedCharacterSets A value that indicates whether to list the supported character sets for
+#' each engine version.
+#' 
+#' If this parameter is enabled and the requested engine supports the
 #' `CharacterSetName` parameter for `CreateDBInstance`, the response
 #' includes a list of supported character sets for each engine version.
-#' @param ListSupportedTimezones If this parameter is specified and the requested engine supports the
+#' @param ListSupportedTimezones A value that indicates whether to list the supported time zones for each
+#' engine version.
+#' 
+#' If this parameter is enabled and the requested engine supports the
 #' `TimeZone` parameter for `CreateDBInstance`, the response includes a
 #' list of supported time zones for each engine version.
+#' @param IncludeAll A value that indicates whether to include engine versions that aren\'t
+#' available in the list. The default is to list only available engine
+#' versions.
 #'
 #' @section Request syntax:
 #' ```
@@ -4561,21 +4597,22 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #'   Marker = "string",
 #'   DefaultOnly = TRUE|FALSE,
 #'   ListSupportedCharacterSets = TRUE|FALSE,
-#'   ListSupportedTimezones = TRUE|FALSE
+#'   ListSupportedTimezones = TRUE|FALSE,
+#'   IncludeAll = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_engine_versions
-rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL, DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL, ListSupportedTimezones = NULL) {
+rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL, DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL, ListSupportedTimezones = NULL, IncludeAll = NULL) {
   op <- new_operation(
     name = "DescribeDBEngineVersions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
+  input <- .rds$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones, IncludeAll = IncludeAll)
   output <- .rds$describe_db_engine_versions_output()
   svc <- .rds$service()
   request <- new_request(svc, op, input, output)
@@ -5031,7 +5068,7 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' 
 #' To add or remove access for an AWS account to copy or restore a manual
 #' DB snapshot, or to make the manual DB snapshot public or private, use
-#' the ModifyDBSnapshotAttribute API action.
+#' the `ModifyDBSnapshotAttribute` API action.
 #'
 #' @usage
 #' rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
@@ -5116,9 +5153,9 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' If you don\'t specify a `SnapshotType` value, then both automated and
 #' manual snapshots are returned. Shared and public DB snapshots are not
 #' included in the returned results by default. You can include shared
-#' snapshots with these results by setting the `IncludeShared` parameter to
-#' `true`. You can include public snapshots with these results by setting
-#' the `IncludePublic` parameter to `true`.
+#' snapshots with these results by enabling the `IncludeShared` parameter.
+#' You can include public snapshots with these results by enabling the
+#' `IncludePublic` parameter.
 #' 
 #' The `IncludeShared` and `IncludePublic` parameters don\'t apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
@@ -5138,15 +5175,17 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' `DescribeDBSnapshots` request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
-#' @param IncludeShared True to include shared manual DB snapshots from other AWS accounts that
-#' this AWS account has been given permission to copy or restore, and
-#' otherwise false. The default is `false`.
+#' @param IncludeShared A value that indicates whether to include shared manual DB cluster
+#' snapshots from other AWS accounts that this AWS account has been given
+#' permission to copy or restore. By default, these snapshots are not
+#' included.
 #' 
 #' You can give an AWS account permission to restore a manual DB snapshot
-#' from another AWS account by using the ModifyDBSnapshotAttribute API
+#' from another AWS account by using the `ModifyDBSnapshotAttribute` API
 #' action.
-#' @param IncludePublic True to include manual DB snapshots that are public and can be copied or
-#' restored by any AWS account, and otherwise false. The default is false.
+#' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
+#' that are public and can be copied or restored by any AWS account. By
+#' default, the public snapshots are not included.
 #' 
 #' You can share a manual DB snapshot as public by using the
 #' ModifyDBSnapshotAttribute API.
@@ -5649,7 +5688,7 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' DescribeGlobalClusters request. If this parameter is specified, the
+#' `DescribeGlobalClusters` request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
 #'
@@ -5833,8 +5872,7 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' the available offerings matching the specified DB instance class.
 #' @param LicenseModel The license model filter value. Specify this parameter to show only the
 #' available offerings matching the specified license model.
-#' @param Vpc The VPC filter value. Specify this parameter to show only the available
-#' VPC or non-VPC offerings.
+#' @param Vpc A value that indicates whether to show only VPC or non-VPC offerings.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -5989,8 +6027,8 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' available offerings matching the specified offering type.
 #' 
 #' Valid Values: `"Partial Upfront" | "All Upfront" | "No Upfront" `
-#' @param MultiAZ The Multi-AZ filter value. Specify this parameter to show only those
-#' reservations matching the specified Multi-AZ parameter.
+#' @param MultiAZ A value that indicates whether to show only those reservations that
+#' support Multi-AZ.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more than
 #' the `MaxRecords` value is available, a pagination token called a marker
@@ -6074,8 +6112,8 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #' available offerings matching the specified offering type.
 #' 
 #' Valid Values: `"Partial Upfront" | "All Upfront" | "No Upfront" `
-#' @param MultiAZ The Multi-AZ filter value. Specify this parameter to show only the
-#' available offerings matching the specified Multi-AZ parameter.
+#' @param MultiAZ A value that indicates whether to show only those reservations that
+#' support Multi-AZ.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more than
 #' the `MaxRecords` value is available, a pagination token called a marker
@@ -6154,7 +6192,7 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' DescribeSourceRegions request. If this parameter is specified, the
+#' `DescribeSourceRegions` request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
 #' @param Filters This parameter is not currently supported.
@@ -6198,9 +6236,9 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' You can call DescribeValidDBInstanceModifications to learn what
 #' modifications you can make to your DB instance
 #'
-#' You can call DescribeValidDBInstanceModifications to learn what
+#' You can call `DescribeValidDBInstanceModifications` to learn what
 #' modifications you can make to your DB instance. You can use this
-#' information when you call ModifyDBInstance.
+#' information when you call `ModifyDBInstance`.
 #'
 #' @usage
 #' rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
@@ -6459,9 +6497,12 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' -   Must match the identifier of an existing DB cluster.
 #' @param Capacity The DB cluster capacity.
 #' 
+#' When you change the capacity of a paused Aurora Serverless DB cluster,
+#' it automatically resumes.
+#' 
 #' Constraints:
 #' 
-#' -   Value must be `2`, `4`, `8`, `16`, `32`, `64`, `128`, or `256`.
+#' -   Value must be `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, or `256`.
 #' @param SecondsBeforeTimeout The amount of time, in seconds, that Aurora Serverless tries to find a
 #' scaling point to perform seamless scaling before enforcing the timeout
 #' action. The default is 300.
@@ -6543,22 +6584,22 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster2`
-#' @param ApplyImmediately A value that specifies whether the modifications in this request and any
+#' @param ApplyImmediately A value that indicates whether the modifications in this request and any
 #' pending modifications are asynchronously applied as soon as possible,
 #' regardless of the `PreferredMaintenanceWindow` setting for the DB
-#' cluster. If this parameter is set to `false`, changes to the DB cluster
-#' are applied during the next maintenance window.
+#' cluster. If this parameter is disabled, changes to the DB cluster are
+#' applied during the next maintenance window.
 #' 
 #' The `ApplyImmediately` parameter only affects the
 #' `EnableIAMDatabaseAuthentication`, `MasterUserPassword`, and
-#' `NewDBClusterIdentifier` values. If you set the `ApplyImmediately`
-#' parameter value to false, then changes to the
-#' `EnableIAMDatabaseAuthentication`, `MasterUserPassword`, and
-#' `NewDBClusterIdentifier` values are applied during the next maintenance
-#' window. All other changes are applied immediately, regardless of the
-#' value of the `ApplyImmediately` parameter.
+#' `NewDBClusterIdentifier` values. If the `ApplyImmediately` parameter is
+#' disabled, then changes to the `EnableIAMDatabaseAuthentication`,
+#' `MasterUserPassword`, and `NewDBClusterIdentifier` values are applied
+#' during the next maintenance window. All other changes are applied
+#' immediately, regardless of the value of the `ApplyImmediately`
+#' parameter.
 #' 
-#' Default: `false`
+#' By default, this parameter is disabled.
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained. You must
 #' specify a minimum value of 1.
 #' 
@@ -6581,11 +6622,11 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' @param OptionGroupName A value that indicates that the DB cluster should be associated with the
 #' specified option group. Changing this parameter doesn\'t result in an
 #' outage except in the following case, and the change is applied during
-#' the next maintenance window unless the `ApplyImmediately` parameter is
-#' set to `true` for this request. If the parameter change results in an
-#' option group that enables OEM, this change can cause a brief
-#' (sub-second) period during which new connections are rejected but
-#' existing connections are not interrupted.
+#' the next maintenance window unless the `ApplyImmediately` is enabled for
+#' this request. If the parameter change results in an option group that
+#' enables OEM, this change can cause a brief (sub-second) period during
+#' which new connections are rejected but existing connections are not
+#' interrupted.
 #' 
 #' Permanent options can\'t be removed from an option group. The option
 #' group can\'t be removed from a DB cluster once it is associated with a
@@ -6624,10 +6665,9 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -6641,19 +6681,15 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' CloudWatch Logs for a specific DB cluster.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
 #' Changing this parameter results in an outage. The change is applied
-#' during the next maintenance window unless the ApplyImmediately parameter
-#' is set to true.
+#' during the next maintenance window unless `ApplyImmediately` is enabled.
 #' 
-#' For a list of valid engine versions, see CreateDBCluster, or call
-#' DescribeDBEngineVersions.
+#' For a list of valid engine versions, use DescribeDBEngineVersions.
 #' @param ScalingConfiguration The scaling properties of the DB cluster. You can only modify scaling
 #' properties for DB clusters in `serverless` DB engine mode.
-#' @param DeletionProtection Indicates if the DB cluster has deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true.
-#' @param EnableHttpEndpoint HTTP endpoint functionality is in beta for Aurora Serverless and is
-#' subject to change.
-#' 
-#' A value that indicates whether to enable the HTTP endpoint for an Aurora
+#' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled.
+#' @param EnableHttpEndpoint A value that indicates whether to enable the HTTP endpoint for an Aurora
 #' Serverless DB cluster. By default, the HTTP endpoint is disabled.
 #' 
 #' When enabled, the HTTP endpoint provides a connectionless web service
@@ -6661,11 +6697,11 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' also query your database from inside the RDS console with the query
 #' editor.
 #' 
-#' For more information about Aurora Serverless, see [Using Amazon Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
+#' For more information, see [Using the Data API for Aurora
+#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
-#' @param CopyTagsToSnapshot True to copy all tags from the DB cluster to snapshots of the DB
-#' cluster, and otherwise false. The default is false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB cluster to
+#' snapshots of the DB cluster. The default is not to copy them.
 #'
 #' @section Request syntax:
 #' ```
@@ -6698,7 +6734,8 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #'     MinCapacity = 123,
 #'     MaxCapacity = 123,
 #'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123
+#'     SecondsUntilAutoPause = 123,
+#'     TimeoutAction = "string"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
 #'   EnableHttpEndpoint = TRUE|FALSE,
@@ -6802,7 +6839,7 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' database defined by the `character_set_database` parameter. You can use
 #' the *Parameter Groups* option of the [Amazon RDS
 #' console](https://console.aws.amazon.com/rds/) or the
-#' DescribeDBClusterParameters command to verify that your DB cluster
+#' `DescribeDBClusterParameters` action to verify that your DB cluster
 #' parameter group has been created or modified.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -6877,7 +6914,7 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' 
 #' To view which AWS accounts have access to copy or restore a manual DB
 #' cluster snapshot, or whether a manual DB cluster snapshot public or
-#' private, use the DescribeDBClusterSnapshotAttributes API action.
+#' private, use the `DescribeDBClusterSnapshotAttributes` API action.
 #' 
 #' This action only applies to Aurora DB clusters.
 #'
@@ -6947,8 +6984,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Modifies settings for a DB instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request. To learn what modifications you can make to your
-#' DB instance, call DescribeValidDBInstanceModifications before you call
-#' ModifyDBInstance.
+#' DB instance, call `DescribeValidDBInstanceModifications` before you call
+#' `ModifyDBInstance`.
 #'
 #' @usage
 #' rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
@@ -6980,7 +7017,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' are 10\% greater than the current value.
 #' 
 #' For the valid values for allocated storage for each engine, see
-#' CreateDBInstance.
+#' `CreateDBInstance`.
 #' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example,
 #' `db.m4.large`. Not all DB instance classes are available in all AWS
 #' Regions, or for all database engines. For the full list of DB instance
@@ -6990,7 +7027,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' If you modify the DB instance class, an outage occurs during the change.
 #' The change is applied during the next maintenance window, unless
-#' `ApplyImmediately` is specified as `true` for this request.
+#' `ApplyImmediately` is enabled for this request.
 #' 
 #' Default: Uses existing setting
 #' @param DBSubnetGroupName The new DB subnet group for the DB instance. You can use this parameter
@@ -7001,8 +7038,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' in the *Amazon RDS User Guide.*
 #' 
 #' Changing the subnet group causes an outage during the change. The change
-#' is applied during the next maintenance window, unless you specify `true`
-#' for the `ApplyImmediately` parameter.
+#' is applied during the next maintenance window, unless you enable
+#' `ApplyImmediately`.
 #' 
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
@@ -7021,26 +7058,24 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The associated list of EC2 VPC security groups is
-#' managed by the DB cluster. For more information, see ModifyDBCluster.
+#' managed by the DB cluster. For more information, see `ModifyDBCluster`.
 #' 
 #' Constraints:
 #' 
 #' -   If supplied, must match existing VpcSecurityGroupIds.
-#' @param ApplyImmediately Specifies whether the modifications in this request and any pending
-#' modifications are asynchronously applied as soon as possible, regardless
-#' of the `PreferredMaintenanceWindow` setting for the DB instance.
+#' @param ApplyImmediately A value that indicates whether the modifications in this request and any
+#' pending modifications are asynchronously applied as soon as possible,
+#' regardless of the `PreferredMaintenanceWindow` setting for the DB
+#' instance. By default, this parameter is disabled.
 #' 
-#' If this parameter is set to `false`, changes to the DB instance are
-#' applied during the next maintenance window. Some parameter changes can
-#' cause an outage and are applied on the next call to RebootDBInstance, or
-#' the next failure reboot. Review the table of parameters in [Modifying a
-#' DB Instance and Using the Apply Immediately
-#' Parameter](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-#' in the *Amazon RDS User Guide.* to see the impact that setting
-#' `ApplyImmediately` to `true` or `false` has for each modified parameter
-#' and to determine when the changes are applied.
-#' 
-#' Default: `false`
+#' If this parameter is disabled, changes to the DB instance are applied
+#' during the next maintenance window. Some parameter changes can cause an
+#' outage and are applied on the next call to RebootDBInstance, or the next
+#' failure reboot. Review the table of parameters in [Modifying a DB
+#' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
+#' in the *Amazon RDS User Guide.* to see the impact of enabling or
+#' disabling `ApplyImmediately` for each modified parameter and to
+#' determine when the changes are applied.
 #' @param MasterUserPassword The new password for the master user. The password can include any
 #' printable ASCII character except \"/\", \"\"\", or \"@\".
 #' 
@@ -7053,7 +7088,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The password for the master user is managed by the DB
-#' cluster. For more information, see ModifyDBCluster.
+#' cluster. For more information, see `ModifyDBCluster`.
 #' 
 #' Default: Uses existing setting
 #' 
@@ -7084,7 +7119,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param DBParameterGroupName The name of the DB parameter group to apply to the DB instance. Changing
 #' this setting doesn\'t result in an outage. The parameter group name
 #' itself is changed immediately, but the actual parameter changes are not
-#' applied until you reboot the instance without failover. The db instance
+#' applied until you reboot the instance without failover. The DB instance
 #' will NOT be rebooted automatically and the parameter changes will NOT be
 #' applied during the next maintenance window.
 #' 
@@ -7099,14 +7134,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Changing this parameter can result in an outage if you change from 0 to
 #' a non-zero value or from a non-zero value to 0. These changes are
 #' applied during the next maintenance window unless the `ApplyImmediately`
-#' parameter is set to `true` for this request. If you change the parameter
-#' from one non-zero value to another non-zero value, the change is
+#' parameter is enabled for this request. If you change the parameter from
+#' one non-zero value to another non-zero value, the change is
 #' asynchronously applied as soon as possible.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The retention period for automated backups is managed by
-#' the DB cluster. For more information, see ModifyDBCluster.
+#' the DB cluster. For more information, see `ModifyDBCluster`.
 #' 
 #' Default: Uses existing setting
 #' 
@@ -7130,7 +7165,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The daily time range for creating automated backups is
-#' managed by the DB cluster. For more information, see ModifyDBCluster.
+#' managed by the DB cluster. For more information, see `ModifyDBCluster`.
 #' 
 #' Constraints:
 #' 
@@ -7158,36 +7193,36 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 #' 
 #' Constraints: Must be at least 30 minutes
-#' @param MultiAZ Specifies if the DB instance is a Multi-AZ deployment. Changing this
-#' parameter doesn\'t result in an outage and the change is applied during
-#' the next maintenance window unless the `ApplyImmediately` parameter is
-#' set to `true` for this request.
+#' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
+#' Changing this parameter doesn\'t result in an outage and the change is
+#' applied during the next maintenance window unless the `ApplyImmediately`
+#' parameter is enabled for this request.
 #' @param EngineVersion The version number of the database engine to upgrade to. Changing this
 #' parameter results in an outage and the change is applied during the next
-#' maintenance window unless the `ApplyImmediately` parameter is set to
-#' `true` for this request.
+#' maintenance window unless the `ApplyImmediately` parameter is eanbled
+#' for this request.
 #' 
 #' For major version upgrades, if a nondefault DB parameter group is
 #' currently in use, a new DB parameter group in the DB parameter group
 #' family for the new engine version must be specified. The new DB
 #' parameter group can be the default for that DB parameter group family.
 #' 
-#' For information about valid engine versions, see CreateDBInstance, or
-#' call DescribeDBEngineVersions.
-#' @param AllowMajorVersionUpgrade Indicates that major version upgrades are allowed. Changing this
-#' parameter doesn\'t result in an outage and the change is asynchronously
-#' applied as soon as possible.
+#' For information about valid engine versions, see `CreateDBInstance`, or
+#' call `DescribeDBEngineVersions`.
+#' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
+#' Changing this parameter doesn\'t result in an outage and the change is
+#' asynchronously applied as soon as possible.
 #' 
-#' Constraints: This parameter must be set to true when specifying a value
-#' for the EngineVersion parameter that is a different major version than
-#' the DB instance\'s current version.
-#' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' DB instance during the maintenance window. Changing this parameter
-#' doesn\'t result in an outage except in the following case and the change
-#' is asynchronously applied as soon as possible. An outage will result if
-#' this parameter is set to `true` during the maintenance window, and a
-#' newer minor version is available, and RDS has enabled auto patching for
-#' that engine version.
+#' Constraints: Major version upgrades must be allowed when specifying a
+#' value for the EngineVersion parameter that is a different major version
+#' than the DB instance\'s current version.
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
+#' automatically to the DB instance during the maintenance window. Changing
+#' this parameter doesn\'t result in an outage except in the following case
+#' and the change is asynchronously applied as soon as possible. An outage
+#' results if this parameter is enabled during the maintenance window, and
+#' a newer minor version is available, and RDS has enabled auto patching
+#' for that engine version.
 #' @param LicenseModel The license model for the DB instance.
 #' 
 #' Valid values: `license-included` \\| `bring-your-own-license` \\|
@@ -7197,7 +7232,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Changing this setting doesn\'t result in an outage and the change is
 #' applied during the next maintenance window unless the `ApplyImmediately`
-#' parameter is set to `true` for this request. If you are migrating from
+#' parameter is enabled for this request. If you are migrating from
 #' Provisioned IOPS to standard storage, set this value to 0. The DB
 #' instance will require a reboot for the change in storage type to take
 #' effect.
@@ -7226,11 +7261,11 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param OptionGroupName Indicates that the DB instance should be associated with the specified
 #' option group. Changing this parameter doesn\'t result in an outage
 #' except in the following case and the change is applied during the next
-#' maintenance window unless the `ApplyImmediately` parameter is set to
-#' `true` for this request. If the parameter change results in an option
-#' group that enables OEM, this change can cause a brief (sub-second)
-#' period during which new connections are rejected but existing
-#' connections are not interrupted.
+#' maintenance window unless the `ApplyImmediately` parameter is enabled
+#' for this request. If the parameter change results in an option group
+#' that enables OEM, this change can cause a brief (sub-second) period
+#' during which new connections are rejected but existing connections are
+#' not interrupted.
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can\'t be removed from an option group, and that option group
@@ -7238,9 +7273,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' instance
 #' @param NewDBInstanceIdentifier The new DB instance identifier for the DB instance when renaming a DB
 #' instance. When you change the DB instance identifier, an instance reboot
-#' will occur immediately if you set `Apply Immediately` to true, or will
-#' occur during the next maintenance window if `Apply Immediately` to
-#' false. This value is stored as a lowercase string.
+#' occurs immediately if you enable `ApplyImmediately`, or will occur
+#' during the next maintenance window if you disable Apply Immediately.
+#' This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -7273,8 +7308,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Valid values: `standard | gp2 | io1`
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -7284,14 +7318,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' remove the instance from its current domain. The domain must be created
 #' prior to this operation. Currently only a Microsoft SQL Server instance
 #' can be created in a Active Directory Domain.
-#' @param CopyTagsToSnapshot True to copy all tags from the DB instance to snapshots of the DB
-#' instance, and otherwise false. The default is false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. Copying tags to snapshots is managed by the DB cluster.
 #' Setting this value for an Aurora DB instance has no effect on the DB
-#' cluster setting. For more information, see ModifyDBCluster.
+#' cluster setting. For more information, see `ModifyDBCluster`.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB instance. To disable collecting
 #' Enhanced Monitoring metrics, specify 0. The default is 0.
@@ -7346,20 +7380,18 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Default: `3306`
 #' 
 #' Valid Values: `1150-65535`
-#' @param PubliclyAccessible Boolean value that indicates if the DB instance has a publicly
-#' resolvable DNS name. Set to `True` to make the DB instance
-#' Internet-facing with a publicly resolvable DNS name, which resolves to a
-#' public IP address. Set to `False` to make the DB instance internal with
-#' a DNS name that resolves to a private IP address.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
 #' 
 #' `PubliclyAccessible` only applies to DB instances in a VPC. The DB
 #' instance must be part of a public subnet and `PubliclyAccessible` must
-#' be true in order for it to be publicly accessible.
+#' be enabled for it to be publicly accessible.
 #' 
 #' Changes to the `PubliclyAccessible` parameter are applied immediately
 #' regardless of the value of the `ApplyImmediately` parameter.
-#' 
-#' Default: false
 #' @param MonitoringRoleArn The ARN for the IAM role that permits RDS to send enhanced monitoring
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
@@ -7380,8 +7412,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Default: 1
 #' 
 #' Valid Values: 0 - 15
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines
@@ -7389,17 +7422,15 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. Mapping AWS IAM accounts to database accounts is managed
-#' by the DB cluster. For more information, see ModifyDBCluster.
+#' by the DB cluster. For more information, see `ModifyDBCluster`.
 #' 
 #' **MySQL**
 #' 
 #' -   For MySQL 5.6, minor version 5.6.34 or higher
 #' 
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
-#' 
-#' Default: `false`
-#' @param EnablePerformanceInsights True to enable Performance Insights for the DB instance, and otherwise
-#' false.
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' instance.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -7407,6 +7438,11 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
 #' The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
 #' the KMS key alias for the KMS encryption key.
+#' 
+#' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default encryption key. AWS KMS creates the default
+#' encryption key for your AWS account. Your AWS account has a different
+#' default encryption key for each AWS Region.
 #' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
 #' values are 7 or 731 (2 years).
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
@@ -7417,10 +7453,11 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' `ApplyImmediately` parameter has no effect.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance
+#' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
-#' @param DeletionProtection Indicates if the DB instance has deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true. For more
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #'
@@ -7676,7 +7713,7 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' 
 #' To view which AWS accounts have access to copy or restore a manual DB
 #' snapshot, or whether a manual DB snapshot public or private, use the
-#' DescribeDBSnapshotAttributes API action.
+#' `DescribeDBSnapshotAttributes` API action.
 #'
 #' @usage
 #' rds_modify_db_snapshot_attribute(DBSnapshotIdentifier, AttributeName,
@@ -7792,8 +7829,8 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' Modifies an existing RDS event notification subscription. Note that you
 #' can\'t modify the source identifiers using this call; to change source
 #' identifiers for a subscription, use the
-#' AddSourceIdentifierToSubscription and
-#' RemoveSourceIdentifierFromSubscription calls.
+#' `AddSourceIdentifierToSubscription` and
+#' `RemoveSourceIdentifierFromSubscription` calls.
 #' 
 #' You can see a list of the event categories for a given SourceType in the
 #' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
@@ -7820,7 +7857,7 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
 #' topic in the *Amazon RDS User Guide* or by using the
 #' **DescribeEventCategories** action.
-#' @param Enabled A Boolean value; set to **true** to activate the subscription.
+#' @param Enabled A value that indicates whether to activate the subscription.
 #'
 #' @section Request syntax:
 #' ```
@@ -7889,8 +7926,8 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' 
 #' Example: `my-cluster2`
 #' @param DeletionProtection Indicates if the global database cluster has deletion protection
-#' enabled. The global database cluster can\'t be deleted when this value
-#' is set to true.
+#' enabled. The global database cluster can\'t be deleted when deletion
+#' protection is enabled.
 #'
 #' @section Request syntax:
 #' ```
@@ -7938,7 +7975,7 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' present, the specified configuration is used to update the existing
 #' configuration.
 #' @param OptionsToRemove Options in this list are removed from the option group.
-#' @param ApplyImmediately Indicates whether the changes should be applied immediately, or during
+#' @param ApplyImmediately A value that indicates whether to apply the change immediately or during
 #' the next maintenance window for each instance associated with the option
 #' group.
 #'
@@ -8204,10 +8241,11 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing DBInstance.
-#' @param ForceFailover When `true`, the reboot is conducted through a MultiAZ failover.
+#' @param ForceFailover A value that indicates whether the reboot is conducted through a
+#' Multi-AZ failover.
 #' 
-#' Constraint: You can\'t specify `true` if the instance is not configured
-#' for MultiAZ.
+#' Constraint: You can\'t enable force failover if the instance is not
+#' configured for Multi-AZ.
 #'
 #' @section Request syntax:
 #' ```
@@ -8294,32 +8332,37 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 #' This action only applies to Aurora DB clusters.
 #'
 #' @usage
-#' rds_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
+#' rds_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn,
+#'   FeatureName)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to disassociate the IAM role from.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the
 #' Aurora DB cluster, for example
 #' `arn:aws:iam::123456789012:role/AuroraAccessRole`.
+#' @param FeatureName The name of the feature for the DB cluster that the IAM role is to be
+#' disassociated from. For the list of supported feature names, see
+#' DBEngineVersion.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$remove_role_from_db_cluster(
 #'   DBClusterIdentifier = "string",
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   FeatureName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_remove_role_from_db_cluster
-rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn) {
+rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "RemoveRoleFromDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn)
+  input <- .rds$remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$remove_role_from_db_cluster_output()
   svc <- .rds$service()
   request <- new_request(svc, op, input, output)
@@ -8343,7 +8386,7 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn) {
 #' DB instance, for example `arn:aws:iam::123456789012:role/AccessRole`.
 #' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be
 #' disassociated from. For the list of supported feature names, see
-#' DBEngineVersion.
+#' `DBEngineVersion`.
 #'
 #' @section Request syntax:
 #' ```
@@ -8475,9 +8518,9 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' 
 #' When resetting the entire group, dynamic parameters are updated
 #' immediately and static parameters are set to `pending-reboot` to take
-#' effect on the next DB instance restart or RebootDBInstance request. You
-#' must call RebootDBInstance for every DB instance in your DB cluster that
-#' you want the updated static parameter to apply to.
+#' effect on the next DB instance restart or `RebootDBInstance` request.
+#' You must call `RebootDBInstance` for every DB instance in your DB
+#' cluster that you want the updated static parameter to apply to.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -8490,13 +8533,13 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #'   ResetAllParameters, Parameters)
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to reset.
-#' @param ResetAllParameters A value that is set to `true` to reset all parameters in the DB cluster
-#' parameter group to their default values, and `false` otherwise. You
-#' can\'t use this parameter if there is a list of parameter names
-#' specified for the `Parameters` parameter.
+#' @param ResetAllParameters A value that indicates whether to reset all parameters in the DB cluster
+#' parameter group to their default values. You can\'t use this parameter
+#' if there is a list of parameter names specified for the `Parameters`
+#' parameter.
 #' @param Parameters A list of parameter names in the DB cluster parameter group to reset to
 #' the default values. You can\'t use this parameter if the
-#' `ResetAllParameters` parameter is set to `true`.
+#' `ResetAllParameters` parameter is enabled.
 #'
 #' @section Request syntax:
 #' ```
@@ -8563,10 +8606,9 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' Constraints:
 #' 
 #' -   Must match the name of an existing DBParameterGroup.
-#' @param ResetAllParameters Specifies whether (`true`) or not (`false`) to reset all parameters in
-#' the DB parameter group to default values.
-#' 
-#' Default: `true`
+#' @param ResetAllParameters A value that indicates whether to reset all parameters in the DB
+#' parameter group to default values. By default, all parameters in the DB
+#' parameter group are reset to default values.
 #' @param Parameters To reset the entire DB parameter group, specify the `DBParameterGroup`
 #' name and `ResetAllParameters` parameters. To reset specific parameters,
 #' provide a list of the following: `ParameterName` and `ApplyMethod`. A
@@ -8659,8 +8701,8 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #'   S3IngestionRoleArn, BacktrackWindow, EnableCloudwatchLogsExports,
 #'   DeletionProtection, CopyTagsToSnapshot)
 #'
-#' @param AvailabilityZones A list of EC2 Availability Zones that instances in the restored DB
-#' cluster can be created in.
+#' @param AvailabilityZones A list of Availability Zones (AZs) where instances in the restored DB
+#' cluster can be created.
 #' @param BackupRetentionPeriod The number of days for which automated backups of the restored DB
 #' cluster are retained. You must specify a minimum value of 1.
 #' 
@@ -8770,7 +8812,7 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' 
 #' Constraints: Minimum 30-minute window.
 #' @param Tags 
-#' @param StorageEncrypted Specifies whether the restored DB cluster is encrypted.
+#' @param StorageEncrypted A value that indicates whether the restored DB cluster is encrypted.
 #' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
@@ -8779,15 +8821,14 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' cluster, then you can use the KMS key alias instead of the ARN for the
 #' KM encryption key.
 #' 
-#' If the `StorageEncrypted` parameter is true, and you do not specify a
+#' If the StorageEncrypted parameter is enabled, and you do not specify a
 #' value for the `KmsKeyId` parameter, then Amazon RDS will use your
 #' default encryption key. AWS KMS creates the default encryption key for
 #' your AWS account. Your AWS account has a different default encryption
 #' key for each AWS Region.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param SourceEngine &#91;required&#93; The identifier for the database engine that was backed up to create the
 #' files stored in the Amazon S3 bucket.
 #' 
@@ -8820,11 +8861,12 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' more information, see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon Aurora User Guide*.
-#' @param DeletionProtection Indicates if the DB cluster should have deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true. The default
-#' is false.
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB cluster to snapshots of the
-#' restored DB cluster, and otherwise false. The default is false.
+#' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
+#' cluster to snapshots of the restored DB cluster. The default is not to
+#' copy them.
 #'
 #' @section Request syntax:
 #' ```
@@ -8918,8 +8960,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
 #'   DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot)
 #'
-#' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
-#' restored DB cluster can be created in.
+#' @param AvailabilityZones Provides the list of Availability Zones (AZs) where instances in the
+#' restored DB cluster can be created.
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to create from the DB snapshot or DB cluster
 #' snapshot. This parameter isn\'t case-sensitive.
 #' 
@@ -8981,10 +9023,9 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' 
 #' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
 #'     not encrypted, then the restored DB cluster is not encrypted.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -9018,11 +9059,12 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' -   First character must be a letter.
 #' 
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens.
-#' @param DeletionProtection Indicates if the DB cluster should have deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true. The default
-#' is false.
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB cluster to snapshots of the
-#' restored DB cluster, and otherwise false. The default is false.
+#' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
+#' cluster to snapshots of the restored DB cluster. The default is not to
+#' copy them.
 #'
 #' @section Request syntax:
 #' ```
@@ -9058,7 +9100,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'     MinCapacity = 123,
 #'     MaxCapacity = 123,
 #'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123
+#'     SecondsUntilAutoPause = 123,
+#'     TimeoutAction = "string"
 #'   ),
 #'   DBClusterParameterGroupName = "string",
 #'   DeletionProtection = TRUE|FALSE,
@@ -9095,7 +9138,7 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' security group.
 #' 
 #' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the CreateDBInstance action to create DB
+#' DB cluster. You must invoke the `CreateDBInstance` action to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
 #' instances only after the `RestoreDBClusterToPointInTime` action has
@@ -9155,15 +9198,16 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' -   Must be specified if `UseLatestRestorableTime` parameter is not
 #'     provided
 #' 
-#' -   Can\'t be specified if `UseLatestRestorableTime` parameter is true
+#' -   Can\'t be specified if the `UseLatestRestorableTime` parameter is
+#'     enabled
 #' 
-#' -   Can\'t be specified if `RestoreType` parameter is `copy-on-write`
+#' -   Can\'t be specified if the `RestoreType` parameter is
+#'     `copy-on-write`
 #' 
 #' Example: `2015-03-07T23:45:00Z`
-#' @param UseLatestRestorableTime A value that is set to `true` to restore the DB cluster to the latest
-#' restorable backup time, and `false` otherwise.
-#' 
-#' Default: `false`
+#' @param UseLatestRestorableTime A value that indicates whether to restore the DB cluster to the latest
+#' restorable backup time. By default, the DB cluster is not restored to
+#' the latest restorable backup time.
 #' 
 #' Constraints: Can\'t be specified if `RestoreToTime` parameter is
 #' provided.
@@ -9207,10 +9251,9 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' 
 #' If `DBClusterIdentifier` refers to a DB cluster that is not encrypted,
 #' then the restore request is rejected.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -9239,11 +9282,12 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' -   First character must be a letter.
 #' 
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens.
-#' @param DeletionProtection Indicates if the DB cluster should have deletion protection enabled. The
-#' database can\'t be deleted when this value is set to true. The default
-#' is false.
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB cluster to snapshots of the
-#' restored DB cluster, and otherwise false. The default is false.
+#' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
+#' cluster to snapshots of the restored DB cluster. The default is not to
+#' copy them.
 #'
 #' @section Request syntax:
 #' ```
@@ -9323,7 +9367,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
 #' 
 #' This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use RestoreDBClusterFromSnapshot.
+#' Aurora, use `RestoreDBClusterFromSnapshot`.
 #'
 #' @usage
 #' rds_restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
@@ -9368,12 +9412,12 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Default: The same port as the original DB instance
 #' 
 #' Constraints: Value must be `1150-65535`
-#' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in.
+#' @param AvailabilityZone The Availability Zone (AZ) where the DB instance will be created.
 #' 
 #' Default: A random, system-chosen Availability Zone.
 #' 
-#' Constraint: You can\'t specify the AvailabilityZone parameter if the
-#' MultiAZ parameter is set to `true`.
+#' Constraint: You can\'t specify the `AvailabilityZone` parameter if the
+#' DB instance is a Multi-AZ deployment.
 #' 
 #' Example: `us-east-1a`
 #' @param DBSubnetGroupName The DB subnet group name to use for the new instance.
@@ -9382,17 +9426,18 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' DBSubnetGroup.
 #' 
 #' Example: `mySubnetgroup`
-#' @param MultiAZ Specifies if the DB instance is a Multi-AZ deployment.
+#' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
 #' 
-#' Constraint: You can\'t specify the AvailabilityZone parameter if the
-#' MultiAZ parameter is set to `true`.
-#' @param PubliclyAccessible Specifies the accessibility options for the DB instance. A value of true
-#' specifies an Internet-facing instance with a publicly resolvable DNS
-#' name, which resolves to a public IP address. A value of false specifies
-#' an internal instance with a DNS name that resolves to a private IP
-#' address. For more information, see CreateDBInstance.
-#' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' DB instance during the maintenance window.
+#' Constraint: You can\'t specify the `AvailabilityZone` parameter if the
+#' DB instance is a Multi-AZ deployment.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
+#' For more information, see CreateDBInstance.
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
+#' automatically to the DB instance during the maintenance window.
 #' @param LicenseModel License model information for the restored DB instance.
 #' 
 #' Default: Same as source.
@@ -9462,8 +9507,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' If you specify `io1`, you must also include a value for the `Iops`
 #' parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -9473,12 +9517,14 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Default: The default EC2 VPC security group for the DB subnet group\'s
 #' VPC.
 #' @param Domain Specify the Active Directory Domain to restore the instance in.
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB instance to snapshots of the
-#' restored DB instance, and otherwise false. The default is false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
+#' instance to snapshots of the DB instance. By default, tags are not
+#' copied.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines
@@ -9486,8 +9532,6 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' -   For MySQL 5.6, minor version 5.6.34 or higher
 #' 
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
-#' 
-#' Default: `false`
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
 #' CloudWatch Logs. The values in the list depend on the DB engine being
 #' used. For more information, see [Publishing Database Logs to Amazon
@@ -9496,7 +9540,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' in the *Amazon Aurora User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance
+#' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' If this argument is omitted, the default DBParameterGroup for the
@@ -9511,9 +9555,10 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' -   First character must be a letter.
 #' 
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens.
-#' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled.
-#' The database can\'t be deleted when this value is set to true. The
-#' default is false. For more information, see [Deleting a DB
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
+#' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #'
 #' @section Request syntax:
@@ -9611,7 +9656,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #'   ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection)
 #'
 #' @param DBName The name of the database to create when the DB instance is created.
-#' Follow the naming rules specified in CreateDBInstance.
+#' Follow the naming rules specified in `CreateDBInstance`.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -9625,7 +9670,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' Example: `mydbinstance`
 #' @param AllocatedStorage The amount of storage (in gigabytes) to allocate initially for the DB
-#' instance. Follow the allocation rules specified in CreateDBInstance.
+#' instance. Follow the allocation rules specified in `CreateDBInstance`.
 #' 
 #' Be sure to allocate enough memory for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional memory
@@ -9670,9 +9715,9 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' Example: `us-east-1d`
 #' 
-#' Constraint: The AvailabilityZone parameter can\'t be specified if the
-#' MultiAZ parameter is set to `true`. The specified Availability Zone must
-#' be in the same AWS Region as the current endpoint.
+#' Constraint: The `AvailabilityZone` parameter can\'t be specified if the
+#' DB instance is a Multi-AZ deployment. The specified Availability Zone
+#' must be in the same AWS Region as the current endpoint.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC). For more information, see [Amazon RDS
@@ -9696,7 +9741,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' specified engine is used.
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained. Setting
 #' this parameter to a positive number enables backups. For more
-#' information, see CreateDBInstance.
+#' information, see `CreateDBInstance`.
 #' @param PreferredBackupWindow The time range each day during which automated backups are created if
 #' automated backups are enabled. For more information, see [The Backup
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
@@ -9718,15 +9763,15 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Valid Values: `1150`-`65535`
 #' 
 #' Default: `3306`
-#' @param MultiAZ Specifies whether the DB instance is a Multi-AZ deployment. If MultiAZ
-#' is set to `true`, you can\'t set the AvailabilityZone parameter.
+#' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
+#' If the DB instance is a Multi-AZ deployment, you can\'t set the
+#' `AvailabilityZone` parameter.
 #' @param EngineVersion The version number of the database engine to use. Choose the latest
 #' minor version of your database engine. For information about engine
-#' versions, see CreateDBInstance, or call DescribeDBEngineVersions.
-#' @param AutoMinorVersionUpgrade True to indicate that minor engine upgrades are applied automatically to
-#' the DB instance during the maintenance window, and otherwise false.
-#' 
-#' Default: `true`
+#' versions, see `CreateDBInstance`, or call `DescribeDBEngineVersions`.
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
+#' automatically to the DB instance during the maintenance window. By
+#' default, minor engine upgrades are not applied automatically.
 #' @param LicenseModel The license model for this DB instance. Use `general-public-license`.
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' allocate initially for the DB instance. For information about valid Iops
@@ -9736,11 +9781,12 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param OptionGroupName The name of the option group to associate with this DB instance. If this
 #' argument is omitted, the default option group for the specified engine
 #' is used.
-#' @param PubliclyAccessible Specifies the accessibility options for the DB instance. A value of true
-#' specifies an Internet-facing instance with a publicly resolvable DNS
-#' name, which resolves to a public IP address. A value of false specifies
-#' an internal instance with a DNS name that resolves to a private IP
-#' address. For more information, see CreateDBInstance.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
+#' For more information, see CreateDBInstance.
 #' @param Tags A list of tags to associate with this DB instance. For more information,
 #' see [Tagging Amazon RDS
 #' Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
@@ -9752,9 +9798,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' If you specify `io1`, you must also include a value for the `Iops`
 #' parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified; otherwise
-#' `standard`
-#' @param StorageEncrypted Specifies whether the new DB instance is encrypted or not.
+#' Default: `io1` if the `Iops` parameter is specified; otherwise `gp2`
+#' @param StorageEncrypted A value that indicates whether the new DB instance is encrypted or not.
 #' @param KmsKeyId The AWS KMS key identifier for an encrypted DB instance.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
@@ -9763,15 +9808,13 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' instance, then you can use the KMS key alias instead of the ARN for the
 #' KM encryption key.
 #' 
-#' If the `StorageEncrypted` parameter is true, and you do not specify a
+#' If the `StorageEncrypted` parameter is enabled, and you do not specify a
 #' value for the `KmsKeyId` parameter, then Amazon RDS will use your
 #' default encryption key. AWS KMS creates the default encryption key for
 #' your AWS account. Your AWS account has a different default encryption
 #' key for each AWS Region.
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB instance to snapshots of the
-#' restored DB instance, and otherwise false.
-#' 
-#' Default: false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
+#' snapshots of the DB instance. By default, tags are not copied.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB instance. To disable collecting
 #' Enhanced Monitoring metrics, specify 0.
@@ -9791,10 +9834,9 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
 #' supply a `MonitoringRoleArn` value.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
-#' 
-#' Default: `false`
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' @param SourceEngine &#91;required&#93; The name of the engine of your source database.
 #' 
 #' Valid Values: `mysql`
@@ -9806,8 +9848,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param S3Prefix The prefix of your Amazon S3 bucket.
 #' @param S3IngestionRoleArn &#91;required&#93; An AWS Identity and Access Management (IAM) role to allow Amazon RDS to
 #' access your Amazon S3 bucket.
-#' @param EnablePerformanceInsights True to enable Performance Insights for the DB instance, and otherwise
-#' false.
+#' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
+#' instance.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -9815,6 +9857,11 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
 #' The KMS key ID is the Amazon Resource Name (ARN), the KMS key
 #' identifier, or the KMS key alias for the KMS encryption key.
+#' 
+#' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default encryption key. AWS KMS creates the default
+#' encryption key for your AWS account. Your AWS account has a different
+#' default encryption key for each AWS Region.
 #' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
 #' values are 7 or 731 (2 years).
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
@@ -9825,11 +9872,12 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' in the *Amazon RDS User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance
+#' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
-#' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled.
-#' The database can\'t be deleted when this value is set to true. The
-#' default is false. For more information, see [Deleting a DB
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
+#' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #'
 #' @section Request syntax:
@@ -9932,7 +9980,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' mirrored deployment and not a single-AZ deployment.
 #' 
 #' This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use RestoreDBClusterToPointInTime.
+#' Aurora, use `RestoreDBClusterToPointInTime`.
 #'
 #' @usage
 #' rds_restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier,
@@ -9969,15 +10017,16 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' 
 #' -   Must be before the latest restorable time for the DB instance
 #' 
-#' -   Can\'t be specified if UseLatestRestorableTime parameter is true
+#' -   Can\'t be specified if the `UseLatestRestorableTime` parameter is
+#'     enabled
 #' 
 #' Example: `2009-09-07T23:45:00Z`
-#' @param UseLatestRestorableTime Specifies whether (`true`) or not (`false`) the DB instance is restored
-#' from the latest backup time.
+#' @param UseLatestRestorableTime A value that indicates whether the DB instance is restored from the
+#' latest backup time. By default, the DB instance is not restored from the
+#' latest backup time.
 #' 
-#' Default: `false`
-#' 
-#' Constraints: Can\'t be specified if RestoreTime parameter is provided.
+#' Constraints: Can\'t be specified if the `RestoreTime` parameter is
+#' provided.
 #' @param DBInstanceClass The compute and memory capacity of the Amazon RDS DB instance, for
 #' example, `db.m4.large`. Not all DB instance classes are available in all
 #' AWS Regions, or for all database engines. For the full list of DB
@@ -9991,12 +10040,12 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Constraints: Value must be `1150-65535`
 #' 
 #' Default: The same port as the original DB instance.
-#' @param AvailabilityZone The EC2 Availability Zone that the DB instance is created in.
+#' @param AvailabilityZone The Availability Zone (AZ) where the DB instance will be created.
 #' 
 #' Default: A random, system-chosen Availability Zone.
 #' 
-#' Constraint: You can\'t specify the AvailabilityZone parameter if the
-#' MultiAZ parameter is set to true.
+#' Constraint: You can\'t specify the `AvailabilityZone` parameter if the
+#' DB instance is a Multi-AZ deployment.
 #' 
 #' Example: `us-east-1a`
 #' @param DBSubnetGroupName The DB subnet group name to use for the new instance.
@@ -10005,17 +10054,18 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' DBSubnetGroup.
 #' 
 #' Example: `mySubnetgroup`
-#' @param MultiAZ Specifies if the DB instance is a Multi-AZ deployment.
+#' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
 #' 
-#' Constraint: You can\'t specify the AvailabilityZone parameter if the
-#' MultiAZ parameter is set to `true`.
-#' @param PubliclyAccessible Specifies the accessibility options for the DB instance. A value of true
-#' specifies an Internet-facing instance with a publicly resolvable DNS
-#' name, which resolves to a public IP address. A value of false specifies
-#' an internal instance with a DNS name that resolves to a private IP
-#' address. For more information, see CreateDBInstance.
-#' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' DB instance during the maintenance window.
+#' Constraint: You can\'t specify the `AvailabilityZone` parameter if the
+#' DB instance is a Multi-AZ deployment.
+#' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
+#' When the DB instance is publicly accessible, it is an Internet-facing
+#' instance with a publicly resolvable DNS name, which resolves to a public
+#' IP address. When the DB instance is not publicly accessible, it is an
+#' internal instance with a DNS name that resolves to a private IP address.
+#' For more information, see CreateDBInstance.
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
+#' automatically to the DB instance during the maintenance window.
 #' @param LicenseModel License model information for the restored DB instance.
 #' 
 #' Default: Same as source.
@@ -10069,8 +10119,9 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' TDE, can\'t be removed from an option group, and that option group
 #' can\'t be removed from a DB instance once it is associated with a DB
 #' instance
-#' @param CopyTagsToSnapshot True to copy all tags from the restored DB instance to snapshots of the
-#' restored DB instance, and otherwise false. The default is false.
+#' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
+#' instance to snapshots of the DB instance. By default, tags are not
+#' copied.
 #' @param Tags 
 #' @param StorageType Specifies the storage type to be associated with the DB instance.
 #' 
@@ -10079,8 +10130,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' If you specify `io1`, you must also include a value for the `Iops`
 #' parameter.
 #' 
-#' Default: `io1` if the `Iops` parameter is specified, otherwise
-#' `standard`
+#' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
@@ -10092,8 +10142,9 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' @param Domain Specify the Active Directory Domain to restore the instance in.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableIAMDatabaseAuthentication True to enable mapping of AWS Identity and Access Management (IAM)
-#' accounts to database accounts, and otherwise false.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
+#' Access Management (IAM) accounts to database accounts. By default,
+#' mapping is disabled.
 #' 
 #' You can enable IAM database authentication for the following database
 #' engines
@@ -10101,8 +10152,6 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' -   For MySQL 5.6, minor version 5.6.34 or higher
 #' 
 #' -   For MySQL 5.7, minor version 5.7.16 or higher
-#' 
-#' Default: `false`
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
 #' CloudWatch Logs. The values in the list depend on the DB engine being
 #' used. For more information, see [Publishing Database Logs to Amazon
@@ -10111,7 +10160,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' in the *Amazon RDS User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
-#' @param UseDefaultProcessorFeatures A value that specifies that the DB instance class of the DB instance
+#' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' If this argument is omitted, the default DBParameterGroup for the
@@ -10126,9 +10175,10 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' -   First character must be a letter.
 #' 
 #' -   Can\'t end with a hyphen or contain two consecutive hyphens.
-#' @param DeletionProtection Indicates if the DB instance should have deletion protection enabled.
-#' The database can\'t be deleted when this value is set to true. The
-#' default is false. For more information, see [Deleting a DB
+#' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
+#' enabled. The database can\'t be deleted when deletion protection is
+#' enabled. By default, deletion protection is disabled. For more
+#' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param SourceDbiResourceId The resource ID of the source DB instance from which to restore.
 #'
@@ -10265,6 +10315,56 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 }
 .rds$operations$revoke_db_security_group_ingress <- rds_revoke_db_security_group_ingress
 
+#' Starts a database activity stream to monitor activity on the database
+#'
+#' Starts a database activity stream to monitor activity on the database.
+#' For more information, see [Database Activity
+#' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
+#' in the *Amazon Aurora User Guide*.
+#'
+#' @usage
+#' rds_start_activity_stream(ResourceArn, Mode, KmsKeyId, ApplyImmediately)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster, for example
+#' `arn:aws:rds:us-east-1:12345667890:cluster:das-cluster`.
+#' @param Mode &#91;required&#93; Specifies the mode of the database activity stream. Database events such
+#' as a change or access generate an activity stream event. The database
+#' session can handle these events either synchronously or asynchronously.
+#' @param KmsKeyId &#91;required&#93; The AWS KMS key identifier for encrypting messages in the database
+#' activity stream. The key identifier can be either a key ID, a key ARN,
+#' or a key alias.
+#' @param ApplyImmediately Specifies whether or not the database activity stream is to start as
+#' soon as possible, regardless of the maintenance window for the database.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_activity_stream(
+#'   ResourceArn = "string",
+#'   Mode = "sync"|"async",
+#'   KmsKeyId = "string",
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_start_activity_stream
+rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediately = NULL) {
+  op <- new_operation(
+    name = "StartActivityStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$start_activity_stream_input(ResourceArn = ResourceArn, Mode = Mode, KmsKeyId = KmsKeyId, ApplyImmediately = ApplyImmediately)
+  output <- .rds$start_activity_stream_output()
+  svc <- .rds$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$start_activity_stream <- rds_start_activity_stream
+
 #' Starts an Amazon Aurora DB cluster that was stopped using the AWS
 #' console, the stop-db-cluster AWS CLI command, or the StopDBCluster
 #' action
@@ -10323,7 +10423,7 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora DB clusters, use StartDBCluster instead.
+#' Aurora DB clusters, use `StartDBCluster` instead.
 #'
 #' @usage
 #' rds_start_db_instance(DBInstanceIdentifier)
@@ -10355,6 +10455,54 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
   return(response)
 }
 .rds$operations$start_db_instance <- rds_start_db_instance
+
+#' Stops a database activity stream that was started using the AWS console,
+#' the start-activity-stream AWS CLI command, or the StartActivityStream
+#' action
+#'
+#' Stops a database activity stream that was started using the AWS console,
+#' the `start-activity-stream` AWS CLI command, or the
+#' `StartActivityStream` action.
+#' 
+#' For more information, see [Database Activity
+#' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
+#' in the *Amazon Aurora User Guide*.
+#'
+#' @usage
+#' rds_stop_activity_stream(ResourceArn, ApplyImmediately)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster for the database
+#' activity stream. For example,
+#' `arn:aws:rds:us-east-1:12345667890:cluster:das-cluster`.
+#' @param ApplyImmediately Specifies whether or not the database activity stream is to stop as soon
+#' as possible, regardless of the maintenance window for the database.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_activity_stream(
+#'   ResourceArn = "string",
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_stop_activity_stream
+rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
+  op <- new_operation(
+    name = "StopActivityStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$stop_activity_stream_input(ResourceArn = ResourceArn, ApplyImmediately = ApplyImmediately)
+  output <- .rds$stop_activity_stream_output()
+  svc <- .rds$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$stop_activity_stream <- rds_stop_activity_stream
 
 #' Stops an Amazon Aurora DB cluster
 #'
@@ -10413,7 +10561,7 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora clusters, use StopDBCluster instead.
+#' Aurora clusters, use `StopDBCluster` instead.
 #'
 #' @usage
 #' rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier)

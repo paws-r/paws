@@ -4,12 +4,15 @@
 \alias{iotanalytics_update_datastore}
 \title{Updates the settings of a data store}
 \usage{
-iotanalytics_update_datastore(datastoreName, retentionPeriod)
+iotanalytics_update_datastore(datastoreName, retentionPeriod,
+  datastoreStorage)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store to be updated.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store.}
+
+\item{datastoreStorage}{Where data store data is stored.}
 }
 \description{
 Updates the settings of a data store.
@@ -20,6 +23,14 @@ Updates the settings of a data store.
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123
+  ),
+  datastoreStorage = list(
+    serviceManagedS3 = list(),
+    customerManagedS3 = list(
+      bucket = "string",
+      keyPrefix = "string",
+      roleArn = "string"
+    )
   )
 )
 }

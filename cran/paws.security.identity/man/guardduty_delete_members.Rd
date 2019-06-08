@@ -5,22 +5,25 @@
 \title{Deletes GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs}
 \usage{
-guardduty_delete_members(AccountIds, DetectorId)
+guardduty_delete_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to delete.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
+want to delete.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to delete.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
+delete.}
 }
 \description{
-Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
+Deletes GuardDuty member accounts (to the current GuardDuty master
+account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_members(
+  DetectorId = "string",
   AccountIds = list(
     "string"
-  ),
-  DetectorId = "string"
+  )
 )
 }
 }

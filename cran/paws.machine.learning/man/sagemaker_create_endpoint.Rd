@@ -28,6 +28,11 @@ API.
 Use this API only for hosting models using Amazon SageMaker hosting
 services.
 
+You must not delete an \code{EndpointConfig} in use by an endpoint that is
+live or while the \code{UpdateEndpoint} or \code{CreateEndpoint} operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new \code{EndpointConfig}.
+
 The endpoint name must be unique within an AWS Region in your AWS
 account.
 

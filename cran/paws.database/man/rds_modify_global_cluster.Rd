@@ -30,8 +30,8 @@ Constraints:
 Example: \code{my-cluster2}}
 
 \item{DeletionProtection}{Indicates if the global database cluster has deletion protection
-enabled. The global database cluster can't be deleted when this value
-is set to true.}
+enabled. The global database cluster can't be deleted when deletion
+protection is enabled.}
 }
 \description{
 Modify a setting for an Amazon Aurora global cluster. You can change one

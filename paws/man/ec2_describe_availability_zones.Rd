@@ -2,16 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_availability_zones}
 \alias{ec2_describe_availability_zones}
-\title{Describes one or more of the Availability Zones that are available to
-you}
+\title{Describes the Availability Zones that are available to you}
 \usage{
 ec2_describe_availability_zones(Filters, ZoneNames, ZoneIds, DryRun)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{message} - Information about the Availability Zone.
-\item \code{region-name} - The name of the region for the Availability Zone
+\item \code{region-name} - The name of the Region for the Availability Zone
 (for example, \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone (\code{available} \|
 \code{information} \| \code{impaired} \| \code{unavailable}).
@@ -21,9 +20,9 @@ ec2_describe_availability_zones(Filters, ZoneNames, ZoneIds, DryRun)
 \code{us-east-1a}).
 }}
 
-\item{ZoneNames}{The names of one or more Availability Zones.}
+\item{ZoneNames}{The names of the Availability Zones.}
 
-\item{ZoneIds}{The IDs of one or more Availability Zones.}
+\item{ZoneIds}{The IDs of the Availability Zones.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -31,11 +30,10 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of the Availability Zones that are available to
-you. The results include zones only for the region you're currently
-using. If there is an event impacting an Availability Zone, you can use
-this request to view the state and any provided message for that
-Availability Zone.
+Describes the Availability Zones that are available to you. The results
+include zones only for the Region you're currently using. If there is
+an event impacting an Availability Zone, you can use this request to
+view the state and any provided message for that Availability Zone.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Availability Zones}

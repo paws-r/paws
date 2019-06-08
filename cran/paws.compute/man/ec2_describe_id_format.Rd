@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_id_format}
 \alias{ec2_describe_id_format}
-\title{Describes the ID format settings for your resources on a per-region
+\title{Describes the ID format settings for your resources on a per-Region
 basis, for example, to view which resource types are enabled for longer
 IDs}
 \usage{
@@ -21,7 +21,7 @@ ec2_describe_id_format(Resource)
 \code{vpc-peering-connection} \| \code{vpn-connection} \| \code{vpn-gateway}}
 }
 \description{
-Describes the ID format settings for your resources on a per-region
+Describes the ID format settings for your resources on a per-Region
 basis, for example, to view which resource types are enabled for longer
 IDs. This request only returns information about resource types whose ID
 formats can be modified; it does not return information about other

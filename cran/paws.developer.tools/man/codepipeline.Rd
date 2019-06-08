@@ -31,6 +31,11 @@ and pipeline metadata, including the pipeline Amazon Resource Name
 execution of a pipeline.
 \item GetPipelineState, which returns information about the current state
 of the stages and actions of a pipeline.
+\item ListActionExecutions, which returns action-level details for past
+executions. The details include full stage and action-level details,
+including individual action duration, status, any errors which
+occurred during the execution, and input and output artifact
+location details.
 \item ListPipelines, which gets a summary of all of the pipelines
 associated with your account.
 \item ListPipelineExecutions, which gets a summary of the most recent
@@ -142,6 +147,7 @@ success.
 \link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account \cr
 \link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline \cr
 \link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account \cr
+\link[=codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key/value pairs (metadata) that are used to manage the resource \cr
 \link[=codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this region for this account \cr
 \link[=codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act upon \cr
 \link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on \cr
@@ -155,6 +161,8 @@ success.
 \link[=codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected \cr
 \link[=codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage \cr
 \link[=codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline \cr
+\link[=codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
+\link[=codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource \cr
 \link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
 }
 }

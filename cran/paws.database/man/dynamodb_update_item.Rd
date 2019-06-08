@@ -23,17 +23,17 @@ for both the partition key and the sort key.}
 
 \item{AttributeUpdates}{This is a legacy parameter. Use \code{UpdateExpression} instead. For more
 information, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html}{AttributeUpdates}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html}{AttributeUpdates}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{Expected}{This is a legacy parameter. Use \code{ConditionExpression} instead. For more
 information, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html}{Expected}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html}{Expected}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ConditionalOperator}{This is a legacy parameter. Use \code{ConditionExpression} instead. For more
 information, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html}{ConditionalOperator}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html}{ConditionalOperator}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ReturnValues}{Use \code{ReturnValues} if you want to get the item attributes as they appear
@@ -145,7 +145,7 @@ attributes.
 You can have many actions in a single expression, such as the following:
 \code{SET a=:value1, b=:value2 DELETE :value3, :value4, :value5}
 
-For more information on update expressions, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html}{Modifying Items and Attributes}
+For more information on update expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html}{Modifying Items and Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ConditionExpression}{A condition that must be satisfied in order for a conditional update to
@@ -162,7 +162,7 @@ These function names are case-sensitive.
 \item Logical operators: \code{AND | OR | NOT}
 }
 
-For more information on condition expressions, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -184,7 +184,7 @@ name. For example, consider the following attribute name:
 
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
-words, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
+words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
 in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
@@ -200,7 +200,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
@@ -219,7 +219,7 @@ You could then use these values in an expression, such as this:
 
 \code{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{

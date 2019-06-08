@@ -20,7 +20,7 @@ update.}
 }
 \description{
 Modifies a task set. This is used when a service uses the \code{EXTERNAL}
-deployment controller type. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
+deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

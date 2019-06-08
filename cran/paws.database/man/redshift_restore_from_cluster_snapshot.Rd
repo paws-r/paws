@@ -77,7 +77,7 @@ keys in an HSM.}
 \item{ClusterParameterGroupName}{The name of the parameter group to be associated with this cluster.
 
 Default: The default Amazon Redshift cluster parameter group. For
-information about the default parameter group, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Working with Amazon Redshift Parameter Groups}.
+information about the default parameter group, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Working with Amazon Redshift Parameter Groups}.
 
 Constraints:
 \itemize{
@@ -106,7 +106,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 Default: The value selected for the cluster from which the snapshot was
 taken. For more information about the time blocks for each region, see
-\href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows}{Maintenance Windows}
+\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows}{Maintenance Windows}
 in Amazon Redshift Cluster Management Guide.
 
 Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
@@ -123,7 +123,11 @@ taken.
 
 Constraints: Must be a value from 0 to 35.}
 
-\item{ManualSnapshotRetentionPeriod}{}
+\item{ManualSnapshotRetentionPeriod}{The default number of days to retain a manual snapshot. If the value is
+-1, the snapshot is retained indefinitely. This setting doesn't change
+the retention period of existing snapshots.
+
+The value must be either -1 or an integer between 1 and 3,653.}
 
 \item{KmsKeyId}{The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster that you restore from a
@@ -140,12 +144,12 @@ that same instance type and size. In other words, you can only restore a
 dc1.large instance type into another dc1.large instance type or
 dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge.
 First restore to a dc1.8xlareg cluster, then resize to a dc2.8large
-cluster. For more information about node types, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes}{About Clusters and Nodes}
+cluster. For more information about node types, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes}{About Clusters and Nodes}
 in the \emph{Amazon Redshift Cluster Management Guide}.}
 
 \item{EnhancedVpcRouting}{An option that specifies whether to create the cluster with enhanced VPC
 routing enabled. To create a cluster that uses enhanced VPC routing, the
-cluster must be in a VPC. For more information, see \href{http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html}{Enhanced VPC Routing}
+cluster must be in a VPC. For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html}{Enhanced VPC Routing}
 in the Amazon Redshift Cluster Management Guide.
 
 If this option is \code{true}, enhanced VPC routing is enabled.
@@ -186,7 +190,7 @@ size during restore.
 If you restore a cluster into a VPC, you must provide a cluster subnet
 group where you want the cluster restored.
 
-For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
+For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

@@ -90,7 +90,10 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #' iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
-#' @param Tags The tags to be assigned to the AWS IoT 1-Click device.
+#' @param Tags A collection of key/value pairs defining the resource tags. For example,
+#' \{ \"tags\": \{\"key1\": \"value1\", \"key2\": \"value2\"\} \}. For more
+#' information, see [AWS Tagging
+#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 #'
 #' @section Request syntax:
 #' ```
@@ -335,15 +338,14 @@ iot1clickdevicesservice_list_devices <- function(DeviceType = NULL, MaxResults =
 }
 .iot1clickdevicesservice$operations$list_devices <- iot1clickdevicesservice_list_devices
 
-#' List all tags on an AWS IoT 1-Click resource
+#' Lists the tags associated with the specified resource ARN
 #'
-#' List all tags on an AWS IoT 1-Click resource.
+#' Lists the tags associated with the specified resource ARN.
 #'
 #' @usage
 #' iot1clickdevicesservice_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The AWS IoT 1-Click resource with tags to be listed. This value is an
-#' Amazon Resource Name (ARN).
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -371,18 +373,21 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 }
 .iot1clickdevicesservice$operations$list_tags_for_resource <- iot1clickdevicesservice_list_tags_for_resource
 
-#' Associate a set of tags with an AWS IoT 1-Click resource
+#' Adds or updates the tags associated with the resource ARN
 #'
-#' Associate a set of tags with an AWS IoT 1-Click resource. You can then
-#' activate these user-defined tags so that they appear on the Billing and
-#' Cost Management console for cost allocation tracking.
+#' Adds or updates the tags associated with the resource ARN. See [AWS IoT
+#' 1-Click Service
+#' Limits](https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
+#' for the maximum number of tags allowed per resource.
 #'
 #' @usage
 #' iot1clickdevicesservice_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; Identifies the AWS IoT 1-Click resource to which tags should be added.
-#' This value is an Amazon Resource Name (ARN).
-#' @param Tags &#91;required&#93; The tags to be assigned to the AWS IoT 1-Click resource.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#' @param Tags &#91;required&#93; A collection of key/value pairs defining the resource tags. For example,
+#' \{ \"tags\": \{\"key1\": \"value1\", \"key2\": \"value2\"\} \}. For more
+#' information, see [AWS Tagging
+#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 #'
 #' @section Request syntax:
 #' ```
@@ -448,17 +453,17 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
 }
 .iot1clickdevicesservice$operations$unclaim_device <- iot1clickdevicesservice_unclaim_device
 
-#' Removes the association of tags from an AWS IoT 1-Click resource
+#' Using tag keys, deletes the tags (key/value pairs) associated with the
+#' specified resource ARN
 #'
-#' Removes the association of tags from an AWS IoT 1-Click resource.
+#' Using tag keys, deletes the tags (key/value pairs) associated with the
+#' specified resource ARN.
 #'
 #' @usage
 #' iot1clickdevicesservice_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The AWS IoT 1-Click resource the tags will be removed from. This value
-#' is an Amazon Resource Name (ARN).
-#' @param TagKeys &#91;required&#93; A list of tag keys. Existing tags of the resource whose keys are members
-#' of this list will be removed from the AWS IoT 1-Click resource.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#' @param TagKeys &#91;required&#93; A collections of tag keys. For example, \{\"key1\",\"key2\"\}
 #'
 #' @section Request syntax:
 #' ```

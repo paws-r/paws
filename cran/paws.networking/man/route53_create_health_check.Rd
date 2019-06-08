@@ -34,7 +34,9 @@ Creates a new health check.
 }
 \details{
 For information about adding health checks to resource record sets, see
-ResourceRecordSet\$HealthCheckId in ChangeResourceRecordSets.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId}{HealthCheckId}
+in
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html}{ChangeResourceRecordSets}.
 
 \strong{ELB Load Balancers}
 
@@ -88,7 +90,7 @@ metrics and alarms by using the CloudWatch console, see the \href{http://docs.aw
       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
     ),
     AlarmIdentifier = list(
-      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
+      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
       Name = "string"
     ),
     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"

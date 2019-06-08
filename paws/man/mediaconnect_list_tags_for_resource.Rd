@@ -2,15 +2,15 @@
 % Please edit documentation in R/mediaconnect_operations.R
 \name{mediaconnect_list_tags_for_resource}
 \alias{mediaconnect_list_tags_for_resource}
-\title{Lists all tags associated with the resource}
+\title{List all tags on an AWS Elemental MediaConnect resource}
 \usage{
 mediaconnect_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to view tags for.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.}
 }
 \description{
-Lists all tags associated with the resource.
+List all tags on an AWS Elemental MediaConnect resource
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

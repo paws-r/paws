@@ -2,26 +2,26 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_findings}
 \alias{securityhub_get_findings}
-\title{Lists and describes Security Hub-aggregated findings that are specified
-by filter attributes}
+\title{Lists and describes Security Hub-aggregated findings that filter
+attributes specify}
 \usage{
 securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
 }
 \arguments{
-\item{Filters}{A collection of attributes that is use for querying findings.}
+\item{Filters}{A collection of attributes that is used for querying findings.}
 
 \item{SortCriteria}{A collection of attributes used for sorting findings.}
 
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first
-call to the GetFindings operation. For subsequent calls to the
-operation, fill nextToken in the request with the value of nextToken
+\item{NextToken}{Paginates results. On your first call to the \code{GetFindings} operation,
+set the value of this parameter to \code{NULL}. For subsequent calls to the
+operation, fill \code{nextToken} in the request with the value of \code{nextToken}
 from the previous response to continue listing data.}
 
 \item{MaxResults}{Indicates the maximum number of items that you want in the response.}
 }
 \description{
-Lists and describes Security Hub-aggregated findings that are specified
-by filter attributes.
+Lists and describes Security Hub-aggregated findings that filter
+attributes specify.
 }
 \section{Request syntax}{
 \preformatted{svc$get_findings(
@@ -29,31 +29,31 @@ by filter attributes.
     ProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     AwsAccountId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Id = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     GeneratorId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Type = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     FirstObservedAt = list(
@@ -113,7 +113,7 @@ by filter attributes.
     SeverityLabel = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Confidence = list(
@@ -133,87 +133,87 @@ by filter attributes.
     Title = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Description = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecommendationText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     SourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProductFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ProductName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     CompanyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     UserDefinedFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     MalwareName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwarePath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDirection = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkProtocol = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceIpV4 = list(
@@ -236,13 +236,13 @@ by filter attributes.
     NetworkSourceDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceMac = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDestinationIpV4 = list(
@@ -265,19 +265,19 @@ by filter attributes.
     NetworkDestinationDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPid = list(
@@ -317,19 +317,19 @@ by filter attributes.
     ThreatIntelIndicatorType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorValue = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorCategory = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorLastObservedAt = list(
@@ -345,56 +345,56 @@ by filter attributes.
     ThreatIntelIndicatorSource = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorSourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourcePartition = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceRegion = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceTags = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ResourceAwsEc2InstanceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -410,25 +410,25 @@ by filter attributes.
     ResourceAwsEc2InstanceKeyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceVpcId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceSubnetId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -444,25 +444,25 @@ by filter attributes.
     ResourceAwsS3BucketOwnerId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsS3BucketOwnerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyUserName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -478,19 +478,19 @@ by filter attributes.
     ResourceContainerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerLaunchedAt = list(
@@ -507,49 +507,49 @@ by filter attributes.
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ComplianceStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     VerificationState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     WorkflowState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecordState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteUpdatedAt = list(
@@ -565,7 +565,7 @@ by filter attributes.
     NoteUpdatedBy = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Keyword = list(

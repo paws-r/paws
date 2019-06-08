@@ -219,6 +219,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$get_mailbox_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$get_mailbox_details_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MailboxQuota = structure(logical(0), tags = list(type = "integer", box = TRUE)), MailboxSize = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$list_aliases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -346,6 +358,18 @@ NULL
 }
 
 .workmail$reset_password_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$update_mailbox_quota_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), MailboxQuota = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$update_mailbox_quota_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

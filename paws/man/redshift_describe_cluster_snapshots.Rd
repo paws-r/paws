@@ -11,8 +11,7 @@ redshift_describe_cluster_snapshots(ClusterIdentifier,
   SortingEntities)
 }
 \arguments{
-\item{ClusterIdentifier}{The identifier of the cluster for which information about snapshots is
-requested.}
+\item{ClusterIdentifier}{The identifier of the cluster which generated the requested snapshots.}
 
 \item{SnapshotIdentifier}{The snapshot identifier of the snapshot about which to return
 information.}
@@ -71,9 +70,21 @@ the request, Amazon Redshift returns a response with the snapshots that
 have either or both of these tag values associated with them.}
 
 \item{ClusterExists}{A value that indicates whether to return snapshots only for an existing
-cluster. Table-level restore can be performed only using a snapshot of
-an existing cluster, that is, a cluster that has not been deleted. If
-\code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is required.}
+cluster. You can perform table-level restore only by using a snapshot of
+an existing cluster, that is, a cluster that has not been deleted.
+Values for this parameter work as follows:
+\itemize{
+\item If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is
+required.
+\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} isn't
+specified, all snapshots associated with deleted clusters (orphaned
+snapshots) are returned.
+\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is
+specified for a deleted cluster, snapshots associated with that
+cluster are returned.
+\item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} is
+specified for an existing cluster, no snapshots are returned.
+}}
 
 \item{SortingEntities}{}
 }

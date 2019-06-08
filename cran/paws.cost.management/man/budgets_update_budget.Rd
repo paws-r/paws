@@ -18,6 +18,14 @@ Updates a budget. You can change every part of a budget except for the
 \code{calculatedSpend} drops to zero until AWS has new usage data to use for
 forecasting.
 }
+\details{
+Only one of \code{BudgetLimit} or \code{PlannedBudgetLimits} can be present in the
+syntax at one time. Use the syntax that matches your case. The Request
+Syntax section shows the \code{BudgetLimit} syntax. For
+\code{PlannedBudgetLimits}, see the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples}{Examples}
+section.
+}
 \section{Request syntax}{
 \preformatted{svc$update_budget(
   AccountId = "string",
@@ -26,6 +34,12 @@ forecasting.
     BudgetLimit = list(
       Amount = "string",
       Unit = "string"
+    ),
+    PlannedBudgetLimits = list(
+      list(
+        Amount = "string",
+        Unit = "string"
+      )
     ),
     CostFilters = list(
       list(

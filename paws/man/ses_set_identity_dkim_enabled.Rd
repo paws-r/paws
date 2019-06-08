@@ -33,7 +33,7 @@ the \code{VerifyDomainDkim} operation.
 
 You can execute this operation no more than once per second.
 
-For more information about Easy DKIM signing, go to the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Amazon SES Developer Guide}.
+For more information about Easy DKIM signing, go to the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_identity_dkim_enabled(

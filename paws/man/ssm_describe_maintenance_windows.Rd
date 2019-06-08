@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_windows}
 \alias{ssm_describe_maintenance_windows}
-\title{Retrieves the Maintenance Windows in an AWS account}
+\title{Retrieves the maintenance windows in an AWS account}
 \usage{
 ssm_describe_maintenance_windows(Filters, MaxResults, NextToken)
 }
 \arguments{
 \item{Filters}{Optional filters used to narrow down the scope of the returned
-Maintenance Windows. Supported filter keys are \strong{Name} and \strong{Enabled}.}
+maintenance windows. Supported filter keys are \strong{Name} and \strong{Enabled}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -18,7 +18,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Retrieves the Maintenance Windows in an AWS account.
+Retrieves the maintenance windows in an AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_windows(

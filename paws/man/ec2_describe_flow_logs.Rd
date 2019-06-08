@@ -27,7 +27,9 @@ log publishes data. Possible destination types include
 \code{ALL}).
 }}
 
-\item{FlowLogIds}{One or more flow log IDs.}
+\item{FlowLogIds}{One or more flow log IDs.
+
+Constraint: Maximum of 1000 flow log IDs.}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}

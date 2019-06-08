@@ -2,15 +2,15 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_delete_maintenance_window}
 \alias{ssm_delete_maintenance_window}
-\title{Deletes a Maintenance Window}
+\title{Deletes a maintenance window}
 \usage{
 ssm_delete_maintenance_window(WindowId)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window to delete.}
+\item{WindowId}{[required] The ID of the maintenance window to delete.}
 }
 \description{
-Deletes a Maintenance Window.
+Deletes a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_maintenance_window(

@@ -27,7 +27,7 @@ types are:
 }
 
 For more information about Amazon Redshift resource types and
-constructing ARNs, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions}{Specifying Policy Elements: Actions, Effects, Resources, and Principals}
+constructing ARNs, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions}{Specifying Policy Elements: Actions, Effects, Resources, and Principals}
 in the Amazon Redshift Cluster Management Guide.}
 
 \item{MaxRecords}{The maximum number or response records to return in each call. If the

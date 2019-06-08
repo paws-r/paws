@@ -29,8 +29,9 @@ request.}
 \item{MaxResults}{(Optional) The maximum number of query logging configurations that you
 want Amazon Route 53 to return in response to the current request. If
 the current AWS account has more than \code{MaxResults} configurations, use
-the value of ListQueryLoggingConfigsResponse\$NextToken in the response
-to get the next page of results.
+the value of
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax}{NextToken}
+in the response to get the next page of results.
 
 If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}
@@ -41,9 +42,10 @@ the current AWS account or the configuration that is associated with a
 specified hosted zone.
 }
 \details{
-For more information about DNS query logs, see CreateQueryLoggingConfig.
+For more information about DNS query logs, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html}{CreateQueryLoggingConfig}.
 Additional information, including the format of DNS query logs, appears
-in \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
+in \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{

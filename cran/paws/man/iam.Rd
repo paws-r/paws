@@ -11,7 +11,7 @@ AWS Identity and Access Management (IAM) is a web service that you can
 use to manage users and user permissions under your AWS account. This
 guide provides descriptions of IAM actions that you can call
 programmatically. For general information about IAM, see \href{http://aws.amazon.com/iam/}{AWS Identity and Access Management (IAM)}. For the user
-guide for IAM, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/}{Using IAM}.
+guide for IAM, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/}{Using IAM}.
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .NET, iOS, Android,
@@ -23,7 +23,7 @@ including how to download and install them, see the \href{http://aws.amazon.com/
 
 We recommend that you use the AWS SDKs to make programmatic API calls to
 IAM. However, you can also use the IAM Query API to make direct calls to
-the IAM web service. To learn more about the IAM Query API, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
+the IAM web service. To learn more about the IAM Query API, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
 in the \emph{Using IAM} guide. IAM supports GET and POST requests for all
 actions. That is, the API does not require you to use GET for some
 actions and POST for others. However, GET requests are subject to the
@@ -39,7 +39,7 @@ key ID and secret access key for an IAM user or you can use the AWS
 Security Token Service to generate temporary security credentials and
 use those to sign requests.
 
-To sign requests, we recommend that you use \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+To sign requests, we recommend that you use \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 If you have an existing application that uses Signature Version 2, you
 do not have to update it to use Signature Version 4. However, some
 operations now require Signature Version 4. The documentation for
@@ -49,13 +49,13 @@ operations that require version 4 indicate this requirement.
 
 For more information, see the following:
 \itemize{
-\item \href{http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html}{AWS Security Credentials}.
+\item \href{https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html}{AWS Security Credentials}.
 This topic provides general information about the types of
 credentials used for accessing AWS.
-\item \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html}{IAM Best Practices}.
+\item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html}{IAM Best Practices}.
 This topic presents a list of suggestions for using the IAM service
 to help secure your AWS resources.
-\item \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}.
+\item \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}.
 This set of topics walk you through the process of signing a request
 using an access key ID and secret access key.
 }
@@ -177,6 +177,7 @@ using an access key ID and secret access key.
 \link[=iam_reset_service_specific_credential]{reset_service_specific_credential} \tab Resets the password for a service-specific credential \cr
 \link[=iam_resync_mfa_device]{resync_mfa_device} \tab Synchronizes the specified MFA device with its IAM resource object on the AWS servers \cr
 \link[=iam_set_default_policy_version]{set_default_policy_version} \tab Sets the specified version of the specified policy as the policy's default (operative) version \cr
+\link[=iam_set_security_token_service_preferences]{set_security_token_service_preferences} \tab Sets the specified version of the global endpoint token as the token version used for the AWS account \cr
 \link[=iam_simulate_custom_policy]{simulate_custom_policy} \tab Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and AWS resources to determine the policies' effective permissions \cr
 \link[=iam_simulate_principal_policy]{simulate_principal_policy} \tab Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and AWS resources to determine the policies' effective permissions \cr
 \link[=iam_tag_role]{tag_role} \tab Adds one or more tags to an IAM role \cr

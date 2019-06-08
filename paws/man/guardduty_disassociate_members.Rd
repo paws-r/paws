@@ -5,22 +5,25 @@
 \title{Disassociates GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs}
 \usage{
-guardduty_disassociate_members(AccountIds, DetectorId)
+guardduty_disassociate_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to disassociate from master.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
+want to disassociate from master.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to disassociate from master.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
+disassociate from master.}
 }
 \description{
-Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
+Disassociates GuardDuty member accounts (to the current GuardDuty master
+account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_members(
+  DetectorId = "string",
   AccountIds = list(
     "string"
-  ),
-  DetectorId = "string"
+  )
 )
 }
 }

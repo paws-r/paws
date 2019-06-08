@@ -28,6 +28,7 @@ NULL
 #'  \link[=xray_get_sampling_statistic_summaries]{get_sampling_statistic_summaries} \tab Retrieves information about recent sampling results for all sampling rules \cr
 #'  \link[=xray_get_sampling_targets]{get_sampling_targets} \tab Requests a sampling quota for rules that the service is using to sample requests \cr
 #'  \link[=xray_get_service_graph]{get_service_graph} \tab Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result\cr
+#'  \link[=xray_get_time_series_service_statistics]{get_time_series_service_statistics} \tab Get an aggregation of service statistics defined by a specific time range \cr
 #'  \link[=xray_get_trace_graph]{get_trace_graph} \tab Retrieves a service graph for one or more specific trace IDs \cr
 #'  \link[=xray_get_trace_summaries]{get_trace_summaries} \tab Retrieves IDs and metadata for traces available for a specified time frame using an optional filter \cr
 #'  \link[=xray_put_encryption_config]{put_encryption_config} \tab Updates the encryption configuration for X-Ray data \cr

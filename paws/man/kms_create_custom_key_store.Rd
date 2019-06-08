@@ -15,14 +15,14 @@ unique in your AWS account.}
 \item{CloudHsmClusterId}{[required] Identifies the AWS CloudHSM cluster for the custom key store. Enter the
 cluster ID of any active AWS CloudHSM cluster that is not already
 associated with a custom key store. To find the cluster ID, use the
-\href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
+\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
 operation.}
 
 \item{TrustAnchorCertificate}{[required] Enter the content of the trust anchor certificate for the cluster. This
 is the content of the \code{customerCA.crt} file that you created when you
-\href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html}{initialized the cluster}.}
+\href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html}{initialized the cluster}.}
 
-\item{KeyStorePassword}{[required] Enter the password of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user (CU) account}
+\item{KeyStorePassword}{[required] Enter the password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user (CU) account}
 in the specified AWS CloudHSM cluster. AWS KMS logs into the cluster as
 this user to manage key material on your behalf.
 
@@ -30,74 +30,32 @@ This parameter tells AWS KMS the \code{kmsuser} account password; it does not
 change the password in the AWS CloudHSM cluster.}
 }
 \description{
-Creates a \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}
-that is associated with an \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{AWS CloudHSM cluster}
+Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
+that is associated with an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{AWS CloudHSM cluster}
 that you own and manage.
 }
 \details{
-This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
+This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.
 
+Before you create the custom key store, you must assemble the required
+elements, including an AWS CloudHSM cluster that fulfills the
+requirements for a custom key store. For details about the required
+elements, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{Assemble the Prerequisites}
+in the \emph{AWS Key Management Service Developer Guide}.
+
 When the operation completes successfully, it returns the ID of the new
 custom key store. Before you can use your new custom key store, you need
 to use the ConnectCustomKeyStore operation to connect the new key store
-to its AWS CloudHSM cluster.
+to its AWS CloudHSM cluster. Even if you are not going to use your
+custom key store immediately, you might want to connect it to verify
+that all settings are correct and then disconnect it until you are ready
+to use it.
 
-The \code{CreateCustomKeyStore} operation requires the following elements.
-\itemize{
-\item You must specify an active AWS CloudHSM cluster in the same account
-and AWS Region as the custom key store. You can use an existing
-cluster or \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/create-cluster.html}{create and activate a new AWS CloudHSM cluster}
-for the key store. AWS KMS does not require exclusive use of the
-cluster.
-\item You must include the content of the \emph{trust anchor certificate} for
-the cluster. You created this certificate, and saved it in the
-\code{customerCA.crt} file, when you \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr}{initialized the cluster}.
-\item You must provide the password of the dedicated \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{kmsuser crypto user}
-(CU) account in the cluster.
-}
-
-Before you create the custom key store, use the
-\href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-createUser.html}{createUser}
-command in \code{cloudhsm_mgmt_util} to create \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{a crypto user (CU) named kmsuser}in
-specified AWS CloudHSM cluster. AWS KMS uses the \code{kmsuser} CU
-account to create and manage key material on your behalf. For
-instructions, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/create-keystore.html#before-keystore}{Create the kmsuser Crypto User}
+For help with failures, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
 in the \emph{AWS Key Management Service Developer Guide}.
-
-The AWS CloudHSM cluster that you specify must meet the following
-requirements.
-\itemize{
-\item The cluster must be active and be in the same AWS account and Region
-as the custom key store.
-\item Each custom key store must be associated with a different AWS
-CloudHSM cluster. The cluster cannot be associated with another
-custom key store or have the same cluster certificate as a cluster
-that is associated with another custom key store. To view the
-cluster certificate, use the AWS CloudHSM
-\href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
-operation. Clusters that share a backup history have the same
-cluster certificate.
-\item The cluster must be configured with subnets in at least two
-different Availability Zones in the Region. Because AWS CloudHSM is
-not supported in all Availability Zones, we recommend that the
-cluster have subnets in all Availability Zones in the Region.
-\item The cluster must contain at least two active HSMs, each in a
-different Availability Zone.
-}
-
-New custom key stores are not automatically connected. After you create
-your custom key store, use the ConnectCustomKeyStore operation to
-connect the custom key store to its associated AWS CloudHSM cluster.
-Even if you are not going to use your custom key store immediately, you
-might want to connect it to verify that all settings are correct and
-then disconnect it until you are ready to use it.
-
-If this operation succeeds, it returns the ID of the new custom key
-store. For help with failures, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshoot a Custom Key Store}
-in the \emph{AWS KMS Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_custom_key_store(

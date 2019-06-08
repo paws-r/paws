@@ -13,7 +13,12 @@ appstream_tag_resource(ResourceArn, Tags)
 optional. For example, Environment=Test. If you do not specify a value,
 Environment=.
 
-If you do not specify a value, the value is set to an empty string.}
+If you do not specify a value, the value is set to an empty string.
+
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+\_ . : / = + \ - @}
 }
 \description{
 Adds or overwrites one or more tags for the specified AppStream 2.0

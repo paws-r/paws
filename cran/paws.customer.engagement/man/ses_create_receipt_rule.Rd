@@ -20,7 +20,7 @@ recipients, domains, enabled status, scan status, and TLS policy.}
 Creates a receipt rule.
 }
 \details{
-For information about setting up receipt rules, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
+For information about setting up receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

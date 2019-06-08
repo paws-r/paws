@@ -14,6 +14,7 @@ operations.
 
 \tabular{ll}{
 \link[=robomaker_batch_describe_simulation_job]{batch_describe_simulation_job} \tab Describes one or more simulation jobs \cr
+\link[=robomaker_cancel_deployment_job]{cancel_deployment_job} \tab Cancels the specified deployment job \cr
 \link[=robomaker_cancel_simulation_job]{cancel_simulation_job} \tab Cancels the specified simulation job \cr
 \link[=robomaker_create_deployment_job]{create_deployment_job} \tab Deploys a specific version of a robot application to robots in a fleet \cr
 \link[=robomaker_create_fleet]{create_fleet} \tab Creates a fleet, a logical group of robots running the same robot application\cr

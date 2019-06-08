@@ -2,35 +2,34 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_delete_account_setting}
 \alias{ecs_delete_account_setting}
-\title{Modifies the ARN and resource ID format of a resource for a specified
-IAM user, IAM role, or the root user for an account}
+\title{Disables an account setting for a specified IAM user, IAM role, or the
+root user for an account}
 \usage{
 ecs_delete_account_setting(name, principalArn)
 }
 \arguments{
-\item{name}{[required] The resource name for which to disable the new format. If
+\item{name}{[required] The resource name for which to disable the account setting. If
 \code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS
 services is affected. If \code{taskLongArnFormat} is specified, the ARN and
 resource ID for your Amazon ECS tasks is affected. If
 \code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
-for your Amazon ECS container instances is affected.}
+for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
+is specified, the ENI limit for your Amazon ECS container instances is
+affected.}
 
 \item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the
-root user. If you specify the root user, it modifies the ARN and
-resource ID format for all IAM users, IAM roles, and the root user of
-the account unless an IAM user or role explicitly overrides these
-settings for themselves. If this field is omitted, the setting are
-changed only for the authenticated user.}
+root user. If you specify the root user, it disables the account setting
+for all IAM users, IAM roles, and the root user of the account unless an
+IAM user or role explicitly overrides these settings. If this field is
+omitted, the setting is changed only for the authenticated user.}
 }
 \description{
-Modifies the ARN and resource ID format of a resource for a specified
-IAM user, IAM role, or the root user for an account. You can specify
-whether the new ARN and resource ID format are disabled for new
-resources that are created.
+Disables an account setting for a specified IAM user, IAM role, or the
+root user for an account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_account_setting(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
   principalArn = "string"
 )
 }

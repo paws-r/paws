@@ -15,7 +15,7 @@ authentication response (assertions) that are received from the IdP. You
 must generate the metadata document using the identity management
 software that is used as your organization's IdP.
 
-For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html}{About SAML 2.0-based Federation}
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html}{About SAML 2.0-based Federation}
 in the \emph{IAM User Guide}}
 
 \item{Name}{[required] The name of the provider to create.
@@ -31,7 +31,7 @@ supports SAML 2.0.
 \details{
 The SAML provider resource that you create with this operation can be
 used as a principal in an IAM role's trust policy. Such a policy can
-enable federated users who sign-in using the SAML IdP to assume the
+enable federated users who sign in using the SAML IdP to assume the
 role. You can create an IAM role that supports Web-based single sign-on
 (SSO) to the AWS Management Console or one that supports API access to
 AWS.
@@ -43,10 +43,10 @@ validate the SAML authentication response (assertions) that the IdP
 sends. You must generate the metadata document using the identity
 management software that is used as your organization's IdP.
 
-This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 
-For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html}{Enabling SAML 2.0 Federated Users to Access the AWS Management Console}
-and \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html}{About SAML 2.0-based Federation}
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html}{Enabling SAML 2.0 Federated Users to Access the AWS Management Console}
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html}{About SAML 2.0-based Federation}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

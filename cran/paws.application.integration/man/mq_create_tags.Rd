@@ -7,7 +7,7 @@
 mq_create_tags(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 
 \item{Tags}{The key-value pair for the resource tag.}
 }

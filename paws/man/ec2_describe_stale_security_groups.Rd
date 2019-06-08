@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_stale_security_groups}
 \alias{ec2_describe_stale_security_groups}
-\title{[EC2-VPC only] Describes the stale security group rules for
-security groups in a specified VPC}
+\title{[VPC only] Describes the stale security group rules for security
+groups in a specified VPC}
 \usage{
 ec2_describe_stale_security_groups(DryRun, MaxResults, NextToken, VpcId)
 }
@@ -23,7 +23,7 @@ from a prior call.)}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-[EC2-VPC only] Describes the stale security group rules for security
+[VPC only] Describes the stale security group rules for security
 groups in a specified VPC. Rules are stale when they reference a deleted
 security group in a peer VPC, or a security group in a peer VPC for
 which the VPC peering connection has been deleted.

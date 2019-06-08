@@ -12,7 +12,7 @@ iam_list_policy_versions(PolicyArn, Marker, MaxItems)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy for which you want the
 versions.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -36,7 +36,7 @@ including the version that is currently set as the policy's default
 version.
 }
 \details{
-For more information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

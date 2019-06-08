@@ -48,7 +48,7 @@ Starts an asynchronous job to transcribe speech to text.
 \section{Request syntax}{
 \preformatted{svc$start_transcription_job(
   TranscriptionJobName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
   MediaSampleRateHertz = 123,
   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
   Media = list(

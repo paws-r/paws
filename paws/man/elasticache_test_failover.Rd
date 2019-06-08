@@ -53,13 +53,13 @@ events, listed here in order of occurrance:
 
 For more information see:
 \itemize{
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html}{Viewing ElastiCache Events}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html}{Viewing ElastiCache Events}
 in the \emph{ElastiCache User Guide}
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html}{DescribeEvents}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html}{DescribeEvents}
 in the ElastiCache API Reference
 }
 
-Also see, \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ with Automatic Failover}
+Also see, \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ with Automatic Failover}
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{

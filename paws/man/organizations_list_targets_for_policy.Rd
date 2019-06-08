@@ -2,14 +2,14 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_list_targets_for_policy}
 \alias{organizations_list_targets_for_policy}
-\title{Lists all the roots, organizaitonal units (OUs), and accounts to which
-the specified policy is attached}
+\title{Lists all the roots, organizational units (OUs), and accounts that the
+specified policy is attached to}
 \usage{
 organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
 }
 \arguments{
-\item{PolicyId}{[required] The unique identifier (ID) of the policy for which you want to know its
-attachments.
+\item{PolicyId}{[required] The unique identifier (ID) of the policy whose attachments you want to
+know.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lower-case letters or
@@ -32,8 +32,8 @@ should check \code{NextToken} after every operation to ensure that you
 receive all of the results.}
 }
 \description{
-Lists all the roots, organizaitonal units (OUs), and accounts to which
-the specified policy is attached.
+Lists all the roots, organizational units (OUs), and accounts that the
+specified policy is attached to.
 }
 \details{
 Always check the \code{NextToken} response parameter for a \code{null} value when

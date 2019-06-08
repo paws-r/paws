@@ -4,23 +4,26 @@
 \alias{guardduty_create_detector}
 \title{Creates a single Amazon GuardDuty detector}
 \usage{
-guardduty_create_detector(ClientToken, Enable,
+guardduty_create_detector(Enable, ClientToken,
   FindingPublishingFrequency)
 }
 \arguments{
-\item{ClientToken}{The idempotency token for the create request.}
-
 \item{Enable}{[required] A boolean value that specifies whether the detector is to be enabled.}
 
-\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates published.}
+\item{ClientToken}{The idempotency token for the create request.}
+
+\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates
+published.}
 }
 \description{
-Creates a single Amazon GuardDuty detector. A detector is an object that represents the GuardDuty service. A detector must be created in order for GuardDuty to become operational.
+Creates a single Amazon GuardDuty detector. A detector is an object that
+represents the GuardDuty service. A detector must be created in order
+for GuardDuty to become operational.
 }
 \section{Request syntax}{
 \preformatted{svc$create_detector(
-  ClientToken = "string",
   Enable = TRUE|FALSE,
+  ClientToken = "string",
   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
 )
 }

@@ -5,7 +5,7 @@
 \title{Creates a task}
 \usage{
 datasync_create_task(SourceLocationArn, DestinationLocationArn,
-  CloudWatchLogGroupArn, Name, Options, Tags)
+  CloudWatchLogGroupArn, Name, Options, Excludes, Tags)
 }
 \arguments{
 \item{SourceLocationArn}{[required] The Amazon Resource Name (ARN) of the source location for the task.}
@@ -13,12 +13,16 @@ datasync_create_task(SourceLocationArn, DestinationLocationArn,
 \item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource's location.}
 
 \item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
-is used to monitor and log events in the task. For more information on
-these groups, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html}{Working with Log Groups and Log Streams}
-in the \emph{Amazon CloudWatch User Guide.}
+is used to monitor and log events in the task.
+
+For more information on these groups, see
+"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
+(Working with Log Groups and Log Streams) in the \emph{Amazon CloudWatch User
+Guide}.
 
 For more information about how to useCloudWatchLogs with DataSync, see
-\href{https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html}{Monitoring Your Task}.}
+"https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html"
+(Monitoring Your Task)}
 
 \item{Name}{The name of a task. This value is a text reference that is used to
 identify the task in the console.}
@@ -33,31 +37,33 @@ For each individual task execution, you can override these options by
 specifying the \code{OverrideOptions} before starting a the task execution.
 For more information, see the operation.}
 
+\item{Excludes}{A filter that determines which files to exclude from a task based on the
+specified pattern. Transfers all files in the task's subdirectory,
+except files that match the filter that is set.}
+
 \item{Tags}{The key-value pair that represents the tag that you want to add to the
 resource. The value can be an empty string.}
 }
 \description{
 Creates a task. A task is a set of two locations (source and
-destination) and a set of default \code{OverrideOptions} that you use to
-control the behavior of a task. If you don't specify default values for
-\code{Options} when you create a task, AWS DataSync populates them with safe
-service defaults.
+destination) and a set of Options that you use to control the behavior
+of a task. If you don't specify Options when you create a task, AWS
+DataSync populates them with service defaults.
 }
 \details{
-When you initially create a task, it enters the INITIALIZING status and
-then the CREATING status. In CREATING status, AWS DataSync attempts to
-mount the source Network File System (NFS) location. The task
-transitions to the AVAILABLE status without waiting for the destination
-location to mount. Instead, AWS DataSync mounts a destination before
-every task execution and then unmounts it after every task execution.
+When you create a task, it first enters the CREATING state. During
+CREATING AWS DataSync attempts to mount the on-premises Network File
+System (NFS) location. The task transitions to the AVAILABLE state
+without waiting for the AWS location to become mounted. If required, AWS
+DataSync mounts the AWS location before each task execution.
 
 If an agent that is associated with a source (NFS) location goes
 offline, the task transitions to the UNAVAILABLE status. If the status
 of the task remains in the CREATING status for more than a few minutes,
 it means that your agent might be having trouble mounting the source NFS
-file system. Check the task's \code{ErrorCode} and \code{ErrorDetail}. Mount
-issues are often caused by either a misconfigured firewall or a mistyped
-NFS server host name.
+file system. Check the task's ErrorCode and ErrorDetail. Mount issues
+are often caused by either a misconfigured firewall or a mistyped NFS
+server host name.
 }
 \section{Request syntax}{
 \preformatted{svc$create_task(
@@ -75,6 +81,12 @@ NFS server host name.
     PreserveDevices = "NONE"|"PRESERVE",
     PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
     BytesPerSecond = 123
+  ),
+  Excludes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
   ),
   Tags = list(
     list(

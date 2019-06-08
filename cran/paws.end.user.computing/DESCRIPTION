@@ -1,6 +1,6 @@
 Package: paws.end.user.computing
 Title: Amazon Web Services End User Computing APIs
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

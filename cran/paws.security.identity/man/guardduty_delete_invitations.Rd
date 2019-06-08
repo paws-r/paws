@@ -8,10 +8,12 @@ specified by their account IDs}
 guardduty_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.}
+\item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the
+current member account that you want to delete invitations from.}
 }
 \description{
-Deletes invitations sent to the current member account by AWS accounts specified by their account IDs.
+Deletes invitations sent to the current member account by AWS accounts
+specified by their account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_invitations(

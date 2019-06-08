@@ -45,12 +45,6 @@ This operation lists in-progress multipart uploads.
 }
 
 \examples{
-# The following example lists in-progress multipart uploads on a specific
-# bucket.
-\donttest{svc$list_multipart_uploads(
-  Bucket = "examplebucket"
-)}
-
 # The following example specifies the upload-id-marker and key-marker from
 # previous truncated response to retrieve next setup of multipart uploads.
 \donttest{svc$list_multipart_uploads(
@@ -58,6 +52,12 @@ This operation lists in-progress multipart uploads.
   KeyMarker = "nextkeyfrompreviousresponse",
   MaxUploads = "2",
   UploadIdMarker = "valuefrompreviousresponse"
+)}
+
+# The following example lists in-progress multipart uploads on a specific
+# bucket.
+\donttest{svc$list_multipart_uploads(
+  Bucket = "examplebucket"
 )}
 
 }

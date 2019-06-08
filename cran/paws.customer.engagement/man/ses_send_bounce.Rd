@@ -30,7 +30,7 @@ list.}
 the identity that is associated with the sending authorization policy
 that permits you to use the address in the "From" header of the
 bounce. For more information about sending authorization, see the
-\href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 }
 \description{
 Generates and sends a bounce message to the sender of an email you
@@ -42,7 +42,7 @@ You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 
 For information about receiving email through Amazon SES, see the
-\href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

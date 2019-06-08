@@ -7,7 +7,7 @@
 iam_create_user(Path, UserName, PermissionsBoundary, Tags)
 }
 \arguments{
-\item{Path}{The path for the user name. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -22,18 +22,16 @@ lowercased letters.}
 
 \item{UserName}{[required] The name of the user to create.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-.
-User names are not distinguished by case. For example, you cannot create
-users named both "TESTUSER" and "testuser".}
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".}
 
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
 the user.}
 
 \item{Tags}{A list of tags that you want to attach to the newly created user. Each
 tag consists of a key name and an associated value. For more information
-about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
 in the \emph{IAM User Guide}.
 
 If any one of the tags is invalid or if you exceed the allowed number of
@@ -45,7 +43,7 @@ Creates a new IAM user for your AWS account.
 }
 \details{
 For information about limitations on the number of IAM users you can
-create, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

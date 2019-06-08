@@ -9,16 +9,18 @@ codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
 \arguments{
 \item{deploymentId}{[required] The unique ID of a deployment.}
 
-\item{instanceIds}{[required] The unique IDs of instances used in the deployment.}
+\item{instanceIds}{[required] The unique IDs of instances used in the deployment. The maximum number
+of instance IDs you can specify is 25.}
 }
 \description{
 This method works, but is deprecated. Use \code{BatchGetDeploymentTargets}
 instead.
 }
 \details{
-Returns an array of instances associated with a deployment. This method
-works with EC2/On-premises and AWS Lambda compute platforms. The newer
-\code{BatchGetDeploymentTargets} works with all compute platforms.
+Returns an array of one or more instances associated with a deployment.
+This method works with EC2/On-premises and AWS Lambda compute platforms.
+The newer \code{BatchGetDeploymentTargets} works with all compute platforms.
+The maximum number of instances that can be returned is 25.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_deployment_instances(

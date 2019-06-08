@@ -15,16 +15,25 @@ the default cluster is assumed.}
 \item{containerInstances}{[required] A list of container instance IDs or full ARN entries.}
 
 \item{status}{[required] The container instance state with which to update the container
-instance.}
+instance. The only valid values for this action are \code{ACTIVE} and
+\code{DRAINING}. A container instance can only be updated to \code{DRAINING}
+status once it has reached an \code{ACTIVE} state. If a container instance is
+in \code{REGISTERING}, \code{DEREGISTERING}, or \code{REGISTRATION_FAILED} state you
+can describe the container instance but will be unable to update the
+container instance state.}
 }
 \description{
 Modifies the status of an Amazon ECS container instance.
 }
 \details{
-You can change the status of a container instance to \code{DRAINING} to
-manually remove an instance from a cluster, for example to perform
-system updates, update the Docker daemon, or scale down the cluster
-size.
+Once a container instance has reached an \code{ACTIVE} state, you can change
+the status of a container instance to \code{DRAINING} to manually remove an
+instance from a cluster, for example to perform system updates, update
+the Docker daemon, or scale down the cluster size.
+
+A container instance cannot be changed to \code{DRAINING} until it has
+reached an \code{ACTIVE} status. If the instance is in any other status, an
+error will be received.
 
 When you set a container instance to \code{DRAINING}, Amazon ECS prevents new
 tasks from being scheduled for placement on the container instance and
@@ -66,8 +75,9 @@ affected. You must wait for them to finish or stop them manually.
 A container instance has completed draining when it has no more
 \code{RUNNING} tasks. You can verify this using ListTasks.
 
-When you set a container instance to \code{ACTIVE}, the Amazon ECS scheduler
-can begin scheduling tasks on the instance again.
+When a container instance has been drained, you can set a container
+instance to \code{ACTIVE} status and once it has reached that status the
+Amazon ECS scheduler can begin scheduling tasks on the instance again.
 }
 \section{Request syntax}{
 \preformatted{svc$update_container_instances_state(
@@ -75,7 +85,7 @@ can begin scheduling tasks on the instance again.
   containerInstances = list(
     "string"
   ),
-  status = "ACTIVE"|"DRAINING"
+  status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 )
 }
 }

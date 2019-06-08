@@ -25,6 +25,8 @@ their cache and can receive alarms if a part of their cache runs hot.
 \tabular{ll}{
 \link[=elasticache_add_tags_to_resource]{add_tags_to_resource} \tab Adds up to 50 cost allocation tags to the named resource \cr
 \link[=elasticache_authorize_cache_security_group_ingress]{authorize_cache_security_group_ingress} \tab Allows network ingress to a cache security group \cr
+\link[=elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update \cr
+\link[=elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update \cr
 \link[=elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot \cr
 \link[=elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster \cr
 \link[=elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group \cr
@@ -50,7 +52,9 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[=elasticache_describe_replication_groups]{describe_replication_groups} \tab Returns information about a particular replication group \cr
 \link[=elasticache_describe_reserved_cache_nodes]{describe_reserved_cache_nodes} \tab Returns information about reserved cache nodes for this account, or about a specified reserved cache node \cr
 \link[=elasticache_describe_reserved_cache_nodes_offerings]{describe_reserved_cache_nodes_offerings} \tab Lists available reserved cache node offerings \cr
+\link[=elasticache_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates \cr
 \link[=elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots \cr
+\link[=elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions \cr
 \link[=elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
 \link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to \cr
 \link[=elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all cost allocation tags currently on the named resource \cr

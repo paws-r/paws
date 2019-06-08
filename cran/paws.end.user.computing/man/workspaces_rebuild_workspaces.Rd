@@ -4,10 +4,12 @@
 \alias{workspaces_rebuild_workspaces}
 \title{Rebuilds the specified WorkSpace}
 \usage{
-workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
+workspaces_rebuild_workspaces(RebuildWorkspaceRequests, AdditionalInfo)
 }
 \arguments{
 \item{RebuildWorkspaceRequests}{[required] The WorkSpace to rebuild. You can specify a single WorkSpace.}
+
+\item{AdditionalInfo}{Reserved.}
 }
 \description{
 Rebuilds the specified WorkSpace.
@@ -28,7 +30,8 @@ been completely rebuilt.
     list(
       WorkspaceId = "string"
     )
-  )
+  ),
+  AdditionalInfo = "string"
 )
 }
 }

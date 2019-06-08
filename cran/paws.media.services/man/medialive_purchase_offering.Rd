@@ -4,7 +4,8 @@
 \alias{medialive_purchase_offering}
 \title{Purchase an offering and create a reservation}
 \usage{
-medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start)
+medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start,
+  Tags)
 }
 \arguments{
 \item{Count}{[required] Number of resources}
@@ -16,6 +17,8 @@ medialive_purchase_offering(Count, Name, OfferingId, RequestId, Start)
 \item{RequestId}{Unique request ID to be specified. This is needed to prevent retries from creating multiple resources.}
 
 \item{Start}{Requested reservation start time (UTC) in ISO-8601 format. The specified time must be between the first day of the current month and one year from now. If no value is given, the default is now.}
+
+\item{Tags}{A collection of key-value pairs}
 }
 \description{
 Purchase an offering and create a reservation.
@@ -26,7 +29,10 @@ Purchase an offering and create a reservation.
   Name = "string",
   OfferingId = "string",
   RequestId = "string",
-  Start = "string"
+  Start = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

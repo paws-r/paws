@@ -33,7 +33,7 @@ sign-in.}
 \description{
 Creates a password for the specified user, giving the user the ability
 to access AWS services through the AWS Management Console. For more
-information about managing passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
+information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -11,23 +11,14 @@ The AWS Security Token Service (STS) is a web service that enables you
 to request temporary, limited-privilege credentials for AWS Identity and
 Access Management (IAM) users or for users that you authenticate
 (federated users). This guide provides descriptions of the STS API. For
-more detailed information about using this service, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials}.
-
-As an alternative to using the API, you can use one of the AWS SDKs,
-which consist of libraries and sample code for various programming
-languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
-provide a convenient way to create programmatic access to STS. For
-example, the SDKs take care of cryptographically signing requests,
-managing errors, and retrying requests automatically. For information
-about the AWS SDKs, including how to download and install them, see the
-\href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services page}.
+more detailed information about using this service, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials}.
 
 For information about setting up signatures and authorization through
-the API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
+the API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
 in the \emph{AWS General Reference}. For general information about the Query
-API, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
+API, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
 in \emph{Using IAM}. For information about using security tokens with other
-AWS products, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
+AWS products, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
 in the \emph{IAM User Guide}.
 
 If you're new to AWS and need additional technical information about a
@@ -36,14 +27,40 @@ documentation at \url{http://aws.amazon.com/documentation/}.
 
 \strong{Endpoints}
 
-The AWS Security Token Service (STS) has a default endpoint of
-https://sts.amazonaws.com that maps to the US East (N. Virginia) region.
-Additional regions are available and are activated by default. For more
-information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
+By default, AWS Security Token Service (STS) is available as a global
+service, and all AWS STS requests go to a single endpoint at
+\code{https://sts.amazonaws.com}. Global requests map to the US East (N.
+Virginia) region. AWS recommends using Regional AWS STS endpoints
+instead of the global endpoint to reduce latency, build in redundancy,
+and increase session token validity. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Managing AWS STS in an AWS Region}
 in the \emph{IAM User Guide}.
 
-For information about STS endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region}{Regions and Endpoints}
-in the \emph{AWS General Reference}.
+Most AWS Regions are enabled for operations in all AWS services by
+default. Those Regions are automatically activated for use with AWS STS.
+Some Regions, such as Asia Pacific (Hong Kong), must be manually
+enabled. To learn more about enabling and disabling AWS Regions, see
+\href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html}{Managing AWS Regions}
+in the \emph{AWS General Reference}. When you enable these AWS Regions, they
+are automatically activated for use with AWS STS. You cannot activate
+the STS endpoint for a Region that is disabled. Tokens that are valid in
+all AWS Regions are longer than tokens that are valid in Regions that
+are enabled by default. Changing this setting might affect existing
+systems where you temporarily store tokens. For more information, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#sts-regions-manage-tokens}{Managing Global Endpoint Session Tokens}
+in the \emph{IAM User Guide}.
+
+After you activate a Region for use with AWS STS, you can direct AWS STS
+API calls to that Region. AWS STS recommends that you provide both the
+Region and endpoint when you make calls to a Regional endpoint. You can
+provide the Region alone for manually enabled Regions, such as Asia
+Pacific (Hong Kong). In this case, the calls are directed to the STS
+Regional endpoint. However, if you provide the Region alone for Regions
+enabled by default, the calls are directed to the global endpoint of
+\code{https://sts.amazonaws.com}.
+
+To view the list of AWS STS endpoints and whether they are active by
+default, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#id_credentials_temp_enable-regions_writing_code}{Writing Code to Use AWS STS Regions}
+in the \emph{IAM User Guide}.
 
 \strong{Recording API requests}
 
@@ -51,15 +68,35 @@ STS supports AWS CloudTrail, which is a service that records AWS calls
 for your AWS account and delivers log files to an Amazon S3 bucket. By
 using information collected by CloudTrail, you can determine what
 requests were successfully made to STS, who made the request, when it
-was made, and so on. To learn more about CloudTrail, including how to
-turn it on and find your log files, see the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
+was made, and so on.
+
+If you activate AWS STS endpoints in Regions other than the default
+global endpoint, then you must also turn on CloudTrail logging in those
+Regions. This is necessary to record any AWS STS API calls that are made
+in those Regions. For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_regions_turn_on_ct.html}{Turning On CloudTrail in Additional Regions}
+in the \emph{AWS CloudTrail User Guide}.
+
+AWS Security Token Service (STS) is a global service with a single
+endpoint at \code{https://sts.amazonaws.com}. Calls to this endpoint are
+logged as calls to a global service. However, because this endpoint is
+physically located in the US East (N. Virginia) Region, your logs list
+\code{us-east-1} as the event Region. CloudTrail does not write these logs to
+the US East (Ohio) Region unless you choose to include global service
+logs in that Region. CloudTrail writes calls to all Regional endpoints
+to their respective Regions. For example, calls to
+sts.us-east-2.amazonaws.com are published to the US East (Ohio) Region
+and calls to sts.eu-central-1.amazonaws.com are published to the EU
+(Frankfurt) Region.
+
+To learn more about CloudTrail, including how to turn it on and find
+your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
 \section{Operations}{
 
 \tabular{ll}{
-\link[=sts_assume_role]{assume_role} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) that you can use to access AWS resources that you might not normally have access to \cr
+\link[=sts_assume_role]{assume_role} \tab Returns a set of temporary security credentials that you can use to access AWS resources that you might not normally have access to \cr
 \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response \cr
-\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider, such as Amazon Cognito, Login with Amazon, Facebook, Google, or any OpenID Connect-compatible identity provider\cr
+\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
 \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an AWS request \cr
 \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM identity whose credentials are used to call the API \cr
 \link[=sts_get_federation_token]{get_federation_token} \tab Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a federated user \cr

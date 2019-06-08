@@ -21,6 +21,7 @@ API for AWS Elemental MediaLive
 \link[=medialive_delete_input]{delete_input} \tab Deletes the input end point \cr
 \link[=medialive_delete_input_security_group]{delete_input_security_group} \tab Deletes an Input Security Group \cr
 \link[=medialive_delete_reservation]{delete_reservation} \tab Delete an expired reservation \cr
+\link[=medialive_delete_schedule]{delete_schedule} \tab Delete all schedule actions on a channel \cr
 \link[=medialive_delete_tags]{delete_tags} \tab Removes tags for a resource \cr
 \link[=medialive_describe_channel]{describe_channel} \tab Gets details about a channel \cr
 \link[=medialive_describe_input]{describe_input} \tab Produces details about an input \cr
@@ -38,8 +39,10 @@ API for AWS Elemental MediaLive
 \link[=medialive_start_channel]{start_channel} \tab Starts an existing channel \cr
 \link[=medialive_stop_channel]{stop_channel} \tab Stops a running channel \cr
 \link[=medialive_update_channel]{update_channel} \tab Updates a channel \cr
+\link[=medialive_update_channel_class]{update_channel_class} \tab Changes the class of the channel \cr
 \link[=medialive_update_input]{update_input} \tab Updates an input \cr
-\link[=medialive_update_input_security_group]{update_input_security_group} \tab Update an Input Security Group's Whilelists
+\link[=medialive_update_input_security_group]{update_input_security_group} \tab Update an Input Security Group's Whilelists \cr
+\link[=medialive_update_reservation]{update_reservation} \tab Update reservation
 }
 }
 

@@ -29,9 +29,14 @@ Creates a new flow. The request must include one source. The request optionally 
       Description = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",
-        KeyType = "static-key",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
         RoleArn = "string",
-        SecretArn = "string"
+        SecretArn = "string",
+        Url = "string"
       ),
       Name = "string",
       Subscribers = list(
@@ -46,9 +51,14 @@ Creates a new flow. The request must include one source. The request optionally 
       Destination = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",
-        KeyType = "static-key",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
         RoleArn = "string",
-        SecretArn = "string"
+        SecretArn = "string",
+        Url = "string"
       ),
       MaxLatency = 123,
       Name = "string",
@@ -61,9 +71,14 @@ Creates a new flow. The request must include one source. The request optionally 
   Source = list(
     Decryption = list(
       Algorithm = "aes128"|"aes192"|"aes256",
-      KeyType = "static-key",
+      ConstantInitializationVector = "string",
+      DeviceId = "string",
+      KeyType = "speke"|"static-key",
+      Region = "string",
+      ResourceId = "string",
       RoleArn = "string",
-      SecretArn = "string"
+      SecretArn = "string",
+      Url = "string"
     ),
     Description = "string",
     EntitlementArn = "string",

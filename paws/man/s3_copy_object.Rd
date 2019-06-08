@@ -111,9 +111,9 @@ the encryption key was transmitted without error.}
 conjunction with the TaggingDirective. The tag-set must be encoded as
 URL Query parameters}
 
-\item{ObjectLockMode}{The Object Lock mode that you want to apply to the copied object.}
+\item{ObjectLockMode}{The object lock mode that you want to apply to the copied object.}
 
-\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's Object Lock to
+\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's object lock to
 expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}

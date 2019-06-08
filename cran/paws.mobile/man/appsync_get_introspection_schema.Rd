@@ -4,12 +4,15 @@
 \alias{appsync_get_introspection_schema}
 \title{Retrieves the introspection schema for a GraphQL API}
 \usage{
-appsync_get_introspection_schema(apiId, format)
+appsync_get_introspection_schema(apiId, format, includeDirectives)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
 
 \item{format}{[required] The schema format: SDL or JSON.}
+
+\item{includeDirectives}{A flag that specifies whether the schema introspection should contain
+directives.}
 }
 \description{
 Retrieves the introspection schema for a GraphQL API.
@@ -17,7 +20,8 @@ Retrieves the introspection schema for a GraphQL API.
 \section{Request syntax}{
 \preformatted{svc$get_introspection_schema(
   apiId = "string",
-  format = "SDL"|"JSON"
+  format = "SDL"|"JSON",
+  includeDirectives = TRUE|FALSE
 )
 }
 }

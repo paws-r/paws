@@ -101,6 +101,15 @@ calling "CreateDatasetContent" or automatically according to a
         iotEventsDestinationConfiguration = list(
           inputName = "string",
           roleArn = "string"
+        ),
+        s3DestinationConfiguration = list(
+          bucket = "string",
+          key = "string",
+          glueConfiguration = list(
+            tableName = "string",
+            databaseName = "string"
+          ),
+          roleArn = "string"
         )
       )
     )

@@ -7,8 +7,8 @@
 organizations_create_organizational_unit(ParentId, Name)
 }
 \arguments{
-\item{ParentId}{[required] The unique identifier (ID) of the parent root or OU in which you want to
-create the new OU.
+\item{ParentId}{[required] The unique identifier (ID) of the parent root or OU that you want to
+create the new OU in.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
 string requires one of the following:
@@ -32,7 +32,7 @@ enabled for that root. For service control policies, the limit is five.
 }
 \details{
 For more information about OUs, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html}{Managing Organizational Units}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 
 This operation can be called only from the organization's master
 account.

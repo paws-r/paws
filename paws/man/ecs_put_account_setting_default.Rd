@@ -2,31 +2,31 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_put_account_setting_default}
 \alias{ecs_put_account_setting_default}
-\title{Modifies the ARN and resource ID format of a resource type for all IAM
-users on an account for which no individual account setting has been set}
+\title{Modifies an account setting for all IAM users on an account for whom no
+individual account setting has been specified}
 \usage{
 ecs_put_account_setting_default(name, value)
 }
 \arguments{
-\item{name}{[required] The resource type to enable the new format for. If
+\item{name}{[required] The resource name for which to modify the account setting. If
 \code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS
 services is affected. If \code{taskLongArnFormat} is specified, the ARN and
-resource ID for your Amazon ECS tasks are affected. If
+resource ID for your Amazon ECS tasks is affected. If
 \code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
-for your Amazon ECS container instances are affected.}
+for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
+is specified, the ENI limit for your Amazon ECS container instances is
+affected.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
 values are \code{enabled} and \code{disabled}.}
 }
 \description{
-Modifies the ARN and resource ID format of a resource type for all IAM
-users on an account for which no individual account setting has been
-set. Enabling this setting is required to use new Amazon ECS features
-such as resource tagging.
+Modifies an account setting for all IAM users on an account for whom no
+individual account setting has been specified.
 }
 \section{Request syntax}{
 \preformatted{svc$put_account_setting_default(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
   value = "string"
 )
 }

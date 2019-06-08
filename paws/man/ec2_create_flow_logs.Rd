@@ -18,29 +18,44 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
-\item{DeliverLogsPermissionArn}{The ARN for the IAM role that's used to post flow logs to a log group.}
+\item{DeliverLogsPermissionArn}{The ARN for the IAM role that permits Amazon EC2 to publish flow logs to
+a CloudWatch Logs log group in your account.
 
-\item{LogGroupName}{The name of the log group.}
+If you specify \code{LogDestinationType} as \code{s3}, do not specify
+\code{DeliverLogsPermissionArn} or \code{LogGroupName}.}
 
-\item{ResourceIds}{[required] One or more subnet, network interface, or VPC IDs.
+\item{LogGroupName}{The name of a new or existing CloudWatch Logs log group where Amazon EC2
+publishes your flow logs.
+
+If you specify \code{LogDestinationType} as \code{s3}, do not specify
+\code{DeliverLogsPermissionArn} or \code{LogGroupName}.}
+
+\item{ResourceIds}{[required] The ID of the subnet, network interface, or VPC for which you want to
+create a flow log.
 
 Constraints: Maximum of 1000 resources}
 
-\item{ResourceType}{[required] The type of resource on which to create the flow log.}
+\item{ResourceType}{[required] The type of resource for which to create the flow log. For example, if
+you specified a VPC ID for the \code{ResourceId} property, specify \code{VPC} for
+this property.}
 
-\item{TrafficType}{[required] The type of traffic to log.}
+\item{TrafficType}{[required] The type of traffic to log. You can log traffic that the resource
+accepts or rejects, or all traffic.}
 
 \item{LogDestinationType}{Specifies the type of destination to which the flow log data is to be
 published. Flow log data can be published to CloudWatch Logs or Amazon
 S3. To publish flow log data to CloudWatch Logs, specify
 \code{cloud-watch-logs}. To publish flow log data to Amazon S3, specify \code{s3}.
 
+If you specify \code{LogDestinationType} as \code{s3}, do not specify
+\code{DeliverLogsPermissionArn} or \code{LogGroupName}.
+
 Default: \code{cloud-watch-logs}}
 
 \item{LogDestination}{Specifies the destination to which the flow log data is to be published.
-Flow log data can be published to an CloudWatch Logs log group or an
+Flow log data can be published to a CloudWatch Logs log group or an
 Amazon S3 bucket. The value specified for this parameter depends on the
-value specified for LogDestinationType.
+value specified for \code{LogDestinationType}.
 
 If LogDestinationType is not specified or \code{cloud-watch-logs}, specify
 the Amazon Resource Name (ARN) of the CloudWatch Logs log group.

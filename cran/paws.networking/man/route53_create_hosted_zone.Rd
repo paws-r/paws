@@ -25,7 +25,8 @@ about the Amazon VPC that you're associating with this hosted zone.
 
 You can specify only one Amazon VPC when you create a private hosted
 zone. To associate additional Amazon VPCs with the hosted zone, use
-AssociateVPCWithHostedZone after you create a hosted zone.}
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AssociateVPCWithHostedZone.html}{AssociateVPCWithHostedZone}
+after you create a hosted zone.}
 
 \item{CallerReference}{[required] A unique string that identifies the request and that allows failed
 \code{CreateHostedZone} requests to be retried without the risk of executing
@@ -45,7 +46,8 @@ If you don't specify a comment or the \code{PrivateZone} element, omit
 \item{DelegationSetId}{If you want to associate a reusable delegation set with this hosted
 zone, the ID that Amazon Route 53 assigned to the reusable delegation
 set when you created it. For more information about reusable delegation
-sets, see CreateReusableDelegationSet.}
+sets, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html}{CreateReusableDelegationSet}.}
 }
 \description{
 Creates a new public or private hosted zone. You create records in a
@@ -94,7 +96,7 @@ changes to \code{INSYNC}.
 \preformatted{svc$create_hosted_zone(
   Name = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
     VPCId = "string"
   ),
   CallerReference = "string",

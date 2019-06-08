@@ -27,8 +27,8 @@ bucket.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 
-\item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new
-bucket.}
+\item{ObjectLockEnabledForBucket}{Specifies whether you want Amazon S3 object lock to be enabled for the
+new bucket.}
 }
 \description{
 Creates a new bucket.
@@ -51,6 +51,11 @@ Creates a new bucket.
 }
 
 \examples{
+# The following example creates a bucket.
+\donttest{svc$create_bucket(
+  Bucket = "examplebucket"
+)}
+
 # The following example creates a bucket. The request specifies an AWS
 # region where to create the bucket.
 \donttest{svc$create_bucket(
@@ -58,11 +63,6 @@ Creates a new bucket.
   CreateBucketConfiguration = list(
     LocationConstraint = "eu-west-1"
   )
-)}
-
-# The following example creates a bucket.
-\donttest{svc$create_bucket(
-  Bucket = "examplebucket"
 )}
 
 }

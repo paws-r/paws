@@ -34,9 +34,6 @@ and output configuration.
 \details{
 Kinesis Data Analytics updates the \code{ApplicationVersionId} each time you
 update your application.
-
-SQL is not enabled for this private beta. Using SQL parameters (such as
-SqlApplicationConfigurationUpdate) will result in an error.
 }
 \section{Request syntax}{
 \preformatted{svc$update_application(

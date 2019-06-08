@@ -36,7 +36,7 @@ least 10\% greater than the existing value are rounded up so that they
 are 10\% greater than the current value.
 
 For the valid values for allocated storage for each engine, see
-CreateDBInstance.}
+\code{CreateDBInstance}.}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
@@ -46,7 +46,7 @@ in the \emph{Amazon RDS User Guide.}
 
 If you modify the DB instance class, an outage occurs during the change.
 The change is applied during the next maintenance window, unless
-\code{ApplyImmediately} is specified as \code{true} for this request.
+\code{ApplyImmediately} is enabled for this request.
 
 Default: Uses existing setting}
 
@@ -57,8 +57,8 @@ a VPC. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/late
 in the \emph{Amazon RDS User Guide.}
 
 Changing the subnet group causes an outage during the change. The change
-is applied during the next maintenance window, unless you specify \code{true}
-for the \code{ApplyImmediately} parameter.
+is applied during the next maintenance window, unless you enable
+\code{ApplyImmediately}.
 
 Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
@@ -80,26 +80,25 @@ change is asynchronously applied as soon as possible.
 \strong{Amazon Aurora}
 
 Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see \code{ModifyDBCluster}.
 
 Constraints:
 \itemize{
 \item If supplied, must match existing VpcSecurityGroupIds.
 }}
 
-\item{ApplyImmediately}{Specifies whether the modifications in this request and any pending
-modifications are asynchronously applied as soon as possible, regardless
-of the \code{PreferredMaintenanceWindow} setting for the DB instance.
+\item{ApplyImmediately}{A value that indicates whether the modifications in this request and any
+pending modifications are asynchronously applied as soon as possible,
+regardless of the \code{PreferredMaintenanceWindow} setting for the DB
+instance. By default, this parameter is disabled.
 
-If this parameter is set to \code{false}, changes to the DB instance are
-applied during the next maintenance window. Some parameter changes can
-cause an outage and are applied on the next call to RebootDBInstance, or
-the next failure reboot. Review the table of parameters in \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance and Using the Apply Immediately Parameter}
-in the \emph{Amazon RDS User Guide.} to see the impact that setting
-\code{ApplyImmediately} to \code{true} or \code{false} has for each modified parameter
-and to determine when the changes are applied.
-
-Default: \code{false}}
+If this parameter is disabled, changes to the DB instance are applied
+during the next maintenance window. Some parameter changes can cause an
+outage and are applied on the next call to RebootDBInstance, or the next
+failure reboot. Review the table of parameters in \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance}
+in the \emph{Amazon RDS User Guide.} to see the impact of enabling or
+disabling \code{ApplyImmediately} for each modified parameter and to
+determine when the changes are applied.}
 
 \item{MasterUserPassword}{The new password for the master user. The password can include any
 printable ASCII character except "/", """, or "@".
@@ -113,7 +112,7 @@ response.
 \strong{Amazon Aurora}
 
 Not applicable. The password for the master user is managed by the DB
-cluster. For more information, see ModifyDBCluster.
+cluster. For more information, see \code{ModifyDBCluster}.
 
 Default: Uses existing setting
 
@@ -145,7 +144,7 @@ been accidentally revoked.}
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
 this setting doesn't result in an outage. The parameter group name
 itself is changed immediately, but the actual parameter changes are not
-applied until you reboot the instance without failover. The db instance
+applied until you reboot the instance without failover. The DB instance
 will NOT be rebooted automatically and the parameter changes will NOT be
 applied during the next maintenance window.
 
@@ -161,14 +160,14 @@ disables automated backups.
 Changing this parameter can result in an outage if you change from 0 to
 a non-zero value or from a non-zero value to 0. These changes are
 applied during the next maintenance window unless the \code{ApplyImmediately}
-parameter is set to \code{true} for this request. If you change the parameter
-from one non-zero value to another non-zero value, the change is
+parameter is enabled for this request. If you change the parameter from
+one non-zero value to another non-zero value, the change is
 asynchronously applied as soon as possible.
 
 \strong{Amazon Aurora}
 
 Not applicable. The retention period for automated backups is managed by
-the DB cluster. For more information, see ModifyDBCluster.
+the DB cluster. For more information, see \code{ModifyDBCluster}.
 
 Default: Uses existing setting
 
@@ -191,7 +190,7 @@ possible.
 \strong{Amazon Aurora}
 
 Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see \code{ModifyDBCluster}.
 
 Constraints:
 \itemize{
@@ -219,39 +218,39 @@ Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
 
 Constraints: Must be at least 30 minutes}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter doesn't result in an outage and the change is applied during
-the next maintenance window unless the \code{ApplyImmediately} parameter is
-set to \code{true} for this request.}
+\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
+Changing this parameter doesn't result in an outage and the change is
+applied during the next maintenance window unless the \code{ApplyImmediately}
+parameter is enabled for this request.}
 
 \item{EngineVersion}{The version number of the database engine to upgrade to. Changing this
 parameter results in an outage and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is set to
-\code{true} for this request.
+maintenance window unless the \code{ApplyImmediately} parameter is eanbled
+for this request.
 
 For major version upgrades, if a nondefault DB parameter group is
 currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For information about valid engine versions, see CreateDBInstance, or
-call DescribeDBEngineVersions.}
+For information about valid engine versions, see \code{CreateDBInstance}, or
+call \code{DescribeDBEngineVersions}.}
 
-\item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
-parameter doesn't result in an outage and the change is asynchronously
-applied as soon as possible.
+\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+Changing this parameter doesn't result in an outage and the change is
+asynchronously applied as soon as possible.
 
-Constraints: This parameter must be set to true when specifying a value
-for the EngineVersion parameter that is a different major version than
-the DB instance's current version.}
+Constraints: Major version upgrades must be allowed when specifying a
+value for the EngineVersion parameter that is a different major version
+than the DB instance's current version.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window. Changing this parameter
-doesn't result in an outage except in the following case and the change
-is asynchronously applied as soon as possible. An outage will result if
-this parameter is set to \code{true} during the maintenance window, and a
-newer minor version is available, and RDS has enabled auto patching for
-that engine version.}
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window. Changing
+this parameter doesn't result in an outage except in the following case
+and the change is asynchronously applied as soon as possible. An outage
+results if this parameter is enabled during the maintenance window, and
+a newer minor version is available, and RDS has enabled auto patching
+for that engine version.}
 
 \item{LicenseModel}{The license model for the DB instance.
 
@@ -263,7 +262,7 @@ instance.
 
 Changing this setting doesn't result in an outage and the change is
 applied during the next maintenance window unless the \code{ApplyImmediately}
-parameter is set to \code{true} for this request. If you are migrating from
+parameter is enabled for this request. If you are migrating from
 Provisioned IOPS to standard storage, set this value to 0. The DB
 instance will require a reboot for the change in storage type to take
 effect.
@@ -293,11 +292,11 @@ Default: Uses existing setting}
 \item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
 option group. Changing this parameter doesn't result in an outage
 except in the following case and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is set to
-\code{true} for this request. If the parameter change results in an option
-group that enables OEM, this change can cause a brief (sub-second)
-period during which new connections are rejected but existing
-connections are not interrupted.
+maintenance window unless the \code{ApplyImmediately} parameter is enabled
+for this request. If the parameter change results in an option group
+that enables OEM, this change can cause a brief (sub-second) period
+during which new connections are rejected but existing connections are
+not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group
@@ -306,9 +305,9 @@ instance}
 
 \item{NewDBInstanceIdentifier}{The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance reboot
-will occur immediately if you set \code{Apply Immediately} to true, or will
-occur during the next maintenance window if \code{Apply Immediately} to
-false. This value is stored as a lowercase string.
+occurs immediately if you enable \code{ApplyImmediately}, or will occur
+during the next maintenance window if you disable Apply Immediately.
+This value is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -341,8 +340,7 @@ creating a DB snapshot of the instance.
 
 Valid values: \code{standard | gp2 | io1}
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise
-\code{standard}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.}
@@ -357,14 +355,14 @@ remove the instance from its current domain. The domain must be created
 prior to this operation. Currently only a Microsoft SQL Server instance
 can be created in a Active Directory Domain.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the DB instance to snapshots of the DB
-instance, and otherwise false. The default is false.
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.
 
 \strong{Amazon Aurora}
 
 Not applicable. Copying tags to snapshots is managed by the DB cluster.
 Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting. For more information, see ModifyDBCluster.}
+cluster setting. For more information, see \code{ModifyDBCluster}.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -422,20 +420,18 @@ Default: \code{3306}
 
 Valid Values: \code{1150-65535}}
 
-\item{PubliclyAccessible}{Boolean value that indicates if the DB instance has a publicly
-resolvable DNS name. Set to \code{True} to make the DB instance
-Internet-facing with a publicly resolvable DNS name, which resolves to a
-public IP address. Set to \code{False} to make the DB instance internal with
-a DNS name that resolves to a private IP address.
+\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a public
+IP address. When the DB instance is not publicly accessible, it is an
+internal instance with a DNS name that resolves to a private IP address.
 
 \code{PubliclyAccessible} only applies to DB instances in a VPC. The DB
 instance must be part of a public subnet and \code{PubliclyAccessible} must
-be true in order for it to be publicly accessible.
+be enabled for it to be publicly accessible.
 
 Changes to the \code{PubliclyAccessible} parameter are applied immediately
-regardless of the value of the \code{ApplyImmediately} parameter.
-
-Default: false}
+regardless of the value of the \code{ApplyImmediately} parameter.}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
@@ -458,8 +454,9 @@ Default: 1
 
 Valid Values: 0 - 15}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
@@ -467,25 +464,28 @@ engines
 \strong{Amazon Aurora}
 
 Not applicable. Mapping AWS IAM accounts to database accounts is managed
-by the DB cluster. For more information, see ModifyDBCluster.
+by the DB cluster. For more information, see \code{ModifyDBCluster}.
 
 \strong{MySQL}
 \itemize{
 \item For MySQL 5.6, minor version 5.6.34 or higher
 \item For MySQL 5.7, minor version 5.7.16 or higher
-}
+}}
 
-Default: \code{false}}
-
-\item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
-false.
+\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
+instance.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.}
+the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
+Amazon RDS uses your default encryption key. AWS KMS creates the default
+encryption key for your AWS account. Your AWS account has a different
+default encryption key for each AWS Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -500,19 +500,20 @@ applied to the DB instance immediately. Therefore, the
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that specifies that the DB instance class of the DB instance
+\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.}
 
-\item{DeletionProtection}{Indicates if the DB instance has deletion protection enabled. The
-database can't be deleted when this value is set to true. For more
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
 configuration parameters by specifying these parameters and the new
 values in the request. To learn what modifications you can make to your
-DB instance, call DescribeValidDBInstanceModifications before you call
-ModifyDBInstance.
+DB instance, call \code{DescribeValidDBInstanceModifications} before you call
+\code{ModifyDBInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_instance(

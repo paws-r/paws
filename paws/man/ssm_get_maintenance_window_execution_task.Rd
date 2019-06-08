@@ -2,20 +2,20 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_maintenance_window_execution_task}
 \alias{ssm_get_maintenance_window_execution_task}
-\title{Retrieves the details about a specific task executed as part of a
-Maintenance Window execution}
+\title{Retrieves the details about a specific task run as part of a maintenance
+window execution}
 \usage{
 ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 }
 \arguments{
-\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution that includes the task.}
+\item{WindowExecutionId}{[required] The ID of the maintenance window execution that includes the task.}
 
-\item{TaskId}{[required] The ID of the specific task execution in the Maintenance Window task
+\item{TaskId}{[required] The ID of the specific task execution in the maintenance window task
 that should be retrieved.}
 }
 \description{
-Retrieves the details about a specific task executed as part of a
-Maintenance Window execution.
+Retrieves the details about a specific task run as part of a maintenance
+window execution.
 }
 \section{Request syntax}{
 \preformatted{svc$get_maintenance_window_execution_task(

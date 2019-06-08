@@ -2,14 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_window_execution_tasks}
 \alias{ssm_describe_maintenance_window_execution_tasks}
-\title{For a given Maintenance Window execution, lists the tasks that were
-executed}
+\title{For a given maintenance window execution, lists the tasks that were run}
 \usage{
 ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
   Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution whose task executions should
+\item{WindowExecutionId}{[required] The ID of the maintenance window execution whose task executions should
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned tasks. The supported
@@ -24,8 +23,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-For a given Maintenance Window execution, lists the tasks that were
-executed.
+For a given maintenance window execution, lists the tasks that were run.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_execution_tasks(

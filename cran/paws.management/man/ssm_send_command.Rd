@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_send_command}
 \alias{ssm_send_command}
-\title{Executes commands on one or more managed instances}
+\title{Runs commands on one or more managed instances}
 \usage{
 ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
   DocumentHash, DocumentHashType, TimeoutSeconds, Comment, Parameters,
@@ -10,9 +10,9 @@ ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
   MaxErrors, ServiceRoleArn, NotificationConfig, CloudWatchOutputConfig)
 }
 \arguments{
-\item{InstanceIds}{The instance IDs where the command should execute. You can specify a
-maximum of 50 IDs. If you prefer not to list individual instance IDs,
-you can instead send commands to a fleet of instances using the Targets
+\item{InstanceIds}{The instance IDs where the command should run. You can specify a maximum
+of 50 IDs. If you prefer not to list individual instance IDs, you can
+instead send commands to a fleet of instances using the Targets
 parameter, which accepts EC2 tags. For more information about how to use
 targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet}
 in the \emph{AWS Systems Manager User Guide}.}
@@ -23,14 +23,14 @@ don't provide one or more instance IDs in the call. For more
 information about how to use targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
-\item{DocumentName}{[required] Required. The name of the Systems Manager document to execute. This can
-be a public document or a custom document.}
+\item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a
+public document or a custom document.}
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify
-\$DEFAULT, \$LATEST, or a specific version number. If you execute
-commands by using the AWS CLI, then you must escape the first two
-options by using a backslash. If you specify a version number, then you
-don't need to use the backslash. For example:
+\$DEFAULT, \$LATEST, or a specific version number. If you run commands
+by using the AWS CLI, then you must escape the first two options by
+using a backslash. If you specify a version number, then you don't need
+to use the backslash. For example:
 
 \--document-version "\\$DEFAULT"
 
@@ -47,14 +47,14 @@ Sha1 hashes have been deprecated.}
 
 Sha1 hashes have been deprecated.}
 
-\item{TimeoutSeconds}{If this time is reached and the command has not already started
-executing, it will not run.}
+\item{TimeoutSeconds}{If this time is reached and the command has not already started running,
+it will not run.}
 
 \item{Comment}{User-specified information about the command, such as a brief
 description of what the command should do.}
 
 \item{Parameters}{The required and optional parameters specified in the document being
-executed.}
+run.}
 
 \item{OutputS3Region}{(Deprecated) You can no longer specify this parameter. The system
 ignores it. Instead, Systems Manager automatically determines the Amazon
@@ -66,8 +66,8 @@ stored.}
 \item{OutputS3KeyPrefix}{The directory structure within the S3 bucket where the responses should
 be stored.}
 
-\item{MaxConcurrency}{(Optional) The maximum number of instances that are allowed to execute
-the command at the same time. You can specify a number such as 10 or a
+\item{MaxConcurrency}{(Optional) The maximum number of instances that are allowed to run the
+command at the same time. You can specify a number such as 10 or a
 percentage such as 10\%. The default value is 50. For more information
 about how to use MaxConcurrency, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using Concurrency Controls}
 in the \emph{AWS Systems Manager User Guide}.}
@@ -79,7 +79,9 @@ a number like 10 or a percentage like 10\%. The default value is 0. For
 more information about how to use MaxErrors, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using Error Controls}
 in the \emph{AWS Systems Manager User Guide}.}
 
-\item{ServiceRoleArn}{The IAM role that Systems Manager uses to send notifications.}
+\item{ServiceRoleArn}{The ARN of the IAM service role to use to publish Amazon Simple
+Notification Service (Amazon SNS) notifications for Run Command
+commands.}
 
 \item{NotificationConfig}{Configurations for sending notifications.}
 
@@ -87,7 +89,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 Logs.}
 }
 \description{
-Executes commands on one or more managed instances.
+Runs commands on one or more managed instances.
 }
 \section{Request syntax}{
 \preformatted{svc$send_command(

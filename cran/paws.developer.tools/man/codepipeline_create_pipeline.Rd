@@ -4,11 +4,13 @@
 \alias{codepipeline_create_pipeline}
 \title{Creates a pipeline}
 \usage{
-codepipeline_create_pipeline(pipeline)
+codepipeline_create_pipeline(pipeline, tags)
 }
 \arguments{
 \item{pipeline}{[required] Represents the structure of actions and stages to be performed in the
 pipeline.}
+
+\item{tags}{The tags for the pipeline.}
 }
 \description{
 Creates a pipeline.
@@ -75,6 +77,12 @@ Creates a pipeline.
       )
     ),
     version = 123
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
   )
 )
 }

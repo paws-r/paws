@@ -49,12 +49,12 @@ Default: The same port as the original DB instance
 
 Constraints: Value must be \code{1150-65535}}
 
-\item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in.
+\item{AvailabilityZone}{The Availability Zone (AZ) where the DB instance will be created.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to \code{true}.
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+DB instance is a Multi-AZ deployment.
 
 Example: \code{us-east-1a}}
 
@@ -65,19 +65,20 @@ DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment.
+\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to \code{true}.}
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+DB instance is a Multi-AZ deployment.}
 
-\item{PubliclyAccessible}{Specifies the accessibility options for the DB instance. A value of true
-specifies an Internet-facing instance with a publicly resolvable DNS
-name, which resolves to a public IP address. A value of false specifies
-an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.}
+\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a public
+IP address. When the DB instance is not publicly accessible, it is an
+internal instance with a DNS name that resolves to a private IP address.
+For more information, see CreateDBInstance.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window.}
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window.}
 
 \item{LicenseModel}{License model information for the restored DB instance.
 
@@ -143,8 +144,7 @@ Valid values: \code{standard | gp2 | io1}
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise
-\code{standard}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.}
@@ -159,23 +159,23 @@ VPC.}
 
 \item{Domain}{Specify the Active Directory Domain to restore the instance in.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
-restored DB instance, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
+instance to snapshots of the DB instance. By default, tags are not
+copied.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
 \itemize{
 \item For MySQL 5.6, minor version 5.6.34 or higher
 \item For MySQL 5.7, minor version 5.7.16 or higher
-}
-
-Default: \code{false}}
+}}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
@@ -185,7 +185,7 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that specifies that the DB instance class of the DB instance
+\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
@@ -200,9 +200,10 @@ Constraints:
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is
@@ -229,7 +230,7 @@ If you are restoring from a shared manual DB snapshot, the
 \code{DBSnapshotIdentifier} must be the ARN of the shared DB snapshot.
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora, use RestoreDBClusterFromSnapshot.
+Aurora, use \code{RestoreDBClusterFromSnapshot}.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_instance_from_db_snapshot(

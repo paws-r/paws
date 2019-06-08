@@ -37,8 +37,8 @@ existing ASN assigned to your network. If you don't have an ASN
 already, you can use a private ASN (in the 64512 - 65534 range).
 
 Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
-with the exception of 7224, which is reserved in the \code{us-east-1} region,
-and 9059, which is reserved in the \code{eu-west-1} region.
+with the exception of 7224, which is reserved in the \code{us-east-1} Region,
+and 9059, which is reserved in the \code{eu-west-1} Region.
 
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.

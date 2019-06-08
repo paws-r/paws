@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.alexaforbusiness$associate_device_with_network_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), NetworkProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$associate_device_with_network_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .alexaforbusiness$associate_device_with_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -120,6 +132,30 @@ NULL
 .alexaforbusiness$create_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$create_gateway_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$create_gateway_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$create_network_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Ssid = structure(logical(0), tags = list(type = "string")), SecurityType = structure(logical(0), tags = list(type = "string")), EapMethod = structure(logical(0), tags = list(type = "string")), CurrentPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NextPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), TrustAnchors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$create_network_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -226,6 +262,42 @@ NULL
 }
 
 .alexaforbusiness$delete_device_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_device_usage_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceUsageType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_device_usage_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_gateway_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_gateway_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_network_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$delete_network_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -431,7 +503,31 @@ NULL
 
 .alexaforbusiness$get_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Device = structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Device = structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Feature = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkProfileInfo = structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string")), CertificateArn = structure(logical(0), tags = list(type = "string")), CertificateExpirationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Gateway = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), GatewayGroupArn = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_gateway_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_gateway_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroup = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -444,6 +540,18 @@ NULL
 .alexaforbusiness$get_invitation_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationName = structure(logical(0), tags = list(type = "string")), ContactEmail = structure(logical(0), tags = list(type = "string")), PrivateSkillIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_network_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$get_network_profile_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfile = structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string")), NetworkProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Ssid = structure(logical(0), tags = list(type = "string")), SecurityType = structure(logical(0), tags = list(type = "string")), EapMethod = structure(logical(0), tags = list(type = "string")), CurrentPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NextPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), TrustAnchors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -528,6 +636,30 @@ NULL
 .alexaforbusiness$list_device_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DeviceEvents = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$list_gateway_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$list_gateway_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroups = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$list_gateways_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroupArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$list_gateways_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Gateways = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), GatewayGroupArn = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -719,7 +851,19 @@ NULL
 
 .alexaforbusiness$search_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Devices = structure(list(structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Devices = structure(list(structure(list(DeviceArn = structure(logical(0), tags = list(type = "string")), DeviceSerialNumber = structure(logical(0), tags = list(type = "string")), DeviceType = structure(logical(0), tags = list(type = "string")), DeviceName = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string")), MacAddress = structure(logical(0), tags = list(type = "string")), DeviceStatus = structure(logical(0), tags = list(type = "string")), NetworkProfileArn = structure(logical(0), tags = list(type = "string")), NetworkProfileName = structure(logical(0), tags = list(type = "string")), RoomArn = structure(logical(0), tags = list(type = "string")), RoomName = structure(logical(0), tags = list(type = "string")), DeviceStatusInfo = structure(list(DeviceStatusDetails = structure(list(structure(list(Feature = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConnectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$search_network_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortCriteria = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$search_network_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfiles = structure(list(structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string")), NetworkProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Ssid = structure(logical(0), tags = list(type = "string")), SecurityType = structure(logical(0), tags = list(type = "string")), EapMethod = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -768,6 +912,18 @@ NULL
 .alexaforbusiness$search_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Users = structure(list(structure(list(UserArn = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), EnrollmentStatus = structure(logical(0), tags = list(type = "string")), EnrollmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$send_announcement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RoomFilters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Content = structure(list(TextList = structure(list(structure(list(Locale = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SsmlList = structure(list(structure(list(Locale = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AudioList = structure(list(structure(list(Locale = structure(logical(0), tags = list(type = "string")), Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), TimeToLiveInSeconds = structure(logical(0), tags = list(type = "integer")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$send_announcement_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AnnouncementArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -886,6 +1042,42 @@ NULL
 }
 
 .alexaforbusiness$update_device_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SoftwareVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_gateway_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GatewayGroupArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_gateway_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_network_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkProfileArn = structure(logical(0), tags = list(type = "string")), NetworkProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CurrentPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NextPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), TrustAnchors = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.alexaforbusiness$update_network_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -41,7 +41,7 @@ For an overview of CIDR blocks, see the Wikipedia article on \href{http://en.wik
 You must also associate the security group with a cluster so that
 clients running on these IP addresses or the EC2 instance are authorized
 to connect to the cluster. For information about managing security
-groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Working with Security Groups}
+groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Working with Security Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

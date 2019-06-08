@@ -97,7 +97,7 @@ Creates a new OriginEndpoint record.
     ),
     Profile = "NONE"|"HBBTV_1_5",
     SegmentDurationSeconds = 123,
-    SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE",
+    SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
     StreamSelection = list(
       MaxVideoBitsPerSecond = 123,
       MinVideoBitsPerSecond = 123,

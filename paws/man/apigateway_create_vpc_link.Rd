@@ -6,7 +6,7 @@
 an asynchronous operation that typically takes 2-4 minutes to complete
 and become operational}
 \usage{
-apigateway_create_vpc_link(name, description, targetArns)
+apigateway_create_vpc_link(name, description, targetArns, tags)
 }
 \arguments{
 \item{name}{[required] [Required] The name used to label and identify the VPC link.}
@@ -16,6 +16,10 @@ apigateway_create_vpc_link(name, description, targetArns)
 \item{targetArns}{[required] [Required] The ARNs of network load balancers of the VPC targeted by
 the VPC link. The network load balancers must be owned by the same AWS
 account of the API owner.}
+
+\item{tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with \code{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Creates a VPC link, under the caller's account in a selected region, in
@@ -28,6 +32,9 @@ update VPC Endpoint services.
   name = "string",
   description = "string",
   targetArns = list(
+    "string"
+  ),
+  tags = list(
     "string"
   )
 )

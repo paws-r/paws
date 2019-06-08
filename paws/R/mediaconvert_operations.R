@@ -83,7 +83,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'   ClientRequestToken, JobTemplate, Queue, Role, Settings,
 #'   StatusUpdateInterval, UserMetadata)
 #'
-#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.
 #' @param ClientRequestToken Idempotency token for CreateJob operation.
 #' @param JobTemplate When you create a job, you can either specify a job template or specify the transcoding settings individually
@@ -322,6 +322,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'               )
 #'             ),
 #'             Encryption = list(
+#'               PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",
@@ -983,7 +984,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' mediaconvert_create_job_template(AccelerationSettings, Category,
 #'   Description, Name, Queue, Settings, StatusUpdateInterval, Tags)
 #'
-#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature please contact AWS customer support.
+#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
@@ -1210,6 +1211,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               )
 #'             ),
 #'             Encryption = list(
+#'               PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",
@@ -3052,7 +3054,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #' mediaconvert_update_job_template(AccelerationSettings, Category,
 #'   Description, Name, Queue, Settings, StatusUpdateInterval)
 #'
-#' @param AccelerationSettings This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
@@ -3278,6 +3280,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               )
 #'             ),
 #'             Encryption = list(
+#'               PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
 #'               SpekeKeyProvider = list(
 #'                 CertificateArn = "string",
 #'                 ResourceId = "string",

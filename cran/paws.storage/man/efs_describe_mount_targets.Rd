@@ -10,7 +10,9 @@ efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of mount targets to return in the response.
-Currently, this number is automatically set to 10.}
+Currently, this number is automatically set to 10, and other values are
+ignored. The response is paginated at 10 per page if you have more than
+10 mount targets.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous
 \code{DescribeMountTargets} operation (String). If present, it specifies to

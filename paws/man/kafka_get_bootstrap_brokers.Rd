@@ -7,10 +7,11 @@
 kafka_get_bootstrap_brokers(ClusterArn)
 }
 \arguments{
-\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
+\item{ClusterArn}{[required]
+<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
 }
 \description{
-A list of brokers that a client application can use to bootstrap.
+<p>A list of brokers that a client application can use to bootstrap.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$get_bootstrap_brokers(

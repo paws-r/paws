@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_revoke_security_group_ingress}
 \alias{ec2_revoke_security_group_ingress}
-\title{Removes one or more ingress rules from a security group}
+\title{Removes the specified ingress rules from a security group}
 \usage{
 ec2_revoke_security_group_ingress(CidrIp, FromPort, GroupId, GroupName,
   IpPermissions, IpProtocol, SourceSecurityGroupName,
@@ -23,8 +23,8 @@ nondefault VPC, you must specify the security group ID.}
 specify either the security group ID or the security group name in the
 request.}
 
-\item{IpPermissions}{One or more sets of IP permissions. You can't specify a source security
-group and a CIDR IP address range in the same set of permissions.}
+\item{IpPermissions}{The sets of IP permissions. You can't specify a source security group
+and a CIDR IP address range in the same set of permissions.}
 
 \item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}).
 Use \code{-1} to specify all.}
@@ -53,14 +53,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Removes one or more ingress rules from a security group. To remove a
+Removes the specified ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the
 existing rule's values exactly.
 }
 \details{
-[EC2-Classic security groups only] If the values you specify do not
-match the existing rule's values, no error is returned. Use
-DescribeSecurityGroups to verify that the rule has been removed.
+[EC2-Classic only] If the values you specify do not match the existing
+rule's values, no error is returned. Use DescribeSecurityGroups to
+verify that the rule has been removed.
 
 Each rule consists of the protocol and the CIDR range or source security
 group. For the TCP and UDP protocols, you must also specify the

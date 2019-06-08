@@ -30,8 +30,9 @@ You can create up to 100 lifecycle policies.
   Description = "string",
   State = "ENABLED"|"DISABLED",
   PolicyDetails = list(
+    PolicyType = "EBS_SNAPSHOT_MANAGEMENT",
     ResourceTypes = list(
-      "VOLUME"
+      "VOLUME"|"INSTANCE"
     ),
     TargetTags = list(
       list(
@@ -49,6 +50,12 @@ You can create up to 100 lifecycle policies.
             Value = "string"
           )
         ),
+        VariableTags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
         CreateRule = list(
           Interval = 123,
           IntervalUnit = "HOURS",
@@ -60,6 +67,9 @@ You can create up to 100 lifecycle policies.
           Count = 123
         )
       )
+    ),
+    Parameters = list(
+      ExcludeBootVolume = TRUE|FALSE
     )
   )
 )

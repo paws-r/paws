@@ -14,13 +14,13 @@ corp.example.com).}
 \item{OrganizationalUnitDistinguishedNames}{[required] The distinguished names of the organizational units for computer
 accounts.}
 
-\item{ServiceAccountCredentials}{[required] The credentials for the service account used by the streaming instance
-to connect to the directory.}
+\item{ServiceAccountCredentials}{[required] The credentials for the service account used by the fleet or image
+builder to connect to the directory.}
 }
 \description{
 Creates a Directory Config object in AppStream 2.0. This object includes
-the information required to join streaming instances to an Active
-Directory domain.
+the configuration information required to join fleets and image builders
+to Microsoft Active Directory domains.
 }
 \section{Request syntax}{
 \preformatted{svc$create_directory_config(

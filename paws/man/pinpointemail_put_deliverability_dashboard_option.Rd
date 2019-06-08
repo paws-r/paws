@@ -2,30 +2,49 @@
 % Please edit documentation in R/pinpointemail_operations.R
 \name{pinpointemail_put_deliverability_dashboard_option}
 \alias{pinpointemail_put_deliverability_dashboard_option}
-\title{Enable or disable the Deliverability dashboard}
+\title{Enable or disable the Deliverability dashboard for your Amazon Pinpoint
+account}
 \usage{
-pinpointemail_put_deliverability_dashboard_option(DashboardEnabled)
+pinpointemail_put_deliverability_dashboard_option(DashboardEnabled,
+  SubscribedDomains)
 }
 \arguments{
-\item{DashboardEnabled}{[required] Indicates whether the Deliverability dashboard is enabled. If the value
-is \code{true}, then the dashboard is enabled.}
+\item{DashboardEnabled}{[required] Specifies whether to enable the Deliverability dashboard for your Amazon
+Pinpoint account. To enable the dashboard, set this value to \code{true}.}
+
+\item{SubscribedDomains}{An array of objects, one for each verified domain that you use to send
+email and enabled the Deliverability dashboard for.}
 }
 \description{
-Enable or disable the Deliverability dashboard. When you enable the
-Deliverability dashboard, you gain access to reputation metrics for the
-domains that you use to send email using Amazon Pinpoint. You also gain
-the ability to perform predictive inbox placement tests.
+Enable or disable the Deliverability dashboard for your Amazon Pinpoint
+account. When you enable the Deliverability dashboard, you gain access
+to reputation, deliverability, and other metrics for the domains that
+you use to send email using Amazon Pinpoint. You also gain the ability
+to perform predictive inbox placement tests.
 }
 \details{
-When you use the Deliverability dashboard, you pay a monthly charge of
-USD\$1,250.00, in addition to any other fees that you accrue by using
-Amazon Pinpoint. If you enable the Deliverability dashboard after the
-first day of a calendar month, we prorate the monthly charge based on
-how many days have elapsed in the current calendar month.
+When you use the Deliverability dashboard, you pay a monthly
+subscription charge, in addition to any other fees that you accrue by
+using Amazon Pinpoint. For more information about the features and cost
+of a Deliverability dashboard subscription, see \href{http://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_deliverability_dashboard_option(
-  DashboardEnabled = TRUE|FALSE
+  DashboardEnabled = TRUE|FALSE,
+  SubscribedDomains = list(
+    list(
+      Domain = "string",
+      SubscriptionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      InboxPlacementTrackingOption = list(
+        Global = TRUE|FALSE,
+        TrackedIsps = list(
+          "string"
+        )
+      )
+    )
+  )
 )
 }
 }

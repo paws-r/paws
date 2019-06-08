@@ -31,10 +31,10 @@ more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sage
 To be able to pass this role to Amazon SageMaker, the caller of this API
 must have the \code{iam:PassRole} permission.}
 
-\item{KmsKeyId}{If you provide a AWS KMS key ID, Amazon SageMaker uses it to encrypt
-data at rest on the ML storage volume that is attached to your notebook
-instance. The KMS key you provide must be enabled. For information, see
-\href{http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
+\item{KmsKeyId}{The Amazon Resource Name (ARN) of a AWS Key Management Service key that
+Amazon SageMaker uses to encrypt data on the storage volume attached to
+your notebook instance. The KMS key you provide must be enabled. For
+information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{Tags}{A list of tags to associate with the notebook instance. You can add tags

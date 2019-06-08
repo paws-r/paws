@@ -17,7 +17,7 @@ kms_re_encrypt(CiphertextBlob, SourceEncryptionContext,
 \item{DestinationKeyId}{[required] A unique identifier for the CMK that is used to reencrypt the data.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
+name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
 To specify a CMK in a different AWS account, you must use the key ARN or
 alias ARN.
 
@@ -37,7 +37,7 @@ get the alias name and alias ARN, use ListAliases.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
@@ -52,15 +52,15 @@ You can reencrypt data using CMKs in different AWS accounts.
 Unlike other operations, \code{ReEncrypt} is authorized twice, once as
 \code{ReEncryptFrom} on the source CMK and once as \code{ReEncryptTo} on the
 destination CMK. We recommend that you include the \code{"kms:ReEncrypt*"}
-permission in your \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policies}
+permission in your \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policies}
 to permit reencryption from or to the CMK. This permission is
 automatically included in the key policy when you create a CMK through
-the console, but you must include it manually when you create a CMK
+the console. But you must include it manually when you create a CMK
 programmatically or when you set a key policy with the PutKeyPolicy
 operation.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

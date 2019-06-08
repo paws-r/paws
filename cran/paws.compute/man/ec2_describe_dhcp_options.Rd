@@ -4,7 +4,8 @@
 \alias{ec2_describe_dhcp_options}
 \title{Describes one or more of your DHCP options sets}
 \usage{
-ec2_describe_dhcp_options(DhcpOptionsIds, Filters, DryRun)
+ec2_describe_dhcp_options(DhcpOptionsIds, Filters, DryRun, NextToken,
+  MaxResults)
 }
 \arguments{
 \item{DhcpOptionsIds}{The IDs of one or more DHCP options sets.
@@ -32,6 +33,12 @@ regardless of the tag value.
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NextToken}{The token for the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, make another call with the returned \code{nextToken}
+value.}
 }
 \description{
 Describes one or more of your DHCP options sets.
@@ -53,7 +60,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       )
     )
   ),
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

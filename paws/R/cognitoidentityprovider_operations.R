@@ -1250,6 +1250,48 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 }
 .cognitoidentityprovider$operations$admin_set_user_mfa_preference <- cognitoidentityprovider_admin_set_user_mfa_preference
 
+#' Admin set user password
+#'
+#' 
+#'
+#' @usage
+#' cognitoidentityprovider_admin_set_user_password(UserPoolId, Username,
+#'   Password, Permanent)
+#'
+#' @param UserPoolId &#91;required&#93; 
+#' @param Username &#91;required&#93; 
+#' @param Password &#91;required&#93; 
+#' @param Permanent 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$admin_set_user_password(
+#'   UserPoolId = "string",
+#'   Username = "string",
+#'   Password = "string",
+#'   Permanent = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cognitoidentityprovider_admin_set_user_password
+cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username, Password, Permanent = NULL) {
+  op <- new_operation(
+    name = "AdminSetUserPassword",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cognitoidentityprovider$admin_set_user_password_input(UserPoolId = UserPoolId, Username = Username, Password = Password, Permanent = Permanent)
+  output <- .cognitoidentityprovider$admin_set_user_password_output()
+  svc <- .cognitoidentityprovider$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cognitoidentityprovider$operations$admin_set_user_password <- cognitoidentityprovider_admin_set_user_password
+
 #' Sets all the user settings for a specified user name
 #'
 #' Sets all the user settings for a specified user name. Works on any user.
@@ -2009,7 +2051,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       RequireUppercase = TRUE|FALSE,
 #'       RequireLowercase = TRUE|FALSE,
 #'       RequireNumbers = TRUE|FALSE,
-#'       RequireSymbols = TRUE|FALSE
+#'       RequireSymbols = TRUE|FALSE,
+#'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
 #'   LambdaConfig = list(
@@ -2052,7 +2095,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'   ),
 #'   EmailConfiguration = list(
 #'     SourceArn = "string",
-#'     ReplyToEmailAddress = "string"
+#'     ReplyToEmailAddress = "string",
+#'     EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
 #'   ),
 #'   SmsConfiguration = list(
 #'     SnsCallerArn = "string",
@@ -2143,7 +2187,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' Pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
 #' @param ExplicitAuthFlows The explicit authentication flows.
 #' @param SupportedIdentityProviders A list of provider names for the identity providers that are supported
-#' on this client.
+#' on this client. The following are supported: `COGNITO`, `Facebook`,
+#' `Google` and `LoginWithAmazon`.
 #' @param CallbackURLs A list of allowed redirect (callback) URLs for the identity providers.
 #' 
 #' A redirect URI must:
@@ -4935,7 +4980,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'       RequireUppercase = TRUE|FALSE,
 #'       RequireLowercase = TRUE|FALSE,
 #'       RequireNumbers = TRUE|FALSE,
-#'       RequireSymbols = TRUE|FALSE
+#'       RequireSymbols = TRUE|FALSE,
+#'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
 #'   LambdaConfig = list(
@@ -4972,7 +5018,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'   ),
 #'   EmailConfiguration = list(
 #'     SourceArn = "string",
-#'     ReplyToEmailAddress = "string"
+#'     ReplyToEmailAddress = "string",
+#'     EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
 #'   ),
 #'   SmsConfiguration = list(
 #'     SnsCallerArn = "string",
@@ -5078,9 +5125,6 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' @param AllowedOAuthFlows Set to `code` to initiate a code grant flow, which provides an
 #' authorization code as the response. This code can be exchanged for
 #' access tokens with the token endpoint.
-#' 
-#' Set to `token` to specify that the client should get the access token
-#' (and, optionally, ID token, based on scopes) directly.
 #' @param AllowedOAuthScopes A list of allowed `OAuth` scopes. Currently supported values are
 #' `"phone"`, `"email"`, `"openid"`, and `"Cognito"`.
 #' @param AllowedOAuthFlowsUserPoolClient Set to TRUE if the client is allowed to follow the OAuth protocol when

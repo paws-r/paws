@@ -19,7 +19,7 @@ Cost Management console for cost allocation tracking. You can call
 TagResource up to 5 times per second, per account.
 }
 \details{
-For an overview on tagging DynamoDB resources, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
+For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{

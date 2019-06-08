@@ -4,7 +4,8 @@
 \alias{sagemaker_update_workteam}
 \title{Updates an existing work team with new member definitions or description}
 \usage{
-sagemaker_update_workteam(WorkteamName, MemberDefinitions, Description)
+sagemaker_update_workteam(WorkteamName, MemberDefinitions, Description,
+  NotificationConfiguration)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to update.}
@@ -13,6 +14,8 @@ sagemaker_update_workteam(WorkteamName, MemberDefinitions, Description)
 members.}
 
 \item{Description}{An updated description for the work team.}
+
+\item{NotificationConfiguration}{Configures SNS topic notifications for available or expiring work items}
 }
 \description{
 Updates an existing work team with new member definitions or
@@ -30,7 +33,10 @@ description.
       )
     )
   ),
-  Description = "string"
+  Description = "string",
+  NotificationConfiguration = list(
+    NotificationTopicArn = "string"
+  )
 )
 }
 }

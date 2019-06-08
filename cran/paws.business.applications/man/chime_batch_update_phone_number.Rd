@@ -11,7 +11,8 @@ chime_batch_update_phone_number(UpdatePhoneNumberRequestItems)
 }
 \description{
 Updates phone number product types. Choose from Amazon Chime Business
-Calling and Amazon Chime Voice Connector product types.
+Calling and Amazon Chime Voice Connector product types. For toll-free
+numbers, you can use only the Amazon Chime Voice Connector product type.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_update_phone_number(

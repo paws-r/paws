@@ -2,19 +2,19 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_regions}
 \alias{ec2_describe_regions}
-\title{Describes one or more regions that are currently available to you}
+\title{Describes the Regions that are currently available to you}
 \usage{
 ec2_describe_regions(Filters, RegionNames, DryRun)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
-\item \code{endpoint} - The endpoint of the region (for example,
+\item \code{endpoint} - The endpoint of the Region (for example,
 \code{ec2.us-east-1.amazonaws.com}).
-\item \code{region-name} - The name of the region (for example, \code{us-east-1}).
+\item \code{region-name} - The name of the Region (for example, \code{us-east-1}).
 }}
 
-\item{RegionNames}{The names of one or more regions.}
+\item{RegionNames}{The names of the Regions.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -22,10 +22,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more regions that are currently available to you.
+Describes the Regions that are currently available to you. The API
+returns a list of all the Regions, including Regions that are disabled
+for your account. For information about enabling Regions for your
+account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-account-payment.html#manage-account-payment-enable-disable-regions}{Enabling and Disabling Regions}
+in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \details{
-For a list of the regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
+For a list of the Regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_regions(

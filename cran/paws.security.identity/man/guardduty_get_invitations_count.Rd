@@ -8,7 +8,8 @@ to the current member account except the currently accepted invitation}
 guardduty_get_invitations_count()
 }
 \description{
-Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
+Returns the count of all GuardDuty membership invitations that were sent
+to the current member account except the currently accepted invitation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_invitations_count()

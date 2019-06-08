@@ -33,6 +33,7 @@ in the \strong{AWS Lambda Developer Guide}.
 \link[=lambda_get_function]{get_function} \tab Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes\cr
 \link[=lambda_get_function_configuration]{get_function_configuration} \tab Returns the version-specific settings of a Lambda function or version \cr
 \link[=lambda_get_layer_version]{get_layer_version} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
+\link[=lambda_get_layer_version_by_arn]{get_layer_version_by_arn} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
 \link[=lambda_get_layer_version_policy]{get_layer_version_policy} \tab Returns the permission policy for a version of an AWS Lambda layer \cr
 \link[=lambda_get_policy]{get_policy} \tab Returns the resource-based IAM policy for a function, version, or alias \cr
 \link[=lambda_invoke]{invoke} \tab Invokes a Lambda function \cr
@@ -54,7 +55,7 @@ in the \strong{AWS Lambda Developer Guide}.
 \link[=lambda_update_alias]{update_alias} \tab Updates the configuration of a Lambda function alias \cr
 \link[=lambda_update_event_source_mapping]{update_event_source_mapping} \tab Updates an event source mapping \cr
 \link[=lambda_update_function_code]{update_function_code} \tab Updates a Lambda function's code \cr
-\link[=lambda_update_function_configuration]{update_function_configuration} \tab Modify the version-specifc settings of a Lambda function
+\link[=lambda_update_function_configuration]{update_function_configuration} \tab Modify the version-specific settings of a Lambda function
 }
 }
 

@@ -7,18 +7,30 @@
 rdsdataservice()
 }
 \description{
-AWS RDS DataService provides Http Endpoint to query RDS databases.
+Amazon RDS Data Service
+
+Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
+Aurora Serverless DB cluster. To run these statements, you work with the
+Data Service API.
+
+For more information about the Data Service API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless}
+in the \emph{Amazon Aurora User Guide}.
 }
 \section{Operations}{
 
 \tabular{ll}{
-\link[=rdsdataservice_execute_sql]{execute_sql} \tab Executes any SQL statement on the target database synchronously
+\link[=rdsdataservice_batch_execute_statement]{batch_execute_statement} \tab Runs a batch SQL statement over an array of data \cr
+\link[=rdsdataservice_begin_transaction]{begin_transaction} \tab Starts a SQL transaction \cr
+\link[=rdsdataservice_commit_transaction]{commit_transaction} \tab Ends a SQL transaction started with the BeginTransaction operation and commits the changes\cr
+\link[=rdsdataservice_execute_sql]{execute_sql} \tab Runs one or more SQL statements \cr
+\link[=rdsdataservice_execute_statement]{execute_statement} \tab Runs a SQL statement against a database \cr
+\link[=rdsdataservice_rollback_transaction]{rollback_transaction} \tab Performs a rollback of a transaction
 }
 }
 
 \examples{
 \donttest{svc <- rdsdataservice()
-svc$execute_sql(
+svc$batch_execute_statement(
   Foo = 123
 )}
 

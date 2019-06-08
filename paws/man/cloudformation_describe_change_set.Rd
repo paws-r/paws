@@ -20,7 +20,7 @@ identifies the next page of information that you want to retrieve.}
 \description{
 Returns the inputs for the change set and a list of changes that AWS
 CloudFormation will make if you execute the change set. For more
-information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets}
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets}
 in the AWS CloudFormation User Guide.
 }
 \section{Request syntax}{

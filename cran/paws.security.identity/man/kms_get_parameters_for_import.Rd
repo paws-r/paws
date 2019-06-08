@@ -23,7 +23,7 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
 \item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing
-it with ImportKeyMaterial. For more information, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
+it with ImportKeyMaterial. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
@@ -32,7 +32,7 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 \description{
 Returns the items you need in order to import key material into AWS KMS
 from your existing key management infrastructure. For more information
-about importing key material into AWS KMS, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
+about importing key material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \details{
@@ -51,7 +51,7 @@ ImportKeyMaterial request. To get new ones, send another
 \code{GetParametersForImport} request.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

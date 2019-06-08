@@ -2,24 +2,33 @@
 % Please edit documentation in R/rdsdataservice_operations.R
 \name{rdsdataservice_execute_sql}
 \alias{rdsdataservice_execute_sql}
-\title{Executes any SQL statement on the target database synchronously}
+\title{Runs one or more SQL statements}
 \usage{
 rdsdataservice_execute_sql(awsSecretStoreArn, database,
   dbClusterOrInstanceArn, schema, sqlStatements)
 }
 \arguments{
-\item{awsSecretStoreArn}{[required] ARN of the db credentials in AWS Secret Store or the friendly secret name}
+\item{awsSecretStoreArn}{[required] The Amazon Resource Name (ARN) of the secret that enables access to the
+DB cluster.}
 
-\item{database}{Target DB name}
+\item{database}{The name of the database.}
 
-\item{dbClusterOrInstanceArn}{[required] ARN of the target db cluster or instance}
+\item{dbClusterOrInstanceArn}{[required] The ARN of the Aurora Serverless DB cluster.}
 
-\item{schema}{Target Schema name}
+\item{schema}{The name of the database schema.}
 
-\item{sqlStatements}{[required] SQL statement(s) to be executed. Statements can be chained by using semicolons}
+\item{sqlStatements}{[required] One or more SQL statements to run on the DB cluster.
+
+You can separate SQL statements from each other with a semicolon (;).
+Any valid SQL statement is permitted, including data definition, data
+manipulation, and commit statements.}
 }
 \description{
-Executes any SQL statement on the target database synchronously
+Runs one or more SQL statements.
+}
+\details{
+This operation is deprecated. Use the \code{BatchExecuteStatement} or
+\code{ExecuteStatement} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$execute_sql(

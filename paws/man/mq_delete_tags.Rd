@@ -2,17 +2,17 @@
 % Please edit documentation in R/mq_operations.R
 \name{mq_delete_tags}
 \alias{mq_delete_tags}
-\title{Remove a tag from a resource}
+\title{Removes a tag from a resource}
 \usage{
 mq_delete_tags(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 
 \item{TagKeys}{[required] An array of tag keys to delete}
 }
 \description{
-Remove a tag from a resource.
+Removes a tag from a resource.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_tags(

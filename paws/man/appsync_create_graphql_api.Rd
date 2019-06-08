@@ -5,18 +5,24 @@
 \title{Creates a GraphqlApi object}
 \usage{
 appsync_create_graphql_api(name, logConfig, authenticationType,
-  userPoolConfig, openIDConnectConfig)
+  userPoolConfig, openIDConnectConfig, tags,
+  additionalAuthenticationProviders)
 }
 \arguments{
 \item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
 
 \item{logConfig}{The Amazon CloudWatch Logs configuration.}
 
-\item{authenticationType}{[required] The authentication type: API key, AWS IAM, or Amazon Cognito user pools.}
+\item{authenticationType}{[required] The authentication type: API key, AWS IAM, OIDC, or Amazon Cognito user
+pools.}
 
 \item{userPoolConfig}{The Amazon Cognito user pool configuration.}
 
 \item{openIDConnectConfig}{The OpenID Connect configuration.}
+
+\item{tags}{A \code{TagMap} object.}
+
+\item{additionalAuthenticationProviders}{A list of additional authentication providers for the \code{GraphqlApi} API.}
 }
 \description{
 Creates a \code{GraphqlApi} object.
@@ -40,6 +46,25 @@ Creates a \code{GraphqlApi} object.
     clientId = "string",
     iatTTL = 123,
     authTTL = 123
+  ),
+  tags = list(
+    "string"
+  ),
+  additionalAuthenticationProviders = list(
+    list(
+      authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+      openIDConnectConfig = list(
+        issuer = "string",
+        clientId = "string",
+        iatTTL = 123,
+        authTTL = 123
+      ),
+      userPoolConfig = list(
+        userPoolId = "string",
+        awsRegion = "string",
+        appIdClientRegex = "string"
+      )
+    )
   )
 )
 }

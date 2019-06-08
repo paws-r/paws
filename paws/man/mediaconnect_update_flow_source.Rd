@@ -38,9 +38,14 @@ Updates the source of a flow.
 \preformatted{svc$update_flow_source(
   Decryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",
-    KeyType = "static-key",
+    ConstantInitializationVector = "string",
+    DeviceId = "string",
+    KeyType = "speke"|"static-key",
+    Region = "string",
+    ResourceId = "string",
     RoleArn = "string",
-    SecretArn = "string"
+    SecretArn = "string",
+    Url = "string"
   ),
   Description = "string",
   EntitlementArn = "string",

@@ -74,7 +74,7 @@ to \code{Local}. To list only AWS managed policies, set \code{Scope} to \code{AW
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 
-For more information about managed policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

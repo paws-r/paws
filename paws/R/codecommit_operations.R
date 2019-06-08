@@ -235,7 +235,8 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' Creates a new, empty repository.
 #'
 #' @usage
-#' codecommit_create_repository(repositoryName, repositoryDescription)
+#' codecommit_create_repository(repositoryName, repositoryDescription,
+#'   tags)
 #'
 #' @param repositoryName &#91;required&#93; The name of the new repository to be created.
 #' 
@@ -243,7 +244,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' addition, repository names are limited to 100 alphanumeric, dash, and
 #' underscore characters, and cannot include certain characters. For a full
 #' description of the limits on repository names, see
-#' [Limits](http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+#' [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
 #' in the AWS CodeCommit User Guide. The suffix \".git\" is prohibited.
 #' @param repositoryDescription A comment or description about the new repository.
 #' 
@@ -253,26 +254,30 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' potentially malicious code. Make sure that you HTML-encode the
 #' description field in any application that uses this API to display the
 #' repository description on a web page.
+#' @param tags One or more tag key-value pairs to use when tagging this repository.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_repository(
 #'   repositoryName = "string",
-#'   repositoryDescription = "string"
+#'   repositoryDescription = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codecommit_create_repository
-codecommit_create_repository <- function(repositoryName, repositoryDescription = NULL) {
+codecommit_create_repository <- function(repositoryName, repositoryDescription = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codecommit$create_repository_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription)
+  input <- .codecommit$create_repository_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription, tags = tags)
   output <- .codecommit$create_repository_output()
   svc <- .codecommit$service()
   request <- new_request(svc, op, input, output)
@@ -1220,6 +1225,50 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 }
 .codecommit$operations$list_repositories <- codecommit_list_repositories
 
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS CodeCommit
+#'
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS CodeCommit. For a list of valid resources in AWS
+#' CodeCommit, see [CodeCommit Resources and
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' in the AWS CodeCommit User Guide.
+#'
+#' @usage
+#' codecommit_list_tags_for_resource(resourceArn, nextToken)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
+#' information about tags, if any.
+#' @param nextToken An enumeration token that when provided in a request, returns the next
+#' batch of the results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_list_tags_for_resource
+codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken)
+  output <- .codecommit$list_tags_for_resource_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$list_tags_for_resource <- codecommit_list_tags_for_resource
+
 #' Closes a pull request and attempts to merge the source commit of a pull
 #' request into the specified destination branch for that pull request at
 #' the specified commit using the fast-forward merge option
@@ -1557,6 +1606,49 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 }
 .codecommit$operations$put_repository_triggers <- codecommit_put_repository_triggers
 
+#' Adds or updates tags for a resource in AWS CodeCommit
+#'
+#' Adds or updates tags for a resource in AWS CodeCommit. For a list of
+#' valid resources in AWS CodeCommit, see [CodeCommit Resources and
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' in the AWS CodeCommit User Guide.
+#'
+#' @usage
+#' codecommit_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
+#' or update tags.
+#' @param tags &#91;required&#93; The key-value pair to use when tagging this repository.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_tag_resource
+codecommit_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .codecommit$tag_resource_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$tag_resource <- codecommit_tag_resource
+
 #' Tests the functionality of repository triggers by sending information to
 #' the trigger target
 #'
@@ -1609,6 +1701,49 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
   return(response)
 }
 .codecommit$operations$test_repository_triggers <- codecommit_test_repository_triggers
+
+#' Removes tags for a resource in AWS CodeCommit
+#'
+#' Removes tags for a resource in AWS CodeCommit. For a list of valid
+#' resources in AWS CodeCommit, see [CodeCommit Resources and
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' in the AWS CodeCommit User Guide.
+#'
+#' @usage
+#' codecommit_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to
+#' remove tags.
+#' @param tagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_untag_resource
+codecommit_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .codecommit$untag_resource_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$untag_resource <- codecommit_untag_resource
 
 #' Replaces the contents of a comment
 #'
@@ -1862,7 +1997,7 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #' alphanumeric, dash, and underscore characters, and cannot include
 #' certain characters. The suffix \".git\" is prohibited. For a full
 #' description of the limits on repository names, see
-#' [Limits](http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+#' [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
 #' in the AWS CodeCommit User Guide.
 #'
 #' @usage

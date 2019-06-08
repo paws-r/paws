@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_register_task_with_maintenance_window}
 \alias{ssm_register_task_with_maintenance_window}
-\title{Adds a new task to a Maintenance Window}
+\title{Adds a new task to a maintenance window}
 \usage{
 ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
   ServiceRoleArn, TaskType, TaskParameters, TaskInvocationParameters,
@@ -10,47 +10,48 @@ ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
   ClientToken)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window the task should be added to.}
+\item{WindowId}{[required] The ID of the maintenance window the task should be added to.}
 
-\item{Targets}{[required] The targets (either instances or Maintenance Window targets).
+\item{Targets}{[required] The targets (either instances or maintenance window targets).
 
 Specify instances using the following format:
 
 \code{Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;}
 
-Specify Maintenance Window targets using the following format:
+Specify maintenance window targets using the following format:
 
 \code{Key=&lt;WindowTargetIds&gt;,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
 
-\item{TaskArn}{[required] The ARN of the task to execute}
+\item{TaskArn}{[required] The ARN of the task to run.}
 
-\item{ServiceRoleArn}{The role to assume when running the Maintenance Window task.
+\item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
+running a maintenance window task. If you do not specify a service role
+ARN, Systems Manager uses your account's service-linked role. If no
+service-linked role for Systems Manager exists in your account, it is
+created when you run \code{RegisterTaskWithMaintenanceWindow}.
 
-If you do not specify a service role ARN, Systems Manager will use your
-account's service-linked role for Systems Manager by default. If no
-service-linked role for Systems Manager exists in your account, it will
-be created when you run \code{RegisterTaskWithMaintenanceWindow} without
-specifying a service role ARN.
-
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager}
-and \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?}
-in the \emph{AWS Systems Manager User Guide}.}
+For more information, see the following topics in the in the \emph{AWS
+Systems Manager User Guide}:
+\itemize{
+\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager}
+\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?}
+}}
 
 \item{TaskType}{[required] The type of task being registered.}
 
-\item{TaskParameters}{The parameters that should be passed to the task when it is executed.
+\item{TaskParameters}{The parameters that should be passed to the task when it is run.
 
 \code{TaskParameters} has been deprecated. To specify parameters to pass to a
 task when it runs, instead use the \code{Parameters} option in the
 \code{TaskInvocationParameters} structure. For information about how Systems
-Manager handles these options for the supported Maintenance Window task
+Manager handles these options for the supported maintenance window task
 types, see MaintenanceWindowTaskInvocationParameters.}
 
 \item{TaskInvocationParameters}{The parameters that the task should use during execution. Populate only
 the fields that match the task type. All other fields should be empty.}
 
-\item{Priority}{The priority of the task in the Maintenance Window, the lower the number
-the higher the priority. Tasks in a Maintenance Window are scheduled in
+\item{Priority}{The priority of the task in the maintenance window, the lower the number
+the higher the priority. Tasks in a maintenance window are scheduled in
 priority order with tasks that have the same priority scheduled in
 parallel.}
 
@@ -66,7 +67,7 @@ instance-level logs to.
 logs, instead use the \code{OutputS3BucketName} and \code{OutputS3KeyPrefix}
 options in the \code{TaskInvocationParameters} structure. For information
 about how Systems Manager handles these options for the supported
-Maintenance Window task types, see
+maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.}
 
 \item{Name}{An optional name for the task.}
@@ -76,7 +77,7 @@ MaintenanceWindowTaskInvocationParameters.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \description{
-Adds a new task to a Maintenance Window.
+Adds a new task to a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$register_task_with_maintenance_window(

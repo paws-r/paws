@@ -17,8 +17,8 @@ sent from.}
 \item{Content}{[required] The HTML body of the message that you sent when you performed the
 predictive inbox placement test.}
 
-\item{Tags}{An object that defines the tags (keys and values) that you want to
-associate with the predictive inbox placement test.}
+\item{Tags}{An array of objects that define the tags (keys and values) that you want
+to associate with the predictive inbox placement test.}
 }
 \description{
 Create a new predictive inbox placement test. Predictive inbox placement

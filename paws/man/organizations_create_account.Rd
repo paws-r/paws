@@ -31,7 +31,7 @@ If you don't specify this parameter, the role name defaults to
 For more information about how to use this role to access the member
 account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
 in the \emph{AWS Organizations User Guide}, and steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
-in the \emph{IAM User Guide}.
+in the \emph{IAM User Guide.}
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
 validate this parameter is a string of characters that can consist of
@@ -62,7 +62,7 @@ account. To check the status of the request, do one of the following:
 \item Use the \code{OperationId} response element from this operation to
 provide as a parameter to the DescribeCreateAccountStatus operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
-For information on using AWS CloudTrail with Organizations, see
+For information on using AWS CloudTrail with AWS Organizations, see
 \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html}{Monitoring the Activity in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 }
@@ -100,7 +100,7 @@ account limits for the organization, contact \href{https://console.aws.amazon.co
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
-\item Using CreateAccount to create multiple temporary accounts isn't
+\item Using \code{CreateAccount} to create multiple temporary accounts isn't
 recommended. You can only close an account from the Billing and Cost
 Management Console, and you must be signed in as the root user. For
 information on the requirements and process for closing an account,

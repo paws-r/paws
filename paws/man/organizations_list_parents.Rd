@@ -9,7 +9,7 @@ organizations_list_parents(ChildId, NextToken, MaxResults)
 }
 \arguments{
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers
-you want to list. Do not specify a root.
+you want to list. Don't specify a root.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a child ID
 string requires one of the following:

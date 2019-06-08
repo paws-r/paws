@@ -31,7 +31,7 @@ keys.}
 Adds, edits, or deletes tags for a health check or a hosted zone.
 }
 \details{
-For information about using tags for cost allocation, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+For information about using tags for cost allocation, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{

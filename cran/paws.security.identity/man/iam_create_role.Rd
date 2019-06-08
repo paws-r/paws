@@ -8,7 +8,7 @@ iam_create_role(Path, RoleName, AssumeRolePolicyDocument, Description,
   MaxSessionDuration, PermissionsBoundary, Tags)
 }
 \arguments{
-\item{Path}{The path to the role. For more information about paths, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+\item{Path}{The path to the role. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -23,15 +23,17 @@ lowercased letters.}
 
 \item{RoleName}{[required] The name of the role to create.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-
-
-Role names are not distinguished by case. For example, you cannot create
-roles named both "PRODROLE" and "prodrole".}
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".}
 
 \item{AssumeRolePolicyDocument}{[required] The trust relationship policy document that grants an entity permission
 to assume the role.
+
+in IAM, you must provide a JSON policy that has been converted to a
+string. However, for AWS CloudFormation templates formatted in YAML, you
+can provide the policy in JSON or YAML format. AWS CloudFormation always
+converts a YAML policy to JSON format before submitting it to IAM.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
 this parameter is a string of characters consisting of the following:
@@ -42,7 +44,10 @@ this parameter is a string of characters consisting of the following:
 character set (through \code{U+00FF})
 \item The special characters tab (\code{U+0009}), line feed (\code{U+000A}), and
 carriage return (\code{U+000D})
-}}
+}
+
+Upon success, the response includes the same trust policy as a
+URL-encoded JSON string.}
 
 \item{Description}{A description of the role.}
 
@@ -59,7 +64,7 @@ parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \code{AssumeRole*} API operations or the
 \code{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
+operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
 in the \emph{IAM User Guide}.}
 
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
@@ -67,7 +72,7 @@ the role.}
 
 \item{Tags}{A list of tags that you want to attach to the newly created role. Each
 tag consists of a key name and an associated value. For more information
-about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
 in the \emph{IAM User Guide}.
 
 If any one of the tags is invalid or if you exceed the allowed number of
@@ -76,9 +81,9 @@ created.}
 }
 \description{
 Creates a new role for your AWS account. For more information about
-roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{IAM Roles}.
+roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{IAM Roles}.
 For information about limitations on role names and the number of roles
-you can create, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+you can create, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
@@ -101,9 +106,10 @@ in the \emph{IAM User Guide}.
 
 \examples{
 # The following command creates a role named Test-Role and attaches a
-# trust policy to it that is provided as a URL-encoded JSON string.
+# trust policy that you must convert from JSON to a string. Upon success,
+# the response includes the same policy as a URL-encoded JSON string.
 \donttest{svc$create_role(
-  AssumeRolePolicyDocument = "<URL-encoded-JSON>",
+  AssumeRolePolicyDocument = "<Stringified-JSON>",
   Path = "/",
   RoleName = "Test-Role"
 )}
