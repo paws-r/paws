@@ -2,9 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_security_group_references}
 \alias{ec2_describe_security_group_references}
-\title{[EC2-VPC only] Describes the VPCs on the other side of a VPC
-peering connection that are referencing the security groups you've
-specified in this request}
+\title{[VPC only] Describes the VPCs on the other side of a VPC peering
+connection that are referencing the security groups you've specified in
+this request}
 \usage{
 ec2_describe_security_group_references(DryRun, GroupId)
 }
@@ -14,10 +14,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{GroupId}{[required] One or more security group IDs in your account.}
+\item{GroupId}{[required] The IDs of the security groups in your account.}
 }
 \description{
-[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+[VPC only] Describes the VPCs on the other side of a VPC peering
 connection that are referencing the security groups you've specified in
 this request.
 }

@@ -25,7 +25,7 @@ container-based jobs. If the job definition's \code{type} parameter is
 
 \item{nodeProperties}{An object with various properties specific to multi-node parallel jobs.
 If you specify node properties for a job, it becomes a multi-node
-parallel job. For more information, see \href{http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
+parallel job. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
 in the \emph{AWS Batch User Guide}. If the job definition's \code{type} parameter
 is \code{container}, then you must specify either \code{containerProperties} or
 \code{nodeProperties}.}
@@ -40,7 +40,7 @@ definition, after which AWS Batch terminates your jobs if they have not
 finished. If a job is terminated due to a timeout, it is not retried.
 The minimum value for the timeout is 60 seconds. Any timeout
 configuration that is specified during a SubmitJob operation overrides
-the timeout configuration defined here. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html}{Job Timeouts}
+the timeout configuration defined here. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html}{Job Timeouts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
@@ -92,7 +92,13 @@ Registers an AWS Batch job definition.
       )
     ),
     user = "string",
-    instanceType = "string"
+    instanceType = "string",
+    resourceRequirements = list(
+      list(
+        value = "string",
+        type = "GPU"
+      )
+    )
   ),
   nodeProperties = list(
     numNodes = 123,
@@ -139,7 +145,13 @@ Registers an AWS Batch job definition.
             )
           ),
           user = "string",
-          instanceType = "string"
+          instanceType = "string",
+          resourceRequirements = list(
+            list(
+              value = "string",
+              type = "GPU"
+            )
+          )
         )
       )
     )

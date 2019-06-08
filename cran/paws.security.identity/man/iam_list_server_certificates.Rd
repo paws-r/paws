@@ -45,7 +45,7 @@ You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 
 For more information about working with server certificates, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic also includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 }

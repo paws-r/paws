@@ -12,7 +12,7 @@ iam_get_policy(PolicyArn)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
 information about.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
 \description{
@@ -30,7 +30,7 @@ information about an inline policy that is embedded with an IAM user,
 group, or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy
 API.
 
-For more information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

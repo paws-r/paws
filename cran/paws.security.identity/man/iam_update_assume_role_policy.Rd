@@ -15,6 +15,11 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy that grants an entity permission to assume the role.
 
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+to JSON format before submitting it to IAM.
+
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
 this parameter is a string of characters consisting of the following:
 \itemize{
@@ -29,7 +34,7 @@ carriage return (\code{U+000D})
 \description{
 Updates the policy that grants an IAM entity permission to assume a
 role. This is typically referred to as the "role trust policy". For
-more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
+more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_assume_role_policy(

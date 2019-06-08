@@ -17,7 +17,7 @@ role, the simulation includes all policies that are associated with that
 entity. If you specify a user, the simulation also includes all policies
 that are attached to any groups the user belongs to.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
@@ -50,7 +50,7 @@ specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 \code{ResourcePolicy} parameter.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
@@ -70,15 +70,15 @@ carriage return (\code{U+000D})
 }}
 
 \item{ResourceOwner}{An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN, such as an S3
-bucket or object. If \code{ResourceOwner} is specified, it is also used as
-the account owner of any \code{ResourcePolicy} included in the simulation. If
-the \code{ResourceOwner} parameter is not specified, then the owner of the
-resources and the resource policy defaults to the account of the
-identity provided in \code{CallerArn}. This parameter is required only if you
-specify a resource-based policy and account that owns the resource is
-different from the account that owns the simulated calling user
-\code{CallerArn}.}
+that does not identify its owner in the resource ARN. Examples of
+resource ARNs include an S3 bucket or object. If \code{ResourceOwner} is
+specified, it is also used as the account owner of any \code{ResourcePolicy}
+included in the simulation. If the \code{ResourceOwner} parameter is not
+specified, then the owner of the resources and the resource policy
+defaults to the account of the identity provided in \code{CallerArn}. This
+parameter is required only if you specify a resource-based policy and
+account that owns the resource is different from the account that owns
+the simulated calling user \code{CallerArn}.}
 
 \item{CallerArn}{The ARN of the IAM user that you want to specify as the simulated caller
 of the API operations. If you do not specify a \code{CallerArn}, it defaults
@@ -96,7 +96,7 @@ of an assumed role, federated user, or a service principal.
 that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
@@ -117,7 +117,7 @@ security group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
@@ -171,7 +171,7 @@ instead.
 You can also optionally include one resource-based policy to be
 evaluated with each of the resources included in the simulation.
 
-The simulation does not perform the API operations, it only checks the
+The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
 operations.
 

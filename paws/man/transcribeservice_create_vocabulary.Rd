@@ -38,7 +38,7 @@ Amazon Transcribe handles transcription of an audio file.
 \section{Request syntax}{
 \preformatted{svc$create_vocabulary(
   VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR",
+  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA",
   Phrases = list(
     "string"
   ),

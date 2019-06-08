@@ -5,7 +5,7 @@
 \title{Adds a route to a network to a Client VPN endpoint}
 \usage{
 ec2_create_client_vpn_route(ClientVpnEndpointId, DestinationCidrBlock,
-  TargetVpcSubnetId, Description, DryRun)
+  TargetVpcSubnetId, Description, ClientToken, DryRun)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which to add the route.}
@@ -29,6 +29,9 @@ endpoint.}
 
 \item{Description}{A brief description of the route.}
 
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -46,6 +49,7 @@ traï¬ƒc to speciï¬c resources or networks.
   DestinationCidrBlock = "string",
   TargetVpcSubnetId = "string",
   Description = "string",
+  ClientToken = "string",
   DryRun = TRUE|FALSE
 )
 }

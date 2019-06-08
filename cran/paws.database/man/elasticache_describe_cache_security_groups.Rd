@@ -26,7 +26,7 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of cache security group descriptions. If a cache security
 group name is specified, the list contains only the description of that
-group.
+group. This applicable only when you have ElastiCache in Classic setup
 }
 \section{Request syntax}{
 \preformatted{svc$describe_cache_security_groups(

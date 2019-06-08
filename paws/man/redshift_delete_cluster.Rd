@@ -51,7 +51,7 @@ Deletes a previously provisioned cluster. A successful response from the
 web service indicates that the request was received correctly. Use
 DescribeClusters to monitor the status of the deletion. The delete
 operation cannot be canceled or reverted once submitted. For more
-information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \details{
@@ -63,7 +63,7 @@ status of the cluster will be "final-snapshot" while the snapshot is
 being taken, then it's "deleting" once Amazon Redshift begins
 deleting the cluster.
 
-For more information about managing clusters, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

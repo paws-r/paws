@@ -39,7 +39,7 @@ value if applicable.}
 the \code{DRAINING} status, the results include only container instances that
 have been set to \code{DRAINING} using UpdateContainerInstancesState. If you
 do not specify this parameter, the default is to include container
-instances set to \code{ACTIVE} and \code{DRAINING}.}
+instances set to all states other than \code{INACTIVE}.}
 }
 \description{
 Returns a list of container instances in a specified cluster. You can
@@ -54,7 +54,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
   filter = "string",
   nextToken = "string",
   maxResults = 123,
-  status = "ACTIVE"|"DRAINING"
+  status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 )
 }
 }

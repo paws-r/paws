@@ -7,7 +7,11 @@
 kinesisanalyticsv2()
 }
 \description{
-Documentation for Kinesis Data Analytics API v2
+Amazon Kinesis Data Analytics is a fully managed service that you can
+use to process and analyze streaming data using SQL or Java. The service
+enables you to quickly author and run SQL or Java code against streaming
+sources to perform time series analytics, feed real-time dashboards, and
+create real-time metrics.
 }
 \section{Operations}{
 
@@ -30,8 +34,11 @@ Documentation for Kinesis Data Analytics API v2
 \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for an SQL-based Amazon Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
 \link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots \cr
 \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Amazon Kinesis Data Analytics applications in your account \cr
+\link[=kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application \cr
 \link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Amazon Kinesis Data Analytics application \cr
 \link[=kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data \cr
+\link[=kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Analytics application \cr
+\link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Analytics application \cr
 \link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Amazon Kinesis Data Analytics application
 }
 }

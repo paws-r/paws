@@ -103,7 +103,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Constraints:
@@ -121,7 +121,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -131,7 +131,7 @@ Constraints: Minimum 30-minute window.}
 \item{ReplicationSourceIdentifier}{The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a Read Replica.}
 
-\item{Tags}{}
+\item{Tags}{The tags to assign to the new DB cluster.}
 
 \item{StorageEncrypted}{Specifies whether the DB cluster is encrypted.}
 
@@ -162,37 +162,7 @@ Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in the
 destination AWS Region. This key is used to encrypt the Read Replica in
 that AWS Region.}
 
-\item{PreSignedUrl}{A URL that contains a Signature Version 4 signed request for the
-\code{CreateDBCluster} action to be called in the source AWS Region where the
-DB cluster is replicated from. You only need to specify \code{PreSignedUrl}
-when you are performing cross-region replication from an encrypted DB
-cluster.
-
-The pre-signed URL must be a valid request for the \code{CreateDBCluster} API
-action that can be executed in the source AWS Region that contains the
-encrypted DB cluster to be copied.
-
-The pre-signed URL request must contain the following parameter values:
-\itemize{
-\item \code{KmsKeyId} - The AWS KMS key identifier for the key to use to
-encrypt the copy of the DB cluster in the destination AWS Region.
-This should refer to the same KMS key for both the \code{CreateDBCluster}
-action that is called in the destination AWS Region, and the action
-contained in the pre-signed URL.
-\item \code{DestinationRegion} - The name of the AWS Region that Read Replica
-will be created in.
-\item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the
-encrypted DB cluster to be copied. This identifier must be in the
-Amazon Resource Name (ARN) format for the source AWS Region. For
-example, if you are copying an encrypted DB cluster from the
-us-west-2 AWS Region, then your \code{ReplicationSourceIdentifier} would
-look like Example:
-\code{arn:aws:rds:us-west-2:123456789012:cluster:neptune-cluster1}.
-}
-
-To learn how to generate a Signature Version 4 signed request, see
-\href{http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
-and \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.}
+\item{PreSignedUrl}{This parameter is not currently supported.}
 
 \item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
@@ -205,9 +175,7 @@ Creates a new Amazon Neptune DB cluster.
 \details{
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
 cluster as a Read Replica of another DB cluster or Amazon Neptune DB
-instance. For cross-region replication where the DB cluster identified
-by \code{ReplicationSourceIdentifier} is encrypted, you must also specify the
-\code{PreSignedUrl} parameter.
+instance.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster(

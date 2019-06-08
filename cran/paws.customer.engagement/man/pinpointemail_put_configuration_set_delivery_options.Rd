@@ -5,11 +5,14 @@
 \title{Associate a configuration set with a dedicated IP pool}
 \usage{
 pinpointemail_put_configuration_set_delivery_options(
-  ConfigurationSetName, SendingPoolName)
+  ConfigurationSetName, TlsPolicy, SendingPoolName)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to associate with a
 dedicated IP pool.}
+
+\item{TlsPolicy}{Whether Amazon Pinpoint should require that incoming email is delivered
+over a connection encrypted with Transport Layer Security (TLS).}
 
 \item{SendingPoolName}{The name of the dedicated IP pool that you want to associate with the
 configuration set.}
@@ -22,6 +25,7 @@ sending specific types of email.
 \section{Request syntax}{
 \preformatted{svc$put_configuration_set_delivery_options(
   ConfigurationSetName = "string",
+  TlsPolicy = "REQUIRE"|"OPTIONAL",
   SendingPoolName = "string"
 )
 }

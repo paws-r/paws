@@ -8,12 +8,12 @@ current AWS account}
 securityhub_list_invitations(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of items that you want in the response.}
 
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first
-call to the ListInvitations operation. For subsequent calls to the
-operation, fill nextToken in the request with the value of NextToken
-from the previous response to continue listing data.}
+\item{NextToken}{Paginates results. On your first call to the \code{ListInvitations}
+operation, set the value of this parameter to \code{NULL}. For subsequent
+calls to the operation, fill \code{nextToken} in the request with the value
+of \code{NextToken} from the previous response to continue listing data.}
 }
 \description{
 Lists all Security Hub membership invitations that were sent to the

@@ -157,8 +157,10 @@ some related topics from the user guide.
 \link[=rds_restore_db_instance_from_s3]{restore_db_instance_from_s3} \tab Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files \cr
 \link[=rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time \cr
 \link[=rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups \cr
-\link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action\cr
-\link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action\cr
+\link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database \cr
+\link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action \cr
+\link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action \cr
+\link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action\cr
 \link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster \cr
 \link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance
 }

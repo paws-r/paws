@@ -16,10 +16,9 @@ Constraints:
 \item Must match the name of an existing DBParameterGroup.
 }}
 
-\item{ResetAllParameters}{Specifies whether (\code{true}) or not (\code{false}) to reset all parameters in
-the DB parameter group to default values.
-
-Default: \code{true}}
+\item{ResetAllParameters}{A value that indicates whether to reset all parameters in the DB
+parameter group to default values. By default, all parameters in the DB
+parameter group are reset to default values.}
 
 \item{Parameters}{To reset the entire DB parameter group, specify the \code{DBParameterGroup}
 name and \code{ResetAllParameters} parameters. To reset specific parameters,

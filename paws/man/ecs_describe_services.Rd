@@ -9,7 +9,9 @@ ecs_describe_services(cluster, services, include)
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN)the cluster that hosts
 the service to describe. If you do not specify a cluster, the default
-cluster is assumed.}
+cluster is assumed. This parameter is required if the service or
+services you are describing were launched in any cluster other than the
+default cluster.}
 
 \item{services}{[required] A list of services to describe. You may specify up to 10 services to
 describe in a single operation.}

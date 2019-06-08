@@ -40,7 +40,7 @@ determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS
 Organizations policies, IAM permissions boundaries, and AWS STS assume
 role policies. It only applies permissions policy logic. For more about
-the evaluation of policy types, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
+the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
 in the \emph{IAM User Guide}.
 
 For each service that the resource could access using permissions
@@ -50,11 +50,11 @@ about the most recent attempt to access the service. If the operation
 fails, the \code{GetServiceLastAccessedDetails} operation returns the reason
 that it failed.
 
-The \code{GetServiceLastAccessedDetails} operation returns a list of services
-that includes the number of entities that have attempted to access the
-service and the date and time of the last attempt. It also returns the
-ARN of the following entity, depending on the resource ARN that you used
-to generate the report:
+The \code{GetServiceLastAccessedDetails} operation returns a list of
+services. This list includes the number of entities that have attempted
+to access the service and the date and time of the last attempt. It also
+returns the ARN of the following entity, depending on the resource ARN
+that you used to generate the report:
 \itemize{
 \item \strong{User} -- Returns the user ARN that you used to generate the
 report

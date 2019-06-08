@@ -198,7 +198,8 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'     ContentSegmentUrlPrefix = "string"
 #'   ),
 #'   DashConfiguration = list(
-#'     MpdLocation = "string"
+#'     MpdLocation = "string",
+#'     OriginManifestType = "SINGLE_PERIOD"|"MULTI_PERIOD"
 #'   ),
 #'   Name = "string",
 #'   SlateAdUrl = "string",

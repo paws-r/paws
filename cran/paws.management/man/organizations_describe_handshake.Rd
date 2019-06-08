@@ -22,9 +22,9 @@ handshake ID comes from the response to the original
 InviteAccountToOrganization operation that generated the handshake.
 }
 \details{
-You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for
-only 30 days after they change to that state. They are then deleted and
-no longer accessible.
+You can access handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED}
+for only 30 days after they change to that state. They're then deleted
+and no longer accessible.
 
 This operation can be called from any account in the organization.
 }

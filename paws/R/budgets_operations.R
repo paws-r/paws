@@ -6,6 +6,13 @@ NULL
 #' Creates a budget and, if included, notifications and subscribers
 #'
 #' Creates a budget and, if included, notifications and subscribers.
+#' 
+#' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
+#' syntax at one time. Use the syntax that matches your case. The Request
+#' Syntax section shows the `BudgetLimit` syntax. For
+#' `PlannedBudgetLimits`, see the
+#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples)
+#' section.
 #'
 #' @usage
 #' budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers)
@@ -27,6 +34,12 @@ NULL
 #'     BudgetLimit = list(
 #'       Amount = "string",
 #'       Unit = "string"
+#'     ),
+#'     PlannedBudgetLimits = list(
+#'       list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       )
 #'     ),
 #'     CostFilters = list(
 #'       list(
@@ -369,6 +382,11 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' Describes a budget
 #'
 #' Describes a budget.
+#' 
+#' The Request Syntax section shows the `BudgetLimit` syntax. For
+#' `PlannedBudgetLimits`, see the
+#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples)
+#' section.
 #'
 #' @usage
 #' budgets_describe_budget(AccountId, BudgetName)
@@ -460,6 +478,11 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' Lists the budgets that are associated with an account
 #'
 #' Lists the budgets that are associated with an account.
+#' 
+#' The Request Syntax section shows the `BudgetLimit` syntax. For
+#' `PlannedBudgetLimits`, see the
+#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples)
+#' section.
 #'
 #' @usage
 #' budgets_describe_budgets(AccountId, MaxResults, NextToken)
@@ -603,6 +626,13 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #' `budgetName` and the `calculatedSpend`. When you modify a budget, the
 #' `calculatedSpend` drops to zero until AWS has new usage data to use for
 #' forecasting.
+#' 
+#' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
+#' syntax at one time. Use the syntax that matches your case. The Request
+#' Syntax section shows the `BudgetLimit` syntax. For
+#' `PlannedBudgetLimits`, see the
+#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
+#' section.
 #'
 #' @usage
 #' budgets_update_budget(AccountId, NewBudget)
@@ -620,6 +650,12 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #'     BudgetLimit = list(
 #'       Amount = "string",
 #'       Unit = "string"
+#'     ),
+#'     PlannedBudgetLimits = list(
+#'       list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       )
 #'     ),
 #'     CostFilters = list(
 #'       list(

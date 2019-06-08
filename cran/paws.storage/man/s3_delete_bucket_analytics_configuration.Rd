@@ -10,11 +10,17 @@ s3_delete_bucket_analytics_configuration(Bucket, Id)
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is deleted.}
 
-\item{Id}{[required] The identifier used to represent an analytics configuration.}
+\item{Id}{[required] The ID that identifies the analytics configuration.}
 }
 \description{
 Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
+}
+\details{
+To use this operation, you must have permissions to perform the
+s3:PutAnalyticsConfiguration action. The bucket owner has this
+permission by default. The bucket owner can grant this permission to
+others.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_analytics_configuration(

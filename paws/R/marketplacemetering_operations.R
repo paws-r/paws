@@ -78,8 +78,9 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code should be the same as the one used during the
 #' publishing of a new product.
-#' @param Timestamp &#91;required&#93; Timestamp of the hour, recorded in UTC. The seconds and milliseconds
-#' portions of the timestamp will be ignored.
+#' @param Timestamp &#91;required&#93; Timestamp, in UTC, for which the usage is being reported. Your
+#' application can meter usage for up to one hour in the past. Make sure
+#' the timestamp value is not before the start of the software usage.
 #' @param UsageDimension &#91;required&#93; It will be one of the fcp dimension name provided during the publishing
 #' of the product.
 #' @param UsageQuantity Consumption value for the hour. Defaults to `0` if not specified.

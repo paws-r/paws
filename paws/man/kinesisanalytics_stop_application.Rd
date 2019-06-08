@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_stop_application}
 \alias{kinesisanalytics_stop_application}
-\title{Stops the application from processing input data}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_stop_application(ApplicationName)
 }
@@ -10,14 +11,20 @@ kinesisanalytics_stop_application(ApplicationName)
 \item{ApplicationName}{[required] Name of the running application to stop.}
 }
 \description{
-Stops the application from processing input data. You can stop an
-application only if it is in the running state. You can use the
-DescribeApplication operation to find the application state. After the
-application is stopped, Amazon Kinesis Analytics stops reading data from
-the input, the application stops processing data, and there is no output
-written to the destination.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
 }
 \details{
+Stops the application from processing input data. You can stop an
+application only if it is in the running state. You can use the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to find the application state. After the application is
+stopped, Amazon Kinesis Analytics stops reading data from the input, the
+application stops processing data, and there is no output written to the
+destination.
+
 This operation requires permissions to perform the
 \code{kinesisanalytics:StopApplication} action.
 }

@@ -17,9 +17,9 @@ IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
 \code{ResourcePolicy} parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to
-\href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken}
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken}
 or one of the
-\href{http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html}{AssumeRole}
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html}{AssumeRole}
 API operations. In other words, do not use policies designed to restrict
 what a user can do while using the temporary credentials.
 
@@ -36,7 +36,8 @@ carriage return (\code{U+000D})
 
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each
 operation is evaluated against each resource. Each operation must
-include the service identifier, such as \code{iam:CreateUser}.}
+include the service identifier, such as \code{iam:CreateUser}. This operation
+does not support using wildcards (*) in an action name.}
 
 \item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided, then the value defaults to \code{*} (all
@@ -53,7 +54,7 @@ If you include a \code{ResourcePolicy}, then it must be applicable to all of
 the resources included in the simulation or you receive an invalid input
 error.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
@@ -73,15 +74,15 @@ carriage return (\code{U+000D})
 }}
 
 \item{ResourceOwner}{An ARN representing the AWS account ID that specifies the owner of any
-simulated resource that does not identify its owner in the resource ARN,
-such as an S3 bucket or object. If \code{ResourceOwner} is specified, it is
-also used as the account owner of any \code{ResourcePolicy} included in the
-simulation. If the \code{ResourceOwner} parameter is not specified, then the
-owner of the resources and the resource policy defaults to the account
-of the identity provided in \code{CallerArn}. This parameter is required only
-if you specify a resource-based policy and account that owns the
-resource is different from the account that owns the simulated calling
-user \code{CallerArn}.
+simulated resource that does not identify its owner in the resource ARN.
+Examples of resource ARNs include an S3 bucket or object. If
+\code{ResourceOwner} is specified, it is also used as the account owner of
+any \code{ResourcePolicy} included in the simulation. If the \code{ResourceOwner}
+parameter is not specified, then the owner of the resources and the
+resource policy defaults to the account of the identity provided in
+\code{CallerArn}. This parameter is required only if you specify a
+resource-based policy and account that owns the resource is different
+from the account that owns the simulated calling user \code{CallerArn}.
 
 The ARN for an account uses the following syntax:
 \code{arn:aws:iam::<i>AWS-account-ID</i>:root}. For example, to represent the
@@ -98,7 +99,7 @@ of an assumed role, federated user, or a service principal.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.}
+permissions policies, the corresponding value is supplied.}
 
 \item{ResourceHandlingOption}{Specifies the type of simulation to run. Different API operations that
 support resource-based policies require different combinations of
@@ -114,7 +115,7 @@ security-group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network-interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}

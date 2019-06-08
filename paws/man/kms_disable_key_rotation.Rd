@@ -22,13 +22,13 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
-Disables \href{http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
+Disables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
 for the specified customer master key (CMK). You cannot perform this
 operation on a CMK in a different AWS account.
 }
 \details{
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

@@ -34,7 +34,7 @@ one or more subnets in your existing Amazon Virtual Private Cloud
 (Amazon VPC) when creating Amazon Redshift subnet group.
 }
 \details{
-For information about subnet groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html}{Amazon Redshift Cluster Subnet Groups}
+For information about subnet groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html}{Amazon Redshift Cluster Subnet Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

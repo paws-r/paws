@@ -40,6 +40,41 @@ robomaker_batch_describe_simulation_job <- function(jobs) {
 }
 .robomaker$operations$batch_describe_simulation_job <- robomaker_batch_describe_simulation_job
 
+#' Cancels the specified deployment job
+#'
+#' Cancels the specified deployment job.
+#'
+#' @usage
+#' robomaker_cancel_deployment_job(job)
+#'
+#' @param job &#91;required&#93; The deployment job ARN to cancel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_deployment_job(
+#'   job = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_cancel_deployment_job
+robomaker_cancel_deployment_job <- function(job) {
+  op <- new_operation(
+    name = "CancelDeploymentJob",
+    http_method = "POST",
+    http_path = "/cancelDeploymentJob",
+    paginator = list()
+  )
+  input <- .robomaker$cancel_deployment_job_input(job = job)
+  output <- .robomaker$cancel_deployment_job_output()
+  svc <- .robomaker$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$cancel_deployment_job <- robomaker_cancel_deployment_job
+
 #' Cancels the specified simulation job
 #'
 #' Cancels the specified simulation job.

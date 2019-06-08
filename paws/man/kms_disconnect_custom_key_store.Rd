@@ -12,7 +12,7 @@ kms_disconnect_custom_key_store(CustomKeyStoreId)
 ID of a custom key store, use the DescribeCustomKeyStores operation.}
 }
 \description{
-Disconnects the \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key store}
+Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 from its associated AWS CloudHSM cluster. While a custom key store is
 disconnected, you can manage the custom key store and its customer
 master keys (CMKs), but you cannot create or use CMKs in the custom key
@@ -30,7 +30,7 @@ the ConnectCustomKeyStore operation.
 
 If the operation succeeds, it returns a JSON object with no properties.
 
-This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
+This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.

@@ -36,7 +36,7 @@ Amazon ElastiCache for Redis does not support Multi-AZ with automatic
 failover on:
 \itemize{
 \item Redis versions earlier than 2.8.6.
-\item Redis (cluster mode disabled): T1 and T2 cache node types.
+\item Redis (cluster mode disabled): T1 node types.
 \item Redis (cluster mode enabled): T1 node types.
 }}
 
@@ -106,7 +106,7 @@ Default: \code{false}}
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the clusters in
 the replication group.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.}
@@ -143,9 +143,9 @@ For Redis (cluster mode enabled) clusters, this operation cannot be used
 to change a cluster's node type or engine version. For more
 information, see:
 \itemize{
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis---Redis (cluster mode enabled)}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
 in the ElastiCache User Guide
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html}{ModifyReplicationGroupShardConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html}{ModifyReplicationGroupShardConfiguration}
 in the ElastiCache API Reference
 }
 

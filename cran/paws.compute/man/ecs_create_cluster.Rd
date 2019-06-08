@@ -9,7 +9,7 @@ ecs_create_cluster(clusterName, tags)
 \arguments{
 \item{clusterName}{The name of your cluster. If you do not specify a name for your cluster,
 you create a cluster named \code{default}. Up to 255 letters (uppercase and
-lowercase), numbers, hyphens, and underscores are allowed.}
+lowercase), numbers, and hyphens are allowed.}
 
 \item{tags}{The metadata that you apply to the cluster to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of
@@ -28,7 +28,7 @@ create the service-linked role for your account so that required
 resources in other AWS services can be managed on your behalf. However,
 if the IAM user that makes the call does not have permissions to create
 the service-linked role, it is not created. For more information, see
-\href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

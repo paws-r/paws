@@ -7,8 +7,8 @@ gateway}
 \usage{
 storagegateway_create_smb_file_share(ClientToken, GatewayARN,
   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
-  ReadOnly, GuessMIMETypeEnabled, RequesterPays, ValidUserList,
-  InvalidUserList, Authentication, Tags)
+  ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
+  AdminUserList, ValidUserList, InvalidUserList, Authentication, Tags)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -45,9 +45,27 @@ if the write status is read-only, and otherwise false.}
 based on file extensions. Set this value to true to enable MIME type
 guessing, and otherwise to false. The default value is true.}
 
-\item{RequesterPays}{A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is \code{private}.}
+\item{RequesterPays}{A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing data.
+
+\code{RequesterPays} is a configuration for the S3 bucket that backs the file
+share, so make sure that the configuration on the file share is the same
+as the S3 bucket configuration.}
+
+\item{SMBACLEnabled}{Set this value to "true to enable ACL (access control list) on the SMB
+file share. Set it to "false" to map file and directory permissions to
+the POSIX permissions.
+
+For more information, see
+https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
+in the Storage Gateway User Guide.}
+
+\item{AdminUserList}{A list of users or groups in the Active Directory that have
+administrator rights to the file share. A group must be prefixed with
+the @ character. For example \code{@group1}. Can only be set if
+Authentication is set to \code{ActiveDirectory}.}
 
 \item{ValidUserList}{A list of users or groups in the Active Directory that are allowed to
 access the file share. A group must be prefixed with the @ character.
@@ -64,7 +82,7 @@ For example \code{@group1}. Can only be set if Authentication is set to
 Valid values are \code{ActiveDirectory} or \code{GuestAccess}. The default is
 \code{ActiveDirectory}.}
 
-\item{Tags}{A list of up to 10 tags that can be assigned to the NFS file share. Each
+\item{Tags}{A list of up to 50 tags that can be assigned to the NFS file share. Each
 tag is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
@@ -103,6 +121,10 @@ share.
   ReadOnly = TRUE|FALSE,
   GuessMIMETypeEnabled = TRUE|FALSE,
   RequesterPays = TRUE|FALSE,
+  SMBACLEnabled = TRUE|FALSE,
+  AdminUserList = list(
+    "string"
+  ),
   ValidUserList = list(
     "string"
   ),

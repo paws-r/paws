@@ -36,13 +36,15 @@ Constraints:
 
 Example: \code{2017-07-08T18:00Z}}
 
-\item{Force}{A value that, if specified, forces the DB cluster to backtrack when
+\item{Force}{A value that indicates whether to force the DB cluster to backtrack when
 binary logging is enabled. Otherwise, an error occurs when binary
 logging is enabled.}
 
-\item{UseEarliestTimeOnPointInTimeUnavailable}{If \emph{BacktrackTo} is set to a timestamp earlier than the earliest
-backtrack time, this value backtracks the DB cluster to the earliest
-possible backtrack time. Otherwise, an error occurs.}
+\item{UseEarliestTimeOnPointInTimeUnavailable}{A value that indicates whether to backtrack the DB cluster to the
+earliest possible backtrack time when \emph{BacktrackTo} is set to a
+timestamp earlier than the earliest backtrack time. When this parameter
+is disabled and \emph{BacktrackTo} is set to a timestamp earlier than the
+earliest backtrack time, an error occurs.}
 }
 \description{
 Backtracks a DB cluster to a specific time, without creating a new DB

@@ -3,13 +3,19 @@
 #' @include kinesisanalytics_service.R
 NULL
 
-#' Adds a CloudWatch log stream to monitor application configuration errors
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Adds a CloudWatch log stream to monitor application configuration
 #' errors. For more information about using CloudWatch log streams with
 #' Amazon Kinesis Analytics applications, see [Working with Amazon
 #' CloudWatch
-#' Logs](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+#' Logs](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 #'
 #' @usage
 #' kinesisanalytics_add_application_cloud_watch_logging_option(
@@ -52,19 +58,27 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 }
 .kinesisanalytics$operations$add_application_cloud_watch_logging_option <- kinesisanalytics_add_application_cloud_watch_logging_option
 
-#' Adds a streaming source to your Amazon Kinesis application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Adds a streaming source to your Amazon Kinesis application. For
 #' conceptual information, see [Configuring Application
-#' Input](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+#' Input](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 #' 
 #' You can add a streaming source either when you create an application or
 #' you can use this operation to add a streaming source after you create an
-#' application. For more information, see CreateApplication.
+#' application. For more information, see
+#' [CreateApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_CreateApplication.html).
 #' 
 #' Any configuration update, including adding a streaming source using this
 #' operation, results in a new version of the application. You can use the
-#' DescribeApplication operation to find the current application version.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to find the current application version.
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:AddApplicationInput` action.
@@ -76,9 +90,12 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 #' @param ApplicationName &#91;required&#93; Name of your existing Amazon Kinesis Analytics application to which you
 #' want to add the streaming source.
 #' @param CurrentApplicationVersionId &#91;required&#93; Current version of your Amazon Kinesis Analytics application. You can
-#' use the DescribeApplication operation to find the current application
-#' version.
-#' @param Input &#91;required&#93; The Input to add.
+#' use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to find the current application version.
+#' @param Input &#91;required&#93; The
+#' [Input](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html)
+#' to add.
 #'
 #' @section Request syntax:
 #' ```
@@ -149,12 +166,20 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 }
 .kinesisanalytics$operations$add_application_input <- kinesisanalytics_add_application_input
 
-#' Adds an InputProcessingConfiguration to an application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
-#' Adds an InputProcessingConfiguration to an application. An input
-#' processor preprocesses records on the input stream before the
-#' application\'s SQL code executes. Currently, the only input processor
-#' available is [AWS Lambda](https://aws.amazon.com/documentation/lambda/).
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
+#' Adds an
+#' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+#' to an application. An input processor preprocesses records on the input
+#' stream before the application\'s SQL code executes. Currently, the only
+#' input processor available is [AWS
+#' Lambda](https://docs.aws.amazon.com/lambda/).
 #'
 #' @usage
 #' kinesisanalytics_add_application_input_processing_configuration(
@@ -164,13 +189,19 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #' @param ApplicationName &#91;required&#93; Name of the application to which you want to add the input processing
 #' configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application to which you want to add the input processing
-#' configuration. You can use the DescribeApplication operation to get the
-#' current application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' configuration. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param InputId &#91;required&#93; The ID of the input configuration to add the input processing
 #' configuration to. You can get a list of the input IDs for an application
-#' using the DescribeApplication operation.
-#' @param InputProcessingConfiguration &#91;required&#93; The InputProcessingConfiguration to add to the application.
+#' using the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation.
+#' @param InputProcessingConfiguration &#91;required&#93; The
+#' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+#' to add to the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -206,9 +237,14 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 }
 .kinesisanalytics$operations$add_application_input_processing_configuration <- kinesisanalytics_add_application_input_processing_configuration
 
-#' Adds an external destination to your Amazon Kinesis Analytics
-#' application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Adds an external destination to your Amazon Kinesis Analytics
 #' application.
 #' 
@@ -224,15 +260,16 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' in-application error stream to an external destination so that you can
 #' analyze the errors. For more information, see [Understanding Application
 #' Output
-#' (Destination)](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
+#' (Destination)](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 #' 
 #' Any configuration update, including adding a streaming source using this
 #' operation, results in a new version of the application. You can use the
-#' DescribeApplication operation to find the current application version.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to find the current application version.
 #' 
 #' For the limits on the number of application inputs and outputs you can
 #' configure, see
-#' [Limits](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
+#' [Limits](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:AddApplicationOutput` action.
@@ -244,9 +281,11 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' @param ApplicationName &#91;required&#93; Name of the application to which you want to add the output
 #' configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application to which you want to add the output
-#' configuration. You can use the DescribeApplication operation to get the
-#' current application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' configuration. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param Output &#91;required&#93; An array of objects, each describing one output configuration. In the
 #' output configuration, you specify the name of an in-application stream,
 #' a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
@@ -298,8 +337,14 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 }
 .kinesisanalytics$operations$add_application_output <- kinesisanalytics_add_application_output
 
-#' Adds a reference data source to an existing application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Adds a reference data source to an existing application.
 #' 
 #' Amazon Kinesis Analytics reads reference data (that is, an Amazon S3
@@ -310,9 +355,9 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #' columns in the resulting in-application table.
 #' 
 #' For conceptual information, see [Configuring Application
-#' Input](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+#' Input](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 #' For the limits on data sources you can add to your application, see
-#' [Limits](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
+#' [Limits](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:AddApplicationOutput` action.
@@ -323,9 +368,11 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #'
 #' @param ApplicationName &#91;required&#93; Name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application for which you are adding the reference data
-#' source. You can use the DescribeApplication operation to get the current
-#' application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' source. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param ReferenceDataSource &#91;required&#93; The reference data source can be an object in your Amazon S3 bucket.
 #' Amazon Kinesis Analytics reads the object and copies the data into the
 #' in-application table that is created. You provide an S3 bucket, object
@@ -391,14 +438,20 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 }
 .kinesisanalytics$operations$add_application_reference_data_source <- kinesisanalytics_add_application_reference_data_source
 
-#' Creates an Amazon Kinesis Analytics application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Creates an Amazon Kinesis Analytics application. You can configure each
 #' application with one streaming source as input, application code to
 #' process the input, and up to three destinations where you want Amazon
 #' Kinesis Analytics to write the output data from your application. For an
 #' overview, see [How it
-#' Works](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html).
 #' 
 #' In the input configuration, you map the streaming source to an
 #' in-application stream, which you can think of as a constantly updating
@@ -421,12 +474,12 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' 
 #' For introductory exercises to create an Amazon Kinesis Analytics
 #' application, see [Getting
-#' Started](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html).
+#' Started](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html).
 #'
 #' @usage
 #' kinesisanalytics_create_application(ApplicationName,
 #'   ApplicationDescription, Inputs, Outputs, CloudWatchLoggingOptions,
-#'   ApplicationCode)
+#'   ApplicationCode, Tags)
 #'
 #' @param ApplicationName &#91;required&#93; Name of your Amazon Kinesis Analytics application (for example,
 #' `sample-app`).
@@ -469,14 +522,14 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' @param CloudWatchLoggingOptions Use this parameter to configure a CloudWatch log stream to monitor
 #' application configuration errors. For more information, see [Working
 #' with Amazon CloudWatch
-#' Logs](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+#' Logs](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 #' @param ApplicationCode One or more SQL statements that read input data, transform it, and
 #' generate output. For example, you can write a SQL statement that reads
 #' data from one in-application stream, generates a running average of the
 #' number of advertisement clicks by vendor, and insert resulting rows in
 #' another in-application stream using pumps. For more information about
 #' the typical pattern, see [Application
-#' Code](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
+#' Code](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html).
 #' 
 #' You can provide such series of SQL statements, where output of one
 #' statement can be used as the input for the next statement. You store
@@ -486,6 +539,13 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' specified in the `Outputs`. For example, if your `Outputs` defines
 #' output streams named `ExampleOutputStream1` and `ExampleOutputStream2`,
 #' then your application code must create these streams.
+#' @param Tags A list of one or more tags to assign to the application. A tag is a
+#' key-value pair that identifies an application. Note that the maximum
+#' number of application tags includes system tags. The maximum number of
+#' user-defined application tags is 50. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+#' in the *AWS Billing and Cost Management Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -562,21 +622,27 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #'       RoleARN = "string"
 #'     )
 #'   ),
-#'   ApplicationCode = "string"
+#'   ApplicationCode = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_create_application
-kinesisanalytics_create_application <- function(ApplicationName, ApplicationDescription = NULL, Inputs = NULL, Outputs = NULL, CloudWatchLoggingOptions = NULL, ApplicationCode = NULL) {
+kinesisanalytics_create_application <- function(ApplicationName, ApplicationDescription = NULL, Inputs = NULL, Outputs = NULL, CloudWatchLoggingOptions = NULL, ApplicationCode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalytics$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, Inputs = Inputs, Outputs = Outputs, CloudWatchLoggingOptions = CloudWatchLoggingOptions, ApplicationCode = ApplicationCode)
+  input <- .kinesisanalytics$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, Inputs = Inputs, Outputs = Outputs, CloudWatchLoggingOptions = CloudWatchLoggingOptions, ApplicationCode = ApplicationCode, Tags = Tags)
   output <- .kinesisanalytics$create_application_output()
   svc <- .kinesisanalytics$service()
   request <- new_request(svc, op, input, output)
@@ -585,8 +651,14 @@ kinesisanalytics_create_application <- function(ApplicationName, ApplicationDesc
 }
 .kinesisanalytics$operations$create_application <- kinesisanalytics_create_application
 
-#' Deletes the specified application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Deletes the specified application. Amazon Kinesis Analytics halts
 #' application execution and deletes the application, including any
 #' application artifacts (such as in-application streams, reference table,
@@ -630,12 +702,18 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 }
 .kinesisanalytics$operations$delete_application <- kinesisanalytics_delete_application
 
-#' Deletes a CloudWatch log stream from an application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Deletes a CloudWatch log stream from an application. For more
 #' information about using CloudWatch log streams with Amazon Kinesis
 #' Analytics applications, see [Working with Amazon CloudWatch
-#' Logs](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
+#' Logs](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 #'
 #' @usage
 #' kinesisanalytics_delete_application_cloud_watch_logging_option(
@@ -645,7 +723,8 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Analytics application.
 #' @param CloudWatchLoggingOptionId &#91;required&#93; The `CloudWatchLoggingOptionId` of the CloudWatch logging option to
 #' delete. You can get the `CloudWatchLoggingOptionId` by using the
-#' DescribeApplication operation.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -675,9 +754,17 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 }
 .kinesisanalytics$operations$delete_application_cloud_watch_logging_option <- kinesisanalytics_delete_application_cloud_watch_logging_option
 
-#' Deletes an InputProcessingConfiguration from an input
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
-#' Deletes an InputProcessingConfiguration from an input.
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
+#' Deletes an
+#' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+#' from an input.
 #'
 #' @usage
 #' kinesisanalytics_delete_application_input_processing_configuration(
@@ -687,7 +774,9 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Analytics application.
 #' @param InputId &#91;required&#93; The ID of the input configuration from which to delete the input
 #' processing configuration. You can get a list of the input IDs for an
-#' application by using the DescribeApplication operation.
+#' application by using the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -717,9 +806,14 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 }
 .kinesisanalytics$operations$delete_application_input_processing_configuration <- kinesisanalytics_delete_application_input_processing_configuration
 
-#' Deletes output destination configuration from your application
-#' configuration
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Deletes output destination configuration from your application
 #' configuration. Amazon Kinesis Analytics will no longer write data from
 #' the corresponding in-application stream to the external output
@@ -734,15 +828,19 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 #'
 #' @param ApplicationName &#91;required&#93; Amazon Kinesis Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; Amazon Kinesis Analytics application version. You can use the
-#' DescribeApplication operation to get the current application version. If
-#' the version specified is not the current version, the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
 #' `ConcurrentModificationException` is returned.
 #' @param OutputId &#91;required&#93; The ID of the configuration to delete. Each output configuration that is
 #' added to the application, either when the application is created or
-#' later using the AddApplicationOutput operation, has a unique ID. You
-#' need to provide the ID to uniquely identify the output configuration
-#' that you want to delete from the application configuration. You can use
-#' the DescribeApplication operation to get the specific `OutputId`.
+#' later using the
+#' [AddApplicationOutput](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationOutput.html)
+#' operation, has a unique ID. You need to provide the ID to uniquely
+#' identify the output configuration that you want to delete from the
+#' application configuration. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to get the specific `OutputId`.
 #'
 #' @section Request syntax:
 #' ```
@@ -772,15 +870,21 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 }
 .kinesisanalytics$operations$delete_application_output <- kinesisanalytics_delete_application_output
 
-#' Deletes a reference data source configuration from the specified
-#' application configuration
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Deletes a reference data source configuration from the specified
 #' application configuration.
 #' 
 #' If the application is running, Amazon Kinesis Analytics immediately
 #' removes the in-application table that you created using the
-#' AddApplicationReferenceDataSource operation.
+#' [AddApplicationReferenceDataSource](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html)
+#' operation.
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics.DeleteApplicationReferenceDataSource` action.
@@ -790,13 +894,16 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 #'   ApplicationName, CurrentApplicationVersionId, ReferenceId)
 #'
 #' @param ApplicationName &#91;required&#93; Name of an existing application.
-#' @param CurrentApplicationVersionId &#91;required&#93; Version of the application. You can use the DescribeApplication
+#' @param CurrentApplicationVersionId &#91;required&#93; Version of the application. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 #' operation to get the current application version. If the version
 #' specified is not the current version, the
 #' `ConcurrentModificationException` is returned.
 #' @param ReferenceId &#91;required&#93; ID of the reference data source. When you add a reference data source to
-#' your application using the AddApplicationReferenceDataSource, Amazon
-#' Kinesis Analytics assigns an ID. You can use the DescribeApplication
+#' your application using the
+#' [AddApplicationReferenceDataSource](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html),
+#' Amazon Kinesis Analytics assigns an ID. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 #' operation to get the reference ID.
 #'
 #' @section Request syntax:
@@ -827,14 +934,21 @@ kinesisanalytics_delete_application_reference_data_source <- function(Applicatio
 }
 .kinesisanalytics$operations$delete_application_reference_data_source <- kinesisanalytics_delete_application_reference_data_source
 
-#' Returns information about a specific Amazon Kinesis Analytics
-#' application
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Returns information about a specific Amazon Kinesis Analytics
 #' application.
 #' 
 #' If you want to retrieve a list of all applications in your account, use
-#' the ListApplications operation.
+#' the
+#' [ListApplications](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_ListApplications.html)
+#' operation.
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:DescribeApplication` action. You can use
@@ -872,10 +986,14 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 }
 .kinesisanalytics$operations$describe_application <- kinesisanalytics_describe_application
 
-#' Infers a schema by evaluating sample records on the specified streaming
-#' source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
-#' stream) or S3 object
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Infers a schema by evaluating sample records on the specified streaming
 #' source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
 #' stream) or S3 object. In the response, the operation returns the
@@ -885,7 +1003,7 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' You can use the inferred schema when configuring a streaming source for
 #' your application. For conceptual information, see [Configuring
 #' Application
-#' Input](http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
+#' Input](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 #' Note that when you create an application using the Amazon Kinesis
 #' Analytics console, the console uses this operation to infer a schema and
 #' show it in the console user interface.
@@ -905,8 +1023,10 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' records from the specified streaming source discovery purposes.
 #' @param S3Configuration Specify this parameter to discover a schema from data in an Amazon S3
 #' object.
-#' @param InputProcessingConfiguration The InputProcessingConfiguration to use to preprocess the records before
-#' discovering the schema of the records.
+#' @param InputProcessingConfiguration The
+#' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
+#' to use to preprocess the records before discovering the schema of the
+#' records.
 #'
 #' @section Request syntax:
 #' ```
@@ -949,8 +1069,14 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 }
 .kinesisanalytics$operations$discover_input_schema <- kinesisanalytics_discover_input_schema
 
-#' Returns a list of Amazon Kinesis Analytics applications in your account
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Returns a list of Amazon Kinesis Analytics applications in your account.
 #' For each application, the response includes the application name, Amazon
 #' Resource Name (ARN), and status. If the response returns the
@@ -960,7 +1086,7 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #' response.
 #' 
 #' If you want detailed information about a specific application, use
-#' DescribeApplication.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html).
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:ListApplications` action.
@@ -1002,8 +1128,49 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 }
 .kinesisanalytics$operations$list_applications <- kinesisanalytics_list_applications
 
-#' Starts the specified Amazon Kinesis Analytics application
+#' Retrieves the list of key-value tags assigned to the application
 #'
+#' Retrieves the list of key-value tags assigned to the application.
+#'
+#' @usage
+#' kinesisanalytics_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the application for which to retrieve tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalytics_list_tags_for_resource
+kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalytics$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .kinesisanalytics$list_tags_for_resource_output()
+  svc <- .kinesisanalytics$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalytics$operations$list_tags_for_resource <- kinesisanalytics_list_tags_for_resource
+
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
+#'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Starts the specified Amazon Kinesis Analytics application. After
 #' creating an application, you must exclusively call this operation to
 #' start your application.
@@ -1013,10 +1180,13 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 #' 
 #' The application status must be `READY` for you to start an application.
 #' You can get the application status in the console or using the
-#' DescribeApplication operation.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation.
 #' 
 #' After you start the application, you can stop the application from
-#' processing the input by calling the StopApplication operation.
+#' processing the input by calling the
+#' [StopApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_StopApplication.html)
+#' operation.
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:StartApplication` action.
@@ -1064,14 +1234,21 @@ kinesisanalytics_start_application <- function(ApplicationName, InputConfigurati
 }
 .kinesisanalytics$operations$start_application <- kinesisanalytics_start_application
 
-#' Stops the application from processing input data
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
 #'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Stops the application from processing input data. You can stop an
 #' application only if it is in the running state. You can use the
-#' DescribeApplication operation to find the application state. After the
-#' application is stopped, Amazon Kinesis Analytics stops reading data from
-#' the input, the application stops processing data, and there is no output
-#' written to the destination.
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
+#' operation to find the application state. After the application is
+#' stopped, Amazon Kinesis Analytics stops reading data from the input, the
+#' application stops processing data, and there is no output written to the
+#' destination.
 #' 
 #' This operation requires permissions to perform the
 #' `kinesisanalytics:StopApplication` action.
@@ -1107,8 +1284,98 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 }
 .kinesisanalytics$operations$stop_application <- kinesisanalytics_stop_application
 
-#' Updates an existing Amazon Kinesis Analytics application
+#' Adds one or more key-value tags to a Kinesis Analytics application
 #'
+#' Adds one or more key-value tags to a Kinesis Analytics application. Note
+#' that the maximum number of application tags includes system tags. The
+#' maximum number of user-defined application tags is 50.
+#'
+#' @usage
+#' kinesisanalytics_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the application to assign the tags.
+#' @param Tags &#91;required&#93; The key-value tags to assign to the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalytics_tag_resource
+kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalytics$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .kinesisanalytics$tag_resource_output()
+  svc <- .kinesisanalytics$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalytics$operations$tag_resource <- kinesisanalytics_tag_resource
+
+#' Removes one or more tags from a Kinesis Analytics application
+#'
+#' Removes one or more tags from a Kinesis Analytics application.
+#'
+#' @usage
+#' kinesisanalytics_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Analytics application from which to remove the
+#' tags.
+#' @param TagKeys &#91;required&#93; A list of keys of tags to remove from the specified application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesisanalytics_untag_resource
+kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesisanalytics$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .kinesisanalytics$untag_resource_output()
+  svc <- .kinesisanalytics$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesisanalytics$operations$untag_resource <- kinesisanalytics_untag_resource
+
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications
+#'
+#' This documentation is for version 1 of the Amazon Kinesis Data Analytics
+#' API, which only supports SQL applications. Version 2 of the API supports
+#' SQL and Java applications. For more information about version 2, see
+#' Amazon Kinesis Data Analytics API V2 Documentation.
+#' 
 #' Updates an existing Amazon Kinesis Analytics application. Using this
 #' API, you can update application code, input configuration, and output
 #' configuration.
@@ -1124,7 +1391,8 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 #'   CurrentApplicationVersionId, ApplicationUpdate)
 #'
 #' @param ApplicationName &#91;required&#93; Name of the Amazon Kinesis Analytics application to update.
-#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can use the DescribeApplication
+#' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can use the
+#' [DescribeApplication](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html)
 #' operation to get this value.
 #' @param ApplicationUpdate &#91;required&#93; Describes application updates.
 #'

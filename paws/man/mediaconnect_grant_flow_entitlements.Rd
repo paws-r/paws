@@ -21,9 +21,14 @@ Grants entitlements to an existing flow.
       Description = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",
-        KeyType = "static-key",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
         RoleArn = "string",
-        SecretArn = "string"
+        SecretArn = "string",
+        Url = "string"
       ),
       Name = "string",
       Subscribers = list(

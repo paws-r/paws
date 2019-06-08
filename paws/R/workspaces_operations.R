@@ -153,16 +153,17 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 }
 .workspaces$operations$create_ip_group <- workspaces_create_ip_group
 
-#' Creates the specified tags for the specified WorkSpace
+#' Creates the specified tags for the specified WorkSpaces resource
 #'
-#' Creates the specified tags for the specified WorkSpace.
+#' Creates the specified tags for the specified WorkSpaces resource.
 #'
 #' @usage
 #' workspaces_create_tags(ResourceId, Tags)
 #'
-#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use
-#' DescribeWorkspaces.
-#' @param Tags &#91;required&#93; The tags. Each WorkSpace can have a maximum of 50 tags.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
+#' are WorkSpaces, registered directories, images, custom bundles, and IP
+#' access control groups.
+#' @param Tags &#91;required&#93; The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -294,15 +295,16 @@ workspaces_delete_ip_group <- function(GroupId) {
 }
 .workspaces$operations$delete_ip_group <- workspaces_delete_ip_group
 
-#' Deletes the specified tags from the specified WorkSpace
+#' Deletes the specified tags from the specified WorkSpaces resource
 #'
-#' Deletes the specified tags from the specified WorkSpace.
+#' Deletes the specified tags from the specified WorkSpaces resource.
 #'
 #' @usage
 #' workspaces_delete_tags(ResourceId, TagKeys)
 #'
-#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use
-#' DescribeWorkspaces.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
+#' are WorkSpaces, registered directories, images, custom bundles, and IP
+#' access control groups.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
 #' @section Request syntax:
@@ -522,15 +524,16 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 }
 .workspaces$operations$describe_ip_groups <- workspaces_describe_ip_groups
 
-#' Describes the specified tags for the specified WorkSpace
+#' Describes the specified tags for the specified WorkSpaces resource
 #'
-#' Describes the specified tags for the specified WorkSpace.
+#' Describes the specified tags for the specified WorkSpaces resource.
 #'
 #' @usage
 #' workspaces_describe_tags(ResourceId)
 #'
-#' @param ResourceId &#91;required&#93; The identifier of the WorkSpace. To find this ID, use
-#' DescribeWorkspaces.
+#' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
+#' are WorkSpaces, registered directories, images, custom bundles, and IP
+#' access control groups.
 #'
 #' @section Request syntax:
 #' ```
@@ -1175,9 +1178,10 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' been completely rebuilt.
 #'
 #' @usage
-#' workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
+#' workspaces_rebuild_workspaces(RebuildWorkspaceRequests, AdditionalInfo)
 #'
 #' @param RebuildWorkspaceRequests &#91;required&#93; The WorkSpace to rebuild. You can specify a single WorkSpace.
+#' @param AdditionalInfo Reserved.
 #'
 #' @section Request syntax:
 #' ```
@@ -1186,21 +1190,22 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #'     list(
 #'       WorkspaceId = "string"
 #'     )
-#'   )
+#'   ),
+#'   AdditionalInfo = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_rebuild_workspaces
-workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
+workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests, AdditionalInfo = NULL) {
   op <- new_operation(
     name = "RebuildWorkspaces",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests)
+  input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests, AdditionalInfo = AdditionalInfo)
   output <- .workspaces$rebuild_workspaces_output()
   svc <- .workspaces$service()
   request <- new_request(svc, op, input, output)

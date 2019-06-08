@@ -95,6 +95,30 @@ NULL
   return(populate(args, shape))
 }
 
+.mq$describe_broker_engine_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EngineType = structure(logical(0), tags = list(location = "querystring", locationName = "engineType", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mq$describe_broker_engine_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BrokerEngineTypes = structure(list(structure(list(EngineType = structure(logical(0), tags = list(locationName = "engineType", type = "string")), EngineVersions = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "engineVersions", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "brokerEngineTypes", type = "list")), MaxResults = structure(logical(0), tags = list(locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mq$describe_broker_instance_options_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EngineType = structure(logical(0), tags = list(location = "querystring", locationName = "engineType", type = "string")), HostInstanceType = structure(logical(0), tags = list(location = "querystring", locationName = "hostInstanceType", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mq$describe_broker_instance_options_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BrokerInstanceOptions = structure(list(structure(list(AvailabilityZones = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "availabilityZones", type = "list")), EngineType = structure(logical(0), tags = list(locationName = "engineType", type = "string")), HostInstanceType = structure(logical(0), tags = list(locationName = "hostInstanceType", type = "string")), SupportedEngineVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "supportedEngineVersions", type = "list"))), tags = list(type = "structure"))), tags = list(locationName = "brokerInstanceOptions", type = "list")), MaxResults = structure(logical(0), tags = list(locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mq$describe_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ConfigurationId = structure(logical(0), tags = list(location = "uri", locationName = "configuration-id", type = "string"))), tags = list(type = "structure"))

@@ -3,19 +3,197 @@
 #' @include rdsdataservice_service.R
 NULL
 
-#' Executes any SQL statement on the target database synchronously
+#' Runs a batch SQL statement over an array of data
 #'
-#' Executes any SQL statement on the target database synchronously
+#' Runs a batch SQL statement over an array of data.
+#' 
+#' You can run bulk update and insert operations for multiple records using
+#' a DML statement with different parameter sets. Bulk operations can
+#' provide a significant performance improvement over individual insert and
+#' update operations.
+#' 
+#' If a call isn\'t part of a transaction because it doesn\'t include the
+#' `transactionID` parameter, changes that result from the call are
+#' committed automatically.
+#'
+#' @usage
+#' rdsdataservice_batch_execute_statement(database, parameterSets,
+#'   resourceArn, schema, secretArn, sql, transactionId)
+#'
+#' @param database The name of the database.
+#' @param parameterSets The parameter set for the batch operation.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param schema The name of the database schema.
+#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#' @param sql &#91;required&#93; The SQL statement to run.
+#' @param transactionId The identifier of a transaction that was started by using the
+#' `BeginTransaction` operation. Specify the transaction ID of the
+#' transaction that you want to include the SQL statement in.
+#' 
+#' If the SQL statement is not part of a transaction, don\'t set this
+#' parameter.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_execute_statement(
+#'   database = "string",
+#'   parameterSets = list(
+#'     list(
+#'       list(
+#'         name = "string",
+#'         value = list(
+#'           blobValue = raw,
+#'           booleanValue = TRUE|FALSE,
+#'           doubleValue = 123.0,
+#'           isNull = TRUE|FALSE,
+#'           longValue = 123,
+#'           stringValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   resourceArn = "string",
+#'   schema = "string",
+#'   secretArn = "string",
+#'   sql = "string",
+#'   transactionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rdsdataservice_batch_execute_statement
+rdsdataservice_batch_execute_statement <- function(database = NULL, parameterSets = NULL, resourceArn, schema = NULL, secretArn, sql, transactionId = NULL) {
+  op <- new_operation(
+    name = "BatchExecuteStatement",
+    http_method = "POST",
+    http_path = "/BatchExecute",
+    paginator = list()
+  )
+  input <- .rdsdataservice$batch_execute_statement_input(database = database, parameterSets = parameterSets, resourceArn = resourceArn, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
+  output <- .rdsdataservice$batch_execute_statement_output()
+  svc <- .rdsdataservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rdsdataservice$operations$batch_execute_statement <- rdsdataservice_batch_execute_statement
+
+#' Starts a SQL transaction
+#'
+#' Starts a SQL transaction.
+#' 
+#' A transaction can run for a maximum of 24 hours. A transaction is
+#' terminated and rolled back automatically after 24 hours.
+#' 
+#' A transaction times out if no calls use its transaction ID in three
+#' minutes. If a transaction times out before it\'s committed, it\'s rolled
+#' back automatically.
+#' 
+#' DDL statements inside a transaction cause an implicit commit. We
+#' recommend that you run each DDL statement in a separate
+#' `ExecuteStatement` call with `continueAfterTimeout` enabled.
+#'
+#' @usage
+#' rdsdataservice_begin_transaction(database, resourceArn, schema,
+#'   secretArn)
+#'
+#' @param database The name of the database.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param schema The name of the database schema.
+#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$begin_transaction(
+#'   database = "string",
+#'   resourceArn = "string",
+#'   schema = "string",
+#'   secretArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rdsdataservice_begin_transaction
+rdsdataservice_begin_transaction <- function(database = NULL, resourceArn, schema = NULL, secretArn) {
+  op <- new_operation(
+    name = "BeginTransaction",
+    http_method = "POST",
+    http_path = "/BeginTransaction",
+    paginator = list()
+  )
+  input <- .rdsdataservice$begin_transaction_input(database = database, resourceArn = resourceArn, schema = schema, secretArn = secretArn)
+  output <- .rdsdataservice$begin_transaction_output()
+  svc <- .rdsdataservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rdsdataservice$operations$begin_transaction <- rdsdataservice_begin_transaction
+
+#' Ends a SQL transaction started with the BeginTransaction operation and
+#' commits the changes
+#'
+#' Ends a SQL transaction started with the `BeginTransaction` operation and
+#' commits the changes.
+#'
+#' @usage
+#' rdsdataservice_commit_transaction(resourceArn, secretArn, transactionId)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#' @param transactionId &#91;required&#93; The identifier of the transaction to end and commit.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$commit_transaction(
+#'   resourceArn = "string",
+#'   secretArn = "string",
+#'   transactionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rdsdataservice_commit_transaction
+rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactionId) {
+  op <- new_operation(
+    name = "CommitTransaction",
+    http_method = "POST",
+    http_path = "/CommitTransaction",
+    paginator = list()
+  )
+  input <- .rdsdataservice$commit_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
+  output <- .rdsdataservice$commit_transaction_output()
+  svc <- .rdsdataservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rdsdataservice$operations$commit_transaction <- rdsdataservice_commit_transaction
+
+#' Runs one or more SQL statements
+#'
+#' Runs one or more SQL statements.
+#' 
+#' This operation is deprecated. Use the `BatchExecuteStatement` or
+#' `ExecuteStatement` operation.
 #'
 #' @usage
 #' rdsdataservice_execute_sql(awsSecretStoreArn, database,
 #'   dbClusterOrInstanceArn, schema, sqlStatements)
 #'
-#' @param awsSecretStoreArn &#91;required&#93; ARN of the db credentials in AWS Secret Store or the friendly secret name
-#' @param database Target DB name
-#' @param dbClusterOrInstanceArn &#91;required&#93; ARN of the target db cluster or instance
-#' @param schema Target Schema name
-#' @param sqlStatements &#91;required&#93; SQL statement(s) to be executed. Statements can be chained by using semicolons
+#' @param awsSecretStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret that enables access to the
+#' DB cluster.
+#' @param database The name of the database.
+#' @param dbClusterOrInstanceArn &#91;required&#93; The ARN of the Aurora Serverless DB cluster.
+#' @param schema The name of the database schema.
+#' @param sqlStatements &#91;required&#93; One or more SQL statements to run on the DB cluster.
+#' 
+#' You can separate SQL statements from each other with a semicolon (;).
+#' Any valid SQL statement is permitted, including data definition, data
+#' manipulation, and commit statements.
 #'
 #' @section Request syntax:
 #' ```
@@ -46,3 +224,129 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
   return(response)
 }
 .rdsdataservice$operations$execute_sql <- rdsdataservice_execute_sql
+
+#' Runs a SQL statement against a database
+#'
+#' Runs a SQL statement against a database.
+#' 
+#' If a call isn\'t part of a transaction because it doesn\'t include the
+#' `transactionID` parameter, changes that result from the call are
+#' committed automatically.
+#' 
+#' The response size limit is 1 MB or 1,000 records. If the call returns
+#' more than 1 MB of response data or over 1,000 records, the call is
+#' terminated.
+#'
+#' @usage
+#' rdsdataservice_execute_statement(continueAfterTimeout, database,
+#'   includeResultMetadata, parameters, resourceArn, schema, secretArn, sql,
+#'   transactionId)
+#'
+#' @param continueAfterTimeout A value that indicates whether to continue running the statement after
+#' the call times out. By default, the statement stops running when the
+#' call times out.
+#' 
+#' For DDL statements, we recommend continuing to run the statement after
+#' the call times out. When a DDL statement terminates before it is
+#' finished running, it can result in errors and possibly corrupted data
+#' structures.
+#' @param database The name of the database.
+#' @param includeResultMetadata A value that indicates whether to include metadata in the results.
+#' @param parameters The parameters for the SQL statement.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param schema The name of the database schema.
+#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#' @param sql &#91;required&#93; The SQL statement to run.
+#' @param transactionId The identifier of a transaction that was started by using the
+#' `BeginTransaction` operation. Specify the transaction ID of the
+#' transaction that you want to include the SQL statement in.
+#' 
+#' If the SQL statement is not part of a transaction, don\'t set this
+#' parameter.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_statement(
+#'   continueAfterTimeout = TRUE|FALSE,
+#'   database = "string",
+#'   includeResultMetadata = TRUE|FALSE,
+#'   parameters = list(
+#'     list(
+#'       name = "string",
+#'       value = list(
+#'         blobValue = raw,
+#'         booleanValue = TRUE|FALSE,
+#'         doubleValue = 123.0,
+#'         isNull = TRUE|FALSE,
+#'         longValue = 123,
+#'         stringValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   resourceArn = "string",
+#'   schema = "string",
+#'   secretArn = "string",
+#'   sql = "string",
+#'   transactionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rdsdataservice_execute_statement
+rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, schema = NULL, secretArn, sql, transactionId = NULL) {
+  op <- new_operation(
+    name = "ExecuteStatement",
+    http_method = "POST",
+    http_path = "/Execute",
+    paginator = list()
+  )
+  input <- .rdsdataservice$execute_statement_input(continueAfterTimeout = continueAfterTimeout, database = database, includeResultMetadata = includeResultMetadata, parameters = parameters, resourceArn = resourceArn, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
+  output <- .rdsdataservice$execute_statement_output()
+  svc <- .rdsdataservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rdsdataservice$operations$execute_statement <- rdsdataservice_execute_statement
+
+#' Performs a rollback of a transaction
+#'
+#' Performs a rollback of a transaction. Rolling back a transaction cancels
+#' its changes.
+#'
+#' @usage
+#' rdsdataservice_rollback_transaction(resourceArn, secretArn,
+#'   transactionId)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#' @param transactionId &#91;required&#93; The identifier of the transaction to roll back.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rollback_transaction(
+#'   resourceArn = "string",
+#'   secretArn = "string",
+#'   transactionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rdsdataservice_rollback_transaction
+rdsdataservice_rollback_transaction <- function(resourceArn, secretArn, transactionId) {
+  op <- new_operation(
+    name = "RollbackTransaction",
+    http_method = "POST",
+    http_path = "/RollbackTransaction",
+    paginator = list()
+  )
+  input <- .rdsdataservice$rollback_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
+  output <- .rdsdataservice$rollback_transaction_output()
+  svc <- .rdsdataservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rdsdataservice$operations$rollback_transaction <- rdsdataservice_rollback_transaction

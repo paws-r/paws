@@ -38,7 +38,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the instance profiles that have the specified path prefix. If
 there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker}

@@ -2,27 +2,28 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object_lock_configuration}
 \alias{s3_put_object_lock_configuration}
-\title{Places an Object Lock configuration on the specified bucket}
+\title{Places an object lock configuration on the specified bucket}
 \usage{
 s3_put_object_lock_configuration(Bucket, ObjectLockConfiguration,
   RequestPayer, Token, ContentMD5)
 }
 \arguments{
-\item{Bucket}{[required] The bucket whose Object Lock configuration you want to create or
+\item{Bucket}{[required] The bucket whose object lock configuration you want to create or
 replace.}
 
-\item{ObjectLockConfiguration}{The Object Lock configuration that you want to apply to the specified
+\item{ObjectLockConfiguration}{The object lock configuration that you want to apply to the specified
 bucket.}
 
 \item{RequestPayer}{}
 
-\item{Token}{A token to allow Object Lock to be enabled for an existing bucket.}
+\item{Token}{A token to allow Amazon S3 object lock to be enabled for an existing
+bucket.}
 
 \item{ContentMD5}{The MD5 hash for the request body.}
 }
 \description{
-Places an Object Lock configuration on the specified bucket. The rule
-specified in the Object Lock configuration will be applied by default to
+Places an object lock configuration on the specified bucket. The rule
+specified in the object lock configuration will be applied by default to
 every new object placed in the specified bucket.
 }
 \section{Request syntax}{

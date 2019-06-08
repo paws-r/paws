@@ -6,7 +6,7 @@
 \usage{
 apigateway_create_rest_api(name, description, version, cloneFrom,
   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-  endpointConfiguration, policy)
+  endpointConfiguration, policy, tags)
 }
 \arguments{
 \item{name}{[required] [Required] The name of the RestApi.}
@@ -40,6 +40,10 @@ a custom authorizer.
 the API.}
 
 \item{policy}{A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.}
+
+\item{tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with \code{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Creates a new RestApi resource.
@@ -60,7 +64,10 @@ Creates a new RestApi resource.
       "REGIONAL"|"EDGE"|"PRIVATE"
     )
   ),
-  policy = "string"
+  policy = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

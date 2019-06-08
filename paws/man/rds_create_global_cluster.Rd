@@ -19,7 +19,7 @@ global database. This parameter is optional.}
 \item{EngineVersion}{The engine version of the Aurora global database.}
 
 \item{DeletionProtection}{The deletion protection setting for the new global database. The global
-database can't be deleted when this value is set to true.}
+database can't be deleted when deletion protection is enabled.}
 
 \item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you
 do not provide a name, Amazon Aurora will not create a database in the

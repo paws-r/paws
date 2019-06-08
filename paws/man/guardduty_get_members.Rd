@@ -5,22 +5,25 @@
 \title{Retrieves GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs}
 \usage{
-guardduty_get_members(AccountIds, DetectorId)
+guardduty_get_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to describe.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
+want to retrieve.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you want to retrieve.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
+describe.}
 }
 \description{
-Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
+Retrieves GuardDuty member accounts (to the current GuardDuty master
+account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_members(
+  DetectorId = "string",
   AccountIds = list(
     "string"
-  ),
-  DetectorId = "string"
+  )
 )
 }
 }

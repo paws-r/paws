@@ -22,8 +22,8 @@ must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
 view your outstanding VPC peering connection requests.
 }
 \details{
-For an inter-region VPC peering connection request, you must accept the
-VPC peering connection in the region of the accepter VPC.
+For an inter-Region VPC peering connection request, you must accept the
+VPC peering connection in the Region of the accepter VPC.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_vpc_peering_connection(

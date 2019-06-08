@@ -9,7 +9,7 @@ neptune_remove_tags_from_resource(ResourceName, TagKeys)
 \arguments{
 \item{ResourceName}{[required] The Amazon Neptune resource that the tags are removed from. This value
 is an Amazon Resource Name (ARN). For information about creating an ARN,
-see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+see \href{https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }

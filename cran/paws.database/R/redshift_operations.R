@@ -71,7 +71,7 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #' clients running on these IP addresses or the EC2 instance are authorized
 #' to connect to the cluster. For information about managing security
 #' groups, go to [Working with Security
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -125,7 +125,7 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
-#' Snapshots](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+#' Snapshots](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -313,7 +313,7 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
-#' Snapshots](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+#' Snapshots](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -392,7 +392,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' cluster subnet group name. The cluster subnet group identifies the
 #' subnets of your VPC that Amazon Redshift uses when creating the cluster.
 #' For more information about managing clusters, go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -412,7 +412,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' To create additional databases after the cluster is created, connect to
 #' the cluster with a SQL client and use SQL commands to create a database.
 #' For more information, go to [Create a
-#' Database](http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html)
+#' Database](https://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html)
 #' in the Amazon Redshift Database Developer Guide.
 #' 
 #' Default: `dev`
@@ -425,7 +425,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' -   Cannot be a word that is reserved by the service. A list of reserved
 #'     words can be found in [Reserved
-#'     Words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
+#'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
 #' @param ClusterIdentifier &#91;required&#93; A unique identifier for the cluster. You use this identifier to refer to
 #' the cluster for any subsequent cluster operations such as deleting or
@@ -455,7 +455,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Default: `multi-node`
 #' @param NodeType &#91;required&#93; The node type to be provisioned for the cluster. For information about
 #' node types, go to [Working with
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `ds2.xlarge` \\|
@@ -473,7 +473,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' -   Cannot be a reserved word. A list of reserved words can be found in
 #'     [Reserved
-#'     Words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
+#'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
 #' @param MasterUserPassword &#91;required&#93; The password associated with the master user account for the cluster
 #' that is being created.
@@ -521,7 +521,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Default: A 30-minute window selected at random from an 8-hour block of
 #' time per region, occurring on a random day of the week. For more
 #' information about the time blocks for each region, see [Maintenance
-#' Windows](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
+#' Windows](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
 #' in Amazon Redshift Cluster Management Guide.
 #' 
 #' Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
@@ -532,7 +532,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Default: The default Amazon Redshift cluster parameter group. For
 #' information about the default parameter group, go to [Working with
 #' Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' 
 #' Constraints:
 #' 
@@ -585,7 +585,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' For information about determining how many nodes you need, go to
 #' [Working with
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you don\'t specify this parameter, you get a single-node cluster.
@@ -610,7 +610,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' publicly-accessible through an Internet gateway. For more information
 #' about provisioning clusters in EC2-VPC, go to [Supported Platforms to
 #' Launch Your
-#' Cluster](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
+#' Cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 #' in the Amazon Redshift Cluster Management Guide.
 #' @param Tags A list of tag instances.
 #' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
@@ -618,7 +618,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @param EnhancedVpcRouting An option that specifies whether to create the cluster with enhanced VPC
 #' routing enabled. To create a cluster that uses enhanced VPC routing, the
 #' cluster must be in a VPC. For more information, see [Enhanced VPC
-#' Routing](http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+#' Routing](https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
 #' If this option is `true`, enhanced VPC routing is enabled.
@@ -714,7 +714,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' Parameters in the parameter group define specific behavior that applies
 #' to the databases you create on the cluster. For more information about
 #' parameters and parameter groups, go to [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -788,7 +788,7 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -851,7 +851,7 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
-#' Snapshots](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+#' Snapshots](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -923,7 +923,7 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
 #' 
 #' For information about subnet groups, go to [Amazon Redshift Cluster
 #' Subnet
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -1113,7 +1113,7 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #' Redshift HSM configuration that provides a cluster the information
 #' needed to store and use encryption keys in the HSM. For more
 #' information, go to [Hardware Security
-#' Modules](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #'
 #' @usage
@@ -1169,7 +1169,7 @@ redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #' 
 #' In addition to creating an HSM configuration, you must also create an
 #' HSM client certificate. For more information, go to [Hardware Security
-#' Modules](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #'
 #' @usage
@@ -1236,7 +1236,7 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #' 
 #' For more information about managing snapshot copy grants, go to [Amazon
 #' Redshift Database
-#' Encryption](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+#' Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -1309,7 +1309,7 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
 #' @param ScheduleIdentifier A unique identifier for a snapshot schedule. Only alphanumeric
 #' characters are allowed for the identifier.
 #' @param ScheduleDescription The description of the snapshot schedule.
-#' @param Tags 
+#' @param Tags An optional set of tags you can use to search for the schedule.
 #' @param DryRun 
 #' @param NextInvocations 
 #'
@@ -1413,7 +1413,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' DescribeClusters to monitor the status of the deletion. The delete
 #' operation cannot be canceled or reverted once submitted. For more
 #' information about managing clusters, go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you want to shut down the cluster and retain it for future use, set
@@ -1425,7 +1425,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' deleting the cluster.
 #' 
 #' For more information about managing clusters, go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -1551,7 +1551,7 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -1999,7 +1999,7 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
@@ -2099,7 +2099,7 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -2167,7 +2167,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' 
 #' For information about managing security groups, go to [Amazon Redshift
 #' Cluster Security
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
@@ -2282,8 +2282,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #'   Marker, OwnerAccount, TagKeys, TagValues, ClusterExists,
 #'   SortingEntities)
 #'
-#' @param ClusterIdentifier The identifier of the cluster for which information about snapshots is
-#' requested.
+#' @param ClusterIdentifier The identifier of the cluster which generated the requested snapshots.
 #' @param SnapshotIdentifier The snapshot identifier of the snapshot about which to return
 #' information.
 #' @param SnapshotType The type of snapshots for which you are requesting information. By
@@ -2334,9 +2333,23 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' the request, Amazon Redshift returns a response with the snapshots that
 #' have either or both of these tag values associated with them.
 #' @param ClusterExists A value that indicates whether to return snapshots only for an existing
-#' cluster. Table-level restore can be performed only using a snapshot of
-#' an existing cluster, that is, a cluster that has not been deleted. If
-#' `ClusterExists` is set to `true`, `ClusterIdentifier` is required.
+#' cluster. You can perform table-level restore only by using a snapshot of
+#' an existing cluster, that is, a cluster that has not been deleted.
+#' Values for this parameter work as follows:
+#' 
+#' -   If `ClusterExists` is set to `true`, `ClusterIdentifier` is
+#'     required.
+#' 
+#' -   If `ClusterExists` is set to `false` and `ClusterIdentifier` isn\'t
+#'     specified, all snapshots associated with deleted clusters (orphaned
+#'     snapshots) are returned.
+#' 
+#' -   If `ClusterExists` is set to `false` and `ClusterIdentifier` is
+#'     specified for a deleted cluster, snapshots associated with that
+#'     cluster are returned.
+#' 
+#' -   If `ClusterExists` is set to `false` and `ClusterIdentifier` is
+#'     specified for an existing cluster, no snapshots are returned.
 #' @param SortingEntities 
 #'
 #' @section Request syntax:
@@ -2526,7 +2539,7 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #' You can call this operation even before creating any clusters to learn
 #' more about the Amazon Redshift versions. For more information about
 #' managing clusters, go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -2600,7 +2613,7 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #' properties, and security and access properties. This operation supports
 #' pagination. For more information about managing clusters, go to [Amazon
 #' Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
@@ -2694,7 +2707,7 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -2753,7 +2766,7 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
 #' Displays a list of event categories for all event source types, or for a
 #' specified source type. For a list of the event categories and source
 #' types, go to [Amazon Redshift Event
-#' Notifications](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
+#' Notifications](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
 #'
 #' @usage
 #' redshift_describe_event_categories(SourceType)
@@ -3219,7 +3232,7 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' involved you might want to obtain a list of cluster options in the
 #' specific region and specify values when creating a cluster. For more
 #' information about managing clusters, go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -3296,7 +3309,7 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' 
 #' For more information about reserved node offerings, go to [Purchasing
 #' Reserved
-#' Nodes](http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+#' Nodes](https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -3455,7 +3468,7 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' 
 #' For more information about managing snapshot copy grants, go to [Amazon
 #' Redshift Database
-#' Encryption](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+#' Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -3737,7 +3750,7 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #' For more information about Amazon Redshift resource types and
 #' constructing ARNs, go to [Specifying Policy Elements: Actions, Effects,
 #' Resources, and
-#' Principals](http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions)
+#' Principals](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions)
 #' in the Amazon Redshift Cluster Management Guide.
 #' @param MaxRecords The maximum number or response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
@@ -3968,7 +3981,7 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #' 
 #' Constraints: Must be the name of a valid AWS Region. For more
 #' information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region)
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region)
 #' in the Amazon Web Services General Reference.
 #' @param RetentionPeriod The number of days to retain automated snapshots in the destination
 #' region after they are copied from the source region.
@@ -4026,14 +4039,14 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' optionally specify a duration between 900 seconds (15 minutes) and 3600
 #' seconds (60 minutes). For more information, see [Using IAM
 #' Authentication to Generate Database User
-#' Credentials](http://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
+#' Credentials](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
 #' The AWS Identity and Access Management (IAM)user or role that executes
 #' GetClusterCredentials must have an IAM policy attached that allows
 #' access to all necessary actions and resources. For more information
 #' about permissions, see [Resource Policies for
-#' GetClusterCredentials](http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources)
+#' GetClusterCredentials](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
 #' If the `DbGroups` parameter is specified, the IAM policy must allow the
@@ -4059,7 +4072,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' doesn\'t exist in the database.
 #' 
 #' For more information, see [CREATE
-#' USER](http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html)
+#' USER](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html)
 #' in the Amazon Redshift Database Developer Guide.
 #' 
 #' Constraints:
@@ -4213,7 +4226,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' reboot. However, modifying a parameter group requires a reboot for
 #' parameters to take effect. For more information about managing clusters,
 #' go to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' You can also change node type and the number of nodes to scale up or
@@ -4361,7 +4374,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' parameter group can be the default for that cluster parameter group
 #' family. For more information about parameters and parameter groups, go
 #' to [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Example: `1.0`
@@ -4397,12 +4410,12 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' publicly-accessible through an Internet gateway. For more information
 #' about provisioning clusters in EC2-VPC, go to [Supported Platforms to
 #' Launch Your
-#' Cluster](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
+#' Cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 #' in the Amazon Redshift Cluster Management Guide.
 #' @param EnhancedVpcRouting An option that specifies whether to create the cluster with enhanced VPC
 #' routing enabled. To create a cluster that uses enhanced VPC routing, the
 #' cluster must be in a VPC. For more information, see [Enhanced VPC
-#' Routing](http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+#' Routing](https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
 #' If this option is `true`, enhanced VPC routing is enabled.
@@ -4587,7 +4600,7 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #' you specify an end time, you can\'t specify a duration.
 #' @param DeferMaintenanceDuration An integer indicating the duration of the maintenance window in days. If
 #' you specify a duration, you can\'t specify an end time. The duration
-#' must be 14 days or less.
+#' must be 45 days or less.
 #'
 #' @section Request syntax:
 #' ```
@@ -4630,7 +4643,7 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -5027,7 +5040,7 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #' 
 #' For more information about reserved node offerings, go to [Purchasing
 #' Reserved
-#' Nodes](http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+#' Nodes](https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -5075,7 +5088,7 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #' completed. Any pending cluster modifications (see ModifyCluster) are
 #' applied at this reboot. For more information about managing clusters, go
 #' to [Amazon Redshift
-#' Clusters](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -5256,7 +5269,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
-#' Snapshots](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+#' Snapshots](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -5325,7 +5338,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' Default: The default Amazon Redshift cluster parameter group. For
 #' information about the default parameter group, go to [Working with
 #' Amazon Redshift Parameter
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html).
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html).
 #' 
 #' Constraints:
 #' 
@@ -5353,7 +5366,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' Default: The value selected for the cluster from which the snapshot was
 #' taken. For more information about the time blocks for each region, see
 #' [Maintenance
-#' Windows](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
+#' Windows](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows)
 #' in Amazon Redshift Cluster Management Guide.
 #' 
 #' Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
@@ -5368,7 +5381,11 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' taken.
 #' 
 #' Constraints: Must be a value from 0 to 35.
-#' @param ManualSnapshotRetentionPeriod 
+#' @param ManualSnapshotRetentionPeriod The default number of days to retain a manual snapshot. If the value is
+#' -1, the snapshot is retained indefinitely. This setting doesn\'t change
+#' the retention period of existing snapshots.
+#' 
+#' The value must be either -1 or an integer between 1 and 3,653.
 #' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
 #' you want to use to encrypt data in the cluster that you restore from a
 #' shared snapshot.
@@ -5384,12 +5401,12 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' dc2.large instance type. You can\'t restore dc1.8xlarge to dc2.8xlarge.
 #' First restore to a dc1.8xlareg cluster, then resize to a dc2.8large
 #' cluster. For more information about node types, see [About Clusters and
-#' Nodes](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
+#' Nodes](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' @param EnhancedVpcRouting An option that specifies whether to create the cluster with enhanced VPC
 #' routing enabled. To create a cluster that uses enhanced VPC routing, the
 #' cluster must be in a VPC. For more information, see [Enhanced VPC
-#' Routing](http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
+#' Routing](https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
 #' If this option is `true`, enhanced VPC routing is enabled.
@@ -5542,7 +5559,7 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #' previously authorized IP range or Amazon EC2 security group. To add an
 #' ingress rule, see AuthorizeClusterSecurityGroupIngress. For information
 #' about managing security groups, go to [Amazon Redshift Cluster Security
-#' Groups](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+#' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
@@ -5603,7 +5620,7 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
-#' Snapshots](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+#' Snapshots](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage

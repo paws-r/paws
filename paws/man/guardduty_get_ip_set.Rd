@@ -7,9 +7,9 @@
 guardduty_get_ip_set(DetectorId, IpSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want to retrieve.}
+\item{DetectorId}{[required] The unique ID of the detector the ipSet is associated with.}
 
-\item{IpSetId}{[required] The unique ID that specifies the IPSet that you want to describe.}
+\item{IpSetId}{[required] The unique ID of the ipSet you want to get.}
 }
 \description{
 Retrieves the IPSet specified by the IPSet ID.

@@ -14,7 +14,7 @@ iam_update_open_id_connect_provider_thumbprint(OpenIDConnectProviderArn,
 for which you want to update the thumbprint. You can get a list of OIDC
 provider ARNs by using the ListOpenIDConnectProviders operation.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{ThumbprintList}{[required] A list of certificate thumbprints that are associated with the specified

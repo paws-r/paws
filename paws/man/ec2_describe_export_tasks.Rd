@@ -2,15 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_export_tasks}
 \alias{ec2_describe_export_tasks}
-\title{Describes one or more of your export tasks}
+\title{Describes the specified export tasks or all your export tasks}
 \usage{
 ec2_describe_export_tasks(ExportTaskIds)
 }
 \arguments{
-\item{ExportTaskIds}{One or more export task IDs.}
+\item{ExportTaskIds}{The export task IDs.}
 }
 \description{
-Describes one or more of your export tasks.
+Describes the specified export tasks or all your export tasks.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_export_tasks(

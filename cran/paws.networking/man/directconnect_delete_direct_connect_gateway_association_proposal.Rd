@@ -3,7 +3,7 @@
 \name{directconnect_delete_direct_connect_gateway_association_proposal}
 \alias{directconnect_delete_direct_connect_gateway_association_proposal}
 \title{Deletes the association proposal request between the specified Direct
-Connect gateway and virtual private gateway}
+Connect gateway and virtual private gateway or transit gateway}
 \usage{
 directconnect_delete_direct_connect_gateway_association_proposal(
   proposalId)
@@ -13,7 +13,7 @@ directconnect_delete_direct_connect_gateway_association_proposal(
 }
 \description{
 Deletes the association proposal request between the specified Direct
-Connect gateway and virtual private gateway.
+Connect gateway and virtual private gateway or transit gateway.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_direct_connect_gateway_association_proposal(

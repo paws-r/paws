@@ -434,7 +434,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1078,6 +1078,44 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 }
 .lambda$operations$get_layer_version <- lambda_get_layer_version
 
+#' Returns information about a version of an AWS Lambda layer, with a link
+#' to download the layer archive that's valid for 10 minutes
+#'
+#' Returns information about a version of an [AWS Lambda
+#' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
+#' with a link to download the layer archive that\'s valid for 10 minutes.
+#'
+#' @usage
+#' lambda_get_layer_version_by_arn(Arn)
+#'
+#' @param Arn &#91;required&#93; The ARN of the layer version.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_layer_version_by_arn(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_layer_version_by_arn
+lambda_get_layer_version_by_arn <- function(Arn) {
+  op <- new_operation(
+    name = "GetLayerVersionByArn",
+    http_method = "GET",
+    http_path = "/2018-10-31/layers?find=LayerVersion",
+    paginator = list()
+  )
+  input <- .lambda$get_layer_version_by_arn_input(Arn = Arn)
+  output <- .lambda$get_layer_version_by_arn_output()
+  svc <- .lambda$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_layer_version_by_arn <- lambda_get_layer_version_by_arn
+
 #' Returns the permission policy for a version of an AWS Lambda layer
 #'
 #' Returns the permission policy for a version of an [AWS Lambda
@@ -1191,6 +1229,13 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' record function errors for asynchronous invocations, configure your
 #' function with a [dead letter
 #' queue](https://docs.aws.amazon.com/lambda/latest/dg/dlq.html).
+#' 
+#' When an error occurs, your function may be invoked multiple times. Retry
+#' behavior varies by error type, client, event source, and invocation
+#' type. For example, if you invoke a function asynchronously and it
+#' returns an error, Lambda executes the function up to two more times. For
+#' more information, see [Retry
+#' Behavior](https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html).
 #' 
 #' The status code in the API response doesn\'t reflect function errors.
 #' Error codes are reserved for errors that prevent your function from
@@ -1560,7 +1605,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -1607,7 +1652,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   Marker = "string",
 #'   MaxItems = 123
 #' )
@@ -1774,7 +1819,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
 #'   ),
 #'   LicenseInfo = "string"
 #' )
@@ -2374,9 +2419,9 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 }
 .lambda$operations$update_function_code <- lambda_update_function_code
 
-#' Modify the version-specifc settings of a Lambda function
+#' Modify the version-specific settings of a Lambda function
 #'
-#' Modify the version-specifc settings of a Lambda function.
+#' Modify the version-specific settings of a Lambda function.
 #' 
 #' These settings can vary between versions of a function and are locked
 #' when you publish a version. You can\'t modify the configuration of a
@@ -2463,7 +2508,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),

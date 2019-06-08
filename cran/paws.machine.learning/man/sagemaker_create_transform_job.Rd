@@ -17,9 +17,13 @@ Region in an AWS account.}
 within an AWS Region in an AWS account.}
 
 \item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each
-instance in a transform job. The default value is \code{1}. To allow Amazon
-SageMaker to determine the appropriate number for
-\code{MaxConcurrentTransforms}, set the value to \code{0}.}
+instance in a transform job. If \code{MaxConcurrentTransforms} is set to \code{0}
+or left unset, Amazon SageMaker checks the optional execution-parameters
+to determine the optimal settings for your chosen algorithm. If the
+execution-parameters endpoint is not enabled, the default value is \code{1}.
+For more information on execution-parameters, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
+For built-in algorithms, you don't need to set a value for
+\code{MaxConcurrentTransforms}.}
 
 \item{MaxPayloadInMB}{The maximum allowed size of the payload, in MB. A \emph{payload} is the data
 portion of a record (without metadata). The value in \code{MaxPayloadInMB}

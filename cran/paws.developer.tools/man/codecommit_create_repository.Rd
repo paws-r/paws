@@ -4,7 +4,8 @@
 \alias{codecommit_create_repository}
 \title{Creates a new, empty repository}
 \usage{
-codecommit_create_repository(repositoryName, repositoryDescription)
+codecommit_create_repository(repositoryName, repositoryDescription,
+  tags)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the new repository to be created.
@@ -13,7 +14,7 @@ The repository name must be unique across the calling AWS account. In
 addition, repository names are limited to 100 alphanumeric, dash, and
 underscore characters, and cannot include certain characters. For a full
 description of the limits on repository names, see
-\href{http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Limits}
+\href{https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Limits}
 in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.}
 
 \item{repositoryDescription}{A comment or description about the new repository.
@@ -24,6 +25,8 @@ description and display it in a web page could expose users to
 potentially malicious code. Make sure that you HTML-encode the
 description field in any application that uses this API to display the
 repository description on a web page.}
+
+\item{tags}{One or more tag key-value pairs to use when tagging this repository.}
 }
 \description{
 Creates a new, empty repository.
@@ -31,7 +34,10 @@ Creates a new, empty repository.
 \section{Request syntax}{
 \preformatted{svc$create_repository(
   repositoryName = "string",
-  repositoryDescription = "string"
+  repositoryDescription = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

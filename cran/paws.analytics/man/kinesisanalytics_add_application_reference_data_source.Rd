@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_add_application_reference_data_source}
 \alias{kinesisanalytics_add_application_reference_data_source}
-\title{Adds a reference data source to an existing application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_add_application_reference_data_source(ApplicationName,
   CurrentApplicationVersionId, ReferenceDataSource)
@@ -11,9 +12,11 @@ kinesisanalytics_add_application_reference_data_source(ApplicationName,
 \item{ApplicationName}{[required] Name of an existing application.}
 
 \item{CurrentApplicationVersionId}{[required] Version of the application for which you are adding the reference data
-source. You can use the DescribeApplication operation to get the current
-application version. If the version specified is not the current
-version, the \code{ConcurrentModificationException} is returned.}
+source. You can use the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to get the current application version. If the version
+specified is not the current version, the
+\code{ConcurrentModificationException} is returned.}
 
 \item{ReferenceDataSource}{[required] The reference data source can be an object in your Amazon S3 bucket.
 Amazon Kinesis Analytics reads the object and copies the data into the
@@ -24,9 +27,14 @@ Kinesis Analytics can assume to read the object from your S3 bucket on
 your behalf.}
 }
 \description{
-Adds a reference data source to an existing application.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
 }
 \details{
+Adds a reference data source to an existing application.
+
 Amazon Kinesis Analytics reads reference data (that is, an Amazon S3
 object) and creates an in-application table within your application. In
 the request, you provide the source (S3 bucket name and object key
@@ -34,9 +42,9 @@ name), name of the in-application table to create, and the necessary
 mapping information that describes how data in Amazon S3 object maps to
 columns in the resulting in-application table.
 
-For conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
+For conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
 For the limits on data sources you can add to your application, see
-\href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html}{Limits}.
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html}{Limits}.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationOutput} action.

@@ -29,9 +29,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of
-create volume permissions, but you cannot do both in a single API call.
+create volume permissions, but you cannot do both in a single operation.
 If you need to both add and remove account IDs for a snapshot, you must
-use multiple API calls.
+use multiple operations.
 }
 \details{
 Encrypted snapshots and snapshots with AWS Marketplace product codes

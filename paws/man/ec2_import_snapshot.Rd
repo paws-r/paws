@@ -36,13 +36,16 @@ parameter is not specified, the default CMK for EBS is used. If a
 The CMK identifier may be provided in any of the following formats:
 \itemize{
 \item Key ID
-\item Key alias, in the form \code{alias/<i>ExampleAlias</i> }
+\item Key alias. The alias ARN contains the \code{arn:aws:kms} namespace,
+followed by the Region of the CMK, the AWS account ID of the CMK
+owner, the \code{alias} namespace, and then the CMK alias. For example,
+arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
 \item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
-followed by the region of the CMK, the AWS account ID of the CMK
+followed by the Region of the CMK, the AWS account ID of the CMK
 owner, the \code{key} namespace, and then the CMK ID. For example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
 \item ARN using key alias. The alias ARN contains the \code{arn:aws:kms}
-namespace, followed by the region of the CMK, the AWS account ID of
+namespace, followed by the Region of the CMK, the AWS account ID of
 the CMK owner, the \code{alias} namespace, and then the CMK alias. For
 example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
@@ -52,7 +55,7 @@ AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call
 may appear to complete even though you provided an invalid identifier.
 This action will eventually report failure.
 
-The specified CMK must exist in the region that the snapshot is being
+The specified CMK must exist in the Region that the snapshot is being
 copied to.}
 
 \item{RoleName}{The name of the role to use when not using the default role,

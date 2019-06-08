@@ -34,7 +34,7 @@ Notification Service (Amazon SNS) notifications of a specified type.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-\href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_identity_headers_in_notifications_enabled(

@@ -2,22 +2,22 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_deregister_target_from_maintenance_window}
 \alias{ssm_deregister_target_from_maintenance_window}
-\title{Removes a target from a Maintenance Window}
+\title{Removes a target from a maintenance window}
 \usage{
 ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
   Safe)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window the target should be removed from.}
+\item{WindowId}{[required] The ID of the maintenance window the target should be removed from.}
 
 \item{WindowTargetId}{[required] The ID of the target definition to remove.}
 
 \item{Safe}{The system checks if the target is being referenced by a task. If the
 target is being referenced, the system returns an error and does not
-deregister the target from the Maintenance Window.}
+deregister the target from the maintenance window.}
 }
 \description{
-Removes a target from a Maintenance Window.
+Removes a target from a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_target_from_maintenance_window(

@@ -9,7 +9,9 @@ iot1clickdevicesservice_finalize_device_claim(DeviceId, Tags)
 \arguments{
 \item{DeviceId}{[required] The unique identifier of the device.}
 
-\item{Tags}{The tags to be assigned to the AWS IoT 1-Click device.}
+\item{Tags}{A collection of key/value pairs defining the resource tags. For example,
+{ "tags": {"key1": "value1", "key2": "value2"} }. For more
+information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.}
 }
 \description{
 Given a device ID, finalizes the claim request for the associated

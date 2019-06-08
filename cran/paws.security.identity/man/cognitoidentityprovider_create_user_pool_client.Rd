@@ -37,7 +37,8 @@ see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user
 \item{ExplicitAuthFlows}{The explicit authentication flows.}
 
 \item{SupportedIdentityProviders}{A list of provider names for the identity providers that are supported
-on this client.}
+on this client. The following are supported: \code{COGNITO}, \code{Facebook},
+\code{Google} and \code{LoginWithAmazon}.}
 
 \item{CallbackURLs}{A list of allowed redirect (callback) URLs for the identity providers.
 

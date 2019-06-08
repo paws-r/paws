@@ -84,7 +84,8 @@ the pool.
       RequireUppercase = TRUE|FALSE,
       RequireLowercase = TRUE|FALSE,
       RequireNumbers = TRUE|FALSE,
-      RequireSymbols = TRUE|FALSE
+      RequireSymbols = TRUE|FALSE,
+      TemporaryPasswordValidityDays = 123
     )
   ),
   LambdaConfig = list(
@@ -127,7 +128,8 @@ the pool.
   ),
   EmailConfiguration = list(
     SourceArn = "string",
-    ReplyToEmailAddress = "string"
+    ReplyToEmailAddress = "string",
+    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER"
   ),
   SmsConfiguration = list(
     SnsCallerArn = "string",

@@ -3,15 +3,15 @@
 \name{ssm_describe_maintenance_window_execution_task_invocations}
 \alias{ssm_describe_maintenance_window_execution_task_invocations}
 \title{Retrieves the individual task executions (one per target) for a
-particular task executed as part of a Maintenance Window execution}
+particular task run as part of a maintenance window execution}
 \usage{
 ssm_describe_maintenance_window_execution_task_invocations(
   WindowExecutionId, TaskId, Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution the task is part of.}
+\item{WindowExecutionId}{[required] The ID of the maintenance window execution the task is part of.}
 
-\item{TaskId}{[required] The ID of the specific task in the Maintenance Window task that should
+\item{TaskId}{[required] The ID of the specific task in the maintenance window task that should
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned task invocations. The
@@ -27,7 +27,7 @@ from a previous call.)}
 }
 \description{
 Retrieves the individual task executions (one per target) for a
-particular task executed as part of a Maintenance Window execution.
+particular task run as part of a maintenance window execution.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_execution_task_invocations(

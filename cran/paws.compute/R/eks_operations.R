@@ -8,13 +8,11 @@ NULL
 #' Creates an Amazon EKS control plane.
 #' 
 #' The Amazon EKS control plane consists of control plane instances that
-#' run the Kubernetes software, like `etcd` and the API server. The control
-#' plane runs in an account managed by AWS, and the Kubernetes API is
-#' exposed via the Amazon EKS API server endpoint.
-#' 
-#' Amazon EKS worker nodes run in your AWS account and connect to your
-#' cluster\'s control plane via the Kubernetes API server endpoint and a
-#' certificate file that is created for your cluster.
+#' run the Kubernetes software, such as `etcd` and the API server. The
+#' control plane runs in an account managed by AWS, and the Kubernetes API
+#' is exposed via the Amazon EKS API server endpoint. Each Amazon EKS
+#' cluster control plane is single-tenant and unique and runs on its own
+#' set of Amazon EC2 instances.
 #' 
 #' The cluster control plane is provisioned across multiple Availability
 #' Zones and fronted by an Elastic Load Balancing Network Load Balancer.
@@ -23,20 +21,44 @@ NULL
 #' worker nodes (for example, to support `kubectl exec`, `logs`, and
 #' `proxy` data flows).
 #' 
-#' After you create an Amazon EKS cluster, you must configure your
-#' Kubernetes tooling to communicate with the API server and launch worker
-#' nodes into your cluster. For more information, see [Managing Cluster
+#' Amazon EKS worker nodes run in your AWS account and connect to your
+#' cluster\'s control plane via the Kubernetes API server endpoint and a
+#' certificate file that is created for your cluster.
+#' 
+#' You can use the `endpointPublicAccess` and `endpointPrivateAccess`
+#' parameters to enable or disable public and private access to your
+#' cluster\'s Kubernetes API server endpoint. By default, public access is
+#' enabled, and private access is disabled. For more information, see
+#' [Amazon EKS Cluster Endpoint Access
+#' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' You can use the `logging` parameter to enable or disable exporting the
+#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+#' default, cluster control plane logs aren\'t exported to CloudWatch Logs.
+#' For more information, see [Amazon EKS Cluster Control Plane
+#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' CloudWatch Logs ingestion, archive storage, and data scanning rates
+#' apply to exported control plane logs. For more information, see [Amazon
+#' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
+#' 
+#' Cluster creation typically takes between 10 and 15 minutes. After you
+#' create an Amazon EKS cluster, you must configure your Kubernetes tooling
+#' to communicate with the API server and launch worker nodes into your
+#' cluster. For more information, see [Managing Cluster
 #' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
 #' and [Launching Amazon EKS Worker
-#' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)in
-#' the *Amazon EKS User Guide*.
+#' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
+#' in the *Amazon EKS User Guide*.
 #'
 #' @usage
-#' eks_create_cluster(name, version, roleArn, resourcesVpcConfig,
+#' eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
 #'   clientRequestToken)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
-#' @param version The desired Kubernetes version for your cluster. If you do not specify a
+#' @param version The desired Kubernetes version for your cluster. If you don\'t specify a
 #' value here, the latest version available in Amazon EKS is used.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for Amazon EKS to make calls to other AWS API operations on your behalf.
@@ -50,8 +72,18 @@ NULL
 #' and [Cluster Security Group
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.
-#' You may specify up to five security groups, but we recommend that you
+#' You can specify up to five security groups, but we recommend that you
 #' use a dedicated security group for your cluster control plane.
+#' @param logging Enable or disable exporting the Kubernetes control plane logs for your
+#' cluster to CloudWatch Logs. By default, cluster control plane logs
+#' aren\'t exported to CloudWatch Logs. For more information, see [Amazon
+#' EKS Cluster Control Plane
+#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' CloudWatch Logs ingestion, archive storage, and data scanning rates
+#' apply to exported control plane logs. For more information, see [Amazon
+#' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -70,6 +102,16 @@ NULL
 #'     ),
 #'     endpointPublicAccess = TRUE|FALSE,
 #'     endpointPrivateAccess = TRUE|FALSE
+#'   ),
+#'   logging = list(
+#'     clusterLogging = list(
+#'       list(
+#'         types = list(
+#'           "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+#'         ),
+#'         enabled = TRUE|FALSE
+#'       )
+#'     )
 #'   ),
 #'   clientRequestToken = "string"
 #' )
@@ -96,14 +138,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, clientRequestToken = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, logging = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken)
   output <- .eks$create_cluster_output()
   svc <- .eks$service()
   request <- new_request(svc, op, input, output)
@@ -172,7 +214,7 @@ eks_delete_cluster <- function(name) {
 #' kubeconfig for Amazon
 #' EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
 #' 
-#' The API server endpoint and certificate authority data are not available
+#' The API server endpoint and certificate authority data aren\'t available
 #' until the cluster reaches the `ACTIVE` state.
 #'
 #' @usage
@@ -266,19 +308,19 @@ eks_describe_update <- function(name, updateId) {
 #' eks_list_clusters(maxResults, nextToken)
 #'
 #' @param maxResults The maximum number of cluster results returned by `ListClusters` in
-#' paginated output. When this parameter is used, `ListClusters` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListClusters` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListClusters` returns up to 100 results and
-#' a `nextToken` value if applicable.
+#' paginated output. When you use this parameter, `ListClusters` returns
+#' only `maxResults` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListClusters` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If you don\'t
+#' use this parameter, `ListClusters` returns up to 100 results and a
+#' `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListClusters`
 #' request where `maxResults` was used and the results exceeded the value
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `nextToken` value.
 #' 
-#' This token should be treated as an opaque identifier that is only used
+#' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
@@ -323,19 +365,19 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' @usage
 #' eks_list_updates(name, nextToken, maxResults)
 #'
-#' @param name &#91;required&#93; The name of the Amazon EKS cluster for which to list updates.
+#' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListUpdates`
 #' request where `maxResults` was used and the results exceeded the value
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `nextToken` value.
 #' @param maxResults The maximum number of update results returned by `ListUpdates` in
-#' paginated output. When this parameter is used, `ListUpdates` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListUpdates` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListUpdates` returns up to 100 results and
-#' a `nextToken` value if applicable.
+#' paginated output. When you use this parameter, `ListUpdates` returns
+#' only `maxResults` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListUpdates` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If you don\'t
+#' use this parameter, `ListUpdates` returns up to 100 results and a
+#' `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -372,11 +414,26 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
 #' that you can use to track the status of your cluster update with the
 #' DescribeUpdate API operation.
 #' 
-#' Currently, the only cluster configuration changes supported are to
-#' enable or disable Amazon EKS public and private API server endpoints.
-#' For more information, see [Amazon EKS Cluster Endpoint Access
+#' You can use this API operation to enable or disable exporting the
+#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+#' default, cluster control plane logs aren\'t exported to CloudWatch Logs.
+#' For more information, see [Amazon EKS Cluster Control Plane
+#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' CloudWatch Logs ingestion, archive storage, and data scanning rates
+#' apply to exported control plane logs. For more information, see [Amazon
+#' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
+#' 
+#' You can also use this API operation to enable or disable public and
+#' private access to your cluster\'s Kubernetes API server endpoint. By
+#' default, public access is enabled, and private access is disabled. For
+#' more information, see [Amazon EKS Cluster Endpoint Access
 #' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 #' in the **Amazon EKS User Guide** .
+#' 
+#' At this time, you can not update the subnets or security group IDs for
+#' an existing cluster.
 #' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
@@ -384,10 +441,21 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
 #' (either `Failed` or `Successful`), the cluster status moves to `Active`.
 #'
 #' @usage
-#' eks_update_cluster_config(name, resourcesVpcConfig, clientRequestToken)
+#' eks_update_cluster_config(name, resourcesVpcConfig, logging,
+#'   clientRequestToken)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param resourcesVpcConfig 
+#' @param logging Enable or disable exporting the Kubernetes control plane logs for your
+#' cluster to CloudWatch Logs. By default, cluster control plane logs
+#' aren\'t exported to CloudWatch Logs. For more information, see [Amazon
+#' EKS Cluster Control Plane
+#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the **Amazon EKS User Guide** .
+#' 
+#' CloudWatch Logs ingestion, archive storage, and data scanning rates
+#' apply to exported control plane logs. For more information, see [Amazon
+#' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -405,6 +473,16 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
 #'     endpointPublicAccess = TRUE|FALSE,
 #'     endpointPrivateAccess = TRUE|FALSE
 #'   ),
+#'   logging = list(
+#'     clusterLogging = list(
+#'       list(
+#'         types = list(
+#'           "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+#'         ),
+#'         enabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
 #'   clientRequestToken = "string"
 #' )
 #' ```
@@ -412,14 +490,14 @@ eks_list_updates <- function(name, nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, clientRequestToken = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/update-config",
     paginator = list()
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken)
   output <- .eks$update_cluster_config_output()
   svc <- .eks$service()
   request <- new_request(svc, op, input, output)

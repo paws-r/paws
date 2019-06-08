@@ -2,19 +2,22 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_snapshots}
 \alias{ec2_describe_snapshots}
-\title{Describes one or more of the EBS snapshots available to you}
+\title{Describes the specified EBS snapshots available to you or all of the EBS
+snapshots available to you}
 \usage{
 ec2_describe_snapshots(Filters, MaxResults, NextToken, OwnerIds,
   RestorableByUserIds, SnapshotIds, DryRun)
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{description} - A description of the snapshot.
+\item \code{encrypted} - Indicates whether the snapshot is encrypted (\code{true} \|
+\code{false})
 \item \code{owner-alias} - Value from an Amazon-maintained list (\code{amazon} \|
-\code{aws-marketplace} \| \code{microsoft}) of snapshot owners. Not to be
-confused with the user-configured AWS account alias, which is set
-from the IAM console.
+\code{self} \| \code{all} \| \code{aws-marketplace} \| \code{microsoft}) of snapshot
+owners. Not to be confused with the user-configured AWS account
+alias, which is set from the IAM console.
 \item \code{owner-id} - The ID of the AWS account that owns the snapshot.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
 example, 80\%).
@@ -51,11 +54,11 @@ exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the \code{NextToken} value. This value
 is \code{null} when there are no more results to return.}
 
-\item{OwnerIds}{Describes the snapshots owned by one or more owners.}
+\item{OwnerIds}{Describes the snapshots owned by these owners.}
 
-\item{RestorableByUserIds}{One or more AWS accounts IDs that can create volumes from the snapshot.}
+\item{RestorableByUserIds}{The IDs of the AWS accounts that can create volumes from the snapshot.}
 
-\item{SnapshotIds}{One or more snapshot IDs.
+\item{SnapshotIds}{The snapshot IDs.
 
 Default: Describes the snapshots for which you have create volume
 permissions.}
@@ -66,13 +69,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of the EBS snapshots available to you. Available
-snapshots include public snapshots available for use by any AWS account,
-private snapshots that you own, and private snapshots owned by another
-AWS account for which you've been given explicit create volume
-permissions.
+Describes the specified EBS snapshots available to you or all of the EBS
+snapshots available to you.
 }
 \details{
+The snapshots available to you include public snapshots, private
+snapshots that you own, and private snapshots owned by other AWS
+accounts for which you have explicit create volume permissions.
+
 The create volume permissions fall into the following categories:
 \itemize{
 \item \emph{public}: The owner of the snapshot granted create volume

@@ -5,7 +5,7 @@
 \title{Creates one or more virtual tapes}
 \usage{
 storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
-  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId)
+  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId, Tags)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -38,12 +38,20 @@ server side encryption. This value can only be set when KMSEncrypted is
 true. Optional.}
 
 \item{PoolId}{The ID of the pool that you want to add your tape to for archiving. The
-tape in this pool is archived in the S3 storage class you chose when you
-created the tape. When you use your backup application to eject the
-tape, the tape is archived directly into the storage class (Glacier or
-Deep Archive).
+tape in this pool is archived in the S3 storage class that is associated
+with the pool. When you use your backup application to eject the tape,
+the tape is archived directly into the storage class (Glacier or Deep
+Archive) that corresponds to the pool.
 
 Valid values: "GLACIER", "DEEP\_ARCHIVE"}
+
+\item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape. Each tag
+is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates one or more virtual tapes. You write data to the virtual tapes
@@ -64,7 +72,13 @@ gateway.
   TapeBarcodePrefix = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
-  PoolId = "string"
+  PoolId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

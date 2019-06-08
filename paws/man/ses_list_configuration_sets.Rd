@@ -17,7 +17,7 @@ list.}
 \description{
 Provides a list of the configuration sets associated with your Amazon
 SES account in the current AWS Region. For information about using
-configuration sets, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
+configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
 in the \emph{Amazon SES Developer Guide.}
 }
 \details{

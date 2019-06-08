@@ -67,7 +67,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \item{networkConfiguration}{The network configuration for the task. This parameter is required for
 task definitions that use the \code{awsvpc} network mode to receive their own
 elastic network interface, and it is not supported for other network
-modes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{tags}{The metadata that you apply to the task to help you categorize and
@@ -76,7 +76,7 @@ which you define. Tag keys can have a maximum character length of 128
 characters, and tag values can have a maximum length of 256 characters.}
 
 \item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the task. For
-more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the

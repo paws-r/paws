@@ -33,11 +33,11 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \description{
-Gets information about \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html}{custom key stores}
+Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}
 in the account and region.
 }
 \details{
-This operation is part of the \href{http://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
+This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant
 key store.
@@ -61,8 +61,8 @@ operation to disconnect it. If your custom key store state is
 associated AWS CloudHSM cluster is active and contains the minimum
 number of HSMs required for the operation, if any.
 
-For help repairing your custom key store, see the Troubleshooting Custom
-Key Stores topic in the \emph{AWS Key Management Service Developer Guide}.
+For help repairing your custom key store, see the \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting Custom Key Stores}
+topic in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_custom_key_stores(

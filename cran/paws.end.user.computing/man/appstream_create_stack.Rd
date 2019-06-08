@@ -36,6 +36,11 @@ a value, Environment=.
 
 If you do not specify a value, the value is set to an empty string.
 
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+\_ . : / = + \ - @
+
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Developer Guide}.}
 }

@@ -9,7 +9,7 @@ NULL
 #' web service. This guide describes the AWS KMS operations that you can
 #' call programmatically. For general information about AWS KMS, see the
 #' [*AWS Key Management Service Developer
-#' Guide*](http://docs.aws.amazon.com/kms/latest/developerguide/).
+#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/).
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms (Java, Ruby, .Net, macOS, Android,
@@ -34,12 +34,12 @@ NULL
 #' Requests must be signed by using an access key ID and a secret access
 #' key. We strongly recommend that you *do not* use your AWS account (root)
 #' access key ID and secret key for everyday work with AWS KMS. Instead,
-#' use the access key ID and secret access key for an IAM user, or you can
-#' use the AWS Security Token Service to generate temporary security
+#' use the access key ID and secret access key for an IAM user. You can
+#' also use the AWS Security Token Service to generate temporary security
 #' credentials that you can use to sign requests.
 #' 
 #' All AWS KMS operations require [Signature Version
-#' 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -50,7 +50,7 @@ NULL
 #' made the request, when it was made, and so on. To learn more about
 #' CloudTrail, including how to turn it on and find your log files, see the
 #' [AWS CloudTrail User
-#' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
 #' 
 #' **Additional Resources**
 #' 
@@ -58,26 +58,26 @@ NULL
 #' following:
 #' 
 #' -   [AWS Security
-#'     Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
-#'     This topic provides general information about the of credentials
-#'     used for accessing AWS.
+#'     Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
+#'     This topic provides general information about the types of
+#'     credentials used for accessing AWS.
 #' 
 #' -   [Temporary Security
-#'     Credentials](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
 #'     This section of the *IAM User Guide* describes how to create and use
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) -
+#'     Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 
-#' **Commonly Used APIs**
+#' **Commonly Used API Operations**
 #' 
-#' Of the APIs discussed in this guide, the following will prove the most
-#' useful for most applications. You will likely perform actions other than
-#' these, such as creating keys and assigning policies, by using the
-#' console.
+#' Of the API operations discussed in this guide, the following will prove
+#' the most useful for most applications. You will likely perform
+#' operations other than these, such as creating keys and assigning
+#' policies, by using the console.
 #' 
 #' -   Encrypt
 #' 
@@ -98,10 +98,10 @@ NULL
 #' \tabular{ll}{
 #'  \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a customer master key (CMK) \cr
 #'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated AWS CloudHSM cluster \cr
-#'  \link[=kms_create_alias]{create_alias} \tab Creates a display name for a customer master key (CMK) \cr
+#'  \link[=kms_create_alias]{create_alias} \tab Creates a display name for a customer managed customer master key (CMK) \cr
 #'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage \cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK) \cr
-#'  \link[=kms_create_key]{create_key} \tab Creates a customer master key (CMK) in the caller's AWS account \cr
+#'  \link[=kms_create_key]{create_key} \tab Creates a customer managed customer master key (CMK) in your AWS account \cr
 #'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext \cr
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias \cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store \cr
@@ -114,14 +114,14 @@ NULL
 #'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled \cr
 #'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified customer master key (CMK) \cr
 #'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext into ciphertext by using a customer master key (CMK) \cr
-#'  \link[=kms_generate_data_key]{generate_data_key} \tab Returns a data encryption key that you can use in your application to encrypt data locally \cr
-#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a data encryption key encrypted under a customer master key (CMK) \cr
+#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique data key \cr
+#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique data key \cr
 #'  \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure \cr
 #'  \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified customer master key (CMK) \cr
 #'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK)\cr
 #'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need in order to import key material into AWS KMS from your existing key management infrastructure \cr
 #'  \link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing AWS KMS customer master key (CMK) that was created without key material \cr
-#'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of all aliases in the caller's AWS account and region \cr
+#'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's AWS account and region \cr
 #'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified customer master key (CMK) \cr
 #'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a customer master key (CMK) \cr
 #'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and region \cr

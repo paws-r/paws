@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_authorize_security_group_egress}
 \alias{ec2_authorize_security_group_egress}
-\title{[EC2-VPC only] Adds one or more egress rules to a security group
+\title{[VPC only] Adds the specified egress rules to a security group
 for use with a VPC}
 \usage{
 ec2_authorize_security_group_egress(DryRun, GroupId, IpPermissions,
@@ -17,9 +17,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{One or more sets of IP permissions. You can't specify a destination
-security group and a CIDR IP address range in the same set of
-permissions.}
+\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
+group and a CIDR IP address range in the same set of permissions.}
 
 \item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
 
@@ -37,25 +36,23 @@ security group.}
 security group.}
 }
 \description{
-[EC2-VPC only] Adds one or more egress rules to a security group for
-use with a VPC. Specifically, this action permits instances to send
-traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or
-to one or more destination security groups for the same VPC. This action
-doesn't apply to security groups for use in EC2-Classic. For more
-information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
-in the \emph{Amazon Virtual Private Cloud User Guide}. For more information
-about security group limits, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html}{Amazon VPC Limits}.
+[VPC only] Adds the specified egress rules to a security group for use
+with a VPC.
 }
 \details{
-Each rule consists of the protocol (for example, TCP), plus either a
-CIDR range or a source group. For the TCP and UDP protocols, you must
-also specify the destination port or port range. For the ICMP protocol,
-you must also specify the ICMP type and code. You can use -1 for the
-type or code to mean all types or all codes. You can optionally specify
-a description for the rule.
+An outbound rule permits instances to send traffic to the specified IPv4
+or IPv6 CIDR address ranges, or to the instances associated with the
+specified destination security groups.
+
+You specify a protocol for each rule (for example, TCP). For the TCP and
+UDP protocols, you must also specify the destination port or port range.
+For the ICMP protocol, you must also specify the ICMP type and code. You
+can use -1 for the type or code to mean all types or all codes.
 
 Rule changes are propagated to affected instances as quickly as
 possible. However, a small delay might occur.
+
+For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
 \preformatted{svc$authorize_security_group_egress(

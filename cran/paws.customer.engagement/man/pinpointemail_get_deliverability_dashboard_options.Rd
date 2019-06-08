@@ -2,22 +2,24 @@
 % Please edit documentation in R/pinpointemail_operations.R
 \name{pinpointemail_get_deliverability_dashboard_options}
 \alias{pinpointemail_get_deliverability_dashboard_options}
-\title{Show the status of the Deliverability dashboard}
+\title{Retrieve information about the status of the Deliverability dashboard
+for your Amazon Pinpoint account}
 \usage{
 pinpointemail_get_deliverability_dashboard_options()
 }
 \description{
-Show the status of the Deliverability dashboard. When the Deliverability
-dashboard is enabled, you gain access to reputation metrics for the
-domains that you use to send email using Amazon Pinpoint. You also gain
-the ability to perform predictive inbox placement tests.
+Retrieve information about the status of the Deliverability dashboard
+for your Amazon Pinpoint account. When the Deliverability dashboard is
+enabled, you gain access to reputation, deliverability, and other
+metrics for the domains that you use to send email using Amazon
+Pinpoint. You also gain the ability to perform predictive inbox
+placement tests.
 }
 \details{
-When you use the Deliverability dashboard, you pay a monthly charge of
-USD\$1,250.00, in addition to any other fees that you accrue by using
-Amazon Pinpoint. If you enable the Deliverability dashboard after the
-first day of a calendar month, AWS prorates the monthly charge based on
-how many days have elapsed in the current calendar month.
+When you use the Deliverability dashboard, you pay a monthly
+subscription charge, in addition to any other fees that you accrue by
+using Amazon Pinpoint. For more information about the features and cost
+of a Deliverability dashboard subscription, see \href{http://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_deliverability_dashboard_options()

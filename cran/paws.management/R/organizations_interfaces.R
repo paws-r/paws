@@ -45,7 +45,19 @@ NULL
 
 .organizations$create_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreateAccountStatus = structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CreateAccountStatus = structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), GovCloudAccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$create_gov_cloud_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$create_gov_cloud_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreateAccountStatus = structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), GovCloudAccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -145,7 +157,7 @@ NULL
 
 .organizations$describe_create_account_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreateAccountStatus = structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CreateAccountStatus = structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), GovCloudAccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -337,7 +349,7 @@ NULL
 
 .organizations$list_create_account_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreateAccountStatuses = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CreateAccountStatuses = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), State = structure(logical(0), tags = list(type = "string")), RequestedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), AccountId = structure(logical(0), tags = list(type = "string")), GovCloudAccountId = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -425,6 +437,18 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$list_targets_for_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PolicyId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -454,6 +478,26 @@ NULL
 }
 
 .organizations$remove_account_from_organization_output <- function(...) {
+  list()
+}
+
+.organizations$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$tag_resource_output <- function(...) {
+  list()
+}
+
+.organizations$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$untag_resource_output <- function(...) {
   list()
 }
 

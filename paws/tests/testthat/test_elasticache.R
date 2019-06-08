@@ -34,6 +34,14 @@ test_that("describe_reserved_cache_nodes_offerings", {
   expect_error(svc$describe_reserved_cache_nodes_offerings(), NA)
 })
 
+test_that("describe_service_updates", {
+  expect_error(svc$describe_service_updates(), NA)
+})
+
 test_that("describe_snapshots", {
   expect_error(svc$describe_snapshots(), NA)
+})
+
+test_that("describe_update_actions", {
+  expect_error(svc$describe_update_actions(), NA)
 })

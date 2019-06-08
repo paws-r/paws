@@ -13,13 +13,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VolumeIds}{One or more volume IDs for which in-progress modifications will be
+\item{VolumeIds}{The IDs of the volumes for which in-progress modifications will be
 described.}
 
-\item{Filters}{One or more filters. Supported filters: \code{volume-id},
-\code{modification-state}, \code{target-size}, \code{target-iops},
-\code{target-volume-type}, \code{original-size}, \code{original-iops},
-\code{original-volume-type}, \code{start-time}.}
+\item{Filters}{The filters. Supported filters: \code{volume-id}, \code{modification-state},
+\code{target-size}, \code{target-iops}, \code{target-volume-type}, \code{original-size},
+\code{original-iops}, \code{original-volume-type}, \code{start-time}.}
 
 \item{NextToken}{The \code{nextToken} value returned by a previous paginated request.}
 

@@ -13,8 +13,8 @@ elasticache_create_cache_parameter_group(CacheParameterGroupName,
 \item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family that the cache parameter
 group can be used with.
 
-Valid values are: \code{memcached1.4} \| \code{redis2.6} \| \code{redis2.8} \|
-\code{redis3.2} \| \code{redis4.0}}
+Valid values are: \code{memcached1.4} \| \code{memcached1.5} \| \code{redis2.6} \|
+\code{redis2.8} \| \code{redis3.2} \| \code{redis4.0} \| \code{redis5.0} \|}
 
 \item{Description}{[required] A user-specified description for the cache parameter group.}
 }
@@ -30,9 +30,9 @@ parameter group for the CacheParameterGroupFamily. To customize the
 newly created CacheParameterGroup you can change the values of specific
 parameters. For more information, see:
 \itemize{
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html}{ModifyCacheParameterGroup}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html}{ModifyCacheParameterGroup}
 in the ElastiCache API Reference.
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html}{Parameters and Parameter Groups}
+\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html}{Parameters and Parameter Groups}
 in the ElastiCache User Guide.
 }
 }

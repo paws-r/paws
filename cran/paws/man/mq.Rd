@@ -17,9 +17,11 @@ Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it 
 \link[=mq_create_tags]{create_tags} \tab Add a tag to a resource \cr
 \link[=mq_create_user]{create_user} \tab Creates an ActiveMQ user \cr
 \link[=mq_delete_broker]{delete_broker} \tab Deletes a broker \cr
-\link[=mq_delete_tags]{delete_tags} \tab Remove a tag from a resource \cr
+\link[=mq_delete_tags]{delete_tags} \tab Removes a tag from a resource \cr
 \link[=mq_delete_user]{delete_user} \tab Deletes an ActiveMQ user \cr
 \link[=mq_describe_broker]{describe_broker} \tab Returns information about the specified broker \cr
+\link[=mq_describe_broker_engine_types]{describe_broker_engine_types} \tab Describe available engine types and versions \cr
+\link[=mq_describe_broker_instance_options]{describe_broker_instance_options} \tab Describe available broker instance options \cr
 \link[=mq_describe_configuration]{describe_configuration} \tab Returns information about the specified configuration \cr
 \link[=mq_describe_configuration_revision]{describe_configuration_revision} \tab Returns the specified configuration revision for the specified configuration\cr
 \link[=mq_describe_user]{describe_user} \tab Returns information about an ActiveMQ user \cr

@@ -16,10 +16,11 @@ Constraints:
 \item Must match the identifier of an existing DBInstance.
 }}
 
-\item{ForceFailover}{When \code{true}, the reboot is conducted through a MultiAZ failover.
+\item{ForceFailover}{A value that indicates whether the reboot is conducted through a
+Multi-AZ failover.
 
-Constraint: You can't specify \code{true} if the instance is not configured
-for MultiAZ.}
+Constraint: You can't enable force failover if the instance is not
+configured for Multi-AZ.}
 }
 \description{
 You might need to reboot your DB instance, usually for maintenance

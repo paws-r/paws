@@ -22,13 +22,13 @@ NULL
 #'  \link[=mediaconnect_grant_flow_entitlements]{grant_flow_entitlements} \tab Grants entitlements to an existing flow \cr
 #'  \link[=mediaconnect_list_entitlements]{list_entitlements} \tab Displays a list of all entitlements that have been granted to this account\cr
 #'  \link[=mediaconnect_list_flows]{list_flows} \tab Displays a list of flows that are associated with this account \cr
-#'  \link[=mediaconnect_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with the resource \cr
+#'  \link[=mediaconnect_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on an AWS Elemental MediaConnect resource \cr
 #'  \link[=mediaconnect_remove_flow_output]{remove_flow_output} \tab Removes an output from an existing flow \cr
 #'  \link[=mediaconnect_revoke_flow_entitlement]{revoke_flow_entitlement} \tab Revokes an entitlement from a flow \cr
 #'  \link[=mediaconnect_start_flow]{start_flow} \tab Starts a flow \cr
 #'  \link[=mediaconnect_stop_flow]{stop_flow} \tab Stops a flow \cr
-#'  \link[=mediaconnect_tag_resource]{tag_resource} \tab Associates the specified tags to a resource \cr
-#'  \link[=mediaconnect_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource \cr
+#'  \link[=mediaconnect_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
+#'  \link[=mediaconnect_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
 #'  \link[=mediaconnect_update_flow_entitlement]{update_flow_entitlement} \tab You can change an entitlement's description, subscribers, and encryption \cr
 #'  \link[=mediaconnect_update_flow_output]{update_flow_output} \tab Updates an existing flow output \cr
 #'  \link[=mediaconnect_update_flow_source]{update_flow_source} \tab Updates the source of a flow 

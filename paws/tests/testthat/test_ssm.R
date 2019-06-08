@@ -50,6 +50,14 @@ test_that("describe_maintenance_windows", {
   expect_error(svc$describe_maintenance_windows(MaxResults = 20), NA)
 })
 
+test_that("describe_ops_items", {
+  expect_error(svc$describe_ops_items(), NA)
+})
+
+test_that("describe_ops_items", {
+  expect_error(svc$describe_ops_items(MaxResults = 20), NA)
+})
+
 test_that("describe_parameters", {
   expect_error(svc$describe_parameters(), NA)
 })

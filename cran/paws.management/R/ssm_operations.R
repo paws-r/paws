@@ -7,7 +7,7 @@ NULL
 #'
 #' Adds or overwrites one or more tags for the specified resource. Tags are
 #' metadata that you can assign to your documents, managed instances,
-#' Maintenance Windows, Parameter Store parameters, and patch baselines.
+#' maintenance windows, Parameter Store parameters, and patch baselines.
 #' Tags enable you to categorize your resources in different ways, for
 #' example, by purpose, owner, or environment. Each tag consists of a key
 #' and an optional value, both of which you define. For example, you could
@@ -35,7 +35,7 @@ NULL
 #' @param ResourceType &#91;required&#93; Specifies the type of resource you are tagging.
 #' 
 #' The ManagedInstance type for this API action is for on-premises managed
-#' instances. You must specify the the name of the managed instance in the
+#' instances. You must specify the name of the managed instance in the
 #' following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
 #' @param ResourceId &#91;required&#93; The resource ID you want to tag.
 #' 
@@ -50,8 +50,8 @@ NULL
 #' For the Document and Parameter values, use the name of the resource.
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. You must specify the the name of the managed instance
-#' in the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' managed instances. You must specify the name of the managed instance in
+#' the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
 #' @param Tags &#91;required&#93; One or more tags. The value parameter is required, but if you don\'t
 #' want the tag to have a value, specify the parameter with no value, and
 #' we set the value to an empty string.
@@ -61,7 +61,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$add_tags_to_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
 #'   ResourceId = "string",
 #'   Tags = list(
 #'     list(
@@ -134,17 +134,17 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 }
 .ssm$operations$cancel_command <- ssm_cancel_command
 
-#' Stops a Maintenance Window execution that is already in progress and
+#' Stops a maintenance window execution that is already in progress and
 #' cancels any tasks in the window that have not already starting running
 #'
-#' Stops a Maintenance Window execution that is already in progress and
+#' Stops a maintenance window execution that is already in progress and
 #' cancels any tasks in the window that have not already starting running.
 #' (Tasks already in progress will continue to completion.)
 #'
 #' @usage
 #' ssm_cancel_maintenance_window_execution(WindowExecutionId)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution to stop.
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution to stop.
 #'
 #' @section Request syntax:
 #' ```
@@ -179,7 +179,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' that you can manage these resources using Run Command. An on-premises
 #' server or virtual machine that has been registered with EC2 is called a
 #' managed instance. For more information about activations, see [Setting
-#' Up Systems Manager in Hybrid
+#' Up AWS Systems Manager for Hybrid
 #' Environments](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html).
 #'
 #' @usage
@@ -284,8 +284,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'   ComplianceSeverity)
 #'
 #' @param Name &#91;required&#93; The name of the SSM document that contains the configuration information
-#' for the instance. You can specify Command, Policy, or Automation
-#' documents.
+#' for the instance. You can specify Command or Automation documents.
 #' 
 #' You can specify AWS-predefined documents, documents you created, or a
 #' document that is shared with you from another account.
@@ -305,7 +304,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param DocumentVersion The document version you want to associate with the target(s). Can be a
 #' specific version or the default version.
 #' @param InstanceId The instance ID.
-#' @param Parameters The parameters for the documents runtime configuration.
+#' @param Parameters The parameters for the runtime configuration of the document.
 #' @param Targets The targets (either instances or tags) for the association.
 #' @param ScheduleExpression A cron expression when the association will be applied to the target(s).
 #' @param OutputLocation An Amazon S3 bucket where you want to store the output details of the
@@ -334,10 +333,10 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' target set, for example 10\%. The default value is 100\%, which means all
 #' targets run the association at the same time.
 #' 
-#' If a new instance starts and attempts to execute an association while
-#' Systems Manager is executing MaxConcurrency associations, the
-#' association is allowed to run. During the next association interval, the
-#' new instance will process its association within the limit specified for
+#' If a new instance starts and attempts to run an association while
+#' Systems Manager is running MaxConcurrency associations, the association
+#' is allowed to run. During the next association interval, the new
+#' instance will process its association within the limit specified for
 #' MaxConcurrency.
 #' @param ComplianceSeverity The severity level to assign to the association.
 #'
@@ -570,46 +569,46 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 }
 .ssm$operations$create_document <- ssm_create_document
 
-#' Creates a new Maintenance Window
+#' Creates a new maintenance window
 #'
-#' Creates a new Maintenance Window.
+#' Creates a new maintenance window.
 #'
 #' @usage
 #' ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
 #'   Schedule, ScheduleTimezone, Duration, Cutoff, AllowUnassociatedTargets,
 #'   ClientToken, Tags)
 #'
-#' @param Name &#91;required&#93; The name of the Maintenance Window.
-#' @param Description An optional description for the Maintenance Window. We recommend
-#' specifying a description to help you organize your Maintenance Windows.
+#' @param Name &#91;required&#93; The name of the maintenance window.
+#' @param Description An optional description for the maintenance window. We recommend
+#' specifying a description to help you organize your maintenance windows.
 #' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the
-#' Maintenance Window to become active. StartDate allows you to delay
-#' activation of the Maintenance Window until the specified future date.
+#' maintenance window to become active. StartDate allows you to delay
+#' activation of the maintenance window until the specified future date.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
-#' Maintenance Window to become inactive. EndDate allows you to set a date
-#' and time in the future when the Maintenance Window will no longer run.
-#' @param Schedule &#91;required&#93; The schedule of the Maintenance Window in the form of a cron or rate
+#' maintenance window to become inactive. EndDate allows you to set a date
+#' and time in the future when the maintenance window will no longer run.
+#' @param Schedule &#91;required&#93; The schedule of the maintenance window in the form of a cron or rate
 #' expression.
-#' @param ScheduleTimezone The time zone that the scheduled Maintenance Window executions are based
+#' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
 #' \"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 #' information, see the [Time Zone
 #' Database](https://www.iana.org/time-zones) on the IANA website.
-#' @param Duration &#91;required&#93; The duration of the Maintenance Window in hours.
-#' @param Cutoff &#91;required&#93; The number of hours before the end of the Maintenance Window that
+#' @param Duration &#91;required&#93; The duration of the maintenance window in hours.
+#' @param Cutoff &#91;required&#93; The number of hours before the end of the maintenance window that
 #' Systems Manager stops scheduling new tasks for execution.
-#' @param AllowUnassociatedTargets &#91;required&#93; Enables a Maintenance Window task to execute on managed instances, even
-#' if you have not registered those instances as targets. If enabled, then
-#' you must specify the unregistered instances (by instance ID) when you
-#' register a task with the Maintenance Window
+#' @param AllowUnassociatedTargets &#91;required&#93; Enables a maintenance window task to run on managed instances, even if
+#' you have not registered those instances as targets. If enabled, then you
+#' must specify the unregistered instances (by instance ID) when you
+#' register a task with the maintenance window.
 #' 
 #' If you don\'t enable this option, then you must specify
 #' previously-registered targets when you register a task with the
-#' Maintenance Window.
+#' maintenance window.
 #' @param ClientToken User-provided idempotency token.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
-#' environment. For example, you might want to tag a Maintenance Window to
+#' environment. For example, you might want to tag a maintenance window to
 #' identify the type of tasks it will run, the types of targets, and the
 #' environment it will run in. In this case, you could specify the
 #' following key name/value pairs:
@@ -620,7 +619,7 @@ ssm_create_document <- function(Content, Attachments = NULL, Name, VersionName =
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
-#' To add tags to an existing Maintenance Window, use the AddTagsToResource
+#' To add tags to an existing maintenance window, use the AddTagsToResource
 #' action.
 #'
 #' @section Request syntax:
@@ -664,6 +663,113 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 }
 .ssm$operations$create_maintenance_window <- ssm_create_maintenance_window
 
+#' Creates a new OpsItem
+#'
+#' Creates a new OpsItem. You must have permission in AWS Identity and
+#' Access Management (IAM) to create a new OpsItem. For more information,
+#' see [Getting Started with
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' in the *AWS Systems Manager User Guide*.
+#' 
+#' Operations engineers and IT professionals use the Systems Manager
+#' OpsItems capability to view, investigate, and remediate operational
+#' issues impacting the performance and health of their AWS resources. For
+#' more information, see [AWS Systems Manager
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' in the *AWS Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_create_ops_item(Description, OperationalData, Notifications,
+#'   Priority, RelatedOpsItems, Source, Title, Tags)
+#'
+#' @param Description &#91;required&#93; Information about the OpsItem.
+#' @param OperationalData Operational data is custom data that provides useful reference details
+#' about the OpsItem. For example, you can specify log files, error
+#' strings, license keys, troubleshooting tips, or other relevant data. You
+#' enter operational data as key-value pairs. The key has a maximum length
+#' of 128 characters. The value has a maximum size of 20 KB.
+#' 
+#' This custom data is searchable, but with restrictions. For the
+#' `Searchable operational data` feature, all users with access to the
+#' OpsItem Overview page (as provided by the DescribeOpsItems API action)
+#' can view and search on the specified data. For the
+#' `Private operational data` feature, the data is only viewable by users
+#' who have access to the OpsItem (as provided by the GetOpsItem API
+#' action).
+#' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
+#' sent when this OpsItem is edited or changed.
+#' @param Priority The importance of this OpsItem in relation to other OpsItems in the
+#' system.
+#' @param RelatedOpsItems One or more OpsItems that share something in common with the current
+#' OpsItems. For example, related OpsItems can include OpsItems with
+#' similar error messages, impacted resources, or statuses for the impacted
+#' resource.
+#' @param Source &#91;required&#93; The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.
+#' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
+#' impacted resource.
+#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For example, you might want to tag an OpsItem to identify
+#' the AWS resource or the type of issue. In this case, you could specify
+#' the following key name/value pairs:
+#' 
+#' -   `Key=source,Value=EC2-instance`
+#' 
+#' -   `Key=status,Value=stopped`
+#' 
+#' To add tags to an existing OpsItem, use the AddTagsToResource action.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_ops_item(
+#'   Description = "string",
+#'   OperationalData = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "SearchableString"|"String"
+#'     )
+#'   ),
+#'   Notifications = list(
+#'     list(
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   RelatedOpsItems = list(
+#'     list(
+#'       OpsItemId = "string"
+#'     )
+#'   ),
+#'   Source = "string",
+#'   Title = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_create_ops_item
+ssm_create_ops_item <- function(Description, OperationalData = NULL, Notifications = NULL, Priority = NULL, RelatedOpsItems = NULL, Source, Title, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateOpsItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$create_ops_item_input(Description = Description, OperationalData = OperationalData, Notifications = Notifications, Priority = Priority, RelatedOpsItems = RelatedOpsItems, Source = Source, Title = Title, Tags = Tags)
+  output <- .ssm$create_ops_item_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$create_ops_item <- ssm_create_ops_item
+
 #' Creates a patch baseline
 #'
 #' Creates a patch baseline.
@@ -688,7 +794,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [Package Name Formats for Approved and Rejected
 #' Patch
-#' Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+#' Lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. This means that if an
 #' approved patch is reported as missing, this is the severity of the
@@ -701,7 +807,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [Package Name Formats for Approved and Rejected
 #' Patch
-#' Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+#' Lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' RejectedPackages list.
@@ -744,7 +850,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'   GlobalFilters = list(
 #'     PatchFilters = list(
 #'       list(
-#'         Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+#'         Key = "PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
 #'         Values = list(
 #'           "string"
 #'         )
@@ -757,7 +863,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'         PatchFilterGroup = list(
 #'           PatchFilters = list(
 #'             list(
-#'               Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+#'               Key = "PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -1021,7 +1127,7 @@ ssm_delete_document <- function(Name) {
 #' DisableSchema: If you choose this option, the system ignores all
 #' inventory data for the specified version, and any earlier versions. To
 #' enable this schema again, you must call the `PutInventory` action for a
-#' version greater than the disbled version.
+#' version greater than the disabled version.
 #' 
 #' DeleteSchema: This option deletes the specified custom type from the
 #' Inventory service. You can recreate the schema later, if you want.
@@ -1061,14 +1167,14 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 }
 .ssm$operations$delete_inventory <- ssm_delete_inventory
 
-#' Deletes a Maintenance Window
+#' Deletes a maintenance window
 #'
-#' Deletes a Maintenance Window.
+#' Deletes a maintenance window.
 #'
 #' @usage
 #' ssm_delete_maintenance_window(WindowId)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window to delete.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1320,19 +1426,19 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 }
 .ssm$operations$deregister_patch_baseline_for_patch_group <- ssm_deregister_patch_baseline_for_patch_group
 
-#' Removes a target from a Maintenance Window
+#' Removes a target from a maintenance window
 #'
-#' Removes a target from a Maintenance Window.
+#' Removes a target from a maintenance window.
 #'
 #' @usage
 #' ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
 #'   Safe)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window the target should be removed from.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be removed from.
 #' @param WindowTargetId &#91;required&#93; The ID of the target definition to remove.
 #' @param Safe The system checks if the target is being referenced by a task. If the
 #' target is being referenced, the system returns an error and does not
-#' deregister the target from the Maintenance Window.
+#' deregister the target from the maintenance window.
 #'
 #' @section Request syntax:
 #' ```
@@ -1362,15 +1468,15 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 }
 .ssm$operations$deregister_target_from_maintenance_window <- ssm_deregister_target_from_maintenance_window
 
-#' Removes a task from a Maintenance Window
+#' Removes a task from a maintenance window
 #'
-#' Removes a task from a Maintenance Window.
+#' Removes a task from a maintenance window.
 #'
 #' @usage
 #' ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window the task should be removed from.
-#' @param WindowTaskId &#91;required&#93; The ID of the task to remove from the Maintenance Window.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be removed from.
+#' @param WindowTaskId &#91;required&#93; The ID of the task to remove from the maintenance window.
 #'
 #' @section Request syntax:
 #' ```
@@ -2276,17 +2382,17 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 .ssm$operations$describe_inventory_deletions <- ssm_describe_inventory_deletions
 
 #' Retrieves the individual task executions (one per target) for a
-#' particular task executed as part of a Maintenance Window execution
+#' particular task run as part of a maintenance window execution
 #'
 #' Retrieves the individual task executions (one per target) for a
-#' particular task executed as part of a Maintenance Window execution.
+#' particular task run as part of a maintenance window execution.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_execution_task_invocations(
 #'   WindowExecutionId, TaskId, Filters, MaxResults, NextToken)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution the task is part of.
-#' @param TaskId &#91;required&#93; The ID of the specific task in the Maintenance Window task that should
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution the task is part of.
+#' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned task invocations. The
 #' supported filter key is STATUS with the corresponding values PENDING,
@@ -2334,17 +2440,15 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 }
 .ssm$operations$describe_maintenance_window_execution_task_invocations <- ssm_describe_maintenance_window_execution_task_invocations
 
-#' For a given Maintenance Window execution, lists the tasks that were
-#' executed
+#' For a given maintenance window execution, lists the tasks that were run
 #'
-#' For a given Maintenance Window execution, lists the tasks that were
-#' executed.
+#' For a given maintenance window execution, lists the tasks that were run.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
 #'   Filters, MaxResults, NextToken)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution whose task executions should
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution whose task executions should
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned tasks. The supported
 #' filter key is STATUS with the corresponding values PENDING,
@@ -2391,17 +2495,17 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 }
 .ssm$operations$describe_maintenance_window_execution_tasks <- ssm_describe_maintenance_window_execution_tasks
 
-#' Lists the executions of a Maintenance Window
+#' Lists the executions of a maintenance window
 #'
-#' Lists the executions of a Maintenance Window. This includes information
-#' about when the Maintenance Window was scheduled to be active, and
-#' information about tasks registered and run with the Maintenance Window.
+#' Lists the executions of a maintenance window. This includes information
+#' about when the maintenance window was scheduled to be active, and
+#' information about tasks registered and run with the maintenance window.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_executions(WindowId, Filters,
 #'   MaxResults, NextToken)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window whose executions should be retrieved.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window whose executions should be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
 #' 
 #' Key (string, between 1 and 128 characters)
@@ -2452,20 +2556,20 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 }
 .ssm$operations$describe_maintenance_window_executions <- ssm_describe_maintenance_window_executions
 
-#' Retrieves information about upcoming executions of a Maintenance Window
+#' Retrieves information about upcoming executions of a maintenance window
 #'
-#' Retrieves information about upcoming executions of a Maintenance Window.
+#' Retrieves information about upcoming executions of a maintenance window.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_schedule(WindowId, Targets,
 #'   ResourceType, Filters, MaxResults, NextToken)
 #'
-#' @param WindowId The ID of the Maintenance Window to retrieve information about.
+#' @param WindowId The ID of the maintenance window to retrieve information about.
 #' @param Targets The instance ID or key/value pair to retrieve information about.
 #' @param ResourceType The type of resource you want to retrieve information about. For
 #' example, \"INSTANCE\".
 #' @param Filters Filters used to limit the range of results. For example, you can limit
-#' Maintenance Window executions to only those scheduled before or after a
+#' maintenance window executions to only those scheduled before or after a
 #' certain date and time.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
@@ -2518,15 +2622,15 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 }
 .ssm$operations$describe_maintenance_window_schedule <- ssm_describe_maintenance_window_schedule
 
-#' Lists the targets registered with the Maintenance Window
+#' Lists the targets registered with the maintenance window
 #'
-#' Lists the targets registered with the Maintenance Window.
+#' Lists the targets registered with the maintenance window.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_targets(WindowId, Filters, MaxResults,
 #'   NextToken)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window whose targets should be retrieved.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window whose targets should be retrieved.
 #' @param Filters Optional filters that can be used to narrow down the scope of the
 #' returned window targets. The supported filter keys are Type,
 #' WindowTargetId and OwnerInformation.
@@ -2572,15 +2676,15 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 }
 .ssm$operations$describe_maintenance_window_targets <- ssm_describe_maintenance_window_targets
 
-#' Lists the tasks in a Maintenance Window
+#' Lists the tasks in a maintenance window
 #'
-#' Lists the tasks in a Maintenance Window.
+#' Lists the tasks in a maintenance window.
 #'
 #' @usage
 #' ssm_describe_maintenance_window_tasks(WindowId, Filters, MaxResults,
 #'   NextToken)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window whose tasks should be retrieved.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window whose tasks should be retrieved.
 #' @param Filters Optional filters used to narrow down the scope of the returned tasks.
 #' The supported filter keys are WindowTaskId, TaskArn, Priority, and
 #' TaskType.
@@ -2626,15 +2730,15 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 }
 .ssm$operations$describe_maintenance_window_tasks <- ssm_describe_maintenance_window_tasks
 
-#' Retrieves the Maintenance Windows in an AWS account
+#' Retrieves the maintenance windows in an AWS account
 #'
-#' Retrieves the Maintenance Windows in an AWS account.
+#' Retrieves the maintenance windows in an AWS account.
 #'
 #' @usage
 #' ssm_describe_maintenance_windows(Filters, MaxResults, NextToken)
 #'
 #' @param Filters Optional filters used to narrow down the scope of the returned
-#' Maintenance Windows. Supported filter keys are **Name** and **Enabled**.
+#' maintenance windows. Supported filter keys are **Name** and **Enabled**.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -2676,11 +2780,11 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 }
 .ssm$operations$describe_maintenance_windows <- ssm_describe_maintenance_windows
 
-#' Retrieves information about the Maintenance Windows targets or tasks
-#' that an instance is associated with
+#' Retrieves information about the maintenance window targets or tasks that
+#' an instance is associated with
 #'
-#' Retrieves information about the Maintenance Windows targets or tasks
-#' that an instance is associated with.
+#' Retrieves information about the maintenance window targets or tasks that
+#' an instance is associated with.
 #'
 #' @usage
 #' ssm_describe_maintenance_windows_for_target(Targets, ResourceType,
@@ -2730,6 +2834,119 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
   return(response)
 }
 .ssm$operations$describe_maintenance_windows_for_target <- ssm_describe_maintenance_windows_for_target
+
+#' Query a set of OpsItems
+#'
+#' Query a set of OpsItems. You must have permission in AWS Identity and
+#' Access Management (IAM) to query a list of OpsItems. For more
+#' information, see [Getting Started with
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' in the *AWS Systems Manager User Guide*.
+#' 
+#' Operations engineers and IT professionals use the Systems Manager
+#' OpsItems capability to view, investigate, and remediate operational
+#' issues impacting the performance and health of their AWS resources. For
+#' more information, see [AWS Systems Manager
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' in the *AWS Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_describe_ops_items(OpsItemFilters, MaxResults, NextToken)
+#'
+#' @param OpsItemFilters One or more filters to limit the reponse.
+#' 
+#' -   Key: CreatedTime
+#' 
+#'     Operations: GreaterThan, LessThan
+#' 
+#' -   Key: LastModifiedBy
+#' 
+#'     Operations: Contains, Equals
+#' 
+#' -   Key: LastModifiedTime
+#' 
+#'     Operations: GreaterThan, LessThan
+#' 
+#' -   Key: Priority
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: Source
+#' 
+#'     Operations: Contains, Equals
+#' 
+#' -   Key: Status
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: Title
+#' 
+#'     Operations: Contains
+#' 
+#' -   Key: OperationalData
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: OperationalDataKey
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: OperationalDataValue
+#' 
+#'     Operations: Equals, Contains
+#' 
+#' -   Key: OpsItemId
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: ResourceId
+#' 
+#'     Operations: Contains
+#' 
+#' -   Key: AutomationId
+#' 
+#'     Operations: Equals
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_ops_items(
+#'   OpsItemFilters = list(
+#'     list(
+#'       Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "Equal"|"Contains"|"GreaterThan"|"LessThan"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_describe_ops_items
+ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOpsItems",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$describe_ops_items_input(OpsItemFilters = OpsItemFilters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$describe_ops_items_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$describe_ops_items <- ssm_describe_ops_items
 
 #' Get information about a parameter
 #'
@@ -2933,6 +3150,93 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
   return(response)
 }
 .ssm$operations$describe_patch_groups <- ssm_describe_patch_groups
+
+#' Lists the properties of available patches organized by product, product
+#' family, classification, severity, and other properties of available
+#' patches
+#'
+#' Lists the properties of available patches organized by product, product
+#' family, classification, severity, and other properties of available
+#' patches. You can use the reported properties in the filters you specify
+#' in requests for actions such as CreatePatchBaseline,
+#' UpdatePatchBaseline, DescribeAvailablePatches, and
+#' DescribePatchBaselines.
+#' 
+#' The following section lists the properties that can be used in filters
+#' for each major operating system type:
+#' 
+#' WINDOWS
+#' 
+#' :   Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
+#'     MSRC\\_SEVERITY
+#' 
+#' AMAZON\\_LINUX
+#' 
+#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' 
+#' AMAZON\\_LINUX\\_2
+#' 
+#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' 
+#' UBUNTU 
+#' 
+#' :   Valid properties: PRODUCT, PRIORITY
+#' 
+#' REDHAT\\_ENTERPRISE\\_LINUX
+#' 
+#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' 
+#' SUSE
+#' 
+#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#' 
+#' CENTOS
+#' 
+#' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+#'
+#' @usage
+#' ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
+#'   MaxResults, NextToken)
+#'
+#' @param OperatingSystem &#91;required&#93; The operating system type for which to list patches.
+#' @param Property &#91;required&#93; The patch property for which you want to view patch details.
+#' @param PatchSet Indicates whether to list patches for the Windows operating system or
+#' for Microsoft applications. Not applicable for Linux operating systems.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_patch_properties(
+#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
+#'   Property = "PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PRIORITY"|"SEVERITY",
+#'   PatchSet = "OS"|"APPLICATION",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_describe_patch_properties
+ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribePatchProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$describe_patch_properties_input(OperatingSystem = OperatingSystem, Property = Property, PatchSet = PatchSet, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$describe_patch_properties_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$describe_patch_properties <- ssm_describe_patch_properties
 
 #' Retrieves a list of all active sessions (both connected and
 #' disconnected) or terminated sessions from the past 30 days
@@ -3366,14 +3670,15 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 }
 .ssm$operations$get_inventory_schema <- ssm_get_inventory_schema
 
-#' Retrieves a Maintenance Window
+#' Retrieves a maintenance window
 #'
-#' Retrieves a Maintenance Window.
+#' Retrieves a maintenance window.
 #'
 #' @usage
 #' ssm_get_maintenance_window(WindowId)
 #'
-#' @param WindowId &#91;required&#93; The ID of the desired Maintenance Window.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window for which you want to retrieve
+#' information.
 #'
 #' @section Request syntax:
 #' ```
@@ -3401,16 +3706,16 @@ ssm_get_maintenance_window <- function(WindowId) {
 }
 .ssm$operations$get_maintenance_window <- ssm_get_maintenance_window
 
-#' Retrieves details about a specific task executed as part of a
-#' Maintenance Window execution
+#' Retrieves details about a specific task run as part of a maintenance
+#' window execution
 #'
-#' Retrieves details about a specific task executed as part of a
-#' Maintenance Window execution.
+#' Retrieves details about a specific task run as part of a maintenance
+#' window execution.
 #'
 #' @usage
 #' ssm_get_maintenance_window_execution(WindowExecutionId)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution that includes the task.
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
 #'
 #' @section Request syntax:
 #' ```
@@ -3438,17 +3743,17 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 }
 .ssm$operations$get_maintenance_window_execution <- ssm_get_maintenance_window_execution
 
-#' Retrieves the details about a specific task executed as part of a
-#' Maintenance Window execution
+#' Retrieves the details about a specific task run as part of a maintenance
+#' window execution
 #'
-#' Retrieves the details about a specific task executed as part of a
-#' Maintenance Window execution.
+#' Retrieves the details about a specific task run as part of a maintenance
+#' window execution.
 #'
 #' @usage
 #' ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution that includes the task.
-#' @param TaskId &#91;required&#93; The ID of the specific task execution in the Maintenance Window task
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
+#' @param TaskId &#91;required&#93; The ID of the specific task execution in the maintenance window task
 #' that should be retrieved.
 #'
 #' @section Request syntax:
@@ -3481,15 +3786,15 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #' Retrieves a task invocation
 #'
 #' Retrieves a task invocation. A task invocation is a specific task
-#' executing on a specific target. Maintenance Windows report status for
-#' all invocations.
+#' running on a specific target. maintenance windows report status for all
+#' invocations.
 #'
 #' @usage
 #' ssm_get_maintenance_window_execution_task_invocation(WindowExecutionId,
 #'   TaskId, InvocationId)
 #'
-#' @param WindowExecutionId &#91;required&#93; The ID of the Maintenance Window execution for which the task is a part.
-#' @param TaskId &#91;required&#93; The ID of the specific task in the Maintenance Window task that should
+#' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution for which the task is a part.
+#' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
 #' be retrieved.
 #' @param InvocationId &#91;required&#93; The invocation ID to retrieve.
 #'
@@ -3521,15 +3826,15 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 }
 .ssm$operations$get_maintenance_window_execution_task_invocation <- ssm_get_maintenance_window_execution_task_invocation
 
-#' Lists the tasks in a Maintenance Window
+#' Lists the tasks in a maintenance window
 #'
-#' Lists the tasks in a Maintenance Window.
+#' Lists the tasks in a maintenance window.
 #'
 #' @usage
 #' ssm_get_maintenance_window_task(WindowId, WindowTaskId)
 #'
-#' @param WindowId &#91;required&#93; The Maintenance Window ID that includes the task to retrieve.
-#' @param WindowTaskId &#91;required&#93; The Maintenance Window task ID to retrieve.
+#' @param WindowId &#91;required&#93; The maintenance window ID that includes the task to retrieve.
+#' @param WindowTaskId &#91;required&#93; The maintenance window task ID to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -3557,6 +3862,125 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
   return(response)
 }
 .ssm$operations$get_maintenance_window_task <- ssm_get_maintenance_window_task
+
+#' Get information about an OpsItem by using the ID
+#'
+#' Get information about an OpsItem by using the ID. You must have
+#' permission in AWS Identity and Access Management (IAM) to view
+#' information about an OpsItem. For more information, see [Getting Started
+#' with
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' in the *AWS Systems Manager User Guide*.
+#' 
+#' Operations engineers and IT professionals use the Systems Manager
+#' OpsItems capability to view, investigate, and remediate operational
+#' issues impacting the performance and health of their AWS resources. For
+#' more information, see [AWS Systems Manager
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' in the *AWS Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_get_ops_item(OpsItemId)
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem that you want to get.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ops_item(
+#'   OpsItemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_ops_item
+ssm_get_ops_item <- function(OpsItemId) {
+  op <- new_operation(
+    name = "GetOpsItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$get_ops_item_input(OpsItemId = OpsItemId)
+  output <- .ssm$get_ops_item_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_ops_item <- ssm_get_ops_item
+
+#' View a summary of OpsItems based on specified filters and aggregators
+#'
+#' View a summary of OpsItems based on specified filters and aggregators.
+#'
+#' @usage
+#' ssm_get_ops_summary(Filters, Aggregators, NextToken, MaxResults)
+#'
+#' @param Filters Optional filters used to scope down the returned OpsItems.
+#' @param Aggregators &#91;required&#93; Optional aggregators that return counts of OpsItems based on one or more
+#' expressions.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ops_summary(
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+#'     )
+#'   ),
+#'   Aggregators = list(
+#'     list(
+#'       AggregatorType = "string",
+#'       TypeName = "string",
+#'       AttributeName = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Filters = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
+#'         )
+#'       ),
+#'       Aggregators = list()
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_ops_summary
+ssm_get_ops_summary <- function(Filters = NULL, Aggregators, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetOpsSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$get_ops_summary_input(Filters = Filters, Aggregators = Aggregators, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssm$get_ops_summary_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_ops_summary <- ssm_get_ops_summary
 
 #' Get information about a parameter by using the parameter name
 #'
@@ -3712,10 +4136,10 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' @param Recursive Retrieve all parameters within a hierarchy.
 #' 
 #' If a user has access to a path, then the user can access all levels of
-#' that path. For example, if a user has permission to access path /a, then
-#' the user can also access /a/b. Even if a user has explicitly been denied
-#' access in IAM for parameter /a, they can still call the
-#' GetParametersByPath API action recursively and view /a/b.
+#' that path. For example, if a user has permission to access path `/a`,
+#' then the user can also access `/a/b`. Even if a user has explicitly been
+#' denied access in IAM for parameter `/a/b`, they can still call the
+#' GetParametersByPath API action recursively for `/a` and view `/a/b`.
 #' @param ParameterFilters Filters to limit the request results.
 #' 
 #' You can\'t filter using the parameter name.
@@ -4062,8 +4486,8 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #'
 #' An invocation is copy of a command sent to a specific instance. A
 #' command can apply to one or more instances. A command invocation applies
-#' to one instance. For example, if a user executes SendCommand against
-#' three instances, then a command invocation is created for each requested
+#' to one instance. For example, if a user runs SendCommand against three
+#' instances, then a command invocation is created for each requested
 #' instance ID. ListCommandInvocations provide status about command
 #' execution.
 #'
@@ -4564,7 +4988,7 @@ ssm_list_resource_data_sync <- function(NextToken = NULL, MaxResults = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
 #'   ResourceId = "string"
 #' )
 #' ```
@@ -4821,7 +5245,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'
 #' @usage
 #' ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-#'   AllowedPattern, Tags)
+#'   AllowedPattern, Tags, Tier, Policies)
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
 #' system. The fully qualified name includes the complete hierarchy of the
@@ -4856,7 +5280,9 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' Optional but recommended.
 #' 
 #' Do not enter personally identifiable information in this field.
-#' @param Value &#91;required&#93; The parameter value that you want to add to the system.
+#' @param Value &#91;required&#93; The parameter value that you want to add to the system. Standard
+#' parameters have a value limit of 4 KB. Advanced parameters have a value
+#' limit of 8 KB.
 #' @param Type &#91;required&#93; The type of parameter that you want to add to the system.
 #' 
 #' Items in a `StringList` must be separated by a comma (,). You can\'t use
@@ -4902,6 +5328,56 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' To add tags to an existing Systems Manager parameter, use the
 #' AddTagsToResource action.
+#' @param Tier Parameter Store offers a standard tier and an advanced tier for
+#' parameters. Standard parameters have a value limit of 4 KB and can\'t be
+#' configured to use parameter policies. You can create a maximum of 10,000
+#' standard parameters per account and per Region. Standard parameters are
+#' offered at no additional cost.
+#' 
+#' Advanced parameters have a value limit of 8 KB and can be configured to
+#' use parameter policies. You can create a maximum of 100,000 advanced
+#' parameters per account and per Region. Advanced parameters incur a
+#' charge.
+#' 
+#' If you don\'t specify a parameter tier when you create a new parameter,
+#' the parameter defaults to using the standard tier. You can change a
+#' standard parameter to an advanced parameter at any time. But you can\'t
+#' revert an advanced parameter to a standard parameter. Reverting an
+#' advanced parameter to a standard parameter would result in data loss
+#' because the system would truncate the size of the parameter from 8 KB to
+#' 4 KB. Reverting would also remove any policies attached to the
+#' parameter. Lastly, advanced parameters use a different form of
+#' encryption than standard parameters.
+#' 
+#' If you no longer need an advanced parameter, or if you no longer want to
+#' incur charges for an advanced parameter, you must delete it and recreate
+#' it as a new standard parameter. For more information, see [About
+#' Advanced
+#' Parameters](http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
+#' in the *AWS Systems Manager User Guide*.
+#' @param Policies One or more policies to apply to a parameter. This action takes a JSON
+#' array. Parameter Store supports the following policy types:
+#' 
+#' Expiration: This policy deletes the parameter after it expires. When you
+#' create the policy, you specify the expiration date. You can update the
+#' expiration date and time by updating the policy. Updating the
+#' *parameter* does not affect the expiration date and time. When the
+#' expiration time is reached, Parameter Store deletes the parameter.
+#' 
+#' ExpirationNotification: This policy triggers an event in Amazon
+#' CloudWatch Events that notifies you about the expiration. By using this
+#' policy, you can receive notification before or after the expiration time
+#' is reached, in units of days or hours.
+#' 
+#' NoChangeNotification: This policy triggers a CloudWatch event if a
+#' parameter has not been modified for a specified period of time. This
+#' policy type is useful when, for example, a secret needs to be changed
+#' within a period of time, but it has not been changed.
+#' 
+#' All existing policies are preserved until you send new policies or an
+#' empty policy. For more information about parameter policies, see
+#' [Working with Parameter
+#' Policies](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-policies.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -4918,21 +5394,23 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Tier = "Standard"|"Advanced",
+#'   Policies = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_put_parameter
-ssm_put_parameter <- function(Name, Description = NULL, Value, Type, KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL, Tags = NULL) {
+ssm_put_parameter <- function(Name, Description = NULL, Value, Type, KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL, Tags = NULL, Tier = NULL, Policies = NULL) {
   op <- new_operation(
     name = "PutParameter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$put_parameter_input(Name = Name, Description = Description, Value = Value, Type = Type, KeyId = KeyId, Overwrite = Overwrite, AllowedPattern = AllowedPattern, Tags = Tags)
+  input <- .ssm$put_parameter_input(Name = Name, Description = Description, Value = Value, Type = Type, KeyId = KeyId, Overwrite = Overwrite, AllowedPattern = AllowedPattern, Tags = Tags, Tier = Tier, Policies = Policies)
   output <- .ssm$put_parameter_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -5014,29 +5492,41 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 }
 .ssm$operations$register_patch_baseline_for_patch_group <- ssm_register_patch_baseline_for_patch_group
 
-#' Registers a target with a Maintenance Window
+#' Registers a target with a maintenance window
 #'
-#' Registers a target with a Maintenance Window.
+#' Registers a target with a maintenance window.
 #'
 #' @usage
 #' ssm_register_target_with_maintenance_window(WindowId, ResourceType,
 #'   Targets, OwnerInformation, Name, Description, ClientToken)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window the target should be registered with.
-#' @param ResourceType &#91;required&#93; The type of target being registered with the Maintenance Window.
-#' @param Targets &#91;required&#93; The targets (either instances or tags).
+#' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be registered with.
+#' @param ResourceType &#91;required&#93; The type of target being registered with the maintenance window.
+#' @param Targets &#91;required&#93; The targets to register with the maintenance window. In other words, the
+#' instances to run commands on when the maintenance window runs.
 #' 
-#' Specify instances using the following format:
+#' You can specify targets using either instance IDs or tags that have been
+#' applied to instances.
 #' 
-#' `Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;`
+#' **Example 1**: Specify instance IDs
 #' 
-#' Specify tags using either of the following formats:
+#' `Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> `
 #' 
-#' `Key=tag:&lt;tag-key&gt;,Values=&lt;tag-value-1&gt;,&lt;tag-value-2&gt;`
+#' **Example 2**: Use tag key-pairs applied to instances
 #' 
-#' `Key=tag-key,Values=&lt;tag-key-1&gt;,&lt;tag-key-2&gt;`
+#' `Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> `
+#' 
+#' **Example 3**: Use tag-keys applied to instances
+#' 
+#' `Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> `
+#' 
+#' For more information about these examples formats, including the best
+#' use case for each one, see [Examples: Register Targets with a
+#' Maintenance
+#' Window](https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
+#' in the *AWS Systems Manager User Guide*.
 #' @param OwnerInformation User-provided value that will be included in any CloudWatch events
-#' raised while running tasks for these targets in this Maintenance Window.
+#' raised while running tasks for these targets in this maintenance window.
 #' @param Name An optional name for the target.
 #' @param Description An optional description for the target.
 #' @param ClientToken User-provided idempotency token.
@@ -5080,9 +5570,9 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 }
 .ssm$operations$register_target_with_maintenance_window <- ssm_register_target_with_maintenance_window
 
-#' Adds a new task to a Maintenance Window
+#' Adds a new task to a maintenance window
 #'
-#' Adds a new task to a Maintenance Window.
+#' Adds a new task to a maintenance window.
 #'
 #' @usage
 #' ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
@@ -5090,43 +5580,44 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #'   Priority, MaxConcurrency, MaxErrors, LoggingInfo, Name, Description,
 #'   ClientToken)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window the task should be added to.
-#' @param Targets &#91;required&#93; The targets (either instances or Maintenance Window targets).
+#' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be added to.
+#' @param Targets &#91;required&#93; The targets (either instances or maintenance window targets).
 #' 
 #' Specify instances using the following format:
 #' 
 #' `Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;`
 #' 
-#' Specify Maintenance Window targets using the following format:
+#' Specify maintenance window targets using the following format:
 #' 
 #' `Key=&lt;WindowTargetIds&gt;,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;`
-#' @param TaskArn &#91;required&#93; The ARN of the task to execute
-#' @param ServiceRoleArn The role to assume when running the Maintenance Window task.
+#' @param TaskArn &#91;required&#93; The ARN of the task to run.
+#' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
+#' running a maintenance window task. If you do not specify a service role
+#' ARN, Systems Manager uses your account\'s service-linked role. If no
+#' service-linked role for Systems Manager exists in your account, it is
+#' created when you run `RegisterTaskWithMaintenanceWindow`.
 #' 
-#' If you do not specify a service role ARN, Systems Manager will use your
-#' account\'s service-linked role for Systems Manager by default. If no
-#' service-linked role for Systems Manager exists in your account, it will
-#' be created when you run `RegisterTaskWithMaintenanceWindow` without
-#' specifying a service role ARN.
+#' For more information, see the following topics in the in the *AWS
+#' Systems Manager User Guide*:
 #' 
-#' For more information, see [Service-Linked Role Permissions for Systems
-#' Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' and [Should I Use a Service-Linked Role or a Custom Service Role to Run
-#' Maintenance Window
-#' Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
-#' in the *AWS Systems Manager User Guide*.
+#' -   [Service-Linked Role Permissions for Systems
+#'     Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+#' 
+#' -   [Should I Use a Service-Linked Role or a Custom Service Role to Run
+#'     Maintenance Window
+#'     Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 #' @param TaskType &#91;required&#93; The type of task being registered.
-#' @param TaskParameters The parameters that should be passed to the task when it is executed.
+#' @param TaskParameters The parameters that should be passed to the task when it is run.
 #' 
 #' `TaskParameters` has been deprecated. To specify parameters to pass to a
 #' task when it runs, instead use the `Parameters` option in the
 #' `TaskInvocationParameters` structure. For information about how Systems
-#' Manager handles these options for the supported Maintenance Window task
+#' Manager handles these options for the supported maintenance window task
 #' types, see MaintenanceWindowTaskInvocationParameters.
 #' @param TaskInvocationParameters The parameters that the task should use during execution. Populate only
 #' the fields that match the task type. All other fields should be empty.
-#' @param Priority The priority of the task in the Maintenance Window, the lower the number
-#' the higher the priority. Tasks in a Maintenance Window are scheduled in
+#' @param Priority The priority of the task in the maintenance window, the lower the number
+#' the higher the priority. Tasks in a maintenance window are scheduled in
 #' priority order with tasks that have the same priority scheduled in
 #' parallel.
 #' @param MaxConcurrency &#91;required&#93; The maximum number of targets this task can be run for in parallel.
@@ -5139,7 +5630,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix`
 #' options in the `TaskInvocationParameters` structure. For information
 #' about how Systems Manager handles these options for the supported
-#' Maintenance Window task types, see
+#' maintenance window task types, see
 #' MaintenanceWindowTaskInvocationParameters.
 #' @param Name An optional name for the task.
 #' @param Description An optional description for the task.
@@ -5250,8 +5741,8 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets, TaskArn
 #' @param ResourceType &#91;required&#93; The type of resource of which you want to remove a tag.
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. You must specify the the name of the managed instance
-#' in the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' managed instances. You must specify the name of the managed instance in
+#' the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
 #' @param ResourceId &#91;required&#93; The resource ID for which you want to remove tags. Use the ID of the
 #' resource. Here are some examples:
 #' 
@@ -5264,14 +5755,14 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets, TaskArn
 #' For the Document and Parameter values, use the name of the resource.
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
-#' managed instances. You must specify the the name of the managed instance
-#' in the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' managed instances. You must specify the name of the managed instance in
+#' the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
 #' @param TagKeys &#91;required&#93; Tag keys that you want to remove from the specified resource.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$remove_tags_from_resource(
-#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+#'   ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
 #'   ResourceId = "string",
 #'   TagKeys = list(
 #'     "string"
@@ -5401,10 +5892,24 @@ ssm_resume_session <- function(SessionId) {
 #'
 #' @param AutomationExecutionId &#91;required&#93; The unique identifier for an existing Automation execution that you want
 #' to send the signal to.
-#' @param SignalType &#91;required&#93; The type of signal. Valid signal types include the following: Approve
-#' and Reject
+#' @param SignalType &#91;required&#93; The type of signal to send to an Automation execution.
 #' @param Payload The data sent with the signal. The data schema depends on the type of
 #' signal used in the request.
+#' 
+#' For `Approve` and `Reject` signal types, the payload is an optional
+#' comment that you can send with the signal type. For example:
+#' 
+#' `Comment="Looks good"`
+#' 
+#' For `StartStep` and `Resume` signal types, you must send the name of the
+#' Automation step to start or resume as the payload. For example:
+#' 
+#' `StepName="step1"`
+#' 
+#' For the `StopStep` signal type, you must send the step execution ID as
+#' the payload. For example:
+#' 
+#' `StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"`
 #'
 #' @section Request syntax:
 #' ```
@@ -5438,9 +5943,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 }
 .ssm$operations$send_automation_signal <- ssm_send_automation_signal
 
-#' Executes commands on one or more managed instances
+#' Runs commands on one or more managed instances
 #'
-#' Executes commands on one or more managed instances.
+#' Runs commands on one or more managed instances.
 #'
 #' @usage
 #' ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
@@ -5448,9 +5953,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #'   OutputS3Region, OutputS3BucketName, OutputS3KeyPrefix, MaxConcurrency,
 #'   MaxErrors, ServiceRoleArn, NotificationConfig, CloudWatchOutputConfig)
 #'
-#' @param InstanceIds The instance IDs where the command should execute. You can specify a
-#' maximum of 50 IDs. If you prefer not to list individual instance IDs,
-#' you can instead send commands to a fleet of instances using the Targets
+#' @param InstanceIds The instance IDs where the command should run. You can specify a maximum
+#' of 50 IDs. If you prefer not to list individual instance IDs, you can
+#' instead send commands to a fleet of instances using the Targets
 #' parameter, which accepts EC2 tags. For more information about how to use
 #' targets, see [Sending Commands to a
 #' Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
@@ -5461,13 +5966,13 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' information about how to use targets, see [Sending Commands to a
 #' Fleet](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 #' in the *AWS Systems Manager User Guide*.
-#' @param DocumentName &#91;required&#93; Required. The name of the Systems Manager document to execute. This can
-#' be a public document or a custom document.
+#' @param DocumentName &#91;required&#93; Required. The name of the Systems Manager document to run. This can be a
+#' public document or a custom document.
 #' @param DocumentVersion The SSM document version to use in the request. You can specify
-#' \\$DEFAULT, \\$LATEST, or a specific version number. If you execute
-#' commands by using the AWS CLI, then you must escape the first two
-#' options by using a backslash. If you specify a version number, then you
-#' don\'t need to use the backslash. For example:
+#' \\$DEFAULT, \\$LATEST, or a specific version number. If you run commands
+#' by using the AWS CLI, then you must escape the first two options by
+#' using a backslash. If you specify a version number, then you don\'t need
+#' to use the backslash. For example:
 #' 
 #' \\--document-version \"\\\$DEFAULT\"
 #' 
@@ -5481,12 +5986,12 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @param DocumentHashType Sha256 or Sha1.
 #' 
 #' Sha1 hashes have been deprecated.
-#' @param TimeoutSeconds If this time is reached and the command has not already started
-#' executing, it will not run.
+#' @param TimeoutSeconds If this time is reached and the command has not already started running,
+#' it will not run.
 #' @param Comment User-specified information about the command, such as a brief
 #' description of what the command should do.
 #' @param Parameters The required and optional parameters specified in the document being
-#' executed.
+#' run.
 #' @param OutputS3Region (Deprecated) You can no longer specify this parameter. The system
 #' ignores it. Instead, Systems Manager automatically determines the Amazon
 #' S3 bucket region.
@@ -5494,8 +5999,8 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' stored.
 #' @param OutputS3KeyPrefix The directory structure within the S3 bucket where the responses should
 #' be stored.
-#' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to execute
-#' the command at the same time. You can specify a number such as 10 or a
+#' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to run the
+#' command at the same time. You can specify a number such as 10 or a
 #' percentage such as 10\%. The default value is 50. For more information
 #' about how to use MaxConcurrency, see [Using Concurrency
 #' Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
@@ -5507,7 +6012,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' more information about how to use MaxErrors, see [Using Error
 #' Controls](http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
 #' in the *AWS Systems Manager User Guide*.
-#' @param ServiceRoleArn The IAM role that Systems Manager uses to send notifications.
+#' @param ServiceRoleArn The ARN of the IAM service role to use to publish Amazon Simple
+#' Notification Service (Amazon SNS) notifications for Run Command
+#' commands.
 #' @param NotificationConfig Configurations for sending notifications.
 #' @param CloudWatchOutputConfig Enables Systems Manager to send Run Command output to Amazon CloudWatch
 #' Logs.
@@ -5576,17 +6083,15 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 }
 .ssm$operations$send_command <- ssm_send_command
 
-#' Use this API action to execute an association immediately and only one
-#' time
+#' Use this API action to run an association immediately and only one time
 #'
-#' Use this API action to execute an association immediately and only one
-#' time. This action can be helpful when troubleshooting associations.
+#' Use this API action to run an association immediately and only one time.
+#' This action can be helpful when troubleshooting associations.
 #'
 #' @usage
 #' ssm_start_associations_once(AssociationIds)
 #'
-#' @param AssociationIds &#91;required&#93; The association IDs that you want to execute immediately and only one
-#' time.
+#' @param AssociationIds &#91;required&#93; The association IDs that you want to run immediately and only one time.
 #'
 #' @section Request syntax:
 #' ```
@@ -5658,9 +6163,9 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' failed executions, set max-concurrency to 1 so the executions proceed
 #' one at a time.
 #' @param TargetLocations A location is a combination of AWS Regions and/or AWS accounts where you
-#' want to execute the Automation. Use this action to start an Automation
-#' in multiple Regions and multiple accounts. For more information, see
-#' [Concurrently Executing Automations in Multiple AWS Regions and
+#' want to run the Automation. Use this action to start an Automation in
+#' multiple Regions and multiple accounts. For more information, see
+#' [Executing Automations in Multiple AWS Regions and
 #' Accounts](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
@@ -5785,9 +6290,9 @@ ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
 }
 .ssm$operations$start_session <- ssm_start_session
 
-#' Stop an Automation that is currently executing
+#' Stop an Automation that is currently running
 #'
-#' Stop an Automation that is currently executing.
+#' Stop an Automation that is currently running.
 #'
 #' @usage
 #' ssm_stop_automation_execution(AutomationExecutionId, Type)
@@ -5865,6 +6370,9 @@ ssm_terminate_session <- function(SessionId) {
 #'
 #' Updates an association. You can update the association name and version,
 #' the document version, schedule, parameters, and Amazon S3 output.
+#' 
+#' When you update an association, the association immediately runs against
+#' the specified targets.
 #'
 #' @usage
 #' ssm_update_association(AssociationId, Parameters, DocumentVersion,
@@ -5881,8 +6389,7 @@ ssm_terminate_session <- function(SessionId) {
 #' update.
 #' @param OutputLocation An Amazon S3 bucket where you want to store the results of this request.
 #' @param Name The name of the SSM document that contains the configuration information
-#' for the instance. You can specify Command, Policy, or Automation
-#' documents.
+#' for the instance. You can specify Command or Automation documents.
 #' 
 #' You can specify AWS-predefined documents, documents you created, or a
 #' document that is shared with you from another account.
@@ -5928,10 +6435,10 @@ ssm_terminate_session <- function(SessionId) {
 #' target set, for example 10\%. The default value is 100\%, which means all
 #' targets run the association at the same time.
 #' 
-#' If a new instance starts and attempts to execute an association while
-#' Systems Manager is executing MaxConcurrency associations, the
-#' association is allowed to run. During the next association interval, the
-#' new instance will process its association within the limit specified for
+#' If a new instance starts and attempts to run an association while
+#' Systems Manager is running MaxConcurrency associations, the association
+#' is allowed to run. During the next association interval, the new
+#' instance will process its association within the limit specified for
 #' MaxConcurrency.
 #' @param ComplianceSeverity The severity level to assign to the association.
 #'
@@ -6137,9 +6644,9 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 }
 .ssm$operations$update_document_default_version <- ssm_update_document_default_version
 
-#' Updates an existing Maintenance Window
+#' Updates an existing maintenance window
 #'
-#' Updates an existing Maintenance Window. Only specified parameters are
+#' Updates an existing maintenance window. Only specified parameters are
 #' modified.
 #'
 #' @usage
@@ -6147,30 +6654,30 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #'   EndDate, Schedule, ScheduleTimezone, Duration, Cutoff,
 #'   AllowUnassociatedTargets, Enabled, Replace)
 #'
-#' @param WindowId &#91;required&#93; The ID of the Maintenance Window to update.
-#' @param Name The name of the Maintenance Window.
+#' @param WindowId &#91;required&#93; The ID of the maintenance window to update.
+#' @param Name The name of the maintenance window.
 #' @param Description An optional description for the update request.
-#' @param StartDate The time zone that the scheduled Maintenance Window executions are based
+#' @param StartDate The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
 #' \"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 #' information, see the [Time Zone
 #' Database](https://www.iana.org/time-zones) on the IANA website.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
-#' Maintenance Window to become inactive. EndDate allows you to set a date
-#' and time in the future when the Maintenance Window will no longer run.
-#' @param Schedule The schedule of the Maintenance Window in the form of a cron or rate
+#' maintenance window to become inactive. EndDate allows you to set a date
+#' and time in the future when the maintenance window will no longer run.
+#' @param Schedule The schedule of the maintenance window in the form of a cron or rate
 #' expression.
-#' @param ScheduleTimezone The time zone that the scheduled Maintenance Window executions are based
+#' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
 #' \"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 #' information, see the [Time Zone
 #' Database](https://www.iana.org/time-zones) on the IANA website.
-#' @param Duration The duration of the Maintenance Window in hours.
-#' @param Cutoff The number of hours before the end of the Maintenance Window that
+#' @param Duration The duration of the maintenance window in hours.
+#' @param Cutoff The number of hours before the end of the maintenance window that
 #' Systems Manager stops scheduling new tasks for execution.
-#' @param AllowUnassociatedTargets Whether targets must be registered with the Maintenance Window before
+#' @param AllowUnassociatedTargets Whether targets must be registered with the maintenance window before
 #' tasks can be defined for those targets.
-#' @param Enabled Whether the Maintenance Window is enabled.
+#' @param Enabled Whether the maintenance window is enabled.
 #' @param Replace If True, then all fields that are required by the
 #' CreateMaintenanceWindow action are also required for this API request.
 #' Optional fields that are not specified are set to null.
@@ -6212,9 +6719,9 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 }
 .ssm$operations$update_maintenance_window <- ssm_update_maintenance_window
 
-#' Modifies the target of an existing Maintenance Window
+#' Modifies the target of an existing maintenance window
 #'
-#' Modifies the target of an existing Maintenance Window. You can\'t change
+#' Modifies the target of an existing maintenance window. You can\'t change
 #' the target type, but you can change the following:
 #' 
 #' The target from being an ID target to a Tag target, or a Tag target to
@@ -6236,11 +6743,11 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #' ssm_update_maintenance_window_target(WindowId, WindowTargetId, Targets,
 #'   OwnerInformation, Name, Description, Replace)
 #'
-#' @param WindowId &#91;required&#93; The Maintenance Window ID with which to modify the target.
+#' @param WindowId &#91;required&#93; The maintenance window ID with which to modify the target.
 #' @param WindowTargetId &#91;required&#93; The target ID to modify.
 #' @param Targets The targets to add or replace.
 #' @param OwnerInformation User-provided value that will be included in any CloudWatch events
-#' raised while running tasks for these targets in this Maintenance Window.
+#' raised while running tasks for these targets in this maintenance window.
 #' @param Name A name for the update.
 #' @param Description An optional description for the update.
 #' @param Replace If True, then all fields that are required by the
@@ -6286,9 +6793,9 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 }
 .ssm$operations$update_maintenance_window_target <- ssm_update_maintenance_window_target
 
-#' Modifies a task assigned to a Maintenance Window
+#' Modifies a task assigned to a maintenance window
 #'
-#' Modifies a task assigned to a Maintenance Window. You can\'t change the
+#' Modifies a task assigned to a maintenance window. You can\'t change the
 #' task type, but you can change the following values:
 #' 
 #' -   TaskARN. For example, you can change a RUN\\_COMMAND task from
@@ -6315,33 +6822,33 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #'   Priority, MaxConcurrency, MaxErrors, LoggingInfo, Name, Description,
 #'   Replace)
 #'
-#' @param WindowId &#91;required&#93; The Maintenance Window ID that contains the task to modify.
+#' @param WindowId &#91;required&#93; The maintenance window ID that contains the task to modify.
 #' @param WindowTaskId &#91;required&#93; The task ID to modify.
 #' @param Targets The targets (either instances or tags) to modify. Instances are
 #' specified using Key=instanceids,Values=instanceID\\_1,instanceID\\_2. Tags
 #' are specified using Key=tag\\_name,Values=tag\\_value.
 #' @param TaskArn The task ARN to modify.
-#' @param ServiceRoleArn The IAM service role ARN to modify. The system assumes this role during
-#' task execution.
+#' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
+#' running a maintenance window task. If you do not specify a service role
+#' ARN, Systems Manager uses your account\'s service-linked role. If no
+#' service-linked role for Systems Manager exists in your account, it is
+#' created when you run `RegisterTaskWithMaintenanceWindow`.
 #' 
-#' If you do not specify a service role ARN, Systems Manager will use your
-#' account\'s service-linked role for Systems Manager by default. If no
-#' service-linked role for Systems Manager exists in your account, it will
-#' be created when you run `RegisterTaskWithMaintenanceWindow` without
-#' specifying a service role ARN.
+#' For more information, see the following topics in the in the *AWS
+#' Systems Manager User Guide*:
 #' 
-#' For more information, see [Service-Linked Role Permissions for Systems
-#' Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' and [Should I Use a Service-Linked Role or a Custom Service Role to Run
-#' Maintenance Window
-#' Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
-#' in the *AWS Systems Manager User Guide*.
+#' -   [Service-Linked Role Permissions for Systems
+#'     Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
+#' 
+#' -   [Should I Use a Service-Linked Role or a Custom Service Role to Run
+#'     Maintenance Window
+#'     Tasks?](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 #' @param TaskParameters The parameters to modify.
 #' 
 #' `TaskParameters` has been deprecated. To specify parameters to pass to a
 #' task when it runs, instead use the `Parameters` option in the
 #' `TaskInvocationParameters` structure. For information about how Systems
-#' Manager handles these options for the supported Maintenance Window task
+#' Manager handles these options for the supported maintenance window task
 #' types, see MaintenanceWindowTaskInvocationParameters.
 #' 
 #' The map has the following format:
@@ -6363,7 +6870,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' logs, instead use the `OutputS3BucketName` and `OutputS3KeyPrefix`
 #' options in the `TaskInvocationParameters` structure. For information
 #' about how Systems Manager handles these options for the supported
-#' Maintenance Window task types, see
+#' maintenance window task types, see
 #' MaintenanceWindowTaskInvocationParameters.
 #' @param Name The new task name to specify.
 #' @param Description The new task description to specify.
@@ -6505,6 +7012,110 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 }
 .ssm$operations$update_managed_instance_role <- ssm_update_managed_instance_role
 
+#' Edit or change an OpsItem
+#'
+#' Edit or change an OpsItem. You must have permission in AWS Identity and
+#' Access Management (IAM) to update an OpsItem. For more information, see
+#' [Getting Started with
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' in the *AWS Systems Manager User Guide*.
+#' 
+#' Operations engineers and IT professionals use the Systems Manager
+#' OpsItems capability to view, investigate, and remediate operational
+#' issues impacting the performance and health of their AWS resources. For
+#' more information, see [AWS Systems Manager
+#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' in the *AWS Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_update_ops_item(Description, OperationalData,
+#'   OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
+#'   Status, OpsItemId, Title)
+#'
+#' @param Description Update the information about the OpsItem. Provide enough information so
+#' that users reading this OpsItem for the first time understand the issue.
+#' @param OperationalData Add new keys or edit existing key-value pairs of the OperationalData map
+#' in the OpsItem object.
+#' 
+#' Operational data is custom data that provides useful reference details
+#' about the OpsItem. For example, you can specify log files, error
+#' strings, license keys, troubleshooting tips, or other relevant data. You
+#' enter operational data as key-value pairs. The key has a maximum length
+#' of 128 characters. The value has a maximum size of 20 KB.
+#' 
+#' This custom data is searchable, but with restrictions. For the
+#' `Searchable operational data` feature, all users with access to the
+#' OpsItem Overview page (as provided by the DescribeOpsItems API action)
+#' can view and search on the specified data. For the
+#' `Private operational data` feature, the data is only viewable by users
+#' who have access to the OpsItem (as provided by the GetOpsItem API
+#' action).
+#' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
+#' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
+#' sent when this OpsItem is edited or changed.
+#' @param Priority The importance of this OpsItem in relation to other OpsItems in the
+#' system.
+#' @param RelatedOpsItems One or more OpsItems that share something in common with the current
+#' OpsItems. For example, related OpsItems can include OpsItems with
+#' similar error messages, impacted resources, or statuses for the impacted
+#' resource.
+#' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
+#' For more information, see [Editing OpsItem
+#' Details](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-working-with-OpsItems-editing-details.html)
+#' in the *AWS Systems Manager User Guide*.
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
+#' @param Title A short heading that describes the nature of the OpsItem and the
+#' impacted resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_ops_item(
+#'   Description = "string",
+#'   OperationalData = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "SearchableString"|"String"
+#'     )
+#'   ),
+#'   OperationalDataToDelete = list(
+#'     "string"
+#'   ),
+#'   Notifications = list(
+#'     list(
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   RelatedOpsItems = list(
+#'     list(
+#'       OpsItemId = "string"
+#'     )
+#'   ),
+#'   Status = "Open"|"InProgress"|"Resolved",
+#'   OpsItemId = "string",
+#'   Title = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_update_ops_item
+ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, OperationalDataToDelete = NULL, Notifications = NULL, Priority = NULL, RelatedOpsItems = NULL, Status = NULL, OpsItemId, Title = NULL) {
+  op <- new_operation(
+    name = "UpdateOpsItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$update_ops_item_input(Description = Description, OperationalData = OperationalData, OperationalDataToDelete = OperationalDataToDelete, Notifications = Notifications, Priority = Priority, RelatedOpsItems = RelatedOpsItems, Status = Status, OpsItemId = OpsItemId, Title = Title)
+  output <- .ssm$update_ops_item_output()
+  svc <- .ssm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$update_ops_item <- ssm_update_ops_item
+
 #' Modifies an existing patch baseline
 #'
 #' Modifies an existing patch baseline. Fields not specified in the request
@@ -6529,7 +7140,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [Package Name Formats for Approved and Rejected
 #' Patch
-#' Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+#' Lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param ApprovedPatchesComplianceLevel Assigns a new compliance severity level to an existing patch baseline.
 #' @param ApprovedPatchesEnableNonSecurity Indicates whether the list of approved patches includes non-security
@@ -6540,7 +7151,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [Package Name Formats for Approved and Rejected
 #' Patch
-#' Lists](http://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
+#' Lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' RejectedPackages list.
@@ -6572,7 +7183,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #'   GlobalFilters = list(
 #'     PatchFilters = list(
 #'       list(
-#'         Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+#'         Key = "PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
 #'         Values = list(
 #'           "string"
 #'         )
@@ -6585,7 +7196,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #'         PatchFilterGroup = list(
 #'           PatchFilters = list(
 #'             list(
-#'               Key = "PRODUCT"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
+#'               Key = "PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PATCH_ID"|"SECTION"|"PRIORITY"|"SEVERITY",
 #'               Values = list(
 #'                 "string"
 #'               )

@@ -11,7 +11,7 @@ ec2_create_vpn_connection(CustomerGatewayId, Type, VpnGatewayId,
 \arguments{
 \item{CustomerGatewayId}{[required] The ID of the customer gateway.}
 
-\item{Type}{[required] The type of VPN connection (\code{ipsec.1}).}
+\item{Type}{[required] The type of VPN connection (\code{ipsec.1} \| \code{ipsec.2}).}
 
 \item{VpnGatewayId}{The ID of the virtual private gateway. If you specify a virtual private
 gateway, you cannot specify a transit gateway.}
@@ -28,7 +28,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a VPN connection between an existing virtual private gateway and
-a VPN customer gateway. The only supported connection type is \code{ipsec.1}.
+a VPN customer gateway. The supported connection types are \code{ipsec.1} and
+\code{ipsec.2}.
 }
 \details{
 The response includes information that you need to give to your network

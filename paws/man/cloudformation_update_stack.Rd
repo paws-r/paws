@@ -15,7 +15,7 @@ cloudformation_update_stack(StackName, TemplateBody, TemplateURL,
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.)
 
 Conditional: You must specify only one of the following parameters:
@@ -24,7 +24,7 @@ Conditional: You must specify only one of the following parameters:
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
-go to \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
@@ -60,7 +60,7 @@ be used.}
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
 stack. For more information, see the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
 data type.}
 
 \item{Capabilities}{In some cases, you must explicity acknowledge that your stack template
@@ -89,13 +89,13 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
@@ -140,7 +140,7 @@ If the list of resource types doesn't include a resource that you're
 updating, the stack update fails. By default, AWS CloudFormation grants
 permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition keys
-in IAM policies. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
+in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes to update the stack. AWS
@@ -219,7 +219,7 @@ To get a copy of the template for an existing stack, you can use the
 GetTemplate action.
 
 For more information about creating an update template, updating a
-stack, and monitoring the progress of the update, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
+stack, and monitoring the progress of the update, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_stack(

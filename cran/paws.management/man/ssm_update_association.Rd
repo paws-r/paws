@@ -24,8 +24,7 @@ update.}
 \item{OutputLocation}{An Amazon S3 bucket where you want to store the results of this request.}
 
 \item{Name}{The name of the SSM document that contains the configuration information
-for the instance. You can specify Command, Policy, or Automation
-documents.
+for the instance. You can specify Command or Automation documents.
 
 You can specify AWS-predefined documents, documents you created, or a
 document that is shared with you from another account.
@@ -77,10 +76,10 @@ time. You can specify a number, for example 10, or a percentage of the
 target set, for example 10\%. The default value is 100\%, which means all
 targets run the association at the same time.
 
-If a new instance starts and attempts to execute an association while
-Systems Manager is executing MaxConcurrency associations, the
-association is allowed to run. During the next association interval, the
-new instance will process its association within the limit specified for
+If a new instance starts and attempts to run an association while
+Systems Manager is running MaxConcurrency associations, the association
+is allowed to run. During the next association interval, the new
+instance will process its association within the limit specified for
 MaxConcurrency.}
 
 \item{ComplianceSeverity}{The severity level to assign to the association.}
@@ -88,6 +87,10 @@ MaxConcurrency.}
 \description{
 Updates an association. You can update the association name and version,
 the document version, schedule, parameters, and Amazon S3 output.
+}
+\details{
+When you update an association, the association immediately runs against
+the specified targets.
 }
 \section{Request syntax}{
 \preformatted{svc$update_association(

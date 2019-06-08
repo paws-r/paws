@@ -49,8 +49,9 @@ must be supplied.
 be supplied.
 }}
 
-\item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription, set to
-\strong{false} to create the subscription but not active it.}
+\item{Enabled}{A value that indicates whether to activate the subscription. If the
+event notification subscription is not activated, the subscription is
+created but not active.}
 
 \item{Tags}{}
 }

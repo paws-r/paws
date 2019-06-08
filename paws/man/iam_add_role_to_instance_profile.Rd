@@ -25,16 +25,16 @@ instance profile can contain only one role, and this limit cannot be
 increased. You can remove the existing role and then add a different
 role to an instance profile. You must then wait for the change to appear
 across all of AWS because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To
-force the change, you must \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile}
-and then \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile},
+force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile}
+and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile},
 or you can stop your instance and then restart it.
 }
 \details{
 The caller of this API must be granted the \code{PassRole} permission on the
 IAM role by a permissions policy.
 
-For more information about roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
-For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
+For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_role_to_instance_profile(

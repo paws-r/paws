@@ -13,7 +13,7 @@ ec2_export_transit_gateway_routes(TransitGatewayRouteTableId, Filters,
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{attachment.transit-gateway-attachment-id}- The id of the transit
+\item \code{attachment.transit-gateway-attachment-id} - The id of the transit
 gateway attachment.
 \item \code{attachment.resource-id} - The resource id of the transit gateway
 attachment.
@@ -32,7 +32,7 @@ supernet-of-match as 10.0.1.0/30, then the result returns
 \code{deleting} \| \code{failed} \| \code{modifying} \| \code{pendingAcceptance} \|
 \code{pending} \| \code{rollingBack} \| \code{rejected} \| \code{rejecting}).
 \item \code{transit-gateway-route-destination-cidr-block} - The CIDR range.
-\item \code{type} - The type of roue (\code{active} \| \code{blackhole}).
+\item \code{type} - The type of route (\code{active} \| \code{blackhole}).
 }}
 
 \item{S3Bucket}{[required] The name of the S3 bucket.}

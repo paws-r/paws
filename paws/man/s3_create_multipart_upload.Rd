@@ -77,10 +77,10 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signatu
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
 parameters}
 
-\item{ObjectLockMode}{Specifies the Object Lock mode that you want to apply to the uploaded
+\item{ObjectLockMode}{Specifies the object lock mode that you want to apply to the uploaded
 object.}
 
-\item{ObjectLockRetainUntilDate}{Specifies the date and time when you want the Object Lock to expire.}
+\item{ObjectLockRetainUntilDate}{Specifies the date and time when you want the object lock to expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the uploaded object.}
 }

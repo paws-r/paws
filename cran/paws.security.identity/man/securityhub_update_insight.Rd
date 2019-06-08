@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_insight}
 \alias{securityhub_update_insight}
-\title{Updates the AWS Security Hub insight specified by the insight ARN}
+\title{Updates the Security Hub insight that the insight ARN specifies}
 \usage{
 securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 }
@@ -13,10 +13,10 @@ securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 
 \item{Filters}{The updated filters that define this insight.}
 
-\item{GroupByAttribute}{The updated GroupBy attribute that defines this insight.}
+\item{GroupByAttribute}{The updated \code{GroupBy} attribute that defines this insight.}
 }
 \description{
-Updates the AWS Security Hub insight specified by the insight ARN.
+Updates the Security Hub insight that the insight ARN specifies.
 }
 \section{Request syntax}{
 \preformatted{svc$update_insight(
@@ -26,31 +26,31 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     AwsAccountId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Id = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     GeneratorId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Type = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     FirstObservedAt = list(
@@ -110,7 +110,7 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     SeverityLabel = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Confidence = list(
@@ -130,87 +130,87 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     Title = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Description = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecommendationText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     SourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProductFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ProductName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     CompanyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     UserDefinedFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     MalwareName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwarePath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     MalwareState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDirection = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkProtocol = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceIpV4 = list(
@@ -233,13 +233,13 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     NetworkSourceDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkSourceMac = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NetworkDestinationIpV4 = list(
@@ -262,19 +262,19 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     NetworkDestinationDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ProcessPid = list(
@@ -314,19 +314,19 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ThreatIntelIndicatorType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorValue = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorCategory = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorLastObservedAt = list(
@@ -342,56 +342,56 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ThreatIntelIndicatorSource = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ThreatIntelIndicatorSourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourcePartition = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceRegion = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceTags = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ResourceAwsEc2InstanceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -407,25 +407,25 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ResourceAwsEc2InstanceKeyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceVpcId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceSubnetId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -441,25 +441,25 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ResourceAwsS3BucketOwnerId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsS3BucketOwnerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyUserName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -475,19 +475,19 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     ResourceContainerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerImageName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     ResourceContainerLaunchedAt = list(
@@ -504,49 +504,49 @@ Updates the AWS Security Hub insight specified by the insight ARN.
       list(
         Key = "string",
         Value = "string",
-        Comparison = "CONTAINS"
+        Comparison = "EQUALS"
       )
     ),
     ComplianceStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     VerificationState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     WorkflowState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RecordState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     RelatedFindingsId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     NoteUpdatedAt = list(
@@ -562,7 +562,7 @@ Updates the AWS Security Hub insight specified by the insight ARN.
     NoteUpdatedBy = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"CONTAINS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"
       )
     ),
     Keyword = list(

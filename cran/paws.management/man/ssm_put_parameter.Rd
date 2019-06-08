@@ -5,7 +5,7 @@
 \title{Add a parameter to the system}
 \usage{
 ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-  AllowedPattern, Tags)
+  AllowedPattern, Tags, Tier, Policies)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the
@@ -38,7 +38,9 @@ Optional but recommended.
 
 Do not enter personally identifiable information in this field.}
 
-\item{Value}{[required] The parameter value that you want to add to the system.}
+\item{Value}{[required] The parameter value that you want to add to the system. Standard
+parameters have a value limit of 4 KB. Advanced parameters have a value
+limit of 8 KB.}
 
 \item{Type}{[required] The type of parameter that you want to add to the system.
 
@@ -88,6 +90,55 @@ pairs:
 
 To add tags to an existing Systems Manager parameter, use the
 AddTagsToResource action.}
+
+\item{Tier}{Parameter Store offers a standard tier and an advanced tier for
+parameters. Standard parameters have a value limit of 4 KB and can't be
+configured to use parameter policies. You can create a maximum of 10,000
+standard parameters per account and per Region. Standard parameters are
+offered at no additional cost.
+
+Advanced parameters have a value limit of 8 KB and can be configured to
+use parameter policies. You can create a maximum of 100,000 advanced
+parameters per account and per Region. Advanced parameters incur a
+charge.
+
+If you don't specify a parameter tier when you create a new parameter,
+the parameter defaults to using the standard tier. You can change a
+standard parameter to an advanced parameter at any time. But you can't
+revert an advanced parameter to a standard parameter. Reverting an
+advanced parameter to a standard parameter would result in data loss
+because the system would truncate the size of the parameter from 8 KB to
+4 KB. Reverting would also remove any policies attached to the
+parameter. Lastly, advanced parameters use a different form of
+encryption than standard parameters.
+
+If you no longer need an advanced parameter, or if you no longer want to
+incur charges for an advanced parameter, you must delete it and recreate
+it as a new standard parameter. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{About Advanced Parameters}
+in the \emph{AWS Systems Manager User Guide}.}
+
+\item{Policies}{One or more policies to apply to a parameter. This action takes a JSON
+array. Parameter Store supports the following policy types:
+
+Expiration: This policy deletes the parameter after it expires. When you
+create the policy, you specify the expiration date. You can update the
+expiration date and time by updating the policy. Updating the
+\emph{parameter} does not affect the expiration date and time. When the
+expiration time is reached, Parameter Store deletes the parameter.
+
+ExpirationNotification: This policy triggers an event in Amazon
+CloudWatch Events that notifies you about the expiration. By using this
+policy, you can receive notification before or after the expiration time
+is reached, in units of days or hours.
+
+NoChangeNotification: This policy triggers a CloudWatch event if a
+parameter has not been modified for a specified period of time. This
+policy type is useful when, for example, a secret needs to be changed
+within a period of time, but it has not been changed.
+
+All existing policies are preserved until you send new policies or an
+empty policy. For more information about parameter policies, see
+\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-policies.html}{Working with Parameter Policies}.}
 }
 \description{
 Add a parameter to the system.
@@ -106,7 +157,9 @@ Add a parameter to the system.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  Tier = "Standard"|"Advanced",
+  Policies = "string"
 )
 }
 }

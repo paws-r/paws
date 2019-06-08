@@ -6,7 +6,7 @@
 \usage{
 dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
-  ProvisionedThroughput, StreamSpecification, SSESpecification)
+  ProvisionedThroughput, StreamSpecification, SSESpecification, Tags)
 }
 \arguments{
 \item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and
@@ -16,7 +16,7 @@ indexes.}
 
 \item{KeySchema}{[required] Specifies the attributes that make up the primary key for a table or an
 index. The attributes in \code{KeySchema} must also be defined in the
-\code{AttributeDefinitions} array. For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html}{Data Model}
+\code{AttributeDefinitions} array. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html}{Data Model}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 Each \code{KeySchemaElement} in the array is composed of:
@@ -47,7 +47,7 @@ provide exactly two elements, in this order: The first element must have
 a \code{KeyType} of \code{HASH}, and the second element must have a \code{KeyType} of
 \code{RANGE}.
 
-For more information, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key}{Specifying the Primary Key}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key}{Specifying the Primary Key}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{LocalSecondaryIndexes}{One or more local secondary indexes (the maximum is 5) to be created on
@@ -138,7 +138,7 @@ If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this
 property.
 
 For current minimum and maximum provisioned throughput values, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist
@@ -162,6 +162,9 @@ the item are written to the stream.
 }}
 
 \item{SSESpecification}{Represents the settings used to enable server-side encryption.}
+
+\item{Tags}{A list of key-value pairs to label the table. For more information, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}.}
 }
 \description{
 The \code{CreateTable} operation adds a new table to your account. In an AWS
@@ -250,6 +253,12 @@ You can use the \code{DescribeTable} action to check the table status.
     Enabled = TRUE|FALSE,
     SSEType = "AES256"|"KMS",
     KMSMasterKeyId = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

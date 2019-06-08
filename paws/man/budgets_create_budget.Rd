@@ -20,6 +20,14 @@ notifications and subscribers for you.}
 \description{
 Creates a budget and, if included, notifications and subscribers.
 }
+\details{
+Only one of \code{BudgetLimit} or \code{PlannedBudgetLimits} can be present in the
+syntax at one time. Use the syntax that matches your case. The Request
+Syntax section shows the \code{BudgetLimit} syntax. For
+\code{PlannedBudgetLimits}, see the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples}{Examples}
+section.
+}
 \section{Request syntax}{
 \preformatted{svc$create_budget(
   AccountId = "string",
@@ -28,6 +36,12 @@ Creates a budget and, if included, notifications and subscribers.
     BudgetLimit = list(
       Amount = "string",
       Unit = "string"
+    ),
+    PlannedBudgetLimits = list(
+      list(
+        Amount = "string",
+        Unit = "string"
+      )
     ),
     CostFilters = list(
       list(

@@ -5,7 +5,7 @@
 \title{Searches phone numbers that can be ordered}
 \usage{
 chime_search_available_phone_numbers(AreaCode, City, Country, State,
-  MaxResults, NextToken)
+  TollFreePrefix, MaxResults, NextToken)
 }
 \arguments{
 \item{AreaCode}{The area code used to filter results.}
@@ -15,6 +15,8 @@ chime_search_available_phone_numbers(AreaCode, City, Country, State,
 \item{Country}{The country used to filter results.}
 
 \item{State}{The state used to filter results.}
+
+\item{TollFreePrefix}{The toll-free prefix that you use to filter results.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 
@@ -29,6 +31,7 @@ Searches phone numbers that can be ordered.
   City = "string",
   Country = "string",
   State = "string",
+  TollFreePrefix = "string",
   MaxResults = 123,
   NextToken = "string"
 )

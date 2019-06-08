@@ -5,12 +5,15 @@
 \title{Associates a target network with a Client VPN endpoint}
 \usage{
 ec2_associate_client_vpn_target_network(ClientVpnEndpointId, SubnetId,
-  DryRun)
+  ClientToken, DryRun)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
 
 \item{SubnetId}{[required] The ID of the subnet to associate with the Client VPN endpoint.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -28,6 +31,7 @@ subnets to provide Availability Zone redundancy.
 \preformatted{svc$associate_client_vpn_target_network(
   ClientVpnEndpointId = "string",
   SubnetId = "string",
+  ClientToken = "string",
   DryRun = TRUE|FALSE
 )
 }

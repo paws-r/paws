@@ -7,7 +7,7 @@
 batch_describe_jobs(jobs)
 }
 \arguments{
-\item{jobs}{[required] A space-separated list of up to 100 job IDs.}
+\item{jobs}{[required] A list of up to 100 job IDs.}
 }
 \description{
 Describes a list of AWS Batch jobs.

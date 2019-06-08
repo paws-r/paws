@@ -127,6 +127,7 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account \cr
 \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake \cr
 \link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request \cr
+\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region\cr
 \link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization \cr
 \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU \cr
 \link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account \cr
@@ -134,7 +135,7 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[=organizations_delete_organization]{delete_organization} \tab Deletes the organization \cr
 \link[=organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU \cr
 \link[=organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization \cr
-\link[=organizations_describe_account]{describe_account} \tab Retrieves Organizations-related information about the specified account \cr
+\link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations-related information about the specified account \cr
 \link[=organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account \cr
 \link[=organizations_describe_handshake]{describe_handshake} \tab Retrieves information about a previously requested handshake \cr
 \link[=organizations_describe_organization]{describe_organization} \tab Retrieves information about the organization that the user's account belongs to \cr
@@ -160,9 +161,12 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[=organizations_list_policies]{list_policies} \tab Retrieves the list of all policies in an organization of a specified type \cr
 \link[=organizations_list_policies_for_target]{list_policies_for_target} \tab Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account \cr
 \link[=organizations_list_roots]{list_roots} \tab Lists the roots that are defined in the current organization \cr
-\link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizaitonal units (OUs), and accounts to which the specified policy is attached \cr
-\link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU\cr
+\link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource \cr
+\link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to \cr
+\link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU \cr
 \link[=organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization \cr
+\link[=organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource \cr
+\link[=organizations_untag_resource]{untag_resource} \tab Removes a tag from the specified resource \cr
 \link[=organizations_update_organizational_unit]{update_organizational_unit} \tab Renames the specified organizational unit (OU) \cr
 \link[=organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content
 }

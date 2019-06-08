@@ -2,18 +2,18 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_get_tags}
 \alias{resourcegroups_get_tags}
-\title{Returns a list of tags that are associated with a resource, specified by
-an ARN}
+\title{Returns a list of tags that are associated with a resource group,
+specified by an ARN}
 \usage{
 resourcegroups_get_tags(Arn)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the resource for which you want a list of tags. The resource
-must exist within the account you are using.}
+\item{Arn}{[required] The ARN of the resource group for which you want a list of tags. The
+resource must exist within the account you are using.}
 }
 \description{
-Returns a list of tags that are associated with a resource, specified by
-an ARN.
+Returns a list of tags that are associated with a resource group,
+specified by an ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$get_tags(

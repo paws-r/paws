@@ -8,17 +8,17 @@ ssm_get_maintenance_window_execution_task_invocation(WindowExecutionId,
   TaskId, InvocationId)
 }
 \arguments{
-\item{WindowExecutionId}{[required] The ID of the Maintenance Window execution for which the task is a part.}
+\item{WindowExecutionId}{[required] The ID of the maintenance window execution for which the task is a part.}
 
-\item{TaskId}{[required] The ID of the specific task in the Maintenance Window task that should
+\item{TaskId}{[required] The ID of the specific task in the maintenance window task that should
 be retrieved.}
 
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }
 \description{
 Retrieves a task invocation. A task invocation is a specific task
-executing on a specific target. Maintenance Windows report status for
-all invocations.
+running on a specific target. maintenance windows report status for all
+invocations.
 }
 \section{Request syntax}{
 \preformatted{svc$get_maintenance_window_execution_task_invocation(

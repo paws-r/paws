@@ -5,10 +5,12 @@
 \title{Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations}
 \usage{
-configservice_put_config_rule(ConfigRule)
+configservice_put_config_rule(ConfigRule, Tags)
 }
 \arguments{
 \item{ConfigRule}{[required] The rule that you want to add to your account.}
+
+\item{Tags}{}
 }
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS
@@ -79,6 +81,12 @@ in the \emph{AWS Config Developer Guide}.
     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
     ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
     CreatedBy = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

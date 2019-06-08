@@ -51,8 +51,8 @@ For information about extending a Windows file system, see \href{https://docs.aw
 
 You can use CloudWatch Events to check the status of a modification to
 an EBS volume. For information about CloudWatch Events, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. You
-can also track the status of a modification using the
-DescribeVolumesModifications API. For information about tracking status
+can also track the status of a modification using
+DescribeVolumesModifications. For information about tracking status
 changes using either method, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications}.
 
 With previous-generation instance types, resizing an EBS volume may

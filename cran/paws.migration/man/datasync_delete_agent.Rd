@@ -17,10 +17,6 @@ Resource Name (ARN) of the agent in your request. The operation
 disassociates the agent from your AWS account. However, it doesn't
 delete the agent virtual machine (VM) from your on-premises environment.
 }
-\details{
-After you delete an agent, you can't reactivate it and you longer pay
-software charges for it.
-}
 \section{Request syntax}{
 \preformatted{svc$delete_agent(
   AgentArn = "string"

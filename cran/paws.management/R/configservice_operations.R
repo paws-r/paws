@@ -780,7 +780,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' @param Limit The number of rule evaluation results that you want returned.
 #' 
 #' This parameter is required if the rule limit for your account is more
-#' than the default of 50 rules.
+#' than the default of 150 rules.
 #' 
 #' For information about requesting a rule limit increase, see [AWS Config
 #' Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
@@ -2083,30 +2083,37 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #'
 #' @usage
 #' configservice_put_aggregation_authorization(AuthorizedAccountId,
-#'   AuthorizedAwsRegion)
+#'   AuthorizedAwsRegion, Tags)
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_aggregation_authorization(
 #'   AuthorizedAccountId = "string",
-#'   AuthorizedAwsRegion = "string"
+#'   AuthorizedAwsRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_aggregation_authorization
-configservice_put_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion) {
+configservice_put_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion, Tags = NULL) {
   op <- new_operation(
     name = "PutAggregationAuthorization",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion)
+  input <- .configservice$put_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion, Tags = Tags)
   output <- .configservice$put_aggregation_authorization_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)
@@ -2159,9 +2166,10 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' in the *AWS Config Developer Guide*.
 #'
 #' @usage
-#' configservice_put_config_rule(ConfigRule)
+#' configservice_put_config_rule(ConfigRule, Tags)
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -2194,6 +2202,12 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
 #'     ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
 #'     CreatedBy = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2201,14 +2215,14 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' @keywords internal
 #'
 #' @rdname configservice_put_config_rule
-configservice_put_config_rule <- function(ConfigRule) {
+configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_config_rule_input(ConfigRule = ConfigRule)
+  input <- .configservice$put_config_rule_input(ConfigRule = ConfigRule, Tags = Tags)
   output <- .configservice$put_config_rule_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)
@@ -2234,11 +2248,12 @@ configservice_put_config_rule <- function(ConfigRule) {
 #'
 #' @usage
 #' configservice_put_configuration_aggregator(ConfigurationAggregatorName,
-#'   AccountAggregationSources, OrganizationAggregationSource)
+#'   AccountAggregationSources, OrganizationAggregationSource, Tags)
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -2261,6 +2276,12 @@ configservice_put_config_rule <- function(ConfigRule) {
 #'       "string"
 #'     ),
 #'     AllAwsRegions = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2268,14 +2289,14 @@ configservice_put_config_rule <- function(ConfigRule) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_aggregator
-configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL) {
+configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigurationAggregator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource)
+  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource, Tags = Tags)
   output <- .configservice$put_configuration_aggregator_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)

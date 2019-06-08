@@ -14,7 +14,7 @@ ecs_register_task_definition(family, taskRoleArn, executionRoleArn,
 \item{family}{[required] You must specify a \code{family} for a task definition, which allows you to
 track multiple versions of the same task definition. The \code{family} is
 used as a name for your task definition. Up to 255 letters (uppercase
-and lowercase), numbers, hyphens, and underscores are allowed.}
+and lowercase), numbers, and hyphens are allowed.}
 
 \item{taskRoleArn}{The short name or full Amazon Resource Name (ARN) of the IAM role that
 containers in this task can assume. All containers in this task are
@@ -45,7 +45,7 @@ mappings.
 If the network mode is \code{awsvpc}, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
 when you create a service or run a task with the task definition. For
-more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
@@ -175,7 +175,7 @@ of undesired IPC namespace expose. For more information, see \href{https://docs.
 
 If you are setting namespaced kernel parameters using \code{systemControls}
 for the containers in the task, the following will apply to your IPC
-resource namespace. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html}{System Controls}
+resource namespace. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html}{System Controls}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 \itemize{
 \item For tasks that use the \code{host} IPC mode, IPC namespace related
@@ -210,7 +210,7 @@ correspond to those described in \href{https://docs.docker.com/engine/reference/
 in the Docker run reference. If you specify the \code{awsvpc} network mode,
 the task is allocated an elastic network interface, and you must specify
 a NetworkConfiguration when you create a service or run a task with the
-task definition. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+task definition. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{
@@ -346,6 +346,12 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
         logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
         options = list(
           "string"
+        ),
+        secretOptions = list(
+          list(
+            name = "string",
+            valueFrom = "string"
+          )
         )
       ),
       healthCheck = list(

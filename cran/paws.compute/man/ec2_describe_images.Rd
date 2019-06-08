@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_images}
 \alias{ec2_describe_images}
-\title{Describes one or more of the images (AMIs, AKIs, and ARIs) available to
-you}
+\title{Describes the specified images (AMIs, AKIs, and ARIs) available to you
+or all of the images available to you}
 \usage{
 ec2_describe_images(ExecutableUsers, Filters, ImageIds, Owners, DryRun)
 }
@@ -12,9 +12,10 @@ ec2_describe_images(ExecutableUsers, Filters, ImageIds, Owners, DryRun)
 AWS account ID, \code{self} (the sender of the request), or \code{all} (public
 AMIs).}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
-\item \code{architecture} - The image architecture (\code{i386} \| \code{x86_64}).
+\item \code{architecture} - The image architecture (\code{i386} \| \code{x86_64} \|
+\code{arm64}).
 \item \code{block-device-mapping.delete-on-termination} - A Boolean value that
 indicates whether the Amazon EBS volume is deleted on instance
 termination.
@@ -72,7 +73,7 @@ regardless of the tag value.
 \code{hvm}).
 }}
 
-\item{ImageIds}{One or more image IDs.
+\item{ImageIds}{The image IDs.
 
 Default: Describes all images available to you.}
 
@@ -88,14 +89,18 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of the images (AMIs, AKIs, and ARIs) available to
-you. Images available to you include public images, private images that
-you own, and private images owned by other AWS accounts but for which
-you have explicit launch permissions.
+Describes the specified images (AMIs, AKIs, and ARIs) available to you
+or all of the images available to you.
 }
 \details{
-Deregistered images are included in the returned results for an
-unspecified interval after deregistration.
+The images available to you include public images, private images that
+you own, and private images owned by other AWS accounts for which you
+have explicit launch permissions.
+
+Recently deregistered images appear in the returned results for a short
+interval and then return empty results. After all instances that
+reference a deregistered AMI are terminated, specifying the ID of the
+image results in an error indicating that the AMI ID cannot be found.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_images(

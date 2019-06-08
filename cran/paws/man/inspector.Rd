@@ -9,7 +9,7 @@ inspector()
 \description{
 Amazon Inspector enables you to analyze the behavior of your AWS
 resources and to identify potential security issues. For more
-information, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
+information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
 }
 \section{Operations}{
 

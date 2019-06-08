@@ -7,27 +7,35 @@ account by CreateMembers) to enable GuardDuty and allow the current AWS
 account to view and manage these accounts' GuardDuty findings on their
 behalf as the master account}
 \usage{
-guardduty_invite_members(AccountIds, DetectorId,
+guardduty_invite_members(DetectorId, AccountIds,
   DisableEmailNotification, Message)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the accounts that you want to invite to GuardDuty as members.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you
+want to invite members.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you want to invite members.}
+\item{AccountIds}{[required] A list of account IDs of the accounts that you want to invite to
+GuardDuty as members.}
 
-\item{DisableEmailNotification}{A boolean value that specifies whether you want to disable email notification to the accounts that you’re inviting to GuardDuty as members.}
+\item{DisableEmailNotification}{A boolean value that specifies whether you want to disable email
+notification to the accounts that you're inviting to GuardDuty as
+members.}
 
-\item{Message}{The invitation message that you want to send to the accounts that you’re inviting to GuardDuty as members.}
+\item{Message}{The invitation message that you want to send to the accounts that you're
+inviting to GuardDuty as members.}
 }
 \description{
-Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account.
+Invites other AWS accounts (created as members of the current AWS
+account by CreateMembers) to enable GuardDuty and allow the current AWS
+account to view and manage these accounts' GuardDuty findings on their
+behalf as the master account.
 }
 \section{Request syntax}{
 \preformatted{svc$invite_members(
+  DetectorId = "string",
   AccountIds = list(
     "string"
   ),
-  DetectorId = "string",
   DisableEmailNotification = TRUE|FALSE,
   Message = "string"
 )

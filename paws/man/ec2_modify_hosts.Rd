@@ -4,12 +4,16 @@
 \alias{ec2_modify_hosts}
 \title{Modify the auto-placement setting of a Dedicated Host}
 \usage{
-ec2_modify_hosts(AutoPlacement, HostIds)
+ec2_modify_hosts(AutoPlacement, HostIds, HostRecovery)
 }
 \arguments{
-\item{AutoPlacement}{[required] Specify whether to enable or disable auto-placement.}
+\item{AutoPlacement}{Specify whether to enable or disable auto-placement.}
 
 \item{HostIds}{[required] The IDs of the Dedicated Hosts to modify.}
+
+\item{HostRecovery}{Indicates whether to enable or disable host recovery for the Dedicated
+Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html}{Host Recovery}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \description{
 Modify the auto-placement setting of a Dedicated Host. When
@@ -25,7 +29,8 @@ instance is launched onto a suitable host with auto-placement enabled.
   AutoPlacement = "on"|"off",
   HostIds = list(
     "string"
-  )
+  ),
+  HostRecovery = "on"|"off"
 )
 }
 }

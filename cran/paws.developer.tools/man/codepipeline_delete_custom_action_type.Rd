@@ -16,8 +16,8 @@ CodeDeploy.}
 \item{version}{[required] The version of the custom action to delete.}
 }
 \description{
-Marks a custom action as deleted. PollForJobs for the custom action will
-fail after the action is marked for deletion. Only used for custom
+Marks a custom action as deleted. \code{PollForJobs} for the custom action
+will fail after the action is marked for deletion. Only used for custom
 actions.
 }
 \details{

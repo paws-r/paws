@@ -66,7 +66,8 @@ Creates a product.
     Info = list(
       "string"
     ),
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+    DisableTemplateValidation = TRUE|FALSE
   ),
   IdempotencyToken = "string"
 )

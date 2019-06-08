@@ -30,6 +30,10 @@ Use the \code{NotIpAddress} condition operator and the \code{aws:SourceIP}
 condition context key to specify the list of IP addresses that you want
 to have access to the notebook instance. For more information, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
+
+The URL that you get from a call to is valid only for 5 minutes. If you
+try to use the URL after the 5-minute limit expires, you are directed to
+the AWS console sign-in page.
 }
 \section{Request syntax}{
 \preformatted{svc$create_presigned_notebook_instance_url(

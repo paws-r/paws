@@ -7,7 +7,7 @@
 guardduty_get_detector(DetectorId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that you want to retrieve.}
+\item{DetectorId}{[required] The unique ID of the detector that you want to get.}
 }
 \description{
 Retrieves an Amazon GuardDuty detector specified by the detectorId.

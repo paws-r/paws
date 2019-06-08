@@ -26,7 +26,7 @@ version compatible with that DB parameter group family.}
 
 \item{Description}{[required] The description for the DB parameter group.}
 
-\item{Tags}{}
+\item{Tags}{The tags to be assigned to the new DB parameter group.}
 }
 \description{
 Creates a new DB parameter group.

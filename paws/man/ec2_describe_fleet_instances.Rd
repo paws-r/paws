@@ -22,7 +22,7 @@ value.}
 
 \item{FleetId}{[required] The ID of the EC2 Fleet.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{instance-type} - The instance type.
 }}

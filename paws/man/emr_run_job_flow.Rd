@@ -28,9 +28,9 @@ open-source application packages installed on the cluster. Release
 labels are in the form \code{emr-x.x.x}, where x.x.x is an Amazon EMR release
 version, for example, \code{emr-5.14.0}. For more information about Amazon
 EMR release versions and included application versions and features, see
-\url{http://docs.aws.amazon.com/emr/latest/ReleaseGuide/}. The release label
-applies only to Amazon EMR releases versions 4.x and later. Earlier
-versions use \code{AmiVersion}.}
+\url{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}. The release
+label applies only to Amazon EMR releases versions 4.x and later.
+Earlier versions use \code{AmiVersion}.}
 
 \item{Instances}{[required] A specification of the number and type of Amazon EC2 instances.}
 
@@ -43,7 +43,7 @@ nodes.}
 later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
-information, see the \href{http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+information, see the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Currently supported values are:
 \itemize{
 \item "mapr-m3" - launch the job flow using MapR M3 Edition.
@@ -57,7 +57,7 @@ A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards the
 argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
-MapR Distribution for Hadoop" in the \href{http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+MapR Distribution for Hadoop" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Supported values are:
 \itemize{
 \item "mapr-m3" - launch the cluster using MapR M3 Edition.
@@ -77,7 +77,7 @@ installed.
 \item{Applications}{Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
 applications for Amazon EMR to install and configure when launching the
 cluster. For a list of applications available for each Amazon EMR
-release version, see the \href{http://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMR Release Guide}.}
+release version, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMR Release Guide}.}
 
 \item{Configurations}{For Amazon EMR releases 4.0 and later. The list of configurations
 supplied for the EMR cluster you are creating.}
@@ -124,14 +124,14 @@ than 5.1.0.}
 \item{CustomAmiId}{Available only in Amazon EMR version 5.7.0 and later. The ID of a custom
 Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this AMI when
 it launches cluster EC2 instances. For more information about custom
-AMIs in Amazon EMR, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html}{Using a Custom AMI}
+AMIs in Amazon EMR, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html}{Using a Custom AMI}
 in the \emph{Amazon EMR Management Guide}. If omitted, the cluster uses the
 base Linux AMI for the \code{ReleaseLabel} specified. For Amazon EMR versions
 2.x and 3.x, use \code{AmiVersion} instead.
 
-For information about creating a custom AMI, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating an Amazon EBS-Backed Linux AMI}
+For information about creating a custom AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating an Amazon EBS-Backed Linux AMI}
 in the \emph{Amazon Elastic Compute Cloud User Guide for Linux Instances}.
-For information about finding an AMI ID, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding a Linux AMI}.}
+For information about finding an AMI ID, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding a Linux AMI}.}
 
 \item{EbsRootVolumeSize}{The size, in GiB, of the EBS root device volume of the Linux AMI that is
 used for each EC2 instance. Available in Amazon EMR version 4.x and
@@ -145,7 +145,7 @@ specified, no updates are applied, and all updates must be applied
 manually.}
 
 \item{KerberosAttributes}{Attributes for Kerberos configuration when Kerberos authentication is
-enabled using a security configuration. For more information see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html}{Use Kerberos Authentication}
+enabled using a security configuration. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html}{Use Kerberos Authentication}
 in the \emph{EMR Management Guide}.}
 }
 \description{
@@ -170,7 +170,7 @@ complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop. For
-more information on how to do this, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
+more information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
 in the \emph{Amazon EMR Management Guide}.
 
 For long running clusters, we recommend that you periodically store your

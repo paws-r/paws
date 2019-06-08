@@ -10,7 +10,8 @@ s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
 
-\item{AccessControlPolicy}{}
+\item{AccessControlPolicy}{Contains the elements that set the ACL permissions for an object per
+grantee.}
 
 \item{Bucket}{[required]}
 

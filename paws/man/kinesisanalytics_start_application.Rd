@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_start_application}
 \alias{kinesisanalytics_start_application}
-\title{Starts the specified Amazon Kinesis Analytics application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_start_application(ApplicationName, InputConfigurations)
 }
@@ -15,20 +16,28 @@ associated with the input. You can also specify where in the streaming
 source you want Amazon Kinesis Analytics to start reading.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Starts the specified Amazon Kinesis Analytics application. After
 creating an application, you must exclusively call this operation to
 start your application.
-}
-\details{
+
 After the application starts, it begins consuming the input data,
 processes it, and writes the output to the configured destination.
 
 The application status must be \code{READY} for you to start an application.
 You can get the application status in the console or using the
-DescribeApplication operation.
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation.
 
 After you start the application, you can stop the application from
-processing the input by calling the StopApplication operation.
+processing the input by calling the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_StopApplication.html}{StopApplication}
+operation.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:StartApplication} action.

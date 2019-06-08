@@ -3,11 +3,11 @@
 #' @include directconnect_service.R
 NULL
 
-#' Accepts a proposal request to attach a virtual private gateway to a
-#' Direct Connect gateway
+#' Accepts a proposal request to attach a virtual private gateway or
+#' transit gateway to a Direct Connect gateway
 #'
-#' Accepts a proposal request to attach a virtual private gateway to a
-#' Direct Connect gateway.
+#' Accepts a proposal request to attach a virtual private gateway or
+#' transit gateway to a Direct Connect gateway.
 #'
 #' @usage
 #' directconnect_accept_direct_connect_gateway_association_proposal(
@@ -16,9 +16,10 @@ NULL
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param proposalId &#91;required&#93; The ID of the request proposal.
-#' @param associatedGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private gateway.
-#' @param overrideAllowedPrefixesToDirectConnectGateway Overrides the Amazon VPC prefixes advertised to the Direct Connect
-#' gateway.
+#' @param associatedGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private gateway or
+#' transit gateway.
+#' @param overrideAllowedPrefixesToDirectConnectGateway Overrides the existing Amazon VPC prefixes advertised to the Direct
+#' Connect gateway.
 #'
 #' @section Request syntax:
 #' ```
@@ -291,6 +292,67 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
   return(response)
 }
 .directconnect$operations$allocate_public_virtual_interface <- directconnect_allocate_public_virtual_interface
+
+#' Provisions a transit virtual interface to be owned by the specified AWS
+#' account
+#'
+#' Provisions a transit virtual interface to be owned by the specified AWS
+#' account. Use this type of interface to connect a transit gateway to your
+#' Direct Connect gateway.
+#' 
+#' The owner of a connection provisions a transit virtual interface to be
+#' owned by the specified AWS account.
+#' 
+#' After you create a transit virtual interface, it must be confirmed by
+#' the owner using ConfirmTransitVirtualInterface. Until this step has been
+#' completed, the transit virtual interface is in the `requested` state and
+#' is not available to handle traffic.
+#'
+#' @usage
+#' directconnect_allocate_transit_virtual_interface(connectionId,
+#'   ownerAccount, newTransitVirtualInterfaceAllocation)
+#'
+#' @param connectionId &#91;required&#93; The ID of the connection on which the transit virtual interface is
+#' provisioned.
+#' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the transit virtual interface.
+#' @param newTransitVirtualInterfaceAllocation &#91;required&#93; Information about the transit virtual interface.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$allocate_transit_virtual_interface(
+#'   connectionId = "string",
+#'   ownerAccount = "string",
+#'   newTransitVirtualInterfaceAllocation = list(
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     mtu = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_allocate_transit_virtual_interface
+directconnect_allocate_transit_virtual_interface <- function(connectionId, ownerAccount, newTransitVirtualInterfaceAllocation) {
+  op <- new_operation(
+    name = "AllocateTransitVirtualInterface",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$allocate_transit_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newTransitVirtualInterfaceAllocation = newTransitVirtualInterfaceAllocation)
+  output <- .directconnect$allocate_transit_virtual_interface_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$allocate_transit_virtual_interface <- directconnect_allocate_transit_virtual_interface
 
 #' Associates an existing connection with a link aggregation group (LAG)
 #'
@@ -570,6 +632,50 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 }
 .directconnect$operations$confirm_public_virtual_interface <- directconnect_confirm_public_virtual_interface
 
+#' Accepts ownership of a transit virtual interface created by another AWS
+#' account
+#'
+#' Accepts ownership of a transit virtual interface created by another AWS
+#' account.
+#' 
+#' After the owner of the transit virtual interface makes this call, the
+#' specified transit virtual interface is created and made available to
+#' handle traffic.
+#'
+#' @usage
+#' directconnect_confirm_transit_virtual_interface(virtualInterfaceId,
+#'   directConnectGatewayId)
+#'
+#' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
+#' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$confirm_transit_virtual_interface(
+#'   virtualInterfaceId = "string",
+#'   directConnectGatewayId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_confirm_transit_virtual_interface
+directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, directConnectGatewayId) {
+  op <- new_operation(
+    name = "ConfirmTransitVirtualInterface",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$confirm_transit_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, directConnectGatewayId = directConnectGatewayId)
+  output <- .directconnect$confirm_transit_virtual_interface_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$confirm_transit_virtual_interface <- directconnect_confirm_transit_virtual_interface
+
 #' Creates a BGP peer on the specified virtual interface
 #'
 #' Creates a BGP peer on the specified virtual interface.
@@ -748,7 +854,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #'   addAllowedPrefixesToDirectConnectGateway, virtualGatewayId)
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
-#' @param gatewayId The ID of the virtual private gateway.
+#' @param gatewayId The ID of the virtual private gateway or transit gateway.
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway
 #' @param virtualGatewayId The ID of the virtual private gateway.
 #'
@@ -785,15 +891,16 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 }
 .directconnect$operations$create_direct_connect_gateway_association <- directconnect_create_direct_connect_gateway_association
 
-#' Creates a proposal to associate the specified virtual private gateway
-#' with the specified Direct Connect gateway
+#' Creates a proposal to associate the specified virtual private gateway or
+#' transit gateway with the specified Direct Connect gateway
 #'
-#' Creates a proposal to associate the specified virtual private gateway
-#' with the specified Direct Connect gateway.
+#' Creates a proposal to associate the specified virtual private gateway or
+#' transit gateway with the specified Direct Connect gateway.
 #' 
 #' You can only associate a Direct Connect gateway and virtual private
-#' gateway when the account that owns the Direct Connect gateway and the
-#' account that owns the virtual private gateway have the same payer ID.
+#' gateway or transit gateway when the account that owns the Direct Connect
+#' gateway and the account that owns the virtual private gateway or transit
+#' gateway have the same AWS Payer ID.
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway_association_proposal(
@@ -803,7 +910,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param directConnectGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the Direct Connect gateway.
-#' @param gatewayId &#91;required&#93; The ID of the virtual private gateway.
+#' @param gatewayId &#91;required&#93; The ID of the virtual private gateway or transit gateway.
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 #' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
 #' gateway.
@@ -1099,6 +1206,58 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 }
 .directconnect$operations$create_public_virtual_interface <- directconnect_create_public_virtual_interface
 
+#' Creates a transit virtual interface
+#'
+#' Creates a transit virtual interface. A transit virtual interface is a
+#' VLAN that transports traffic from a Direct Connect gateway to one or
+#' more transit gateways. A transit virtual interface enables the
+#' connection of multiple VPCs attached to a transit gateway to a Direct
+#' Connect gateway.
+#'
+#' @usage
+#' directconnect_create_transit_virtual_interface(connectionId,
+#'   newTransitVirtualInterface)
+#'
+#' @param connectionId &#91;required&#93; The ID of the connection.
+#' @param newTransitVirtualInterface &#91;required&#93; Information about the transit virtual interface.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_transit_virtual_interface(
+#'   connectionId = "string",
+#'   newTransitVirtualInterface = list(
+#'     virtualInterfaceName = "string",
+#'     vlan = 123,
+#'     asn = 123,
+#'     mtu = 123,
+#'     authKey = "string",
+#'     amazonAddress = "string",
+#'     customerAddress = "string",
+#'     addressFamily = "ipv4"|"ipv6",
+#'     directConnectGatewayId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_create_transit_virtual_interface
+directconnect_create_transit_virtual_interface <- function(connectionId, newTransitVirtualInterface) {
+  op <- new_operation(
+    name = "CreateTransitVirtualInterface",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$create_transit_virtual_interface_input(connectionId = connectionId, newTransitVirtualInterface = newTransitVirtualInterface)
+  output <- .directconnect$create_transit_virtual_interface_output()
+  svc <- .directconnect$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$create_transit_virtual_interface <- directconnect_create_transit_virtual_interface
+
 #' Deletes the specified BGP peer on the specified virtual interface with
 #' the specified customer address and ASN
 #'
@@ -1267,10 +1426,10 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 .directconnect$operations$delete_direct_connect_gateway_association <- directconnect_delete_direct_connect_gateway_association
 
 #' Deletes the association proposal request between the specified Direct
-#' Connect gateway and virtual private gateway
+#' Connect gateway and virtual private gateway or transit gateway
 #'
 #' Deletes the association proposal request between the specified Direct
-#' Connect gateway and virtual private gateway.
+#' Connect gateway and virtual private gateway or transit gateway.
 #'
 #' @usage
 #' directconnect_delete_direct_connect_gateway_association_proposal(
@@ -1541,10 +1700,10 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 .directconnect$operations$describe_connections_on_interconnect <- directconnect_describe_connections_on_interconnect
 
 #' Describes one or more association proposals for connection between a
-#' virtual private gateway and a Direct Connect gateway
+#' virtual private gateway or transit gateway and a Direct Connect gateway
 #'
 #' Describes one or more association proposals for connection between a
-#' virtual private gateway and a Direct Connect gateway.
+#' virtual private gateway or transit gateway and a Direct Connect gateway.
 #'
 #' @usage
 #' directconnect_describe_direct_connect_gateway_association_proposals(
@@ -1553,7 +1712,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param proposalId The ID of the proposal.
-#' @param associatedGatewayId The ID of the associated virtual private gateway.
+#' @param associatedGatewayId The ID of the associated gateway.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.

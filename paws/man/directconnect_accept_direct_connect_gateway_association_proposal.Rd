@@ -2,8 +2,8 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_accept_direct_connect_gateway_association_proposal}
 \alias{directconnect_accept_direct_connect_gateway_association_proposal}
-\title{Accepts a proposal request to attach a virtual private gateway to a
-Direct Connect gateway}
+\title{Accepts a proposal request to attach a virtual private gateway or
+transit gateway to a Direct Connect gateway}
 \usage{
 directconnect_accept_direct_connect_gateway_association_proposal(
   directConnectGatewayId, proposalId, associatedGatewayOwnerAccount,
@@ -14,14 +14,15 @@ directconnect_accept_direct_connect_gateway_association_proposal(
 
 \item{proposalId}{[required] The ID of the request proposal.}
 
-\item{associatedGatewayOwnerAccount}{[required] The ID of the AWS account that owns the virtual private gateway.}
+\item{associatedGatewayOwnerAccount}{[required] The ID of the AWS account that owns the virtual private gateway or
+transit gateway.}
 
-\item{overrideAllowedPrefixesToDirectConnectGateway}{Overrides the Amazon VPC prefixes advertised to the Direct Connect
-gateway.}
+\item{overrideAllowedPrefixesToDirectConnectGateway}{Overrides the existing Amazon VPC prefixes advertised to the Direct
+Connect gateway.}
 }
 \description{
-Accepts a proposal request to attach a virtual private gateway to a
-Direct Connect gateway.
+Accepts a proposal request to attach a virtual private gateway or
+transit gateway to a Direct Connect gateway.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_direct_connect_gateway_association_proposal(

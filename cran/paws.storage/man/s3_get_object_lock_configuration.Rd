@@ -2,16 +2,16 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_lock_configuration}
 \alias{s3_get_object_lock_configuration}
-\title{Gets the Object Lock configuration for a bucket}
+\title{Gets the object lock configuration for a bucket}
 \usage{
 s3_get_object_lock_configuration(Bucket)
 }
 \arguments{
-\item{Bucket}{[required] The bucket whose Object Lock configuration you want to retrieve.}
+\item{Bucket}{[required] The bucket whose object lock configuration you want to retrieve.}
 }
 \description{
-Gets the Object Lock configuration for a bucket. The rule specified in
-the Object Lock configuration will be applied by default to every new
+Gets the object lock configuration for a bucket. The rule specified in
+the object lock configuration will be applied by default to every new
 object placed in the specified bucket.
 }
 \section{Request syntax}{

@@ -36,6 +36,11 @@ use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 and the value is optional. For example, Environment=Test. If you do not
 specify a value, Environment=.
 
+Generally allowed characters are: letters, numbers, and spaces
+representable in UTF-8, and the following special characters:
+
+\_ . : / = + \ - @
+
 If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}

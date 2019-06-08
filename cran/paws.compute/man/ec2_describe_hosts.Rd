@@ -2,12 +2,12 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_hosts}
 \alias{ec2_describe_hosts}
-\title{Describes one or more of your Dedicated Hosts}
+\title{Describes the specified Dedicated Hosts or all your Dedicated Hosts}
 \usage{
 ec2_describe_hosts(Filter, HostIds, MaxResults, NextToken)
 }
 \arguments{
-\item{Filter}{One or more filters.
+\item{Filter}{The filters.
 \itemize{
 \item \code{auto-placement} - Whether auto-placement is enabled or disabled
 (\code{on} \| \code{off}).
@@ -32,14 +32,15 @@ launches.}
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
 the returned \code{nextToken} value. This value can be between 5 and 500. If
-\code{maxResults} is given a larger value than 500, you receive an error. You
-cannot specify this parameter and the host IDs parameter in the same
+\code{maxResults} is given a larger value than 500, you receive an error.
+
+You cannot specify this parameter and the host IDs parameter in the same
 request.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
-Describes one or more of your Dedicated Hosts.
+Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 }
 \details{
 The results describe only the Dedicated Hosts in the Region you're

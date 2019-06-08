@@ -1023,6 +1023,11 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' group, interleaved in a single response. If the value is false, all the
 #' matched log events in the first log stream are searched first, then
 #' those in the next log stream, and so on. The default is false.
+#' 
+#' **IMPORTANT:** Starting on June 17, 2019, this parameter will be ignored
+#' and the value will be assumed to be true. The response from this
+#' operation will always interleave events from multiple log streams within
+#' a log group.
 #'
 #' @section Request syntax:
 #' ```
@@ -1224,8 +1229,11 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #' Returns the results from the specified query
 #'
 #' Returns the results from the specified query. If the query is in
-#' progress, partial results of that current execution are returned. Only
-#' the fields requested in the query are returned.
+#' progress, partial results of that current execution are returned.
+#' 
+#' Only the fields requested in the query are returned, along with a `@ptr`
+#' field which is the identifier for the log record. You can use the value
+#' of `@ptr` in a operation to get the full log record.
 #' 
 #' `GetQueryResults` does not start a query execution. To run a query, use
 #' .
@@ -1410,8 +1418,8 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' -   None of the log events in the batch can be more than 2 hours in the
 #'     future.
 #' 
-#' -   None of the log events in the batch can be older than 14 days or the
-#'     retention period of the log group.
+#' -   None of the log events in the batch can be older than 14 days or
+#'     older than the retention period of the log group.
 #' 
 #' -   The log events in the batch must be in chronological ordered by
 #'     their timestamp. The timestamp is the time the event occurred,
@@ -1544,7 +1552,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @param policyName Name of the new policy. This parameter is required.
 #' @param policyDocument Details of the new policy, including the identity of the principal that
 #' is enabled to put logs to this account. This is formatted as a JSON
-#' string.
+#' string. This parameter is required.
 #' 
 #' The following example creates a resource policy enabling the Route 53
 #' service to put DNS query logs in to the specified log group. Replace
@@ -1718,6 +1726,10 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' 
 #' For more information, see [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' 
+#' Queries time out after 15 minutes of execution. If your queries are
+#' timing out, reduce the time range being searched, or partition your
+#' query into a number of queries.
 #'
 #' @usage
 #' cloudwatchlogs_start_query(logGroupName, startTime, endTime,

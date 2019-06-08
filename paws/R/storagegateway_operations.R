@@ -62,7 +62,7 @@ NULL
 #' gateway. This field is optional.
 #' 
 #' Valid Values: \"STK-L700\", \"AWS-Gateway-VTL\"
-#' @param Tags A list of up to 10 tags that can be assigned to the gateway. Each tag is
+#' @param Tags A list of up to 50 tags that can be assigned to the gateway. Each tag is
 #' a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
@@ -195,7 +195,7 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' 
 #' -   NFS and SMB file shares
 #' 
-#' You can create a maximum of 10 tags for each resource. Virtual tapes and
+#' You can create a maximum of 50 tags for each resource. Virtual tapes and
 #' storage volumes that are recovered to a new gateway maintain their tags.
 #'
 #' @usage
@@ -376,6 +376,56 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
   return(response)
 }
 .storagegateway$operations$add_working_storage <- storagegateway_add_working_storage
+
+#' Assigns a tape to a tape pool for archiving
+#'
+#' Assigns a tape to a tape pool for archiving. The tape assigned to a pool
+#' is archived in the S3 storage class that is associated with the pool.
+#' When you use your backup application to eject the tape, the tape is
+#' archived directly into the S3 storage class (Glacier or Deep Archive)
+#' that corresponds to the pool.
+#' 
+#' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
+#'
+#' @usage
+#' storagegateway_assign_tape_pool(TapeARN, PoolId)
+#'
+#' @param TapeARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the virtual tape that you want
+#' to add to the tape pool.
+#' @param PoolId &#91;required&#93; The ID of the pool that you want to add your tape to for archiving. The
+#' tape in this pool is archived in the S3 storage class that is associated
+#' with the pool. When you use your backup application to eject the tape,
+#' the tape is archived directly into the storage class (Glacier or Deep
+#' Archive) that corresponds to the pool.
+#' 
+#' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
+#'
+#' @section Request syntax:
+#' ```
+#' svc$assign_tape_pool(
+#'   TapeARN = "string",
+#'   PoolId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_assign_tape_pool
+storagegateway_assign_tape_pool <- function(TapeARN, PoolId) {
+  op <- new_operation(
+    name = "AssignTapePool",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$assign_tape_pool_input(TapeARN = TapeARN, PoolId = PoolId)
+  output <- .storagegateway$assign_tape_pool_output()
+  svc <- .storagegateway$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$assign_tape_pool <- storagegateway_assign_tape_pool
 
 #' Connects a volume to an iSCSI connection and then attaches the volume to
 #' the specified gateway
@@ -565,7 +615,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @usage
 #' storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
 #'   SnapshotId, TargetName, SourceVolumeARN, NetworkInterfaceId,
-#'   ClientToken, KMSEncrypted, KMSKey)
+#'   ClientToken, KMSEncrypted, KMSKey, Tags)
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param VolumeSizeInBytes &#91;required&#93; The size of the volume in bytes.
@@ -600,6 +650,13 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @param KMSKey The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
 #' server side encryption. This value can only be set when KMSEncrypted is
 #' true. Optional.
+#' @param Tags A list of up to 50 tags that can be assigned to a cached volume. Each
+#' tag is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -612,7 +669,13 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #'   NetworkInterfaceId = "string",
 #'   ClientToken = "string",
 #'   KMSEncrypted = TRUE|FALSE,
-#'   KMSKey = "string"
+#'   KMSKey = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -630,14 +693,14 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_cachedi_scsi_volume
-storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBytes, SnapshotId = NULL, TargetName, SourceVolumeARN = NULL, NetworkInterfaceId, ClientToken, KMSEncrypted = NULL, KMSKey = NULL) {
+storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBytes, SnapshotId = NULL, TargetName, SourceVolumeARN = NULL, NetworkInterfaceId, ClientToken, KMSEncrypted = NULL, KMSKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCachediSCSIVolume",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_cachedi_scsi_volume_input(GatewayARN = GatewayARN, VolumeSizeInBytes = VolumeSizeInBytes, SnapshotId = SnapshotId, TargetName = TargetName, SourceVolumeARN = SourceVolumeARN, NetworkInterfaceId = NetworkInterfaceId, ClientToken = ClientToken, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey)
+  input <- .storagegateway$create_cachedi_scsi_volume_input(GatewayARN = GatewayARN, VolumeSizeInBytes = VolumeSizeInBytes, SnapshotId = SnapshotId, TargetName = TargetName, SourceVolumeARN = SourceVolumeARN, NetworkInterfaceId = NetworkInterfaceId, ClientToken = ClientToken, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_cachedi_scsi_volume_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -706,10 +769,15 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to true to enable MIME type
 #' guessing, and otherwise to false. The default value is true.
-#' @param RequesterPays A value that sets the access control list permission for objects in the
-#' Amazon S3 bucket that a file gateway puts objects into. The default
-#' value is `private`.
-#' @param Tags A list of up to 10 tags that can be assigned to the NFS file share. Each
+#' @param RequesterPays A value that sets who pays the cost of the request and the cost
+#' associated with data download from the S3 bucket. If this value is set
+#' to true, the requester pays the costs. Otherwise the S3 bucket owner
+#' pays. However, the S3 bucket owner always pays the cost of storing data.
+#' 
+#' `RequesterPays` is a configuration for the S3 bucket that backs the file
+#' share, so make sure that the configuration on the file share is the same
+#' as the S3 bucket configuration.
+#' @param Tags A list of up to 50 tags that can be assigned to the NFS file share. Each
 #' tag is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
@@ -793,8 +861,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @usage
 #' storagegateway_create_smb_file_share(ClientToken, GatewayARN,
 #'   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
-#'   ReadOnly, GuessMIMETypeEnabled, RequesterPays, ValidUserList,
-#'   InvalidUserList, Authentication, Tags)
+#'   ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
+#'   AdminUserList, ValidUserList, InvalidUserList, Authentication, Tags)
 #'
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by file gateway to
 #' ensure idempotent file share creation.
@@ -820,9 +888,25 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to true to enable MIME type
 #' guessing, and otherwise to false. The default value is true.
-#' @param RequesterPays A value that sets the access control list permission for objects in the
-#' Amazon S3 bucket that a file gateway puts objects into. The default
-#' value is `private`.
+#' @param RequesterPays A value that sets who pays the cost of the request and the cost
+#' associated with data download from the S3 bucket. If this value is set
+#' to true, the requester pays the costs. Otherwise the S3 bucket owner
+#' pays. However, the S3 bucket owner always pays the cost of storing data.
+#' 
+#' `RequesterPays` is a configuration for the S3 bucket that backs the file
+#' share, so make sure that the configuration on the file share is the same
+#' as the S3 bucket configuration.
+#' @param SMBACLEnabled Set this value to \"true to enable ACL (access control list) on the SMB
+#' file share. Set it to \"false\" to map file and directory permissions to
+#' the POSIX permissions.
+#' 
+#' For more information, see
+#' https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
+#' in the Storage Gateway User Guide.
+#' @param AdminUserList A list of users or groups in the Active Directory that have
+#' administrator rights to the file share. A group must be prefixed with
+#' the @ character. For example `@group1`. Can only be set if
+#' Authentication is set to `ActiveDirectory`.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @ character.
 #' For example `@group1`. Can only be set if Authentication is set to
@@ -835,7 +919,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' Valid values are `ActiveDirectory` or `GuestAccess`. The default is
 #' `ActiveDirectory`.
-#' @param Tags A list of up to 10 tags that can be assigned to the NFS file share. Each
+#' @param Tags A list of up to 50 tags that can be assigned to the NFS file share. Each
 #' tag is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
@@ -857,6 +941,10 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #'   ReadOnly = TRUE|FALSE,
 #'   GuessMIMETypeEnabled = TRUE|FALSE,
 #'   RequesterPays = TRUE|FALSE,
+#'   SMBACLEnabled = TRUE|FALSE,
+#'   AdminUserList = list(
+#'     "string"
+#'   ),
 #'   ValidUserList = list(
 #'     "string"
 #'   ),
@@ -876,14 +964,14 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_smb_file_share
-storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL, Authentication = NULL, Tags = NULL) {
+storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, Authentication = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSMBFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, Authentication = Authentication, Tags = Tags)
+  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, Authentication = Authentication, Tags = Tags)
   output <- .storagegateway$create_smb_file_share_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -900,7 +988,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' snapshots of your data to Amazon Simple Storage (S3) for durable
 #' off-site recovery, as well as import the data to an Amazon Elastic Block
 #' Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
-#' snapshots of your gateway volume on a scheduled or ad-hoc basis. This
+#' snapshots of your gateway volume on a scheduled or ad hoc basis. This
 #' API enables you to take ad-hoc snapshot. For more information, see
 #' [Editing a Snapshot
 #' Schedule](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
@@ -924,7 +1012,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' page.
 #'
 #' @usage
-#' storagegateway_create_snapshot(VolumeARN, SnapshotDescription)
+#' storagegateway_create_snapshot(VolumeARN, SnapshotDescription, Tags)
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 #' operation to return a list of gateway volumes.
@@ -932,12 +1020,25 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' console, Elastic Block Store snapshots panel in the **Description**
 #' field, and in the AWS Storage Gateway snapshot **Details** pane,
 #' **Description** field
+#' @param Tags A list of up to 50 tags that can be assigned to a snapshot. Each tag is
+#' a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_snapshot(
 #'   VolumeARN = "string",
-#'   SnapshotDescription = "string"
+#'   SnapshotDescription = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -951,14 +1052,14 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_snapshot
-storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription) {
+storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_snapshot_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription)
+  input <- .storagegateway$create_snapshot_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription, Tags = Tags)
   output <- .storagegateway$create_snapshot_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -1054,7 +1155,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @usage
 #' storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 #'   SnapshotId, PreserveExistingData, TargetName, NetworkInterfaceId,
-#'   KMSEncrypted, KMSKey)
+#'   KMSEncrypted, KMSKey, Tags)
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
@@ -1089,6 +1190,13 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @param KMSKey The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
 #' side encryption. This value can only be set when KMSEncrypted is true.
 #' Optional.
+#' @param Tags A list of up to 50 tags that can be assigned to a stored volume. Each
+#' tag is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1100,7 +1208,13 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #'   TargetName = "string",
 #'   NetworkInterfaceId = "string",
 #'   KMSEncrypted = TRUE|FALSE,
-#'   KMSKey = "string"
+#'   KMSKey = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1118,14 +1232,14 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_storedi_scsi_volume
-storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, SnapshotId = NULL, PreserveExistingData, TargetName, NetworkInterfaceId, KMSEncrypted = NULL, KMSKey = NULL) {
+storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, SnapshotId = NULL, PreserveExistingData, TargetName, NetworkInterfaceId, KMSEncrypted = NULL, KMSKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStorediSCSIVolume",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_storedi_scsi_volume_input(GatewayARN = GatewayARN, DiskId = DiskId, SnapshotId = SnapshotId, PreserveExistingData = PreserveExistingData, TargetName = TargetName, NetworkInterfaceId = NetworkInterfaceId, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey)
+  input <- .storagegateway$create_storedi_scsi_volume_input(GatewayARN = GatewayARN, DiskId = DiskId, SnapshotId = SnapshotId, PreserveExistingData = PreserveExistingData, TargetName = TargetName, NetworkInterfaceId = NetworkInterfaceId, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_storedi_scsi_volume_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -1148,7 +1262,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #'
 #' @usage
 #' storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-#'   TapeBarcode, KMSEncrypted, KMSKey, PoolId)
+#'   TapeBarcode, KMSEncrypted, KMSKey, PoolId, Tags)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tape with. Use the ListGateways operation to
@@ -1172,6 +1286,13 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' Archive) that corresponds to the pool.
 #' 
 #' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
+#' @param Tags A list of up to 50 tags that can be assigned to a virtual tape that has
+#' a barcode. Each tag is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1181,7 +1302,13 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #'   TapeBarcode = "string",
 #'   KMSEncrypted = TRUE|FALSE,
 #'   KMSKey = "string",
-#'   PoolId = "string"
+#'   PoolId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1196,14 +1323,14 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tape_with_barcode
-storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes, TapeBarcode, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL) {
+storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes, TapeBarcode, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTapeWithBarcode",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId)
+  input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Tags = Tags)
   output <- .storagegateway$create_tape_with_barcode_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -1224,7 +1351,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #'
 #' @usage
 #' storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
-#'   NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId)
+#'   NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId, Tags)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tapes with. Use the ListGateways operation to
@@ -1249,12 +1376,19 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' server side encryption. This value can only be set when KMSEncrypted is
 #' true. Optional.
 #' @param PoolId The ID of the pool that you want to add your tape to for archiving. The
-#' tape in this pool is archived in the S3 storage class you chose when you
-#' created the tape. When you use your backup application to eject the
-#' tape, the tape is archived directly into the storage class (Glacier or
-#' Deep Archive).
+#' tape in this pool is archived in the S3 storage class that is associated
+#' with the pool. When you use your backup application to eject the tape,
+#' the tape is archived directly into the storage class (Glacier or Deep
+#' Archive) that corresponds to the pool.
 #' 
 #' Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"
+#' @param Tags A list of up to 50 tags that can be assigned to a virtual tape. Each tag
+#' is a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1266,7 +1400,13 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #'   TapeBarcodePrefix = "string",
 #'   KMSEncrypted = TRUE|FALSE,
 #'   KMSKey = "string",
-#'   PoolId = "string"
+#'   PoolId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1283,14 +1423,14 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tapes
-storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL) {
+storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTapes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId)
+  input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Tags = Tags)
   output <- .storagegateway$create_tapes_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -3198,6 +3338,14 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' your RefreshCache operation completes. For more information, see
 #' [Getting Notified About File
 #' Operations](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification).
+#' 
+#' When this API is called, it only initiates the refresh operation. When
+#' the API call completes and returns a success code, it doesn\'t
+#' necessarily mean that the file refresh has completed. You should use the
+#' refresh-complete notification to determine that the operation has
+#' completed before you check for new files on the gateway file share. You
+#' can subscribe to be notified through an CloudWatch event when your
+#' `RefreshCache` operation completes.
 #'
 #' @usage
 #' storagegateway_refresh_cache(FileShareARN, FolderList, Recursive)
@@ -3930,7 +4078,7 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #'
 #' @usage
 #' storagegateway_update_maintenance_start_time(GatewayARN, HourOfDay,
-#'   MinuteOfHour, DayOfWeek)
+#'   MinuteOfHour, DayOfWeek, DayOfMonth)
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param HourOfDay &#91;required&#93; The hour component of the maintenance start time represented as *hh*,
@@ -3939,8 +4087,14 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @param MinuteOfHour &#91;required&#93; The minute component of the maintenance start time represented as *mm*,
 #' where *mm* is the minute (00 to 59). The minute of the hour is in the
 #' time zone of the gateway.
-#' @param DayOfWeek &#91;required&#93; The maintenance start time day of the week represented as an ordinal
-#' number from 0 to 6, where 0 represents Sunday and 6 Saturday.
+#' @param DayOfWeek The day of the week component of the maintenance start time week
+#' represented as an ordinal number from 0 to 6, where 0 represents Sunday
+#' and 6 Saturday.
+#' @param DayOfMonth The day of the month component of the maintenance start time represented
+#' as an ordinal number from 1 to 28, where 1 represents the first day of
+#' the month and 28 represents the last day of the month.
+#' 
+#' This value is only available for tape and volume gateways.
 #'
 #' @section Request syntax:
 #' ```
@@ -3948,7 +4102,8 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #'   GatewayARN = "string",
 #'   HourOfDay = 123,
 #'   MinuteOfHour = 123,
-#'   DayOfWeek = 123
+#'   DayOfWeek = 123,
+#'   DayOfMonth = 123
 #' )
 #' ```
 #'
@@ -3966,14 +4121,14 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_maintenance_start_time
-storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, MinuteOfHour, DayOfWeek) {
+storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, MinuteOfHour, DayOfWeek = NULL, DayOfMonth = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceStartTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_maintenance_start_time_input(GatewayARN = GatewayARN, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek)
+  input <- .storagegateway$update_maintenance_start_time_input(GatewayARN = GatewayARN, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth)
   output <- .storagegateway$update_maintenance_start_time_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -4038,9 +4193,14 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to true to enable MIME type
 #' guessing, and otherwise to false. The default value is true.
-#' @param RequesterPays A value that sets the access control list permission for objects in the
-#' Amazon S3 bucket that a file gateway puts objects into. The default
-#' value is `private`.
+#' @param RequesterPays A value that sets who pays the cost of the request and the cost
+#' associated with data download from the S3 bucket. If this value is set
+#' to true, the requester pays the costs. Otherwise the S3 bucket owner
+#' pays. However, the S3 bucket owner always pays the cost of storing data.
+#' 
+#' `RequesterPays` is a configuration for the S3 bucket that backs the file
+#' share, so make sure that the configuration on the file share is the same
+#' as the S3 bucket configuration.
 #'
 #' @section Request syntax:
 #' ```
@@ -4107,7 +4267,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @usage
 #' storagegateway_update_smb_file_share(FileShareARN, KMSEncrypted, KMSKey,
 #'   DefaultStorageClass, ObjectACL, ReadOnly, GuessMIMETypeEnabled,
-#'   RequesterPays, ValidUserList, InvalidUserList)
+#'   RequesterPays, SMBACLEnabled, AdminUserList, ValidUserList,
+#'   InvalidUserList)
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the SMB file share that you want to
 #' update.
@@ -4128,9 +4289,25 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to true to enable MIME type
 #' guessing, and otherwise to false. The default value is true.
-#' @param RequesterPays A value that sets the access control list permission for objects in the
-#' Amazon S3 bucket that a file gateway puts objects into. The default
-#' value is `private`.
+#' @param RequesterPays A value that sets who pays the cost of the request and the cost
+#' associated with data download from the S3 bucket. If this value is set
+#' to true, the requester pays the costs. Otherwise the S3 bucket owner
+#' pays. However, the S3 bucket owner always pays the cost of storing data.
+#' 
+#' `RequesterPays` is a configuration for the S3 bucket that backs the file
+#' share, so make sure that the configuration on the file share is the same
+#' as the S3 bucket configuration.
+#' @param SMBACLEnabled Set this value to \"true to enable ACL (access control list) on the SMB
+#' file share. Set it to \"false\" to map file and directory permissions to
+#' the POSIX permissions.
+#' 
+#' For more information, see
+#' https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.htmlin
+#' the Storage Gateway User Guide.
+#' @param AdminUserList A list of users or groups in the Active Directory that have
+#' administrator rights to the file share. A group must be prefixed with
+#' the @ character. For example `@group1`. Can only be set if
+#' Authentication is set to `ActiveDirectory`.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @ character.
 #' For example `@group1`. Can only be set if Authentication is set to
@@ -4151,6 +4328,10 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'   ReadOnly = TRUE|FALSE,
 #'   GuessMIMETypeEnabled = TRUE|FALSE,
 #'   RequesterPays = TRUE|FALSE,
+#'   SMBACLEnabled = TRUE|FALSE,
+#'   AdminUserList = list(
+#'     "string"
+#'   ),
 #'   ValidUserList = list(
 #'     "string"
 #'   ),
@@ -4163,14 +4344,14 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_file_share
-storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, ValidUserList = NULL, InvalidUserList = NULL) {
+storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL) {
   op <- new_operation(
     name = "UpdateSMBFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList)
+  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList)
   output <- .storagegateway$update_smb_file_share_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)
@@ -4178,6 +4359,54 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
   return(response)
 }
 .storagegateway$operations$update_smb_file_share <- storagegateway_update_smb_file_share
+
+#' Updates the SMB security strategy on a file gateway
+#'
+#' Updates the SMB security strategy on a file gateway. This action is only
+#' supported in file gateways.
+#'
+#' @usage
+#' storagegateway_update_smb_security_strategy(GatewayARN,
+#'   SMBSecurityStrategy)
+#'
+#' @param GatewayARN &#91;required&#93; 
+#' @param SMBSecurityStrategy &#91;required&#93; Specifies the type of security strategy.
+#' 
+#' ClientSpecified: SMBv1 is enabled, SMB signing is offered but not
+#' required, SMB encryption is offered but not required.
+#' 
+#' MandatorySigning: SMBv1 is disabled, SMB signing is required, SMB
+#' encryption is offered but not required.
+#' 
+#' MandatoryEncryption: SMBv1 is disabled, SMB signing is offered but not
+#' required, SMB encryption is required.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_smb_security_strategy(
+#'   GatewayARN = "string",
+#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_update_smb_security_strategy
+storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityStrategy) {
+  op <- new_operation(
+    name = "UpdateSMBSecurityStrategy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$update_smb_security_strategy_input(GatewayARN = GatewayARN, SMBSecurityStrategy = SMBSecurityStrategy)
+  output <- .storagegateway$update_smb_security_strategy_output()
+  svc <- .storagegateway$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$update_smb_security_strategy <- storagegateway_update_smb_security_strategy
 
 #' Updates a snapshot schedule configured for a gateway volume
 #'
@@ -4196,7 +4425,7 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'
 #' @usage
 #' storagegateway_update_snapshot_schedule(VolumeARN, StartAt,
-#'   RecurrenceInHours, Description)
+#'   RecurrenceInHours, Description, Tags)
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 #' operation to return a list of gateway volumes.
@@ -4206,6 +4435,13 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @param RecurrenceInHours &#91;required&#93; Frequency of snapshots. Specify the number of hours between snapshots.
 #' @param Description Optional description of the snapshot that overwrites the existing
 #' description.
+#' @param Tags A list of up to 50 tags that can be assigned to a snapshot. Each tag is
+#' a key-value pair.
+#' 
+#' Valid characters for key and value are letters, spaces, and numbers
+#' representable in UTF-8 format, and the following special characters: + -
+#' = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
+#' the maximum length for a tag\'s value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -4213,7 +4449,13 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'   VolumeARN = "string",
 #'   StartAt = 123,
 #'   RecurrenceInHours = 123,
-#'   Description = "string"
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4229,14 +4471,14 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_snapshot_schedule
-storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, RecurrenceInHours, Description = NULL) {
+storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, RecurrenceInHours, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateSnapshotSchedule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_snapshot_schedule_input(VolumeARN = VolumeARN, StartAt = StartAt, RecurrenceInHours = RecurrenceInHours, Description = Description)
+  input <- .storagegateway$update_snapshot_schedule_input(VolumeARN = VolumeARN, StartAt = StartAt, RecurrenceInHours = RecurrenceInHours, Description = Description, Tags = Tags)
   output <- .storagegateway$update_snapshot_schedule_output()
   svc <- .storagegateway$service()
   request <- new_request(svc, op, input, output)

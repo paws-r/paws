@@ -7,7 +7,13 @@
 securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 }
 \arguments{
-\item{StandardsSubscriptionRequests}{[required] The list of standards that you want to enable.}
+\item{StandardsSubscriptionRequests}{[required] The list of standards that you want to enable.
+
+In this release, Security Hub supports only the CIS AWS Foundations
+standard.
+
+Its ARN is
+\code{arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0}.}
 }
 \description{
 Enables the standards specified by the standards ARNs. In the context of

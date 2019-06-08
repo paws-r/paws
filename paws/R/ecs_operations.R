@@ -16,7 +16,7 @@ NULL
 #' if the IAM user that makes the call does not have permissions to create
 #' the service-linked role, it is not created. For more information, see
 #' [Using Service-Linked Roles for Amazon
-#' ECS](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+#' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -24,7 +24,7 @@ NULL
 #'
 #' @param clusterName The name of your cluster. If you do not specify a name for your cluster,
 #' you create a cluster named `default`. Up to 255 letters (uppercase and
-#' lowercase), numbers, hyphens, and underscores are allowed.
+#' lowercase), numbers, and hyphens are allowed.
 #' @param tags The metadata that you apply to the cluster to help you categorize and
 #' organize them. Each tag consists of a key and an optional value, both of
 #' which you define. Tag keys can have a maximum character length of 128
@@ -197,9 +197,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' which to run your service. If you do not specify a cluster, the default
 #' cluster is assumed.
 #' @param serviceName &#91;required&#93; The name of your service. Up to 255 letters (uppercase and lowercase),
-#' numbers, hyphens, and underscores are allowed. Service names must be
-#' unique within a cluster, but you can have similarly named services in
-#' multiple clusters within a Region or across multiple Regions.
+#' numbers, and hyphens are allowed. Service names must be unique within a
+#' cluster, but you can have similarly named services in multiple clusters
+#' within a Region or across multiple Regions.
 #' @param taskDefinition The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run in your service. If a `revision` is not specified, the
 #' latest `ACTIVE` revision is used.
@@ -252,12 +252,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' network interface, not an Amazon EC2 instance.
 #' @param serviceRegistries The details of the service discovery registries to assign to this
 #' service. For more information, see [Service
-#' Discovery](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 #' 
 #' Service discovery is supported for Fargate tasks if you are using
 #' platform version v1.1.0 or later. For more information, see [AWS Fargate
 #' Platform
-#' Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
 #' @param desiredCount The number of instantiations of the specified task definition to place
 #' and keep running on your cluster.
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -284,7 +284,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' here. The service-linked role is required if your task definition uses
 #' the `awsvpc` network mode, in which case you should not specify a role
 #' here. For more information, see [Using Service-Linked Roles for Amazon
-#' ECS](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+#' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' If your specified role has a path other than `/`, then you must either
@@ -306,7 +306,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' for task definitions that use the `awsvpc` network mode to receive their
 #' own elastic network interface, and it is not supported for other network
 #' modes. For more information, see [Task
-#' Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
 #' should ignore unhealthy Elastic Load Balancing target health checks
@@ -319,7 +319,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' tasks as unhealthy and stopping them before they have time to come up.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
-#' [Services](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
+#' [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 #' 
 #' There are two service scheduler strategies available:
 #' 
@@ -347,7 +347,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL) {
 #' and tag values can have a maximum length of 256 characters.
 #' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the tasks within
 #' the service. For more information, see [Tagging Your Amazon ECS
-#' Resources](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition or the
 #' service to the tasks in the service. If no value is specified, the tags
@@ -477,7 +477,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Create a task set in the specified cluster and service. This is used
 #' when a service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS Deployment
-#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -501,7 +501,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Load Balancer or a Network Load Balancer.
 #' @param serviceRegistries The details of the service discovery registries to assign to this task
 #' set. For more information, see [Service
-#' Discovery](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+#' Discovery](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 #' @param launchType The launch type that new tasks in the task set will use. For more
 #' information, see [Amazon ECS Launch
 #' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
@@ -577,34 +577,33 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 }
 .ecs$operations$create_task_set <- ecs_create_task_set
 
-#' Modifies the ARN and resource ID format of a resource for a specified
-#' IAM user, IAM role, or the root user for an account
+#' Disables an account setting for a specified IAM user, IAM role, or the
+#' root user for an account
 #'
-#' Modifies the ARN and resource ID format of a resource for a specified
-#' IAM user, IAM role, or the root user for an account. You can specify
-#' whether the new ARN and resource ID format are disabled for new
-#' resources that are created.
+#' Disables an account setting for a specified IAM user, IAM role, or the
+#' root user for an account.
 #'
 #' @usage
 #' ecs_delete_account_setting(name, principalArn)
 #'
-#' @param name &#91;required&#93; The resource name for which to disable the new format. If
+#' @param name &#91;required&#93; The resource name for which to disable the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
 #' services is affected. If `taskLongArnFormat` is specified, the ARN and
 #' resource ID for your Amazon ECS tasks is affected. If
 #' `containerInstanceLongArnFormat` is specified, the ARN and resource ID
-#' for your Amazon ECS container instances is affected.
+#' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
+#' is specified, the ENI limit for your Amazon ECS container instances is
+#' affected.
 #' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
-#' root user. If you specify the root user, it modifies the ARN and
-#' resource ID format for all IAM users, IAM roles, and the root user of
-#' the account unless an IAM user or role explicitly overrides these
-#' settings for themselves. If this field is omitted, the setting are
-#' changed only for the authenticated user.
+#' root user. If you specify the root user, it disables the account setting
+#' for all IAM users, IAM roles, and the root user of the account unless an
+#' IAM user or role explicitly overrides these settings. If this field is
+#' omitted, the setting is changed only for the authenticated user.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
 #'   principalArn = "string"
 #' )
 #' ```
@@ -809,7 +808,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' Deletes a specified task set within a service. This is used when a
 #' service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS Deployment
-#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -884,7 +883,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' the Region of the container instance, the AWS account ID of the
 #' container instance owner, the `container-instance` namespace, and then
 #' the container instance ID. For example,
-#' `arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> `.
+#' `arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID`.
 #' @param force Forces the deregistration of the container instance. If you have tasks
 #' running on the container instance when you deregister it with the
 #' `force` option, these tasks remain running until you terminate the
@@ -1071,7 +1070,9 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to describe. If you do not specify a
-#' cluster, the default cluster is assumed.
+#' cluster, the default cluster is assumed. This parameter is required if
+#' the container instance or container instances you are describing were
+#' launched in any cluster other than the default cluster.
 #' @param containerInstances &#91;required&#93; A list of up to 100 container instance IDs or full Amazon Resource Name
 #' (ARN) entries.
 #' @param include Specifies whether you want to see the resource tags for the container
@@ -1130,7 +1131,9 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN)the cluster that hosts
 #' the service to describe. If you do not specify a cluster, the default
-#' cluster is assumed.
+#' cluster is assumed. This parameter is required if the service or
+#' services you are describing were launched in any cluster other than the
+#' default cluster.
 #' @param services &#91;required&#93; A list of services to describe. You may specify up to 10 services to
 #' describe in a single operation.
 #' @param include Specifies whether you want to see the resource tags for the service. If
@@ -1237,7 +1240,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' Describes the task sets in the specified cluster and service. This is
 #' used when a service uses the `EXTERNAL` deployment controller type. For
 #' more information, see [Amazon ECS Deployment
-#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -1287,8 +1290,10 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
 #' ecs_describe_tasks(cluster, tasks, include)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
-#' hosts the task to describe. If you do not specify a cluster, the default
-#' cluster is assumed.
+#' hosts the task or tasks to describe. If you do not specify a cluster,
+#' the default cluster is assumed. This parameter is required if the task
+#' or tasks you are describing were launched in any cluster other than the
+#' default cluster.
 #' @param tasks &#91;required&#93; A list of up to 100 task IDs or full ARN entries.
 #' @param include Specifies whether you want to see the resource tags for the task. If
 #' `TAGS` is specified, the tags are included in the response. If this
@@ -1351,7 +1356,7 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' container instance, the AWS account ID of the container instance owner,
 #' the `container-instance` namespace, and then the container instance ID.
 #' For example,
-#' `arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> `.
+#' `arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID`.
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to
 #' which the container instance belongs.
 #'
@@ -1382,11 +1387,9 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 }
 .ecs$operations$discover_poll_endpoint <- ecs_discover_poll_endpoint
 
-#' Lists the account settings for an Amazon ECS resource for a specified
-#' principal
+#' Lists the account settings for a specified principal
 #'
-#' Lists the account settings for an Amazon ECS resource for a specified
-#' principal.
+#' Lists the account settings for a specified principal.
 #'
 #' @usage
 #' ecs_list_account_settings(name, value, principalArn, effectiveSettings,
@@ -1400,9 +1403,9 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' only for the authenticated user.
 #' @param effectiveSettings Specifies whether to return the effective settings. If `true`, the
 #' account settings for the root user or the default setting for the
-#' `principalArn`. If `false`, the account settings for the `principalArn`
-#' are returned if they are set. Otherwise, no account settings are
-#' returned.
+#' `principalArn` are returned. If `false`, the account settings for the
+#' `principalArn` are returned if they are set. Otherwise, no account
+#' settings are returned.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListAccountSettings` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
@@ -1423,7 +1426,7 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' @section Request syntax:
 #' ```
 #' svc$list_account_settings(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
 #'   value = "string",
 #'   principalArn = "string",
 #'   effectiveSettings = TRUE|FALSE,
@@ -1633,7 +1636,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' the `DRAINING` status, the results include only container instances that
 #' have been set to `DRAINING` using UpdateContainerInstancesState. If you
 #' do not specify this parameter, the default is to include container
-#' instances set to `ACTIVE` and `DRAINING`.
+#' instances set to all states other than `INACTIVE`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1642,7 +1645,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #'   filter = "string",
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   status = "ACTIVE"|"DRAINING"
+#'   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 #' )
 #' ```
 #'
@@ -2055,44 +2058,55 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 }
 .ecs$operations$list_tasks <- ecs_list_tasks
 
-#' Modifies the ARN and resource ID format of a resource type for a
-#' specified IAM user, IAM role, or the root user for an account
+#' Modifies an account setting
 #'
-#' Modifies the ARN and resource ID format of a resource type for a
-#' specified IAM user, IAM role, or the root user for an account. If the
-#' account setting for the root user is changed, it sets the default
-#' setting for all of the IAM users and roles for which no individual
-#' account setting has been set. The opt-in and opt-out account setting can
-#' be set for each Amazon ECS resource separately. The ARN and resource ID
-#' format of a resource will be defined by the opt-in status of the IAM
-#' user or role that created the resource. Enabling this setting is
-#' required to use new Amazon ECS features such as resource tagging. For
-#' more information, see [Amazon Resource Names (ARNs) and
-#' IDs](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-resource-ids.html)
+#' Modifies an account setting. For more information, see [Account
+#' Settings](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' When `serviceLongArnFormat`, `taskLongArnFormat`, or
+#' `containerInstanceLongArnFormat` are specified, the ARN and resource ID
+#' format of the resource type for a specified IAM user, IAM role, or the
+#' root user for an account is changed. If you change the account setting
+#' for the root user, the default settings for all of the IAM users and
+#' roles for which no individual account setting has been specified are
+#' reset. The opt-in and opt-out account setting can be specified for each
+#' Amazon ECS resource separately. The ARN and resource ID format of a
+#' resource will be defined by the opt-in status of the IAM user or role
+#' that created the resource. You must enable this setting to use Amazon
+#' ECS features such as resource tagging.
+#' 
+#' When `awsvpcTrunking` is specified, the elastic network interface (ENI)
+#' limit for any new container instances that support the feature is
+#' changed. If `awsvpcTrunking` is enabled, any new container instances
+#' that support the feature are launched have the increased ENI limits
+#' available to them. For more information, see [Elastic Network Interface
+#' Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_put_account_setting(name, value, principalArn)
 #'
-#' @param name &#91;required&#93; The resource name for which to enable the new format. If
+#' @param name &#91;required&#93; The resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
 #' services is affected. If `taskLongArnFormat` is specified, the ARN and
 #' resource ID for your Amazon ECS tasks is affected. If
 #' `containerInstanceLongArnFormat` is specified, the ARN and resource ID
-#' for your Amazon ECS container instances is affected.
+#' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
+#' is specified, the ENI limit for your Amazon ECS container instances is
+#' affected.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled` and `disabled`.
 #' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
-#' root user. If you specify the root user, it modifies the ARN and
-#' resource ID format for all IAM users, IAM roles, and the root user of
-#' the account unless an IAM user or role explicitly overrides these
-#' settings for themselves. If this field is omitted, the settings are
-#' changed only for the authenticated user.
+#' root user. If you specify the root user, it modifies the account setting
+#' for all IAM users, IAM roles, and the root user of the account unless an
+#' IAM user or role explicitly overrides these settings. If this field is
+#' omitted, the setting is changed only for the authenticated user.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
 #'   value = "string",
 #'   principalArn = "string"
 #' )
@@ -2138,30 +2152,30 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 }
 .ecs$operations$put_account_setting <- ecs_put_account_setting
 
-#' Modifies the ARN and resource ID format of a resource type for all IAM
-#' users on an account for which no individual account setting has been set
+#' Modifies an account setting for all IAM users on an account for whom no
+#' individual account setting has been specified
 #'
-#' Modifies the ARN and resource ID format of a resource type for all IAM
-#' users on an account for which no individual account setting has been
-#' set. Enabling this setting is required to use new Amazon ECS features
-#' such as resource tagging.
+#' Modifies an account setting for all IAM users on an account for whom no
+#' individual account setting has been specified.
 #'
 #' @usage
 #' ecs_put_account_setting_default(name, value)
 #'
-#' @param name &#91;required&#93; The resource type to enable the new format for. If
+#' @param name &#91;required&#93; The resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
 #' services is affected. If `taskLongArnFormat` is specified, the ARN and
-#' resource ID for your Amazon ECS tasks are affected. If
+#' resource ID for your Amazon ECS tasks is affected. If
 #' `containerInstanceLongArnFormat` is specified, the ARN and resource ID
-#' for your Amazon ECS container instances are affected.
+#' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
+#' is specified, the ENI limit for your Amazon ECS container instances is
+#' affected.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled` and `disabled`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
 #'   value = "string"
 #' )
 #' ```
@@ -2378,7 +2392,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' the task is allocated an elastic network interface, and you must specify
 #' a NetworkConfiguration when you create a service or run a task with the
 #' task definition. For more information, see [Task
-#' Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -2390,7 +2404,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @param family &#91;required&#93; You must specify a `family` for a task definition, which allows you to
 #' track multiple versions of the same task definition. The `family` is
 #' used as a name for your task definition. Up to 255 letters (uppercase
-#' and lowercase), numbers, hyphens, and underscores are allowed.
+#' and lowercase), numbers, and hyphens are allowed.
 #' @param taskRoleArn The short name or full Amazon Resource Name (ARN) of the IAM role that
 #' containers in this task can assume. All containers in this task are
 #' granted the permissions that are specified in this role. For more
@@ -2420,7 +2434,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' network interface, and you must specify a NetworkConfiguration value
 #' when you create a service or run a task with the task definition. For
 #' more information, see [Task
-#' Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' Currently, only Amazon ECS-optimized AMIs, other Amazon Linux variants
@@ -2553,7 +2567,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' If you are setting namespaced kernel parameters using `systemControls`
 #' for the containers in the task, the following will apply to your IPC
 #' resource namespace. For more information, see [System
-#' Controls](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+#' Controls](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' -   For tasks that use the `host` IPC mode, IPC namespace related
@@ -2700,6 +2714,12 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'         logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
 #'         options = list(
 #'           "string"
+#'         ),
+#'         secretOptions = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
 #'         )
 #'       ),
 #'       healthCheck = list(
@@ -2907,7 +2927,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' task definitions that use the `awsvpc` network mode to receive their own
 #' elastic network interface, and it is not supported for other network
 #' modes. For more information, see [Task
-#' Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param tags The metadata that you apply to the task to help you categorize and
 #' organize them. Each tag consists of a key and an optional value, both of
@@ -2915,7 +2935,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' characters, and tag values can have a maximum length of 256 characters.
 #' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the task. For
 #' more information, see [Tagging Your Amazon ECS
-#' Resources](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags are not propagated. Tags can
@@ -3079,7 +3099,7 @@ ecs_run_task <- function(cluster = NULL, taskDefinition, overrides = NULL, count
 #' characters, and tag values can have a maximum length of 256 characters.
 #' @param enableECSManagedTags Specifies whether to enable Amazon ECS managed tags for the task. For
 #' more information, see [Tagging Your Amazon ECS
-#' Resources](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
+#' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition or the
 #' service to the task. If no value is specified, the tags are not
@@ -3220,6 +3240,53 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
   return(response)
 }
 .ecs$operations$stop_task <- ecs_stop_task
+
+#' This action is only used by the Amazon ECS agent, and it is not intended
+#' for use outside of the agent
+#'
+#' This action is only used by the Amazon ECS agent, and it is not intended
+#' for use outside of the agent.
+#' 
+#' Sent to acknowledge that an attachment changed states.
+#'
+#' @usage
+#' ecs_submit_attachment_state_changes(cluster, attachments)
+#'
+#' @param cluster The short name or full ARN of the cluster that hosts the container
+#' instance the attachment belongs to.
+#' @param attachments &#91;required&#93; Any attachments associated with the state change request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$submit_attachment_state_changes(
+#'   cluster = "string",
+#'   attachments = list(
+#'     list(
+#'       attachmentArn = "string",
+#'       status = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_submit_attachment_state_changes
+ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
+  op <- new_operation(
+    name = "SubmitAttachmentStateChanges",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$submit_attachment_state_changes_input(cluster = cluster, attachments = attachments)
+  output <- .ecs$submit_attachment_state_changes_output()
+  svc <- .ecs$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$submit_attachment_state_changes <- ecs_submit_attachment_state_changes
 
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
@@ -3532,10 +3599,14 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'
 #' Modifies the status of an Amazon ECS container instance.
 #' 
-#' You can change the status of a container instance to `DRAINING` to
-#' manually remove an instance from a cluster, for example to perform
-#' system updates, update the Docker daemon, or scale down the cluster
-#' size.
+#' Once a container instance has reached an `ACTIVE` state, you can change
+#' the status of a container instance to `DRAINING` to manually remove an
+#' instance from a cluster, for example to perform system updates, update
+#' the Docker daemon, or scale down the cluster size.
+#' 
+#' A container instance cannot be changed to `DRAINING` until it has
+#' reached an `ACTIVE` status. If the instance is in any other status, an
+#' error will be received.
 #' 
 #' When you set a container instance to `DRAINING`, Amazon ECS prevents new
 #' tasks from being scheduled for placement on the container instance and
@@ -3577,8 +3648,9 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' A container instance has completed draining when it has no more
 #' `RUNNING` tasks. You can verify this using ListTasks.
 #' 
-#' When you set a container instance to `ACTIVE`, the Amazon ECS scheduler
-#' can begin scheduling tasks on the instance again.
+#' When a container instance has been drained, you can set a container
+#' instance to `ACTIVE` status and once it has reached that status the
+#' Amazon ECS scheduler can begin scheduling tasks on the instance again.
 #'
 #' @usage
 #' ecs_update_container_instances_state(cluster, containerInstances,
@@ -3589,7 +3661,12 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' the default cluster is assumed.
 #' @param containerInstances &#91;required&#93; A list of container instance IDs or full ARN entries.
 #' @param status &#91;required&#93; The container instance state with which to update the container
-#' instance.
+#' instance. The only valid values for this action are `ACTIVE` and
+#' `DRAINING`. A container instance can only be updated to `DRAINING`
+#' status once it has reached an `ACTIVE` state. If a container instance is
+#' in `REGISTERING`, `DEREGISTERING`, or `REGISTRATION_FAILED` state you
+#' can describe the container instance but will be unable to update the
+#' container instance state.
 #'
 #' @section Request syntax:
 #' ```
@@ -3598,7 +3675,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'   containerInstances = list(
 #'     "string"
 #'   ),
-#'   status = "ACTIVE"|"DRAINING"
+#'   status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
 #' )
 #' ```
 #'
@@ -3750,7 +3827,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' for task definitions that use the `awsvpc` network mode to receive their
 #' own elastic network interface, and it is not supported for other network
 #' modes. For more information, see [Task
-#' Networking](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
+#' Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' Updating a service to add a subnet to a list of existing subnets does
@@ -3850,7 +3927,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' transition to the service. This is used when a service uses the
 #' `EXTERNAL` deployment controller type. For more information, see [Amazon
 #' ECS Deployment
-#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -3896,7 +3973,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' Modifies a task set. This is used when a service uses the `EXTERNAL`
 #' deployment controller type. For more information, see [Amazon ECS
 #' Deployment
-#' Types](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage

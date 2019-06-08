@@ -2,18 +2,19 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_delete_tags}
 \alias{workspaces_delete_tags}
-\title{Deletes the specified tags from the specified WorkSpace}
+\title{Deletes the specified tags from the specified WorkSpaces resource}
 \usage{
 workspaces_delete_tags(ResourceId, TagKeys)
 }
 \arguments{
-\item{ResourceId}{[required] The identifier of the WorkSpace. To find this ID, use
-DescribeWorkspaces.}
+\item{ResourceId}{[required] The identifier of the WorkSpaces resource. The supported resource types
+are WorkSpaces, registered directories, images, custom bundles, and IP
+access control groups.}
 
 \item{TagKeys}{[required] The tag keys.}
 }
 \description{
-Deletes the specified tags from the specified WorkSpace.
+Deletes the specified tags from the specified WorkSpaces resource.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_tags(

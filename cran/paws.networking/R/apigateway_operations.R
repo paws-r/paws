@@ -14,7 +14,7 @@ NULL
 #'
 #' @usage
 #' apigateway_create_api_key(name, description, enabled,
-#'   generateDistinctId, value, stageKeys, customerId)
+#'   generateDistinctId, value, stageKeys, customerId, tags)
 #'
 #' @param name The name of the ApiKey.
 #' @param description The description of the ApiKey.
@@ -26,6 +26,9 @@ NULL
 #' key.
 #' @param customerId An AWS Marketplace customer identifier , when integrating with the AWS
 #' SaaS Marketplace.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -41,21 +44,24 @@ NULL
 #'       stageName = "string"
 #'     )
 #'   ),
-#'   customerId = "string"
+#'   customerId = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_api_key
-apigateway_create_api_key <- function(name = NULL, description = NULL, enabled = NULL, generateDistinctId = NULL, value = NULL, stageKeys = NULL, customerId = NULL) {
+apigateway_create_api_key <- function(name = NULL, description = NULL, enabled = NULL, generateDistinctId = NULL, value = NULL, stageKeys = NULL, customerId = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApiKey",
     http_method = "POST",
     http_path = "/apikeys",
     paginator = list()
   )
-  input <- .apigateway$create_api_key_input(name = name, description = description, enabled = enabled, generateDistinctId = generateDistinctId, value = value, stageKeys = stageKeys, customerId = customerId)
+  input <- .apigateway$create_api_key_input(name = name, description = description, enabled = enabled, generateDistinctId = generateDistinctId, value = value, stageKeys = stageKeys, customerId = customerId, tags = tags)
   output <- .apigateway$create_api_key_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -391,7 +397,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' apigateway_create_domain_name(domainName, certificateName,
 #'   certificateBody, certificatePrivateKey, certificateChain,
 #'   certificateArn, regionalCertificateName, regionalCertificateArn,
-#'   endpointConfiguration)
+#'   endpointConfiguration, tags)
 #'
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
@@ -418,6 +424,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' only supported source.
 #' @param endpointConfiguration The endpoint configuration of this DomainName showing the endpoint types
 #' of the domain name.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +443,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -441,14 +453,14 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/domainnames",
     paginator = list()
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags)
   output <- .apigateway$create_domain_name_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -594,7 +606,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @usage
 #' apigateway_create_rest_api(name, description, version, cloneFrom,
 #'   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-#'   endpointConfiguration, policy)
+#'   endpointConfiguration, policy, tags)
 #'
 #' @param name &#91;required&#93; \[Required\] The name of the RestApi.
 #' @param description The description of the RestApi.
@@ -618,6 +630,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
 #' the API.
 #' @param policy A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -636,21 +651,24 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     )
 #'   ),
-#'   policy = "string"
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_rest_api
-apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL) {
+apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRestApi",
     http_method = "POST",
     http_path = "/restapis",
     paginator = list()
   )
-  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy)
+  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags)
   output <- .apigateway$create_rest_api_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -742,13 +760,16 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #'
 #' @usage
 #' apigateway_create_usage_plan(name, description, apiStages, throttle,
-#'   quota)
+#'   quota, tags)
 #'
 #' @param name &#91;required&#93; \[Required\] The name of the usage plan.
 #' @param description The description of the usage plan.
 #' @param apiStages The associated API stages of the usage plan.
 #' @param throttle The throttling limits of the usage plan.
 #' @param quota The quota of the usage plan.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -775,6 +796,9 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #'     limit = 123,
 #'     offset = 123,
 #'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -782,14 +806,14 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' @keywords internal
 #'
 #' @rdname apigateway_create_usage_plan
-apigateway_create_usage_plan <- function(name, description = NULL, apiStages = NULL, throttle = NULL, quota = NULL) {
+apigateway_create_usage_plan <- function(name, description = NULL, apiStages = NULL, throttle = NULL, quota = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateUsagePlan",
     http_method = "POST",
     http_path = "/usageplans",
     paginator = list()
   )
-  input <- .apigateway$create_usage_plan_input(name = name, description = description, apiStages = apiStages, throttle = throttle, quota = quota)
+  input <- .apigateway$create_usage_plan_input(name = name, description = description, apiStages = apiStages, throttle = throttle, quota = quota, tags = tags)
   output <- .apigateway$create_usage_plan_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -850,13 +874,16 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' update VPC Endpoint services.
 #'
 #' @usage
-#' apigateway_create_vpc_link(name, description, targetArns)
+#' apigateway_create_vpc_link(name, description, targetArns, tags)
 #'
 #' @param name &#91;required&#93; \[Required\] The name used to label and identify the VPC link.
 #' @param description The description of the VPC link.
 #' @param targetArns &#91;required&#93; \[Required\] The ARNs of network load balancers of the VPC targeted by
 #' the VPC link. The network load balancers must be owned by the same AWS
 #' account of the API owner.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -865,6 +892,9 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #'   description = "string",
 #'   targetArns = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -872,14 +902,14 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' @keywords internal
 #'
 #' @rdname apigateway_create_vpc_link
-apigateway_create_vpc_link <- function(name, description = NULL, targetArns) {
+apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tags = NULL) {
   op <- new_operation(
     name = "CreateVpcLink",
     http_method = "POST",
     http_path = "/vpclinks",
     paginator = list()
   )
-  input <- .apigateway$create_vpc_link_input(name = name, description = description, targetArns = targetArns)
+  input <- .apigateway$create_vpc_link_input(name = name, description = description, targetArns = targetArns, tags = tags)
   output <- .apigateway$create_vpc_link_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -1789,28 +1819,34 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #' Generates a ClientCertificate resource.
 #'
 #' @usage
-#' apigateway_generate_client_certificate(description)
+#' apigateway_generate_client_certificate(description, tags)
 #'
 #' @param description The description of the ClientCertificate.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$generate_client_certificate(
-#'   description = "string"
+#'   description = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_generate_client_certificate
-apigateway_generate_client_certificate <- function(description = NULL) {
+apigateway_generate_client_certificate <- function(description = NULL, tags = NULL) {
   op <- new_operation(
     name = "GenerateClientCertificate",
     http_method = "POST",
     http_path = "/clientcertificates",
     paginator = list()
   )
-  input <- .apigateway$generate_client_certificate_input(description = description)
+  input <- .apigateway$generate_client_certificate_input(description = description, tags = tags)
   output <- .apigateway$generate_client_certificate_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)

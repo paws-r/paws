@@ -23,12 +23,14 @@ ElastiCache immediately begins deleting the cluster; you cannot cancel
 or revert this operation.
 }
 \details{
-This operation cannot be used to delete a cluster that is the last read
-replica of a replication group or node group (shard) that has Multi-AZ
-mode enabled or a cluster from a Redis (cluster mode enabled)
-replication group.
-
-This operation is not valid for Redis (cluster mode enabled) clusters.
+This operation is not valid for:
+\itemize{
+\item Redis (cluster mode enabled) clusters
+\item A cluster that is the last read replica of a replication group
+\item A node group (shard) that has Multi-AZ mode enabled
+\item A cluster from a Redis (cluster mode enabled) replication group
+\item A cluster that is not in the \code{available} state
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cache_cluster(

@@ -13,7 +13,7 @@ glue_get_plan(Mapping, Source, Sinks, Location, Language)
 
 \item{Sinks}{The target tables.}
 
-\item{Location}{Parameters for the mapping.}
+\item{Location}{The parameters for the mapping.}
 
 \item{Language}{The programming language of the code to perform the mapping.}
 }

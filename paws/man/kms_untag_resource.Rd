@@ -31,7 +31,7 @@ To remove a tag, specify the tag key. To change the tag value of an
 existing tag key, use TagResource.
 
 The result of this operation varies with the key state of the CMK. For
-details, see \href{http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 }
 \section{Request syntax}{

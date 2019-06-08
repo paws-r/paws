@@ -9,7 +9,7 @@ pinpointemail_create_configuration_set(ConfigurationSetName,
   Tags)
 }
 \arguments{
-\item{ConfigurationSetName}{The name of the configuration set.}
+\item{ConfigurationSetName}{[required] The name of the configuration set.}
 
 \item{TrackingOptions}{An object that defines the open and click tracking options for emails
 that you send using the configuration set.}
@@ -24,8 +24,8 @@ configuration set.}
 \item{SendingOptions}{An object that defines whether or not Amazon Pinpoint can send email
 that you send using the configuration set.}
 
-\item{Tags}{An object that defines the tags (keys and values) that you want to
-associate with the configuration set.}
+\item{Tags}{An array of objects that define the tags (keys and values) that you want
+to associate with the configuration set.}
 }
 \description{
 Create a configuration set. \emph{Configuration sets} are groups of rules
@@ -42,6 +42,7 @@ set are applied to the email.
     CustomRedirectDomain = "string"
   ),
   DeliveryOptions = list(
+    TlsPolicy = "REQUIRE"|"OPTIONAL",
     SendingPoolName = "string"
   ),
   ReputationOptions = list(

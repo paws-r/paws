@@ -58,6 +58,10 @@ test_that("describe_dhcp_options", {
   expect_error(svc$describe_dhcp_options(), NA)
 })
 
+test_that("describe_dhcp_options", {
+  expect_error(svc$describe_dhcp_options(MaxResults = 20), NA)
+})
+
 test_that("describe_egress_only_internet_gateways", {
   expect_error(svc$describe_egress_only_internet_gateways(), NA)
 })
@@ -336,6 +340,10 @@ test_that("describe_spot_price_history", {
 
 test_that("describe_subnets", {
   expect_error(svc$describe_subnets(), NA)
+})
+
+test_that("describe_subnets", {
+  expect_error(svc$describe_subnets(MaxResults = 20), NA)
 })
 
 test_that("describe_tags", {

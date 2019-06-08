@@ -77,7 +77,9 @@ mediastoredata_describe_object <- function(Path) {
 
 #' Downloads the object at the specified path
 #'
-#' Downloads the object at the specified path.
+#' Downloads the object at the specified path. If the object's upload
+#' availability is set to `streaming`, AWS Elemental MediaStore downloads
+#' the object even if it's still uploading the object.
 #'
 #' @usage
 #' mediastoredata_get_object(Path, Range)
@@ -109,8 +111,10 @@ mediastoredata_describe_object <- function(Path) {
 #' MediaStore, or it can have the same name. The file name can include or
 #' omit an extension.
 #' @param Range The range bytes of an object to retrieve. For more information about the
-#' `Range` header, go to
-#' <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>.
+#' `Range` header, see
+#' <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>. AWS
+#' Elemental MediaStore ignores this header for partially uploaded objects
+#' that have streaming upload availability.
 #'
 #' @section Request syntax:
 #' ```
@@ -198,11 +202,12 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' Uploads an object to the specified path
 #'
 #' Uploads an object to the specified path. Object sizes are limited to 25
-#' MB.
+#' MB for standard upload availability and 10 MB for streaming upload
+#' availability.
 #'
 #' @usage
 #' mediastoredata_put_object(Body, Path, ContentType, CacheControl,
-#'   StorageClass)
+#'   StorageClass, UploadAvailability)
 #'
 #' @param Body &#91;required&#93; The bytes to be stored.
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
@@ -241,6 +246,15 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' @param StorageClass Indicates the storage class of a `Put` request. Defaults to
 #' high-performance temporal storage class, and objects are persisted into
 #' durable storage shortly after being received.
+#' @param UploadAvailability Indicates the availability of an object while it is still uploading. If
+#' the value is set to `streaming`, the object is available for downloading
+#' after some initial buffering but before the object is uploaded
+#' completely. If the value is set to `standard`, the object is available
+#' for downloading only when it is uploaded completely. The default value
+#' for this header is `standard`.
+#' 
+#' To use this header, you must also set the HTTP `Transfer-Encoding`
+#' header to `chunked`.
 #'
 #' @section Request syntax:
 #' ```
@@ -249,21 +263,22 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #'   Path = "string",
 #'   ContentType = "string",
 #'   CacheControl = "string",
-#'   StorageClass = "TEMPORAL"
+#'   StorageClass = "TEMPORAL",
+#'   UploadAvailability = "STANDARD"|"STREAMING"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediastoredata_put_object
-mediastoredata_put_object <- function(Body, Path, ContentType = NULL, CacheControl = NULL, StorageClass = NULL) {
+mediastoredata_put_object <- function(Body, Path, ContentType = NULL, CacheControl = NULL, StorageClass = NULL, UploadAvailability = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
     http_path = "/{Path+}",
     paginator = list()
   )
-  input <- .mediastoredata$put_object_input(Body = Body, Path = Path, ContentType = ContentType, CacheControl = CacheControl, StorageClass = StorageClass)
+  input <- .mediastoredata$put_object_input(Body = Body, Path = Path, ContentType = ContentType, CacheControl = CacheControl, StorageClass = StorageClass, UploadAvailability = UploadAvailability)
   output <- .mediastoredata$put_object_output()
   svc <- .mediastoredata$service()
   request <- new_request(svc, op, input, output)

@@ -3,7 +3,7 @@
 \name{pinpointemail_list_tags_for_resource}
 \alias{pinpointemail_list_tags_for_resource}
 \title{Retrieve a list of the tags (keys and values) that are associated with a
-specific resource}
+specified resource}
 \usage{
 pinpointemail_list_tags_for_resource(ResourceArn)
 }
@@ -13,7 +13,7 @@ tag information for.}
 }
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
-specific resource. AÂ \emph{tag}Â is a label that you optionally define and
+specified resource. AÂ \emph{tag}Â is a label that you optionally define and
 associate with a resource in Amazon Pinpoint. Each tag consists of a
 requiredÂ \emph{tag key}Â and an optional associatedÂ \emph{tag value}. A tag key is
 a general label that acts as a category for more specific tag values. A

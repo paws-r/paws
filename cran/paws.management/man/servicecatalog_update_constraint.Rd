@@ -4,7 +4,8 @@
 \alias{servicecatalog_update_constraint}
 \title{Updates the specified constraint}
 \usage{
-servicecatalog_update_constraint(AcceptLanguage, Id, Description)
+servicecatalog_update_constraint(AcceptLanguage, Id, Description,
+  Parameters)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -17,6 +18,49 @@ servicecatalog_update_constraint(AcceptLanguage, Id, Description)
 \item{Id}{[required] The identifier of the constraint.}
 
 \item{Description}{The updated description of the constraint.}
+
+\item{Parameters}{The constraint parameters, in JSON format. The syntax depends on the
+constraint type as follows:
+
+LAUNCH
+
+:   Specify the \code{RoleArn} property as follows:\preformatted{`\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+
+You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+
+You also cannot have more than one `LAUNCH` constraint on a product
+and portfolio.
+}
+
+NOTIFICATION
+
+:   Specify the \code{NotificationArns} property as follows:\preformatted{`\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+}
+
+RESOURCE\_UPDATE
+
+:   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+
+The `TagUpdatesOnProvisionedProduct` property accepts a string value
+of `ALLOWED` or `NOT_ALLOWED`.
+}
+
+STACKSET
+
+:   Specify the \code{Parameters} property as follows:\preformatted{`\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+
+You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+
+You also cannot have more than one `STACKSET` constraint on a
+product and portfolio.
+
+Products with a `STACKSET` constraint will launch an AWS
+CloudFormation stack set.
+}
+
+TEMPLATE
+
+:   Specify the \code{Rules} property. For more information, see \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.}
 }
 \description{
 Updates the specified constraint.
@@ -25,7 +69,8 @@ Updates the specified constraint.
 \preformatted{svc$update_constraint(
   AcceptLanguage = "string",
   Id = "string",
-  Description = "string"
+  Description = "string",
+  Parameters = "string"
 )
 }
 }

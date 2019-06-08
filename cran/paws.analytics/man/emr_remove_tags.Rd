@@ -16,7 +16,7 @@ value must be a cluster identifier.}
 Removes tags from an Amazon EMR resource. Tags make it easier to
 associate clusters in various ways, such as grouping clusters to track
 your Amazon EMR resource allocation costs. For more information, see
-\href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
+\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 }
 \details{
 The following example removes the stack tag with value Prod from a

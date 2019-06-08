@@ -7,7 +7,8 @@
 guardduty_archive_findings(DetectorId, FindingIds)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to archive.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
+findings you want to archive.}
 
 \item{FindingIds}{[required] IDs of the findings that you want to archive.}
 }

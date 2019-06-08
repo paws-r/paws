@@ -98,17 +98,17 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @usage
 #' codepipeline_create_custom_action_type(category, provider, version,
 #'   settings, configurationProperties, inputArtifactDetails,
-#'   outputArtifactDetails)
+#'   outputArtifactDetails, tags)
 #'
 #' @param category &#91;required&#93; The category of the custom action, such as a build action or a test
 #' action.
 #' 
-#' Although Source and Approval are listed as valid values, they are not
-#' currently functional. These values are reserved for future use.
+#' Although `Source` and `Approval` are listed as valid values, they are
+#' not currently functional. These values are reserved for future use.
 #' @param provider &#91;required&#93; The provider of the service used in the custom action, such as AWS
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version identifier of the custom action.
-#' @param settings Returns information about the settings for an action type.
+#' @param settings URLs that provide users information about this custom action.
 #' @param configurationProperties The configuration properties for the custom action.
 #' 
 #' You can refer to a name in the configuration properties of the custom
@@ -118,6 +118,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
+#' @param tags The tags for the custom action.
 #'
 #' @section Request syntax:
 #' ```
@@ -149,6 +150,12 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #'   outputArtifactDetails = list(
 #'     minimumCount = 123,
 #'     maximumCount = 123
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -156,14 +163,14 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @keywords internal
 #'
 #' @rdname codepipeline_create_custom_action_type
-codepipeline_create_custom_action_type <- function(category, provider, version, settings = NULL, configurationProperties = NULL, inputArtifactDetails, outputArtifactDetails) {
+codepipeline_create_custom_action_type <- function(category, provider, version, settings = NULL, configurationProperties = NULL, inputArtifactDetails, outputArtifactDetails, tags = NULL) {
   op <- new_operation(
     name = "CreateCustomActionType",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$create_custom_action_type_input(category = category, provider = provider, version = version, settings = settings, configurationProperties = configurationProperties, inputArtifactDetails = inputArtifactDetails, outputArtifactDetails = outputArtifactDetails)
+  input <- .codepipeline$create_custom_action_type_input(category = category, provider = provider, version = version, settings = settings, configurationProperties = configurationProperties, inputArtifactDetails = inputArtifactDetails, outputArtifactDetails = outputArtifactDetails, tags = tags)
   output <- .codepipeline$create_custom_action_type_output()
   svc <- .codepipeline$service()
   request <- new_request(svc, op, input, output)
@@ -177,10 +184,11 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' Creates a pipeline.
 #'
 #' @usage
-#' codepipeline_create_pipeline(pipeline)
+#' codepipeline_create_pipeline(pipeline, tags)
 #'
 #' @param pipeline &#91;required&#93; Represents the structure of actions and stages to be performed in the
 #' pipeline.
+#' @param tags The tags for the pipeline.
 #'
 #' @section Request syntax:
 #' ```
@@ -245,6 +253,12 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'       )
 #'     ),
 #'     version = 123
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -252,14 +266,14 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' @keywords internal
 #'
 #' @rdname codepipeline_create_pipeline
-codepipeline_create_pipeline <- function(pipeline) {
+codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$create_pipeline_input(pipeline = pipeline)
+  input <- .codepipeline$create_pipeline_input(pipeline = pipeline, tags = tags)
   output <- .codepipeline$create_pipeline_output()
   svc <- .codepipeline$service()
   request <- new_request(svc, op, input, output)
@@ -270,8 +284,8 @@ codepipeline_create_pipeline <- function(pipeline) {
 
 #' Marks a custom action as deleted
 #'
-#' Marks a custom action as deleted. PollForJobs for the custom action will
-#' fail after the action is marked for deletion. Only used for custom
+#' Marks a custom action as deleted. `PollForJobs` for the custom action
+#' will fail after the action is marked for deletion. Only used for custom
 #' actions.
 #' 
 #' To re-create a custom action after it has been deleted you must use a
@@ -657,8 +671,8 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' Returns information about the state of a pipeline, including the stages
 #' and actions.
 #' 
-#' Values returned in the revisionId and revisionUrl fields indicate the
-#' source revision information, such as the commit ID, for the current
+#' Values returned in the `revisionId` and `revisionUrl` fields indicate
+#' the source revision information, such as the commit ID, for the current
 #' state.
 #'
 #' @usage
@@ -751,11 +765,14 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' @param filter Input information used to filter action execution history.
 #' @param maxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned nextToken
-#' value. The action execution history is limited to the most recent 12
-#' months, based on action execution start times. Default value is 100.
-#' @param nextToken The token that was returned from the previous ListActionExecutions call,
-#' which can be used to return the next set of action executions in the
-#' list.
+#' value. Action execution history is retained for up to 12 months, based
+#' on action execution start times. Default value is 100.
+#' 
+#' Detailed execution history is available for executions run on or after
+#' February 21, 2019.
+#' @param nextToken The token that was returned from the previous `ListActionExecutions`
+#' call, which can be used to return the next set of action executions in
+#' the list.
 #'
 #' @section Request syntax:
 #' ```
@@ -841,10 +858,9 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' information.
 #' @param maxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned nextToken
-#' value. The available pipeline execution history is limited to the most
-#' recent 12 months, based on pipeline execution start times. Default value
-#' is 100.
-#' @param nextToken The token that was returned from the previous ListPipelineExecutions
+#' value. Pipeline history is limited to the most recent 12 months, based
+#' on pipeline execution start times. Default value is 100.
+#' @param nextToken The token that was returned from the previous `ListPipelineExecutions`
 #' call, which can be used to return the next set of pipeline executions in
 #' the list.
 #'
@@ -912,6 +928,50 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 }
 .codepipeline$operations$list_pipelines <- codepipeline_list_pipelines
 
+#' Gets the set of key/value pairs (metadata) that are used to manage the
+#' resource
+#'
+#' Gets the set of key/value pairs (metadata) that are used to manage the
+#' resource.
+#'
+#' @usage
+#' codepipeline_list_tags_for_resource(resourceArn, nextToken, maxResults)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
+#' @param nextToken The token that was returned from the previous API call, which would be
+#' used to return the next page of the list. However, the
+#' ListTagsforResource call lists all available tags in one call and does
+#' not use pagination.
+#' @param maxResults The maximum number of results to return in a single call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_list_tags_for_resource
+codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .codepipeline$list_tags_for_resource_output()
+  svc <- .codepipeline$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$list_tags_for_resource <- codepipeline_list_tags_for_resource
+
 #' Gets a listing of all the webhooks in this region for this account
 #'
 #' Gets a listing of all the webhooks in this region for this account. The
@@ -957,9 +1017,9 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' Returns information about any jobs for AWS CodePipeline to act upon
 #'
 #' Returns information about any jobs for AWS CodePipeline to act upon.
-#' PollForJobs is only valid for action types with \"Custom\" in the owner
-#' field. If the action type contains \"AWS\" or \"ThirdParty\" in the
-#' owner field, the PollForJobs action returns an error.
+#' `PollForJobs` is only valid for action types with \"Custom\" in the
+#' owner field. If the action type contains \"AWS\" or \"ThirdParty\" in
+#' the owner field, the `PollForJobs` action returns an error.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the Amazon S3 bucket used to store artifacts for the pipeline, if
@@ -1174,7 +1234,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' codepipeline_put_job_failure_result(jobId, failureDetails)
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that failed. This is the same
-#' ID returned from PollForJobs.
+#' ID returned from `PollForJobs`.
 #' @param failureDetails &#91;required&#93; The details about the failure of a job.
 #'
 #' @section Request syntax:
@@ -1219,7 +1279,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #'   continuationToken, executionDetails)
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that succeeded. This is the
-#' same ID returned from PollForJobs.
+#' same ID returned from `PollForJobs`.
 #' @param currentRevision The ID of the current revision of the artifact successfully worked upon
 #' by the job.
 #' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
@@ -1282,7 +1342,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #'   failureDetails)
 #'
 #' @param jobId &#91;required&#93; The ID of the job that failed. This is the same ID returned from
-#' PollForThirdPartyJobs.
+#' `PollForThirdPartyJobs`.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
@@ -1331,7 +1391,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #'   currentRevision, continuationToken, executionDetails)
 #'
 #' @param jobId &#91;required&#93; The ID of the job that successfully completed. This is the same ID
-#' returned from PollForThirdPartyJobs.
+#' returned from `PollForThirdPartyJobs`.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
@@ -1400,13 +1460,14 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' the generated webhook URL.
 #'
 #' @usage
-#' codepipeline_put_webhook(webhook)
+#' codepipeline_put_webhook(webhook, tags)
 #'
 #' @param webhook &#91;required&#93; The detail provided in an input file to create the webhook, such as the
 #' webhook name, the pipeline name, and the action name. Give the webhook a
 #' unique name which identifies the webhook being defined. You may choose
 #' to name the webhook after the pipeline and action it targets so that you
 #' can easily recognize what it\'s used for later.
+#' @param tags The tags for the webhook.
 #'
 #' @section Request syntax:
 #' ```
@@ -1426,6 +1487,12 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #'       AllowedIPRange = "string",
 #'       SecretToken = "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1433,14 +1500,14 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_webhook
-codepipeline_put_webhook <- function(webhook) {
+codepipeline_put_webhook <- function(webhook, tags = NULL) {
   op <- new_operation(
     name = "PutWebhook",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$put_webhook_input(webhook = webhook)
+  input <- .codepipeline$put_webhook_input(webhook = webhook, tags = tags)
   output <- .codepipeline$put_webhook_output()
   svc <- .codepipeline$service()
   request <- new_request(svc, op, input, output)
@@ -1573,11 +1640,93 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 }
 .codepipeline$operations$start_pipeline_execution <- codepipeline_start_pipeline_execution
 
+#' Adds to or modifies the tags of the given resource
+#'
+#' Adds to or modifies the tags of the given resource. Tags are metadata
+#' that can be used to manage a resource.
+#'
+#' @usage
+#' codepipeline_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
+#' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_tag_resource
+codepipeline_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .codepipeline$tag_resource_output()
+  svc <- .codepipeline$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$tag_resource <- codepipeline_tag_resource
+
+#' Removes tags from an AWS resource
+#'
+#' Removes tags from an AWS resource.
+#'
+#' @usage
+#' codepipeline_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
+#' @param tagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_untag_resource
+codepipeline_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .codepipeline$untag_resource_output()
+  svc <- .codepipeline$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$untag_resource <- codepipeline_untag_resource
+
 #' Updates a specified pipeline with edits or changes to its structure
 #'
 #' Updates a specified pipeline with edits or changes to its structure. Use
 #' a JSON file with the pipeline structure in conjunction with
-#' UpdatePipeline to provide the full structure of the pipeline. Updating
+#' `UpdatePipeline` to provide the full structure of the pipeline. Updating
 #' the pipeline increases the version number of the pipeline by 1.
 #'
 #' @usage

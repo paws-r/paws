@@ -10,10 +10,10 @@ NULL
 #' can use Amazon SNS to easily push real-time notification messages to
 #' interested subscribers over multiple delivery protocols. For more
 #' information about this product see
-#' [http://aws.amazon.com/sns](http://aws.amazon.com/sns/). For detailed
+#' [https://aws.amazon.com/sns](http://aws.amazon.com/sns/). For detailed
 #' information about Amazon SNS features and their associated API calls,
 #' see the [Amazon SNS Developer
-#' Guide](http://docs.aws.amazon.com/sns/latest/dg/).
+#' Guide](https://docs.aws.amazon.com/sns/latest/dg/).
 #' 
 #' We also provide SDKs that enable you to access Amazon SNS from your
 #' preferred programming language. The SDKs contain functionality that
@@ -33,7 +33,7 @@ NULL
 #'  \link[=sns_add_permission]{add_permission} \tab Adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions \cr
 #'  \link[=sns_check_if_phone_number_is_opted_out]{check_if_phone_number_is_opted_out} \tab Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account \cr
 #'  \link[=sns_confirm_subscription]{confirm_subscription} \tab Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier Subscribe action \cr
-#'  \link[=sns_create_platform_application]{create_platform_application} \tab Creates a platform application object for one of the supported push notification services, such as APNS and GCM, to which devices and mobile apps may register\cr
+#'  \link[=sns_create_platform_application]{create_platform_application} \tab Creates a platform application object for one of the supported push notification services, such as APNS and FCM, to which devices and mobile apps may register\cr
 #'  \link[=sns_create_platform_endpoint]{create_platform_endpoint} \tab Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS \cr
 #'  \link[=sns_create_topic]{create_topic} \tab Creates a topic to which notifications can be published \cr
 #'  \link[=sns_delete_endpoint]{delete_endpoint} \tab Deletes the endpoint for a device and mobile app from Amazon SNS \cr
@@ -49,6 +49,7 @@ NULL
 #'  \link[=sns_list_platform_applications]{list_platform_applications} \tab Lists the platform application objects for the supported push notification services, such as APNS and GCM \cr
 #'  \link[=sns_list_subscriptions]{list_subscriptions} \tab Returns a list of the requester's subscriptions \cr
 #'  \link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic} \tab Returns a list of the subscriptions to a specific topic \cr
+#'  \link[=sns_list_tags_for_resource]{list_tags_for_resource} \tab List all tags added to the specified Amazon SNS topic \cr
 #'  \link[=sns_list_topics]{list_topics} \tab Returns a list of the requester's topics \cr
 #'  \link[=sns_opt_in_phone_number]{opt_in_phone_number} \tab Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number \cr
 #'  \link[=sns_publish]{publish} \tab Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number \cr
@@ -59,7 +60,9 @@ NULL
 #'  \link[=sns_set_subscription_attributes]{set_subscription_attributes} \tab Allows a subscription owner to set an attribute of the subscription to a new value \cr
 #'  \link[=sns_set_topic_attributes]{set_topic_attributes} \tab Allows a topic owner to set an attribute of the topic to a new value \cr
 #'  \link[=sns_subscribe]{subscribe} \tab Prepares to subscribe an endpoint by sending the endpoint a confirmation message \cr
-#'  \link[=sns_unsubscribe]{unsubscribe} \tab Deletes a subscription 
+#'  \link[=sns_tag_resource]{tag_resource} \tab Add tags to the specified Amazon SNS topic \cr
+#'  \link[=sns_unsubscribe]{unsubscribe} \tab Deletes a subscription \cr
+#'  \link[=sns_untag_resource]{untag_resource} \tab Remove tags from the specified Amazon SNS topic 
 #' }
 #'
 #' @rdname sns

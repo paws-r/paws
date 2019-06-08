@@ -8,7 +8,7 @@ ec2_describe_host_reservation_offerings(Filter, MaxDuration, MaxResults,
   MinDuration, NextToken, OfferingId)
 }
 \arguments{
-\item{Filter}{One or more filters.
+\item{Filter}{The filters.
 \itemize{
 \item \code{instance-family} - The instance family of the offering (for
 example, \code{m4}).

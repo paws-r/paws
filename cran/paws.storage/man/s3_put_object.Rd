@@ -33,7 +33,8 @@ referenced by the Content-Type header field.}
 body cannot be determined automatically.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data. This parameter
-is auto-populated when using the command from the CLI}
+is auto-populated when using the command from the CLI. This parameted is
+required if object lock parameters are specified.}
 
 \item{ContentType}{A standard MIME type describing the format of the object data.}
 
@@ -85,9 +86,9 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signatu
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
 parameters. (For example, "Key1=Value1")}
 
-\item{ObjectLockMode}{The Object Lock mode that you want to apply to this object.}
+\item{ObjectLockMode}{The object lock mode that you want to apply to this object.}
 
-\item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.}
+\item{ObjectLockRetainUntilDate}{The date and time when you want this object's object lock to expire.}
 
 \item{ObjectLockLegalHoldStatus}{The Legal Hold status that you want to apply to the specified object.}
 }
@@ -136,14 +137,24 @@ Adds an object to a bucket.
 }
 
 \examples{
-# The following example uploads an object. The request specifies optional
-# object tags. The bucket is versioned, therefore S3 returns version ID of
-# the newly created object.
+# The following example uploads and object. The request specifies the
+# optional server-side encryption option. The request also specifies
+# optional object tags. If the bucket is versioning enabled, S3 returns
+# version ID in response.
 \donttest{svc$put_object(
-  Body = "c:\\\\HappyFace.jpg",
+  Body = "filetoupload",
   Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
+  Key = "exampleobject",
+  ServerSideEncryption = "AES256",
   Tagging = "key1=value1&key2=value2"
+)}
+
+# The following example creates an object. If the bucket is versioning
+# enabled, S3 returns version ID in response.
+\donttest{svc$put_object(
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "objectkey"
 )}
 
 # The following example uploads and object. The request specifies optional
@@ -155,25 +166,6 @@ Adds an object to a bucket.
   Body = "filetoupload",
   Bucket = "examplebucket",
   Key = "exampleobject"
-)}
-
-# The following example creates an object. If the bucket is versioning
-# enabled, S3 returns version ID in response.
-\donttest{svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "objectkey"
-)}
-
-# The following example uploads an object. The request specifies optional
-# request headers to directs S3 to use specific storage class and use
-# server-side encryption.
-\donttest{svc$put_object(
-  Body = "HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  ServerSideEncryption = "AES256",
-  StorageClass = "STANDARD_IA"
 )}
 
 # The following example uploads an object to a versioning-enabled bucket.
@@ -198,15 +190,24 @@ Adds an object to a bucket.
   )
 )}
 
-# The following example uploads and object. The request specifies the
-# optional server-side encryption option. The request also specifies
-# optional object tags. If the bucket is versioning enabled, S3 returns
-# version ID in response.
+# The following example uploads an object. The request specifies optional
+# request headers to directs S3 to use specific storage class and use
+# server-side encryption.
 \donttest{svc$put_object(
-  Body = "filetoupload",
+  Body = "HappyFace.jpg",
   Bucket = "examplebucket",
-  Key = "exampleobject",
+  Key = "HappyFace.jpg",
   ServerSideEncryption = "AES256",
+  StorageClass = "STANDARD_IA"
+)}
+
+# The following example uploads an object. The request specifies optional
+# object tags. The bucket is versioned, therefore S3 returns version ID of
+# the newly created object.
+\donttest{svc$put_object(
+  Body = "c:\\\\HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg",
   Tagging = "key1=value1&key2=value2"
 )}
 

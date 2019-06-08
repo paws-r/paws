@@ -44,8 +44,8 @@ address that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
-EC2-Classic per region and 5 Elastic IP addresses for EC2-VPC per
-region.
+EC2-Classic per Region and 5 Elastic IP addresses for EC2-VPC per
+Region.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

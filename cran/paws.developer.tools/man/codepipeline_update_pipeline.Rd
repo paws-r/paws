@@ -12,7 +12,7 @@ codepipeline_update_pipeline(pipeline)
 \description{
 Updates a specified pipeline with edits or changes to its structure. Use
 a JSON file with the pipeline structure in conjunction with
-UpdatePipeline to provide the full structure of the pipeline. Updating
+\code{UpdatePipeline} to provide the full structure of the pipeline. Updating
 the pipeline increases the version number of the pipeline by 1.
 }
 \section{Request syntax}{

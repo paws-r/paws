@@ -36,10 +36,10 @@ managed policy document that is attached to a role, use GetPolicy to
 determine the policy's default version, then use GetPolicyVersion to
 retrieve the policy document.
 
-For more information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
-For more information about roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
+For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_role_policy(

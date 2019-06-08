@@ -15,8 +15,8 @@ You can also include any of the following characters: \_+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
-the value of the \code{Marker} element in the response to indicate where the
-next call should start.}
+the value of the \code{Marker} element in the response that you received to
+indicate where the next call should start.}
 
 \item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum
 number of items that you want in the response. If additional items exist
@@ -32,7 +32,7 @@ the service where to continue from.}
 \description{
 Lists the tags that are attached to the specified role. The returned
 list of tags is sorted by tag key. For more information about tagging,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

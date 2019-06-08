@@ -5,7 +5,7 @@
 \title{Updates a GraphqlApi object}
 \usage{
 appsync_update_graphql_api(apiId, name, logConfig, authenticationType,
-  userPoolConfig, openIDConnectConfig)
+  userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -20,6 +20,8 @@ appsync_update_graphql_api(apiId, name, logConfig, authenticationType,
 object.}
 
 \item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
+
+\item{additionalAuthenticationProviders}{A list of additional authentication providers for the \code{GraphqlApi} API.}
 }
 \description{
 Updates a \code{GraphqlApi} object.
@@ -44,6 +46,22 @@ Updates a \code{GraphqlApi} object.
     clientId = "string",
     iatTTL = 123,
     authTTL = 123
+  ),
+  additionalAuthenticationProviders = list(
+    list(
+      authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+      openIDConnectConfig = list(
+        issuer = "string",
+        clientId = "string",
+        iatTTL = 123,
+        authTTL = 123
+      ),
+      userPoolConfig = list(
+        userPoolId = "string",
+        awsRegion = "string",
+        appIdClientRegex = "string"
+      )
+    )
   )
 )
 }

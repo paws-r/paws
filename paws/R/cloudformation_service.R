@@ -25,7 +25,7 @@ NULL
 #' Amazon CloudFormation makes use of other AWS products. If you need
 #' additional technical information about a specific AWS product, you can
 #' find the product\'s technical documentation at
-#' [docs.aws.amazon.com](http://docs.aws.amazon.com/).
+#' [docs.aws.amazon.com](https://docs.aws.amazon.com/).
 #'
 #' @examples
 #' \donttest{svc <- cloudformation()

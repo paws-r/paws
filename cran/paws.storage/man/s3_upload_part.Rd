@@ -16,7 +16,9 @@ s3_upload_part(Body, Bucket, ContentLength, ContentMD5, Key, PartNumber,
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data.}
+\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data. This parameter
+is auto-populated when using the command from the CLI. This parameted is
+required if object lock parameters are specified.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 

@@ -92,13 +92,14 @@ propagates your changes to all of the Route 53 authoritative DNS
 servers. While your changes are propagating, \code{GetChange} returns a
 status of \code{PENDING}. When propagation is complete, \code{GetChange} returns a
 status of \code{INSYNC}. Changes generally propagate to all Route 53 name
-servers within 60 seconds. For more information, see GetChange.
+servers within 60 seconds. For more information, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html}{GetChange}.
 
 \strong{Limits on ChangeResourceRecordSets Requests}
 
 For information about the limits on a \code{ChangeResourceRecordSets}
 request, see
-\href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
@@ -114,7 +115,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
           SetIdentifier = "string",
           Weight = 123,
-          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-south-1",
+          Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"ap-south-1",
           GeoLocation = list(
             ContinentCode = "string",
             CountryCode = "string",

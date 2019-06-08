@@ -7,9 +7,8 @@
 kms_delete_alias(AliasName)
 }
 \arguments{
-\item{AliasName}{[required] The alias to be deleted. The name must start with the word "alias"
-followed by a forward slash (alias/). Aliases that begin with
-"alias/aws" are reserved.}
+\item{AliasName}{[required] The alias to be deleted. The alias name must begin with \code{alias/}
+followed by the alias name, such as \code{alias/ExampleAlias}.}
 }
 \description{
 Deletes the specified alias. You cannot perform this operation on an

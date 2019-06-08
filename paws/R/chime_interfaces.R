@@ -99,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$create_bot_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_bot_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Bot = structure(list(BotId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BotType = structure(logical(0), tags = list(type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), BotEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecurityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$create_phone_number_order_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProductType = structure(logical(0), tags = list(type = "string")), E164PhoneNumbers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -133,6 +145,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.chime$delete_events_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$delete_events_configuration_output <- function(...) {
+  list()
 }
 
 .chime$delete_phone_number_input <- function(...) {
@@ -233,6 +255,30 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$get_bot_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_bot_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Bot = structure(list(BotId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BotType = structure(logical(0), tags = list(type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), BotEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecurityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_events_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_events_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventsConfiguration = structure(list(BotId = structure(logical(0), tags = list(type = "string")), OutboundEventsHTTPSEndpoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LambdaFunctionArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$get_global_settings_input <- function(...) {
   list()
 }
@@ -251,7 +297,7 @@ NULL
 
 .chime$get_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -363,6 +409,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$list_bots_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_bots_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Bots = structure(list(structure(list(BotId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BotType = structure(logical(0), tags = list(type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), BotEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecurityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$list_phone_number_orders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
@@ -383,7 +441,7 @@ NULL
 
 .chime$list_phone_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumbers = structure(list(structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumbers = structure(list(structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -435,6 +493,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$put_events_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string")), OutboundEventsHTTPSEndpoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LambdaFunctionArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$put_events_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventsConfiguration = structure(list(BotId = structure(logical(0), tags = list(type = "string")), OutboundEventsHTTPSEndpoint = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LambdaFunctionArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$put_voice_connector_origination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), Origination = structure(list(Routes = structure(list(structure(list(Host = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -469,6 +539,18 @@ NULL
   list()
 }
 
+.chime$regenerate_security_token_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$regenerate_security_token_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Bot = structure(list(BotId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BotType = structure(logical(0), tags = list(type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), BotEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecurityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$reset_personal_pin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), UserId = structure(logical(0), tags = list(location = "uri", locationName = "userId", type = "string"))), tags = list(type = "structure"))
@@ -489,13 +571,13 @@ NULL
 
 .chime$restore_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .chime$search_available_phone_numbers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AreaCode = structure(logical(0), tags = list(location = "querystring", locationName = "area-code", type = "string")), City = structure(logical(0), tags = list(location = "querystring", locationName = "city", type = "string")), Country = structure(logical(0), tags = list(location = "querystring", locationName = "country", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AreaCode = structure(logical(0), tags = list(location = "querystring", locationName = "area-code", type = "string")), City = structure(logical(0), tags = list(location = "querystring", locationName = "city", type = "string")), Country = structure(logical(0), tags = list(location = "querystring", locationName = "country", type = "string")), State = structure(logical(0), tags = list(location = "querystring", locationName = "state", type = "string")), TollFreePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "toll-free-prefix", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -529,6 +611,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$update_bot_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), BotId = structure(logical(0), tags = list(location = "uri", locationName = "botId", type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$update_bot_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Bot = structure(list(BotId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), BotType = structure(logical(0), tags = list(type = "string")), Disabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), BotEmail = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SecurityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$update_global_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(BusinessCalling = structure(list(CdrBucket = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure")), VoiceConnector = structure(list(CdrBucket = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -547,7 +641,7 @@ NULL
 
 .chime$update_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Capabilities = structure(list(InboundCall = structure(logical(0), tags = list(type = "boolean")), OutboundCall = structure(logical(0), tags = list(type = "boolean")), InboundSMS = structure(logical(0), tags = list(type = "boolean")), OutboundSMS = structure(logical(0), tags = list(type = "boolean")), InboundMMS = structure(logical(0), tags = list(type = "boolean")), OutboundMMS = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Associations = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AssociatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

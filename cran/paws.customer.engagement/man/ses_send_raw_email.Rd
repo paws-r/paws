@@ -41,12 +41,12 @@ line.
 \item All of the required header fields must be present in the message.
 \item Each part of a multipart MIME message must be formatted properly.
 \item Attachments must be of a content type that Amazon SES supports. For
-a list on unsupported content types, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html}{Unsupported Attachment Types}
+a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html}{Unsupported Attachment Types}
 in the \emph{Amazon SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is
 outside of the 7-bit ASCII character range, we highly recommend that
-you encode that content. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html}{Sending Raw Email}
+you encode that content. For more information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html}{Sending Raw Email}
 in the \emph{Amazon SES Developer Guide}.
 \item Per \href{https://tools.ietf.org/html/rfc5321#section-4.5.3.1.6}{RFC 5321}, the
 maximum length of each line of text, including the \<CRLF\>, must
@@ -64,7 +64,7 @@ Instead of using this parameter, you can use the X-header
 value of the \code{FromArn} parameter.
 
 For information about when to use this parameter, see the description of
-\code{SendRawEmail} in this guide, or see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
+\code{SendRawEmail} in this guide, or see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
 
 \item{SourceArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -84,7 +84,7 @@ Instead of using this parameter, you can use the X-header
 the value of the \code{SourceArn} parameter.
 
 For information about when to use this parameter, see the description of
-\code{SendRawEmail} in this guide, or see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
+\code{SendRawEmail} in this guide, or see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
 
 \item{ReturnPathArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -104,7 +104,7 @@ the \code{ReturnPathArn} parameter and the corresponding X-header, Amazon SES
 uses the value of the \code{ReturnPathArn} parameter.
 
 For information about when to use this parameter, see the description of
-\code{SendRawEmail} in this guide, or see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
+\code{SendRawEmail} in this guide, or see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using \code{SendRawEmail}. Tags correspond to characteristics
@@ -127,12 +127,12 @@ operation to send messages that include attachments.
 
 The \code{SendRawEmail} operation has the following requirements:
 \itemize{
-\item You can only send email from \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{verified email addresses or domains}.
+\item You can only send email from \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{verified email addresses or domains}.
 If you try to send email from an address that isn't verified, the
 operation results in an "Email address not verified" error.
-\item If your account is still in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html}{Amazon SES sandbox},
+\item If your account is still in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html}{Amazon SES sandbox},
 you can only send email to other verified addresses in your account,
-or to addresses that are associated with the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html}{Amazon SES mailbox simulator}.
+or to addresses that are associated with the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html}{Amazon SES mailbox simulator}.
 \item The maximum message size, including attachments, is 10 MB.
 \item Each message has to include at least one recipient address. A
 recipient address includes any address on the To:, CC:, or BCC:
@@ -152,7 +152,7 @@ MIME message parts. However, if Amazon SES has to modify the
 contents of your message (for example, if you use open and click
 tracking), 8-bit content isn't preserved. For this reason, we
 highly recommend that you encode all content that isn't 7-bit
-ASCII. For more information, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding}{MIME Encoding}
+ASCII. For more information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding}{MIME Encoding}
 in the \emph{Amazon SES Developer Guide}.
 }
 
@@ -184,14 +184,14 @@ you specify the \code{SourceIdentityArn} parameter and not the
 specify the \code{SourceIdentityArn} parameter, Amazon SES will set the
 From and Return Path addresses to the identity specified in
 \code{SourceIdentityArn}. For more information about sending
-authorization, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Using Sending Authorization with Amazon SES}
+authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Using Sending Authorization with Amazon SES}
 in the \emph{Amazon SES Developer Guide.}
 \itemize{
 \item For every message that you send, the total number of recipients
 (including each recipient in the To:, CC: and BCC: fields) is
 counted against the maximum number of emails you can send in a
 24-hour period (your \emph{sending quota}). For more information about
-sending quotas in Amazon SES, see \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits}
+sending quotas in Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits}
 in the \emph{Amazon SES Developer Guide.}
 }
 }

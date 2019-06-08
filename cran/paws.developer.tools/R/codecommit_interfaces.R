@@ -51,7 +51,7 @@ NULL
 
 .codecommit$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -313,6 +313,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codecommit$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codecommit$merge_pull_request_by_fast_forward_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(pullRequestId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), sourceCommitId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -385,6 +397,16 @@ NULL
   return(populate(args, shape))
 }
 
+.codecommit$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$tag_resource_output <- function(...) {
+  list()
+}
+
 .codecommit$test_repository_triggers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), triggers = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), customData = structure(logical(0), tags = list(type = "string")), branches = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), events = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -395,6 +417,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(successfulExecutions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), failedExecutions = structure(list(structure(list(trigger = structure(logical(0), tags = list(type = "string")), failureMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.codecommit$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$untag_resource_output <- function(...) {
+  list()
 }
 
 .codecommit$update_comment_input <- function(...) {

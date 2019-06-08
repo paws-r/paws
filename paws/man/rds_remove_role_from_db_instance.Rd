@@ -16,7 +16,7 @@ DB instance, for example \code{arn:aws:iam::123456789012:role/AccessRole}.}
 
 \item{FeatureName}{[required] The name of the feature for the DB instance that the IAM role is to be
 disassociated from. For the list of supported feature names, see
-DBEngineVersion.}
+\code{DBEngineVersion}.}
 }
 \description{
 Disassociates an AWS Identity and Access Management (IAM) role from a DB

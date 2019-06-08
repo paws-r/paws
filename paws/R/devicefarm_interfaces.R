@@ -567,6 +567,18 @@ NULL
   return(populate(args, shape))
 }
 
+.devicefarm$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .devicefarm$list_tests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -684,6 +696,30 @@ NULL
 .devicefarm$stop_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(run = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), created = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), result = structure(logical(0), tags = list(type = "string")), started = structure(logical(0), tags = list(type = "timestamp")), stopped = structure(logical(0), tags = list(type = "timestamp")), counters = structure(list(total = structure(logical(0), tags = list(type = "integer")), passed = structure(logical(0), tags = list(type = "integer")), failed = structure(logical(0), tags = list(type = "integer")), warned = structure(logical(0), tags = list(type = "integer")), errored = structure(logical(0), tags = list(type = "integer")), stopped = structure(logical(0), tags = list(type = "integer")), skipped = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), message = structure(logical(0), tags = list(type = "string")), totalJobs = structure(logical(0), tags = list(type = "integer")), completedJobs = structure(logical(0), tags = list(type = "integer")), billingMethod = structure(logical(0), tags = list(type = "string")), deviceMinutes = structure(list(total = structure(logical(0), tags = list(type = "double")), metered = structure(logical(0), tags = list(type = "double")), unmetered = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), networkProfile = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), uplinkBandwidthBits = structure(logical(0), tags = list(type = "long")), downlinkBandwidthBits = structure(logical(0), tags = list(type = "long")), uplinkDelayMs = structure(logical(0), tags = list(type = "long")), downlinkDelayMs = structure(logical(0), tags = list(type = "long")), uplinkJitterMs = structure(logical(0), tags = list(type = "long")), downlinkJitterMs = structure(logical(0), tags = list(type = "long")), uplinkLossPercent = structure(logical(0), tags = list(type = "integer")), downlinkLossPercent = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), parsingResultUrl = structure(logical(0), tags = list(type = "string")), resultCode = structure(logical(0), tags = list(type = "string")), seed = structure(logical(0), tags = list(type = "integer")), appUpload = structure(logical(0), tags = list(type = "string")), eventCount = structure(logical(0), tags = list(type = "integer")), jobTimeoutMinutes = structure(logical(0), tags = list(type = "integer")), devicePoolArn = structure(logical(0), tags = list(type = "string")), locale = structure(logical(0), tags = list(type = "string")), radios = structure(list(wifi = structure(logical(0), tags = list(type = "boolean")), bluetooth = structure(logical(0), tags = list(type = "boolean")), nfc = structure(logical(0), tags = list(type = "boolean")), gps = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), location = structure(list(latitude = structure(logical(0), tags = list(type = "double")), longitude = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), customerArtifactPaths = structure(list(iosPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), androidPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), deviceHostPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), webUrl = structure(logical(0), tags = list(type = "string")), skipAppResign = structure(logical(0), tags = list(type = "boolean")), testSpecArn = structure(logical(0), tags = list(type = "string")), deviceSelectionResult = structure(list(filters = structure(list(structure(list(attribute = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), matchedDevicesCount = structure(logical(0), tags = list(type = "integer")), maxDevices = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.devicefarm$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

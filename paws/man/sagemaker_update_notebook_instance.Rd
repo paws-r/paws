@@ -27,7 +27,10 @@ must have the \code{iam:PassRole} permission.}
 instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
 \item{DisassociateLifecycleConfig}{Set to \code{true} to remove the notebook instance lifecycle configuration
-currently associated with the notebook instance.}
+currently associated with the notebook instance. This operation is
+idempotent. If you specify a lifecycle configuration that is not
+associated with the notebook instance when you call this method, it does
+not throw an error.}
 
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
 instance. The default value is 5 GB.}
@@ -52,13 +55,19 @@ this notebook instance. Currently only one EI instance type can be
 associated with a notebook instance. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
 
 \item{DisassociateAcceleratorTypes}{A list of the Elastic Inference (EI) instance types to remove from this
-notebook instance.}
+notebook instance. This operation is idempotent. If you specify an
+accelerator type that is not associated with the notebook instance when
+you call this method, it does not throw an error.}
 
 \item{DisassociateDefaultCodeRepository}{The name or URL of the default Git repository to remove from this
-notebook instance.}
+notebook instance. This operation is idempotent. If you specify a Git
+repository that is not associated with the notebook instance when you
+call this method, it does not throw an error.}
 
 \item{DisassociateAdditionalCodeRepositories}{A list of names or URLs of the default Git repositories to remove from
-this notebook instance.}
+this notebook instance. This operation is idempotent. If you specify a
+Git repository that is not associated with the notebook instance when
+you call this method, it does not throw an error.}
 
 \item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
 instance. The default value is \code{Enabled}.
@@ -70,8 +79,7 @@ root permissions.}
 \description{
 Updates a notebook instance. NotebookInstance updates include upgrading
 or downgrading the ML compute instance used for your notebook instance
-to accommodate changes in your workload requirements. You can also
-update the VPC security groups.
+to accommodate changes in your workload requirements.
 }
 \section{Request syntax}{
 \preformatted{svc$update_notebook_instance(

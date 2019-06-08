@@ -19,9 +19,7 @@ neptune_create_db_instance(DBName, DBInstanceIdentifier,
   PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports)
 }
 \arguments{
-\item{DBName}{The database name.
-
-Type: String}
+\item{DBName}{Not supported.}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
 string.
@@ -70,7 +68,7 @@ managed by the DB cluster. For more information, see CreateDBCluster.
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
-\item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in.
+\item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 AWS Region.
@@ -168,9 +166,9 @@ CharacterSet.
 Not applicable. The character set is managed by the DB cluster. For more
 information, see CreateDBCluster.}
 
-\item{PubliclyAccessible}{This parameter is not supported.}
+\item{PubliclyAccessible}{This flag should no longer be used.}
 
-\item{Tags}{}
+\item{Tags}{The tags to assign to the new instance.}
 
 \item{DBClusterIdentifier}{The identifier of the DB cluster that the instance will belong to.
 

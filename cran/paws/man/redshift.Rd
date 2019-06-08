@@ -17,7 +17,7 @@ such as polling or asynchronous callback handlers, to determine when a
 command has been applied. In this reference, the parameter descriptions
 indicate whether a change is applied immediately, on the next instance
 reboot, or during the next maintenance window. For a summary of the
-Amazon Redshift cluster management interfaces, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html}{Using the Amazon Redshift Management Interfaces}.
+Amazon Redshift cluster management interfaces, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html}{Using the Amazon Redshift Management Interfaces}.
 
 Amazon Redshift manages all the work of setting up, operating, and
 scaling a data warehouse: provisioning capacity, monitoring and backing
@@ -26,9 +26,9 @@ engine. You can focus on using your data to acquire new insights for
 your business and customers.
 
 If you are a first-time user of Amazon Redshift, we recommend that you
-begin by reading the \href{http://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html}{Amazon Redshift Getting Started Guide}.
+begin by reading the \href{https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html}{Amazon Redshift Getting Started Guide}.
 
-If you are a database developer, the \href{http://docs.aws.amazon.com/redshift/latest/dg/welcome.html}{Amazon Redshift Database Developer Guide}
+If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/latest/dg/welcome.html}{Amazon Redshift Database Developer Guide}
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 }

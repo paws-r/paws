@@ -15,7 +15,7 @@ mail from it.}
 Creates a new IP address filter.
 }
 \details{
-For information about setting up IP address filters, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html}{Amazon SES Developer Guide}.
+For information about setting up IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

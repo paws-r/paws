@@ -76,7 +76,7 @@ To receive the report, the bucket must have a policy that allows the
 Amazon SNS service principle to perform the \code{s3:PutObject} and
 \code{s3:GetBucketLocation} actions.
 
-For an example bucket policy and usage report, see \href{http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html}{Monitoring SMS Activity} in
+For an example bucket policy and usage report, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html}{Monitoring SMS Activity} in
 the \emph{Amazon SNS Developer Guide}.}
 }
 \description{
@@ -86,7 +86,7 @@ and receiving daily SMS usage reports.
 \details{
 You can override some of these settings for a single message when you
 use the \code{Publish} action with the \code{MessageAttributes.entry.N} parameter.
-For more information, see \href{http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Sending an SMS Message}
+For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Sending an SMS Message}
 in the \emph{Amazon SNS Developer Guide}.
 }
 \section{Request syntax}{

@@ -8,11 +8,11 @@ ses()
 }
 \description{
 This document contains reference information for the \href{https://aws.amazon.com/ses/}{Amazon Simple Email Service} (Amazon SES) API, version
-2010-12-01. This document is best used in conjunction with the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
+2010-12-01. This document is best used in conjunction with the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
 
 For a list of Amazon SES endpoints to use in service requests, see
-\href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html}{Regions and Amazon SES}
-in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html}{Regions and Amazon SES}
+in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
 }
 \section{Operations}{
 
@@ -59,6 +59,7 @@ in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{
 \link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets} \tab Lists the receipt rule sets that exist under your AWS account in the current AWS Region \cr
 \link[=ses_list_templates]{list_templates} \tab Lists the email templates present in your Amazon SES account in the current AWS Region \cr
 \link[=ses_list_verified_email_addresses]{list_verified_email_addresses} \tab Deprecated \cr
+\link[=ses_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Adds or updates the delivery options for a configuration set \cr
 \link[=ses_put_identity_policy]{put_identity_policy} \tab Adds or updates a sending authorization policy for the specified identity (an email address or a domain) \cr
 \link[=ses_reorder_receipt_rule_set]{reorder_receipt_rule_set} \tab Reorders the receipt rules within a receipt rule set \cr
 \link[=ses_send_bounce]{send_bounce} \tab Generates and sends a bounce message to the sender of an email you received through Amazon SES \cr
@@ -83,7 +84,7 @@ in the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{
 \link[=ses_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template \cr
 \link[=ses_update_receipt_rule]{update_receipt_rule} \tab Updates a receipt rule \cr
 \link[=ses_update_template]{update_template} \tab Updates an email template \cr
-\link[=ses_verify_domain_dkim]{verify_domain_dkim} \tab Returns a set of DKIM tokens for a domain \cr
+\link[=ses_verify_domain_dkim]{verify_domain_dkim} \tab Returns a set of DKIM tokens for a domain identity \cr
 \link[=ses_verify_domain_identity]{verify_domain_identity} \tab Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it \cr
 \link[=ses_verify_email_address]{verify_email_address} \tab Deprecated \cr
 \link[=ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it

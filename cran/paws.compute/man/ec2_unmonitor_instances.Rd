@@ -7,7 +7,7 @@
 ec2_unmonitor_instances(InstanceIds, DryRun)
 }
 \arguments{
-\item{InstanceIds}{[required] One or more instance IDs.}
+\item{InstanceIds}{[required] The IDs of the instances.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

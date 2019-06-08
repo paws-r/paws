@@ -9,7 +9,7 @@ iam_upload_server_certificate(Path, ServerCertificateName,
 }
 \arguments{
 \item{Path}{The path for the server certificate. For more information about paths,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -78,27 +78,27 @@ certificate entity includes a public key certificate, a private key, and
 an optional certificate chain, which should all be PEM-encoded.
 }
 \details{
-We recommend that you use AWS Certificate Manager to provision, manage,
-and deploy your server certificates. With ACM you can request a
-certificate, deploy it to AWS resources, and let ACM handle certificate
-renewals for you. Certificates provided by ACM are free. For more
-information about using ACM, see the \href{http://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.
+We recommend that you use \href{https://docs.aws.amazon.com/acm/}{AWS Certificate Manager} to provision, manage, and
+deploy your server certificates. With ACM you can request a certificate,
+deploy it to AWS resources, and let ACM handle certificate renewals for
+you. Certificates provided by ACM are free. For more information about
+using ACM, see the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager User Guide}.
 
 For more information about working with server certificates, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic includes a list of AWS services that
 can use the server certificates that you manage with IAM.
 
 For information about the number of server certificates you can upload,
-see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html}{Limitations on IAM Entities and Objects}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html}{Limitations on IAM Entities and Objects}
 in the \emph{IAM User Guide}.
 
 Because the body of the public key certificate, private key, and the
 certificate chain can be large, you should use POST rather than GET when
 calling \code{UploadServerCertificate}. For information about setting up
-signatures and authorization through the API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
+signatures and authorization through the API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
 in the \emph{AWS General Reference}. For general information about using the
-Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Calling the API by Making HTTP Query Requests}
+Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Calling the API by Making HTTP Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -17,8 +17,8 @@ sets the value to an empty string.}
 \description{
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,
-hyperparameter tuning jobs, models, endpoint configurations, and
-endpoints.
+hyperparameter tuning jobs, batch transform jobs, models, labeling jobs,
+work teams, endpoint configurations, and endpoints.
 }
 \details{
 Each tag consists of a key and an optional value. Tag keys must be

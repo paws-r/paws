@@ -6,7 +6,7 @@
 \usage{
 comprehend_start_topics_detection_job(InputDataConfig, OutputDataConfig,
   DataAccessRoleArn, JobName, NumberOfTopics, ClientRequestToken,
-  VolumeKmsKeyId)
+  VolumeKmsKeyId, VpcConfig)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -37,6 +37,10 @@ either of the following formats:
 \item Amazon Resource Name (ARN) of a KMS Key:
 \code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
 }}
+
+\item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your topic detection
+job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \description{
 Starts an asynchronous topic detection job. Use the
@@ -56,7 +60,15 @@ Starts an asynchronous topic detection job. Use the
   JobName = "string",
   NumberOfTopics = 123,
   ClientRequestToken = "string",
-  VolumeKmsKeyId = "string"
+  VolumeKmsKeyId = "string",
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  )
 )
 }
 }

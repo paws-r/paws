@@ -11,7 +11,8 @@ route53_create_traffic_policy_version(Id, Document, Comment)
 
 \item{Document}{[required] The definition of this version of the traffic policy, in JSON format.
 You specified the JSON in the \code{CreateTrafficPolicyVersion} request. For
-more information about the JSON format, see CreateTrafficPolicy.}
+more information about the JSON format, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html}{CreateTrafficPolicy}.}
 
 \item{Comment}{The comment that you specified in the \code{CreateTrafficPolicyVersion}
 request, if any.}

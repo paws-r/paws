@@ -50,7 +50,7 @@ be supplied.
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription, set to
 \strong{false} to create the subscription but not active it.}
 
-\item{Tags}{}
+\item{Tags}{The tags to be applied to the new event subscription.}
 }
 \description{
 Creates an event notification subscription. This action requires a topic

@@ -18,7 +18,7 @@ value string with a maximum of 256 characters.}
 \description{
 Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your Amazon
-EMR resource allocation costs. For more information, see \href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
+EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

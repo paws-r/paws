@@ -22,6 +22,11 @@ spaces. You can also include any of the following characters: \_+=,.@-}
 
 \item{PolicyDocument}{[required] The policy document.
 
+You must provide policies in JSON format in IAM. However, for AWS
+CloudFormation templates formatted in YAML, you can provide the policy
+in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+to JSON format before submitting it to IAM.
+
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
 this parameter is a string of characters consisting of the following:
 \itemize{
@@ -42,20 +47,20 @@ When you embed an inline policy in a role, the inline policy is used as
 part of the role's access (permissions) policy. The role's trust
 policy is created at the same time as the role, using CreateRole. You
 can update a role's trust policy using UpdateAssumeRolePolicy. For more
-information about IAM roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
+information about IAM roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 
 A role can also have a managed policy attached to it. To attach a
 managed policy to a role, use AttachRolePolicy. To create a new managed
-policy, use CreatePolicy. For information about policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+policy, use CreatePolicy. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 For information about limits on the number of inline policies that you
-can embed with a role, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+can embed with a role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 
 Because policy documents can be large, you should use POST rather than
 GET when calling \code{PutRolePolicy}. For general information about using
-the Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
+the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

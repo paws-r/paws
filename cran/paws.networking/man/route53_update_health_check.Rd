@@ -58,9 +58,9 @@ Elastic IP address for \code{IPAddress}. This ensures that the IP address of
 your instance never changes. For more information, see the applicable
 documentation:
 \itemize{
-\item Linux: \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
+\item Linux: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Linux Instances}
-\item Windows: \href{http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
+\item Windows: \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Windows Instances}
 }
 
@@ -69,7 +69,7 @@ the value. However, you can't update an existing health check to add or
 remove the value of \code{IPAddress}.
 
 For more information, see
-UpdateHealthCheckRequest\$FullyQualifiedDomainName.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
 
 Constraints: Route 53 can't check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
@@ -192,7 +192,7 @@ After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover, Route
 53 continues to route traffic to the corresponding resources. If you
 want to stop routing traffic to a resource, change the value of
-UpdateHealthCheckRequest\$Inverted.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted}{Inverted}.
 
 Charges for a health check still apply when the health check is
 disabled. For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.}
@@ -263,13 +263,17 @@ each element that you want to reset to the default value. Valid values
 for \code{ResettableElementName} include the following:
 \itemize{
 \item \code{ChildHealthChecks}: Amazon Route 53 resets
-HealthCheckConfig\$ChildHealthChecks to null.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks}{ChildHealthChecks}
+to null.
 \item \code{FullyQualifiedDomainName}: Route 53 resets
-HealthCheckConfig\$FullyQualifiedDomainName to null.
-\item \code{Regions}: Route 53 resets the HealthCheckConfig\$Regions list to
-the default set of regions.
-\item \code{ResourcePath}: Route 53 resets HealthCheckConfig\$ResourcePath to
-null.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
+to null.
+\item \code{Regions}: Route 53 resets the
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions}{Regions}
+list to the default set of regions.
+\item \code{ResourcePath}: Route 53 resets
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath}{ResourcePath}
+to null.
 }}
 }
 \description{
@@ -301,7 +305,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
   ),
   AlarmIdentifier = list(
-    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1",
+    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
     Name = "string"
   ),
   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",

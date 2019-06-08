@@ -30,7 +30,7 @@ see the documentation for the other AWS service.
 
 For more information about enabling services to integrate with AWS
 Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 
 This operation can be called only from the organization's master
 account and only if the organization has \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.

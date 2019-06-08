@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_tags}
 \alias{ec2_describe_tags}
-\title{Describes one or more of the tags for your EC2 resources}
+\title{Describes the specified tags for your EC2 resources}
 \usage{
 ec2_describe_tags(DryRun, Filters, MaxResults, NextToken)
 }
@@ -12,7 +12,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{key} - The tag key.
 \item \code{resource-id} - The ID of the resource.
@@ -37,7 +37,7 @@ call with the returned \code{NextToken} value.}
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \description{
-Describes one or more of the tags for your EC2 resources.
+Describes the specified tags for your EC2 resources.
 }
 \details{
 For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}

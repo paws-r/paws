@@ -2,18 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_start_associations_once}
 \alias{ssm_start_associations_once}
-\title{Use this API action to execute an association immediately and only one
-time}
+\title{Use this API action to run an association immediately and only one time}
 \usage{
 ssm_start_associations_once(AssociationIds)
 }
 \arguments{
-\item{AssociationIds}{[required] The association IDs that you want to execute immediately and only one
-time.}
+\item{AssociationIds}{[required] The association IDs that you want to run immediately and only one time.}
 }
 \description{
-Use this API action to execute an association immediately and only one
-time. This action can be helpful when troubleshooting associations.
+Use this API action to run an association immediately and only one time.
+This action can be helpful when troubleshooting associations.
 }
 \section{Request syntax}{
 \preformatted{svc$start_associations_once(

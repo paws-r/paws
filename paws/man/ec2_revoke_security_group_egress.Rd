@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_revoke_security_group_egress}
 \alias{ec2_revoke_security_group_egress}
-\title{[EC2-VPC only] Removes one or more egress rules from a security
+\title{[VPC only] Removes the specified egress rules from a security
 group for EC2-VPC}
 \usage{
 ec2_revoke_security_group_egress(DryRun, GroupId, IpPermissions, CidrIp,
@@ -17,9 +17,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{One or more sets of IP permissions. You can't specify a destination
-security group and a CIDR IP address range in the same set of
-permissions.}
+\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
+group and a CIDR IP address range in the same set of permissions.}
 
 \item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
 
@@ -37,7 +36,7 @@ security group.}
 security group.}
 }
 \description{
-[EC2-VPC only] Removes one or more egress rules from a security group
+[VPC only] Removes the specified egress rules from a security group
 for EC2-VPC. This action doesn't apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for example,
 ports) must match the existing rule's values exactly.

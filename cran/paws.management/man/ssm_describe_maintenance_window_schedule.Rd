@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_window_schedule}
 \alias{ssm_describe_maintenance_window_schedule}
-\title{Retrieves information about upcoming executions of a Maintenance Window}
+\title{Retrieves information about upcoming executions of a maintenance window}
 \usage{
 ssm_describe_maintenance_window_schedule(WindowId, Targets,
   ResourceType, Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{WindowId}{The ID of the Maintenance Window to retrieve information about.}
+\item{WindowId}{The ID of the maintenance window to retrieve information about.}
 
 \item{Targets}{The instance ID or key/value pair to retrieve information about.}
 
@@ -16,7 +16,7 @@ ssm_describe_maintenance_window_schedule(WindowId, Targets,
 example, "INSTANCE".}
 
 \item{Filters}{Filters used to limit the range of results. For example, you can limit
-Maintenance Window executions to only those scheduled before or after a
+maintenance window executions to only those scheduled before or after a
 certain date and time.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
@@ -27,7 +27,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Retrieves information about upcoming executions of a Maintenance Window.
+Retrieves information about upcoming executions of a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_schedule(

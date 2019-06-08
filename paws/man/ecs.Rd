@@ -16,7 +16,7 @@ serverless infrastructure that is managed by Amazon ECS by launching
 your services or tasks using the Fargate launch type. For more control,
 you can host your tasks on a cluster of Amazon Elastic Compute Cloud
 (Amazon EC2) instances that you manage by using the EC2 launch type. For
-more information about launch types, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}.
+more information about launch types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}.
 
 Amazon ECS lets you launch and stop container-based applications with
 simple API calls, allows you to get the state of your cluster from a
@@ -35,7 +35,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster \cr
 \link[=ecs_create_service]{create_service} \tab Runs and maintains a desired number of tasks from a specified task definition \cr
 \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service \cr
-\link[=ecs_delete_account_setting]{delete_account_setting} \tab Modifies the ARN and resource ID format of a resource for a specified IAM user, IAM role, or the root user for an account \cr
+\link[=ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified IAM user, IAM role, or the root user for an account \cr
 \link[=ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource \cr
 \link[=ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster \cr
 \link[=ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster \cr
@@ -49,7 +49,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service \cr
 \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks \cr
 \link[=ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
-\link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for an Amazon ECS resource for a specified principal \cr
+\link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for a specified principal \cr
 \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster \cr
 \link[=ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters \cr
 \link[=ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster \cr
@@ -58,14 +58,15 @@ or worry about scaling your management infrastructure.
 \link[=ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any ACTIVE task definition revisions)\cr
 \link[=ecs_list_task_definitions]{list_task_definitions} \tab Returns a list of task definitions that are registered to your account \cr
 \link[=ecs_list_tasks]{list_tasks} \tab Returns a list of tasks for a specified cluster \cr
-\link[=ecs_put_account_setting]{put_account_setting} \tab Modifies the ARN and resource ID format of a resource type for a specified IAM user, IAM role, or the root user for an account \cr
-\link[=ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies the ARN and resource ID format of a resource type for all IAM users on an account for which no individual account setting has been set \cr
+\link[=ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting \cr
+\link[=ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified \cr
 \link[=ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource \cr
 \link[=ecs_register_container_instance]{register_container_instance} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_register_task_definition]{register_task_definition} \tab Registers a new task definition from the supplied family and containerDefinitions \cr
 \link[=ecs_run_task]{run_task} \tab Starts a new task using the specified task definition \cr
 \link[=ecs_start_task]{start_task} \tab Starts a new task from the specified task definition on the specified container instance or instances \cr
 \link[=ecs_stop_task]{stop_task} \tab Stops a running task \cr
+\link[=ecs_submit_attachment_state_changes]{submit_attachment_state_changes} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_submit_container_state_change]{submit_container_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_submit_task_state_change]{submit_task_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent \cr
 \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr

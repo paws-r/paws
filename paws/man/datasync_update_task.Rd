@@ -4,7 +4,8 @@
 \alias{datasync_update_task}
 \title{Updates the metadata associated with a task}
 \usage{
-datasync_update_task(TaskArn, Options, Name)
+datasync_update_task(TaskArn, Options, Excludes, Name,
+  CloudWatchLogGroupArn)
 }
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the resource name of the task to
@@ -12,7 +13,14 @@ update.}
 
 \item{Options}{}
 
+\item{Excludes}{A filter that determines which files to exclude from a task based on the
+specified pattern in the filter. Transfers all files in the task's
+subdirectory, except files that match the filter that is set.}
+
 \item{Name}{The name of the task to update.}
+
+\item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the resource name of the CloudWatch
+LogGroup.}
 }
 \description{
 Updates the metadata associated with a task.
@@ -31,7 +39,14 @@ Updates the metadata associated with a task.
     PosixPermissions = "NONE"|"BEST_EFFORT"|"PRESERVE",
     BytesPerSecond = 123
   ),
-  Name = "string"
+  Excludes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
+  ),
+  Name = "string",
+  CloudWatchLogGroupArn = "string"
 )
 }
 }

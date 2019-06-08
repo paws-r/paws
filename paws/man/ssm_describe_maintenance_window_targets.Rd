@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_window_targets}
 \alias{ssm_describe_maintenance_window_targets}
-\title{Lists the targets registered with the Maintenance Window}
+\title{Lists the targets registered with the maintenance window}
 \usage{
 ssm_describe_maintenance_window_targets(WindowId, Filters, MaxResults,
   NextToken)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window whose targets should be retrieved.}
+\item{WindowId}{[required] The ID of the maintenance window whose targets should be retrieved.}
 
 \item{Filters}{Optional filters that can be used to narrow down the scope of the
 returned window targets. The supported filter keys are Type,
@@ -22,7 +22,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Lists the targets registered with the Maintenance Window.
+Lists the targets registered with the maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_maintenance_window_targets(

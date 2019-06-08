@@ -6,7 +6,8 @@
 \usage{
 glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-  Timeout, MaxCapacity, NotificationProperty, SecurityConfiguration, Tags)
+  Timeout, MaxCapacity, NotificationProperty, WorkerType, NumberOfWorkers,
+  SecurityConfiguration, Tags)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your
@@ -16,12 +17,13 @@ account.}
 
 \item{LogUri}{This field is reserved for future use.}
 
-\item{Role}{[required] The name or ARN of the IAM role associated with this job.}
+\item{Role}{[required] The name or Amazon Resource Name (ARN) of the IAM role associated with
+this job.}
 
-\item{ExecutionProperty}{An ExecutionProperty specifying the maximum number of concurrent runs
+\item{ExecutionProperty}{An \code{ExecutionProperty} specifying the maximum number of concurrent runs
 allowed for this job.}
 
-\item{Command}{[required] The JobCommand that executes this job.}
+\item{Command}{[required] The \code{JobCommand} that executes this job.}
 
 \item{DefaultArguments}{The default arguments for this job.
 
@@ -29,11 +31,11 @@ You can specify arguments here that your own job-execution script
 consumes, as well as arguments that AWS Glue itself consumes.
 
 For information about how to specify and consume your own Job arguments,
-see the \href{http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html}{Calling AWS Glue APIs in Python}
+see the \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html}{Calling AWS Glue APIs in Python}
 topic in the developer guide.
 
 For information about the key-value pairs that AWS Glue consumes to set
-up your job, see the \href{http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html}{Special Parameters Used by AWS Glue}
+up your job, see the \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html}{Special Parameters Used by AWS Glue}
 topic in the developer guide.}
 
 \item{Connections}{The connections used for this job.}
@@ -43,7 +45,7 @@ topic in the developer guide.}
 \item{AllocatedCapacity}{This parameter is deprecated. Use \code{MaxCapacity} instead.
 
 The number of AWS Glue data processing units (DPUs) to allocate to this
-Job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a
+Job. You can allocate from 2 to 100 DPUs; the default is 10. A DPU is a
 relative measure of processing power that consists of 4 vCPUs of compute
 capacity and 16 GB of memory. For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.}
 
@@ -56,10 +58,12 @@ allocated when this job runs. A DPU is a relative measure of processing
 power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 For more information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.
 
+Do not set \code{Max Capacity} if using \code{WorkerType} and \code{NumberOfWorkers}.
+
 The value that can be allocated for \code{MaxCapacity} depends on whether you
-are running a python shell job, or an Apache Spark ETL job:
+are running a Python shell job or an Apache Spark ETL job:
 \itemize{
-\item When you specify a python shell job
+\item When you specify a Python shell job
 (\code{JobCommand.Name}="pythonshell"), you can allocate either 0.0625
 or 1 DPU. The default is 0.0625 DPU.
 \item When you specify an Apache Spark ETL job
@@ -70,11 +74,30 @@ DPU allocation.
 
 \item{NotificationProperty}{Specifies configuration properties of a job notification.}
 
-\item{SecurityConfiguration}{The name of the SecurityConfiguration structure to be used with this
+\item{WorkerType}{The type of predefined worker that is allocated when a job runs. Accepts
+a value of Standard, G.1X, or G.2X.
+\itemize{
+\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB
+of memory and a 50GB disk, and 2 executors per worker.
+\item For the \code{G.1X} worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+of memory, 64 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+\item For the \code{G.2X} worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+of memory, 128 GB disk), and provides 1 executor per worker. We
+recommend this worker type for memory-intensive jobs.
+}}
+
+\item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated when
+a job runs.
+
+The maximum number of workers you can define are 299 for \code{G.1X}, and 149
+for \code{G.2X}.}
+
+\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
 job.}
 
 \item{Tags}{The tags to use with this job. You may use tags to limit access to the
-job. For more information about tags in AWS Glue, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+job. For more information about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
 the developer guide.}
 }
 \description{
@@ -91,7 +114,8 @@ Creates a new job definition.
   ),
   Command = list(
     Name = "string",
-    ScriptLocation = "string"
+    ScriptLocation = "string",
+    PythonVersion = "string"
   ),
   DefaultArguments = list(
     "string"
@@ -108,6 +132,8 @@ Creates a new job definition.
   NotificationProperty = list(
     NotifyDelayAfter = 123
   ),
+  WorkerType = "Standard"|"G.1X"|"G.2X",
+  NumberOfWorkers = 123,
   SecurityConfiguration = "string",
   Tags = list(
     "string"

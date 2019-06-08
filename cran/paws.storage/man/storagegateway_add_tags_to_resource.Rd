@@ -32,7 +32,7 @@ define. You can add tags to the following AWS Storage Gateway resources:
 \item NFS and SMB file shares
 }
 
-You can create a maximum of 10 tags for each resource. Virtual tapes and
+You can create a maximum of 50 tags for each resource. Virtual tapes and
 storage volumes that are recovered to a new gateway maintain their tags.
 }
 \section{Request syntax}{

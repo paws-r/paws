@@ -6,7 +6,7 @@
 \usage{
 comprehend_start_document_classification_job(JobName,
   DocumentClassifierArn, InputDataConfig, OutputDataConfig,
-  DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId)
+  DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
 }
 \arguments{
 \item{JobName}{The identifier of the job.}
@@ -33,6 +33,10 @@ either of the following formats:
 \item Amazon Resource Name (ARN) of a KMS Key:
 \code{"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"}
 }}
+
+\item{VpcConfig}{Configuration parameters for an optional private Virtual Private Cloud
+(VPC) containing the resources you are using for your document
+classification job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 }
 \description{
 Starts an asynchronous document classification job. Use the operation to
@@ -52,7 +56,15 @@ track the progress of the job.
   ),
   DataAccessRoleArn = "string",
   ClientRequestToken = "string",
-  VolumeKmsKeyId = "string"
+  VolumeKmsKeyId = "string",
+  VpcConfig = list(
+    SecurityGroupIds = list(
+      "string"
+    ),
+    Subnets = list(
+      "string"
+    )
+  )
 )
 }
 }

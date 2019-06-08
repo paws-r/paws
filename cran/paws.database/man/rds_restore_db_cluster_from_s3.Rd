@@ -16,8 +16,8 @@ rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
   DeletionProtection, CopyTagsToSnapshot)
 }
 \arguments{
-\item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the restored DB
-cluster can be created in.}
+\item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the restored DB
+cluster can be created.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups of the restored DB
 cluster are retained. You must specify a minimum value of 1.
@@ -139,7 +139,7 @@ Constraints: Minimum 30-minute window.}
 
 \item{Tags}{}
 
-\item{StorageEncrypted}{Specifies whether the restored DB cluster is encrypted.}
+\item{StorageEncrypted}{A value that indicates whether the restored DB cluster is encrypted.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
 
@@ -149,16 +149,15 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
-If the \code{StorageEncrypted} parameter is true, and you do not specify a
+If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS Region.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{SourceEngine}{[required] The identifier for the database engine that was backed up to create the
 files stored in the Amazon S3 bucket.
@@ -199,12 +198,13 @@ Logs. The values in the list depend on the DB engine being used. For
 more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
-\item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
-database can't be deleted when this value is set to true. The default
-is false.}
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB cluster to snapshots of the
-restored DB cluster, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.}
 }
 \description{
 Creates an Amazon Aurora DB cluster from data stored in an Amazon S3

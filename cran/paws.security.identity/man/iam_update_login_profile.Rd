@@ -38,7 +38,7 @@ Changes the password for the specified IAM user.
 }
 \details{
 IAM users can change their own passwords by calling ChangePassword. For
-more information about modifying passwords, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
+more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

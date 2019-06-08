@@ -123,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.securityhub$describe_products_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.securityhub$describe_products_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Products = structure(list(structure(list(ProductArn = structure(logical(0), tags = list(type = "string")), ProductName = structure(logical(0), tags = list(type = "string")), CompanyName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Categories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MarketplaceUrl = structure(logical(0), tags = list(type = "string")), ActivationUrl = structure(logical(0), tags = list(type = "string")), ProductSubscriptionResourcePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .securityhub$disable_import_findings_for_product_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProductSubscriptionArn = structure(logical(0), tags = list(location = "uri", locationName = "ProductSubscriptionArn", type = "string"))), tags = list(type = "structure"))
@@ -324,6 +336,18 @@ NULL
 .securityhub$list_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Members = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), MasterId = structure(logical(0), tags = list(type = "string")), MemberStatus = structure(logical(0), tags = list(type = "string")), InvitedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.securityhub$list_product_subscribers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProductArn = structure(logical(0), tags = list(location = "querystring", locationName = "ProductArn", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.securityhub$list_product_subscribers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProductSubscribers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_add_application_input}
 \alias{kinesisanalytics_add_application_input}
-\title{Adds a streaming source to your Amazon Kinesis application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_add_application_input(ApplicationName,
   CurrentApplicationVersionId, Input)
@@ -12,23 +13,33 @@ kinesisanalytics_add_application_input(ApplicationName,
 want to add the streaming source.}
 
 \item{CurrentApplicationVersionId}{[required] Current version of your Amazon Kinesis Analytics application. You can
-use the DescribeApplication operation to find the current application
-version.}
+use the
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to find the current application version.}
 
-\item{Input}{[required] The Input to add.}
+\item{Input}{[required] The
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html}{Input}
+to add.}
 }
 \description{
-Adds a streaming source to your Amazon Kinesis application. For
-conceptual information, see \href{http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
 }
 \details{
+Adds a streaming source to your Amazon Kinesis application. For
+conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
+
 You can add a streaming source either when you create an application or
 you can use this operation to add a streaming source after you create an
-application. For more information, see CreateApplication.
+application. For more information, see
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_CreateApplication.html}{CreateApplication}.
 
 Any configuration update, including adding a streaming source using this
 operation, results in a new version of the application. You can use the
-DescribeApplication operation to find the current application version.
+\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+operation to find the current application version.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:AddApplicationInput} action.

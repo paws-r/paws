@@ -18,9 +18,12 @@ Constraints:
 
 \item{Capacity}{The DB cluster capacity.
 
+When you change the capacity of a paused Aurora Serverless DB cluster,
+it automatically resumes.
+
 Constraints:
 \itemize{
-\item Value must be \code{2}, \code{4}, \code{8}, \code{16}, \code{32}, \code{64}, \code{128}, or \code{256}.
+\item Value must be \code{1}, \code{2}, \code{4}, \code{8}, \code{16}, \code{32}, \code{64}, \code{128}, or \code{256}.
 }}
 
 \item{SecondsBeforeTimeout}{The amount of time, in seconds, that Aurora Serverless tries to find a

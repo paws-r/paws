@@ -46,7 +46,7 @@ the cluster is created by using ModifyCluster.
 
 Parameters in the parameter group define specific behavior that applies
 to the databases you create on the cluster. For more information about
-parameters and parameter groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
+parameters and parameter groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

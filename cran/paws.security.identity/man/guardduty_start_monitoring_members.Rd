@@ -5,22 +5,27 @@
 \title{Re-enables GuardDuty to monitor findings of the member accounts
 specified by the account IDs}
 \usage{
-guardduty_start_monitoring_members(AccountIds, DetectorId)
+guardduty_start_monitoring_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts whose findings you want the master account to monitor.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whom you want to
+re-enable to monitor members' findings.}
 
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whom you want to re-enable to monitor members' findings.}
+\item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts whose findings
+you want the master account to monitor.}
 }
 \description{
-Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A master GuardDuty account can run this command after disabling GuardDuty from monitoring these members' findings by running StopMonitoringMembers.
+Re-enables GuardDuty to monitor findings of the member accounts
+specified by the account IDs. A master GuardDuty account can run this
+command after disabling GuardDuty from monitoring these members'
+findings by running StopMonitoringMembers.
 }
 \section{Request syntax}{
 \preformatted{svc$start_monitoring_members(
+  DetectorId = "string",
   AccountIds = list(
     "string"
-  ),
-  DetectorId = "string"
+  )
 )
 }
 }

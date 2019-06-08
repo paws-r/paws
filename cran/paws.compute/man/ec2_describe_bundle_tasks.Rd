@@ -2,16 +2,16 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_bundle_tasks}
 \alias{ec2_describe_bundle_tasks}
-\title{Describes one or more of your bundling tasks}
+\title{Describes the specified bundle tasks or all of your bundle tasks}
 \usage{
 ec2_describe_bundle_tasks(BundleIds, Filters, DryRun)
 }
 \arguments{
-\item{BundleIds}{One or more bundle task IDs.
+\item{BundleIds}{The bundle task IDs.
 
 Default: Describes all your bundle tasks.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{bundle-id} - The ID of the bundle task.
 \item \code{error-code} - If the task failed, the error code returned.
@@ -35,7 +35,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes one or more of your bundling tasks.
+Describes the specified bundle tasks or all of your bundle tasks.
 }
 \details{
 Completed bundle tasks are listed for only a limited time. If your

@@ -187,6 +187,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lambda$get_layer_version_by_arn_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "querystring", locationName = "Arn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lambda$get_layer_version_by_arn_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Content = structure(list(Location = structure(logical(0), tags = list(type = "string")), CodeSha256 = structure(logical(0), tags = list(type = "string")), CodeSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), LayerArn = structure(logical(0), tags = list(type = "string")), LayerVersionArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "long")), CompatibleRuntimes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseInfo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lambda$get_layer_version_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(LayerName = structure(logical(0), tags = list(location = "uri", locationName = "LayerName", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "uri", locationName = "VersionNumber", type = "long"))), tags = list(type = "structure"))

@@ -5,7 +5,7 @@
 \title{Creates an endpoint for a Network File System (NFS) file system}
 \usage{
 datasync_create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
-  Tags)
+  MountOptions, Tags)
 }
 \arguments{
 \item{Subdirectory}{[required] The subdirectory in the NFS file system that is used to read data from
@@ -23,11 +23,13 @@ accessible without Kerberos authentication.
 To transfer all the data in the folder you specified, DataSync needs to
 have permissions to read all the data. To ensure this, either configure
 the NFS export with \code{no_root_squash,} or ensure that the permissions for
-all of the files that you want sync allow read access for all users.
+all of the files that you want DataSync allow read access for all users.
 Doing either enables the agent to read the files. For the agent to
-access directories, you must additionally enable all execute access. For
-information about NFS export configuration, see 18.7. The /etc/exports
-Configuration File in the Centos documentation.}
+access directories, you must additionally enable all execute access.
+
+For information about NFS export configuration, see
+"http://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment\_Guide-en-US/s1-nfs-server-config-exports.html"
+(18.7. The /etc/exports Configuration File).}
 
 \item{ServerHostname}{[required] The name of the NFS server. This value is the IP address or Domain Name
 Service (DNS) name of the NFS server. An agent that is installed
@@ -38,6 +40,8 @@ address.}
 
 \item{OnPremConfig}{[required] Contains a list of Amazon Resource Names (ARNs) of agents that are used
 to connect to an NFS server.}
+
+\item{MountOptions}{The NFS mount options that DataSync can use to mount your NFS share.}
 
 \item{Tags}{The key-value pair that represents the tag that you want to add to the
 location. The value can be an empty string. We recommend using tags to
@@ -54,6 +58,9 @@ Creates an endpoint for a Network File System (NFS) file system.
     AgentArns = list(
       "string"
     )
+  ),
+  MountOptions = list(
+    Version = "AUTOMATIC"|"NFS3"|"NFS4_0"|"NFS4_1"
   ),
   Tags = list(
     list(

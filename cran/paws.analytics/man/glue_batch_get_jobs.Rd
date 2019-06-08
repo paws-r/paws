@@ -7,8 +7,8 @@
 glue_batch_get_jobs(JobNames)
 }
 \arguments{
-\item{JobNames}{[required] A list of job names, which may be the names returned from the \code{ListJobs}
-operation.}
+\item{JobNames}{[required] A list of job names, which might be the names returned from the
+\code{ListJobs} operation.}
 }
 \description{
 Returns a list of resource metadata for a given list of job names. After

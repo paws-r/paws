@@ -11,7 +11,8 @@ guardduty_disassociate_from_master_account(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
-Disassociates the current GuardDuty member account from its master account.
+Disassociates the current GuardDuty member account from its master
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_from_master_account(

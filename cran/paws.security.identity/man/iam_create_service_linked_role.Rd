@@ -13,9 +13,9 @@ attached. You use a string similar to a URL but without the http:// in
 front. For example: \code{elasticbeanstalk.amazonaws.com}.
 
 Service principals are unique and case-sensitive. To find the exact
-service principal for your service-linked role, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
-in the \emph{IAM User Guide} and look for the services that have \strong{Yes} in
-the \strong{Service-Linked Role} column. Choose the \strong{Yes} link to view the
+service principal for your service-linked role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
+in the \emph{IAM User Guide}. Look for the services that have \strong{Yes} in the
+\strong{Service-Linked Role} column. Choose the \strong{Yes} link to view the
 service-linked role documentation for that service.}
 
 \item{Description}{The description of the role.}
@@ -37,7 +37,7 @@ This helps ensure that the service is not broken by an unexpectedly
 changed or deleted role, which could put your AWS resources into an
 unknown state. Allowing the service to control the role helps improve
 service stability and proper cleanup when a service and its role are no
-longer needed. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using Service-Linked Roles}
+longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using Service-Linked Roles}
 in the \emph{IAM User Guide}.
 }
 \details{

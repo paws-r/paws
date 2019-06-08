@@ -11,9 +11,9 @@ rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 \item{DBInstanceIdentifier}{[required] The customer identifier or the ARN of your DB instance.}
 }
 \description{
-You can call DescribeValidDBInstanceModifications to learn what
+You can call \code{DescribeValidDBInstanceModifications} to learn what
 modifications you can make to your DB instance. You can use this
-information when you call ModifyDBInstance.
+information when you call \code{ModifyDBInstance}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_valid_db_instance_modifications(

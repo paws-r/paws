@@ -28,8 +28,6 @@ reference, the parameter descriptions indicate whether a command is
 applied immediately, on the next instance reboot, or during the
 maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
-
-\strong{Amazon Neptune API Reference}
 }
 \section{Operations}{
 
@@ -82,7 +80,7 @@ following some related topics from the user guide.
 \link[=neptune_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group \cr
 \link[=neptune_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group \cr
 \link[=neptune_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing event notification subscription \cr
-\link[=neptune_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a Read Replica DB cluster to a standalone DB cluster \cr
+\link[=neptune_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Not supported \cr
 \link[=neptune_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons \cr
 \link[=neptune_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Disassociates an Identity and Access Management (IAM) role from a DB cluster \cr
 \link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing event notification subscription \cr

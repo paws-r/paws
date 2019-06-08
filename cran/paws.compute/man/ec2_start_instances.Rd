@@ -7,7 +7,7 @@
 ec2_start_instances(InstanceIds, AdditionalInfo, DryRun)
 }
 \arguments{
-\item{InstanceIds}{[required] One or more instance IDs.}
+\item{InstanceIds}{[required] The IDs of the instances.}
 
 \item{AdditionalInfo}{Reserved.}
 

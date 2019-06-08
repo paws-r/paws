@@ -8,11 +8,11 @@
 kafka_describe_cluster(ClusterArn)
 }
 \arguments{
-\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
+\item{ClusterArn}{[required]
+<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
 }
 \description{
-Returns a description of the MSK cluster whose Amazon Resource Name
-(ARN) is specified in the request.
+<p>Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$describe_cluster(

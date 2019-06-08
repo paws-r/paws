@@ -10,20 +10,23 @@ organizations_create_organization(FeatureSet)
 \item{FeatureSet}{Specifies the feature set supported by the new organization. Each
 feature set supports different levels of functionality.
 \itemize{
-\item \emph{CONSOLIDATED\_BILLING}: All member accounts have their bills
+\item \code{CONSOLIDATED_BILLING}: All member accounts have their bills
 consolidated to and paid by the master account. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
-in the \emph{AWS Organizations User Guide}.
-\item \emph{ALL}: In addition to all the features supported by the consolidated
+in the \emph{AWS Organizations User Guide.}
+
+The consolidated billing feature subset isn't available for
+organizations in the AWS GovCloud (US) Region.
+\item \code{ALL}: In addition to all the features supported by the consolidated
 billing feature set, the master account can also apply any type of
 policy to any member account in the organization. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
-in the \emph{AWS Organizations User Guide}.
+in the \emph{AWS Organizations User Guide.}
 }}
 }
 \description{
 Creates an AWS organization. The account whose user is calling the
-CreateOrganization operation automatically becomes the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account}{master account}
+\code{CreateOrganization} operation automatically becomes the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account}{master account}
 of the new organization.
 }
 \details{
@@ -36,8 +39,8 @@ organization is created with all features enabled and service control
 policies automatically enabled in the root. If you instead choose to
 create the organization supporting only the consolidated billing
 features by setting the \code{FeatureSet} parameter to
-\code{CONSOLIDATED_BILLING\"}, then no policy types are enabled by default
-and you cannot use organization policies.
+\code{CONSOLIDATED_BILLING\"}, no policy types are enabled by default, and
+you can't use organization policies.
 }
 \section{Request syntax}{
 \preformatted{svc$create_organization(

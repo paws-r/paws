@@ -2,8 +2,8 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_create_direct_connect_gateway_association_proposal}
 \alias{directconnect_create_direct_connect_gateway_association_proposal}
-\title{Creates a proposal to associate the specified virtual private gateway
-with the specified Direct Connect gateway}
+\title{Creates a proposal to associate the specified virtual private gateway or
+transit gateway with the specified Direct Connect gateway}
 \usage{
 directconnect_create_direct_connect_gateway_association_proposal(
   directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId,
@@ -15,7 +15,7 @@ directconnect_create_direct_connect_gateway_association_proposal(
 
 \item{directConnectGatewayOwnerAccount}{[required] The ID of the AWS account that owns the Direct Connect gateway.}
 
-\item{gatewayId}{[required] The ID of the virtual private gateway.}
+\item{gatewayId}{[required] The ID of the virtual private gateway or transit gateway.}
 
 \item{addAllowedPrefixesToDirectConnectGateway}{The Amazon VPC prefixes to advertise to the Direct Connect gateway.}
 
@@ -23,13 +23,14 @@ directconnect_create_direct_connect_gateway_association_proposal(
 gateway.}
 }
 \description{
-Creates a proposal to associate the specified virtual private gateway
-with the specified Direct Connect gateway.
+Creates a proposal to associate the specified virtual private gateway or
+transit gateway with the specified Direct Connect gateway.
 }
 \details{
 You can only associate a Direct Connect gateway and virtual private
-gateway when the account that owns the Direct Connect gateway and the
-account that owns the virtual private gateway have the same payer ID.
+gateway or transit gateway when the account that owns the Direct Connect
+gateway and the account that owns the virtual private gateway or transit
+gateway have the same AWS Payer ID.
 }
 \section{Request syntax}{
 \preformatted{svc$create_direct_connect_gateway_association_proposal(

@@ -52,9 +52,9 @@ failed executions, set max-concurrency to 1 so the executions proceed
 one at a time.}
 
 \item{TargetLocations}{A location is a combination of AWS Regions and/or AWS accounts where you
-want to execute the Automation. Use this action to start an Automation
-in multiple Regions and multiple accounts. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Concurrently Executing Automations in Multiple AWS Regions and Accounts}
+want to run the Automation. Use this action to start an Automation in
+multiple Regions and multiple accounts. For more information, see
+\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Executing Automations in Multiple AWS Regions and Accounts}
 in the \emph{AWS Systems Manager User Guide}.}
 }
 \description{

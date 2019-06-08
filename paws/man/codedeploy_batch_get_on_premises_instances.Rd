@@ -7,10 +7,12 @@
 codedeploy_batch_get_on_premises_instances(instanceNames)
 }
 \arguments{
-\item{instanceNames}{[required] The names of the on-premises instances about which to get information.}
+\item{instanceNames}{[required] The names of the on-premises instances about which to get information.
+The maximum number of instance names you can specify is 25.}
 }
 \description{
-Gets information about one or more on-premises instances.
+Gets information about one or more on-premises instances. The maximum
+number of on-premises instances that can be returned is 25.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_on_premises_instances(

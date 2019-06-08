@@ -18,7 +18,7 @@ reference the SAML provider resource's ARN as a principal in their
 trust policies. Any attempt to assume a role that references a
 non-existent provider resource ARN fails.
 
-This operation requires \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_saml_provider(

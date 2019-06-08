@@ -20,7 +20,7 @@ Example: \code{mySubnetgroup}}
 
 \item{SubnetIds}{[required] The EC2 Subnet IDs for the DB subnet group.}
 
-\item{Tags}{}
+\item{Tags}{Tags to assign to the DB subnet group.}
 }
 \description{
 Creates a new DB subnet group. DB subnet groups must contain at least

@@ -10,9 +10,17 @@ codedeploy_list_deployments(applicationName, deploymentGroupName,
 }
 \arguments{
 \item{applicationName}{The name of an AWS CodeDeploy application associated with the IAM user
-or AWS account.}
+or AWS account.
 
-\item{deploymentGroupName}{The name of a deployment group for the specified application.}
+If \code{applicationName} is specified, then \code{deploymentGroupName} must be
+specified. If it is not specified, then \code{deploymentGroupName} must not
+be specified.}
+
+\item{deploymentGroupName}{The name of a deployment group for the specified application.
+
+If \code{deploymentGroupName} is specified, then \code{applicationName} must be
+specified. If it is not specified, then \code{applicationName} must not be
+specified.}
 
 \item{includeOnlyStatuses}{A subset of deployments to list by status:
 \itemize{

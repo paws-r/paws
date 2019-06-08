@@ -59,7 +59,7 @@ to keep an automated snapshot for a longer period, you can make a manual
 copy of the snapshot. Manual snapshots are retained until you delete
 them.
 
-For more information about working with snapshots, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
+For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

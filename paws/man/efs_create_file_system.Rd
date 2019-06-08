@@ -44,16 +44,20 @@ If \code{KmsKeyId} is specified, the CreateFileSystemRequest\$Encrypted
 parameter must be set to true.}
 
 \item{ThroughputMode}{The throughput mode for the file system to be created. There are two
-throughput modes to choose from for your file system: bursting and
-provisioned. You can decrease your file system's throughput in
-Provisioned Throughput mode or change between the throughput modes as
-long as it's been more than 24 hours since the last decrease or
-throughput mode change.}
+throughput modes to choose from for your file system: \code{bursting} and
+\code{provisioned}. If you set \code{ThroughputMode} to \code{provisioned}, you must
+also set a value for \code{ProvisionedThroughPutInMibps}. You can decrease
+your file system's throughput in Provisioned Throughput mode or change
+between the throughput modes as long as it's been more than 24 hours
+since the last decrease or throughput mode change. For more, see
+\href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying Throughput with Provisioned Mode}
+in the \emph{Amazon EFS User Guide.}}
 
 \item{ProvisionedThroughputInMibps}{The throughput, measured in MiB/s, that you want to provision for a file
-system that you're creating. The limit on throughput is 1024 MiB/s. You
-can get these limits increased by contacting AWS Support. For more
-information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS Limits That You Can Increase}
+system that you're creating. Valid values are 1-1024. Required if
+\code{ThroughputMode} is set to \code{provisioned}. The upper limit for throughput
+is 1024 MiB/s. You can get this limit increased by contacting AWS
+Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS Limits That You Can Increase}
 in the \emph{Amazon EFS User Guide.}}
 
 \item{Tags}{A value that specifies to create one or more tags associated with the

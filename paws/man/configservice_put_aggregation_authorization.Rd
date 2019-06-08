@@ -6,12 +6,14 @@
 source account and region}
 \usage{
 configservice_put_aggregation_authorization(AuthorizedAccountId,
-  AuthorizedAwsRegion)
+  AuthorizedAwsRegion, Tags)
 }
 \arguments{
 \item{AuthorizedAccountId}{[required] The 12-digit account ID of the account authorized to aggregate data.}
 
 \item{AuthorizedAwsRegion}{[required] The region authorized to collect aggregated data.}
+
+\item{Tags}{}
 }
 \description{
 Authorizes the aggregator account and region to collect data from the
@@ -20,7 +22,13 @@ source account and region.
 \section{Request syntax}{
 \preformatted{svc$put_aggregation_authorization(
   AuthorizedAccountId = "string",
-  AuthorizedAwsRegion = "string"
+  AuthorizedAwsRegion = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

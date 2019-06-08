@@ -52,15 +52,17 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 
 #' Gets information about one or more application revisions
 #'
-#' Gets information about one or more application revisions.
+#' Gets information about one or more application revisions. The maximum
+#' number of application revisions that can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_application_revisions(applicationName, revisions)
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application about which to get revision
 #' information.
-#' @param revisions &#91;required&#93; Information to get about the application revisions, including type and
-#' location.
+#' @param revisions &#91;required&#93; An array of `RevisionLocation` objects that specify information to get
+#' about the application revisions, including type and location. The
+#' maximum number of `RevisionLocation` objects you can specify is 25.
 #'
 #' @section Request syntax:
 #' ```
@@ -114,12 +116,14 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 
 #' Gets information about one or more applications
 #'
-#' Gets information about one or more applications.
+#' Gets information about one or more applications. The maximum number of
+#' applications that can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_applications(applicationNames)
 #'
-#' @param applicationNames &#91;required&#93; A list of application names separated by spaces.
+#' @param applicationNames &#91;required&#93; A list of application names separated by spaces. The maximum number of
+#' application names you can specify is 25.
 #'
 #' @section Request syntax:
 #' ```
@@ -195,15 +199,17 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #' This method works, but is deprecated. Use `BatchGetDeploymentTargets`
 #' instead.
 #' 
-#' Returns an array of instances associated with a deployment. This method
-#' works with EC2/On-premises and AWS Lambda compute platforms. The newer
-#' `BatchGetDeploymentTargets` works with all compute platforms.
+#' Returns an array of one or more instances associated with a deployment.
+#' This method works with EC2/On-premises and AWS Lambda compute platforms.
+#' The newer `BatchGetDeploymentTargets` works with all compute platforms.
+#' The maximum number of instances that can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
-#' @param instanceIds &#91;required&#93; The unique IDs of instances used in the deployment.
+#' @param instanceIds &#91;required&#93; The unique IDs of instances used in the deployment. The maximum number
+#' of instance IDs you can specify is 25.
 #'
 #' @section Request syntax:
 #' ```
@@ -234,11 +240,12 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 }
 .codedeploy$operations$batch_get_deployment_instances <- codedeploy_batch_get_deployment_instances
 
-#' Returns an array of targets associated with a deployment
+#' Returns an array of one or more targets associated with a deployment
 #'
-#' Returns an array of targets associated with a deployment. This method
-#' works with all compute types and should be used instead of the
-#' deprecated `BatchGetDeploymentInstances`.
+#' Returns an array of one or more targets associated with a deployment.
+#' This method works with all compute types and should be used instead of
+#' the deprecated `BatchGetDeploymentInstances`. The maximum number of
+#' targets that can be returned is 25.
 #' 
 #' The type of targets returned depends on the deployment\'s compute
 #' platform:
@@ -254,7 +261,8 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param targetIds The unique IDs of the deployment targets. The compute platform of the
-#' deployment determines the type of the targets and their formats.
+#' deployment determines the type of the targets and their formats. The
+#' maximum number of deployment target IDs you can specify is 25.
 #' 
 #' -   For deployments that use the EC2/On-premises compute platform, the
 #'     target IDs are EC2 or on-premises instances IDs, and their target
@@ -300,12 +308,14 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 
 #' Gets information about one or more deployments
 #'
-#' Gets information about one or more deployments.
+#' Gets information about one or more deployments. The maximum number of
+#' deployments that can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_deployments(deploymentIds)
 #'
-#' @param deploymentIds &#91;required&#93; A list of deployment IDs, separated by spaces.
+#' @param deploymentIds &#91;required&#93; A list of deployment IDs, separated by spaces. The maximum number of
+#' deployment IDs you can specify is 25.
 #'
 #' @section Request syntax:
 #' ```
@@ -337,12 +347,14 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 
 #' Gets information about one or more on-premises instances
 #'
-#' Gets information about one or more on-premises instances.
+#' Gets information about one or more on-premises instances. The maximum
+#' number of on-premises instances that can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_on_premises_instances(instanceNames)
 #'
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances about which to get information.
+#' The maximum number of instance names you can specify is 25.
 #'
 #' @section Request syntax:
 #' ```
@@ -426,31 +438,41 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' Creates an application.
 #'
 #' @usage
-#' codedeploy_create_application(applicationName, computePlatform)
+#' codedeploy_create_application(applicationName, computePlatform, tags)
 #'
 #' @param applicationName &#91;required&#93; The name of the application. This name must be unique with the
 #' applicable IAM user or AWS account.
-#' @param computePlatform The destination platform type for the deployment (`Lambda` or `Server`).
+#' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
+#' `ECS`).
+#' @param tags The metadata that you apply to CodeDeploy applications to help you
+#' organize and categorize them. Each tag consists of a key and an optional
+#' value, both of which you define.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
 #'   applicationName = "string",
-#'   computePlatform = "Server"|"Lambda"|"ECS"
+#'   computePlatform = "Server"|"Lambda"|"ECS",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_application
-codedeploy_create_application <- function(applicationName, computePlatform = NULL) {
+codedeploy_create_application <- function(applicationName, computePlatform = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_application_input(applicationName = applicationName, computePlatform = computePlatform)
+  input <- .codedeploy$create_application_input(applicationName = applicationName, computePlatform = computePlatform, tags = tags)
   output <- .codedeploy$create_application_output()
   svc <- .codedeploy$service()
   request <- new_request(svc, op, input, output)
@@ -641,8 +663,8 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' For example, to set a minimum of 95\% healthy instance, specify a type of
 #' FLEET\\_PERCENT and a value of 95.
 #' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
-#' @param computePlatform The destination platform type for the deployment (`Lambda` or
-#' `Server`\\>).
+#' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
+#' `ECS`).
 #'
 #' @section Request syntax:
 #' ```
@@ -696,7 +718,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #'   autoScalingGroups, serviceRoleArn, triggerConfigurations,
 #'   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
 #'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
-#'   ecsServices, onPremisesTagSet)
+#'   ecsServices, onPremisesTagSet, tags)
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -748,6 +770,9 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' deployment group includes only on-premises instances identified by all
 #' of the tag groups. Cannot be used in the same call as
 #' onPremisesInstanceTagFilters.
+#' @param tags The metadata that you apply to CodeDeploy deployment groups to help you
+#' organize and categorize them. Each tag consists of a key and an optional
+#' value, both of which you define.
 #'
 #' @section Request syntax:
 #' ```
@@ -872,6 +897,12 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -879,14 +910,14 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_group
-codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
+codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
+  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
   output <- .codedeploy$create_deployment_group_output()
   svc <- .codedeploy$service()
   request <- new_request(svc, op, input, output)
@@ -1722,7 +1753,15 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #'
 #' @param applicationName The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
+#' 
+#' If `applicationName` is specified, then `deploymentGroupName` must be
+#' specified. If it is not specified, then `deploymentGroupName` must not
+#' be specified.
 #' @param deploymentGroupName The name of a deployment group for the specified application.
+#' 
+#' If `deploymentGroupName` is specified, then `applicationName` must be
+#' specified. If it is not specified, then `applicationName` must not be
+#' specified.
 #' @param includeOnlyStatuses A subset of deployments to list by status:
 #' 
 #' -   Created: Include created deployments in the resulting list.
@@ -1874,6 +1913,47 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
   return(response)
 }
 .codedeploy$operations$list_on_premises_instances <- codedeploy_list_on_premises_instances
+
+#' Returns a list of tags for the resource identified by a specified ARN
+#'
+#' Returns a list of tags for the resource identified by a specified ARN.
+#' Tags are used to organize and categorize your CodeDeploy resources.
+#'
+#' @usage
+#' codedeploy_list_tags_for_resource(ResourceArn, NextToken)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of a CodeDeploy resource. `ListTagsForResource` returns all the
+#' tags associated with the resource that is identified by the
+#' `ResourceArn`.
+#' @param NextToken An identifier returned from the previous `ListTagsForResource` call. It
+#' can be used to return the next set of applications in the list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codedeploy_list_tags_for_resource
+codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codedeploy$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
+  output <- .codedeploy$list_tags_for_resource_output()
+  svc <- .codedeploy$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codedeploy$operations$list_tags_for_resource <- codedeploy_list_tags_for_resource
 
 #' Sets the result of a Lambda validation function
 #'
@@ -2146,6 +2226,96 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
   return(response)
 }
 .codedeploy$operations$stop_deployment <- codedeploy_stop_deployment
+
+#' Associates the list of tags in the input Tags parameter with the
+#' resource identified by the ResourceArn input parameter
+#'
+#' Associates the list of tags in the input `Tags` parameter with the
+#' resource identified by the `ResourceArn` input parameter.
+#'
+#' @usage
+#' codedeploy_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of a resource, such as a CodeDeploy application or deployment
+#' group.
+#' @param Tags &#91;required&#93; A list of tags that `TagResource` associates with a resource. The
+#' resource is identified by the `ResourceArn` input parameter.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codedeploy_tag_resource
+codedeploy_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codedeploy$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .codedeploy$tag_resource_output()
+  svc <- .codedeploy$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codedeploy$operations$tag_resource <- codedeploy_tag_resource
+
+#' Disassociates a resource from a list of tags
+#'
+#' Disassociates a resource from a list of tags. The resource is identified
+#' by the `ResourceArn` input parameter. The tags are identfied by the list
+#' of keys in the `TagKeys` input parameter.
+#'
+#' @usage
+#' codedeploy_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN that specifies from which resource to disassociate the tags with
+#' the keys in the `TagKeys` input paramter.
+#' @param TagKeys &#91;required&#93; A list of keys of `Tag` objects. The `Tag` objects identified by the
+#' keys are disassociated from the resource specified by the `ResourceArn`
+#' input parameter.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codedeploy_untag_resource
+codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codedeploy$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .codedeploy$untag_resource_output()
+  svc <- .codedeploy$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codedeploy$operations$untag_resource <- codedeploy_untag_resource
 
 #' Changes the name of an application
 #'

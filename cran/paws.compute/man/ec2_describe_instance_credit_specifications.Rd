@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instance_credit_specifications}
 \alias{ec2_describe_instance_credit_specifications}
-\title{Describes the credit option for CPU usage of one or more of your T2 or
-T3 instances}
+\title{Describes the credit option for CPU usage of the specified T2 or T3
+instances}
 \usage{
 ec2_describe_instance_credit_specifications(DryRun, Filters,
   InstanceIds, MaxResults, NextToken)
@@ -14,12 +14,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{instance-id} - The ID of the instance.
 }}
 
-\item{InstanceIds}{One or more instance IDs.
+\item{InstanceIds}{The instance IDs.
 
 Default: Describes all your instances.
 
@@ -33,8 +33,8 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \description{
-Describes the credit option for CPU usage of one or more of your T2 or
-T3 instances. The credit options are \code{standard} and \code{unlimited}.
+Describes the credit option for CPU usage of the specified T2 or T3
+instances. The credit options are \code{standard} and \code{unlimited}.
 }
 \details{
 If you do not specify an instance ID, Amazon EC2 returns T2 and T3

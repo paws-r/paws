@@ -19,10 +19,10 @@ is used only when exporting a snapshot for external access.
 
 When using this parameter to export a snapshot, be sure Amazon
 ElastiCache has the needed permissions to this S3 bucket. For more
-information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the \emph{Amazon ElastiCache User Guide}.
 
-For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html}{Exporting a Snapshot}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html}{Exporting a Snapshot}
 in the \emph{Amazon ElastiCache User Guide}.}
 }
 \description{
@@ -36,8 +36,8 @@ operation can create their own Amazon S3 buckets and copy snapshots to
 it. To control access to your snapshots, use an IAM policy to control
 who has the ability to use the \code{CopySnapshot} operation. For more
 information about using IAM to control the use of ElastiCache
-operations, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html}{Exporting Snapshots}
-and \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html}{Authentication & Access Control}.
+operations, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html}{Exporting Snapshots}
+and \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html}{Authentication & Access Control}.
 
 You could receive the following error messages.
 
@@ -47,14 +47,14 @@ You could receive the following error messages.
 }
 
 \strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket}{Step 1: Create an Amazon S3 Bucket}
+snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} The S3 bucket \%s does not exist.
 }
 
 \strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket}{Step 1: Create an Amazon S3 Bucket}
+snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} The S3 bucket \%s is not owned by the
@@ -62,7 +62,7 @@ authenticated user.
 }
 
 \strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket}{Step 1: Create an Amazon S3 Bucket}
+snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} The authenticated user does not have sufficient
@@ -85,7 +85,7 @@ S3 bucket and use this same value for \code{TargetSnapshotName}.
 }
 
 \strong{Solution:} Add List and Read permissions on the bucket. For more
-information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} ElastiCache has not been granted WRITE
@@ -93,7 +93,7 @@ permissions \%s on the S3 Bucket.
 }
 
 \strong{Solution:} Add Upload/Delete permissions on the bucket. For more
-information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} ElastiCache has not been granted READ\_ACP
@@ -101,7 +101,7 @@ permissions \%s on the S3 Bucket.
 }
 
 \strong{Solution:} Add View Permissions on the bucket. For more
-information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 }
 \section{Request syntax}{

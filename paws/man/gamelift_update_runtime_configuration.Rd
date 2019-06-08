@@ -12,11 +12,13 @@ gamelift_update_runtime_configuration(FleetId, RuntimeConfiguration)
 \item{FleetId}{[required] Unique identifier for a fleet to update run-time configuration for.}
 
 \item{RuntimeConfiguration}{[required] Instructions for launching server processes on each instance in the
-fleet. The run-time configuration for a fleet has a collection of server
-process configurations, one for each type of server process to run on an
-instance. A server process configuration specifies the location of the
-server executable, launch parameters, and the number of concurrent
-processes with that configuration to maintain on each instance.}
+fleet. Server processes run either a custom game build executable or a
+Realtime Servers script. The run-time configuration lists the types of
+server processes to run on an instance and includes the following
+configuration settings: the server executable or launch script file,
+launch parameters, and the number of processes to run concurrently on
+each instance. A CreateFleet request must include a run-time
+configuration with at least one server process configuration.}
 }
 \description{
 Updates the current run-time configuration for the specified fleet,
@@ -27,17 +29,15 @@ status.
 }
 \details{
 To update run-time configuration, specify the fleet ID and provide a
-\code{RuntimeConfiguration} object with the updated collection of server
-process configurations.
+\code{RuntimeConfiguration} object with an updated set of server process
+configurations.
 
 Each instance in a Amazon GameLift fleet checks regularly for an updated
 run-time configuration and changes how it launches server processes to
 comply with the latest version. Existing server processes are not
-affected by the update; they continue to run until they end, while
-Amazon GameLift simply adds new server processes to fit the current
-run-time configuration. As a result, the run-time configuration changes
-are applied gradually as existing processes shut down and new processes
-are launched in Amazon GameLift's normal process recycling activity.
+affected by the update; run-time configuration changes are applied
+gradually as existing processes shut down and new processes are launched
+during Amazon GameLift's normal process recycling activity.
 
 \strong{Learn more}
 

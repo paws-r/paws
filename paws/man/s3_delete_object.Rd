@@ -20,7 +20,7 @@ space, and the value that is displayed on your authentication device.}
 
 \item{RequestPayer}{}
 
-\item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode
+\item{BypassGovernanceRetention}{Indicates whether Amazon S3 object lock should bypass governance-mode
 restrictions to process this operation.}
 }
 \description{
@@ -41,16 +41,16 @@ isn't a null version, Amazon S3 does not remove any objects.
 }
 
 \examples{
-# The following example deletes an object from a non-versioned bucket.
-\donttest{svc$delete_object(
-  Bucket = "ExampleBucket",
-  Key = "HappyFace.jpg"
-)}
-
 # The following example deletes an object from an S3 bucket.
 \donttest{svc$delete_object(
   Bucket = "examplebucket",
   Key = "objectkey.jpg"
+)}
+
+# The following example deletes an object from a non-versioned bucket.
+\donttest{svc$delete_object(
+  Bucket = "ExampleBucket",
+  Key = "HappyFace.jpg"
 )}
 
 }

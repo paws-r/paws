@@ -16,10 +16,10 @@ a maximum of 15 levels. Here is an example of a hierarchy:
 \item{Recursive}{Retrieve all parameters within a hierarchy.
 
 If a user has access to a path, then the user can access all levels of
-that path. For example, if a user has permission to access path /a, then
-the user can also access /a/b. Even if a user has explicitly been denied
-access in IAM for parameter /a, they can still call the
-GetParametersByPath API action recursively and view /a/b.}
+that path. For example, if a user has permission to access path \code{/a},
+then the user can also access \code{/a/b}. Even if a user has explicitly been
+denied access in IAM for parameter \code{/a/b}, they can still call the
+GetParametersByPath API action recursively for \code{/a} and view \code{/a/b}.}
 
 \item{ParameterFilters}{Filters to limit the request results.
 

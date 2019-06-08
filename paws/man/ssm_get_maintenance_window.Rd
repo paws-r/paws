@@ -2,15 +2,16 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_maintenance_window}
 \alias{ssm_get_maintenance_window}
-\title{Retrieves a Maintenance Window}
+\title{Retrieves a maintenance window}
 \usage{
 ssm_get_maintenance_window(WindowId)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the desired Maintenance Window.}
+\item{WindowId}{[required] The ID of the maintenance window for which you want to retrieve
+information.}
 }
 \description{
-Retrieves a Maintenance Window.
+Retrieves a maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$get_maintenance_window(

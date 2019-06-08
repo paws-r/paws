@@ -2,52 +2,52 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_maintenance_window}
 \alias{ssm_update_maintenance_window}
-\title{Updates an existing Maintenance Window}
+\title{Updates an existing maintenance window}
 \usage{
 ssm_update_maintenance_window(WindowId, Name, Description, StartDate,
   EndDate, Schedule, ScheduleTimezone, Duration, Cutoff,
   AllowUnassociatedTargets, Enabled, Replace)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the Maintenance Window to update.}
+\item{WindowId}{[required] The ID of the maintenance window to update.}
 
-\item{Name}{The name of the Maintenance Window.}
+\item{Name}{The name of the maintenance window.}
 
 \item{Description}{An optional description for the update request.}
 
-\item{StartDate}{The time zone that the scheduled Maintenance Window executions are based
+\item{StartDate}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
 "America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
-Maintenance Window to become inactive. EndDate allows you to set a date
-and time in the future when the Maintenance Window will no longer run.}
+maintenance window to become inactive. EndDate allows you to set a date
+and time in the future when the maintenance window will no longer run.}
 
-\item{Schedule}{The schedule of the Maintenance Window in the form of a cron or rate
+\item{Schedule}{The schedule of the maintenance window in the form of a cron or rate
 expression.}
 
-\item{ScheduleTimezone}{The time zone that the scheduled Maintenance Window executions are based
+\item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
 "America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
-\item{Duration}{The duration of the Maintenance Window in hours.}
+\item{Duration}{The duration of the maintenance window in hours.}
 
-\item{Cutoff}{The number of hours before the end of the Maintenance Window that
+\item{Cutoff}{The number of hours before the end of the maintenance window that
 Systems Manager stops scheduling new tasks for execution.}
 
-\item{AllowUnassociatedTargets}{Whether targets must be registered with the Maintenance Window before
+\item{AllowUnassociatedTargets}{Whether targets must be registered with the maintenance window before
 tasks can be defined for those targets.}
 
-\item{Enabled}{Whether the Maintenance Window is enabled.}
+\item{Enabled}{Whether the maintenance window is enabled.}
 
 \item{Replace}{If True, then all fields that are required by the
 CreateMaintenanceWindow action are also required for this API request.
 Optional fields that are not specified are set to null.}
 }
 \description{
-Updates an existing Maintenance Window. Only specified parameters are
+Updates an existing maintenance window. Only specified parameters are
 modified.
 }
 \section{Request syntax}{

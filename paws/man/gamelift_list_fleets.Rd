@@ -4,12 +4,16 @@
 \alias{gamelift_list_fleets}
 \title{Retrieves a collection of fleet records for this AWS account}
 \usage{
-gamelift_list_fleets(BuildId, Limit, NextToken)
+gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 }
 \arguments{
 \item{BuildId}{Unique identifier for a build to return fleets for. Use this parameter
 to return only fleets using the specified build. To retrieve all fleets,
 leave this parameter empty.}
+
+\item{ScriptId}{Unique identifier for a Realtime script to return fleets for. Use this
+parameter to return only fleets using the specified script. To retrieve
+all fleets, leave this parameter empty.}
 
 \item{Limit}{Maximum number of results to return. Use this parameter with \code{NextToken}
 to get results as a set of sequential pages.}
@@ -20,15 +24,16 @@ start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves a collection of fleet records for this AWS account. You can
-filter the result set by build ID. Use the pagination parameters to
-retrieve results in sequential pages.
+filter the result set to find only those fleets that are deployed with a
+specific build or script. Use the pagination parameters to retrieve
+results in sequential pages.
 }
 \details{
-Fleet records are not listed in any particular order.
+Fleet records are not listed in a particular order.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Set Up Fleets}.
 
 \strong{Related operations}
 \itemize{
@@ -56,6 +61,7 @@ Fleet records are not listed in any particular order.
 \section{Request syntax}{
 \preformatted{svc$list_fleets(
   BuildId = "string",
+  ScriptId = "string",
   Limit = 123,
   NextToken = "string"
 )

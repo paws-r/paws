@@ -31,7 +31,7 @@ codes. If you generate the codes and then wait too long to submit the
 request, the MFA device successfully associates with the user but the
 MFA device becomes out of sync. This happens because time-based one-time
 passwords (TOTP) expire after a short period of time. If this happens,
-you can \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
+you can \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
 
 \item{AuthenticationCode2}{[required] A subsequent authentication code emitted by the device.
 
@@ -42,7 +42,7 @@ codes. If you generate the codes and then wait too long to submit the
 request, the MFA device successfully associates with the user but the
 MFA device becomes out of sync. This happens because time-based one-time
 passwords (TOTP) expire after a short period of time. If this happens,
-you can \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
+you can \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
 }
 \description{
 Enables the specified MFA device and associates it with the specified

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_update_function_configuration}
 \alias{lambda_update_function_configuration}
-\title{Modify the version-specifc settings of a Lambda function}
+\title{Modify the version-specific settings of a Lambda function}
 \usage{
 lambda_update_function_configuration(FunctionName, Role, Handler,
   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
@@ -69,7 +69,7 @@ to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 }
 \description{
-Modify the version-specifc settings of a Lambda function.
+Modify the version-specific settings of a Lambda function.
 }
 \details{
 These settings can vary between versions of a function and are locked
@@ -100,7 +100,7 @@ invoke permissions to an account or AWS service, use AddPermission.
       "string"
     )
   ),
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"java8"|"python2.7"|"python3.6"|"python3.7"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
   DeadLetterConfig = list(
     TargetArn = "string"
   ),

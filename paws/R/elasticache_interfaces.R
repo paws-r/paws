@@ -27,6 +27,30 @@ NULL
   return(populate(args, shape))
 }
 
+.elasticache$batch_apply_update_action_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplicationGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceUpdateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$batch_apply_update_action_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProcessedUpdateActions = structure(list(structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), UpdateActionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ProcessedUpdateAction", type = "structure"))), tags = list(locationNameList = "ProcessedUpdateAction", type = "list")), UnprocessedUpdateActions = structure(list(structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "UnprocessedUpdateAction", type = "structure"))), tags = list(locationNameList = "UnprocessedUpdateAction", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$batch_stop_update_action_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplicationGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceUpdateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$batch_stop_update_action_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProcessedUpdateActions = structure(list(structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), UpdateActionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ProcessedUpdateAction", type = "structure"))), tags = list(locationNameList = "ProcessedUpdateAction", type = "list")), UnprocessedUpdateActions = structure(list(structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "UnprocessedUpdateAction", type = "structure"))), tags = list(locationNameList = "UnprocessedUpdateAction", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .elasticache$copy_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SourceSnapshotName = structure(logical(0), tags = list(type = "string")), TargetSnapshotName = structure(logical(0), tags = list(type = "string")), TargetBucket = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -321,6 +345,18 @@ NULL
   return(populate(args, shape))
 }
 
+.elasticache$describe_service_updates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ServiceUpdateStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxRecords = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$describe_service_updates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), ServiceUpdates = structure(list(structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ServiceUpdateReleaseDate = structure(logical(0), tags = list(type = "timestamp")), ServiceUpdateEndDate = structure(logical(0), tags = list(type = "timestamp")), ServiceUpdateSeverity = structure(logical(0), tags = list(type = "string")), ServiceUpdateRecommendedApplyByDate = structure(logical(0), tags = list(type = "timestamp")), ServiceUpdateStatus = structure(logical(0), tags = list(type = "string")), ServiceUpdateDescription = structure(logical(0), tags = list(type = "string")), ServiceUpdateType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), AutoUpdateAfterRecommendedApplyByDate = structure(logical(0), tags = list(type = "boolean")), EstimatedUpdateTime = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "ServiceUpdate", type = "structure"))), tags = list(locationNameList = "ServiceUpdate", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .elasticache$describe_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), CacheClusterId = structure(logical(0), tags = list(type = "string")), SnapshotName = structure(logical(0), tags = list(type = "string")), SnapshotSource = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxRecords = structure(logical(0), tags = list(type = "integer")), ShowNodeGroupConfig = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -330,6 +366,18 @@ NULL
 .elasticache$describe_snapshots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), Snapshots = structure(list(structure(list(SnapshotName = structure(logical(0), tags = list(type = "string")), ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ReplicationGroupDescription = structure(logical(0), tags = list(type = "string")), CacheClusterId = structure(logical(0), tags = list(type = "string")), SnapshotStatus = structure(logical(0), tags = list(type = "string")), SnapshotSource = structure(logical(0), tags = list(type = "string")), CacheNodeType = structure(logical(0), tags = list(type = "string")), Engine = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), NumCacheNodes = structure(logical(0), tags = list(type = "integer")), PreferredAvailabilityZone = structure(logical(0), tags = list(type = "string")), CacheClusterCreateTime = structure(logical(0), tags = list(type = "timestamp")), PreferredMaintenanceWindow = structure(logical(0), tags = list(type = "string")), TopicArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), CacheParameterGroupName = structure(logical(0), tags = list(type = "string")), CacheSubnetGroupName = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), AutoMinorVersionUpgrade = structure(logical(0), tags = list(type = "boolean")), SnapshotRetentionLimit = structure(logical(0), tags = list(type = "integer")), SnapshotWindow = structure(logical(0), tags = list(type = "string")), NumNodeGroups = structure(logical(0), tags = list(type = "integer")), AutomaticFailover = structure(logical(0), tags = list(type = "string")), NodeSnapshots = structure(list(structure(list(CacheClusterId = structure(logical(0), tags = list(type = "string")), NodeGroupId = structure(logical(0), tags = list(type = "string")), CacheNodeId = structure(logical(0), tags = list(type = "string")), NodeGroupConfiguration = structure(list(NodeGroupId = structure(logical(0), tags = list(type = "string")), Slots = structure(logical(0), tags = list(type = "string")), ReplicaCount = structure(logical(0), tags = list(type = "integer")), PrimaryAvailabilityZone = structure(logical(0), tags = list(type = "string")), ReplicaAvailabilityZones = structure(list(structure(logical(0), tags = list(locationName = "AvailabilityZone", type = "string"))), tags = list(locationNameList = "AvailabilityZone", type = "list"))), tags = list(type = "structure")), CacheSize = structure(logical(0), tags = list(type = "string")), CacheNodeCreateTime = structure(logical(0), tags = list(type = "timestamp")), SnapshotCreateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(locationName = "NodeSnapshot", type = "structure", wrapper = TRUE))), tags = list(locationNameList = "NodeSnapshot", type = "list"))), tags = list(locationName = "Snapshot", type = "structure", wrapper = TRUE))), tags = list(locationNameList = "Snapshot", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$describe_update_actions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ReplicationGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceUpdateStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceUpdateTimeRange = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), UpdateActionStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ShowNodeLevelUpdateStatus = structure(logical(0), tags = list(type = "boolean")), MaxRecords = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticache$describe_update_actions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string")), UpdateActions = structure(list(structure(list(ReplicationGroupId = structure(logical(0), tags = list(type = "string")), ServiceUpdateName = structure(logical(0), tags = list(type = "string")), ServiceUpdateReleaseDate = structure(logical(0), tags = list(type = "timestamp")), ServiceUpdateSeverity = structure(logical(0), tags = list(type = "string")), ServiceUpdateStatus = structure(logical(0), tags = list(type = "string")), ServiceUpdateRecommendedApplyByDate = structure(logical(0), tags = list(type = "timestamp")), ServiceUpdateType = structure(logical(0), tags = list(type = "string")), UpdateActionAvailableDate = structure(logical(0), tags = list(type = "timestamp")), UpdateActionStatus = structure(logical(0), tags = list(type = "string")), NodesUpdated = structure(logical(0), tags = list(type = "string")), UpdateActionStatusModifiedDate = structure(logical(0), tags = list(type = "timestamp")), SlaMet = structure(logical(0), tags = list(type = "string")), NodeGroupUpdateStatus = structure(list(structure(list(NodeGroupId = structure(logical(0), tags = list(type = "string")), NodeGroupMemberUpdateStatus = structure(list(structure(list(CacheClusterId = structure(logical(0), tags = list(type = "string")), CacheNodeId = structure(logical(0), tags = list(type = "string")), NodeUpdateStatus = structure(logical(0), tags = list(type = "string")), NodeDeletionDate = structure(logical(0), tags = list(type = "timestamp")), NodeUpdateStartDate = structure(logical(0), tags = list(type = "timestamp")), NodeUpdateEndDate = structure(logical(0), tags = list(type = "timestamp")), NodeUpdateInitiatedBy = structure(logical(0), tags = list(type = "string")), NodeUpdateInitiatedDate = structure(logical(0), tags = list(type = "timestamp")), NodeUpdateStatusModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(locationName = "NodeGroupMemberUpdateStatus", type = "structure"))), tags = list(locationNameList = "NodeGroupMemberUpdateStatus", type = "list"))), tags = list(locationName = "NodeGroupUpdateStatus", type = "structure"))), tags = list(locationNameList = "NodeGroupUpdateStatus", type = "list")), EstimatedUpdateTime = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "UpdateAction", type = "structure"))), tags = list(locationNameList = "UpdateAction", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

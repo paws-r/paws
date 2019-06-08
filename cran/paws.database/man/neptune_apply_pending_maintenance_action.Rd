@@ -11,7 +11,7 @@ neptune_apply_pending_maintenance_action(ResourceIdentifier,
 \arguments{
 \item{ResourceIdentifier}{[required] The Amazon Resource Name (ARN) of the resource that the pending
 maintenance action applies to. For information about creating an ARN,
-see \href{http://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+see \href{https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
 
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.
 

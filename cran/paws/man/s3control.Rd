@@ -12,15 +12,20 @@ AWS S3 Control provides access to Amazon S3 control plane operations.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Removes the Public Access Block configuration for an Amazon Web Services account \cr
-\link[=s3control_get_public_access_block]{get_public_access_block} \tab Retrieves the Public Access Block configuration for an Amazon Web Services account \cr
-\link[=s3control_put_public_access_block]{put_public_access_block} \tab Creates or modifies the Public Access Block configuration for an Amazon Web Services account
+\link[=s3control_create_job]{create_job} \tab Creates an Amazon S3 batch operations job \cr
+\link[=s3control_delete_public_access_block]{delete_public_access_block} \tab Deletes the block public access configuration for the specified account \cr
+\link[=s3control_describe_job]{describe_job} \tab Retrieves the configuration parameters and status for a batch operations job \cr
+\link[=s3control_get_public_access_block]{get_public_access_block} \tab Get public access block \cr
+\link[=s3control_list_jobs]{list_jobs} \tab Lists current jobs and jobs that have ended within the last 30 days for the AWS account making the request\cr
+\link[=s3control_put_public_access_block]{put_public_access_block} \tab Put public access block \cr
+\link[=s3control_update_job_priority]{update_job_priority} \tab Updates an existing job's priority \cr
+\link[=s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job
 }
 }
 
 \examples{
 \donttest{svc <- s3control()
-svc$delete_public_access_block(
+svc$create_job(
   Foo = 123
 )}
 

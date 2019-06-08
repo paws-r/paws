@@ -5,7 +5,7 @@
 \title{Adds an ingress authorization rule to a Client VPN endpoint}
 \usage{
 ec2_authorize_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
-  AccessGroupId, AuthorizeAllGroups, Description, DryRun)
+  AccessGroupId, AuthorizeAllGroups, Description, ClientToken, DryRun)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -20,6 +20,9 @@ all clients who successfully establish a VPN connection access to the
 network.}
 
 \item{Description}{A brief description of the authorization rule.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -39,6 +42,7 @@ access resources in AWS or on-premises networks.
   AccessGroupId = "string",
   AuthorizeAllGroups = TRUE|FALSE,
   Description = "string",
+  ClientToken = "string",
   DryRun = TRUE|FALSE
 )
 }

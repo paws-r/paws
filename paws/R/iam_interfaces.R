@@ -1271,6 +1271,16 @@ NULL
   list()
 }
 
+.iam$set_security_token_service_preferences_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GlobalEndpointTokenVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$set_security_token_service_preferences_output <- function(...) {
+  list()
+}
+
 .iam$simulate_custom_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PolicyInputList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ActionNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), ResourceOwner = structure(logical(0), tags = list(type = "string")), CallerArn = structure(logical(0), tags = list(type = "string")), ContextEntries = structure(list(structure(list(ContextKeyName = structure(logical(0), tags = list(type = "string")), ContextKeyValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ContextKeyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceHandlingOption = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

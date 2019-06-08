@@ -2428,6 +2428,45 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 }
 .devicefarm$operations$list_suites <- devicefarm_list_suites
 
+#' List the tags for an AWS Device Farm resource
+#'
+#' List the tags for an AWS Device Farm resource.
+#'
+#' @usage
+#' devicefarm_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) for which to list
+#' tags. You can associate tags with the following Device Farm resources:
+#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
+#' `VPCE_CONFIGURATION`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_list_tags_for_resource
+devicefarm_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .devicefarm$list_tags_for_resource_output()
+  svc <- .devicefarm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$list_tags_for_resource <- devicefarm_list_tags_for_resource
+
 #' Gets information about tests in a given test suite
 #'
 #' Gets information about tests in a given test suite.
@@ -3045,6 +3084,101 @@ devicefarm_stop_run <- function(arn) {
   return(response)
 }
 .devicefarm$operations$stop_run <- devicefarm_stop_run
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are deleted as well.
+#'
+#' @usage
+#' devicefarm_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) to which to add tags.
+#' You can associate tags with the following Device Farm resources:
+#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
+#' `VPCE_CONFIGURATION`.
+#' @param Tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#' Tag keys can have a maximum character length of 128 characters, and tag
+#' values can have a maximum length of 256 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_tag_resource
+devicefarm_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .devicefarm$tag_resource_output()
+  svc <- .devicefarm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$tag_resource <- devicefarm_tag_resource
+
+#' Deletes the specified tags from a resource
+#'
+#' Deletes the specified tags from a resource.
+#'
+#' @usage
+#' devicefarm_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource(s) from which to delete
+#' tags. You can associate tags with the following Device Farm resources:
+#' `PROJECT`, `RUN`, `NETWORK_PROFILE`, `INSTANCE_PROFILE`,
+#' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
+#' `VPCE_CONFIGURATION`.
+#' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname devicefarm_untag_resource
+devicefarm_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .devicefarm$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .devicefarm$untag_resource_output()
+  svc <- .devicefarm$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.devicefarm$operations$untag_resource <- devicefarm_untag_resource
 
 #' Updates information about an existing private device instance
 #'

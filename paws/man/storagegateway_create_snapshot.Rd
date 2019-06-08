@@ -4,7 +4,7 @@
 \alias{storagegateway_create_snapshot}
 \title{Initiates a snapshot of a volume}
 \usage{
-storagegateway_create_snapshot(VolumeARN, SnapshotDescription)
+storagegateway_create_snapshot(VolumeARN, SnapshotDescription, Tags)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
@@ -14,6 +14,14 @@ operation to return a list of gateway volumes.}
 console, Elastic Block Store snapshots panel in the \strong{Description}
 field, and in the AWS Storage Gateway snapshot \strong{Details} pane,
 \strong{Description} field}
+
+\item{Tags}{A list of up to 50 tags that can be assigned to a snapshot. Each tag is
+a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Initiates a snapshot of a volume.
@@ -23,7 +31,7 @@ AWS Storage Gateway provides the ability to back up point-in-time
 snapshots of your data to Amazon Simple Storage (S3) for durable
 off-site recovery, as well as import the data to an Amazon Elastic Block
 Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
-snapshots of your gateway volume on a scheduled or ad-hoc basis. This
+snapshots of your gateway volume on a scheduled or ad hoc basis. This
 API enables you to take ad-hoc snapshot. For more information, see
 \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a Snapshot Schedule}.
 
@@ -47,7 +55,13 @@ page.
 \section{Request syntax}{
 \preformatted{svc$create_snapshot(
   VolumeARN = "string",
-  SnapshotDescription = "string"
+  SnapshotDescription = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

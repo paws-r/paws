@@ -12,7 +12,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{FlowLogIds}{[required] One or more flow log IDs.}
+\item{FlowLogIds}{[required] One or more flow log IDs.
+
+Constraint: Maximum of 1000 flow log IDs.}
 }
 \description{
 Deletes one or more flow logs.

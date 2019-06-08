@@ -9,7 +9,7 @@ codedeploy_create_deployment_group(applicationName, deploymentGroupName,
   autoScalingGroups, serviceRoleArn, triggerConfigurations,
   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
-  ecsServices, onPremisesTagSet)
+  ecsServices, onPremisesTagSet, tags)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
@@ -75,6 +75,10 @@ service name pair using the format
 deployment group includes only on-premises instances identified by all
 of the tag groups. Cannot be used in the same call as
 onPremisesInstanceTagFilters.}
+
+\item{tags}{The metadata that you apply to CodeDeploy deployment groups to help you
+organize and categorize them. Each tag consists of a key and an optional
+value, both of which you define.}
 }
 \description{
 Creates a deployment group to which application revisions are deployed.
@@ -200,6 +204,12 @@ Creates a deployment group to which application revisions are deployed.
           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
         )
       )
+    )
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

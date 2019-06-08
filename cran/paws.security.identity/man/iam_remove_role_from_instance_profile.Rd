@@ -28,8 +28,8 @@ role you are about to remove from the instance profile. Removing a role
 from an instance profile that is associated with a running instance
 might break any applications running on the instance.
 
-For more information about IAM roles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
-For more information about instance profiles, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+For more information about IAM roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
+For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_role_from_instance_profile(

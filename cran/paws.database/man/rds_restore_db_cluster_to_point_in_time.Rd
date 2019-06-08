@@ -53,16 +53,17 @@ Constraints:
 \item Must be before the latest restorable time for the DB instance
 \item Must be specified if \code{UseLatestRestorableTime} parameter is not
 provided
-\item Can't be specified if \code{UseLatestRestorableTime} parameter is true
-\item Can't be specified if \code{RestoreType} parameter is \code{copy-on-write}
+\item Can't be specified if the \code{UseLatestRestorableTime} parameter is
+enabled
+\item Can't be specified if the \code{RestoreType} parameter is
+\code{copy-on-write}
 }
 
 Example: \code{2015-03-07T23:45:00Z}}
 
-\item{UseLatestRestorableTime}{A value that is set to \code{true} to restore the DB cluster to the latest
-restorable backup time, and \code{false} otherwise.
-
-Default: \code{false}
+\item{UseLatestRestorableTime}{A value that indicates whether to restore the DB cluster to the latest
+restorable backup time. By default, the DB cluster is not restored to
+the latest restorable backup time.
 
 Constraints: Can't be specified if \code{RestoreToTime} parameter is
 provided.}
@@ -113,10 +114,9 @@ not encrypted.
 If \code{DBClusterIdentifier} refers to a DB cluster that is not encrypted,
 then the restore request is rejected.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -147,12 +147,13 @@ group.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
-database can't be deleted when this value is set to true. The default
-is false.}
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB cluster to snapshots of the
-restored DB cluster, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
@@ -164,7 +165,7 @@ security group.
 }
 \details{
 This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the CreateDBInstance action to create DB
+DB cluster. You must invoke the \code{CreateDBInstance} action to create DB
 instances for the restored DB cluster, specifying the identifier of the
 restored DB cluster in \code{DBClusterIdentifier}. You can create DB
 instances only after the \code{RestoreDBClusterToPointInTime} action has

@@ -2,20 +2,20 @@
 % Please edit documentation in R/iot1clickdevicesservice_operations.R
 \name{iot1clickdevicesservice_tag_resource}
 \alias{iot1clickdevicesservice_tag_resource}
-\title{Associate a set of tags with an AWS IoT 1-Click resource}
+\title{Adds or updates the tags associated with the resource ARN}
 \usage{
 iot1clickdevicesservice_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] Identifies the AWS IoT 1-Click resource to which tags should be added.
-This value is an Amazon Resource Name (ARN).}
+\item{ResourceArn}{[required] The ARN of the resource.}
 
-\item{Tags}{[required] The tags to be assigned to the AWS IoT 1-Click resource.}
+\item{Tags}{[required] A collection of key/value pairs defining the resource tags. For example,
+{ "tags": {"key1": "value1", "key2": "value2"} }. For more
+information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.}
 }
 \description{
-Associate a set of tags with an AWS IoT 1-Click resource. You can then
-activate these user-defined tags so that they appear on the Billing and
-Cost Management console for cost allocation tracking.
+Adds or updates the tags associated with the resource ARN. See \href{https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits}{AWS IoT 1-Click Service Limits}
+for the maximum number of tags allowed per resource.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

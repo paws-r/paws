@@ -36,14 +36,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a security group.
 }
 \details{
-A security group is for use with instances either in the EC2-Classic
-platform or in a specific VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups}
+A security group acts as a virtual firewall for your instance to control
+inbound and outbound traffic. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups}
 in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
-
-EC2-Classic: You can have up to 500 security groups.
-
-EC2-VPC: You can create up to 500 security groups per VPC.
 
 When you create a security group, you specify a friendly name of your
 choice. You can have a security group for use in EC2-Classic with the
@@ -61,6 +57,8 @@ other.
 You can add or remove rules from your security groups using
 AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
 RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
+
+For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_security_group(

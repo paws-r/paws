@@ -18,7 +18,7 @@ Deletes the specified server certificate.
 }
 \details{
 For more information about working with server certificates, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic also includes a list of AWS services
 that can use the server certificates that you manage with IAM.
 
@@ -30,7 +30,7 @@ Elastic Load Balancing to stop accepting traffic. We recommend that you
 remove the reference to the certificate from Elastic Load Balancing
 before using this command to delete the certificate. For more
 information, go to
-\href{http://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html}{DeleteLoadBalancerListeners}
+\href{https://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html}{DeleteLoadBalancerListeners}
 in the \emph{Elastic Load Balancing API Reference}.
 }
 \section{Request syntax}{

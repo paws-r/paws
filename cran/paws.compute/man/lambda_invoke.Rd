@@ -59,6 +59,12 @@ and \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{trace}. To
 record function errors for asynchronous invocations, configure your
 function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/dlq.html}{dead letter queue}.
 
+When an error occurs, your function may be invoked multiple times. Retry
+behavior varies by error type, client, event source, and invocation
+type. For example, if you invoke a function asynchronously and it
+returns an error, Lambda executes the function up to two more times. For
+more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html}{Retry Behavior}.
+
 The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
 executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or

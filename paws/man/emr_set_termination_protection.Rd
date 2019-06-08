@@ -36,7 +36,7 @@ To terminate a cluster that has been locked by setting
 by a subsequent call to \code{SetTerminationProtection} in which you set the
 value to \code{false}.
 
-For more information, see\href{http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html}{Managing Cluster Termination}
+For more information, see\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html}{Managing Cluster Termination}
 in the \emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{

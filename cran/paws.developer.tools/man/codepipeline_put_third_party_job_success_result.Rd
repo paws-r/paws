@@ -10,7 +10,7 @@ codepipeline_put_third_party_job_success_result(jobId, clientToken,
 }
 \arguments{
 \item{jobId}{[required] The ID of the job that successfully completed. This is the same ID
-returned from PollForThirdPartyJobs.}
+returned from \code{PollForThirdPartyJobs}.}
 
 \item{clientToken}{[required] The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its

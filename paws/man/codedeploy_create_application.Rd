@@ -4,13 +4,18 @@
 \alias{codedeploy_create_application}
 \title{Creates an application}
 \usage{
-codedeploy_create_application(applicationName, computePlatform)
+codedeploy_create_application(applicationName, computePlatform, tags)
 }
 \arguments{
 \item{applicationName}{[required] The name of the application. This name must be unique with the
 applicable IAM user or AWS account.}
 
-\item{computePlatform}{The destination platform type for the deployment (\code{Lambda} or \code{Server}).}
+\item{computePlatform}{The destination platform type for the deployment (\code{Lambda}, \code{Server}, or
+\code{ECS}).}
+
+\item{tags}{The metadata that you apply to CodeDeploy applications to help you
+organize and categorize them. Each tag consists of a key and an optional
+value, both of which you define.}
 }
 \description{
 Creates an application.
@@ -18,7 +23,13 @@ Creates an application.
 \section{Request syntax}{
 \preformatted{svc$create_application(
   applicationName = "string",
-  computePlatform = "Server"|"Lambda"|"ECS"
+  computePlatform = "Server"|"Lambda"|"ECS",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

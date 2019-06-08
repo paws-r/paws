@@ -13,11 +13,10 @@ information.}
 
 \item{maxResults}{The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned nextToken
-value. The available pipeline execution history is limited to the most
-recent 12 months, based on pipeline execution start times. Default value
-is 100.}
+value. Pipeline history is limited to the most recent 12 months, based
+on pipeline execution start times. Default value is 100.}
 
-\item{nextToken}{The token that was returned from the previous ListPipelineExecutions
+\item{nextToken}{The token that was returned from the previous \code{ListPipelineExecutions}
 call, which can be used to return the next set of pipeline executions in
 the list.}
 }

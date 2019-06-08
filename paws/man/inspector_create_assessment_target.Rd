@@ -26,7 +26,7 @@ isn't already registered, this action also creates and registers a
 service-linked role to grant Amazon Inspector access to AWS Services
 needed to perform security assessments. You can create up to 50
 assessment targets per AWS account. You can run up to 500 concurrent
-agents per AWS account. For more information, see \href{http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
+agents per AWS account. For more information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_assessment_target(

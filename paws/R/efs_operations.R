@@ -96,15 +96,20 @@ NULL
 #' If `KmsKeyId` is specified, the CreateFileSystemRequest\\$Encrypted
 #' parameter must be set to true.
 #' @param ThroughputMode The throughput mode for the file system to be created. There are two
-#' throughput modes to choose from for your file system: bursting and
-#' provisioned. You can decrease your file system\'s throughput in
-#' Provisioned Throughput mode or change between the throughput modes as
-#' long as it's been more than 24 hours since the last decrease or
-#' throughput mode change.
+#' throughput modes to choose from for your file system: `bursting` and
+#' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
+#' also set a value for `ProvisionedThroughPutInMibps`. You can decrease
+#' your file system\'s throughput in Provisioned Throughput mode or change
+#' between the throughput modes as long as it's been more than 24 hours
+#' since the last decrease or throughput mode change. For more, see
+#' [Specifying Throughput with Provisioned
+#' Mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
+#' in the *Amazon EFS User Guide.*
 #' @param ProvisionedThroughputInMibps The throughput, measured in MiB/s, that you want to provision for a file
-#' system that you\'re creating. The limit on throughput is 1024 MiB/s. You
-#' can get these limits increased by contacting AWS Support. For more
-#' information, see [Amazon EFS Limits That You Can
+#' system that you\'re creating. Valid values are 1-1024. Required if
+#' `ThroughputMode` is set to `provisioned`. The upper limit for throughput
+#' is 1024 MiB/s. You can get this limit increased by contacting AWS
+#' Support. For more information, see [Amazon EFS Limits That You Can
 #' Increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
 #' in the *Amazon EFS User Guide.*
 #' @param Tags A value that specifies to create one or more tags associated with the
@@ -598,7 +603,9 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' efs_describe_file_systems(MaxItems, Marker, CreationToken, FileSystemId)
 #'
 #' @param MaxItems (Optional) Specifies the maximum number of file systems to return in the
-#' response (integer). Currently, this number is automatically set to 10.
+#' response (integer). Currently, this number is automatically set to 10,
+#' and other values are ignored. The response is paginated at 10 per page
+#' if you have more than 10 file systems.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
 #' `DescribeFileSystems` operation (String). If present, specifies to
 #' continue the list from where the returning call had left off.
@@ -765,7 +772,9 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #'   MountTargetId)
 #'
 #' @param MaxItems (Optional) Maximum number of mount targets to return in the response.
-#' Currently, this number is automatically set to 10.
+#' Currently, this number is automatically set to 10, and other values are
+#' ignored. The response is paginated at 10 per page if you have more than
+#' 10 mount targets.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
 #' `DescribeMountTargets` operation (String). If present, it specifies to
 #' continue the list from where the previous returning call left off.
@@ -825,7 +834,9 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' efs_describe_tags(MaxItems, Marker, FileSystemId)
 #'
 #' @param MaxItems (Optional) The maximum number of file system tags to return in the
-#' response. Currently, this number is automatically set to 10.
+#' response. Currently, this number is automatically set to 10, and other
+#' values are ignored. The response is paginated at 10 per page if you have
+#' more than 10 tags.
 #' @param Marker (Optional) An opaque pagination token returned from a previous
 #' `DescribeTags` operation (String). If present, it specifies to continue
 #' the list from where the previous call left off.
@@ -1035,11 +1046,14 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you want to update.
 #' @param ThroughputMode (Optional) The throughput mode that you want your file system to use. If
 #' you\'re not updating your throughput mode, you don\'t need to provide
-#' this value in your request.
+#' this value in your request. If you are changing the `ThroughputMode` to
+#' `provisioned`, you must also set a value for
+#' `ProvisionedThroughputInMibps`.
 #' @param ProvisionedThroughputInMibps (Optional) The amount of throughput, in MiB/s, that you want to
-#' provision for your file system. If you\'re not updating the amount of
-#' provisioned throughput for your file system, you don\'t need to provide
-#' this value in your request.
+#' provision for your file system. Valid values are 1-1024. Required if
+#' `ThroughputMode` is changed to `provisioned` on update. If you\'re not
+#' updating the amount of provisioned throughput for your file system, you
+#' don\'t need to provide this value in your request.
 #'
 #' @section Request syntax:
 #' ```

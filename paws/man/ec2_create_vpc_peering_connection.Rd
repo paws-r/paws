@@ -24,10 +24,10 @@ connection. You must specify this parameter in the request.}
 \item{VpcId}{The ID of the requester VPC. You must specify this parameter in the
 request.}
 
-\item{PeerRegion}{The region code for the accepter VPC, if the accepter VPC is located in
-a region other than the region in which you make the request.
+\item{PeerRegion}{The Region code for the accepter VPC, if the accepter VPC is located in
+a Region other than the Region in which you make the request.
 
-Default: The region in which you make the request.}
+Default: The Region in which you make the request.}
 }
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that

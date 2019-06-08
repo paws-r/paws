@@ -11,7 +11,7 @@ s3_put_bucket_analytics_configuration(Bucket, Id,
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which an analytics configuration is stored.}
 
-\item{Id}{[required] The identifier used to represent an analytics configuration.}
+\item{Id}{[required] The ID that identifies the analytics configuration.}
 
 \item{AnalyticsConfiguration}{[required] The configuration and any analyses for the analytics filter.}
 }

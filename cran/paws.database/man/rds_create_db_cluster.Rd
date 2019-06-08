@@ -16,13 +16,12 @@ rds_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   SourceRegion)
 }
 \arguments{
-\item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be
-created in. For information on AWS Regions and Availability Zones, see
+\item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the DB cluster can
+be created. For information on AWS Regions and Availability Zones, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones}
 in the \emph{Amazon Aurora User Guide}.}
 
-\item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must
-specify a minimum value of 1.
+\item{BackupRetentionPeriod}{The number of days for which automated backups are retained.
 
 Default: 1
 
@@ -144,9 +143,9 @@ Constraints: Minimum 30-minute window.}
 \item{ReplicationSourceIdentifier}{The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a Read Replica.}
 
-\item{Tags}{}
+\item{Tags}{Tags to assign to the DB cluster.}
 
-\item{StorageEncrypted}{Specifies whether the DB cluster is encrypted.}
+\item{StorageEncrypted}{A value that indicates whether the DB cluster is encrypted.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
 
@@ -161,7 +160,7 @@ If an encryption key is not specified in \code{KmsKeyId}:
 \item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
 then Amazon RDS will use the encryption key used to encrypt the
 source. Otherwise, Amazon RDS will use your default encryption key.
-\item If the \code{StorageEncrypted} parameter is true and
+\item If the \code{StorageEncrypted} parameter is enabled and
 \code{ReplicationSourceIdentifier} is not specified, then Amazon RDS will
 use your default encryption key.
 }
@@ -209,10 +208,9 @@ and \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -236,15 +234,15 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.}
 
-\item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
-database can't be deleted when this value is set to true. The default
-is false.}
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 
 \item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
 cluster in the new global database cluster.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the DB cluster to snapshots of the DB
-cluster, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
+snapshots of the DB cluster. The default is not to copy them.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -305,7 +303,8 @@ This action only applies to Aurora DB clusters.
     MinCapacity = 123,
     MaxCapacity = 123,
     AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
+    SecondsUntilAutoPause = 123,
+    TimeoutAction = "string"
   ),
   DeletionProtection = TRUE|FALSE,
   GlobalClusterIdentifier = "string",

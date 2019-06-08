@@ -6,7 +6,7 @@
 \usage{
 rds_describe_db_engine_versions(Engine, EngineVersion,
   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
-  ListSupportedCharacterSets, ListSupportedTimezones)
+  ListSupportedCharacterSets, ListSupportedTimezones, IncludeAll)
 }
 \arguments{
 \item{Engine}{The database engine to return.}
@@ -37,16 +37,26 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{DefaultOnly}{Indicates that only the default version of the specified engine or
-engine and major version combination is returned.}
+\item{DefaultOnly}{A value that indicates whether only the default version of the specified
+engine or engine and major version combination is returned.}
 
-\item{ListSupportedCharacterSets}{If this parameter is specified and the requested engine supports the
+\item{ListSupportedCharacterSets}{A value that indicates whether to list the supported character sets for
+each engine version.
+
+If this parameter is enabled and the requested engine supports the
 \code{CharacterSetName} parameter for \code{CreateDBInstance}, the response
 includes a list of supported character sets for each engine version.}
 
-\item{ListSupportedTimezones}{If this parameter is specified and the requested engine supports the
+\item{ListSupportedTimezones}{A value that indicates whether to list the supported time zones for each
+engine version.
+
+If this parameter is enabled and the requested engine supports the
 \code{TimeZone} parameter for \code{CreateDBInstance}, the response includes a
 list of supported time zones for each engine version.}
+
+\item{IncludeAll}{A value that indicates whether to include engine versions that aren't
+available in the list. The default is to list only available engine
+versions.}
 }
 \description{
 Returns a list of the available DB engines.
@@ -68,7 +78,8 @@ Returns a list of the available DB engines.
   Marker = "string",
   DefaultOnly = TRUE|FALSE,
   ListSupportedCharacterSets = TRUE|FALSE,
-  ListSupportedTimezones = TRUE|FALSE
+  ListSupportedTimezones = TRUE|FALSE,
+  IncludeAll = TRUE|FALSE
 )
 }
 }

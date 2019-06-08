@@ -4,19 +4,24 @@
 \alias{guardduty_list_findings}
 \title{Lists Amazon GuardDuty findings for the specified detector ID}
 \usage{
-guardduty_list_findings(DetectorId, FindingCriteria, MaxResults,
-  NextToken, SortCriteria)
+guardduty_list_findings(DetectorId, FindingCriteria, SortCriteria,
+  MaxResults, NextToken)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to list.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
+findings you want to list.}
 
 \item{FindingCriteria}{Represents the criteria used for querying findings.}
 
-\item{MaxResults}{You can use this parameter to indicate the maximum number of items you want in the response. The default value is 50. The maximum value is 50.}
-
-\item{NextToken}{You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListFindings action. For subsequent calls to the action fill nextToken in the request with the value of nextToken from the previous response to continue listing data.}
-
 \item{SortCriteria}{Represents the criteria used for sorting findings.}
+
+\item{MaxResults}{You can use this parameter to indicate the maximum number of items you
+want in the response. The default value is 50. The maximum value is 50.}
+
+\item{NextToken}{You can use this parameter when paginating results. Set the value of
+this parameter to null on your first call to the list action. For
+subsequent calls to the action fill nextToken in the request with the
+value of NextToken from the previous response to continue listing data.}
 }
 \description{
 Lists Amazon GuardDuty findings for the specified detector ID.
@@ -30,22 +35,32 @@ Lists Amazon GuardDuty findings for the specified detector ID.
         Eq = list(
           "string"
         ),
+        Neq = list(
+          "string"
+        ),
         Gt = 123,
         Gte = 123,
         Lt = 123,
         Lte = 123,
-        Neq = list(
+        Equals = list(
           "string"
-        )
+        ),
+        NotEquals = list(
+          "string"
+        ),
+        GreaterThan = 123,
+        GreaterThanOrEqual = 123,
+        LessThan = 123,
+        LessThanOrEqual = 123
       )
     )
   ),
-  MaxResults = 123,
-  NextToken = "string",
   SortCriteria = list(
     AttributeName = "string",
     OrderBy = "ASC"|"DESC"
-  )
+  ),
+  MaxResults = 123,
+  NextToken = "string"
 )
 }
 }

@@ -3,7 +3,7 @@
 \name{textract_get_document_text_detection}
 \alias{textract_get_document_text_detection}
 \title{Gets the results for an Amazon Textract asynchronous operation that
-detects text in a document image}
+detects text in a document}
 \usage{
 textract_get_document_text_detection(JobId, MaxResults, NextToken)
 }
@@ -23,8 +23,8 @@ blocks.}
 }
 \description{
 Gets the results for an Amazon Textract asynchronous operation that
-detects text in a document image. Amazon Textract can detect lines of
-text and the words that make up a line of text.
+detects text in a document. Amazon Textract can detect lines of text and
+the words that make up a line of text.
 }
 \details{
 You start asynchronous text detection by calling
@@ -38,8 +38,13 @@ topic is \code{SUCCEEDED}. If so, call \code{GetDocumentTextDetection}, and pass
 the job identifier (\code{JobId}) from the initial call to
 \code{StartDocumentTextDetection}.
 
-\code{GetDocumentTextDetection} returns an array of Block objects. For more
-information, see how-it-works-detecting.
+\code{GetDocumentTextDetection} returns an array of Block objects.
+
+Each document page has as an associated \code{Block} of type PAGE. Each PAGE
+\code{Block} object is the parent of LINE \code{Block} objects that represent the
+lines of detected text on a page. A LINE \code{Block} object is a parent for
+each word that makes up the line. Words are represented by \code{Block}
+objects of type WORD.
 
 Use the MaxResults parameter to limit the number of blocks that are
 returned. If there are more results than specified in \code{MaxResults}, the
@@ -49,8 +54,7 @@ results, call \code{GetDocumentTextDetection}, and populate the \code{NextToken}
 request parameter with the token value that's returned from the
 previous call to \code{GetDocumentTextDetection}.
 
-For more information, see Document Text Detection in the Amazon Textract
-Developer Guide.
+For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_document_text_detection(

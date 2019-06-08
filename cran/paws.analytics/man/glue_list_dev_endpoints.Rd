@@ -15,15 +15,15 @@ glue_list_dev_endpoints(NextToken, MaxResults, Tags)
 \item{Tags}{Specifies to return only these tagged resources.}
 }
 \description{
-Retrieves the names of all DevEndpoint resources in this AWS account, or
-the resources with the specified tag. This operation allows you to see
-which resources are available in your account, and their names.
+Retrieves the names of all \code{DevEndpoint} resources in this AWS account,
+or the resources with the specified tag. This operation allows you to
+see which resources are available in your account, and their names.
 }
 \details{
-This operation takes the optional \code{Tags} field which you can use as a
+This operation takes the optional \code{Tags} field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag
-will be retrieved.
+are retrieved.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dev_endpoints(

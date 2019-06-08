@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalytics_operations.R
 \name{kinesisanalytics_delete_application}
 \alias{kinesisanalytics_delete_application}
-\title{Deletes the specified application}
+\title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application(ApplicationName, CreateTimestamp)
 }
@@ -12,12 +13,17 @@ kinesisanalytics_delete_application(ApplicationName, CreateTimestamp)
 \item{CreateTimestamp}{[required] You can use the \code{DescribeApplication} operation to get this value.}
 }
 \description{
+This documentation is for version 1 of the Amazon Kinesis Data Analytics
+API, which only supports SQL applications. Version 2 of the API supports
+SQL and Java applications. For more information about version 2, see
+Amazon Kinesis Data Analytics API V2 Documentation.
+}
+\details{
 Deletes the specified application. Amazon Kinesis Analytics halts
 application execution and deletes the application, including any
 application artifacts (such as in-application streams, reference table,
 and application code).
-}
-\details{
+
 This operation requires permissions to perform the
 \code{kinesisanalytics:DeleteApplication} action.
 }

@@ -35,8 +35,8 @@ The create operation is asynchronous. To verify that the AFI is ready
 for use, check the output logs.
 
 An AFI contains the FPGA bitstream that is ready to download to an FPGA.
-You can securely deploy an AFI on one or more FPGA-accelerated
-instances. For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA Hardware Development Kit}.
+You can securely deploy an AFI on multiple FPGA-accelerated instances.
+For more information, see the \href{https://github.com/aws/aws-fpga/}{AWS FPGA Hardware Development Kit}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_fpga_image(

@@ -6,7 +6,7 @@
 associated API stages, specified in the payload}
 \usage{
 apigateway_create_usage_plan(name, description, apiStages, throttle,
-  quota)
+  quota, tags)
 }
 \arguments{
 \item{name}{[required] [Required] The name of the usage plan.}
@@ -18,6 +18,10 @@ apigateway_create_usage_plan(name, description, apiStages, throttle,
 \item{throttle}{The throttling limits of the usage plan.}
 
 \item{quota}{The quota of the usage plan.}
+
+\item{tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with \code{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Creates a usage plan with the throttle and quota limits, as well as the
@@ -47,6 +51,9 @@ associated API stages, specified in the payload.
     limit = 123,
     offset = 123,
     period = "DAY"|"WEEK"|"MONTH"
+  ),
+  tags = list(
+    "string"
   )
 )
 }

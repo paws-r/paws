@@ -14,7 +14,8 @@ chime_update_phone_number(PhoneNumberId, ProductType)
 }
 \description{
 Updates phone number details, such as product type, for the specified
-phone number ID.
+phone number ID. For toll-free numbers, you can use only the Amazon
+Chime Voice Connector product type.
 }
 \section{Request syntax}{
 \preformatted{svc$update_phone_number(

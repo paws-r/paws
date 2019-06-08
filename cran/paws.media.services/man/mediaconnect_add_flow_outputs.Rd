@@ -23,9 +23,14 @@ Adds outputs to an existing flow. You can create up to 20 outputs per flow.
       Destination = "string",
       Encryption = list(
         Algorithm = "aes128"|"aes192"|"aes256",
-        KeyType = "static-key",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
         RoleArn = "string",
-        SecretArn = "string"
+        SecretArn = "string",
+        Url = "string"
       ),
       MaxLatency = 123,
       Name = "string",

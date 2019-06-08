@@ -34,7 +34,7 @@ resource-based policies. You can use tags to restrict access to only
 an IAM requesting user or to a role that has a specified tag
 attached. You can also restrict access to only those resources that
 have a certain tag attached. For examples of policies that show how
-to use tags to control access, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Control Access Using IAM Tags}
+to use tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Control Access Using IAM Tags}
 in the \emph{IAM User Guide}.
 \item \strong{Cost allocation} - Use tags to help track which individuals and
 teams are using which AWS resources.
@@ -49,7 +49,7 @@ need to store an array, you can store comma-separated values in the
 string. However, you must interpret the value in your code.
 }
 
-For more information about tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

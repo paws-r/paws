@@ -33,18 +33,18 @@ validate requests that are signed with a corresponding private key. When
 you upload the certificate, its default status is \code{Active}.
 }
 \details{
-If the \code{UserName} field is not specified, the IAM user name is
-determined implicitly based on the AWS access key ID used to sign the
-request. This operation works for access keys under the AWS account.
-Consequently, you can use this operation to manage AWS account root user
-credentials even if the AWS account has no associated users.
+If the \code{UserName} is not specified, the IAM user name is determined
+implicitly based on the AWS access key ID used to sign the request. This
+operation works for access keys under the AWS account. Consequently, you
+can use this operation to manage AWS account root user credentials even
+if the AWS account has no associated users.
 
 Because the body of an X.509 certificate can be large, you should use
 POST rather than GET when calling \code{UploadSigningCertificate}. For
 information about setting up signatures and authorization through the
-API, go to \href{http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
+API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
 in the \emph{AWS General Reference}. For general information about using the
-Query API with IAM, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
+Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

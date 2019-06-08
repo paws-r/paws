@@ -2,53 +2,53 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_create_maintenance_window}
 \alias{ssm_create_maintenance_window}
-\title{Creates a new Maintenance Window}
+\title{Creates a new maintenance window}
 \usage{
 ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
   Schedule, ScheduleTimezone, Duration, Cutoff, AllowUnassociatedTargets,
   ClientToken, Tags)
 }
 \arguments{
-\item{Name}{[required] The name of the Maintenance Window.}
+\item{Name}{[required] The name of the maintenance window.}
 
-\item{Description}{An optional description for the Maintenance Window. We recommend
-specifying a description to help you organize your Maintenance Windows.}
+\item{Description}{An optional description for the maintenance window. We recommend
+specifying a description to help you organize your maintenance windows.}
 
 \item{StartDate}{The date and time, in ISO-8601 Extended format, for when you want the
-Maintenance Window to become active. StartDate allows you to delay
-activation of the Maintenance Window until the specified future date.}
+maintenance window to become active. StartDate allows you to delay
+activation of the maintenance window until the specified future date.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
-Maintenance Window to become inactive. EndDate allows you to set a date
-and time in the future when the Maintenance Window will no longer run.}
+maintenance window to become inactive. EndDate allows you to set a date
+and time in the future when the maintenance window will no longer run.}
 
-\item{Schedule}{[required] The schedule of the Maintenance Window in the form of a cron or rate
+\item{Schedule}{[required] The schedule of the maintenance window in the form of a cron or rate
 expression.}
 
-\item{ScheduleTimezone}{The time zone that the scheduled Maintenance Window executions are based
+\item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
 "America/Los\_Angeles", "etc/UTC", or "Asia/Seoul". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
-\item{Duration}{[required] The duration of the Maintenance Window in hours.}
+\item{Duration}{[required] The duration of the maintenance window in hours.}
 
-\item{Cutoff}{[required] The number of hours before the end of the Maintenance Window that
+\item{Cutoff}{[required] The number of hours before the end of the maintenance window that
 Systems Manager stops scheduling new tasks for execution.}
 
-\item{AllowUnassociatedTargets}{[required] Enables a Maintenance Window task to execute on managed instances, even
-if you have not registered those instances as targets. If enabled, then
-you must specify the unregistered instances (by instance ID) when you
-register a task with the Maintenance Window
+\item{AllowUnassociatedTargets}{[required] Enables a maintenance window task to run on managed instances, even if
+you have not registered those instances as targets. If enabled, then you
+must specify the unregistered instances (by instance ID) when you
+register a task with the maintenance window.
 
 If you don't enable this option, then you must specify
 previously-registered targets when you register a task with the
-Maintenance Window.}
+maintenance window.}
 
 \item{ClientToken}{User-provided idempotency token.}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or
-environment. For example, you might want to tag a Maintenance Window to
+environment. For example, you might want to tag a maintenance window to
 identify the type of tasks it will run, the types of targets, and the
 environment it will run in. In this case, you could specify the
 following key name/value pairs:
@@ -58,11 +58,11 @@ following key name/value pairs:
 \item \code{Key=Environment,Value=Production}
 }
 
-To add tags to an existing Maintenance Window, use the AddTagsToResource
+To add tags to an existing maintenance window, use the AddTagsToResource
 action.}
 }
 \description{
-Creates a new Maintenance Window.
+Creates a new maintenance window.
 }
 \section{Request syntax}{
 \preformatted{svc$create_maintenance_window(

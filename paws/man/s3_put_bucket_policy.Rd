@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_policy}
 \alias{s3_put_bucket_policy}
-\title{Replaces a policy on a bucket}
+\title{Applies an Amazon S3 bucket policy to an Amazon S3 bucket}
 \usage{
 s3_put_bucket_policy(Bucket, ContentMD5, ConfirmRemoveSelfBucketAccess,
   Policy)
@@ -18,8 +18,7 @@ permissions to change this bucket policy in the future.}
 \item{Policy}{[required] The bucket policy as a JSON document.}
 }
 \description{
-Replaces a policy on a bucket. If the bucket already has a policy, the
-one in this request completely replaces it.
+Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_policy(

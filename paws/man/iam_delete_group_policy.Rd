@@ -28,7 +28,7 @@ IAM group.
 \details{
 A group can also have managed policies attached to it. To detach a
 managed policy from a group, use DetachGroupPolicy. For more information
-about policies, refer to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

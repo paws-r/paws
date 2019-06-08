@@ -20,7 +20,7 @@ longer than 128 characters.}
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information, go to
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the \code{TemplateBody} or the
@@ -28,7 +28,7 @@ Conditional: You must specify either the \code{TemplateBody} or the
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to the \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+bucket. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the \code{TemplateBody} or the
@@ -36,7 +36,7 @@ Conditional: You must specify either the \code{TemplateBody} or the
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
 stack. For more information, see the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
 data type.}
 
 \item{DisableRollback}{Set to \code{true} to disable rollback of the stack if stack creation failed.
@@ -82,13 +82,13 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
@@ -139,7 +139,7 @@ If the list of resource types doesn't include a resource that you're
 creating, the stack creation fails. By default, AWS CloudFormation
 grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for AWS CloudFormation-specific
-condition keys in IAM policies. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
+condition keys in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes to create the stack. AWS
@@ -161,7 +161,7 @@ be one of: DO\_NOTHING, ROLLBACK, or DELETE. You can specify either
 Default: \code{ROLLBACK}}
 
 \item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources}
 in the \emph{AWS CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 

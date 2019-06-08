@@ -28,7 +28,7 @@ specified number of items, but it might return fewer.
 This value is optional. If you include a value, it must be between 1 and
 1000, inclusive. If you do not include a value, it defaults to 100.
 
-Currently only 1 policy can be attached to a key.}
+Only one policy can be attached to a key.}
 
 \item{Marker}{Use this parameter in a subsequent request after you receive a response
 with truncated results. Set it to the value of \code{NextMarker} from the

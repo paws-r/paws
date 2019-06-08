@@ -4,11 +4,13 @@
 \alias{medialive_list_reservations}
 \title{List purchased reservations}
 \usage{
-medialive_list_reservations(Codec, MaxResults, MaximumBitrate,
-  MaximumFramerate, NextToken, Resolution, ResourceType, SpecialFeature,
-  VideoQuality)
+medialive_list_reservations(ChannelClass, Codec, MaxResults,
+  MaximumBitrate, MaximumFramerate, NextToken, Resolution, ResourceType,
+  SpecialFeature, VideoQuality)
 }
 \arguments{
+\item{ChannelClass}{Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'}
+
 \item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}
 
 \item{MaxResults}{}
@@ -32,6 +34,7 @@ List purchased reservations.
 }
 \section{Request syntax}{
 \preformatted{svc$list_reservations(
+  ChannelClass = "string",
   Codec = "string",
   MaxResults = 123,
   MaximumBitrate = "string",

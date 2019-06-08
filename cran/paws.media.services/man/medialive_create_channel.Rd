@@ -4,11 +4,13 @@
 \alias{medialive_create_channel}
 \title{Creates a new channel}
 \usage{
-medialive_create_channel(Destinations, EncoderSettings,
+medialive_create_channel(ChannelClass, Destinations, EncoderSettings,
   InputAttachments, InputSpecification, LogLevel, Name, RequestId,
   Reserved, RoleArn, Tags)
 }
 \arguments{
+\item{ChannelClass}{The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.}
+
 \item{Destinations}{}
 
 \item{EncoderSettings}{}
@@ -35,6 +37,7 @@ Creates a new channel
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel(
+  ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
   Destinations = list(
     list(
       Id = "string",

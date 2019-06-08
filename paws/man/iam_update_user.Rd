@@ -27,24 +27,24 @@ lowercased letters.}
 \item{NewUserName}{New name for the user. Include this parameter only if you're changing
 the user's name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM user.
 }
 \details{
 You should understand the implications of changing an IAM user's path
-or name. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
-and \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}
+or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}
 in the \emph{IAM User Guide}.
 
 To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on Bob
 and Robert, or must have permission on all (*). For more information
-about permissions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
+about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user(

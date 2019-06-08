@@ -5,40 +5,52 @@
 \title{Lists Amazon GuardDuty findings' statistics for the specified detector
 ID}
 \usage{
-guardduty_get_findings_statistics(DetectorId, FindingCriteria,
-  FindingStatisticTypes)
+guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
+  FindingCriteria)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings' statistics you want to retrieve.}
-
-\item{FindingCriteria}{Represents the criteria used for querying findings.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
+findings' statistics you want to retrieve.}
 
 \item{FindingStatisticTypes}{[required] Types of finding statistics to retrieve.}
+
+\item{FindingCriteria}{Represents the criteria used for querying findings.}
 }
 \description{
-Lists Amazon GuardDuty findings' statistics for the specified detector ID.
+Lists Amazon GuardDuty findings' statistics for the specified detector
+ID.
 }
 \section{Request syntax}{
 \preformatted{svc$get_findings_statistics(
   DetectorId = "string",
+  FindingStatisticTypes = list(
+    "COUNT_BY_SEVERITY"
+  ),
   FindingCriteria = list(
     Criterion = list(
       list(
         Eq = list(
           "string"
         ),
+        Neq = list(
+          "string"
+        ),
         Gt = 123,
         Gte = 123,
         Lt = 123,
         Lte = 123,
-        Neq = list(
+        Equals = list(
           "string"
-        )
+        ),
+        NotEquals = list(
+          "string"
+        ),
+        GreaterThan = 123,
+        GreaterThanOrEqual = 123,
+        LessThan = 123,
+        LessThanOrEqual = 123
       )
     )
-  ),
-  FindingStatisticTypes = list(
-    "COUNT_BY_SEVERITY"
   )
 )
 }

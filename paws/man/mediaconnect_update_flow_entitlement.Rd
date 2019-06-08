@@ -26,9 +26,14 @@ You can change an entitlement's description, subscribers, and encryption. If you
   Description = "string",
   Encryption = list(
     Algorithm = "aes128"|"aes192"|"aes256",
-    KeyType = "static-key",
+    ConstantInitializationVector = "string",
+    DeviceId = "string",
+    KeyType = "speke"|"static-key",
+    Region = "string",
+    ResourceId = "string",
     RoleArn = "string",
-    SecretArn = "string"
+    SecretArn = "string",
+    Url = "string"
   ),
   EntitlementArn = "string",
   FlowArn = "string",

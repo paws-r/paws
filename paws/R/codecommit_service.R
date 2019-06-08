@@ -129,6 +129,17 @@ NULL
 #' -   UpdateComment, which updates the content of a comment on a commit in
 #'     a repository.
 #' 
+#' Tags used to tag resources in AWS CodeCommit (not Git tags), by calling
+#' the following:
+#' 
+#' -   ListTagsForResource, which gets information about AWS tags for a
+#'     specified Amazon Resource Name (ARN) in AWS CodeCommit.
+#' 
+#' -   TagResource, which adds or updates tags for a resource in AWS
+#'     CodeCommit.
+#' 
+#' -   UntagResource, which removes tags for a resource in AWS CodeCommit.
+#' 
 #' Triggers, by calling the following:
 #' 
 #' -   GetRepositoryTriggers, which returns information about triggers
@@ -142,7 +153,7 @@ NULL
 #' 
 #' For information about how to use AWS CodeCommit, see the [AWS CodeCommit
 #' User
-#' Guide](http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
+#' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 #'
 #' @examples
 #' \donttest{svc <- codecommit()
@@ -178,13 +189,16 @@ NULL
 #'  \link[=codecommit_list_branches]{list_branches} \tab Gets information about one or more branches in a repository \cr
 #'  \link[=codecommit_list_pull_requests]{list_pull_requests} \tab Returns a list of pull requests for a specified repository \cr
 #'  \link[=codecommit_list_repositories]{list_repositories} \tab Gets information about one or more repositories \cr
+#'  \link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit \cr
 #'  \link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Closes a pull request and attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge option\cr
 #'  \link[=codecommit_post_comment_for_compared_commit]{post_comment_for_compared_commit} \tab Posts a comment on the comparison between two commits \cr
 #'  \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request \cr
 #'  \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request \cr
 #'  \link[=codecommit_put_file]{put_file} \tab Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch \cr
 #'  \link[=codecommit_put_repository_triggers]{put_repository_triggers} \tab Replaces all triggers for a repository \cr
+#'  \link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeCommit \cr
 #'  \link[=codecommit_test_repository_triggers]{test_repository_triggers} \tab Tests the functionality of repository triggers by sending information to the trigger target \cr
+#'  \link[=codecommit_untag_resource]{untag_resource} \tab Removes tags for a resource in AWS CodeCommit \cr
 #'  \link[=codecommit_update_comment]{update_comment} \tab Replaces the contents of a comment \cr
 #'  \link[=codecommit_update_default_branch]{update_default_branch} \tab Sets or changes the default branch name for the specified repository \cr
 #'  \link[=codecommit_update_pull_request_description]{update_pull_request_description} \tab Replaces the contents of the description of a pull request \cr

@@ -176,8 +176,8 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' Creates a Directory Config object in AppStream 2
 #'
 #' Creates a Directory Config object in AppStream 2.0. This object includes
-#' the information required to join streaming instances to an Active
-#' Directory domain.
+#' the configuration information required to join fleets and image builders
+#' to Microsoft Active Directory domains.
 #'
 #' @usage
 #' appstream_create_directory_config(DirectoryName,
@@ -187,8 +187,8 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' corp.example.com).
 #' @param OrganizationalUnitDistinguishedNames &#91;required&#93; The distinguished names of the organizational units for computer
 #' accounts.
-#' @param ServiceAccountCredentials &#91;required&#93; The credentials for the service account used by the streaming instance
-#' to connect to the directory.
+#' @param ServiceAccountCredentials &#91;required&#93; The credentials for the service account used by the fleet or image
+#' builder to connect to the directory.
 #'
 #' @section Request syntax:
 #' ```
@@ -232,7 +232,8 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
 #'   FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, Description, DisplayName,
-#'   EnableDefaultInternetAccess, DomainJoinInfo, Tags)
+#'   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
+#'   IdleDisconnectTimeoutInSeconds)
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
@@ -295,12 +296,20 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'     are not streaming apps.
 #' @param ComputeCapacity &#91;required&#93; The desired capacity for the fleet.
 #' @param VpcConfig The VPC configuration for the fleet.
-#' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a
-#' value between 600 and 360000.
-#' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended,
-#' in seconds. If a user who was disconnected reconnects within this time
-#' interval, the user is connected to their previous session. Specify a
-#' value between 60 and 360000.
+#' @param MaxUserDurationInSeconds The maximum amount of time that a streaming session can remain active,
+#' in seconds. If users are still connected to a streaming instance five
+#' minutes before this limit is reached, they are prompted to save any open
+#' documents before being disconnected. After this time elapses, the
+#' instance is terminated and replaced by a new instance.
+#' 
+#' Specify a value between 600 and 360000.
+#' @param DisconnectTimeoutInSeconds The amount of time that a streaming session remains active after users
+#' disconnect. If users try to reconnect to the streaming session after a
+#' disconnection or network interruption within this time interval, they
+#' are connected to their previous session. Otherwise, they are connected
+#' to a new session with a new streaming instance.
+#' 
+#' Specify a value between 60 and 360000.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
@@ -312,9 +321,38 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' If you do not specify a value, the value is set to an empty string.
 #' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' \\_ . : / = + \\ - @
+#' 
 #' For more information, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
+#' @param IdleDisconnectTimeoutInSeconds The amount of time that users can be idle (inactive) before they are
+#' disconnected from their streaming session and the
+#' `DisconnectTimeoutInSeconds` time interval begins. Users are notified
+#' before they are disconnected due to inactivity. If they try to reconnect
+#' to the streaming session before the time interval specified in
+#' `DisconnectTimeoutInSeconds` elapses, they are connected to their
+#' previous session. Users are considered idle when they stop providing
+#' keyboard or mouse input during their streaming session. File uploads and
+#' downloads, audio in, audio out, and pixels changing do not qualify as
+#' user activity. If users continue to be idle after the time interval in
+#' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
+#' 
+#' To prevent users from being disconnected due to inactivity, specify a
+#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value is 900.
+#' 
+#' If you enable this feature, we recommend that you specify a value that
+#' corresponds exactly to a whole number of minutes (for example, 60, 120,
+#' and 180). If you don\'t do this, the value is rounded to the nearest
+#' minute. For example, if you specify a value of 70, users are
+#' disconnected after 1 minute of inactivity. If you specify a value that
+#' is at the midpoint between two different minutes, the value is rounded
+#' up. For example, if you specify a value of 90, users are disconnected
+#' after 2 minutes of inactivity.
 #'
 #' @section Request syntax:
 #' ```
@@ -346,21 +384,22 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   IdleDisconnectTimeoutInSeconds = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds)
   output <- .appstream$create_fleet_output()
   svc <- .appstream$service()
   request <- new_request(svc, op, input, output)
@@ -398,6 +437,11 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @param Tags The tags to associate with the image builder. A tag is a key-value pair,
 #' and the value is optional. For example, Environment=Test. If you do not
 #' specify a value, Environment=.
+#' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' \\_ . : / = + \\ - @
 #' 
 #' If you do not specify a value, the value is set to an empty string.
 #' 
@@ -521,6 +565,11 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' 
 #' If you do not specify a value, the value is set to an empty string.
 #' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' \\_ . : / = + \\ - @
+#' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
 #' in the *Amazon AppStream 2.0 Developer Guide*.
@@ -629,6 +678,37 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 }
 .appstream$operations$create_streaming_url <- appstream_create_streaming_url
 
+#' Creates a usage report subscription
+#'
+#' Creates a usage report subscription. Usage reports are generated daily.
+#'
+#' @usage
+#' appstream_create_usage_report_subscription()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_usage_report_subscription()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_usage_report_subscription
+appstream_create_usage_report_subscription <- function() {
+  op <- new_operation(
+    name = "CreateUsageReportSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_usage_report_subscription_input()
+  output <- .appstream$create_usage_report_subscription_output()
+  svc <- .appstream$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_usage_report_subscription <- appstream_create_usage_report_subscription
+
 #' Creates a new user in the user pool
 #'
 #' Creates a new user in the user pool.
@@ -638,6 +718,11 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'   AuthenticationType)
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
+#' 
+#' Users\' email addresses are case-sensitive. During login, if they
+#' specify an email address that doesn\'t use the same capitalization as
+#' the email address specified when their user pool account was created, a
+#' \"user does not exist\" error message displays.
 #' @param MessageAction The action to take for the welcome email that is sent to a user after
 #' the user is created in the user pool. If you specify SUPPRESS, no email
 #' is sent. If you specify RESEND, do not specify the first name or last
@@ -902,6 +987,37 @@ appstream_delete_stack <- function(Name) {
 }
 .appstream$operations$delete_stack <- appstream_delete_stack
 
+#' Disables usage report generation
+#'
+#' Disables usage report generation.
+#'
+#' @usage
+#' appstream_delete_usage_report_subscription()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_usage_report_subscription()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_usage_report_subscription
+appstream_delete_usage_report_subscription <- function() {
+  op <- new_operation(
+    name = "DeleteUsageReportSubscription",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$delete_usage_report_subscription_input()
+  output <- .appstream$delete_usage_report_subscription_output()
+  svc <- .appstream$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_usage_report_subscription <- appstream_delete_usage_report_subscription
+
 #' Deletes a user from the user pool
 #'
 #' Deletes a user from the user pool.
@@ -910,6 +1026,8 @@ appstream_delete_stack <- function(Name) {
 #' appstream_delete_user(UserName, AuthenticationType)
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
+#' 
+#' Users\' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -945,8 +1063,8 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #' Retrieves a list that describes one or more specified Directory Config
 #' objects for AppStream 2.0, if the names for these objects are provided.
 #' Otherwise, all Directory Config objects in the account are described.
-#' These objects include the information required to join streaming
-#' instances to an Active Directory domain.
+#' These objects include the configuration information required to join
+#' fleets and image builders to Microsoft Active Directory domains.
 #' 
 #' Although the response syntax in this topic includes the account
 #' password, this password is not returned in the actual response.
@@ -1178,14 +1296,14 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 }
 .appstream$operations$describe_images <- appstream_describe_images
 
-#' Retrieves a list that describes the active streaming sessions for a
-#' specified stack and fleet
+#' Retrieves a list that describes the streaming sessions for a specified
+#' stack and fleet
 #'
-#' Retrieves a list that describes the active streaming sessions for a
-#' specified stack and fleet. If a value for `UserId` is provided for the
-#' stack and fleet, only streaming sessions for that user are described. If
-#' an authentication type is not provided, the default is to authenticate
-#' users using a streaming URL.
+#' Retrieves a list that describes the streaming sessions for a specified
+#' stack and fleet. If a UserId is provided for the stack and fleet, only
+#' streaming sessions for that user are described. If an authentication
+#' type is not provided, the default is to authenticate users using a
+#' streaming URL.
 #'
 #' @usage
 #' appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
@@ -1199,9 +1317,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @param Limit The size of each page of results. The default value is 20 and the
 #' maximum value is 50.
 #' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using
-#' a streaming URL, `SAML` for a SAML 2.0-federated user, or `USERPOOL` for
-#' a user in the AppStream 2.0 user pool. The default is to authenticate
-#' users using a streaming URL.
+#' a streaming URL or `SAML` for a SAML federated user. The default is to
+#' authenticate users using a streaming URL.
 #'
 #' @section Request syntax:
 #' ```
@@ -1277,6 +1394,44 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 }
 .appstream$operations$describe_stacks <- appstream_describe_stacks
 
+#' Retrieves a list that describes one or more usage report subscriptions
+#'
+#' Retrieves a list that describes one or more usage report subscriptions.
+#'
+#' @usage
+#' appstream_describe_usage_report_subscriptions(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum size of each page of results.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_usage_report_subscriptions(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_usage_report_subscriptions
+appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeUsageReportSubscriptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$describe_usage_report_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$describe_usage_report_subscriptions_output()
+  svc <- .appstream$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_usage_report_subscriptions <- appstream_describe_usage_report_subscriptions
+
 #' Retrieves a list that describes the UserStackAssociation objects
 #'
 #' Retrieves a list that describes the UserStackAssociation objects. You
@@ -1293,6 +1448,8 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #'
 #' @param StackName The name of the stack that is associated with the user.
 #' @param UserName The email address of the user who is associated with the stack.
+#' 
+#' Users\' email addresses are case-sensitive.
 #' @param AuthenticationType The authentication type for the user who is associated with the stack.
 #' You must specify USERPOOL.
 #' @param MaxResults The maximum size of each page of results.
@@ -1382,6 +1539,8 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' appstream_disable_user(UserName, AuthenticationType)
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
+#' 
+#' Users\' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -1458,6 +1617,11 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' appstream_enable_user(UserName, AuthenticationType)
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
+#' 
+#' Users\' email addresses are case-sensitive. During login, if they
+#' specify an email address that doesn\'t use the same capitalization as
+#' the email address specified when their user pool account was created, a
+#' \"user does not exist\" error message displays.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -1810,6 +1974,11 @@ appstream_stop_image_builder <- function(Name) {
 #' Environment=.
 #' 
 #' If you do not specify a value, the value is set to an empty string.
+#' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' \\_ . : / = + \\ - @
 #'
 #' @section Request syntax:
 #' ```
@@ -1889,8 +2058,8 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the specified Directory Config object in AppStream 2
 #'
 #' Updates the specified Directory Config object in AppStream 2.0. This
-#' object includes the information required to join streaming instances to
-#' an Active Directory domain.
+#' object includes the configuration information required to join fleets
+#' and image builders to Microsoft Active Directory domains.
 #'
 #' @usage
 #' appstream_update_directory_config(DirectoryName,
@@ -1899,8 +2068,8 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param DirectoryName &#91;required&#93; The name of the Directory Config object.
 #' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer
 #' accounts.
-#' @param ServiceAccountCredentials The credentials for the service account used by the streaming instance
-#' to connect to the directory.
+#' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
+#' builder to connect to the directory.
 #'
 #' @section Request syntax:
 #' ```
@@ -1941,14 +2110,16 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' If the fleet is in the `STOPPED` state, you can update any attribute
 #' except the fleet name. If the fleet is in the `RUNNING` state, you can
-#' update the `DisplayName` and `ComputeCapacity` attributes. If the fleet
-#' is in the `STARTING` or `STOPPING` state, you can\'t update it.
+#' update the `DisplayName`, `ComputeCapacity`, `ImageARN`, `ImageName`,
+#' and `DisconnectTimeoutInSeconds` attributes. If the fleet is in the
+#' `STARTING` or `STOPPING` state, you can\'t update it.
 #'
 #' @usage
 #' appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
 #'   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
-#'   EnableDefaultInternetAccess, DomainJoinInfo, AttributesToDelete)
+#'   EnableDefaultInternetAccess, DomainJoinInfo,
+#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete)
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
@@ -1997,20 +2168,50 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-pro.16xlarge
 #' @param ComputeCapacity The desired capacity for the fleet.
 #' @param VpcConfig The VPC configuration for the fleet.
-#' @param MaxUserDurationInSeconds The maximum time that a streaming session can run, in seconds. Specify a
-#' value between 600 and 360000. By default, the value is 900 seconds (15
-#' minutes).
-#' @param DisconnectTimeoutInSeconds The time after disconnection when a session is considered to have ended,
-#' in seconds. If a user who was disconnected reconnects within this time
-#' interval, the user is connected to their previous session. Specify a
-#' value between 60 and 360000. By default, the value is 900 seconds (15
-#' minutes).
+#' @param MaxUserDurationInSeconds The maximum amount of time that a streaming session can remain active,
+#' in seconds. If users are still connected to a streaming instance five
+#' minutes before this limit is reached, they are prompted to save any open
+#' documents before being disconnected. After this time elapses, the
+#' instance is terminated and replaced by a new instance.
+#' 
+#' Specify a value between 600 and 360000.
+#' @param DisconnectTimeoutInSeconds The amount of time that a streaming session remains active after users
+#' disconnect. If users try to reconnect to the streaming session after a
+#' disconnection or network interruption within this time interval, they
+#' are connected to their previous session. Otherwise, they are connected
+#' to a new session with a new streaming instance.
+#' 
+#' Specify a value between 60 and 360000.
 #' @param DeleteVpcConfig Deletes the VPC association for the specified fleet.
 #' @param Description The description to display.
 #' @param DisplayName The fleet name to display.
 #' @param EnableDefaultInternetAccess Enables or disables default internet access for the fleet.
 #' @param DomainJoinInfo The name of the directory and organizational unit (OU) to use to join
 #' the fleet to a Microsoft Active Directory domain.
+#' @param IdleDisconnectTimeoutInSeconds The amount of time that users can be idle (inactive) before they are
+#' disconnected from their streaming session and the
+#' `DisconnectTimeoutInSeconds` time interval begins. Users are notified
+#' before they are disconnected due to inactivity. If users try to
+#' reconnect to the streaming session before the time interval specified in
+#' `DisconnectTimeoutInSeconds` elapses, they are connected to their
+#' previous session. Users are considered idle when they stop providing
+#' keyboard or mouse input during their streaming session. File uploads and
+#' downloads, audio in, audio out, and pixels changing do not qualify as
+#' user activity. If users continue to be idle after the time interval in
+#' `IdleDisconnectTimeoutInSeconds` elapses, they are disconnected.
+#' 
+#' To prevent users from being disconnected due to inactivity, specify a
+#' value of 0. Otherwise, specify a value between 60 and 3600. The default
+#' value is 900.
+#' 
+#' If you enable this feature, we recommend that you specify a value that
+#' corresponds exactly to a whole number of minutes (for example, 60, 120,
+#' and 180). If you don\'t do this, the value is rounded to the nearest
+#' minute. For example, if you specify a value of 70, users are
+#' disconnected after 1 minute of inactivity. If you specify a value that
+#' is at the midpoint between two different minutes, the value is rounded
+#' up. For example, if you specify a value of 90, users are disconnected
+#' after 2 minutes of inactivity.
 #' @param AttributesToDelete The fleet attributes to delete.
 #'
 #' @section Request syntax:
@@ -2041,6 +2242,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'     DirectoryName = "string",
 #'     OrganizationalUnitDistinguishedName = "string"
 #'   ),
+#'   IdleDisconnectTimeoutInSeconds = 123,
 #'   AttributesToDelete = list(
 #'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"
 #'   )
@@ -2050,14 +2252,14 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AttributesToDelete = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AttributesToDelete = AttributesToDelete)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_fleet_output()
   svc <- .appstream$service()
   request <- new_request(svc, op, input, output)

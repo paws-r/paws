@@ -7,9 +7,9 @@
 guardduty_get_filter(DetectorId, FilterName)
 }
 \arguments{
-\item{DetectorId}{[required] The detector ID that specifies the GuardDuty service where you want to list the details of the specified filter.}
+\item{DetectorId}{[required] The unique ID of the detector the filter is associated with.}
 
-\item{FilterName}{[required] The name of the filter whose details you want to get.}
+\item{FilterName}{[required] The name of the filter you want to get.}
 }
 \description{
 Returns the details of the filter specified by the filter name.

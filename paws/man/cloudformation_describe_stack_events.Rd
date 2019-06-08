@@ -25,7 +25,7 @@ retrieve.}
 Returns all stack related events for a specified stack in reverse
 chronological order. For more information about a stack's event
 history, go to
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html}{Stacks}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html}{Stacks}
 in the AWS CloudFormation User Guide.
 }
 \details{

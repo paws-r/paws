@@ -4,10 +4,13 @@
 \alias{iotanalytics_create_datastore}
 \title{Creates a data store, which is a repository for messages}
 \usage{
-iotanalytics_create_datastore(datastoreName, retentionPeriod, tags)
+iotanalytics_create_datastore(datastoreName, datastoreStorage,
+  retentionPeriod, tags)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store.}
+
+\item{datastoreStorage}{Where data store data is stored.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store.}
 
@@ -19,6 +22,14 @@ Creates a data store, which is a repository for messages.
 \section{Request syntax}{
 \preformatted{svc$create_datastore(
   datastoreName = "string",
+  datastoreStorage = list(
+    serviceManagedS3 = list(),
+    customerManagedS3 = list(
+      bucket = "string",
+      keyPrefix = "string",
+      roleArn = "string"
+    )
+  ),
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123

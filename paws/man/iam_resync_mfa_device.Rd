@@ -35,7 +35,7 @@ the AWS servers.
 }
 \details{
 For more information about creating and working with virtual MFA
-devices, go to \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device}
+devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html}{Using a Virtual MFA Device}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

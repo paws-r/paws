@@ -43,11 +43,11 @@ of policy:
 can be delegated to users in affected member accounts. The scope of
 influence for a policy depends on what you attach the policy to:
 \item If you attach an SCP to a root, it affects all accounts in the
-organization.
+organization
 \item If you attach an SCP to an OU, it affects all accounts in that
-OU and in any child OUs.
-\item If you attach the policy directly to an account, then it affects
-only that account.
+OU and in any child OUs
+\item If you attach the policy directly to an account, it affects only
+that account
 }
 
 SCPs are JSON policies that specify the maximum permissions for an
@@ -55,16 +55,15 @@ organization or organizational unit (OU). When you attach one SCP to
 a higher level root or OU, and you also attach a different SCP to a
 child OU or to an account, the child policy can further restrict
 only the permissions that pass through the parent filter and are
-available to the child. An SCP that is attached to a child cannot
-grant a permission that is not already granted by the parent. For
+available to the child. An SCP that is attached to a child can't
+grant a permission that the paren't hasn't already granted. For
 example, imagine that the parent SCP allows permissions A, B, C, D,
 and E. The child SCP allows C, D, E, F, and G. The result is that
 the accounts affected by the child SCP are allowed to use only C, D,
-and E. They cannot use A or B because they were filtered out by the
-child OU. They also cannot use F and G because they were filtered
-out by the parent OU. They cannot be granted back by the child SCP;
-child SCPs can only filter the permissions they receive from the
-parent SCP.
+and E. They can't use A or B because the child OU filtered them
+out. They also can't use F and G because the parent OU filtered
+them out. They can't be granted back by the child SCP; child SCPs
+can only filter the permissions they receive from the parent SCP.
 
 AWS Organizations attaches a default SCP named \code{\"FullAWSAccess} to
 every root, OU, and account. This default SCP allows all services
@@ -73,9 +72,9 @@ permissions of the parent root or OU. If you detach the default
 policy, you must replace it with a policy that specifies the
 permissions that you want to allow in that OU or account.
 
-For more information about how Organizations policies permissions
-work, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{Using Service Control Policies}
-in the \emph{AWS Organizations User Guide}.
+For more information about how AWS Organizations policies
+permissions work, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{Using Service Control Policies}
+in the \emph{AWS Organizations User Guide.}
 
 This operation can be called only from the organization's master
 account.

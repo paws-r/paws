@@ -13,7 +13,7 @@ a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_p
 (SCP), this string must be JSON text that specifies the permissions that
 admins in attached accounts can delegate to their users, groups, and
 roles. For more information about the SCP syntax, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
-in the \emph{AWS Organizations User Guide}.}
+in the \emph{AWS Organizations User Guide.}}
 
 \item{Description}{[required] An optional description to assign to the policy.}
 

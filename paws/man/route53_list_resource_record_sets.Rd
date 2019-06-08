@@ -26,11 +26,13 @@ sets: \code{A} \| \code{AAAA} \| \code{CAA} \| \code{CNAME} \| \code{MX} \| \cod
 
 Values for alias resource record sets:
 \itemize{
+\item \strong{API Gateway custom regional API or edge-optimized API}: A
 \item \strong{CloudFront distribution}: A or AAAA
 \item \strong{Elastic Beanstalk environment that has a regionalized subdomain}:
 A
-\item \strong{ELB load balancer}: A \| AAAA
+\item \strong{Elastic Load Balancing load balancer}: A \| AAAA
 \item \strong{Amazon S3 bucket}: A
+\item \strong{Amazon VPC interface VPC endpoint}: A
 \item \strong{Another resource record set in this hosted zone:} The type of the
 resource record set that the alias references.
 }

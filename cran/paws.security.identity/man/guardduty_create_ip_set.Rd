@@ -6,33 +6,40 @@
 whitelisted for secure communication with AWS infrastructure and
 applications}
 \usage{
-guardduty_create_ip_set(Activate, ClientToken, DetectorId, Format,
-  Location, Name)
+guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
+  ClientToken)
 }
 \arguments{
-\item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the uploaded IPSet.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
+want to create an IPSet.}
 
-\item{ClientToken}{The idempotency token for the create request.}
-
-\item{DetectorId}{[required] The unique ID of the detector that you want to update.}
+\item{Name}{[required] The user friendly name to identify the IPSet. This name is displayed in
+all findings that are triggered by activity that involves IP addresses
+included in this IPSet.}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
 
-\item{Location}{[required] The URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
+\item{Location}{[required] The URI of the file that contains the IPSet. For example
+(https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
 
-\item{Name}{[required] The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by activity that involves IP addresses included in this IPSet.}
+\item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the
+uploaded IPSet.}
+
+\item{ClientToken}{The idempotency token for the create request.}
 }
 \description{
-Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications.
+Creates a new IPSet - a list of trusted IP addresses that have been
+whitelisted for secure communication with AWS infrastructure and
+applications.
 }
 \section{Request syntax}{
 \preformatted{svc$create_ip_set(
-  Activate = TRUE|FALSE,
-  ClientToken = "string",
   DetectorId = "string",
+  Name = "string",
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
   Location = "string",
-  Name = "string"
+  Activate = TRUE|FALSE,
+  ClientToken = "string"
 )
 }
 }

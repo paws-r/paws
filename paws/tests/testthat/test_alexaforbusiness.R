@@ -18,6 +18,22 @@ test_that("list_conference_providers", {
   expect_error(svc$list_conference_providers(MaxResults = 20), NA)
 })
 
+test_that("list_gateway_groups", {
+  expect_error(svc$list_gateway_groups(), NA)
+})
+
+test_that("list_gateway_groups", {
+  expect_error(svc$list_gateway_groups(MaxResults = 20), NA)
+})
+
+test_that("list_gateways", {
+  expect_error(svc$list_gateways(), NA)
+})
+
+test_that("list_gateways", {
+  expect_error(svc$list_gateways(MaxResults = 20), NA)
+})
+
 test_that("list_skills_store_categories", {
   expect_error(svc$list_skills_store_categories(), NA)
 })

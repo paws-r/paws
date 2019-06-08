@@ -5,7 +5,7 @@
 \title{Creates a virtual tape by using your own barcode}
 \usage{
 storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-  TapeBarcode, KMSEncrypted, KMSKey, PoolId)
+  TapeBarcode, KMSEncrypted, KMSKey, PoolId, Tags)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -35,6 +35,14 @@ the tape is archived directly into the storage class (Glacier or Deep
 Archive) that corresponds to the pool.
 
 Valid values: "GLACIER", "DEEP\_ARCHIVE"}
+
+\item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape that has
+a barcode. Each tag is a key-value pair.
+
+Valid characters for key and value are letters, spaces, and numbers
+representable in UTF-8 format, and the following special characters: + -
+= . \_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a virtual tape by using your own barcode. You write data to the
@@ -55,7 +63,13 @@ gateway.
   TapeBarcode = "string",
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
-  PoolId = "string"
+  PoolId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

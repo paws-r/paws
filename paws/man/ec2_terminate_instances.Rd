@@ -2,12 +2,12 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_terminate_instances}
 \alias{ec2_terminate_instances}
-\title{Shuts down one or more instances}
+\title{Shuts down the specified instances}
 \usage{
 ec2_terminate_instances(InstanceIds, DryRun)
 }
 \arguments{
-\item{InstanceIds}{[required] One or more instance IDs.
+\item{InstanceIds}{[required] The IDs of the instances.
 
 Constraints: Up to 1000 instance IDs. We recommend breaking up this
 request into smaller batches.}
@@ -18,7 +18,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Shuts down one or more instances. This operation is idempotent; if you
+Shuts down the specified instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.
 }
 \details{

@@ -32,7 +32,7 @@ Example: \code{111122223333}}
 Revokes an ingress rule in an Amazon Redshift security group for a
 previously authorized IP range or Amazon EC2 security group. To add an
 ingress rule, see AuthorizeClusterSecurityGroupIngress. For information
-about managing security groups, go to \href{http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
+about managing security groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

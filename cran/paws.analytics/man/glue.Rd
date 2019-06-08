@@ -37,7 +37,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog \cr
 \link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog \cr
 \link[=glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog \cr
-\link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the Data Catalog, unless the crawler state is RUNNING \cr
+\link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING \cr
 \link[=glue_delete_database]{delete_database} \tab Removes a specified Database from a Data Catalog \cr
 \link[=glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified DevEndpoint \cr
 \link[=glue_delete_job]{delete_job} \tab Deletes a specified job definition \cr

@@ -44,7 +44,7 @@ NULL
 #' more likely to succeed.
 #' 
 #' For more information, see [Batch Operations and Error
-#' Handling](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' By default, `BatchGetItem` performs eventually consistent reads on every
@@ -62,7 +62,7 @@ NULL
 #' If a requested item does not exist, it is not returned in the result.
 #' Requests for nonexistent items consume the minimum read capacity units
 #' according to the type of read. For more information, see [Capacity Units
-#' Calculations](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
+#' Calculations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -98,7 +98,7 @@ NULL
 #'     The name of this attribute conflicts with a reserved word, so it
 #'     cannot be used directly in an expression. (For the complete list of
 #'     reserved words, see [Reserved
-#'     Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#'     Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #'     in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #'     could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -114,7 +114,7 @@ NULL
 #' 
 #'     For more information on expression attribute names, see [Accessing
 #'     Item
-#'     Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' -   `Keys` - An array of primary key attribute values that define
@@ -134,12 +134,12 @@ NULL
 #'     will not appear in the result.
 #' 
 #'     For more information, see [Accessing Item
-#'     Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' -   `AttributesToGet` - This is a legacy parameter. Use
 #'     `ProjectionExpression` instead. For more information, see
-#'     [AttributesToGet](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+#'     [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnConsumedCapacity 
 #'
@@ -279,7 +279,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' more likely to succeed.
 #' 
 #' For more information, see [Batch Operations and Error
-#' Handling](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' With `BatchWriteItem`, you can efficiently write or delete large amounts
@@ -671,7 +671,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @usage
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
-#'   ProvisionedThroughput, StreamSpecification, SSESpecification)
+#'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -679,7 +679,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param KeySchema &#91;required&#93; Specifies the attributes that make up the primary key for a table or an
 #' index. The attributes in `KeySchema` must also be defined in the
 #' `AttributeDefinitions` array. For more information, see [Data
-#' Model](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+#' Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Each `KeySchemaElement` in the array is composed of:
@@ -711,7 +711,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' `RANGE`.
 #' 
 #' For more information, see [Specifying the Primary
-#' Key](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+#' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param LocalSecondaryIndexes One or more local secondary indexes (the maximum is 5) to be created on
 #' the table. Each index is scoped to a given partition key value. There is
@@ -803,7 +803,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' property.
 #' 
 #' For current minimum and maximum provisioned throughput values, see
-#' [Limits](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' [Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
@@ -827,6 +827,9 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     -   `NEW_AND_OLD_IMAGES` - Both the new and the old item images of
 #'         the item are written to the stream.
 #' @param SSESpecification Represents the settings used to enable server-side encryption.
+#' @param Tags A list of key-value pairs to label the table. For more information, see
+#' [Tagging for
+#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -895,6 +898,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     Enabled = TRUE|FALSE,
 #'     SSEType = "AES256"|"KMS",
 #'     KMSMasterKeyId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -932,14 +941,14 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags)
   output <- .dynamodb$create_table_output()
   svc <- .dynamodb$service()
   request <- new_request(svc, op, input, output)
@@ -1019,11 +1028,11 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' for both the partition key and the sort key.
 #' @param Expected This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [Expected](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+#' [Expected](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionalOperator This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [ConditionalOperator](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+#' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnValues Use `ReturnValues` if you want to get the item attributes as they
 #' appeared before they were deleted. For `DeleteItem`, the valid values
@@ -1059,7 +1068,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information on condition expressions, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -1081,7 +1090,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -1096,7 +1105,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -1115,7 +1124,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1528,7 +1537,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' provision across all of your DynamoDB tables in a given region. Also,
 #' there are per-table limits that apply when you create a table there. For
 #' more information, see
-#' [Limits](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' [Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' page in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Although you can increase these limits by filing a case at [AWS Support
@@ -1728,7 +1737,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' for both the partition key and the sort key.
 #' @param AttributesToGet This is a legacy parameter. Use `ProjectionExpression` instead. For more
 #' information, see
-#' [AttributesToGet](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+#' [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead Determines the read consistency model: If set to `true`, then the
 #' operation uses strongly consistent reads; otherwise, the operation uses
@@ -1743,7 +1752,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' not appear in the result.
 #' 
 #' For more information, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -1765,7 +1774,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -1780,7 +1789,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2025,7 +2034,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 #' ListTagsOfResource up to 10 times per second, per account.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -2120,7 +2129,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' exists.
 #' 
 #' For more information about `PutItem`, see [Working with
-#' Items](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
+#' Items](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -2144,13 +2153,13 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' table\'s attribute definition.
 #' 
 #' For more information about primary keys, see [Primary
-#' Key](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+#' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Each element in the `Item` map is an `AttributeValue` object.
 #' @param Expected This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [Expected](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+#' [Expected](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnValues Use `ReturnValues` if you want to get the item attributes as they
 #' appeared before they were updated with the `PutItem` request. For
@@ -2173,7 +2182,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' set to `NONE` (the default), no statistics are returned.
 #' @param ConditionalOperator This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [ConditionalOperator](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+#' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionExpression A condition that must be satisfied in order for a conditional `PutItem`
 #' operation to succeed.
@@ -2191,7 +2200,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information on condition expressions, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -2213,7 +2222,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -2228,7 +2237,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -2247,7 +2256,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2441,7 +2450,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' then apply any filtering to the results using `FilterExpression`. If
 #' `LastEvaluatedKey` is present in the response, you will need to paginate
 #' the result set. For more information, see [Paginating the
-#' Results](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
+#' Results](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' `FilterExpression` is applied after a `Query` finishes, but before the
@@ -2518,7 +2527,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' will return an error.
 #' @param AttributesToGet This is a legacy parameter. Use `ProjectionExpression` instead. For more
 #' information, see
-#' [AttributesToGet](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+#' [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Limit The maximum number of items to evaluate (not necessarily the number of
 #' matching items). If DynamoDB processes the number of items up to the
@@ -2530,7 +2539,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
 #' see [Query and
-#' Scan](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead Determines the read consistency model: If set to `true`, then the
 #' operation uses strongly consistent reads; otherwise, the operation uses
@@ -2541,15 +2550,15 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' `true`, you will receive a `ValidationException`.
 #' @param KeyConditions This is a legacy parameter. Use `KeyConditionExpression` instead. For
 #' more information, see
-#' [KeyConditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html)
+#' [KeyConditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param QueryFilter This is a legacy parameter. Use `FilterExpression` instead. For more
 #' information, see
-#' [QueryFilter](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html)
+#' [QueryFilter](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionalOperator This is a legacy parameter. Use `FilterExpression` instead. For more
 #' information, see
-#' [ConditionalOperator](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+#' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ScanIndexForward Specifies the order for index traversal: If `true` (default), the
 #' traversal is performed in ascending order; if `false`, the traversal is
@@ -2582,7 +2591,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' not appear in the result.
 #' 
 #' For more information, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param FilterExpression A string that contains conditions that DynamoDB applies after the
 #' `Query` operation, but before the data is returned to you. Items that do
@@ -2596,7 +2605,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param KeyConditionExpression The condition that specifies the key value(s) for items to be retrieved
 #' by the `Query` action.
@@ -2665,13 +2674,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' -   `#S = :myval`
 #' 
 #' For a list of reserved words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' For more information on `ExpressionAttributeNames` and
 #' `ExpressionAttributeValues`, see [Using Placeholders for Attribute Names
 #' and
-#' Values](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html)
+#' Values](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -2693,7 +2702,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -2708,7 +2717,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -2727,7 +2736,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -3053,14 +3062,14 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' then apply any filtering to the results using `FilterExpression`. If
 #' `LastEvaluatedKey` is present in the response, you will need to paginate
 #' the result set. For more information, see [Paginating the
-#' Results](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
+#' Results](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' `Scan` operations proceed sequentially; however, for faster performance
 #' on a large table or secondary index, applications can request a parallel
 #' `Scan` operation by providing the `Segment` and `TotalSegments`
 #' parameters. For more information, see [Parallel
-#' Scan](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
+#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' `Scan` uses eventually consistent reads when accessing the data in a
@@ -3083,7 +3092,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' `IndexName` parameter, you must also provide `TableName`.
 #' @param AttributesToGet This is a legacy parameter. Use `ProjectionExpression` instead. For more
 #' information, see
-#' [AttributesToGet](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+#' [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Limit The maximum number of items to evaluate (not necessarily the number of
 #' matching items). If DynamoDB processes the number of items up to the
@@ -3095,7 +3104,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
 #' see [Query and
-#' Scan](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Select The attributes to be returned in the result. You can retrieve all item
 #' attributes, specific item attributes, the count of matching items, or in
@@ -3144,11 +3153,11 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' will return an error.
 #' @param ScanFilter This is a legacy parameter. Use `FilterExpression` instead. For more
 #' information, see
-#' [ScanFilter](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
+#' [ScanFilter](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionalOperator This is a legacy parameter. Use `FilterExpression` instead. For more
 #' information, see
-#' [ConditionalOperator](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+#' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExclusiveStartKey The primary key of the first item that this operation will evaluate. Use
 #' the value that was returned for `LastEvaluatedKey` in the previous
@@ -3199,7 +3208,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' not appear in the result.
 #' 
 #' For more information, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param FilterExpression A string that contains conditions that DynamoDB applies after the `Scan`
 #' operation, but before the data is returned to you. Items that do not
@@ -3210,7 +3219,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -3232,7 +3241,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -3247,7 +3256,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -3266,7 +3275,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead A Boolean value that determines the read consistency model during the
 #' scan:
@@ -3431,7 +3440,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' TagResource up to 5 times per second, per account.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -3922,7 +3931,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' can call UntagResource up to 5 times per second, per account.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
-#' DynamoDB](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+#' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -4237,15 +4246,15 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' for both the partition key and the sort key.
 #' @param AttributeUpdates This is a legacy parameter. Use `UpdateExpression` instead. For more
 #' information, see
-#' [AttributeUpdates](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html)
+#' [AttributeUpdates](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Expected This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [Expected](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+#' [Expected](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionalOperator This is a legacy parameter. Use `ConditionExpression` instead. For more
 #' information, see
-#' [ConditionalOperator](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+#' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnValues Use `ReturnValues` if you want to get the item attributes as they appear
 #' before or after they are updated. For `UpdateItem`, the valid values
@@ -4359,7 +4368,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' `SET a=:value1, b=:value2 DELETE :value3, :value4, :value5`
 #' 
 #' For more information on update expressions, see [Modifying Items and
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionExpression A condition that must be satisfied in order for a conditional update to
 #' succeed.
@@ -4377,7 +4386,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information on condition expressions, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -4399,7 +4408,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
-#' Words](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
@@ -4414,7 +4423,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Accessing Item
-#' Attributes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -4433,7 +4442,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -4686,7 +4695,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' -   `Delete` - remove a global secondary index from the table.
 #' 
 #' For more information, see [Managing Global Secondary
-#' Indexes](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
+#' Indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification Represents the DynamoDB Streams configuration for the table.
 #' 
@@ -4815,7 +4824,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' way as a standard delete operation.
 #' 
 #' For more information, see [Time To
-#' Live](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
+#' Live](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
 #' in the Amazon DynamoDB Developer Guide.
 #'
 #' @usage

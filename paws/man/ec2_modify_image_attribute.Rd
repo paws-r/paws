@@ -21,13 +21,13 @@ ec2_modify_image_attribute(Attribute, Description, ImageId,
 \item{OperationType}{The operation type. This parameter can be used only when the \code{Attribute}
 parameter is \code{launchPermission}.}
 
-\item{ProductCodes}{One or more DevPay product codes. After you add a product code to an
-AMI, it can't be removed.}
+\item{ProductCodes}{The DevPay product codes. After you add a product code to an AMI, it
+can't be removed.}
 
-\item{UserGroups}{One or more user groups. This parameter can be used only when the
-\code{Attribute} parameter is \code{launchPermission}.}
+\item{UserGroups}{The user groups. This parameter can be used only when the \code{Attribute}
+parameter is \code{launchPermission}.}
 
-\item{UserIds}{One or more AWS account IDs. This parameter can be used only when the
+\item{UserIds}{The AWS account IDs. This parameter can be used only when the
 \code{Attribute} parameter is \code{launchPermission}.}
 
 \item{Value}{The value of the attribute being modified. This parameter can be used

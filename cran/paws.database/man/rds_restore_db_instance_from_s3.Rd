@@ -21,7 +21,7 @@ rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
 }
 \arguments{
 \item{DBName}{The name of the database to create when the DB instance is created.
-Follow the naming rules specified in CreateDBInstance.}
+Follow the naming rules specified in \code{CreateDBInstance}.}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
 string.
@@ -36,7 +36,7 @@ Constraints:
 Example: \code{mydbinstance}}
 
 \item{AllocatedStorage}{The amount of storage (in gigabytes) to allocate initially for the DB
-instance. Follow the allocation rules specified in CreateDBInstance.
+instance. Follow the allocation rules specified in \code{CreateDBInstance}.
 
 Be sure to allocate enough memory for your new DB instance so that the
 restore operation can succeed. You can also allocate additional memory
@@ -84,9 +84,9 @@ AWS Region.
 
 Example: \code{us-east-1d}
 
-Constraint: The AvailabilityZone parameter can't be specified if the
-MultiAZ parameter is set to \code{true}. The specified Availability Zone must
-be in the same AWS Region as the current endpoint.}
+Constraint: The \code{AvailabilityZone} parameter can't be specified if the
+DB instance is a Multi-AZ deployment. The specified Availability Zone
+must be in the same AWS Region as the current endpoint.}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.}
 
@@ -109,7 +109,7 @@ specified engine is used.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. For more
-information, see CreateDBInstance.}
+information, see \code{CreateDBInstance}.}
 
 \item{PreferredBackupWindow}{The time range each day during which automated backups are created if
 automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
@@ -131,17 +131,17 @@ Valid Values: \code{1150}-\code{65535}
 
 Default: \code{3306}}
 
-\item{MultiAZ}{Specifies whether the DB instance is a Multi-AZ deployment. If MultiAZ
-is set to \code{true}, you can't set the AvailabilityZone parameter.}
+\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
+If the DB instance is a Multi-AZ deployment, you can't set the
+\code{AvailabilityZone} parameter.}
 
 \item{EngineVersion}{The version number of the database engine to use. Choose the latest
 minor version of your database engine. For information about engine
-versions, see CreateDBInstance, or call DescribeDBEngineVersions.}
+versions, see \code{CreateDBInstance}, or call \code{DescribeDBEngineVersions}.}
 
-\item{AutoMinorVersionUpgrade}{True to indicate that minor engine upgrades are applied automatically to
-the DB instance during the maintenance window, and otherwise false.
-
-Default: \code{true}}
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
+automatically to the DB instance during the maintenance window. By
+default, minor engine upgrades are not applied automatically.}
 
 \item{LicenseModel}{The license model for this DB instance. Use \code{general-public-license}.}
 
@@ -154,11 +154,12 @@ in the \emph{Amazon RDS User Guide.}}
 argument is omitted, the default option group for the specified engine
 is used.}
 
-\item{PubliclyAccessible}{Specifies the accessibility options for the DB instance. A value of true
-specifies an Internet-facing instance with a publicly resolvable DNS
-name, which resolves to a public IP address. A value of false specifies
-an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.}
+\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a public
+IP address. When the DB instance is not publicly accessible, it is an
+internal instance with a DNS name that resolves to a private IP address.
+For more information, see CreateDBInstance.}
 
 \item{Tags}{A list of tags to associate with this DB instance. For more information,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
@@ -171,10 +172,9 @@ Valid values: \code{standard} \| \code{gp2} \| \code{io1}
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified; otherwise
-\code{standard}}
+Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{gp2}}
 
-\item{StorageEncrypted}{Specifies whether the new DB instance is encrypted or not.}
+\item{StorageEncrypted}{A value that indicates whether the new DB instance is encrypted or not.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
 
@@ -184,16 +184,14 @@ account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
-If the \code{StorageEncrypted} parameter is true, and you do not specify a
+If the \code{StorageEncrypted} parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS Region.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
-restored DB instance, and otherwise false.
-
-Default: false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
+snapshots of the DB instance. By default, tags are not copied.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -215,10 +213,9 @@ in the \emph{Amazon RDS User Guide.}
 If \code{MonitoringInterval} is set to a value other than 0, then you must
 supply a \code{MonitoringRoleArn} value.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{SourceEngine}{[required] The name of the engine of your source database.
 
@@ -236,15 +233,20 @@ file.}
 \item{S3IngestionRoleArn}{[required] An AWS Identity and Access Management (IAM) role to allow Amazon RDS to
 access your Amazon S3 bucket.}
 
-\item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
-false.
+\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
+instance.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
 The KMS key ID is the Amazon Resource Name (ARN), the KMS key
-identifier, or the KMS key alias for the KMS encryption key.}
+identifier, or the KMS key alias for the KMS encryption key.
+
+If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
+Amazon RDS uses your default encryption key. AWS KMS creates the default
+encryption key for your AWS account. Your AWS account has a different
+default encryption key for each AWS Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -257,12 +259,13 @@ in the \emph{Amazon RDS User Guide}.}
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that specifies that the DB instance class of the DB instance
+\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.}
 
-\item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL

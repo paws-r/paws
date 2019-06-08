@@ -28,20 +28,24 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
-\strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
-\code{cache.t2.medium}
-
-\strong{M3 node types:} \code{cache.m3.medium}, \code{cache.m3.large},
-\code{cache.m3.xlarge}, \code{cache.m3.2xlarge}
+\strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
+\code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
+\code{cache.m5.24xlarge}
 
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
+
+\strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
+\code{cache.t2.medium}
 \item Previous generation: (not recommended)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
 \strong{M1 node types:} \code{cache.m1.small}, \code{cache.m1.medium},
 \code{cache.m1.large}, \code{cache.m1.xlarge}
+
+\strong{M3 node types:} \code{cache.m3.medium}, \code{cache.m3.large},
+\code{cache.m3.xlarge}, \code{cache.m3.2xlarge}
 }
 \item Compute optimized:
 \itemize{
@@ -53,36 +57,33 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
-\strong{R3 node types:} \code{cache.r3.large}, \code{cache.r3.xlarge},
-\code{cache.r3.2xlarge}, \code{cache.r3.4xlarge}, \code{cache.r3.8xlarge}
+\strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
+\code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
+\code{cache.r5.24xlarge}
 
-\strong{R4 node types;} \code{cache.r4.large}, \code{cache.r4.xlarge},
+\strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
 \item Previous generation: (not recommended)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
+
+\strong{R3 node types:} \code{cache.r3.large}, \code{cache.r3.xlarge},
+\code{cache.r3.2xlarge}, \code{cache.r3.4xlarge}, \code{cache.r3.8xlarge}
 }
 }
 
-\strong{Notes:}
+\strong{Additional node type info}
 \itemize{
-\item All T2 instances are created in an Amazon Virtual Private Cloud
-(Amazon VPC).
-\item Redis (cluster mode disabled): Redis backup/restore is not supported
-on T1 and T2 instances.
-\item Redis (cluster mode enabled): Backup/restore is not supported on T1
+\item All current generation instance types are created in Amazon VPC by
+default.
+\item Redis append-only files (AOF) are not supported for T1 or T2
 instances.
-\item Redis Append-only files (AOF) functionality is not supported for T1
-or T2 instances.
-}
-
-For a complete listing of node types and specifications, see:
-\itemize{
-\item \href{http://aws.amazon.com/elasticache/details}{Amazon ElastiCache Product Features and Details}
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/ParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific}{Cache Node Type-Specific Parameters for Memcached}
-\item \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific}{Cache Node Type-Specific Parameters for Redis}
+\item Redis Multi-AZ with automatic failover is not supported on T1
+instances.
+\item Redis configuration variables \code{appendonly} and \code{appendfsync} are not
+supported on Redis version 2.8.22 and later.
 }}
 
 \item{Duration}{The duration filter value, specified in years or seconds. Use this

@@ -24,6 +24,9 @@ the following steps:
 Create the data firehose with a PUT source and in the region that
 you are operating. However, if you are capturing logs for Amazon
 CloudFront, always create the firehose in US East (N. Virginia).
+
+Do not create the data firehose using a \code{Kinesis stream} as your
+source.
 \enumerate{
 \item Associate that firehose to your web ACL using a
 \code{PutLoggingConfiguration} request.

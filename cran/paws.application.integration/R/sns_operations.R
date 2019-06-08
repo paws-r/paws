@@ -143,11 +143,11 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 .sns$operations$confirm_subscription <- sns_confirm_subscription
 
 #' Creates a platform application object for one of the supported push
-#' notification services, such as APNS and GCM, to which devices and mobile
+#' notification services, such as APNS and FCM, to which devices and mobile
 #' apps may register
 #'
 #' Creates a platform application object for one of the supported push
-#' notification services, such as APNS and GCM, to which devices and mobile
+#' notification services, such as APNS and FCM, to which devices and mobile
 #' apps may register. You must specify PlatformPrincipal and
 #' PlatformCredential attributes when using the `CreatePlatformApplication`
 #' action. The PlatformPrincipal is received from the notification service.
@@ -166,21 +166,21 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' returned when using `CreatePlatformApplication` is then used as an
 #' attribute for the `CreatePlatformEndpoint` action. For more information,
 #' see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' For more information about obtaining the PlatformPrincipal and
 #' PlatformCredential for each of the supported push notification services,
 #' see [Getting Started with Apple Push Notification
-#' Service](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html),
+#' Service](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-apns.html),
 #' [Getting Started with Amazon Device
-#' Messaging](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html),
+#' Messaging](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-adm.html),
 #' [Getting Started with Baidu Cloud
-#' Push](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html),
+#' Push](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-baidu.html),
 #' [Getting Started with Google Cloud Messaging for
-#' Android](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html),
+#' Android](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-gcm.html),
 #' [Getting Started with
-#' MPNS](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html),
+#' MPNS](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-mpns.html),
 #' or [Getting Started with
-#' WNS](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html).
+#' WNS](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-wns.html).
 #'
 #' @usage
 #' sns_create_platform_application(Name, Platform, Attributes)
@@ -192,7 +192,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' APNS (Apple Push Notification Service), APNS\\_SANDBOX, and GCM (Google
 #' Cloud Messaging).
 #' @param Attributes &#91;required&#93; For a list of attributes, see
-#' [SetPlatformApplicationAttributes](http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
+#' [SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
 #'
 #' @section Request syntax:
 #' ```
@@ -238,13 +238,13 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' same device token and attributes, that endpoint\'s ARN is returned
 #' without creating a new endpoint. For more information, see [Using Amazon
 #' SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' When using `CreatePlatformEndpoint` with Baidu, two attributes must be
 #' provided: ChannelId and UserId. The token field must also contain the
 #' ChannelId. For more information, see [Creating an Amazon SNS Endpoint
 #' for
-#' Baidu](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html).
+#' Baidu](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html).
 #'
 #' @usage
 #' sns_create_platform_endpoint(PlatformApplicationArn, Token,
@@ -261,7 +261,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' @param CustomUserData Arbitrary user data to associate with the endpoint. Amazon SNS does not
 #' use this data. The data must be in UTF-8 format and less than 2KB.
 #' @param Attributes For a list of attributes, see
-#' [SetEndpointAttributes](http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
+#' [SetEndpointAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -298,12 +298,12 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #'
 #' Creates a topic to which notifications can be published. Users can
 #' create at most 100,000 topics. For more information, see
-#' [http://aws.amazon.com/sns](http://aws.amazon.com/sns/). This action is
+#' [https://aws.amazon.com/sns](http://aws.amazon.com/sns/). This action is
 #' idempotent, so if the requester already owns a topic with the specified
 #' name, that topic\'s ARN is returned without creating a new topic.
 #'
 #' @usage
-#' sns_create_topic(Name, Attributes)
+#' sns_create_topic(Name, Attributes, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the topic you want to create.
 #' 
@@ -323,6 +323,17 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' 
 #' -   `Policy` -- The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
+#' 
+#' The following attribute applies only to
+#' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
+#' 
+#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#'     (CMK) for Amazon SNS or a custom CMK. For more information, see [Key
+#'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+#'     For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *AWS Key Management Service API Reference*.
+#' @param Tags The list of tags to add to a new topic.
 #'
 #' @section Request syntax:
 #' ```
@@ -330,6 +341,12 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #'   Name = "string",
 #'   Attributes = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -337,14 +354,14 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' @keywords internal
 #'
 #' @rdname sns_create_topic
-sns_create_topic <- function(Name, Attributes = NULL) {
+sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTopic",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sns$create_topic_input(Name = Name, Attributes = Attributes)
+  input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags)
   output <- .sns$create_topic_output()
   svc <- .sns$service()
   request <- new_request(svc, op, input, output)
@@ -358,7 +375,7 @@ sns_create_topic <- function(Name, Attributes = NULL) {
 #' Deletes the endpoint for a device and mobile app from Amazon SNS. This
 #' action is idempotent. For more information, see [Using Amazon SNS Mobile
 #' Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' When you delete an endpoint that is also subscribed to a topic, then you
 #' must also unsubscribe the endpoint from the topic.
@@ -400,7 +417,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #' Deletes a platform application object for one of the supported push
 #' notification services, such as APNS and GCM. For more information, see
 #' [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
 #' sns_delete_platform_application(PlatformApplicationArn)
@@ -477,7 +494,7 @@ sns_delete_topic <- function(TopicArn) {
 #' Retrieves the endpoint attributes for a device on one of the supported
 #' push notification services, such as GCM and APNS. For more information,
 #' see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
 #' sns_get_endpoint_attributes(EndpointArn)
@@ -516,7 +533,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' Retrieves the attributes of the platform application object for the
 #' supported push notification services, such as APNS and GCM. For more
 #' information, see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
 #' sns_get_platform_application_attributes(PlatformApplicationArn)
@@ -562,7 +579,7 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 #' for which you want values.
 #' 
 #' For all attribute names, see
-#' [SetSMSAttributes](http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html).
+#' [SetSMSAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html).
 #' 
 #' If you don\'t use this parameter, Amazon SNS returns all SMS attributes.
 #'
@@ -677,7 +694,7 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' again using the NextToken string received from the previous call. When
 #' there are no more records to return, NextToken will be null. For more
 #' information, see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' This action is throttled at 30 transactions per second (TPS).
 #'
@@ -777,7 +794,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' string received from the previous call. When there are no more records
 #' to return, NextToken will be null. For more information, see [Using
 #' Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' This action is throttled at 15 transactions per second (TPS).
 #'
@@ -897,6 +914,44 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 }
 .sns$operations$list_subscriptions_by_topic <- sns_list_subscriptions_by_topic
 
+#' List all tags added to the specified Amazon SNS topic
+#'
+#' List all tags added to the specified Amazon SNS topic. For an overview,
+#' see [Amazon SNS
+#' Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the
+#' *Amazon Simple Notification Service Developer Guide*.
+#'
+#' @usage
+#' sns_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the topic for which to list tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sns_list_tags_for_resource
+sns_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sns$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .sns$list_tags_for_resource_output()
+  svc <- .sns$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sns$operations$list_tags_for_resource <- sns_list_tags_for_resource
+
 #' Returns a list of the requester's topics
 #'
 #' Returns a list of the requester\'s topics. Each call returns a limited
@@ -996,7 +1051,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' For more information about formatting messages, see [Send Custom
 #' Platform-Specific Payloads in Messages to Mobile
-#' Devices](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
+#' Devices](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
 #'
 #' @usage
 #' sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
@@ -1006,9 +1061,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' If you don\'t specify a value for the `TopicArn` parameter, you must
 #' specify a value for the `PhoneNumber` or `TargetArn` parameters.
-#' @param TargetArn Either TopicArn or EndpointArn, but not both.
-#' 
-#' If you don\'t specify a value for the `TargetArn` parameter, you must
+#' @param TargetArn If you don\'t specify a value for the `TargetArn` parameter, you must
 #' specify a value for the `PhoneNumber` or `TopicArn` parameters.
 #' @param PhoneNumber The phone number to which you want to deliver an SMS message. Use E.164
 #' format.
@@ -1094,7 +1147,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' For information about sending different messages for each protocol using
 #' the AWS Management Console, go to [Create Different Messages for Each
-#' Protocol](http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
+#' Protocol](https://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol)
 #' in the *Amazon Simple Notification Service Getting Started Guide*.
 #' 
 #' Valid value: `json`
@@ -1181,7 +1234,7 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' Sets the attributes for an endpoint for a device on one of the supported
 #' push notification services, such as GCM and APNS. For more information,
 #' see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
 #' sns_set_endpoint_attributes(EndpointArn, Attributes)
@@ -1239,10 +1292,10 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' Sets the attributes of the platform application object for the supported
 #' push notification services, such as APNS and GCM. For more information,
 #' see [Using Amazon SNS Mobile Push
-#' Notifications](http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+#' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' For information on configuring attributes for message delivery status,
 #' see [Using Amazon SNS Application Attributes for Message Delivery
-#' Status](http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
+#' Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
 #'
 #' @usage
 #' sns_set_platform_application_attributes(PlatformApplicationArn,
@@ -1322,7 +1375,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' You can override some of these settings for a single message when you
 #' use the `Publish` action with the `MessageAttributes.entry.N` parameter.
 #' For more information, see [Sending an SMS
-#' Message](http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
+#' Message](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
 #' in the *Amazon SNS Developer Guide*.
 #'
 #' @usage
@@ -1404,7 +1457,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' `s3:GetBucketLocation` actions.
 #' 
 #' For an example bucket policy and usage report, see [Monitoring SMS
-#' Activity](http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
+#' Activity](https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
 #' the *Amazon SNS Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1513,6 +1566,16 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' 
 #' -   `Policy` -- The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
+#' 
+#' The following attribute applies only to
+#' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
+#' 
+#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#'     (CMK) for Amazon SNS or a custom CMK. For more information, see [Key
+#'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+#'     For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *AWS Key Management Service API Reference*.
 #' @param AttributeValue The new value for the attribute.
 #'
 #' @section Request syntax:
@@ -1581,7 +1644,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' protocol:
 #' 
 #' -   For the `http` protocol, the endpoint is an URL beginning with
-#'     \"http://\"
+#'     \"https://\"
 #' 
 #' -   For the `https` protocol, the endpoint is a URL beginning with
 #'     \"https://\"
@@ -1663,6 +1726,71 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 }
 .sns$operations$subscribe <- sns_subscribe
 
+#' Add tags to the specified Amazon SNS topic
+#'
+#' Add tags to the specified Amazon SNS topic. For an overview, see [Amazon
+#' SNS Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in
+#' the *Amazon SNS Developer Guide*.
+#' 
+#' When you use topic tags, keep the following guidelines in mind:
+#' 
+#' -   Adding more than 50 tags to a topic isn\'t recommended.
+#' 
+#' -   Tags don\'t have any semantic meaning. Amazon SNS interprets tags as
+#'     character strings.
+#' 
+#' -   Tags are case-sensitive.
+#' 
+#' -   A new tag with a key identical to that of an existing tag overwrites
+#'     the existing tag.
+#' 
+#' -   Tagging actions are limited to 10 TPS per AWS account. If your
+#'     application requires a higher throughput, file a [technical support
+#'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
+#' 
+#' For a full list of tag restrictions, see [Limits Related to
+#' Topics](https://docs.aws.amazon.com/sns/latest/dg/sns-limits.html#limits-topics)
+#' in the *Amazon SNS Developer Guide*.
+#'
+#' @usage
+#' sns_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the topic to which to add tags.
+#' @param Tags &#91;required&#93; The tags to be added to the specified topic. A tag consists of a
+#' required key and an optional value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sns_tag_resource
+sns_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sns$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .sns$tag_resource_output()
+  svc <- .sns$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sns$operations$tag_resource <- sns_tag_resource
+
 #' Deletes a subscription
 #'
 #' Deletes a subscription. If the subscription requires authentication for
@@ -1705,3 +1833,45 @@ sns_unsubscribe <- function(SubscriptionArn) {
   return(response)
 }
 .sns$operations$unsubscribe <- sns_unsubscribe
+
+#' Remove tags from the specified Amazon SNS topic
+#'
+#' Remove tags from the specified Amazon SNS topic. For an overview, see
+#' [Amazon SNS
+#' Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the
+#' *Amazon SNS Developer Guide*.
+#'
+#' @usage
+#' sns_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the topic from which to remove tags.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the specified topic.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sns_untag_resource
+sns_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sns$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .sns$untag_resource_output()
+  svc <- .sns$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sns$operations$untag_resource <- sns_untag_resource

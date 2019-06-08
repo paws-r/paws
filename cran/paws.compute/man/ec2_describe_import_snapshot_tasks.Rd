@@ -13,7 +13,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{The filters.}
 
 \item{ImportTaskIds}{A list of import snapshot task IDs.}
 

@@ -14,9 +14,25 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \_+=,.@-}
 }
 \description{
-Deletes the specified IAM user. The user must not belong to any groups
-or have any access keys, signing certificates, MFA devices enabled for
-AWS, or attached policies.
+Deletes the specified IAM user. Unlike the AWS Management Console, when
+you delete a user programmatically, you must delete the items attached
+to the user manually, or the deletion fails. For more information, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli}{Deleting an IAM User}.
+Before attempting to delete a user, remove the following items:
+}
+\details{
+\itemize{
+\item Password (DeleteLoginProfile)
+\item Access keys (DeleteAccessKey)
+\item Signing certificate (DeleteSigningCertificate)
+\item SSH public key (DeleteSSHPublicKey)
+\item Git credentials (DeleteServiceSpecificCredential)
+\item Multi-factor authentication (MFA) device (DeactivateMFADevice,
+DeleteVirtualMFADevice)
+\item Inline policies (DeleteUserPolicy)
+\item Attached managed policies (DetachUserPolicy)
+\item Group memberships (RemoveUserFromGroup)
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_user(

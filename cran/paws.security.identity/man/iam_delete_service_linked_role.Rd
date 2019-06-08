@@ -30,7 +30,7 @@ again. Resources are specific to the service that is linked to the role.
 For more information about removing resources from a service, see the
 \href{http://docs.aws.amazon.com/}{AWS documentation} for your service.
 
-For more information about service-linked roles, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role}
+For more information about service-linked roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

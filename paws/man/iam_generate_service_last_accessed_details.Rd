@@ -17,9 +17,9 @@ attempt to access an AWS service.}
 Generates a request for a report that includes details about when an IAM
 resource (user, group, role, or policy) was last used in an attempt to
 access AWS services. Recent activity usually appears within four hours.
-IAM reports activity for the last 365 days, or less if your region began
+IAM reports activity for the last 365 days, or less if your Region began
 supporting this feature within the last year. For more information, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
 }
 \details{
 The service last accessed data includesÂ allÂ attempts to access an AWS
@@ -30,7 +30,7 @@ service last accessed data does not mean that your account has been
 compromised, because the request might have been denied. Refer to your
 CloudTrail logs as the authoritative source for information about all
 API calls and whether they were successful or denied access. For more
-information, seeÂ \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail}
+information, seeÂ \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail}
 in the \emph{IAM User Guide}.
 
 The \code{GenerateServiceLastAccessedDetails} operation returns a \code{JobId}.
@@ -61,10 +61,10 @@ determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS
 Organizations policies, IAM permissions boundaries, and AWS STS assume
 role policies. It only applies permissions policy logic. For more about
-the evaluation of policy types, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
+the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
 in the \emph{IAM User Guide}.
 
-For more information about service last accessed data, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Policy Scope by Viewing User Activity}
+For more information about service last accessed data, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Policy Scope by Viewing User Activity}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

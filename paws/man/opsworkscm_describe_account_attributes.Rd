@@ -2,14 +2,12 @@
 % Please edit documentation in R/opsworkscm_operations.R
 \name{opsworkscm_describe_account_attributes}
 \alias{opsworkscm_describe_account_attributes}
-\title{Describes your account attributes, and creates requests to increase
-limits before they are reached or exceeded}
+\title{Describes your OpsWorks-CM account attributes}
 \usage{
 opsworkscm_describe_account_attributes()
 }
 \description{
-Describes your account attributes, and creates requests to increase
-limits before they are reached or exceeded.
+Describes your OpsWorks-CM account attributes.
 }
 \details{
 This operation is synchronous.

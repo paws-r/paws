@@ -16,21 +16,22 @@ Constraints:
 \item Must match an existing DBClusterIdentifier.
 }}
 
-\item{SkipFinalSnapshot}{Determines whether a final DB cluster snapshot is created before the DB
-cluster is deleted. If \code{true} is specified, no DB cluster snapshot is
-created. If \code{false} is specified, a DB cluster snapshot is created
-before the DB cluster is deleted.
+\item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
+cluster snapshot before the DB cluster is deleted. If skip is specified,
+no DB cluster snapshot is created. If skip is not specified, a DB
+cluster snapshot is created before the DB cluster is deleted. By
+default, skip is not specified, and the DB cluster snapshot is created.
+By default, this parameter is disabled.
 
 You must specify a \code{FinalDBSnapshotIdentifier} parameter if
-\code{SkipFinalSnapshot} is \code{false}.
-
-Default: \code{false}}
+\code{SkipFinalSnapshot} is disabled.}
 
 \item{FinalDBSnapshotIdentifier}{The DB cluster snapshot identifier of the new DB cluster snapshot
-created when \code{SkipFinalSnapshot} is set to \code{false}.
+created when \code{SkipFinalSnapshot} is disabled.
 
-Specifying this parameter and also setting the \code{SkipFinalShapshot}
-parameter to true results in an error.
+Specifying this parameter and also skipping the creation of a final DB
+cluster snapshot with the \code{SkipFinalShapshot} parameter results in an
+error.
 
 Constraints:
 \itemize{

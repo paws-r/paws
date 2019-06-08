@@ -11,9 +11,11 @@ waf_create_rule_group(Name, MetricName, ChangeToken)
 \code{Name} after you create a \code{RuleGroup}.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{RuleGroup}. The
-name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
-can't contain whitespace. You can't change the name of the metric
-after you create the \code{RuleGroup}.}
+name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default\_Action." You can't change the name of the metric after you
+create the \code{RuleGroup}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }

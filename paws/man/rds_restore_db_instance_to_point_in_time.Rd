@@ -40,17 +40,18 @@ format
 Constraints:
 \itemize{
 \item Must be before the latest restorable time for the DB instance
-\item Can't be specified if UseLatestRestorableTime parameter is true
+\item Can't be specified if the \code{UseLatestRestorableTime} parameter is
+enabled
 }
 
 Example: \code{2009-09-07T23:45:00Z}}
 
-\item{UseLatestRestorableTime}{Specifies whether (\code{true}) or not (\code{false}) the DB instance is restored
-from the latest backup time.
+\item{UseLatestRestorableTime}{A value that indicates whether the DB instance is restored from the
+latest backup time. By default, the DB instance is not restored from the
+latest backup time.
 
-Default: \code{false}
-
-Constraints: Can't be specified if RestoreTime parameter is provided.}
+Constraints: Can't be specified if the \code{RestoreTime} parameter is
+provided.}
 
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
 example, \code{db.m4.large}. Not all DB instance classes are available in all
@@ -66,12 +67,12 @@ Constraints: Value must be \code{1150-65535}
 
 Default: The same port as the original DB instance.}
 
-\item{AvailabilityZone}{The EC2 Availability Zone that the DB instance is created in.
+\item{AvailabilityZone}{The Availability Zone (AZ) where the DB instance will be created.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to true.
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+DB instance is a Multi-AZ deployment.
 
 Example: \code{us-east-1a}}
 
@@ -82,19 +83,20 @@ DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
-\item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment.
+\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
 
-Constraint: You can't specify the AvailabilityZone parameter if the
-MultiAZ parameter is set to \code{true}.}
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the
+DB instance is a Multi-AZ deployment.}
 
-\item{PubliclyAccessible}{Specifies the accessibility options for the DB instance. A value of true
-specifies an Internet-facing instance with a publicly resolvable DNS
-name, which resolves to a public IP address. A value of false specifies
-an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.}
+\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+When the DB instance is publicly accessible, it is an Internet-facing
+instance with a publicly resolvable DNS name, which resolves to a public
+IP address. When the DB instance is not publicly accessible, it is an
+internal instance with a DNS name that resolves to a private IP address.
+For more information, see CreateDBInstance.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window.}
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
+automatically to the DB instance during the maintenance window.}
 
 \item{LicenseModel}{License model information for the restored DB instance.
 
@@ -145,8 +147,9 @@ TDE, can't be removed from an option group, and that option group
 can't be removed from a DB instance once it is associated with a DB
 instance}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB instance to snapshots of the
-restored DB instance, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
+instance to snapshots of the DB instance. By default, tags are not
+copied.}
 
 \item{Tags}{}
 
@@ -157,8 +160,7 @@ Valid values: \code{standard | gp2 | io1}
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise
-\code{standard}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.}
@@ -176,17 +178,16 @@ VPC.}
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 You can enable IAM database authentication for the following database
 engines
 \itemize{
 \item For MySQL 5.6, minor version 5.6.34 or higher
 \item For MySQL 5.7, minor version 5.7.16 or higher
-}
-
-Default: \code{false}}
+}}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
@@ -196,7 +197,7 @@ in the \emph{Amazon RDS User Guide}.}
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that specifies that the DB instance class of the DB instance
+\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
 uses its default processor features.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
@@ -211,9 +212,10 @@ Constraints:
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{Indicates if the DB instance should have deletion protection enabled.
-The database can't be deleted when this value is set to true. The
-default is false. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceDbiResourceId}{The resource ID of the source DB instance from which to restore.}
 }
@@ -233,7 +235,7 @@ is associated with mirroring; in this case, the instance becomes a
 mirrored deployment and not a single-AZ deployment.
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora, use RestoreDBClusterToPointInTime.
+Aurora, use \code{RestoreDBClusterToPointInTime}.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_instance_to_point_in_time(

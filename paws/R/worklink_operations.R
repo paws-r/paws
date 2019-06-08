@@ -3,6 +3,92 @@
 #' @include worklink_service.R
 NULL
 
+#' Specifies a domain to be associated to Amazon WorkLink
+#'
+#' Specifies a domain to be associated to Amazon WorkLink.
+#'
+#' @usage
+#' worklink_associate_domain(FleetArn, DomainName, DisplayName,
+#'   AcmCertificateArn)
+#'
+#' @param FleetArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#' @param DomainName &#91;required&#93; The fully qualified domain name (FQDN).
+#' @param DisplayName The name to display.
+#' @param AcmCertificateArn &#91;required&#93; The ARN of an issued ACM certificate that is valid for the domain being
+#' associated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_domain(
+#'   FleetArn = "string",
+#'   DomainName = "string",
+#'   DisplayName = "string",
+#'   AcmCertificateArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_associate_domain
+worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, AcmCertificateArn) {
+  op <- new_operation(
+    name = "AssociateDomain",
+    http_method = "POST",
+    http_path = "/associateDomain",
+    paginator = list()
+  )
+  input <- .worklink$associate_domain_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName, AcmCertificateArn = AcmCertificateArn)
+  output <- .worklink$associate_domain_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$associate_domain <- worklink_associate_domain
+
+#' Associates a website authorization provider with a specified fleet
+#'
+#' Associates a website authorization provider with a specified fleet. This
+#' is used to authorize users against associated websites in the company
+#' network.
+#'
+#' @usage
+#' worklink_associate_website_authorization_provider(FleetArn,
+#'   AuthorizationProviderType, DomainName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param AuthorizationProviderType &#91;required&#93; The authorization provider type.
+#' @param DomainName The domain name of the authorization provider. This applies only to
+#' SAML-based authorization providers.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_website_authorization_provider(
+#'   FleetArn = "string",
+#'   AuthorizationProviderType = "SAML",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_associate_website_authorization_provider
+worklink_associate_website_authorization_provider <- function(FleetArn, AuthorizationProviderType, DomainName = NULL) {
+  op <- new_operation(
+    name = "AssociateWebsiteAuthorizationProvider",
+    http_method = "POST",
+    http_path = "/associateWebsiteAuthorizationProvider",
+    paginator = list()
+  )
+  input <- .worklink$associate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderType = AuthorizationProviderType, DomainName = DomainName)
+  output <- .worklink$associate_website_authorization_provider_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$associate_website_authorization_provider <- worklink_associate_website_authorization_provider
+
 #' Imports the root certificate of a certificate authority (CA) used to
 #' obtain TLS certificates used by associated websites within the company
 #' network
@@ -273,6 +359,43 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 }
 .worklink$operations$describe_device_policy_configuration <- worklink_describe_device_policy_configuration
 
+#' Provides information about the domain
+#'
+#' Provides information about the domain.
+#'
+#' @usage
+#' worklink_describe_domain(FleetArn, DomainName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_domain(
+#'   FleetArn = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_describe_domain
+worklink_describe_domain <- function(FleetArn, DomainName) {
+  op <- new_operation(
+    name = "DescribeDomain",
+    http_method = "POST",
+    http_path = "/describeDomain",
+    paginator = list()
+  )
+  input <- .worklink$describe_domain_input(FleetArn = FleetArn, DomainName = DomainName)
+  output <- .worklink$describe_domain_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$describe_domain <- worklink_describe_domain
+
 #' Provides basic information for the specified fleet, excluding identity
 #' provider, networking, and device configuration details
 #'
@@ -382,6 +505,84 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 }
 .worklink$operations$describe_website_certificate_authority <- worklink_describe_website_certificate_authority
 
+#' Disassociates a domain from Amazon WorkLink
+#'
+#' Disassociates a domain from Amazon WorkLink. End users lose the ability
+#' to access the domain with Amazon WorkLink.
+#'
+#' @usage
+#' worklink_disassociate_domain(FleetArn, DomainName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_domain(
+#'   FleetArn = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_disassociate_domain
+worklink_disassociate_domain <- function(FleetArn, DomainName) {
+  op <- new_operation(
+    name = "DisassociateDomain",
+    http_method = "POST",
+    http_path = "/disassociateDomain",
+    paginator = list()
+  )
+  input <- .worklink$disassociate_domain_input(FleetArn = FleetArn, DomainName = DomainName)
+  output <- .worklink$disassociate_domain_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$disassociate_domain <- worklink_disassociate_domain
+
+#' Disassociates a website authorization provider from a specified fleet
+#'
+#' Disassociates a website authorization provider from a specified fleet.
+#' After the disassociation, users can\'t load any associated websites that
+#' require this authorization provider.
+#'
+#' @usage
+#' worklink_disassociate_website_authorization_provider(FleetArn,
+#'   AuthorizationProviderId)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param AuthorizationProviderId &#91;required&#93; A unique identifier for the authorization provider.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_website_authorization_provider(
+#'   FleetArn = "string",
+#'   AuthorizationProviderId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_disassociate_website_authorization_provider
+worklink_disassociate_website_authorization_provider <- function(FleetArn, AuthorizationProviderId) {
+  op <- new_operation(
+    name = "DisassociateWebsiteAuthorizationProvider",
+    http_method = "POST",
+    http_path = "/disassociateWebsiteAuthorizationProvider",
+    paginator = list()
+  )
+  input <- .worklink$disassociate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderId = AuthorizationProviderId)
+  output <- .worklink$disassociate_website_authorization_provider_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$disassociate_website_authorization_provider <- worklink_disassociate_website_authorization_provider
+
 #' Removes a certificate authority (CA)
 #'
 #' Removes a certificate authority (CA).
@@ -460,6 +661,46 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 }
 .worklink$operations$list_devices <- worklink_list_devices
 
+#' Retrieves a list of domains associated to a specified fleet
+#'
+#' Retrieves a list of domains associated to a specified fleet.
+#'
+#' @usage
+#' worklink_list_domains(FleetArn, NextToken, MaxResults)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation. If this value is null, it retrieves the first page.
+#' @param MaxResults The maximum number of results to be included in the next page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domains(
+#'   FleetArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_list_domains
+worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDomains",
+    http_method = "POST",
+    http_path = "/listDomains",
+    paginator = list()
+  )
+  input <- .worklink$list_domains_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .worklink$list_domains_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$list_domains <- worklink_list_domains
+
 #' Retrieves a list of fleets for the current account and Region
 #'
 #' Retrieves a list of fleets for the current account and Region.
@@ -497,6 +738,49 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .worklink$operations$list_fleets <- worklink_list_fleets
+
+#' Retrieves a list of website authorization providers associated with a
+#' specified fleet
+#'
+#' Retrieves a list of website authorization providers associated with a
+#' specified fleet.
+#'
+#' @usage
+#' worklink_list_website_authorization_providers(FleetArn, NextToken,
+#'   MaxResults)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param NextToken The pagination token to use to retrieve the next page of results for
+#' this operation. If this value is null, it retrieves the first page.
+#' @param MaxResults The maximum number of results to be included in the next page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_website_authorization_providers(
+#'   FleetArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_list_website_authorization_providers
+worklink_list_website_authorization_providers <- function(FleetArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListWebsiteAuthorizationProviders",
+    http_method = "POST",
+    http_path = "/listWebsiteAuthorizationProviders",
+    paginator = list()
+  )
+  input <- .worklink$list_website_authorization_providers_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .worklink$list_website_authorization_providers_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$list_website_authorization_providers <- worklink_list_website_authorization_providers
 
 #' Retrieves a list of certificate authorities added for the current
 #' account and Region
@@ -540,6 +824,80 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
   return(response)
 }
 .worklink$operations$list_website_certificate_authorities <- worklink_list_website_certificate_authorities
+
+#' Moves a domain to ACTIVE status if it was in the INACTIVE status
+#'
+#' Moves a domain to ACTIVE status if it was in the INACTIVE status.
+#'
+#' @usage
+#' worklink_restore_domain_access(FleetArn, DomainName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_domain_access(
+#'   FleetArn = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_restore_domain_access
+worklink_restore_domain_access <- function(FleetArn, DomainName) {
+  op <- new_operation(
+    name = "RestoreDomainAccess",
+    http_method = "POST",
+    http_path = "/restoreDomainAccess",
+    paginator = list()
+  )
+  input <- .worklink$restore_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
+  output <- .worklink$restore_domain_access_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$restore_domain_access <- worklink_restore_domain_access
+
+#' Moves a domain to INACTIVE status if it was in the ACTIVE status
+#'
+#' Moves a domain to INACTIVE status if it was in the ACTIVE status.
+#'
+#' @usage
+#' worklink_revoke_domain_access(FleetArn, DomainName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_domain_access(
+#'   FleetArn = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_revoke_domain_access
+worklink_revoke_domain_access <- function(FleetArn, DomainName) {
+  op <- new_operation(
+    name = "RevokeDomainAccess",
+    http_method = "POST",
+    http_path = "/revokeDomainAccess",
+    paginator = list()
+  )
+  input <- .worklink$revoke_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
+  output <- .worklink$revoke_domain_access_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$revoke_domain_access <- worklink_revoke_domain_access
 
 #' Signs the user out from all of their devices
 #'
@@ -702,6 +1060,45 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
   return(response)
 }
 .worklink$operations$update_device_policy_configuration <- worklink_update_device_policy_configuration
+
+#' Updates domain metadata, such as DisplayName
+#'
+#' Updates domain metadata, such as DisplayName.
+#'
+#' @usage
+#' worklink_update_domain_metadata(FleetArn, DomainName, DisplayName)
+#'
+#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param DisplayName The name to display.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_domain_metadata(
+#'   FleetArn = "string",
+#'   DomainName = "string",
+#'   DisplayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_update_domain_metadata
+worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = NULL) {
+  op <- new_operation(
+    name = "UpdateDomainMetadata",
+    http_method = "POST",
+    http_path = "/updateDomainMetadata",
+    paginator = list()
+  )
+  input <- .worklink$update_domain_metadata_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName)
+  output <- .worklink$update_domain_metadata_output()
+  svc <- .worklink$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$update_domain_metadata <- worklink_update_domain_metadata
 
 #' Updates fleet metadata, such as DisplayName
 #'

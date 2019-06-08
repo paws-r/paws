@@ -14,11 +14,11 @@ Amazon Textract.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships in the detected text and tables \cr
+\link[=textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items \cr
 \link[=textract_detect_document_text]{detect_document_text} \tab Detects text in the input document \cr
-\link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document image \cr
-\link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document image \cr
-\link[=textract_start_document_analysis]{start_document_analysis} \tab Starts asynchronous analysis of text for relationships in the text and tables that are detected in a document\cr
+\link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document \cr
+\link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document \cr
+\link[=textract_start_document_analysis]{start_document_analysis} \tab Starts asynchronous analysis of an input document for relationships between detected items such as key and value pairs, tables, and selection elements\cr
 \link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document
 }
 }

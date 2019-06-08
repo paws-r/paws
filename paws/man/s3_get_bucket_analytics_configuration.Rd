@@ -11,7 +11,7 @@ s3_get_bucket_analytics_configuration(Bucket, Id)
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is
 retrieved.}
 
-\item{Id}{[required] The identifier used to represent an analytics configuration.}
+\item{Id}{[required] The ID that identifies the analytics configuration.}
 }
 \description{
 Gets an analytics configuration for the bucket (specified by the

@@ -13,7 +13,9 @@ retrieve.}
 }
 \description{
 Retrieves your account's AWS CloudFormation limits, such as the maximum
-number of stacks that you can create in your account.
+number of stacks that you can create in your account. For more
+information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{AWS CloudFormation Limits}
+in the \emph{AWS CloudFormation User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account_limits(

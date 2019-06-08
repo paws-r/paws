@@ -7,9 +7,9 @@
 guardduty_delete_filter(DetectorId, FilterName)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID that specifies the detector where you want to delete a filter.}
+\item{DetectorId}{[required] The unique ID of the detector the filter is associated with.}
 
-\item{FilterName}{[required] The name of the filter.}
+\item{FilterName}{[required] The name of the filter you want to delete.}
 }
 \description{
 Deletes the filter specified by the filter name.

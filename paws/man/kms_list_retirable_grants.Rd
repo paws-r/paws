@@ -21,10 +21,10 @@ truncated response you just received.}
 
 \item{RetiringPrincipal}{[required] The retiring principal for which to list grants.
 
-To specify the retiring principal, use the \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+To specify the retiring principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an AWS principal. Valid AWS principals include AWS accounts (root),
 IAM users, federated users, and assumed role users. For examples of the
-ARN syntax for specifying a principal, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
+ARN syntax for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{AWS Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }

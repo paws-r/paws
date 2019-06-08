@@ -11,12 +11,12 @@ securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
 \item{StandardsSubscriptionArns}{The list of standards subscription ARNS that you want to list and
 describe.}
 
-\item{NextToken}{Paginates results. Set the value of this parameter to NULL on your first
-call to the GetEnabledStandards operation. For subsequent calls to the
-operation, fill nextToken in the request with the value of nextToken
-from the previous response to continue listing data.}
+\item{NextToken}{Paginates results. On your first call to the \code{GetEnabledStandards}
+operation, set the value of this parameter to \code{NULL}. For subsequent
+calls to the operation, fill \code{nextToken} in the request with the value
+of \code{nextToken} from the previous response to continue listing data.}
 
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of items that you want in the response.}
 }
 \description{
 Lists and describes enabled standards.

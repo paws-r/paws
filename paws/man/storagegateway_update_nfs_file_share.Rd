@@ -46,9 +46,14 @@ if the write status is read-only, and otherwise false.}
 based on file extensions. Set this value to true to enable MIME type
 guessing, and otherwise to false. The default value is true.}
 
-\item{RequesterPays}{A value that sets the access control list permission for objects in the
-Amazon S3 bucket that a file gateway puts objects into. The default
-value is \code{private}.}
+\item{RequesterPays}{A value that sets who pays the cost of the request and the cost
+associated with data download from the S3 bucket. If this value is set
+to true, the requester pays the costs. Otherwise the S3 bucket owner
+pays. However, the S3 bucket owner always pays the cost of storing data.
+
+\code{RequesterPays} is a configuration for the S3 bucket that backs the file
+share, so make sure that the configuration on the file share is the same
+as the S3 bucket configuration.}
 }
 \description{
 Updates a Network File System (NFS) file share. This operation is only

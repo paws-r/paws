@@ -40,7 +40,7 @@ To get complete information about a policy, use GetLifecyclePolicy.
   ),
   State = "ENABLED"|"DISABLED"|"ERROR",
   ResourceTypes = list(
-    "VOLUME"
+    "VOLUME"|"INSTANCE"
   ),
   TargetTags = list(
     "string"

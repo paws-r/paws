@@ -37,7 +37,7 @@ NOTIFICATION
 :   Specify the \code{NotificationArns} property as follows:\preformatted{`\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 }
 
-RESOUCE\_UPDATE
+RESOURCE\_UPDATE
 
 :   Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:\preformatted{`\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
 

@@ -19,7 +19,7 @@ maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given region. Also,
 there are per-table limits that apply when you create a table there. For
 more information, see
-\href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
 page in the \emph{Amazon DynamoDB Developer Guide}.
 
 Although you can increase these limits by filing a case at \href{https://console.aws.amazon.com/support/home#/}{AWS Support Center}, obtaining the

@@ -3,7 +3,7 @@
 \name{ec2_describe_aggregate_id_format}
 \alias{ec2_describe_aggregate_id_format}
 \title{Describes the longer ID format settings for all resource types in a
-specific region}
+specific Region}
 \usage{
 ec2_describe_aggregate_id_format(DryRun)
 }
@@ -15,8 +15,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the longer ID format settings for all resource types in a
-specific region. This request is useful for performing a quick audit to
-determine whether a specific region is fully opted in for longer IDs
+specific Region. This request is useful for performing a quick audit to
+determine whether a specific Region is fully opted in for longer IDs
 (17-character IDs).
 }
 \details{

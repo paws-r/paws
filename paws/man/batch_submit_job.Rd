@@ -19,7 +19,7 @@ the name or the Amazon Resource Name (ARN) of the queue.}
 \item{arrayProperties}{The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
 properties for a job, it becomes an array job. For more information, see
-\href{http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html}{Array Jobs}
+\href{https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html}{Array Jobs}
 in the \emph{AWS Batch User Guide}.}
 
 \item{dependsOn}{A list of dependencies for the job. A job can depend upon a maximum of
@@ -61,7 +61,7 @@ have not finished. If a job is terminated due to a timeout, it is not
 retried. The minimum value for the timeout is 60 seconds. This
 configuration overrides any timeout configuration specified in the job
 definition. For array jobs, child jobs have the same timeout
-configuration as the parent job. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html}{Job Timeouts}
+configuration as the parent job. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html}{Job Timeouts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
@@ -97,9 +97,16 @@ during SubmitJob override parameters defined in the job definition.
         name = "string",
         value = "string"
       )
+    ),
+    resourceRequirements = list(
+      list(
+        value = "string",
+        type = "GPU"
+      )
     )
   ),
   nodeOverrides = list(
+    numNodes = 123,
     nodePropertyOverrides = list(
       list(
         targetNodes = "string",
@@ -114,6 +121,12 @@ during SubmitJob override parameters defined in the job definition.
             list(
               name = "string",
               value = "string"
+            )
+          ),
+          resourceRequirements = list(
+            list(
+              value = "string",
+              type = "GPU"
             )
           )
         )

@@ -7,7 +7,7 @@
 glue_get_classifiers(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{Size of the list to return (optional).}
+\item{MaxResults}{The size of the list to return (optional).}
 
 \item{NextToken}{An optional continuation token.}
 }

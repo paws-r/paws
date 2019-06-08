@@ -27,8 +27,10 @@ to \code{Updating}. After updating the endpoint, it sets the status to
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
 API.
 
-You cannot update an endpoint with the current \code{EndpointConfig}. To
-update an endpoint, you must create a new \code{EndpointConfig}.
+You must not delete an \code{EndpointConfig} in use by an endpoint that is
+live or while the \code{UpdateEndpoint} or \code{CreateEndpoint} operations are
+being performed on the endpoint. To update an endpoint, you must create
+a new \code{EndpointConfig}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint(

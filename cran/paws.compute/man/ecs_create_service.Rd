@@ -18,9 +18,9 @@ which to run your service. If you do not specify a cluster, the default
 cluster is assumed.}
 
 \item{serviceName}{[required] The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, hyphens, and underscores are allowed. Service names must be
-unique within a cluster, but you can have similarly named services in
-multiple clusters within a Region or across multiple Regions.}
+numbers, and hyphens are allowed. Service names must be unique within a
+cluster, but you can have similarly named services in multiple clusters
+within a Region or across multiple Regions.}
 
 \item{taskDefinition}{The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
 definition to run in your service. If a \code{revision} is not specified, the
@@ -75,10 +75,10 @@ that use the \code{awsvpc} network mode are associated with an elastic
 network interface, not an Amazon EC2 instance.}
 
 \item{serviceRegistries}{The details of the service discovery registries to assign to this
-service. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.
+service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.
 
 Service discovery is supported for Fargate tasks if you are using
-platform version v1.1.0 or later. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}.}
+platform version v1.1.0 or later. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}.}
 
 \item{desiredCount}{The number of instantiations of the specified task definition to place
 and keep running on your cluster.}
@@ -107,7 +107,7 @@ If your account has already created the Amazon ECS service-linked role,
 that role is used by default for your service unless you specify a role
 here. The service-linked role is required if your task definition uses
 the \code{awsvpc} network mode, in which case you should not specify a role
-here. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+here. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If your specified role has a path other than \code{/}, then you must either
@@ -131,7 +131,7 @@ specify a maximum of five strategy rules per service.}
 \item{networkConfiguration}{The network configuration for the service. This parameter is required
 for task definitions that use the \code{awsvpc} network mode to receive their
 own elastic network interface, and it is not supported for other network
-modes. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
+modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html}{Task Networking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
@@ -146,7 +146,7 @@ tasks as unhealthy and stopping them before they have time to come up.}
 
 \item{schedulingStrategy}{The scheduling strategy to use for the service. For more information,
 see
-\href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html}{Services}.
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html}{Services}.
 
 There are two service scheduler strategies available:
 \itemize{
@@ -176,7 +176,7 @@ well. Tag keys can have a maximum character length of 128 characters,
 and tag values can have a maximum length of 256 characters.}
 
 \item{enableECSManagedTags}{Specifies whether to enable Amazon ECS managed tags for the tasks within
-the service. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
+the service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition or the

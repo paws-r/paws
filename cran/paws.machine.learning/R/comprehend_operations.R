@@ -235,13 +235,19 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'
 #' @usage
 #' comprehend_create_document_classifier(DocumentClassifierName,
-#'   DataAccessRoleArn, InputDataConfig, ClientRequestToken, LanguageCode,
-#'   VolumeKmsKeyId)
+#'   DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
+#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig)
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 #' role that grants Amazon Comprehend read access to your input data.
+#' @param Tags Tags to be associated with the document classifier being created. A tag
+#' is a key-value pair that adds as a metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with \"Sales\" as the key might be added
+#' to a resource to indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig Enables the addition of output results configuration parameters for
+#' custom classifier jobs.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
@@ -255,32 +261,54 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your custom classifier.
+#' For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_document_classifier(
 #'   DocumentClassifierName = "string",
 #'   DataAccessRoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   InputDataConfig = list(
 #'     S3Uri = "string"
 #'   ),
+#'   OutputDataConfig = list(
+#'     S3Uri = "string",
+#'     KmsKeyId = "string"
+#'   ),
 #'   ClientRequestToken = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
-comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL) {
+comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$create_document_classifier_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -297,7 +325,8 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'
 #' @usage
 #' comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
-#'   InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId)
+#'   Tags, InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId,
+#'   VpcConfig)
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
@@ -305,6 +334,10 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' account/region.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 #' role that grants Amazon Comprehend read access to your input data.
+#' @param Tags Tags to be associated with the entity recognizer being created. A tag is
+#' a key-value pair that adds as a metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with \"Sales\" as the key might be added
+#' to a resource to indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data. The S3 bucket
 #' containing the input data must be located in the same region as the
 #' entity recognizer being created.
@@ -321,12 +354,22 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your custom entity
+#' recognizer. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_entity_recognizer(
 #'   RecognizerName = "string",
 #'   DataAccessRoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   InputDataConfig = list(
 #'     EntityTypes = list(
 #'       list(
@@ -345,21 +388,29 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #'   ),
 #'   ClientRequestToken = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_entity_recognizer
-comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL) {
+comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "CreateEntityRecognizer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$create_entity_recognizer_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1320,6 +1371,42 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 }
 .comprehend$operations$list_sentiment_detection_jobs <- comprehend_list_sentiment_detection_jobs
 
+#' Lists all tags associated with a given Amazon Comprehend resource
+#'
+#' Lists all tags associated with a given Amazon Comprehend resource.
+#'
+#' @usage
+#' comprehend_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
+#' you are querying.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_tags_for_resource
+comprehend_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .comprehend$list_tags_for_resource_output()
+  svc <- .comprehend$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_tags_for_resource <- comprehend_list_tags_for_resource
+
 #' Gets a list of the topic detection jobs that you have submitted
 #'
 #' Gets a list of the topic detection jobs that you have submitted.
@@ -1379,7 +1466,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @usage
 #' comprehend_start_document_classification_job(JobName,
 #'   DocumentClassifierArn, InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId)
+#'   DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
 #'
 #' @param JobName The identifier of the job.
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) of the document classifier to use to
@@ -1399,6 +1486,10 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your document
+#' classification job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1415,21 +1506,29 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_document_classification_job
-comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_document_classification_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1447,7 +1546,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' @usage
 #' comprehend_start_dominant_language_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   VolumeKmsKeyId)
+#'   VolumeKmsKeyId, VpcConfig)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1467,6 +1566,10 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your dominant language
+#' detection job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1482,21 +1585,29 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #'   DataAccessRoleArn = "string",
 #'   JobName = "string",
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_dominant_language_detection_job
-comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_dominant_language_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1519,7 +1630,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' @usage
 #' comprehend_start_entities_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, EntityRecognizerArn,
-#'   LanguageCode, ClientRequestToken, VolumeKmsKeyId)
+#'   LanguageCode, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1548,6 +1659,10 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your entity detection
+#' job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1565,21 +1680,29 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #'   EntityRecognizerArn = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_entities_detection_job
-comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_entities_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1597,7 +1720,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @usage
 #' comprehend_start_key_phrases_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken, VolumeKmsKeyId)
+#'   ClientRequestToken, VolumeKmsKeyId, VpcConfig)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1619,6 +1742,10 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your key phrases
+#' detection job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1635,21 +1762,29 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #'   JobName = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_key_phrases_detection_job
-comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_key_phrases_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1667,7 +1802,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @usage
 #' comprehend_start_sentiment_detection_job(InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken, VolumeKmsKeyId)
+#'   ClientRequestToken, VolumeKmsKeyId, VpcConfig)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -1689,6 +1824,10 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your sentiment
+#' detection job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1705,21 +1844,29 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #'   JobName = "string",
 #'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt",
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_sentiment_detection_job
-comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_sentiment_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -1736,7 +1883,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @usage
 #' comprehend_start_topics_detection_job(InputDataConfig, OutputDataConfig,
 #'   DataAccessRoleArn, JobName, NumberOfTopics, ClientRequestToken,
-#'   VolumeKmsKeyId)
+#'   VolumeKmsKeyId, VpcConfig)
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files. The output is a compressed
@@ -1760,6 +1907,10 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
+#' (VPC) containing the resources you are using for your topic detection
+#' job. For more information, see [Amazon
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1776,21 +1927,29 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #'   JobName = "string",
 #'   NumberOfTopics = 123,
 #'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string"
+#'   VolumeKmsKeyId = "string",
+#'   VpcConfig = list(
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_topics_detection_job
-comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL) {
+comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
   op <- new_operation(
     name = "StartTopicsDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId)
+  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
   output <- .comprehend$start_topics_detection_job_output()
   svc <- .comprehend$service()
   request <- new_request(svc, op, input, output)
@@ -2071,3 +2230,94 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
   return(response)
 }
 .comprehend$operations$stop_training_entity_recognizer <- comprehend_stop_training_entity_recognizer
+
+#' Associates a specific tag with an Amazon Comprehend resource
+#'
+#' Associates a specific tag with an Amazon Comprehend resource. A tag is a
+#' key-value pair that adds as a metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with \"Sales\" as the key might be added
+#' to a resource to indicate its use by the sales department.
+#'
+#' @usage
+#' comprehend_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
+#' to which you want to associate the tags.
+#' @param Tags &#91;required&#93; Tags being associated with a specific Amazon Comprehend resource. There
+#' can be a maximum of 50 tags (both existing and pending) associated with
+#' a specific resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_tag_resource
+comprehend_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .comprehend$tag_resource_output()
+  svc <- .comprehend$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$tag_resource <- comprehend_tag_resource
+
+#' Removes a specific tag associated with an Amazon Comprehend resource
+#'
+#' Removes a specific tag associated with an Amazon Comprehend resource.
+#'
+#' @usage
+#' comprehend_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
+#' from which you want to remove the tags.
+#' @param TagKeys &#91;required&#93; The initial part of a key-value pair that forms a tag being removed from
+#' a given resource. For example, a tag with \"Sales\" as the key might be
+#' added to a resource to indicate its use by the sales department. Keys
+#' must be unique and cannot be duplicated for a particular resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_untag_resource
+comprehend_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .comprehend$untag_resource_output()
+  svc <- .comprehend$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$untag_resource <- comprehend_untag_resource

@@ -10,7 +10,7 @@ ssm_add_tags_to_resource(ResourceType, ResourceId, Tags)
 \item{ResourceType}{[required] Specifies the type of resource you are tagging.
 
 The ManagedInstance type for this API action is for on-premises managed
-instances. You must specify the the name of the managed instance in the
+instances. You must specify the name of the managed instance in the
 following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{ResourceId}{[required] The resource ID you want to tag.
@@ -26,8 +26,8 @@ PatchBaseline: pb-012345abcde
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the the name of the managed instance
-in the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
+managed instances. You must specify the name of the managed instance in
+the following format: mi-ID\_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{Tags}{[required] One or more tags. The value parameter is required, but if you don't
 want the tag to have a value, specify the parameter with no value, and
@@ -38,7 +38,7 @@ Do not enter personally identifiable information in this field.}
 \description{
 Adds or overwrites one or more tags for the specified resource. Tags are
 metadata that you can assign to your documents, managed instances,
-Maintenance Windows, Parameter Store parameters, and patch baselines.
+maintenance windows, Parameter Store parameters, and patch baselines.
 Tags enable you to categorize your resources in different ways, for
 example, by purpose, owner, or environment. Each tag consists of a key
 and an optional value, both of which you define. For example, you could
@@ -62,7 +62,7 @@ in the \emph{Amazon EC2 User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags_to_resource(
-  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline",
+  ResourceType = "Document"|"ManagedInstance"|"MaintenanceWindow"|"Parameter"|"PatchBaseline"|"OpsItem",
   ResourceId = "string",
   Tags = list(
     list(

@@ -41,8 +41,11 @@ NULL
 #'  \link[=appsync_list_graphql_apis]{list_graphql_apis} \tab Lists your GraphQL APIs \cr
 #'  \link[=appsync_list_resolvers]{list_resolvers} \tab Lists the resolvers for a given API and type \cr
 #'  \link[=appsync_list_resolvers_by_function]{list_resolvers_by_function} \tab List the resolvers that are associated with a specific function \cr
+#'  \link[=appsync_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource \cr
 #'  \link[=appsync_list_types]{list_types} \tab Lists the types for a given API \cr
 #'  \link[=appsync_start_schema_creation]{start_schema_creation} \tab Adds a new schema to your GraphQL API \cr
+#'  \link[=appsync_tag_resource]{tag_resource} \tab Tags a resource with user-supplied tags \cr
+#'  \link[=appsync_untag_resource]{untag_resource} \tab Untags a resource \cr
 #'  \link[=appsync_update_api_key]{update_api_key} \tab Updates an API key \cr
 #'  \link[=appsync_update_data_source]{update_data_source} \tab Updates a DataSource object \cr
 #'  \link[=appsync_update_function]{update_function} \tab Updates a Function object \cr

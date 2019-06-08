@@ -2,23 +2,15 @@
 % Please edit documentation in R/neptune_operations.R
 \name{neptune_promote_read_replica_db_cluster}
 \alias{neptune_promote_read_replica_db_cluster}
-\title{Promotes a Read Replica DB cluster to a standalone DB cluster}
+\title{Not supported}
 \usage{
 neptune_promote_read_replica_db_cluster(DBClusterIdentifier)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] The identifier of the DB cluster Read Replica to promote. This parameter
-is not case-sensitive.
-
-Constraints:
-\itemize{
-\item Must match the identifier of an existing DBCluster Read Replica.
-}
-
-Example: \code{my-cluster-replica1}}
+\item{DBClusterIdentifier}{[required] Not supported.}
 }
 \description{
-Promotes a Read Replica DB cluster to a standalone DB cluster.
+Not supported.
 }
 \section{Request syntax}{
 \preformatted{svc$promote_read_replica_db_cluster(

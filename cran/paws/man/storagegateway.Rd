@@ -12,7 +12,7 @@ AWS Storage Gateway Service
 AWS Storage Gateway is the service that connects an on-premises software
 appliance with cloud-based storage to provide seamless and secure
 integration between an organization's on-premises IT environment and
-AWS's storage infrastructure. The service enables you to securely
+the AWS storage infrastructure. The service enables you to securely
 upload data to the AWS cloud for cost effective backup and rapid
 disaster recovery.
 
@@ -69,6 +69,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_add_tags_to_resource]{add_tags_to_resource} \tab Adds one or more tags to the specified resource \cr
 \link[=storagegateway_add_upload_buffer]{add_upload_buffer} \tab Configures one or more gateway local disks as upload buffer for a specified gateway \cr
 \link[=storagegateway_add_working_storage]{add_working_storage} \tab Configures one or more gateway local disks as working storage for a gateway \cr
+\link[=storagegateway_assign_tape_pool]{assign_tape_pool} \tab Assigns a tape to a tape pool for archiving \cr
 \link[=storagegateway_attach_volume]{attach_volume} \tab Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway \cr
 \link[=storagegateway_cancel_archival]{cancel_archival} \tab Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated \cr
 \link[=storagegateway_cancel_retrieval]{cancel_retrieval} \tab Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated \cr
@@ -133,6 +134,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week \cr
 \link[=storagegateway_update_nfs_file_share]{update_nfs_file_share} \tab Updates a Network File System (NFS) file share \cr
 \link[=storagegateway_update_smb_file_share]{update_smb_file_share} \tab Updates a Server Message Block (SMB) file share \cr
+\link[=storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy on a file gateway \cr
 \link[=storagegateway_update_snapshot_schedule]{update_snapshot_schedule} \tab Updates a snapshot schedule configured for a gateway volume \cr
 \link[=storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
 }

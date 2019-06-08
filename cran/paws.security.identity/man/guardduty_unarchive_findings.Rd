@@ -8,12 +8,14 @@ IDs}
 guardduty_unarchive_findings(DetectorId, FindingIds)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.}
+\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
+findings you want to unarchive.}
 
 \item{FindingIds}{[required] IDs of the findings that you want to unarchive.}
 }
 \description{
-Unarchives Amazon GuardDuty findings specified by the list of finding IDs.
+Unarchives Amazon GuardDuty findings specified by the list of finding
+IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$unarchive_findings(

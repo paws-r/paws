@@ -5,7 +5,7 @@
 \title{Create an ApiKey resource}
 \usage{
 apigateway_create_api_key(name, description, enabled,
-  generateDistinctId, value, stageKeys, customerId)
+  generateDistinctId, value, stageKeys, customerId, tags)
 }
 \arguments{
 \item{name}{The name of the ApiKey.}
@@ -24,6 +24,10 @@ key.}
 
 \item{customerId}{An AWS Marketplace customer identifier , when integrating with the AWS
 SaaS Marketplace.}
+
+\item{tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with \code{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
 Create an ApiKey resource.
@@ -46,7 +50,10 @@ Create an ApiKey resource.
       stageName = "string"
     )
   ),
-  customerId = "string"
+  customerId = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

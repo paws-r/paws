@@ -9,7 +9,7 @@ mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
   StatusUpdateInterval, UserMetadata)
 }
 \arguments{
-\item{AccelerationSettings}{This is a beta feature. If you are interested in using this feature, please contact AWS customer support.}
+\item{AccelerationSettings}{Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
 
 \item{BillingTagsSource}{Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.}
 
@@ -258,6 +258,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
               )
             ),
             Encryption = list(
+              PlaybackDeviceCompatibility = "CENC_V1"|"UNENCRYPTED_SEI",
               SpekeKeyProvider = list(
                 CertificateArn = "string",
                 ResourceId = "string",

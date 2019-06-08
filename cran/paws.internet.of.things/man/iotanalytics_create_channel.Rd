@@ -4,10 +4,13 @@
 \alias{iotanalytics_create_channel}
 \title{Creates a channel}
 \usage{
-iotanalytics_create_channel(channelName, retentionPeriod, tags)
+iotanalytics_create_channel(channelName, channelStorage,
+  retentionPeriod, tags)
 }
 \arguments{
 \item{channelName}{[required] The name of the channel.}
+
+\item{channelStorage}{Where channel data is stored.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the channel.}
 
@@ -21,6 +24,14 @@ pipeline.
 \section{Request syntax}{
 \preformatted{svc$create_channel(
   channelName = "string",
+  channelStorage = list(
+    serviceManagedS3 = list(),
+    customerManagedS3 = list(
+      bucket = "string",
+      keyPrefix = "string",
+      roleArn = "string"
+    )
+  ),
   retentionPeriod = list(
     unlimited = TRUE|FALSE,
     numberOfDays = 123

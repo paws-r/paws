@@ -44,6 +44,7 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training \cr
 \link[=comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted \cr
 \link[=comprehend_list_sentiment_detection_jobs]{list_sentiment_detection_jobs} \tab Gets a list of sentiment detection jobs that you have submitted \cr
+\link[=comprehend_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with a given Amazon Comprehend resource \cr
 \link[=comprehend_list_topics_detection_jobs]{list_topics_detection_jobs} \tab Gets a list of the topic detection jobs that you have submitted \cr
 \link[=comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job \cr
 \link[=comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents \cr
@@ -56,7 +57,9 @@ expressed in them, the predominant language used, and more.
 \link[=comprehend_stop_key_phrases_detection_job]{stop_key_phrases_detection_job} \tab Stops a key phrases detection job in progress \cr
 \link[=comprehend_stop_sentiment_detection_job]{stop_sentiment_detection_job} \tab Stops a sentiment detection job in progress \cr
 \link[=comprehend_stop_training_document_classifier]{stop_training_document_classifier} \tab Stops a document classifier training job while in progress \cr
-\link[=comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress
+\link[=comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress \cr
+\link[=comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource \cr
+\link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource
 }
 }
 

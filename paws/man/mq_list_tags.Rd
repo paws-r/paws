@@ -7,7 +7,7 @@
 mq_list_tags(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] the Amazon Resource Name (ARN)}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 }
 \description{
 Lists tags for a resource.

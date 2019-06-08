@@ -39,9 +39,8 @@ and \code{PreferredAvailabilityZones}.}
 \item{ReplicasToRemove}{A list of the node ids to remove from the replication group or node
 group (shard).}
 
-\item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is decreased immediately. If
-\code{False}, the number of replica nodes is decreased during the next
-maintenance window.}
+\item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is decreased immediately.
+\code{ApplyImmediately=False} is not currently supported.}
 }
 \description{
 Dynamically decreases the number of replics in a Redis (cluster mode

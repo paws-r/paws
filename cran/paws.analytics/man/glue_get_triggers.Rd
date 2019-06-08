@@ -9,9 +9,9 @@ glue_get_triggers(NextToken, DependentJobName, MaxResults)
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation call.}
 
-\item{DependentJobName}{The name of the job for which to retrieve triggers. The trigger that can
-start this job will be returned, and if there is no such trigger, all
-triggers will be returned.}
+\item{DependentJobName}{The name of the job to retrieve triggers for. The trigger that can start
+this job is returned, and if there is no such trigger, all triggers are
+returned.}
 
 \item{MaxResults}{The maximum size of the response.}
 }

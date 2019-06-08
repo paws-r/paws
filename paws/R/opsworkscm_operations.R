@@ -177,8 +177,8 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' Valid values are `true` or `false`. The default value is `true`.
 #' @param DisableAutomatedBackup Enable or disable scheduled backups. Valid values are `true` or `false`.
 #' The default value is `true`.
-#' @param Engine The configuration management engine to use. Valid values include `Chef`
-#' and `Puppet`.
+#' @param Engine The configuration management engine to use. Valid values include
+#' `ChefAutomate` and `Puppet`.
 #' @param EngineModel The engine model of the server. Valid values in this release include
 #' `Monolithic` for Puppet and `Single` for Chef.
 #' @param EngineVersion The major release version of the engine that you want to use. For a Chef
@@ -188,19 +188,19 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' 
 #' **Attributes accepted in a Chef createServer request:**
 #' 
-#' -   `CHEF_PIVOTAL_KEY`: A base64-encoded RSA public key. The
+#' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
 #'     corresponding private key is required to access the Chef API. When
-#'     no CHEF\\_PIVOTAL\\_KEY is set, a private key is generated and
-#'     returned in the response.
+#'     no CHEF\\_AUTOMATE\\_PIVOTAL\\_KEY is set, a private key is generated
+#'     and returned in the response.
 #' 
-#' -   `CHEF_DELIVERY_ADMIN_PASSWORD`: The password for the administrative
-#'     user in the Chef Automate GUI. The password length is a minimum of
-#'     eight characters, and a maximum of 32. The password can contain
-#'     letters, numbers, and special characters (!/@\\#\\$\%\\^&+=\\_). The
-#'     password must contain at least one lower case letter, one upper case
-#'     letter, one number, and one special character. When no
-#'     CHEF\\_DELIVERY\\_ADMIN\\_PASSWORD is set, one is generated and
-#'     returned in the response.
+#' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
+#'     user in the Chef Automate web-based dashboard. The password length
+#'     is a minimum of eight characters, and a maximum of 32. The password
+#'     can contain letters, numbers, and special characters
+#'     (!/@\\#\\$\%\\^&+=\\_). The password must contain at least one lower case
+#'     letter, one upper case letter, one number, and one special
+#'     character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
+#'     generated and returned in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
 #' 
@@ -213,8 +213,8 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #'     r10k remote opens TCP port 8170.
 #' 
 #' -   `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git
-#'     repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify an SSH URL and
-#'     a PEM-encoded private SSH key.
+#'     repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify a PEM-encoded
+#'     private SSH key.
 #' @param BackupRetentionCount The number of automated backups that you want to keep. Whenever a new
 #' backup is created, AWS OpsWorks CM deletes the oldest backups if this
 #' number is exceeded. The default value is `1`.
@@ -229,9 +229,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL) {
 #' https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml.
 #' This template creates a CloudFormation stack that includes the instance
 #' profile you need.
-#' @param InstanceType &#91;required&#93; The Amazon EC2 instance type to use. For example, `m4.large`.
-#' Recommended instance types include `t2.medium` and greater, `m4.*`, or
-#' `c4.xlarge` and greater.
+#' @param InstanceType &#91;required&#93; The Amazon EC2 instance type to use. For example, `m5.large`.
 #' @param KeyPair The Amazon EC2 key pair to set for the instance. This parameter is
 #' optional; if desired, you may specify this parameter to connect to your
 #' instances by using SSH.
@@ -431,11 +429,9 @@ opsworkscm_delete_server <- function(ServerName) {
 }
 .opsworkscm$operations$delete_server <- opsworkscm_delete_server
 
-#' Describes your account attributes, and creates requests to increase
-#' limits before they are reached or exceeded
+#' Describes your OpsWorks-CM account attributes
 #'
-#' Describes your account attributes, and creates requests to increase
-#' limits before they are reached or exceeded.
+#' Describes your OpsWorks-CM account attributes.
 #' 
 #' This operation is synchronous.
 #'
@@ -827,7 +823,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' @param ServerName &#91;required&#93; The name of the server that you want to restore.
 #' @param InstanceType The type of the instance to create. Valid values must be specified in
 #' the following format: `^(\\[cm\\]\\[34\\]|t2).*` For example,
-#' `m4.large`. Valid values are `t2.medium`, `m4.large`, and `m4.2xlarge`.
+#' `m5.large`. Valid values are `m5.large`, `r5.xlarge`, and `r5.2xlarge`.
 #' If you do not specify this parameter, RestoreServer uses the instance
 #' type from the specified backup.
 #' @param KeyPair The name of the key pair to set on the new EC2 instance. This can be

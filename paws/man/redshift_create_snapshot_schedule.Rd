@@ -17,7 +17,7 @@ characters are allowed for the identifier.}
 
 \item{ScheduleDescription}{The description of the snapshot schedule.}
 
-\item{Tags}{}
+\item{Tags}{An optional set of tags you can use to search for the schedule.}
 
 \item{DryRun}{}
 

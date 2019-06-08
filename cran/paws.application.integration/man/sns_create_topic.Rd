@@ -4,7 +4,7 @@
 \alias{sns_create_topic}
 \title{Creates a topic to which notifications can be published}
 \usage{
-sns_create_topic(Name, Attributes)
+sns_create_topic(Name, Attributes, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the topic you want to create.
@@ -24,12 +24,24 @@ failed deliveries to HTTP/S endpoints.
 subscriptions.
 \item \code{Policy} -- The policy that defines who can access your topic. By
 default, only the topic owner can publish or subscribe to the topic.
+}
+
+The following attribute applies only to
+\href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side-encryption}:
+\itemize{
+\item \code{KmsMasterKeyId} - The ID of an AWS-managed customer master key
+(CMK) for Amazon SNS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
+For more examples, see
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
+in the \emph{AWS Key Management Service API Reference}.
 }}
+
+\item{Tags}{The list of tags to add to a new topic.}
 }
 \description{
 Creates a topic to which notifications can be published. Users can
 create at most 100,000 topics. For more information, see
-\href{http://aws.amazon.com/sns/}{http://aws.amazon.com/sns}. This action is
+\href{http://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. This action is
 idempotent, so if the requester already owns a topic with the specified
 name, that topic's ARN is returned without creating a new topic.
 }
@@ -38,6 +50,12 @@ name, that topic's ARN is returned without creating a new topic.
   Name = "string",
   Attributes = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

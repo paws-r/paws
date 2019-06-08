@@ -721,6 +721,45 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 }
 .workmail$operations$disassociate_member_from_group <- workmail_disassociate_member_from_group
 
+#' Requests a user's mailbox details for a specified organization and user
+#'
+#' Requests a user\'s mailbox details for a specified organization and
+#' user.
+#'
+#' @usage
+#' workmail_get_mailbox_details(OrganizationId, UserId)
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user whose mailbox
+#' details are being requested.
+#' @param UserId &#91;required&#93; The identifier for the user whose mailbox details are being requested.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mailbox_details(
+#'   OrganizationId = "string",
+#'   UserId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_mailbox_details
+workmail_get_mailbox_details <- function(OrganizationId, UserId) {
+  op <- new_operation(
+    name = "GetMailboxDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_mailbox_details_input(OrganizationId = OrganizationId, UserId = UserId)
+  output <- .workmail$get_mailbox_details_output()
+  svc <- .workmail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_mailbox_details <- workmail_get_mailbox_details
+
 #' Creates a paginated call to list the aliases associated with a given
 #' entity
 #'
@@ -1204,6 +1243,48 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
   return(response)
 }
 .workmail$operations$reset_password <- workmail_reset_password
+
+#' Updates a user's current mailbox quota for a specified organization and
+#' user
+#'
+#' Updates a user\'s current mailbox quota for a specified organization and
+#' user.
+#'
+#' @usage
+#' workmail_update_mailbox_quota(OrganizationId, UserId, MailboxQuota)
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user for whom to
+#' update the mailbox quota.
+#' @param UserId &#91;required&#93; The identifer for the user for whom to update the mailbox quota.
+#' @param MailboxQuota &#91;required&#93; The updated mailbox quota, in MB, for the specified user.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_mailbox_quota(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   MailboxQuota = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_mailbox_quota
+workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) {
+  op <- new_operation(
+    name = "UpdateMailboxQuota",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_mailbox_quota_input(OrganizationId = OrganizationId, UserId = UserId, MailboxQuota = MailboxQuota)
+  output <- .workmail$update_mailbox_quota_output()
+  svc <- .workmail$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_mailbox_quota <- workmail_update_mailbox_quota
 
 #' Updates the primary email for a user, group, or resource
 #'

@@ -8,7 +8,9 @@ efs_describe_tags(MaxItems, Marker, FileSystemId)
 }
 \arguments{
 \item{MaxItems}{(Optional) The maximum number of file system tags to return in the
-response. Currently, this number is automatically set to 10.}
+response. Currently, this number is automatically set to 10, and other
+values are ignored. The response is paginated at 10 per page if you have
+more than 10 tags.}
 
 \item{Marker}{(Optional) An opaque pagination token returned from a previous
 \code{DescribeTags} operation (String). If present, it specifies to continue

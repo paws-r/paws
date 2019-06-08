@@ -15,8 +15,8 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lower-case letters or
 digits.}
 
-\item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account from which you
-want to detach the policy. You can get the ID from the ListRoots,
+\item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
+detach the policy from. You can get the ID from the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
@@ -40,14 +40,14 @@ are immediate.
 \details{
 \strong{Note:} Every root, OU, and account must have at least one SCP
 attached. If you want to replace the default \code{FullAWSAccess} policy with
-one that limits the permissions that can be delegated, then you must
-attach the replacement policy before you can remove the default one.
-This is the authorization strategy of
+one that limits the permissions that can be delegated, you must attach
+the replacement policy before you can remove the default one. This is
+the authorization strategy of
 \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist}{whitelisting}.
 If you instead attach a second SCP and leave the \code{FullAWSAccess} SCP
 still attached, and specify \code{"Effect": "Deny"} in the second SCP to
 override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy (or any
-other attached SCP), then you are using the authorization strategy of
+other attached SCP), you're using the authorization strategy of
 \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist}{blacklisting}.
 
 This operation can be called only from the organization's master

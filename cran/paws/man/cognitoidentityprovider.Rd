@@ -40,6 +40,7 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool as an administrator \cr
 \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator \cr
 \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference \cr
+\link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Admin set user password \cr
 \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab Sets all the user settings for a specified user name \cr
 \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event as to whether it was from a valid user \cr
 \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator \cr

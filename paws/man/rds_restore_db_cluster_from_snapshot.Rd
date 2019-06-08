@@ -12,8 +12,8 @@ rds_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot)
 }
 \arguments{
-\item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the
-restored DB cluster can be created in.}
+\item{AvailabilityZones}{Provides the list of Availability Zones (AZs) where instances in the
+restored DB cluster can be created.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the DB snapshot or DB cluster
 snapshot. This parameter isn't case-sensitive.
@@ -87,10 +87,9 @@ key that was used to encrypt the DB snapshot or DB cluster snapshot.
 not encrypted, then the restored DB cluster is not encrypted.
 }}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -127,12 +126,13 @@ parameter group.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{Indicates if the DB cluster should have deletion protection enabled. The
-database can't be deleted when this value is set to true. The default
-is false.}
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can't be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 
-\item{CopyTagsToSnapshot}{True to copy all tags from the restored DB cluster to snapshots of the
-restored DB cluster, and otherwise false. The default is false.}
+\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
+cluster to snapshots of the restored DB cluster. The default is not to
+copy them.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -185,7 +185,8 @@ This action only applies to Aurora DB clusters.
     MinCapacity = 123,
     MaxCapacity = 123,
     AutoPause = TRUE|FALSE,
-    SecondsUntilAutoPause = 123
+    SecondsUntilAutoPause = 123,
+    TimeoutAction = "string"
   ),
   DBClusterParameterGroupName = "string",
   DeletionProtection = TRUE|FALSE,

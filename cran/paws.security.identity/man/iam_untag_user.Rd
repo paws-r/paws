@@ -18,7 +18,7 @@ keys are removed from the specified user.}
 }
 \description{
 Removes the specified tags from the user. For more information about
-tagging, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

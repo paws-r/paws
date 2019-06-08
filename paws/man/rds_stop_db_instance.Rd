@@ -23,7 +23,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide.}
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora clusters, use StopDBCluster instead.
+Aurora clusters, use \code{StopDBCluster} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_db_instance(

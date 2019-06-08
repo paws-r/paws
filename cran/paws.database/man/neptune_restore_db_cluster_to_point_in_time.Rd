@@ -7,7 +7,8 @@
 neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-  VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication)
+  VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
+  DBClusterParameterGroupName)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -19,20 +20,8 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens
 }}
 
-\item{RestoreType}{The type of restore to be performed. You can specify one of the
-following values:
-\itemize{
-\item \code{full-copy} - The new DB cluster is restored as a full copy of the
-source DB cluster.
-\item \code{copy-on-write} - The new DB cluster is restored as a clone of the
-source DB cluster.
-}
-
-Constraints: You can't specify \code{copy-on-write} if the engine version of
-the source DB cluster is earlier than 1.11.
-
-If you don't specify a \code{RestoreType} value, then the new DB cluster is
-restored as a full copy of the source DB cluster.}
+\item{RestoreType}{The type of restore to be performed. The only type of restore currently
+supported is \code{full-copy} (the default).}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
 
@@ -82,7 +71,7 @@ Example: \code{mySubnetgroup}}
 
 \item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster belongs to.}
 
-\item{Tags}{}
+\item{Tags}{The tags to be applied to the restored DB cluster.}
 
 \item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
 from an encrypted DB cluster.
@@ -115,6 +104,15 @@ then the restore request is rejected.}
 accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
+
+\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the new DB
+cluster.
+
+Constraints:
+\itemize{
+\item If supplied, must match the name of an existing
+DBClusterParameterGroup.
+}}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
@@ -154,7 +152,8 @@ completed and the DB cluster is available.
     )
   ),
   KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  DBClusterParameterGroupName = "string"
 )
 }
 }

@@ -20,7 +20,7 @@ All of the rules in the rule set must be represented in this request.
 That is, this API will return an error if the reorder request doesn't
 explicitly position all of the rules.
 
-For information about managing receipt rule sets, see the \href{http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
+For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

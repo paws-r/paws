@@ -9,7 +9,8 @@ glue_batch_stop_job_run(JobName, JobRunIds)
 \arguments{
 \item{JobName}{[required] The name of the job definition for which to stop job runs.}
 
-\item{JobRunIds}{[required] A list of the JobRunIds that should be stopped for that job definition.}
+\item{JobRunIds}{[required] A list of the \code{JobRunIds} that should be stopped for that job
+definition.}
 }
 \description{
 Stops one or more job runs for a specified job definition.

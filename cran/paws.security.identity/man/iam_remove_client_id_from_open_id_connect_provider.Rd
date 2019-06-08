@@ -14,7 +14,7 @@ iam_remove_client_id_from_open_id_connect_provider(
 remove the client ID from. You can get a list of OIDC provider ARNs by
 using the ListOpenIDConnectProviders operation.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{ClientID}{[required] The client ID (also known as audience) to remove from the IAM OIDC

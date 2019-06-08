@@ -4,12 +4,21 @@
 \alias{eks_update_cluster_config}
 \title{Updates an Amazon EKS cluster configuration}
 \usage{
-eks_update_cluster_config(name, resourcesVpcConfig, clientRequestToken)
+eks_update_cluster_config(name, resourcesVpcConfig, logging,
+  clientRequestToken)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to update.}
 
 \item{resourcesVpcConfig}{}
+
+\item{logging}{Enable or disable exporting the Kubernetes control plane logs for your
+cluster to CloudWatch Logs. By default, cluster control plane logs
+aren't exported to CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
+in the \strong{Amazon EKS User Guide} .
+
+CloudWatch Logs ingestion, archive storage, and data scanning rates
+apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.}
 
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
@@ -21,10 +30,23 @@ that you can use to track the status of your cluster update with the
 DescribeUpdate API operation.
 }
 \details{
-Currently, the only cluster configuration changes supported are to
-enable or disable Amazon EKS public and private API server endpoints.
-For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html}{Amazon EKS Cluster Endpoint Access Control}
+You can use this API operation to enable or disable exporting the
+Kubernetes control plane logs for your cluster to CloudWatch Logs. By
+default, cluster control plane logs aren't exported to CloudWatch Logs.
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
 in the \strong{Amazon EKS User Guide} .
+
+CloudWatch Logs ingestion, archive storage, and data scanning rates
+apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+
+You can also use this API operation to enable or disable public and
+private access to your cluster's Kubernetes API server endpoint. By
+default, public access is enabled, and private access is disabled. For
+more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html}{Amazon EKS Cluster Endpoint Access Control}
+in the \strong{Amazon EKS User Guide} .
+
+At this time, you can not update the subnets or security group IDs for
+an existing cluster.
 
 Cluster updates are asynchronous, and they should finish within a few
 minutes. During an update, the cluster status moves to \code{UPDATING} (this
@@ -43,6 +65,16 @@ status transition is eventually consistent). When the update is complete
     ),
     endpointPublicAccess = TRUE|FALSE,
     endpointPrivateAccess = TRUE|FALSE
+  ),
+  logging = list(
+    clusterLogging = list(
+      list(
+        types = list(
+          "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+        ),
+        enabled = TRUE|FALSE
+      )
+    )
   ),
   clientRequestToken = "string"
 )

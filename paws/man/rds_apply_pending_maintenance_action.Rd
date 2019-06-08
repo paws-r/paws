@@ -15,7 +15,7 @@ see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.AR
 
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.
 
-Valid values: \code{system-update}, \code{db-upgrade}}
+Valid values: \code{system-update}, \code{db-upgrade}, \code{hardware-maintenance}}
 
 \item{OptInType}{[required] A value that specifies the type of opt-in request, or undoes an opt-in
 request. An opt-in request of type \code{immediate} can't be undone.

@@ -9,7 +9,9 @@ efs_describe_file_systems(MaxItems, Marker, CreationToken, FileSystemId)
 }
 \arguments{
 \item{MaxItems}{(Optional) Specifies the maximum number of file systems to return in the
-response (integer). Currently, this number is automatically set to 10.}
+response (integer). Currently, this number is automatically set to 10,
+and other values are ignored. The response is paginated at 10 per page
+if you have more than 10 file systems.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous
 \code{DescribeFileSystems} operation (String). If present, specifies to

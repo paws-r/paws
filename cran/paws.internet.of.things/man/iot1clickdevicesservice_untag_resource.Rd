@@ -2,19 +2,19 @@
 % Please edit documentation in R/iot1clickdevicesservice_operations.R
 \name{iot1clickdevicesservice_untag_resource}
 \alias{iot1clickdevicesservice_untag_resource}
-\title{Removes the association of tags from an AWS IoT 1-Click resource}
+\title{Using tag keys, deletes the tags (key/value pairs) associated with the
+specified resource ARN}
 \usage{
 iot1clickdevicesservice_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The AWS IoT 1-Click resource the tags will be removed from. This value
-is an Amazon Resource Name (ARN).}
+\item{ResourceArn}{[required] The ARN of the resource.}
 
-\item{TagKeys}{[required] A list of tag keys. Existing tags of the resource whose keys are members
-of this list will be removed from the AWS IoT 1-Click resource.}
+\item{TagKeys}{[required] A collections of tag keys. For example, {"key1","key2"}}
 }
 \description{
-Removes the association of tags from an AWS IoT 1-Click resource.
+Using tag keys, deletes the tags (key/value pairs) associated with the
+specified resource ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

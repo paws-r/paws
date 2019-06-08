@@ -22,36 +22,28 @@ Region in your AWS configuration file.}
 
 \item{Encrypted}{Specifies whether the destination snapshot should be encrypted. You can
 encrypt a copy of an unencrypted snapshot, but you cannot use it to
-create an unencrypted copy of an encrypted snapshot. Your default CMK
-for EBS is used unless you specify a non-default AWS Key Management
-Service (AWS KMS) CMK using \code{KmsKeyId}. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+create an unencrypted copy of an encrypted snapshot. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{KmsKeyId}{An identifier for the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use when creating the encrypted volume. This
-parameter is only required if you want to use a non-default CMK; if this
-parameter is not specified, the default CMK for EBS is used. If a
-\code{KmsKeyId} is specified, the \code{Encrypted} flag must also be set.
+\item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer
+master key (CMK) to use for Amazon EBS encryption. If this parameter is
+not specified, your AWS managed CMK for EBS is used. If \code{KmsKeyId} is
+specified, the encrypted state must be \code{true}.
 
-The CMK identifier may be provided in any of the following formats:
+You can specify the CMK using any of the following:
 \itemize{
-\item Key ID
-\item Key alias
-\item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
-followed by the region of the CMK, the AWS account ID of the CMK
-owner, the \code{key} namespace, and then the CMK ID. For example,
+\item Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+\item Key alias. For example, alias/ExampleAlias.
+\item Key ARN. For example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
-\item ARN using key alias. The alias ARN contains the \code{arn:aws:kms}
-namespace, followed by the region of the CMK, the AWS account ID of
-the CMK owner, the \code{alias} namespace, and then the CMK alias. For
-example,
+\item Alias ARN. For example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
 }
 
-AWS parses \code{KmsKeyId} asynchronously, meaning that the action you call
-may appear to complete even though you provided an invalid identifier.
-The action will eventually fail.}
+AWS authenticates the CMK asynchronously. Therefore, if you specify an
+ID, alias, or ARN that is not valid, the action can appear to complete,
+but eventually fails.}
 
 \item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query
 API, you must supply a pre-signed URL. This parameter is optional for
@@ -80,16 +72,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 S3. You can copy the snapshot within the same Region or from one Region
 to another. You can use the snapshot to create EBS volumes or Amazon
-Machine Images (AMIs). The snapshot is copied to the regional endpoint
-that you send the HTTP request to.
+Machine Images (AMIs).
 }
 \details{
 Copies of encrypted EBS snapshots remain encrypted. Copies of
-unencrypted snapshots remain unencrypted, unless the \code{Encrypted} flag is
-specified during the snapshot copy operation. By default, encrypted
-snapshot copies use the default AWS Key Management Service (AWS KMS)
-customer master key (CMK); however, you can specify a non-default CMK
-with the \code{KmsKeyId} parameter.
+unencrypted snapshots remain unencrypted, unless you enable encryption
+for the snapshot copy operation. By default, encrypted snapshot copies
+use the default AWS Key Management Service (AWS KMS) customer master key
+(CMK); however, you can specify a different CMK.
 
 To copy an encrypted snapshot that has been shared from another account,
 you must have permissions for the CMK used to encrypt the snapshot.

@@ -6,15 +6,14 @@
 \usage{
 kinesisanalyticsv2_create_application(ApplicationName,
   ApplicationDescription, RuntimeEnvironment, ServiceExecutionRole,
-  ApplicationConfiguration, CloudWatchLoggingOptions)
+  ApplicationConfiguration, CloudWatchLoggingOptions, Tags)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of your application (for example, \code{sample-app}).}
 
 \item{ApplicationDescription}{A summary description of the application.}
 
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or
-\code{JAVA-8-FLINK-1.5}).}
+\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \code{FLINK-1_6}).}
 
 \item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
@@ -24,15 +23,16 @@ external resources.}
 
 \item{CloudWatchLoggingOptions}{Use this parameter to configure an Amazon CloudWatch log stream to
 monitor application configuration errors.}
+
+\item{Tags}{A list of one or more tags to assign to the application. A tag is a
+key-value pair that identifies an application. Note that the maximum
+number of application tags includes system tags. The maximum number of
+user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management Guide}.}
 }
 \description{
 Creates an Amazon Kinesis Data Analytics application. For information
-about creating a Kinesis Data Analytics application, see Creating an
-Application.
-}
-\details{
-SQL is not enabled for this private beta release. Using SQL parameters
-(such as SqlApplicationConfiguration) will result in an error.
+about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_application(
@@ -180,6 +180,12 @@ SQL is not enabled for this private beta release. Using SQL parameters
   CloudWatchLoggingOptions = list(
     list(
       LogStreamARN = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

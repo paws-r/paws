@@ -20,6 +20,8 @@ size of the Spot Fleet.}
 Modifies the specified Spot Fleet request.
 }
 \details{
+You can only modify a Spot Fleet request of type \code{maintain}.
+
 While the Spot Fleet request is being modified, it is in the \code{modifying}
 state.
 

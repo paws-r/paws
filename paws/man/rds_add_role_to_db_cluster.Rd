@@ -5,7 +5,7 @@
 \title{Associates an Identity and Access Management (IAM) role from an Amazon
 Aurora DB cluster}
 \usage{
-rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
+rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn, FeatureName)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to associate the IAM role with.}
@@ -13,6 +13,10 @@ rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn)
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with the
 Aurora DB cluster, for example
 \code{arn:aws:iam::123456789012:role/AuroraAccessRole}.}
+
+\item{FeatureName}{The name of the feature for the DB cluster that the IAM role is to be
+associated with. For the list of supported feature names, see
+DBEngineVersion.}
 }
 \description{
 Associates an Identity and Access Management (IAM) role from an Amazon
@@ -25,7 +29,8 @@ This action only applies to Aurora DB clusters.
 \section{Request syntax}{
 \preformatted{svc$add_role_to_db_cluster(
   DBClusterIdentifier = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  FeatureName = "string"
 )
 }
 }

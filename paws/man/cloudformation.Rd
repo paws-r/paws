@@ -26,7 +26,7 @@ For more information about AWS CloudFormation, see the \href{http://aws.amazon.c
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
 find the product's technical documentation at
-\href{http://docs.aws.amazon.com/}{docs.aws.amazon.com}.
+\href{https://docs.aws.amazon.com/}{docs.aws.amazon.com}.
 }
 \section{Operations}{
 

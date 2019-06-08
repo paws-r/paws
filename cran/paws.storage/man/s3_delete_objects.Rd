@@ -19,7 +19,7 @@ space, and the value that is displayed on your authentication device.}
 \item{RequestPayer}{}
 
 \item{BypassGovernanceRetention}{Specifies whether you want to delete this object even if it has a
-Governance-type Object Lock in place. You must have sufficient
+Governance-type object lock in place. You must have sufficient
 permissions to perform this operation.}
 }
 \description{

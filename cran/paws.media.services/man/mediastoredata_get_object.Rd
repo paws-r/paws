@@ -34,11 +34,15 @@ MediaStore, or it can have the same name. The file name can include or
 omit an extension.}
 
 \item{Range}{The range bytes of an object to retrieve. For more information about the
-\code{Range} header, go to
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}.}
+\code{Range} header, see
+\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}. AWS
+Elemental MediaStore ignores this header for partially uploaded objects
+that have streaming upload availability.}
 }
 \description{
-Downloads the object at the specified path.
+Downloads the object at the specified path. If the object's upload
+availability is set to \code{streaming}, AWS Elemental MediaStore downloads
+the object even if it's still uploading the object.
 }
 \section{Request syntax}{
 \preformatted{svc$get_object(

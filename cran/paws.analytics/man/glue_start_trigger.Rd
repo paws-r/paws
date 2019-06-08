@@ -10,7 +10,7 @@ glue_start_trigger(Name)
 \item{Name}{[required] The name of the trigger to start.}
 }
 \description{
-Starts an existing trigger. See \href{http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html}{Triggering Jobs} for
+Starts an existing trigger. See \href{https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html}{Triggering Jobs} for
 information about how different types of trigger are started.
 }
 \section{Request syntax}{

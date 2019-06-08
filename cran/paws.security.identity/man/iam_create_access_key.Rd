@@ -26,7 +26,7 @@ can use this operation to manage AWS account root user credentials. This
 is true even if the AWS account has no associated users.
 
 For information about limits on the number of keys you can create, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 
 To ensure the security of your AWS account, the secret access key is

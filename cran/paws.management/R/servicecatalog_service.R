@@ -21,6 +21,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=servicecatalog_accept_portfolio_share]{accept_portfolio_share} \tab Accepts an offer to share the specified portfolio \cr
+#'  \link[=servicecatalog_associate_budget_with_resource]{associate_budget_with_resource} \tab Associates the specified budget with the specified resource \cr
 #'  \link[=servicecatalog_associate_principal_with_portfolio]{associate_principal_with_portfolio} \tab Associates the specified principal ARN with the specified portfolio \cr
 #'  \link[=servicecatalog_associate_product_with_portfolio]{associate_product_with_portfolio} \tab Associates the specified product with the specified portfolio \cr
 #'  \link[=servicecatalog_associate_service_action_with_provisioning_artifact]{associate_service_action_with_provisioning_artifact} \tab Associates a self-service action with a provisioning artifact \cr
@@ -59,6 +60,7 @@ NULL
 #'  \link[=servicecatalog_describe_service_action]{describe_service_action} \tab Describes a self-service action \cr
 #'  \link[=servicecatalog_describe_tag_option]{describe_tag_option} \tab Gets information about the specified TagOption \cr
 #'  \link[=servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access} \tab Disable portfolio sharing through AWS Organizations feature \cr
+#'  \link[=servicecatalog_disassociate_budget_from_resource]{disassociate_budget_from_resource} \tab Disassociates the specified budget from the specified resource \cr
 #'  \link[=servicecatalog_disassociate_principal_from_portfolio]{disassociate_principal_from_portfolio} \tab Disassociates a previously associated principal ARN from a specified portfolio \cr
 #'  \link[=servicecatalog_disassociate_product_from_portfolio]{disassociate_product_from_portfolio} \tab Disassociates the specified product from the specified portfolio \cr
 #'  \link[=servicecatalog_disassociate_service_action_from_provisioning_artifact]{disassociate_service_action_from_provisioning_artifact} \tab Disassociates the specified self-service action association from the specified provisioning artifact \cr
@@ -68,6 +70,7 @@ NULL
 #'  \link[=servicecatalog_execute_provisioned_product_service_action]{execute_provisioned_product_service_action} \tab Executes a self-service action against a provisioned product \cr
 #'  \link[=servicecatalog_get_aws_organizations_access_status]{get_aws_organizations_access_status} \tab Get the Access Status for AWS Organization portfolio share feature \cr
 #'  \link[=servicecatalog_list_accepted_portfolio_shares]{list_accepted_portfolio_shares} \tab Lists all portfolios for which sharing was accepted by this account \cr
+#'  \link[=servicecatalog_list_budgets_for_resource]{list_budgets_for_resource} \tab Lists all the budgets associated to the specified resource \cr
 #'  \link[=servicecatalog_list_constraints_for_portfolio]{list_constraints_for_portfolio} \tab Lists the constraints for the specified portfolio and product \cr
 #'  \link[=servicecatalog_list_launch_paths]{list_launch_paths} \tab Lists the paths to the specified product \cr
 #'  \link[=servicecatalog_list_organization_portfolio_access]{list_organization_portfolio_access} \tab Lists the organization nodes that have access to the specified portfolio \cr
@@ -82,6 +85,7 @@ NULL
 #'  \link[=servicecatalog_list_resources_for_tag_option]{list_resources_for_tag_option} \tab Lists the resources associated with the specified TagOption \cr
 #'  \link[=servicecatalog_list_service_actions]{list_service_actions} \tab Lists all self-service actions \cr
 #'  \link[=servicecatalog_list_service_actions_for_provisioning_artifact]{list_service_actions_for_provisioning_artifact} \tab Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID \cr
+#'  \link[=servicecatalog_list_stack_instances_for_provisioned_product]{list_stack_instances_for_provisioned_product} \tab Returns summary information about stack instances that are associated with the specified CFN_STACKSET type provisioned product\cr
 #'  \link[=servicecatalog_list_tag_options]{list_tag_options} \tab Lists the specified TagOptions or all TagOptions \cr
 #'  \link[=servicecatalog_provision_product]{provision_product} \tab Provisions the specified product \cr
 #'  \link[=servicecatalog_reject_portfolio_share]{reject_portfolio_share} \tab Rejects an offer to share the specified portfolio \cr
@@ -94,6 +98,7 @@ NULL
 #'  \link[=servicecatalog_update_portfolio]{update_portfolio} \tab Updates the specified portfolio \cr
 #'  \link[=servicecatalog_update_product]{update_product} \tab Updates the specified product \cr
 #'  \link[=servicecatalog_update_provisioned_product]{update_provisioned_product} \tab Requests updates to the configuration of the specified provisioned product \cr
+#'  \link[=servicecatalog_update_provisioned_product_properties]{update_provisioned_product_properties} \tab Requests updates to the properties of the specified provisioned product \cr
 #'  \link[=servicecatalog_update_provisioning_artifact]{update_provisioning_artifact} \tab Updates the specified provisioning artifact (also known as a version) for the specified product \cr
 #'  \link[=servicecatalog_update_service_action]{update_service_action} \tab Updates a self-service action \cr
 #'  \link[=servicecatalog_update_tag_option]{update_tag_option} \tab Updates the specified TagOption 

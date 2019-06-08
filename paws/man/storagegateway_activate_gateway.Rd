@@ -56,7 +56,7 @@ gateway. This field is optional.
 
 Valid Values: "STK-L700", "AWS-Gateway-VTL"}
 
-\item{Tags}{A list of up to 10 tags that can be assigned to the gateway. Each tag is
+\item{Tags}{A list of up to 50 tags that can be assigned to the gateway. Each tag is
 a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers

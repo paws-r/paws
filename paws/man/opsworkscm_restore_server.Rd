@@ -14,7 +14,7 @@ opsworkscm_restore_server(BackupId, ServerName, InstanceType, KeyPair)
 
 \item{InstanceType}{The type of the instance to create. Valid values must be specified in
 the following format: \code{^(\\[cm\\]\\[34\\]|t2).*} For example,
-\code{m4.large}. Valid values are \code{t2.medium}, \code{m4.large}, and \code{m4.2xlarge}.
+\code{m5.large}. Valid values are \code{m5.large}, \code{r5.xlarge}, and \code{r5.2xlarge}.
 If you do not specify this parameter, RestoreServer uses the instance
 type from the specified backup.}
 

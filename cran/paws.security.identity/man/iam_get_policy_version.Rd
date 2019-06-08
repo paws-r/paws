@@ -11,7 +11,7 @@ iam_get_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the managed policy that you want
 information about.
 
-For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
@@ -38,10 +38,10 @@ This API retrieves information about managed policies. To retrieve
 information about an inline policy that is embedded in a user, group, or
 role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
 
-For more information about the types of policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about the types of policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
-For more information about managed policy versions, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

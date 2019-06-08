@@ -2,15 +2,17 @@
 % Please edit documentation in R/textract_operations.R
 \name{textract_analyze_document}
 \alias{textract_analyze_document}
-\title{Analyzes an input document for relationships in the detected text and
-tables}
+\title{Analyzes an input document for relationships between detected items}
 \usage{
 textract_analyze_document(Document, FeatureTypes)
 }
 \arguments{
 \item{Document}{[required] The input document as base64-encoded bytes or an Amazon S3 object. If
 you use the AWS CLI to call Amazon Textract operations, you can't pass
-image bytes. The document must be an image in JPG or PNG format.}
+image bytes. The document must be an image in JPG or PNG format.
+
+If you are using an AWS SDK to call Amazon Textract, you might not need
+to base64-encode image bytes passed using the \code{Bytes} field.}
 
 \item{FeatureTypes}{[required] A list of the types of analysis to perform. Add TABLES to the list to
 return information about the tables detected in the input document. Add
@@ -18,29 +20,35 @@ FORMS to return detected fields and the associated text. To perform both
 types of analysis, add TABLES and FORMS to \code{FeatureTypes}.}
 }
 \description{
-Analyzes an input document for relationships in the detected text and
-tables.
+Analyzes an input document for relationships between detected items.
 }
 \details{
-Two types of information are returned:
+The types of information returned are as follows:
 \itemize{
 \item Words and lines that are related to nearby lines and words. The
-related information is returned in two Block objects: a KEY Block
-object and a VALUE Block object. For example, \emph{Name: Ana Silva
-Carolina} contains a key and value. \emph{Name:} is the key. \emph{Ana Silva
-Carolina} is the value.
-\item Table and table cell data. A TABLE Block contains information about
-a detected table. A CELL block is returned for each cell in a table.
+related information is returned in two Block objects each of type
+\code{KEY_VALUE_SET}: a KEY Block object and a VALUE Block object. For
+example, \emph{Name: Ana Silva Carolina} contains a key and value.
+\emph{Name:} is the key. \emph{Ana Silva Carolina} is the value.
+\item Table and table cell data. A TABLE Block object contains information
+about a detected table. A CELL Block object is returned for each
+cell in a table.
+\item Selectable elements such as checkboxes and radio buttons. A
+SELECTION\_ELEMENT Block object contains information about a
+selectable element.
+\item Lines and words of text. A LINE Block object contains one or more
+WORD Block objects.
 }
 
 You can choose which type of analysis to perform by specifying the
 \code{FeatureTypes} list.
 
-The output is returned in a list of \code{BLOCK} objects (Blocks). For more
-information, see how-it-works-analyzing.
+The output is returned in a list of \code{BLOCK} objects.
 
 \code{AnalyzeDocument} is a synchronous operation. To analyze documents
 asynchronously, use StartDocumentAnalysis.
+
+For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }
 \section{Request syntax}{
 \preformatted{svc$analyze_document(

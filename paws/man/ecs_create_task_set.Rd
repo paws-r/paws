@@ -30,7 +30,7 @@ task set. The supported load balancer types are either an Application
 Load Balancer or a Network Load Balancer.}
 
 \item{serviceRegistries}{The details of the service discovery registries to assign to this task
-set. For more information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.}
+set. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html}{Service Discovery}.}
 
 \item{launchType}{The launch type that new tasks in the task set will use. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS Launch Types}
@@ -49,7 +49,7 @@ idempotency of the request. Up to 32 ASCII characters are allowed.}
 \description{
 Create a task set in the specified cluster and service. This is used
 when a service uses the \code{EXTERNAL} deployment controller type. For more
-information, see \href{http://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

@@ -4,14 +4,15 @@
 \alias{guardduty_accept_invitation}
 \title{Accepts the invitation to be monitored by a master GuardDuty account}
 \usage{
-guardduty_accept_invitation(DetectorId, InvitationId, MasterId)
+guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 
-\item{InvitationId}{[required] This value is used to validate the master account to the member account.}
+\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you're
+accepting.}
 
-\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you're accepting.}
+\item{InvitationId}{[required] This value is used to validate the master account to the member account.}
 }
 \description{
 Accepts the invitation to be monitored by a master GuardDuty account.
@@ -19,8 +20,8 @@ Accepts the invitation to be monitored by a master GuardDuty account.
 \section{Request syntax}{
 \preformatted{svc$accept_invitation(
   DetectorId = "string",
-  InvitationId = "string",
-  MasterId = "string"
+  MasterId = "string",
+  InvitationId = "string"
 )
 }
 }

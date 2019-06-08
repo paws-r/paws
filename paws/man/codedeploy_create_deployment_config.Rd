@@ -32,8 +32,8 @@ FLEET\_PERCENT and a value of 95.}
 
 \item{trafficRoutingConfig}{The configuration that specifies how the deployment traffic is routed.}
 
-\item{computePlatform}{The destination platform type for the deployment (\code{Lambda} or
-\code{Server}\>).}
+\item{computePlatform}{The destination platform type for the deployment (\code{Lambda}, \code{Server}, or
+\code{ECS}).}
 }
 \description{
 Creates a deployment configuration.

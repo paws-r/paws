@@ -14,9 +14,7 @@ sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
 If you don't specify a value for the \code{TopicArn} parameter, you must
 specify a value for the \code{PhoneNumber} or \code{TargetArn} parameters.}
 
-\item{TargetArn}{Either TopicArn or EndpointArn, but not both.
-
-If you don't specify a value for the \code{TargetArn} parameter, you must
+\item{TargetArn}{If you don't specify a value for the \code{TargetArn} parameter, you must
 specify a value for the \code{PhoneNumber} or \code{TopicArn} parameters.}
 
 \item{PhoneNumber}{The phone number to which you want to deliver an SMS message. Use E.164
@@ -98,7 +96,7 @@ You can define other top-level keys that define the message you want to
 send to a specific transport protocol (e.g., "http").
 
 For information about sending different messages for each protocol using
-the AWS Management Console, go to \href{http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol}{Create Different Messages for Each Protocol}
+the AWS Management Console, go to \href{https://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol}{Create Different Messages for Each Protocol}
 in the \emph{Amazon Simple Notification Service Getting Started Guide}.
 
 Valid value: \code{json}}
@@ -122,7 +120,7 @@ such as an app on a Kindle device or mobile phone, you must specify the
 EndpointArn for the TargetArn parameter. The EndpointArn is returned
 when making a call with the \code{CreatePlatformEndpoint} action.
 
-For more information about formatting messages, see \href{http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
+For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
 }
 \section{Request syntax}{
 \preformatted{svc$publish(

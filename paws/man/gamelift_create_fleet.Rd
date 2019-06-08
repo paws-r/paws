@@ -4,8 +4,8 @@
 \alias{gamelift_create_fleet}
 \title{Creates a new fleet to run your game servers}
 \usage{
-gamelift_create_fleet(Name, Description, BuildId, ServerLaunchPath,
-  ServerLaunchParameters, LogPaths, EC2InstanceType,
+gamelift_create_fleet(Name, Description, BuildId, ScriptId,
+  ServerLaunchPath, ServerLaunchParameters, LogPaths, EC2InstanceType,
   EC2InboundPermissions, NewGameSessionProtectionPolicy,
   RuntimeConfiguration, ResourceCreationLimitPolicy, MetricGroups,
   PeerVpcAwsAccountId, PeerVpcId, FleetType, InstanceRoleArn)
@@ -16,9 +16,14 @@ need to be unique.}
 
 \item{Description}{Human-readable description of a fleet.}
 
-\item{BuildId}{[required] Unique identifier for a build to be deployed on the new fleet. The build
-must have been successfully uploaded to Amazon GameLift and be in a
-\code{READY} status. This fleet setting cannot be changed once the fleet is
+\item{BuildId}{Unique identifier for a build to be deployed on the new fleet. The
+custom game server build must have been successfully uploaded to Amazon
+GameLift and be in a \code{READY} status. This fleet setting cannot be
+changed once the fleet is created.}
+
+\item{ScriptId}{Unique identifier for a Realtime script to be deployed on the new fleet.
+The Realtime script must have been successfully uploaded to Amazon
+GameLift. This fleet setting cannot be changed once the fleet is
 created.}
 
 \item{ServerLaunchPath}{This parameter is no longer used. Instead, specify a server launch path
@@ -43,10 +48,12 @@ Amazon GameLift supports the following EC2 instance types. See \href{http://aws.
 detailed descriptions.}
 
 \item{EC2InboundPermissions}{Range of IP addresses and port settings that permit inbound traffic to
-access server processes running on the fleet. If no inbound permissions
-are set, including both IP address range and port range, the server
-processes in the fleet cannot accept connections. You can specify one or
-more sets of permissions for a fleet.}
+access game sessions that running on the fleet. For fleets using a
+custom game build, this parameter is required before game sessions
+running on the fleet can accept connections. For Realtime Servers
+fleets, Amazon GameLift automatically sets TCP and UDP ranges for use by
+the Realtime servers. You can specify multiple permission settings or
+add more by updating the fleet.}
 
 \item{NewGameSessionProtectionPolicy}{Game session protection policy to apply to all instances in this fleet.
 If this parameter is not set, instances in this fleet default to no
@@ -62,17 +69,13 @@ it cannot be terminated during a scale-down event.
 }}
 
 \item{RuntimeConfiguration}{Instructions for launching server processes on each instance in the
-fleet. The run-time configuration for a fleet has a collection of server
-process configurations, one for each type of server process to run on an
-instance. A server process configuration specifies the location of the
-server executable, launch parameters, and the number of concurrent
-processes with that configuration to maintain on each instance. A
-CreateFleet request must include a run-time configuration with at least
-one server process configuration; otherwise the request fails with an
-invalid request exception. (This parameter replaces the parameters
-\code{ServerLaunchPath} and \code{ServerLaunchParameters}; requests that contain
-values for these parameters instead of a run-time configuration will
-continue to work.)}
+fleet. Server processes run either a custom game build executable or a
+Realtime Servers script. The run-time configuration lists the types of
+server processes to run on an instance and includes the following
+configuration settings: the server executable or launch script file,
+launch parameters, and the number of processes to run concurrently on
+each instance. A CreateFleet request must include a run-time
+configuration with at least one server process configuration.}
 
 \item{ResourceCreationLimitPolicy}{Policy that limits the number of game sessions an individual player can
 create over a span of time for this fleet.}
@@ -93,34 +96,36 @@ Console. Learn more about VPC peering in \href{https://docs.aws.amazon.com/gamel
 
 \item{FleetType}{Indicates whether to use on-demand instances or spot instances for this
 fleet. If empty, the default is ON\_DEMAND. Both categories of instances
-use identical hardware and configurations, based on the instance type
-selected for this fleet. You can acquire on-demand instances at any time
-for a fixed price and keep them as long as you need them. Spot instances
-have lower prices, but spot pricing is variable, and while in use they
-can be interrupted (with a two-minute notification). Learn more about
-Amazon GameLift spot instances with at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-credentials.html}{Set up Access to External Services}.}
+use identical hardware and configurations based on the instance type
+selected for this fleet. Learn more about \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot}{On-Demand versus Spot Instances}.}
 
 \item{InstanceRoleArn}{Unique identifier for an AWS IAM role that manages access to your AWS
-services. Any application that runs on an instance in this fleet can
-assume the role, including install scripts, server processs, daemons
-(background processes). Create a role or look up a role's ARN using the
-\href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS
-Management Console. Learn more about using on-box credentials for your
-game servers at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html}{Access external resources from a game server}.}
+services. With an instance role ARN set, any application that runs on an
+instance in this fleet can assume the role, including install scripts,
+server processes, daemons (background processes). Create a role or look
+up a role's ARN using the \href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS Management
+Console. Learn more about using on-box credentials for your game servers
+at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html}{Access external resources from a game server}.}
 }
 \description{
-Creates a new fleet to run your game servers. A fleet is a set of Amazon
-Elastic Compute Cloud (Amazon EC2) instances, each of which can run
-multiple server processes to host game sessions. You set up a fleet to
-use instances with certain hardware specifications (see \href{http://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types}), and deploy
-your game build to the fleet.
+Creates a new fleet to run your game servers. whether they are custom
+game builds or Realtime Servers with game-specific script. A fleet is a
+set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of
+which can host multiple game sessions. When creating a fleet, you choose
+the hardware specifications, set some configuration options, and specify
+the game server to deploy on the new fleet.
 }
 \details{
 To create a new fleet, you must provide the following: (1) a fleet name,
-(2) an EC2 instance type, (3) the build ID for your game build, and (4)
-a run-time configuration, which specifies the server processes to run on
-each instance in the fleet. If fleet type is not set, the new fleet will
-use on-demand instances by default.
+(2) an EC2 instance type and fleet type (spot or on-demand), (3) the
+build ID for your game build or script ID if using Realtime Servers, and
+(4) a run-time configuration, which determines how game servers will run
+on each instance in the fleet.
+
+When creating a Realtime Servers fleet, we recommend using a minimal
+version of the Realtime script (see this \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples}{working code example}).
+This will make it much easier to troubleshoot any fleet creation issues.
+Once the fleet is active, you can update your Realtime script as needed.
 
 If the \code{CreateFleet} call is successful, Amazon GameLift performs the
 following tasks. You can track the process of a fleet by checking the
@@ -134,8 +139,8 @@ in the Amazon GameLift console.
 Sets the fleet's target capacity to 1 (desired instances), which
 triggers Amazon GameLift to start one new EC2 instance.
 \itemize{
-\item Downloads the game build to the new instance and installs it.
-Statuses: \code{DOWNLOADING}, \code{VALIDATING}, \code{BUILDING}.
+\item Downloads the game build or Realtime script to the new instance and
+installs it. Statuses: \code{DOWNLOADING}, \code{VALIDATING}, \code{BUILDING}.
 \item Starts launching server processes on the instance. If the fleet is
 configured to run multiple server processes per instance, Amazon
 GameLift staggers each launch by a few seconds. Status:
@@ -146,7 +151,9 @@ is ready to host a game session.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html}{Debug Fleet Creation Issues}
 
 \strong{Related operations}
 \itemize{
@@ -176,6 +183,7 @@ is ready to host a game session.
   Name = "string",
   Description = "string",
   BuildId = "string",
+  ScriptId = "string",
   ServerLaunchPath = "string",
   ServerLaunchParameters = "string",
   LogPaths = list(

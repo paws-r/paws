@@ -8,9 +8,9 @@ ec2_describe_iam_instance_profile_associations(AssociationIds, Filters,
   MaxResults, NextToken)
 }
 \arguments{
-\item{AssociationIds}{One or more IAM instance profile associations.}
+\item{AssociationIds}{The IAM instance profile associations.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{instance-id} - The ID of the instance.
 \item \code{state} - The state of the association (\code{associating} \|

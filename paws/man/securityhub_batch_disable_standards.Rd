@@ -7,7 +7,7 @@
 securityhub_batch_disable_standards(StandardsSubscriptionArns)
 }
 \arguments{
-\item{StandardsSubscriptionArns}{[required] The ARNS of the standards subscriptions that you want to disable.}
+\item{StandardsSubscriptionArns}{[required] The ARNs of the standards subscriptions that you want to disable.}
 }
 \description{
 Disables the standards specified by the standards subscription ARNs. In

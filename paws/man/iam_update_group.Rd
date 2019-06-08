@@ -27,16 +27,16 @@ lowercased letters.}
 \item{NewGroupName}{New name for the IAM group. Only include this if changing the group's
 name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \_+=,.@-}
+IAM user, group, role, and policy names must be unique within the
+account. Names are not distinguished by case. For example, you cannot
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM group.
 }
 \details{
 You should understand the implications of changing a group's path or
-name. For more information, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html}{Renaming Users and Groups}
+name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html}{Renaming Users and Groups}
 in the \emph{IAM User Guide}.
 
 The person making the request (the principal), must have permission to
@@ -45,7 +45,7 @@ to change the group named \code{Managers} to \code{MGRs}, the principal must hav
 a policy that allows them to update both groups. If the principal has
 permission to update the \code{Managers} group, but not the \code{MGRs} group,
 then the update fails. For more information about permissions, see
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Access Management}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_group(

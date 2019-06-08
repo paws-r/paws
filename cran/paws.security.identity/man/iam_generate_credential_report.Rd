@@ -8,7 +8,7 @@ iam_generate_credential_report()
 }
 \description{
 Generates a credential report for the AWS account. For more information
-about the credential report, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html}{Getting Credential Reports}
+about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html}{Getting Credential Reports}
 in the \emph{IAM User Guide}.
 }
 \keyword{internal}
