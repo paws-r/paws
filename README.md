@@ -31,7 +31,11 @@ You'll need to set up your AWS credentials and region. Paws supports R
 and OS environment variables, AWS credential files, and IAM roles.
 See [docs/credentials.md](docs/credentials.md) for more info.
 
-In this example, we set them with R environment variables.
+In the example below, we set them with R environment variables.
+
+Warning: Do not save your credentials in your R code files! You might
+accidentally upload them to GitHub and that would be bad. Use one
+of the other methods above instead.
 
 ``` r
 Sys.setenv(
