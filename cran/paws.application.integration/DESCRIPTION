@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: Amazon Web Services Application Integration APIs
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
