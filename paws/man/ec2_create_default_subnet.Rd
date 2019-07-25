@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a default subnet with a size \code{/20} IPv4 CIDR block in the
 specified Availability Zone in your default VPC. You can have only one
 default subnet per Availability Zone. For more information, see
-\href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet}{Creating a Default Subnet}
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Creating a Default Subnet}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

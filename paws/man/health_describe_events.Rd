@@ -87,7 +87,7 @@ are sorted by \code{lastModifiedTime}, starting with the most recent.
       "string"
     ),
     eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"
+      "issue"|"accountNotification"|"scheduledChange"|"investigation"
     ),
     tags = list(
       list(

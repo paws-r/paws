@@ -16,19 +16,10 @@ NULL
 #' for the other.
 #' 
 #' Tagging can help you organize your resources and enables you to simplify
-#' resource management, access management and cost allocation. For more
-#' information about tagging, see [Working with Tag
-#' Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html)
-#' and [Working with Resource
-#' Groups](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html).
-#' For more information about permissions you need to use the resource
-#' groups tagging APIs, see [Obtaining Permissions for Resource
-#' Groups](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html)
-#' and [Obtaining Permissions for
-#' Tagging](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html).
+#' resource management, access management and cost allocation.
 #' 
-#' You can use the resource groups tagging APIs to complete the following
-#' tasks:
+#' You can use the resource groups tagging API operations to complete the
+#' following tasks:
 #' 
 #' -   Tag and untag supported resources located in the specified region
 #'     for the AWS account
@@ -42,17 +33,175 @@ NULL
 #' -   List all existing values for the specified key in the specified
 #'     region for the AWS account
 #' 
-#' Not all resources can have tags. For a lists of resources that you can
-#' tag, see [Supported
-#' Resources](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
-#' in the *AWS Resource Groups and Tag Editor User Guide*.
+#' To make full use of the resource groups tagging API operations, you
+#' might need additional IAM permissions, including permission to access
+#' the resources of individual services as well as permission to view and
+#' apply tags to those resources. For more information, see [Obtaining
+#' Permissions for Resource Groups and Tag
+#' Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
 #' 
-#' To make full use of the resource groups tagging APIs, you might need
-#' additional IAM permissions, including permission to access the resources
-#' of individual services as well as permission to view and apply tags to
-#' those resources. For more information, see [Obtaining Permissions for
-#' Tagging](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-#' in the *AWS Resource Groups and Tag Editor User Guide*.
+#' You can use the Resource Groups Tagging API to tag resources for the
+#' following AWS services.
+#' 
+#' -   Alexa for Business (a4b)
+#' 
+#' -   API Gateway
+#' 
+#' -   AWS AppStream
+#' 
+#' -   AWS AppSync
+#' 
+#' -   Amazon Athena
+#' 
+#' -   Amazon Aurora
+#' 
+#' -   AWS Certificate Manager
+#' 
+#' -   AWS Certificate Manager Private CA
+#' 
+#' -   Amazon Cloud Directory
+#' 
+#' -   AWS CloudFormation
+#' 
+#' -   Amazon CloudFront
+#' 
+#' -   AWS CloudHSM
+#' 
+#' -   AWS CloudTrail
+#' 
+#' -   Amazon CloudWatch (alarms only)
+#' 
+#' -   Amazon CloudWatch Events
+#' 
+#' -   Amazon CloudWatch Logs
+#' 
+#' -   AWS CodeBuild
+#' 
+#' -   AWS CodeStar
+#' 
+#' -   Amazon Cognito Identity
+#' 
+#' -   Amazon Cognito User Pools
+#' 
+#' -   Amazon Comprehend
+#' 
+#' -   AWS Config
+#' 
+#' -   AWS Data Pipeline
+#' 
+#' -   AWS Database Migration Service
+#' 
+#' -   AWS Datasync
+#' 
+#' -   AWS Direct Connect
+#' 
+#' -   AWS Directory Service
+#' 
+#' -   Amazon DynamoDB
+#' 
+#' -   Amazon EBS
+#' 
+#' -   Amazon EC2
+#' 
+#' -   Amazon ECR
+#' 
+#' -   Amazon ECS
+#' 
+#' -   AWS Elastic Beanstalk
+#' 
+#' -   Amazon Elastic File System
+#' 
+#' -   Elastic Load Balancing
+#' 
+#' -   Amazon ElastiCache
+#' 
+#' -   Amazon Elasticsearch Service
+#' 
+#' -   AWS Elemental MediaLive
+#' 
+#' -   AWS Elemental MediaPackage
+#' 
+#' -   AWS Elemental MediaTailor
+#' 
+#' -   Amazon EMR
+#' 
+#' -   Amazon FSx
+#' 
+#' -   Amazon Glacier
+#' 
+#' -   AWS Glue
+#' 
+#' -   Amazon Inspector
+#' 
+#' -   AWS IoT Analytics
+#' 
+#' -   AWS IoT Core
+#' 
+#' -   AWS IoT Device Defender
+#' 
+#' -   AWS IoT Device Management
+#' 
+#' -   AWS IoT Greengrass
+#' 
+#' -   AWS Key Management Service
+#' 
+#' -   Amazon Kinesis
+#' 
+#' -   Amazon Kinesis Data Analytics
+#' 
+#' -   Amazon Kinesis Data Firehose
+#' 
+#' -   AWS Lambda
+#' 
+#' -   AWS License Manager
+#' 
+#' -   Amazon Machine Learning
+#' 
+#' -   Amazon MQ
+#' 
+#' -   Amazon MSK
+#' 
+#' -   Amazon Neptune
+#' 
+#' -   AWS OpsWorks
+#' 
+#' -   Amazon RDS
+#' 
+#' -   Amazon Redshift
+#' 
+#' -   AWS Resource Access Manager
+#' 
+#' -   AWS Resource Groups
+#' 
+#' -   AWS RoboMaker
+#' 
+#' -   Amazon Route 53
+#' 
+#' -   Amazon Route 53 Resolver
+#' 
+#' -   Amazon S3 (buckets only)
+#' 
+#' -   Amazon SageMaker
+#' 
+#' -   AWS Secrets Manager
+#' 
+#' -   AWS Service Catalog
+#' 
+#' -   Amazon Simple Notification Service (SNS)
+#' 
+#' -   Amazon Simple Queue Service (SQS)
+#' 
+#' -   AWS Simple System Manager (SSM)
+#' 
+#' -   AWS Step Functions
+#' 
+#' -   AWS Storage Gateway
+#' 
+#' -   AWS Transfer for SFTP
+#' 
+#' -   Amazon VPC
+#' 
+#' -   Amazon WorkSpaces
 #'
 #' @examples
 #' \donttest{svc <- resourcegroupstaggingapi()
@@ -62,7 +211,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged resources that are associated with the specified tags (keys and values) located in the specified region for the AWS account\cr
+#'  \link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified region for the AWS account\cr
 #'  \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified region for the AWS account \cr
 #'  \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified region for the AWS account \cr
 #'  \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources \cr

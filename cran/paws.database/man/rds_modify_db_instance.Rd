@@ -17,7 +17,7 @@ rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   CloudwatchLogsExportConfiguration, ProcessorFeatures,
-  UseDefaultProcessorFeatures, DeletionProtection)
+  UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -144,9 +144,9 @@ been accidentally revoked.}
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
 this setting doesn't result in an outage. The parameter group name
 itself is changed immediately, but the actual parameter changes are not
-applied until you reboot the instance without failover. The DB instance
-will NOT be rebooted automatically and the parameter changes will NOT be
-applied during the next maintenance window.
+applied until you reboot the instance without failover. In this case,
+the DB instance isn't rebooted automatically and the parameter changes
+isn't applied during the next maintenance window.
 
 Default: Uses existing setting
 
@@ -507,6 +507,9 @@ uses its default processor features.}
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+
+\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -572,7 +575,8 @@ DB instance, call \code{DescribeValidDBInstanceModifications} before you call
     )
   ),
   UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  MaxAllocatedStorage = 123
 )
 }
 }

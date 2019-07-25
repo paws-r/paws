@@ -296,7 +296,7 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS",
-#'     version = "Kinetic"
+#'     version = "Kinetic"|"Melodic"
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -396,7 +396,7 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS",
-#'     version = "Kinetic"
+#'     version = "Kinetic"|"Melodic"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",
@@ -760,8 +760,7 @@ robomaker_deregister_robot <- function(fleet, robot) {
 
 #' Describes a deployment job
 #'
-#' Describes a deployment job. \[Does it work regardless of deployment
-#' status, e.g. Failed?\]
+#' Describes a deployment job.
 #'
 #' @usage
 #' robomaker_describe_deployment_job(job)
@@ -1641,7 +1640,7 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS",
-#'     version = "Kinetic"
+#'     version = "Kinetic"|"Melodic"
 #'   ),
 #'   currentRevisionId = "string"
 #' )
@@ -1699,7 +1698,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #'   ),
 #'   robotSoftwareSuite = list(
 #'     name = "ROS",
-#'     version = "Kinetic"
+#'     version = "Kinetic"|"Melodic"
 #'   ),
 #'   renderingEngine = list(
 #'     name = "OGRE",

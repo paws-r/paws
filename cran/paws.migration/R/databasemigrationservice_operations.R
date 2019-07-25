@@ -15,10 +15,12 @@ NULL
 #' @usage
 #' databasemigrationservice_add_tags_to_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
-#' added to. AWS DMS resources include a replication instance, endpoint,
-#' and a replication task.
-#' @param Tags &#91;required&#93; The tag to be assigned to the DMS resource.
+#' @param ResourceArn &#91;required&#93; Identifies the AWS DMS resource to which tags should be added. The value
+#' for this parameter is an Amazon Resource Name (ARN).
+#' 
+#' For AWS DMS, you can tag a replication instance, an endpoint, or a
+#' replication task.
+#' @param Tags &#91;required&#93; One or more tags to be assigned to the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -82,7 +84,7 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' maintenance action applies to.
 #' @param ApplyAction &#91;required&#93; The pending maintenance action to apply to this resource.
 #' @param OptInType &#91;required&#93; A value that specifies the type of opt-in request, or undoes an opt-in
-#' request. An opt-in request of type `immediate` cannot be undone.
+#' request. You can\'t undo an opt-in request of type `immediate`.
 #' 
 #' Valid values:
 #' 
@@ -137,9 +139,9 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #' @param EndpointIdentifier &#91;required&#93; The database endpoint identifier. Identifiers must begin with a letter;
 #' must contain only ASCII letters, digits, and hyphens; and must not end
 #' with a hyphen or contain two consecutive hyphens.
-#' @param EndpointType &#91;required&#93; The type of endpoint.
+#' @param EndpointType &#91;required&#93; The type of endpoint. Valid values are `source` and `target`.
 #' @param EngineName &#91;required&#93; The type of engine for the endpoint. Valid values, depending on the
-#' `EndPointType` value, include `mysql`, `oracle`, `postgres`, `mariadb`,
+#' `EndpointType` value, include `mysql`, `oracle`, `postgres`, `mariadb`,
 #' `aurora`, `aurora-postgresql`, `redshift`, `s3`, `db2`, `azuredb`,
 #' `sybase`, `dynamodb`, `mongodb`, and `sqlserver`.
 #' @param Username The user name to be used to log in to the endpoint database.
@@ -147,17 +149,25 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #' @param ServerName The name of the server where the endpoint database resides.
 #' @param Port The port used by the endpoint database.
 #' @param DatabaseName The name of the endpoint database.
-#' @param ExtraConnectionAttributes Additional attributes associated with the connection.
-#' @param KmsKeyId The AWS KMS key identifier to use to encrypt the connection parameters.
+#' @param ExtraConnectionAttributes Additional attributes associated with the connection. Each attribute is
+#' specified as a name-value pair associated by an equal sign (=). Multiple
+#' attributes are separated by a semicolon (;) with no additional white
+#' space. For information on the attributes available for connecting your
+#' source or target endpoint, see [Working with AWS DMS
+#' Endpoints](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Endpoints.html)
+#' in the *AWS Database Migration Service User Guide.*
+#' @param KmsKeyId An AWS KMS key identifier that is used to encrypt the connection
+#' parameters for the endpoint.
+#' 
 #' If you don\'t specify a value for the `KmsKeyId` parameter, then AWS DMS
-#' uses your default encryption key. AWS KMS creates the default encryption
-#' key for your AWS account. Your AWS account has a different default
-#' encryption key for each AWS Region.
-#' @param Tags Tags to be added to the endpoint.
+#' uses your default encryption key.
+#' 
+#' AWS KMS creates the default encryption key for your AWS account. Your
+#' AWS account has a different default encryption key for each AWS Region.
+#' @param Tags One or more tags to be assigned to the endpoint.
 #' @param CertificateArn The Amazon Resource Name (ARN) for the certificate.
 #' @param SslMode The Secure Sockets Layer (SSL) mode to use for the SSL connection. The
-#' SSL mode can be one of four values: `none`, `require`, `verify-ca`,
-#' `verify-full`. The default value is `none`.
+#' default is `none`
 #' @param ServiceAccessRoleArn The Amazon Resource Name (ARN) for the service access role that you want
 #' to use to create the endpoint.
 #' @param ExternalTableDefinition The external table definition.
@@ -199,7 +209,7 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams
 #' endpoint. For more information about the available settings, see [Using
 #' Object Mapping to Migrate Data to a Kinesis Data
-#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
+#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping)
 #' in the *AWS Database Migration User Guide.*
 #' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more
 #' information about the available settings, see [Extra Connection
@@ -251,7 +261,9 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #'     DataPageSize = 123,
 #'     ParquetVersion = "parquet-1-0"|"parquet-2-0",
 #'     EnableStatistics = TRUE|FALSE,
-#'     CdcInsertsOnly = TRUE|FALSE
+#'     IncludeOpForFullLoad = TRUE|FALSE,
+#'     CdcInsertsOnly = TRUE|FALSE,
+#'     TimestampColumnName = "string"
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -380,9 +392,8 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 #' databasemigrationservice_create_event_subscription(SubscriptionName,
 #'   SnsTopicArn, SourceType, EventCategories, SourceIds, Enabled, Tags)
 #'
-#' @param SubscriptionName &#91;required&#93; The name of the AWS DMS event notification subscription.
-#' 
-#' Constraints: The name must be less than 255 characters.
+#' @param SubscriptionName &#91;required&#93; The name of the AWS DMS event notification subscription. This name must
+#' be less than 255 characters.
 #' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon SNS topic created for event
 #' notification. The ARN is created by Amazon SNS when you create a topic
 #' and subscribe to it.
@@ -391,21 +402,22 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 #' you set this parameter to `replication-instance`. If this value is not
 #' specified, all events are returned.
 #' 
-#' Valid values: replication-instance \\| migration-task
+#' Valid values: `replication-instance` \\| `replication-task`
 #' @param EventCategories A list of event categories for a source type that you want to subscribe
-#' to. You can see a list of the categories for a given source type by
-#' calling the `DescribeEventCategories` action or in the topic [Working
-#' with Events and
+#' to. For more information, see [Working with Events and
 #' Notifications](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 #' in the *AWS Database Migration Service User Guide.*
-#' @param SourceIds The list of identifiers of the event sources for which events will be
-#' returned. If not specified, then all sources are included in the
-#' response. An identifier must begin with a letter and must contain only
-#' ASCII letters, digits, and hyphens; it cannot end with a hyphen or
-#' contain two consecutive hyphens.
+#' @param SourceIds A list of identifiers for which AWS DMS provides notification events.
+#' 
+#' If you don\'t specify a value, notifications are provided for all
+#' sources.
+#' 
+#' If you specify multiple values, they must be of the same type. For
+#' example, if you specify a database instance ID, then all of the other
+#' values must be database instance IDs.
 #' @param Enabled A Boolean value; set to `true` to activate the subscription, or set to
 #' `false` to create the subscription but not activate it.
-#' @param Tags A tag to be attached to the event subscription.
+#' @param Tags One or more tags to be assigned to the event subscription.
 #'
 #' @section Request syntax:
 #' ```
@@ -482,13 +494,9 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 #' @param VpcSecurityGroupIds Specifies the VPC security group to be used with the replication
 #' instance. The VPC security group must work with the VPC containing the
 #' replication instance.
-#' @param AvailabilityZone The EC2 Availability Zone that the replication instance will be created
-#' in.
-#' 
-#' Default: A random, system-chosen Availability Zone in the endpoint\'s
-#' region.
-#' 
-#' Example: `us-east-1d`
+#' @param AvailabilityZone The AWS Availability Zone where the replication instance will be
+#' created. The default value is a random, system-chosen Availability Zone
+#' in the endpoint\'s AWS Region, for example: `us-east-1d`
 #' @param ReplicationSubnetGroupIdentifier A subnet group to associate with the replication instance.
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
@@ -496,25 +504,29 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' Default: A 30-minute window selected at random from an 8-hour block of
-#' time per region, occurring on a random day of the week.
+#' time per AWS Region, occurring on a random day of the week.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param MultiAZ Specifies if the replication instance is a Multi-AZ deployment. You
+#' @param MultiAZ Specifies whether the replication instance is a Multi-AZ deployment. You
 #' cannot set the `AvailabilityZone` parameter if the Multi-AZ parameter is
 #' set to `true`.
 #' @param EngineVersion The engine version number of the replication instance.
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades will be applied automatically to
-#' the replication instance during the maintenance window.
+#' @param AutoMinorVersionUpgrade Indicates whether minor engine upgrades will be applied automatically to
+#' the replication instance during the maintenance window. This parameter
+#' defaults to `true`.
 #' 
 #' Default: `true`
-#' @param Tags Tags to be associated with the replication instance.
-#' @param KmsKeyId The AWS KMS key identifier that is used to encrypt the content on the
-#' replication instance. If you don\'t specify a value for the `KmsKeyId`
-#' parameter, then AWS DMS uses your default encryption key. AWS KMS
-#' creates the default encryption key for your AWS account. Your AWS
-#' account has a different default encryption key for each AWS Region.
+#' @param Tags One or more tags to be assigned to the replication instance.
+#' @param KmsKeyId An AWS KMS key identifier that is used to encrypt the data on the
+#' replication instance.
+#' 
+#' If you don\'t specify a value for the `KmsKeyId` parameter, then AWS DMS
+#' uses your default encryption key.
+#' 
+#' AWS KMS creates the default encryption key for your AWS account. Your
+#' AWS account has a different default encryption key for each AWS Region.
 #' @param PubliclyAccessible Specifies the accessibility options for the replication instance. A
 #' value of `true` represents an instance with a public IP address. A value
 #' of `false` represents an instance with a private IP address. The default
@@ -609,8 +621,8 @@ databasemigrationservice_create_replication_instance <- function(ReplicationInst
 #' 
 #' Example: `mySubnetgroup`
 #' @param ReplicationSubnetGroupDescription &#91;required&#93; The description for the subnet group.
-#' @param SubnetIds &#91;required&#93; The EC2 subnet IDs for the subnet group.
-#' @param Tags The tag to be assigned to the subnet group.
+#' @param SubnetIds &#91;required&#93; One or more subnet IDs to be assigned to the subnet group.
+#' @param Tags One or more tags to be assigned to the subnet group.
 #'
 #' @section Request syntax:
 #' ```
@@ -677,7 +689,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #'   ReplicationTaskSettings, CdcStartTime, CdcStartPosition,
 #'   CdcStopPosition, Tags)
 #'
-#' @param ReplicationTaskIdentifier &#91;required&#93; The replication task identifier.
+#' @param ReplicationTaskIdentifier &#91;required&#93; An identifier for the replication task.
 #' 
 #' Constraints:
 #' 
@@ -686,21 +698,20 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' -   First character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
-#' @param SourceEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
+#' @param SourceEndpointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies the source
 #' endpoint.
-#' @param TargetEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
+#' @param TargetEndpointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies the target
 #' endpoint.
-#' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication instance.
-#' @param MigrationType &#91;required&#93; The migration type.
-#' @param TableMappings &#91;required&#93; When using the AWS CLI or boto3, provide the path of the JSON file that
-#' contains the table mappings. Precede the path with \"file://\". When
-#' working with the DMS API, provide the JSON as the parameter value.
-#' 
-#' For example, \\--table-mappings file://mappingfile.json
-#' @param ReplicationTaskSettings Settings for the task, such as target metadata settings. For a complete
-#' list of task settings, see [Task Settings for AWS Database Migration
-#' Service
-#' Tasks](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
+#' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of a replication instance.
+#' @param MigrationType &#91;required&#93; The migration type. Valid values: `full-load` \\| `cdc` \\|
+#' `full-load-and-cdc`
+#' @param TableMappings &#91;required&#93; The table mappings for the task, in JSON format. For more information,
+#' see [Table
+#' Mapping](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
+#' in the *AWS Database Migration User Guide.*
+#' @param ReplicationTaskSettings Overall settings for the task, in JSON format. For more information, see
+#' [Task
+#' Settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
 #' in the *AWS Database Migration User Guide.*
 #' @param CdcStartTime Indicates the start time for a change data capture (CDC) operation. Use
 #' either CdcStartTime or CdcStartPosition to specify when you want a CDC
@@ -727,7 +738,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' 
 #' Commit time example: \\--cdc-stop-position "commit\\_time:
 #' 3018-02-09T12:12:12 "
-#' @param Tags Tags to be added to the replication instance.
+#' @param Tags One or more tags to be assigned to the replication task.
 #'
 #' @section Request syntax:
 #' ```
@@ -1049,11 +1060,14 @@ databasemigrationservice_delete_replication_task <- function(ReplicationTaskArn)
 
 #' Lists all of the AWS DMS attributes for a customer account
 #'
-#' Lists all of the AWS DMS attributes for a customer account. The
-#' attributes include AWS DMS quotas for the account, such as the number of
-#' replication instances allowed. The description for a quota includes the
-#' quota name, current usage toward that quota, and the quota\'s maximum
-#' value.
+#' Lists all of the AWS DMS attributes for a customer account. These
+#' attributes include AWS DMS quotas for the account and a unique account
+#' identifier in a particular DMS region. DMS quotas include a list of
+#' resource quotas supported by the account, such as the number of
+#' replication instances allowed. The description for each resource quota,
+#' includes the quota name, current usage toward that quota, and the
+#' quota\'s maximum value. DMS uses the unique account identifier to name
+#' each artifact used by DMS in the given region.
 #' 
 #' This command does not take any parameters.
 #'
@@ -1110,7 +1124,7 @@ databasemigrationservice_describe_account_attributes <- function() {
 #' Default: 10
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
-#' marker, up to the value specified by `MaxRecords`.
+#' marker, up to the vlue specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1407,7 +1421,7 @@ databasemigrationservice_describe_endpoints <- function(Filters = NULL, MaxRecor
 #'
 #' @param SourceType The type of AWS DMS resource that generates events.
 #' 
-#' Valid values: replication-instance \\| migration-task
+#' Valid values: replication-instance \\| replication-task
 #' @param Filters Filters applied to the action.
 #'
 #' @section Request syntax:
@@ -1521,17 +1535,14 @@ databasemigrationservice_describe_event_subscriptions <- function(SubscriptionNa
 #'   StartTime, EndTime, Duration, EventCategories, Filters, MaxRecords,
 #'   Marker)
 #'
-#' @param SourceIdentifier The identifier of the event source. An identifier must begin with a
-#' letter and must contain only ASCII letters, digits, and hyphens. It
-#' cannot end with a hyphen or contain two consecutive hyphens.
+#' @param SourceIdentifier The identifier of an event source.
 #' @param SourceType The type of AWS DMS resource that generates events.
 #' 
-#' Valid values: replication-instance \\| migration-task
+#' Valid values: replication-instance \\| replication-task
 #' @param StartTime The start time for the events to be listed.
 #' @param EndTime The end time for the events to be listed.
 #' @param Duration The duration of the events to be listed.
-#' @param EventCategories A list of event categories for a source type that you want to subscribe
-#' to.
+#' @param EventCategories A list of event categories for the source type that you\'ve chosen.
 #' @param Filters Filters applied to the action.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -1657,7 +1668,7 @@ databasemigrationservice_describe_orderable_replication_instances <- function(Ma
 #' databasemigrationservice_describe_pending_maintenance_actions(
 #'   ReplicationInstanceArn, Filters, Marker, MaxRecords)
 #'
-#' @param ReplicationInstanceArn The ARN of the replication instance.
+#' @param ReplicationInstanceArn The Amazon Resource Name (ARN) of the replication instance.
 #' @param Filters 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
@@ -2025,9 +2036,9 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#' @param WithoutSettings Set this flag to avoid returning setting information. Use this to reduce
-#' overhead when settings are too large. Choose TRUE to use this flag,
-#' otherwise choose FALSE (default).
+#' @param WithoutSettings An option to set to avoid returning information about settings. Use this
+#' to reduce overhead when setting information is too large. To use this
+#' option, choose `true`; otherwise, choose `false` (the default).
 #'
 #' @section Request syntax:
 #' ```
@@ -2226,10 +2237,11 @@ databasemigrationservice_describe_table_statistics <- function(ReplicationTaskAr
 #' databasemigrationservice_import_certificate(CertificateIdentifier,
 #'   CertificatePem, CertificateWallet, Tags)
 #'
-#' @param CertificateIdentifier &#91;required&#93; The customer-assigned name of the certificate. Valid characters are A-z
-#' and 0-9.
-#' @param CertificatePem The contents of the .pem X.509 certificate file for the certificate.
-#' @param CertificateWallet The location of the imported Oracle Wallet certificate for use with SSL.
+#' @param CertificateIdentifier &#91;required&#93; A customer-assigned name for the certificate. Identifiers must begin
+#' with a letter; must contain only ASCII letters, digits, and hyphens; and
+#' must not end with a hyphen or contain two consecutive hyphens.
+#' @param CertificatePem The contents of a `.pem` file, which contains an X.509 certificate.
+#' @param CertificateWallet The location of an imported Oracle Wallet certificate for use with SSL.
 #' @param Tags The tags associated with the certificate.
 #'
 #' @section Request syntax:
@@ -2332,10 +2344,10 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' @param EndpointIdentifier The database endpoint identifier. Identifiers must begin with a letter;
 #' must contain only ASCII letters, digits, and hyphens; and must not end
 #' with a hyphen or contain two consecutive hyphens.
-#' @param EndpointType The type of endpoint.
+#' @param EndpointType The type of endpoint. Valid values are `source` and `target`.
 #' @param EngineName The type of engine for the endpoint. Valid values, depending on the
-#' EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-#' aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb,
+#' EndpointType, include mysql, oracle, postgres, mariadb, aurora,
+#' aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
 #' mongodb, and sqlserver.
 #' @param Username The user name to be used to login to the endpoint database.
 #' @param Password The password to be used to login to the endpoint database.
@@ -2346,12 +2358,8 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' parameter, pass the empty string (\"\") as an argument.
 #' @param CertificateArn The Amazon Resource Name (ARN) of the certificate used for SSL
 #' connection.
-#' @param SslMode The SSL mode to be used.
-#' 
-#' SSL mode can be one of four values: none, require, verify-ca,
-#' verify-full.
-#' 
-#' The default value is none.
+#' @param SslMode The SSL mode used to connect to the endpoint. The default value is
+#' `none`.
 #' @param ServiceAccessRoleArn The Amazon Resource Name (ARN) for the service access role you want to
 #' use to modify the endpoint.
 #' @param ExternalTableDefinition The external table definition.
@@ -2395,7 +2403,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' @param KinesisSettings Settings in JSON format for the target Amazon Kinesis Data Streams
 #' endpoint. For more information about the available settings, see [Using
 #' Object Mapping to Migrate Data to a Kinesis Data
-#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20)
+#' Stream](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping)
 #' in the *AWS Database Migration User Guide.*
 #' @param ElasticsearchSettings Settings in JSON format for the target Elasticsearch endpoint. For more
 #' information about the available settings, see [Extra Connection
@@ -2441,7 +2449,9 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #'     DataPageSize = 123,
 #'     ParquetVersion = "parquet-1-0"|"parquet-2-0",
 #'     EnableStatistics = TRUE|FALSE,
-#'     CdcInsertsOnly = TRUE|FALSE
+#'     IncludeOpForFullLoad = TRUE|FALSE,
+#'     CdcInsertsOnly = TRUE|FALSE,
+#'     TimestampColumnName = "string"
 #'   ),
 #'   DmsTransferSettings = list(
 #'     ServiceAccessRoleArn = "string",
@@ -2553,7 +2563,7 @@ databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdenti
 #' @param SourceType The type of AWS DMS resource that generates the events you want to
 #' subscribe to.
 #' 
-#' Valid values: replication-instance \\| migration-task
+#' Valid values: replication-instance \\| replication-task
 #' @param EventCategories A list of event categories for a source type that you want to subscribe
 #' to. Use the `DescribeEventCategories` action to see a list of event
 #' categories.
@@ -2633,17 +2643,17 @@ databasemigrationservice_modify_event_subscription <- function(SubscriptionName,
 #' Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 #' 
 #' Constraints: Must be at least 30 minutes
-#' @param MultiAZ Specifies if the replication instance is a Multi-AZ deployment. You
+#' @param MultiAZ Specifies whether the replication instance is a Multi-AZ deployment. You
 #' cannot set the `AvailabilityZone` parameter if the Multi-AZ parameter is
 #' set to `true`.
 #' @param EngineVersion The engine version number of the replication instance.
 #' @param AllowMajorVersionUpgrade Indicates that major version upgrades are allowed. Changing this
-#' parameter does not result in an outage and the change is asynchronously
+#' parameter does not result in an outage, and the change is asynchronously
 #' applied as soon as possible.
 #' 
-#' Constraints: This parameter must be set to true when specifying a value
-#' for the `EngineVersion` parameter that is a different major version than
-#' the replication instance\'s current version.
+#' This parameter must be set to `true` when specifying a value for the
+#' `EngineVersion` parameter that is a different major version than the
+#' replication instance\'s current version.
 #' @param AutoMinorVersionUpgrade Indicates that minor version upgrades will be applied automatically to
 #' the replication instance during the maintenance window. Changing this
 #' parameter does not result in an outage except in the following case and
@@ -2720,7 +2730,7 @@ databasemigrationservice_modify_replication_instance <- function(ReplicationInst
 #'   SubnetIds)
 #'
 #' @param ReplicationSubnetGroupIdentifier &#91;required&#93; The name of the replication instance subnet group.
-#' @param ReplicationSubnetGroupDescription The description of the replication instance subnet group.
+#' @param ReplicationSubnetGroupDescription A description for the replication instance subnet group.
 #' @param SubnetIds &#91;required&#93; A list of subnet IDs.
 #'
 #' @section Request syntax:
@@ -2788,14 +2798,12 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' -   First character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
-#' @param MigrationType The migration type.
-#' 
-#' Valid values: full-load \\| cdc \\| full-load-and-cdc
+#' @param MigrationType The migration type. Valid values: `full-load` \\| `cdc` \\|
+#' `full-load-and-cdc`
 #' @param TableMappings When using the AWS CLI or boto3, provide the path of the JSON file that
-#' contains the table mappings. Precede the path with \"file://\". When
-#' working with the DMS API, provide the JSON as the parameter value.
-#' 
-#' For example, \\--table-mappings file://mappingfile.json
+#' contains the table mappings. Precede the path with `file://`. When
+#' working with the DMS API, provide the JSON as the parameter value, for
+#' example: `--table-mappings file://mappingfile.json`
 #' @param ReplicationTaskSettings JSON file that contains settings for the task, such as target metadata
 #' settings.
 #' @param CdcStartTime Indicates the start time for a change data capture (CDC) operation. Use
@@ -3009,8 +3017,8 @@ databasemigrationservice_reload_tables <- function(ReplicationTaskArn, TablesToR
 #' @usage
 #' databasemigrationservice_remove_tags_from_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; \\>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-#' be removed from.
+#' @param ResourceArn &#91;required&#93; An AWS DMS resource from which you want to remove tag(s). The value for
+#' this parameter is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
 #'
 #' @section Request syntax:

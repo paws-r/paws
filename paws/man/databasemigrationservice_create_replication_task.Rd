@@ -11,7 +11,7 @@ databasemigrationservice_create_replication_task(
   CdcStopPosition, Tags)
 }
 \arguments{
-\item{ReplicationTaskIdentifier}{[required] The replication task identifier.
+\item{ReplicationTaskIdentifier}{[required] An identifier for the replication task.
 
 Constraints:
 \itemize{
@@ -20,24 +20,23 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{SourceEndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the
+\item{SourceEndpointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies the source
 endpoint.}
 
-\item{TargetEndpointArn}{[required] The Amazon Resource Name (ARN) string that uniquely identifies the
+\item{TargetEndpointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies the target
 endpoint.}
 
-\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
+\item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of a replication instance.}
 
-\item{MigrationType}{[required] The migration type.}
+\item{MigrationType}{[required] The migration type. Valid values: \code{full-load} \| \code{cdc} \|
+\code{full-load-and-cdc}}
 
-\item{TableMappings}{[required] When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with "file://". When
-working with the DMS API, provide the JSON as the parameter value.
+\item{TableMappings}{[required] The table mappings for the task, in JSON format. For more information,
+see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html}{Table Mapping}
+in the \emph{AWS Database Migration User Guide.}}
 
-For example, \--table-mappings file://mappingfile.json}
-
-\item{ReplicationTaskSettings}{Settings for the task, such as target metadata settings. For a complete
-list of task settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings for AWS Database Migration Service Tasks}
+\item{ReplicationTaskSettings}{Overall settings for the task, in JSON format. For more information, see
+\href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use
@@ -68,7 +67,7 @@ Server time example: \--cdc-stop-position
 Commit time example: \--cdc-stop-position "commit\_time:
 3018-02-09T12:12:12 "}
 
-\item{Tags}{Tags to be added to the replication instance.}
+\item{Tags}{One or more tags to be assigned to the replication task.}
 }
 \description{
 Creates a replication task using the specified parameters.

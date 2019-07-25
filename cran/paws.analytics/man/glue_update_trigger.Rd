@@ -28,10 +28,11 @@ Updates a trigger definition.
           "string"
         ),
         Timeout = 123,
+        SecurityConfiguration = "string",
         NotificationProperty = list(
           NotifyDelayAfter = 123
         ),
-        SecurityConfiguration = "string"
+        CrawlerName = "string"
       )
     ),
     Predicate = list(
@@ -40,7 +41,9 @@ Updates a trigger definition.
         list(
           LogicalOperator = "EQUALS",
           JobName = "string",
-          State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
+          State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+          CrawlerName = "string",
+          CrawlState = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED"
         )
       )
     )

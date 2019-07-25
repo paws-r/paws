@@ -44,7 +44,7 @@ gateway, NAT instance, NAT gateway, VPC peering connection, network
 interface, or egress-only internet gateway.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

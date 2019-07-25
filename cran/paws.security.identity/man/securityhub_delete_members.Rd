@@ -2,16 +2,15 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_members}
 \alias{securityhub_delete_members}
-\title{Deletes the Security Hub member accounts that the account IDs specify}
+\title{Deletes the specified member accounts from Security Hub}
 \usage{
 securityhub_delete_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of account IDs of the Security Hub member accounts that you want
-to delete.}
+\item{AccountIds}{A list of account IDs of the member accounts to delete.}
 }
 \description{
-Deletes the Security Hub member accounts that the account IDs specify.
+Deletes the specified member accounts from Security Hub.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_members(

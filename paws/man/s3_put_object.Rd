@@ -9,8 +9,9 @@ s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
   ContentType, Expires, GrantFullControl, GrantRead, GrantReadACP,
   GrantWriteACP, Key, Metadata, ServerSideEncryption, StorageClass,
   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-  SSECustomerKeyMD5, SSEKMSKeyId, RequestPayer, Tagging, ObjectLockMode,
-  ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus)
+  SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext, RequestPayer,
+  Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
+  ObjectLockLegalHoldStatus)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -81,6 +82,10 @@ via SSL or using SigV4. Documentation on configuring any of the
 officially supported AWS SDKs and CLI can be found at
 http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signature-version}
 
+\item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
+The value of this header is a base64-encoded UTF-8 string holding JSON
+with the encryption context key-value pairs.}
+
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
@@ -125,6 +130,7 @@ Adds an object to a bucket.
   SSECustomerKey = raw,
   SSECustomerKeyMD5 = "string",
   SSEKMSKeyId = "string",
+  SSEKMSEncryptionContext = "string",
   RequestPayer = "requester",
   Tagging = "string",
   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
@@ -137,6 +143,40 @@ Adds an object to a bucket.
 }
 
 \examples{
+# The following example uploads and object. The request specifies optional
+# canned ACL (access control list) to all READ access to authenticated
+# users. If the bucket is versioning enabled, S3 returns version ID in
+# response.
+\donttest{svc$put_object(
+  ACL = "authenticated-read",
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "exampleobject"
+)}
+
+# The following example uploads an object. The request specifies optional
+# object tags. The bucket is versioned, therefore S3 returns version ID of
+# the newly created object.
+\donttest{svc$put_object(
+  Body = "c:\\\\HappyFace.jpg",
+  Bucket = "examplebucket",
+  Key = "HappyFace.jpg",
+  Tagging = "key1=value1&key2=value2"
+)}
+
+# The following example creates an object. The request also specifies
+# optional metadata. If the bucket is versioning enabled, S3 returns
+# version ID in response.
+\donttest{svc$put_object(
+  Body = "filetoupload",
+  Bucket = "examplebucket",
+  Key = "exampleobject",
+  Metadata = list(
+    metadata1 = "value1",
+    metadata2 = "value2"
+  )
+)}
+
 # The following example uploads and object. The request specifies the
 # optional server-side encryption option. The request also specifies
 # optional object tags. If the bucket is versioning enabled, S3 returns
@@ -157,17 +197,6 @@ Adds an object to a bucket.
   Key = "objectkey"
 )}
 
-# The following example uploads and object. The request specifies optional
-# canned ACL (access control list) to all READ access to authenticated
-# users. If the bucket is versioning enabled, S3 returns version ID in
-# response.
-\donttest{svc$put_object(
-  ACL = "authenticated-read",
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject"
-)}
-
 # The following example uploads an object to a versioning-enabled bucket.
 # The source file is specified using Windows file syntax. S3 returns
 # VersionId of the newly created object.
@@ -175,19 +204,6 @@ Adds an object to a bucket.
   Body = "HappyFace.jpg",
   Bucket = "examplebucket",
   Key = "HappyFace.jpg"
-)}
-
-# The following example creates an object. The request also specifies
-# optional metadata. If the bucket is versioning enabled, S3 returns
-# version ID in response.
-\donttest{svc$put_object(
-  Body = "filetoupload",
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  Metadata = list(
-    metadata1 = "value1",
-    metadata2 = "value2"
-  )
 )}
 
 # The following example uploads an object. The request specifies optional
@@ -199,16 +215,6 @@ Adds an object to a bucket.
   Key = "HappyFace.jpg",
   ServerSideEncryption = "AES256",
   StorageClass = "STANDARD_IA"
-)}
-
-# The following example uploads an object. The request specifies optional
-# object tags. The bucket is versioned, therefore S3 returns version ID of
-# the newly created object.
-\donttest{svc$put_object(
-  Body = "c:\\\\HappyFace.jpg",
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  Tagging = "key1=value1&key2=value2"
 )}
 
 }

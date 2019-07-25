@@ -8,7 +8,7 @@ ioteventsdata_list_detectors(detectorModelName, stateName, nextToken,
   maxResults)
 }
 \arguments{
-\item{detectorModelName}{[required] The name of the detector model whose instances you want to list.}
+\item{detectorModelName}{[required] The name of the detector model whose detectors (instances) are listed.}
 
 \item{stateName}{A filter that limits results to those detectors (instances) in the given
 state.}

@@ -25,8 +25,8 @@ To configure the endpoint type, set \code{parameters} as
 \code{endpointConfigurationTypes=PRIVATE}. The default endpoint type is
 \code{EDGE}.
 
-To handle imported \code{basePath}, set \code{parameters} as \code{basePath=ignore},
-\code{basePath=prepend} or \code{basePath=split}.
+To handle imported \code{basepath}, set \code{parameters} as \code{basepath=ignore},
+\code{basepath=prepend} or \code{basepath=split}.
 
 For example, the AWS CLI command to exclude documentation from the
 imported API is:\preformatted{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'

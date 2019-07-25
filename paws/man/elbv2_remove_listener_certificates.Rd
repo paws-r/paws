@@ -2,7 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_remove_listener_certificates}
 \alias{elbv2_remove_listener_certificates}
-\title{Removes the specified certificate from the specified HTTPS listener}
+\title{Removes the specified certificate from the certificate list for the
+specified HTTPS listener}
 \usage{
 elbv2_remove_listener_certificates(ListenerArn, Certificates)
 }
@@ -13,7 +14,8 @@ elbv2_remove_listener_certificates(ListenerArn, Certificates)
 \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
 \description{
-Removes the specified certificate from the specified HTTPS listener.
+Removes the specified certificate from the certificate list for the
+specified HTTPS listener.
 }
 \details{
 You can't remove the default certificate for a listener. To replace the

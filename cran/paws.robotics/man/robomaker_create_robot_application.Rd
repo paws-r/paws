@@ -32,7 +32,7 @@ Creates a robot application.
   ),
   robotSoftwareSuite = list(
     name = "ROS",
-    version = "Kinetic"
+    version = "Kinetic"|"Melodic"
   ),
   tags = list(
     "string"

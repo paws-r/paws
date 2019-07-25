@@ -7,7 +7,7 @@
 docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-  EnableCloudwatchLogsExports)
+  EnableCloudwatchLogsExports, DeletionProtection)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the
@@ -86,6 +86,11 @@ is not encrypted.
 
 \item{EnableCloudwatchLogsExports}{A list of log types that must be enabled for exporting to Amazon
 CloudWatch Logs.}
+
+\item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
+is enabled, the cluster cannot be deleted unless it is modified and
+\code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
+from being accidentally deleted.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -123,7 +128,8 @@ created with the default security group.
   KmsKeyId = "string",
   EnableCloudwatchLogsExports = list(
     "string"
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

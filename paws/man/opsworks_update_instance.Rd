@@ -16,7 +16,7 @@ opsworks_update_instance(InstanceId, LayerIds, InstanceType,
 \item{InstanceType}{The instance type, such as \code{t2.micro}. For a list of supported instance
 types, open the stack in the console, choose \strong{Instances}, and choose
 \strong{+ Instance}. The \strong{Size} list contains the currently supported
-types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.
+types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.
 The parameter values that you use to specify the various types are in
 the \strong{API Name} column of the \strong{Available Instance Types} table.}
 
@@ -29,9 +29,10 @@ only time-based instances.}
 following. You cannot update an instance that is using a custom AMI.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\code{Amazon Linux 2017.09}, \code{Amazon Linux 2017.03},
-\code{Amazon Linux 2016.09}, \code{Amazon Linux 2016.03},
-\code{Amazon Linux 2015.09}, or \code{Amazon Linux 2015.03}.
+\code{Amazon Linux 2018.03}, \code{Amazon Linux 2017.09},
+\code{Amazon Linux 2017.03}, \code{Amazon Linux 2016.09},
+\code{Amazon Linux 2016.03}, \code{Amazon Linux 2015.09}, or
+\code{Amazon Linux 2015.03}.
 \item A supported Ubuntu operating system, such as \code{Ubuntu 16.04 LTS},
 \code{Ubuntu 14.04 LTS}, or \code{Ubuntu 12.04 LTS}.
 \item \code{CentOS Linux 7}
@@ -43,14 +44,14 @@ following. You cannot update an instance that is using a custom AMI.
 \code{Microsoft Windows Server 2012 R2 with SQL Server Web}.
 }
 
-For more information about supported operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
+For more information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to \code{Custom}, you must use the AmiId parameter to specify the
 custom AMI that you want to use. For more information about supported
-operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}.
+operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}.
 For more information about how to use custom AMIs with OpsWorks, see
-\href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.}
@@ -65,7 +66,7 @@ custom AMIs.}
 
 \item{Architecture}{The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
-by the different instance types, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.}
+by the different instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.}
 
 \item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the
 instance boots. The default value is \code{true}. To control when updates are
@@ -104,7 +105,7 @@ Updates a specified instance.
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_instance(

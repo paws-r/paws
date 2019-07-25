@@ -5,16 +5,16 @@
 \title{This operation returns information about a job you previously initiated,
 including the job initiation date, the user who initiated the job, the
 job status code/message and the Amazon SNS topic to notify after Amazon
-Glacier completes the job}
+S3 Glacier (Glacier) completes the job}
 \usage{
 glacier_describe_job(accountId, vaultName, jobId)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
-associated with the credentials used to sign the request. If you use an
-account ID, do not include any hyphens ('-') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+ID associated with the credentials used to sign the request. If you use
+an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
@@ -24,25 +24,25 @@ account ID, do not include any hyphens ('-') in the ID.}
 This operation returns information about a job you previously initiated,
 including the job initiation date, the user who initiated the job, the
 job status code/message and the Amazon SNS topic to notify after Amazon
-Glacier completes the job. For more information about initiating a job,
-see InitiateJob.
+S3 Glacier (Glacier) completes the job. For more information about
+initiating a job, see InitiateJob.
 }
 \details{
 This operation enables you to check the status of your job. However, it
 is strongly recommended that you set up an Amazon SNS topic and specify
-it in your initiate job request so that Amazon Glacier can notify the
-topic after it completes the job.
+it in your initiate job request so that Glacier can notify the topic
+after it completes the job.
 
-A job ID will not expire for at least 24 hours after Amazon Glacier
-completes the job.
+A job ID will not expire for at least 24 hours after Glacier completes
+the job.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
+perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 
 For more information about using this operation, see the documentation
-for the underlying REST API \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html}{Describe Job}
+for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html}{Describe Job}
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{

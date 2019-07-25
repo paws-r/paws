@@ -29,8 +29,8 @@ A vault lock is put into the \code{InProgress} state by calling
 InitiateVaultLock. A vault lock is put into the \code{Locked} state by
 calling CompleteVaultLock. You can get the state of a vault lock by
 calling GetVaultLock. For more information about the vault locking
-process, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
-For more information about vault lock policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
+process, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+For more information about vault lock policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
 
 This operation is idempotent. You can successfully invoke this operation
 multiple times, if the vault lock is in the \code{InProgress} state or if

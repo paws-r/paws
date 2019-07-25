@@ -5,9 +5,10 @@
 \title{Changes the settings of a build project}
 \usage{
 codebuild_update_project(name, description, source, secondarySources,
-  artifacts, secondaryArtifacts, cache, environment, serviceRole,
-  timeoutInMinutes, queuedTimeoutInMinutes, encryptionKey, tags,
-  vpcConfig, badgeEnabled, logsConfig)
+  sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
+  cache, environment, serviceRole, timeoutInMinutes,
+  queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
+  logsConfig)
 }
 \arguments{
 \item{name}{[required] The name of the build project.
@@ -20,6 +21,34 @@ You cannot change a build project's name.}
 build project.}
 
 \item{secondarySources}{An array of \code{ProjectSource} objects.}
+
+\item{sourceVersion}{A version of the build input to be built for this project. If not
+specified, the latest version is used. If specified, it must be one of:
+\itemize{
+\item For AWS CodeCommit: the commit ID to use.
+\item For GitHub: the commit ID, pull request ID, branch name, or tag name
+that corresponds to the version of the source code you want to
+build. If a pull request ID is specified, it must use the format
+\code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
+specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
+\item For Bitbucket: the commit ID, branch name, or tag name that
+corresponds to the version of the source code you want to build. If
+a branch name is specified, the branch's HEAD commit ID is used. If
+not specified, the default branch's HEAD commit ID is used.
+\item For Amazon Simple Storage Service (Amazon S3): the version ID of the
+object that represents the build input ZIP file to use.
+}
+
+If \code{sourceVersion} is specified at the build level, then that version
+takes precedence over this \code{sourceVersion} (at the project level).
+
+For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html}{Source Version Sample with CodeBuild}
+in the \emph{AWS CodeBuild User Guide}.}
+
+\item{secondarySourceVersions}{An array of \code{ProjectSourceVersion} objects. If \code{secondarySourceVersions}
+is specified at the build level, then they take over these
+\code{secondarySourceVersions} (at the project level).}
 
 \item{artifacts}{Information to be changed about the build output artifacts for the build
 project.}
@@ -105,6 +134,13 @@ Changes the settings of a build project.
       reportBuildStatus = TRUE|FALSE,
       insecureSsl = TRUE|FALSE,
       sourceIdentifier = "string"
+    )
+  ),
+  sourceVersion = "string",
+  secondarySourceVersions = list(
+    list(
+      sourceIdentifier = "string",
+      sourceVersion = "string"
     )
   ),
   artifacts = list(

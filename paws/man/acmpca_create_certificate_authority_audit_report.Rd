@@ -22,8 +22,8 @@ form:
 \description{
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify on
-input. The IssueCertificate and RevokeCertificate operations use the
-private key. You can generate a new report every 30 minutes.
+input. The IssueCertificate and RevokeCertificate actions use the
+private key.
 }
 \section{Request syntax}{
 \preformatted{svc$create_certificate_authority_audit_report(

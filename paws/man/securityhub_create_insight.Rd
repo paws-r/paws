@@ -2,25 +2,25 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_insight}
 \alias{securityhub_create_insight}
-\title{Creates an insight, which is a consolidation of findings that identifies
-a security area that requires attention or intervention}
+\title{Creates a custom insight in Security Hub}
 \usage{
 securityhub_create_insight(Name, Filters, GroupByAttribute)
 }
 \arguments{
-\item{Name}{[required] The user-defined name that identifies the insight to create.}
+\item{Name}{[required] The name of the custom insight to create.}
 
-\item{Filters}{[required] A collection of attributes that are applied to all of the active
-findings aggregated by Security Hub, and that result in a subset of
-findings that are included in this insight.}
+\item{Filters}{[required] One or more attributes used to filter the findings included in the
+insight. Only findings that match the criteria defined in the filters
+are included in the insight.}
 
-\item{GroupByAttribute}{[required] The attribute by which the insight's findings are grouped. This
-attribute is used as a findings aggregator for the purposes of viewing
-and managing multiple related findings under a single operand.}
+\item{GroupByAttribute}{[required] The attribute used as the aggregator to group related findings for the
+insight.}
 }
 \description{
-Creates an insight, which is a consolidation of findings that identifies
-a security area that requires attention or intervention.
+Creates a custom insight in Security Hub. An insight is a consolidation
+of findings that relate to a security issue that requires attention or
+remediation. Use the \code{GroupByAttribute} to group the related findings in
+the insight.
 }
 \section{Request syntax}{
 \preformatted{svc$create_insight(

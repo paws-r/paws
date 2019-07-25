@@ -82,7 +82,7 @@ of all events in each category are returned.
       "string"
     ),
     eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"
+      "issue"|"accountNotification"|"scheduledChange"|"investigation"
     ),
     tags = list(
       list(

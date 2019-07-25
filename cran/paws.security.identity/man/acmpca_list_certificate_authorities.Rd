@@ -3,7 +3,7 @@
 \name{acmpca_list_certificate_authorities}
 \alias{acmpca_list_certificate_authorities}
 \title{Lists the private certificate authorities that you created by using the
-CreateCertificateAuthority operation}
+CreateCertificateAuthority action}
 \usage{
 acmpca_list_certificate_authorities(NextToken, MaxResults)
 }
@@ -20,7 +20,7 @@ retrieve additional items.}
 }
 \description{
 Lists the private certificate authorities that you created by using the
-CreateCertificateAuthority operation.
+CreateCertificateAuthority action.
 }
 \section{Request syntax}{
 \preformatted{svc$list_certificate_authorities(

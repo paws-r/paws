@@ -10,9 +10,9 @@ glacier_initiate_multipart_upload(accountId, vaultName,
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
-associated with the credentials used to sign the request. If you use an
-account ID, do not include any hyphens ('-') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+ID associated with the credentials used to sign the request. If you use
+an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
@@ -27,7 +27,7 @@ is 4 GB (4096 MB).}
 smaller than this part size.}
 }
 \description{
-This operation initiates a multipart upload. Amazon Glacier creates a
+This operation initiates a multipart upload. Amazon S3 Glacier creates a
 multipart upload resource and returns its ID in the response. The
 multipart upload ID is used in subsequent requests to upload parts of an
 archive (see UploadMultipartPart).
@@ -46,21 +46,21 @@ you initiate the multipart upload with a part size of 4 MB, you will
 upload four parts of 4 MB each and one part of 0.2 MB.
 
 You don't need to know the size of the archive when you start a
-multipart upload because Amazon Glacier does not require you to specify
-the overall archive size.
+multipart upload because Amazon S3 Glacier does not require you to
+specify the overall archive size.
 
-After you complete the multipart upload, Amazon Glacier removes the
-multipart upload resource referenced by the ID. Amazon Glacier also
+After you complete the multipart upload, Amazon S3 Glacier (Glacier)
+removes the multipart upload resource referenced by the ID. Glacier also
 removes the multipart upload resource if you cancel the multipart upload
 or it may be removed if there is no activity for a period of 24 hours.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
+perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 
-For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html}{Uploading Large Archives in Parts (Multipart Upload)}
-and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html}{Initiate Multipart Upload}
+For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html}{Uploading Large Archives in Parts (Multipart Upload)}
+and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html}{Initiate Multipart Upload}
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{

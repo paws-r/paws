@@ -3,20 +3,20 @@
 \name{dynamodb_describe_limits}
 \alias{dynamodb_describe_limits}
 \title{Returns the current provisioned-capacity limits for your AWS account in
-a region, both for the region as a whole and for any one DynamoDB table
+a Region, both for the Region as a whole and for any one DynamoDB table
 that you create there}
 \usage{
 dynamodb_describe_limits()
 }
 \description{
 Returns the current provisioned-capacity limits for your AWS account in
-a region, both for the region as a whole and for any one DynamoDB table
+a Region, both for the Region as a whole and for any one DynamoDB table
 that you create there.
 }
 \details{
 When you establish an AWS account, the account has initial limits on the
 maximum read capacity units and write capacity units that you can
-provision across all of your DynamoDB tables in a given region. Also,
+provision across all of your DynamoDB tables in a given Region. Also,
 there are per-table limits that apply when you create a table there. For
 more information, see
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
@@ -30,10 +30,10 @@ an increase before you hit a limit.
 
 For example, you could use one of the AWS SDKs to do the following:
 \enumerate{
-\item Call \code{DescribeLimits} for a particular region to obtain your current
+\item Call \code{DescribeLimits} for a particular Region to obtain your current
 account limits on provisioned capacity there.
 \item Create a variable to hold the aggregate read capacity units
-provisioned for all your tables in that region, and one to hold the
+provisioned for all your tables in that Region, and one to hold the
 aggregate write capacity units. Zero them both.
 \item Call \code{ListTables} to obtain a list of all your DynamoDB tables.
 \item For each table name listed by \code{ListTables}, do the following:
@@ -48,7 +48,7 @@ loop over these GSIs and add their provisioned capacity values
 to your variables as well.
 }
 \enumerate{
-\item Report the account limits for that region returned by
+\item Report the account limits for that Region returned by
 \code{DescribeLimits}, along with the total current provisioned capacity
 levels you have calculated.
 }
@@ -60,8 +60,8 @@ The per-table limits apply only when you are creating a new table. They
 restrict the sum of the provisioned capacity of the new table itself and
 all its global secondary indexes.
 
-For existing tables and their GSIs, DynamoDB will not let you increase
-provisioned capacity extremely rapidly, but the only upper limit that
+For existing tables and their GSIs, DynamoDB doesn't let you increase
+provisioned capacity extremely rapidly. But the only upper limit that
 applies is that the aggregate provisioned capacity over all your tables
 and GSIs cannot exceed either of the per-account limits.
 

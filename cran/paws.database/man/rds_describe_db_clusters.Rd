@@ -5,7 +5,7 @@
 \title{Returns information about provisioned Aurora DB clusters}
 \usage{
 rds_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-  Marker)
+  Marker, IncludeShared)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified,
@@ -38,6 +38,9 @@ Constraints: Minimum 20, maximum 100.}
 \item{Marker}{An optional pagination token provided by a previous \code{DescribeDBClusters}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
+
+\item{IncludeShared}{Optional Boolean parameter that specifies whether the output includes
+information about clusters shared from other AWS accounts.}
 }
 \description{
 Returns information about provisioned Aurora DB clusters. This API
@@ -61,7 +64,8 @@ This action only applies to Aurora DB clusters.
     )
   ),
   MaxRecords = 123,
-  Marker = "string"
+  Marker = "string",
+  IncludeShared = TRUE|FALSE
 )
 }
 }

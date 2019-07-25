@@ -41,7 +41,8 @@ parameters, and an incoming request body.
 }
 \details{
 ::: {.seeAlso}
-\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html}{Enable custom authorizers}
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html}{Use Lambda Function as Authorizer}
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html}{Use Cognito User Pool as Authorizer}
 :::
 }
 \section{Request syntax}{

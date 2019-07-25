@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_endpoint}
 \alias{pinpoint_delete_endpoint}
-\title{Deletes an endpoint}
+\title{Deletes an endpoint from an application}
 \usage{
 pinpoint_delete_endpoint(ApplicationId, EndpointId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{EndpointId}{[required] The unique ID of the endpoint.}
+\item{EndpointId}{[required] The unique identifier for the endpoint.}
 }
 \description{
-Deletes an endpoint.
+Deletes an endpoint from an application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_endpoint(

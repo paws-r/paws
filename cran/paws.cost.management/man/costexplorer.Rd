@@ -32,7 +32,8 @@ For information about costs associated with the Cost Explorer API, see
 \link[=costexplorer_get_reservation_coverage]{get_reservation_coverage} \tab Retrieves the reservation coverage for your account \cr
 \link[=costexplorer_get_reservation_purchase_recommendation]{get_reservation_purchase_recommendation} \tab Gets recommendations for which reservations to purchase \cr
 \link[=costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account \cr
-\link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period
+\link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period \cr
+\link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage
 }
 }
 

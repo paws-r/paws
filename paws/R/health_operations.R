@@ -206,7 +206,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #'       "string"
 #'     ),
 #'     eventTypeCategories = list(
-#'       "issue"|"accountNotification"|"scheduledChange"
+#'       "issue"|"accountNotification"|"scheduledChange"|"investigation"
 #'     ),
 #'     tags = list(
 #'       list(
@@ -322,7 +322,7 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #'       "string"
 #'     ),
 #'     eventTypeCategories = list(
-#'       "issue"|"accountNotification"|"scheduledChange"
+#'       "issue"|"accountNotification"|"scheduledChange"|"investigation"
 #'     )
 #'   ),
 #'   locale = "string",
@@ -431,7 +431,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #'       "string"
 #'     ),
 #'     eventTypeCategories = list(
-#'       "issue"|"accountNotification"|"scheduledChange"
+#'       "issue"|"accountNotification"|"scheduledChange"|"investigation"
 #'     ),
 #'     tags = list(
 #'       list(

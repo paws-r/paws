@@ -13,7 +13,7 @@ sqs_tag_queue(QueueUrl, Tags)
 }
 \description{
 Add cost allocation tags to the specified Amazon SQS queue. For an
-overview, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}
+overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \details{
@@ -29,11 +29,11 @@ the existing tag.
 application requires a higher throughput, file a \href{https://console.aws.amazon.com/support/home#/case/create?issueType=technical}{technical support request}.
 }
 
-For a full list of tag restrictions, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues}{Limits Related to Queues}
+For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues}{Limits Related to Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 Cross-account permissions don't apply to this action. For more
-information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

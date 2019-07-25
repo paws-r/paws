@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_send_users_messages}
 \alias{pinpoint_send_users_messages}
-\title{Used to send a message to a list of users}
+\title{Creates and sends a message to a list of users}
 \usage{
 pinpoint_send_users_messages(ApplicationId, SendUsersMessageRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{SendUsersMessageRequest}{[required]}
 }
 \description{
-Used to send a message to a list of users.
+Creates and sends a message to a list of users.
 }
 \section{Request syntax}{
 \preformatted{svc$send_users_messages(

@@ -26,16 +26,16 @@ strings. You cannot set your own permissions level.
 }
 
 For more information about the permissions associated with these levels,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.}
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.}
 }
 \description{
-Specifies a user's permissions. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
+Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_permission(

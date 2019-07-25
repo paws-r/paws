@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_apns_voip_channel}
 \alias{pinpoint_update_apns_voip_channel}
-\title{Update an APNS VoIP channel}
+\title{Updates the APNs VoIP channel settings for an application}
 \usage{
 pinpoint_update_apns_voip_channel(APNSVoipChannelRequest, ApplicationId)
 }
 \arguments{
 \item{APNSVoipChannelRequest}{[required]}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Update an APNS VoIP channel
+Updates the APNs VoIP channel settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_apns_voip_channel(

@@ -14,9 +14,9 @@ ensure idempotent creation. This string is automatically filled on your
 behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
 SDK.}
 
-\item{FileSystemType}{[required] The type of file system.}
+\item{FileSystemType}{[required] The type of Amazon FSx file system to create.}
 
-\item{StorageCapacity}{[required] The storage capacity of the file system.
+\item{StorageCapacity}{[required] The storage capacity of the file system being created.
 
 For Windows file systems, the storage capacity has a minimum of 300 GiB,
 and a maximum of 65,536 GiB.
@@ -24,22 +24,21 @@ and a maximum of 65,536 GiB.
 For Lustre file systems, the storage capacity has a minimum of 3,600
 GiB. Storage capacity is provisioned in increments of 3,600 GiB.}
 
-\item{SubnetIds}{[required] A list of IDs for the subnets that the file system will be accessible
-from. File systems support only one subnet. The file server is also
-launched in that subnet's Availability Zone.}
+\item{SubnetIds}{[required] The IDs of the subnets that the file system will be accessible from.
+File systems support only one subnet. The file server is also launched
+in that subnet's Availability Zone.}
 
-\item{SecurityGroupIds}{A list of IDs for the security groups that apply to the specified
-network interfaces created for file system access. These security groups
-will apply to all network interfaces. This list isn't returned in later
-describe requests.}
+\item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
+interfaces created for file system access. This list isn't returned in
+later requests to describe the file system.}
 
-\item{Tags}{The tags to be applied to the file system at file system creation. The
-key value of the \code{Name} tag appears in the console as the file system
-name.}
+\item{Tags}{The tags to apply to the file system being created. The key value of the
+\code{Name} tag appears in the console as the file system name.}
 
 \item{KmsKeyId}{}
 
-\item{WindowsConfiguration}{The configuration for this Microsoft Windows file system.}
+\item{WindowsConfiguration}{The Microsoft Windows configuration for the file system being created.
+This value is required if \code{FileSystemType} is set to \code{WINDOWS}.}
 
 \item{LustreConfiguration}{}
 }
@@ -96,6 +95,16 @@ system state along with other information.
   KmsKeyId = "string",
   WindowsConfiguration = list(
     ActiveDirectoryId = "string",
+    SelfManagedActiveDirectoryConfiguration = list(
+      DomainName = "string",
+      OrganizationalUnitDistinguishedName = "string",
+      FileSystemAdministratorsGroup = "string",
+      UserName = "string",
+      Password = "string",
+      DnsIps = list(
+        "string"
+      )
+    ),
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",

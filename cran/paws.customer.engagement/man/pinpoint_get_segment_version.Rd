@@ -2,19 +2,24 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_segment_version}
 \alias{pinpoint_get_segment_version}
-\title{Returns information about a segment version}
+\title{Retrieves information about the configuration, dimension, and other
+settings for a specific version of a segment that's associated with an
+application}
 \usage{
 pinpoint_get_segment_version(ApplicationId, SegmentId, Version)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{SegmentId}{[required] The unique ID of the segment.}
+\item{SegmentId}{[required] The unique identifier for the segment.}
 
-\item{Version}{[required] The segment version.}
+\item{Version}{[required] The unique version number (Version property) for the campaign version.}
 }
 \description{
-Returns information about a segment version.
+Retrieves information about the configuration, dimension, and other
+settings for a specific version of a segment that's associated with an
+application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_segment_version(

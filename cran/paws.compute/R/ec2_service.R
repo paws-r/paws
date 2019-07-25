@@ -10,18 +10,20 @@ NULL
 #' need to invest in hardware up front, so you can develop and deploy
 #' applications faster.
 #' 
-#' To learn more about Amazon EC2, Amazon EBS, and Amazon VPC, see the
-#' following resources:
+#' To learn more, see the following resources:
 #' 
-#' -   [Amazon EC2 product page](http://aws.amazon.com/ec2)
+#' -   Amazon EC2: [Amazon EC2 product page](http://aws.amazon.com/ec2),
+#'     [Amazon EC2 documentation](http://aws.amazon.com/documentation/ec2)
 #' 
-#' -   [Amazon EC2 documentation](http://aws.amazon.com/documentation/ec2)
+#' -   Amazon EBS: [Amazon EBS product page](http://aws.amazon.com/ebs),
+#'     [Amazon EBS
+#'     documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
 #' 
-#' -   [Amazon EBS product page](http://aws.amazon.com/ebs)
+#' -   Amazon VPC: [Amazon VPC product page](http://aws.amazon.com/vpc),
+#'     [Amazon VPC documentation](http://aws.amazon.com/documentation/vpc)
 #' 
-#' -   [Amazon VPC product page](http://aws.amazon.com/vpc)
-#' 
-#' -   [Amazon VPC documentation](http://aws.amazon.com/documentation/vpc)
+#' -   AWS VPN: [AWS VPN product page](http://aws.amazon.com/vpn), AWS VPN
+#'     documentation
 #'
 #' @examples
 #' # This example allocates an Elastic IP address to use with an instance in
@@ -104,6 +106,10 @@ NULL
 #'  \link[=ec2_create_spot_datafeed_subscription]{create_spot_datafeed_subscription} \tab Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs \cr
 #'  \link[=ec2_create_subnet]{create_subnet} \tab Creates a subnet in an existing VPC \cr
 #'  \link[=ec2_create_tags]{create_tags} \tab Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources \cr
+#'  \link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter} \tab Creates a Traffic Mirror filter \cr
+#'  \link[=ec2_create_traffic_mirror_filter_rule]{create_traffic_mirror_filter_rule} \tab Creates a Traffic Mirror rule \cr
+#'  \link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session} \tab Creates a Traffic Mirror session \cr
+#'  \link[=ec2_create_traffic_mirror_target]{create_traffic_mirror_target} \tab Creates a target for your Traffic Mirror session \cr
 #'  \link[=ec2_create_transit_gateway]{create_transit_gateway} \tab Creates a transit gateway \cr
 #'  \link[=ec2_create_transit_gateway_route]{create_transit_gateway_route} \tab Creates a static route for the specified transit gateway route table \cr
 #'  \link[=ec2_create_transit_gateway_route_table]{create_transit_gateway_route_table} \tab Creates a route table for the specified transit gateway \cr
@@ -142,6 +148,10 @@ NULL
 #'  \link[=ec2_delete_spot_datafeed_subscription]{delete_spot_datafeed_subscription} \tab Deletes the data feed for Spot Instances \cr
 #'  \link[=ec2_delete_subnet]{delete_subnet} \tab Deletes the specified subnet \cr
 #'  \link[=ec2_delete_tags]{delete_tags} \tab Deletes the specified set of tags from the specified set of resources \cr
+#'  \link[=ec2_delete_traffic_mirror_filter]{delete_traffic_mirror_filter} \tab Deletes the specified Traffic Mirror filter \cr
+#'  \link[=ec2_delete_traffic_mirror_filter_rule]{delete_traffic_mirror_filter_rule} \tab Deletes the specified Traffic Mirror rule \cr
+#'  \link[=ec2_delete_traffic_mirror_session]{delete_traffic_mirror_session} \tab Deletes the specified Traffic Mirror session \cr
+#'  \link[=ec2_delete_traffic_mirror_target]{delete_traffic_mirror_target} \tab Deletes the specified Traffic Mirror target \cr
 #'  \link[=ec2_delete_transit_gateway]{delete_transit_gateway} \tab Deletes the specified transit gateway \cr
 #'  \link[=ec2_delete_transit_gateway_route]{delete_transit_gateway_route} \tab Deletes the specified route from the specified transit gateway route table \cr
 #'  \link[=ec2_delete_transit_gateway_route_table]{delete_transit_gateway_route_table} \tab Deletes the specified transit gateway route table \cr
@@ -195,7 +205,7 @@ NULL
 #'  \link[=ec2_describe_instance_attribute]{describe_instance_attribute} \tab Describes the specified attribute of the specified instance \cr
 #'  \link[=ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified T2 or T3 instances \cr
 #'  \link[=ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances \cr
-#'  \link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all of your instances \cr
+#'  \link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all of AWS account's instances \cr
 #'  \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways \cr
 #'  \link[=ec2_describe_key_pairs]{describe_key_pairs} \tab Describes the specified key pairs or all of your key pairs \cr
 #'  \link[=ec2_describe_launch_template_versions]{describe_launch_template_versions} \tab Describes one or more versions of a specified launch template \cr
@@ -231,6 +241,9 @@ NULL
 #'  \link[=ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab &#91;VPC only&#93; Describes the stale security group rules for security groups in a specified VPC \cr
 #'  \link[=ec2_describe_subnets]{describe_subnets} \tab Describes one or more of your subnets \cr
 #'  \link[=ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources \cr
+#'  \link[=ec2_describe_traffic_mirror_filters]{describe_traffic_mirror_filters} \tab Describes one or more Traffic Mirror filters \cr
+#'  \link[=ec2_describe_traffic_mirror_sessions]{describe_traffic_mirror_sessions} \tab Describes one or more Traffic Mirror sessions \cr
+#'  \link[=ec2_describe_traffic_mirror_targets]{describe_traffic_mirror_targets} \tab Information about one or more Traffic Mirror targets \cr
 #'  \link[=ec2_describe_transit_gateway_attachments]{describe_transit_gateway_attachments} \tab Describes one or more attachments between resources and transit gateways \cr
 #'  \link[=ec2_describe_transit_gateway_route_tables]{describe_transit_gateway_route_tables} \tab Describes one or more transit gateway route tables \cr
 #'  \link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments} \tab Describes one or more VPC attachments \cr
@@ -315,6 +328,9 @@ NULL
 #'  \link[=ec2_modify_snapshot_attribute]{modify_snapshot_attribute} \tab Adds or removes permission settings for the specified snapshot \cr
 #'  \link[=ec2_modify_spot_fleet_request]{modify_spot_fleet_request} \tab Modifies the specified Spot Fleet request \cr
 #'  \link[=ec2_modify_subnet_attribute]{modify_subnet_attribute} \tab Modifies a subnet attribute \cr
+#'  \link[=ec2_modify_traffic_mirror_filter_network_services]{modify_traffic_mirror_filter_network_services} \tab Allows or restricts mirroring network services \cr
+#'  \link[=ec2_modify_traffic_mirror_filter_rule]{modify_traffic_mirror_filter_rule} \tab Modifies the specified Traffic Mirror rule \cr
+#'  \link[=ec2_modify_traffic_mirror_session]{modify_traffic_mirror_session} \tab Modifies a Traffic Mirror session \cr
 #'  \link[=ec2_modify_transit_gateway_vpc_attachment]{modify_transit_gateway_vpc_attachment} \tab Modifies the specified VPC attachment \cr
 #'  \link[=ec2_modify_volume]{modify_volume} \tab You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity \cr
 #'  \link[=ec2_modify_volume_attribute]{modify_volume_attribute} \tab Modifies a volume attribute \cr

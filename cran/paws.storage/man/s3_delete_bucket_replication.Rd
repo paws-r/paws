@@ -14,8 +14,8 @@ configuration to all Amazon S3 systems.}
 }
 \description{
 Deletes the replication configuration from the bucket. For information
-about replication configuration, see Cross-Region Replication (CRR) in
-the \emph{Amazon S3 Developer Guide}.
+about replication configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html}{Cross-Region Replication (CRR)} in the
+\emph{Amazon S3 Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_replication(

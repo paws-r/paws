@@ -11,9 +11,9 @@ glacier_set_vault_notifications(accountId, vaultName,
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
-associated with the credentials used to sign the request. If you use an
-account ID, do not include any hyphens ('-') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+ID associated with the credentials used to sign the request. If you use
+an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
@@ -27,8 +27,8 @@ events happen to a vault. By default, you don't get any notifications.
 To configure vault notifications, send a PUT request to the
 \code{notification-configuration} subresource of the vault. The request
 should include a JSON document that provides an Amazon SNS topic and
-specific events for which you want Amazon Glacier to send notifications
-to the topic.
+specific events for which you want Amazon S3 Glacier to send
+notifications to the topic.
 
 Amazon SNS topics must grant permission to the vault to be allowed to
 publish notifications to the topic. You can configure a vault to publish
@@ -49,10 +49,10 @@ returned from DescribeJob.
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
+perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 
-For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon Glacier}
-and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html}{Set Vault Notification Configuration}
+For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon S3 Glacier}
+and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html}{Set Vault Notification Configuration}
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{

@@ -16,7 +16,7 @@ update network profile settings.}
 \item{name}{The name of the network profile about which you are returning
 information.}
 
-\item{description}{The descriptoin of the network profile about which you are returning
+\item{description}{The description of the network profile about which you are returning
 information.}
 
 \item{type}{The type of network profile you wish to return information about. Valid

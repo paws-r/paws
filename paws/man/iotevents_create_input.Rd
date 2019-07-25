@@ -14,7 +14,7 @@ iotevents_create_input(inputName, inputDescription, inputDefinition,
 
 \item{inputDefinition}{[required] The definition of the input.}
 
-\item{tags}{Metadata which can be used to manage the input.}
+\item{tags}{Metadata that can be used to manage the input.}
 }
 \description{
 Creates an input.

@@ -2,20 +2,21 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_campaign}
 \alias{pinpoint_update_campaign}
-\title{Use to update a campaign}
+\title{Updates the settings for a campaign}
 \usage{
 pinpoint_update_campaign(ApplicationId, CampaignId,
   WriteCampaignRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{CampaignId}{[required] The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique identifier for the campaign.}
 
 \item{WriteCampaignRequest}{[required]}
 }
 \description{
-Use to update a campaign.
+Updates the settings for a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$update_campaign(

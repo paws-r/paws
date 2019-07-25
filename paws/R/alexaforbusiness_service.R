@@ -47,7 +47,7 @@ NULL
 #'  \link[=alexaforbusiness_delete_conference_provider]{delete_conference_provider} \tab Deletes a conference provider \cr
 #'  \link[=alexaforbusiness_delete_contact]{delete_contact} \tab Deletes a contact by the contact ARN \cr
 #'  \link[=alexaforbusiness_delete_device]{delete_device} \tab Removes a device from Alexa For Business \cr
-#'  \link[=alexaforbusiness_delete_device_usage_data]{delete_device_usage_data} \tab When this action is called for a specified shared device, it allows authorized users to delete the device's entire previous history of voice input data\cr
+#'  \link[=alexaforbusiness_delete_device_usage_data]{delete_device_usage_data} \tab When this action is called for a specified shared device, it allows authorized users to delete the device's entire previous history of voice input data and associated response data\cr
 #'  \link[=alexaforbusiness_delete_gateway_group]{delete_gateway_group} \tab Deletes a gateway group \cr
 #'  \link[=alexaforbusiness_delete_network_profile]{delete_network_profile} \tab Deletes a network profile by the network profile ARN \cr
 #'  \link[=alexaforbusiness_delete_profile]{delete_profile} \tab Deletes a room profile by the profile ARN \cr

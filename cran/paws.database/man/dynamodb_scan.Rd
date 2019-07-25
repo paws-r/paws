@@ -29,11 +29,11 @@ matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns
 the matching values up to that point, and a key in \code{LastEvaluatedKey} to
 apply in a subsequent operation, so that you can pick up where you left
-off. Also, if the processed data set size exceeds 1 MB before DynamoDB
+off. Also, if the processed dataset size exceeds 1 MB before DynamoDB
 reaches this limit, it stops the operation and returns the matching
 values up to the limit, and a key in \code{LastEvaluatedKey} to apply in a
 subsequent operation to continue the operation. For more information,
-see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html}{Query and Scan}
+see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html}{Working with Queries}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{Select}{The attributes to be returned in the result. You can retrieve all item
@@ -43,7 +43,7 @@ index.
 \itemize{
 \item \code{ALL_ATTRIBUTES} - Returns all of the item attributes from the
 specified table or index. If you query a local secondary index, then
-for each matching item in the index DynamoDB will fetch the entire
+for each matching item in the index, DynamoDB fetches the entire
 item from the parent table. If the index is configured to project
 all item attributes, then all of the data can be obtained from the
 local secondary index, and no fetching is required.
@@ -58,11 +58,11 @@ matching items themselves.
 \code{AttributesToGet} without specifying any value for \code{Select}.
 
 If you query or scan a local secondary index and request only
-attributes that are projected into that index, the operation will
-read only the index and not the table. If any of the requested
-attributes are not projected into the local secondary index,
-DynamoDB will fetch each of these attributes from the parent table.
-This extra fetching incurs additional throughput cost and latency.
+attributes that are projected into that index, the operation reads
+only the index and not the table. If any of the requested attributes
+are not projected into the local secondary index, DynamoDB fetches
+each of these attributes from the parent table. This extra fetching
+incurs additional throughput cost and latency.
 
 If you query or scan a global secondary index, you can only request
 attributes that are projected into the index. Global secondary index
@@ -142,7 +142,7 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{FilterExpression}{A string that contains conditions that DynamoDB applies after the \code{Scan}
@@ -191,14 +191,14 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
 
 Use the \strong{:} (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
-the value of the \emph{ProductStatus} attribute was one of the following:
+the value of the \code{ProductStatus} attribute was one of the following:
 
 \code{Available | Backordered | Discontinued}
 
@@ -210,7 +210,7 @@ You could then use these values in an expression, such as this:
 
 \code{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ConsistentRead}{A Boolean value that determines the read consistency model during the
@@ -218,7 +218,7 @@ scan:
 \itemize{
 \item If \code{ConsistentRead} is \code{false}, then the data returned from \code{Scan}
 might not contain the results from other recently completed write
-operations (PutItem, UpdateItem or DeleteItem).
+operations (\code{PutItem}, \code{UpdateItem}, or \code{DeleteItem}).
 \item If \code{ConsistentRead} is \code{true}, then all of the write operations that
 completed before the \code{Scan} began are guaranteed to be contained in
 the \code{Scan} response.
@@ -236,17 +236,17 @@ accessing every item in a table or a secondary index. To have DynamoDB
 return fewer items, you can provide a \code{FilterExpression} operation.
 }
 \details{
-If the total number of scanned items exceeds the maximum data set size
+If the total number of scanned items exceeds the maximum dataset size
 limit of 1 MB, the scan stops and results are returned to the user as a
 \code{LastEvaluatedKey} value to continue the scan in a subsequent operation.
 The results also include the number of items exceeding the limit. A scan
 can result in no table data meeting the filter criteria.
 
-A single \code{Scan} operation will read up to the maximum number of items
-set (if using the \code{Limit} parameter) or a maximum of 1 MB of data and
-then apply any filtering to the results using \code{FilterExpression}. If
-\code{LastEvaluatedKey} is present in the response, you will need to paginate
-the result set. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination}{Paginating the Results}
+A single \code{Scan} operation reads up to the maximum number of items set
+(if using the \code{Limit} parameter) or a maximum of 1 MB of data and then
+apply any filtering to the results using \code{FilterExpression}. If
+\code{LastEvaluatedKey} is present in the response, you need to paginate the
+result set. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination}{Paginating the Results}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 \code{Scan} operations proceed sequentially; however, for faster performance
@@ -367,8 +367,8 @@ can set the \code{ConsistentRead} parameter to \code{true}.
 # title and song title are returned.
 \donttest{svc$scan(
   ExpressionAttributeNames = list(
-    AT = "AlbumTitle",
-    ST = "SongTitle"
+    `#AT` = "AlbumTitle",
+    `#ST` = "SongTitle"
   ),
   ExpressionAttributeValues = list(
     `:a` = list(

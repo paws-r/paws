@@ -22,23 +22,24 @@ any associated arguments.}
 
 \item{Comment}{A user-defined comment.}
 
-\item{CustomJson}{A string that contains user-defined, custom JSON. It is used to override
-the corresponding default stack configuration JSON values. The string
-should be in the following format:
+\item{CustomJson}{A string that contains user-defined, custom JSON. You can use this
+parameter to override some corresponding default stack configuration
+JSON values. The string should be in the following format:
 
 \code{"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"}
 
-For more information about custom JSON, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}.}
+For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}
+and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Overriding Attributes With Custom JSON}.}
 }
 \description{
-Runs deployment or stack commands. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps}
-and \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html}{Run Stack Commands}.
+Runs deployment or stack commands. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps}
+and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html}{Run Stack Commands}.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
 that explicitly grants permissions. For more information on user
-permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_deployment(

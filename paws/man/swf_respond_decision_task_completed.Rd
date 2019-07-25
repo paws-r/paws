@@ -40,7 +40,7 @@ of decisions in the \code{decisions} parameter. Each of the decisions has one
 or more parameters, much like a regular API call. To allow for policies
 to be as readable as possible, you can express permissions on decisions
 as if they were actual API calls, including applying conditions to some
-parameters. For more information, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+parameters. For more information, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

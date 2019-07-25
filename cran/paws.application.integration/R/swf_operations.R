@@ -40,7 +40,7 @@ NULL
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -173,7 +173,7 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -270,7 +270,7 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -336,7 +336,7 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -409,7 +409,7 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -478,7 +478,7 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -548,7 +548,7 @@ swf_deprecate_domain <- function(name) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -618,7 +618,7 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -683,7 +683,7 @@ swf_describe_activity_type <- function(domain, activityType) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -744,7 +744,7 @@ swf_describe_domain <- function(name) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -814,7 +814,7 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -880,7 +880,7 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -889,20 +889,17 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution.
 #' @param execution &#91;required&#93; Specifies the workflow execution for which to return the history.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the events in reverse order. By default the
 #' results are returned in ascending order of the `eventTimeStamp` of the
 #' events.
@@ -968,7 +965,7 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -978,20 +975,17 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' @param domain &#91;required&#93; The name of the domain in which the activity types have been registered.
 #' @param name If specified, only lists the activity types that have this name.
 #' @param registrationStatus &#91;required&#93; Specifies the registration status of the activity types to list.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default,
 #' the results are returned in ascending alphabetical order by `name` of
 #' the activity types.
@@ -1066,7 +1060,7 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1109,20 +1103,17 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' 
 #' `closeStatusFilter`, `executionFilter`, `typeFilter` and `tagFilter` are
 #' mutually exclusive. You can specify at most one of these in a request.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default the
 #' results are returned in descending order of the start or the close time
 #' of the executions.
@@ -1214,28 +1205,25 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
 #' swf_list_domains(nextPageToken, registrationStatus, maximumPageSize,
 #'   reverseOrder)
 #'
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
 #' @param registrationStatus &#91;required&#93; Specifies the registration status of the domains to list.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default,
 #' the results are returned in ascending alphabetical order by `name` of
 #' the domains.
@@ -1308,7 +1296,7 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1328,20 +1316,17 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' 
 #' `executionFilter`, `typeFilter` and `tagFilter` are mutually exclusive.
 #' You can specify at most one of these in a request.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default the
 #' results are returned in descending order of the start time of the
 #' executions.
@@ -1398,6 +1383,41 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 }
 .swf$operations$list_open_workflow_executions <- swf_list_open_workflow_executions
 
+#' List tags for a given domain
+#'
+#' List tags for a given domain.
+#'
+#' @usage
+#' swf_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_list_tags_for_resource
+swf_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .swf$list_tags_for_resource_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$list_tags_for_resource <- swf_list_tags_for_resource
+
 #' Returns information about workflow types in the specified domain
 #'
 #' Returns information about workflow types in the specified domain. The
@@ -1422,7 +1442,7 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1432,20 +1452,17 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #' @param domain &#91;required&#93; The name of the domain in which the workflow types have been registered.
 #' @param name If specified, lists the workflow type with this name.
 #' @param registrationStatus &#91;required&#93; Specifies the registration status of the workflow types to list.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
-#' 
-#' This is an upper limit only; the actual number of results returned per
-#' call may be fewer than the specified maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default the
 #' results are returned in ascending alphabetical order of the `name` of
 #' the workflow types.
@@ -1518,7 +1535,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1529,8 +1546,8 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param identity Identity of the worker making the request, recorded in the
 #' `ActivityTaskStarted` event in the workflow history. This enables
 #' diagnostic tracing when problems arise. The form of this identity is
@@ -1613,7 +1630,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1625,16 +1642,18 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param identity Identity of the decider making the request, which is recorded in the
 #' DecisionTaskStarted event in the workflow history. This enables
 #' diagnostic tracing when problems arise. The form of this identity is
 #' user defined.
-#' @param nextPageToken If a `NextPageToken` was returned by a previous call, there are more
-#' results available. To retrieve the next page of results, make the call
-#' again using the returned token in `nextPageToken`. Keep all other
-#' arguments unchanged.
+#' @param nextPageToken If `NextPageToken` is returned there are more results available. The
+#' value of `NextPageToken` is a unique pagination token for each page.
+#' Make the call again using the returned token to retrieve the next page.
+#' Keep all other arguments unchanged. Each pagination token expires after
+#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' \"`Specified token has exceeded its maximum lifetime`\".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
 #' returned in a single call.
@@ -1644,10 +1663,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' PollForDecisionTask again (with the `nextPageToken`) to retrieve the
 #' next page of history records. Calling PollForDecisionTask with a
 #' `nextPageToken` doesn\'t return a new decision task.
-#' @param maximumPageSize The maximum number of results that are returned per call.
-#' `nextPageToken` can be used to obtain futher pages of results. The
-#' default is 1000, which is the maximum allowed page size. You can,
-#' however, specify a page size *smaller* than the maximum.
+#' @param maximumPageSize The maximum number of results that are returned per call. Use
+#' `nextPageToken` to obtain further pages of results.
 #' 
 #' This is an upper limit only; the actual number of results returned per
 #' call may be fewer than the specified maximum.
@@ -1740,7 +1757,7 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1817,7 +1834,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -1831,8 +1848,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the activity type.
 #' 
 #' The activity type consists of the name and version, the combination of
@@ -1840,8 +1857,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param description A textual description of the activity type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration that a worker can take to
 #' process tasks of this activity type. This default can be overridden when
@@ -1871,7 +1888,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' (2147483647). Higher numbers indicate higher priority.
 #' 
 #' For more information about setting task priority, see [Setting Task
-#' Priority](http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+#' Priority](https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 #' in the *in the *Amazon SWF Developer Guide*.*.
 #' @param defaultTaskScheduleToStartTimeout If set, specifies the default maximum duration that a task of this
 #' activity type can wait before being assigned to a worker. This default
@@ -1947,20 +1964,20 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
 #' swf_register_domain(name, description,
-#'   workflowExecutionRetentionPeriodInDays)
+#'   workflowExecutionRetentionPeriodInDays, tags)
 #'
 #' @param name &#91;required&#93; Name of the domain to register. The name must be unique in the region
 #' that the domain is registered in.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param description A text description of the domain.
 #' @param workflowExecutionRetentionPeriodInDays &#91;required&#93; The duration (in days) that records and histories of workflow executions
 #' on the domain should be kept by the service. After the retention period,
@@ -1973,29 +1990,39 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' The maximum workflow execution retention period is 90 days. For more
 #' information about Amazon SWF service limits, see: [Amazon SWF Service
-#' Limits](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
+#' Limits](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
 #' in the *Amazon SWF Developer Guide*.
+#' @param tags Tags to be added when registering a domain.
+#' 
+#' Tags may only contain unicode letters, digits, whitespace, or these
+#' symbols: `_ . : / = + - @`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$register_domain(
 #'   name = "string",
 #'   description = "string",
-#'   workflowExecutionRetentionPeriodInDays = "string"
+#'   workflowExecutionRetentionPeriodInDays = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname swf_register_domain
-swf_register_domain <- function(name, description = NULL, workflowExecutionRetentionPeriodInDays) {
+swf_register_domain <- function(name, description = NULL, workflowExecutionRetentionPeriodInDays, tags = NULL) {
   op <- new_operation(
     name = "RegisterDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .swf$register_domain_input(name = name, description = description, workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays)
+  input <- .swf$register_domain_input(name = name, description = description, workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays, tags = tags)
   output <- .swf$register_domain_output()
   svc <- .swf$service()
   request <- new_request(svc, op, input, output)
@@ -2043,7 +2070,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2057,8 +2084,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the workflow type.
 #' 
 #' The workflow type consists of the name and version, the combination of
@@ -2067,8 +2094,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
 #' this workflow type. This default can be overridden when starting a
@@ -2098,7 +2125,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' (2147483647). Higher numbers indicate higher priority.
 #' 
 #' For more information about setting task priority, see [Setting Task
-#' Priority](http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+#' Priority](https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 #' in the *Amazon SWF Developer Guide*.
 #' @param defaultChildPolicy If set, specifies the default policy to use for the child workflow
 #' executions when a workflow execution of this type is terminated, by
@@ -2124,7 +2151,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' functions. If you don\'t specify an IAM role when you start this
 #' workflow type, the default Lambda role is attached to the execution. For
 #' more information, see
-#' <http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
+#' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2200,7 +2227,7 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2257,7 +2284,7 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' processing it. A task is closed after it has been specified in a call to
 #' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 #' RespondActivityTaskFailed, or the task has [timed
-#' out](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
 #' **Access Control**
 #' 
@@ -2277,7 +2304,7 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2337,7 +2364,7 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' processing it. A task is closed after it has been specified in a call to
 #' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 #' RespondActivityTaskFailed, or the task has [timed
-#' out](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
 #' **Access Control**
 #' 
@@ -2357,7 +2384,7 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2412,7 +2439,7 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' processing it. A task is closed after it has been specified in a call to
 #' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
 #' RespondActivityTaskFailed, or the task has [timed
-#' out](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
+#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
 #' **Access Control**
 #' 
@@ -2432,7 +2459,7 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2496,7 +2523,7 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' as if they were actual API calls, including applying conditions to some
 #' parameters. For more information, see [Using IAM to Manage Access to
 #' Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2677,7 +2704,7 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2767,7 +2794,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -2780,12 +2807,13 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' can use this to associate a custom identifier with the workflow
 #' execution. You may specify the same identifier if a workflow execution
 #' is logically a *restart* of a previous execution. You cannot have two
-#' open workflow executions with the same `workflowId` at the same time.
+#' open workflow executions with the same `workflowId` at the same time
+#' within the same domain.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param workflowType &#91;required&#93; The type of the workflow to start.
 #' @param taskList The task list to use for the decision tasks generated for this workflow
 #' execution. This overrides the `defaultTaskList` specified when
@@ -2798,8 +2826,8 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not
-#' contain the literal string `arn`.
+#' characters (``U+0000`-`U+001f`` \\| ``U+007f`-`U+009f``). Also, it must not *be*
+#' the literal string `arn`.
 #' @param taskPriority The task priority to use for this workflow execution. This overrides any
 #' default priority that was assigned when the workflow type was
 #' registered. If not set, then the default task priority for the workflow
@@ -2808,7 +2836,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' Higher numbers indicate higher priority.
 #' 
 #' For more information about setting task priority, see [Setting Task
-#' Priority](http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+#' Priority](https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
 #' in the *Amazon SWF Developer Guide*.
 #' @param input The input for the workflow execution. This is a free form string which
 #' should be meaningful to the workflow you are starting. This `input` is
@@ -2872,7 +2900,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' functions. If you don\'t attach an IAM role, any attempt to schedule a
 #' Lambda task fails. This results in a `ScheduleLambdaFunctionFailed`
 #' history event. For more information, see
-#' <http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
+#' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2918,6 +2946,53 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 }
 .swf$operations$start_workflow_execution <- swf_start_workflow_execution
 
+#' Add a tag to a Amazon SWF domain
+#'
+#' Add a tag to a Amazon SWF domain.
+#' 
+#' Amazon SWF supports a maximum of 50 tags per resource.
+#'
+#' @usage
+#' swf_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
+#' @param tags &#91;required&#93; The list of tags to add to a domain.
+#' 
+#' Tags may only contain unicode letters, digits, whitespace, or these
+#' symbols: `_ . : / = + - @`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_tag_resource
+swf_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .swf$tag_resource_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$tag_resource <- swf_tag_resource
+
 #' Records a WorkflowExecutionTerminated event and forces closure of the
 #' workflow execution identified by the given domain, runId, and workflowId
 #'
@@ -2956,7 +3031,7 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #' action fails. The associated event attribute\'s `cause` parameter is set
 #' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
 #' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
 #' @usage
@@ -3020,3 +3095,248 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
   return(response)
 }
 .swf$operations$terminate_workflow_execution <- swf_terminate_workflow_execution
+
+#' Undeprecates a previously deprecated _activity type_
+#'
+#' Undeprecates a previously deprecated *activity type*. After an activity
+#' type has been undeprecated, you can create new tasks of that activity
+#' type.
+#' 
+#' This operation is eventually consistent. The results are best effort and
+#' may not exactly reflect recent updates and changes.
+#' 
+#' **Access Control**
+#' 
+#' You can use IAM policies to control this action\'s access to Amazon SWF
+#' resources as follows:
+#' 
+#' -   Use a `Resource` element with the domain name to limit the action to
+#'     only specified domains.
+#' 
+#' -   Use an `Action` element to allow or deny permission to call this
+#'     action.
+#' 
+#' -   Constrain the following parameters by using a `Condition` element
+#'     with the appropriate keys.
+#' 
+#'     -   `activityType.name`: String constraint. The key is
+#'         `swf:activityType.name`.
+#' 
+#'     -   `activityType.version`: String constraint. The key is
+#'         `swf:activityType.version`.
+#' 
+#' If the caller doesn\'t have sufficient permissions to invoke the action,
+#' or the parameter values fall outside the specified constraints, the
+#' action fails. The associated event attribute\'s `cause` parameter is set
+#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
+#' [Using IAM to Manage Access to Amazon SWF
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' in the *Amazon SWF Developer Guide*.
+#'
+#' @usage
+#' swf_undeprecate_activity_type(domain, activityType)
+#'
+#' @param domain &#91;required&#93; The name of the domain of the deprecated activity type.
+#' @param activityType &#91;required&#93; The activity type to undeprecate.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$undeprecate_activity_type(
+#'   domain = "string",
+#'   activityType = list(
+#'     name = "string",
+#'     version = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_undeprecate_activity_type
+swf_undeprecate_activity_type <- function(domain, activityType) {
+  op <- new_operation(
+    name = "UndeprecateActivityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$undeprecate_activity_type_input(domain = domain, activityType = activityType)
+  output <- .swf$undeprecate_activity_type_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$undeprecate_activity_type <- swf_undeprecate_activity_type
+
+#' Undeprecates a previously deprecated domain
+#'
+#' Undeprecates a previously deprecated domain. After a domain has been
+#' undeprecated it can be used to create new workflow executions or
+#' register new types.
+#' 
+#' This operation is eventually consistent. The results are best effort and
+#' may not exactly reflect recent updates and changes.
+#' 
+#' **Access Control**
+#' 
+#' You can use IAM policies to control this action\'s access to Amazon SWF
+#' resources as follows:
+#' 
+#' -   Use a `Resource` element with the domain name to limit the action to
+#'     only specified domains.
+#' 
+#' -   Use an `Action` element to allow or deny permission to call this
+#'     action.
+#' 
+#' -   You cannot use an IAM policy to constrain this action\'s parameters.
+#' 
+#' If the caller doesn\'t have sufficient permissions to invoke the action,
+#' or the parameter values fall outside the specified constraints, the
+#' action fails. The associated event attribute\'s `cause` parameter is set
+#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
+#' [Using IAM to Manage Access to Amazon SWF
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' in the *Amazon SWF Developer Guide*.
+#'
+#' @usage
+#' swf_undeprecate_domain(name)
+#'
+#' @param name &#91;required&#93; The name of the domain of the deprecated workflow type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$undeprecate_domain(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_undeprecate_domain
+swf_undeprecate_domain <- function(name) {
+  op <- new_operation(
+    name = "UndeprecateDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$undeprecate_domain_input(name = name)
+  output <- .swf$undeprecate_domain_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$undeprecate_domain <- swf_undeprecate_domain
+
+#' Undeprecates a previously deprecated _workflow type_
+#'
+#' Undeprecates a previously deprecated *workflow type*. After a workflow
+#' type has been undeprecated, you can create new executions of that type.
+#' 
+#' This operation is eventually consistent. The results are best effort and
+#' may not exactly reflect recent updates and changes.
+#' 
+#' **Access Control**
+#' 
+#' You can use IAM policies to control this action\'s access to Amazon SWF
+#' resources as follows:
+#' 
+#' -   Use a `Resource` element with the domain name to limit the action to
+#'     only specified domains.
+#' 
+#' -   Use an `Action` element to allow or deny permission to call this
+#'     action.
+#' 
+#' -   Constrain the following parameters by using a `Condition` element
+#'     with the appropriate keys.
+#' 
+#'     -   `workflowType.name`: String constraint. The key is
+#'         `swf:workflowType.name`.
+#' 
+#'     -   `workflowType.version`: String constraint. The key is
+#'         `swf:workflowType.version`.
+#' 
+#' If the caller doesn\'t have sufficient permissions to invoke the action,
+#' or the parameter values fall outside the specified constraints, the
+#' action fails. The associated event attribute\'s `cause` parameter is set
+#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
+#' [Using IAM to Manage Access to Amazon SWF
+#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+#' in the *Amazon SWF Developer Guide*.
+#'
+#' @usage
+#' swf_undeprecate_workflow_type(domain, workflowType)
+#'
+#' @param domain &#91;required&#93; The name of the domain of the deprecated workflow type.
+#' @param workflowType &#91;required&#93; The name of the domain of the deprecated workflow type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$undeprecate_workflow_type(
+#'   domain = "string",
+#'   workflowType = list(
+#'     name = "string",
+#'     version = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_undeprecate_workflow_type
+swf_undeprecate_workflow_type <- function(domain, workflowType) {
+  op <- new_operation(
+    name = "UndeprecateWorkflowType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$undeprecate_workflow_type_input(domain = domain, workflowType = workflowType)
+  output <- .swf$undeprecate_workflow_type_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$undeprecate_workflow_type <- swf_undeprecate_workflow_type
+
+#' Remove a tag from a Amazon SWF domain
+#'
+#' Remove a tag from a Amazon SWF domain.
+#'
+#' @usage
+#' swf_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
+#' @param tagKeys &#91;required&#93; The list of tags to remove from the Amazon SWF domain.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname swf_untag_resource
+swf_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .swf$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .swf$untag_resource_output()
+  svc <- .swf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.swf$operations$untag_resource <- swf_untag_resource

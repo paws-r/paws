@@ -19,13 +19,13 @@ mode.}
 \item{GlobalTableProvisionedWriteCapacityUnits}{The maximum number of writes consumed per second before DynamoDB returns
 a \code{ThrottlingException.}}
 
-\item{GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate}{AutoScaling settings for managing provisioned write capacity for the
+\item{GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate}{Auto scaling settings for managing provisioned write capacity for the
 global table.}
 
 \item{GlobalTableGlobalSecondaryIndexSettingsUpdate}{Represents the settings of a global secondary index for a global table
 that will be modified.}
 
-\item{ReplicaSettingsUpdate}{Represents the settings for a global table in a region that will be
+\item{ReplicaSettingsUpdate}{Represents the settings for a global table in a Region that will be
 modified.}
 }
 \description{

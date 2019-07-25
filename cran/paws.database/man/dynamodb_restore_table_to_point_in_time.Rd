@@ -47,7 +47,7 @@ You must manually set up the following on the restored table:
 \itemize{
 \item Auto scaling policies
 \item IAM policies
-\item Cloudwatch metrics and alarms
+\item Amazon CloudWatch metrics and alarms
 \item Tags
 \item Stream settings
 \item Time to Live (TTL) settings

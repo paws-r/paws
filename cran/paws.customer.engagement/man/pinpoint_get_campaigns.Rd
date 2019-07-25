@@ -2,19 +2,24 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_campaigns}
 \alias{pinpoint_get_campaigns}
-\title{Returns information about your campaigns}
+\title{Retrieves information about the status, configuration, and other
+settings for all the campaigns that are associated with an application}
 \usage{
 pinpoint_get_campaigns(ApplicationId, PageSize, Token)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{PageSize}{The number of entries you want on each page in the response.}
+\item{PageSize}{The maximum number of items to include on each page in a paginated
+response.}
 
-\item{Token}{The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
+\item{Token}{The NextToken string that specifies which page of results to return in a
+paginated response.}
 }
 \description{
-Returns information about your campaigns.
+Retrieves information about the status, configuration, and other
+settings for all the campaigns that are associated with an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaigns(

@@ -13,11 +13,17 @@ directconnect_create_transit_virtual_interface(connectionId,
 \item{newTransitVirtualInterface}{[required] Information about the transit virtual interface.}
 }
 \description{
-Creates a transit virtual interface. A transit virtual interface is a
-VLAN that transports traffic from a Direct Connect gateway to one or
-more transit gateways. A transit virtual interface enables the
-connection of multiple VPCs attached to a transit gateway to a Direct
-Connect gateway.
+Creates a transit virtual interface. A transit virtual interface should
+be used to access one or more transit gateways associated with Direct
+Connect gateways. A transit virtual interface enables the connection of
+multiple VPCs attached to a transit gateway to a Direct Connect gateway.
+}
+\details{
+If you associate your transit gateway with one or more Direct Connect
+gateways, the Autonomous System Number (ASN) used by the transit gateway
+and the Direct Connect gateway must be different. For example, if you
+use the default ASN 64512 for both your the transit gateway and Direct
+Connect gateway, the association request fails.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transit_virtual_interface(
@@ -31,7 +37,13 @@ Connect gateway.
     amazonAddress = "string",
     customerAddress = "string",
     addressFamily = "ipv4"|"ipv6",
-    directConnectGatewayId = "string"
+    directConnectGatewayId = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
   )
 )
 }

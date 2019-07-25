@@ -42,6 +42,14 @@ test_that("describe_delivery_channels", {
   expect_error(svc$describe_delivery_channels(), NA)
 })
 
+test_that("describe_organization_config_rule_statuses", {
+  expect_error(svc$describe_organization_config_rule_statuses(), NA)
+})
+
+test_that("describe_organization_config_rules", {
+  expect_error(svc$describe_organization_config_rules(), NA)
+})
+
 test_that("describe_pending_aggregation_requests", {
   expect_error(svc$describe_pending_aggregation_requests(), NA)
 })

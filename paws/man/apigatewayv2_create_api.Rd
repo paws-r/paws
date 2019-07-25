@@ -6,7 +6,7 @@
 \usage{
 apigatewayv2_create_api(ApiKeySelectionExpression, Description,
   DisableSchemaValidation, Name, ProtocolType, RouteSelectionExpression,
-  Version)
+  Version, Tags)
 }
 \arguments{
 \item{ApiKeySelectionExpression}{An API key selection expression. See \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions}{API Key Selection Expressions}.}
@@ -22,6 +22,10 @@ apigatewayv2_create_api(ApiKeySelectionExpression, Description,
 \item{RouteSelectionExpression}{[required] The route selection expression for the API.}
 
 \item{Version}{A version identifier for the API.}
+
+\item{Tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..}
 }
 \description{
 Creates an Api resource.
@@ -34,7 +38,10 @@ Creates an Api resource.
   Name = "string",
   ProtocolType = "WEBSOCKET",
   RouteSelectionExpression = "string",
-  Version = "string"
+  Version = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

@@ -2,19 +2,24 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_segment}
 \alias{pinpoint_update_segment}
-\title{Used to update a segment}
+\title{Creates a new segment for an application or updates the configuration,
+dimension, and other settings for an existing segment that's associated
+with an application}
 \usage{
 pinpoint_update_segment(ApplicationId, SegmentId, WriteSegmentRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{SegmentId}{[required] The unique ID of the segment.}
+\item{SegmentId}{[required] The unique identifier for the segment.}
 
 \item{WriteSegmentRequest}{[required]}
 }
 \description{
-Used to update a segment.
+Creates a new segment for an application or updates the configuration,
+dimension, and other settings for an existing segment that's associated
+with an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_segment(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_list_global_tables}
 \alias{dynamodb_list_global_tables}
-\title{Lists all global tables that have a replica in the specified region}
+\title{Lists all global tables that have a replica in the specified Region}
 \usage{
 dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
   RegionName)
@@ -12,10 +12,10 @@ dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
 
 \item{Limit}{The maximum number of table names to return.}
 
-\item{RegionName}{Lists the global tables in a specific region.}
+\item{RegionName}{Lists the global tables in a specific Region.}
 }
 \description{
-Lists all global tables that have a replica in the specified region.
+Lists all global tables that have a replica in the specified Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_global_tables(

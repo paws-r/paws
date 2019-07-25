@@ -42,7 +42,13 @@ is not available to handle traffic.
     authKey = "string",
     amazonAddress = "string",
     customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6"
+    addressFamily = "ipv4"|"ipv6",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
   )
 )
 }

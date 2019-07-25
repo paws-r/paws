@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_channels}
 \alias{pinpoint_get_channels}
-\title{Get all channels}
+\title{Retrieves information about the history and status of each channel for
+an application}
 \usage{
 pinpoint_get_channels(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Get all channels.
+Retrieves information about the history and status of each channel for
+an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_channels(

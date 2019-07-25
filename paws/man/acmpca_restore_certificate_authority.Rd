@@ -8,7 +8,7 @@ acmpca_restore_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-CreateCertificateAuthority operation. This must be of the form:
+CreateCertificateAuthority action. This must be of the form:
 
 \code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 }
@@ -16,17 +16,17 @@ CreateCertificateAuthority operation. This must be of the form:
 Restores a certificate authority (CA) that is in the \code{DELETED} state.
 You can restore a CA during the period that you defined in the
 \strong{PermanentDeletionTimeInDays} parameter of the
-DeleteCertificateAuthority operation. Currently, you can specify 7 to 30
+DeleteCertificateAuthority action. Currently, you can specify 7 to 30
 days. If you did not specify a \strong{PermanentDeletionTimeInDays} value, by
 default you can restore the CA at any time in a 30 day period. You can
 check the time remaining in the restoration period of a private CA in
 the \code{DELETED} state by calling the DescribeCertificateAuthority or
-ListCertificateAuthorities operations. The status of a restored CA is
-set to its pre-deletion status when the \strong{RestoreCertificateAuthority}
-operation returns. To change its status to \code{ACTIVE}, call the
-UpdateCertificateAuthority operation. If the private CA was in the
+ListCertificateAuthorities actions. The status of a restored CA is set
+to its pre-deletion status when the \strong{RestoreCertificateAuthority}
+action returns. To change its status to \code{ACTIVE}, call the
+UpdateCertificateAuthority action. If the private CA was in the
 \code{PENDING_CERTIFICATE} state at deletion, you must use the
-ImportCertificateAuthorityCertificate operation to import a certificate
+ImportCertificateAuthorityCertificate action to import a certificate
 authority into the private CA before it can be activated. You cannot
 restore a CA after the restoration period has ended.
 }

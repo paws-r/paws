@@ -2,17 +2,20 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_put_events}
 \alias{pinpoint_put_events}
-\title{Use to record events for endpoints}
+\title{Creates a new event to record for endpoints, or creates or updates
+endpoint data that existing events are associated with}
 \usage{
 pinpoint_put_events(ApplicationId, EventsRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EventsRequest}{[required]}
 }
 \description{
-Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.
+Creates a new event to record for endpoints, or creates or updates
+endpoint data that existing events are associated with.
 }
 \section{Request syntax}{
 \preformatted{svc$put_events(

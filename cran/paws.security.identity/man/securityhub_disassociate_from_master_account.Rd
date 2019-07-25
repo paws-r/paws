@@ -2,14 +2,14 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_from_master_account}
 \alias{securityhub_disassociate_from_master_account}
-\title{Disassociates the current Security Hub member account from its master
-account}
+\title{Disassociates the current Security Hub member account from the
+associated master account}
 \usage{
 securityhub_disassociate_from_master_account()
 }
 \description{
-Disassociates the current Security Hub member account from its master
-account.
+Disassociates the current Security Hub member account from the
+associated master account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_from_master_account()

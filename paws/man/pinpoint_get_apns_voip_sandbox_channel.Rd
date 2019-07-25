@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_apns_voip_sandbox_channel}
 \alias{pinpoint_get_apns_voip_sandbox_channel}
-\title{Get an APNS VoIPSandbox channel}
+\title{Retrieves information about the status and settings of the APNs VoIP
+sandbox channel for an application}
 \usage{
 pinpoint_get_apns_voip_sandbox_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Get an APNS VoIPSandbox channel
+Retrieves information about the status and settings of the APNs VoIP
+sandbox channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_apns_voip_sandbox_channel(

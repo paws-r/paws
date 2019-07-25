@@ -5,23 +5,28 @@
 \title{Creates a new Amplify App}
 \usage{
 amplify_create_app(name, description, repository, platform,
-  iamServiceRoleArn, oauthToken, environmentVariables,
+  iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
   enableBranchAutoBuild, enableBasicAuth, basicAuthCredentials,
-  customRules, tags, buildSpec)
+  customRules, tags, buildSpec, enableAutoBranchCreation,
+  autoBranchCreationPatterns, autoBranchCreationConfig)
 }
 \arguments{
 \item{name}{[required] Name for the Amplify App}
 
 \item{description}{Description for an Amplify App}
 
-\item{repository}{[required] Repository for an Amplify App}
+\item{repository}{Repository for an Amplify App}
 
-\item{platform}{[required] Platform / framework for an Amplify App}
+\item{platform}{Platform / framework for an Amplify App}
 
 \item{iamServiceRoleArn}{AWS IAM service role for an Amplify App}
 
-\item{oauthToken}{[required] OAuth token for 3rd party source control system for an Amplify App, used
+\item{oauthToken}{OAuth token for 3rd party source control system for an Amplify App, used
 to create webhook and read-only deploy key. OAuth token is not stored.}
+
+\item{accessToken}{Personal Access token for 3rd party source control system for an Amplify
+App, used to create webhook and read-only deploy key. Token is not
+stored.}
 
 \item{environmentVariables}{Environment variables map for an Amplify App.}
 
@@ -37,6 +42,12 @@ branches part of this App.}
 \item{tags}{Tag for an Amplify App}
 
 \item{buildSpec}{BuildSpec for an Amplify App}
+
+\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify App.}
+
+\item{autoBranchCreationPatterns}{Automated branch creation glob patterns for the Amplify App.}
+
+\item{autoBranchCreationConfig}{Automated branch creation config for the Amplify App.}
 }
 \description{
 Creates a new Amplify App.
@@ -46,9 +57,10 @@ Creates a new Amplify App.
   name = "string",
   description = "string",
   repository = "string",
-  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+  platform = "WEB",
   iamServiceRoleArn = "string",
   oauthToken = "string",
+  accessToken = "string",
   environmentVariables = list(
     "string"
   ),
@@ -66,7 +78,22 @@ Creates a new Amplify App.
   tags = list(
     "string"
   ),
-  buildSpec = "string"
+  buildSpec = "string",
+  enableAutoBranchCreation = TRUE|FALSE,
+  autoBranchCreationPatterns = list(
+    "string"
+  ),
+  autoBranchCreationConfig = list(
+    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+    framework = "string",
+    enableAutoBuild = TRUE|FALSE,
+    environmentVariables = list(
+      "string"
+    ),
+    basicAuthCredentials = "string",
+    enableBasicAuth = TRUE|FALSE,
+    buildSpec = "string"
+  )
 )
 }
 }

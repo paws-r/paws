@@ -22,10 +22,10 @@ AWS Command Line Interface (CLI) or by using one of the AWS SDKs to
 implement applications in your preferred language. For more information,
 see:
 \itemize{
-\item \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{AWS CLI}
-\item \href{http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{AWS SDK for Java}
-\item \href{http://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm}{AWS SDK for .NET}
-\item \href{http://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html}{AWS SDK for PHP 2}
+\item \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{AWS CLI}
+\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{AWS SDK for Java}
+\item \href{https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm}{AWS SDK for .NET}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html}{AWS SDK for PHP 2}
 \item \href{http://docs.aws.amazon.com/sdkforruby/api/}{AWS SDK for Ruby}
 \item \href{http://aws.amazon.com/documentation/sdkforjavascript/}{AWS SDK for Node.js}
 \item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{AWS SDK for Python(Boto)}
@@ -60,7 +60,7 @@ AWS console)
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
 use the \code{ConfigurationManager} parameter to specify the Chef version.
 The recommended and default value for Linux stacks is currently 12.
-Windows stacks use Chef 12.2. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html}{Chef Versions}.
+Windows stacks use Chef 12.2. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html}{Chef Versions}.
 
 You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as

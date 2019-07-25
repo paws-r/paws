@@ -32,16 +32,13 @@ object already exists for the specified file system, a
 in the request body deletes any existing \code{LifecycleConfiguration} and
 disables lifecycle management.
 
-You can enable lifecycle management only for EFS file systems created
-after the release of EFS infrequent access.
-
 In the request, specify the following:
 \itemize{
-\item The ID for the file system for which you are creating a lifecycle
-management configuration.
+\item The ID for the file system for which you are enabling, disabling, or
+modifying lifecycle management.
 \item A \code{LifecyclePolicies} array of \code{LifecyclePolicy} objects that define
 when files are moved to the IA storage class. The array can contain
-only one \code{"TransitionToIA": "AFTER_30_DAYS"} \code{LifecyclePolicy} item.
+only one \code{LifecyclePolicy} item.
 }
 
 This operation requires permissions for the
@@ -56,7 +53,7 @@ when you created the encrypted file system.
   FileSystemId = "string",
   LifecyclePolicies = list(
     list(
-      TransitionToIA = "AFTER_30_DAYS"
+      TransitionToIA = "AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
     )
   )
 )

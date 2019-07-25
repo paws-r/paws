@@ -33,7 +33,7 @@ When you set \code{FifoQueue}, you can't set \code{DelaySeconds} per message. Yo
 can set this parameter only on a queue level.}
 
 \item{MessageAttributes}{Each message attribute consists of a \code{Name}, \code{Type}, and \code{Value}. For
-more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) queues.
@@ -42,7 +42,7 @@ The token used for deduplication of sent messages. If a message with a
 particular \code{MessageDeduplicationId} is sent successfully, any messages
 sent with the same \code{MessageDeduplicationId} are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
-more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item Every message must have a unique \code{MessageDeduplicationId},
@@ -84,7 +84,7 @@ The length of \code{MessageDeduplicationId} is 128 characters.
 \code{A-Z}, \code{0-9}) and punctuation
 (\code{!\"#$\\\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~}).
 
-For best practices of using \code{MessageDeduplicationId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property}
+For best practices of using \code{MessageDeduplicationId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) queues.
@@ -108,7 +108,7 @@ The length of \code{MessageGroupId} is 128 characters. Valid values:
 alphanumeric characters and punctuation
 \code{(!\"#$\\\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~)}.
 
-For best practices of using \code{MessageGroupId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
+For best practices of using \code{MessageGroupId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 \code{MessageGroupId} is required for FIFO queues. You can't use it for

@@ -67,8 +67,8 @@ between existing ones without having to renumber the rules.
 After you add an entry, you can't modify it; you must either replace
 it, or create an entry and delete the old one.
 
-For more information about network ACLs, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information about network ACLs, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html}{Network ACLs} in
+the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_network_acl_entry(

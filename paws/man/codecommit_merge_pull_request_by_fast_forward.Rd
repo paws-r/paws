@@ -2,9 +2,9 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_merge_pull_request_by_fast_forward}
 \alias{codecommit_merge_pull_request_by_fast_forward}
-\title{Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the fast-forward merge option}
+\title{Attempts to merge the source commit of a pull request into the specified
+destination branch for that pull request at the specified commit using
+the fast-forward merge strategy}
 \usage{
 codecommit_merge_pull_request_by_fast_forward(pullRequestId,
   repositoryName, sourceCommitId)
@@ -21,9 +21,10 @@ current commit ID of the tip of the source branch does not match this
 commit ID.}
 }
 \description{
-Closes a pull request and attempts to merge the source commit of a pull
-request into the specified destination branch for that pull request at
-the specified commit using the fast-forward merge option.
+Attempts to merge the source commit of a pull request into the specified
+destination branch for that pull request at the specified commit using
+the fast-forward merge strategy. If the merge is successful, it closes
+the pull request.
 }
 \section{Request syntax}{
 \preformatted{svc$merge_pull_request_by_fast_forward(

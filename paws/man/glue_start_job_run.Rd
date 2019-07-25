@@ -5,8 +5,8 @@
 \title{Starts a job run using a job definition}
 \usage{
 glue_start_job_run(JobName, JobRunId, Arguments, AllocatedCapacity,
-  Timeout, MaxCapacity, WorkerType, NumberOfWorkers,
-  SecurityConfiguration, NotificationProperty)
+  Timeout, MaxCapacity, SecurityConfiguration, NotificationProperty,
+  WorkerType, NumberOfWorkers)
 }
 \arguments{
 \item{JobName}{[required] The name of the job definition to use.}
@@ -59,6 +59,11 @@ DPUs. The default is 10 DPUs. This job type cannot have a fractional
 DPU allocation.
 }}
 
+\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
+job run.}
+
+\item{NotificationProperty}{Specifies configuration properties of a job run notification.}
+
 \item{WorkerType}{The type of predefined worker that is allocated when a job runs. Accepts
 a value of Standard, G.1X, or G.2X.
 \itemize{
@@ -75,11 +80,6 @@ a job runs.
 
 The maximum number of workers you can define are 299 for \code{G.1X}, and 149
 for \code{G.2X}.}
-
-\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
-job run.}
-
-\item{NotificationProperty}{Specifies configuration properties of a job run notification.}
 }
 \description{
 Starts a job run using a job definition.
@@ -94,12 +94,12 @@ Starts a job run using a job definition.
   AllocatedCapacity = 123,
   Timeout = 123,
   MaxCapacity = 123.0,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  NumberOfWorkers = 123,
   SecurityConfiguration = "string",
   NotificationProperty = list(
     NotifyDelayAfter = 123
-  )
+  ),
+  WorkerType = "string",
+  NumberOfWorkers = 123
 )
 }
 }

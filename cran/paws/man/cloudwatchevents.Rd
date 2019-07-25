@@ -7,8 +7,8 @@
 cloudwatchevents()
 }
 \description{
-Amazon CloudWatch Events helps you to respond to state changes in your
-AWS resources. When your resources change state, they automatically send
+Amazon EventBridge helps you to respond to state changes in your AWS
+resources. When your resources change state, they automatically send
 events into an event stream. You can create rules that match selected
 events in the stream and route them to targets to take action. You can
 also use rules to take action on a predetermined schedule. For example,
@@ -16,44 +16,57 @@ you can configure rules to:
 \itemize{
 \item Automatically invoke an AWS Lambda function to update DNS entries
 when an event notifies you that Amazon EC2 instance enters the
-running state.
+running state
 \item Direct specific API records from AWS CloudTrail to an Amazon Kinesis
 data stream for detailed analysis of potential security or
-availability risks.
+availability risks
 \item Periodically invoke a built-in target to create a snapshot of an
-Amazon EBS volume.
+Amazon EBS volume
 }
 
-For more information about the features of Amazon CloudWatch Events, see
-the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events}{Amazon CloudWatch Events User Guide}.
+For more information about the features of Amazon EventBridge, see the
+\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Amazon EventBridge User Guide}.
 }
 \section{Operations}{
 
 \tabular{ll}{
+\link[=cloudwatchevents_activate_event_source]{activate_event_source} \tab Activates a partner event source that has been deactivated \cr
+\link[=cloudwatchevents_create_event_bus]{create_event_bus} \tab Creates a new event bus within your account \cr
+\link[=cloudwatchevents_create_partner_event_source]{create_partner_event_source} \tab Called by an SaaS partner to create a partner event source \cr
+\link[=cloudwatchevents_deactivate_event_source]{deactivate_event_source} \tab An AWS customer uses this operation to temporarily stop receiving events from the specified partner event source \cr
+\link[=cloudwatchevents_delete_event_bus]{delete_event_bus} \tab Deletes the specified custom event bus or partner event bus \cr
+\link[=cloudwatchevents_delete_partner_event_source]{delete_partner_event_source} \tab This operation is used by SaaS partners to delete a partner event source \cr
 \link[=cloudwatchevents_delete_rule]{delete_rule} \tab Deletes the specified rule \cr
-\link[=cloudwatchevents_describe_event_bus]{describe_event_bus} \tab Displays the external AWS accounts that are permitted to write events to your account using your account's event bus, and the associated policy\cr
+\link[=cloudwatchevents_describe_event_bus]{describe_event_bus} \tab Displays details about an event bus in your account \cr
+\link[=cloudwatchevents_describe_event_source]{describe_event_source} \tab This operation lists details about a partner event source that is shared with your account \cr
+\link[=cloudwatchevents_describe_partner_event_source]{describe_partner_event_source} \tab An SaaS partner can use this operation to list details about a partner event source that they have created \cr
 \link[=cloudwatchevents_describe_rule]{describe_rule} \tab Describes the specified rule \cr
 \link[=cloudwatchevents_disable_rule]{disable_rule} \tab Disables the specified rule \cr
 \link[=cloudwatchevents_enable_rule]{enable_rule} \tab Enables the specified rule \cr
+\link[=cloudwatchevents_list_event_buses]{list_event_buses} \tab Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses \cr
+\link[=cloudwatchevents_list_event_sources]{list_event_sources} \tab You can use this to see all the partner event sources that have been shared with your AWS account \cr
+\link[=cloudwatchevents_list_partner_event_source_accounts]{list_partner_event_source_accounts} \tab An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with\cr
+\link[=cloudwatchevents_list_partner_event_sources]{list_partner_event_sources} \tab An SaaS partner can use this operation to list all the partner event source names that they have created \cr
 \link[=cloudwatchevents_list_rule_names_by_target]{list_rule_names_by_target} \tab Lists the rules for the specified target \cr
-\link[=cloudwatchevents_list_rules]{list_rules} \tab Lists your Amazon CloudWatch Events rules \cr
-\link[=cloudwatchevents_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Events resource \cr
+\link[=cloudwatchevents_list_rules]{list_rules} \tab Lists your EventBridge rules \cr
+\link[=cloudwatchevents_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an EventBridge resource \cr
 \link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule} \tab Lists the targets assigned to the specified rule \cr
-\link[=cloudwatchevents_put_events]{put_events} \tab Sends custom events to Amazon CloudWatch Events so that they can be matched to rules \cr
-\link[=cloudwatchevents_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to your account's default \emph{event bus} \cr
+\link[=cloudwatchevents_put_events]{put_events} \tab Sends custom events to EventBridge so that they can be matched to rules \cr
+\link[=cloudwatchevents_put_partner_events]{put_partner_events} \tab This is used by SaaS partners to write events to a customer's partner event bus \cr
+\link[=cloudwatchevents_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to the specified \emph{event bus} \cr
 \link[=cloudwatchevents_put_rule]{put_rule} \tab Creates or updates the specified rule \cr
-\link[=cloudwatchevents_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule \cr
-\link[=cloudwatchevents_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to your default event bus \cr
+\link[=cloudwatchevents_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they're already associated with the rule \cr
+\link[=cloudwatchevents_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to the specified event bus \cr
 \link[=cloudwatchevents_remove_targets]{remove_targets} \tab Removes the specified targets from the specified rule \cr
-\link[=cloudwatchevents_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch Events resource \cr
+\link[=cloudwatchevents_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified EventBridge resource \cr
 \link[=cloudwatchevents_test_event_pattern]{test_event_pattern} \tab Tests whether the specified event pattern matches the provided event \cr
-\link[=cloudwatchevents_untag_resource]{untag_resource} \tab Removes one or more tags from the specified CloudWatch Events resource
+\link[=cloudwatchevents_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge resource
 }
 }
 
 \examples{
 \donttest{svc <- cloudwatchevents()
-svc$delete_rule(
+svc$activate_event_source(
   Foo = 123
 )}
 

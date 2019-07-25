@@ -91,33 +91,37 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'
 #' @usage
 #' guardduty_create_detector(Enable, ClientToken,
-#'   FindingPublishingFrequency)
+#'   FindingPublishingFrequency, Tags)
 #'
 #' @param Enable &#91;required&#93; A boolean value that specifies whether the detector is to be enabled.
 #' @param ClientToken The idempotency token for the create request.
 #' @param FindingPublishingFrequency A enum value that specifies how frequently customer got Finding updates
 #' published.
+#' @param Tags The tags to be added to a new detector resource.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_detector(
 #'   Enable = TRUE|FALSE,
 #'   ClientToken = "string",
-#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_detector
-guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL) {
+guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDetector",
     http_method = "POST",
     http_path = "/detector",
     paginator = list()
   )
-  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency)
+  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, Tags = Tags)
   output <- .guardduty$create_detector_output()
   svc <- .guardduty$service()
   request <- new_request(svc, op, input, output)
@@ -132,7 +136,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #'
 #' @usage
 #' guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
-#'   FindingCriteria, ClientToken)
+#'   FindingCriteria, ClientToken, Tags)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
 #' want to create a filter.
@@ -145,6 +149,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' findings.
 #' @param FindingCriteria &#91;required&#93; Represents the criteria to be used in the filter for querying findings.
 #' @param ClientToken The idempotency token for the create request.
+#' @param Tags The tags to be added to a new filter resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -180,21 +185,24 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #'       )
 #'     )
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_filter
-guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action = NULL, Rank = NULL, FindingCriteria, ClientToken = NULL) {
+guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action = NULL, Rank = NULL, FindingCriteria, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFilter",
     http_method = "POST",
     http_path = "/detector/{detectorId}/filter",
     paginator = list()
   )
-  input <- .guardduty$create_filter_input(DetectorId = DetectorId, Name = Name, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria, ClientToken = ClientToken)
+  input <- .guardduty$create_filter_input(DetectorId = DetectorId, Name = Name, Description = Description, Action = Action, Rank = Rank, FindingCriteria = FindingCriteria, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_filter_output()
   svc <- .guardduty$service()
   request <- new_request(svc, op, input, output)
@@ -213,7 +221,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #'
 #' @usage
 #' guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
-#'   ClientToken)
+#'   ClientToken, Tags)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
 #' want to create an IPSet.
@@ -226,6 +234,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' @param Activate &#91;required&#93; A boolean value that indicates whether GuardDuty is to start using the
 #' uploaded IPSet.
 #' @param ClientToken The idempotency token for the create request.
+#' @param Tags The tags to be added to a new IP set resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -235,21 +244,24 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
 #'   Location = "string",
 #'   Activate = TRUE|FALSE,
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_ip_set
-guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL) {
+guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIPSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/ipset",
     paginator = list()
   )
-  input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken)
+  input <- .guardduty$create_ip_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_ip_set_output()
   svc <- .guardduty$service()
   request <- new_request(svc, op, input, output)
@@ -354,7 +366,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #'
 #' @usage
 #' guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
-#'   Activate, ClientToken)
+#'   Activate, ClientToken, Tags)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account for which you
 #' want to create a threatIntelSet.
@@ -367,6 +379,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' @param Activate &#91;required&#93; A boolean value that indicates whether GuardDuty is to start using the
 #' uploaded ThreatIntelSet.
 #' @param ClientToken The idempotency token for the create request.
+#' @param Tags The tags to be added to a new Threat List resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -376,21 +389,24 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
 #'   Location = "string",
 #'   Activate = TRUE|FALSE,
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_create_threat_intel_set
-guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL) {
+guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateThreatIntelSet",
     http_method = "POST",
     http_path = "/detector/{detectorId}/threatintelset",
     paginator = list()
   )
-  input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken)
+  input <- .guardduty$create_threat_intel_set_input(DetectorId = DetectorId, Name = Name, Format = Format, Location = Location, Activate = Activate, ClientToken = ClientToken, Tags = Tags)
   output <- .guardduty$create_threat_intel_set_output()
   svc <- .guardduty$service()
   request <- new_request(svc, op, input, output)
@@ -1476,6 +1492,44 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_members <- guardduty_list_members
 
+#' Lists tags for a resource
+#'
+#' Lists tags for a resource. Tagging is currently supported for detectors,
+#' finding filters, IP sets, and Threat Intel sets, with a limit of 50 tags
+#' per resource. When invoked, this operation returns all assigned tags for
+#' a given resource..
+#'
+#' @usage
+#' guardduty_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_tags_for_resource
+guardduty_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .guardduty$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .guardduty$list_tags_for_resource_output()
+  svc <- .guardduty$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_tags_for_resource <- guardduty_list_tags_for_resource
+
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
 #' detector ID
 #'
@@ -1611,6 +1665,45 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$stop_monitoring_members <- guardduty_stop_monitoring_members
 
+#' Adds tags to a resource
+#'
+#' Adds tags to a resource.
+#'
+#' @usage
+#' guardduty_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource
+#' @param Tags &#91;required&#93; The tags to be added to a resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_tag_resource
+guardduty_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .guardduty$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .guardduty$tag_resource_output()
+  svc <- .guardduty$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$tag_resource <- guardduty_tag_resource
+
 #' Unarchives Amazon GuardDuty findings specified by the list of finding
 #' IDs
 #'
@@ -1652,6 +1745,45 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
   return(response)
 }
 .guardduty$operations$unarchive_findings <- guardduty_unarchive_findings
+
+#' Removes tags from a resource
+#'
+#' Removes tags from a resource.
+#'
+#' @usage
+#' guardduty_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource
+#' @param TagKeys &#91;required&#93; The tag keys to remove from a resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_untag_resource
+guardduty_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .guardduty$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .guardduty$untag_resource_output()
+  svc <- .guardduty$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$untag_resource <- guardduty_untag_resource
 
 #' Updates an Amazon GuardDuty detector specified by the detectorId
 #'

@@ -69,12 +69,13 @@ authorization caching is not enabled, this property is optional.
 }}
 
 \item{identityValidationExpression}{A validation expression for the incoming identity token. For \code{TOKEN}
-authorizers, this value is a regular expression. API Gateway will match
-the \code{aud} field of the incoming token from the client against the
-specified regular expression. It will invoke the authorizer's Lambda
-function when there is a match. Otherwise, it will return a 401
-Unauthorized response without calling the Lambda function. The
-validation expression does not apply to the \code{REQUEST} authorizer.}
+authorizers, this value is a regular expression. For
+\code{COGNITO_USER_POOLS} authorizers, API Gateway will match the \code{aud} field
+of the incoming token from the client against the specified regular
+expression. It will invoke the authorizer's Lambda function when there
+is a match. Otherwise, it will return a 401 Unauthorized response
+without calling the Lambda function. The validation expression does not
+apply to the \code{REQUEST} authorizer.}
 
 \item{authorizerResultTtlInSeconds}{The TTL in seconds of cached authorizer results. If it equals 0,
 authorization caching is disabled. If it is greater than 0, API Gateway

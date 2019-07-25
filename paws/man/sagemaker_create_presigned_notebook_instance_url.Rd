@@ -21,15 +21,13 @@ showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
 }
 \details{
-You can restrict access to this API and to the URL that it returns to a
-list of IP addresses that you specify. To restrict access, attach an IAM
-policy that denies access to this API unless the call comes from an IP
-address in the specified list to every AWS Identity and Access
-Management user, group, or role used to access the notebook instance.
-Use the \code{NotIpAddress} condition operator and the \code{aws:SourceIP}
-condition context key to specify the list of IP addresses that you want
-to have access to the notebook instance. For more information, see
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
+IAM authorization policies for this API are also enforced for every HTTP
+request and WebSocket frame that attempts to connect to the notebook
+instance.For example, you can restrict access to this API and to the URL
+that it returns to a list of IP addresses that you specify. Use the
+\code{NotIpAddress} condition operator and the \code{aws:SourceIP} condition
+context key to specify the list of IP addresses that you want to have
+access to the notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html}{Limit Access to a Notebook Instance by IP Address}.
 
 The URL that you get from a call to is valid only for 5 minutes. If you
 try to use the URL after the 5-minute limit expires, you are directed to

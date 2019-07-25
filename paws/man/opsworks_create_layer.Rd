@@ -28,7 +28,7 @@ which are limited to the alphanumeric characters, '-', '\_', and
 '.'.
 
 The built-in layers' short names are defined by AWS OpsWorks Stacks.
-For more information, see the \href{http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
+For more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.
@@ -40,11 +40,11 @@ cluster's ARN.}
 information, see CloudWatchLogsLogStream.}
 
 \item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer's EC2 instances. For
-more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{CustomJson}{A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For
-more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.
+more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html}{Using Custom JSON}.
 This feature is supported as of version 1.7.42 of the AWS CLI.}
 
 \item{CustomSecurityGroupIds}{An array containing the layer custom security group IDs.}
@@ -56,12 +56,12 @@ volumes.}
 
 \item{EnableAutoHealing}{Whether to disable auto healing for the layer.}
 
-\item{AutoAssignElasticIps}{Whether to automatically assign an \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address}
-to the layer's instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+\item{AutoAssignElasticIps}{Whether to automatically assign an \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP address}
+to the layer's instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
 
 \item{AutoAssignPublicIps}{For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
-\href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html}{How to Edit a Layer}.}
 
 \item{CustomRecipes}{A \code{LayerCustomRecipes} object that specifies the layer custom recipes.}
 
@@ -82,7 +82,7 @@ Shutdown event to specify an execution timeout and enable or disable
 Elastic Load Balancer connection draining.}
 }
 \description{
-Creates a layer. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
+Creates a layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
 }
 \details{
 You should use \strong{CreateLayer} for noncustom layer types such as PHP App
@@ -95,7 +95,7 @@ have an arbitrary number of custom layers, so you can call
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_layer(

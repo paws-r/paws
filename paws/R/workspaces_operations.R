@@ -89,6 +89,57 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 }
 .workspaces$operations$authorize_ip_rules <- workspaces_authorize_ip_rules
 
+#' Copies the specified image from the specified Region to the current
+#' Region
+#'
+#' Copies the specified image from the specified Region to the current
+#' Region.
+#'
+#' @usage
+#' workspaces_copy_workspace_image(Name, Description, SourceImageId,
+#'   SourceRegion, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the image.
+#' @param Description A description of the image.
+#' @param SourceImageId &#91;required&#93; The identifier of the source image.
+#' @param SourceRegion &#91;required&#93; The identifier of the source Region.
+#' @param Tags The tags for the image.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_workspace_image(
+#'   Name = "string",
+#'   Description = "string",
+#'   SourceImageId = "string",
+#'   SourceRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_copy_workspace_image
+workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImageId, SourceRegion, Tags = NULL) {
+  op <- new_operation(
+    name = "CopyWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$copy_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, SourceRegion = SourceRegion, Tags = Tags)
+  output <- .workspaces$copy_workspace_image_output()
+  svc <- .workspaces$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$copy_workspace_image <- workspaces_copy_workspace_image
+
 #' Creates an IP access control group
 #'
 #' Creates an IP access control group.
@@ -339,7 +390,8 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #' Deletes the specified image from your account
 #'
 #' Deletes the specified image from your account. To delete an image, you
-#' must first delete any bundles that are associated with the image.
+#' must first delete any bundles that are associated with the image and
+#' un-share the image if it is shared with other accounts.
 #'
 #' @usage
 #' workspaces_delete_workspace_image(ImageId)
@@ -1081,9 +1133,9 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #' 
 #' To maintain a WorkSpace without being interrupted, set the WorkSpace
 #' state to `ADMIN_MAINTENANCE`. WorkSpaces in this state do not respond to
-#' requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in
-#' this state is not stopped. Users can log into a WorkSpace in the
-#' `ADMIN_MAINTENANCE` state.
+#' requests to reboot, stop, start, rebuild, or restore. An AutoStop
+#' WorkSpace in this state is not stopped. Users cannot log into a
+#' WorkSpace in the `ADMIN_MAINTENANCE` state.
 #'
 #' @usage
 #' workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
@@ -1178,10 +1230,9 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' been completely rebuilt.
 #'
 #' @usage
-#' workspaces_rebuild_workspaces(RebuildWorkspaceRequests, AdditionalInfo)
+#' workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
 #'
 #' @param RebuildWorkspaceRequests &#91;required&#93; The WorkSpace to rebuild. You can specify a single WorkSpace.
-#' @param AdditionalInfo Reserved.
 #'
 #' @section Request syntax:
 #' ```
@@ -1190,22 +1241,21 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #'     list(
 #'       WorkspaceId = "string"
 #'     )
-#'   ),
-#'   AdditionalInfo = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_rebuild_workspaces
-workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests, AdditionalInfo = NULL) {
+workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
   op <- new_operation(
     name = "RebuildWorkspaces",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests, AdditionalInfo = AdditionalInfo)
+  input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests)
   output <- .workspaces$rebuild_workspaces_output()
   svc <- .workspaces$service()
   request <- new_request(svc, op, input, output)

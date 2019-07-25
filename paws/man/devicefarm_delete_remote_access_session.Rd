@@ -7,7 +7,7 @@
 devicefarm_delete_remote_access_session(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the sesssion for which you want to
+\item{arn}{[required] The Amazon Resource Name (ARN) of the session for which you want to
 delete remote access.}
 }
 \description{

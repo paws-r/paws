@@ -22,7 +22,7 @@ NULL
 #' device associated with the input.
 #' @param roleArn &#91;required&#93; The ARN of the role that grants permission to AWS IoT Events to perform
 #' its operations.
-#' @param tags Metadata which can be used to manage the detector model.
+#' @param tags Metadata that can be used to manage the detector model.
 #'
 #' @section Request syntax:
 #' ```
@@ -58,6 +58,20 @@ NULL
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )
@@ -88,6 +102,20 @@ NULL
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               ),
@@ -121,6 +149,20 @@ NULL
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )
@@ -153,6 +195,20 @@ NULL
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )
@@ -205,7 +261,7 @@ iotevents_create_detector_model <- function(detectorModelName, detectorModelDefi
 #' @param inputName &#91;required&#93; The name you want to give to the input.
 #' @param inputDescription A brief description of the input.
 #' @param inputDefinition &#91;required&#93; The definition of the input.
-#' @param tags Metadata which can be used to manage the input.
+#' @param tags Metadata that can be used to manage the input.
 #'
 #' @section Request syntax:
 #' ```
@@ -290,7 +346,7 @@ iotevents_delete_detector_model <- function(detectorModelName) {
 #' @usage
 #' iotevents_delete_input(inputName)
 #'
-#' @param inputName &#91;required&#93; The name of the input to be deleted.
+#' @param inputName &#91;required&#93; The name of the input to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -320,8 +376,8 @@ iotevents_delete_input <- function(inputName) {
 
 #' Describes a detector model
 #'
-#' Describes a detector model. If the `version` parameter is not specified,
-#' information about the latest version is returned.
+#' Describes a detector model. If the `"version"` parameter is not
+#' specified, information about the latest version is returned.
 #'
 #' @usage
 #' iotevents_describe_detector_model(detectorModelName,
@@ -578,11 +634,11 @@ iotevents_list_tags_for_resource <- function(resourceArn) {
 #'
 #' Sets or updates the AWS IoT Events logging options.
 #' 
-#' Note that if you update the value of any `loggingOptions` field, it
-#' takes up to one minute for the change to take effect. Also, if you
-#' change the policy attached to the role you specified in the roleArn
-#' field (for example, to correct an invalid policy) it takes up to five
-#' minutes for that change to take effect.
+#' If you update the value of any `"loggingOptions"` field, it takes up to
+#' one minute for the change to take effect. Also, if you change the policy
+#' attached to the role you specified in the `"roleArn"` field (for
+#' example, to correct an invalid policy) it takes up to five minutes for
+#' that change to take effect.
 #'
 #' @usage
 #' iotevents_put_logging_options(loggingOptions)
@@ -625,10 +681,10 @@ iotevents_put_logging_options <- function(loggingOptions) {
 }
 .iotevents$operations$put_logging_options <- iotevents_put_logging_options
 
-#' Add to or modifies the tags of the given resource
+#' Adds to or modifies the tags of the given resource
 #'
-#' Add to or modifies the tags of the given resource. Tags are metadata
-#' which can be used to manage a resource.
+#' Adds to or modifies the tags of the given resource. Tags are metadata
+#' that can be used to manage a resource.
 #'
 #' @usage
 #' iotevents_tag_resource(resourceArn, tags)
@@ -710,13 +766,13 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a detector model
 #'
 #' Updates a detector model. Detectors (instances) spawned by the previous
-#' version will be deleted and re-created as new inputs arrive.
+#' version are deleted and then re-created as new inputs arrive.
 #'
 #' @usage
 #' iotevents_update_detector_model(detectorModelName,
 #'   detectorModelDefinition, detectorModelDescription, roleArn)
 #'
-#' @param detectorModelName &#91;required&#93; The name of the detector model to be updated.
+#' @param detectorModelName &#91;required&#93; The name of the detector model that is updated.
 #' @param detectorModelDefinition &#91;required&#93; Information that defines how a detector operates.
 #' @param detectorModelDescription A brief description of the detector model.
 #' @param roleArn &#91;required&#93; The ARN of the role that grants permission to AWS IoT Events to perform
@@ -756,6 +812,20 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )
@@ -786,6 +856,20 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               ),
@@ -819,6 +903,20 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )
@@ -851,6 +949,20 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #'                   ),
 #'                   resetTimer = list(
 #'                     timerName = "string"
+#'                   ),
+#'                   lambda = list(
+#'                     functionArn = "string"
+#'                   ),
+#'                   iotEvents = list(
+#'                     inputName = "string"
+#'                   ),
+#'                   sqs = list(
+#'                     queueUrl = "string",
+#'                     useBase64 = TRUE|FALSE
+#'                   ),
+#'                   firehose = list(
+#'                     deliveryStreamName = "string",
+#'                     separator = "string"
 #'                   )
 #'                 )
 #'               )

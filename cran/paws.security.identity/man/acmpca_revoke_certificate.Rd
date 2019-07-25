@@ -2,8 +2,7 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_revoke_certificate}
 \alias{acmpca_revoke_certificate}
-\title{Revokes a certificate that you issued by calling the IssueCertificate
-operation}
+\title{Revokes a certificate that was issued inside ACM Private CA}
 \usage{
 acmpca_revoke_certificate(CertificateAuthorityArn, CertificateSerial,
   RevocationReason)
@@ -17,28 +16,31 @@ to be revoked. This must be of the form:
 \item{CertificateSerial}{[required] Serial number of the certificate to be revoked. This must be in
 hexadecimal format. You can retrieve the serial number by calling
 GetCertificate with the Amazon Resource Name (ARN) of the certificate
-you want and the ARN of your private CA. The \strong{GetCertificate}
-operation retrieves the certificate in the PEM format. You can use the
-following OpenSSL command to list the certificate in text format and
-copy the hexadecimal serial number.
+you want and the ARN of your private CA. The \strong{GetCertificate} action
+retrieves the certificate in the PEM format. You can use the following
+OpenSSL command to list the certificate in text format and copy the
+hexadecimal serial number.
 
 \code{openssl x509 -in <i>file_path</i> -text -noout}
 
 You can also copy the serial number from the console or use the
 \href{https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html}{DescribeCertificate}
-operation in the \emph{AWS Certificate Manager API Reference}.}
+action in the \emph{AWS Certificate Manager API Reference}.}
 
 \item{RevocationReason}{[required] Specifies why you revoked the certificate.}
 }
 \description{
-Revokes a certificate that you issued by calling the IssueCertificate
-operation. If you enable a certificate revocation list (CRL) when you
-create or update your private CA, information about the revoked
-certificates will be included in the CRL. ACM PCA writes the CRL to an
-S3 bucket that you specify. For more information about revocation, see
-the CrlConfiguration structure. ACM PCA also writes revocation
+Revokes a certificate that was issued inside ACM Private CA. If you
+enable a certificate revocation list (CRL) when you create or update
+your private CA, information about the revoked certificates will be
+included in the CRL. ACM Private CA writes the CRL to an S3 bucket that
+you specify. For more information about revocation, see the
+CrlConfiguration structure. ACM Private CA also writes revocation
 information to the audit report. For more information, see
 CreateCertificateAuthorityAuditReport.
+}
+\details{
+You cannot revoke a root CA self-signed certificate.
 }
 \section{Request syntax}{
 \preformatted{svc$revoke_certificate(

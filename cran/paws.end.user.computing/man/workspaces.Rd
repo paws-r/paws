@@ -17,6 +17,7 @@ Microsoft Windows and Amazon Linux desktops for your users.
 \tabular{ll}{
 \link[=workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory \cr
 \link[=workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group \cr
+\link[=workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region \cr
 \link[=workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group \cr
 \link[=workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource \cr
 \link[=workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces \cr

@@ -8,23 +8,20 @@ swf_list_domains(nextPageToken, registrationStatus, maximumPageSize,
   reverseOrder)
 }
 \arguments{
-\item{nextPageToken}{If a \code{NextPageToken} was returned by a previous call, there are more
-results available. To retrieve the next page of results, make the call
-again using the returned token in \code{nextPageToken}. Keep all other
-arguments unchanged.
+\item{nextPageToken}{If \code{NextPageToken} is returned there are more results available. The
+value of \code{NextPageToken} is a unique pagination token for each page.
+Make the call again using the returned token to retrieve the next page.
+Keep all other arguments unchanged. Each pagination token expires after
+60 seconds. Using an expired pagination token will return a \code{400} error:
+"\code{Specified token has exceeded its maximum lifetime}".
 
 The configured \code{maximumPageSize} determines how many results can be
 returned in a single call.}
 
 \item{registrationStatus}{[required] Specifies the registration status of the domains to list.}
 
-\item{maximumPageSize}{The maximum number of results that are returned per call.
-\code{nextPageToken} can be used to obtain futher pages of results. The
-default is 1000, which is the maximum allowed page size. You can,
-however, specify a page size \emph{smaller} than the maximum.
-
-This is an upper limit only; the actual number of results returned per
-call may be fewer than the specified maximum.}
+\item{maximumPageSize}{The maximum number of results that are returned per call. Use
+\code{nextPageToken} to obtain further pages of results.}
 
 \item{reverseOrder}{When set to \code{true}, returns the results in reverse order. By default,
 the results are returned in ascending alphabetical order by \code{name} of
@@ -57,7 +54,7 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

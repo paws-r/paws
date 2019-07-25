@@ -4,7 +4,7 @@
 \alias{alexaforbusiness_delete_device_usage_data}
 \title{When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of voice
-input data}
+input data and associated response data}
 \usage{
 alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
 }
@@ -14,6 +14,12 @@ alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
 \item{DeviceUsageType}{[required] The type of usage data to delete.}
 }
 \description{
+When this action is called for a specified shared device, it allows
+authorized users to delete the device's entire previous history of
+voice input data and associated response data. This action can be called
+once every 24 hours for a specific shared device.
+}
+\details{
 When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of
 voice input data. This action can be called once every 24 hours for a

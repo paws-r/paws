@@ -19,11 +19,11 @@ endpoint.}
 must contain only ASCII letters, digits, and hyphens; and must not end
 with a hyphen or contain two consecutive hyphens.}
 
-\item{EndpointType}{The type of endpoint.}
+\item{EndpointType}{The type of endpoint. Valid values are \code{source} and \code{target}.}
 
 \item{EngineName}{The type of engine for the endpoint. Valid values, depending on the
-EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb,
+EndpointType, include mysql, oracle, postgres, mariadb, aurora,
+aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
 mongodb, and sqlserver.}
 
 \item{Username}{The user name to be used to login to the endpoint database.}
@@ -42,12 +42,8 @@ parameter, pass the empty string ("") as an argument.}
 \item{CertificateArn}{The Amazon Resource Name (ARN) of the certificate used for SSL
 connection.}
 
-\item{SslMode}{The SSL mode to be used.
-
-SSL mode can be one of four values: none, require, verify-ca,
-verify-full.
-
-The default value is none.}
+\item{SslMode}{The SSL mode used to connect to the endpoint. The default value is
+\code{none}.}
 
 \item{ServiceAccessRoleArn}{The Amazon Resource Name (ARN) for the service access role you want to
 use to modify the endpoint.}
@@ -89,7 +85,7 @@ properties section in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams
-endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
+endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more
@@ -137,7 +133,9 @@ Modifies the specified endpoint.
     DataPageSize = 123,
     ParquetVersion = "parquet-1-0"|"parquet-2-0",
     EnableStatistics = TRUE|FALSE,
-    CdcInsertsOnly = TRUE|FALSE
+    IncludeOpForFullLoad = TRUE|FALSE,
+    CdcInsertsOnly = TRUE|FALSE,
+    TimestampColumnName = "string"
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",

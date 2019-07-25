@@ -26,7 +26,10 @@ Updates a domain name.
         "2015-01-01"
       ),
       EndpointType = "REGIONAL"|"EDGE",
-      HostedZoneId = "string"
+      HostedZoneId = "string",
+      SecurityPolicy = "TLS_1_0"|"TLS_1_2",
+      DomainNameStatus = "AVAILABLE"|"UPDATING",
+      DomainNameStatusMessage = "string"
     )
   )
 )

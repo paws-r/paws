@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instances}
 \alias{ec2_describe_instances}
-\title{Describes the specified instances or all of your instances}
+\title{Describes the specified instances or all of AWS account's instances}
 \usage{
 ec2_describe_instances(Filters, InstanceIds, DryRun, MaxResults,
   NextToken)
@@ -206,7 +206,7 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes the specified instances or all of your instances.
+Describes the specified instances or all of AWS account's instances.
 }
 \details{
 If you specify one or more instance IDs, Amazon EC2 returns information

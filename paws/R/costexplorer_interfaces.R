@@ -86,3 +86,15 @@ NULL
   shape <- structure(list(NextPageToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReturnSize = structure(logical(0), tags = list(type = "integer")), TotalSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
+
+.costexplorer$get_usage_forecast_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TimePeriod = structure(list(Start = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Metric = structure(logical(0), tags = list(type = "string")), Granularity = structure(logical(0), tags = list(type = "string")), Filter = structure(list(Or = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), And = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), Not = structure(logical(0), tags = list(type = "structure")), Dimensions = structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), PredictionIntervalLevel = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.costexplorer$get_usage_forecast_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Total = structure(list(Amount = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForecastResultsByTime = structure(list(structure(list(TimePeriod = structure(list(Start = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MeanValue = structure(logical(0), tags = list(type = "string")), PredictionIntervalLowerBound = structure(logical(0), tags = list(type = "string")), PredictionIntervalUpperBound = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}

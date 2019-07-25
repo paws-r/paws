@@ -8,12 +8,13 @@ databasemigrationservice_import_certificate(CertificateIdentifier,
   CertificatePem, CertificateWallet, Tags)
 }
 \arguments{
-\item{CertificateIdentifier}{[required] The customer-assigned name of the certificate. Valid characters are A-z
-and 0-9.}
+\item{CertificateIdentifier}{[required] A customer-assigned name for the certificate. Identifiers must begin
+with a letter; must contain only ASCII letters, digits, and hyphens; and
+must not end with a hyphen or contain two consecutive hyphens.}
 
-\item{CertificatePem}{The contents of the .pem X.509 certificate file for the certificate.}
+\item{CertificatePem}{The contents of a \code{.pem} file, which contains an X.509 certificate.}
 
-\item{CertificateWallet}{The location of the imported Oracle Wallet certificate for use with SSL.}
+\item{CertificateWallet}{The location of an imported Oracle Wallet certificate for use with SSL.}
 
 \item{Tags}{The tags associated with the certificate.}
 }

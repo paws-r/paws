@@ -19,7 +19,7 @@ name, AWS OpsWorks Stacks generates one from the IAM user name.}
 \item{SshPublicKey}{The user's public SSH key.}
 
 \item{AllowSelfManagement}{Whether users can specify their own SSH public key through the My
-Settings page. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html}{Setting an IAM User's Public SSH Key}.}
+Settings page. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html}{Setting an IAM User's Public SSH Key}.}
 }
 \description{
 Creates a new user profile.
@@ -27,7 +27,7 @@ Creates a new user profile.
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_user_profile(

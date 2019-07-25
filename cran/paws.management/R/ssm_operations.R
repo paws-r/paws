@@ -668,14 +668,14 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Creates a new OpsItem. You must have permission in AWS Identity and
 #' Access Management (IAM) to create a new OpsItem. For more information,
 #' see [Getting Started with
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' Operations engineers and IT professionals use the Systems Manager
-#' OpsItems capability to view, investigate, and remediate operational
-#' issues impacting the performance and health of their AWS resources. For
-#' more information, see [AWS Systems Manager
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' Operations engineers and IT professionals use OpsCenter to view,
+#' investigate, and remediate operational issues impacting the performance
+#' and health of their AWS resources. For more information, see [AWS
+#' Systems Manager
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
@@ -689,13 +689,23 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
 #' 
-#' This custom data is searchable, but with restrictions. For the
-#' `Searchable operational data` feature, all users with access to the
-#' OpsItem Overview page (as provided by the DescribeOpsItems API action)
-#' can view and search on the specified data. For the
-#' `Private operational data` feature, the data is only viewable by users
-#' who have access to the OpsItem (as provided by the GetOpsItem API
-#' action).
+#' Operational data keys *can\'t* begin with the following: amazon, aws,
+#' amzn, ssm, /amazon, /aws, /amzn, /ssm.
+#' 
+#' You can choose to make the data searchable by other users in the account
+#' or you can restrict search access. Searchable data means that all users
+#' with access to the OpsItem Overview page (as provided by the
+#' DescribeOpsItems API action) can view and search on the specified data.
+#' Operational data that is not searchable is only viewable by users who
+#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' 
+#' Use the `/aws/resources` key in OperationalData to specify a related
+#' resource in the request. Use the `/aws/automations` key in
+#' OperationalData to associate an Automation runbook with the OpsItem. To
+#' view AWS CLI example commands that use these keys, see [Creating
+#' OpsItems
+#' Manually](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+#' in the *AWS Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
 #' @param Priority The importance of this OpsItem in relation to other OpsItems in the
@@ -707,15 +717,15 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' @param Source &#91;required&#93; The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.
 #' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
 #' impacted resource.
-#' @param Tags Optional metadata that you assign to a resource. Tags enable you to
-#' categorize a resource in different ways, such as by purpose, owner, or
-#' environment. For example, you might want to tag an OpsItem to identify
-#' the AWS resource or the type of issue. In this case, you could specify
-#' the following key name/value pairs:
+#' @param Tags Optional metadata that you assign to a resource. You can restrict access
+#' to OpsItems by using an inline IAM policy that specifies tags. For more
+#' information, see [Getting Started with
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
+#' in the *AWS Systems Manager User Guide*.
 #' 
-#' -   `Key=source,Value=EC2-instance`
+#' Tags use a key-value pair. For example:
 #' 
-#' -   `Key=status,Value=stopped`
+#' `Key=Department,Value=Finance`
 #' 
 #' To add tags to an existing OpsItem, use the AddTagsToResource action.
 #'
@@ -1077,28 +1087,34 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' the document.
 #'
 #' @usage
-#' ssm_delete_document(Name)
+#' ssm_delete_document(Name, DocumentVersion, VersionName)
 #'
 #' @param Name &#91;required&#93; The name of the document.
+#' @param DocumentVersion (Optional) The version of the document that you want to delete. If not
+#' provided, all versions of the document are deleted.
+#' @param VersionName (Optional) The version name of the document that you want to delete. If
+#' not provided, all versions of the document are deleted.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_document(
-#'   Name = "string"
+#'   Name = "string",
+#'   DocumentVersion = "string",
+#'   VersionName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ssm_delete_document
-ssm_delete_document <- function(Name) {
+ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL) {
   op <- new_operation(
     name = "DeleteDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$delete_document_input(Name = Name)
+  input <- .ssm$delete_document_input(Name = Name, DocumentVersion = DocumentVersion, VersionName = VersionName)
   output <- .ssm$delete_document_output()
   svc <- .ssm$service()
   request <- new_request(svc, op, input, output)
@@ -2840,14 +2856,14 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' Query a set of OpsItems. You must have permission in AWS Identity and
 #' Access Management (IAM) to query a list of OpsItems. For more
 #' information, see [Getting Started with
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' Operations engineers and IT professionals use the Systems Manager
-#' OpsItems capability to view, investigate, and remediate operational
-#' issues impacting the performance and health of their AWS resources. For
-#' more information, see [AWS Systems Manager
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' Operations engineers and IT professionals use OpsCenter to view,
+#' investigate, and remediate operational issues impacting the performance
+#' and health of their AWS resources. For more information, see [AWS
+#' Systems Manager
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
@@ -2883,7 +2899,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Contains
 #' 
-#' -   Key: OperationalData
+#' -   Key: OperationalData\*
 #' 
 #'     Operations: Equals
 #' 
@@ -2906,6 +2922,10 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' -   Key: AutomationId
 #' 
 #'     Operations: Equals
+#' 
+#' \*If you filter the response by using the OperationalData operator,
+#' specify a key-value pair by using the following JSON format:
+#' \{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -3869,14 +3889,14 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' permission in AWS Identity and Access Management (IAM) to view
 #' information about an OpsItem. For more information, see [Getting Started
 #' with
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' Operations engineers and IT professionals use the Systems Manager
-#' OpsItems capability to view, investigate, and remediate operational
-#' issues impacting the performance and health of their AWS resources. For
-#' more information, see [AWS Systems Manager
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' Operations engineers and IT professionals use OpsCenter to view,
+#' investigate, and remediate operational issues impacting the performance
+#' and health of their AWS resources. For more information, see [AWS
+#' Systems Manager
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
@@ -7017,14 +7037,14 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Edit or change an OpsItem. You must have permission in AWS Identity and
 #' Access Management (IAM) to update an OpsItem. For more information, see
 #' [Getting Started with
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html)
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' Operations engineers and IT professionals use the Systems Manager
-#' OpsItems capability to view, investigate, and remediate operational
-#' issues impacting the performance and health of their AWS resources. For
-#' more information, see [AWS Systems Manager
-#' OpsItems](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html)
+#' Operations engineers and IT professionals use OpsCenter to view,
+#' investigate, and remediate operational issues impacting the performance
+#' and health of their AWS resources. For more information, see [AWS
+#' Systems Manager
+#' OpsCenter](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
 #' @usage
@@ -7043,13 +7063,23 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
 #' 
-#' This custom data is searchable, but with restrictions. For the
-#' `Searchable operational data` feature, all users with access to the
-#' OpsItem Overview page (as provided by the DescribeOpsItems API action)
-#' can view and search on the specified data. For the
-#' `Private operational data` feature, the data is only viewable by users
-#' who have access to the OpsItem (as provided by the GetOpsItem API
-#' action).
+#' Operational data keys *can\'t* begin with the following: amazon, aws,
+#' amzn, ssm, /amazon, /aws, /amzn, /ssm.
+#' 
+#' You can choose to make the data searchable by other users in the account
+#' or you can restrict search access. Searchable data means that all users
+#' with access to the OpsItem Overview page (as provided by the
+#' DescribeOpsItems API action) can view and search on the specified data.
+#' Operational data that is not searchable is only viewable by users who
+#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' 
+#' Use the `/aws/resources` key in OperationalData to specify a related
+#' resource in the request. Use the `/aws/automations` key in
+#' OperationalData to associate an Automation runbook with the OpsItem. To
+#' view AWS CLI example commands that use these keys, see [Creating
+#' OpsItems
+#' Manually](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+#' in the *AWS Systems Manager User Guide*.
 #' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
@@ -7061,7 +7091,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' resource.
 #' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
 #' For more information, see [Editing OpsItem
-#' Details](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-working-with-OpsItems-editing-details.html)
+#' Details](http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html)
 #' in the *AWS Systems Manager User Guide*.
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
 #' @param Title A short heading that describes the nature of the OpsItem and the

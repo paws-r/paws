@@ -87,7 +87,7 @@ user activity. If users continue to be idle after the time interval in
 
 To prevent users from being disconnected due to inactivity, specify a
 value of 0. Otherwise, specify a value between 60 and 3600. The default
-value is 900.
+value is 0.
 
 If you enable this feature, we recommend that you specify a value that
 corresponds exactly to a whole number of minutes (for example, 60, 120,

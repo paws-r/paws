@@ -4,12 +4,17 @@
 \alias{apigatewayv2_create_domain_name}
 \title{Creates a domain name}
 \usage{
-apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations)
+apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
+  Tags)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
 
 \item{DomainNameConfigurations}{The domain name configurations.}
+
+\item{Tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..}
 }
 \description{
 Creates a domain name.
@@ -26,8 +31,14 @@ Creates a domain name.
         "2015-01-01"
       ),
       EndpointType = "REGIONAL"|"EDGE",
-      HostedZoneId = "string"
+      HostedZoneId = "string",
+      SecurityPolicy = "TLS_1_0"|"TLS_1_2",
+      DomainNameStatus = "AVAILABLE"|"UPDATING",
+      DomainNameStatusMessage = "string"
     )
+  ),
+  Tags = list(
+    "string"
   )
 )
 }

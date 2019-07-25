@@ -24,7 +24,7 @@ device associated with the input.}
 \item{roleArn}{[required] The ARN of the role that grants permission to AWS IoT Events to perform
 its operations.}
 
-\item{tags}{Metadata which can be used to manage the detector model.}
+\item{tags}{Metadata that can be used to manage the detector model.}
 }
 \description{
 Creates a detector model.
@@ -62,6 +62,20 @@ Creates a detector model.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )
@@ -92,6 +106,20 @@ Creates a detector model.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               ),
@@ -125,6 +153,20 @@ Creates a detector model.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )
@@ -157,6 +199,20 @@ Creates a detector model.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )

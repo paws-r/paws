@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_segment}
 \alias{pinpoint_delete_segment}
-\title{Deletes a segment}
+\title{Deletes a segment from an application}
 \usage{
 pinpoint_delete_segment(ApplicationId, SegmentId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{SegmentId}{[required] The unique ID of the segment.}
+\item{SegmentId}{[required] The unique identifier for the segment.}
 }
 \description{
-Deletes a segment.
+Deletes a segment from an application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_segment(

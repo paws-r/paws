@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_email_channel}
 \alias{pinpoint_update_email_channel}
-\title{Update an email channel}
+\title{Updates the status and settings of the email channel for an application}
 \usage{
 pinpoint_update_email_channel(ApplicationId, EmailChannelRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EmailChannelRequest}{[required]}
 }
 \description{
-Update an email channel.
+Updates the status and settings of the email channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_email_channel(

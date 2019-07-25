@@ -5,7 +5,7 @@
 \title{Updates the contact details by the contact ARN}
 \usage{
 alexaforbusiness_update_contact(ContactArn, DisplayName, FirstName,
-  LastName, PhoneNumber)
+  LastName, PhoneNumber, PhoneNumbers, SipAddresses)
 }
 \arguments{
 \item{ContactArn}{[required] The ARN of the contact to update.}
@@ -16,7 +16,14 @@ alexaforbusiness_update_contact(ContactArn, DisplayName, FirstName,
 
 \item{LastName}{The updated last name of the contact.}
 
-\item{PhoneNumber}{The updated phone number of the contact.}
+\item{PhoneNumber}{The updated phone number of the contact. The phone number type defaults
+to WORK. You can either specify PhoneNumber or PhoneNumbers. We
+recommend that you use PhoneNumbers, which lets you specify the phone
+number type and multiple numbers.}
+
+\item{PhoneNumbers}{The list of phone numbers for the contact.}
+
+\item{SipAddresses}{The list of SIP addresses for the contact.}
 }
 \description{
 Updates the contact details by the contact ARN.
@@ -27,7 +34,19 @@ Updates the contact details by the contact ARN.
   DisplayName = "string",
   FirstName = "string",
   LastName = "string",
-  PhoneNumber = "string"
+  PhoneNumber = "string",
+  PhoneNumbers = list(
+    list(
+      Number = "string",
+      Type = "MOBILE"|"WORK"|"HOME"
+    )
+  ),
+  SipAddresses = list(
+    list(
+      Uri = "string",
+      Type = "WORK"
+    )
+  )
 )
 }
 }

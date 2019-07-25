@@ -28,9 +28,10 @@ send the \code{GetMedia} requests to this endpoint using the \href{https://docs.
 
 When you put media data (fragments) on a stream, Kinesis Video Streams
 stores each incoming fragment and related metadata in what is called a
-"chunk." For more information, see . The \code{GetMedia} API returns a
-stream of these chunks starting from the chunk that you specify in the
-request.
+"chunk." For more information, see
+\href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html}{PutMedia}.
+The \code{GetMedia} API returns a stream of these chunks starting from the
+chunk that you specify in the request.
 
 The following limits apply when using the \code{GetMedia} API:
 \itemize{
@@ -39,6 +40,26 @@ The following limits apply when using the \code{GetMedia} API:
 megabytes per second (or 200 megabits per second) during a
 \code{GetMedia} session.
 }
+
+If an error is thrown after invoking a Kinesis Video Streams media API,
+in addition to the HTTP status code and the response body, it includes
+the following pieces of information:
+\itemize{
+\item \code{x-amz-ErrorType} HTTP header -- contains a more specific error type
+in addition to what the HTTP status code provides.
+\item \code{x-amz-RequestId} HTTP header -- if you want to report an issue to
+AWS, the support team can better diagnose the problem if given the
+Request Id.
+}
+
+Both the HTTP status code and the ErrorType header can be utilized to
+make programmatic decisions about whether errors are retry-able and
+under what conditions, as well as provide information on what actions
+the client programmer might need to take in order to successfully try
+again.
+
+For more information, see the \strong{Errors} section at the bottom of this
+topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_media(

@@ -6,7 +6,7 @@
 aggregation group (LAG) of interconnects}
 \usage{
 directconnect_allocate_hosted_connection(connectionId, ownerAccount,
-  bandwidth, connectionName, vlan)
+  bandwidth, connectionName, vlan, tags)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
@@ -22,6 +22,8 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 \item{connectionName}{[required] The name of the hosted connection.}
 
 \item{vlan}{[required] The dedicated VLAN provisioned to the hosted connection.}
+
+\item{tags}{The tags to assign to the hosted connection.}
 }
 \description{
 Creates a hosted connection on the specified interconnect or a link
@@ -42,7 +44,13 @@ Intended for use by AWS Direct Connect Partners only.
   ownerAccount = "string",
   bandwidth = "string",
   connectionName = "string",
-  vlan = 123
+  vlan = 123,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

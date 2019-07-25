@@ -4,7 +4,7 @@
 \alias{wafregional_create_rule_group}
 \title{Creates a RuleGroup}
 \usage{
-wafregional_create_rule_group(Name, MetricName, ChangeToken)
+wafregional_create_rule_group(Name, MetricName, ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RuleGroup. You can't change
@@ -18,6 +18,8 @@ or metric names reserved for AWS WAF, including "All" and
 create the \code{RuleGroup}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+
+\item{Tags}{}
 }
 \description{
 Creates a \code{RuleGroup}. A rule group is a collection of predefined rules
@@ -40,7 +42,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
 \preformatted{svc$create_rule_group(
   Name = "string",
   MetricName = "string",
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

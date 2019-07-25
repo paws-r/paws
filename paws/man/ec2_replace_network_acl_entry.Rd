@@ -47,8 +47,8 @@ must specify an ICMP type and code.}
 }
 \description{
 Replaces an entry (rule) in a network ACL. For more information, see
-\href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html}{Network ACLs}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html}{Network ACLs} in
+the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$replace_network_acl_entry(

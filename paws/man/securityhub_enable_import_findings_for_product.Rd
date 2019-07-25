@@ -2,18 +2,18 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_import_findings_for_product}
 \alias{securityhub_enable_import_findings_for_product}
-\title{Sets up the subscription that enables a findings-generating solution
-(product) to import its findings into Security Hub}
+\title{Enables the integration of a partner product with Security Hub}
 \usage{
 securityhub_enable_import_findings_for_product(ProductArn)
 }
 \arguments{
-\item{ProductArn}{[required] The ARN of the product that generates findings that you want to import
-into Security Hub.}
+\item{ProductArn}{[required] The ARN of the product to enable the integration for.}
 }
 \description{
-Sets up the subscription that enables a findings-generating solution
-(product) to import its findings into Security Hub.
+Enables the integration of a partner product with Security Hub.
+Integrated products send findings to Security Hub. When you enable a
+product integration, a permission policy that grants permission for the
+product to send findings to Security Hub is applied.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_import_findings_for_product(

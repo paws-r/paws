@@ -9,8 +9,8 @@ acmpca_create_permission(CertificateAuthorityArn, Principal,
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA that grants the permissions.
-You can find the ARN by calling the ListCertificateAuthorities
-operation. This must have the following form:
+You can find the ARN by calling the ListCertificateAuthorities action.
+This must have the following form:
 
 \code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
@@ -34,8 +34,7 @@ to the ACM service principal.
 \details{
 At this time, you can only assign permissions to ACM
 (\code{acm.amazonaws.com}). Permissions can be revoked with the
-DeletePermission operation and listed with the ListPermissions
-operation.
+DeletePermission action and listed with the ListPermissions action.
 }
 \section{Request syntax}{
 \preformatted{svc$create_permission(

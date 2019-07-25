@@ -148,15 +148,15 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' 
 #' Valid values for a `GetCostForecast` call are the following:
 #' 
-#' -   AmortizedCost
+#' -   AMORTIZED\\_COST
 #' 
-#' -   BlendedCost
+#' -   BLENDED\\_COST
 #' 
-#' -   NetAmortizedCost
+#' -   NET\\_AMORTIZED\\_COST
 #' 
-#' -   NetUnblendedCost
+#' -   NET\\_UNBLENDED\\_COST
 #' 
-#' -   UnblendedCost
+#' -   UNBLENDED\\_COST
 #' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
 #' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
 #' 
@@ -796,3 +796,94 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
   return(response)
 }
 .costexplorer$operations$get_tags <- costexplorer_get_tags
+
+#' Retrieves a forecast for how much Amazon Web Services predicts that you
+#' will use over the forecast time period that you select, based on your
+#' past usage
+#'
+#' Retrieves a forecast for how much Amazon Web Services predicts that you
+#' will use over the forecast time period that you select, based on your
+#' past usage.
+#'
+#' @usage
+#' costexplorer_get_usage_forecast(TimePeriod, Metric, Granularity, Filter,
+#'   PredictionIntervalLevel)
+#'
+#' @param TimePeriod &#91;required&#93; The start and end dates of the period that you want to retrieve usage
+#' forecast for. The start date is inclusive, but the end date is
+#' exclusive. For example, if `start` is `2017-01-01` and `end` is
+#' `2017-05-01`, then the cost and usage data is retrieved from
+#' `2017-01-01` up to and including `2017-04-30` but not including
+#' `2017-05-01`.
+#' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast.
+#' 
+#' Valid values for a `GetUsageForecast` call are the following:
+#' 
+#' -   USAGE\\_QUANTITY
+#' 
+#' -   NORMALIZED\\_USAGE\\_AMOUNT
+#' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
+#' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
+#' 
+#' The `GetUsageForecast` operation supports only `DAILY` and `MONTHLY`
+#' granularities.
+#' @param Filter The filters that you want to use to filter your forecast. Cost Explorer
+#' API supports all of the Cost Explorer filters.
+#' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You
+#' can request a prediction interval around the mean by specifying a
+#' confidence level. The higher the confidence level, the more confident
+#' Cost Explorer is about the actual value falling in the prediction
+#' interval. Higher confidence levels result in wider prediction intervals.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_usage_forecast(
+#'   TimePeriod = list(
+#'     Start = "string",
+#'     End = "string"
+#'   ),
+#'   Metric = "BLENDED_COST"|"UNBLENDED_COST"|"AMORTIZED_COST"|"NET_UNBLENDED_COST"|"NET_AMORTIZED_COST"|"USAGE_QUANTITY"|"NORMALIZED_USAGE_AMOUNT",
+#'   Granularity = "DAILY"|"MONTHLY"|"HOURLY",
+#'   Filter = list(
+#'     Or = list(
+#'       list()
+#'     ),
+#'     And = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Dimensions = list(
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   PredictionIntervalLevel = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_usage_forecast
+costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, PredictionIntervalLevel = NULL) {
+  op <- new_operation(
+    name = "GetUsageForecast",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
+  output <- .costexplorer$get_usage_forecast_output()
+  svc <- .costexplorer$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_usage_forecast <- costexplorer_get_usage_forecast

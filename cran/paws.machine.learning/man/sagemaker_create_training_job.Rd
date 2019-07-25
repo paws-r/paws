@@ -74,15 +74,14 @@ count greater than 1.}
 job to connect to. Control access to and from your training container by
 configuring the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
-\item{StoppingCondition}{[required] Sets a duration for training. Use this parameter to cap model training
-costs. To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM}
-signal, which delays job termination for 120 seconds. Algorithms might
-use this 120-second window to save the model artifacts.
+\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. When the job
+reaches the time limit, Amazon SageMaker ends the training job. Use this
+API to cap model training costs.
 
-When Amazon SageMaker terminates a job because the stopping condition
-has been met, training algorithms provided by Amazon SageMaker save the
-intermediate results of the job. This intermediate data is a valid model
-artifact. You can use it to create a model using the \code{CreateModel} API.}
+To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM}
+signal, which delays job termination for 120 seconds. Algorithms can use
+this 120-second window to save the model artifacts, so the results of
+training are not lost.}
 
 \item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
@@ -120,9 +119,10 @@ In the request body, you provide the following:
 \itemize{
 \item \code{AlgorithmSpecification} - Identifies the training algorithm to use.
 \item \code{HyperParameters} - Specify these algorithm-specific parameters to
-influence the quality of the final model. For a list of
-hyperparameters for each training algorithm provided by Amazon
-SageMaker, see
+enable the estimation of model parameters during training.
+Hyperparameters can be tuned to optimize this learning process. For
+a list of hyperparameters for each training algorithm provided by
+Amazon SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 \item \code{InputDataConfig} - Describes the training dataset and the Amazon S3
 location where it is stored.
@@ -135,7 +135,7 @@ training, you specify more than one instance.
 assumes to perform tasks on your behalf during model training. You
 must grant this role the necessary permissions so that Amazon
 SageMaker can successfully complete model training.
-\item \code{StoppingCondition} - Sets a duration for training. Use this
+\item \code{StoppingCondition} - Sets a time limit for training. Use this
 parameter to cap model training costs.
 }
 

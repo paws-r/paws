@@ -6,7 +6,8 @@
 \usage{
 amplify_create_branch(appId, branchName, description, stage, framework,
   enableNotification, enableAutoBuild, environmentVariables,
-  basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl)
+  basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl,
+  displayName)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -34,6 +35,8 @@ amplify_create_branch(appId, branchName, description, stage, framework,
 \item{buildSpec}{BuildSpec for the branch.}
 
 \item{ttl}{The content TTL for the website in seconds.}
+
+\item{displayName}{Display name for a branch, will use as the default domain prefix.}
 }
 \description{
 Creates a new Branch for an Amplify App.
@@ -56,7 +59,8 @@ Creates a new Branch for an Amplify App.
     "string"
   ),
   buildSpec = "string",
-  ttl = "string"
+  ttl = "string",
+  displayName = "string"
 )
 }
 }

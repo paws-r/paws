@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_apns_sandbox_channel}
 \alias{pinpoint_update_apns_sandbox_channel}
-\title{Update an APNS sandbox channel}
+\title{Updates the APNs sandbox channel settings for an application}
 \usage{
 pinpoint_update_apns_sandbox_channel(APNSSandboxChannelRequest,
   ApplicationId)
@@ -10,10 +10,11 @@ pinpoint_update_apns_sandbox_channel(APNSSandboxChannelRequest,
 \arguments{
 \item{APNSSandboxChannelRequest}{[required]}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Update an APNS sandbox channel.
+Updates the APNs sandbox channel settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_apns_sandbox_channel(

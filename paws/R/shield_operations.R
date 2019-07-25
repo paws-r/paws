@@ -4,11 +4,11 @@
 NULL
 
 #' Authorizes the DDoS Response team (DRT) to access the specified Amazon
-#' S3 bucket containing your flow logs
+#' S3 bucket containing your AWS WAF logs
 #'
 #' Authorizes the DDoS Response team (DRT) to access the specified Amazon
-#' S3 bucket containing your flow logs. You can associate up to 10 Amazon
-#' S3 buckets with your subscription.
+#' S3 bucket containing your AWS WAF logs. You can associate up to 10
+#' Amazon S3 buckets with your subscription.
 #' 
 #' To use the services of the DRT and make an `AssociateDRTLogBucket`
 #' request, you must be subscribed to the [Business Support
@@ -19,7 +19,7 @@ NULL
 #' @usage
 #' shield_associate_drt_log_bucket(LogBucket)
 #'
-#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your flow logs.
+#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
 #'
 #' @section Request syntax:
 #' ```
@@ -200,6 +200,11 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' assist you during a suspected DDoS attack. For more information see
 #' [Authorize the DDoS Response Team to Create Rules and Web ACLs on Your
 #' Behalf](https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html).
+#' 
+#' To use the services of the DRT, you must be subscribed to the [Business
+#' Support plan](https://aws.amazon.com/premiumsupport/business-support/)
+#' or the [Enterprise Support
+#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
 #' 
 #' When you initally create a subscription, your subscription is set to be
 #' automatically renewed at the end of the existing subscription period.
@@ -479,10 +484,10 @@ shield_describe_subscription <- function() {
 .shield$operations$describe_subscription <- shield_describe_subscription
 
 #' Removes the DDoS Response team's (DRT) access to the specified Amazon S3
-#' bucket containing your flow logs
+#' bucket containing your AWS WAF logs
 #'
 #' Removes the DDoS Response team\'s (DRT) access to the specified Amazon
-#' S3 bucket containing your flow logs.
+#' S3 bucket containing your AWS WAF logs.
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
 #' the [Business Support
@@ -496,7 +501,7 @@ shield_describe_subscription <- function() {
 #' @usage
 #' shield_disassociate_drt_log_bucket(LogBucket)
 #'
-#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your flow logs.
+#' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
 #'
 #' @section Request syntax:
 #' ```

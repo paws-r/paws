@@ -2,21 +2,28 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_segment_versions}
 \alias{pinpoint_get_segment_versions}
-\title{Returns information about your segment versions}
+\title{Retrieves information about the configuration, dimension, and other
+settings for all versions of a specific segment that's associated with
+an application}
 \usage{
 pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{PageSize}{The number of entries you want on each page in the response.}
+\item{PageSize}{The maximum number of items to include on each page in a paginated
+response.}
 
-\item{SegmentId}{[required] The unique ID of the segment.}
+\item{SegmentId}{[required] The unique identifier for the segment.}
 
-\item{Token}{The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
+\item{Token}{The NextToken string that specifies which page of results to return in a
+paginated response.}
 }
 \description{
-Returns information about your segment versions.
+Retrieves information about the configuration, dimension, and other
+settings for all versions of a specific segment that's associated with
+an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_segment_versions(

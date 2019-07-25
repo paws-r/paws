@@ -2,15 +2,16 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_event_stream}
 \alias{pinpoint_delete_event_stream}
-\title{Deletes the event stream for an app}
+\title{Deletes the event stream for an application}
 \usage{
 pinpoint_delete_event_stream(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Deletes the event stream for an app.
+Deletes the event stream for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_event_stream(

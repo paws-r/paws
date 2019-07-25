@@ -22,6 +22,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names \cr
 \link[=glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request \cr
 \link[=glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names \cr
+\link[=glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names \cr
 \link[=glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition \cr
 \link[=glue_create_classifier]{create_classifier} \tab Creates a classifier in the user's account \cr
 \link[=glue_create_connection]{create_connection} \tab Creates a connection definition in the Data Catalog \cr
@@ -35,6 +36,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog \cr
 \link[=glue_create_trigger]{create_trigger} \tab Creates a new trigger \cr
 \link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog \cr
+\link[=glue_create_workflow]{create_workflow} \tab Creates a new workflow \cr
 \link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog \cr
 \link[=glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog \cr
 \link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING \cr
@@ -48,6 +50,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table \cr
 \link[=glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger \cr
 \link[=glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog \cr
+\link[=glue_delete_workflow]{delete_workflow} \tab Deletes a workflow \cr
 \link[=glue_get_catalog_import_status]{get_catalog_import_status} \tab Retrieves the status of a migration operation \cr
 \link[=glue_get_classifier]{get_classifier} \tab Retrieve a classifier by name \cr
 \link[=glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog \cr
@@ -82,18 +85,25 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job \cr
 \link[=glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog \cr
 \link[=glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves a multiple function definitions from the Data Catalog \cr
+\link[=glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow \cr
+\link[=glue_get_workflow_run]{get_workflow_run} \tab Retrieves the metadata for a given workflow run \cr
+\link[=glue_get_workflow_run_properties]{get_workflow_run_properties} \tab Retrieves the workflow run properties which were set during the run \cr
+\link[=glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow \cr
 \link[=glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Athena Data Catalog to AWS Glue \cr
 \link[=glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this AWS account, or the resources with the specified tag \cr
+\link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account \cr
 \link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog \cr
 \link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control \cr
+\link[=glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run \cr
 \link[=glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry \cr
 \link[=glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled \cr
 \link[=glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
 \link[=glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition \cr
 \link[=glue_start_trigger]{start_trigger} \tab Starts an existing trigger \cr
+\link[=glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow \cr
 \link[=glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl \cr
 \link[=glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running \cr
 \link[=glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger \cr
@@ -109,7 +119,8 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_update_partition]{update_partition} \tab Updates a partition \cr
 \link[=glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog \cr
 \link[=glue_update_trigger]{update_trigger} \tab Updates a trigger definition \cr
-\link[=glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog
+\link[=glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog \cr
+\link[=glue_update_workflow]{update_workflow} \tab Updates an existing workflow
 }
 }
 

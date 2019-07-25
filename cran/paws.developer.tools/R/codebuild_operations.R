@@ -130,14 +130,44 @@ codebuild_batch_get_projects <- function(names) {
 #'
 #' @usage
 #' codebuild_create_project(name, description, source, secondarySources,
-#'   artifacts, secondaryArtifacts, cache, environment, serviceRole,
-#'   timeoutInMinutes, queuedTimeoutInMinutes, encryptionKey, tags,
-#'   vpcConfig, badgeEnabled, logsConfig)
+#'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
+#'   cache, environment, serviceRole, timeoutInMinutes,
+#'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
+#'   logsConfig)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
 #' @param source &#91;required&#93; Information about the build input source code for the build project.
 #' @param secondarySources An array of `ProjectSource` objects.
+#' @param sourceVersion A version of the build input to be built for this project. If not
+#' specified, the latest version is used. If specified, it must be one of:
+#' 
+#' -   For AWS CodeCommit: the commit ID to use.
+#' 
+#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
+#'     that corresponds to the version of the source code you want to
+#'     build. If a pull request ID is specified, it must use the format
+#'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
+#'     specified, the branch\'s HEAD commit ID is used. If not specified,
+#'     the default branch\'s HEAD commit ID is used.
+#' 
+#' -   For Bitbucket: the commit ID, branch name, or tag name that
+#'     corresponds to the version of the source code you want to build. If
+#'     a branch name is specified, the branch\'s HEAD commit ID is used. If
+#'     not specified, the default branch\'s HEAD commit ID is used.
+#' 
+#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
+#'     object that represents the build input ZIP file to use.
+#' 
+#' If `sourceVersion` is specified at the build level, then that version
+#' takes precedence over this `sourceVersion` (at the project level).
+#' 
+#' For more information, see [Source Version Sample with
+#' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+#' in the *AWS CodeBuild User Guide*.
+#' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
+#' is specified at the build level, then they take precedence over these
+#' `secondarySourceVersions` (at the project level).
 #' @param artifacts &#91;required&#93; Information about the build output artifacts for the build project.
 #' @param secondaryArtifacts An array of `ProjectArtifacts` objects.
 #' @param cache Stores recently used information so that it can be quickly accessed at a
@@ -207,6 +237,13 @@ codebuild_batch_get_projects <- function(names) {
 #'       reportBuildStatus = TRUE|FALSE,
 #'       insecureSsl = TRUE|FALSE,
 #'       sourceIdentifier = "string"
+#'     )
+#'   ),
+#'   sourceVersion = "string",
+#'   secondarySourceVersions = list(
+#'     list(
+#'       sourceIdentifier = "string",
+#'       sourceVersion = "string"
 #'     )
 #'   ),
 #'   artifacts = list(
@@ -297,14 +334,14 @@ codebuild_batch_get_projects <- function(names) {
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
   output <- .codebuild$create_project_output()
   svc <- .codebuild$service()
   request <- new_request(svc, op, input, output)
@@ -850,6 +887,13 @@ codebuild_list_source_credentials <- function() {
 #' 
 #' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
 #'     object that represents the build input ZIP file to use.
+#' 
+#' If `sourceVersion` is specified at the project level, then this
+#' `sourceVersion` (at the build level) takes precedence.
+#' 
+#' For more information, see [Source Version Sample with
+#' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+#' in the *AWS CodeBuild User Guide*.
 #' @param artifactsOverride Build output artifact settings that override, for this build only, the
 #' latest ones already defined in the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects.
@@ -1086,9 +1130,10 @@ codebuild_stop_build <- function(id) {
 #'
 #' @usage
 #' codebuild_update_project(name, description, source, secondarySources,
-#'   artifacts, secondaryArtifacts, cache, environment, serviceRole,
-#'   timeoutInMinutes, queuedTimeoutInMinutes, encryptionKey, tags,
-#'   vpcConfig, badgeEnabled, logsConfig)
+#'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
+#'   cache, environment, serviceRole, timeoutInMinutes,
+#'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
+#'   logsConfig)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -1097,6 +1142,35 @@ codebuild_stop_build <- function(id) {
 #' @param source Information to be changed about the build input source code for the
 #' build project.
 #' @param secondarySources An array of `ProjectSource` objects.
+#' @param sourceVersion A version of the build input to be built for this project. If not
+#' specified, the latest version is used. If specified, it must be one of:
+#' 
+#' -   For AWS CodeCommit: the commit ID to use.
+#' 
+#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
+#'     that corresponds to the version of the source code you want to
+#'     build. If a pull request ID is specified, it must use the format
+#'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
+#'     specified, the branch\'s HEAD commit ID is used. If not specified,
+#'     the default branch\'s HEAD commit ID is used.
+#' 
+#' -   For Bitbucket: the commit ID, branch name, or tag name that
+#'     corresponds to the version of the source code you want to build. If
+#'     a branch name is specified, the branch\'s HEAD commit ID is used. If
+#'     not specified, the default branch\'s HEAD commit ID is used.
+#' 
+#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
+#'     object that represents the build input ZIP file to use.
+#' 
+#' If `sourceVersion` is specified at the build level, then that version
+#' takes precedence over this `sourceVersion` (at the project level).
+#' 
+#' For more information, see [Source Version Sample with
+#' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
+#' in the *AWS CodeBuild User Guide*.
+#' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
+#' is specified at the build level, then they take over these
+#' `secondarySourceVersions` (at the project level).
 #' @param artifacts Information to be changed about the build output artifacts for the build
 #' project.
 #' @param secondaryArtifacts An array of `ProjectSource` objects.
@@ -1168,6 +1242,13 @@ codebuild_stop_build <- function(id) {
 #'       reportBuildStatus = TRUE|FALSE,
 #'       insecureSsl = TRUE|FALSE,
 #'       sourceIdentifier = "string"
+#'     )
+#'   ),
+#'   sourceVersion = "string",
+#'   secondarySourceVersions = list(
+#'     list(
+#'       sourceIdentifier = "string",
+#'       sourceVersion = "string"
 #'     )
 #'   ),
 #'   artifacts = list(
@@ -1258,14 +1339,14 @@ codebuild_stop_build <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
   output <- .codebuild$update_project_output()
   svc <- .codebuild$service()
   request <- new_request(svc, op, input, output)

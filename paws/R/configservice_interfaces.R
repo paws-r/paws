@@ -89,6 +89,16 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$delete_organization_config_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_organization_config_rule_output <- function(...) {
+  list()
+}
+
 .configservice$delete_pending_aggregation_request_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RequesterAccountId = structure(logical(0), tags = list(type = "string")), RequesterAwsRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -277,6 +287,30 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$describe_organization_config_rule_statuses_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_config_rule_statuses_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleStatuses = structure(list(structure(list(OrganizationConfigRuleName = structure(logical(0), tags = list(type = "string")), OrganizationRuleStatus = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_config_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$describe_organization_config_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRules = structure(list(structure(list(OrganizationConfigRuleName = structure(logical(0), tags = list(type = "string")), OrganizationConfigRuleArn = structure(logical(0), tags = list(type = "string")), OrganizationManagedRuleMetadata = structure(list(Description = structure(logical(0), tags = list(type = "string")), RuleIdentifier = structure(logical(0), tags = list(type = "string")), InputParameters = structure(logical(0), tags = list(type = "string")), MaximumExecutionFrequency = structure(logical(0), tags = list(type = "string")), ResourceTypesScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdScope = structure(logical(0), tags = list(type = "string")), TagKeyScope = structure(logical(0), tags = list(type = "string")), TagValueScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OrganizationCustomRuleMetadata = structure(list(Description = structure(logical(0), tags = list(type = "string")), LambdaFunctionArn = structure(logical(0), tags = list(type = "string")), OrganizationConfigRuleTriggerTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InputParameters = structure(logical(0), tags = list(type = "string")), MaximumExecutionFrequency = structure(logical(0), tags = list(type = "string")), ResourceTypesScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdScope = structure(logical(0), tags = list(type = "string")), TagKeyScope = structure(logical(0), tags = list(type = "string")), TagValueScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExcludedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$describe_pending_aggregation_requests_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -431,6 +465,18 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$get_organization_config_rule_detailed_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleName = structure(logical(0), tags = list(type = "string")), Filters = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), MemberAccountRuleStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_organization_config_rule_detailed_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleDetailedStatus = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ConfigRuleName = structure(logical(0), tags = list(type = "string")), MemberAccountRuleStatus = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$get_resource_config_history_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), laterTime = structure(logical(0), tags = list(type = "timestamp")), earlierTime = structure(logical(0), tags = list(type = "timestamp")), chronologicalOrder = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -542,6 +588,18 @@ NULL
 .configservice$put_evaluations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FailedEvaluations = structure(list(structure(list(ComplianceResourceType = structure(logical(0), tags = list(type = "string")), ComplianceResourceId = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string")), Annotation = structure(logical(0), tags = list(type = "string")), OrderingTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_organization_config_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleName = structure(logical(0), tags = list(type = "string")), OrganizationManagedRuleMetadata = structure(list(Description = structure(logical(0), tags = list(type = "string")), RuleIdentifier = structure(logical(0), tags = list(type = "string")), InputParameters = structure(logical(0), tags = list(type = "string")), MaximumExecutionFrequency = structure(logical(0), tags = list(type = "string")), ResourceTypesScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdScope = structure(logical(0), tags = list(type = "string")), TagKeyScope = structure(logical(0), tags = list(type = "string")), TagValueScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OrganizationCustomRuleMetadata = structure(list(Description = structure(logical(0), tags = list(type = "string")), LambdaFunctionArn = structure(logical(0), tags = list(type = "string")), OrganizationConfigRuleTriggerTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InputParameters = structure(logical(0), tags = list(type = "string")), MaximumExecutionFrequency = structure(logical(0), tags = list(type = "string")), ResourceTypesScope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceIdScope = structure(logical(0), tags = list(type = "string")), TagKeyScope = structure(logical(0), tags = list(type = "string")), TagValueScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExcludedAccounts = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_organization_config_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationConfigRuleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

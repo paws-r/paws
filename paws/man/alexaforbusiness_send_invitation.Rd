@@ -11,7 +11,7 @@ alexaforbusiness_send_invitation(UserArn)
 }
 \description{
 Sends an enrollment invitation email with a URL to a user. The URL is
-valid for 72 hours or until you call this operation again, whichever
+valid for 30 days or until you call this operation again, whichever
 comes first.
 }
 \section{Request syntax}{

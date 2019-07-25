@@ -14,7 +14,7 @@ elasticache_batch_apply_update_action(ReplicationGroupIds,
 }
 \description{
 Apply the service update. For more information on service updates and
-applying them, see Applying Service Updates.
+applying them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html}{Applying Service Updates}.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_apply_update_action(

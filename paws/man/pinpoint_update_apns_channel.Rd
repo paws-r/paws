@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_apns_channel}
 \alias{pinpoint_update_apns_channel}
-\title{Use to update the APNs channel for an app}
+\title{Updates the APNs channel settings for an application}
 \usage{
 pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 }
 \arguments{
 \item{APNSChannelRequest}{[required]}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Use to update the APNs channel for an app.
+Updates the APNs channel settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_apns_channel(

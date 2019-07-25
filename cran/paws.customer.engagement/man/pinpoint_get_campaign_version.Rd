@@ -2,19 +2,22 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_campaign_version}
 \alias{pinpoint_get_campaign_version}
-\title{Returns information about a specific version of a campaign}
+\title{Retrieves information about the status, configuration, and other
+settings for a specific version of a campaign}
 \usage{
 pinpoint_get_campaign_version(ApplicationId, CampaignId, Version)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{CampaignId}{[required] The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique identifier for the campaign.}
 
-\item{Version}{[required] The version of the campaign.}
+\item{Version}{[required] The unique version number (Version property) for the campaign version.}
 }
 \description{
-Returns information about a specific version of a campaign.
+Retrieves information about the status, configuration, and other
+settings for a specific version of a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaign_version(

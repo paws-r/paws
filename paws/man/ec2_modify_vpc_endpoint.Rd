@@ -49,7 +49,7 @@ associated with the VPC.}
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you
 can modify depend on the type of VPC endpoint (interface or gateway).
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

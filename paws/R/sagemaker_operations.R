@@ -419,7 +419,9 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #' the model was trained.
 #' @param OutputConfig &#91;required&#93; Provides information about the output location for the compiled model
 #' and the target device the model runs on.
-#' @param StoppingCondition &#91;required&#93; The duration allowed for model compilation.
+#' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model compilation job can run. When the
+#' job reaches the time limit, Amazon SageMaker ends the compilation job.
+#' Use this API to cap model training costs.
 #'
 #' @section Request syntax:
 #' ```
@@ -433,7 +435,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"|"sbe_c"
 #'   ),
 #'   StoppingCondition = list(
 #'     MaxRuntimeInSeconds = 123
@@ -1533,15 +1535,14 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' showing the Jupyter server home page from the notebook instance. The
 #' console uses this API to get the URL and show the page.
 #' 
-#' You can restrict access to this API and to the URL that it returns to a
-#' list of IP addresses that you specify. To restrict access, attach an IAM
-#' policy that denies access to this API unless the call comes from an IP
-#' address in the specified list to every AWS Identity and Access
-#' Management user, group, or role used to access the notebook instance.
-#' Use the `NotIpAddress` condition operator and the `aws:SourceIP`
-#' condition context key to specify the list of IP addresses that you want
-#' to have access to the notebook instance. For more information, see
-#' [Limit Access to a Notebook Instance by IP
+#' IAM authorization policies for this API are also enforced for every HTTP
+#' request and WebSocket frame that attempts to connect to the notebook
+#' instance.For example, you can restrict access to this API and to the URL
+#' that it returns to a list of IP addresses that you specify. Use the
+#' `NotIpAddress` condition operator and the `aws:SourceIP` condition
+#' context key to specify the list of IP addresses that you want to have
+#' access to the notebook instance. For more information, see [Limit Access
+#' to a Notebook Instance by IP
 #' Address](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
 #' 
 #' The URL that you get from a call to is valid only for 5 minutes. If you
@@ -1599,9 +1600,10 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' -   `AlgorithmSpecification` - Identifies the training algorithm to use.
 #' 
 #' -   `HyperParameters` - Specify these algorithm-specific parameters to
-#'     influence the quality of the final model. For a list of
-#'     hyperparameters for each training algorithm provided by Amazon
-#'     SageMaker, see
+#'     enable the estimation of model parameters during training.
+#'     Hyperparameters can be tuned to optimize this learning process. For
+#'     a list of hyperparameters for each training algorithm provided by
+#'     Amazon SageMaker, see
 #'     [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' 
 #' -   `InputDataConfig` - Describes the training dataset and the Amazon S3
@@ -1619,7 +1621,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'     must grant this role the necessary permissions so that Amazon
 #'     SageMaker can successfully complete model training.
 #' 
-#' -   `StoppingCondition` - Sets a duration for training. Use this
+#' -   `StoppingCondition` - Sets a time limit for training. Use this
 #'     parameter to cap model training costs.
 #' 
 #' For more information about Amazon SageMaker, see [How It
@@ -1692,15 +1694,14 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' configuring the VPC. For more information, see [Protect Training Jobs by
 #' Using an Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
-#' @param StoppingCondition &#91;required&#93; Sets a duration for training. Use this parameter to cap model training
-#' costs. To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM`
-#' signal, which delays job termination for 120 seconds. Algorithms might
-#' use this 120-second window to save the model artifacts.
+#' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model training job can run. When the job
+#' reaches the time limit, Amazon SageMaker ends the training job. Use this
+#' API to cap model training costs.
 #' 
-#' When Amazon SageMaker terminates a job because the stopping condition
-#' has been met, training algorithms provided by Amazon SageMaker save the
-#' intermediate results of the job. This intermediate data is a valid model
-#' artifact. You can use it to create a model using the `CreateModel` API.
+#' To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM`
+#' signal, which delays job termination for 120 seconds. Algorithms can use
+#' this 120-second window to save the model artifacts, so the results of
+#' training are not lost.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
@@ -1850,7 +1851,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @usage
 #' sagemaker_create_transform_job(TransformJobName, ModelName,
 #'   MaxConcurrentTransforms, MaxPayloadInMB, BatchStrategy, Environment,
-#'   TransformInput, TransformOutput, TransformResources, Tags)
+#'   TransformInput, TransformOutput, TransformResources, DataProcessing,
+#'   Tags)
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job. The name must be unique within an AWS
 #' Region in an AWS account.
@@ -1899,6 +1901,9 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @param TransformOutput &#91;required&#93; Describes the results of the transform job.
 #' @param TransformResources &#91;required&#93; Describes the resources, including ML instance types and ML instance
 #' count, to use for the transform job.
+#' @param DataProcessing The data structure used for combining the input data and inference in
+#' the output file. For more information, see [Batch Transform I/O
+#' Join](http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html).
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
@@ -1937,6 +1942,11 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'     InstanceCount = 123,
 #'     VolumeKmsKeyId = "string"
 #'   ),
+#'   DataProcessing = list(
+#'     InputFilter = "string",
+#'     OutputFilter = "string",
+#'     JoinSource = "Input"|"None"
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1949,14 +1959,14 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_transform_job
-sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, Tags = NULL) {
+sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, DataProcessing = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTransformJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, TransformResources = TransformResources, Tags = Tags)
+  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags)
   output <- .sagemaker$create_transform_job_output()
   svc <- .sagemaker$service()
   request <- new_request(svc, op, input, output)
@@ -4764,7 +4774,12 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' associated with the notebook instance when you call this method, it does
 #' not throw an error.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
-#' instance. The default value is 5 GB.
+#' instance. The default value is 5 GB. ML storage volumes are encrypted,
+#' so Amazon SageMaker can\'t determine the amount of available free space
+#' on the volume. Because of this, you can increase the volume size when
+#' you update a notebook instance, but you can\'t decrease the volume size.
+#' If you want to decrease the size of the ML storage volume in use, create
+#' a new notebook instance with the desired size.
 #' @param DefaultCodeRepository The Git repository to associate with the notebook instance as its
 #' default code repository. This can be either the name of a Git repository
 #' stored as a resource in your account, or the URL of a Git repository in

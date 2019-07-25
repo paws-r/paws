@@ -59,7 +59,7 @@ Default: \code{true}}
 Creates a VPC endpoint for a specified service. An endpoint enables you
 to create a private connection between your VPC and the service. The
 service may be provided by AWS, an AWS Marketplace partner, or another
-AWS account. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html}{VPC Endpoints}
+AWS account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{

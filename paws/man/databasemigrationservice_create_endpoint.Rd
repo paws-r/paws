@@ -16,10 +16,10 @@ databasemigrationservice_create_endpoint(EndpointIdentifier,
 must contain only ASCII letters, digits, and hyphens; and must not end
 with a hyphen or contain two consecutive hyphens.}
 
-\item{EndpointType}{[required] The type of endpoint.}
+\item{EndpointType}{[required] The type of endpoint. Valid values are \code{source} and \code{target}.}
 
 \item{EngineName}{[required] The type of engine for the endpoint. Valid values, depending on the
-\code{EndPointType} value, include \code{mysql}, \code{oracle}, \code{postgres}, \code{mariadb},
+\code{EndpointType} value, include \code{mysql}, \code{oracle}, \code{postgres}, \code{mariadb},
 \code{aurora}, \code{aurora-postgresql}, \code{redshift}, \code{s3}, \code{db2}, \code{azuredb},
 \code{sybase}, \code{dynamodb}, \code{mongodb}, and \code{sqlserver}.}
 
@@ -33,21 +33,28 @@ with a hyphen or contain two consecutive hyphens.}
 
 \item{DatabaseName}{The name of the endpoint database.}
 
-\item{ExtraConnectionAttributes}{Additional attributes associated with the connection.}
+\item{ExtraConnectionAttributes}{Additional attributes associated with the connection. Each attribute is
+specified as a name-value pair associated by an equal sign (=). Multiple
+attributes are separated by a semicolon (;) with no additional white
+space. For information on the attributes available for connecting your
+source or target endpoint, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Endpoints.html}{Working with AWS DMS Endpoints}
+in the \emph{AWS Database Migration Service User Guide.}}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use to encrypt the connection parameters.
+\item{KmsKeyId}{An AWS KMS key identifier that is used to encrypt the connection
+parameters for the endpoint.
+
 If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS
-uses your default encryption key. AWS KMS creates the default encryption
-key for your AWS account. Your AWS account has a different default
-encryption key for each AWS Region.}
+uses your default encryption key.
 
-\item{Tags}{Tags to be added to the endpoint.}
+AWS KMS creates the default encryption key for your AWS account. Your
+AWS account has a different default encryption key for each AWS Region.}
+
+\item{Tags}{One or more tags to be assigned to the endpoint.}
 
 \item{CertificateArn}{The Amazon Resource Name (ARN) for the certificate.}
 
 \item{SslMode}{The Secure Sockets Layer (SSL) mode to use for the SSL connection. The
-SSL mode can be one of four values: \code{none}, \code{require}, \code{verify-ca},
-\code{verify-full}. The default value is \code{none}.}
+default is \code{none}}
 
 \item{ServiceAccessRoleArn}{The Amazon Resource Name (ARN) for the service access role that you want
 to use to create the endpoint.}
@@ -87,7 +94,7 @@ properties section in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams
-endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping\%20}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
+endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more
@@ -141,7 +148,9 @@ Creates an endpoint using the provided settings.
     DataPageSize = 123,
     ParquetVersion = "parquet-1-0"|"parquet-2-0",
     EnableStatistics = TRUE|FALSE,
-    CdcInsertsOnly = TRUE|FALSE
+    IncludeOpForFullLoad = TRUE|FALSE,
+    CdcInsertsOnly = TRUE|FALSE,
+    TimestampColumnName = "string"
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",

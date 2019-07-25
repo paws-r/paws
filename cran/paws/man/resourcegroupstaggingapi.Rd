@@ -18,15 +18,10 @@ the value of "Stack" might be "Testing" for one and "Production"
 for the other.
 
 Tagging can help you organize your resources and enables you to simplify
-resource management, access management and cost allocation. For more
-information about tagging, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html}{Working with Tag Editor}
-and \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html}{Working with Resource Groups}.
-For more information about permissions you need to use the resource
-groups tagging APIs, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html}{Obtaining Permissions for Resource Groups}
-and \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}.
+resource management, access management and cost allocation.
 
-You can use the resource groups tagging APIs to complete the following
-tasks:
+You can use the resource groups tagging API operations to complete the
+following tasks:
 \itemize{
 \item Tag and untag supported resources located in the specified region
 for the AWS account
@@ -38,20 +33,100 @@ account
 region for the AWS account
 }
 
-Not all resources can have tags. For a lists of resources that you can
-tag, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html}{Supported Resources}
-in the \emph{AWS Resource Groups and Tag Editor User Guide}.
+To make full use of the resource groups tagging API operations, you
+might need additional IAM permissions, including permission to access
+the resources of individual services as well as permission to view and
+apply tags to those resources. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html}{Obtaining Permissions for Resource Groups and Tag Editor}.
 
-To make full use of the resource groups tagging APIs, you might need
-additional IAM permissions, including permission to access the resources
-of individual services as well as permission to view and apply tags to
-those resources. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
-in the \emph{AWS Resource Groups and Tag Editor User Guide}.
+You can use the Resource Groups Tagging API to tag resources for the
+following AWS services.
+\itemize{
+\item Alexa for Business (a4b)
+\item API Gateway
+\item AWS AppStream
+\item AWS AppSync
+\item Amazon Athena
+\item Amazon Aurora
+\item AWS Certificate Manager
+\item AWS Certificate Manager Private CA
+\item Amazon Cloud Directory
+\item AWS CloudFormation
+\item Amazon CloudFront
+\item AWS CloudHSM
+\item AWS CloudTrail
+\item Amazon CloudWatch (alarms only)
+\item Amazon CloudWatch Events
+\item Amazon CloudWatch Logs
+\item AWS CodeBuild
+\item AWS CodeStar
+\item Amazon Cognito Identity
+\item Amazon Cognito User Pools
+\item Amazon Comprehend
+\item AWS Config
+\item AWS Data Pipeline
+\item AWS Database Migration Service
+\item AWS Datasync
+\item AWS Direct Connect
+\item AWS Directory Service
+\item Amazon DynamoDB
+\item Amazon EBS
+\item Amazon EC2
+\item Amazon ECR
+\item Amazon ECS
+\item AWS Elastic Beanstalk
+\item Amazon Elastic File System
+\item Elastic Load Balancing
+\item Amazon ElastiCache
+\item Amazon Elasticsearch Service
+\item AWS Elemental MediaLive
+\item AWS Elemental MediaPackage
+\item AWS Elemental MediaTailor
+\item Amazon EMR
+\item Amazon FSx
+\item Amazon Glacier
+\item AWS Glue
+\item Amazon Inspector
+\item AWS IoT Analytics
+\item AWS IoT Core
+\item AWS IoT Device Defender
+\item AWS IoT Device Management
+\item AWS IoT Greengrass
+\item AWS Key Management Service
+\item Amazon Kinesis
+\item Amazon Kinesis Data Analytics
+\item Amazon Kinesis Data Firehose
+\item AWS Lambda
+\item AWS License Manager
+\item Amazon Machine Learning
+\item Amazon MQ
+\item Amazon MSK
+\item Amazon Neptune
+\item AWS OpsWorks
+\item Amazon RDS
+\item Amazon Redshift
+\item AWS Resource Access Manager
+\item AWS Resource Groups
+\item AWS RoboMaker
+\item Amazon Route 53
+\item Amazon Route 53 Resolver
+\item Amazon S3 (buckets only)
+\item Amazon SageMaker
+\item AWS Secrets Manager
+\item AWS Service Catalog
+\item Amazon Simple Notification Service (SNS)
+\item Amazon Simple Queue Service (SQS)
+\item AWS Simple System Manager (SSM)
+\item AWS Step Functions
+\item AWS Storage Gateway
+\item AWS Transfer for SFTP
+\item Amazon VPC
+\item Amazon WorkSpaces
+}
 }
 \section{Operations}{
 
 \tabular{ll}{
-\link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged resources that are associated with the specified tags (keys and values) located in the specified region for the AWS account\cr
+\link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified region for the AWS account\cr
 \link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys in the specified region for the AWS account \cr
 \link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key in the specified region for the AWS account \cr
 \link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources \cr

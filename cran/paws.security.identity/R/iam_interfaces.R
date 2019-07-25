@@ -529,6 +529,18 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$generate_organizations_access_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EntityPath = structure(logical(0), tags = list(type = "string")), OrganizationsPolicyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$generate_organizations_access_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .iam$generate_service_last_accessed_details_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -676,6 +688,18 @@ NULL
 .iam$get_open_id_connect_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), ClientIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ThumbprintList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$get_organizations_access_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), SortKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$get_organizations_access_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobStatus = structure(logical(0), tags = list(type = "string")), JobCreationDate = structure(logical(0), tags = list(type = "timestamp")), JobCompletionDate = structure(logical(0), tags = list(type = "timestamp")), NumberOfServicesAccessible = structure(logical(0), tags = list(type = "integer")), NumberOfServicesNotAccessed = structure(logical(0), tags = list(type = "integer")), AccessDetails = structure(list(structure(list(ServiceName = structure(logical(0), tags = list(type = "string")), ServiceNamespace = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), EntityPath = structure(logical(0), tags = list(type = "string")), LastAuthenticatedTime = structure(logical(0), tags = list(type = "timestamp")), TotalAuthenticatedEntities = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(Message = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

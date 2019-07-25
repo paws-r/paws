@@ -9,8 +9,8 @@ s3_create_multipart_upload(ACL, Bucket, CacheControl,
   Expires, GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, Key,
   Metadata, ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
-  RequestPayer, Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
-  ObjectLockLegalHoldStatus)
+  SSEKMSEncryptionContext, RequestPayer, Tagging, ObjectLockMode,
+  ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.}
@@ -72,6 +72,10 @@ via SSL or using SigV4. Documentation on configuring any of the
 officially supported AWS SDKs and CLI can be found at
 http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\#specify-signature-version}
 
+\item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
+The value of this header is a base64-encoded UTF-8 string holding JSON
+with the encryption context key-value pairs.}
+
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
@@ -121,6 +125,7 @@ storage and stops charging you for the parts storage.
   SSECustomerKey = raw,
   SSECustomerKeyMD5 = "string",
   SSEKMSKeyId = "string",
+  SSEKMSEncryptionContext = "string",
   RequestPayer = "requester",
   Tagging = "string",
   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",

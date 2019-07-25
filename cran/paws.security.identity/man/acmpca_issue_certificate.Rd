@@ -6,7 +6,7 @@
 certificate}
 \usage{
 acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
-  Validity, IdempotencyToken)
+  TemplateArn, Validity, IdempotencyToken)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
@@ -29,31 +29,49 @@ X509 version 3 extensions.
 \item{SigningAlgorithm}{[required] The name of the algorithm that will be used to sign the certificate to
 be issued.}
 
+\item{TemplateArn}{Specifies a custom configuration template to use when issuing a
+certificate. If this parameter is not provided, ACM Private CA defaults
+to the \code{EndEntityCertificate/V1} template.
+
+The following service-owned \code{TemplateArn} values are supported by ACM
+Private CA:
+\itemize{
+\item arn:aws:acm-pca:::template/EndEntityCertificate/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen0/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen1/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen2/V1
+\item arn:aws:acm-pca:::template/SubordinateCACertificate\_PathLen3/V1
+\item arn:aws:acm-pca:::template/RootCACertificate/V1
+}
+
+For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html}{Using Templates}.}
+
 \item{Validity}{[required] The type of the validity period.}
 
 \item{IdempotencyToken}{Custom string that can be used to distinguish between calls to the
-\strong{IssueCertificate} operation. Idempotency tokens time out after one
-hour. Therefore, if you call \strong{IssueCertificate} multiple times with
-the same idempotency token within 5 minutes, ACM PCA recognizes that you
+\strong{IssueCertificate} action. Idempotency tokens time out after one hour.
+Therefore, if you call \strong{IssueCertificate} multiple times with the same
+idempotency token within 5 minutes, ACM Private CA recognizes that you
 are requesting only one certificate and will issue only one. If you
 change the idempotency token for each call, PCA recognizes that you are
 requesting multiple certificates.}
 }
 \description{
 Uses your private certificate authority (CA) to issue a client
-certificate. This operation returns the Amazon Resource Name (ARN) of
-the certificate. You can retrieve the certificate by calling the
-GetCertificate operation and specifying the ARN.
+certificate. This action returns the Amazon Resource Name (ARN) of the
+certificate. You can retrieve the certificate by calling the
+GetCertificate action and specifying the ARN.
 }
 \details{
-You cannot use the ACM \strong{ListCertificateAuthorities} operation to
-retrieve the ARNs of the certificates that you issue by using ACM PCA.
+You cannot use the ACM \strong{ListCertificateAuthorities} action to retrieve
+the ARNs of the certificates that you issue by using ACM Private CA.
 }
 \section{Request syntax}{
 \preformatted{svc$issue_certificate(
   CertificateAuthorityArn = "string",
   Csr = raw,
   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+  TemplateArn = "string",
   Validity = list(
     Value = 123,
     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"

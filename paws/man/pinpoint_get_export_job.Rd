@@ -2,17 +2,20 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_export_job}
 \alias{pinpoint_get_export_job}
-\title{Returns information about an export job}
+\title{Retrieves information about the status and settings of a specific export
+job for an application}
 \usage{
 pinpoint_get_export_job(ApplicationId, JobId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{JobId}{[required] The unique ID of the job.}
+\item{JobId}{[required] The unique identifier for the job.}
 }
 \description{
-Returns information about an export job.
+Retrieves information about the status and settings of a specific export
+job for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_export_job(

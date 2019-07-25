@@ -16,12 +16,13 @@ swf_start_workflow_execution(domain, workflowId, workflowType, taskList,
 can use this to associate a custom identifier with the workflow
 execution. You may specify the same identifier if a workflow execution
 is logically a \emph{restart} of a previous execution. You cannot have two
-open workflow executions with the same \code{workflowId} at the same time.
+open workflow executions with the same \code{workflowId} at the same time
+within the same domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{workflowType}{[required] The type of the workflow to start.}
 
@@ -36,8 +37,8 @@ time then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{taskPriority}{The task priority to use for this workflow execution. This overrides any
 default priority that was assigned when the workflow type was
@@ -46,7 +47,7 @@ type is used. Valid values are integers that range from Java's
 \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE} (2147483647).
 Higher numbers indicate higher priority.
 
-For more information about setting task priority, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
+For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
 in the \emph{Amazon SWF Developer Guide}.}
 
 \item{input}{The input for the workflow execution. This is a free form string which
@@ -115,7 +116,7 @@ Executions of this workflow type need IAM roles to invoke Lambda
 functions. If you don't attach an IAM role, any attempt to schedule a
 Lambda task fails. This results in a \code{ScheduleLambdaFunctionFailed}
 history event. For more information, see
-\url{http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
+\url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
 }
 \description{
@@ -152,7 +153,7 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

@@ -75,7 +75,7 @@ for a specific network interface, subnet, or VPC.
 \details{
 Flow log data for a monitored network interface is recorded as flow log
 records, which are log events consisting of fields that describe the
-traffic flow. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records}{Flow Log Records}
+traffic flow. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow Log Records}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 When publishing to CloudWatch Logs, flow log records are published to a
@@ -84,7 +84,7 @@ group. When publishing to Amazon S3, flow log records for all of the
 monitored network interfaces are published to a single log file object
 that is stored in the specified bucket.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html}{VPC Flow Logs}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html}{VPC Flow Logs}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

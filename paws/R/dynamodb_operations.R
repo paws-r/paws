@@ -10,27 +10,26 @@ NULL
 #' from one or more tables. You identify requested items by primary key.
 #' 
 #' A single operation can retrieve up to 16 MB of data, which can contain
-#' as many as 100 items. `BatchGetItem` will return a partial result if the
+#' as many as 100 items. `BatchGetItem` returns a partial result if the
 #' response size limit is exceeded, the table\'s provisioned throughput is
 #' exceeded, or an internal processing failure occurs. If a partial result
 #' is returned, the operation returns a value for `UnprocessedKeys`. You
 #' can use this value to retry the operation starting with the next item to
 #' get.
 #' 
-#' If you request more than 100 items `BatchGetItem` will return a
+#' If you request more than 100 items, `BatchGetItem` returns a
 #' `ValidationException` with the message \"Too many items requested for
-#' the BatchGetItem call\".
+#' the BatchGetItem call.\"
 #' 
 #' For example, if you ask to retrieve 100 items, but each individual item
 #' is 300 KB in size, the system returns 52 items (so as not to exceed the
 #' 16 MB limit). It also returns an appropriate `UnprocessedKeys` value so
 #' you can get the next page of results. If desired, your application can
-#' include its own logic to assemble the pages of results into one data
-#' set.
+#' include its own logic to assemble the pages of results into one dataset.
 #' 
 #' If *none* of the items can be processed due to insufficient provisioned
-#' throughput on all of the tables in the request, then `BatchGetItem` will
-#' return a `ProvisionedThroughputExceededException`. If *at least one* of
+#' throughput on all of the tables in the request, then `BatchGetItem`
+#' returns a `ProvisionedThroughputExceededException`. If *at least one* of
 #' the items is successfully processed, then `BatchGetItem` completes
 #' successfully, while returning the keys of the unread items in
 #' `UnprocessedKeys`.
@@ -61,8 +60,8 @@ NULL
 #' 
 #' If a requested item does not exist, it is not returned in the result.
 #' Requests for nonexistent items consume the minimum read capacity units
-#' according to the type of read. For more information, see [Capacity Units
-#' Calculations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
+#' according to the type of read. For more information, see [Working with
+#' Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @usage
@@ -112,8 +111,8 @@ NULL
 #'     Tokens that begin with the **:** character are *expression attribute
 #'     values*, which are placeholders for the actual value at runtime.
 #' 
-#'     For more information on expression attribute names, see [Accessing
-#'     Item
+#'     For more information about expression attribute names, see
+#'     [Accessing Item
 #'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' 
@@ -129,9 +128,9 @@ NULL
 #'     scalars, sets, or elements of a JSON document. The attributes in the
 #'     expression must be separated by commas.
 #' 
-#'     If no attribute names are specified, then all attributes will be
-#'     returned. If any of the requested attributes are not found, they
-#'     will not appear in the result.
+#'     If no attribute names are specified, then all attributes are
+#'     returned. If any of the requested attributes are not found, they do
+#'     not appear in the result.
 #' 
 #'     For more information, see [Accessing Item
 #'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
@@ -266,9 +265,9 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' request with those unprocessed items until all items have been
 #' processed.
 #' 
-#' Note that if *none* of the items can be processed due to insufficient
-#' provisioned throughput on all of the tables in the request, then
-#' `BatchWriteItem` will return a `ProvisionedThroughputExceededException`.
+#' If *none* of the items can be processed due to insufficient provisioned
+#' throughput on all of the tables in the request, then `BatchWriteItem`
+#' returns a `ProvisionedThroughputExceededException`.
 #' 
 #' If DynamoDB returns any unprocessed items, you should retry the batch
 #' operation on those items. However, *we strongly recommend that you use
@@ -279,17 +278,16 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' more likely to succeed.
 #' 
 #' For more information, see [Batch Operations and Error
-#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' With `BatchWriteItem`, you can efficiently write or delete large amounts
-#' of data, such as from Amazon Elastic MapReduce (EMR), or copy data from
-#' another database into DynamoDB. In order to improve performance with
-#' these large-scale operations, `BatchWriteItem` does not behave in the
-#' same way as individual `PutItem` and `DeleteItem` calls would. For
-#' example, you cannot specify conditions on individual put and delete
-#' requests, and `BatchWriteItem` does not return deleted items in the
-#' response.
+#' of data, such as from Amazon EMR, or copy data from another database
+#' into DynamoDB. In order to improve performance with these large-scale
+#' operations, `BatchWriteItem` does not behave in the same way as
+#' individual `PutItem` and `DeleteItem` calls would. For example, you
+#' cannot specify conditions on individual put and delete requests, and
+#' `BatchWriteItem` does not return deleted items in the response.
 #' 
 #' If you use a programming language that supports concurrency, you can use
 #' threads to write items in parallel. Your application must include the
@@ -354,7 +352,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #'         Attribute values must not be null; string and binary type
 #'         attributes must have lengths greater than zero; and set type
 #'         attributes must not be empty. Requests that contain empty values
-#'         will be rejected with a `ValidationException` exception.
+#'         are rejected with a `ValidationException` exception.
 #' 
 #'         If you specify any attributes that are part of an index key,
 #'         then the data types for those attributes must match those of the
@@ -509,11 +507,11 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #'
 #' Creates a backup for an existing table.
 #' 
-#' Each time you create an On-Demand Backup, the entire table data is
+#' Each time you create an on-demand backup, the entire table data is
 #' backed up. There is no limit to the number of on-demand backups that can
 #' be taken.
 #' 
-#' When you create an On-Demand Backup, a time marker of the request is
+#' When you create an on-demand backup, a time marker of the request is
 #' cataloged, and the backup is created asynchronously, by applying all
 #' changes until the time of the request to the last full table snapshot.
 #' Backup requests are processed instantaneously and become available for
@@ -526,9 +524,9 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #' 
 #' If you submit a backup request on 2018-12-14 at 14:25:00, the backup is
 #' guaranteed to contain all data committed to the table up to 14:24:00,
-#' and data committed after 14:26:00 will not be. The backup may or may not
-#' contain data modifications made between 14:24:00 and 14:26:00. On-Demand
-#' Backup does not support causal consistency.
+#' and data committed after 14:26:00 will not be. The backup might contain
+#' data modifications made between 14:24:00 and 14:26:00. On-demand backup
+#' does not support causal consistency.
 #' 
 #' Along with data, the following are also included on the backups:
 #' 
@@ -577,7 +575,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'
 #' Creates a global table from an existing table. A global table creates a
 #' replication relationship between two or more DynamoDB tables with the
-#' same table name in the provided regions.
+#' same table name in the provided Regions.
 #' 
 #' If you want to add a new replica table to a global table, each of the
 #' following conditions must be true:
@@ -614,7 +612,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
-#' @param ReplicationGroup &#91;required&#93; The regions where the global table needs to be created.
+#' @param ReplicationGroup &#91;required&#93; The Regions where the global table needs to be created.
 #'
 #' @section Request syntax:
 #' ```
@@ -650,9 +648,9 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' The CreateTable operation adds a new table to your account
 #'
 #' The `CreateTable` operation adds a new table to your account. In an AWS
-#' account, table names must be unique within each region. That is, you can
+#' account, table names must be unique within each Region. That is, you can
 #' have two tables with same name if you create the tables in different
-#' regions.
+#' Regions.
 #' 
 #' `CreateTable` is an asynchronous operation. Upon receiving a
 #' `CreateTable` request, DynamoDB immediately returns a response with a
@@ -693,7 +691,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     -   `RANGE` - sort key
 #' 
 #' The partition key of an item is also known as its *hash attribute*. The
-#' term \"hash attribute\" derives from DynamoDB\' usage of an internal
+#' term \"hash attribute\" derives from the DynamoDB usage of an internal
 #' hash function to evenly distribute data items across partitions, based
 #' on their partition key values.
 #' 
@@ -710,8 +708,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' a `KeyType` of `HASH`, and the second element must have a `KeyType` of
 #' `RANGE`.
 #' 
-#' For more information, see [Specifying the Primary
-#' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+#' For more information, see [Working with
+#' Tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param LocalSecondaryIndexes One or more local secondary indexes (the maximum is 5) to be created on
 #' the table. Each index is scoped to a given partition key value. There is
@@ -739,7 +737,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #'         -   `INCLUDE` - Only the specified table attributes are
 #'             projected into the index. The list of projected attributes
-#'             are in `NonKeyAttributes`.
+#'             is in `NonKeyAttributes`.
 #' 
 #'         -   `ALL` - All of the table attributes are projected into the
 #'             index.
@@ -772,7 +770,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #'         -   `INCLUDE` - Only the specified table attributes are
 #'             projected into the index. The list of projected attributes
-#'             are in `NonKeyAttributes`.
+#'             is in `NonKeyAttributes`.
 #' 
 #'         -   `ALL` - All of the table attributes are projected into the
 #'             index.
@@ -808,8 +806,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
 #' 
-#' -   `StreamEnabled` - Indicates whether Streams is to be enabled (true)
-#'     or disabled (false).
+#' -   `StreamEnabled` - Indicates whether DynamoDB Streams is to be
+#'     enabled (true) or disabled (false).
 #' 
 #' -   `StreamViewType` - When an item in the table is modified,
 #'     `StreamViewType` determines what information is written to the
@@ -1067,8 +1065,8 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' 
 #' -   Logical operators: `AND | OR | NOT`
 #' 
-#' For more information on condition expressions, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information about condition expressions, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -1104,7 +1102,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information on expression attribute names, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
@@ -1123,8 +1121,8 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' 
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
-#' For more information on expression attribute values, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information on expression attribute values, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1344,7 +1342,7 @@ dynamodb_delete_table <- function(TableName) {
 #' @usage
 #' dynamodb_describe_backup(BackupArn)
 #'
-#' @param BackupArn &#91;required&#93; The ARN associated with the backup.
+#' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
 #'
 #' @section Request syntax:
 #' ```
@@ -1380,7 +1378,7 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' table creation. If point in time recovery is enabled,
 #' `PointInTimeRecoveryStatus` will be set to ENABLED.
 #' 
-#' Once continuous backups and point in time recovery are enabled, you can
+#' After continuous backups and point in time recovery are enabled, you can
 #' restore to any point in time within `EarliestRestorableDateTime` and
 #' `LatestRestorableDateTime`.
 #' 
@@ -1489,9 +1487,9 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 }
 .dynamodb$operations$describe_global_table <- dynamodb_describe_global_table
 
-#' Describes region specific settings for a global table
+#' Describes Region-specific settings for a global table
 #'
-#' Describes region specific settings for a global table.
+#' Describes Region-specific settings for a global table.
 #'
 #' @usage
 #' dynamodb_describe_global_table_settings(GlobalTableName)
@@ -1525,16 +1523,16 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 .dynamodb$operations$describe_global_table_settings <- dynamodb_describe_global_table_settings
 
 #' Returns the current provisioned-capacity limits for your AWS account in
-#' a region, both for the region as a whole and for any one DynamoDB table
+#' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there
 #'
 #' Returns the current provisioned-capacity limits for your AWS account in
-#' a region, both for the region as a whole and for any one DynamoDB table
+#' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there.
 #' 
 #' When you establish an AWS account, the account has initial limits on the
 #' maximum read capacity units and write capacity units that you can
-#' provision across all of your DynamoDB tables in a given region. Also,
+#' provision across all of your DynamoDB tables in a given Region. Also,
 #' there are per-table limits that apply when you create a table there. For
 #' more information, see
 #' [Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
@@ -1549,11 +1547,11 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' 
 #' For example, you could use one of the AWS SDKs to do the following:
 #' 
-#' 1.  Call `DescribeLimits` for a particular region to obtain your current
+#' 1.  Call `DescribeLimits` for a particular Region to obtain your current
 #'     account limits on provisioned capacity there.
 #' 
 #' 2.  Create a variable to hold the aggregate read capacity units
-#'     provisioned for all your tables in that region, and one to hold the
+#'     provisioned for all your tables in that Region, and one to hold the
 #'     aggregate write capacity units. Zero them both.
 #' 
 #' 3.  Call `ListTables` to obtain a list of all your DynamoDB tables.
@@ -1570,7 +1568,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'         loop over these GSIs and add their provisioned capacity values
 #'         to your variables as well.
 #' 
-#' 5.  Report the account limits for that region returned by
+#' 5.  Report the account limits for that Region returned by
 #'     `DescribeLimits`, along with the total current provisioned capacity
 #'     levels you have calculated.
 #' 
@@ -1581,8 +1579,8 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' restrict the sum of the provisioned capacity of the new table itself and
 #' all its global secondary indexes.
 #' 
-#' For existing tables and their GSIs, DynamoDB will not let you increase
-#' provisioned capacity extremely rapidly, but the only upper limit that
+#' For existing tables and their GSIs, DynamoDB doesn\'t let you increase
+#' provisioned capacity extremely rapidly. But the only upper limit that
 #' applies is that the aggregate provisioned capacity over all your tables
 #' and GSIs cannot exceed either of the per-account limits.
 #' 
@@ -1747,11 +1745,11 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' table. These attributes can include scalars, sets, or elements of a JSON
 #' document. The attributes in the expression must be separated by commas.
 #' 
-#' If no attribute names are specified, then all attributes will be
-#' returned. If any of the requested attributes are not found, they will
-#' not appear in the result.
+#' If no attribute names are specified, then all attributes are returned.
+#' If any of the requested attributes are not found, they do not appear in
+#' the result.
 #' 
-#' For more information, see [Accessing Item
+#' For more information, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
@@ -1788,7 +1786,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information on expression attribute names, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
@@ -1871,14 +1869,14 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #'
 #' List backups associated with an AWS account. To list backups for a given
 #' table, specify `TableName`. `ListBackups` returns a paginated list of
-#' results with at most 1MB worth of items in a page. You can also specify
+#' results with at most 1 MB worth of items in a page. You can also specify
 #' a limit for the maximum number of entries to be returned in a page.
 #' 
-#' In the request, start time is inclusive but end time is exclusive. Note
+#' In the request, start time is inclusive, but end time is exclusive. Note
 #' that these limits are for the time at which the original backup was
 #' requested.
 #' 
-#' You can call `ListBackups` a maximum of 5 times per second.
+#' You can call `ListBackups` a maximum of five times per second.
 #'
 #' @usage
 #' dynamodb_list_backups(TableName, Limit, TimeRangeLowerBound,
@@ -1890,11 +1888,11 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' is inclusive.
 #' @param TimeRangeUpperBound Only backups created before this time are listed. `TimeRangeUpperBound`
 #' is exclusive.
-#' @param ExclusiveStartBackupArn `LastEvaluatedBackupArn` is the ARN of the backup last evaluated when
-#' the current page of results was returned, inclusive of the current page
-#' of results. This value may be specified as the `ExclusiveStartBackupArn`
-#' of a new `ListBackups` operation in order to fetch the next page of
-#' results.
+#' @param ExclusiveStartBackupArn `LastEvaluatedBackupArn` is the Amazon Resource Name (ARN) of the backup
+#' last evaluated when the current page of results was returned, inclusive
+#' of the current page of results. This value may be specified as the
+#' `ExclusiveStartBackupArn` of a new `ListBackups` operation in order to
+#' fetch the next page of results.
 #' @param BackupType The backups from the table specified by `BackupType` are listed.
 #' 
 #' Where `BackupType` can be:
@@ -1940,9 +1938,9 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 }
 .dynamodb$operations$list_backups <- dynamodb_list_backups
 
-#' Lists all global tables that have a replica in the specified region
+#' Lists all global tables that have a replica in the specified Region
 #'
-#' Lists all global tables that have a replica in the specified region.
+#' Lists all global tables that have a replica in the specified Region.
 #'
 #' @usage
 #' dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
@@ -1950,7 +1948,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #'
 #' @param ExclusiveStartGlobalTableName The first global table name that this operation will evaluate.
 #' @param Limit The maximum number of table names to return.
-#' @param RegionName Lists the global tables in a specific region.
+#' @param RegionName Lists the global tables in a specific Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -2115,7 +2113,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   [PutItem in the AWS SDK for Ruby
 #'     V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem)
 #' 
-#' When you add an item, the primary key attribute(s) are the only required
+#' When you add an item, the primary key attributes are the only required
 #' attributes. Attribute values cannot be null. String and Binary type
 #' attributes must have lengths greater than zero. Set type attributes
 #' cannot be empty. Requests with empty values will be rejected with a
@@ -2153,7 +2151,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' table\'s attribute definition.
 #' 
 #' For more information about primary keys, see [Primary
-#' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+#' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Each element in the `Item` map is an `AttributeValue` object.
@@ -2199,8 +2197,8 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' 
 #' -   Logical operators: `AND | OR | NOT`
 #' 
-#' For more information on condition expressions, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information on condition expressions, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -2236,7 +2234,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information on expression attribute names, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
@@ -2255,8 +2253,8 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' 
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
-#' For more information on expression attribute values, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information on expression attribute values, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2487,7 +2485,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' 
 #' -   `ALL_ATTRIBUTES` - Returns all of the item attributes from the
 #'     specified table or index. If you query a local secondary index, then
-#'     for each matching item in the index DynamoDB will fetch the entire
+#'     for each matching item in the index, DynamoDB fetches the entire
 #'     item from the parent table. If the index is configured to project
 #'     all item attributes, then all of the data can be obtained from the
 #'     local secondary index, and no fetching is required.
@@ -2508,7 +2506,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     attributes that are projected into that index, the operation will
 #'     read only the index and not the table. If any of the requested
 #'     attributes are not projected into the local secondary index,
-#'     DynamoDB will fetch each of these attributes from the parent table.
+#'     DynamoDB fetches each of these attributes from the parent table.
 #'     This extra fetching incurs additional throughput cost and latency.
 #' 
 #'     If you query or scan a global secondary index, you can only request
@@ -2534,7 +2532,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' limit while processing the results, it stops the operation and returns
 #' the matching values up to that point, and a key in `LastEvaluatedKey` to
 #' apply in a subsequent operation, so that you can pick up where you left
-#' off. Also, if the processed data set size exceeds 1 MB before DynamoDB
+#' off. Also, if the processed dataset size exceeds 1 MB before DynamoDB
 #' reaches this limit, it stops the operation and returns the matching
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
@@ -2579,7 +2577,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' the value that was returned for `LastEvaluatedKey` in the previous
 #' operation.
 #' 
-#' The data type for `ExclusiveStartKey` must be String, Number or Binary.
+#' The data type for `ExclusiveStartKey` must be String, Number, or Binary.
 #' No set data types are allowed.
 #' @param ReturnConsumedCapacity 
 #' @param ProjectionExpression A string that identifies one or more attributes to retrieve from the
@@ -2607,8 +2605,8 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' For more information, see [Filter
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 #' in the *Amazon DynamoDB Developer Guide*.
-#' @param KeyConditionExpression The condition that specifies the key value(s) for items to be retrieved
-#' by the `Query` action.
+#' @param KeyConditionExpression The condition that specifies the key values for items to be retrieved by
+#' the `Query` action.
 #' 
 #' The condition must perform an equality test on a single partition key
 #' value.
@@ -2716,7 +2714,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information on expression attribute names, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
@@ -2918,7 +2916,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' 
 #' -   IAM policies
 #' 
-#' -   Cloudwatch metrics and alarms
+#' -   Amazon CloudWatch metrics and alarms
 #' 
 #' -   Tags
 #' 
@@ -2930,7 +2928,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' dynamodb_restore_table_from_backup(TargetTableName, BackupArn)
 #'
 #' @param TargetTableName &#91;required&#93; The name of the new table to which the backup must be restored.
-#' @param BackupArn &#91;required&#93; The ARN associated with the backup.
+#' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
 #'
 #' @section Request syntax:
 #' ```
@@ -2992,7 +2990,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn) {
 #' 
 #' -   IAM policies
 #' 
-#' -   Cloudwatch metrics and alarms
+#' -   Amazon CloudWatch metrics and alarms
 #' 
 #' -   Tags
 #' 
@@ -3051,17 +3049,17 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' accessing every item in a table or a secondary index. To have DynamoDB
 #' return fewer items, you can provide a `FilterExpression` operation.
 #' 
-#' If the total number of scanned items exceeds the maximum data set size
+#' If the total number of scanned items exceeds the maximum dataset size
 #' limit of 1 MB, the scan stops and results are returned to the user as a
 #' `LastEvaluatedKey` value to continue the scan in a subsequent operation.
 #' The results also include the number of items exceeding the limit. A scan
 #' can result in no table data meeting the filter criteria.
 #' 
-#' A single `Scan` operation will read up to the maximum number of items
-#' set (if using the `Limit` parameter) or a maximum of 1 MB of data and
-#' then apply any filtering to the results using `FilterExpression`. If
-#' `LastEvaluatedKey` is present in the response, you will need to paginate
-#' the result set. For more information, see [Paginating the
+#' A single `Scan` operation reads up to the maximum number of items set
+#' (if using the `Limit` parameter) or a maximum of 1 MB of data and then
+#' apply any filtering to the results using `FilterExpression`. If
+#' `LastEvaluatedKey` is present in the response, you need to paginate the
+#' result set. For more information, see [Paginating the
 #' Results](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
@@ -3099,12 +3097,12 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' limit while processing the results, it stops the operation and returns
 #' the matching values up to that point, and a key in `LastEvaluatedKey` to
 #' apply in a subsequent operation, so that you can pick up where you left
-#' off. Also, if the processed data set size exceeds 1 MB before DynamoDB
+#' off. Also, if the processed dataset size exceeds 1 MB before DynamoDB
 #' reaches this limit, it stops the operation and returns the matching
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
-#' see [Query and
-#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+#' see [Working with
+#' Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Select The attributes to be returned in the result. You can retrieve all item
 #' attributes, specific item attributes, the count of matching items, or in
@@ -3113,7 +3111,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' 
 #' -   `ALL_ATTRIBUTES` - Returns all of the item attributes from the
 #'     specified table or index. If you query a local secondary index, then
-#'     for each matching item in the index DynamoDB will fetch the entire
+#'     for each matching item in the index, DynamoDB fetches the entire
 #'     item from the parent table. If the index is configured to project
 #'     all item attributes, then all of the data can be obtained from the
 #'     local secondary index, and no fetching is required.
@@ -3131,11 +3129,11 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #'     `AttributesToGet` without specifying any value for `Select`.
 #' 
 #'     If you query or scan a local secondary index and request only
-#'     attributes that are projected into that index, the operation will
-#'     read only the index and not the table. If any of the requested
-#'     attributes are not projected into the local secondary index,
-#'     DynamoDB will fetch each of these attributes from the parent table.
-#'     This extra fetching incurs additional throughput cost and latency.
+#'     attributes that are projected into that index, the operation reads
+#'     only the index and not the table. If any of the requested attributes
+#'     are not projected into the local secondary index, DynamoDB fetches
+#'     each of these attributes from the parent table. This extra fetching
+#'     incurs additional throughput cost and latency.
 #' 
 #'     If you query or scan a global secondary index, you can only request
 #'     attributes that are projected into the index. Global secondary index
@@ -3207,7 +3205,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' returned. If any of the requested attributes are not found, they will
 #' not appear in the result.
 #' 
-#' For more information, see [Accessing Item
+#' For more information, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param FilterExpression A string that contains conditions that DynamoDB applies after the `Scan`
@@ -3255,14 +3253,14 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information on expression attribute names, see [Specifying Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
 #' Use the **:** (colon) character in an expression to dereference an
 #' attribute value. For example, suppose that you wanted to check whether
-#' the value of the *ProductStatus* attribute was one of the following:
+#' the value of the `ProductStatus` attribute was one of the following:
 #' 
 #' `Available | Backordered | Discontinued`
 #' 
@@ -3274,15 +3272,15 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' 
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
-#' For more information on expression attribute values, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information on expression attribute values, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead A Boolean value that determines the read consistency model during the
 #' scan:
 #' 
 #' -   If `ConsistentRead` is `false`, then the data returned from `Scan`
 #'     might not contain the results from other recently completed write
-#'     operations (PutItem, UpdateItem or DeleteItem).
+#'     operations (`PutItem`, `UpdateItem`, or `DeleteItem`).
 #' 
 #' -   If `ConsistentRead` is `true`, then all of the write operations that
 #'     completed before the `Scan` began are guaranteed to be contained in
@@ -3400,8 +3398,8 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTable
 #' # title and song title are returned.
 #' \donttest{svc$scan(
 #'   ExpressionAttributeNames = list(
-#'     AT = "AlbumTitle",
-#'     ST = "SongTitle"
+#'     `#AT` = "AlbumTitle",
+#'     `#ST` = "SongTitle"
 #'   ),
 #'   ExpressionAttributeValues = list(
 #'     `:a` = list(
@@ -3437,7 +3435,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' Associate a set of tags with an Amazon DynamoDB resource. You can then
 #' activate these user-defined tags so that they appear on the Billing and
 #' Cost Management console for cost allocation tracking. You can call
-#' TagResource up to 5 times per second, per account.
+#' TagResource up to five times per second, per account.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
@@ -3484,15 +3482,26 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 
 #' TransactGetItems is a synchronous operation that atomically retrieves
 #' multiple items from one or more tables (but not from indexes) in a
-#' single account and region
+#' single account and Region
 #'
 #' `TransactGetItems` is a synchronous operation that atomically retrieves
 #' multiple items from one or more tables (but not from indexes) in a
-#' single account and region. A `TransactGetItems` call can contain up to
-#' 10 `TransactGetItem` objects, each of which contains a `Get` structure
+#' single account and Region. A `TransactGetItems` call can contain up to
+#' 25 `TransactGetItem` objects, each of which contains a `Get` structure
 #' that specifies an item to retrieve from a table in the account and
-#' region. A call to `TransactGetItems` cannot retrieve items from tables
-#' in more than one AWS account or region.
+#' Region. A call to `TransactGetItems` cannot retrieve items from tables
+#' in more than one AWS account or Region. The aggregate size of the items
+#' in the transaction cannot exceed 4 MB.
+#' 
+#' All AWS Regions and AWS GovCloud (US) support up to 25 items per
+#' transaction with up to 4 MB of data, except the following AWS Regions:
+#' 
+#' -   China (Beijing)
+#' 
+#' -   China (Ningxia)
+#' 
+#' The China (Beijing) and China (Ningxia) Regions support up to 10 items
+#' per transaction with up to 4 MB of data.
 #' 
 #' DynamoDB rejects the entire `TransactGetItems` request if any of the
 #' following is true:
@@ -3504,11 +3513,14 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #'     completed.
 #' 
 #' -   There is a user error, such as an invalid data format.
+#' 
+#' -   The aggregate size of the items in the transaction cannot exceed 4
+#'     MB.
 #'
 #' @usage
 #' dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
 #'
-#' @param TransactItems &#91;required&#93; An ordered array of up to 10 `TransactGetItem` objects, each of which
+#' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactGetItem` objects, each of which
 #' contains a `Get` structure.
 #' @param ReturnConsumedCapacity A value of `TOTAL` causes consumed capacity information to be returned,
 #' and a value of `NONE` prevents that information from being returned. No
@@ -3575,14 +3587,25 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 }
 .dynamodb$operations$transact_get_items <- dynamodb_transact_get_items
 
-#' TransactWriteItems is a synchronous write operation that groups up to 10
+#' TransactWriteItems is a synchronous write operation that groups up to 25
 #' action requests
 #'
 #' `TransactWriteItems` is a synchronous write operation that groups up to
-#' 10 action requests. These actions can target items in different tables,
-#' but not in different AWS accounts or regions, and no two actions can
+#' 25 action requests. These actions can target items in different tables,
+#' but not in different AWS accounts or Regions, and no two actions can
 #' target the same item. For example, you cannot both `ConditionCheck` and
-#' `Update` the same item.
+#' `Update` the same item. The aggregate size of the items in the
+#' transaction cannot exceed 4 MB.
+#' 
+#' All AWS Regions and AWS GovCloud (US) support up to 25 items per
+#' transaction with up to 4 MB of data, except the following AWS Regions:
+#' 
+#' -   China (Beijing)
+#' 
+#' -   China (Ningxia)
+#' 
+#' The China (Beijing) and China (Ningxia) Regions support up to 10 items
+#' per transaction with up to 4 MB of data.
 #' 
 #' The actions are completed atomically so that either all of them succeed,
 #' or all of them fail. They are defined by the following objects:
@@ -3591,7 +3614,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #'     This structure specifies the primary key of the item to be written,
 #'     the name of the table to write it in, an optional condition
 #'     expression that must be satisfied for the write to succeed, a list
-#'     of the item\'s attributes, and a field indicating whether or not to
+#'     of the item\'s attributes, and a field indicating whether to
 #'     retrieve the item\'s attributes if the condition is not met.
 #' 
 #' -   `Update` Â --- Â  Initiates an `UpdateItem` operation to update an
@@ -3599,36 +3622,38 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #'     to be updated, the name of the table where it resides, an optional
 #'     condition expression that must be satisfied for the update to
 #'     succeed, an expression that defines one or more attributes to be
-#'     updated, and a field indicating whether or not to retrieve the
-#'     item\'s attributes if the condition is not met.
+#'     updated, and a field indicating whether to retrieve the item\'s
+#'     attributes if the condition is not met.
 #' 
 #' -   `Delete` Â --- Â  Initiates a `DeleteItem` operation to delete an
 #'     existing item. This structure specifies the primary key of the item
 #'     to be deleted, the name of the table where it resides, an optional
 #'     condition expression that must be satisfied for the deletion to
-#'     succeed, and a field indicating whether or not to retrieve the
-#'     item\'s attributes if the condition is not met.
+#'     succeed, and a field indicating whether to retrieve the item\'s
+#'     attributes if the condition is not met.
 #' 
 #' -   `ConditionCheck` Â --- Â  Applies a condition to an item that is not
 #'     being modified by the transaction. This structure specifies the
 #'     primary key of the item to be checked, the name of the table where
 #'     it resides, a condition expression that must be satisfied for the
-#'     transaction to succeed, and a field indicating whether or not to
-#'     retrieve the item\'s attributes if the condition is not met.
+#'     transaction to succeed, and a field indicating whether to retrieve
+#'     the item\'s attributes if the condition is not met.
 #' 
 #' DynamoDB rejects the entire `TransactWriteItems` request if any of the
 #' following is true:
 #' 
 #' -   A condition in one of the condition expressions is not met.
 #' 
-#' -   A conflicting operation is in the process of updating the same item.
+#' -   An ongoing operation is in the process of updating the same item.
 #' 
 #' -   There is insufficient provisioned capacity for the transaction to be
 #'     completed.
 #' 
-#' -   An item size becomes too large (bigger than 400 KB), a Local
-#'     Secondary Index (LSI) becomes too large, or a similar validation
+#' -   An item size becomes too large (bigger than 400 KB), a local
+#'     secondary index (LSI) becomes too large, or a similar validation
 #'     error occurs because of changes made by the transaction.
+#' 
+#' -   The aggregate size of the items in the transaction exceeds 4 MB.
 #' 
 #' -   There is a user error, such as an invalid data format.
 #'
@@ -3636,10 +3661,10 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' dynamodb_transact_write_items(TransactItems, ReturnConsumedCapacity,
 #'   ReturnItemCollectionMetrics, ClientRequestToken)
 #'
-#' @param TransactItems &#91;required&#93; An ordered array of up to 10 `TransactWriteItem` objects, each of which
+#' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactWriteItem` objects, each of which
 #' contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These
 #' can operate on items in different tables, but the tables must reside in
-#' the same AWS account and region, and no two of them can operate on the
+#' the same AWS account and Region, and no two of them can operate on the
 #' same item.
 #' @param ReturnConsumedCapacity 
 #' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to
@@ -3652,20 +3677,20 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' 
 #' Although multiple identical calls using the same client request token
 #' produce the same result on the server (no side effects), the responses
-#' to the calls may not be the same. If the `ReturnConsumedCapacity&gt;`
+#' to the calls might not be the same. If the `ReturnConsumedCapacity&gt;`
 #' parameter is set, then the initial `TransactWriteItems` call returns the
-#' amount of write capacity units consumed in making the changes, and
-#' subsequent `TransactWriteItems` calls with the same client token return
-#' the amount of read capacity units consumed in reading the item.
+#' amount of write capacity units consumed in making the changes.
+#' Subsequent `TransactWriteItems` calls with the same client token return
+#' the number of read capacity units consumed in reading the item.
 #' 
 #' A client request token is valid for 10 minutes after the first request
-#' that uses it completes. After 10 minutes, any request with the same
+#' that uses it is completed. After 10 minutes, any request with the same
 #' client token is treated as a new request. Do not resubmit the same
-#' request with the same client token for more than 10 minutes or the
-#' result may not be idempotent.
+#' request with the same client token for more than 10 minutes, or the
+#' result might not be idempotent.
 #' 
 #' If you submit a request with the same client token but a change in other
-#' parameters within the 10 minute idempotency window, DynamoDB returns an
+#' parameters within the 10-minute idempotency window, DynamoDB returns an
 #' `IdempotentParameterMismatch` exception.
 #'
 #' @section Request syntax:
@@ -3928,7 +3953,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' Removes the association of tags from an Amazon DynamoDB resource
 #'
 #' Removes the association of tags from an Amazon DynamoDB resource. You
-#' can call UntagResource up to 5 times per second, per account.
+#' can call `UntagResource` up to five times per second, per account.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
@@ -3937,10 +3962,10 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' @usage
 #' dynamodb_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon DyanamoDB resource the tags will be removed from. This value
-#' is an Amazon Resource Name (ARN).
+#' @param ResourceArn &#91;required&#93; The DynamoDB resource that the tags will be removed from. This value is
+#' an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tag keys. Existing tags of the resource whose keys are members
-#' of this list will be removed from the Amazon DynamoDB resource.
+#' of this list will be removed from the DynamoDB resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -3986,7 +4011,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' `LatestRestorableDateTime` is typically 5 minutes before the current
 #' time. You can restore your table to any point in time during the last 35
-#' days..
+#' days.
 #'
 #' @usage
 #' dynamodb_update_continuous_backups(TableName,
@@ -4028,9 +4053,9 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #'
 #' Adds or removes replicas in the specified global table. The global table
 #' must already exist to be able to use this operation. Any replica to be
-#' added must be empty, must have the same name as the global table, must
-#' have the same key schema, and must have DynamoDB Streams enabled and
-#' must have same provisioned and maximum write capacity units.
+#' added must be empty, have the same name as the global table, have the
+#' same key schema, have DynamoDB Streams enabled, and have the same
+#' provisioned and maximum write capacity units.
 #' 
 #' Although you can use `UpdateGlobalTable` to add replicas and remove
 #' replicas in a single request, for simplicity we recommend that you issue
@@ -4051,7 +4076,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
-#' @param ReplicaUpdates &#91;required&#93; A list of regions that should be added or removed from the global table.
+#' @param ReplicaUpdates &#91;required&#93; A list of Regions that should be added or removed from the global table.
 #'
 #' @section Request syntax:
 #' ```
@@ -4105,11 +4130,11 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' mode.
 #' @param GlobalTableProvisionedWriteCapacityUnits The maximum number of writes consumed per second before DynamoDB returns
 #' a `ThrottlingException.`
-#' @param GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate AutoScaling settings for managing provisioned write capacity for the
+#' @param GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate Auto scaling settings for managing provisioned write capacity for the
 #' global table.
 #' @param GlobalTableGlobalSecondaryIndexSettingsUpdate Represents the settings of a global secondary index for a global table
 #' that will be modified.
-#' @param ReplicaSettingsUpdate Represents the settings for a global table in a region that will be
+#' @param ReplicaSettingsUpdate Represents the settings for a global table in a Region that will be
 #' modified.
 #'
 #' @section Request syntax:
@@ -4287,12 +4312,12 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' that were modified during the operation are returned in the response. If
 #' set to `NONE` (the default), no statistics are returned.
 #' @param UpdateExpression An expression that defines one or more attributes to be updated, the
-#' action to be performed on them, and new value(s) for them.
+#' action to be performed on them, and new values for them.
 #' 
 #' The following action values are available for `UpdateExpression`.
 #' 
 #' -   `SET` - Adds one or more attributes and values to an item. If any of
-#'     these attribute already exist, they are replaced by the new values.
+#'     these attributes already exist, they are replaced by the new values.
 #'     You can also use `SET` to add or subtract from an attribute that is
 #'     of type Number. For example: `SET myNum = myNum + :val`
 #' 
@@ -4330,10 +4355,10 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'         decrement an attribute value that doesn\'t exist before the
 #'         update, DynamoDB uses `0` as the initial value. For example,
 #'         suppose that the item you want to update doesn\'t have an
-#'         attribute named *itemcount*, but you decide to `ADD` the number
+#'         attribute named `itemcount`, but you decide to `ADD` the number
 #'         `3` to this attribute anyway. DynamoDB will create the
-#'         *itemcount* attribute, set its initial value to `0`, and finally
-#'         add `3` to it. The result will be a new *itemcount* attribute in
+#'         `itemcount` attribute, set its initial value to `0`, and finally
+#'         add `3` to it. The result will be a new `itemcount` attribute in
 #'         the item, with a value of `3`.
 #' 
 #'     -   If the existing data type is a set and if `Value` is also a set,
@@ -4385,7 +4410,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' 
 #' -   Logical operators: `AND | OR | NOT`
 #' 
-#' For more information on condition expressions, see [Specifying
+#' For more information about condition expressions, see [Specifying
 #' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
@@ -4409,7 +4434,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' be used directly in an expression. (For the complete list of reserved
 #' words, see [Reserved
 #' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
-#' in the *Amazon DynamoDB Developer Guide*). To work around this, you
+#' in the *Amazon DynamoDB Developer Guide*.) To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
 #' -   `\{"#P":"Percentile"\}`
@@ -4422,14 +4447,15 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
 #' 
-#' For more information on expression attribute names, see [Accessing Item
+#' For more information about expression attribute names, see [Specifying
+#' Item
 #' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
 #' Use the **:** (colon) character in an expression to dereference an
 #' attribute value. For example, suppose that you wanted to check whether
-#' the value of the *ProductStatus* attribute was one of the following:
+#' the value of the `ProductStatus` attribute was one of the following:
 #' 
 #' `Available | Backordered | Discontinued`
 #' 
@@ -4441,8 +4467,8 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' 
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
-#' For more information on expression attribute values, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' For more information on expression attribute values, see [Condition
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -4647,11 +4673,11 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' 
 #' -   Modify the provisioned throughput settings of the table.
 #' 
-#' -   Enable or disable Streams on the table.
+#' -   Enable or disable DynamoDB Streams on the table.
 #' 
 #' -   Remove a global secondary index from the table.
 #' 
-#' -   Create a new global secondary index on the table. Once the index
+#' -   Create a new global secondary index on the table. After the index
 #'     begins backfilling, you can use `UpdateTable` to perform other
 #'     operations.
 #' 
@@ -4699,9 +4725,9 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification Represents the DynamoDB Streams configuration for the table.
 #' 
-#' You will receive a `ResourceInUseException` if you attempt to enable a
-#' stream on a table that already has a stream, or if you attempt to
-#' disable a stream on a table which does not have a stream.
+#' You receive a `ResourceInUseException` if you try to enable a stream on
+#' a table that already has a stream, or if you try to disable a stream on
+#' a table that doesn\'t have a stream.
 #' @param SSESpecification The new server-side encryption settings for the specified table.
 #'
 #' @section Request syntax:
@@ -4794,14 +4820,15 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 }
 .dynamodb$operations$update_table <- dynamodb_update_table
 
-#' The UpdateTimeToLive method will enable or disable TTL for the specified
-#' table
+#' The UpdateTimeToLive method enables or disables Time to Live (TTL) for
+#' the specified table
 #'
-#' The UpdateTimeToLive method will enable or disable TTL for the specified
-#' table. A successful `UpdateTimeToLive` call returns the current
-#' `TimeToLiveSpecification`; it may take up to one hour for the change to
-#' fully process. Any additional `UpdateTimeToLive` calls for the same
-#' table during this one hour duration result in a `ValidationException`.
+#' The `UpdateTimeToLive` method enables or disables Time to Live (TTL) for
+#' the specified table. A successful `UpdateTimeToLive` call returns the
+#' current `TimeToLiveSpecification`. It can take up to one hour for the
+#' change to fully process. Any additional `UpdateTimeToLive` calls for the
+#' same table during this one hour duration result in a
+#' `ValidationException`.
 #' 
 #' TTL compares the current time in epoch time format to the time stored in
 #' the TTL attribute of an item. If the epoch time value stored in the
@@ -4809,7 +4836,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' and subsequently deleted.
 #' 
 #' The epoch time format is the number of seconds elapsed since 12:00:00 AM
-#' January 1st, 1970 UTC.
+#' January 1, 1970 UTC.
 #' 
 #' DynamoDB deletes expired items on a best-effort basis to ensure
 #' availability of throughput for other data operations.
@@ -4819,8 +4846,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' specific to the nature of the workload. Items that have expired and not
 #' been deleted will still show up in reads, queries, and scans.
 #' 
-#' As items are deleted, they are removed from any Local Secondary Index
-#' and Global Secondary Index immediately in the same eventually consistent
+#' As items are deleted, they are removed from any local secondary index
+#' and global secondary index immediately in the same eventually consistent
 #' way as a standard delete operation.
 #' 
 #' For more information, see [Time To

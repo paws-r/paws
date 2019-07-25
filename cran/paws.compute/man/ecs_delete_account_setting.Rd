@@ -29,7 +29,7 @@ root user for an account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_account_setting(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   principalArn = "string"
 )
 }

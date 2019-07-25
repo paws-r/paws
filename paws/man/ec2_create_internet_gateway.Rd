@@ -18,7 +18,7 @@ internet gateway, you attach it to a VPC using AttachInternetGateway.
 }
 \details{
 For more information about your VPC and internet gateway, see the
-\href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_internet_gateway(

@@ -2,18 +2,18 @@
 % Please edit documentation in R/cloudwatchevents_operations.R
 \name{cloudwatchevents_untag_resource}
 \alias{cloudwatchevents_untag_resource}
-\title{Removes one or more tags from the specified CloudWatch Events resource}
+\title{Removes one or more tags from the specified EventBridge resource}
 \usage{
 cloudwatchevents_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch Events rule from which you are removing tags.}
+\item{ResourceARN}{[required] The ARN of the rule that you're removing tags from.}
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }
 \description{
-Removes one or more tags from the specified CloudWatch Events resource.
-In CloudWatch Events, rules can be tagged.
+Removes one or more tags from the specified EventBridge resource. In
+EventBridge, rules can be tagged.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

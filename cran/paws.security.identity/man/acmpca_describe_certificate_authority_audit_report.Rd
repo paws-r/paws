@@ -3,7 +3,7 @@
 \name{acmpca_describe_certificate_authority_audit_report}
 \alias{acmpca_describe_certificate_authority_audit_report}
 \title{Lists information about a specific audit report created by calling the
-CreateCertificateAuthorityAuditReport operation}
+CreateCertificateAuthorityAuditReport action}
 \usage{
 acmpca_describe_certificate_authority_audit_report(
   CertificateAuthorityArn, AuditReportId)
@@ -15,14 +15,14 @@ form:
 \code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
 \item{AuditReportId}{[required] The report ID returned by calling the
-CreateCertificateAuthorityAuditReport operation.}
+CreateCertificateAuthorityAuditReport action.}
 }
 \description{
 Lists information about a specific audit report created by calling the
-CreateCertificateAuthorityAuditReport operation. Audit information is
+CreateCertificateAuthorityAuditReport action. Audit information is
 created every time the certificate authority (CA) private key is used.
-The private key is used when you call the IssueCertificate operation or
-the RevokeCertificate operation.
+The private key is used when you call the IssueCertificate action or the
+RevokeCertificate action.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_certificate_authority_audit_report(

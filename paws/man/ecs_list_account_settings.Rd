@@ -46,7 +46,7 @@ Lists the account settings for a specified principal.
 }
 \section{Request syntax}{
 \preformatted{svc$list_account_settings(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   value = "string",
   principalArn = "string",
   effectiveSettings = TRUE|FALSE,

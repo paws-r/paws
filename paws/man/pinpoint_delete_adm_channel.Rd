@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_adm_channel}
 \alias{pinpoint_delete_adm_channel}
-\title{Delete an ADM channel}
+\title{Disables the ADM channel for an application and deletes any existing
+settings for the channel}
 \usage{
 pinpoint_delete_adm_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Delete an ADM channel.
+Disables the ADM channel for an application and deletes any existing
+settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_adm_channel(

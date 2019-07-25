@@ -2,15 +2,16 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_app}
 \alias{pinpoint_delete_app}
-\title{Deletes an app}
+\title{Deletes an application}
 \usage{
 pinpoint_delete_app(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Deletes an app.
+Deletes an application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_app(

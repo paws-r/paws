@@ -19,10 +19,11 @@ output contains the status of your CA. This can be any of the following:
 }
 \details{
 \itemize{
-\item \code{CREATING} - ACM PCA is creating your private certificate authority.
+\item \code{CREATING} - ACM Private CA is creating your private certificate
+authority.
 \item \code{PENDING_CERTIFICATE} - The certificate is pending. You must use
-your on-premises root or subordinate CA to sign your private CA CSR
-and then import it into PCA.
+your ACM Private CA-hosted or on-premises root or subordinate CA to
+sign your private CA CSR and then import it into PCA.
 \item \code{ACTIVE} - Your private CA is active.
 \item \code{DISABLED} - Your private CA has been disabled.
 \item \code{EXPIRED} - Your private CA certificate has expired.
@@ -32,8 +33,7 @@ errors. A failed CA can never return to the pending state. You must
 create a new CA.
 \item \code{DELETED} - Your private CA is within the restoration period, after
 which it is permanently deleted. The length of time remaining in the
-CA's restoration period is also included in this operation's
-output.
+CA's restoration period is also included in this action's output.
 }
 }
 \section{Request syntax}{

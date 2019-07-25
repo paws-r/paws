@@ -264,9 +264,16 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 }
 .quicksight$operations$delete_user <- quicksight_delete_user
 
-#' Deletes a user after locating the user by its principal ID
+#' Deletes a user identified by its principal ID
 #'
-#' Deletes a user after locating the user by its principal ID.
+#' Deletes a user identified by its principal ID.
+#' 
+#' The permission resource is
+#' `arn:aws:quicksight:us-east-1:<i>&lt;aws-account-id&gt;</i>:user/default/<i>&lt;user-name&gt; </i> `.
+#' 
+#' **CLI Sample:**
+#' 
+#' `aws quicksight delete-user-by-principal-id --aws-account-id=111122223333 --namespace=default --principal-id=ABCDEFJA26JLI7EUUOEHS `
 #'
 #' @usage
 #' quicksight_delete_user_by_principal_id(PrincipalId, AwsAccountId,
@@ -436,7 +443,8 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #'
 #' @usage
 #' quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
-#'   IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled)
+#'   IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
+#'   UserArn)
 #'
 #' @param AwsAccountId &#91;required&#93; AWS account ID that contains the dashboard you are embedding.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to IAM policy
@@ -447,6 +455,19 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' which enables the undo/redo button.
 #' @param ResetDisabled Remove the reset button on embedded dashboard. The default is FALSE,
 #' which allows the reset button.
+#' @param UserArn The Amazon QuickSight user\'s ARN, for use with `QUICKSIGHT` identity
+#' type. You can use this for any of the following:
+#' 
+#' -   Amazon QuickSight users in your account (readers, authors, or
+#'     admins)
+#' 
+#' -   AD users
+#' 
+#' -   Invited non-federated users
+#' 
+#' -   Federated IAM users
+#' 
+#' -   Federated IAM role-based sessions
 #'
 #' @section Request syntax:
 #' ```
@@ -456,21 +477,22 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #'   IdentityType = "IAM"|"QUICKSIGHT",
 #'   SessionLifetimeInMinutes = 123,
 #'   UndoRedoDisabled = TRUE|FALSE,
-#'   ResetDisabled = TRUE|FALSE
+#'   ResetDisabled = TRUE|FALSE,
+#'   UserArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_get_dashboard_embed_url
-quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, IdentityType, SessionLifetimeInMinutes = NULL, UndoRedoDisabled = NULL, ResetDisabled = NULL) {
+quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, IdentityType, SessionLifetimeInMinutes = NULL, UndoRedoDisabled = NULL, ResetDisabled = NULL, UserArn = NULL) {
   op <- new_operation(
     name = "GetDashboardEmbedUrl",
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}/embed-url",
     paginator = list()
   )
-  input <- .quicksight$get_dashboard_embed_url_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, IdentityType = IdentityType, SessionLifetimeInMinutes = SessionLifetimeInMinutes, UndoRedoDisabled = UndoRedoDisabled, ResetDisabled = ResetDisabled)
+  input <- .quicksight$get_dashboard_embed_url_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, IdentityType = IdentityType, SessionLifetimeInMinutes = SessionLifetimeInMinutes, UndoRedoDisabled = UndoRedoDisabled, ResetDisabled = ResetDisabled, UserArn = UserArn)
   output <- .quicksight$get_dashboard_embed_url_output()
   svc <- .quicksight$service()
   request <- new_request(svc, op, input, output)
@@ -740,10 +762,12 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #'     QuickSight settings.
 #' @param IamArn The ARN of the IAM user or role that you are registering with Amazon
 #' QuickSight.
-#' @param SessionName The name of the session with the assumed IAM role. By using this
-#' parameter, you can register multiple users with the same IAM role,
-#' provided that each has a different session name. For more information on
-#' assuming IAM roles, see
+#' @param SessionName You need to use this parameter only when you register one or more users
+#' using an assumed IAM role. You don\'t need to provide the session name
+#' for other scenarios, for example when you are registering an IAM user or
+#' an Amazon QuickSight user. You can register multiple users using the
+#' same IAM role if each user has a different session name. For more
+#' information on assuming IAM roles, see
 #' [`assume-role`](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
 #' in the *AWS CLI Reference.*
 #' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the

@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_adm_channel}
 \alias{pinpoint_update_adm_channel}
-\title{Update an ADM channel}
+\title{Updates the ADM channel settings for an application}
 \usage{
 pinpoint_update_adm_channel(ADMChannelRequest, ApplicationId)
 }
 \arguments{
 \item{ADMChannelRequest}{[required]}
 
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Update an ADM channel.
+Updates the ADM channel settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_adm_channel(

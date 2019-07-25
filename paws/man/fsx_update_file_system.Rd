@@ -15,8 +15,9 @@ ensure idempotent updates. This string is automatically filled on your
 behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
 SDK.}
 
-\item{WindowsConfiguration}{The configuration for this Microsoft Windows file system. The only
-supported options are for backup and maintenance.}
+\item{WindowsConfiguration}{The configuration update for this Microsoft Windows file system. The
+only supported options are for backup and maintenance and for
+self-managed Active Directory configuration.}
 
 \item{LustreConfiguration}{}
 }
@@ -30,7 +31,14 @@ Updates a file system configuration.
   WindowsConfiguration = list(
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123
+    AutomaticBackupRetentionDays = 123,
+    SelfManagedActiveDirectoryConfiguration = list(
+      UserName = "string",
+      Password = "string",
+      DnsIps = list(
+        "string"
+      )
+    )
   ),
   LustreConfiguration = list(
     WeeklyMaintenanceStartTime = "string"

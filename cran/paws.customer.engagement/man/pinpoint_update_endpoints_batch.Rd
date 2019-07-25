@@ -2,17 +2,20 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_endpoints_batch}
 \alias{pinpoint_update_endpoints_batch}
-\title{Use to update a batch of endpoints}
+\title{Creates a new batch of endpoints for an application or updates the
+settings and attributes of a batch of existing endpoints for an
+application}
 \usage{
 pinpoint_update_endpoints_batch(ApplicationId, EndpointBatchRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EndpointBatchRequest}{[required]}
 }
 \description{
-Use to update a batch of endpoints.
+<p>Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes (Attributes, Metrics, and UserAttributes properties) for a batch of endpoints.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoints_batch(

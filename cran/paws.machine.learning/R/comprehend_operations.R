@@ -60,8 +60,10 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer than 5,000
 #' bytes of UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -102,8 +104,10 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -146,8 +150,10 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -191,8 +197,10 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -250,8 +258,10 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' custom classifier jobs.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -851,8 +861,10 @@ comprehend_detect_dominant_language <- function(Text) {
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -890,8 +902,10 @@ comprehend_detect_entities <- function(Text, LanguageCode) {
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -931,8 +945,10 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -971,8 +987,10 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #'
 #' @param Text &#91;required&#93; A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
 #' encoded characters.
-#' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify English
-#' (\"en\") or Spanish (\"es\").
+#' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify any of the
+#' primary languages supported by Amazon Comprehend: German (\"de\"),
+#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
+#' or Portuguese (\"pt\").
 #'
 #' @section Request syntax:
 #' ```
@@ -1729,8 +1747,10 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' For more information, see
 #' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
@@ -1811,8 +1831,10 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' For more information, see
 #' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify English (\"en\") or
-#' Spanish (\"es\"). All documents must be in the same language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' languages supported by Amazon Comprehend: German (\"de\"), English
+#' (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"), or
+#' Portuguese (\"pt\"). All documents must be in the same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
 #' request token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend

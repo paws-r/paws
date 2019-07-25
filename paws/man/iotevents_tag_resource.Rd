@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotevents_operations.R
 \name{iotevents_tag_resource}
 \alias{iotevents_tag_resource}
-\title{Add to or modifies the tags of the given resource}
+\title{Adds to or modifies the tags of the given resource}
 \usage{
 iotevents_tag_resource(resourceArn, tags)
 }
@@ -12,8 +12,8 @@ iotevents_tag_resource(resourceArn, tags)
 \item{tags}{[required] The new or modified tags for the resource.}
 }
 \description{
-Add to or modifies the tags of the given resource. Tags are metadata
-which can be used to manage a resource.
+Adds to or modifies the tags of the given resource. Tags are metadata
+that can be used to manage a resource.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

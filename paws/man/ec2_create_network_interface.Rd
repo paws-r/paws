@@ -48,10 +48,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{InterfaceType}{Indicates the type of network interface. To create an Elastic Fabric
 Adapter (EFA), specify \code{efa}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html}{Elastic Fabric Adapter}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-If you are not creating an EFA, specify \code{interface} or omit this
-parameter.}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 }

@@ -5,9 +5,9 @@
 \title{Creates a broker}
 \usage{
 mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
-  CreatorRequestId, DeploymentMode, EngineType, EngineVersion,
-  HostInstanceType, Logs, MaintenanceWindowStartTime, PubliclyAccessible,
-  SecurityGroups, SubnetIds, Tags, Users)
+  CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
+  EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
+  PubliclyAccessible, SecurityGroups, SubnetIds, Tags, Users)
 }
 \arguments{
 \item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
@@ -19,6 +19,8 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 \item{CreatorRequestId}{The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.}
 
 \item{DeploymentMode}{Required. The deployment mode of the broker.}
+
+\item{EncryptionOptions}{Encryption options for the broker.}
 
 \item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
 
@@ -53,6 +55,10 @@ Creates a broker. Note: This API is asynchronous.
   ),
   CreatorRequestId = "string",
   DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ",
+  EncryptionOptions = list(
+    KmsKeyId = "string",
+    UseAwsOwnedKey = TRUE|FALSE
+  ),
   EngineType = "ACTIVEMQ",
   EngineVersion = "string",
   HostInstanceType = "string",

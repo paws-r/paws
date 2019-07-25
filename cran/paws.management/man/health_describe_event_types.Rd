@@ -36,7 +36,7 @@ particular order.
       "string"
     ),
     eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"
+      "issue"|"accountNotification"|"scheduledChange"|"investigation"
     )
   ),
   locale = "string",

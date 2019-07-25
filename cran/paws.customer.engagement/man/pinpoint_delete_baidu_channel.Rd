@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_baidu_channel}
 \alias{pinpoint_delete_baidu_channel}
-\title{Delete a BAIDU GCM channel}
+\title{Disables the Baidu channel for an application and deletes any existing
+settings for the channel}
 \usage{
 pinpoint_delete_baidu_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Delete a BAIDU GCM channel
+Disables the Baidu channel for an application and deletes any existing
+settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_baidu_channel(

@@ -3,7 +3,7 @@
 \name{securityhub_describe_products}
 \alias{securityhub_describe_products}
 \title{Returns information about the products available that you can subscribe
-to}
+to and integrate with Security Hub to consolidate findings}
 \usage{
 securityhub_describe_products(NextToken, MaxResults)
 }
@@ -14,7 +14,7 @@ securityhub_describe_products(NextToken, MaxResults)
 }
 \description{
 Returns information about the products available that you can subscribe
-to.
+to and integrate with Security Hub to consolidate findings.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_products(

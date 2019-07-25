@@ -23,6 +23,11 @@ Describes the specified listeners or the listeners for the specified
 Application Load Balancer or Network Load Balancer. You must specify
 either a load balancer or one or more listeners.
 }
+\details{
+For an HTTPS or TLS listener, the output includes the default
+certificate for the listener. To describe the certificate list for the
+listener, use DescribeListenerCertificates.
+}
 \section{Request syntax}{
 \preformatted{svc$describe_listeners(
   LoadBalancerArn = "string",

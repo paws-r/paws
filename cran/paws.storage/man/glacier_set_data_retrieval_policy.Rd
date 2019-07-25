@@ -26,7 +26,7 @@ successful PUT operation.
 \details{
 The set policy operation does not affect retrieval jobs that were in
 progress before the policy was enacted. For more information about data
-retrieval policies, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
+retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_data_retrieval_policy(

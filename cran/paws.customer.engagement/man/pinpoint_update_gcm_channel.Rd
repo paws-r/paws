@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_gcm_channel}
 \alias{pinpoint_update_gcm_channel}
-\title{Use to update the GCM channel for an app}
+\title{Updates the status and settings of the GCM channel for an application}
 \usage{
 pinpoint_update_gcm_channel(ApplicationId, GCMChannelRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{GCMChannelRequest}{[required]}
 }
 \description{
-Use to update the GCM channel for an app.
+Updates the status and settings of the GCM channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_gcm_channel(

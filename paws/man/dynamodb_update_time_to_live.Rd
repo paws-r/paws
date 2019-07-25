@@ -2,8 +2,8 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_update_time_to_live}
 \alias{dynamodb_update_time_to_live}
-\title{The UpdateTimeToLive method will enable or disable TTL for the specified
-table}
+\title{The UpdateTimeToLive method enables or disables Time to Live (TTL) for
+the specified table}
 \usage{
 dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 }
@@ -14,11 +14,12 @@ dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 specified table.}
 }
 \description{
-The UpdateTimeToLive method will enable or disable TTL for the specified
-table. A successful \code{UpdateTimeToLive} call returns the current
-\code{TimeToLiveSpecification}; it may take up to one hour for the change to
-fully process. Any additional \code{UpdateTimeToLive} calls for the same
-table during this one hour duration result in a \code{ValidationException}.
+The \code{UpdateTimeToLive} method enables or disables Time to Live (TTL) for
+the specified table. A successful \code{UpdateTimeToLive} call returns the
+current \code{TimeToLiveSpecification}. It can take up to one hour for the
+change to fully process. Any additional \code{UpdateTimeToLive} calls for the
+same table during this one hour duration result in a
+\code{ValidationException}.
 }
 \details{
 TTL compares the current time in epoch time format to the time stored in
@@ -27,7 +28,7 @@ attribute is less than the current time, the item is marked as expired
 and subsequently deleted.
 
 The epoch time format is the number of seconds elapsed since 12:00:00 AM
-January 1st, 1970 UTC.
+January 1, 1970 UTC.
 
 DynamoDB deletes expired items on a best-effort basis to ensure
 availability of throughput for other data operations.
@@ -37,8 +38,8 @@ The exact duration within which an item gets deleted after expiration is
 specific to the nature of the workload. Items that have expired and not
 been deleted will still show up in reads, queries, and scans.
 
-As items are deleted, they are removed from any Local Secondary Index
-and Global Secondary Index immediately in the same eventually consistent
+As items are deleted, they are removed from any local secondary index
+and global secondary index immediately in the same eventually consistent
 way as a standard delete operation.
 
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html}{Time To Live}

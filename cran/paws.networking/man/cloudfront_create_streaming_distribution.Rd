@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_create_streaming_distribution}
 \alias{cloudfront_create_streaming_distribution}
-\title{Creates a new RMTP distribution}
+\title{Creates a new RTMP distribution}
 \usage{
 cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 }
@@ -10,24 +10,24 @@ cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 \item{StreamingDistributionConfig}{[required] The streaming distribution's configuration information.}
 }
 \description{
-Creates a new RMTP distribution. An RTMP distribution is similar to a
+Creates a new RTMP distribution. An RTMP distribution is similar to a
 web distribution, but an RTMP distribution streams media files using the
 Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using
 HTTP.
 }
 \details{
-To create a new web distribution, submit a \code{POST} request to the
-\emph{CloudFront API version}/distribution resource. The request body must
-include a document with a \emph{StreamingDistributionConfig} element. The
-response echoes the \code{StreamingDistributionConfig} element and returns
-other information about the RTMP distribution.
+To create a new distribution, submit a \code{POST} request to the \emph{CloudFront
+API version}/distribution resource. The request body must include a
+document with a \emph{StreamingDistributionConfig} element. The response
+echoes the \code{StreamingDistributionConfig} element and returns other
+information about the RTMP distribution.
 
 To get the status of your request, use the \emph{GET StreamingDistribution}
 API action. When the value of \code{Enabled} is \code{true} and the value of
 \code{Status} is \code{Deployed}, your distribution is ready. A distribution
 usually deploys in less than 15 minutes.
 
-For more information about web distributions, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html}{Working with RTMP Distributions}
+For more information about web distributions, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html}{Working with RTMP Distributions}
 in the \emph{Amazon CloudFront Developer Guide}.
 
 Beginning with the 2012-05-05 version of the CloudFront API, we made

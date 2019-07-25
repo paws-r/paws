@@ -6,7 +6,7 @@
 Direct Connect location}
 \usage{
 directconnect_create_connection(location, bandwidth, connectionName,
-  lagId)
+  lagId, tags)
 }
 \arguments{
 \item{location}{[required] The location of the connection.}
@@ -16,6 +16,8 @@ directconnect_create_connection(location, bandwidth, connectionName,
 \item{connectionName}{[required] The name of the connection.}
 
 \item{lagId}{The ID of the LAG.}
+
+\item{tags}{The tags to assign to the connection.}
 }
 \description{
 Creates a connection between a customer network and a specific AWS
@@ -40,7 +42,13 @@ endpoint, the request fails and no connection is created.
   location = "string",
   bandwidth = "string",
   connectionName = "string",
-  lagId = "string"
+  lagId = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -12,9 +12,9 @@ glacier_describe_vault(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
-associated with the credentials used to sign the request. If you use an
-account ID, do not include any hyphens ('-') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+ID associated with the credentials used to sign the request. If you use
+an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
@@ -26,18 +26,18 @@ vault. The number of archives and their total size are as of the last
 inventory generation. This means that if you add or remove an archive
 from a vault, and then immediately use Describe Vault, the change in
 contents will not be immediately reflected. If you want to retrieve the
-latest inventory of the vault, use InitiateJob. Amazon Glacier generates
-vault inventories approximately daily. For more information, see
-\href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon Glacier}.
+latest inventory of the vault, use InitiateJob. Amazon S3 Glacier
+generates vault inventories approximately daily. For more information,
+see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
 }
 \details{
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
+perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 
-For conceptual information and underlying REST API, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html}{Retrieving Vault Metadata in Amazon Glacier}
-and \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html}{Describe Vault}
+For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html}{Retrieving Vault Metadata in Amazon S3 Glacier}
+and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html}{Describe Vault}
 in the \emph{Amazon Glacier Developer Guide}.
 }
 \section{Request syntax}{

@@ -67,12 +67,12 @@ that were modified during the operation are returned in the response. If
 set to \code{NONE} (the default), no statistics are returned.}
 
 \item{UpdateExpression}{An expression that defines one or more attributes to be updated, the
-action to be performed on them, and new value(s) for them.
+action to be performed on them, and new values for them.
 
 The following action values are available for \code{UpdateExpression}.
 \itemize{
 \item \code{SET} - Adds one or more attributes and values to an item. If any of
-these attribute already exist, they are replaced by the new values.
+these attributes already exist, they are replaced by the new values.
 You can also use \code{SET} to add or subtract from an attribute that is
 of type Number. For example: \code{SET myNum = myNum + :val}
 
@@ -108,10 +108,10 @@ Similarly, if you use \code{ADD} for an existing item to increment or
 decrement an attribute value that doesn't exist before the
 update, DynamoDB uses \code{0} as the initial value. For example,
 suppose that the item you want to update doesn't have an
-attribute named \emph{itemcount}, but you decide to \code{ADD} the number
+attribute named \code{itemcount}, but you decide to \code{ADD} the number
 \code{3} to this attribute anyway. DynamoDB will create the
-\emph{itemcount} attribute, set its initial value to \code{0}, and finally
-add \code{3} to it. The result will be a new \emph{itemcount} attribute in
+\code{itemcount} attribute, set its initial value to \code{0}, and finally
+add \code{3} to it. The result will be a new \code{itemcount} attribute in
 the item, with a value of \code{3}.
 \item If the existing data type is a set and if \code{Value} is also a set,
 then \code{Value} is added to the existing set. For example, if the
@@ -162,7 +162,7 @@ These function names are case-sensitive.
 \item Logical operators: \code{AND | OR | NOT}
 }
 
-For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information about condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -185,7 +185,7 @@ name. For example, consider the following attribute name:
 The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html}{Reserved Words}
-in the \emph{Amazon DynamoDB Developer Guide}). To work around this, you
+in the \emph{Amazon DynamoDB Developer Guide}.) To work around this, you
 could specify the following for \code{ExpressionAttributeNames}:
 \itemize{
 \item \code{\{"#P":"Percentile"\}}
@@ -200,14 +200,14 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information about expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
 
 Use the \strong{:} (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
-the value of the \emph{ProductStatus} attribute was one of the following:
+the value of the \code{ProductStatus} attribute was one of the following:
 
 \code{Available | Backordered | Discontinued}
 
@@ -219,7 +219,7 @@ You could then use these values in an expression, such as this:
 
 \code{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{

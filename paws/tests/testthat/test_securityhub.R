@@ -2,6 +2,18 @@ context("securityhub")
 
 svc <- paws::securityhub()
 
+test_that("describe_action_targets", {
+  expect_error(svc$describe_action_targets(), NA)
+})
+
+test_that("describe_action_targets", {
+  expect_error(svc$describe_action_targets(MaxResults = 20), NA)
+})
+
+test_that("describe_hub", {
+  expect_error(svc$describe_hub(), NA)
+})
+
 test_that("describe_products", {
   expect_error(svc$describe_products(), NA)
 })
@@ -32,12 +44,4 @@ test_that("list_members", {
 
 test_that("list_members", {
   expect_error(svc$list_members(MaxResults = 20), NA)
-})
-
-test_that("list_product_subscribers", {
-  expect_error(svc$list_product_subscribers(), NA)
-})
-
-test_that("list_product_subscribers", {
-  expect_error(svc$list_product_subscribers(MaxResults = 20), NA)
 })

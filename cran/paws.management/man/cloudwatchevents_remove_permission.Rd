@@ -3,24 +3,28 @@
 \name{cloudwatchevents_remove_permission}
 \alias{cloudwatchevents_remove_permission}
 \title{Revokes the permission of another AWS account to be able to put events
-to your default event bus}
+to the specified event bus}
 \usage{
-cloudwatchevents_remove_permission(StatementId)
+cloudwatchevents_remove_permission(StatementId, EventBusName)
 }
 \arguments{
 \item{StatementId}{[required] The statement ID corresponding to the account that is no longer allowed
 to put events to the default event bus.}
+
+\item{EventBusName}{The name of the event bus to revoke permissions for. If you omit this,
+the default event bus is used.}
 }
 \description{
 Revokes the permission of another AWS account to be able to put events
-to your default event bus. Specify the account to revoke by the
+to the specified event bus. Specify the account to revoke by the
 \code{StatementId} value that you associated with the account when you
 granted it permission with \code{PutPermission}. You can find the
 \code{StatementId} by using DescribeEventBus.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_permission(
-  StatementId = "string"
+  StatementId = "string",
+  EventBusName = "string"
 )
 }
 }

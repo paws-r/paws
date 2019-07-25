@@ -19,12 +19,12 @@ Deletes a specified instance, which terminates the associated Amazon EC2
 instance. You must stop an instance before you can delete it.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html}{Deleting Instances}.
+For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html}{Deleting Instances}.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance(

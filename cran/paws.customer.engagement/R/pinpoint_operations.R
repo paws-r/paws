@@ -3,9 +3,9 @@
 #' @include pinpoint_service.R
 NULL
 
-#' Creates or updates an app
+#' Creates an application
 #'
-#' Creates or updates an app.
+#'  <p>Creates an application.</p>
 #'
 #' @usage
 #' pinpoint_create_app(CreateApplicationRequest)
@@ -43,14 +43,17 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 }
 .pinpoint$operations$create_app <- pinpoint_create_app
 
-#' Creates or updates a campaign
+#' Creates a new campaign for an application or updates the settings of an
+#' existing campaign for an application
 #'
-#' Creates or updates a campaign.
+#' Creates a new campaign for an application or updates the settings of an
+#' existing campaign for an application.
 #'
 #' @usage
 #' pinpoint_create_campaign(ApplicationId, WriteCampaignRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteCampaignRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -348,14 +351,15 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 }
 .pinpoint$operations$create_campaign <- pinpoint_create_campaign
 
-#' Creates an export job
+#' Creates a new export job for an application
 #'
-#' Creates an export job.
+#' Creates a new export job for an application.
 #'
 #' @usage
 #' pinpoint_create_export_job(ApplicationId, ExportJobRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param ExportJobRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -390,14 +394,15 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
 }
 .pinpoint$operations$create_export_job <- pinpoint_create_export_job
 
-#' Creates or updates an import job
+#' Creates a new import job for an application
 #'
-#' Creates or updates an import job.
+#' Creates a new import job for an application.
 #'
 #' @usage
 #' pinpoint_create_import_job(ApplicationId, ImportJobRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param ImportJobRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -436,14 +441,19 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 }
 .pinpoint$operations$create_import_job <- pinpoint_create_import_job
 
-#' Used to create or update a segment
+#' Creates a new segment for an application or updates the configuration,
+#' dimension, and other settings for an existing segment that's associated
+#' with an application
 #'
-#' Used to create or update a segment.
+#' Creates a new segment for an application or updates the configuration,
+#' dimension, and other settings for an existing segment that\'s associated
+#' with an application.
 #'
 #' @usage
 #' pinpoint_create_segment(ApplicationId, WriteSegmentRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteSegmentRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -661,14 +671,17 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 }
 .pinpoint$operations$create_segment <- pinpoint_create_segment
 
-#' Delete an ADM channel
+#' Disables the ADM channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Delete an ADM channel.
+#' Disables the ADM channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_adm_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -696,14 +709,17 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_adm_channel <- pinpoint_delete_adm_channel
 
-#' Deletes the APNs channel for an app
+#' Disables the APNs channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Deletes the APNs channel for an app.
+#' Disables the APNs channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_apns_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -731,14 +747,17 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_apns_channel <- pinpoint_delete_apns_channel
 
-#' Delete an APNS sandbox channel
+#' Disables the APNs sandbox channel for an application and deletes any
+#' existing settings for the channel
 #'
-#' Delete an APNS sandbox channel.
+#' Disables the APNs sandbox channel for an application and deletes any
+#' existing settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_apns_sandbox_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -766,14 +785,17 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_apns_sandbox_channel <- pinpoint_delete_apns_sandbox_channel
 
-#' Delete an APNS VoIP channel
+#' Disables the APNs VoIP channel for an application and deletes any
+#' existing settings for the channel
 #'
-#' Delete an APNS VoIP channel
+#' Disables the APNs VoIP channel for an application and deletes any
+#' existing settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_apns_voip_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -801,14 +823,17 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_apns_voip_channel <- pinpoint_delete_apns_voip_channel
 
-#' Delete an APNS VoIP sandbox channel
+#' Disables the APNs VoIP sandbox channel for an application and deletes
+#' any existing settings for the channel
 #'
-#' Delete an APNS VoIP sandbox channel
+#' Disables the APNs VoIP sandbox channel for an application and deletes
+#' any existing settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_apns_voip_sandbox_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -836,14 +861,15 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_apns_voip_sandbox_channel <- pinpoint_delete_apns_voip_sandbox_channel
 
-#' Deletes an app
+#' Deletes an application
 #'
-#' Deletes an app.
+#' Deletes an application.
 #'
 #' @usage
 #' pinpoint_delete_app(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -871,14 +897,17 @@ pinpoint_delete_app <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_app <- pinpoint_delete_app
 
-#' Delete a BAIDU GCM channel
+#' Disables the Baidu channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Delete a BAIDU GCM channel
+#' Disables the Baidu channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_baidu_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -906,15 +935,16 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_baidu_channel <- pinpoint_delete_baidu_channel
 
-#' Deletes a campaign
+#' Deletes a campaign from an application
 #'
-#' Deletes a campaign.
+#' Deletes a campaign from an application.
 #'
 #' @usage
 #' pinpoint_delete_campaign(ApplicationId, CampaignId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #'
 #' @section Request syntax:
 #' ```
@@ -943,14 +973,17 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 }
 .pinpoint$operations$delete_campaign <- pinpoint_delete_campaign
 
-#' Delete an email channel
+#' Disables the email channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Delete an email channel.
+#' Disables the email channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_email_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -978,15 +1011,16 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_email_channel <- pinpoint_delete_email_channel
 
-#' Deletes an endpoint
+#' Deletes an endpoint from an application
 #'
-#' Deletes an endpoint.
+#' Deletes an endpoint from an application.
 #'
 #' @usage
 #' pinpoint_delete_endpoint(ApplicationId, EndpointId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param EndpointId &#91;required&#93; The unique ID of the endpoint.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -1015,14 +1049,15 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
 }
 .pinpoint$operations$delete_endpoint <- pinpoint_delete_endpoint
 
-#' Deletes the event stream for an app
+#' Deletes the event stream for an application
 #'
-#' Deletes the event stream for an app.
+#' Deletes the event stream for an application.
 #'
 #' @usage
 #' pinpoint_delete_event_stream(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1050,14 +1085,17 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_event_stream <- pinpoint_delete_event_stream
 
-#' Deletes the GCM channel for an app
+#' Disables the GCM channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Deletes the GCM channel for an app.
+#' Disables the GCM channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_gcm_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1085,15 +1123,16 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_gcm_channel <- pinpoint_delete_gcm_channel
 
-#' Deletes a segment
+#' Deletes a segment from an application
 #'
-#' Deletes a segment.
+#' Deletes a segment from an application.
 #'
 #' @usage
 #' pinpoint_delete_segment(ApplicationId, SegmentId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #'
 #' @section Request syntax:
 #' ```
@@ -1122,14 +1161,17 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
 }
 .pinpoint$operations$delete_segment <- pinpoint_delete_segment
 
-#' Delete an SMS channel
+#' Disables the SMS channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Delete an SMS channel.
+#' Disables the SMS channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_sms_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1157,15 +1199,16 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_sms_channel <- pinpoint_delete_sms_channel
 
-#' Deletes endpoints that are associated with a User ID
+#' Deletes all the endpoints that are associated with a specific user ID
 #'
-#' Deletes endpoints that are associated with a User ID.
+#' Deletes all the endpoints that are associated with a specific user ID.
 #'
 #' @usage
 #' pinpoint_delete_user_endpoints(ApplicationId, UserId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param UserId &#91;required&#93; The unique ID of the user.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param UserId &#91;required&#93; The unique identifier for the user.
 #'
 #' @section Request syntax:
 #' ```
@@ -1194,14 +1237,17 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
 }
 .pinpoint$operations$delete_user_endpoints <- pinpoint_delete_user_endpoints
 
-#' Delete an Voice channel
+#' Disables the voice channel for an application and deletes any existing
+#' settings for the channel
 #'
-#' Delete an Voice channel
+#' Disables the voice channel for an application and deletes any existing
+#' settings for the channel.
 #'
 #' @usage
 #' pinpoint_delete_voice_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,14 +1275,17 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_voice_channel <- pinpoint_delete_voice_channel
 
-#' Get an ADM channel
+#' Retrieves information about the status and settings of the ADM channel
+#' for an application
 #'
-#' Get an ADM channel.
+#' Retrieves information about the status and settings of the ADM channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_adm_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1264,14 +1313,17 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_adm_channel <- pinpoint_get_adm_channel
 
-#' Returns information about the APNs channel for an app
+#' Retrieves information about the status and settings of the APNs channel
+#' for an application
 #'
-#' Returns information about the APNs channel for an app.
+#' Retrieves information about the status and settings of the APNs channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_apns_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1299,14 +1351,17 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_apns_channel <- pinpoint_get_apns_channel
 
-#' Get an APNS sandbox channel
+#' Retrieves information about the status and settings of the APNs sandbox
+#' channel for an application
 #'
-#' Get an APNS sandbox channel.
+#' Retrieves information about the status and settings of the APNs sandbox
+#' channel for an application.
 #'
 #' @usage
 #' pinpoint_get_apns_sandbox_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1334,14 +1389,17 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_apns_sandbox_channel <- pinpoint_get_apns_sandbox_channel
 
-#' Get an APNS VoIP channel
+#' Retrieves information about the status and settings of the APNs VoIP
+#' channel for an application
 #'
-#' Get an APNS VoIP channel
+#' Retrieves information about the status and settings of the APNs VoIP
+#' channel for an application.
 #'
 #' @usage
 #' pinpoint_get_apns_voip_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1369,14 +1427,17 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_apns_voip_channel <- pinpoint_get_apns_voip_channel
 
-#' Get an APNS VoIPSandbox channel
+#' Retrieves information about the status and settings of the APNs VoIP
+#' sandbox channel for an application
 #'
-#' Get an APNS VoIPSandbox channel
+#' Retrieves information about the status and settings of the APNs VoIP
+#' sandbox channel for an application.
 #'
 #' @usage
 #' pinpoint_get_apns_voip_sandbox_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1404,14 +1465,15 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_apns_voip_sandbox_channel <- pinpoint_get_apns_voip_sandbox_channel
 
-#' Returns information about an app
+#' Retrieves information about an application
 #'
-#' Returns information about an app.
+#' Retrieves information about an application.
 #'
 #' @usage
 #' pinpoint_get_app(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1439,14 +1501,15 @@ pinpoint_get_app <- function(ApplicationId) {
 }
 .pinpoint$operations$get_app <- pinpoint_get_app
 
-#' Used to request the settings for an app
+#' Retrieves information about the settings for an application
 #'
-#' Used to request the settings for an app.
+#' Retrieves information about the settings for an application.
 #'
 #' @usage
 #' pinpoint_get_application_settings(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1474,15 +1537,17 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 }
 .pinpoint$operations$get_application_settings <- pinpoint_get_application_settings
 
-#' Returns information about your apps
+#' Retrieves information about all of your applications
 #'
-#' Returns information about your apps.
+#' Retrieves information about all of your applications.
 #'
 #' @usage
 #' pinpoint_get_apps(PageSize, Token)
 #'
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1511,14 +1576,17 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
 }
 .pinpoint$operations$get_apps <- pinpoint_get_apps
 
-#' Get a BAIDU GCM channel
+#' Retrieves information about the status and settings of the Baidu Cloud
+#' Push channel for an application
 #'
-#' Get a BAIDU GCM channel
+#' Retrieves information about the status and settings of the Baidu Cloud
+#' Push channel for an application.
 #'
 #' @usage
 #' pinpoint_get_baidu_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1546,15 +1614,18 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_baidu_channel <- pinpoint_get_baidu_channel
 
-#' Returns information about a campaign
+#' Retrieves information about the status, configuration, and other
+#' settings for a campaign
 #'
-#' Returns information about a campaign.
+#' Retrieves information about the status, configuration, and other
+#' settings for a campaign.
 #'
 #' @usage
 #' pinpoint_get_campaign(ApplicationId, CampaignId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #'
 #' @section Request syntax:
 #' ```
@@ -1583,18 +1654,21 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 }
 .pinpoint$operations$get_campaign <- pinpoint_get_campaign
 
-#' Returns information about the activity performed by a campaign
+#' Retrieves information about the activity performed by a campaign
 #'
-#' Returns information about the activity performed by a campaign.
+#' Retrieves information about the activity performed by a campaign.
 #'
 #' @usage
 #' pinpoint_get_campaign_activities(ApplicationId, CampaignId, PageSize,
 #'   Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1625,16 +1699,19 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 }
 .pinpoint$operations$get_campaign_activities <- pinpoint_get_campaign_activities
 
-#' Returns information about a specific version of a campaign
+#' Retrieves information about the status, configuration, and other
+#' settings for a specific version of a campaign
 #'
-#' Returns information about a specific version of a campaign.
+#' Retrieves information about the status, configuration, and other
+#' settings for a specific version of a campaign.
 #'
 #' @usage
 #' pinpoint_get_campaign_version(ApplicationId, CampaignId, Version)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
-#' @param Version &#91;required&#93; The version of the campaign.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
+#' @param Version &#91;required&#93; The unique version number (Version property) for the campaign version.
 #'
 #' @section Request syntax:
 #' ```
@@ -1664,18 +1741,23 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 }
 .pinpoint$operations$get_campaign_version <- pinpoint_get_campaign_version
 
-#' Returns information about your campaign versions
+#' Retrieves information about the status, configuration, and other
+#' settings for all versions of a specific campaign
 #'
-#' Returns information about your campaign versions.
+#' Retrieves information about the status, configuration, and other
+#' settings for all versions of a specific campaign.
 #'
 #' @usage
 #' pinpoint_get_campaign_versions(ApplicationId, CampaignId, PageSize,
 #'   Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1706,16 +1788,21 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 }
 .pinpoint$operations$get_campaign_versions <- pinpoint_get_campaign_versions
 
-#' Returns information about your campaigns
+#' Retrieves information about the status, configuration, and other
+#' settings for all the campaigns that are associated with an application
 #'
-#' Returns information about your campaigns.
+#' Retrieves information about the status, configuration, and other
+#' settings for all the campaigns that are associated with an application.
 #'
 #' @usage
 #' pinpoint_get_campaigns(ApplicationId, PageSize, Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1745,14 +1832,17 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
 }
 .pinpoint$operations$get_campaigns <- pinpoint_get_campaigns
 
-#' Get all channels
+#' Retrieves information about the history and status of each channel for
+#' an application
 #'
-#' Get all channels.
+#' Retrieves information about the history and status of each channel for
+#' an application.
 #'
 #' @usage
 #' pinpoint_get_channels(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1780,14 +1870,17 @@ pinpoint_get_channels <- function(ApplicationId) {
 }
 .pinpoint$operations$get_channels <- pinpoint_get_channels
 
-#' Get an email channel
+#' Retrieves information about the status and settings of the email channel
+#' for an application
 #'
-#' Get an email channel.
+#' Retrieves information about the status and settings of the email channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_email_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1815,15 +1908,18 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_email_channel <- pinpoint_get_email_channel
 
-#' Returns information about an endpoint
+#' Retrieves information about the settings and attributes of a specific
+#' endpoint for an application
 #'
-#' Returns information about an endpoint.
+#' Retrieves information about the settings and attributes of a specific
+#' endpoint for an application.
 #'
 #' @usage
 #' pinpoint_get_endpoint(ApplicationId, EndpointId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param EndpointId &#91;required&#93; The unique ID of the endpoint.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -1852,14 +1948,16 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
 }
 .pinpoint$operations$get_endpoint <- pinpoint_get_endpoint
 
-#' Returns the event stream for an app
+#' Retrieves information about the event stream settings for an application
 #'
-#' Returns the event stream for an app.
+#' Retrieves information about the event stream settings for an
+#' application.
 #'
 #' @usage
 #' pinpoint_get_event_stream(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1887,15 +1985,18 @@ pinpoint_get_event_stream <- function(ApplicationId) {
 }
 .pinpoint$operations$get_event_stream <- pinpoint_get_event_stream
 
-#' Returns information about an export job
+#' Retrieves information about the status and settings of a specific export
+#' job for an application
 #'
-#' Returns information about an export job.
+#' Retrieves information about the status and settings of a specific export
+#' job for an application.
 #'
 #' @usage
 #' pinpoint_get_export_job(ApplicationId, JobId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param JobId &#91;required&#93; The unique ID of the job.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JobId &#91;required&#93; The unique identifier for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -1924,16 +2025,21 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 }
 .pinpoint$operations$get_export_job <- pinpoint_get_export_job
 
-#' Returns information about your export jobs
+#' Retrieves information about the status and settings of all the export
+#' jobs for an application
 #'
-#' Returns information about your export jobs.
+#' Retrieves information about the status and settings of all the export
+#' jobs for an application.
 #'
 #' @usage
 #' pinpoint_get_export_jobs(ApplicationId, PageSize, Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1963,14 +2069,17 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 }
 .pinpoint$operations$get_export_jobs <- pinpoint_get_export_jobs
 
-#' Returns information about the GCM channel for an app
+#' Retrieves information about the status and settings of the GCM channel
+#' for an application
 #'
-#' Returns information about the GCM channel for an app.
+#' Retrieves information about the status and settings of the GCM channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_gcm_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -1998,15 +2107,18 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_gcm_channel <- pinpoint_get_gcm_channel
 
-#' Returns information about an import job
+#' Retrieves information about the status and settings of a specific import
+#' job for an application
 #'
-#' Returns information about an import job.
+#' Retrieves information about the status and settings of a specific import
+#' job for an application.
 #'
 #' @usage
 #' pinpoint_get_import_job(ApplicationId, JobId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param JobId &#91;required&#93; The unique ID of the job.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JobId &#91;required&#93; The unique identifier for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -2035,16 +2147,21 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 }
 .pinpoint$operations$get_import_job <- pinpoint_get_import_job
 
-#' Returns information about your import jobs
+#' Retrieves information about the status and settings of all the import
+#' jobs for an application
 #'
-#' Returns information about your import jobs.
+#' Retrieves information about the status and settings of all the import
+#' jobs for an application.
 #'
 #' @usage
 #' pinpoint_get_import_jobs(ApplicationId, PageSize, Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2074,15 +2191,18 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 }
 .pinpoint$operations$get_import_jobs <- pinpoint_get_import_jobs
 
-#' Returns information about a segment
+#' Retrieves information about the configuration, dimension, and other
+#' settings for a specific segment that's associated with an application
 #'
-#' Returns information about a segment.
+#' Retrieves information about the configuration, dimension, and other
+#' settings for a specific segment that\'s associated with an application.
 #'
 #' @usage
 #' pinpoint_get_segment(ApplicationId, SegmentId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #'
 #' @section Request syntax:
 #' ```
@@ -2111,18 +2231,23 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 }
 .pinpoint$operations$get_segment <- pinpoint_get_segment
 
-#' Returns a list of export jobs for a specific segment
+#' Retrieves information about the status and settings of the export jobs
+#' for a segment
 #'
-#' Returns a list of export jobs for a specific segment.
+#' Retrieves information about the status and settings of the export jobs
+#' for a segment.
 #'
 #' @usage
 #' pinpoint_get_segment_export_jobs(ApplicationId, PageSize, SegmentId,
 #'   Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2153,18 +2278,23 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 }
 .pinpoint$operations$get_segment_export_jobs <- pinpoint_get_segment_export_jobs
 
-#' Returns a list of import jobs for a specific segment
+#' Retrieves information about the status and settings of the import jobs
+#' for a segment
 #'
-#' Returns a list of import jobs for a specific segment.
+#' Retrieves information about the status and settings of the import jobs
+#' for a segment.
 #'
 #' @usage
 #' pinpoint_get_segment_import_jobs(ApplicationId, PageSize, SegmentId,
 #'   Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2195,16 +2325,21 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 }
 .pinpoint$operations$get_segment_import_jobs <- pinpoint_get_segment_import_jobs
 
-#' Returns information about a segment version
+#' Retrieves information about the configuration, dimension, and other
+#' settings for a specific version of a segment that's associated with an
+#' application
 #'
-#' Returns information about a segment version.
+#' Retrieves information about the configuration, dimension, and other
+#' settings for a specific version of a segment that\'s associated with an
+#' application.
 #'
 #' @usage
 #' pinpoint_get_segment_version(ApplicationId, SegmentId, Version)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
-#' @param Version &#91;required&#93; The segment version.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
+#' @param Version &#91;required&#93; The unique version number (Version property) for the campaign version.
 #'
 #' @section Request syntax:
 #' ```
@@ -2234,17 +2369,24 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 }
 .pinpoint$operations$get_segment_version <- pinpoint_get_segment_version
 
-#' Returns information about your segment versions
+#' Retrieves information about the configuration, dimension, and other
+#' settings for all versions of a specific segment that's associated with
+#' an application
 #'
-#' Returns information about your segment versions.
+#' Retrieves information about the configuration, dimension, and other
+#' settings for all versions of a specific segment that\'s associated with
+#' an application.
 #'
 #' @usage
 #' pinpoint_get_segment_versions(ApplicationId, PageSize, SegmentId, Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2275,16 +2417,21 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 }
 .pinpoint$operations$get_segment_versions <- pinpoint_get_segment_versions
 
-#' Used to get information about your segments
+#' Retrieves information about the configuration, dimension, and other
+#' settings for all the segments that are associated with an application
 #'
-#' Used to get information about your segments.
+#' Retrieves information about the configuration, dimension, and other
+#' settings for all the segments that are associated with an application.
 #'
 #' @usage
 #' pinpoint_get_segments(ApplicationId, PageSize, Token)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param PageSize The number of entries you want on each page in the response.
-#' @param Token The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param PageSize The maximum number of items to include on each page in a paginated
+#' response.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2314,14 +2461,17 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
 }
 .pinpoint$operations$get_segments <- pinpoint_get_segments
 
-#' Get an SMS channel
+#' Retrieves information about the status and settings of the SMS channel
+#' for an application
 #'
-#' Get an SMS channel.
+#' Retrieves information about the status and settings of the SMS channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_sms_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -2349,16 +2499,18 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_sms_channel <- pinpoint_get_sms_channel
 
-#' Returns information about the endpoints that are associated with a User
-#' ID
+#' Retrieves information about all the endpoints that are associated with a
+#' specific user ID
 #'
-#' Returns information about the endpoints that are associated with a User ID.
+#' Retrieves information about all the endpoints that are associated with a
+#' specific user ID.
 #'
 #' @usage
 #' pinpoint_get_user_endpoints(ApplicationId, UserId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param UserId &#91;required&#93; The unique ID of the user.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param UserId &#91;required&#93; The unique identifier for the user.
 #'
 #' @section Request syntax:
 #' ```
@@ -2387,14 +2539,17 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
 }
 .pinpoint$operations$get_user_endpoints <- pinpoint_get_user_endpoints
 
-#' Get a Voice Channel
+#' Retrieves information about the status and settings of the voice channel
+#' for an application
 #'
-#' Get a Voice Channel
+#' Retrieves information about the status and settings of the voice channel
+#' for an application.
 #'
 #' @usage
 #' pinpoint_get_voice_channel(ApplicationId)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -2422,14 +2577,16 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$get_voice_channel <- pinpoint_get_voice_channel
 
-#' List tags for resource
+#' Retrieves all the tags (keys and values) that are associated with an
+#' application, campaign, or segment
 #'
-#' 
+#' Retrieves all the tags (keys and values) that are associated with an
+#' application, campaign, or segment.
 #'
 #' @usage
 #' pinpoint_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the application, campaign, or segment.
 #'
 #' @section Request syntax:
 #' ```
@@ -2457,9 +2614,9 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 }
 .pinpoint$operations$list_tags_for_resource <- pinpoint_list_tags_for_resource
 
-#' Returns information about the specified phone number
+#' Retrieves information about a phone number
 #'
-#' Returns information about the specified phone number.
+#' Retrieves information about a phone number.
 #'
 #' @usage
 #' pinpoint_phone_number_validate(NumberValidateRequest)
@@ -2495,14 +2652,17 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
 }
 .pinpoint$operations$phone_number_validate <- pinpoint_phone_number_validate
 
-#' Use to create or update the event stream for an app
+#' Creates a new event stream for an application or updates the settings of
+#' an existing event stream for an application
 #'
-#' Use to create or update the event stream for an app.
+#' Creates a new event stream for an application or updates the settings of
+#' an existing event stream for an application.
 #'
 #' @usage
 #' pinpoint_put_event_stream(ApplicationId, WriteEventStream)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteEventStream &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -2535,14 +2695,17 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 }
 .pinpoint$operations$put_event_stream <- pinpoint_put_event_stream
 
-#' Use to record events for endpoints
+#' Creates a new event to record for endpoints, or creates or updates
+#' endpoint data that existing events are associated with
 #'
-#' Use to record events for endpoints. This method creates events and creates or updates the endpoints that those events are associated with.
+#' Creates a new event to record for endpoints, or creates or updates
+#' endpoint data that existing events are associated with.
 #'
 #' @usage
 #' pinpoint_put_events(ApplicationId, EventsRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EventsRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -2642,16 +2805,19 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 }
 .pinpoint$operations$put_events <- pinpoint_put_events
 
-#' Used to remove the attributes for an app
+#' Removes one or more attributes, of the same attribute type, from all the
+#' endpoints that are associated with an application
 #'
-#' Used to remove the attributes for an app
+#' Removes one or more attributes, of the same attribute type, from all the
+#' endpoints that are associated with an application.
 #'
 #' @usage
 #' pinpoint_remove_attributes(ApplicationId, AttributeType,
 #'   UpdateAttributesRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param AttributeType &#91;required&#93; Type of attribute. Can be endpoint-custom-attributes, endpoint-custom-metrics, endpoint-user-attributes.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param AttributeType &#91;required&#93;  <p>The type of attribute or attributes to remove. Valid values are:</p> <ul><li><p>endpoint-custom-attributes - Custom attributes that describe endpoints, such as the date when an associated user opted in or out of receiving communications from you through a specific type of channel.</p></li> <li><p>endpoint-custom-metrics - Custom metrics that your app reports to Amazon Pinpoint for endpoints, such as the number of app sessions or the number of items left in a cart.</p></li> <li><p>endpoint-user-attributes - Custom attributes that describe users, such as first name, last name, and age.</p></li></ul>
 #' @param UpdateAttributesRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -2686,14 +2852,15 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 }
 .pinpoint$operations$remove_attributes <- pinpoint_remove_attributes
 
-#' Used to send a direct message
+#' Creates and sends a direct message
 #'
-#' Used to send a direct message.
+#' Creates and sends a direct message.
 #'
 #' @usage
 #' pinpoint_send_messages(ApplicationId, MessageRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param MessageRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -2933,14 +3100,15 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 }
 .pinpoint$operations$send_messages <- pinpoint_send_messages
 
-#' Used to send a message to a list of users
+#' Creates and sends a message to a list of users
 #'
-#' Used to send a message to a list of users.
+#' Creates and sends a message to a list of users.
 #'
 #' @usage
 #' pinpoint_send_users_messages(ApplicationId, SendUsersMessageRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SendUsersMessageRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3164,14 +3332,16 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 }
 .pinpoint$operations$send_users_messages <- pinpoint_send_users_messages
 
-#' Tag resource
+#' Adds one or more tags (keys and values) to an application, campaign, or
+#' segment
 #'
-#' 
+#' Adds one or more tags (keys and values) to an application, campaign, or
+#' segment.
 #'
 #' @usage
 #' pinpoint_tag_resource(ResourceArn, TagsModel)
 #'
-#' @param ResourceArn &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the application, campaign, or segment.
 #' @param TagsModel &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3205,15 +3375,19 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 }
 .pinpoint$operations$tag_resource <- pinpoint_tag_resource
 
-#' Untag resource
+#' Removes one or more tags (keys and values) from an application,
+#' campaign, or segment
 #'
-#' 
+#' Removes one or more tags (keys and values) from an application,
+#' campaign, or segment.
 #'
 #' @usage
 #' pinpoint_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; 
-#' @param TagKeys &#91;required&#93; The key(s) of tag to be deleted
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the application, campaign, or segment.
+#' @param TagKeys &#91;required&#93; The key of the tag to remove from the application, campaign, or segment.
+#' To remove multiple tags, append the tagKeys parameter and argument for
+#' each additional tag to remove, separated by an ampersand (&).
 #'
 #' @section Request syntax:
 #' ```
@@ -3244,15 +3418,16 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .pinpoint$operations$untag_resource <- pinpoint_untag_resource
 
-#' Update an ADM channel
+#' Updates the ADM channel settings for an application
 #'
-#' Update an ADM channel.
+#' Updates the ADM channel settings for an application.
 #'
 #' @usage
 #' pinpoint_update_adm_channel(ADMChannelRequest, ApplicationId)
 #'
 #' @param ADMChannelRequest &#91;required&#93; 
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -3285,15 +3460,16 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
 }
 .pinpoint$operations$update_adm_channel <- pinpoint_update_adm_channel
 
-#' Use to update the APNs channel for an app
+#' Updates the APNs channel settings for an application
 #'
-#' Use to update the APNs channel for an app.
+#' Updates the APNs channel settings for an application.
 #'
 #' @usage
 #' pinpoint_update_apns_channel(APNSChannelRequest, ApplicationId)
 #'
 #' @param APNSChannelRequest &#91;required&#93; 
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -3331,16 +3507,17 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
 }
 .pinpoint$operations$update_apns_channel <- pinpoint_update_apns_channel
 
-#' Update an APNS sandbox channel
+#' Updates the APNs sandbox channel settings for an application
 #'
-#' Update an APNS sandbox channel.
+#' Updates the APNs sandbox channel settings for an application.
 #'
 #' @usage
 #' pinpoint_update_apns_sandbox_channel(APNSSandboxChannelRequest,
 #'   ApplicationId)
 #'
 #' @param APNSSandboxChannelRequest &#91;required&#93; 
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -3378,15 +3555,16 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
 }
 .pinpoint$operations$update_apns_sandbox_channel <- pinpoint_update_apns_sandbox_channel
 
-#' Update an APNS VoIP channel
+#' Updates the APNs VoIP channel settings for an application
 #'
-#' Update an APNS VoIP channel
+#' Updates the APNs VoIP channel settings for an application.
 #'
 #' @usage
 #' pinpoint_update_apns_voip_channel(APNSVoipChannelRequest, ApplicationId)
 #'
 #' @param APNSVoipChannelRequest &#91;required&#93; 
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -3424,16 +3602,19 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
 }
 .pinpoint$operations$update_apns_voip_channel <- pinpoint_update_apns_voip_channel
 
-#' Update an APNS VoIP sandbox channel
+#' Updates the settings for the APNs VoIP sandbox channel for an
+#' application
 #'
-#' Update an APNS VoIP sandbox channel
+#' Updates the settings for the APNs VoIP sandbox channel for an
+#' application.
 #'
 #' @usage
 #' pinpoint_update_apns_voip_sandbox_channel(APNSVoipSandboxChannelRequest,
 #'   ApplicationId)
 #'
 #' @param APNSVoipSandboxChannelRequest &#91;required&#93; 
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #'
 #' @section Request syntax:
 #' ```
@@ -3471,15 +3652,16 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 }
 .pinpoint$operations$update_apns_voip_sandbox_channel <- pinpoint_update_apns_voip_sandbox_channel
 
-#' Used to update the settings for an app
+#' Updates the settings for an application
 #'
-#' Used to update the settings for an app.
+#' Updates the settings for an application.
 #'
 #' @usage
 #' pinpoint_update_application_settings(ApplicationId,
 #'   WriteApplicationSettingsRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param WriteApplicationSettingsRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3526,14 +3708,15 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
 }
 .pinpoint$operations$update_application_settings <- pinpoint_update_application_settings
 
-#' Update a BAIDU GCM channel
+#' Updates the settings of the Baidu channel for an application
 #'
-#' Update a BAIDU GCM channel
+#' Updates the settings of the Baidu channel for an application.
 #'
 #' @usage
 #' pinpoint_update_baidu_channel(ApplicationId, BaiduChannelRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param BaiduChannelRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3567,16 +3750,17 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 }
 .pinpoint$operations$update_baidu_channel <- pinpoint_update_baidu_channel
 
-#' Use to update a campaign
+#' Updates the settings for a campaign
 #'
-#' Use to update a campaign.
+#' Updates the settings for a campaign.
 #'
 #' @usage
 #' pinpoint_update_campaign(ApplicationId, CampaignId,
 #'   WriteCampaignRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param CampaignId &#91;required&#93; The unique ID of the campaign.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param WriteCampaignRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3875,14 +4059,15 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 }
 .pinpoint$operations$update_campaign <- pinpoint_update_campaign
 
-#' Update an email channel
+#' Updates the status and settings of the email channel for an application
 #'
-#' Update an email channel.
+#' Updates the status and settings of the email channel for an application.
 #'
 #' @usage
 #' pinpoint_update_email_channel(ApplicationId, EmailChannelRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EmailChannelRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3918,15 +4103,20 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 }
 .pinpoint$operations$update_email_channel <- pinpoint_update_email_channel
 
-#' Creates or updates an endpoint
+#' Creates a new endpoint for an application or updates the settings and
+#' attributes of an existing endpoint for an application
 #'
-#' Creates or updates an endpoint.
+#' Creates a new endpoint for an application or updates the settings and
+#' attributes of an existing endpoint for an application. You can also use
+#' this operation to define custom attributes (Attributes, Metrics, and
+#' UserAttributes properties) for an endpoint.
 #'
 #' @usage
 #' pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param EndpointId &#91;required&#93; The unique ID of the endpoint.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
 #' @param EndpointRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -3998,14 +4188,17 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 }
 .pinpoint$operations$update_endpoint <- pinpoint_update_endpoint
 
-#' Use to update a batch of endpoints
+#' Creates a new batch of endpoints for an application or updates the
+#' settings and attributes of a batch of existing endpoints for an
+#' application
 #'
-#' Use to update a batch of endpoints.
+#'  <p>Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes (Attributes, Metrics, and UserAttributes properties) for a batch of endpoints.</p>
 #'
 #' @usage
 #' pinpoint_update_endpoints_batch(ApplicationId, EndpointBatchRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndpointBatchRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -4081,14 +4274,15 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 }
 .pinpoint$operations$update_endpoints_batch <- pinpoint_update_endpoints_batch
 
-#' Use to update the GCM channel for an app
+#' Updates the status and settings of the GCM channel for an application
 #'
-#' Use to update the GCM channel for an app.
+#' Updates the status and settings of the GCM channel for an application.
 #'
 #' @usage
 #' pinpoint_update_gcm_channel(ApplicationId, GCMChannelRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param GCMChannelRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -4121,15 +4315,20 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 }
 .pinpoint$operations$update_gcm_channel <- pinpoint_update_gcm_channel
 
-#' Used to update a segment
+#' Creates a new segment for an application or updates the configuration,
+#' dimension, and other settings for an existing segment that's associated
+#' with an application
 #'
-#' Used to update a segment.
+#' Creates a new segment for an application or updates the configuration,
+#' dimension, and other settings for an existing segment that\'s associated
+#' with an application.
 #'
 #' @usage
 #' pinpoint_update_segment(ApplicationId, SegmentId, WriteSegmentRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
-#' @param SegmentId &#91;required&#93; The unique ID of the segment.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param WriteSegmentRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -4348,14 +4547,15 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
 }
 .pinpoint$operations$update_segment <- pinpoint_update_segment
 
-#' Update an SMS channel
+#' Updates the status and settings of the SMS channel for an application
 #'
-#' Update an SMS channel.
+#' Updates the status and settings of the SMS channel for an application.
 #'
 #' @usage
 #' pinpoint_update_sms_channel(ApplicationId, SMSChannelRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param SMSChannelRequest &#91;required&#93; 
 #'
 #' @section Request syntax:
@@ -4389,14 +4589,15 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 }
 .pinpoint$operations$update_sms_channel <- pinpoint_update_sms_channel
 
-#' Update an Voice channel
+#' Updates the status and settings of the voice channel for an application
 #'
-#' Update an Voice channel
+#' Updates the status and settings of the voice channel for an application.
 #'
 #' @usage
 #' pinpoint_update_voice_channel(ApplicationId, VoiceChannelRequest)
 #'
-#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
 #' @param VoiceChannelRequest &#91;required&#93; 
 #'
 #' @section Request syntax:

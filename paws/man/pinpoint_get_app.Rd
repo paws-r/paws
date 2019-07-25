@@ -2,15 +2,16 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_app}
 \alias{pinpoint_get_app}
-\title{Returns information about an app}
+\title{Retrieves information about an application}
 \usage{
 pinpoint_get_app(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Returns information about an app.
+Retrieves information about an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app(

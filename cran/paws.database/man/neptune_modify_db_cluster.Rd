@@ -8,7 +8,8 @@ neptune_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
   VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
   PreferredBackupWindow, PreferredMaintenanceWindow,
-  EnableIAMDatabaseAuthentication, EngineVersion)
+  EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration,
+  EngineVersion)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
@@ -118,6 +119,9 @@ accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
 
+\item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
+CloudWatch Logs for a specific DB cluster.}
+
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
 Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless the ApplyImmediately parameter
@@ -147,6 +151,14 @@ values in the request.
   PreferredBackupWindow = "string",
   PreferredMaintenanceWindow = "string",
   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  CloudwatchLogsExportConfiguration = list(
+    EnableLogTypes = list(
+      "string"
+    ),
+    DisableLogTypes = list(
+      "string"
+    )
+  ),
   EngineVersion = "string"
 )
 }

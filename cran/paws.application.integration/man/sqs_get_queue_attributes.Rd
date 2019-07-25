@@ -49,7 +49,7 @@ to arrive.
 \item \code{RedrivePolicy} - Returns the string that includes the parameters
 for dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item \code{deadLetterTargetArn} - The Amazon Resource Name (ARN) of the
@@ -62,34 +62,34 @@ When the \code{ReceiveCount} for a message exceeds the
 the dead-letter-queue.
 }
 \item \code{VisibilityTimeout} - Returns the visibility timeout for the queue.
-For more information about the visibility timeout, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
+For more information about the visibility timeout, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 
 The following attributes apply only to
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
 \itemize{
 \item \code{KmsMasterKeyId} - Returns the ID of an AWS-managed customer master
 key (CMK) for Amazon SQS or a custom CMK. For more information, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 \item \code{KmsDataKeyReusePeriodSeconds} - Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
 decrypt messages before calling AWS KMS again. For more information,
-see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
 }
 
-The following attributes apply only to \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{FifoQueue} - Returns whether the queue is FIFO. For more
-information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 To determine whether a queue is
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 \item \code{ContentBasedDeduplication} - Returns whether content-based
 deduplication is enabled for the queue. For more information, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }}
 }
@@ -98,7 +98,7 @@ Gets attributes for the specified queue.
 }
 \details{
 To determine whether a queue is
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 
 Some actions take lists of parameters. These lists are specified using

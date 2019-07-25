@@ -30,8 +30,8 @@ Creates a virtual node within a service mesh.
 \details{
 A virtual node acts as a logical pointer to a particular task group,
 such as an Amazon ECS service or a Kubernetes deployment. When you
-create a virtual node, you must specify the DNS service discovery
-hostname for your task group.
+create a virtual node, you can specify the service discovery information
+for your task group.
 
 Any inbound traffic that your virtual node expects should be specified
 as a \code{listener}. Any outbound traffic that your virtual node expects to
@@ -87,6 +87,16 @@ environment variable.
       )
     ),
     serviceDiscovery = list(
+      awsCloudMap = list(
+        attributes = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        namespaceName = "string",
+        serviceName = "string"
+      ),
       dns = list(
         hostname = "string"
       )

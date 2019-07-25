@@ -818,6 +818,10 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #' @param Tags One or more tags.
+#' 
+#' If the plan is for an existing provisioned product, the product must
+#' have a `RESOURCE_UPDATE` constraint with
+#' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
 #'
 #' @section Request syntax:
 #' ```
@@ -2022,6 +2026,46 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 }
 .servicecatalog$operations$describe_service_action <- servicecatalog_describe_service_action
 
+#' Describe service action execution parameters
+#'
+#' 
+#'
+#' @usage
+#' servicecatalog_describe_service_action_execution_parameters(
+#'   ProvisionedProductId, ServiceActionId, AcceptLanguage)
+#'
+#' @param ProvisionedProductId &#91;required&#93; 
+#' @param ServiceActionId &#91;required&#93; 
+#' @param AcceptLanguage 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_service_action_execution_parameters(
+#'   ProvisionedProductId = "string",
+#'   ServiceActionId = "string",
+#'   AcceptLanguage = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_describe_service_action_execution_parameters
+servicecatalog_describe_service_action_execution_parameters <- function(ProvisionedProductId, ServiceActionId, AcceptLanguage = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceActionExecutionParameters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$describe_service_action_execution_parameters_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
+  output <- .servicecatalog$describe_service_action_execution_parameters_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$describe_service_action_execution_parameters <- servicecatalog_describe_service_action_execution_parameters
+
 #' Gets information about the specified TagOption
 #'
 #' Gets information about the specified TagOption.
@@ -2408,7 +2452,8 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #'
 #' @usage
 #' servicecatalog_execute_provisioned_product_service_action(
-#'   ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage)
+#'   ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage,
+#'   Parameters)
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
@@ -2420,6 +2465,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#' @param Parameters 
 #'
 #' @section Request syntax:
 #' ```
@@ -2427,21 +2473,26 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #'   ProvisionedProductId = "string",
 #'   ServiceActionId = "string",
 #'   ExecuteToken = "string",
-#'   AcceptLanguage = "string"
+#'   AcceptLanguage = "string",
+#'   Parameters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_execute_provisioned_product_service_action
-servicecatalog_execute_provisioned_product_service_action <- function(ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage = NULL) {
+servicecatalog_execute_provisioned_product_service_action <- function(ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ExecuteProvisionedProductServiceAction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage)
+  input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage, Parameters = Parameters)
   output <- .servicecatalog$execute_provisioned_product_service_action_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)
@@ -4271,7 +4322,7 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'
 #' @usage
 #' servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
-#'   ProvisioningArtifactId, Name, Description, Active)
+#'   ProvisioningArtifactId, Name, Description, Active, Guidance)
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4285,6 +4336,15 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' @param Name The updated name of the provisioning artifact.
 #' @param Description The updated description of the provisioning artifact.
 #' @param Active Indicates whether the product version is active.
+#' @param Guidance Information set by the administrator to provide guidance to end users
+#' about which provisioning artifacts to use.
+#' 
+#' The `DEFAULT` value indicates that the product version is active.
+#' 
+#' The administrator can set the guidance to `DEPRECATED` to inform users
+#' that the product version is deprecated. Users are able to make updates
+#' to a provisioned product of a deprecated version but cannot launch new
+#' provisioned products using a deprecated version.
 #'
 #' @section Request syntax:
 #' ```
@@ -4294,21 +4354,22 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'   ProvisioningArtifactId = "string",
 #'   Name = "string",
 #'   Description = "string",
-#'   Active = TRUE|FALSE
+#'   Active = TRUE|FALSE,
+#'   Guidance = "DEFAULT"|"DEPRECATED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioning_artifact
-servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, Name = NULL, Description = NULL, Active = NULL) {
+servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, Name = NULL, Description = NULL, Active = NULL, Guidance = NULL) {
   op <- new_operation(
     name = "UpdateProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active)
+  input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active, Guidance = Guidance)
   output <- .servicecatalog$update_provisioning_artifact_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)

@@ -7,7 +7,8 @@
 gamelift_create_matchmaking_configuration(Name, Description,
   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
   AcceptanceRequired, RuleSetName, NotificationTarget,
-  AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData)
+  AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
+  BackfillMode)
 }
 \arguments{
 \item{Name}{[required] Unique identifier for a matchmaking configuration. This name is used to
@@ -20,20 +21,20 @@ ticket.}
 (\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html}{ARN})
 that is assigned to a game session queue and uniquely identifies it.
 Format is
-\code{arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912}.
+\code{arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;}.
 These queues are used when placing game sessions for matches that are
 created with this matchmaking configuration. Queues can be located in
 any region.}
 
 \item{RequestTimeoutSeconds}{[required] Maximum duration, in seconds, that a matchmaking ticket can remain in
-process before timing out. Requests that time out can be resubmitted as
-needed.}
+process before timing out. Requests that fail due to timing out can be
+resubmitted as needed.}
 
 \item{AcceptanceTimeoutSeconds}{Length of time (in seconds) to wait for players to accept a proposed
 match. If any player rejects the match or fails to accept before the
 timeout, the ticket continues to look for an acceptable match.}
 
-\item{AcceptanceRequired}{[required] Flag that determines whether or not a match that was created with this
+\item{AcceptanceRequired}{[required] Flag that determines whether a match that was created with this
 configuration must be accepted by the matched players. To require
 acceptance, set to TRUE.}
 
@@ -48,7 +49,7 @@ example, if the configuration's rule set specifies a match for a single
 12-person team, and the additional player count is set to 2, only 10
 players are selected for the match.}
 
-\item{CustomEventData}{Information to attached to all events related to the matchmaking
+\item{CustomEventData}{Information to be added to all events related to this matchmaking
 configuration.}
 
 \item{GameProperties}{Set of custom properties for a game session, formatted as key:value
@@ -63,6 +64,13 @@ value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).
 This information is added to the new GameSession object that is created
 for a successful match.}
+
+\item{BackfillMode}{Method used to backfill game sessions created with this matchmaking
+configuration. Specify MANUAL when your game manages backfill requests
+manually or does not use the match backfill feature. Specify AUTOMATIC
+to have GameLift create a StartMatchBackfill request whenever a game
+session has one or more open slots. Learn more about manual and
+automatic backfill in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html}{Backfill Existing Games with FlexMatch}.}
 }
 \description{
 Defines a new matchmaking configuration for use with FlexMatch. A
@@ -80,22 +88,22 @@ players and find acceptable matches; a game session queue to use when
 placing a new game session for the match; and the maximum time allowed
 for a matchmaking attempt.
 
-\strong{Player acceptance} \-- In each configuration, you have the option to
-require that all players accept participation in a proposed match. To
-enable this feature, set \emph{AcceptanceRequired} to true and specify a time
-limit for player acceptance. Players have the option to accept or reject
-a proposed match, and a match does not move ahead to game session
-placement unless all matched players accept.
+There are two ways to track the progress of matchmaking tickets: (1)
+polling ticket status with DescribeMatchmaking; or (2) receiving
+notifications with Amazon Simple Notification Service (SNS). To use
+notifications, you first need to set up an SNS topic to receive the
+notifications, and provide the topic ARN in the matchmaking
+configuration. Since notifications promise only "best effort"
+delivery, we recommend calling \code{DescribeMatchmaking} if no notifications
+are received within 30 seconds.
 
-\strong{Matchmaking status notification} \-- There are two ways to track the
-progress of matchmaking tickets: (1) polling ticket status with
-DescribeMatchmaking; or (2) receiving notifications with Amazon Simple
-Notification Service (SNS). To use notifications, you first need to set
-up an SNS topic to receive the notifications, and provide the topic ARN
-in the matchmaking configuration (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking}).
-Since notifications promise only "best effort" delivery, we recommend
-calling \code{DescribeMatchmaking} if no notifications are received within 30
-seconds.
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html}{Design a FlexMatch Matchmaker}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Setting up Notifications for Matchmaking}
+
+\strong{Related operations}
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations
@@ -127,7 +135,8 @@ seconds.
       Value = "string"
     )
   ),
-  GameSessionData = "string"
+  GameSessionData = "string",
+  BackfillMode = "AUTOMATIC"|"MANUAL"
 )
 }
 }

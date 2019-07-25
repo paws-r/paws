@@ -12,7 +12,10 @@ codecommit_post_comment_for_compared_commit(repositoryName,
 comparison between commits.}
 
 \item{beforeCommitId}{To establish the directionality of the comparison, the full commit ID of
-the 'before' commit.}
+the 'before' commit.
+
+This is required for commenting on any commit unless that commit is the
+initial commit.}
 
 \item{afterCommitId}{[required] To establish the directionality of the comparison, the full commit ID of
 the 'after' commit.}

@@ -21,8 +21,10 @@ For more information, see
 
 \item{JobName}{The identifier of the job.}
 
-\item{LanguageCode}{[required] The language of the input documents. You can specify English ("en") or
-Spanish ("es"). All documents must be in the same language.}
+\item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
+languages supported by Amazon Comprehend: German ("de"), English
+("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
+Portuguese ("pt"). All documents must be in the same language.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client
 request token, Amazon Comprehend generates one.}

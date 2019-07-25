@@ -7,7 +7,7 @@ bundled physical connections between the customer network and a specific
 AWS Direct Connect location}
 \usage{
 directconnect_create_lag(numberOfConnections, location,
-  connectionsBandwidth, lagName, connectionId)
+  connectionsBandwidth, lagName, connectionId, tags, childConnectionTags)
 }
 \arguments{
 \item{numberOfConnections}{[required] The number of physical connections initially provisioned and bundled by
@@ -22,6 +22,14 @@ The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
 \item{lagName}{[required] The name of the LAG.}
 
 \item{connectionId}{The ID of an existing connection to migrate to the LAG.}
+
+\item{tags}{The tags to assign to the link aggregation group (LAG).}
+
+\item{childConnectionTags}{The tags to assign to the child connections of the LAG. Only newly
+created child connections as the result of creating a LAG connection are
+assigned the provided tags. The tags are not assigned to an existing
+connection that is provided via the "connectionId" parameter that will
+be migrated to the LAG.}
 }
 \description{
 Creates a link aggregation group (LAG) with the specified number of
@@ -58,7 +66,19 @@ interfaces cannot be directly configured.
   location = "string",
   connectionsBandwidth = "string",
   lagName = "string",
-  connectionId = "string"
+  connectionId = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  ),
+  childConnectionTags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

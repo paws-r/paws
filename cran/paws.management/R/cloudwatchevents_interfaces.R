@@ -3,9 +3,73 @@
 #' @include cloudwatchevents_service.R
 NULL
 
+.cloudwatchevents$activate_event_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$activate_event_source_output <- function(...) {
+  list()
+}
+
+.cloudwatchevents$create_event_bus_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventSourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$create_event_bus_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventBusArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$create_partner_event_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$create_partner_event_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$deactivate_event_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$deactivate_event_source_output <- function(...) {
+  list()
+}
+
+.cloudwatchevents$delete_event_bus_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$delete_event_bus_output <- function(...) {
+  list()
+}
+
+.cloudwatchevents$delete_partner_event_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$delete_partner_event_source_output <- function(...) {
+  list()
+}
+
 .cloudwatchevents$delete_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,7 +79,7 @@ NULL
 
 .cloudwatchevents$describe_event_bus_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -25,21 +89,45 @@ NULL
   return(populate(args, shape))
 }
 
-.cloudwatchevents$describe_rule_input <- function(...) {
+.cloudwatchevents$describe_event_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$describe_event_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$describe_partner_event_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$describe_partner_event_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$describe_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchevents$describe_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchevents$disable_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -49,7 +137,7 @@ NULL
 
 .cloudwatchevents$enable_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -57,9 +145,57 @@ NULL
   list()
 }
 
+.cloudwatchevents$list_event_buses_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_event_buses_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventBuses = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_event_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_event_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_partner_event_source_accounts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSourceName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_partner_event_source_accounts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PartnerEventSourceAccounts = structure(list(structure(list(Account = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ExpirationTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_partner_event_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$list_partner_event_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PartnerEventSources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchevents$list_rule_names_by_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TargetArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(TargetArn = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -71,13 +207,13 @@ NULL
 
 .cloudwatchevents$list_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchevents$list_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Rules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,7 +231,7 @@ NULL
 
 .cloudwatchevents$list_targets_by_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +243,7 @@ NULL
 
 .cloudwatchevents$put_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "timestamp")), Source = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DetailType = structure(logical(0), tags = list(type = "string")), Detail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "timestamp")), Source = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DetailType = structure(logical(0), tags = list(type = "string")), Detail = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -117,9 +253,21 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatchevents$put_partner_events_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entries = structure(list(structure(list(Time = structure(logical(0), tags = list(type = "timestamp")), Source = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DetailType = structure(logical(0), tags = list(type = "string")), Detail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchevents$put_partner_events_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FailedEntryCount = structure(logical(0), tags = list(type = "integer")), Entries = structure(list(structure(list(EventId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchevents$put_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Action = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), StatementId = structure(logical(0), tags = list(type = "string")), Condition = structure(list(Type = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EventBusName = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), StatementId = structure(logical(0), tags = list(type = "string")), Condition = structure(list(Type = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -129,7 +277,7 @@ NULL
 
 .cloudwatchevents$put_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -141,7 +289,7 @@ NULL
 
 .cloudwatchevents$put_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -153,7 +301,7 @@ NULL
 
 .cloudwatchevents$remove_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StatementId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StatementId = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -163,7 +311,7 @@ NULL
 
 .cloudwatchevents$remove_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), Ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), Ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

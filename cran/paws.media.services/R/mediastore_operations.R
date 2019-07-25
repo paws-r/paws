@@ -9,32 +9,45 @@ NULL
 #' bucket in the Amazon S3 service.
 #'
 #' @usage
-#' mediastore_create_container(ContainerName)
+#' mediastore_create_container(ContainerName, Tags)
 #'
 #' @param ContainerName &#91;required&#93; The name for the container. The name must be from 1 to 255 characters.
 #' Container names must be unique to your AWS account within a specific
 #' region. As an example, you could create a container named `movies` in
 #' every region, as long as you don't have an existing container with that
 #' name.
+#' @param Tags An array of key:value pairs that you define. These values can be
+#' anything that you want. Typically, the tag key represents a category
+#' (such as \"environment\") and the tag value represents a specific value
+#' within that category (such as \"test,\" \"development,\" or
+#' \"production\"). You can add up to 50 tags to each container. For more
+#' information about tagging, including naming and usage conventions, see
+#' Tagging Resources in MediaStore.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_container(
-#'   ContainerName = "string"
+#'   ContainerName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediastore_create_container
-mediastore_create_container <- function(ContainerName) {
+mediastore_create_container <- function(ContainerName, Tags = NULL) {
   op <- new_operation(
     name = "CreateContainer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .mediastore$create_container_input(ContainerName = ContainerName)
+  input <- .mediastore$create_container_input(ContainerName = ContainerName, Tags = Tags)
   output <- .mediastore$create_container_output()
   svc <- .mediastore$service()
   request <- new_request(svc, op, input, output)
@@ -401,6 +414,41 @@ mediastore_list_containers <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .mediastore$operations$list_containers <- mediastore_list_containers
 
+#' Returns a list of the tags assigned to the specified container
+#'
+#' Returns a list of the tags assigned to the specified container.
+#'
+#' @usage
+#' mediastore_list_tags_for_resource(Resource)
+#'
+#' @param Resource &#91;required&#93; The Amazon Resource Name (ARN) for the container.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   Resource = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_list_tags_for_resource
+mediastore_list_tags_for_resource <- function(Resource) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$list_tags_for_resource_input(Resource = Resource)
+  output <- .mediastore$list_tags_for_resource_output()
+  svc <- .mediastore$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$list_tags_for_resource <- mediastore_list_tags_for_resource
+
 #' Creates an access policy for the specified container to restrict the
 #' users and clients that can access it
 #'
@@ -639,3 +687,101 @@ mediastore_stop_access_logging <- function(ContainerName) {
   return(response)
 }
 .mediastore$operations$stop_access_logging <- mediastore_stop_access_logging
+
+#' Adds tags to the specified AWS Elemental MediaStore container
+#'
+#' Adds tags to the specified AWS Elemental MediaStore container. Tags are
+#' key:value pairs that you can associate with AWS resources. For example,
+#' the tag key might be \"customer\" and the tag value might be
+#' \"companyA.\" You can specify one or more tags to add to each container.
+#' You can add up to 50 tags to each container. For more information about
+#' tagging, including naming and usage conventions, see Tagging Resources
+#' in MediaStore.
+#'
+#' @usage
+#' mediastore_tag_resource(Resource, Tags)
+#'
+#' @param Resource &#91;required&#93; The Amazon Resource Name (ARN) for the container.
+#' @param Tags &#91;required&#93; An array of key:value pairs that you want to add to the container. You
+#' need to specify only the tags that you want to add or update. For
+#' example, suppose a container already has two tags (customer:CompanyA and
+#' priority:High). You want to change the priority tag and also add a third
+#' tag (type:Contract). For TagResource, you specify the following tags:
+#' priority:Medium, type:Contract. The result is that your container has
+#' three tags: customer:CompanyA, priority:Medium, and type:Contract.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   Resource = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_tag_resource
+mediastore_tag_resource <- function(Resource, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$tag_resource_input(Resource = Resource, Tags = Tags)
+  output <- .mediastore$tag_resource_output()
+  svc <- .mediastore$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$tag_resource <- mediastore_tag_resource
+
+#' Removes tags from the specified container
+#'
+#' Removes tags from the specified container. You can specify one or more
+#' tags to remove.
+#'
+#' @usage
+#' mediastore_untag_resource(Resource, TagKeys)
+#'
+#' @param Resource &#91;required&#93; The Amazon Resource Name (ARN) for the container.
+#' @param TagKeys &#91;required&#93; A comma-separated list of keys for tags that you want to remove from the
+#' container. For example, if your container has two tags
+#' (customer:CompanyA and priority:High) and you want to remove one of the
+#' tags (priority:High), you specify the key for the tag that you want to
+#' remove (priority).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   Resource = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_untag_resource
+mediastore_untag_resource <- function(Resource, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$untag_resource_input(Resource = Resource, TagKeys = TagKeys)
+  output <- .mediastore$untag_resource_output()
+  svc <- .mediastore$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$untag_resource <- mediastore_untag_resource

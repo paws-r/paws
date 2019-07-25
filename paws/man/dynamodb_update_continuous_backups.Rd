@@ -27,7 +27,7 @@ restore to any point in time within \code{EarliestRestorableDateTime} and
 
 \code{LatestRestorableDateTime} is typically 5 minutes before the current
 time. You can restore your table to any point in time during the last 35
-days..
+days.
 }
 \section{Request syntax}{
 \preformatted{svc$update_continuous_backups(

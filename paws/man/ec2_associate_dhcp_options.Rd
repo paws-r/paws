@@ -30,7 +30,7 @@ pick up the changes within a few hours, depending on how frequently the
 instance renews its DHCP lease. You can explicitly renew the lease using
 the operating system on the instance.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html}{DHCP Options Sets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

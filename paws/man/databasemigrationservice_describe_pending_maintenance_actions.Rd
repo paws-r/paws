@@ -8,7 +8,7 @@ databasemigrationservice_describe_pending_maintenance_actions(
   ReplicationInstanceArn, Filters, Marker, MaxRecords)
 }
 \arguments{
-\item{ReplicationInstanceArn}{The ARN of the replication instance.}
+\item{ReplicationInstanceArn}{The Amazon Resource Name (ARN) of the replication instance.}
 
 \item{Filters}{}
 

@@ -4,21 +4,25 @@
 \alias{cloudwatchevents_describe_rule}
 \title{Describes the specified rule}
 \usage{
-cloudwatchevents_describe_rule(Name)
+cloudwatchevents_describe_rule(Name, EventBusName)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
+
+\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
+event bus is used.}
 }
 \description{
 Describes the specified rule.
 }
 \details{
-DescribeRule does not list the targets of a rule. To see the targets
+\code{DescribeRule} doesn't list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_rule(
-  Name = "string"
+  Name = "string",
+  EventBusName = "string"
 )
 }
 }

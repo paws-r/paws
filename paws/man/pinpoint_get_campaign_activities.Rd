@@ -2,22 +2,25 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_campaign_activities}
 \alias{pinpoint_get_campaign_activities}
-\title{Returns information about the activity performed by a campaign}
+\title{Retrieves information about the activity performed by a campaign}
 \usage{
 pinpoint_get_campaign_activities(ApplicationId, CampaignId, PageSize,
   Token)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{CampaignId}{[required] The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique identifier for the campaign.}
 
-\item{PageSize}{The number of entries you want on each page in the response.}
+\item{PageSize}{The maximum number of items to include on each page in a paginated
+response.}
 
-\item{Token}{The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
+\item{Token}{The NextToken string that specifies which page of results to return in a
+paginated response.}
 }
 \description{
-Returns information about the activity performed by a campaign.
+Retrieves information about the activity performed by a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaign_activities(

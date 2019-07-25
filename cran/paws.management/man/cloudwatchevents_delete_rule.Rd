@@ -4,10 +4,13 @@
 \alias{cloudwatchevents_delete_rule}
 \title{Deletes the specified rule}
 \usage{
-cloudwatchevents_delete_rule(Name, Force)
+cloudwatchevents_delete_rule(Name, EventBusName, Force)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
+
+\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
+event bus is used.}
 
 \item{Force}{If this is a managed rule, created by an AWS service on your behalf, you
 must specify \code{Force} as \code{True} to delete the rule. This parameter is
@@ -28,12 +31,13 @@ deleted rule. Allow a short period of time for changes to take effect.
 Managed rules are rules created and managed by another AWS service on
 your behalf. These rules are created by those other AWS services to
 support functionality in those services. You can delete these rules
-using the \code{Force} option, but you should do so only if you are sure the
-other service is not still using that rule.
+using the \code{Force} option, but you should do so only if you're sure that
+the other service isn't still using that rule.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_rule(
   Name = "string",
+  EventBusName = "string",
   Force = TRUE|FALSE
 )
 }

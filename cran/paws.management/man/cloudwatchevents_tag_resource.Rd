@@ -2,22 +2,22 @@
 % Please edit documentation in R/cloudwatchevents_operations.R
 \name{cloudwatchevents_tag_resource}
 \alias{cloudwatchevents_tag_resource}
-\title{Assigns one or more tags (key-value pairs) to the specified CloudWatch
-Events resource}
+\title{Assigns one or more tags (key-value pairs) to the specified EventBridge
+resource}
 \usage{
 cloudwatchevents_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch Events rule that you're adding tags to.}
+\item{ResourceARN}{[required] The ARN of the rule that you're adding tags to.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the rule.}
 }
 \description{
-Assigns one or more tags (key-value pairs) to the specified CloudWatch
-Events resource. Tags can help you organize and categorize your
-resources. You can also use them to scope user permissions by granting a
-user permission to access or change only resources with certain tag
-values. In CloudWatch Events, rules can be tagged.
+Assigns one or more tags (key-value pairs) to the specified EventBridge
+resource. Tags can help you organize and categorize your resources. You
+can also use them to scope user permissions by granting a user
+permission to access or change only resources with certain tag values.
+In EventBridge, rules can be tagged.
 }
 \details{
 Tags don't have any semantic meaning to AWS and are interpreted

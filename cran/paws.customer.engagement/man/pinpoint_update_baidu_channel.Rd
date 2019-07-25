@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_baidu_channel}
 \alias{pinpoint_update_baidu_channel}
-\title{Update a BAIDU GCM channel}
+\title{Updates the settings of the Baidu channel for an application}
 \usage{
 pinpoint_update_baidu_channel(ApplicationId, BaiduChannelRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{BaiduChannelRequest}{[required]}
 }
 \description{
-Update a BAIDU GCM channel
+Updates the settings of the Baidu channel for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_baidu_channel(

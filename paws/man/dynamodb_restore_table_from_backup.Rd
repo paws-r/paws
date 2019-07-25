@@ -9,7 +9,7 @@ dynamodb_restore_table_from_backup(TargetTableName, BackupArn)
 \arguments{
 \item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
 
-\item{BackupArn}{[required] The ARN associated with the backup.}
+\item{BackupArn}{[required] The Amazon Resource Name (ARN) associated with the backup.}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can
@@ -24,7 +24,7 @@ You must manually set up the following on the restored table:
 \itemize{
 \item Auto scaling policies
 \item IAM policies
-\item Cloudwatch metrics and alarms
+\item Amazon CloudWatch metrics and alarms
 \item Tags
 \item Stream settings
 \item Time to Live (TTL) settings

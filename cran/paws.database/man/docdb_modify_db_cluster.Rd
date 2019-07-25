@@ -8,7 +8,7 @@ docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
-  EngineVersion)
+  EngineVersion, DeletionProtection)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster that is being modified. This
@@ -68,8 +68,9 @@ Constraints: Must be a value from \code{1150} to \code{65535}.
 
 Default: The same port as the original DB cluster.}
 
-\item{MasterUserPassword}{The new password for the master database user. This password can contain
-any printable ASCII character except "\code{/}", "\code{\"}", or "\code{@}".
+\item{MasterUserPassword}{The password for the master database user. This password can contain any
+printable ASCII character except forward slash (/), double quote ("),
+or the "at" symbol (@).
 
 Constraints: Must contain from 8 to 41 characters.}
 
@@ -110,6 +111,11 @@ exported (or not exported) to CloudWatch Logs.}
 Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless the \code{ApplyImmediately}
 parameter is set to \code{true}.}
+
+\item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
+is enabled, the cluster cannot be deleted unless it is modified and
+\code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
+from being accidentally deleted.}
 }
 \description{
 Modifies a setting for an Amazon DocumentDB DB cluster. You can change
@@ -138,7 +144,8 @@ parameters and the new values in the request.
       "string"
     )
   ),
-  EngineVersion = "string"
+  EngineVersion = "string",
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

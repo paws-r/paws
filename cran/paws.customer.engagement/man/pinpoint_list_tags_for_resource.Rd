@@ -2,15 +2,17 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_list_tags_for_resource}
 \alias{pinpoint_list_tags_for_resource}
-\title{List tags for resource}
+\title{Retrieves all the tags (keys and values) that are associated with an
+application, campaign, or segment}
 \usage{
 pinpoint_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the application, campaign, or segment.}
 }
 \description{
-List tags for resource
+Retrieves all the tags (keys and values) that are associated with an
+application, campaign, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

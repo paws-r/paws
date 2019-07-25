@@ -2,12 +2,15 @@
 % Please edit documentation in R/cloudwatchevents_operations.R
 \name{cloudwatchevents_list_rules}
 \alias{cloudwatchevents_list_rules}
-\title{Lists your Amazon CloudWatch Events rules}
+\title{Lists your EventBridge rules}
 \usage{
-cloudwatchevents_list_rules(NamePrefix, NextToken, Limit)
+cloudwatchevents_list_rules(NamePrefix, EventBusName, NextToken, Limit)
 }
 \arguments{
 \item{NamePrefix}{The prefix matching the rule name.}
+
+\item{EventBusName}{Limits the results to show only the rules associated with the specified
+event bus.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of
 results.}
@@ -15,16 +18,17 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \description{
-Lists your Amazon CloudWatch Events rules. You can either list all the
-rules or you can provide a prefix to match to the rule names.
+Lists your EventBridge rules. You can either list all the rules or
+provide a prefix to match to the rule names.
 }
 \details{
-ListRules does not list the targets of a rule. To see the targets
+\code{ListRules} doesn't list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{
 \preformatted{svc$list_rules(
   NamePrefix = "string",
+  EventBusName = "string",
   NextToken = "string",
   Limit = 123
 )

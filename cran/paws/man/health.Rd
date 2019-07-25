@@ -34,9 +34,9 @@ The Health API requires a Business or Enterprise support plan from \href{http://
 from an account that does not have a Business or Enterprise support plan
 causes a \code{SubscriptionRequiredException}.
 
-For authentication of requests, AWS Health uses the \href{http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+For authentication of requests, AWS Health uses the \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
 
-See the \href{http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html}{AWS Health User Guide}
+See the \href{https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html}{AWS Health User Guide}
 for information about how to use the API.
 
 \strong{Service Endpoint}

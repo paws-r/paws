@@ -15,24 +15,34 @@ modern web apps.
 \tabular{ll}{
 \link[=amplify_create_app]{create_app} \tab Creates a new Amplify App \cr
 \link[=amplify_create_branch]{create_branch} \tab Creates a new Branch for an Amplify App \cr
+\link[=amplify_create_deployment]{create_deployment} \tab Create a deployment for manual deploy apps \cr
 \link[=amplify_create_domain_association]{create_domain_association} \tab Create a new DomainAssociation on an App \cr
+\link[=amplify_create_webhook]{create_webhook} \tab Create a new webhook on an App \cr
 \link[=amplify_delete_app]{delete_app} \tab Delete an existing Amplify App by appId \cr
 \link[=amplify_delete_branch]{delete_branch} \tab Deletes a branch for an Amplify App \cr
 \link[=amplify_delete_domain_association]{delete_domain_association} \tab Deletes a DomainAssociation \cr
 \link[=amplify_delete_job]{delete_job} \tab Delete a job, for an Amplify branch, part of Amplify App \cr
+\link[=amplify_delete_webhook]{delete_webhook} \tab Deletes a webhook \cr
 \link[=amplify_get_app]{get_app} \tab Retrieves an existing Amplify App by appId \cr
 \link[=amplify_get_branch]{get_branch} \tab Retrieves a branch for an Amplify App \cr
 \link[=amplify_get_domain_association]{get_domain_association} \tab Retrieves domain info that corresponds to an appId and domainName \cr
 \link[=amplify_get_job]{get_job} \tab Get a job for a branch, part of an Amplify App \cr
+\link[=amplify_get_webhook]{get_webhook} \tab Retrieves webhook info that corresponds to a webhookId \cr
 \link[=amplify_list_apps]{list_apps} \tab Lists existing Amplify Apps \cr
 \link[=amplify_list_branches]{list_branches} \tab Lists branches for an Amplify App \cr
 \link[=amplify_list_domain_associations]{list_domain_associations} \tab List domains with an app \cr
 \link[=amplify_list_jobs]{list_jobs} \tab List Jobs for a branch, part of an Amplify App \cr
+\link[=amplify_list_tags_for_resource]{list_tags_for_resource} \tab List tags for resource \cr
+\link[=amplify_list_webhooks]{list_webhooks} \tab List webhooks with an app \cr
+\link[=amplify_start_deployment]{start_deployment} \tab Start a deployment for manual deploy apps \cr
 \link[=amplify_start_job]{start_job} \tab Starts a new job for a branch, part of an Amplify App \cr
 \link[=amplify_stop_job]{stop_job} \tab Stop a job that is in progress, for an Amplify branch, part of Amplify App\cr
+\link[=amplify_tag_resource]{tag_resource} \tab Tag resource with tag key and value \cr
+\link[=amplify_untag_resource]{untag_resource} \tab Untag resource with resourceArn \cr
 \link[=amplify_update_app]{update_app} \tab Updates an existing Amplify App \cr
 \link[=amplify_update_branch]{update_branch} \tab Updates a branch for an Amplify App \cr
-\link[=amplify_update_domain_association]{update_domain_association} \tab Create a new DomainAssociation on an App
+\link[=amplify_update_domain_association]{update_domain_association} \tab Create a new DomainAssociation on an App \cr
+\link[=amplify_update_webhook]{update_webhook} \tab Update a webhook
 }
 }
 

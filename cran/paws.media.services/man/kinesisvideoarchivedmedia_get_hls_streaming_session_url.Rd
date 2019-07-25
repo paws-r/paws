@@ -20,9 +20,9 @@ HLS master playlist URL.
 
 You must specify either the \code{StreamName} or the \code{StreamARN}.}
 
-\item{PlaybackMode}{Whether to retrieve live or archived, on-demand data.
+\item{PlaybackMode}{Whether to retrieve live, live replay, or archived, on-demand data.
 
-Features of the two types of session include the following:
+Features of the three types of sessions include the following:
 \itemize{
 \item \strong{\code{LIVE}} : For sessions of this type, the HLS media playlist is
 continually updated with the latest fragments as they become
@@ -40,6 +40,18 @@ are not added to the HLS media playlist if they are older than the
 newest fragment in the playlist. If the missing fragment becomes
 available after a subsequent fragment is added to the playlist, the
 older fragment is not added, and the gap is not filled.
+\item \strong{\code{LIVE_REPLAY}} : For sessions of this type, the HLS media
+playlist is updated similarly to how it is updated for \code{LIVE} mode
+except that it starts by including fragments from a given start
+time. Instead of fragments being added as they are ingested,
+fragments are added as the duration of the next fragment elapses.
+For example, if the fragments in the session are two seconds long,
+then a new fragment is added to the media playlist every two
+seconds. This mode is useful to be able to start playback from when
+an event is detected and continue live streaming media that has not
+yet been ingested as of the time of the session creation. This mode
+is also useful to stream previously archived media without being
+limited by the 1,000 fragment limit in the \code{ON_DEMAND} mode.
 \item \strong{\code{ON_DEMAND}} : For sessions of this type, the HLS media playlist
 contains all the fragments for the session, up to the number that is
 specified in \code{MaxMediaPlaylistFragmentResults}. The playlist must be
@@ -49,7 +61,7 @@ scrubber control for choosing the position in the playback window to
 display.
 }
 
-In both playback modes, if \code{FragmentSelectorType} is
+In all playback modes, if \code{FragmentSelectorType} is
 \code{PRODUCER_TIMESTAMP}, and if there are multiple fragments with the same
 start timestamp, the fragment that has the larger fragment number (that
 is, the newer fragment) is included in the HLS media playlist. The other
@@ -62,11 +74,12 @@ The default is \code{LIVE}.}
 \item{HLSFragmentSelector}{The time range of the requested fragment, and the source of the
 timestamps.
 
-This parameter is required if \code{PlaybackMode} is \code{ON_DEMAND}. This
-parameter is optional if \code{PlaybackMode} is \code{LIVE}. If \code{PlaybackMode} is
-\code{LIVE}, the \code{FragmentSelectorType} can be set, but the \code{TimestampRange}
-should not be set. If \code{PlaybackMode} is \code{ON_DEMAND}, both
-\code{FragmentSelectorType} and \code{TimestampRange} must be set.}
+This parameter is required if \code{PlaybackMode} is \code{ON_DEMAND} or
+\code{LIVE_REPLAY}. This parameter is optional if PlaybackMode is`` \code{LIVE}.
+If `PlaybackMode` is `LIVE`, the `FragmentSelectorType` can be set, but
+the `TimestampRange` should not be set. If `PlaybackMode` is `ON_DEMAND`
+or `LIVE_REPLAY`, both `FragmentSelectorType` and `TimestampRange` must
+be set.}
 
 \item{ContainerFormat}{Specifies which format should be used for packaging the media.
 Specifying the \code{FRAGMENTED_MP4} container format packages the media into
@@ -115,8 +128,8 @@ producer start timestamps.}
 be between 300 (5 minutes) and 43200 (12 hours).
 
 When a session expires, no new calls to \code{GetHLSMasterPlaylist},
-\code{GetHLSMediaPlaylist}, \code{GetMP4InitFragment}, or \code{GetMP4MediaFragment}
-can be made for that session.
+\code{GetHLSMediaPlaylist}, \code{GetMP4InitFragment}, \code{GetMP4MediaFragment}, or
+\code{GetTSFragment} can be made for that session.
 
 The default is 300 (5 minutes).}
 
@@ -134,8 +147,8 @@ it decreases the likelihood that rebuffering will occur during playback.
 We recommend that a live HLS media playlist have a minimum of 3
 fragments and a maximum of 10 fragments.
 
-The default is 5 fragments if \code{PlaybackMode} is \code{LIVE}, and 1,000 if
-\code{PlaybackMode} is \code{ON_DEMAND}.
+The default is 5 fragments if \code{PlaybackMode} is \code{LIVE} or \code{LIVE_REPLAY},
+and 1,000 if \code{PlaybackMode} is \code{ON_DEMAND}.
 
 The maximum value of 1,000 fragments corresponds to more than 16 minutes
 of video on streams with 1-second fragments, and more than 2 1/2 hours
@@ -146,27 +159,30 @@ Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then
 open the URL in a browser or media player to view the stream contents.
 }
 \details{
-You must specify either the \code{StreamName} or the \code{StreamARN}.
+Both the \code{StreamName} and the \code{StreamARN} parameters are optional, but
+you must specify either the \code{StreamName} or the \code{StreamARN} when
+invoking this API operation.
 
 An Amazon Kinesis video stream has the following requirements for
 providing data through HLS:
 \itemize{
-\item The media must contain h.264 encoded video and, optionally, AAC
-encoded audio. Specifically, the codec id of track 1 should be
-\code{V_MPEG/ISO/AVC}. Optionally, the codec id of track 2 should be
-\code{A_AAC}.
+\item The media must contain h.264 or h.265 encoded video and, optionally,
+AAC encoded audio. Specifically, the codec id of track 1 should be
+\code{V_MPEG/ISO/AVC} (for h.264) or \code{V_MPEG/ISO/HEVC} (for h.265).
+Optionally, the codec id of track 2 should be \code{A_AAC}.
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
-the Advanced Video Coding (AVC) for H.264 format (\href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}). For information
+the Advanced Video Coding (AVC) for H.264 format or HEVC for H.265
+format (\href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}). For information
 about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}).
 }
 
 Kinesis Video Streams HLS sessions contain fragments in the fragmented
-MPEG-4 form (also called fMP4 or CMAF), rather than the MPEG-2 form
-(also called TS chunks, which the HLS specification also supports). For
-more information about HLS fragment types, see the \href{https://tools.ietf.org/html/draft-pantos-http-live-streaming-23}{HLS specification}.
+MPEG-4 form (also called fMP4 or CMAF) or the MPEG-2 form (also called
+TS chunks, which the HLS specification also supports). For more
+information about HLS fragment types, see the \href{https://tools.ietf.org/html/draft-pantos-http-live-streaming-23}{HLS specification}.
 
 The following procedure shows how to use HLS with Kinesis Video Streams:
 \enumerate{
@@ -267,7 +283,7 @@ The following restrictions apply to HLS sessions:
 \item A streaming session URL should not be shared between players. The
 service might throttle a session if multiple media players are
 sharing it. For connection limits, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
-\item A Kinesis video stream can have a maximum of five active HLS
+\item A Kinesis video stream can have a maximum of ten active HLS
 streaming sessions. If a new session is created when the maximum
 number of sessions is already active, the oldest (earliest created)
 session is closed. The number of active \code{GetMedia} connections on a
@@ -275,6 +291,9 @@ Kinesis video stream does not count against this limit, and the
 number of active HLS sessions does not count against the active
 \code{GetMedia} connection limit.
 }
+
+The maximum limits for active HLS and MPEG-DASH streaming sessions
+are independent of each other.
 
 You can monitor the amount of data that the media player consumes by
 monitoring the \code{GetMP4MediaFragment.OutgoingBytes} Amazon CloudWatch
@@ -284,12 +303,32 @@ For pricing information, see \href{https://aws.amazon.com/kinesis/video-streams/
 and outgoing AWS data apply.
 
 For more information about HLS, see \href{https://developer.apple.com/streaming/}{HTTP Live Streaming} on the \href{https://developer.apple.com}{Apple Developer site}.
+
+If an error is thrown after invoking a Kinesis Video Streams archived
+media API, in addition to the HTTP status code and the response body, it
+includes the following pieces of information:
+\itemize{
+\item \code{x-amz-ErrorType} HTTP header -- contains a more specific error type
+in addition to what the HTTP status code provides.
+\item \code{x-amz-RequestId} HTTP header -- if you want to report an issue to
+AWS, the support team can better diagnose the problem if given the
+Request Id.
+}
+
+Both the HTTP status code and the ErrorType header can be utilized to
+make programmatic decisions about whether errors are retry-able and
+under what conditions, as well as provide information on what actions
+the client programmer might need to take in order to successfully try
+again.
+
+For more information, see the \strong{Errors} section at the bottom of this
+topic, as well as \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html}{Common Errors}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_hls_streaming_session_url(
   StreamName = "string",
   StreamARN = "string",
-  PlaybackMode = "LIVE"|"ON_DEMAND",
+  PlaybackMode = "LIVE"|"LIVE_REPLAY"|"ON_DEMAND",
   HLSFragmentSelector = list(
     FragmentSelectorType = "PRODUCER_TIMESTAMP"|"SERVER_TIMESTAMP",
     TimestampRange = list(

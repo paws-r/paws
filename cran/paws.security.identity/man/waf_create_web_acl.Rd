@@ -5,7 +5,7 @@
 \title{Creates a WebACL, which contains the Rules that identify the CloudFront
 web requests that you want to allow, block, or count}
 \usage{
-waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken)
+waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the WebACL. You can't change \code{Name}
@@ -23,6 +23,8 @@ the criteria specified in any of the \code{Rule} objects that are associated
 with the \code{WebACL}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+
+\item{Tags}{}
 }
 \description{
 Creates a \code{WebACL}, which contains the \code{Rules} that identify the
@@ -62,7 +64,13 @@ For more information about how to use the AWS WAF API, see the \href{https://doc
   DefaultAction = list(
     Type = "BLOCK"|"ALLOW"|"COUNT"
   ),
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

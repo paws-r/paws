@@ -49,6 +49,12 @@ Amazon pool of IPv6 addresses; you cannot specify custom IPv6 addresses.
       list(
         cidr = "string"
       )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
     )
   )
 )

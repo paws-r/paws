@@ -57,6 +57,9 @@ Amazon API Gateway V2
 \link[=apigatewayv2_get_routes]{get_routes} \tab Gets the Routes for an API \cr
 \link[=apigatewayv2_get_stage]{get_stage} \tab Gets a Stage \cr
 \link[=apigatewayv2_get_stages]{get_stages} \tab Gets the Stages for an API \cr
+\link[=apigatewayv2_get_tags]{get_tags} \tab Gets the Tags for an API \cr
+\link[=apigatewayv2_tag_resource]{tag_resource} \tab Tag an APIGW resource \cr
+\link[=apigatewayv2_untag_resource]{untag_resource} \tab Untag an APIGW resource \cr
 \link[=apigatewayv2_update_api]{update_api} \tab Updates an Api resource \cr
 \link[=apigatewayv2_update_api_mapping]{update_api_mapping} \tab The API mapping \cr
 \link[=apigatewayv2_update_authorizer]{update_authorizer} \tab Updates an Authorizer \cr

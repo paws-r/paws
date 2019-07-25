@@ -15,7 +15,8 @@ resource ID for your Amazon ECS tasks is affected. If
 \code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
 for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
 is specified, the ENI limit for your Amazon ECS container instances is
-affected.}
+affected. If \code{containerInsights} is specified, the default setting for
+CloudWatch Container Insights for your clusters is affected.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
 values are \code{enabled} and \code{disabled}.}
@@ -26,7 +27,7 @@ individual account setting has been specified.
 }
 \section{Request syntax}{
 \preformatted{svc$put_account_setting_default(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking",
+  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
   value = "string"
 )
 }

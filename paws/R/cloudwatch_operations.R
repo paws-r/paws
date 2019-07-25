@@ -41,6 +41,54 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 }
 .cloudwatch$operations$delete_alarms <- cloudwatch_delete_alarms
 
+#' Deletes the specified anomaly detection model from your account
+#'
+#' Deletes the specified anomaly detection model from your account.
+#'
+#' @usage
+#' cloudwatch_delete_anomaly_detector(Namespace, MetricName, Dimensions,
+#'   Stat)
+#'
+#' @param Namespace &#91;required&#93; The namespace associated with the anomaly detection model to delete.
+#' @param MetricName &#91;required&#93; The metric name associated with the anomaly detection model to delete.
+#' @param Dimensions The metric dimensions associated with the anomaly detection model to
+#' delete.
+#' @param Stat &#91;required&#93; The statistic associated with the anomaly detection model to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_anomaly_detector(
+#'   Namespace = "string",
+#'   MetricName = "string",
+#'   Dimensions = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Stat = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_delete_anomaly_detector
+cloudwatch_delete_anomaly_detector <- function(Namespace, MetricName, Dimensions = NULL, Stat) {
+  op <- new_operation(
+    name = "DeleteAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$delete_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat)
+  output <- .cloudwatch$delete_anomaly_detector_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$delete_anomaly_detector <- cloudwatch_delete_anomaly_detector
+
 #' Deletes all dashboards that you specify
 #'
 #' Deletes all dashboards that you specify. You may specify up to 100
@@ -244,6 +292,70 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
   return(response)
 }
 .cloudwatch$operations$describe_alarms_for_metric <- cloudwatch_describe_alarms_for_metric
+
+#' Lists the anomaly detection models that you have created in your account
+#'
+#' Lists the anomaly detection models that you have created in your
+#' account. You can list all models in your account or filter the results
+#' to only the models that are related to a certain namespace, metric name,
+#' or metric dimension.
+#'
+#' @usage
+#' cloudwatch_describe_anomaly_detectors(NextToken, MaxResults, Namespace,
+#'   MetricName, Dimensions)
+#'
+#' @param NextToken Use the token returned by the previous operation to request the next
+#' page of results.
+#' @param MaxResults The maximum number of results to return in one operation. The maximum
+#' value you can specify is 10.
+#' 
+#' To retrieve the remaining results, make another call with the returned
+#' `NextToken` value.
+#' @param Namespace Limits the results to only the anomaly detection models that are
+#' associated with the specified namespace.
+#' @param MetricName Limits the results to only the anomaly detection models that are
+#' associated with the specified metric name. If there are multiple metrics
+#' with this name in different namespaces that have anomaly detection
+#' models, they\'re all returned.
+#' @param Dimensions Limits the results to only the anomaly detection models that are
+#' associated with the specified metric dimensions. If there are multiple
+#' metrics that have these dimensions and have anomaly detection models
+#' associated, they\'re all returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_anomaly_detectors(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Namespace = "string",
+#'   MetricName = "string",
+#'   Dimensions = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_describe_anomaly_detectors
+cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults = NULL, Namespace = NULL, MetricName = NULL, Dimensions = NULL) {
+  op <- new_operation(
+    name = "DescribeAnomalyDetectors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$describe_anomaly_detectors_input(NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions)
+  output <- .cloudwatch$describe_anomaly_detectors_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$describe_anomaly_detectors <- cloudwatch_describe_anomaly_detectors
 
 #' Disables the actions for the specified alarms
 #'
@@ -916,6 +1028,78 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 }
 .cloudwatch$operations$list_tags_for_resource <- cloudwatch_list_tags_for_resource
 
+#' Creates an anomaly detection model for a CloudWatch metric
+#'
+#' Creates an anomaly detection model for a CloudWatch metric. You can use
+#' the model to display a band of expected normal values when the metric is
+#' graphed.
+#' 
+#' For more information, see [CloudWatch Anomaly
+#' Detection](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html).
+#'
+#' @usage
+#' cloudwatch_put_anomaly_detector(Namespace, MetricName, Dimensions, Stat,
+#'   Configuration)
+#'
+#' @param Namespace &#91;required&#93; The namespace of the metric to create the anomaly detection model for.
+#' @param MetricName &#91;required&#93; The name of the metric to create the anomaly detection model for.
+#' @param Dimensions The metric dimensions to create the anomaly detection model for.
+#' @param Stat &#91;required&#93; The statistic to use for the metric and the anomaly detection model.
+#' @param Configuration The configuration specifies details about how the anomaly detection
+#' model is to be trained, including time ranges to exclude when training
+#' and updating the model. You can specify as many as 10 time ranges.
+#' 
+#' The configuration can also include the time zone to use for the metric.
+#' 
+#' You can in
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_anomaly_detector(
+#'   Namespace = "string",
+#'   MetricName = "string",
+#'   Dimensions = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Stat = "string",
+#'   Configuration = list(
+#'     ExcludedTimeRanges = list(
+#'       list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     MetricTimezone = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_anomaly_detector
+cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = NULL, Stat, Configuration = NULL) {
+  op <- new_operation(
+    name = "PutAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$put_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, Configuration = Configuration)
+  output <- .cloudwatch$put_anomaly_detector_output()
+  svc <- .cloudwatch$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_anomaly_detector <- cloudwatch_put_anomaly_detector
+
 #' Creates a dashboard if it does not already exist, or updates an existing
 #' dashboard
 #'
@@ -923,8 +1107,7 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' dashboard. If you update a dashboard, the entire contents are replaced
 #' with what you specify here.
 #' 
-#' There is no limit to the number of dashboards in your account. All
-#' dashboards in your account are global, not region-specific.
+#' All dashboards in your account are global, not region-specific.
 #' 
 #' A simple way to create a dashboard using `PutDashboard` is to copy an
 #' existing dashboard. To copy an existing dashboard using the console, you
@@ -983,11 +1166,14 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 }
 .cloudwatch$operations$put_dashboard <- cloudwatch_put_dashboard
 
-#' Creates or updates an alarm and associates it with the specified metric
-#' or metric math expression
+#' Creates or updates an alarm and associates it with the specified metric,
+#' metric math expression, or anomaly detection model
 #'
-#' Creates or updates an alarm and associates it with the specified metric
-#' or metric math expression.
+#' Creates or updates an alarm and associates it with the specified metric,
+#' metric math expression, or anomaly detection model.
+#' 
+#' Alarms based on anomaly detection models cannot have Auto Scaling
+#' actions.
 #' 
 #' When this operation creates an alarm, the alarm state is immediately set
 #' to `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
@@ -1037,7 +1223,8 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'   OKActions, AlarmActions, InsufficientDataActions, MetricName, Namespace,
 #'   Statistic, ExtendedStatistic, Dimensions, Period, Unit,
 #'   EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
-#'   TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags)
+#'   TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags,
+#'   ThresholdMetricId)
 #'
 #' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within your AWS
 #' account.
@@ -1153,10 +1340,14 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' case, this value is the M. For more information, see [Evaluating an
 #' Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation)
 #' in the *Amazon CloudWatch User Guide*.
-#' @param Threshold &#91;required&#93; The value against which the specified statistic is compared.
+#' @param Threshold The value against which the specified statistic is compared.
 #' @param ComparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the specified statistic
 #' and threshold. The specified statistic value is used as the first
 #' operand.
+#' 
+#' The values `LessThanLowerOrGreaterThanUpperThreshold`,
+#' `LessThanLowerThreshold`, and `GreaterThanUpperThreshold` are used only
+#' for alarms based on anomaly detection models.
 #' @param TreatMissingData Sets how this alarm is to handle missing data points. If
 #' `TreatMissingData` is omitted, the default behavior of `missing` is
 #' used. For more information, see [Configuring How CloudWatch Alarms
@@ -1192,6 +1383,13 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values.
+#' @param ThresholdMetricId If this is an alarm based on an anomaly detection model, make this value
+#' match the ID of the `ANOMALY_DETECTION_BAND` function.
+#' 
+#' For an example of how to use this parameter, see the **Anomaly Detection
+#' Model Alarm** example on this page.
+#' 
+#' If your alarm uses this parameter, it cannot have Auto Scaling actions.
 #'
 #' @section Request syntax:
 #' ```
@@ -1223,7 +1421,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'   EvaluationPeriods = 123,
 #'   DatapointsToAlarm = 123,
 #'   Threshold = 123.0,
-#'   ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'   ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
 #'   TreatMissingData = "string",
 #'   EvaluateLowSampleCountPercentile = "string",
 #'   Metrics = list(
@@ -1254,21 +1452,22 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ThresholdMetricId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_alarm
-cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL) {
+cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL) {
   op <- new_operation(
     name = "PutMetricAlarm",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags)
+  input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId)
   output <- .cloudwatch$put_metric_alarm_output()
   svc <- .cloudwatch$service()
   request <- new_request(svc, op, input, output)

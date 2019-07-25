@@ -5,7 +5,8 @@
 \title{Generates a server-side embeddable URL and authorization code}
 \usage{
 quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
-  IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled)
+  IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
+  UserArn)
 }
 \arguments{
 \item{AwsAccountId}{[required] AWS account ID that contains the dashboard you are embedding.}
@@ -22,6 +23,17 @@ which enables the undo/redo button.}
 
 \item{ResetDisabled}{Remove the reset button on embedded dashboard. The default is FALSE,
 which allows the reset button.}
+
+\item{UserArn}{The Amazon QuickSight user's ARN, for use with \code{QUICKSIGHT} identity
+type. You can use this for any of the following:
+\itemize{
+\item Amazon QuickSight users in your account (readers, authors, or
+admins)
+\item AD users
+\item Invited non-federated users
+\item Federated IAM users
+\item Federated IAM role-based sessions
+}}
 }
 \description{
 Generates a server-side embeddable URL and authorization code. Before
@@ -56,7 +68,8 @@ Get the URL for the embedded dashboard
   IdentityType = "IAM"|"QUICKSIGHT",
   SessionLifetimeInMinutes = 123,
   UndoRedoDisabled = TRUE|FALSE,
-  ResetDisabled = TRUE|FALSE
+  ResetDisabled = TRUE|FALSE,
+  UserArn = "string"
 )
 }
 }

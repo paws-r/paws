@@ -6,7 +6,9 @@
 \usage{
 amplify_update_app(appId, name, description, platform,
   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
-  enableBasicAuth, basicAuthCredentials, customRules, buildSpec)
+  enableBasicAuth, basicAuthCredentials, customRules, buildSpec,
+  enableAutoBranchCreation, autoBranchCreationPatterns,
+  autoBranchCreationConfig)
 }
 \arguments{
 \item{appId}{[required] Unique Id for an Amplify App.}
@@ -30,6 +32,12 @@ amplify_update_app(appId, name, description, platform,
 \item{customRules}{Custom redirect / rewrite rules for an Amplify App.}
 
 \item{buildSpec}{BuildSpec for an Amplify App.}
+
+\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify App.}
+
+\item{autoBranchCreationPatterns}{Automated branch creation glob patterns for the Amplify App.}
+
+\item{autoBranchCreationConfig}{Automated branch creation config for the Amplify App.}
 }
 \description{
 Updates an existing Amplify App.
@@ -39,7 +47,7 @@ Updates an existing Amplify App.
   appId = "string",
   name = "string",
   description = "string",
-  platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+  platform = "WEB",
   iamServiceRoleArn = "string",
   environmentVariables = list(
     "string"
@@ -55,7 +63,22 @@ Updates an existing Amplify App.
       condition = "string"
     )
   ),
-  buildSpec = "string"
+  buildSpec = "string",
+  enableAutoBranchCreation = TRUE|FALSE,
+  autoBranchCreationPatterns = list(
+    "string"
+  ),
+  autoBranchCreationConfig = list(
+    stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+    framework = "string",
+    enableAutoBuild = TRUE|FALSE,
+    environmentVariables = list(
+      "string"
+    ),
+    basicAuthCredentials = "string",
+    enableBasicAuth = TRUE|FALSE,
+    buildSpec = "string"
+  )
 )
 }
 }

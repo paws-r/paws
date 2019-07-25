@@ -10,7 +10,7 @@ NULL
 #' access your content using a CloudFront URL instead of the Amazon S3 URL.
 #' For more information about how to use origin access identities, see
 #' [Serving Private Content through
-#' CloudFront](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+#' CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @usage
@@ -36,7 +36,7 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
   op <- new_operation(
     name = "CreateCloudFrontOriginAccessIdentity",
     http_method = "POST",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront",
     paginator = list()
   )
   input <- .cloudfront$create_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig)
@@ -59,16 +59,13 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 
 #' When you update a distribution, there are more required fields than when
 #' you create a distribution. When you update your distribution by using
-#' UpdateDistribution, follow the steps included in the documentation to
-#' get the current configuration and then make your updates. This helps to
-#' make sure that you include all of the required fields. To view a
-#' summary, see [Required Fields for Create Distribution and Update
-#' Distribution](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html),
+#' follow the steps included in the documentation to get the current
+#' configuration and then make your updates. This helps to make sure that
+#' you include all of the required fields. To view a summary, see [Required
+#' Fields for Create Distribution and Update
+#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
 #' in the *Amazon CloudFront Developer Guide*.
-#' 
-#' If you are using Adobe Flash Media Server\'s RTMP protocol, you set up a
-#' different kind of CloudFront distribution. For more information, see
-#' CreateStreamingDistribution.
 #'
 #' @usage
 #' cloudfront_create_distribution(DistributionConfig)
@@ -330,7 +327,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
   op <- new_operation(
     name = "CreateDistribution",
     http_method = "POST",
-    http_path = "/2018-11-05/distribution",
+    http_path = "/2019-03-26/distribution",
     paginator = list()
   )
   input <- .cloudfront$create_distribution_input(DistributionConfig = DistributionConfig)
@@ -616,7 +613,7 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
   op <- new_operation(
     name = "CreateDistributionWithTags",
     http_method = "POST",
-    http_path = "/2018-11-05/distribution?WithTags",
+    http_path = "/2019-03-26/distribution?WithTags",
     paginator = list()
   )
   input <- .cloudfront$create_distribution_with_tags_input(DistributionConfigWithTags = DistributionConfigWithTags)
@@ -680,7 +677,7 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
   op <- new_operation(
     name = "CreateFieldLevelEncryptionConfig",
     http_method = "POST",
-    http_path = "/2018-11-05/field-level-encryption",
+    http_path = "/2019-03-26/field-level-encryption",
     paginator = list()
   )
   input <- .cloudfront$create_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig)
@@ -735,7 +732,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
   op <- new_operation(
     name = "CreateFieldLevelEncryptionProfile",
     http_method = "POST",
-    http_path = "/2018-11-05/field-level-encryption-profile",
+    http_path = "/2019-03-26/field-level-encryption-profile",
     paginator = list()
   )
   input <- .cloudfront$create_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig)
@@ -780,7 +777,7 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
   op <- new_operation(
     name = "CreateInvalidation",
     http_method = "POST",
-    http_path = "/2018-11-05/distribution/{DistributionId}/invalidation",
+    http_path = "/2019-03-26/distribution/{DistributionId}/invalidation",
     paginator = list()
   )
   input <- .cloudfront$create_invalidation_input(DistributionId = DistributionId, InvalidationBatch = InvalidationBatch)
@@ -823,7 +820,7 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
   op <- new_operation(
     name = "CreatePublicKey",
     http_method = "POST",
-    http_path = "/2018-11-05/public-key",
+    http_path = "/2019-03-26/public-key",
     paginator = list()
   )
   input <- .cloudfront$create_public_key_input(PublicKeyConfig = PublicKeyConfig)
@@ -835,18 +832,18 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 }
 .cloudfront$operations$create_public_key <- cloudfront_create_public_key
 
-#' Creates a new RMTP distribution
+#' Creates a new RTMP distribution
 #'
-#' Creates a new RMTP distribution. An RTMP distribution is similar to a
+#' Creates a new RTMP distribution. An RTMP distribution is similar to a
 #' web distribution, but an RTMP distribution streams media files using the
 #' Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using
 #' HTTP.
 #' 
-#' To create a new web distribution, submit a `POST` request to the
-#' *CloudFront API version*/distribution resource. The request body must
-#' include a document with a *StreamingDistributionConfig* element. The
-#' response echoes the `StreamingDistributionConfig` element and returns
-#' other information about the RTMP distribution.
+#' To create a new distribution, submit a `POST` request to the *CloudFront
+#' API version*/distribution resource. The request body must include a
+#' document with a *StreamingDistributionConfig* element. The response
+#' echoes the `StreamingDistributionConfig` element and returns other
+#' information about the RTMP distribution.
 #' 
 #' To get the status of your request, use the *GET StreamingDistribution*
 #' API action. When the value of `Enabled` is `true` and the value of
@@ -854,7 +851,7 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #' usually deploys in less than 15 minutes.
 #' 
 #' For more information about web distributions, see [Working with RTMP
-#' Distributions](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html)
+#' Distributions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' Beginning with the 2012-05-05 version of the CloudFront API, we made
@@ -915,7 +912,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
   op <- new_operation(
     name = "CreateStreamingDistribution",
     http_method = "POST",
-    http_path = "/2018-11-05/streaming-distribution",
+    http_path = "/2019-03-26/streaming-distribution",
     paginator = list()
   )
   input <- .cloudfront$create_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig)
@@ -988,7 +985,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
   op <- new_operation(
     name = "CreateStreamingDistributionWithTags",
     http_method = "POST",
-    http_path = "/2018-11-05/streaming-distribution?WithTags",
+    http_path = "/2019-03-26/streaming-distribution?WithTags",
     paginator = list()
   )
   input <- .cloudfront$create_streaming_distribution_with_tags_input(StreamingDistributionConfigWithTags = StreamingDistributionConfigWithTags)
@@ -1026,7 +1023,7 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
   op <- new_operation(
     name = "DeleteCloudFrontOriginAccessIdentity",
     http_method = "DELETE",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_cloud_front_origin_access_identity_input(Id = Id, IfMatch = IfMatch)
@@ -1064,7 +1061,7 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteDistribution",
     http_method = "DELETE",
-    http_path = "/2018-11-05/distribution/{Id}",
+    http_path = "/2019-03-26/distribution/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_distribution_input(Id = Id, IfMatch = IfMatch)
@@ -1102,7 +1099,7 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
   op <- new_operation(
     name = "DeleteFieldLevelEncryptionConfig",
     http_method = "DELETE",
-    http_path = "/2018-11-05/field-level-encryption/{Id}",
+    http_path = "/2019-03-26/field-level-encryption/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_field_level_encryption_config_input(Id = Id, IfMatch = IfMatch)
@@ -1140,7 +1137,7 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
   op <- new_operation(
     name = "DeleteFieldLevelEncryptionProfile",
     http_method = "DELETE",
-    http_path = "/2018-11-05/field-level-encryption-profile/{Id}",
+    http_path = "/2019-03-26/field-level-encryption-profile/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_field_level_encryption_profile_input(Id = Id, IfMatch = IfMatch)
@@ -1178,7 +1175,7 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeletePublicKey",
     http_method = "DELETE",
-    http_path = "/2018-11-05/public-key/{Id}",
+    http_path = "/2019-03-26/public-key/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_public_key_input(Id = Id, IfMatch = IfMatch)
@@ -1230,7 +1227,7 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 #' 
 #' For information about deleting a distribution using the CloudFront
 #' console, see [Deleting a
-#' Distribution](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html)
+#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @usage
@@ -1255,7 +1252,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteStreamingDistribution",
     http_method = "DELETE",
-    http_path = "/2018-11-05/streaming-distribution/{Id}",
+    http_path = "/2019-03-26/streaming-distribution/{Id}",
     paginator = list()
   )
   input <- .cloudfront$delete_streaming_distribution_input(Id = Id, IfMatch = IfMatch)
@@ -1290,7 +1287,7 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
   op <- new_operation(
     name = "GetCloudFrontOriginAccessIdentity",
     http_method = "GET",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_cloud_front_origin_access_identity_input(Id = Id)
@@ -1325,7 +1322,7 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
   op <- new_operation(
     name = "GetCloudFrontOriginAccessIdentityConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}/config",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_cloud_front_origin_access_identity_config_input(Id = Id)
@@ -1344,7 +1341,8 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #' @usage
 #' cloudfront_get_distribution(Id)
 #'
-#' @param Id &#91;required&#93; The distribution\'s ID.
+#' @param Id &#91;required&#93; The distribution\'s ID. If the ID is empty, an empty distribution
+#' configuration is returned.
 #'
 #' @section Request syntax:
 #' ```
@@ -1360,7 +1358,7 @@ cloudfront_get_distribution <- function(Id) {
   op <- new_operation(
     name = "GetDistribution",
     http_method = "GET",
-    http_path = "/2018-11-05/distribution/{Id}",
+    http_path = "/2019-03-26/distribution/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_distribution_input(Id = Id)
@@ -1379,7 +1377,8 @@ cloudfront_get_distribution <- function(Id) {
 #' @usage
 #' cloudfront_get_distribution_config(Id)
 #'
-#' @param Id &#91;required&#93; The distribution\'s ID.
+#' @param Id &#91;required&#93; The distribution\'s ID. If the ID is empty, an empty distribution
+#' configuration is returned.
 #'
 #' @section Request syntax:
 #' ```
@@ -1395,7 +1394,7 @@ cloudfront_get_distribution_config <- function(Id) {
   op <- new_operation(
     name = "GetDistributionConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/distribution/{Id}/config",
+    http_path = "/2019-03-26/distribution/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_distribution_config_input(Id = Id)
@@ -1430,7 +1429,7 @@ cloudfront_get_field_level_encryption <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryption",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption/{Id}",
+    http_path = "/2019-03-26/field-level-encryption/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_field_level_encryption_input(Id = Id)
@@ -1465,7 +1464,7 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption/{Id}/config",
+    http_path = "/2019-03-26/field-level-encryption/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_field_level_encryption_config_input(Id = Id)
@@ -1500,7 +1499,7 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionProfile",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption-profile/{Id}",
+    http_path = "/2019-03-26/field-level-encryption-profile/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_field_level_encryption_profile_input(Id = Id)
@@ -1536,7 +1535,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionProfileConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption-profile/{Id}/config",
+    http_path = "/2019-03-26/field-level-encryption-profile/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_field_level_encryption_profile_config_input(Id = Id)
@@ -1574,7 +1573,7 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
   op <- new_operation(
     name = "GetInvalidation",
     http_method = "GET",
-    http_path = "/2018-11-05/distribution/{DistributionId}/invalidation/{Id}",
+    http_path = "/2019-03-26/distribution/{DistributionId}/invalidation/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_invalidation_input(DistributionId = DistributionId, Id = Id)
@@ -1609,7 +1608,7 @@ cloudfront_get_public_key <- function(Id) {
   op <- new_operation(
     name = "GetPublicKey",
     http_method = "GET",
-    http_path = "/2018-11-05/public-key/{Id}",
+    http_path = "/2019-03-26/public-key/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_public_key_input(Id = Id)
@@ -1644,7 +1643,7 @@ cloudfront_get_public_key_config <- function(Id) {
   op <- new_operation(
     name = "GetPublicKeyConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/public-key/{Id}/config",
+    http_path = "/2019-03-26/public-key/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_public_key_config_input(Id = Id)
@@ -1681,7 +1680,7 @@ cloudfront_get_streaming_distribution <- function(Id) {
   op <- new_operation(
     name = "GetStreamingDistribution",
     http_method = "GET",
-    http_path = "/2018-11-05/streaming-distribution/{Id}",
+    http_path = "/2019-03-26/streaming-distribution/{Id}",
     paginator = list()
   )
   input <- .cloudfront$get_streaming_distribution_input(Id = Id)
@@ -1716,7 +1715,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
   op <- new_operation(
     name = "GetStreamingDistributionConfig",
     http_method = "GET",
-    http_path = "/2018-11-05/streaming-distribution/{Id}/config",
+    http_path = "/2019-03-26/streaming-distribution/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$get_streaming_distribution_config_input(Id = Id)
@@ -1758,7 +1757,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
   op <- new_operation(
     name = "ListCloudFrontOriginAccessIdentities",
     http_method = "GET",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront",
     paginator = list()
   )
   input <- .cloudfront$list_cloud_front_origin_access_identities_input(Marker = Marker, MaxItems = MaxItems)
@@ -1770,9 +1769,9 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 }
 .cloudfront$operations$list_cloud_front_origin_access_identities <- cloudfront_list_cloud_front_origin_access_identities
 
-#' List distributions
+#' List CloudFront distributions
 #'
-#' List distributions.
+#' List CloudFront distributions.
 #'
 #' @usage
 #' cloudfront_list_distributions(Marker, MaxItems)
@@ -1799,7 +1798,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListDistributions",
     http_method = "GET",
-    http_path = "/2018-11-05/distribution",
+    http_path = "/2019-03-26/distribution",
     paginator = list()
   )
   input <- .cloudfront$list_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -1848,7 +1847,7 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
   op <- new_operation(
     name = "ListDistributionsByWebACLId",
     http_method = "GET",
-    http_path = "/2018-11-05/distributionsByWebACLId/{WebACLId}",
+    http_path = "/2019-03-26/distributionsByWebACLId/{WebACLId}",
     paginator = list()
   )
   input <- .cloudfront$list_distributions_by_web_acl_id_input(Marker = Marker, MaxItems = MaxItems, WebACLId = WebACLId)
@@ -1892,7 +1891,7 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
   op <- new_operation(
     name = "ListFieldLevelEncryptionConfigs",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption",
+    http_path = "/2019-03-26/field-level-encryption",
     paginator = list()
   )
   input <- .cloudfront$list_field_level_encryption_configs_input(Marker = Marker, MaxItems = MaxItems)
@@ -1936,7 +1935,7 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
   op <- new_operation(
     name = "ListFieldLevelEncryptionProfiles",
     http_method = "GET",
-    http_path = "/2018-11-05/field-level-encryption-profile",
+    http_path = "/2019-03-26/field-level-encryption-profile",
     paginator = list()
   )
   input <- .cloudfront$list_field_level_encryption_profiles_input(Marker = Marker, MaxItems = MaxItems)
@@ -1982,7 +1981,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
   op <- new_operation(
     name = "ListInvalidations",
     http_method = "GET",
-    http_path = "/2018-11-05/distribution/{DistributionId}/invalidation",
+    http_path = "/2019-03-26/distribution/{DistributionId}/invalidation",
     paginator = list()
   )
   input <- .cloudfront$list_invalidations_input(DistributionId = DistributionId, Marker = Marker, MaxItems = MaxItems)
@@ -2024,7 +2023,7 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPublicKeys",
     http_method = "GET",
-    http_path = "/2018-11-05/public-key",
+    http_path = "/2019-03-26/public-key",
     paginator = list()
   )
   input <- .cloudfront$list_public_keys_input(Marker = Marker, MaxItems = MaxItems)
@@ -2061,7 +2060,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
   op <- new_operation(
     name = "ListStreamingDistributions",
     http_method = "GET",
-    http_path = "/2018-11-05/streaming-distribution",
+    http_path = "/2019-03-26/streaming-distribution",
     paginator = list()
   )
   input <- .cloudfront$list_streaming_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -2096,7 +2095,7 @@ cloudfront_list_tags_for_resource <- function(Resource) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "GET",
-    http_path = "/2018-11-05/tagging",
+    http_path = "/2019-03-26/tagging",
     paginator = list()
   )
   input <- .cloudfront$list_tags_for_resource_input(Resource = Resource)
@@ -2140,7 +2139,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
-    http_path = "/2018-11-05/tagging?Operation=Tag",
+    http_path = "/2019-03-26/tagging?Operation=Tag",
     paginator = list()
   )
   input <- .cloudfront$tag_resource_input(Resource = Resource, Tags = Tags)
@@ -2181,7 +2180,7 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "POST",
-    http_path = "/2018-11-05/tagging?Operation=Untag",
+    http_path = "/2019-03-26/tagging?Operation=Untag",
     paginator = list()
   )
   input <- .cloudfront$untag_resource_input(Resource = Resource, TagKeys = TagKeys)
@@ -2225,7 +2224,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
   op <- new_operation(
     name = "UpdateCloudFrontOriginAccessIdentity",
     http_method = "PUT",
-    http_path = "/2018-11-05/origin-access-identity/cloudfront/{Id}/config",
+    http_path = "/2019-03-26/origin-access-identity/cloudfront/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig, Id = Id, IfMatch = IfMatch)
@@ -2247,7 +2246,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' and then make your updates, to make sure that you include all of the
 #' required fields. To view a summary, see [Required Fields for Create
 #' Distribution and Update
-#' Distribution](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
+#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' The update process includes getting the current distribution
@@ -2257,13 +2256,15 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 
 #' For information about updating a distribution using the CloudFront
 #' console instead, see [Creating a
-#' Distribution](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
+#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' **To update a web distribution using the CloudFront API**
 #' 
-#' 1.  Submit a GetDistributionConfig request to get the current
-#'     configuration and an `Etag` header for the distribution.
+#' 1.  Submit a
+#'     [GetDistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html)
+#'     request to get the current configuration and an `Etag` header for
+#'     the distribution.
 #' 
 #'     If you update the distribution again, you must get a new `Etag`
 #'     header.
@@ -2305,9 +2306,10 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 4.  Review the response to the `UpdateDistribution` request to confirm
 #'     that the configuration was successfully updated.
 #' 
-#' 5.  Optional: Submit a GetDistribution request to confirm that your
-#'     changes have propagated. When propagation is complete, the value of
-#'     `Status` is `Deployed`.
+#' 5.  Optional: Submit a
+#'     [GetDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)
+#'     request to confirm that your changes have propagated. When
+#'     propagation is complete, the value of `Status` is `Deployed`.
 #'
 #' @usage
 #' cloudfront_update_distribution(DistributionConfig, Id, IfMatch)
@@ -2574,7 +2576,7 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
   op <- new_operation(
     name = "UpdateDistribution",
     http_method = "PUT",
-    http_path = "/2018-11-05/distribution/{Id}/config",
+    http_path = "/2019-03-26/distribution/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_distribution_input(DistributionConfig = DistributionConfig, Id = Id, IfMatch = IfMatch)
@@ -2643,7 +2645,7 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
   op <- new_operation(
     name = "UpdateFieldLevelEncryptionConfig",
     http_method = "PUT",
-    http_path = "/2018-11-05/field-level-encryption/{Id}/config",
+    http_path = "/2019-03-26/field-level-encryption/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig, Id = Id, IfMatch = IfMatch)
@@ -2703,7 +2705,7 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
   op <- new_operation(
     name = "UpdateFieldLevelEncryptionProfile",
     http_method = "PUT",
-    http_path = "/2018-11-05/field-level-encryption-profile/{Id}/config",
+    http_path = "/2019-03-26/field-level-encryption-profile/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig, Id = Id, IfMatch = IfMatch)
@@ -2749,7 +2751,7 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdatePublicKey",
     http_method = "PUT",
-    http_path = "/2018-11-05/public-key/{Id}/config",
+    http_path = "/2019-03-26/public-key/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_public_key_input(PublicKeyConfig = PublicKeyConfig, Id = Id, IfMatch = IfMatch)
@@ -2817,7 +2819,7 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
   op <- new_operation(
     name = "UpdateStreamingDistribution",
     http_method = "PUT",
-    http_path = "/2018-11-05/streaming-distribution/{Id}/config",
+    http_path = "/2019-03-26/streaming-distribution/{Id}/config",
     paginator = list()
   )
   input <- .cloudfront$update_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig, Id = Id, IfMatch = IfMatch)

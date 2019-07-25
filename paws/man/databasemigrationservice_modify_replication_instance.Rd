@@ -44,19 +44,19 @@ Valid Days: Mon \| Tue \| Wed \| Thu \| Fri \| Sat \| Sun
 
 Constraints: Must be at least 30 minutes}
 
-\item{MultiAZ}{Specifies if the replication instance is a Multi-AZ deployment. You
+\item{MultiAZ}{Specifies whether the replication instance is a Multi-AZ deployment. You
 cannot set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
 \item{EngineVersion}{The engine version number of the replication instance.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
-parameter does not result in an outage and the change is asynchronously
+parameter does not result in an outage, and the change is asynchronously
 applied as soon as possible.
 
-Constraints: This parameter must be set to true when specifying a value
-for the \code{EngineVersion} parameter that is a different major version than
-the replication instance's current version.}
+This parameter must be set to \code{true} when specifying a value for the
+\code{EngineVersion} parameter that is a different major version than the
+replication instance's current version.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades will be applied automatically to
 the replication instance during the maintenance window. Changing this

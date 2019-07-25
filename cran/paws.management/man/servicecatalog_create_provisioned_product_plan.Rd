@@ -42,7 +42,11 @@ provisioning the product.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 
-\item{Tags}{One or more tags.}
+\item{Tags}{One or more tags.
+
+If the plan is for an existing provisioned product, the product must
+have a \code{RESOURCE_UPDATE} constraint with
+\code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
 \description{
 Creates a plan. A plan includes the list of resources to be created

@@ -2,24 +2,23 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_enabled_standards}
 \alias{securityhub_get_enabled_standards}
-\title{Lists and describes enabled standards}
+\title{Returns a list of the standards that are currently enabled}
 \usage{
 securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
   MaxResults)
 }
 \arguments{
-\item{StandardsSubscriptionArns}{The list of standards subscription ARNS that you want to list and
-describe.}
+\item{StandardsSubscriptionArns}{A list of the standards subscription ARNs for the standards to retrieve.}
 
 \item{NextToken}{Paginates results. On your first call to the \code{GetEnabledStandards}
 operation, set the value of this parameter to \code{NULL}. For subsequent
 calls to the operation, fill \code{nextToken} in the request with the value
 of \code{nextToken} from the previous response to continue listing data.}
 
-\item{MaxResults}{The maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of results to return in the response.}
 }
 \description{
-Lists and describes enabled standards.
+Returns a list of the standards that are currently enabled.
 }
 \section{Request syntax}{
 \preformatted{svc$get_enabled_standards(

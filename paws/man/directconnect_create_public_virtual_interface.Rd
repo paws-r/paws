@@ -37,6 +37,12 @@ auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
       list(
         cidr = "string"
       )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
     )
   )
 )

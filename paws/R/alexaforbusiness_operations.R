@@ -433,14 +433,19 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #'
 #' @usage
 #' alexaforbusiness_create_contact(DisplayName, FirstName, LastName,
-#'   PhoneNumber, ClientRequestToken)
+#'   PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken)
 #'
 #' @param DisplayName The name of the contact to display on the console.
 #' @param FirstName &#91;required&#93; The first name of the contact that is used to call the contact on the
 #' device.
 #' @param LastName The last name of the contact that is used to call the contact on the
 #' device.
-#' @param PhoneNumber The phone number of the contact in E.164 format.
+#' @param PhoneNumber The phone number of the contact in E.164 format. The phone number type
+#' defaults to WORK. You can specify PhoneNumber or PhoneNumbers. We
+#' recommend that you use PhoneNumbers, which lets you specify the phone
+#' number type and multiple numbers.
+#' @param PhoneNumbers The list of phone numbers for the contact.
+#' @param SipAddresses The list of SIP addresses for the contact.
 #' @param ClientRequestToken A unique, user-specified identifier for this request that ensures
 #' idempotency.
 #'
@@ -451,6 +456,18 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #'   FirstName = "string",
 #'   LastName = "string",
 #'   PhoneNumber = "string",
+#'   PhoneNumbers = list(
+#'     list(
+#'       Number = "string",
+#'       Type = "MOBILE"|"WORK"|"HOME"
+#'     )
+#'   ),
+#'   SipAddresses = list(
+#'     list(
+#'       Uri = "string",
+#'       Type = "WORK"
+#'     )
+#'   ),
 #'   ClientRequestToken = "string"
 #' )
 #' ```
@@ -458,14 +475,14 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_create_contact
-alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastName = NULL, PhoneNumber = NULL, ClientRequestToken = NULL) {
+alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastName = NULL, PhoneNumber = NULL, PhoneNumbers = NULL, SipAddresses = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$create_contact_input(DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber, ClientRequestToken = ClientRequestToken)
+  input <- .alexaforbusiness$create_contact_input(DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber, PhoneNumbers = PhoneNumbers, SipAddresses = SipAddresses, ClientRequestToken = ClientRequestToken)
   output <- .alexaforbusiness$create_contact_output()
   svc <- .alexaforbusiness$service()
   request <- new_request(svc, op, input, output)
@@ -959,8 +976,13 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 
 #' When this action is called for a specified shared device, it allows
 #' authorized users to delete the device's entire previous history of voice
-#' input data
+#' input data and associated response data
 #'
+#' When this action is called for a specified shared device, it allows
+#' authorized users to delete the device\'s entire previous history of
+#' voice input data and associated response data. This action can be called
+#' once every 24 hours for a specific shared device.
+#' 
 #' When this action is called for a specified shared device, it allows
 #' authorized users to delete the device\'s entire previous history of
 #' voice input data. This action can be called once every 24 hours for a
@@ -3329,7 +3351,7 @@ alexaforbusiness_send_announcement <- function(RoomFilters, Content, TimeToLiveI
 #' Sends an enrollment invitation email with a URL to a user
 #'
 #' Sends an enrollment invitation email with a URL to a user. The URL is
-#' valid for 72 hours or until you call this operation again, whichever
+#' valid for 30 days or until you call this operation again, whichever
 #' comes first.
 #'
 #' @usage
@@ -3691,13 +3713,18 @@ alexaforbusiness_update_conference_provider <- function(ConferenceProviderArn, C
 #'
 #' @usage
 #' alexaforbusiness_update_contact(ContactArn, DisplayName, FirstName,
-#'   LastName, PhoneNumber)
+#'   LastName, PhoneNumber, PhoneNumbers, SipAddresses)
 #'
 #' @param ContactArn &#91;required&#93; The ARN of the contact to update.
 #' @param DisplayName The updated display name of the contact.
 #' @param FirstName The updated first name of the contact.
 #' @param LastName The updated last name of the contact.
-#' @param PhoneNumber The updated phone number of the contact.
+#' @param PhoneNumber The updated phone number of the contact. The phone number type defaults
+#' to WORK. You can either specify PhoneNumber or PhoneNumbers. We
+#' recommend that you use PhoneNumbers, which lets you specify the phone
+#' number type and multiple numbers.
+#' @param PhoneNumbers The list of phone numbers for the contact.
+#' @param SipAddresses The list of SIP addresses for the contact.
 #'
 #' @section Request syntax:
 #' ```
@@ -3706,21 +3733,33 @@ alexaforbusiness_update_conference_provider <- function(ConferenceProviderArn, C
 #'   DisplayName = "string",
 #'   FirstName = "string",
 #'   LastName = "string",
-#'   PhoneNumber = "string"
+#'   PhoneNumber = "string",
+#'   PhoneNumbers = list(
+#'     list(
+#'       Number = "string",
+#'       Type = "MOBILE"|"WORK"|"HOME"
+#'     )
+#'   ),
+#'   SipAddresses = list(
+#'     list(
+#'       Uri = "string",
+#'       Type = "WORK"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname alexaforbusiness_update_contact
-alexaforbusiness_update_contact <- function(ContactArn, DisplayName = NULL, FirstName = NULL, LastName = NULL, PhoneNumber = NULL) {
+alexaforbusiness_update_contact <- function(ContactArn, DisplayName = NULL, FirstName = NULL, LastName = NULL, PhoneNumber = NULL, PhoneNumbers = NULL, SipAddresses = NULL) {
   op <- new_operation(
     name = "UpdateContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .alexaforbusiness$update_contact_input(ContactArn = ContactArn, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber)
+  input <- .alexaforbusiness$update_contact_input(ContactArn = ContactArn, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, PhoneNumber = PhoneNumber, PhoneNumbers = PhoneNumbers, SipAddresses = SipAddresses)
   output <- .alexaforbusiness$update_contact_output()
   svc <- .alexaforbusiness$service()
   request <- new_request(svc, op, input, output)

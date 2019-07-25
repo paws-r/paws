@@ -8,7 +8,7 @@ neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  DBClusterParameterGroupName)
+  EnableCloudwatchLogsExports, DBClusterParameterGroupName)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -20,8 +20,17 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens
 }}
 
-\item{RestoreType}{The type of restore to be performed. The only type of restore currently
-supported is \code{full-copy} (the default).}
+\item{RestoreType}{The type of restore to be performed. You can specify one of the
+following values:
+\itemize{
+\item \code{full-copy} - The new DB cluster is restored as a full copy of the
+source DB cluster.
+\item \code{copy-on-write} - The new DB cluster is restored as a clone of the
+source DB cluster.
+}
+
+If you don't specify a \code{RestoreType} value, then the new DB cluster is
+restored as a full copy of the source DB cluster.}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
 
@@ -105,6 +114,9 @@ accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
 
+\item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to CloudWatch
+Logs.}
+
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the new DB
 cluster.
 
@@ -153,6 +165,9 @@ completed and the DB cluster is available.
   ),
   KmsKeyId = "string",
   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
   DBClusterParameterGroupName = "string"
 )
 }
