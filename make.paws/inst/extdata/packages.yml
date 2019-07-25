@@ -3,6 +3,7 @@
   services:
     - batch
     - ec2
+    - ec2instanceconnect
     - ecr
     - ecs
     - eks
@@ -123,6 +124,7 @@
 - name: management
   services:
     - applicationautoscaling
+    - applicationinsights
     - autoscaling
     - autoscalingplans
     - cloudformation
@@ -140,6 +142,7 @@
     - resourcegroups
     - resourcegroupstaggingapi
     - servicecatalog
+    - servicequotas
     - ssm
     - support
   title: Amazon Web Services Management & Governance APIs
@@ -174,6 +177,9 @@
     - lexmodelbuildingservice
     - lexruntimeservice
     - machinelearning
+    - personalize
+    - personalizeevents
+    - personalizeruntime
     - polly
     - rekognition
     - sagemaker
@@ -260,6 +266,7 @@
 
 - name: application.integration
   services:
+    - eventbridge
     - mq
     - sfn
     - sns

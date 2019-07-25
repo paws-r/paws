@@ -3,7 +3,7 @@
 # Pandoc will occasionally fail with errors like `pandoc.exe: Cannot decode
 # byte '\x97': Data.Text.Internal.Encoding.decodeUtf8: Invalid UTF-8 stream`.
 write_utf8 <- function(x, file) {
-  writeLines(rlang::as_utf8_string(x), con = file, useBytes = TRUE)
+  writeLines(rlang::as_utf8_character(x), con = file, useBytes = TRUE)
 }
 
 # Convert HTML to other formats using Pandoc.
