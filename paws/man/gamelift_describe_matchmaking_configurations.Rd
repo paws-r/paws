@@ -23,7 +23,7 @@ Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
 \description{
-Retrieves the details of FlexMatch matchmaking configurations. with this
+Retrieves the details of FlexMatch matchmaking configurations. With this
 operation, you have the following options: (1) retrieve all existing
 configurations, (2) provide the names of one or more configurations to
 retrieve, or (3) retrieve all configurations that use a specified rule
@@ -33,6 +33,11 @@ configuration is returned for each requested name. When specifying a
 list of names, only configurations that currently exist are returned.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html}{Setting Up FlexMatch Matchmakers}
+
+\strong{Related operations}
 \itemize{
 \item CreateMatchmakingConfiguration
 \item DescribeMatchmakingConfigurations

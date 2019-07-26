@@ -129,7 +129,7 @@ NULL
 
 .acmpca$issue_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Csr = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Value = structure(logical(0), tags = list(box = TRUE, type = "long")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CertificateAuthorityArn = structure(logical(0), tags = list(type = "string")), Csr = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), Validity = structure(list(Value = structure(logical(0), tags = list(box = TRUE, type = "long")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -14,16 +14,25 @@ autoscaling_update_auto_scaling_group(AutoScalingGroupName,
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LaunchConfigurationName}{The name of the launch configuration. If you specify this parameter, you
-can't specify a launch template or a mixed instances policy.}
+\item{LaunchConfigurationName}{The name of the launch configuration. If you specify
+\code{LaunchConfigurationName} in your update request, you can't specify
+\code{LaunchTemplate} or \code{MixedInstancesPolicy}.
+
+To update an Auto Scaling group with a launch configuration with
+\code{InstanceMonitoring} set to \code{false}, you must first disable the
+collection of group metrics. Otherwise, you get an error. If you have
+previously enabled the collection of group metrics, you can disable it
+using DisableMetricsCollection.}
 
 \item{LaunchTemplate}{The launch template and version to use to specify the updates. If you
-specify this parameter, you can't specify a launch configuration or a
-mixed instances policy.}
+specify \code{LaunchTemplate} in your update request, you can't specify
+\code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.}
 
-\item{MixedInstancesPolicy}{The mixed instances policy to use to specify the updates. If you specify
-this parameter, you can't specify a launch configuration or a launch
-template.
+\item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy.
+
+In your call to \code{UpdateAutoScalingGroup}, you can make changes to the
+policy that is specified. All optional parameters are left unchanged if
+not specified.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
@@ -38,8 +47,12 @@ the group and less than or equal to the maximum size of the group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is \code{300}.
+This cooldown period is not used when a scaling-specific cooldown is
+specified.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+Cooldown periods are not supported for target tracking scaling policies,
+step scaling policies, or scheduled scaling. For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group.}
@@ -65,7 +78,7 @@ single Availability Zone. You cannot specify multiple Availability Zones
 and a placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
-\item{VPCZoneIdentifier}{A comma-separated list of subnet IDs, if you are launching into a VPC.
+\item{VPCZoneIdentifier}{A comma-separated list of subnet IDs for virtual private cloud (VPC).
 
 If you specify \code{VPCZoneIdentifier} with \code{AvailabilityZones}, the subnets
 that you specify for this parameter must reside in those Availability
@@ -94,28 +107,47 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 Updates the configuration for the specified Auto Scaling group.
 }
 \details{
-The new settings take effect on any scaling activities after this call
-returns. Scaling activities that are currently in progress aren't
-affected.
+To update an Auto Scaling group, specify the name of the group and the
+parameter that you want to change. Any parameters that you don't
+specify are not changed by this update request. The new settings take
+effect on any scaling activities after this call returns. Scaling
+activities that are currently in progress aren't affected.
 
-To update an Auto Scaling group with a launch configuration with
-\code{InstanceMonitoring} set to \code{false}, you must first disable the
-collection of group metrics. Otherwise, you get an error. If you have
-previously enabled the collection of group metrics, you can disable it
-using DisableMetricsCollection.
+If you associate a new launch configuration or template with an Auto
+Scaling group, all new instances will get the updated configuration, but
+existing instances continue to run with the configuration that they were
+originally launched with. When you update a group to specify a mixed
+instances policy instead of a launch configuration or template, existing
+instances may be replaced to match the new purchasing options that you
+specified in the policy. For example, if the group currently has 100\%
+On-Demand capacity and the policy specifies 50\% Spot capacity, this
+means that half of your instances will be gradually terminated and
+relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
+Scaling launches new instances before terminating the old ones, so that
+updating your group does not compromise the performance or availability
+of your application.
 
-Note the following:
+Note the following about changing \code{DesiredCapacity}, \code{MaxSize}, or
+\code{MinSize}:
 \itemize{
+\item If a scale-in event occurs as a result of a new \code{DesiredCapacity}
+value that is lower than the current size of the group, the Auto
+Scaling group uses its termination policy to determine which
+instances to terminate.
 \item If you specify a new value for \code{MinSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MinSize} is larger than the
-current size of the group, we implicitly call SetDesiredCapacity to
-set the size of the group to the new value of \code{MinSize}.
+current size of the group, this sets the group's \code{DesiredCapacity}
+to the new \code{MinSize} value.
 \item If you specify a new value for \code{MaxSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MaxSize} is smaller than the
-current size of the group, we implicitly call SetDesiredCapacity to
-set the size of the group to the new value of \code{MaxSize}.
-\item All other optional parameters are left unchanged if not specified.
+current size of the group, this sets the group's \code{DesiredCapacity}
+to the new \code{MaxSize} value.
 }
+
+To see which parameters have been set, use DescribeAutoScalingGroups.
+You can also view the scaling policies for an Auto Scaling group using
+DescribePolicies. If the group has scaling policies, you can update them
+using PutScalingPolicy.
 }
 \section{Request syntax}{
 \preformatted{svc$update_auto_scaling_group(

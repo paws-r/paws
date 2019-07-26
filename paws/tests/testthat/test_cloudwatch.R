@@ -10,6 +10,14 @@ test_that("describe_alarms", {
   expect_error(svc$describe_alarms(), NA)
 })
 
+test_that("describe_anomaly_detectors", {
+  expect_error(svc$describe_anomaly_detectors(), NA)
+})
+
+test_that("describe_anomaly_detectors", {
+  expect_error(svc$describe_anomaly_detectors(MaxResults = 20), NA)
+})
+
 test_that("list_dashboards", {
   expect_error(svc$list_dashboards(), NA)
 })

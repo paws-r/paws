@@ -10,7 +10,8 @@ neptune_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
-  PreSignedUrl, EnableIAMDatabaseAuthentication)
+  PreSignedUrl, EnableIAMDatabaseAuthentication,
+  EnableCloudwatchLogsExports)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be
@@ -168,6 +169,9 @@ that AWS Region.}
 accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
+
+\item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
+CloudWatch Logs.}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.
@@ -209,7 +213,10 @@ instance.
   StorageEncrypted = TRUE|FALSE,
   KmsKeyId = "string",
   PreSignedUrl = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE
+  EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  )
 )
 }
 }

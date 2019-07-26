@@ -91,9 +91,9 @@ content type defined, unmapped content types will be rejected with
 the same 415 response.
 }}
 
-\item{cacheNamespace}{Specifies a put integration input's cache namespace.}
+\item{cacheNamespace}{A list of request parameters whose values are to be cached.}
 
-\item{cacheKeyParameters}{Specifies a put integration input's cache key parameters.}
+\item{cacheKeyParameters}{An API-specific tag group of related cached parameters.}
 
 \item{contentHandling}{Specifies how to handle request payload content type conversions.
 Supported values are \code{CONVERT_TO_BINARY} and \code{CONVERT_TO_TEXT}, with the
@@ -107,7 +107,7 @@ a Base64-encoded string.
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
-modification, provided that the \code{passthroughBehaviors} is configured to
+modification, provided that the \code{passthroughBehavior} is configured to
 support payload pass-through.}
 
 \item{timeoutInMillis}{Custom timeout between 50 and 29,000 milliseconds. The default value is

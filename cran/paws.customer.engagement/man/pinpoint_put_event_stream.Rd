@@ -2,17 +2,20 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_put_event_stream}
 \alias{pinpoint_put_event_stream}
-\title{Use to create or update the event stream for an app}
+\title{Creates a new event stream for an application or updates the settings of
+an existing event stream for an application}
 \usage{
 pinpoint_put_event_stream(ApplicationId, WriteEventStream)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteEventStream}{[required]}
 }
 \description{
-Use to create or update the event stream for an app.
+Creates a new event stream for an application or updates the settings of
+an existing event stream for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$put_event_stream(

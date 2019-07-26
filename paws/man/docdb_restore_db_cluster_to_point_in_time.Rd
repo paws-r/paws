@@ -7,7 +7,7 @@
 docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
   SourceDBClusterIdentifier, RestoreToTime, UseLatestRestorableTime, Port,
   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-  EnableCloudwatchLogsExports)
+  EnableCloudwatchLogsExports, DeletionProtection)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -97,6 +97,11 @@ then the restore request is rejected.}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that must be enabled for exporting to Amazon
 CloudWatch Logs.}
+
+\item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
+is enabled, the cluster cannot be deleted unless it is modified and
+\code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
+from being accidentally deleted.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
@@ -128,7 +133,8 @@ security group.
   KmsKeyId = "string",
   EnableCloudwatchLogsExports = list(
     "string"
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

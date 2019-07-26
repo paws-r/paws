@@ -34,18 +34,18 @@ complete registration operation includes two tasks: installing the AWS
 OpsWorks Stacks agent on the instance, and registering the instance with
 the stack. \code{RegisterInstance} handles only the second step. You should
 instead use the AWS CLI \code{register} command, which performs the entire
-registration operation. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html}{Registering an Instance with an AWS OpsWorks Stacks Stack}.
+registration operation. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html}{Registering an Instance with an AWS OpsWorks Stacks Stack}.
 
 Registered instances have the same requirements as instances that are
 created by using the CreateInstance API. For example, registered
 instances must be running a supported Linux-based operating system, and
 they must have a supported instance type. For more information about
-requirements for instances that you want to register, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html}{Preparing the Instance}.
+requirements for instances that you want to register, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html}{Preparing the Instance}.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$register_instance(

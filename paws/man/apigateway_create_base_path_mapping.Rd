@@ -12,13 +12,13 @@ apigateway_create_base_path_mapping(domainName, basePath, restApiId,
 
 \item{basePath}{The base path name that callers of the API must provide as part of the
 URL after the domain name. This value must be unique for all of the
-mappings across a single API. Leave this blank if you do not want
+mappings across a single API. Specify '(none)' if you do not want
 callers to specify a base path name after the domain name.}
 
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{stage}{The name of the API's stage that you want to use for this mapping.
-Leave this blank if you do not want callers to explicitly specify the
+Specify '(none)' if you do not want callers to explicitly specify the
 stage name after any base path name.}
 }
 \description{

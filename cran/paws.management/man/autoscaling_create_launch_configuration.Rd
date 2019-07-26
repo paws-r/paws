@@ -12,8 +12,8 @@ autoscaling_create_launch_configuration(LaunchConfigurationName,
   PlacementTenancy)
 }
 \arguments{
-\item{LaunchConfigurationName}{[required] The name of the launch configuration. This name must be unique within
-the scope of your AWS account.}
+\item{LaunchConfigurationName}{[required] The name of the launch configuration. This name must be unique per
+Region per account.}
 
 \item{ImageId}{The ID of the Amazon Machine Image (AMI) to use to launch your EC2
 instances.
@@ -61,21 +61,21 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 new launch configuration derives attributes from the instance, except
 for the block device mapping.
 
-If you do not specify \code{InstanceId}, you must specify both \code{ImageId} and
-\code{InstanceType}.
-
 To create a launch configuration with a block device mapping or override
 any other instance attributes, specify them as part of the same request.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html}{Create a Launch Configuration Using an EC2 Instance}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+If you do not specify \code{InstanceId}, you must specify both \code{ImageId} and
+\code{InstanceType}.}
 
 \item{InstanceType}{The instance type of the EC2 instance.
 
-If you do not specify \code{InstanceId}, you must specify \code{InstanceType}.
-
 For information about available instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes}{Available Instance Types}
-in the \emph{Amazon EC2 User Guide for Linux Instances.}}
+in the \emph{Amazon EC2 User Guide for Linux Instances.}
+
+If you do not specify \code{InstanceId}, you must specify \code{InstanceType}.}
 
 \item{KernelId}{The ID of the kernel associated with the AMI.}
 
@@ -101,7 +101,7 @@ EC2 instances launched with an IAM role automatically have AWS security
 credentials available. You can use IAM roles with Amazon EC2 Auto
 Scaling to automatically enable applications running on your EC2
 instances to securely access other AWS resources. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{Use an IAM Role for Applications That Run on Amazon EC2 Instances}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{IAM Role for Applications That Run on Amazon EC2 Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. By
@@ -131,10 +131,10 @@ To launch Dedicated Instances into a shared tenancy VPC (a VPC with the
 instance placement tenancy attribute set to \code{default}), you must set the
 value of this parameter to \code{dedicated}.
 
-If you specify this parameter, be sure to specify at least one subnet
-when you create your group.
+If you specify \code{PlacementTenancy}, be sure to specify at least one
+subnet when you create your group.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy}{Instance Placement Tenancy}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Valid values: \code{default} \| \code{dedicated}}

@@ -81,10 +81,13 @@ AWS WAF features and an overview of how to use the AWS WAF API, see the
 \link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets} \tab Returns an array of SizeConstraintSetSummary objects \cr
 \link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab Returns an array of SqlInjectionMatchSet objects \cr
 \link[=wafregional_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab Returns an array of RuleGroup objects that you are subscribed to \cr
+\link[=wafregional_list_tags_for_resource]{list_tags_for_resource} \tab List tags for resource \cr
 \link[=wafregional_list_web_ac_ls]{list_web_ac_ls} \tab Returns an array of WebACLSummary objects in the response \cr
 \link[=wafregional_list_xss_match_sets]{list_xss_match_sets} \tab Returns an array of XssMatchSet objects \cr
 \link[=wafregional_put_logging_configuration]{put_logging_configuration} \tab Associates a LoggingConfiguration with a specified web ACL \cr
 \link[=wafregional_put_permission_policy]{put_permission_policy} \tab Attaches a IAM policy to the specified resource \cr
+\link[=wafregional_tag_resource]{tag_resource} \tab Tag resource \cr
+\link[=wafregional_untag_resource]{untag_resource} \tab Untag resource \cr
 \link[=wafregional_update_byte_match_set]{update_byte_match_set} \tab Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet \cr
 \link[=wafregional_update_geo_match_set]{update_geo_match_set} \tab Inserts or deletes GeoMatchConstraint objects in an GeoMatchSet \cr
 \link[=wafregional_update_ip_set]{update_ip_set} \tab Inserts or deletes IPSetDescriptor objects in an IPSet \cr

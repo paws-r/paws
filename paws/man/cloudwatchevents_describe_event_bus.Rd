@@ -2,19 +2,31 @@
 % Please edit documentation in R/cloudwatchevents_operations.R
 \name{cloudwatchevents_describe_event_bus}
 \alias{cloudwatchevents_describe_event_bus}
-\title{Displays the external AWS accounts that are permitted to write events to
-your account using your account's event bus, and the associated policy}
+\title{Displays details about an event bus in your account}
 \usage{
-cloudwatchevents_describe_event_bus()
+cloudwatchevents_describe_event_bus(Name)
+}
+\arguments{
+\item{Name}{The name of the event bus to show details for. If you omit this, the
+default event bus is displayed.}
 }
 \description{
-Displays the external AWS accounts that are permitted to write events to
-your account using your account's event bus, and the associated policy.
-To enable your account to receive events from other accounts, use
-PutPermission.
+Displays details about an event bus in your account. This can include
+the external AWS accounts that are permitted to write events to your
+default event bus, and the associated policy. For custom event buses and
+partner event buses, it displays the name, ARN, policy, state, and
+creation time.
+}
+\details{
+To enable your account to receive events from other accounts on its
+default event bus, use PutPermission.
+
+For more information about partner event buses, see CreateEventBus.
 }
 \section{Request syntax}{
-\preformatted{svc$describe_event_bus()
+\preformatted{svc$describe_event_bus(
+  Name = "string"
+)
 }
 }
 

@@ -17,11 +17,11 @@ information about blended and unblended rates, see \href{https://aws.amazon.com/
 
 Valid values for a \code{GetCostForecast} call are the following:
 \itemize{
-\item AmortizedCost
-\item BlendedCost
-\item NetAmortizedCost
-\item NetUnblendedCost
-\item UnblendedCost
+\item AMORTIZED\_COST
+\item BLENDED\_COST
+\item NET\_AMORTIZED\_COST
+\item NET\_UNBLENDED\_COST
+\item UNBLENDED\_COST
 }}
 
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of

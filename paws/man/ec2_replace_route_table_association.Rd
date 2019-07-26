@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Changes the route table associated with a given subnet in a VPC. After
 the operation completes, the subnet uses the routes in the new route
 table it's associated with. For more information about route tables,
-see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html}{Route Tables}
+see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{

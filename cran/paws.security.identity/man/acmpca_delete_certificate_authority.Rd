@@ -17,29 +17,32 @@ CreateCertificateAuthority. This must have the following form:
 This can be anywhere from 7 to 30 days, with 30 being the default.}
 }
 \description{
-Deletes a private certificate authority (CA). You must provide the ARN
-(Amazon Resource Name) of the private CA that you want to delete. You
-can find the ARN by calling the ListCertificateAuthorities operation.
-Before you can delete a CA, you must disable it. Call the
-UpdateCertificateAuthority operation and set the
-\strong{CertificateAuthorityStatus} parameter to \code{DISABLED}.
+Deletes a private certificate authority (CA). You must provide the
+Amazon Resource Name (ARN) of the private CA that you want to delete.
+You can find the ARN by calling the ListCertificateAuthorities action.
 }
 \details{
-Additionally, you can delete a CA if you are waiting for it to be
-created (the \strong{Status} field of the CertificateAuthority is
-\code{CREATING}). You can also delete it if the CA has been created but you
-haven't yet imported the signed certificate (the \strong{Status} is
-\code{PENDING_CERTIFICATE}) into ACM PCA.
+Deleting a CA will invalidate other CAs and certificates below it in
+your CA hierarchy.
 
-If the CA is in one of the previously mentioned states and you call
-DeleteCertificateAuthority, the CA's status changes to \code{DELETED}.
-However, the CA won't be permanently deleted until the restoration
-period has passed. By default, if you do not set the
-\code{PermanentDeletionTimeInDays} parameter, the CA remains restorable for
-30 days. You can set the parameter from 7 to 30 days. The
-DescribeCertificateAuthority operation returns the time remaining in the
-restoration window of a Private CA in the \code{DELETED} state. To restore an
-eligible CA, call the RestoreCertificateAuthority operation.
+Before you can delete a CA that you have created and activated, you must
+disable it. To do this, call the UpdateCertificateAuthority action and
+set the \strong{CertificateAuthorityStatus} parameter to \code{DISABLED}.
+
+Additionally, you can delete a CA if you are waiting for it to be
+created (that is, the status of the CA is \code{CREATING}). You can also
+delete it if the CA has been created but you haven't yet imported the
+signed certificate into ACM Private CA (that is, the status of the CA is
+\code{PENDING_CERTIFICATE}).
+
+When you successfully call DeleteCertificateAuthority, the CA's status
+changes to \code{DELETED}. However, the CA won't be permanently deleted
+until the restoration period has passed. By default, if you do not set
+the \code{PermanentDeletionTimeInDays} parameter, the CA remains restorable
+for 30 days. You can set the parameter from 7 to 30 days. The
+DescribeCertificateAuthority action returns the time remaining in the
+restoration window of a private CA in the \code{DELETED} state. To restore an
+eligible CA, call the RestoreCertificateAuthority action.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_certificate_authority(

@@ -8,7 +8,7 @@ apigateway_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged. The resource ARN
-must be URL-encoded. At present, Stage is the only taggable resource.}
+must be URL-encoded.}
 
 \item{tagKeys}{[required] [Required] The Tag keys to delete.}
 }

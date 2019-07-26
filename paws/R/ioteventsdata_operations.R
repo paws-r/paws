@@ -6,17 +6,17 @@ NULL
 #' Sends a set of messages to the AWS IoT Events system
 #'
 #' Sends a set of messages to the AWS IoT Events system. Each message
-#' payload will be transformed into the input you specify (`inputName`) and
+#' payload is transformed into the input you specify (`"inputName"`) and
 #' ingested into any detectors that monitor that input. If multiple
-#' messages are sent, the order in which the messages are processed is not
-#' guaranteed\\--you must send messages one at a time and wait for a
-#' successful response to guarantee ordering.
+#' messages are sent, the order in which the messages are processed isn\'t
+#' guaranteed. To guarantee ordering, you must send messages one at a time
+#' and wait for a successful response.
 #'
 #' @usage
 #' ioteventsdata_batch_put_message(messages)
 #'
-#' @param messages &#91;required&#93; The list of messages to send. Each message has format:
-#' `'\{ "messageId": "string", "inputName": "string", "payload": "string"\}'`.
+#' @param messages &#91;required&#93; The list of messages to send. Each message has the following format:
+#' `'\{ "messageId": "string", "inputName": "string", "payload": "string"\}'`
 #'
 #' @section Request syntax:
 #' ```
@@ -59,8 +59,8 @@ ioteventsdata_batch_put_message <- function(messages) {
 #' @usage
 #' ioteventsdata_batch_update_detector(detectors)
 #'
-#' @param detectors &#91;required&#93; The list of detectors (instances) to be updated, along with the values
-#' to be updated.
+#' @param detectors &#91;required&#93; The list of detectors (instances) to update, along with the values to
+#' update.
 #'
 #' @section Request syntax:
 #' ```
@@ -156,7 +156,7 @@ ioteventsdata_describe_detector <- function(detectorModelName, keyValue = NULL) 
 #' ioteventsdata_list_detectors(detectorModelName, stateName, nextToken,
 #'   maxResults)
 #'
-#' @param detectorModelName &#91;required&#93; The name of the detector model whose instances you want to list.
+#' @param detectorModelName &#91;required&#93; The name of the detector model whose detectors (instances) are listed.
 #' @param stateName A filter that limits results to those detectors (instances) in the given
 #' state.
 #' @param nextToken The token for the next set of results.

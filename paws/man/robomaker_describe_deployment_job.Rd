@@ -10,8 +10,7 @@ robomaker_describe_deployment_job(job)
 \item{job}{[required] The Amazon Resource Name (ARN) of the deployment job.}
 }
 \description{
-Describes a deployment job. [Does it work regardless of deployment
-status, e.g. Failed?]
+Describes a deployment job.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_deployment_job(

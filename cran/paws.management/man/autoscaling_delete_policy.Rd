@@ -15,8 +15,12 @@ autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
 Deletes the specified scaling policy.
 }
 \details{
-Deleting a policy deletes the underlying alarm action, but does not
-delete the alarm, even if it no longer has an associated action.
+Deleting either a step scaling policy or a simple scaling policy deletes
+the underlying alarm action, but does not delete the alarm, even if it
+no longer has an associated action.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html}{Deleting a Scaling Policy}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_policy(

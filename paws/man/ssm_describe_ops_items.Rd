@@ -30,7 +30,7 @@ Operations: Equals
 \item Key: Title
 
 Operations: Contains
-\item Key: OperationalData
+\item Key: OperationalData*
 
 Operations: Equals
 \item Key: OperationalDataKey
@@ -48,7 +48,11 @@ Operations: Contains
 \item Key: AutomationId
 
 Operations: Equals
-}}
+}
+
+*If you filter the response by using the OperationalData operator,
+specify a key-value pair by using the following JSON format:
+{"key":"key\_name","value":"a\_value"}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -60,14 +64,13 @@ results.}
 \description{
 Query a set of OpsItems. You must have permission in AWS Identity and
 Access Management (IAM) to query a list of OpsItems. For more
-information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html}{Getting Started with OpsItems}
+information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting Started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \details{
-Operations engineers and IT professionals use the Systems Manager
-OpsItems capability to view, investigate, and remediate operational
-issues impacting the performance and health of their AWS resources. For
-more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html}{AWS Systems Manager OpsItems}
+Operations engineers and IT professionals use OpsCenter to view,
+investigate, and remediate operational issues impacting the performance
+and health of their AWS resources. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{

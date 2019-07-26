@@ -9,16 +9,16 @@ glacier_list_tags_for_vault(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-'\code{-}' (hyphen), in which case Amazon Glacier uses the AWS account ID
-associated with the credentials used to sign the request. If you use an
-account ID, do not include any hyphens ('-') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account
+ID associated with the credentials used to sign the request. If you use
+an account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
 \description{
 This operation lists all the tags attached to a vault. The operation
 returns an empty map if there are no tags. For more information about
-tags, see \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon Glacier Resources}.
+tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_vault(

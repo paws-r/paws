@@ -6,7 +6,7 @@
 \usage{
 apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
   DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-  StageName, StageVariables)
+  StageName, StageVariables, Tags)
 }
 \arguments{
 \item{AccessLogSettings}{Settings for logging access in this stage.}
@@ -28,6 +28,10 @@ apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
 [A-Za-z0-9-.\_~:/?\#&=,]+.}
+
+\item{Tags}{The key-value map of strings. The valid character set is
+[a-zA-Z+-=.\_:/]. The tag key can be up to 128 characters and must not
+start with aws:. The tag value can be up to 256 characters..}
 }
 \description{
 Creates a Stage for an API.
@@ -60,6 +64,9 @@ Creates a Stage for an API.
   ),
   StageName = "string",
   StageVariables = list(
+    "string"
+  ),
+  Tags = list(
     "string"
   )
 )

@@ -10,7 +10,9 @@ iam_put_group_policy(GroupName, PolicyName, PolicyDocument)
 \arguments{
 \item{GroupName}{[required] The name of the group to associate the policy with.
 
-&regex-name;.}
+This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: \_+=,.@-.}
 
 \item{PolicyName}{[required] The name of the policy document.
 

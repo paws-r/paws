@@ -11,7 +11,7 @@ databasemigrationservice_modify_replication_subnet_group(
 \arguments{
 \item{ReplicationSubnetGroupIdentifier}{[required] The name of the replication instance subnet group.}
 
-\item{ReplicationSubnetGroupDescription}{The description of the replication instance subnet group.}
+\item{ReplicationSubnetGroupDescription}{A description for the replication instance subnet group.}
 
 \item{SubnetIds}{[required] A list of subnet IDs.}
 }

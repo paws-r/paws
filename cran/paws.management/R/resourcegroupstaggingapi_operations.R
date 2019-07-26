@@ -3,16 +3,19 @@
 #' @include resourcegroupstaggingapi_service.R
 NULL
 
-#' Returns all the tagged resources that are associated with the specified
-#' tags (keys and values) located in the specified region for the AWS
-#' account
+#' Returns all the tagged or previously tagged resources that are located
+#' in the specified region for the AWS account
 #'
-#' Returns all the tagged resources that are associated with the specified
-#' tags (keys and values) located in the specified region for the AWS
-#' account. The tags and the resource types that you specify in the request
-#' are known as *filters*. The response includes all tags that are
-#' associated with the requested resources. If no filter is provided, this
-#' action returns a paginated resource list with the associated tags.
+#' Returns all the tagged or previously tagged resources that are located
+#' in the specified region for the AWS account. You can optionally specify
+#' *filters* (tags and resource types) in your request, depending on what
+#' information you want returned. The response includes all tags that are
+#' associated with the requested resources.
+#' 
+#' You can check the `PaginationToken` response parameter to determine if a
+#' query completed. Queries can occasionally return fewer results on a page
+#' than allowed. The `PaginationToken` response parameter value is `null`
+#' *only* when there are no more results to display.
 #'
 #' @usage
 #' resourcegroupstaggingapi_get_resources(PaginationToken, TagFilters,
@@ -22,19 +25,49 @@ NULL
 #' value empty for your initial request. If the response includes a
 #' `PaginationToken`, use that string for this value to request an
 #' additional page of data.
-#' @param TagFilters A list of tags (keys and values). A request can include up to 50 keys,
-#' and each key can include up to 20 values.
+#' @param TagFilters A list of TagFilters (keys and values). Each TagFilter specified must
+#' contain a key with values as optional. A request can include up to 50
+#' keys, and each key can include up to 20 values.
 #' 
-#' If you specify multiple filters connected by an AND operator in a single
-#' request, the response returns only those resources that are associated
-#' with every specified filter.
+#' Note the following when deciding how to use TagFilters:
 #' 
-#' If you specify multiple filters connected by an OR operator in a single
-#' request, the response returns all resources that are associated with at
-#' least one or possibly more of the specified filters.
+#' -   If you *do* specify a TagFilter, the response returns only those
+#'     resources that are currently associated with the specified tag.
+#' 
+#' -   If you *don\'t* specify a TagFilter, the response includes all
+#'     resources that were ever associated with tags. Resources that
+#'     currently don\'t have associated tags are shown with an empty tag
+#'     set, like this: `"Tags": \\[\\]`.
+#' 
+#' -   If you specify more than one filter in a single request, the
+#'     response returns only those resources that satisfy all specified
+#'     filters.
+#' 
+#' -   If you specify a filter that contains more than one value for a key,
+#'     the response returns resources that match any of the specified
+#'     values for that key.
+#' 
+#' -   If you don\'t specify any values for a key, the response returns
+#'     resources that are tagged with that key irrespective of the value.
+#' 
+#'     For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
+#'     \{key2, \{value2,value3,value4\}\} , filter3 = \{key3\}:
+#' 
+#'     -   GetResources( \{filter1\} ) returns resources tagged with
+#'         key1=value1
+#' 
+#'     -   GetResources( \{filter2\} ) returns resources tagged with
+#'         key2=value2 or key2=value3 or key2=value4
+#' 
+#'     -   GetResources( \{filter3\} ) returns resources tagged with any tag
+#'         containing key3 as its tag key, irrespective of its value
+#' 
+#'     -   GetResources( \{filter1,filter2,filter3\} ) returns resources
+#'         tagged with ( key1=value1) and ( key2=value2 or key2=value3 or
+#'         key2=value4) and (key3, irrespective of the value)
 #' @param ResourcesPerPage A limit that restricts the number of resources returned by GetResources
 #' in paginated output. You can set ResourcesPerPage to a minimum of 1 item
-#' and the maximum of 50 items.
+#' and the maximum of 100 items.
 #' @param TagsPerPage A limit that restricts the number of tags (key and value pairs) returned
 #' by GetResources in paginated output. A resource with no tags is counted
 #' as having one tag (one key and value pair).
@@ -54,9 +87,9 @@ NULL
 #' 500 items.
 #' @param ResourceTypeFilters The constraints on the resources that you want returned. The format of
 #' each resource type is `service\\[:resourceType\\]`. For example,
-#' specifying a resource type of `ec2` returns all tagged Amazon EC2
-#' resources (which includes tagged EC2 instances). Specifying a resource
-#' type of `ec2:instance` returns only EC2 instances.
+#' specifying a resource type of `ec2` returns all Amazon EC2 resources
+#' (which includes EC2 instances). Specifying a resource type of
+#' `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
 #' embedded in a resource\'s Amazon Resource Name (ARN). Consult the *AWS
@@ -71,6 +104,10 @@ NULL
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
 #'     and AWS Service
 #'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' 
+#' You can specify multiple resource types by using an array. The array can
+#' include up to 100 items. Note that the length constraint requirement
+#' applies to each resource type filter.
 #'
 #' @section Request syntax:
 #' ```
@@ -198,8 +235,8 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' 
 #' -   Not all resources can have tags. For a list of resources that
 #'     support tagging, see [Supported
-#'     Resources](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
-#'     in the *AWS Resource Groups and Tag Editor User Guide*.
+#'     Resources](http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
+#'     in the *AWS Resource Groups User Guide*.
 #' 
 #' -   Each resource can have up to 50 tags. For other limits, see [Tag
 #'     Restrictions](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions)
@@ -211,8 +248,8 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' -   To add tags to a resource, you need the necessary permissions for
 #'     the service that the resource belongs to as well as permissions for
 #'     adding tags. For more information, see [Obtaining Permissions for
-#'     Tagging](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-#'     in the *AWS Resource Groups and Tag Editor User Guide*.
+#'     Tagging](http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
+#'     in the *AWS Resource Groups User Guide*.
 #'
 #' @usage
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
@@ -268,8 +305,8 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #'     for the service that the resource belongs to as well as permissions
 #'     for removing tags. For more information, see [Obtaining Permissions
 #'     for
-#'     Tagging](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
-#'     in the *AWS Resource Groups and Tag Editor User Guide*.
+#'     Tagging](http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html)
+#'     in the *AWS Resource Groups User Guide*.
 #' 
 #' -   You can only tag resources that are located in the specified region
 #'     for the AWS account.

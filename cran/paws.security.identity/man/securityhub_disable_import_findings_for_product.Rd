@@ -2,18 +2,17 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_import_findings_for_product}
 \alias{securityhub_disable_import_findings_for_product}
-\title{Cancels the subscription that allows a findings-generating solution
-(product) to import its findings into Security Hub}
+\title{Disables the integration of the specified product with Security Hub}
 \usage{
 securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 }
 \arguments{
-\item{ProductSubscriptionArn}{[required] The ARN of a resource that represents your subscription to a supported
-product.}
+\item{ProductSubscriptionArn}{[required] The ARN of the integrated product to disable the integration for.}
 }
 \description{
-Cancels the subscription that allows a findings-generating solution
-(product) to import its findings into Security Hub.
+Disables the integration of the specified product with Security Hub.
+Findings from that product are no longer sent to Security Hub after the
+integration is disabled.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_import_findings_for_product(

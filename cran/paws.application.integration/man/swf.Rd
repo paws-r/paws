@@ -20,7 +20,7 @@ coordinating them without worrying about underlying complexities such as
 tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
-the Amazon SWF programming model, see the \emph{\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
+the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
 }
 \section{Operations}{
 
@@ -41,6 +41,7 @@ the Amazon SWF programming model, see the \emph{\href{http://docs.aws.amazon.com
 \link[=swf_list_closed_workflow_executions]{list_closed_workflow_executions} \tab Returns a list of closed workflow executions in the specified domain that meet the filtering criteria \cr
 \link[=swf_list_domains]{list_domains} \tab Returns the list of domains registered in the account \cr
 \link[=swf_list_open_workflow_executions]{list_open_workflow_executions} \tab Returns a list of open workflow executions in the specified domain that meet the filtering criteria \cr
+\link[=swf_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given domain \cr
 \link[=swf_list_workflow_types]{list_workflow_types} \tab Returns information about workflow types in the specified domain \cr
 \link[=swf_poll_for_activity_task]{poll_for_activity_task} \tab Used by workers to get an ActivityTask from the specified activity taskList \cr
 \link[=swf_poll_for_decision_task]{poll_for_decision_task} \tab Used by deciders to get a DecisionTask from the specified decision taskList \cr
@@ -55,7 +56,12 @@ the Amazon SWF programming model, see the \emph{\href{http://docs.aws.amazon.com
 \link[=swf_respond_decision_task_completed]{respond_decision_task_completed} \tab Used by deciders to tell the service that the DecisionTask identified by the taskToken has successfully completed \cr
 \link[=swf_signal_workflow_execution]{signal_workflow_execution} \tab Records a WorkflowExecutionSignaled event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId\cr
 \link[=swf_start_workflow_execution]{start_workflow_execution} \tab Starts an execution of the workflow type in the specified domain using the provided workflowId and input data \cr
-\link[=swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId
+\link[=swf_tag_resource]{tag_resource} \tab Add a tag to a Amazon SWF domain \cr
+\link[=swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId \cr
+\link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated \emph{activity type} \cr
+\link[=swf_undeprecate_domain]{undeprecate_domain} \tab Undeprecates a previously deprecated domain \cr
+\link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated \emph{workflow type} \cr
+\link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
 }
 }
 

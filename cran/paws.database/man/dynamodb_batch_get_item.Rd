@@ -52,7 +52,8 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information about expression attribute names, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
 \item \code{Keys} - An array of primary key attribute values that define
 specific items in the table. For each primary key, you must provide
@@ -65,9 +66,9 @@ attributes to retrieve from the table. These attributes can include
 scalars, sets, or elements of a JSON document. The attributes in the
 expression must be separated by commas.
 
-If no attribute names are specified, then all attributes will be
-returned. If any of the requested attributes are not found, they
-will not appear in the result.
+If no attribute names are specified, then all attributes are
+returned. If any of the requested attributes are not found, they do
+not appear in the result.
 
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
@@ -85,27 +86,26 @@ from one or more tables. You identify requested items by primary key.
 }
 \details{
 A single operation can retrieve up to 16 MB of data, which can contain
-as many as 100 items. \code{BatchGetItem} will return a partial result if the
+as many as 100 items. \code{BatchGetItem} returns a partial result if the
 response size limit is exceeded, the table's provisioned throughput is
 exceeded, or an internal processing failure occurs. If a partial result
 is returned, the operation returns a value for \code{UnprocessedKeys}. You
 can use this value to retry the operation starting with the next item to
 get.
 
-If you request more than 100 items \code{BatchGetItem} will return a
+If you request more than 100 items, \code{BatchGetItem} returns a
 \code{ValidationException} with the message "Too many items requested for
-the BatchGetItem call".
+the BatchGetItem call."
 
 For example, if you ask to retrieve 100 items, but each individual item
 is 300 KB in size, the system returns 52 items (so as not to exceed the
 16 MB limit). It also returns an appropriate \code{UnprocessedKeys} value so
 you can get the next page of results. If desired, your application can
-include its own logic to assemble the pages of results into one data
-set.
+include its own logic to assemble the pages of results into one dataset.
 
 If \emph{none} of the items can be processed due to insufficient provisioned
-throughput on all of the tables in the request, then \code{BatchGetItem} will
-return a \code{ProvisionedThroughputExceededException}. If \emph{at least one} of
+throughput on all of the tables in the request, then \code{BatchGetItem}
+returns a \code{ProvisionedThroughputExceededException}. If \emph{at least one} of
 the items is successfully processed, then \code{BatchGetItem} completes
 successfully, while returning the keys of the unread items in
 \code{UnprocessedKeys}.
@@ -135,7 +135,7 @@ the \code{ProjectionExpression} parameter.
 
 If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
-according to the type of read. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations}{Capacity Units Calculations}
+according to the type of read. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations}{Working with Tables}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{

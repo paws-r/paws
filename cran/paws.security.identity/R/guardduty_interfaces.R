@@ -29,7 +29,7 @@ NULL
 
 .guardduty$create_detector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Enable = structure(logical(0), tags = list(locationName = "enable", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string")), FindingPublishingFrequency = structure(logical(0), tags = list(locationName = "findingPublishingFrequency", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Enable = structure(logical(0), tags = list(locationName = "enable", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string")), FindingPublishingFrequency = structure(logical(0), tags = list(locationName = "findingPublishingFrequency", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .guardduty$create_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), Action = structure(logical(0), tags = list(locationName = "action", type = "string")), Rank = structure(logical(0), tags = list(locationName = "rank", type = "integer")), FindingCriteria = structure(list(Criterion = structure(list(structure(list(Eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "eq", type = "list")), Neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "neq", type = "list")), Gt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gt", type = "integer")), Gte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gte", type = "integer")), Lt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lt", type = "integer")), Lte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lte", type = "integer")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "equals", type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "notEquals", type = "list")), GreaterThan = structure(logical(0), tags = list(locationName = "greaterThan", type = "long")), GreaterThanOrEqual = structure(logical(0), tags = list(locationName = "greaterThanOrEqual", type = "long")), LessThan = structure(logical(0), tags = list(locationName = "lessThan", type = "long")), LessThanOrEqual = structure(logical(0), tags = list(locationName = "lessThanOrEqual", type = "long"))), tags = list(type = "structure"))), tags = list(locationName = "criterion", type = "map"))), tags = list(locationName = "findingCriteria", type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), Action = structure(logical(0), tags = list(locationName = "action", type = "string")), Rank = structure(logical(0), tags = list(locationName = "rank", type = "integer")), FindingCriteria = structure(list(Criterion = structure(list(structure(list(Eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "eq", type = "list")), Neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "neq", type = "list")), Gt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gt", type = "integer")), Gte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gte", type = "integer")), Lt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lt", type = "integer")), Lte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lte", type = "integer")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "equals", type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "notEquals", type = "list")), GreaterThan = structure(logical(0), tags = list(locationName = "greaterThan", type = "long")), GreaterThanOrEqual = structure(logical(0), tags = list(locationName = "greaterThanOrEqual", type = "long")), LessThan = structure(logical(0), tags = list(locationName = "lessThan", type = "long")), LessThanOrEqual = structure(logical(0), tags = list(locationName = "lessThanOrEqual", type = "long"))), tags = list(type = "structure"))), tags = list(locationName = "criterion", type = "map"))), tags = list(locationName = "findingCriteria", type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .guardduty$create_ip_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Activate = structure(logical(0), tags = list(locationName = "activate", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Activate = structure(logical(0), tags = list(locationName = "activate", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .guardduty$create_threat_intel_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Activate = structure(logical(0), tags = list(locationName = "activate", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Activate = structure(logical(0), tags = list(locationName = "activate", type = "boolean")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, locationName = "clientToken", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .guardduty$get_detector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedAt = structure(logical(0), tags = list(locationName = "createdAt", type = "string")), FindingPublishingFrequency = structure(logical(0), tags = list(locationName = "findingPublishingFrequency", type = "string")), ServiceRole = structure(logical(0), tags = list(locationName = "serviceRole", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), UpdatedAt = structure(logical(0), tags = list(locationName = "updatedAt", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CreatedAt = structure(logical(0), tags = list(locationName = "createdAt", type = "string")), FindingPublishingFrequency = structure(logical(0), tags = list(locationName = "findingPublishingFrequency", type = "string")), ServiceRole = structure(logical(0), tags = list(locationName = "serviceRole", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), UpdatedAt = structure(logical(0), tags = list(locationName = "updatedAt", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -227,7 +227,7 @@ NULL
 
 .guardduty$get_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), Action = structure(logical(0), tags = list(locationName = "action", type = "string")), Rank = structure(logical(0), tags = list(locationName = "rank", type = "integer")), FindingCriteria = structure(list(Criterion = structure(list(structure(list(Eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "eq", type = "list")), Neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "neq", type = "list")), Gt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gt", type = "integer")), Gte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gte", type = "integer")), Lt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lt", type = "integer")), Lte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lte", type = "integer")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "equals", type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "notEquals", type = "list")), GreaterThan = structure(logical(0), tags = list(locationName = "greaterThan", type = "long")), GreaterThanOrEqual = structure(logical(0), tags = list(locationName = "greaterThanOrEqual", type = "long")), LessThan = structure(logical(0), tags = list(locationName = "lessThan", type = "long")), LessThanOrEqual = structure(logical(0), tags = list(locationName = "lessThanOrEqual", type = "long"))), tags = list(type = "structure"))), tags = list(locationName = "criterion", type = "map"))), tags = list(locationName = "findingCriteria", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Description = structure(logical(0), tags = list(locationName = "description", type = "string")), Action = structure(logical(0), tags = list(locationName = "action", type = "string")), Rank = structure(logical(0), tags = list(locationName = "rank", type = "integer")), FindingCriteria = structure(list(Criterion = structure(list(structure(list(Eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "eq", type = "list")), Neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, locationName = "neq", type = "list")), Gt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gt", type = "integer")), Gte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "gte", type = "integer")), Lt = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lt", type = "integer")), Lte = structure(logical(0), tags = list(deprecated = TRUE, locationName = "lte", type = "integer")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "equals", type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "notEquals", type = "list")), GreaterThan = structure(logical(0), tags = list(locationName = "greaterThan", type = "long")), GreaterThanOrEqual = structure(logical(0), tags = list(locationName = "greaterThanOrEqual", type = "long")), LessThan = structure(logical(0), tags = list(locationName = "lessThan", type = "long")), LessThanOrEqual = structure(logical(0), tags = list(locationName = "lessThanOrEqual", type = "long"))), tags = list(type = "structure"))), tags = list(locationName = "criterion", type = "map"))), tags = list(locationName = "findingCriteria", type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -263,7 +263,7 @@ NULL
 
 .guardduty$get_ip_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -311,7 +311,7 @@ NULL
 
 .guardduty$get_threat_intel_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(locationName = "name", type = "string")), Format = structure(logical(0), tags = list(locationName = "format", type = "string")), Location = structure(logical(0), tags = list(locationName = "location", type = "string")), Status = structure(logical(0), tags = list(locationName = "status", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -399,6 +399,18 @@ NULL
   return(populate(args, shape))
 }
 
+.guardduty$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.guardduty$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .guardduty$list_threat_intel_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
@@ -435,6 +447,18 @@ NULL
   return(populate(args, shape))
 }
 
+.guardduty$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.guardduty$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .guardduty$unarchive_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DetectorId = structure(logical(0), tags = list(location = "uri", locationName = "detectorId", type = "string")), FindingIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "findingIds", type = "list"))), tags = list(type = "structure"))
@@ -442,6 +466,18 @@ NULL
 }
 
 .guardduty$unarchive_findings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.guardduty$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.guardduty$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

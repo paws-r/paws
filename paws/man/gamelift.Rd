@@ -108,7 +108,7 @@ retrieve game logs, and get hosting and game metrics.
 \link[=gamelift_start_matchmaking]{start_matchmaking} \tab Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players \cr
 \link[=gamelift_stop_fleet_actions]{stop_fleet_actions} \tab Suspends activity on a fleet \cr
 \link[=gamelift_stop_game_session_placement]{stop_game_session_placement} \tab Cancels a game session placement that is in PENDING status \cr
-\link[=gamelift_stop_matchmaking]{stop_matchmaking} \tab Cancels a matchmaking ticket that is currently being processed \cr
+\link[=gamelift_stop_matchmaking]{stop_matchmaking} \tab Cancels a matchmaking ticket or match backfill ticket that is currently being processed \cr
 \link[=gamelift_update_alias]{update_alias} \tab Updates properties for an alias \cr
 \link[=gamelift_update_build]{update_build} \tab Updates metadata in a build record, including the build name and version \cr
 \link[=gamelift_update_fleet_attributes]{update_fleet_attributes} \tab Updates fleet properties, including name and description, for a fleet \cr

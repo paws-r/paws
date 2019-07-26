@@ -9,17 +9,21 @@ NULL
 #'
 #' @usage
 #' amplify_create_app(name, description, repository, platform,
-#'   iamServiceRoleArn, oauthToken, environmentVariables,
+#'   iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
 #'   enableBranchAutoBuild, enableBasicAuth, basicAuthCredentials,
-#'   customRules, tags, buildSpec)
+#'   customRules, tags, buildSpec, enableAutoBranchCreation,
+#'   autoBranchCreationPatterns, autoBranchCreationConfig)
 #'
 #' @param name &#91;required&#93; Name for the Amplify App
 #' @param description Description for an Amplify App
-#' @param repository &#91;required&#93; Repository for an Amplify App
-#' @param platform &#91;required&#93; Platform / framework for an Amplify App
+#' @param repository Repository for an Amplify App
+#' @param platform Platform / framework for an Amplify App
 #' @param iamServiceRoleArn AWS IAM service role for an Amplify App
-#' @param oauthToken &#91;required&#93; OAuth token for 3rd party source control system for an Amplify App, used
+#' @param oauthToken OAuth token for 3rd party source control system for an Amplify App, used
 #' to create webhook and read-only deploy key. OAuth token is not stored.
+#' @param accessToken Personal Access token for 3rd party source control system for an Amplify
+#' App, used to create webhook and read-only deploy key. Token is not
+#' stored.
 #' @param environmentVariables Environment variables map for an Amplify App.
 #' @param enableBranchAutoBuild Enable the auto building of branches for an Amplify App.
 #' @param enableBasicAuth Enable Basic Authorization for an Amplify App, this will apply to all
@@ -28,6 +32,9 @@ NULL
 #' @param customRules Custom rewrite / redirect rules for an Amplify App.
 #' @param tags Tag for an Amplify App
 #' @param buildSpec BuildSpec for an Amplify App
+#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify App.
+#' @param autoBranchCreationPatterns Automated branch creation glob patterns for the Amplify App.
+#' @param autoBranchCreationConfig Automated branch creation config for the Amplify App.
 #'
 #' @section Request syntax:
 #' ```
@@ -35,9 +42,10 @@ NULL
 #'   name = "string",
 #'   description = "string",
 #'   repository = "string",
-#'   platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+#'   platform = "WEB",
 #'   iamServiceRoleArn = "string",
 #'   oauthToken = "string",
+#'   accessToken = "string",
 #'   environmentVariables = list(
 #'     "string"
 #'   ),
@@ -55,21 +63,36 @@ NULL
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   buildSpec = "string"
+#'   buildSpec = "string",
+#'   enableAutoBranchCreation = TRUE|FALSE,
+#'   autoBranchCreationPatterns = list(
+#'     "string"
+#'   ),
+#'   autoBranchCreationConfig = list(
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+#'     framework = "string",
+#'     enableAutoBuild = TRUE|FALSE,
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     basicAuthCredentials = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     buildSpec = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_create_app
-amplify_create_app <- function(name, description = NULL, repository, platform, iamServiceRoleArn = NULL, oauthToken, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL) {
+amplify_create_app <- function(name, description = NULL, repository = NULL, platform = NULL, iamServiceRoleArn = NULL, oauthToken = NULL, accessToken = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
     http_path = "/apps",
     paginator = list()
   )
-  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec)
+  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, accessToken = accessToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
   output <- .amplify$create_app_output()
   svc <- .amplify$service()
   request <- new_request(svc, op, input, output)
@@ -85,7 +108,8 @@ amplify_create_app <- function(name, description = NULL, repository, platform, i
 #' @usage
 #' amplify_create_branch(appId, branchName, description, stage, framework,
 #'   enableNotification, enableAutoBuild, environmentVariables,
-#'   basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl)
+#'   basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl,
+#'   displayName)
 #'
 #' @param appId &#91;required&#93; Unique Id for an Amplify App.
 #' @param branchName &#91;required&#93; Name for the branch.
@@ -100,6 +124,7 @@ amplify_create_app <- function(name, description = NULL, repository, platform, i
 #' @param tags Tag for the branch.
 #' @param buildSpec BuildSpec for the branch.
 #' @param ttl The content TTL for the website in seconds.
+#' @param displayName Display name for a branch, will use as the default domain prefix.
 #'
 #' @section Request syntax:
 #' ```
@@ -120,21 +145,22 @@ amplify_create_app <- function(name, description = NULL, repository, platform, i
 #'     "string"
 #'   ),
 #'   buildSpec = "string",
-#'   ttl = "string"
+#'   ttl = "string",
+#'   displayName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_create_branch
-amplify_create_branch <- function(appId, branchName, description = NULL, stage = NULL, framework = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, tags = NULL, buildSpec = NULL, ttl = NULL) {
+amplify_create_branch <- function(appId, branchName, description = NULL, stage = NULL, framework = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, tags = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL) {
   op <- new_operation(
     name = "CreateBranch",
     http_method = "POST",
     http_path = "/apps/{appId}/branches",
     paginator = list()
   )
-  input <- .amplify$create_branch_input(appId = appId, branchName = branchName, description = description, stage = stage, framework = framework, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, tags = tags, buildSpec = buildSpec, ttl = ttl)
+  input <- .amplify$create_branch_input(appId = appId, branchName = branchName, description = description, stage = stage, framework = framework, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, tags = tags, buildSpec = buildSpec, ttl = ttl, displayName = displayName)
   output <- .amplify$create_branch_output()
   svc <- .amplify$service()
   request <- new_request(svc, op, input, output)
@@ -142,6 +168,51 @@ amplify_create_branch <- function(appId, branchName, description = NULL, stage =
   return(response)
 }
 .amplify$operations$create_branch <- amplify_create_branch
+
+#' Create a deployment for manual deploy apps
+#'
+#' Create a deployment for manual deploy apps. (Apps are not connected to
+#' repository)
+#'
+#' @usage
+#' amplify_create_deployment(appId, branchName, fileMap)
+#'
+#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param branchName &#91;required&#93; Name for the branch, for the Job.
+#' @param fileMap Optional file map that contains file name as the key and file content
+#' md5 hash as the value. If this argument is provided, the service will
+#' generate different upload url per file. Otherwise, the service will only
+#' generate a single upload url for the zipped files.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_deployment(
+#'   appId = "string",
+#'   branchName = "string",
+#'   fileMap = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_create_deployment
+amplify_create_deployment <- function(appId, branchName, fileMap = NULL) {
+  op <- new_operation(
+    name = "CreateDeployment",
+    http_method = "POST",
+    http_path = "/apps/{appId}/branches/{branchName}/deployments",
+    paginator = list()
+  )
+  input <- .amplify$create_deployment_input(appId = appId, branchName = branchName, fileMap = fileMap)
+  output <- .amplify$create_deployment_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$create_deployment <- amplify_create_deployment
 
 #' Create a new DomainAssociation on an App
 #'
@@ -189,6 +260,45 @@ amplify_create_domain_association <- function(appId, domainName, enableAutoSubDo
   return(response)
 }
 .amplify$operations$create_domain_association <- amplify_create_domain_association
+
+#' Create a new webhook on an App
+#'
+#' Create a new webhook on an App.
+#'
+#' @usage
+#' amplify_create_webhook(appId, branchName, description)
+#'
+#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param branchName &#91;required&#93; Name for a branch, part of an Amplify App.
+#' @param description Description for a webhook.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_webhook(
+#'   appId = "string",
+#'   branchName = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_create_webhook
+amplify_create_webhook <- function(appId, branchName, description = NULL) {
+  op <- new_operation(
+    name = "CreateWebhook",
+    http_method = "POST",
+    http_path = "/apps/{appId}/webhooks",
+    paginator = list()
+  )
+  input <- .amplify$create_webhook_input(appId = appId, branchName = branchName, description = description)
+  output <- .amplify$create_webhook_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$create_webhook <- amplify_create_webhook
 
 #' Delete an existing Amplify App by appId
 #'
@@ -338,6 +448,41 @@ amplify_delete_job <- function(appId, branchName, jobId) {
 }
 .amplify$operations$delete_job <- amplify_delete_job
 
+#' Deletes a webhook
+#'
+#' Deletes a webhook.
+#'
+#' @usage
+#' amplify_delete_webhook(webhookId)
+#'
+#' @param webhookId &#91;required&#93; Unique Id for a webhook.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_webhook(
+#'   webhookId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_delete_webhook
+amplify_delete_webhook <- function(webhookId) {
+  op <- new_operation(
+    name = "DeleteWebhook",
+    http_method = "DELETE",
+    http_path = "/webhooks/{webhookId}",
+    paginator = list()
+  )
+  input <- .amplify$delete_webhook_input(webhookId = webhookId)
+  output <- .amplify$delete_webhook_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$delete_webhook <- amplify_delete_webhook
+
 #' Retrieves an existing Amplify App by appId
 #'
 #' Retrieves an existing Amplify App by appId.
@@ -485,6 +630,41 @@ amplify_get_job <- function(appId, branchName, jobId) {
   return(response)
 }
 .amplify$operations$get_job <- amplify_get_job
+
+#' Retrieves webhook info that corresponds to a webhookId
+#'
+#' Retrieves webhook info that corresponds to a webhookId.
+#'
+#' @usage
+#' amplify_get_webhook(webhookId)
+#'
+#' @param webhookId &#91;required&#93; Unique Id for a webhook.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_webhook(
+#'   webhookId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_get_webhook
+amplify_get_webhook <- function(webhookId) {
+  op <- new_operation(
+    name = "GetWebhook",
+    http_method = "GET",
+    http_path = "/webhooks/{webhookId}",
+    paginator = list()
+  )
+  input <- .amplify$get_webhook_input(webhookId = webhookId)
+  output <- .amplify$get_webhook_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$get_webhook <- amplify_get_webhook
 
 #' Lists existing Amplify Apps
 #'
@@ -649,6 +829,126 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 }
 .amplify$operations$list_jobs <- amplify_list_jobs
 
+#' List tags for resource
+#'
+#' List tags for resource.
+#'
+#' @usage
+#' amplify_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; Resource arn used to list tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_list_tags_for_resource
+amplify_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .amplify$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .amplify$list_tags_for_resource_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$list_tags_for_resource <- amplify_list_tags_for_resource
+
+#' List webhooks with an app
+#'
+#' List webhooks with an app.
+#'
+#' @usage
+#' amplify_list_webhooks(appId, nextToken, maxResults)
+#'
+#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param nextToken Pagination token. Set to null to start listing webhooks from start. If
+#' non-null pagination token is returned in a result, then pass its value
+#' in here to list more webhooks.
+#' @param maxResults Maximum number of records to list in a single response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_webhooks(
+#'   appId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_list_webhooks
+amplify_list_webhooks <- function(appId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListWebhooks",
+    http_method = "GET",
+    http_path = "/apps/{appId}/webhooks",
+    paginator = list()
+  )
+  input <- .amplify$list_webhooks_input(appId = appId, nextToken = nextToken, maxResults = maxResults)
+  output <- .amplify$list_webhooks_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$list_webhooks <- amplify_list_webhooks
+
+#' Start a deployment for manual deploy apps
+#'
+#' Start a deployment for manual deploy apps. (Apps are not connected to
+#' repository)
+#'
+#' @usage
+#' amplify_start_deployment(appId, branchName, jobId, sourceUrl)
+#'
+#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param branchName &#91;required&#93; Name for the branch, for the Job.
+#' @param jobId The job id for this deployment, generated by create deployment request.
+#' @param sourceUrl The sourceUrl for this deployment, used when calling start deployment
+#' without create deployment. SourceUrl can be any HTTP GET url that is
+#' public accessible and downloads a single zip.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_deployment(
+#'   appId = "string",
+#'   branchName = "string",
+#'   jobId = "string",
+#'   sourceUrl = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_start_deployment
+amplify_start_deployment <- function(appId, branchName, jobId = NULL, sourceUrl = NULL) {
+  op <- new_operation(
+    name = "StartDeployment",
+    http_method = "POST",
+    http_path = "/apps/{appId}/branches/{branchName}/deployments/start",
+    paginator = list()
+  )
+  input <- .amplify$start_deployment_input(appId = appId, branchName = branchName, jobId = jobId, sourceUrl = sourceUrl)
+  output <- .amplify$start_deployment_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$start_deployment <- amplify_start_deployment
+
 #' Starts a new job for a branch, part of an Amplify App
 #'
 #' Starts a new job for a branch, part of an Amplify App.
@@ -659,9 +959,12 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 #'
 #' @param appId &#91;required&#93; Unique Id for an Amplify App.
 #' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId Unique Id for the Job.
-#' @param jobType &#91;required&#93; Type for the Job.
-#' @param jobReason Reason for the Job.
+#' @param jobId Unique Id for an existing job. Required for \"RETRY\" JobType.
+#' @param jobType &#91;required&#93; Type for the Job. Available JobTypes are: `\\n` \"RELEASE\": Start a new
+#' job with the latest change from the specified branch. Only available for
+#' apps that have connected to a repository. \"RETRY\": Retry an existing
+#' job. JobId is required for this type of job.
+#' @param jobReason Descriptive reason for starting this job.
 #' @param commitId Commit Id from 3rd party repository provider for the Job.
 #' @param commitMessage Commit message from 3rd party repository provider for the Job.
 #' @param commitTime Commit date / time for the Job.
@@ -672,7 +975,7 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 #'   appId = "string",
 #'   branchName = "string",
 #'   jobId = "string",
-#'   jobType = "RELEASE"|"RETRY"|"WEB_HOOK",
+#'   jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK",
 #'   jobReason = "string",
 #'   commitId = "string",
 #'   commitMessage = "string",
@@ -742,6 +1045,84 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 }
 .amplify$operations$stop_job <- amplify_stop_job
 
+#' Tag resource with tag key and value
+#'
+#' Tag resource with tag key and value.
+#'
+#' @usage
+#' amplify_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; Resource arn used to tag resource.
+#' @param tags &#91;required&#93; Tags used to tag resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_tag_resource
+amplify_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .amplify$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .amplify$tag_resource_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$tag_resource <- amplify_tag_resource
+
+#' Untag resource with resourceArn
+#'
+#' Untag resource with resourceArn.
+#'
+#' @usage
+#' amplify_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; Resource arn used to untag resource.
+#' @param tagKeys &#91;required&#93; Tag keys used to untag resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_untag_resource
+amplify_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .amplify$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .amplify$untag_resource_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$untag_resource <- amplify_untag_resource
+
 #' Updates an existing Amplify App
 #'
 #' Updates an existing Amplify App.
@@ -749,7 +1130,9 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #' @usage
 #' amplify_update_app(appId, name, description, platform,
 #'   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
-#'   enableBasicAuth, basicAuthCredentials, customRules, buildSpec)
+#'   enableBasicAuth, basicAuthCredentials, customRules, buildSpec,
+#'   enableAutoBranchCreation, autoBranchCreationPatterns,
+#'   autoBranchCreationConfig)
 #'
 #' @param appId &#91;required&#93; Unique Id for an Amplify App.
 #' @param name Name for an Amplify App.
@@ -762,6 +1145,9 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #' @param basicAuthCredentials Basic Authorization credentials for an Amplify App.
 #' @param customRules Custom redirect / rewrite rules for an Amplify App.
 #' @param buildSpec BuildSpec for an Amplify App.
+#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify App.
+#' @param autoBranchCreationPatterns Automated branch creation glob patterns for the Amplify App.
+#' @param autoBranchCreationConfig Automated branch creation config for the Amplify App.
 #'
 #' @section Request syntax:
 #' ```
@@ -769,7 +1155,7 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #'   appId = "string",
 #'   name = "string",
 #'   description = "string",
-#'   platform = "IOS"|"ANDROID"|"WEB"|"REACT_NATIVE",
+#'   platform = "WEB",
 #'   iamServiceRoleArn = "string",
 #'   environmentVariables = list(
 #'     "string"
@@ -785,21 +1171,36 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #'       condition = "string"
 #'     )
 #'   ),
-#'   buildSpec = "string"
+#'   buildSpec = "string",
+#'   enableAutoBranchCreation = TRUE|FALSE,
+#'   autoBranchCreationPatterns = list(
+#'     "string"
+#'   ),
+#'   autoBranchCreationConfig = list(
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL",
+#'     framework = "string",
+#'     enableAutoBuild = TRUE|FALSE,
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     basicAuthCredentials = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     buildSpec = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_update_app
-amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL) {
+amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
   op <- new_operation(
     name = "UpdateApp",
     http_method = "POST",
     http_path = "/apps/{appId}",
     paginator = list()
   )
-  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec)
+  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
   output <- .amplify$update_app_output()
   svc <- .amplify$service()
   request <- new_request(svc, op, input, output)
@@ -815,7 +1216,7 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @usage
 #' amplify_update_branch(appId, branchName, description, framework, stage,
 #'   enableNotification, enableAutoBuild, environmentVariables,
-#'   basicAuthCredentials, enableBasicAuth, buildSpec, ttl)
+#'   basicAuthCredentials, enableBasicAuth, buildSpec, ttl, displayName)
 #'
 #' @param appId &#91;required&#93; Unique Id for an Amplify App.
 #' @param branchName &#91;required&#93; Name for the branch.
@@ -829,6 +1230,7 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @param enableBasicAuth Enables Basic Auth for the branch.
 #' @param buildSpec BuildSpec for the branch.
 #' @param ttl The content TTL for the website in seconds.
+#' @param displayName Display name for a branch, will use as the default domain prefix.
 #'
 #' @section Request syntax:
 #' ```
@@ -846,21 +1248,22 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #'   basicAuthCredentials = "string",
 #'   enableBasicAuth = TRUE|FALSE,
 #'   buildSpec = "string",
-#'   ttl = "string"
+#'   ttl = "string",
+#'   displayName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_update_branch
-amplify_update_branch <- function(appId, branchName, description = NULL, framework = NULL, stage = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, buildSpec = NULL, ttl = NULL) {
+amplify_update_branch <- function(appId, branchName, description = NULL, framework = NULL, stage = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL) {
   op <- new_operation(
     name = "UpdateBranch",
     http_method = "POST",
     http_path = "/apps/{appId}/branches/{branchName}",
     paginator = list()
   )
-  input <- .amplify$update_branch_input(appId = appId, branchName = branchName, description = description, framework = framework, stage = stage, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, buildSpec = buildSpec, ttl = ttl)
+  input <- .amplify$update_branch_input(appId = appId, branchName = branchName, description = description, framework = framework, stage = stage, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, buildSpec = buildSpec, ttl = ttl, displayName = displayName)
   output <- .amplify$update_branch_output()
   svc <- .amplify$service()
   request <- new_request(svc, op, input, output)
@@ -915,3 +1318,42 @@ amplify_update_domain_association <- function(appId, domainName, enableAutoSubDo
   return(response)
 }
 .amplify$operations$update_domain_association <- amplify_update_domain_association
+
+#' Update a webhook
+#'
+#' Update a webhook.
+#'
+#' @usage
+#' amplify_update_webhook(webhookId, branchName, description)
+#'
+#' @param webhookId &#91;required&#93; Unique Id for a webhook.
+#' @param branchName Name for a branch, part of an Amplify App.
+#' @param description Description for a webhook.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_webhook(
+#'   webhookId = "string",
+#'   branchName = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname amplify_update_webhook
+amplify_update_webhook <- function(webhookId, branchName = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateWebhook",
+    http_method = "POST",
+    http_path = "/webhooks/{webhookId}",
+    paginator = list()
+  )
+  input <- .amplify$update_webhook_input(webhookId = webhookId, branchName = branchName, description = description)
+  output <- .amplify$update_webhook_output()
+  svc <- .amplify$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.amplify$operations$update_webhook <- amplify_update_webhook

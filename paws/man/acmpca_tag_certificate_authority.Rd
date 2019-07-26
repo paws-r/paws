@@ -23,8 +23,8 @@ pair. You can apply a tag to just one private CA if you want to identify
 a specific characteristic of that CA, or you can apply the same tag to
 multiple private CAs if you want to filter for a common relationship
 among those CAs. To remove one or more tags, use the
-UntagCertificateAuthority operation. Call the ListTags operation to see
-what tags are associated with your CA.
+UntagCertificateAuthority action. Call the ListTags action to see what
+tags are associated with your CA.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_certificate_authority(

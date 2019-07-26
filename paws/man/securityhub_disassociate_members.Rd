@@ -2,18 +2,18 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_members}
 \alias{securityhub_disassociate_members}
-\title{Disassociates the Security Hub member accounts that are specified by the
-account IDs from their master account}
+\title{Disassociates the specified member accounts from the associated master
+account}
 \usage{
 securityhub_disassociate_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{The account IDs of the member accounts that you want to disassociate
-from the master account.}
+\item{AccountIds}{The account IDs of the member accounts to disassociate from the master
+account.}
 }
 \description{
-Disassociates the Security Hub member accounts that are specified by the
-account IDs from their master account.
+Disassociates the specified member accounts from the associated master
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_members(

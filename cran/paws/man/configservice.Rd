@@ -39,6 +39,7 @@ in the \emph{AWS Config Developer Guide}.
 \link[=configservice_delete_configuration_recorder]{delete_configuration_recorder} \tab Deletes the configuration recorder \cr
 \link[=configservice_delete_delivery_channel]{delete_delivery_channel} \tab Deletes the delivery channel \cr
 \link[=configservice_delete_evaluation_results]{delete_evaluation_results} \tab Deletes the evaluation results for the specified AWS Config rule \cr
+\link[=configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Delete organization config rule \cr
 \link[=configservice_delete_pending_aggregation_request]{delete_pending_aggregation_request} \tab Deletes pending authorization requests for a specified aggregator account in a specified region \cr
 \link[=configservice_delete_remediation_configuration]{delete_remediation_configuration} \tab Deletes the remediation configuration \cr
 \link[=configservice_delete_retention_configuration]{delete_retention_configuration} \tab Deletes the retention configuration \cr
@@ -55,6 +56,8 @@ in the \emph{AWS Config Developer Guide}.
 \link[=configservice_describe_configuration_recorders]{describe_configuration_recorders} \tab Returns the details for the specified configuration recorders \cr
 \link[=configservice_describe_delivery_channel_status]{describe_delivery_channel_status} \tab Returns the current status of the specified delivery channel \cr
 \link[=configservice_describe_delivery_channels]{describe_delivery_channels} \tab Returns details about the specified delivery channel \cr
+\link[=configservice_describe_organization_config_rule_statuses]{describe_organization_config_rule_statuses} \tab Describe organization config rule statuses \cr
+\link[=configservice_describe_organization_config_rules]{describe_organization_config_rules} \tab Describe organization config rules \cr
 \link[=configservice_describe_pending_aggregation_requests]{describe_pending_aggregation_requests} \tab Returns a list of all pending aggregation requests \cr
 \link[=configservice_describe_remediation_configurations]{describe_remediation_configurations} \tab Returns the details of one or more remediation configurations \cr
 \link[=configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed\cr
@@ -68,6 +71,7 @@ in the \emph{AWS Config Developer Guide}.
 \link[=configservice_get_compliance_summary_by_config_rule]{get_compliance_summary_by_config_rule} \tab Returns the number of AWS Config rules that are compliant and noncompliant, up to a maximum of 25 for each \cr
 \link[=configservice_get_compliance_summary_by_resource_type]{get_compliance_summary_by_resource_type} \tab Returns the number of resources that are compliant and the number that are noncompliant \cr
 \link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts} \tab Returns the resource types, the number of each resource type, and the total number of resources that AWS Config is recording in this region for your AWS account \cr
+\link[=configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Get organization config rule detailed status \cr
 \link[=configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of configuration items for the specified resource \cr
 \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions \cr
 \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type \cr
@@ -78,6 +82,7 @@ in the \emph{AWS Config Developer Guide}.
 \link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record the selected resource configurations \cr
 \link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic \cr
 \link[=configservice_put_evaluations]{put_evaluations} \tab Used by an AWS Lambda function to deliver evaluation results to AWS Config \cr
+\link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Put organization config rule \cr
 \link[=configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action \cr
 \link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information \cr
 \link[=configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties \cr

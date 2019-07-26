@@ -38,7 +38,13 @@ traffic.
     authKey = "string",
     amazonAddress = "string",
     addressFamily = "ipv4"|"ipv6",
-    customerAddress = "string"
+    customerAddress = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
   )
 )
 }

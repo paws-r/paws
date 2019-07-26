@@ -91,6 +91,10 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'     HlsManifests = list(
 #'       list(
 #'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         AdTriggers = list(
+#'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'         ),
+#'         AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'         Id = "string",
 #'         IncludeIframeOnlyStream = TRUE|FALSE,
 #'         ManifestName = "string",
@@ -108,6 +112,10 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'     )
 #'   ),
 #'   DashPackage = list(
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'     Encryption = list(
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
@@ -140,6 +148,10 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 #'   Description = "string",
 #'   HlsPackage = list(
 #'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'     Encryption = list(
 #'       ConstantInitializationVector = "string",
 #'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
@@ -699,6 +711,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     HlsManifests = list(
 #'       list(
 #'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         AdTriggers = list(
+#'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'         ),
+#'         AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'         Id = "string",
 #'         IncludeIframeOnlyStream = TRUE|FALSE,
 #'         ManifestName = "string",
@@ -716,6 +732,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     )
 #'   ),
 #'   DashPackage = list(
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'     Encryption = list(
 #'       KeyRotationIntervalSeconds = 123,
 #'       SpekeKeyProvider = list(
@@ -748,6 +768,10 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'   Description = "string",
 #'   HlsPackage = list(
 #'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'     AdTriggers = list(
+#'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+#'     ),
+#'     AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
 #'     Encryption = list(
 #'       ConstantInitializationVector = "string",
 #'       EncryptionMethod = "AES_128"|"SAMPLE_AES",

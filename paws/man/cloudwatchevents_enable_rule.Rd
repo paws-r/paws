@@ -4,13 +4,16 @@
 \alias{cloudwatchevents_enable_rule}
 \title{Enables the specified rule}
 \usage{
-cloudwatchevents_enable_rule(Name)
+cloudwatchevents_enable_rule(Name, EventBusName)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
+
+\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
+event bus is used.}
 }
 \description{
-Enables the specified rule. If the rule does not exist, the operation
+Enables the specified rule. If the rule doesn't exist, the operation
 fails.
 }
 \details{
@@ -20,7 +23,8 @@ changes to take effect.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_rule(
-  Name = "string"
+  Name = "string",
+  EventBusName = "string"
 )
 }
 }

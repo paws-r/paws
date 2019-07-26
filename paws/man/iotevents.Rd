@@ -8,7 +8,9 @@ iotevents()
 }
 \description{
 AWS IoT Events monitors your equipment or device fleets for failures or
-changes in operation, and triggers actions when such events occur.
+changes in operation, and triggers actions when such events occur. AWS
+IoT Events API commands enable you to create, read, update and delete
+inputs and detector models, and to list their versions.
 }
 \section{Operations}{
 
@@ -25,7 +27,7 @@ changes in operation, and triggers actions when such events occur.
 \link[=iotevents_list_inputs]{list_inputs} \tab Lists the inputs you have created \cr
 \link[=iotevents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) you have assigned to the resource \cr
 \link[=iotevents_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Events logging options \cr
-\link[=iotevents_tag_resource]{tag_resource} \tab Add to or modifies the tags of the given resource \cr
+\link[=iotevents_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
 \link[=iotevents_untag_resource]{untag_resource} \tab Removes the given tags (metadata) from the resource \cr
 \link[=iotevents_update_detector_model]{update_detector_model} \tab Updates a detector model \cr
 \link[=iotevents_update_input]{update_input} \tab Updates an input

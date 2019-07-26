@@ -8,7 +8,7 @@ neptune_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
   Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  DBClusterParameterGroupName)
+  EnableCloudwatchLogsExports, DBClusterParameterGroupName)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the
@@ -91,6 +91,9 @@ accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
 
+\item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to Amazon
+CloudWatch Logs.}
+
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the new DB
 cluster.
 
@@ -137,6 +140,9 @@ created with the default security group.
   ),
   KmsKeyId = "string",
   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+  EnableCloudwatchLogsExports = list(
+    "string"
+  ),
   DBClusterParameterGroupName = "string"
 )
 }

@@ -4,11 +4,13 @@
 \alias{glue_create_trigger}
 \title{Creates a new trigger}
 \usage{
-glue_create_trigger(Name, Type, Schedule, Predicate, Actions,
-  Description, StartOnCreation, Tags)
+glue_create_trigger(Name, WorkflowName, Type, Schedule, Predicate,
+  Actions, Description, StartOnCreation, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the trigger.}
+
+\item{WorkflowName}{The name of the workflow associated with the trigger.}
 
 \item{Type}{[required] The type of the new trigger.}
 
@@ -39,6 +41,7 @@ Creates a new trigger.
 \section{Request syntax}{
 \preformatted{svc$create_trigger(
   Name = "string",
+  WorkflowName = "string",
   Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
   Schedule = "string",
   Predicate = list(
@@ -47,7 +50,9 @@ Creates a new trigger.
       list(
         LogicalOperator = "EQUALS",
         JobName = "string",
-        State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
+        State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+        CrawlerName = "string",
+        CrawlState = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED"
       )
     )
   ),
@@ -58,10 +63,11 @@ Creates a new trigger.
         "string"
       ),
       Timeout = 123,
+      SecurityConfiguration = "string",
       NotificationProperty = list(
         NotifyDelayAfter = 123
       ),
-      SecurityConfiguration = "string"
+      CrawlerName = "string"
     )
   ),
   Description = "string",

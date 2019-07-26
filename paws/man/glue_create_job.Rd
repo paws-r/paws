@@ -6,8 +6,8 @@
 \usage{
 glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-  Timeout, MaxCapacity, NotificationProperty, WorkerType, NumberOfWorkers,
-  SecurityConfiguration, Tags)
+  Timeout, MaxCapacity, SecurityConfiguration, Tags, NotificationProperty,
+  NumberOfWorkers, WorkerType)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your
@@ -72,7 +72,20 @@ DPUs. The default is 10 DPUs. This job type cannot have a fractional
 DPU allocation.
 }}
 
+\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
+job.}
+
+\item{Tags}{The tags to use with this job. You may use tags to limit access to the
+job. For more information about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
+
 \item{NotificationProperty}{Specifies configuration properties of a job notification.}
+
+\item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated when
+a job runs.
+
+The maximum number of workers you can define are 299 for \code{G.1X}, and 149
+for \code{G.2X}.}
 
 \item{WorkerType}{The type of predefined worker that is allocated when a job runs. Accepts
 a value of Standard, G.1X, or G.2X.
@@ -86,19 +99,6 @@ recommend this worker type for memory-intensive jobs.
 of memory, 128 GB disk), and provides 1 executor per worker. We
 recommend this worker type for memory-intensive jobs.
 }}
-
-\item{NumberOfWorkers}{The number of workers of a defined \code{workerType} that are allocated when
-a job runs.
-
-The maximum number of workers you can define are 299 for \code{G.1X}, and 149
-for \code{G.2X}.}
-
-\item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this
-job.}
-
-\item{Tags}{The tags to use with this job. You may use tags to limit access to the
-job. For more information about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
-the developer guide.}
 }
 \description{
 Creates a new job definition.
@@ -129,15 +129,15 @@ Creates a new job definition.
   AllocatedCapacity = 123,
   Timeout = 123,
   MaxCapacity = 123.0,
-  NotificationProperty = list(
-    NotifyDelayAfter = 123
-  ),
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  NumberOfWorkers = 123,
   SecurityConfiguration = "string",
   Tags = list(
     "string"
-  )
+  ),
+  NotificationProperty = list(
+    NotifyDelayAfter = 123
+  ),
+  NumberOfWorkers = 123,
+  WorkerType = "string"
 )
 }
 }

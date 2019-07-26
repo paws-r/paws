@@ -34,7 +34,7 @@ process.
 
 You can set one vault lock policy for each vault and this policy can be
 up to 20 KB in size. For more information about vault lock policies, see
-\href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
+\href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
 
 You must complete the vault locking process within 24 hours after the
 vault lock enters the \code{InProgress} state. After the 24 hour window ends,
@@ -48,7 +48,7 @@ vault lock for the vault.
 
 You can abort the vault locking process by calling AbortVaultLock. You
 can get the state of the vault lock by calling GetVaultLock. For more
-information about the vault locking process, \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
 If this operation is called when the vault lock is in the \code{InProgress}
 state, the operation returns an \code{AccessDeniedException} error. When the

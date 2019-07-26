@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_apns_sandbox_channel}
 \alias{pinpoint_delete_apns_sandbox_channel}
-\title{Delete an APNS sandbox channel}
+\title{Disables the APNs sandbox channel for an application and deletes any
+existing settings for the channel}
 \usage{
 pinpoint_delete_apns_sandbox_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Delete an APNS sandbox channel.
+Disables the APNs sandbox channel for an application and deletes any
+existing settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_apns_sandbox_channel(

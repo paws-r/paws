@@ -13,32 +13,47 @@ autoscaling_create_auto_scaling_group(AutoScalingGroupName,
   LifecycleHookSpecificationList, Tags, ServiceLinkedRoleARN)
 }
 \arguments{
-\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique within the
-scope of your AWS account.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique per Region
+per account.}
 
-\item{LaunchConfigurationName}{The name of the launch configuration. This parameter, a launch template,
-a mixed instances policy, or an EC2 instance must be specified.
+\item{LaunchConfigurationName}{The name of the launch configuration.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg.html}{Creating an Auto Scaling Group Using a Launch Configuration}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-\item{LaunchTemplate}{The launch template to use to launch instances. This parameter, a launch
-configuration, a mixed instances policy, or an EC2 instance must be
-specified.
+If you do not specify \code{LaunchConfigurationName}, you must specify one of
+the following parameters: \code{InstanceId}, \code{LaunchTemplate}, or
+\code{MixedInstancesPolicy}.}
+
+\item{LaunchTemplate}{The launch template to use to launch instances.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html}{Creating an Auto Scaling Group Using a Launch Template}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-\item{MixedInstancesPolicy}{The mixed instances policy to use to launch instances. This parameter, a
-launch template, a launch configuration, or an EC2 instance must be
-specified.
+If you do not specify \code{LaunchTemplate}, you must specify one of the
+following parameters: \code{InstanceId}, \code{LaunchConfigurationName}, or
+\code{MixedInstancesPolicy}.}
+
+\item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. The required
+parameters must be specified. If optional parameters are unspecified,
+their default values are used.
+
+The policy includes parameters that not only define the distribution of
+On-Demand Instances and Spot Instances, the maximum price to pay for
+Spot instances, and how the Auto Scaling group allocates instance types
+to fulfill On-Demand and Spot capacity, but also the parameters that
+specify the instance configuration information---the launch template and
+instance types.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+You must specify one of the following parameters in your request:
+\code{LaunchConfigurationName}, \code{LaunchTemplate}, \code{InstanceId}, or
+\code{MixedInstancesPolicy}.}
 
 \item{InstanceId}{The ID of the instance used to create a launch configuration for the
-group. This parameter, a launch configuration, a launch template, or a
-mixed instances policy must be specified.
+group.
 
 When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a
 new launch configuration and associates it with the group. This launch
@@ -46,17 +61,21 @@ configuration derives its attributes from the specified instance, except
 for the block device mapping.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html}{Create an Auto Scaling Group Using an EC2 Instance}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+You must specify one of the following parameters in your request:
+\code{LaunchConfigurationName}, \code{LaunchTemplate}, \code{InstanceId}, or
+\code{MixedInstancesPolicy}.}
 
 \item{MinSize}{[required] The minimum size of the group.}
 
 \item{MaxSize}{[required] The maximum size of the group.}
 
-\item{DesiredCapacity}{The number of EC2 instances that should be running in the group. This
-number must be greater than or equal to the minimum size of the group
-and less than or equal to the maximum size of the group. If you do not
-specify a desired capacity, the default is the minimum size of the
-group.}
+\item{DesiredCapacity}{The number of Amazon EC2 instances that the Auto Scaling group attempts
+to maintain. This number must be greater than or equal to the minimum
+size of the group and less than or equal to the maximum size of the
+group. If you do not specify a desired capacity, the default is the
+minimum size of the group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is \code{300}.
@@ -70,13 +89,20 @@ if you specify one or more subnets for \code{VPCZoneIdentifier}.
 Conditional: If your account supports EC2-Classic and VPC, this
 parameter is required to launch instances into EC2-Classic.}
 
-\item{LoadBalancerNames}{One or more Classic Load Balancers. To specify an Application Load
-Balancer or a Network Load Balancer, use \code{TargetGroupARNs} instead.
+\item{LoadBalancerNames}{A list of Classic Load Balancers associated with this Auto Scaling
+group. For Application Load Balancers and Network Load Balancers,
+specify a list of target groups using the \code{TargetGroupARNs} property
+instead.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Using a Load Balancer With an Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Using a Load Balancer with an Auto Scaling Group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-\item{TargetGroupARNs}{The Amazon Resource Names (ARN) of the target groups.}
+\item{TargetGroupARNs}{The Amazon Resource Names (ARN) of the target groups to associate with
+the Auto Scaling group. Instances are registered as targets in a target
+group, and traffic is routed to the target group.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Using a Load Balancer with an Auto Scaling Group}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{HealthCheckType}{The service to use for the health checks. The valid values are \code{EC2} and
 \code{ELB}. The default value is \code{EC2}. If you configure an Auto Scaling

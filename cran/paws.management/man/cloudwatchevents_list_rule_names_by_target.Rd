@@ -4,10 +4,14 @@
 \alias{cloudwatchevents_list_rule_names_by_target}
 \title{Lists the rules for the specified target}
 \usage{
-cloudwatchevents_list_rule_names_by_target(TargetArn, NextToken, Limit)
+cloudwatchevents_list_rule_names_by_target(TargetArn, EventBusName,
+  NextToken, Limit)
 }
 \arguments{
 \item{TargetArn}{[required] The Amazon Resource Name (ARN) of the target resource.}
+
+\item{EventBusName}{Limits the results to show only the rules associated with the specified
+event bus.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of
 results.}
@@ -15,13 +19,13 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \description{
-Lists the rules for the specified target. You can see which of the rules
-in Amazon CloudWatch Events can invoke a specific target in your
-account.
+Lists the rules for the specified target. You can see which rules can
+invoke a specific target in your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_rule_names_by_target(
   TargetArn = "string",
+  EventBusName = "string",
   NextToken = "string",
   Limit = 123
 )

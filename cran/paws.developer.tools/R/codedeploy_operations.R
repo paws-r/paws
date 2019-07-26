@@ -1707,7 +1707,14 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' @param nextToken A token identifier returned from the previous `ListDeploymentTargets`
 #' call. It can be used to return the next set of deployment targets in the
 #' list.
-#' @param targetFilters A key used to filter the returned targets.
+#' @param targetFilters A key used to filter the returned targets. The two valid values are:
+#' 
+#' -   `TargetStatus` - A `TargetStatus` filter string can be `Failed`,
+#'     `InProgress`, `Pending`, `Ready`, `Skipped`, `Succeeded`, or
+#'     `Unknown`.
+#' 
+#' -   `ServerInstanceLabel` - A `ServerInstanceLabel` filter string can be
+#'     `Blue` or `Green`.
 #'
 #' @section Request syntax:
 #' ```

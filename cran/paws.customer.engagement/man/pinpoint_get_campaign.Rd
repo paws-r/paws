@@ -2,17 +2,20 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_campaign}
 \alias{pinpoint_get_campaign}
-\title{Returns information about a campaign}
+\title{Retrieves information about the status, configuration, and other
+settings for a campaign}
 \usage{
 pinpoint_get_campaign(ApplicationId, CampaignId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{CampaignId}{[required] The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique identifier for the campaign.}
 }
 \description{
-Returns information about a campaign.
+Retrieves information about the status, configuration, and other
+settings for a campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaign(

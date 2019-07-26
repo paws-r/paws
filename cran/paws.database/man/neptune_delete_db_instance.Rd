@@ -63,11 +63,8 @@ Note that when a DB instance is in a failure state and has a status of
 \code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can
 only delete it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
 
-If the specified DB instance is part of a DB cluster, you can't delete
-the DB instance if both of the following conditions are true:
-\itemize{
-\item The DB instance is the only instance in the DB cluster.
-}
+You can't delete a DB instance if it is the only instance in the DB
+cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_instance(

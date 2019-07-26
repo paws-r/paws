@@ -22,7 +22,7 @@ When you update a distribution, there are more required fields than when
 you create a distribution. When you update your distribution by using
 this API action, follow the steps here to get the current configuration
 and then make your updates, to make sure that you include all of the
-required fields. To view a summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
+required fields. To view a summary, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
 in the \emph{Amazon CloudFront Developer Guide}.
 
 The update process includes getting the current distribution
@@ -31,13 +31,15 @@ changes, and then submitting an \code{UpdateDistribution} request to make the
 updates.
 
 For information about updating a distribution using the CloudFront
-console instead, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html}{Creating a Distribution}
+console instead, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html}{Creating a Distribution}
 in the \emph{Amazon CloudFront Developer Guide}.
 
 \strong{To update a web distribution using the CloudFront API}
 \enumerate{
-\item Submit a GetDistributionConfig request to get the current
-configuration and an \code{Etag} header for the distribution.
+\item Submit a
+\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html}{GetDistributionConfig}
+request to get the current configuration and an \code{Etag} header for
+the distribution.
 }
 
 If you update the distribution again, you must get a new \code{Etag}
@@ -79,9 +81,10 @@ in Step 2. The request body must include an XML document with a
 \enumerate{
 \item Review the response to the \code{UpdateDistribution} request to confirm
 that the configuration was successfully updated.
-\item Optional: Submit a GetDistribution request to confirm that your
-changes have propagated. When propagation is complete, the value of
-\code{Status} is \code{Deployed}.
+\item Optional: Submit a
+\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html}{GetDistribution}
+request to confirm that your changes have propagated. When
+propagation is complete, the value of \code{Status} is \code{Deployed}.
 }
 }
 \section{Request syntax}{

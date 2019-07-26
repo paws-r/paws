@@ -46,25 +46,48 @@ Files, by calling the following:
 \itemize{
 \item DeleteFile, which deletes the content of a specified file from a
 specified branch.
+\item GetBlob, which returns the base-64 encoded content of an individual
+Git blob object within a repository.
 \item GetFile, which returns the base-64 encoded content of a specified
 file.
 \item GetFolder, which returns the contents of a specified folder or
 directory.
-\item PutFile, which adds or modifies a file in a specified repository and
-branch.
+\item PutFile, which adds or modifies a single file in a specified
+repository and branch.
 }
 
-Information about committed code in a repository, by calling the
-following:
+Commits, by calling the following:
 \itemize{
 \item CreateCommit, which creates a commit for changes to a repository.
-\item GetBlob, which returns the base-64 encoded content of an individual
-Git blob object within a repository.
 \item GetCommit, which returns information about a commit, including
 commit messages and author and committer information.
 \item GetDifferences, which returns information about the differences in a
 valid commit specifier (such as a branch, tag, HEAD, commit ID or
 other fully qualified reference).
+}
+
+Merges, by calling the following:
+\itemize{
+\item BatchDescribeMergeConflicts, which returns information about
+conflicts in a merge between commits in a repository.
+\item CreateUnreferencedMergeCommit, which creates an unreferenced commit
+between two branches or commits for the purpose of comparing them
+and identifying any potential conflicts.
+\item DescribeMergeConflicts, which returns information about merge
+conflicts between the base, source, and destination versions of a
+file in a potential merge.
+\item GetMergeCommit, which returns information about the merge between a
+source and destination commit.
+\item GetMergeConflicts, which returns information about merge conflicts
+between the source and destination branch in a pull request.
+\item GetMergeOptions, which returns information about the available merge
+options between two branches or commit specifiers.
+\item MergeBranchesByFastForward, which merges two branches using the
+fast-forward merge option.
+\item MergeBranchesBySquash, which merges two branches using the squash
+merge option.
+\item MergeBranchesByThreeWay, which merges two branches using the
+three-way merge option.
 }
 
 Pull requests, by calling the following:
@@ -75,14 +98,18 @@ repository.
 more pull request events.
 \item GetCommentsForPullRequest, which returns information about comments
 on a specified pull request.
-\item GetMergeConflicts, which returns information about merge conflicts
-between the source and destination branch in a pull request.
 \item GetPullRequest, which returns information about a specified pull
 request.
 \item ListPullRequests, which lists all pull requests for a repository.
 \item MergePullRequestByFastForward, which merges the source destination
 branch of a pull request into the specified destination branch for
 that pull request using the fast-forward merge option.
+\item MergePullRequestBySquash, which merges the source destination branch
+of a pull request into the specified destination branch for that
+pull request using the squash merge option.
+\item MergePullRequestByThreeWay. which merges the source destination
+branch of a pull request into the specified destination branch for
+that pull request using the three-way merge option.
 \item PostCommentForPullRequest, which posts a comment to a pull request
 at the specified line, file, or request.
 \item UpdatePullRequestDescription, which updates the description of a
@@ -91,7 +118,7 @@ pull request.
 \item UpdatePullRequestTitle, which updates the title of a pull request.
 }
 
-Information about comments in a repository, by calling the following:
+Comments in a repository, by calling the following:
 \itemize{
 \item DeleteCommentContent, which deletes the content of a comment on a
 commit in a repository.
@@ -131,15 +158,18 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=codecommit_batch_describe_merge_conflicts]{batch_describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy \cr
 \link[=codecommit_batch_get_repositories]{batch_get_repositories} \tab Returns information about one or more repositories \cr
 \link[=codecommit_create_branch]{create_branch} \tab Creates a new branch in a repository and points the branch to a commit \cr
 \link[=codecommit_create_commit]{create_commit} \tab Creates a commit for a repository on the tip of a specified branch \cr
 \link[=codecommit_create_pull_request]{create_pull_request} \tab Creates a pull request in the specified repository \cr
 \link[=codecommit_create_repository]{create_repository} \tab Creates a new, empty repository \cr
+\link[=codecommit_create_unreferenced_merge_commit]{create_unreferenced_merge_commit} \tab Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy \cr
 \link[=codecommit_delete_branch]{delete_branch} \tab Deletes a branch from a repository, unless that branch is the default branch for the repository \cr
 \link[=codecommit_delete_comment_content]{delete_comment_content} \tab Deletes the content of a comment made on a change, file, or commit in a repository \cr
 \link[=codecommit_delete_file]{delete_file} \tab Deletes a specified file from a specified branch \cr
 \link[=codecommit_delete_repository]{delete_repository} \tab Deletes a repository \cr
+\link[=codecommit_describe_merge_conflicts]{describe_merge_conflicts} \tab Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy \cr
 \link[=codecommit_describe_pull_request_events]{describe_pull_request_events} \tab Returns information about one or more pull request events \cr
 \link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob within a repository \cr
 \link[=codecommit_get_branch]{get_branch} \tab Returns information about a repository branch, including its name and the last commit ID \cr
@@ -150,7 +180,9 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_get_differences]{get_differences} \tab Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or other fully qualified reference) \cr
 \link[=codecommit_get_file]{get_file} \tab Returns the base-64 encoded contents of a specified file and its metadata \cr
 \link[=codecommit_get_folder]{get_folder} \tab Returns the contents of a specified folder in a repository \cr
+\link[=codecommit_get_merge_commit]{get_merge_commit} \tab Returns information about a specified merge commit \cr
 \link[=codecommit_get_merge_conflicts]{get_merge_conflicts} \tab Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository \cr
+\link[=codecommit_get_merge_options]{get_merge_options} \tab Returns information about the merge options available for merging two specified branches \cr
 \link[=codecommit_get_pull_request]{get_pull_request} \tab Gets information about a pull request in a specified repository \cr
 \link[=codecommit_get_repository]{get_repository} \tab Returns information about a repository \cr
 \link[=codecommit_get_repository_triggers]{get_repository_triggers} \tab Gets information about triggers configured for a repository \cr
@@ -158,7 +190,12 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_list_pull_requests]{list_pull_requests} \tab Returns a list of pull requests for a specified repository \cr
 \link[=codecommit_list_repositories]{list_repositories} \tab Gets information about one or more repositories \cr
 \link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit \cr
-\link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Closes a pull request and attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge option\cr
+\link[=codecommit_merge_branches_by_fast_forward]{merge_branches_by_fast_forward} \tab Merges two branches using the fast-forward merge strategy \cr
+\link[=codecommit_merge_branches_by_squash]{merge_branches_by_squash} \tab Merges two branches using the squash merge strategy \cr
+\link[=codecommit_merge_branches_by_three_way]{merge_branches_by_three_way} \tab Merges two specified branches using the three-way merge strategy \cr
+\link[=codecommit_merge_pull_request_by_fast_forward]{merge_pull_request_by_fast_forward} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy\cr
+\link[=codecommit_merge_pull_request_by_squash]{merge_pull_request_by_squash} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy \cr
+\link[=codecommit_merge_pull_request_by_three_way]{merge_pull_request_by_three_way} \tab Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy \cr
 \link[=codecommit_post_comment_for_compared_commit]{post_comment_for_compared_commit} \tab Posts a comment on the comparison between two commits \cr
 \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request \cr
 \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request \cr
@@ -179,7 +216,7 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 
 \examples{
 \donttest{svc <- codecommit()
-svc$batch_get_repositories(
+svc$batch_describe_merge_conflicts(
   Foo = 123
 )}
 

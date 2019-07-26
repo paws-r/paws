@@ -2,16 +2,16 @@
 % Please edit documentation in R/cloudwatchevents_operations.R
 \name{cloudwatchevents_list_tags_for_resource}
 \alias{cloudwatchevents_list_tags_for_resource}
-\title{Displays the tags associated with a CloudWatch Events resource}
+\title{Displays the tags associated with an EventBridge resource}
 \usage{
 cloudwatchevents_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch Events rule for which you want to view tags.}
+\item{ResourceARN}{[required] The ARN of the rule for which you want to view tags.}
 }
 \description{
-Displays the tags associated with a CloudWatch Events resource. In
-CloudWatch Events, rules can be tagged.
+Displays the tags associated with an EventBridge resource. In
+EventBridge, rules can be tagged.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

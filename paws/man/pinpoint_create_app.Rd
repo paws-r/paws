@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_app}
 \alias{pinpoint_create_app}
-\title{Creates or updates an app}
+\title{Creates an application}
 \usage{
 pinpoint_create_app(CreateApplicationRequest)
 }
@@ -10,7 +10,7 @@ pinpoint_create_app(CreateApplicationRequest)
 \item{CreateApplicationRequest}{[required]}
 }
 \description{
-Creates or updates an app.
+<p>Creates an application.</p>
 }
 \section{Request syntax}{
 \preformatted{svc$create_app(

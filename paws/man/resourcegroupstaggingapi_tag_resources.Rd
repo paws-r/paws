@@ -22,16 +22,16 @@ Applies one or more tags to the specified resources. Note the following:
 \details{
 \itemize{
 \item Not all resources can have tags. For a list of resources that
-support tagging, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html}{Supported Resources}
-in the \emph{AWS Resource Groups and Tag Editor User Guide}.
+support tagging, see \href{http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html}{Supported Resources}
+in the \emph{AWS Resource Groups User Guide}.
 \item Each resource can have up to 50 tags. For other limits, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions}{Tag Restrictions}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \item You can only tag resources that are located in the specified region
 for the AWS account.
 \item To add tags to a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
-adding tags. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
-in the \emph{AWS Resource Groups and Tag Editor User Guide}.
+adding tags. For more information, see \href{http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
+in the \emph{AWS Resource Groups User Guide}.
 }
 }
 \section{Request syntax}{

@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_invite_members}
 \alias{securityhub_invite_members}
-\title{Invites other AWS accounts to enable Security Hub and become Security
-Hub member accounts}
+\title{Invites other AWS accounts to become member accounts for the Security
+Hub master account that the invitation is sent from}
 \usage{
 securityhub_invite_members(AccountIds)
 }
@@ -12,10 +12,13 @@ securityhub_invite_members(AccountIds)
 Hub as members.}
 }
 \description{
-Invites other AWS accounts to enable Security Hub and become Security
-Hub member accounts. When an account accepts the invitation and becomes
-a member account, the master account can view Security Hub findings of
-the member account.
+Invites other AWS accounts to become member accounts for the Security
+Hub master account that the invitation is sent from. Before you can use
+this action to invite a member, you must first create the member account
+in Security Hub by using the CreateMembers action. When the account
+owner accepts the invitation to become a member account and enables
+Security Hub, the master account can view the findings generated from
+member account.
 }
 \section{Request syntax}{
 \preformatted{svc$invite_members(

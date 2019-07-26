@@ -13,8 +13,8 @@ sqs_receive_message(QueueUrl, AttributeNames, MessageAttributeNames,
 
 Queue URLs and names are case-sensitive.}
 
-\item{AttributeNames}{A list of s that need to be returned along with each message. These
-attributes include:
+\item{AttributeNames}{A list of attributes that need to be returned along with each message.
+These attributes include:
 \itemize{
 \item \code{All} - Returns all values.
 \item \code{ApproximateFirstReceiveTimestamp} - Returns the time the message
@@ -92,7 +92,7 @@ can provide a \code{ReceiveRequestAttemptId} explicitly.
 \item During a visibility timeout, subsequent calls with the same
 \code{ReceiveRequestAttemptId} return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it
-resets the visibility timeout. For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
+resets the visibility timeout. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 If a caller of the \code{ReceiveMessage} action still processes messages
@@ -120,13 +120,13 @@ The length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{A-Z}, \code{0-9}) and punctuation
 (\code{!\"#$\\\%&amp;\'()*+,-./:;&lt;=&gt;?@\\[\\\]^_\`\{|\}~}).
 
-For best practices of using \code{ReceiveRequestAttemptId}, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
+For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
 Retrieves one or more messages (up to 10), from the specified queue.
 Using the \code{WaitTimeSeconds} parameter enables long-poll support. For
-more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html}{Amazon SQS Long Polling}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html}{Amazon SQS Long Polling}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \details{
@@ -151,14 +151,14 @@ For each message returned, the response includes the following:
 }
 
 The receipt handle is the identifier you must provide when deleting the
-message. For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html}{Queue and Message Identifiers}
+message. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html}{Queue and Message Identifiers}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 You can provide the \code{VisibilityTimeout} parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
 response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
-information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 A message that isn't deleted or a message whose visibility isn't

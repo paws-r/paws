@@ -3,6 +3,80 @@
 #' @include codecommit_service.R
 NULL
 
+#' Returns information about one or more merge conflicts in the attempted
+#' merge of two commit specifiers using the squash or three-way merge
+#' strategy
+#'
+#' Returns information about one or more merge conflicts in the attempted
+#' merge of two commit specifiers using the squash or three-way merge
+#' strategy.
+#'
+#' @usage
+#' codecommit_batch_describe_merge_conflicts(repositoryName,
+#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
+#'   maxMergeHunks, maxConflictFiles, filePaths, conflictDetailLevel,
+#'   conflictResolutionStrategy, nextToken)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the merge conflicts you want to
+#' review.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
+#' @param maxMergeHunks The maximum number of merge hunks to include in the output.
+#' @param maxConflictFiles The maximum number of files to include in the output.
+#' @param filePaths The path of the target files used to describe the conflicts. If not
+#' specified, the default is all conflict files.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param nextToken An enumeration token that when provided in a request, returns the next
+#' batch of the results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_describe_merge_conflicts(
+#'   repositoryName = "string",
+#'   destinationCommitSpecifier = "string",
+#'   sourceCommitSpecifier = "string",
+#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
+#'   maxMergeHunks = 123,
+#'   maxConflictFiles = 123,
+#'   filePaths = list(
+#'     "string"
+#'   ),
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_batch_describe_merge_conflicts
+codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, maxMergeHunks = NULL, maxConflictFiles = NULL, filePaths = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "BatchDescribeMergeConflicts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$batch_describe_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, maxMergeHunks = maxMergeHunks, maxConflictFiles = maxConflictFiles, filePaths = filePaths, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
+  output <- .codecommit$batch_describe_merge_conflicts_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$batch_describe_merge_conflicts <- codecommit_batch_describe_merge_conflicts
+
 #' Returns information about one or more repositories
 #'
 #' Returns information about one or more repositories.
@@ -110,7 +184,8 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' default message will be used.
 #' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
 #' structure if the changes leave the folders empty. If this is specified
-#' as true, a .gitkeep file will be created for empty folders.
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
 #' @param putFiles The files to add or update in this commit.
 #' @param deleteFiles The files to delete in this commit. These files will still exist in
 #' prior commits.
@@ -285,6 +360,109 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
   return(response)
 }
 .codecommit$operations$create_repository <- codecommit_create_repository
+
+#' Creates an unreferenced commit that represents the result of merging two
+#' branches using a specified merge strategy
+#'
+#' Creates an unreferenced commit that represents the result of merging two
+#' branches using a specified merge strategy. This can help you determine
+#' the outcome of a potential merge. This API cannot be used with the
+#' fast-forward merge strategy, as that strategy does not create a merge
+#' commit.
+#' 
+#' This unreferenced merge commit can only be accessed using the GetCommit
+#' API or through git commands such as git fetch. To retrieve this commit,
+#' you must specify its commit ID or otherwise reference it.
+#'
+#' @usage
+#' codecommit_create_unreferenced_merge_commit(repositoryName,
+#'   sourceCommitSpecifier, destinationCommitSpecifier, mergeOption,
+#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
+#'   commitMessage, keepEmptyFolders, conflictResolution)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you want to create the unreferenced
+#' merge commit.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param authorName The name of the author who created the unreferenced commit. This
+#' information will be used as both the author and committer for the
+#' commit.
+#' @param email The email address for the person who created the unreferenced commit.
+#' @param commitMessage The commit message for the unreferenced commit.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
+#' @param conflictResolution A list of inputs to use when resolving conflicts during a merge if
+#' AUTOMERGE is chosen as the conflict resolution strategy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_unreferenced_merge_commit(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   authorName = "string",
+#'   email = "string",
+#'   commitMessage = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   conflictResolution = list(
+#'     replaceContents = list(
+#'       list(
+#'         filePath = "string",
+#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
+#'         content = raw,
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     ),
+#'     deleteFiles = list(
+#'       list(
+#'         filePath = "string"
+#'       )
+#'     ),
+#'     setFileModes = list(
+#'       list(
+#'         filePath = "string",
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_create_unreferenced_merge_commit
+codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, mergeOption, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
+  op <- new_operation(
+    name = "CreateUnreferencedMergeCommit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$create_unreferenced_merge_commit_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, mergeOption = mergeOption, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
+  output <- .codecommit$create_unreferenced_merge_commit_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$create_unreferenced_merge_commit <- codecommit_create_unreferenced_merge_commit
 
 #' Deletes a branch from a repository, unless that branch is the default
 #' branch for the repository
@@ -471,6 +649,76 @@ codecommit_delete_repository <- function(repositoryName) {
   return(response)
 }
 .codecommit$operations$delete_repository <- codecommit_delete_repository
+
+#' Returns information about one or more merge conflicts in the attempted
+#' merge of two commit specifiers using the squash or three-way merge
+#' strategy
+#'
+#' Returns information about one or more merge conflicts in the attempted
+#' merge of two commit specifiers using the squash or three-way merge
+#' strategy. If the merge option for the attempted merge is specified as
+#' FAST\\_FORWARD\\_MERGE, an exception will be thrown.
+#'
+#' @usage
+#' codecommit_describe_merge_conflicts(repositoryName,
+#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
+#'   maxMergeHunks, filePath, conflictDetailLevel,
+#'   conflictResolutionStrategy, nextToken)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you want to get information about a
+#' merge conflict.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
+#' @param maxMergeHunks The maximum number of merge hunks to include in the output.
+#' @param filePath &#91;required&#93; The path of the target files used to describe the conflicts.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param nextToken An enumeration token that when provided in a request, returns the next
+#' batch of the results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_merge_conflicts(
+#'   repositoryName = "string",
+#'   destinationCommitSpecifier = "string",
+#'   sourceCommitSpecifier = "string",
+#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
+#'   maxMergeHunks = 123,
+#'   filePath = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_describe_merge_conflicts
+codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, maxMergeHunks = NULL, filePath, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeMergeConflicts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$describe_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, maxMergeHunks = maxMergeHunks, filePath = filePath, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
+  output <- .codecommit$describe_merge_conflicts_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$describe_merge_conflicts <- codecommit_describe_merge_conflicts
 
 #' Returns information about one or more pull request events
 #'
@@ -937,6 +1185,61 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 }
 .codecommit$operations$get_folder <- codecommit_get_folder
 
+#' Returns information about a specified merge commit
+#'
+#' Returns information about a specified merge commit.
+#'
+#' @usage
+#' codecommit_get_merge_commit(repositoryName, sourceCommitSpecifier,
+#'   destinationCommitSpecifier, conflictDetailLevel,
+#'   conflictResolutionStrategy)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the merge commit about which
+#' you want to get information.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_merge_commit(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_get_merge_commit
+codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL) {
+  op <- new_operation(
+    name = "GetMergeCommit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$get_merge_commit_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy)
+  output <- .codecommit$get_merge_commit_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$get_merge_commit <- codecommit_get_merge_commit
+
 #' Returns information about merge conflicts between the before and after
 #' commit IDs for a pull request in a repository
 #'
@@ -945,15 +1248,28 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #'
 #' @usage
 #' codecommit_get_merge_conflicts(repositoryName,
-#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption)
+#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
+#'   conflictDetailLevel, maxConflictFiles, conflictResolutionStrategy,
+#'   nextToken)
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit. For example, a branch name or a full commit ID.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit. For example, a branch name or a full commit ID.
-#' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code. The only
-#' valid value is FAST\\_FORWARD\\_MERGE.
+#' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param maxConflictFiles The maximum number of files to include in the output.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param nextToken An enumeration token that when provided in a request, returns the next
+#' batch of the results.
 #'
 #' @section Request syntax:
 #' ```
@@ -961,21 +1277,25 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #'   repositoryName = "string",
 #'   destinationCommitSpecifier = "string",
 #'   sourceCommitSpecifier = "string",
-#'   mergeOption = "FAST_FORWARD_MERGE"
+#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   maxConflictFiles = 123,
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codecommit_get_merge_conflicts
-codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption) {
+codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, conflictDetailLevel = NULL, maxConflictFiles = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetMergeConflicts",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codecommit$get_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption)
+  input <- .codecommit$get_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, conflictDetailLevel = conflictDetailLevel, maxConflictFiles = maxConflictFiles, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
   output <- .codecommit$get_merge_conflicts_output()
   svc <- .codecommit$service()
   request <- new_request(svc, op, input, output)
@@ -983,6 +1303,64 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
   return(response)
 }
 .codecommit$operations$get_merge_conflicts <- codecommit_get_merge_conflicts
+
+#' Returns information about the merge options available for merging two
+#' specified branches
+#'
+#' Returns information about the merge options available for merging two
+#' specified branches. For details about why a particular merge option is
+#' not available, use GetMergeConflicts or DescribeMergeConflicts.
+#'
+#' @usage
+#' codecommit_get_merge_options(repositoryName, sourceCommitSpecifier,
+#'   destinationCommitSpecifier, conflictDetailLevel,
+#'   conflictResolutionStrategy)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the commits about which you
+#' want to get merge options.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_merge_options(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_get_merge_options
+codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL) {
+  op <- new_operation(
+    name = "GetMergeOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$get_merge_options_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy)
+  output <- .codecommit$get_merge_options_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$get_merge_options <- codecommit_get_merge_options
 
 #' Gets information about a pull request in a specified repository
 #'
@@ -1269,13 +1647,244 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 }
 .codecommit$operations$list_tags_for_resource <- codecommit_list_tags_for_resource
 
-#' Closes a pull request and attempts to merge the source commit of a pull
-#' request into the specified destination branch for that pull request at
-#' the specified commit using the fast-forward merge option
+#' Merges two branches using the fast-forward merge strategy
 #'
-#' Closes a pull request and attempts to merge the source commit of a pull
-#' request into the specified destination branch for that pull request at
-#' the specified commit using the fast-forward merge option.
+#' Merges two branches using the fast-forward merge strategy.
+#'
+#' @usage
+#' codecommit_merge_branches_by_fast_forward(repositoryName,
+#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param targetBranch The branch where the merge will be applied.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_branches_by_fast_forward(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   targetBranch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_merge_branches_by_fast_forward
+codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL) {
+  op <- new_operation(
+    name = "MergeBranchesByFastForward",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$merge_branches_by_fast_forward_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch)
+  output <- .codecommit$merge_branches_by_fast_forward_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$merge_branches_by_fast_forward <- codecommit_merge_branches_by_fast_forward
+
+#' Merges two branches using the squash merge strategy
+#'
+#' Merges two branches using the squash merge strategy.
+#'
+#' @usage
+#' codecommit_merge_branches_by_squash(repositoryName,
+#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch,
+#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
+#'   commitMessage, keepEmptyFolders, conflictResolution)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param targetBranch The branch where the merge will be applied.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param authorName The name of the author who created the commit. This information will be
+#' used as both the author and committer for the commit.
+#' @param email The email address of the person merging the branches. This information
+#' will be used in the commit information for the merge.
+#' @param commitMessage The commit message for the merge.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
+#' @param conflictResolution A list of inputs to use when resolving conflicts during a merge if
+#' AUTOMERGE is chosen as the conflict resolution strategy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_branches_by_squash(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   targetBranch = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   authorName = "string",
+#'   email = "string",
+#'   commitMessage = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   conflictResolution = list(
+#'     replaceContents = list(
+#'       list(
+#'         filePath = "string",
+#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
+#'         content = raw,
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     ),
+#'     deleteFiles = list(
+#'       list(
+#'         filePath = "string"
+#'       )
+#'     ),
+#'     setFileModes = list(
+#'       list(
+#'         filePath = "string",
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_merge_branches_by_squash
+codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
+  op <- new_operation(
+    name = "MergeBranchesBySquash",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$merge_branches_by_squash_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
+  output <- .codecommit$merge_branches_by_squash_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$merge_branches_by_squash <- codecommit_merge_branches_by_squash
+
+#' Merges two specified branches using the three-way merge strategy
+#'
+#' Merges two specified branches using the three-way merge strategy.
+#'
+#' @usage
+#' codecommit_merge_branches_by_three_way(repositoryName,
+#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch,
+#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
+#'   commitMessage, keepEmptyFolders, conflictResolution)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
+#' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
+#' identify a commit. For example, a branch name or a full commit ID.
+#' @param targetBranch The branch where the merge will be applied.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param authorName The name of the author who created the commit. This information will be
+#' used as both the author and committer for the commit.
+#' @param email The email address of the person merging the branches. This information
+#' will be used in the commit information for the merge.
+#' @param commitMessage The commit message to include in the commit information for the merge.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
+#' @param conflictResolution A list of inputs to use when resolving conflicts during a merge if
+#' AUTOMERGE is chosen as the conflict resolution strategy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_branches_by_three_way(
+#'   repositoryName = "string",
+#'   sourceCommitSpecifier = "string",
+#'   destinationCommitSpecifier = "string",
+#'   targetBranch = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   authorName = "string",
+#'   email = "string",
+#'   commitMessage = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   conflictResolution = list(
+#'     replaceContents = list(
+#'       list(
+#'         filePath = "string",
+#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
+#'         content = raw,
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     ),
+#'     deleteFiles = list(
+#'       list(
+#'         filePath = "string"
+#'       )
+#'     ),
+#'     setFileModes = list(
+#'       list(
+#'         filePath = "string",
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_merge_branches_by_three_way
+codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
+  op <- new_operation(
+    name = "MergeBranchesByThreeWay",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$merge_branches_by_three_way_input(repositoryName = repositoryName, sourceCommitSpecifier = sourceCommitSpecifier, destinationCommitSpecifier = destinationCommitSpecifier, targetBranch = targetBranch, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, authorName = authorName, email = email, commitMessage = commitMessage, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
+  output <- .codecommit$merge_branches_by_three_way_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$merge_branches_by_three_way <- codecommit_merge_branches_by_three_way
+
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the fast-forward merge strategy
+#'
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the fast-forward merge strategy. If the merge is successful, it closes
+#' the pull request.
 #'
 #' @usage
 #' codecommit_merge_pull_request_by_fast_forward(pullRequestId,
@@ -1317,6 +1926,201 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 }
 .codecommit$operations$merge_pull_request_by_fast_forward <- codecommit_merge_pull_request_by_fast_forward
 
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the squash merge strategy
+#'
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the squash merge strategy. If the merge is successful, it closes the
+#' pull request.
+#'
+#' @usage
+#' codecommit_merge_pull_request_by_squash(pullRequestId, repositoryName,
+#'   sourceCommitId, conflictDetailLevel, conflictResolutionStrategy,
+#'   commitMessage, authorName, email, keepEmptyFolders, conflictResolution)
+#'
+#' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
+#' ListPullRequests.
+#' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
+#' @param sourceCommitId The full commit ID of the original or updated commit in the pull request
+#' source branch. Pass this value if you want an exception thrown if the
+#' current commit ID of the tip of the source branch does not match this
+#' commit ID.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param commitMessage The commit message to include in the commit information for the merge.
+#' @param authorName The name of the author who created the commit. This information will be
+#' used as both the author and committer for the commit.
+#' @param email The email address of the person merging the branches. This information
+#' will be used in the commit information for the merge.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
+#' @param conflictResolution A list of inputs to use when resolving conflicts during a merge if
+#' AUTOMERGE is chosen as the conflict resolution strategy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_pull_request_by_squash(
+#'   pullRequestId = "string",
+#'   repositoryName = "string",
+#'   sourceCommitId = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   commitMessage = "string",
+#'   authorName = "string",
+#'   email = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   conflictResolution = list(
+#'     replaceContents = list(
+#'       list(
+#'         filePath = "string",
+#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
+#'         content = raw,
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     ),
+#'     deleteFiles = list(
+#'       list(
+#'         filePath = "string"
+#'       )
+#'     ),
+#'     setFileModes = list(
+#'       list(
+#'         filePath = "string",
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_merge_pull_request_by_squash
+codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryName, sourceCommitId = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, commitMessage = NULL, authorName = NULL, email = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
+  op <- new_operation(
+    name = "MergePullRequestBySquash",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$merge_pull_request_by_squash_input(pullRequestId = pullRequestId, repositoryName = repositoryName, sourceCommitId = sourceCommitId, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, commitMessage = commitMessage, authorName = authorName, email = email, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
+  output <- .codecommit$merge_pull_request_by_squash_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$merge_pull_request_by_squash <- codecommit_merge_pull_request_by_squash
+
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the three-way merge strategy
+#'
+#' Attempts to merge the source commit of a pull request into the specified
+#' destination branch for that pull request at the specified commit using
+#' the three-way merge strategy. If the merge is successful, it closes the
+#' pull request.
+#'
+#' @usage
+#' codecommit_merge_pull_request_by_three_way(pullRequestId,
+#'   repositoryName, sourceCommitId, conflictDetailLevel,
+#'   conflictResolutionStrategy, commitMessage, authorName, email,
+#'   keepEmptyFolders, conflictResolution)
+#'
+#' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
+#' ListPullRequests.
+#' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
+#' @param sourceCommitId The full commit ID of the original or updated commit in the pull request
+#' source branch. Pass this value if you want an exception thrown if the
+#' current commit ID of the tip of the source branch does not match this
+#' commit ID.
+#' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
+#' FILE\\_LEVEL is used, which will return a not mergeable result if the
+#' same file has differences in both branches. If LINE\\_LEVEL is specified,
+#' a conflict will be considered not mergeable if the same file in both
+#' branches has differences on the same line.
+#' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
+#' attempt automatically merging two versions of a file. The default is
+#' NONE, which requires any conflicts to be resolved manually before the
+#' merge operation will be successful.
+#' @param commitMessage The commit message to include in the commit information for the merge.
+#' @param authorName The name of the author who created the commit. This information will be
+#' used as both the author and committer for the commit.
+#' @param email The email address of the person merging the branches. This information
+#' will be used in the commit information for the merge.
+#' @param keepEmptyFolders If the commit contains deletions, whether to keep a folder or folder
+#' structure if the changes leave the folders empty. If this is specified
+#' as true, a .gitkeep file will be created for empty folders. The default
+#' is false.
+#' @param conflictResolution A list of inputs to use when resolving conflicts during a merge if
+#' AUTOMERGE is chosen as the conflict resolution strategy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_pull_request_by_three_way(
+#'   pullRequestId = "string",
+#'   repositoryName = "string",
+#'   sourceCommitId = "string",
+#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+#'   commitMessage = "string",
+#'   authorName = "string",
+#'   email = "string",
+#'   keepEmptyFolders = TRUE|FALSE,
+#'   conflictResolution = list(
+#'     replaceContents = list(
+#'       list(
+#'         filePath = "string",
+#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
+#'         content = raw,
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     ),
+#'     deleteFiles = list(
+#'       list(
+#'         filePath = "string"
+#'       )
+#'     ),
+#'     setFileModes = list(
+#'       list(
+#'         filePath = "string",
+#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_merge_pull_request_by_three_way
+codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repositoryName, sourceCommitId = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, commitMessage = NULL, authorName = NULL, email = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
+  op <- new_operation(
+    name = "MergePullRequestByThreeWay",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$merge_pull_request_by_three_way_input(pullRequestId = pullRequestId, repositoryName = repositoryName, sourceCommitId = sourceCommitId, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, commitMessage = commitMessage, authorName = authorName, email = email, keepEmptyFolders = keepEmptyFolders, conflictResolution = conflictResolution)
+  output <- .codecommit$merge_pull_request_by_three_way_output()
+  svc <- .codecommit$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$merge_pull_request_by_three_way <- codecommit_merge_pull_request_by_three_way
+
 #' Posts a comment on the comparison between two commits
 #'
 #' Posts a comment on the comparison between two commits.
@@ -1329,6 +2133,9 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' comparison between commits.
 #' @param beforeCommitId To establish the directionality of the comparison, the full commit ID of
 #' the \'before\' commit.
+#' 
+#' This is required for commenting on any commit unless that commit is the
+#' initial commit.
 #' @param afterCommitId &#91;required&#93; To establish the directionality of the comparison, the full commit ID of
 #' the \'after\' commit.
 #' @param location The location of the comparison where you want to comment.

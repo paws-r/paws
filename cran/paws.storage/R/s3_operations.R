@@ -139,10 +139,10 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   GrantReadACP, GrantWriteACP, Key, Metadata, MetadataDirective,
 #'   TaggingDirective, ServerSideEncryption, StorageClass,
 #'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-#'   SSECustomerKeyMD5, SSEKMSKeyId, CopySourceSSECustomerAlgorithm,
-#'   CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5, RequestPayer,
-#'   Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
-#'   ObjectLockLegalHoldStatus)
+#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
+#'   CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey,
+#'   CopySourceSSECustomerKeyMD5, RequestPayer, Tagging, ObjectLockMode,
+#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus)
 #'
 #' @param ACL The canned ACL to apply to the object.
 #' @param Bucket &#91;required&#93; 
@@ -193,6 +193,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' via SSL or using SigV4. Documentation on configuring any of the
 #' officially supported AWS SDKs and CLI can be found at
 #' http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\\#specify-signature-version
+#' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.
+#' The value of this header is a base64-encoded UTF-8 string holding JSON
+#' with the encryption context key-value pairs.
 #' @param CopySourceSSECustomerAlgorithm Specifies the algorithm to use when decrypting the source object (e.g.,
 #' AES256).
 #' @param CopySourceSSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use to
@@ -249,6 +252,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
+#'   SSEKMSEncryptionContext = "string",
 #'   CopySourceSSECustomerAlgorithm = "string",
 #'   CopySourceSSECustomerKey = raw,
 #'   CopySourceSSECustomerKeyMD5 = "string",
@@ -273,14 +277,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @keywords internal
 #'
 #' @rdname s3_copy_object
-s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
+s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
   op <- new_operation(
     name = "CopyObject",
     http_method = "PUT",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()
   )
-  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
+  input <- .s3$copy_object_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, CopySource = CopySource, CopySourceIfMatch = CopySourceIfMatch, CopySourceIfModifiedSince = CopySourceIfModifiedSince, CopySourceIfNoneMatch = CopySourceIfNoneMatch, CopySourceIfUnmodifiedSince = CopySourceIfUnmodifiedSince, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, MetadataDirective = MetadataDirective, TaggingDirective = TaggingDirective, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, CopySourceSSECustomerAlgorithm = CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey = CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5 = CopySourceSSECustomerKeyMD5, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
   output <- .s3$copy_object_output()
   svc <- .s3$service()
   request <- new_request(svc, op, input, output)
@@ -329,11 +333,6 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' ```
 #'
 #' @examples
-#' # The following example creates a bucket.
-#' \donttest{svc$create_bucket(
-#'   Bucket = "examplebucket"
-#' )}
-#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' \donttest{svc$create_bucket(
@@ -341,6 +340,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
 #'   )
+#' )}
+#' 
+#' # The following example creates a bucket.
+#' \donttest{svc$create_bucket(
+#'   Bucket = "examplebucket"
 #' )}
 #'
 #' @keywords internal
@@ -378,8 +382,8 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'   Expires, GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, Key,
 #'   Metadata, ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
 #'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
-#'   RequestPayer, Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
-#'   ObjectLockLegalHoldStatus)
+#'   SSEKMSEncryptionContext, RequestPayer, Tagging, ObjectLockMode,
+#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus)
 #'
 #' @param ACL The canned ACL to apply to the object.
 #' @param Bucket &#91;required&#93; 
@@ -419,6 +423,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' via SSL or using SigV4. Documentation on configuring any of the
 #' officially supported AWS SDKs and CLI can be found at
 #' http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\\#specify-signature-version
+#' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.
+#' The value of this header is a base64-encoded UTF-8 string holding JSON
+#' with the encryption context key-value pairs.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters
@@ -455,6 +462,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
+#'   SSEKMSEncryptionContext = "string",
 #'   RequestPayer = "requester",
 #'   Tagging = "string",
 #'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
@@ -475,14 +483,14 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @keywords internal
 #'
 #' @rdname s3_create_multipart_upload
-s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
+s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
   op <- new_operation(
     name = "CreateMultipartUpload",
     http_method = "POST",
     http_path = "/{Bucket}/{Key+}?uploads",
     paginator = list()
   )
-  input <- .s3$create_multipart_upload_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
+  input <- .s3$create_multipart_upload_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
   output <- .s3$create_multipart_upload_output()
   svc <- .s3$service()
   request <- new_request(svc, op, input, output)
@@ -818,8 +826,9 @@ s3_delete_bucket_policy <- function(Bucket) {
 #' Deletes the replication configuration from the bucket
 #'
 #' Deletes the replication configuration from the bucket. For information
-#' about replication configuration, see Cross-Region Replication (CRR) in
-#' the *Amazon S3 Developer Guide*.
+#' about replication configuration, see [Cross-Region Replication
+#' (CRR)](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
+#' *Amazon S3 Developer Guide*.
 #'
 #' @usage
 #' s3_delete_bucket_replication(Bucket)
@@ -976,16 +985,16 @@ s3_delete_bucket_website <- function(Bucket) {
 #' ```
 #'
 #' @examples
-#' # The following example deletes an object from an S3 bucket.
-#' \donttest{svc$delete_object(
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey.jpg"
-#' )}
-#' 
 #' # The following example deletes an object from a non-versioned bucket.
 #' \donttest{svc$delete_object(
 #'   Bucket = "ExampleBucket",
 #'   Key = "HappyFace.jpg"
+#' )}
+#' 
+#' # The following example deletes an object from an S3 bucket.
+#' \donttest{svc$delete_object(
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -1103,25 +1112,6 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' ```
 #'
 #' @examples
-#' # The following example deletes objects from a bucket. The bucket is
-#' # versioned, and the request does not specify the object version to
-#' # delete. In this case, all versions remain in the bucket and S3 adds a
-#' # delete marker.
-#' \donttest{svc$delete_objects(
-#'   Bucket = "examplebucket",
-#'   Delete = list(
-#'     Objects = list(
-#'       list(
-#'         Key = "objectkey1"
-#'       ),
-#'       list(
-#'         Key = "objectkey2"
-#'       )
-#'     ),
-#'     Quiet = FALSE
-#'   )
-#' )}
-#' 
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
@@ -1136,6 +1126,25 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #'       list(
 #'         Key = "HappyFace.jpg",
 #'         VersionId = "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"
+#'       )
+#'     ),
+#'     Quiet = FALSE
+#'   )
+#' )}
+#' 
+#' # The following example deletes objects from a bucket. The bucket is
+#' # versioned, and the request does not specify the object version to
+#' # delete. In this case, all versions remain in the bucket and S3 adds a
+#' # delete marker.
+#' \donttest{svc$delete_objects(
+#'   Bucket = "examplebucket",
+#'   Delete = list(
+#'     Objects = list(
+#'       list(
+#'         Key = "objectkey1"
+#'       ),
+#'       list(
+#'         Key = "objectkey2"
 #'       )
 #'     ),
 #'     Quiet = FALSE
@@ -2075,18 +2084,18 @@ s3_get_bucket_website <- function(Bucket) {
 #' ```
 #'
 #' @examples
+#' # The following example retrieves an object for an S3 bucket.
+#' \donttest{svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )}
+#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' \donttest{svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
-#' )}
-#' 
-#' # The following example retrieves an object for an S3 bucket.
-#' \donttest{svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -2302,18 +2311,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' ```
 #'
 #' @examples
-#' # The following example retrieves tag set of an object.
-#' \donttest{svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )}
-#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' \donttest{svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+#' )}
+#' 
+#' # The following example retrieves tag set of an object.
+#' \donttest{svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )}
 #'
 #' @keywords internal
@@ -4393,8 +4402,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   ContentType, Expires, GrantFullControl, GrantRead, GrantReadACP,
 #'   GrantWriteACP, Key, Metadata, ServerSideEncryption, StorageClass,
 #'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-#'   SSECustomerKeyMD5, SSEKMSKeyId, RequestPayer, Tagging, ObjectLockMode,
-#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus)
+#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext, RequestPayer,
+#'   Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
+#'   ObjectLockLegalHoldStatus)
 #'
 #' @param ACL The canned ACL to apply to the object.
 #' @param Body Object data.
@@ -4440,6 +4450,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' via SSL or using SigV4. Documentation on configuring any of the
 #' officially supported AWS SDKs and CLI can be found at
 #' http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html\\#specify-signature-version
+#' @param SSEKMSEncryptionContext Specifies the AWS KMS Encryption Context to use for object encryption.
+#' The value of this header is a base64-encoded UTF-8 string holding JSON
+#' with the encryption context key-value pairs.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters. (For example, \"Key1=Value1\")
@@ -4478,6 +4491,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   SSECustomerKey = raw,
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
+#'   SSEKMSEncryptionContext = "string",
 #'   RequestPayer = "requester",
 #'   Tagging = "string",
 #'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
@@ -4489,6 +4503,40 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' ```
 #'
 #' @examples
+#' # The following example uploads and object. The request specifies optional
+#' # canned ACL (access control list) to all READ access to authenticated
+#' # users. If the bucket is versioning enabled, S3 returns version ID in
+#' # response.
+#' \donttest{svc$put_object(
+#'   ACL = "authenticated-read",
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject"
+#' )}
+#' 
+#' # The following example uploads an object. The request specifies optional
+#' # object tags. The bucket is versioned, therefore S3 returns version ID of
+#' # the newly created object.
+#' \donttest{svc$put_object(
+#'   Body = "c:\\HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   Tagging = "key1=value1&key2=value2"
+#' )}
+#' 
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' \donttest{svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
+#' )}
+#' 
 #' # The following example uploads and object. The request specifies the
 #' # optional server-side encryption option. The request also specifies
 #' # optional object tags. If the bucket is versioning enabled, S3 returns
@@ -4509,17 +4557,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   Key = "objectkey"
 #' )}
 #' 
-#' # The following example uploads and object. The request specifies optional
-#' # canned ACL (access control list) to all READ access to authenticated
-#' # users. If the bucket is versioning enabled, S3 returns version ID in
-#' # response.
-#' \donttest{svc$put_object(
-#'   ACL = "authenticated-read",
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject"
-#' )}
-#' 
 #' # The following example uploads an object to a versioning-enabled bucket.
 #' # The source file is specified using Windows file syntax. S3 returns
 #' # VersionId of the newly created object.
@@ -4527,19 +4564,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg"
-#' )}
-#' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' \donttest{svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
 #' )}
 #' 
 #' # The following example uploads an object. The request specifies optional
@@ -4552,28 +4576,18 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #'   ServerSideEncryption = "AES256",
 #'   StorageClass = "STANDARD_IA"
 #' )}
-#' 
-#' # The following example uploads an object. The request specifies optional
-#' # object tags. The bucket is versioned, therefore S3 returns version ID of
-#' # the newly created object.
-#' \donttest{svc$put_object(
-#'   Body = "c:\\HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   Tagging = "key1=value1&key2=value2"
-#' )}
 #'
 #' @keywords internal
 #'
 #' @rdname s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus)
   output <- .s3$put_object_output()
   svc <- .s3$service()
   request <- new_request(svc, op, input, output)

@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_sms_channel}
 \alias{pinpoint_delete_sms_channel}
-\title{Delete an SMS channel}
+\title{Disables the SMS channel for an application and deletes any existing
+settings for the channel}
 \usage{
 pinpoint_delete_sms_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Delete an SMS channel.
+Disables the SMS channel for an application and deletes any existing
+settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_sms_channel(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_import_certificate_authority_certificate}
 \alias{acmpca_import_certificate_authority_certificate}
-\title{Imports your signed private CA certificate into ACM PCA}
+\title{Imports a signed private CA certificate into ACM Private CA}
 \usage{
 acmpca_import_certificate_authority_certificate(CertificateAuthorityArn,
   Certificate, CertificateChain)
@@ -13,35 +13,52 @@ CreateCertificateAuthority. This must be of the form:
 
 \code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
-\item{Certificate}{[required] The PEM-encoded certificate for your private CA. This must be signed by
-using your on-premises CA.}
+\item{Certificate}{[required] The PEM-encoded certificate for a private CA. This may be a self-signed
+certificate in the case of a root CA, or it may be signed by another CA
+that you control.}
 
-\item{CertificateChain}{[required] A PEM-encoded file that contains all of your certificates, other than
-the certificate you're importing, chaining up to your root CA. Your
-on-premises root certificate is the last in the chain, and each
-certificate in the chain signs the one preceding.}
+\item{CertificateChain}{A PEM-encoded file that contains all of your certificates, other than
+the certificate you're importing, chaining up to your root CA. Your ACM
+Private CA-hosted or on-premises root certificate is the last in the
+chain, and each certificate in the chain signs the one preceding.
+
+This parameter must be supplied when you import a subordinate CA. When
+you import a root CA, there is no chain.}
 }
 \description{
-Imports your signed private CA certificate into ACM PCA. Before you can
-call this operation, you must create the private certificate authority
-by calling the CreateCertificateAuthority operation. You must then
-generate a certificate signing request (CSR) by calling the
-GetCertificateAuthorityCsr operation. Take the CSR to your on-premises
-CA and use the root certificate or a subordinate certificate to sign it.
-Create a certificate chain and copy the signed certificate and the
-certificate chain to your working directory.
+Imports a signed private CA certificate into ACM Private CA. This action
+is used when you are using a chain of trust whose root is located
+outside ACM Private CA. Before you can call this action, the following
+preparations must in place:
 }
 \details{
-Your certificate chain must not include the private CA certificate that
-you are importing.
+\enumerate{
+\item In ACM Private CA, call the CreateCertificateAuthority action to
+create the private CA that that you plan to back with the imported
+certificate.
+\item Call the GetCertificateAuthorityCsr action to generate a certificate
+signing request (CSR).
+\item Sign the CSR using a root or intermediate CA hosted either by an
+on-premises PKI hierarchy or a commercial CA..
+\item Create a certificate chain and copy the signed certificate and the
+certificate chain to your working directory.
+}
 
-Your on-premises CA certificate must be the last certificate in your
-chain. The subordinate certificate, if any, that your root CA signed
-must be next to last. The subordinate certificate signed by the
-preceding subordinate CA must come next, and so on until your chain is
-built.
-
-The chain must be PEM-encoded.
+The following requirements apply when you import a CA certificate.
+\itemize{
+\item You cannot import a non-self-signed certificate for use as a root
+CA.
+\item You cannot import a self-signed certificate for use as a subordinate
+CA.
+\item Your certificate chain must not include the private CA certificate
+that you are importing.
+\item Your ACM Private CA-hosted or on-premises CA certificate must be the
+last certificate in your chain. The subordinate certificate, if any,
+that your root CA signed must be next to last. The subordinate
+certificate signed by the preceding subordinate CA must come next,
+and so on until your chain is built.
+\item The chain must be PEM-encoded.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$import_certificate_authority_certificate(

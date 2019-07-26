@@ -15,7 +15,8 @@ autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
 \item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
 to complete before executing the policy.
 
-This parameter is not supported if the policy type is \code{StepScaling}.
+This parameter is not supported if the policy type is \code{StepScaling} or
+\code{TargetTrackingScaling}.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}

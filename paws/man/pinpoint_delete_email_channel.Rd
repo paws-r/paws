@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_email_channel}
 \alias{pinpoint_delete_email_channel}
-\title{Delete an email channel}
+\title{Disables the email channel for an application and deletes any existing
+settings for the channel}
 \usage{
 pinpoint_delete_email_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Delete an email channel.
+Disables the email channel for an application and deletes any existing
+settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_email_channel(

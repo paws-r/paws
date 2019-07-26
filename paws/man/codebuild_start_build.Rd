@@ -40,7 +40,13 @@ a branch name is specified, the branch's HEAD commit ID is used. If
 not specified, the default branch's HEAD commit ID is used.
 \item For Amazon Simple Storage Service (Amazon S3): the version ID of the
 object that represents the build input ZIP file to use.
-}}
+}
+
+If \code{sourceVersion} is specified at the project level, then this
+\code{sourceVersion} (at the build level) takes precedence.
+
+For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html}{Source Version Sample with CodeBuild}
+in the \emph{AWS CodeBuild User Guide}.}
 
 \item{artifactsOverride}{Build output artifact settings that override, for this build only, the
 latest ones already defined in the build project.}

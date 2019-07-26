@@ -8,8 +8,8 @@ detectors (instances) of a specified detector model}
 ioteventsdata_batch_update_detector(detectors)
 }
 \arguments{
-\item{detectors}{[required] The list of detectors (instances) to be updated, along with the values
-to be updated.}
+\item{detectors}{[required] The list of detectors (instances) to update, along with the values to
+update.}
 }
 \description{
 Updates the state, variable values, and timer settings of one or more

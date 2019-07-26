@@ -15,8 +15,8 @@ elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on
 targets. The TCP protocol is supported for health checks only if the
-protocol of the target group is TCP or TLS. The TLS protocol is not
-supported for health checks.
+protocol of the target group is TCP, TLS, UDP, or TCP\_UDP. The TLS,
+UDP, and TCP\_UDP protocols are not supported for health checks.
 
 If the protocol of the target group is TCP, you can't modify this
 setting.}
@@ -30,7 +30,7 @@ the health check request.}
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For Application Load Balancers, the range is 5--300
+individual target. For Application Load Balancers, the range is 5 to 300
 seconds. For Network Load Balancers, the supported values are 10 or 30
 seconds.
 
@@ -66,7 +66,7 @@ To monitor the health of the targets, use DescribeTargetHealth.
 \section{Request syntax}{
 \preformatted{svc$modify_target_group(
   TargetGroupArn = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
   HealthCheckPort = "string",
   HealthCheckPath = "string",
   HealthCheckEnabled = TRUE|FALSE,

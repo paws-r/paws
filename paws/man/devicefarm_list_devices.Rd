@@ -17,7 +17,7 @@ list.}
 operator, and one or more values.
 \itemize{
 \item Attribute: The aspect of a device such as platform or model used as
-the selction criteria in a device filter.
+the selection criteria in a device filter.
 
 Allowed values include:
 \itemize{

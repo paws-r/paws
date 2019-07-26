@@ -2,19 +2,24 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_endpoint}
 \alias{pinpoint_update_endpoint}
-\title{Creates or updates an endpoint}
+\title{Creates a new endpoint for an application or updates the settings and
+attributes of an existing endpoint for an application}
 \usage{
 pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{EndpointId}{[required] The unique ID of the endpoint.}
+\item{EndpointId}{[required] The unique identifier for the endpoint.}
 
 \item{EndpointRequest}{[required]}
 }
 \description{
-Creates or updates an endpoint.
+Creates a new endpoint for an application or updates the settings and
+attributes of an existing endpoint for an application. You can also use
+this operation to define custom attributes (Attributes, Metrics, and
+UserAttributes properties) for an endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint(

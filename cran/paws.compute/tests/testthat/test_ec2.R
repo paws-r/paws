@@ -354,6 +354,30 @@ test_that("describe_tags", {
   expect_error(svc$describe_tags(MaxResults = 20), NA)
 })
 
+test_that("describe_traffic_mirror_filters", {
+  expect_error(svc$describe_traffic_mirror_filters(), NA)
+})
+
+test_that("describe_traffic_mirror_filters", {
+  expect_error(svc$describe_traffic_mirror_filters(MaxResults = 20), NA)
+})
+
+test_that("describe_traffic_mirror_sessions", {
+  expect_error(svc$describe_traffic_mirror_sessions(), NA)
+})
+
+test_that("describe_traffic_mirror_sessions", {
+  expect_error(svc$describe_traffic_mirror_sessions(MaxResults = 20), NA)
+})
+
+test_that("describe_traffic_mirror_targets", {
+  expect_error(svc$describe_traffic_mirror_targets(), NA)
+})
+
+test_that("describe_traffic_mirror_targets", {
+  expect_error(svc$describe_traffic_mirror_targets(MaxResults = 20), NA)
+})
+
 test_that("describe_transit_gateway_attachments", {
   expect_error(svc$describe_transit_gateway_attachments(), NA)
 })

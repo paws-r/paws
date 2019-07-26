@@ -125,7 +125,7 @@ NULL
 
 .alexaforbusiness$create_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumbers = structure(list(structure(list(Number = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), SipAddresses = structure(list(structure(list(Uri = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -491,7 +491,7 @@ NULL
 
 .alexaforbusiness$get_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Contact = structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Contact = structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumbers = structure(list(structure(list(Number = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), SipAddresses = structure(list(structure(list(Uri = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -839,7 +839,7 @@ NULL
 
 .alexaforbusiness$search_contacts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Contacts = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(Contacts = structure(list(structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumbers = structure(list(structure(list(Number = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), SipAddresses = structure(list(structure(list(Uri = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1025,7 +1025,7 @@ NULL
 
 .alexaforbusiness$update_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(ContactArn = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumbers = structure(list(structure(list(Number = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), SipAddresses = structure(list(structure(list(Uri = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

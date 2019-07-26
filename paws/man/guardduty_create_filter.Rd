@@ -5,7 +5,7 @@
 \title{Creates a filter using the specified finding criteria}
 \usage{
 guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
-  FindingCriteria, ClientToken)
+  FindingCriteria, ClientToken, Tags)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
@@ -25,6 +25,8 @@ findings.}
 \item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
 
 \item{ClientToken}{The idempotency token for the create request.}
+
+\item{Tags}{The tags to be added to a new filter resource.}
 }
 \description{
 Creates a filter using the specified finding criteria.
@@ -62,7 +64,10 @@ Creates a filter using the specified finding criteria.
       )
     )
   ),
-  ClientToken = "string"
+  ClientToken = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

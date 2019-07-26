@@ -1,6 +1,6 @@
 Package: paws.compute
 Title: Amazon Web Services Compute APIs
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -31,6 +31,9 @@ Collate:
     'ec2_service.R'
     'ec2_interfaces.R'
     'ec2_operations.R'
+    'ec2instanceconnect_service.R'
+    'ec2instanceconnect_interfaces.R'
+    'ec2instanceconnect_operations.R'
     'ecr_service.R'
     'ecr_interfaces.R'
     'ecr_operations.R'

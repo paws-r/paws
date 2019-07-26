@@ -14,7 +14,14 @@ codedeploy_list_deployment_targets(deploymentId, nextToken,
 call. It can be used to return the next set of deployment targets in the
 list.}
 
-\item{targetFilters}{A key used to filter the returned targets.}
+\item{targetFilters}{A key used to filter the returned targets. The two valid values are:
+\itemize{
+\item \code{TargetStatus} - A \code{TargetStatus} filter string can be \code{Failed},
+\code{InProgress}, \code{Pending}, \code{Ready}, \code{Skipped}, \code{Succeeded}, or
+\code{Unknown}.
+\item \code{ServerInstanceLabel} - A \code{ServerInstanceLabel} filter string can be
+\code{Blue} or \code{Green}.
+}}
 }
 \description{
 Returns an array of target IDs that are associated a deployment.

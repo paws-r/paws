@@ -24,7 +24,7 @@ creates a network interface in the specified subnet with a private IP
 address from the IP address range of the subnet. Internet-bound traffic
 from a private subnet can be routed to the NAT gateway, therefore
 enabling instances in the private subnet to connect to the internet. For
-more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html}{NAT Gateways}
+more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html}{NAT Gateways}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

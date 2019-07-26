@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_phone_number_validate}
 \alias{pinpoint_phone_number_validate}
-\title{Returns information about the specified phone number}
+\title{Retrieves information about a phone number}
 \usage{
 pinpoint_phone_number_validate(NumberValidateRequest)
 }
@@ -10,7 +10,7 @@ pinpoint_phone_number_validate(NumberValidateRequest)
 \item{NumberValidateRequest}{[required]}
 }
 \description{
-Returns information about the specified phone number.
+Retrieves information about a phone number.
 }
 \section{Request syntax}{
 \preformatted{svc$phone_number_validate(

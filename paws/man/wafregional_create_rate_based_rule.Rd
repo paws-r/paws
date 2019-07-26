@@ -5,7 +5,7 @@
 \title{Creates a RateBasedRule}
 \usage{
 wafregional_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
-  ChangeToken)
+  ChangeToken, Tags)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change
@@ -33,6 +33,8 @@ action that is specified for this rule.}
 \item{ChangeToken}{[required] The \code{ChangeToken} that you used to submit the \code{CreateRateBasedRule}
 request. You can also use this value to query the status of the request.
 For more information, see GetChangeTokenStatus.}
+
+\item{Tags}{}
 }
 \description{
 Creates a RateBasedRule. The \code{RateBasedRule} contains a \code{RateLimit},
@@ -103,7 +105,13 @@ HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developergui
   MetricName = "string",
   RateKey = "IP",
   RateLimit = 123,
-  ChangeToken = "string"
+  ChangeToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

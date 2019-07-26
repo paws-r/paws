@@ -71,22 +71,15 @@ to.}
 \item{LicenseType}{The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
-\strong{Note:} You may only use BYOL if you have existing licenses with
-rights to use these licenses in a third party cloud like AWS. For more
-information, see
+By default, we detect the source-system operating system (OS) and apply
+the appropriate license. Specify \code{AWS} to replace the source-system
+license with an AWS license, if appropriate. Specify \code{BYOL} to retain
+the source-system license, if appropriate.
+
+To use \code{BYOL}, you must have existing licenses with rights to use these
+licenses in a third party cloud, such as AWS. For more information, see
 \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image}{Prerequisites}
-in the VM Import/Export User Guide.
-
-Valid values include:
-\itemize{
-\item \code{Auto} - Detects the source-system operating system (OS) and applies
-the appropriate license.
-\item \code{AWS} - Replaces the source-system license with an AWS license, if
-appropriate.
-\item \code{BYOL} - Retains the source-system license, if appropriate.
-}
-
-Default value: \code{Auto}}
+in the VM Import/Export User Guide.}
 
 \item{Platform}{The operating system of the virtual machine.
 

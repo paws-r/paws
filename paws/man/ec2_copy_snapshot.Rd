@@ -20,10 +20,11 @@ HTTP request to (for example, \code{ec2.us-east-1.amazonaws.com}). With the
 AWS CLI, this is specified using the \code{--region} parameter or the default
 Region in your AWS configuration file.}
 
-\item{Encrypted}{Specifies whether the destination snapshot should be encrypted. You can
-encrypt a copy of an unencrypted snapshot, but you cannot use it to
-create an unencrypted copy of an encrypted snapshot. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+\item{Encrypted}{To encrypt a copy of an unencrypted snapshot if encryption by default is
+not enabled, enable encryption using this parameter. Otherwise, omit
+this parameter. Encrypted snapshots are encrypted, even if you omit this
+parameter and encryption by default is not enabled. You cannot set this
+parameter to false. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer

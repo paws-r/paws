@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_user_endpoints}
 \alias{pinpoint_delete_user_endpoints}
-\title{Deletes endpoints that are associated with a User ID}
+\title{Deletes all the endpoints that are associated with a specific user ID}
 \usage{
 pinpoint_delete_user_endpoints(ApplicationId, UserId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{UserId}{[required] The unique ID of the user.}
+\item{UserId}{[required] The unique identifier for the user.}
 }
 \description{
-Deletes endpoints that are associated with a User ID.
+Deletes all the endpoints that are associated with a specific user ID.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_user_endpoints(

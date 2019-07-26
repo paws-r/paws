@@ -16,7 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a default VPC with a size \code{/16} IPv4 CIDR block and a default
 subnet in each Availability Zone. For more information about the
-components of a default VPC, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html}{Default VPC and Default Subnets}
+components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and Default Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the
 components of the default VPC yourself.
 }

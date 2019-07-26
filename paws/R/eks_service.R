@@ -2,14 +2,14 @@
 #' @importFrom paws.common new_handlers new_service
 NULL
 
-#' Amazon Elastic Container Service for Kubernetes
+#' Amazon Elastic Kubernetes Service
 #'
 #' @description
-#' Amazon Elastic Container Service for Kubernetes (Amazon EKS) is a
-#' managed service that makes it easy for you to run Kubernetes on AWS
-#' without needing to stand up or maintain your own Kubernetes control
-#' plane. Kubernetes is an open-source system for automating the
-#' deployment, scaling, and management of containerized applications.
+#' Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that
+#' makes it easy for you to run Kubernetes on AWS without needing to stand
+#' up or maintain your own Kubernetes control plane. Kubernetes is an
+#' open-source system for automating the deployment, scaling, and
+#' management of containerized applications.
 #' 
 #' Amazon EKS runs up-to-date versions of the open-source Kubernetes
 #' software, so you can use all the existing plugins and tooling from the

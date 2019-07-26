@@ -7,8 +7,8 @@
 cloudwatchevents_test_event_pattern(EventPattern, Event)
 }
 \arguments{
-\item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html}{Events and Event Patterns}
-in the \emph{Amazon CloudWatch Events User Guide}.}
+\item{EventPattern}{[required] The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html}{Event Patterns}
+in the \emph{Amazon EventBridge User Guide}.}
 
 \item{Event}{[required] The event, in JSON format, to test against the event pattern.}
 }
@@ -16,11 +16,11 @@ in the \emph{Amazon CloudWatch Events User Guide}.}
 Tests whether the specified event pattern matches the provided event.
 }
 \details{
-Most services in AWS treat : or / as the same character in Amazon
-Resource Names (ARNs). However, CloudWatch Events uses an exact match in
-event patterns and rules. Be sure to use the correct ARN characters when
+Most services in AWS treat \code{:} or \code{/} as the same character in Amazon
+Resource Names (ARNs). However, EventBridge uses an exact match in event
+patterns and rules. Be sure to use the correct ARN characters when
 creating event patterns so that they match the ARN syntax in the event
-you want to match.
+that you want to match.
 }
 \section{Request syntax}{
 \preformatted{svc$test_event_pattern(

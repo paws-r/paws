@@ -2,15 +2,16 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_application_settings}
 \alias{pinpoint_get_application_settings}
-\title{Used to request the settings for an app}
+\title{Retrieves information about the settings for an application}
 \usage{
 pinpoint_get_application_settings(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Used to request the settings for an app.
+Retrieves information about the settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_application_settings(

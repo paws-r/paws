@@ -58,6 +58,7 @@ NULL
 #'  \link[=servicecatalog_describe_provisioning_parameters]{describe_provisioning_parameters} \tab Gets information about the configuration required to provision the specified product using the specified provisioning artifact\cr
 #'  \link[=servicecatalog_describe_record]{describe_record} \tab Gets information about the specified request operation \cr
 #'  \link[=servicecatalog_describe_service_action]{describe_service_action} \tab Describes a self-service action \cr
+#'  \link[=servicecatalog_describe_service_action_execution_parameters]{describe_service_action_execution_parameters} \tab Describe service action execution parameters \cr
 #'  \link[=servicecatalog_describe_tag_option]{describe_tag_option} \tab Gets information about the specified TagOption \cr
 #'  \link[=servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access} \tab Disable portfolio sharing through AWS Organizations feature \cr
 #'  \link[=servicecatalog_disassociate_budget_from_resource]{disassociate_budget_from_resource} \tab Disassociates the specified budget from the specified resource \cr

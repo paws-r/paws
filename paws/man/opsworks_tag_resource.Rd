@@ -28,7 +28,7 @@ value.
 \description{
 Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
 Stacks. For more information about how tagging works, see
-\href{http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags}
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags}
 in the AWS OpsWorks User Guide.
 }
 \section{Request syntax}{

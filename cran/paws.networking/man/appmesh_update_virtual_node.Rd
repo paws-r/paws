@@ -59,6 +59,16 @@ Updates an existing virtual node in a specified service mesh.
       )
     ),
     serviceDiscovery = list(
+      awsCloudMap = list(
+        attributes = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        namespaceName = "string",
+        serviceName = "string"
+      ),
       dns = list(
         hostname = "string"
       )

@@ -2,9 +2,8 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_service_last_accessed_details}
 \alias{iam_get_service_last_accessed_details}
-\title{After you generate a user, group, role, or policy report using the
-GenerateServiceLastAccessedDetails operation, you can use the JobId
-parameter in GetServiceLastAccessedDetails}
+\title{Retrieves a service last accessed report that was created using the
+GenerateServiceLastAccessedDetails operation}
 \usage{
 iam_get_service_last_accessed_details(JobId, MaxItems, Marker)
 }
@@ -28,10 +27,11 @@ the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
 \description{
-After you generate a user, group, role, or policy report using the
-\code{GenerateServiceLastAccessedDetails} operation, you can use the \code{JobId}
-parameter in \code{GetServiceLastAccessedDetails}. This operation retrieves
-the status of your report job and a list of AWS services that the
+Retrieves a service last accessed report that was created using the
+\code{GenerateServiceLastAccessedDetails} operation. You can use the \code{JobId}
+parameter in \code{GetServiceLastAccessedDetails} to retrieve the status of
+your report job. When the report is complete, you can retrieve the
+generated report. The report includes a list of AWS services that the
 resource (user, group, role, or managed policy) can access.
 }
 \details{

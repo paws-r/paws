@@ -8,12 +8,15 @@ product into Security Hub}
 securityhub_batch_import_findings(Findings)
 }
 \arguments{
-\item{Findings}{[required] A list of findings to import. You must submit them in the
-AwsSecurityFinding format.}
+\item{Findings}{[required] A list of findings to import. To successfully import a finding, it must
+follow the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html}{AWS Security Finding Format}.}
 }
 \description{
 Imports security findings generated from an integrated third-party
-product into Security Hub.
+product into Security Hub. This action is requested by the integrated
+product to import its findings into Security Hub. The maximum allowed
+size for a finding is 240 Kb. An error is returned for any finding
+larger than 240 Kb.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_import_findings(

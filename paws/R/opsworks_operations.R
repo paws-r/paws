@@ -19,7 +19,7 @@ NULL
 #' Management (IAM) user must have a Manage permissions level for the stack
 #' or an attached policy that explicitly grants permissions. For more
 #' information on user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_assign_instance(InstanceId, LayerIds)
@@ -65,13 +65,13 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' RegisterVolume. After you register the volume, you must call
 #' UpdateVolume to specify a mount point before calling `AssignVolume`. For
 #' more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_assign_volume(VolumeId, InstanceId)
@@ -112,13 +112,13 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' Associates one of the stack\'s registered Elastic IP addresses with a
 #' specified instance. The address must first be registered with the stack
 #' by calling RegisterElasticIp. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_associate_elastic_ip(ElasticIp, InstanceId)
@@ -159,18 +159,18 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' AWS OpsWorks Stacks does not support Application Load Balancer. You can
 #' only use Classic Load Balancer with AWS OpsWorks Stacks. For more
 #' information, see [Elastic Load
-#' Balancing](http://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
+#' Balancing](https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
 #' 
 #' You must create the Elastic Load Balancing instance separately, by using
 #' the Elastic Load Balancing console, API, or CLI. For more information,
 #' see [Elastic Load Balancing Developer
-#' Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html).
+#' Guide](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
@@ -209,14 +209,14 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' Creates a clone of a specified stack
 #'
 #' Creates a clone of a specified stack. For more information, see [Clone a
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html).
 #' By default, all parameters are set to the values used by the parent
 #' stack.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_clone_stack(SourceStackId, Name, Region, VpcId, Attributes,
@@ -230,7 +230,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @param Name The cloned stack name.
 #' @param Region The cloned stack AWS region, such as \"ap-northeast-2\". For more
 #' information about AWS regions, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' @param VpcId The ID of the VPC that the cloned stack is to be launched into. It must
 #' be in the specified region. All instances are launched into this VPC,
 #' and you cannot change the ID later.
@@ -256,9 +256,9 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' For more information about how to use AWS OpsWorks Stacks with a VPC,
 #' see [Running a Stack in a
-#' VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
+#' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2 Classic, see [Supported
-#' Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 #' @param Attributes A list of stack attributes and values as key/value pairs to be added to
 #' the cloned stack.
 #' @param ServiceRoleArn &#91;required&#93; The stack AWS Identity and Access Management (IAM) role, which allows
@@ -268,7 +268,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' creates the role for you. You can obtain an existing stack\'s IAM ARN
 #' programmatically by calling DescribePermissions. For more information
 #' about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' 
 #' You must set this parameter to a valid service role ARN or the action
 #' will fail; there is no default value. You can specify the source
@@ -276,14 +276,15 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @param DefaultInstanceProfileArn The Amazon Resource Name (ARN) of an IAM profile that is the default
 #' profile for all of the stack\'s EC2 instances. For more information
 #' about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param DefaultOs The stack\'s operating system, which must be set to one of the
 #' following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2017.09`, `Amazon Linux 2017.03`,
-#'     `Amazon Linux 2016.09`, `Amazon Linux 2016.03`,
-#'     `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'     `Amazon Linux 2015.03`.
 #' 
 #' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`,
 #'     `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
@@ -300,12 +301,12 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
 #'     when you create instances. For more information about how to use
 #'     custom AMIs with OpsWorks, see [Using Custom
-#'     AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the parent stack\'s operating system. For more
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' You can specify a different Linux operating system for the cloned stack,
 #' but you cannot change from Linux to Windows or Windows to Linux.
@@ -323,7 +324,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' -   `Fruits`
 #' 
-#' -   `Greek_Deities`
+#' -   `Greek_Deities_and_Titans`
 #' 
 #' -   `Legendary_creatures_from_Japan`
 #' 
@@ -341,7 +342,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' returns a host name based on the current theme.
 #' @param DefaultAvailabilityZone The cloned stack\'s default Availability Zone, which must be in the
 #' specified region. For more information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see the `VpcId` parameter
 #' description.
@@ -359,7 +360,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
-#' Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
+#' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 #' @param ConfigurationManager The configuration manager. When you clone a stack we recommend that you
 #' use the configuration manager to specify the Chef version: 12, 11.10, or
 #' 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for
@@ -367,7 +368,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf
 #' and the Berkshelf version on Chef 11.10 stacks. For more information,
 #' see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param UseCustomCookbooks Whether to use custom cookbooks.
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
 #' with the stack\'s layers.
@@ -391,25 +392,29 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'     that need custom settings.
 #' 
 #' For more information, see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
-#' @param CustomCookbooksSource 
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param CustomCookbooksSource Contains the information required to retrieve an app or cookbook from a
+#' repository. For more information, see [Adding
+#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+#' or [Cookbooks and
+#' Recipes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 #' @param DefaultSshKeyName A default Amazon EC2 key pair name. The default value is none. If you
 #' specify a key pair name, AWS OpsWorks installs the public key on the
 #' instance and you can use the private key with an SSH client to log in to
 #' the instance. For more information, see [Using SSH to Communicate with
 #' an
-#' Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
+#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
 #' and [Managing SSH
-#' Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
+#' Access](https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
 #' You can override this setting by specifying a different key pair, or no
 #' key pair, when you [create an
-#' instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #' @param ClonePermissions Whether to clone the source stack\'s permissions.
 #' @param CloneAppIds A list of source stack app IDs to be included in the cloned stack.
 #' @param DefaultRootDeviceType The default root device type. This value is used by default for all
 #' instances in the cloned stack, but you can override it when you create
 #' an instance. For more information, see [Storage for the Root
-#' Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 #' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
@@ -498,13 +503,13 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #'
 #' Creates an app for a specified stack. For more information, see
 #' [Creating
-#' Apps](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
+#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_app(StackId, Shortname, Name, Description, DataSources,
@@ -533,18 +538,17 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' variables to be associated with the app. After you deploy the app, these
 #' variables are defined on the associated app server instance. For more
 #' information, see [Environment
-#' Variables](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
+#' Variables](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
 #' 
 #' There is no specific limit on the number of environment variables.
 #' However, the size of the associated data structure - which includes the
-#' variables\' names, values, and protected flag values - cannot exceed 10
-#' KB (10240 Bytes). This limit should accommodate most if not all use
-#' cases. Exceeding it will cause an exception with the message,
-#' \"Environment: is too large (maximum is 10KB).\"
+#' variables\' names, values, and protected flag values - cannot exceed 20
+#' KB. This limit should accommodate most if not all use cases. Exceeding
+#' it will cause an exception with the message, \"Environment: is too large
+#' (maximum is 20KB).\"
 #' 
-#' This parameter is supported only by Chef 11.10 stacks. If you have
-#' specified one or more environment variables, you cannot modify the
-#' stack\'s Chef version.
+#' If you have specified one or more environment variables, you cannot
+#' modify the stack\'s Chef version.
 #'
 #' @section Request syntax:
 #' ```
@@ -613,15 +617,15 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' Runs deployment or stack commands
 #'
 #' Runs deployment or stack commands. For more information, see [Deploying
-#' Apps](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html)
+#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html)
 #' and [Run Stack
-#' Commands](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
+#' Commands](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Deploy or Manage permissions level for the stack, or an attached policy
 #' that explicitly grants permissions. For more information on user
 #' permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_deployment(StackId, AppId, InstanceIds, LayerIds,
@@ -635,15 +639,17 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' @param Command &#91;required&#93; A `DeploymentCommand` object that specifies the deployment command and
 #' any associated arguments.
 #' @param Comment A user-defined comment.
-#' @param CustomJson A string that contains user-defined, custom JSON. It is used to override
-#' the corresponding default stack configuration JSON values. The string
-#' should be in the following format:
+#' @param CustomJson A string that contains user-defined, custom JSON. You can use this
+#' parameter to override some corresponding default stack configuration
+#' JSON values. The string should be in the following format:
 #' 
 #' `"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"`
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
-#' Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
+#' and [Overriding Attributes With Custom
+#' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -692,13 +698,13 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #'
 #' Creates an instance in a specified stack. For more information, see
 #' [Adding an Instance to a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_instance(StackId, LayerIds, InstanceType,
@@ -713,7 +719,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' types, open the stack in the console, choose **Instances**, and choose
 #' **+ Instance**. The **Size** list contains the currently supported
 #' types. For more information, see [Instance Families and
-#' Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 #' The parameter values that you use to specify the various types are in
 #' the **API Name** column of the **Available Instance Types** table.
 #' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use
@@ -723,9 +729,10 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2017.09`, `Amazon Linux 2017.03`,
-#'     `Amazon Linux 2016.09`, `Amazon Linux 2016.03`,
-#'     `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'     `Amazon Linux 2015.03`.
 #' 
 #' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`,
 #'     `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
@@ -744,26 +751,26 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' 
 #' For more information about the supported operating systems, see [AWS
 #' OpsWorks Stacks Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' The default option is the current Amazon Linux version. If you set this
 #' parameter to `Custom`, you must use the CreateInstance action\'s AmiId
 #' parameter to specify the custom AMI that you want to use. Block device
 #' mappings are not supported if the value is `Custom`. For more
 #' information about supported operating systems, see [Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
 #' more information about how to use custom AMIs with AWS OpsWorks Stacks,
 #' see [Using Custom
-#' AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' @param AmiId A custom AMI ID to be used to create the instance. The AMI should be
 #' based on one of the supported operating systems. For more information,
 #' see [Using Custom
-#' AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' If you specify a custom AMI, you must set `Os` to `Custom`.
 #' @param SshKeyName The instance\'s Amazon EC2 key-pair name.
 #' @param AvailabilityZone The instance Availability Zone. For more information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' @param VirtualizationType The instance\'s virtualization type, `paravirtual` or `hvm`.
 #' @param SubnetId The ID of the instance\'s subnet. If the stack is running in a VPC, you
 #' can use this parameter to override the stack\'s default subnet ID value
@@ -773,13 +780,13 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' types do not necessarily support both architectures. For a list of the
 #' architectures that are supported by the different instance types, see
 #' [Instance Families and
-#' Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 #' @param RootDeviceType The instance root device type. For more information, see [Storage for
 #' the Root
-#' Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 #' @param BlockDeviceMappings An array of `BlockDeviceMapping` objects that specify the instance\'s
 #' block devices. For more information, see [Block Device
-#' Mapping](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html).
+#' Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html).
 #' Note that block device mappings are not supported for custom AMIs.
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
@@ -816,7 +823,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' Overview](http://aws.amazon.com/ec2/dedicated-hosts/) and [Amazon EC2
 #' Dedicated Hosts](http://aws.amazon.com/ec2/dedicated-hosts/). For more
 #' information about dedicated instances, see [Dedicated
-#' Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html)
+#' Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html)
 #' and [Amazon EC2 Dedicated
 #' Instances](http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/).
 #'
@@ -881,7 +888,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' Creates a layer
 #'
 #' Creates a layer. For more information, see [How to Create a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
 #' 
 #' You should use **CreateLayer** for noncustom layer types such as PHP App
 #' Server only if the stack does not have an existing layer of that type. A
@@ -894,7 +901,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_layer(StackId, Type, Name, Shortname, Attributes,
@@ -918,7 +925,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' 
 #' The built-in layers\' short names are defined by AWS OpsWorks Stacks.
 #' For more information, see the [Layer
-#' Reference](http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html).
+#' Reference](https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
 #' 
@@ -928,11 +935,11 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' information, see CloudWatchLogsLogStream.
 #' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for the layer\'s EC2 instances. For
 #' more information about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
 #' deployment attributes to be installed on the layer\'s instances. For
 #' more information, see [Using Custom
-#' JSON](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
+#' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
 #' This feature is supported as of version 1.7.42 of the AWS CLI.
 #' @param CustomSecurityGroupIds An array containing the layer custom security group IDs.
 #' @param Packages An array of `Package` objects that describes the layer packages.
@@ -940,13 +947,13 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' volumes.
 #' @param EnableAutoHealing Whether to disable auto healing for the layer.
 #' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP
-#' address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+#' address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #' to the layer\'s instances. For more information, see [How to Edit a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a
 #' public IP address to the layer\'s instances. For more information, see
 #' [How to Edit a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer custom recipes.
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
@@ -1062,12 +1069,12 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' Creates a new stack
 #'
 #' Creates a new stack. For more information, see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_stack(Name, Region, VpcId, Attributes, ServiceRoleArn,
@@ -1080,7 +1087,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' @param Name &#91;required&#93; The stack name.
 #' @param Region &#91;required&#93; The stack\'s AWS region, such as `ap-south-1`. For more information
 #' about Amazon regions, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html).
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' 
 #' In the AWS CLI, this API maps to the `--stack-region` parameter. If the
 #' `--stack-region` parameter and the AWS CLI common parameter `--region`
@@ -1123,28 +1130,29 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' For more information about how to use AWS OpsWorks Stacks with a VPC,
 #' see [Running a Stack in a
-#' VPC](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
+#' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2-Classic, see [Supported
-#' Platforms](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
 #' @param ServiceRoleArn &#91;required&#93; The stack\'s AWS Identity and Access Management (IAM) role, which allows
 #' AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 #' set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 #' role. For more information about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param DefaultInstanceProfileArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM profile that is the default
 #' profile for all of the stack\'s EC2 instances. For more information
 #' about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param DefaultOs The stack\'s default operating system, which is installed on every
 #' instance unless you specify a different operating system when you create
 #' the instance. You can specify one of the following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2017.09`, `Amazon Linux 2017.03`,
-#'     `Amazon Linux 2016.09`, `Amazon Linux 2016.03`,
-#'     `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'     `Amazon Linux 2015.03`.
 #' 
 #' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`,
 #'     `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
@@ -1161,12 +1169,12 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
 #'     when you create instances. For more information, see [Using Custom
-#'     AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the current Amazon Linux version. For more
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' @param HostnameTheme The stack\'s host name theme, with spaces replaced by underscores. The
 #' theme is used to generate host names for the stack\'s instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host
@@ -1181,7 +1189,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' -   `Fruits`
 #' 
-#' -   `Greek_Deities`
+#' -   `Greek_Deities_and_Titans`
 #' 
 #' -   `Legendary_creatures_from_Japan`
 #' 
@@ -1199,7 +1207,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' returns a host name based on the current theme.
 #' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the specified
 #' region. For more information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see the `VpcId` parameter
 #' description.
@@ -1218,7 +1226,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
-#' Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 #' @param ConfigurationManager The configuration manager. When you create a stack we recommend that you
 #' use the configuration manager to specify the Chef version: 12, 11.10, or
 #' 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for
@@ -1226,7 +1234,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf
 #' and the Berkshelf version on Chef 11.10 stacks. For more information,
 #' see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param UseCustomCookbooks Whether the stack uses custom cookbooks.
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
 #' with the stack\'s layers.
@@ -1249,24 +1257,28 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #'     for those layers that need custom settings.
 #' 
 #' For more information, see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
-#' @param CustomCookbooksSource 
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' @param CustomCookbooksSource Contains the information required to retrieve an app or cookbook from a
+#' repository. For more information, see [Adding
+#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+#' or [Cookbooks and
+#' Recipes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 #' @param DefaultSshKeyName A default Amazon EC2 key pair name. The default value is none. If you
 #' specify a key pair name, AWS OpsWorks installs the public key on the
 #' instance and you can use the private key with an SSH client to log in to
 #' the instance. For more information, see [Using SSH to Communicate with
 #' an
-#' Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
+#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
 #' and [Managing SSH
-#' Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
+#' Access](https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
 #' You can override this setting by specifying a different key pair, or no
 #' key pair, when you [create an
-#' instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #' @param DefaultRootDeviceType The default root device type. This value is the default for all
 #' instances in the stack, but you can override it when you create an
 #' instance. The default option is `instance-store`. For more information,
 #' see [Storage for the Root
-#' Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 #' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
@@ -1354,7 +1366,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_create_user_profile(IamUserArn, SshUsername, SshPublicKey,
@@ -1370,7 +1382,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
 #' Settings page. For more information, see [Setting an IAM User\'s Public
 #' SSH
-#' Key](http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#' Key](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1409,7 +1421,7 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_delete_app(AppId)
@@ -1449,13 +1461,13 @@ opsworks_delete_app <- function(AppId) {
 #' instance. You must stop an instance before you can delete it.
 #' 
 #' For more information, see [Deleting
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_delete_instance(InstanceId, DeleteElasticIp, DeleteVolumes)
@@ -1497,13 +1509,13 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #' Deletes a specified layer. You must first stop and then delete all
 #' associated instances or unassign registered instances. For more
 #' information, see [How to Delete a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_delete_layer(LayerId)
@@ -1541,13 +1553,13 @@ opsworks_delete_layer <- function(LayerId) {
 #' Deletes a specified stack. You must first delete all instances, layers,
 #' and apps or deregister registered instances. For more information, see
 #' [Shut Down a
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_delete_stack(StackId)
@@ -1587,7 +1599,7 @@ opsworks_delete_stack <- function(StackId) {
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_delete_user_profile(IamUserArn)
@@ -1624,13 +1636,13 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #'
 #' Deregisters a specified Amazon ECS cluster from a stack. For more
 #' information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see
-#' <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html>.
+#' <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html>.
 #'
 #' @usage
 #' opsworks_deregister_ecs_cluster(EcsClusterArn)
@@ -1667,13 +1679,13 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #'
 #' Deregisters a specified Elastic IP address. The address can then be
 #' registered by another stack. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_deregister_elastic_ip(ElasticIp)
@@ -1717,7 +1729,7 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #' Manage permissions level for the stack or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_deregister_instance(InstanceId)
@@ -1758,7 +1770,7 @@ opsworks_deregister_instance <- function(InstanceId) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
@@ -1795,13 +1807,13 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #'
 #' Deregisters an Amazon EBS volume. The volume can then be registered by
 #' another stack. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_deregister_volume(VolumeId)
@@ -1889,7 +1901,7 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_apps(StackId, AppIds)
@@ -1939,7 +1951,7 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_commands(DeploymentId, InstanceId, CommandIds)
@@ -1994,7 +2006,7 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_deployments(StackId, AppId, DeploymentIds)
@@ -2049,7 +2061,7 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' Show, Deploy, or Manage permissions level for the stack or an attached
 #' policy that explicitly grants permission. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #' 
 #' This call accepts only one resource-identifying parameter.
 #'
@@ -2106,7 +2118,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' Describes Elastic IP addresses
 #'
 #' Describes [Elastic IP
-#' addresses](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
+#' addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 #' 
 #' This call accepts only one resource-identifying parameter.
 #' 
@@ -2114,7 +2126,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_elastic_ips(InstanceId, StackId, Ips)
@@ -2170,7 +2182,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_elastic_load_balancers(StackId, LayerIds)
@@ -2219,7 +2231,7 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_instances(StackId, LayerId, InstanceIds)
@@ -2272,7 +2284,7 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_layers(StackId, LayerIds)
@@ -2321,7 +2333,7 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_load_based_auto_scaling(LayerIds)
@@ -2364,7 +2376,7 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 #' self-management enabled or an attached policy that explicitly grants
 #' permissions. For more information about user permissions, see [Managing
 #' User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_my_user_profile()
@@ -2432,14 +2444,14 @@ opsworks_describe_operating_systems <- function() {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_permissions(IamUserArn, StackId)
 #'
 #' @param IamUserArn The user\'s IAM ARN. This can also be a federated user\'s ARN. For more
 #' information about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param StackId The stack ID.
 #'
 #' @section Request syntax:
@@ -2479,7 +2491,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_raid_arrays(InstanceId, StackId, RaidArrayIds)
@@ -2529,7 +2541,7 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #' 
 #' This call accepts only one resource-identifying parameter.
 #'
@@ -2577,7 +2589,7 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #' 
 #' This call accepts only one resource-identifying parameter.
 #'
@@ -2631,7 +2643,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #' Show, Deploy, or Manage permissions level for the stack or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_stack_provisioning_parameters(StackId)
@@ -2674,7 +2686,7 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_stack_summary(StackId)
@@ -2715,7 +2727,7 @@ opsworks_describe_stack_summary <- function(StackId) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_stacks(StackIds)
@@ -2763,7 +2775,7 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_time_based_auto_scaling(InstanceIds)
@@ -2805,7 +2817,7 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_user_profiles(IamUserArns)
@@ -2851,7 +2863,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' Show, Deploy, or Manage permissions level for the stack, or an attached
 #' policy that explicitly grants permissions. For more information about
 #' user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_describe_volumes(InstanceId, StackId, RaidArrayId, VolumeIds)
@@ -2905,7 +2917,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
@@ -2945,13 +2957,13 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'
 #' Disassociates an Elastic IP address from its instance. The address
 #' remains registered with the stack. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_disassociate_elastic_ip(ElasticIp)
@@ -2994,7 +3006,7 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_get_hostname_suggestion(LayerId)
@@ -3114,13 +3126,13 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #'
 #' Reboots a specified instance. For more information, see [Starting,
 #' Stopping, and Rebooting
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_reboot_instance(InstanceId)
@@ -3158,13 +3170,13 @@ opsworks_reboot_instance <- function(InstanceId) {
 #' Registers a specified Amazon ECS cluster with a stack. You can register
 #' only one cluster with a stack. A cluster can be registered with only one
 #' stack. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_register_ecs_cluster(EcsClusterArn, StackId)
@@ -3205,13 +3217,13 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #' be registered with only one stack at a time. If the address is already
 #' registered, you must first deregister it by calling DeregisterElasticIp.
 #' For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_register_elastic_ip(ElasticIp, StackId)
@@ -3259,20 +3271,20 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' instead use the AWS CLI `register` command, which performs the entire
 #' registration operation. For more information, see [Registering an
 #' Instance with an AWS OpsWorks Stacks
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
 #' 
 #' Registered instances have the same requirements as instances that are
 #' created by using the CreateInstance API. For example, registered
 #' instances must be running a supported Linux-based operating system, and
 #' they must have a supported instance type. For more information about
 #' requirements for instances that you want to register, see [Preparing the
-#' Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html).
+#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_register_instance(StackId, Hostname, PublicIp, PrivateIp,
@@ -3330,7 +3342,7 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser,
@@ -3376,13 +3388,13 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #' registered with only one stack at a time. If the volume is already
 #' registered, you must first deregister it by calling DeregisterVolume.
 #' For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_register_volume(Ec2VolumeId, StackId)
@@ -3421,7 +3433,7 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #'
 #' Specify the load-based auto scaling configuration for a specified layer.
 #' For more information, see [Managing Load with Time-based and Load-based
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #' 
 #' To use load-based auto scaling, you must create a set of load-based auto
 #' scaling instances. Load-based auto scaling operates only on the
@@ -3432,7 +3444,7 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_set_load_based_auto_scaling(LayerId, Enable, UpScaling,
@@ -3501,13 +3513,13 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' Specifies a user's permissions
 #'
 #' Specifies a user\'s permissions. For more information, see [Security and
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_set_permission(StackId, IamUserArn, AllowSsh, AllowSudo, Level)
@@ -3531,7 +3543,7 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' 
 #' For more information about the permissions associated with these levels,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -3569,13 +3581,13 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #' Specify the time-based auto scaling configuration for a specified
 #' instance. For more information, see [Managing Load with Time-based and
 #' Load-based
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule)
@@ -3636,13 +3648,13 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #'
 #' Starts a specified instance. For more information, see [Starting,
 #' Stopping, and Rebooting
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_start_instance(InstanceId)
@@ -3683,7 +3695,7 @@ opsworks_start_instance <- function(InstanceId) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_start_stack(StackId)
@@ -3722,19 +3734,25 @@ opsworks_start_stack <- function(StackId) {
 #' disappears and must be reinstalled when you restart the instance. You
 #' can stop an Amazon EBS-backed instance without losing data. For more
 #' information, see [Starting, Stopping, and Rebooting
-#' Instances](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
+#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_stop_instance(InstanceId, Force)
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#' @param Force Specifies whether to force an instance to stop.
+#' @param Force Specifies whether to force an instance to stop. If the instance\'s root
+#' device type is `ebs`, or EBS-backed, adding the `Force` parameter to the
+#' `StopInstances` API call disassociates the AWS OpsWorks Stacks instance
+#' from EC2, and forces deletion of *only* the OpsWorks Stacks instance.
+#' You must also delete the formerly-associated instance in EC2 after
+#' troubleshooting and replacing the AWS OpsWorks Stacks instance with a
+#' new one.
 #'
 #' @section Request syntax:
 #' ```
@@ -3771,7 +3789,7 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_stop_stack(StackId)
@@ -3809,7 +3827,7 @@ opsworks_stop_stack <- function(StackId) {
 #'
 #' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
 #' Stacks. For more information about how tagging works, see
-#' [Tags](http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html)
+#' [Tags](https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html)
 #' in the AWS OpsWorks User Guide.
 #'
 #' @usage
@@ -3875,7 +3893,7 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #' Manage permissions level for the stack or an attached policy that
 #' explicitly grants permissions. For more information about user
 #' permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_unassign_instance(InstanceId)
@@ -3912,13 +3930,13 @@ opsworks_unassign_instance <- function(InstanceId) {
 #'
 #' Unassigns an assigned Amazon EBS volume. The volume remains registered
 #' with the stack. For more information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_unassign_volume(VolumeId)
@@ -3998,7 +4016,7 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' Deploy or Manage permissions level for the stack, or an attached policy
 #' that explicitly grants permissions. For more information on user
 #' permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_app(AppId, Name, Description, DataSources, Type,
@@ -4021,18 +4039,17 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' variables to be associated with the app. After you deploy the app, these
 #' variables are defined on the associated app server instances.For more
 #' information, see [Environment
-#' Variables](http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
+#' Variables](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment).
 #' 
 #' There is no specific limit on the number of environment variables.
 #' However, the size of the associated data structure - which includes the
-#' variables\' names, values, and protected flag values - cannot exceed 10
-#' KB (10240 Bytes). This limit should accommodate most if not all use
-#' cases. Exceeding it will cause an exception with the message,
-#' \"Environment: is too large (maximum is 10KB).\"
+#' variables\' names, values, and protected flag values - cannot exceed 20
+#' KB. This limit should accommodate most if not all use cases. Exceeding
+#' it will cause an exception with the message, \"Environment: is too large
+#' (maximum is 20 KB).\"
 #' 
-#' This parameter is supported only by Chef 11.10 stacks. If you have
-#' specified one or more environment variables, you cannot modify the
-#' stack\'s Chef version.
+#' If you have specified one or more environment variables, you cannot
+#' modify the stack\'s Chef version.
 #'
 #' @section Request syntax:
 #' ```
@@ -4101,13 +4118,13 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #'
 #' Updates a registered Elastic IP address\'s name. For more information,
 #' see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_elastic_ip(ElasticIp, Name)
@@ -4150,7 +4167,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_instance(InstanceId, LayerIds, InstanceType,
@@ -4163,7 +4180,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' types, open the stack in the console, choose **Instances**, and choose
 #' **+ Instance**. The **Size** list contains the currently supported
 #' types. For more information, see [Instance Families and
-#' Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 #' The parameter values that you use to specify the various types are in
 #' the **API Name** column of the **Available Instance Types** table.
 #' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use
@@ -4173,9 +4190,10 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' following. You cannot update an instance that is using a custom AMI.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2017.09`, `Amazon Linux 2017.03`,
-#'     `Amazon Linux 2016.09`, `Amazon Linux 2016.03`,
-#'     `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'     `Amazon Linux 2015.03`.
 #' 
 #' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`,
 #'     `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
@@ -4192,16 +4210,16 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' 
 #' For more information about supported operating systems, see [AWS
 #' OpsWorks Stacks Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' The default option is the current Amazon Linux version. If you set this
 #' parameter to `Custom`, you must use the AmiId parameter to specify the
 #' custom AMI that you want to use. For more information about supported
 #' operating systems, see [Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' For more information about how to use custom AMIs with OpsWorks, see
 #' [Using Custom
-#' AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' You can specify a different Linux operating system for the updated
 #' stack, but you cannot change from Linux to Windows or Windows to Linux.
@@ -4214,7 +4232,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param Architecture The instance architecture. Instance types do not necessarily support
 #' both architectures. For a list of the architectures that are supported
 #' by the different instance types, see [Instance Families and
-#' Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+#' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
@@ -4290,7 +4308,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_layer(LayerId, Name, Shortname, Attributes,
@@ -4310,31 +4328,31 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' 
 #' The built-in layers\' short names are defined by AWS OpsWorks Stacks.
 #' For more information, see the [Layer
-#' Reference](http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html)
+#' Reference](https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html)
 #' @param Attributes One or more user-defined key/value pairs to be added to the stack
 #' attributes.
 #' @param CloudWatchLogsConfiguration Specifies CloudWatch Logs configuration options for the layer. For more
 #' information, see CloudWatchLogsLogStream.
 #' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for all of the layer\'s EC2
 #' instances. For more information about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
 #' deployment attributes to be installed on the layer\'s instances. For
 #' more information, see [Using Custom
-#' JSON](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
+#' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
 #' @param CustomSecurityGroupIds An array containing the layer\'s custom security group IDs.
 #' @param Packages An array of `Package` objects that describe the layer\'s packages.
 #' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer\'s Amazon EBS
 #' volumes.
 #' @param EnableAutoHealing Whether to disable auto healing for the layer.
 #' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP
-#' address](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+#' address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #' to the layer\'s instances. For more information, see [How to Edit a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a
 #' public IP address to the layer\'s instances. For more information, see
 #' [How to Edit a
-#' Layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
+#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer\'s custom
 #' recipes.
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
@@ -4453,7 +4471,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #' self-management enabled or an attached policy that explicitly grants
 #' permissions. For more information about user permissions, see [Managing
 #' User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_my_user_profile(SshPublicKey)
@@ -4494,7 +4512,7 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_rds_db_instance(RdsDbInstanceArn, DbUser, DbPassword)
@@ -4539,7 +4557,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_stack(StackId, Name, Attributes, ServiceRoleArn,
@@ -4556,14 +4574,15 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' @param ServiceRoleArn Do not use this parameter. You cannot update a stack\'s service role.
 #' @param DefaultInstanceProfileArn The ARN of an IAM profile that is the default profile for all of the
 #' stack\'s EC2 instances. For more information about IAM ARNs, see [Using
-#' Identifiers](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param DefaultOs The stack\'s operating system, which must be set to one of the
 #' following:
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2017.09`, `Amazon Linux 2017.03`,
-#'     `Amazon Linux 2016.09`, `Amazon Linux 2016.03`,
-#'     `Amazon Linux 2015.09`, or `Amazon Linux 2015.03`.
+#'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'     `Amazon Linux 2015.03`.
 #' 
 #' -   A supported Ubuntu operating system, such as `Ubuntu 16.04 LTS`,
 #'     `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
@@ -4581,12 +4600,12 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
 #'     when you create instances. For more information about how to use
 #'     custom AMIs with OpsWorks, see [Using Custom
-#'     AMIs](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the stack\'s current operating system. For more
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
-#' Systems](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
+#' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' @param HostnameTheme The stack\'s new host name theme, with spaces replaced by underscores.
 #' The theme is used to generate host names for the stack\'s instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host
@@ -4601,7 +4620,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' 
 #' -   `Fruits`
 #' 
-#' -   `Greek_Deities`
+#' -   `Greek_Deities_and_Titans`
 #' 
 #' -   `Legendary_creatures_from_Japan`
 #' 
@@ -4619,7 +4638,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' returns a host name based on the current theme.
 #' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the stack\'s
 #' region. For more information, see [Regions and
-#' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html). If
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see CreateStack.
 #' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you
@@ -4636,7 +4655,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' 
 #' For more information about custom JSON, see [Use Custom JSON to Modify
 #' the Stack Configuration
-#' Attributes](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
+#' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html).
 #' @param ConfigurationManager The configuration manager. When you update a stack, we recommend that
 #' you use the configuration manager to specify the Chef version: 12,
 #' 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default
@@ -4644,24 +4663,28 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' @param ChefConfiguration A `ChefConfiguration` object that specifies whether to enable Berkshelf
 #' and the Berkshelf version on Chef 11.10 stacks. For more information,
 #' see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param UseCustomCookbooks Whether the stack uses custom cookbooks.
-#' @param CustomCookbooksSource 
+#' @param CustomCookbooksSource Contains the information required to retrieve an app or cookbook from a
+#' repository. For more information, see [Adding
+#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html)
+#' or [Cookbooks and
+#' Recipes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html).
 #' @param DefaultSshKeyName A default Amazon EC2 key-pair name. The default value is `none`. If you
 #' specify a key-pair name, AWS OpsWorks Stacks installs the public key on
 #' the instance and you can use the private key with an SSH client to log
 #' in to the instance. For more information, see [Using SSH to Communicate
 #' with an
-#' Instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
+#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html)
 #' and [Managing SSH
-#' Access](http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
+#' Access](https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html).
 #' You can override this setting by specifying a different key pair, or no
 #' key pair, when you [create an
-#' instance](http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
+#' instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #' @param DefaultRootDeviceType The default root device type. This value is used by default for all
 #' instances in the stack, but you can override it when you create an
 #' instance. For more information, see [Storage for the Root
-#' Device](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
+#' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
 #' with the stack\'s layers.
 #' 
@@ -4684,7 +4707,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'     layers that need custom settings.
 #' 
 #' For more information, see [Create a New
-#' Stack](http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
+#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
@@ -4770,7 +4793,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' **Required Permissions**: To use this action, an IAM user must have an
 #' attached policy that explicitly grants permissions. For more information
 #' about user permissions, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_user_profile(IamUserArn, SshUsername, SshPublicKey,
@@ -4785,7 +4808,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' @param SshPublicKey The user\'s new SSH public key.
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
 #' Settings page. For more information, see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -4820,13 +4843,13 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #'
 #' Updates an Amazon EBS volume\'s name or mount point. For more
 #' information, see [Resource
-#' Management](http://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
+#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
 #' explicitly grants permissions. For more information on user permissions,
 #' see [Managing User
-#' Permissions](http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
 #' @usage
 #' opsworks_update_volume(VolumeId, Name, MountPoint)

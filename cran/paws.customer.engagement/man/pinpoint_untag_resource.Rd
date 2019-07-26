@@ -2,17 +2,21 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_untag_resource}
 \alias{pinpoint_untag_resource}
-\title{Untag resource}
+\title{Removes one or more tags (keys and values) from an application,
+campaign, or segment}
 \usage{
 pinpoint_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the application, campaign, or segment.}
 
-\item{TagKeys}{[required] The key(s) of tag to be deleted}
+\item{TagKeys}{[required] The key of the tag to remove from the application, campaign, or segment.
+To remove multiple tags, append the tagKeys parameter and argument for
+each additional tag to remove, separated by an ampersand (&).}
 }
 \description{
-Untag resource
+Removes one or more tags (keys and values) from an application,
+campaign, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

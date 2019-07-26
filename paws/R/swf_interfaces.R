@@ -101,7 +101,7 @@ NULL
 
 .swf$describe_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainInfo = structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configuration = structure(list(workflowExecutionRetentionPeriodInDays = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(domainInfo = structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), configuration = structure(list(workflowExecutionRetentionPeriodInDays = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,7 +173,7 @@ NULL
 
 .swf$list_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainInfos = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainInfos = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -186,6 +186,18 @@ NULL
 .swf$list_open_workflow_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(executionInfos = structure(list(structure(list(execution = structure(list(workflowId = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), workflowType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), startTimestamp = structure(logical(0), tags = list(type = "timestamp")), closeTimestamp = structure(logical(0), tags = list(type = "timestamp")), executionStatus = structure(logical(0), tags = list(type = "string")), closeStatus = structure(logical(0), tags = list(type = "string")), parent = structure(list(workflowId = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tagList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), cancelRequested = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -249,7 +261,7 @@ NULL
 
 .swf$register_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), workflowExecutionRetentionPeriodInDays = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), workflowExecutionRetentionPeriodInDays = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -339,6 +351,16 @@ NULL
   return(populate(args, shape))
 }
 
+.swf$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$tag_resource_output <- function(...) {
+  list()
+}
+
 .swf$terminate_workflow_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), details = structure(logical(0), tags = list(type = "string")), childPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -346,5 +368,45 @@ NULL
 }
 
 .swf$terminate_workflow_execution_output <- function(...) {
+  list()
+}
+
+.swf$undeprecate_activity_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), activityType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$undeprecate_activity_type_output <- function(...) {
+  list()
+}
+
+.swf$undeprecate_domain_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$undeprecate_domain_output <- function(...) {
+  list()
+}
+
+.swf$undeprecate_workflow_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), workflowType = structure(list(name = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$undeprecate_workflow_type_output <- function(...) {
+  list()
+}
+
+.swf$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.swf$untag_resource_output <- function(...) {
   list()
 }

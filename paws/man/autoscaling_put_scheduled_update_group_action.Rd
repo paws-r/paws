@@ -15,8 +15,9 @@ autoscaling_put_scheduled_update_group_action(AutoScalingGroupName,
 
 \item{Time}{This parameter is deprecated.}
 
-\item{StartTime}{The time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in
-UTC/GMT only and in quotes (for example, \code{"2019-06-01T00:00:00Z"}).
+\item{StartTime}{The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ
+format in UTC/GMT only and in quotes (for example,
+\code{"2019-06-01T00:00:00Z"}).
 
 If you specify \code{Recurrence} and \code{StartTime}, Amazon EC2 Auto Scaling
 performs the action at this time, and then performs the action based on
@@ -25,20 +26,24 @@ the specified recurrence.
 If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 returns an error message.}
 
-\item{EndTime}{The time for the recurring schedule to end. Amazon EC2 Auto Scaling does
-not perform the action after this time.}
+\item{EndTime}{The date and time for the recurring schedule to end. Amazon EC2 Auto
+Scaling does not perform the action after this time.}
 
 \item{Recurrence}{The recurring schedule for this action, in Unix cron syntax format. This
 format consists of five fields separated by white spaces: [Minute]
 [Hour] [Day\_of\_Month] [Month\_of\_Year] [Day\_of\_Week]. The
 value must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more
-information about this format, see \href{http://crontab.org}{Crontab}.}
+information about this format, see \href{http://crontab.org}{Crontab}.
 
-\item{MinSize}{The minimum size for the Auto Scaling group.}
+When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
+form the boundaries of when the recurring action starts and stops.}
 
-\item{MaxSize}{The maximum size for the Auto Scaling group.}
+\item{MinSize}{The minimum number of instances in the Auto Scaling group.}
 
-\item{DesiredCapacity}{The number of EC2 instances that should be running in the group.}
+\item{MaxSize}{The maximum number of instances in the Auto Scaling group.}
+
+\item{DesiredCapacity}{The number of EC2 instances that should be running in the Auto Scaling
+group.}
 }
 \description{
 Creates or updates a scheduled scaling action for an Auto Scaling group.

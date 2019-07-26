@@ -24,7 +24,7 @@ instances.}
 }
 \description{
 Specify the load-based auto scaling configuration for a specified layer.
-For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
+For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
 }
 \details{
 To use load-based auto scaling, you must create a set of load-based auto
@@ -35,7 +35,7 @@ instances to handle the maximum anticipated load.
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_load_based_auto_scaling(

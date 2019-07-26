@@ -25,7 +25,7 @@ If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
 table's attribute definition.
 
-For more information about primary keys, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey}{Primary Key}
+For more information about primary keys, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey}{Primary Key}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 Each element in the \code{Item} map is an \code{AttributeValue} object.}
@@ -76,7 +76,7 @@ These function names are case-sensitive.
 \item Logical operators: \code{AND | OR | NOT}
 }
 
-For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -114,7 +114,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
@@ -133,7 +133,7 @@ You could then use these values in an expression, such as this:
 
 \code{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Specifying Conditions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
@@ -162,7 +162,7 @@ specific languages, see the following:
 \item \href{http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Ruby V2}
 }
 
-When you add an item, the primary key attribute(s) are the only required
+When you add an item, the primary key attributes are the only required
 attributes. Attribute values cannot be null. String and Binary type
 attributes must have lengths greater than zero. Set type attributes
 cannot be empty. Requests with empty values will be rejected with a

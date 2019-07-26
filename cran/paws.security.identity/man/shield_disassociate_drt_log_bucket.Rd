@@ -3,16 +3,16 @@
 \name{shield_disassociate_drt_log_bucket}
 \alias{shield_disassociate_drt_log_bucket}
 \title{Removes the DDoS Response team's (DRT) access to the specified Amazon S3
-bucket containing your flow logs}
+bucket containing your AWS WAF logs}
 \usage{
 shield_disassociate_drt_log_bucket(LogBucket)
 }
 \arguments{
-\item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
+\item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
 \description{
 Removes the DDoS Response team's (DRT) access to the specified Amazon
-S3 bucket containing your flow logs.
+S3 bucket containing your AWS WAF logs.
 }
 \details{
 To make a \code{DisassociateDRTLogBucket} request, you must be subscribed to

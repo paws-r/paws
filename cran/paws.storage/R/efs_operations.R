@@ -958,17 +958,14 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' in the request body deletes any existing `LifecycleConfiguration` and
 #' disables lifecycle management.
 #' 
-#' You can enable lifecycle management only for EFS file systems created
-#' after the release of EFS infrequent access.
-#' 
 #' In the request, specify the following:
 #' 
-#' -   The ID for the file system for which you are creating a lifecycle
-#'     management configuration.
+#' -   The ID for the file system for which you are enabling, disabling, or
+#'     modifying lifecycle management.
 #' 
 #' -   A `LifecyclePolicies` array of `LifecyclePolicy` objects that define
 #'     when files are moved to the IA storage class. The array can contain
-#'     only one `"TransitionToIA": "AFTER_30_DAYS"` `LifecyclePolicy` item.
+#'     only one `LifecyclePolicy` item.
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:PutLifecycleConfiguration` operation.
@@ -993,7 +990,7 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #'   FileSystemId = "string",
 #'   LifecyclePolicies = list(
 #'     list(
-#'       TransitionToIA = "AFTER_30_DAYS"
+#'       TransitionToIA = "AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
 #'     )
 #'   )
 #' )

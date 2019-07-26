@@ -37,11 +37,19 @@ session is created for the match.
 If any player rejects the match, or if acceptances are not received
 before a specified timeout, the proposed match is dropped. The
 matchmaking tickets are then handled in one of two ways: For tickets
-where all players accepted the match, the ticket status is returned to
-\code{SEARCHING} to find a new match. For tickets where one or more players
-failed to accept the match, the ticket status is set to \code{FAILED}, and
-processing is terminated. A new matchmaking request for these players
-can be submitted as needed.
+where one or more players rejected the match, the ticket status is
+returned to \code{SEARCHING} to find a new match. For tickets where one or
+more players failed to respond, the ticket status is set to \code{CANCELLED},
+and processing is terminated. A new matchmaking request for these
+players can be submitted as needed.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html}{FlexMatch Events Reference}
+
+\strong{Related operations}
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking

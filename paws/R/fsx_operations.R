@@ -134,26 +134,25 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #' ensure idempotent creation. This string is automatically filled on your
 #' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
 #' SDK.
-#' @param FileSystemType &#91;required&#93; The type of file system.
-#' @param StorageCapacity &#91;required&#93; The storage capacity of the file system.
+#' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create.
+#' @param StorageCapacity &#91;required&#93; The storage capacity of the file system being created.
 #' 
 #' For Windows file systems, the storage capacity has a minimum of 300 GiB,
 #' and a maximum of 65,536 GiB.
 #' 
 #' For Lustre file systems, the storage capacity has a minimum of 3,600
 #' GiB. Storage capacity is provisioned in increments of 3,600 GiB.
-#' @param SubnetIds &#91;required&#93; A list of IDs for the subnets that the file system will be accessible
-#' from. File systems support only one subnet. The file server is also
-#' launched in that subnet\'s Availability Zone.
-#' @param SecurityGroupIds A list of IDs for the security groups that apply to the specified
-#' network interfaces created for file system access. These security groups
-#' will apply to all network interfaces. This list isn\'t returned in later
-#' describe requests.
-#' @param Tags The tags to be applied to the file system at file system creation. The
-#' key value of the `Name` tag appears in the console as the file system
-#' name.
+#' @param SubnetIds &#91;required&#93; The IDs of the subnets that the file system will be accessible from.
+#' File systems support only one subnet. The file server is also launched
+#' in that subnet\'s Availability Zone.
+#' @param SecurityGroupIds A list of IDs specifying the security groups to apply to all network
+#' interfaces created for file system access. This list isn\'t returned in
+#' later requests to describe the file system.
+#' @param Tags The tags to apply to the file system being created. The key value of the
+#' `Name` tag appears in the console as the file system name.
 #' @param KmsKeyId 
-#' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
+#' @param WindowsConfiguration The Microsoft Windows configuration for the file system being created.
+#' This value is required if `FileSystemType` is set to `WINDOWS`.
 #' @param LustreConfiguration 
 #'
 #' @section Request syntax:
@@ -177,6 +176,16 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #'   KmsKeyId = "string",
 #'   WindowsConfiguration = list(
 #'     ActiveDirectoryId = "string",
+#'     SelfManagedActiveDirectoryConfiguration = list(
+#'       DomainName = "string",
+#'       OrganizationalUnitDistinguishedName = "string",
+#'       FileSystemAdministratorsGroup = "string",
+#'       UserName = "string",
+#'       Password = "string",
+#'       DnsIps = list(
+#'         "string"
+#'       )
+#'     ),
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",
@@ -246,7 +255,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' Windows File Server backup.
 #' 
 #' If a file system with the specified client request token exists and the
-#' parameters match, this call returns the description of the existing file
+#' parameters match, this operation returns the description of the file
 #' system. If a client request token specified by the file system exists
 #' and the parameters don\'t match, this call returns
 #' `IncompatibleParameterError`. If a file system with the specified client
@@ -316,6 +325,16 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'   ),
 #'   WindowsConfiguration = list(
 #'     ActiveDirectoryId = "string",
+#'     SelfManagedActiveDirectoryConfiguration = list(
+#'       DomainName = "string",
+#'       OrganizationalUnitDistinguishedName = "string",
+#'       FileSystemAdministratorsGroup = "string",
+#'       UserName = "string",
+#'       Password = "string",
+#'       DnsIps = list(
+#'         "string"
+#'       )
+#'     ),
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",
@@ -852,8 +871,9 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' ensure idempotent updates. This string is automatically filled on your
 #' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
 #' SDK.
-#' @param WindowsConfiguration The configuration for this Microsoft Windows file system. The only
-#' supported options are for backup and maintenance.
+#' @param WindowsConfiguration The configuration update for this Microsoft Windows file system. The
+#' only supported options are for backup and maintenance and for
+#' self-managed Active Directory configuration.
 #' @param LustreConfiguration 
 #'
 #' @section Request syntax:
@@ -864,7 +884,14 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'   WindowsConfiguration = list(
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123
+#'     AutomaticBackupRetentionDays = 123,
+#'     SelfManagedActiveDirectoryConfiguration = list(
+#'       UserName = "string",
+#'       Password = "string",
+#'       DnsIps = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
 #'   LustreConfiguration = list(
 #'     WeeklyMaintenanceStartTime = "string"

@@ -39,7 +39,7 @@ have overlapping CIDR blocks.
 \details{
 Limitations and rules apply to a VPC peering connection. For more
 information, see the
-\href{https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-basics.html#vpc-peering-limitations}{limitations}
+\href{https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations}{limitations}
 section in the \emph{VPC Peering Guide}.
 
 The owner of the accepter VPC must accept the peering request to

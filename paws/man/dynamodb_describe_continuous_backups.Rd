@@ -18,7 +18,7 @@ table creation. If point in time recovery is enabled,
 \code{PointInTimeRecoveryStatus} will be set to ENABLED.
 }
 \details{
-Once continuous backups and point in time recovery are enabled, you can
+After continuous backups and point in time recovery are enabled, you can
 restore to any point in time within \code{EarliestRestorableDateTime} and
 \code{LatestRestorableDateTime}.
 

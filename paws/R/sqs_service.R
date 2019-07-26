@@ -12,13 +12,6 @@ NULL
 #' microservices. Amazon SQS moves data between distributed application
 #' components and helps you decouple these components.
 #' 
-#' [Standard
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html)
-#' are available in all regions. [FIFO
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)
-#' are available in the US East (N. Virginia), US East (Ohio), US West
-#' (Oregon), and EU (Ireland) regions.
-#' 
 #' You can use [AWS SDKs](http://aws.amazon.com/tools/#sdk) to access
 #' Amazon SQS using your favorite programming language. The SDKs perform
 #' tasks such as the following automatically:
@@ -36,13 +29,13 @@ NULL
 #' -   *Amazon Simple Queue Service Developer Guide*
 #' 
 #'     -   [Making API
-#'         Requests](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html)
+#'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html)
 #' 
 #'     -   [Amazon SQS Message
-#'         Attributes](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+#'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
 #' 
 #'     -   [Amazon SQS Dead-Letter
-#'         Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
 #' -   [Amazon SQS in the *AWS CLI Command
 #'     Reference*](http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
@@ -50,7 +43,7 @@ NULL
 #' -   *Amazon Web Services General Reference*
 #' 
 #'     -   [Regions and
-#'         Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
+#'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
 #' @examples
 #' \donttest{svc <- sqs()

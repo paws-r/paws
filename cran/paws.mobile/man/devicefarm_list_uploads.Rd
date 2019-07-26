@@ -16,7 +16,7 @@ Must be one of the following values:
 \itemize{
 \item ANDROID\_APP: An Android upload.
 \item IOS\_APP: An iOS upload.
-\item WEB\_APP: A web appliction upload.
+\item WEB\_APP: A web application upload.
 \item EXTERNAL\_DATA: An external data upload.
 \item APPIUM\_JAVA\_JUNIT\_TEST\_PACKAGE: An Appium Java JUnit test
 package upload.
@@ -39,8 +39,8 @@ for a web app.
 \item INSTRUMENTATION\_TEST\_PACKAGE: An instrumentation upload.
 \item UIAUTOMATION\_TEST\_PACKAGE: A uiautomation test package upload.
 \item UIAUTOMATOR\_TEST\_PACKAGE: A uiautomator test package upload.
-\item XCTEST\_TEST\_PACKAGE: An XCode test package upload.
-\item XCTEST\_UI\_TEST\_PACKAGE: An XCode UI test package upload.
+\item XCTEST\_TEST\_PACKAGE: An Xcode test package upload.
+\item XCTEST\_UI\_TEST\_PACKAGE: An Xcode UI test package upload.
 \item APPIUM\_JAVA\_JUNIT\_TEST\_SPEC: An Appium Java JUnit test spec
 upload.
 \item APPIUM\_JAVA\_TESTNG\_TEST\_SPEC: An Appium Java TestNG test spec
@@ -59,7 +59,7 @@ for a web app.
 \item APPIUM\_WEB\_RUBY\_TEST\_SPEC: An Appium Ruby test spec upload for a
 web app.
 \item INSTRUMENTATION\_TEST\_SPEC: An instrumentation test spec upload.
-\item XCTEST\_UI\_TEST\_SPEC: An XCode UI test spec upload.
+\item XCTEST\_UI\_TEST\_SPEC: An Xcode UI test spec upload.
 }}
 
 \item{nextToken}{An identifier that was returned from the previous call to this

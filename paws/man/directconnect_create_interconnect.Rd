@@ -6,7 +6,7 @@
 and a specific AWS Direct Connect location}
 \usage{
 directconnect_create_interconnect(interconnectName, bandwidth, location,
-  lagId)
+  lagId, tags)
 }
 \arguments{
 \item{interconnectName}{[required] The name of the interconnect.}
@@ -16,6 +16,8 @@ directconnect_create_interconnect(interconnectName, bandwidth, location,
 \item{location}{[required] The location of the interconnect.}
 
 \item{lagId}{The ID of the LAG.}
+
+\item{tags}{The tags to assign to the interconnect,}
 }
 \description{
 Creates an interconnect between an AWS Direct Connect Partner's network
@@ -49,7 +51,13 @@ Intended for use by AWS Direct Connect Partners only.
   interconnectName = "string",
   bandwidth = "string",
   location = "string",
-  lagId = "string"
+  lagId = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

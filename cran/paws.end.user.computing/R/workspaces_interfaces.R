@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$copy_workspace_image_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SourceImageId = structure(logical(0), tags = list(type = "string")), SourceRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$copy_workspace_image_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$create_ip_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupDesc = structure(logical(0), tags = list(type = "string")), UserRules = structure(list(structure(list(ipRule = structure(logical(0), tags = list(type = "string")), ruleDesc = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -317,7 +329,7 @@ NULL
 
 .workspaces$rebuild_workspaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RebuildWorkspaceRequests = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AdditionalInfo = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(RebuildWorkspaceRequests = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

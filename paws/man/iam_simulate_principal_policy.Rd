@@ -101,7 +101,7 @@ in the \emph{AWS General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
-permission policies, the corresponding value is supplied.}
+permissions policies, the corresponding value is supplied.}
 
 \item{ResourceHandlingOption}{Specifies the type of simulation to run. Different API operations that
 support resource-based policies require different combinations of

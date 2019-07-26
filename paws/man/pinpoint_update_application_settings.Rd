@@ -2,18 +2,19 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_application_settings}
 \alias{pinpoint_update_application_settings}
-\title{Used to update the settings for an app}
+\title{Updates the settings for an application}
 \usage{
 pinpoint_update_application_settings(ApplicationId,
   WriteApplicationSettingsRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteApplicationSettingsRequest}{[required]}
 }
 \description{
-Used to update the settings for an app.
+Updates the settings for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_application_settings(

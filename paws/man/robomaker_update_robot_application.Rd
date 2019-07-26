@@ -31,7 +31,7 @@ Updates a robot application.
   ),
   robotSoftwareSuite = list(
     name = "ROS",
-    version = "Kinetic"
+    version = "Kinetic"|"Melodic"
   ),
   currentRevisionId = "string"
 )

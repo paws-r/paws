@@ -14,8 +14,8 @@ swf_poll_for_activity_task(domain, taskList, identity)
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{identity}{Identity of the worker making the request, recorded in the
 \code{ActivityTaskStarted} event in the workflow history. This enables
@@ -56,7 +56,7 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

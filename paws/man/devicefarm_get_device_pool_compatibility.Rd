@@ -34,8 +34,8 @@ same time.
 \item INSTRUMENTATION: The Instrumentation type.
 \item UIAUTOMATION: The uiautomation type.
 \item UIAUTOMATOR: The uiautomator type.
-\item XCTEST: The XCode test type.
-\item XCTEST\_UI: The XCode UI test type.
+\item XCTEST: The Xcode test type.
+\item XCTEST\_UI: The Xcode UI test type.
 }}
 
 \item{test}{Information about the uploaded test to be run against the device pool.}

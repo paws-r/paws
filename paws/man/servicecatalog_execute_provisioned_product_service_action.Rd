@@ -5,7 +5,8 @@
 \title{Executes a self-service action against a provisioned product}
 \usage{
 servicecatalog_execute_provisioned_product_service_action(
-  ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage)
+  ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage,
+  Parameters)
 }
 \arguments{
 \item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
@@ -20,6 +21,8 @@ servicecatalog_execute_provisioned_product_service_action(
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{Parameters}{}
 }
 \description{
 Executes a self-service action against a provisioned product.
@@ -29,7 +32,12 @@ Executes a self-service action against a provisioned product.
   ProvisionedProductId = "string",
   ServiceActionId = "string",
   ExecuteToken = "string",
-  AcceptLanguage = "string"
+  AcceptLanguage = "string",
+  Parameters = list(
+    list(
+      "string"
+    )
+  )
 )
 }
 }

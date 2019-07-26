@@ -25,6 +25,14 @@ notifications in StartMatchmaking.
 To request matchmaking tickets, provide a list of up to 10 ticket IDs.
 If the request is successful, a ticket object is returned for each
 requested ID that currently exists.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html}{Set Up FlexMatch Event Notification}
+
+\strong{Related operations}
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking

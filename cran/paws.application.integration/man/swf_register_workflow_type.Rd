@@ -17,8 +17,8 @@ swf_register_workflow_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{version}{[required] The version of the workflow type.
 
@@ -28,8 +28,8 @@ registered workflow types, use the ListWorkflowTypes action.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{description}{Textual description of the workflow type.}
 
@@ -63,7 +63,7 @@ assigned, then \code{0} is used. Valid values are integers that range from
 Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
-For more information about setting task priority, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
+For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
 in the \emph{Amazon SWF Developer Guide}.}
 
 \item{defaultChildPolicy}{If set, specifies the default policy to use for the child workflow
@@ -90,7 +90,7 @@ Executions of this workflow type need IAM roles to invoke Lambda
 functions. If you don't specify an IAM role when you start this
 workflow type, the default Lambda role is attached to the execution. For
 more information, see
-\url{http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
+\url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
 }
 \description{
@@ -126,7 +126,7 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

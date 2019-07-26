@@ -52,7 +52,7 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \link[=autoscaling_describe_policies]{describe_policies} \tab Describes the policies for the specified Auto Scaling group \cr
 \link[=autoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Describes one or more scaling activities for the specified Auto Scaling group \cr
 \link[=autoscaling_describe_scaling_process_types]{describe_scaling_process_types} \tab Describes the scaling process types for use with ResumeProcesses and SuspendProcesses \cr
-\link[=autoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the actions scheduled for your Auto Scaling group that haven't run \cr
+\link[=autoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the actions scheduled for your Auto Scaling group that haven't run or that have not reached their end time \cr
 \link[=autoscaling_describe_tags]{describe_tags} \tab Describes the specified tags \cr
 \link[=autoscaling_describe_termination_policy_types]{describe_termination_policy_types} \tab Describes the termination policies supported by Amazon EC2 Auto Scaling \cr
 \link[=autoscaling_detach_instances]{detach_instances} \tab Removes one or more instances from the specified Auto Scaling group \cr

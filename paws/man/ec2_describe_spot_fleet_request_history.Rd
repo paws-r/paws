@@ -41,7 +41,7 @@ hours.
 \section{Request syntax}{
 \preformatted{svc$describe_spot_fleet_request_history(
   DryRun = TRUE|FALSE,
-  EventType = "instanceChange"|"fleetRequestChange"|"error",
+  EventType = "instanceChange"|"fleetRequestChange"|"error"|"information",
   MaxResults = 123,
   NextToken = "string",
   SpotFleetRequestId = "string",

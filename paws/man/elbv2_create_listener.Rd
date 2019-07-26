@@ -13,7 +13,8 @@ elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
 
 \item{Protocol}{[required] The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
-For Network Load Balancers, the supported protocols are TCP and TLS.}
+For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
+and TCP\_UDP.}
 
 \item{Port}{[required] The port on which the load balancer is listening.}
 
@@ -21,19 +22,20 @@ For Network Load Balancers, the supported protocols are TCP and TLS.}
 ciphers and protocols are supported. The default is the current
 predefined security policy.}
 
-\item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must
-provide exactly one certificate. Set \code{CertificateArn} to the certificate
-ARN but do not set \code{IsDefault}.
+\item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
+You must provide exactly one certificate. Set \code{CertificateArn} to the
+certificate ARN but do not set \code{IsDefault}.
 
-To create a certificate list, use AddListenerCertificates.}
+To create a certificate list for the listener, use
+AddListenerCertificates.}
 
 \item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward
 action or one or more fixed-response actions.
 
 If the action type is \code{forward}, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for a
-Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -69,7 +71,7 @@ in the \emph{Network Load Balancers Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_listener(
   LoadBalancerArn = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
   Port = 123,
   SslPolicy = "string",
   Certificates = list(

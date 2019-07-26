@@ -32,8 +32,7 @@ session for optimal performance. A matchmaking request might start with
 a single player or a group of players who want to play together.
 FlexMatch finds additional players as needed to fill the match. Match
 type, rules, and the queue used to place a new game session are defined
-in a \code{MatchmakingConfiguration}. For complete information on setting up
-and using FlexMatch, see the topic \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html}{Adding FlexMatch to Your Game}.
+in a \code{MatchmakingConfiguration}.
 }
 \details{
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
@@ -86,6 +85,18 @@ session endpoint and player session) is added to the matchmaking
 tickets. Matched players can use the connection information to join
 the game.
 }
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Set Up FlexMatch Event Notification}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html}{FlexMatch Integration Roadmap}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html}{How GameLift FlexMatch Works}
+
+\strong{Related operations}
 \itemize{
 \item StartMatchmaking
 \item DescribeMatchmaking

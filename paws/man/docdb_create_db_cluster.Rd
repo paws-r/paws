@@ -8,7 +8,8 @@ docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
   DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
-  Tags, StorageEncrypted, KmsKeyId, EnableCloudwatchLogsExports)
+  Tags, StorageEncrypted, KmsKeyId, EnableCloudwatchLogsExports,
+  DeletionProtection)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Amazon EC2 Availability Zones that instances in the DB cluster
@@ -57,7 +58,7 @@ Valid values: \code{docdb}}
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.}
 
-\item{MasterUsername}{The name of the master user for the DB cluster.
+\item{MasterUsername}{[required] The name of the master user for the DB cluster.
 
 Constraints:
 \itemize{
@@ -66,8 +67,9 @@ Constraints:
 \item Cannot be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
+\item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
+printable ASCII character except forward slash (/), double quote ("),
+or the "at" symbol (@).
 
 Constraints: Must contain from 8 to 41 characters.}
 
@@ -132,6 +134,11 @@ AWS Region.}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that need to be enabled for exporting to Amazon
 CloudWatch Logs.}
+
+\item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
+is enabled, the cluster cannot be deleted unless it is modified and
+\code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
+from being accidentally deleted.}
 }
 \description{
 Creates a new Amazon DocumentDB DB cluster.
@@ -165,7 +172,8 @@ Creates a new Amazon DocumentDB DB cluster.
   KmsKeyId = "string",
   EnableCloudwatchLogsExports = list(
     "string"
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

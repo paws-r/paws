@@ -18,7 +18,7 @@ opsworks_create_instance(StackId, LayerIds, InstanceType,
 \item{InstanceType}{[required] The instance type, such as \code{t2.micro}. For a list of supported instance
 types, open the stack in the console, choose \strong{Instances}, and choose
 \strong{+ Instance}. The \strong{Size} list contains the currently supported
-types. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.
+types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.
 The parameter values that you use to specify the various types are in
 the \strong{API Name} column of the \strong{Available Instance Types} table.}
 
@@ -31,9 +31,10 @@ only time-based instances.}
 following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\code{Amazon Linux 2017.09}, \code{Amazon Linux 2017.03},
-\code{Amazon Linux 2016.09}, \code{Amazon Linux 2016.03},
-\code{Amazon Linux 2015.09}, or \code{Amazon Linux 2015.03}.
+\code{Amazon Linux 2018.03}, \code{Amazon Linux 2017.09},
+\code{Amazon Linux 2017.03}, \code{Amazon Linux 2016.09},
+\code{Amazon Linux 2016.03}, \code{Amazon Linux 2015.09}, or
+\code{Amazon Linux 2015.03}.
 \item A supported Ubuntu operating system, such as \code{Ubuntu 16.04 LTS},
 \code{Ubuntu 14.04 LTS}, or \code{Ubuntu 12.04 LTS}.
 \item \code{CentOS Linux 7}
@@ -46,25 +47,25 @@ following.
 \item A custom AMI: \code{Custom}.
 }
 
-For more information about the supported operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
+For more information about the supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to \code{Custom}, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is \code{Custom}. For more
-information about supported operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}For
+information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{Operating Systems}For
 more information about how to use custom AMIs with AWS OpsWorks Stacks,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.}
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.}
 
 \item{AmiId}{A custom AMI ID to be used to create the instance. The AMI should be
 based on one of the supported operating systems. For more information,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 
 If you specify a custom AMI, you must set \code{Os} to \code{Custom}.}
 
 \item{SshKeyName}{The instance's Amazon EC2 key-pair name.}
 
-\item{AvailabilityZone}{The instance Availability Zone. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.}
+\item{AvailabilityZone}{The instance Availability Zone. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.}
 
 \item{VirtualizationType}{The instance's virtualization type, \code{paravirtual} or \code{hvm}.}
 
@@ -76,12 +77,12 @@ subnet.}
 \item{Architecture}{The instance architecture. The default option is \code{x86_64}. Instance
 types do not necessarily support both architectures. For a list of the
 architectures that are supported by the different instance types, see
-\href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Families and Types}.}
 
-\item{RootDeviceType}{The instance root device type. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
+\item{RootDeviceType}{The instance root device type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
 \item{BlockDeviceMappings}{An array of \code{BlockDeviceMapping} objects that specify the instance's
-block devices. For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html}{Block Device Mapping}.
+block devices. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html}{Block Device Mapping}.
 Note that block device mappings are not supported for custom AMIs.}
 
 \item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the
@@ -119,18 +120,18 @@ The following are valid values for this parameter: \code{dedicated},
 tenancy options, we recommend that you research tenancy options before
 choosing them for your instances. For more information about dedicated
 hosts, see \href{http://aws.amazon.com/ec2/dedicated-hosts/}{Dedicated Hosts Overview} and \href{http://aws.amazon.com/ec2/dedicated-hosts/}{Amazon EC2 Dedicated Hosts}. For more
-information about dedicated instances, see \href{http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
+information about dedicated instances, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
 and \href{http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
 }
 \description{
 Creates an instance in a specified stack. For more information, see
-\href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
+\href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instance(

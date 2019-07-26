@@ -2,7 +2,7 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_describe_global_table_settings}
 \alias{dynamodb_describe_global_table_settings}
-\title{Describes region specific settings for a global table}
+\title{Describes Region-specific settings for a global table}
 \usage{
 dynamodb_describe_global_table_settings(GlobalTableName)
 }
@@ -10,7 +10,7 @@ dynamodb_describe_global_table_settings(GlobalTableName)
 \item{GlobalTableName}{[required] The name of the global table to describe.}
 }
 \description{
-Describes region specific settings for a global table.
+Describes Region-specific settings for a global table.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_global_table_settings(

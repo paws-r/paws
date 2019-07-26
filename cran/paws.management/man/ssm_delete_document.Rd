@@ -5,10 +5,16 @@
 \title{Deletes the Systems Manager document and all instance associations to
 the document}
 \usage{
-ssm_delete_document(Name)
+ssm_delete_document(Name, DocumentVersion, VersionName)
 }
 \arguments{
 \item{Name}{[required] The name of the document.}
+
+\item{DocumentVersion}{(Optional) The version of the document that you want to delete. If not
+provided, all versions of the document are deleted.}
+
+\item{VersionName}{(Optional) The version name of the document that you want to delete. If
+not provided, all versions of the document are deleted.}
 }
 \description{
 Deletes the Systems Manager document and all instance associations to
@@ -21,7 +27,9 @@ the document.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_document(
-  Name = "string"
+  Name = "string",
+  DocumentVersion = "string",
+  VersionName = "string"
 )
 }
 }

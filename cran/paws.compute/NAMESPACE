@@ -2,6 +2,7 @@
 
 export(batch)
 export(ec2)
+export(ec2instanceconnect)
 export(ecr)
 export(ecs)
 export(eks)

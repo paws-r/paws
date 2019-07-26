@@ -22,7 +22,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
 \link[=cloudfront_create_field_level_encryption_profile]{create_field_level_encryption_profile} \tab Create a field-level encryption profile \cr
 \link[=cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation \cr
 \link[=cloudfront_create_public_key]{create_public_key} \tab Add a new public key to CloudFront to use, for example, for field-level encryption \cr
-\link[=cloudfront_create_streaming_distribution]{create_streaming_distribution} \tab Creates a new RMTP distribution \cr
+\link[=cloudfront_create_streaming_distribution]{create_streaming_distribution} \tab Creates a new RTMP distribution \cr
 \link[=cloudfront_create_streaming_distribution_with_tags]{create_streaming_distribution_with_tags} \tab Create a new streaming distribution with tags \cr
 \link[=cloudfront_delete_cloud_front_origin_access_identity]{delete_cloud_front_origin_access_identity} \tab Delete an origin access identity \cr
 \link[=cloudfront_delete_distribution]{delete_distribution} \tab Delete a distribution \cr
@@ -44,7 +44,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
 \link[=cloudfront_get_streaming_distribution]{get_streaming_distribution} \tab Gets information about a specified RTMP distribution, including the distribution configuration \cr
 \link[=cloudfront_get_streaming_distribution_config]{get_streaming_distribution_config} \tab Get the configuration information about a streaming distribution \cr
 \link[=cloudfront_list_cloud_front_origin_access_identities]{list_cloud_front_origin_access_identities} \tab Lists origin access identities \cr
-\link[=cloudfront_list_distributions]{list_distributions} \tab List distributions \cr
+\link[=cloudfront_list_distributions]{list_distributions} \tab List CloudFront distributions \cr
 \link[=cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified AWS WAF web ACL \cr
 \link[=cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account \cr
 \link[=cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr

@@ -5,7 +5,7 @@
 \title{Registers a new domain}
 \usage{
 swf_register_domain(name, description,
-  workflowExecutionRetentionPeriodInDays)
+  workflowExecutionRetentionPeriodInDays, tags)
 }
 \arguments{
 \item{name}{[required] Name of the domain to register. The name must be unique in the region
@@ -13,8 +13,8 @@ that the domain is registered in.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{description}{A text description of the domain.}
 
@@ -28,8 +28,13 @@ history isn't retained. As soon as the workflow execution completes,
 the execution record and its history are deleted.
 
 The maximum workflow execution retention period is 90 days. For more
-information about Amazon SWF service limits, see: \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html}{Amazon SWF Service Limits}
+information about Amazon SWF service limits, see: \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html}{Amazon SWF Service Limits}
 in the \emph{Amazon SWF Developer Guide}.}
+
+\item{tags}{Tags to be added when registering a domain.
+
+Tags may only contain unicode letters, digits, whitespace, or these
+symbols: \code{_ . : / = + - @}.}
 }
 \description{
 Registers a new domain.
@@ -52,14 +57,20 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$register_domain(
   name = "string",
   description = "string",
-  workflowExecutionRetentionPeriodInDays = "string"
+  workflowExecutionRetentionPeriodInDays = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

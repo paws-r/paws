@@ -31,7 +31,7 @@ can create an interface VPC endpoint to connect to your service.
 }
 \details{
 To create an endpoint service configuration, you must first create a
-Network Load Balancer for your service. For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/endpoint-service.html}{VPC Endpoint Services}
+Network Load Balancer for your service. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html}{VPC Endpoint Services}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

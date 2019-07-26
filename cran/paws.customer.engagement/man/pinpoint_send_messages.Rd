@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_send_messages}
 \alias{pinpoint_send_messages}
-\title{Used to send a direct message}
+\title{Creates and sends a direct message}
 \usage{
 pinpoint_send_messages(ApplicationId, MessageRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{MessageRequest}{[required]}
 }
 \description{
-Used to send a direct message.
+Creates and sends a direct message.
 }
 \section{Request syntax}{
 \preformatted{svc$send_messages(

@@ -9,15 +9,16 @@ NULL
 #'
 #' @usage
 #' mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
-#'   CreatorRequestId, DeploymentMode, EngineType, EngineVersion,
-#'   HostInstanceType, Logs, MaintenanceWindowStartTime, PubliclyAccessible,
-#'   SecurityGroups, SubnetIds, Tags, Users)
+#'   CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
+#'   EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
+#'   PubliclyAccessible, SecurityGroups, SubnetIds, Tags, Users)
 #'
 #' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerName Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.
 #' @param DeploymentMode Required. The deployment mode of the broker.
+#' @param EncryptionOptions Encryption options for the broker.
 #' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
 #' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType Required. The broker's instance type.
@@ -40,6 +41,10 @@ NULL
 #'   ),
 #'   CreatorRequestId = "string",
 #'   DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ",
+#'   EncryptionOptions = list(
+#'     KmsKeyId = "string",
+#'     UseAwsOwnedKey = TRUE|FALSE
+#'   ),
 #'   EngineType = "ACTIVEMQ",
 #'   EngineVersion = "string",
 #'   HostInstanceType = "string",
@@ -78,14 +83,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
+mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
     paginator = list()
   )
-  input <- .mq$create_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
+  input <- .mq$create_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
   output <- .mq$create_broker_output()
   svc <- .mq$service()
   request <- new_request(svc, op, input, output)

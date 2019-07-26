@@ -6,7 +6,7 @@
 for the specified product}
 \usage{
 servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
-  ProvisioningArtifactId, Name, Description, Active)
+  ProvisioningArtifactId, Name, Description, Active, Guidance)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,6 +25,16 @@ servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
 \item{Description}{The updated description of the provisioning artifact.}
 
 \item{Active}{Indicates whether the product version is active.}
+
+\item{Guidance}{Information set by the administrator to provide guidance to end users
+about which provisioning artifacts to use.
+
+The \code{DEFAULT} value indicates that the product version is active.
+
+The administrator can set the guidance to \code{DEPRECATED} to inform users
+that the product version is deprecated. Users are able to make updates
+to a provisioned product of a deprecated version but cannot launch new
+provisioned products using a deprecated version.}
 }
 \description{
 Updates the specified provisioning artifact (also known as a version)
@@ -41,7 +51,8 @@ with you.
   ProvisioningArtifactId = "string",
   Name = "string",
   Description = "string",
-  Active = TRUE|FALSE
+  Active = TRUE|FALSE,
+  Guidance = "DEFAULT"|"DEPRECATED"
 )
 }
 }

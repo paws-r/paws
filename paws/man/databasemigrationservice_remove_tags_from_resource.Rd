@@ -7,8 +7,8 @@
 databasemigrationservice_remove_tags_from_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] \>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to
-be removed from.}
+\item{ResourceArn}{[required] An AWS DMS resource from which you want to remove tag(s). The value for
+this parameter is an Amazon Resource Name (ARN).}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }

@@ -5,7 +5,7 @@
 \title{Creates a contact with the specified details}
 \usage{
 alexaforbusiness_create_contact(DisplayName, FirstName, LastName,
-  PhoneNumber, ClientRequestToken)
+  PhoneNumber, PhoneNumbers, SipAddresses, ClientRequestToken)
 }
 \arguments{
 \item{DisplayName}{The name of the contact to display on the console.}
@@ -16,7 +16,14 @@ device.}
 \item{LastName}{The last name of the contact that is used to call the contact on the
 device.}
 
-\item{PhoneNumber}{The phone number of the contact in E.164 format.}
+\item{PhoneNumber}{The phone number of the contact in E.164 format. The phone number type
+defaults to WORK. You can specify PhoneNumber or PhoneNumbers. We
+recommend that you use PhoneNumbers, which lets you specify the phone
+number type and multiple numbers.}
+
+\item{PhoneNumbers}{The list of phone numbers for the contact.}
+
+\item{SipAddresses}{The list of SIP addresses for the contact.}
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures
 idempotency.}
@@ -30,6 +37,18 @@ Creates a contact with the specified details.
   FirstName = "string",
   LastName = "string",
   PhoneNumber = "string",
+  PhoneNumbers = list(
+    list(
+      Number = "string",
+      Type = "MOBILE"|"WORK"|"HOME"
+    )
+  ),
+  SipAddresses = list(
+    list(
+      Uri = "string",
+      Type = "WORK"
+    )
+  ),
   ClientRequestToken = "string"
 )
 }

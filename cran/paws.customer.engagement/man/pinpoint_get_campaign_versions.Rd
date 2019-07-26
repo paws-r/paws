@@ -2,22 +2,27 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_campaign_versions}
 \alias{pinpoint_get_campaign_versions}
-\title{Returns information about your campaign versions}
+\title{Retrieves information about the status, configuration, and other
+settings for all versions of a specific campaign}
 \usage{
 pinpoint_get_campaign_versions(ApplicationId, CampaignId, PageSize,
   Token)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{CampaignId}{[required] The unique ID of the campaign.}
+\item{CampaignId}{[required] The unique identifier for the campaign.}
 
-\item{PageSize}{The number of entries you want on each page in the response.}
+\item{PageSize}{The maximum number of items to include on each page in a paginated
+response.}
 
-\item{Token}{The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
+\item{Token}{The NextToken string that specifies which page of results to return in a
+paginated response.}
 }
 \description{
-Returns information about your campaign versions.
+Retrieves information about the status, configuration, and other
+settings for all versions of a specific campaign.
 }
 \section{Request syntax}{
 \preformatted{svc$get_campaign_versions(

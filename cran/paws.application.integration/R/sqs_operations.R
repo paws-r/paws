@@ -6,24 +6,28 @@ NULL
 #' Adds a permission to a queue for a specific principal
 #'
 #' Adds a permission to a queue for a specific
-#' [principal](http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P).
+#' [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P).
 #' This allows sharing access to the queue.
 #' 
 #' When you create a queue, you have full control access rights for the
 #' queue. Only you, the owner of the queue, can grant or deny permissions
 #' to the queue. For more information about these permissions, see [Allow
 #' Developers to Write Messages to a Shared
-#' Queue](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
+#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#' `AddPermission` writes an Amazon-SQS-generated policy. If you want to
-#' write your own policy, use ` <a>SetQueueAttributes</a> ` to upload your
-#' policy. For more information about writing your own policy, see [Using
-#' Custom Policies with the Amazon SQS Access Policy
-#' Language](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html)
-#' in the *Amazon Simple Queue Service Developer Guide*.
+#' -   `AddPermission` generates a policy for you. You can use
+#'     ` <a>SetQueueAttributes</a> ` to upload your policy. For more
+#'     information, see [Using Custom Policies with the Amazon SQS Access
+#'     Policy
+#'     Language](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html)
+#'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#' An Amazon SQS policy can have a maximum of 7 actions.
+#' -   An Amazon SQS policy can have a maximum of 7 actions.
+#' 
+#' -   To remove the ability to change queue permissions, you must deny
+#'     permission to the `AddPermission`, `RemovePermission`, and
+#'     `SetQueueAttributes` actions in your IAM policy.
 #' 
 #' Some actions take lists of parameters. These lists are specified using
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
@@ -34,9 +38,8 @@ NULL
 #' `&amp;Attribute.2=second`
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -49,18 +52,18 @@ NULL
 #' example, `AliceSendMessage`). Maximum 80 characters. Allowed characters
 #' include alphanumeric characters, hyphens (`-`), and underscores (`_`).
 #' @param AWSAccountIds &#91;required&#93; The AWS account number of the
-#' [principal](http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
+#' [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
 #' who is given permission. The principal must have an AWS account, but
 #' does not need to be signed up for Amazon SQS. For information about
 #' locating the AWS account identification, see [Your AWS
-#' Identifiers](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
+#' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' @param Actions &#91;required&#93; The action the client wants to allow for the specified principal. Valid
 #' values: the name of any action or `*`.
 #' 
 #' For more information about these actions, see [Overview of Managing
 #' Access Permissions to Your Amazon Simple Queue Service
-#' Resource](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
+#' Resource](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Specifying `SendMessage`, `DeleteMessage`, or `ChangeMessageVisibility`
@@ -105,28 +108,50 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' new value
 #'
 #' Changes the visibility timeout of a specified message in a queue to a
-#' new value. The maximum allowed timeout value is 12 hours. For more
-#' information, see [Visibility
-#' Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#' new value. The default visibility timeout for a message is 30 seconds.
+#' The minimum is 0 seconds. The maximum is 12 hours. For more information,
+#' see [Visibility
+#' Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' For example, you have a message with a visibility timeout of 5 minutes.
 #' After 3 minutes, you call `ChangeMessageVisibility` with a timeout of 10
 #' minutes. You can continue to call `ChangeMessageVisibility` to extend
-#' the visibility timeout to a maximum of 12 hours. If you try to extend
-#' the visibility timeout beyond 12 hours, your request is rejected.
+#' the visibility timeout to the maximum allowed time. If you try to extend
+#' the visibility timeout beyond the maximum, your request is rejected.
 #' 
-#' A message is considered to be *in flight* after it\'s received from a
-#' queue by a consumer, but not yet deleted from the queue.
+#' An Amazon SQS message has three basic states:
 #' 
-#' For standard queues, there can be a maximum of 120,000 inflight messages
-#' per queue. If you reach this limit, Amazon SQS returns the `OverLimit`
+#' 1.  Sent to a queue by a producer.
+#' 
+#' 2.  Received from the queue by a consumer.
+#' 
+#' 3.  Deleted from the queue.
+#' 
+#' A message is considered to be *stored* after it is sent to a queue by a
+#' producer, but not yet received from the queue by a consumer (that is,
+#' between states 1 and 2). There is no limit to the number of stored
+#' messages. A message is considered to be *in flight* after it is received
+#' from a queue by a consumer, but not yet deleted from the queue (that is,
+#' between states 2 and 3). There is a limit to the number of inflight
+#' messages.
+#' 
+#' Limits that apply to inflight messages are unrelated to the *unlimited*
+#' number of stored messages.
+#' 
+#' For most standard queues (depending on queue traffic and message
+#' backlog), there can be a maximum of approximately 120,000 inflight
+#' messages (received from a queue by a consumer, but not yet deleted from
+#' the queue). If you reach this limit, Amazon SQS returns the `OverLimit`
 #' error message. To avoid reaching the limit, you should delete messages
 #' from the queue after they\'re processed. You can also increase the
-#' number of queues you use to process your messages.
+#' number of queues you use to process your messages. To request a limit
+#' increase, [file a support
+#' request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs).
 #' 
-#' For FIFO queues, there can be a maximum of 20,000 inflight messages per
-#' queue. If you reach this limit, Amazon SQS returns no error messages.
+#' For FIFO queues, there can be a maximum of 20,000 inflight messages
+#' (received from a queue by a consumer, but not yet deleted from the
+#' queue). If you reach this limit, Amazon SQS returns no error messages.
 #' 
 #' If you attempt to set the `VisibilityTimeout` to a value greater than
 #' the maximum time left, Amazon SQS returns an error. Amazon SQS doesn\'t
@@ -256,7 +281,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     either create a new FIFO queue for your application or delete your
 #'     existing standard queue and recreate it as a FIFO queue. For more
 #'     information, see [Moving From a Standard Queue to a FIFO
-#'     Queue](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving)
+#'     Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   If you don\'t provide a value for an attribute, the queue is created
@@ -267,7 +292,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' To successfully create a new queue, you must provide a queue name that
 #' adheres to the [limits related to
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
 #' and is unique within the scope of your queues.
 #' 
 #' To get the queue URL, use the ` <a>GetQueueUrl</a> ` action.
@@ -290,9 +315,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' `&amp;Attribute.2=second`
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -329,7 +353,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `Policy` - The queue\'s policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
-#'     Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds,
@@ -340,7 +364,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     dead-letter queue functionality of the source queue. For more
 #'     information about the redrive policy and dead-letter queues, see
 #'     [Using Amazon SQS Dead-Letter
-#'     Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
@@ -361,49 +385,50 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 #'     Default: 30. For more information about the visibility timeout, see
 #'     [Visibility
-#'     Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' The following attributes apply only to
-#' [server-side-encryption](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
+#' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
 #' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SQS or a custom CMK. For more information, see [Key
-#'     Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
 #'     `alias/aws/sqs`, the alias of a custom CMK can, for example, be
 #'     `alias/<i>MyAlias</i> `. For more examples, see
-#'     [KeyId](http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 
 #' -   `KmsDataKeyReusePeriodSeconds` - The length of time, in seconds, for
 #'     which Amazon SQS can reuse a [data
-#'     key](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+#'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 #'     to encrypt or decrypt messages before calling AWS KMS again. An
 #'     integer representing seconds, between 60 seconds (1 minute) and
 #'     86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time
 #'     period provides better security but results in more calls to KMS
 #'     which might incur charges after Free Tier. For more information, see
 #'     [How Does the Data Key Reuse Period
-#'     Work?](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
 #' -   `FifoQueue` - Designates a queue as FIFO. Valid values: `true`,
-#'     `false`. You can provide this attribute only during queue creation.
-#'     You can\'t change it for an existing queue. When you set this
-#'     attribute, you must also provide the `MessageGroupId` for your
-#'     messages explicitly.
+#'     `false`. If you don\'t specify the `FifoQueue` attribute, Amazon SQS
+#'     creates a standard queue. You can provide this attribute only during
+#'     queue creation. You can\'t change it for an existing queue. When you
+#'     set this attribute, you must also provide the `MessageGroupId` for
+#'     your messages explicitly.
 #' 
 #'     For more information, see [FIFO Queue
-#'     Logic](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
+#'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   `ContentBasedDeduplication` - Enables content-based deduplication.
 #'     Valid values: `true`, `false`. For more information, see
 #'     [Exactly-Once
-#'     Processing](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+#'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     -   Every message must have a unique `MessageDeduplicationId`,
@@ -600,9 +625,8 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' creating a queue with the same name.
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -643,7 +667,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #' Gets attributes for the specified queue.
 #' 
 #' To determine whether a queue is
-#' [FIFO](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
+#' [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
 #' you can check whether `QueueName` ends with the `.fifo` suffix.
 #' 
 #' Some actions take lists of parameters. These lists are specified using
@@ -712,7 +736,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     for dead-letter queue functionality of the source queue. For more
 #'     information about the redrive policy and dead-letter queues, see
 #'     [Using Amazon SQS Dead-Letter
-#'     Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
@@ -727,39 +751,39 @@ sqs_delete_queue <- function(QueueUrl) {
 #' 
 #' -   `VisibilityTimeout` - Returns the visibility timeout for the queue.
 #'     For more information about the visibility timeout, see [Visibility
-#'     Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' The following attributes apply only to
-#' [server-side-encryption](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
+#' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
 #' -   `KmsMasterKeyId` - Returns the ID of an AWS-managed customer master
 #'     key (CMK) for Amazon SQS or a custom CMK. For more information, see
 #'     [Key
-#'     Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #' 
 #' -   `KmsDataKeyReusePeriodSeconds` - Returns the length of time, in
 #'     seconds, for which Amazon SQS can reuse a data key to encrypt or
 #'     decrypt messages before calling AWS KMS again. For more information,
 #'     see [How Does the Data Key Reuse Period
-#'     Work?](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
 #' -   `FifoQueue` - Returns whether the queue is FIFO. For more
 #'     information, see [FIFO Queue
-#'     Logic](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
+#'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     To determine whether a queue is
-#'     [FIFO](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
+#'     [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
 #'     you can check whether `QueueName` ends with the `.fifo` suffix.
 #' 
 #' -   `ContentBasedDeduplication` - Returns whether content-based
 #'     deduplication is enabled for the queue. For more information, see
 #'     [Exactly-Once
-#'     Processing](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+#'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -801,7 +825,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' the queue. For more information about shared queue access, see
 #' ` <a>AddPermission</a> ` or see [Allow Developers to Write Messages to a
 #' Shared
-#' Queue](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
+#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -849,7 +873,7 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' 
 #' For more information about using dead-letter queues, see [Using Amazon
 #' SQS Dead-Letter
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -889,33 +913,12 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl) {
 #'
 #' List all cost allocation tags added to the specified Amazon SQS queue.
 #' For an overview, see [Tagging Your Amazon SQS
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
-#' in the *Amazon Simple Queue Service Developer Guide*.
-#' 
-#' When you use queue tags, keep the following guidelines in mind:
-#' 
-#' -   Adding more than 50 tags to a queue isn\'t recommended.
-#' 
-#' -   Tags don\'t have any semantic meaning. Amazon SQS interprets tags as
-#'     character strings.
-#' 
-#' -   Tags are case-sensitive.
-#' 
-#' -   A new tag with a key identical to that of an existing tag overwrites
-#'     the existing tag.
-#' 
-#' -   Tagging actions are limited to 5 TPS per AWS account. If your
-#'     application requires a higher throughput, file a [technical support
-#'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
-#' 
-#' For a full list of tag restrictions, see [Limits Related to
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -957,9 +960,8 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' the specified value are returned.
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -1051,7 +1053,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' Retrieves one or more messages (up to 10), from the specified queue.
 #' Using the `WaitTimeSeconds` parameter enables long-poll support. For
 #' more information, see [Amazon SQS Long
-#' Polling](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
+#' Polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Short poll is the default behavior where a weighted random set of
@@ -1080,7 +1082,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' The receipt handle is the identifier you must provide when deleting the
 #' message. For more information, see [Queue and Message
-#' Identifiers](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
+#' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' You can provide the `VisibilityTimeout` parameter in your request. The
@@ -1088,7 +1090,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' response. If you don\'t include the parameter, the overall visibility
 #' timeout for the queue is used for the returned messages. For more
 #' information, see [Visibility
-#' Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#' Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' A message that isn\'t deleted or a message whose visibility isn\'t
@@ -1108,8 +1110,8 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are received.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param AttributeNames A list of s that need to be returned along with each message. These
-#' attributes include:
+#' @param AttributeNames A list of attributes that need to be returned along with each message.
+#' These attributes include:
 #' 
 #' -   `All` - Returns all values.
 #' 
@@ -1197,7 +1199,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     `ReceiveRequestAttemptId` return the same messages and receipt
 #'     handles. If a retry occurs within the deduplication interval, it
 #'     resets the visibility timeout. For more information, see [Visibility
-#'     Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     If a caller of the `ReceiveMessage` action still processes messages
@@ -1228,7 +1230,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
-#' Parameter](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
+#' Parameter](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1273,13 +1275,17 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' Revokes any permissions in the queue policy that matches the specified
 #' `Label` parameter.
 #' 
-#' Only the owner of a queue can remove permissions from it.
+#' -   Only the owner of a queue can remove permissions from it.
 #' 
-#' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-#' in the *Amazon Simple Queue Service Developer Guide*.
+#' -   Cross-account permissions don\'t apply to this action. For more
+#'     information, see [Grant Cross-Account Permissions to a Role and a
+#'     User
+#'     Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#'     in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' -   To remove the ability to change queue permissions, you must deny
+#'     permission to the `AddPermission`, `RemovePermission`, and
+#'     `SetQueueAttributes` actions in your IAM policy.
 #'
 #' @usage
 #' sqs_remove_permission(QueueUrl, Label)
@@ -1359,7 +1365,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' can set this parameter only on a queue level.
 #' @param MessageAttributes Each message attribute consists of a `Name`, `Type`, and `Value`. For
 #' more information, see [Amazon SQS Message
-#' Attributes](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+#' Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
@@ -1368,7 +1374,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' sent with the same `MessageDeduplicationId` are accepted successfully
 #' but aren\'t delivered during the 5-minute deduplication interval. For
 #' more information, see [Exactly-Once
-#' Processing](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+#' Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   Every message must have a unique `MessageDeduplicationId`,
@@ -1415,7 +1421,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' For best practices of using `MessageDeduplicationId`, see [Using the
 #' MessageDeduplicationId
-#' Property](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
+#' Property](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
@@ -1440,7 +1446,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' For best practices of using `MessageGroupId`, see [Using the
 #' MessageGroupId
-#' Property](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
+#' Property](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' `MessageGroupId` is required for FIFO queues. You can\'t use it for
@@ -1589,15 +1595,19 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' made to the `MessageRetentionPeriod` attribute can take up to 15
 #' minutes.
 #' 
-#' In the future, new attributes might be added. If you write code that
-#' calls this action, we recommend that you structure your code so that it
-#' can handle new attributes gracefully.
+#' -   In the future, new attributes might be added. If you write code that
+#'     calls this action, we recommend that you structure your code so that
+#'     it can handle new attributes gracefully.
 #' 
-#' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-#' in the *Amazon Simple Queue Service Developer Guide*.
+#' -   Cross-account permissions don\'t apply to this action. For more
+#'     information, see [Grant Cross-Account Permissions to a Role and a
+#'     User
+#'     Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#'     in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' -   To remove the ability to change queue permissions, you must deny
+#'     permission to the `AddPermission`, `RemovePermission`, and
+#'     `SetQueueAttributes` actions in your IAM policy.
 #'
 #' @usage
 #' sqs_set_queue_attributes(QueueUrl, Attributes)
@@ -1626,7 +1636,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `Policy` - The queue\'s policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
-#'     Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds,
@@ -1637,7 +1647,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     dead-letter queue functionality of the source queue. For more
 #'     information about the redrive policy and dead-letter queues, see
 #'     [Using Amazon SQS Dead-Letter
-#'     Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
@@ -1658,38 +1668,38 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     seconds. Valid values: an integer from 0 to 43,200 (12 hours).
 #'     Default: 30. For more information about the visibility timeout, see
 #'     [Visibility
-#'     Timeout](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' The following attributes apply only to
-#' [server-side-encryption](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
+#' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
 #' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SQS or a custom CMK. For more information, see [Key
-#'     Terms](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
 #'     `alias/aws/sqs`, the alias of a custom CMK can, for example, be
 #'     `alias/<i>MyAlias</i> `. For more examples, see
-#'     [KeyId](http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 
 #' -   `KmsDataKeyReusePeriodSeconds` - The length of time, in seconds, for
 #'     which Amazon SQS can reuse a [data
-#'     key](http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+#'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 #'     to encrypt or decrypt messages before calling AWS KMS again. An
 #'     integer representing seconds, between 60 seconds (1 minute) and
 #'     86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time
 #'     period provides better security but results in more calls to KMS
 #'     which might incur charges after Free Tier. For more information, see
 #'     [How Does the Data Key Reuse Period
-#'     Work?](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 #' 
 #' The following attribute applies only to [FIFO (first-in-first-out)
-#' queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
 #' -   `ContentBasedDeduplication` - Enables content-based deduplication.
 #'     For more information, see [Exactly-Once
-#'     Processing](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+#'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #'     -   Every message must have a unique `MessageDeduplicationId`,
@@ -1753,7 +1763,7 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #'
 #' Add cost allocation tags to the specified Amazon SQS queue. For an
 #' overview, see [Tagging Your Amazon SQS
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' When you use queue tags, keep the following guidelines in mind:
@@ -1773,13 +1783,12 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
 #' 
 #' For a full list of tag restrictions, see [Limits Related to
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -1821,33 +1830,12 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #'
 #' Remove cost allocation tags from the specified Amazon SQS queue. For an
 #' overview, see [Tagging Your Amazon SQS
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
-#' in the *Amazon Simple Queue Service Developer Guide*.
-#' 
-#' When you use queue tags, keep the following guidelines in mind:
-#' 
-#' -   Adding more than 50 tags to a queue isn\'t recommended.
-#' 
-#' -   Tags don\'t have any semantic meaning. Amazon SQS interprets tags as
-#'     character strings.
-#' 
-#' -   Tags are case-sensitive.
-#' 
-#' -   A new tag with a key identical to that of an existing tag overwrites
-#'     the existing tag.
-#' 
-#' -   Tagging actions are limited to 5 TPS per AWS account. If your
-#'     application requires a higher throughput, file a [technical support
-#'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
-#' 
-#' For a full list of tag restrictions, see [Limits Related to
-#' Queues](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
-#' information, see see [Grant Cross-Account Permissions to a Role and a
-#' User
-#' Name](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant Cross-Account Permissions to a Role and a User
+#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage

@@ -7,7 +7,7 @@
 iotevents_delete_input(inputName)
 }
 \arguments{
-\item{inputName}{[required] The name of the input to be deleted.}
+\item{inputName}{[required] The name of the input to delete.}
 }
 \description{
 Deletes an input.

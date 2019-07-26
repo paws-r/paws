@@ -12,7 +12,9 @@ apigateway_create_stage(restApiId, stageName, deploymentId, description,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[required] [Required] The name for the Stage resource.}
+\item{stageName}{[required] [Required] The name for the Stage resource. Stage names can only
+contain alphanumeric characters, hyphens, and underscores. Maximum
+length is 128 characters.}
 
 \item{deploymentId}{[required] [Required] The identifier of the Deployment resource for the Stage
 resource.}

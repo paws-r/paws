@@ -5,7 +5,7 @@
 \title{Create a new ThreatIntelSet}
 \usage{
 guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
-  Activate, ClientToken)
+  Activate, ClientToken, Tags)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
@@ -24,6 +24,8 @@ ThreatIntelSet.}
 uploaded ThreatIntelSet.}
 
 \item{ClientToken}{The idempotency token for the create request.}
+
+\item{Tags}{The tags to be added to a new Threat List resource.}
 }
 \description{
 Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious
@@ -36,7 +38,10 @@ IP addresses. GuardDuty generates findings based on ThreatIntelSets.
   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
   Location = "string",
   Activate = TRUE|FALSE,
-  ClientToken = "string"
+  ClientToken = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

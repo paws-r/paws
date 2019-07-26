@@ -52,6 +52,10 @@ Updates an existing OriginEndpoint.
     HlsManifests = list(
       list(
         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+        AdTriggers = list(
+          "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+        ),
+        AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
         Id = "string",
         IncludeIframeOnlyStream = TRUE|FALSE,
         ManifestName = "string",
@@ -69,6 +73,10 @@ Updates an existing OriginEndpoint.
     )
   ),
   DashPackage = list(
+    AdTriggers = list(
+      "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+    ),
+    AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
     Encryption = list(
       KeyRotationIntervalSeconds = 123,
       SpekeKeyProvider = list(
@@ -101,6 +109,10 @@ Updates an existing OriginEndpoint.
   Description = "string",
   HlsPackage = list(
     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+    AdTriggers = list(
+      "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+    ),
+    AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
     Encryption = list(
       ConstantInitializationVector = "string",
       EncryptionMethod = "AES_128"|"SAMPLE_AES",

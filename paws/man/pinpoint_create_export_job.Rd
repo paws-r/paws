@@ -2,17 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_create_export_job}
 \alias{pinpoint_create_export_job}
-\title{Creates an export job}
+\title{Creates a new export job for an application}
 \usage{
 pinpoint_create_export_job(ApplicationId, ExportJobRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{ExportJobRequest}{[required]}
 }
 \description{
-Creates an export job.
+Creates a new export job for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$create_export_job(

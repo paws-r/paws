@@ -8,7 +8,7 @@ iotevents_update_detector_model(detectorModelName,
   detectorModelDefinition, detectorModelDescription, roleArn)
 }
 \arguments{
-\item{detectorModelName}{[required] The name of the detector model to be updated.}
+\item{detectorModelName}{[required] The name of the detector model that is updated.}
 
 \item{detectorModelDefinition}{[required] Information that defines how a detector operates.}
 
@@ -19,7 +19,7 @@ its operations.}
 }
 \description{
 Updates a detector model. Detectors (instances) spawned by the previous
-version will be deleted and re-created as new inputs arrive.
+version are deleted and then re-created as new inputs arrive.
 }
 \section{Request syntax}{
 \preformatted{svc$update_detector_model(
@@ -54,6 +54,20 @@ version will be deleted and re-created as new inputs arrive.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )
@@ -84,6 +98,20 @@ version will be deleted and re-created as new inputs arrive.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               ),
@@ -117,6 +145,20 @@ version will be deleted and re-created as new inputs arrive.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )
@@ -149,6 +191,20 @@ version will be deleted and re-created as new inputs arrive.
                   ),
                   resetTimer = list(
                     timerName = "string"
+                  ),
+                  lambda = list(
+                    functionArn = "string"
+                  ),
+                  iotEvents = list(
+                    inputName = "string"
+                  ),
+                  sqs = list(
+                    queueUrl = "string",
+                    useBase64 = TRUE|FALSE
+                  ),
+                  firehose = list(
+                    deliveryStreamName = "string",
+                    separator = "string"
                   )
                 )
               )

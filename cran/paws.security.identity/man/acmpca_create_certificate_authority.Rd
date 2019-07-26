@@ -2,7 +2,7 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_create_certificate_authority}
 \alias{acmpca_create_certificate_authority}
-\title{Creates a private subordinate certificate authority (CA)}
+\title{Creates a root or subordinate private certificate authority (CA)}
 \usage{
 acmpca_create_certificate_authority(CertificateAuthorityConfiguration,
   RevocationConfiguration, CertificateAuthorityType, IdempotencyToken,
@@ -14,38 +14,40 @@ algorithm, and X.500 certificate subject information.}
 
 \item{RevocationConfiguration}{Contains a Boolean value that you can use to enable a certification
 revocation list (CRL) for the CA, the name of the S3 bucket to which ACM
-PCA will write the CRL, and an optional CNAME alias that you can use to
-hide the name of your bucket in the \strong{CRL Distribution Points}
+Private CA will write the CRL, and an optional CNAME alias that you can
+use to hide the name of your bucket in the \strong{CRL Distribution Points}
 extension of your CA certificate. For more information, see the
 CrlConfiguration structure.}
 
-\item{CertificateAuthorityType}{[required] The type of the certificate authority. Currently, this must be
-\strong{SUBORDINATE}.}
+\item{CertificateAuthorityType}{[required] The type of the certificate authority.}
 
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to
 \strong{CreateCertificateAuthority}. Idempotency tokens time out after five
 minutes. Therefore, if you call \strong{CreateCertificateAuthority} multiple
 times with the same idempotency token within a five minute period, ACM
-PCA recognizes that you are requesting only one certificate. As a
-result, ACM PCA issues only one. If you change the idempotency token for
-each call, however, ACM PCA recognizes that you are requesting multiple
-certificates.}
+Private CA recognizes that you are requesting only one certificate. As a
+result, ACM Private CA issues only one. If you change the idempotency
+token for each call, however, ACM Private CA recognizes that you are
+requesting multiple certificates.}
 
 \item{Tags}{Key-value pairs that will be attached to the new private CA. You can
-associate up to 50 tags with a private CA.}
+associate up to 50 tags with a private CA. For information using tags
+with
+
+IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
 \description{
-Creates a private subordinate certificate authority (CA). You must
-specify the CA configuration, the revocation configuration, the CA type,
-and an optional idempotency token. The CA configuration specifies the
+Creates a root or subordinate private certificate authority (CA). You
+must specify the CA configuration, the certificate revocation list (CRL)
+configuration, the CA type, and an optional idempotency token to avoid
+accidental creation of multiple CAs. The CA configuration specifies the
 name of the algorithm and key size to be used to create the CA private
-key, the type of signing algorithm that the CA uses to sign, and X.500
-subject information. The CRL (certificate revocation list) configuration
-specifies the CRL expiration period in days (the validity period of the
-CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias
-for the S3 bucket that is included in certificates issued by the CA. If
-successful, this operation returns the Amazon Resource Name (ARN) of the
-CA.
+key, the type of signing algorithm that the CA uses, and X.500 subject
+information. The CRL configuration specifies the CRL expiration period
+in days (the validity period of the CRL), the Amazon S3 bucket that will
+contain the CRL, and a CNAME alias for the S3 bucket that is included in
+certificates issued by the CA. If successful, this action returns the
+Amazon Resource Name (ARN) of the CA.
 }
 \section{Request syntax}{
 \preformatted{svc$create_certificate_authority(
@@ -77,7 +79,7 @@ CA.
       S3BucketName = "string"
     )
   ),
-  CertificateAuthorityType = "SUBORDINATE",
+  CertificateAuthorityType = "ROOT"|"SUBORDINATE",
   IdempotencyToken = "string",
   Tags = list(
     list(

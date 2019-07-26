@@ -6,7 +6,9 @@
 commit IDs for a pull request in a repository}
 \usage{
 codecommit_get_merge_conflicts(repositoryName,
-  destinationCommitSpecifier, sourceCommitSpecifier, mergeOption)
+  destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
+  conflictDetailLevel, maxConflictFiles, conflictResolutionStrategy,
+  nextToken)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where the pull request was created.}
@@ -17,8 +19,23 @@ identify a commit. For example, a branch name or a full commit ID.}
 \item{sourceCommitSpecifier}{[required] The branch, tag, HEAD, or other fully qualified reference used to
 identify a commit. For example, a branch name or a full commit ID.}
 
-\item{mergeOption}{[required] The merge option or strategy you want to use to merge the code. The only
-valid value is FAST\_FORWARD\_MERGE.}
+\item{mergeOption}{[required] The merge option or strategy you want to use to merge the code.}
+
+\item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
+FILE\_LEVEL is used, which will return a not mergeable result if the
+same file has differences in both branches. If LINE\_LEVEL is specified,
+a conflict will be considered not mergeable if the same file in both
+branches has differences on the same line.}
+
+\item{maxConflictFiles}{The maximum number of files to include in the output.}
+
+\item{conflictResolutionStrategy}{Specifies which branch to use when resolving conflicts, or whether to
+attempt automatically merging two versions of a file. The default is
+NONE, which requires any conflicts to be resolved manually before the
+merge operation will be successful.}
+
+\item{nextToken}{An enumeration token that when provided in a request, returns the next
+batch of the results.}
 }
 \description{
 Returns information about merge conflicts between the before and after
@@ -29,7 +46,11 @@ commit IDs for a pull request in a repository.
   repositoryName = "string",
   destinationCommitSpecifier = "string",
   sourceCommitSpecifier = "string",
-  mergeOption = "FAST_FORWARD_MERGE"
+  mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
+  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
+  maxConflictFiles = 123,
+  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
+  nextToken = "string"
 )
 }
 }

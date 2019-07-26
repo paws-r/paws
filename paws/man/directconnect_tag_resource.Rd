@@ -9,7 +9,7 @@ directconnect_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tags}{[required] The tags to add.}
+\item{tags}{[required] The tags to assign.}
 }
 \description{
 Adds the specified tags to the specified AWS Direct Connect resource.

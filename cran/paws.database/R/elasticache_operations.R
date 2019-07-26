@@ -117,7 +117,8 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' Apply the service update
 #'
 #' Apply the service update. For more information on service updates and
-#' applying them, see Applying Service Updates.
+#' applying them, see [Applying Service
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html).
 #'
 #' @usage
 #' elasticache_batch_apply_update_action(ReplicationGroupIds,
@@ -257,7 +258,7 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds, ServiceUpd
 #' 
 #'     **Solution:** Add List and Read permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted WRITE
@@ -265,7 +266,7 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds, ServiceUpd
 #' 
 #'     **Solution:** Add Upload/Delete permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted READ\\_ACP
@@ -273,7 +274,7 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds, ServiceUpd
 #' 
 #'     **Solution:** Add View Permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #'
 #' @usage
@@ -823,7 +824,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' propagated to the replicas.
 #' 
 #' A Redis (cluster mode enabled) replication group is a collection of 1 to
-#' 15 node groups (shards). Each node group (shard) has one read/write
+#' 90 node groups (shards). Each node group (shard) has one read/write
 #' primary node and up to 5 read-only replica nodes. Writes to the primary
 #' are asynchronously propagated to the replicas. Redis (cluster mode
 #' enabled) replication groups partition the data across node groups
@@ -1147,7 +1148,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' `CacheSubnetGroup`.
 #' 
 #' **Required:** Only available when creating a replication group in an
-#' Amazon VPC using redis version `3.2.6` or `4.x`.
+#' Amazon VPC using redis version `3.2.6`, `4.x` or later.
 #' 
 #' Default: `false`
 #' 
@@ -1161,7 +1162,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' you create the replication group.
 #' 
 #' **Required:** Only available when creating a replication group in an
-#' Amazon VPC using redis version `3.2.6` or `4.x`.
+#' Amazon VPC using redis version `3.2.6`, `4.x` or later.
 #' 
 #' Default: `false`
 #'
@@ -2905,7 +2906,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' For instructions on how to move existing Memcached nodes to different
 #' Availability Zones, see the **Availability Zone Considerations** section
 #' of [Cache Node Considerations for
-#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html).
 #' @param NewAvailabilityZones The list of Availability Zones where the new Memcached cache nodes are
 #' created.
 #' 
@@ -2940,7 +2941,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' different Availability Zones. For guidance on how to move existing
 #' Memcached nodes to different Availability Zones, see the **Availability
 #' Zone Considerations** section of [Cache Node Considerations for
-#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html).
 #' 
 #' **Impact of new add/remove requests upon pending requests**
 #' 

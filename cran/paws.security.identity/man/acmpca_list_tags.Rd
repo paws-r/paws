@@ -8,7 +8,7 @@ acmpca_list_tags(CertificateAuthorityArn, NextToken, MaxResults)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-CreateCertificateAuthority operation. This must be of the form:
+CreateCertificateAuthority action. This must be of the form:
 
 \code{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
@@ -26,8 +26,8 @@ additional items.}
 Lists the tags, if any, that are associated with your private CA. Tags
 are labels that you can use to identify and organize your CAs. Each tag
 consists of a key and an optional value. Call the
-TagCertificateAuthority operation to add one or more tags to your CA.
-Call the UntagCertificateAuthority operation to remove tags.
+TagCertificateAuthority action to add one or more tags to your CA. Call
+the UntagCertificateAuthority action to remove tags.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags(

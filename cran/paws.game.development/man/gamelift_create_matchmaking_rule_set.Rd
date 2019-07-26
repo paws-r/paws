@@ -12,9 +12,8 @@ configuration identifies the rule set it uses by this name value. (Note:
 The rule set name is different from the optional "name" field in the
 rule set body.)}
 
-\item{RuleSetBody}{[required] Collection of matchmaking rules, formatted as a JSON string. Note that
-comments are not allowed in JSON, but most elements support a
-description field.}
+\item{RuleSetBody}{[required] Collection of matchmaking rules, formatted as a JSON string. Comments
+are not allowed in JSON, but most elements support a description field.}
 }
 \description{
 Creates a new rule set for FlexMatch matchmaking. A rule set describes
@@ -26,7 +25,7 @@ MatchmakingConfiguration.
 \details{
 To create a matchmaking rule set, provide unique rule set name and the
 rule set body in JSON format. Rule sets must be defined in the same
-region as the matchmaking configuration they will be used with.
+region as the matchmaking configuration they are used with.
 
 Since matchmaking rule sets cannot be edited, it is a good idea to check
 the rule set syntax using ValidateMatchmakingRuleSet before creating a

@@ -2,26 +2,25 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_findings}
 \alias{securityhub_get_findings}
-\title{Lists and describes Security Hub-aggregated findings that filter
-attributes specify}
+\title{Returns a list of findings that match the specified criteria}
 \usage{
 securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
 }
 \arguments{
-\item{Filters}{A collection of attributes that is used for querying findings.}
+\item{Filters}{The findings attributes used to define a condition to filter the
+findings returned.}
 
-\item{SortCriteria}{A collection of attributes used for sorting findings.}
+\item{SortCriteria}{Findings attributes used to sort the list of findings returned.}
 
 \item{NextToken}{Paginates results. On your first call to the \code{GetFindings} operation,
 set the value of this parameter to \code{NULL}. For subsequent calls to the
 operation, fill \code{nextToken} in the request with the value of \code{nextToken}
 from the previous response to continue listing data.}
 
-\item{MaxResults}{Indicates the maximum number of items that you want in the response.}
+\item{MaxResults}{The maximum number of findings to return.}
 }
 \description{
-Lists and describes Security Hub-aggregated findings that filter
-attributes specify.
+Returns a list of findings that match the specified criteria.
 }
 \section{Request syntax}{
 \preformatted{svc$get_findings(

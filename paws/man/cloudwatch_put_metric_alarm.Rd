@@ -2,14 +2,15 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_put_metric_alarm}
 \alias{cloudwatch_put_metric_alarm}
-\title{Creates or updates an alarm and associates it with the specified metric
-or metric math expression}
+\title{Creates or updates an alarm and associates it with the specified metric,
+metric math expression, or anomaly detection model}
 \usage{
 cloudwatch_put_metric_alarm(AlarmName, AlarmDescription, ActionsEnabled,
   OKActions, AlarmActions, InsufficientDataActions, MetricName, Namespace,
   Statistic, ExtendedStatistic, Dimensions, Period, Unit,
   EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
-  TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags)
+  TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags,
+  ThresholdMetricId)
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within your AWS
@@ -140,11 +141,15 @@ This is used only if you are setting an "M out of N" alarm. In that
 case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
 in the \emph{Amazon CloudWatch User Guide}.}
 
-\item{Threshold}{[required] The value against which the specified statistic is compared.}
+\item{Threshold}{The value against which the specified statistic is compared.}
 
 \item{ComparisonOperator}{[required] The arithmetic operation to use when comparing the specified statistic
 and threshold. The specified statistic value is used as the first
-operand.}
+operand.
+
+The values \code{LessThanLowerOrGreaterThanUpperThreshold},
+\code{LessThanLowerThreshold}, and \code{GreaterThanUpperThreshold} are used only
+for alarms based on anomaly detection models.}
 
 \item{TreatMissingData}{Sets how this alarm is to handle missing data points. If
 \code{TreatMissingData} is omitted, the default behavior of \code{missing} is
@@ -181,12 +186,23 @@ as many as 50 tags with an alarm.
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.}
+
+\item{ThresholdMetricId}{If this is an alarm based on an anomaly detection model, make this value
+match the ID of the \code{ANOMALY_DETECTION_BAND} function.
+
+For an example of how to use this parameter, see the \strong{Anomaly Detection
+Model Alarm} example on this page.
+
+If your alarm uses this parameter, it cannot have Auto Scaling actions.}
 }
 \description{
-Creates or updates an alarm and associates it with the specified metric
-or metric math expression.
+Creates or updates an alarm and associates it with the specified metric,
+metric math expression, or anomaly detection model.
 }
 \details{
+Alarms based on anomaly detection models cannot have Auto Scaling
+actions.
+
 When this operation creates an alarm, the alarm state is immediately set
 to \code{INSUFFICIENT_DATA}. The alarm is then evaluated and its state is set
 appropriately. Any actions associated with the new state are then
@@ -254,7 +270,7 @@ necessary service-linked role for you. The service-linked role is called
   EvaluationPeriods = 123,
   DatapointsToAlarm = 123,
   Threshold = 123.0,
-  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
   TreatMissingData = "string",
   EvaluateLowSampleCountPercentile = "string",
   Metrics = list(
@@ -285,7 +301,8 @@ necessary service-linked role for you. The service-linked role is called
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  ThresholdMetricId = "string"
 )
 }
 }

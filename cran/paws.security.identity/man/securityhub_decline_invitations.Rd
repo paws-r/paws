@@ -2,20 +2,16 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_decline_invitations}
 \alias{securityhub_decline_invitations}
-\title{Declines invitations that are sent to this AWS account (invitee) from
-the AWS accounts (inviters) that are specified by the provided
-AccountIds}
+\title{Declines invitations to become a member account}
 \usage{
 securityhub_decline_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of account IDs that specify the accounts from which invitations
-to Security Hub are declined.}
+\item{AccountIds}{A list of account IDs that specify the accounts that invitations to
+Security Hub are declined from.}
 }
 \description{
-Declines invitations that are sent to this AWS account (invitee) from
-the AWS accounts (inviters) that are specified by the provided
-\code{AccountIds}.
+Declines invitations to become a member account.
 }
 \section{Request syntax}{
 \preformatted{svc$decline_invitations(

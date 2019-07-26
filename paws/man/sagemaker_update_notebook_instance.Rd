@@ -33,7 +33,12 @@ associated with the notebook instance when you call this method, it does
 not throw an error.}
 
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
-instance. The default value is 5 GB.}
+instance. The default value is 5 GB. ML storage volumes are encrypted,
+so Amazon SageMaker can't determine the amount of available free space
+on the volume. Because of this, you can increase the volume size when
+you update a notebook instance, but you can't decrease the volume size.
+If you want to decrease the size of the ML storage volume in use, create
+a new notebook instance with the desired size.}
 
 \item{DefaultCodeRepository}{The Git repository to associate with the notebook instance as its
 default code repository. This can be either the name of a Git repository

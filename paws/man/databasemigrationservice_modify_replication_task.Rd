@@ -21,15 +21,13 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{MigrationType}{The migration type.
-
-Valid values: full-load \| cdc \| full-load-and-cdc}
+\item{MigrationType}{The migration type. Valid values: \code{full-load} \| \code{cdc} \|
+\code{full-load-and-cdc}}
 
 \item{TableMappings}{When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with "file://". When
-working with the DMS API, provide the JSON as the parameter value.
-
-For example, \--table-mappings file://mappingfile.json}
+contains the table mappings. Precede the path with \code{file://}. When
+working with the DMS API, provide the JSON as the parameter value, for
+example: \code{--table-mappings file://mappingfile.json}}
 
 \item{ReplicationTaskSettings}{JSON file that contains settings for the task, such as target metadata
 settings.}

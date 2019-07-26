@@ -60,10 +60,13 @@ information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-g
 \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current AWS account \cr
 \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty master account \cr
+\link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource \cr
 \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID \cr
 \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs \cr
 \link[=guardduty_stop_monitoring_members]{stop_monitoring_members} \tab Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs \cr
+\link[=guardduty_tag_resource]{tag_resource} \tab Adds tags to a resource \cr
 \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives Amazon GuardDuty findings specified by the list of finding IDs \cr
+\link[=guardduty_untag_resource]{untag_resource} \tab Removes tags from a resource \cr
 \link[=guardduty_update_detector]{update_detector} \tab Updates an Amazon GuardDuty detector specified by the detectorId \cr
 \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name \cr
 \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks specified Amazon GuardDuty findings as useful or not useful \cr

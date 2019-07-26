@@ -28,7 +28,7 @@ Amazon SQS retains a message. Valid values: An integer representing
 seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
 (4 days).
 \item \code{Policy} - The queue's policy. A valid AWS policy. For more
-information about policy structure, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
+information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} - The length of time, in seconds,
 for which a \code{<a>ReceiveMessage</a>} action waits for a message to
@@ -36,7 +36,7 @@ arrive. Valid values: an integer from 0 to 20 (seconds). Default: 0.
 \item \code{RedrivePolicy} - The string that includes the parameters for the
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item \code{deadLetterTargetArn} - The Amazon Resource Name (ARN) of the
@@ -55,34 +55,34 @@ standard queue.
 \item \code{VisibilityTimeout} - The visibility timeout for the queue, in
 seconds. Valid values: an integer from 0 to 43,200 (12 hours).
 Default: 30. For more information about the visibility timeout, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 
 The following attributes apply only to
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
 \itemize{
 \item \code{KmsMasterKeyId} - The ID of an AWS-managed customer master key
-(CMK) for Amazon SQS or a custom CMK. For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
+(CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
 \code{alias/<i>MyAlias</i> }. For more examples, see
-\href{http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{AWS Key Management Service API Reference}.
 \item \code{KmsDataKeyReusePeriodSeconds} - The length of time, in seconds, for
-which Amazon SQS can reuse a \href{http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data key}
+which Amazon SQS can reuse a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data key}
 to encrypt or decrypt messages before calling AWS KMS again. An
 integer representing seconds, between 60 seconds (1 minute) and
 86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time
 period provides better security but results in more calls to KMS
 which might incur charges after Free Tier. For more information, see
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
 }
 
-The following attribute applies only to \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
+The following attribute applies only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{ContentBasedDeduplication} - Enables content-based deduplication.
-For more information, see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
+For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item Every message must have a unique \code{MessageDeduplicationId},
@@ -119,13 +119,17 @@ made to the \code{MessageRetentionPeriod} attribute can take up to 15
 minutes.
 }
 \details{
-In the future, new attributes might be added. If you write code that
-calls this action, we recommend that you structure your code so that it
-can handle new attributes gracefully.
-
-Cross-account permissions don't apply to this action. For more
-information, see see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+\itemize{
+\item In the future, new attributes might be added. If you write code that
+calls this action, we recommend that you structure your code so that
+it can handle new attributes gracefully.
+\item Cross-account permissions don't apply to this action. For more
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
+\item To remove the ability to change queue permissions, you must deny
+permission to the \code{AddPermission}, \code{RemovePermission}, and
+\code{SetQueueAttributes} actions in your IAM policy.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$set_queue_attributes(

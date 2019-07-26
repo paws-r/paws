@@ -9,14 +9,14 @@ dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
 \arguments{
 \item{GlobalTableName}{[required] The global table name.}
 
-\item{ReplicaUpdates}{[required] A list of regions that should be added or removed from the global table.}
+\item{ReplicaUpdates}{[required] A list of Regions that should be added or removed from the global table.}
 }
 \description{
 Adds or removes replicas in the specified global table. The global table
 must already exist to be able to use this operation. Any replica to be
-added must be empty, must have the same name as the global table, must
-have the same key schema, and must have DynamoDB Streams enabled and
-must have same provisioned and maximum write capacity units.
+added must be empty, have the same name as the global table, have the
+same key schema, have DynamoDB Streams enabled, and have the same
+provisioned and maximum write capacity units.
 }
 \details{
 Although you can use \code{UpdateGlobalTable} to add replicas and remove

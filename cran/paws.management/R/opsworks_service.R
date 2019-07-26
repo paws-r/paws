@@ -22,16 +22,16 @@ NULL
 #' see:
 #' 
 #' -   [AWS
-#'     CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+#'     CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 #' 
 #' -   [AWS SDK for
-#'     Java](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
+#'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 #' 
 #' -   [AWS SDK for
-#'     .NET](http://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm)
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm)
 #' 
 #' -   [AWS SDK for PHP
-#'     2](http://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html)
+#'     2](https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html)
 #' 
 #' -   [AWS SDK for Ruby](http://docs.aws.amazon.com/sdkforruby/api/)
 #' 
@@ -84,7 +84,7 @@ NULL
 #' use the `ConfigurationManager` parameter to specify the Chef version.
 #' The recommended and default value for Linux stacks is currently 12.
 #' Windows stacks use Chef 12.2. For more information, see [Chef
-#' Versions](http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
+#' Versions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
 #' 
 #' You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as

@@ -33,3 +33,11 @@ test_that("list_triggers", {
 test_that("list_triggers", {
   expect_error(svc$list_triggers(MaxResults = 20), NA)
 })
+
+test_that("list_workflows", {
+  expect_error(svc$list_workflows(), NA)
+})
+
+test_that("list_workflows", {
+  expect_error(svc$list_workflows(MaxResults = 20), NA)
+})

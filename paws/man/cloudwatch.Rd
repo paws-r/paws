@@ -28,10 +28,12 @@ performance, and operational health.
 
 \tabular{ll}{
 \link[=cloudwatch_delete_alarms]{delete_alarms} \tab Deletes the specified alarms \cr
+\link[=cloudwatch_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes the specified anomaly detection model from your account \cr
 \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify \cr
 \link[=cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm \cr
 \link[=cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms \cr
 \link[=cloudwatch_describe_alarms_for_metric]{describe_alarms_for_metric} \tab Retrieves the alarms for the specified metric \cr
+\link[=cloudwatch_describe_anomaly_detectors]{describe_anomaly_detectors} \tab Lists the anomaly detection models that you have created in your account \cr
 \link[=cloudwatch_disable_alarm_actions]{disable_alarm_actions} \tab Disables the actions for the specified alarms \cr
 \link[=cloudwatch_enable_alarm_actions]{enable_alarm_actions} \tab Enables the actions for the specified alarms \cr
 \link[=cloudwatch_get_dashboard]{get_dashboard} \tab Displays the details of the dashboard that you specify \cr
@@ -41,8 +43,9 @@ performance, and operational health.
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account \cr
 \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics \cr
 \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
+\link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric \cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
-\link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric or metric math expression \cr
+\link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model \cr
 \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch \cr
 \link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes \cr
 \link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource \cr

@@ -14,15 +14,15 @@ elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
 
 \item{Protocol}{The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols. Network
-Load Balancers support the TCP and TLS protocols.}
+Load Balancers support the TCP, TLS, UDP, and TCP\_UDP protocols.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
 in the \emph{Application Load Balancers Guide}.}
 
-\item{Certificates}{[HTTPS and TLS listeners] The default SSL server certificate. You must
-provide exactly one certificate. Set \code{CertificateArn} to the certificate
-ARN but do not set \code{IsDefault}.
+\item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
+You must provide exactly one certificate. Set \code{CertificateArn} to the
+certificate ARN but do not set \code{IsDefault}.
 
 To create a certificate list, use AddListenerCertificates.}
 
@@ -31,8 +31,8 @@ action or one or more fixed-response actions.
 
 If the action type is \code{forward}, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for a
-Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect
@@ -53,15 +53,15 @@ Modifies the specified properties of the specified listener.
 \details{
 Any properties that you do not specify retain their current values.
 However, changing the protocol from HTTPS to HTTP, or from TLS to TCP,
-removes the security policy and server certificate properties. If you
+removes the security policy and default certificate properties. If you
 change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add
-the security policy and server certificate properties.
+the security policy and default certificate properties.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_listener(
   ListenerArn = "string",
   Port = 123,
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
   SslPolicy = "string",
   Certificates = list(
     list(

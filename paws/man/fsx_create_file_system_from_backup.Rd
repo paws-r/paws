@@ -37,7 +37,7 @@ Windows File Server backup.
 }
 \details{
 If a file system with the specified client request token exists and the
-parameters match, this call returns the description of the existing file
+parameters match, this operation returns the description of the file
 system. If a client request token specified by the file system exists
 and the parameters don't match, this call returns
 \code{IncompatibleParameterError}. If a file system with the specified client
@@ -85,6 +85,16 @@ returns the file system state along with other information.
   ),
   WindowsConfiguration = list(
     ActiveDirectoryId = "string",
+    SelfManagedActiveDirectoryConfiguration = list(
+      DomainName = "string",
+      OrganizationalUnitDistinguishedName = "string",
+      FileSystemAdministratorsGroup = "string",
+      UserName = "string",
+      Password = "string",
+      DnsIps = list(
+        "string"
+      )
+    ),
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",

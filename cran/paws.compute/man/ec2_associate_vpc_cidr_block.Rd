@@ -23,7 +23,7 @@ block. The IPv6 CIDR block size is fixed at /56.
 }
 \details{
 For more information about associating CIDR blocks with your VPC and
-applicable restrictions, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing}
+applicable restrictions, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

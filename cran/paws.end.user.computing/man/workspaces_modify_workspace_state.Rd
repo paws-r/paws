@@ -17,9 +17,9 @@ Sets the state of the specified WorkSpace.
 \details{
 To maintain a WorkSpace without being interrupted, set the WorkSpace
 state to \code{ADMIN_MAINTENANCE}. WorkSpaces in this state do not respond to
-requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in
-this state is not stopped. Users can log into a WorkSpace in the
-\code{ADMIN_MAINTENANCE} state.
+requests to reboot, stop, start, rebuild, or restore. An AutoStop
+WorkSpace in this state is not stopped. Users cannot log into a
+WorkSpace in the \code{ADMIN_MAINTENANCE} state.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_workspace_state(

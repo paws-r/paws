@@ -15,7 +15,7 @@ opsworks_create_stack(Name, Region, VpcId, Attributes, ServiceRoleArn,
 \item{Name}{[required] The stack name.}
 
 \item{Region}{[required] The stack's AWS region, such as \code{ap-south-1}. For more information
-about Amazon regions, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+about Amazon regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 
 In the AWS CLI, this API maps to the \code{--stack-region} parameter. If the
 \code{--stack-region} parameter and the AWS CLI common parameter \code{--region}
@@ -58,8 +58,8 @@ region.
 }
 
 For more information about how to use AWS OpsWorks Stacks with a VPC,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
-For more information about default VPC and EC2-Classic, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
+For more information about default VPC and EC2-Classic, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
@@ -67,20 +67,21 @@ attributes.}
 \item{ServiceRoleArn}{[required] The stack's AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 set this parameter to the Amazon Resource Name (ARN) for an existing IAM
-role. For more information about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+role. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{DefaultInstanceProfileArn}{[required] The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information
-about IAM ARNs, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{DefaultOs}{The stack's default operating system, which is installed on every
 instance unless you specify a different operating system when you create
 the instance. You can specify one of the following.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
-\code{Amazon Linux 2017.09}, \code{Amazon Linux 2017.03},
-\code{Amazon Linux 2016.09}, \code{Amazon Linux 2016.03},
-\code{Amazon Linux 2015.09}, or \code{Amazon Linux 2015.03}.
+\code{Amazon Linux 2018.03}, \code{Amazon Linux 2017.09},
+\code{Amazon Linux 2017.03}, \code{Amazon Linux 2016.09},
+\code{Amazon Linux 2016.03}, \code{Amazon Linux 2015.09}, or
+\code{Amazon Linux 2015.03}.
 \item A supported Ubuntu operating system, such as \code{Ubuntu 16.04 LTS},
 \code{Ubuntu 14.04 LTS}, or \code{Ubuntu 12.04 LTS}.
 \item \code{CentOS Linux 7}
@@ -91,11 +92,11 @@ the instance. You can specify one of the following.
 \code{Microsoft Windows Server 2012 R2 with SQL Server Standard}, or
 \code{Microsoft Windows Server 2012 R2 with SQL Server Web}.
 \item A custom AMI: \code{Custom}. You specify the custom AMI you want to use
-when you create instances. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
+when you create instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html}{Using Custom AMIs}.
 }
 
 The default option is the current Amazon Linux version. For more
-information about supported operating systems, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
+information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
 
 \item{HostnameTheme}{The stack's host name theme, with spaces replaced by underscores. The
 theme is used to generate host names for the stack's instances. By
@@ -107,7 +108,7 @@ are:
 \item \code{Clouds}
 \item \code{Europe_Cities}
 \item \code{Fruits}
-\item \code{Greek_Deities}
+\item \code{Greek_Deities_and_Titans}
 \item \code{Legendary_creatures_from_Japan}
 \item \code{Planets_and_Moons}
 \item \code{Roman_Deities}
@@ -120,7 +121,7 @@ To obtain a generated host name, call \code{GetHostNameSuggestion}, which
 returns a host name based on the current theme.}
 
 \item{DefaultAvailabilityZone}{The stack's default Availability Zone, which must be in the specified
-region. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}. If
+region. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}. If
 you also specify a value for \code{DefaultSubnetId}, the subnet must be in
 the same zone. For more information, see the \code{VpcId} parameter
 description.}
@@ -139,7 +140,7 @@ format:
 
 \code{"\{\"key1\": \"value1\", \"key2\": \"value2\",...\}"}
 
-For more information about custom JSON, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}.}
+For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}.}
 
 \item{ConfigurationManager}{The configuration manager. When you create a stack we recommend that you
 use the configuration manager to specify the Chef version: 12, 11.10, or
@@ -148,7 +149,7 @@ Linux stacks is currently 12.}
 
 \item{ChefConfiguration}{A \code{ChefConfiguration} object that specifies whether to enable Berkshelf
 and the Berkshelf version on Chef 11.10 stacks. For more information,
-see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
+see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
 
 \item{UseCustomCookbooks}{Whether the stack uses custom cookbooks.}
 
@@ -172,22 +173,24 @@ with a layer on creation; custom security groups are required only
 for those layers that need custom settings.
 }
 
-For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
+For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
 
-\item{CustomCookbooksSource}{}
+\item{CustomCookbooksSource}{Contains the information required to retrieve an app or cookbook from a
+repository. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html}{Adding Apps}
+or \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html}{Cookbooks and Recipes}.}
 
 \item{DefaultSshKeyName}{A default Amazon EC2 key pair name. The default value is none. If you
 specify a key pair name, AWS OpsWorks installs the public key on the
 instance and you can use the private key with an SSH client to log in to
-the instance. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
-and \href{http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html}{Managing SSH Access}.
+the instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html}{Using SSH to Communicate with an Instance}
+and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html}{Managing SSH Access}.
 You can override this setting by specifying a different key pair, or no
-key pair, when you \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{create an instance}.}
+key pair, when you \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{create an instance}.}
 
 \item{DefaultRootDeviceType}{The default root device type. This value is the default for all
 instances in the stack, but you can override it when you create an
 instance. The default option is \code{instance-store}. For more information,
-see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device}{Storage for the Root Device}.}
 
 \item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
 options:
@@ -211,12 +214,12 @@ You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
 }
 \description{
-Creates a new stack. For more information, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.
+Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more information
-about user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_stack(

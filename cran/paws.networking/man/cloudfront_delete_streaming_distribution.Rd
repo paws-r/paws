@@ -45,7 +45,7 @@ to confirm that the distribution was successfully deleted.
 }
 
 For information about deleting a distribution using the CloudFront
-console, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html}{Deleting a Distribution}
+console, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html}{Deleting a Distribution}
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{

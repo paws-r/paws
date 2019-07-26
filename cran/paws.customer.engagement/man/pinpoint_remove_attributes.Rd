@@ -2,20 +2,23 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_remove_attributes}
 \alias{pinpoint_remove_attributes}
-\title{Used to remove the attributes for an app}
+\title{Removes one or more attributes, of the same attribute type, from all the
+endpoints that are associated with an application}
 \usage{
 pinpoint_remove_attributes(ApplicationId, AttributeType,
   UpdateAttributesRequest)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{AttributeType}{[required] Type of attribute. Can be endpoint-custom-attributes, endpoint-custom-metrics, endpoint-user-attributes.}
+\item{AttributeType}{[required]  <p>The type of attribute or attributes to remove. Valid values are:</p> <ul><li><p>endpoint-custom-attributes - Custom attributes that describe endpoints, such as the date when an associated user opted in or out of receiving communications from you through a specific type of channel.</p></li> <li><p>endpoint-custom-metrics - Custom metrics that your app reports to Amazon Pinpoint for endpoints, such as the number of app sessions or the number of items left in a cart.</p></li> <li><p>endpoint-user-attributes - Custom attributes that describe users, such as first name, last name, and age.</p></li></ul>}
 
 \item{UpdateAttributesRequest}{[required]}
 }
 \description{
-Used to remove the attributes for an app
+Removes one or more attributes, of the same attribute type, from all the
+endpoints that are associated with an application.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_attributes(

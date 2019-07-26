@@ -36,7 +36,7 @@ Default: \code{default}}
 Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). For more information about how
-large to make your VPC, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html}{Your VPC and Subnets}
+large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
@@ -47,7 +47,7 @@ your VPC.
 
 By default, each instance you launch in the VPC has the default DHCP
 options, which include only a default DNS server that we provide
-(AmazonProvidedDNS). For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets}
+(AmazonProvidedDNS). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html}{DHCP Options Sets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 You can specify the instance tenancy value for the VPC when you create

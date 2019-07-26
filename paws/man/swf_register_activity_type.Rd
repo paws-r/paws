@@ -17,8 +17,8 @@ swf_register_activity_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{version}{[required] The version of the activity type.
 
@@ -27,8 +27,8 @@ which must be unique within the domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not
-contain the literal string \code{arn}.}
+characters (\code{U+0000`-`U+001f} \| \code{U+007f`-`U+009f}). Also, it must not \emph{be}
+the literal string \code{arn}.}
 
 \item{description}{A textual description of the activity type.}
 
@@ -62,7 +62,7 @@ assigned, then \code{0} is used. Valid values are integers that range from
 Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
-For more information about setting task priority, see \href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
+For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
 in the \emph{in the \emph{Amazon SWF Developer Guide}.}.}
 
 \item{defaultTaskScheduleToStartTimeout}{If set, specifies the default maximum duration that a task of this
@@ -110,7 +110,7 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

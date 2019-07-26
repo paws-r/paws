@@ -20,15 +20,11 @@ resource.
 \details{
 When you update a distribution, there are more required fields than when
 you create a distribution. When you update your distribution by using
-UpdateDistribution, follow the steps included in the documentation to
-get the current configuration and then make your updates. This helps to
-make sure that you include all of the required fields. To view a
-summary, see \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
+\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html}{UpdateDistribution},
+follow the steps included in the documentation to get the current
+configuration and then make your updates. This helps to make sure that
+you include all of the required fields. To view a summary, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
 in the \emph{Amazon CloudFront Developer Guide}.
-
-If you are using Adobe Flash Media Server's RTMP protocol, you set up a
-different kind of CloudFront distribution. For more information, see
-CreateStreamingDistribution.
 }
 \section{Request syntax}{
 \preformatted{svc$create_distribution(

@@ -403,9 +403,9 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #' 
 #' -   UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE: An XCode test package upload.
+#' -   XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An XCode UI test package upload.
+#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
 #' 
 #' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
 #'     upload.
@@ -436,7 +436,7 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #' 
 #' -   INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC: An XCode UI test spec upload.
+#' -   XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
 #' 
 #' **Note** If you call `CreateUpload` with `WEB_APP` specified, AWS Device
 #' Farm throws an `ArgumentException` error.
@@ -696,7 +696,7 @@ devicefarm_delete_project <- function(arn) {
 #' @usage
 #' devicefarm_delete_remote_access_session(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the sesssion for which you want to
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the session for which you want to
 #' delete remote access.
 #'
 #' @section Request syntax:
@@ -1061,9 +1061,9 @@ devicefarm_get_device_pool <- function(arn) {
 #' 
 #' -   UIAUTOMATOR: The uiautomator type.
 #' 
-#' -   XCTEST: The XCode test type.
+#' -   XCTEST: The Xcode test type.
 #' 
-#' -   XCTEST\\_UI: The XCode UI test type.
+#' -   XCTEST\\_UI: The Xcode UI test type.
 #' @param test Information about the uploaded test to be run against the device pool.
 #' @param configuration An object containing information about the settings for a run.
 #'
@@ -1813,7 +1813,7 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' operator, and one or more values.
 #' 
 #' -   Attribute: The aspect of a device such as platform or model used as
-#'     the selction criteria in a device filter.
+#'     the selection criteria in a device filter.
 #' 
 #'     Allowed values include:
 #' 
@@ -2578,7 +2578,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' 
 #' -   IOS\\_APP: An iOS upload.
 #' 
-#' -   WEB\\_APP: A web appliction upload.
+#' -   WEB\\_APP: A web application upload.
 #' 
 #' -   EXTERNAL\\_DATA: An external data upload.
 #' 
@@ -2617,9 +2617,9 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' 
 #' -   UIAUTOMATOR\\_TEST\\_PACKAGE: A uiautomator test package upload.
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE: An XCode test package upload.
+#' -   XCTEST\\_TEST\\_PACKAGE: An Xcode test package upload.
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An XCode UI test package upload.
+#' -   XCTEST\\_UI\\_TEST\\_PACKAGE: An Xcode UI test package upload.
 #' 
 #' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC: An Appium Java JUnit test spec
 #'     upload.
@@ -2650,7 +2650,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' 
 #' -   INSTRUMENTATION\\_TEST\\_SPEC: An instrumentation test spec upload.
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC: An XCode UI test spec upload.
+#' -   XCTEST\\_UI\\_TEST\\_SPEC: An Xcode UI test spec upload.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -3233,8 +3233,8 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' devicefarm_update_device_pool(arn, name, description, rules, maxDevices,
 #'   clearMaxDevices)
 #'
-#' @param arn &#91;required&#93; The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-#' update.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the Device Farm device pool you wish
+#' to update.
 #' @param name A string representing the name of the device pool you wish to update.
 #' @param description A description of the device pool you wish to update.
 #' @param rules Represents the rules you wish to modify for the device pool. Updating
@@ -3383,7 +3383,7 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 #' update network profile settings.
 #' @param name The name of the network profile about which you are returning
 #' information.
-#' @param description The descriptoin of the network profile about which you are returning
+#' @param description The description of the network profile about which you are returning
 #' information.
 #' @param type The type of network profile you wish to return information about. Valid
 #' values are listed below.

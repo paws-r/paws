@@ -4,12 +4,12 @@
 \alias{dynamodb_transact_get_items}
 \title{TransactGetItems is a synchronous operation that atomically retrieves
 multiple items from one or more tables (but not from indexes) in a
-single account and region}
+single account and Region}
 \usage{
 dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
 }
 \arguments{
-\item{TransactItems}{[required] An ordered array of up to 10 \code{TransactGetItem} objects, each of which
+\item{TransactItems}{[required] An ordered array of up to 25 \code{TransactGetItem} objects, each of which
 contains a \code{Get} structure.}
 
 \item{ReturnConsumedCapacity}{A value of \code{TOTAL} causes consumed capacity information to be returned,
@@ -19,13 +19,24 @@ other value is valid.}
 \description{
 \code{TransactGetItems} is a synchronous operation that atomically retrieves
 multiple items from one or more tables (but not from indexes) in a
-single account and region. A \code{TransactGetItems} call can contain up to
-10 \code{TransactGetItem} objects, each of which contains a \code{Get} structure
+single account and Region. A \code{TransactGetItems} call can contain up to
+25 \code{TransactGetItem} objects, each of which contains a \code{Get} structure
 that specifies an item to retrieve from a table in the account and
-region. A call to \code{TransactGetItems} cannot retrieve items from tables
-in more than one AWS account or region.
+Region. A call to \code{TransactGetItems} cannot retrieve items from tables
+in more than one AWS account or Region. The aggregate size of the items
+in the transaction cannot exceed 4 MB.
 }
 \details{
+All AWS Regions and AWS GovCloud (US) support up to 25 items per
+transaction with up to 4 MB of data, except the following AWS Regions:
+\itemize{
+\item China (Beijing)
+\item China (Ningxia)
+}
+
+The China (Beijing) and China (Ningxia) Regions support up to 10 items
+per transaction with up to 4 MB of data.
+
 DynamoDB rejects the entire \code{TransactGetItems} request if any of the
 following is true:
 \itemize{
@@ -34,6 +45,8 @@ read.
 \item There is insufficient provisioned capacity for the transaction to be
 completed.
 \item There is a user error, such as an invalid data format.
+\item The aggregate size of the items in the transaction cannot exceed 4
+MB.
 }
 }
 \section{Request syntax}{

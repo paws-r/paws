@@ -20,9 +20,9 @@ Example: \code{mySubnetgroup}}
 
 \item{ReplicationSubnetGroupDescription}{[required] The description for the subnet group.}
 
-\item{SubnetIds}{[required] The EC2 subnet IDs for the subnet group.}
+\item{SubnetIds}{[required] One or more subnet IDs to be assigned to the subnet group.}
 
-\item{Tags}{The tag to be assigned to the subnet group.}
+\item{Tags}{One or more tags to be assigned to the subnet group.}
 }
 \description{
 Creates a replication subnet group given a list of the subnet IDs in a

@@ -2,12 +2,24 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_security_hub}
 \alias{securityhub_disable_security_hub}
-\title{Disables the Security Hub service}
+\title{Disables Security Hub in your account only in the current Region}
 \usage{
 securityhub_disable_security_hub()
 }
 \description{
-Disables the Security Hub service.
+Disables Security Hub in your account only in the current Region. To
+disable Security Hub in all Regions, you must submit one request per
+Region where you have enabled Security Hub. When you disable Security
+Hub for a master account, it doesn't disable Security Hub for any
+associated member accounts.
+}
+\details{
+When you disable Security Hub, your existing findings and insights and
+any Security Hub configuration settings are deleted after 90 days and
+can't be recovered. Any standards that were enabled are disabled, and
+your master and member account associations are removed. If you want to
+save your existing findings, you must export them before you disable
+Security Hub.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_security_hub()

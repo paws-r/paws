@@ -6,7 +6,8 @@
 \usage{
 sagemaker_create_transform_job(TransformJobName, ModelName,
   MaxConcurrentTransforms, MaxPayloadInMB, BatchStrategy, Environment,
-  TransformInput, TransformOutput, TransformResources, Tags)
+  TransformInput, TransformOutput, TransformResources, DataProcessing,
+  Tags)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job. The name must be unique within an AWS
@@ -63,6 +64,9 @@ to 16 key and values entries in the map.}
 
 \item{TransformResources}{[required] Describes the resources, including ML instance types and ML instance
 count, to use for the transform job.}
+
+\item{DataProcessing}{The data structure used for combining the input data and inference in
+the output file. For more information, see \href{http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html}{Batch Transform I/O Join}.}
 
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
@@ -126,6 +130,11 @@ SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-trans
     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
     InstanceCount = 123,
     VolumeKmsKeyId = "string"
+  ),
+  DataProcessing = list(
+    InputFilter = "string",
+    OutputFilter = "string",
+    JoinSource = "Input"|"None"
   ),
   Tags = list(
     list(

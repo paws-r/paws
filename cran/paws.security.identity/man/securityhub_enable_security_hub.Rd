@@ -2,15 +2,27 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_enable_security_hub}
 \alias{securityhub_enable_security_hub}
-\title{Enables the Security Hub service}
+\title{Enables Security Hub for your account in the current Region or the
+Region you specify in the request}
 \usage{
-securityhub_enable_security_hub()
+securityhub_enable_security_hub(Tags)
+}
+\arguments{
+\item{Tags}{The tags to add to the Hub resource when you enable Security Hub.}
 }
 \description{
-Enables the Security Hub service.
+Enables Security Hub for your account in the current Region or the
+Region you specify in the request. When you enable Security Hub, you
+grant to Security Hub the permissions necessary to gather findings from
+AWS Config, Amazon GuardDuty, Amazon Inspector, and Amazon Macie. To
+learn more, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html}{Setting Up AWS Security Hub}.
 }
 \section{Request syntax}{
-\preformatted{svc$enable_security_hub()
+\preformatted{svc$enable_security_hub(
+  Tags = list(
+    "string"
+  )
+)
 }
 }
 

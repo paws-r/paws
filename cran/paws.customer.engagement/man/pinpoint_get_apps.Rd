@@ -2,17 +2,19 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_apps}
 \alias{pinpoint_get_apps}
-\title{Returns information about your apps}
+\title{Retrieves information about all of your applications}
 \usage{
 pinpoint_get_apps(PageSize, Token)
 }
 \arguments{
-\item{PageSize}{The number of entries you want on each page in the response.}
+\item{PageSize}{The maximum number of items to include on each page in a paginated
+response.}
 
-\item{Token}{The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
+\item{Token}{The NextToken string that specifies which page of results to return in a
+paginated response.}
 }
 \description{
-Returns information about your apps.
+Retrieves information about all of your applications.
 }
 \section{Request syntax}{
 \preformatted{svc$get_apps(

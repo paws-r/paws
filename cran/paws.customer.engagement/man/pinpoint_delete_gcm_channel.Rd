@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_delete_gcm_channel}
 \alias{pinpoint_delete_gcm_channel}
-\title{Deletes the GCM channel for an app}
+\title{Disables the GCM channel for an application and deletes any existing
+settings for the channel}
 \usage{
 pinpoint_delete_gcm_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Deletes the GCM channel for an app.
+Disables the GCM channel for an application and deletes any existing
+settings for the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_gcm_channel(

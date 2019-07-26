@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Attaches an internet gateway to a VPC, enabling connectivity between the
 internet and the VPC. For more information about your VPC and internet
-gateway, see the \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/}{Amazon Virtual Private Cloud User Guide}.
+gateway, see the \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_internet_gateway(

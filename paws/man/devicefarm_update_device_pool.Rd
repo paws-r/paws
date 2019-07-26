@@ -9,8 +9,8 @@ devicefarm_update_device_pool(arn, name, description, rules, maxDevices,
   clearMaxDevices)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resourc Name (ARN) of the Device Farm device pool you wish to
-update.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the Device Farm device pool you wish
+to update.}
 
 \item{name}{A string representing the name of the device pool you wish to update.}
 

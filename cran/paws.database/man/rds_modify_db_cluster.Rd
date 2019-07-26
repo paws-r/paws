@@ -9,17 +9,17 @@ rds_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
   PreferredBackupWindow, PreferredMaintenanceWindow,
   EnableIAMDatabaseAuthentication, BacktrackWindow,
-  CloudwatchLogsExportConfiguration, EngineVersion, ScalingConfiguration,
-  DeletionProtection, EnableHttpEndpoint, CopyTagsToSnapshot)
+  CloudwatchLogsExportConfiguration, EngineVersion,
+  AllowMajorVersionUpgrade, DBInstanceParameterGroupName,
+  ScalingConfiguration, DeletionProtection, EnableHttpEndpoint,
+  CopyTagsToSnapshot)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
 is not case-sensitive.
 
-Constraints:
-\itemize{
-\item Must match the identifier of an existing DBCluster.
-}}
+Constraints: This identifier must match the identifier of an existing DB
+cluster.}
 
 \item{NewDBClusterIdentifier}{The new DB cluster identifier for the DB cluster when renaming a DB
 cluster. This value is stored as a lowercase string.
@@ -143,6 +143,30 @@ during the next maintenance window unless \code{ApplyImmediately} is enabled.
 
 For a list of valid engine versions, use DescribeDBEngineVersions.}
 
+\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the \code{EngineVersion} parameter that is a different major
+version than the DB cluster's current version.}
+
+\item{DBInstanceParameterGroupName}{The name of the DB parameter group to apply to all instances of the DB
+cluster.
+
+When you apply a parameter group using the
+\code{DBInstanceParameterGroupName} parameter, the DB cluster isn't rebooted
+automatically. Also, parameter changes aren't applied during the next
+maintenance window but instead are applied immediately.
+
+Default: The existing name setting
+
+Constraints:
+\itemize{
+\item The DB parameter group must be in the same DB parameter group family
+as this DB cluster.
+\item The \code{DBInstanceParameterGroupName} parameter is only valid in
+combination with the \code{AllowMajorVersionUpgrade} parameter.
+}}
+
 \item{ScalingConfiguration}{The scaling properties of the DB cluster. You can only modify scaling
 properties for DB clusters in \code{serverless} DB engine mode.}
 
@@ -200,6 +224,8 @@ This action only applies to Aurora DB clusters.
     )
   ),
   EngineVersion = "string",
+  AllowMajorVersionUpgrade = TRUE|FALSE,
+  DBInstanceParameterGroupName = "string",
   ScalingConfiguration = list(
     MinCapacity = 123,
     MaxCapacity = 123,

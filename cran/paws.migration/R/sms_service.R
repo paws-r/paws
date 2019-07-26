@@ -42,8 +42,8 @@ NULL
 #'  \link[=sms_delete_replication_job]{delete_replication_job} \tab Deletes the specified replication job \cr
 #'  \link[=sms_delete_server_catalog]{delete_server_catalog} \tab Deletes all servers from your server catalog \cr
 #'  \link[=sms_disassociate_connector]{disassociate_connector} \tab Disassociates the specified connector from AWS SMS \cr
-#'  \link[=sms_generate_change_set]{generate_change_set} \tab Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customerâ€™s Amazon S3 bucket \cr
-#'  \link[=sms_generate_template]{generate_template} \tab Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customerâ€™s Amazon S3 bucket\cr
+#'  \link[=sms_generate_change_set]{generate_change_set} \tab Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket \cr
+#'  \link[=sms_generate_template]{generate_template} \tab Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket\cr
 #'  \link[=sms_get_app]{get_app} \tab Retrieve information about an application \cr
 #'  \link[=sms_get_app_launch_configuration]{get_app_launch_configuration} \tab Retrieves the application launch configuration associated with an application \cr
 #'  \link[=sms_get_app_replication_configuration]{get_app_replication_configuration} \tab Retrieves an application replication configuration associatd with an application \cr

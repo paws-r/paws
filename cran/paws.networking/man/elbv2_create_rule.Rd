@@ -9,31 +9,10 @@ elbv2_create_rule(ListenerArn, Conditions, Priority, Actions)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Conditions}{[required] The conditions. Each condition specifies a field name and a single
-value.
-
-If the field name is \code{host-header}, you can specify a single host name
-(for example, my.example.com). A host name is case insensitive, can be
-up to 128 characters in length, and can contain any of the following
-characters. You can include up to three wildcard characters.
-\itemize{
-\item A-Z, a-z, 0-9
-\item \- .
-\item * (matches 0 or more characters)
-\item ? (matches exactly 1 character)
-}
-
-If the field name is \code{path-pattern}, you can specify a single path
-pattern. A path pattern is case-sensitive, can be up to 128 characters
-in length, and can contain any of the following characters. You can
-include up to three wildcard characters.
-\itemize{
-\item A-Z, a-z, 0-9
-\item \_ - . \$ / ~ " ' @ : +
-\item & (using &)
-\item * (matches 0 or more characters)
-\item ? (matches exactly 1 character)
-}}
+\item{Conditions}{[required] The conditions. Each rule can include zero or one of the following
+conditions: \code{http-request-method}, \code{host-header}, \code{path-pattern}, and
+\code{source-ip}, and zero or more of the following conditions: \code{http-header}
+and \code{query-string}.}
 
 \item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same
 priority.}
@@ -43,8 +22,8 @@ of actions: \code{forward}, \code{fixed-response}, or \code{redirect}.
 
 If the action type is \code{forward}, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
-Load Balancer. The protocol of the target group must be TCP or TLS for a
-Network Load Balancer.
+Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
+or TCP\_UDP for a Network Load Balancer.
 
 [HTTPS listeners] If the action type is \code{authenticate-oidc}, you
 authenticate users through an identity provider that is OpenID Connect

@@ -2,7 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_add_listener_certificates}
 \alias{elbv2_add_listener_certificates}
-\title{Adds the specified certificate to the specified HTTPS listener}
+\title{Adds the specified SSL server certificate to the certificate list for
+the specified HTTPS listener}
 \usage{
 elbv2_add_listener_certificates(ListenerArn, Certificates)
 }
@@ -13,16 +14,20 @@ elbv2_add_listener_certificates(ListenerArn, Certificates)
 \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
 \description{
-Adds the specified certificate to the specified HTTPS listener.
+Adds the specified SSL server certificate to the certificate list for
+the specified HTTPS listener.
 }
 \details{
-If the certificate was already added, the call is successful but the
-certificate is not added again.
+If the certificate in already in the certificate list, the call is
+successful but the certificate is not added again.
 
-To list the certificates for your listener, use
-DescribeListenerCertificates. To remove certificates from your listener,
-use RemoveListenerCertificates. To specify the default SSL server
-certificate, use ModifyListener.
+To get the certificate list for a listener, use
+DescribeListenerCertificates. To remove certificates from the
+certificate list for a listener, use RemoveListenerCertificates. To
+replace the default certificate for a listener, use ModifyListener.
+
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL Certificates}
+in the \emph{Application Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_listener_certificates(

@@ -10,8 +10,10 @@ comprehend_detect_syntax(Text, LanguageCode)
 \item{Text}{[required] A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
 encoded characters.}
 
-\item{LanguageCode}{[required] The language code of the input documents. You can specify English
-("en") or Spanish ("es").}
+\item{LanguageCode}{[required] The language code of the input documents. You can specify any of the
+primary languages supported by Amazon Comprehend: German ("de"),
+English ("en"), Spanish ("es"), French ("fr"), Italian ("it"),
+or Portuguese ("pt").}
 }
 \description{
 Inspects text for syntax and the part of speech of words in the

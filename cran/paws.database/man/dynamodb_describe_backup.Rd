@@ -7,7 +7,7 @@
 dynamodb_describe_backup(BackupArn)
 }
 \arguments{
-\item{BackupArn}{[required] The ARN associated with the backup.}
+\item{BackupArn}{[required] The Amazon Resource Name (ARN) associated with the backup.}
 }
 \description{
 Describes an existing backup of a table.

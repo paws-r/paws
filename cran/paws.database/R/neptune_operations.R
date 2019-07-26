@@ -464,7 +464,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #'   Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
 #'   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
 #'   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
-#'   PreSignedUrl, EnableIAMDatabaseAuthentication)
+#'   PreSignedUrl, EnableIAMDatabaseAuthentication,
+#'   EnableCloudwatchLogsExports)
 #'
 #' @param AvailabilityZones A list of EC2 Availability Zones that instances in the DB cluster can be
 #' created in.
@@ -605,6 +606,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
+#' CloudWatch Logs.
 #'
 #' @section Request syntax:
 #' ```
@@ -639,21 +642,24 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #'   StorageEncrypted = TRUE|FALSE,
 #'   KmsKeyId = "string",
 #'   PreSignedUrl = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE
+#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   EnableCloudwatchLogsExports = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster
-neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL) {
+neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication)
+  input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports)
   output <- .neptune$create_db_cluster_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)
@@ -1521,10 +1527,8 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' `failed`, `incompatible-restore`, or `incompatible-network`, you can
 #' only delete it when the `SkipFinalSnapshot` parameter is set to `true`.
 #' 
-#' If the specified DB instance is part of a DB cluster, you can\'t delete
-#' the DB instance if both of the following conditions are true:
-#' 
-#' -   The DB instance is the only instance in the DB cluster.
+#' You can\'t delete a DB instance if it is the only instance in the DB
+#' cluster.
 #'
 #' @usage
 #' neptune_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
@@ -3102,7 +3106,8 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
 #'   VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
 #'   PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   EnableIAMDatabaseAuthentication, EngineVersion)
+#'   EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration,
+#'   EngineVersion)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster being modified. This parameter
 #' is not case-sensitive.
@@ -3200,6 +3205,8 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
+#' CloudWatch Logs for a specific DB cluster.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
 #' Changing this parameter results in an outage. The change is applied
 #' during the next maintenance window unless the ApplyImmediately parameter
@@ -3225,6 +3232,14 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   PreferredBackupWindow = "string",
 #'   PreferredMaintenanceWindow = "string",
 #'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   CloudwatchLogsExportConfiguration = list(
+#'     EnableLogTypes = list(
+#'       "string"
+#'     ),
+#'     DisableLogTypes = list(
+#'       "string"
+#'     )
+#'   ),
 #'   EngineVersion = "string"
 #' )
 #' ```
@@ -3232,14 +3247,14 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster
-neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, EngineVersion = NULL) {
+neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EngineVersion = EngineVersion)
+  input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion)
   output <- .neptune$modify_db_cluster_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)
@@ -4285,7 +4300,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
 #'   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
 #'   Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   DBClusterParameterGroupName)
+#'   EnableCloudwatchLogsExports, DBClusterParameterGroupName)
 #'
 #' @param AvailabilityZones Provides the list of EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -4354,6 +4369,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param EnableCloudwatchLogsExports The list of logs that the restored DB cluster is to export to Amazon
+#' CloudWatch Logs.
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with the new DB
 #' cluster.
 #' 
@@ -4387,6 +4404,9 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #'   ),
 #'   KmsKeyId = "string",
 #'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   EnableCloudwatchLogsExports = list(
+#'     "string"
+#'   ),
 #'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
@@ -4394,14 +4414,14 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_from_snapshot
-neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, DBClusterParameterGroupName = NULL) {
+neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DBClusterParameterGroupName = DBClusterParameterGroupName)
+  input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$restore_db_cluster_from_snapshot_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)
@@ -4431,7 +4451,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
 #'   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
 #'   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   DBClusterParameterGroupName)
+#'   EnableCloudwatchLogsExports, DBClusterParameterGroupName)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
 #' 
@@ -4442,8 +4462,17 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' -   First character must be a letter
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens
-#' @param RestoreType The type of restore to be performed. The only type of restore currently
-#' supported is `full-copy` (the default).
+#' @param RestoreType The type of restore to be performed. You can specify one of the
+#' following values:
+#' 
+#' -   `full-copy` - The new DB cluster is restored as a full copy of the
+#'     source DB cluster.
+#' 
+#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
+#'     source DB cluster.
+#' 
+#' If you don\'t specify a `RestoreType` value, then the new DB cluster is
+#' restored as a full copy of the source DB cluster.
 #' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source DB cluster from which to restore.
 #' 
 #' Constraints:
@@ -4517,6 +4546,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' accounts to database accounts, and otherwise false.
 #' 
 #' Default: `false`
+#' @param EnableCloudwatchLogsExports The list of logs that the restored DB cluster is to export to CloudWatch
+#' Logs.
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with the new DB
 #' cluster.
 #' 
@@ -4549,6 +4580,9 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #'   ),
 #'   KmsKeyId = "string",
 #'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
+#'   EnableCloudwatchLogsExports = list(
+#'     "string"
+#'   ),
 #'   DBClusterParameterGroupName = "string"
 #' )
 #' ```
@@ -4556,14 +4590,14 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_to_point_in_time
-neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, DBClusterParameterGroupName = NULL) {
+neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DBClusterParameterGroupName = DBClusterParameterGroupName)
+  input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$restore_db_cluster_to_point_in_time_output()
   svc <- .neptune$service()
   request <- new_request(svc, op, input, output)

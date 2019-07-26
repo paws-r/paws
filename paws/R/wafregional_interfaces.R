@@ -53,7 +53,7 @@ NULL
 
 .wafregional$create_rate_based_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), RateKey = structure(logical(0), tags = list(type = "string")), RateLimit = structure(logical(0), tags = list(type = "long")), ChangeToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), RateKey = structure(logical(0), tags = list(type = "string")), RateLimit = structure(logical(0), tags = list(type = "long")), ChangeToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .wafregional$create_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), ChangeToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), ChangeToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +101,7 @@ NULL
 
 .wafregional$create_rule_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), ChangeToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), ChangeToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .wafregional$create_web_acl_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), DefaultAction = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ChangeToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), DefaultAction = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ChangeToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -735,6 +735,18 @@ NULL
   return(populate(args, shape))
 }
 
+.wafregional$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), TagInfoForResource = structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .wafregional$list_web_ac_ls_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -778,6 +790,30 @@ NULL
 }
 
 .wafregional$put_permission_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

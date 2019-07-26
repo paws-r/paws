@@ -1,6 +1,6 @@
 Package: paws.machine.learning
 Title: Amazon Web Services Machine Learning APIs
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -41,6 +41,15 @@ Collate:
     'machinelearning_service.R'
     'machinelearning_interfaces.R'
     'machinelearning_operations.R'
+    'personalize_service.R'
+    'personalize_interfaces.R'
+    'personalize_operations.R'
+    'personalizeevents_service.R'
+    'personalizeevents_interfaces.R'
+    'personalizeevents_operations.R'
+    'personalizeruntime_service.R'
+    'personalizeruntime_interfaces.R'
+    'personalizeruntime_operations.R'
     'polly_service.R'
     'polly_interfaces.R'
     'polly_operations.R'

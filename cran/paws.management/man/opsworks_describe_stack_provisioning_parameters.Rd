@@ -16,7 +16,7 @@ Requests a description of a stack's provisioning parameters.
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permissions. For more information about
-user permissions, see \href{http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stack_provisioning_parameters(

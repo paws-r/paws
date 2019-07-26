@@ -267,7 +267,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #'
 #' @usage
 #' waf_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
-#'   ChangeToken)
+#'   ChangeToken, Tags)
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can\'t change
 #' the name of a `RateBasedRule` after you create it.
@@ -290,6 +290,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' @param ChangeToken &#91;required&#93; The `ChangeToken` that you used to submit the `CreateRateBasedRule`
 #' request. You can also use this value to query the status of the request.
 #' For more information, see GetChangeTokenStatus.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -298,21 +299,27 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #'   MetricName = "string",
 #'   RateKey = "IP",
 #'   RateLimit = 123,
-#'   ChangeToken = "string"
+#'   ChangeToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname waf_create_rate_based_rule
-waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, ChangeToken) {
+waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRateBasedRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .waf$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken)
+  input <- .waf$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rate_based_rule_output()
   svc <- .waf$service()
   request <- new_request(svc, op, input, output)
@@ -486,7 +493,7 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
-#' waf_create_rule(Name, MetricName, ChangeToken)
+#' waf_create_rule(Name, MetricName, ChangeToken, Tags)
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the Rule. You can\'t change the name
 #' of a `Rule` after you create it.
@@ -497,13 +504,20 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' \"Default\\_Action.\" You can\'t change the name of the metric after you
 #' create the `Rule`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_rule(
 #'   Name = "string",
 #'   MetricName = "string",
-#'   ChangeToken = "string"
+#'   ChangeToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -518,14 +532,14 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname waf_create_rule
-waf_create_rule <- function(Name, MetricName, ChangeToken) {
+waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .waf$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken)
+  input <- .waf$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_output()
   svc <- .waf$service()
   request <- new_request(svc, op, input, output)
@@ -554,7 +568,7 @@ waf_create_rule <- function(Name, MetricName, ChangeToken) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
-#' waf_create_rule_group(Name, MetricName, ChangeToken)
+#' waf_create_rule_group(Name, MetricName, ChangeToken, Tags)
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can\'t change
 #' `Name` after you create a `RuleGroup`.
@@ -565,27 +579,34 @@ waf_create_rule <- function(Name, MetricName, ChangeToken) {
 #' \"Default\\_Action.\" You can\'t change the name of the metric after you
 #' create the `RuleGroup`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_rule_group(
 #'   Name = "string",
 #'   MetricName = "string",
-#'   ChangeToken = "string"
+#'   ChangeToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname waf_create_rule_group
-waf_create_rule_group <- function(Name, MetricName, ChangeToken) {
+waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .waf$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken)
+  input <- .waf$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_group_output()
   svc <- .waf$service()
   request <- new_request(svc, op, input, output)
@@ -774,7 +795,7 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @usage
-#' waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken)
+#' waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken, Tags)
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can\'t change `Name`
 #' after you create the `WebACL`.
@@ -788,6 +809,7 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' the criteria specified in any of the `Rule` objects that are associated
 #' with the `WebACL`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -797,7 +819,13 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #'   DefaultAction = list(
 #'     Type = "BLOCK"|"ALLOW"|"COUNT"
 #'   ),
-#'   ChangeToken = "string"
+#'   ChangeToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -815,14 +843,14 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname waf_create_web_acl
-waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken) {
+waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .waf$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken)
+  input <- .waf$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_web_acl_output()
   svc <- .waf$service()
   request <- new_request(svc, op, input, output)
@@ -3094,6 +3122,45 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_subscribed_rule_groups <- waf_list_subscribed_rule_groups
 
+#' List tags for resource
+#'
+#' 
+#'
+#' @usage
+#' waf_list_tags_for_resource(NextMarker, Limit, ResourceARN)
+#'
+#' @param NextMarker 
+#' @param Limit 
+#' @param ResourceARN &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   NextMarker = "string",
+#'   Limit = 123,
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname waf_list_tags_for_resource
+waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .waf$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
+  output <- .waf$list_tags_for_resource_output()
+  svc <- .waf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.waf$operations$list_tags_for_resource <- waf_list_tags_for_resource
+
 #' Returns an array of WebACLSummary objects in the response
 #'
 #' Returns an array of WebACLSummary objects in the response.
@@ -3333,6 +3400,87 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
   return(response)
 }
 .waf$operations$put_permission_policy <- waf_put_permission_policy
+
+#' Tag resource
+#'
+#' 
+#'
+#' @usage
+#' waf_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; 
+#' @param Tags &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname waf_tag_resource
+waf_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .waf$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .waf$tag_resource_output()
+  svc <- .waf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.waf$operations$tag_resource <- waf_tag_resource
+
+#' Untag resource
+#'
+#' 
+#'
+#' @usage
+#' waf_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; 
+#' @param TagKeys &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname waf_untag_resource
+waf_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .waf$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .waf$untag_resource_output()
+  svc <- .waf$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.waf$operations$untag_resource <- waf_untag_resource
 
 #' Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet
 #'

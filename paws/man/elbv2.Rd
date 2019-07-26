@@ -60,7 +60,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified certificate to the specified HTTPS listener \cr
+\link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS listener \cr
 \link[=elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource \cr
 \link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer or Network Load Balancer \cr
 \link[=elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer or a Network Load Balancer \cr
@@ -72,7 +72,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[=elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group \cr
 \link[=elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group \cr
 \link[=elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account \cr
-\link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the certificates for the specified HTTPS listener \cr
+\link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS listener \cr
 \link[=elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer\cr
 \link[=elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer or Network Load Balancer \cr
 \link[=elbv2_describe_load_balancers]{describe_load_balancers} \tab Describes the specified load balancers or all of your load balancers \cr
@@ -88,7 +88,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[=elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group \cr
 \link[=elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group \cr
 \link[=elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group \cr
-\link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the specified HTTPS listener \cr
+\link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS listener \cr
 \link[=elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resource \cr
 \link[=elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer \cr
 \link[=elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules \cr

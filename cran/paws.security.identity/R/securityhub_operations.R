@@ -3,17 +3,20 @@
 #' @include securityhub_service.R
 NULL
 
-#' Accepts the invitation to be monitored by a Security Hub master account
+#' Accepts the invitation to be a member account and be monitored by the
+#' Security Hub master account that the invitation was sent from
 #'
-#' Accepts the invitation to be monitored by a Security Hub master account.
+#' Accepts the invitation to be a member account and be monitored by the
+#' Security Hub master account that the invitation was sent from. When the
+#' member account accepts the invitation, permission is granted to the
+#' master account to view findings generated in the member account.
 #'
 #' @usage
 #' securityhub_accept_invitation(MasterId, InvitationId)
 #'
-#' @param MasterId The account ID of the Security Hub master account whose invitation
-#' you\'re accepting.
-#' @param InvitationId The ID of the invitation that the Security Hub master account sends to
-#' the AWS account.
+#' @param MasterId The account ID of the Security Hub master account that sent the
+#' invitation.
+#' @param InvitationId The ID of the invitation sent from the Security Hub master account.
 #'
 #' @section Request syntax:
 #' ```
@@ -42,18 +45,18 @@ securityhub_accept_invitation <- function(MasterId = NULL, InvitationId = NULL) 
 }
 .securityhub$operations$accept_invitation <- securityhub_accept_invitation
 
-#' Disables the standards specified by the standards subscription ARNs
+#' Disables the standards specified by the provided
+#' StandardsSubscriptionArns
 #'
-#' Disables the standards specified by the standards subscription ARNs. In
-#' the context of Security Hub, supported standards (for example, CIS AWS
-#' Foundations) are automated and continuous checks that help determine
-#' your compliance status against security industry (including AWS) best
-#' practices.
+#' Disables the standards specified by the provided
+#' `StandardsSubscriptionArns`. For more information, see [Standards
+#' Supported in AWS Security
+#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
 #'
 #' @usage
 #' securityhub_batch_disable_standards(StandardsSubscriptionArns)
 #'
-#' @param StandardsSubscriptionArns &#91;required&#93; The ARNs of the standards subscriptions that you want to disable.
+#' @param StandardsSubscriptionArns &#91;required&#93; The ARNs of the standards subscriptions to disable.
 #'
 #' @section Request syntax:
 #' ```
@@ -83,22 +86,22 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 }
 .securityhub$operations$batch_disable_standards <- securityhub_batch_disable_standards
 
-#' Enables the standards specified by the standards ARNs
+#' Enables the standards specified by the provided standardsArn
 #'
-#' Enables the standards specified by the standards ARNs. In the context of
-#' Security Hub, supported standards (for example, CIS AWS Foundations) are
-#' automated and continuous checks that help determine your compliance
-#' status against security industry (including AWS) best practices.
+#' Enables the standards specified by the provided `standardsArn`. In this
+#' release, only CIS AWS Foundations standards are supported. For more
+#' information, see [Standards Supported in AWS Security
+#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
 #'
 #' @usage
 #' securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 #'
-#' @param StandardsSubscriptionRequests &#91;required&#93; The list of standards that you want to enable.
+#' @param StandardsSubscriptionRequests &#91;required&#93; The list of standards compliance checks to enable.
 #' 
 #' In this release, Security Hub supports only the CIS AWS Foundations
 #' standard.
 #' 
-#' Its ARN is
+#' The ARN for the standard is
 #' `arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0`.
 #'
 #' @section Request syntax:
@@ -138,13 +141,17 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' product into Security Hub
 #'
 #' Imports security findings generated from an integrated third-party
-#' product into Security Hub.
+#' product into Security Hub. This action is requested by the integrated
+#' product to import its findings into Security Hub. The maximum allowed
+#' size for a finding is 240 Kb. An error is returned for any finding
+#' larger than 240 Kb.
 #'
 #' @usage
 #' securityhub_batch_import_findings(Findings)
 #'
-#' @param Findings &#91;required&#93; A list of findings to import. You must submit them in the
-#' AwsSecurityFinding format.
+#' @param Findings &#91;required&#93; A list of findings to import. To successfully import a finding, it must
+#' follow the [AWS Security Finding
+#' Format](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -310,22 +317,63 @@ securityhub_batch_import_findings <- function(Findings) {
 }
 .securityhub$operations$batch_import_findings <- securityhub_batch_import_findings
 
-#' Creates an insight, which is a consolidation of findings that identifies
-#' a security area that requires attention or intervention
+#' Creates a custom action target in Security Hub
 #'
-#' Creates an insight, which is a consolidation of findings that identifies
-#' a security area that requires attention or intervention.
+#' Creates a custom action target in Security Hub. You can use custom
+#' actions on findings and insights in Security Hub to trigger target
+#' actions in Amazon CloudWatch Events.
+#'
+#' @usage
+#' securityhub_create_action_target(Name, Description, Id)
+#'
+#' @param Name &#91;required&#93; The name of the custom action target.
+#' @param Description &#91;required&#93; The description for the custom action target.
+#' @param Id &#91;required&#93; The ID for the custom action target.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_action_target(
+#'   Name = "string",
+#'   Description = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_action_target
+securityhub_create_action_target <- function(Name, Description, Id) {
+  op <- new_operation(
+    name = "CreateActionTarget",
+    http_method = "POST",
+    http_path = "/actionTargets",
+    paginator = list()
+  )
+  input <- .securityhub$create_action_target_input(Name = Name, Description = Description, Id = Id)
+  output <- .securityhub$create_action_target_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_action_target <- securityhub_create_action_target
+
+#' Creates a custom insight in Security Hub
+#'
+#' Creates a custom insight in Security Hub. An insight is a consolidation
+#' of findings that relate to a security issue that requires attention or
+#' remediation. Use the `GroupByAttribute` to group the related findings in
+#' the insight.
 #'
 #' @usage
 #' securityhub_create_insight(Name, Filters, GroupByAttribute)
 #'
-#' @param Name &#91;required&#93; The user-defined name that identifies the insight to create.
-#' @param Filters &#91;required&#93; A collection of attributes that are applied to all of the active
-#' findings aggregated by Security Hub, and that result in a subset of
-#' findings that are included in this insight.
-#' @param GroupByAttribute &#91;required&#93; The attribute by which the insight\'s findings are grouped. This
-#' attribute is used as a findings aggregator for the purposes of viewing
-#' and managing multiple related findings under a single operand.
+#' @param Name &#91;required&#93; The name of the custom insight to create.
+#' @param Filters &#91;required&#93; One or more attributes used to filter the findings included in the
+#' insight. Only findings that match the criteria defined in the filters
+#' are included in the insight.
+#' @param GroupByAttribute &#91;required&#93; The attribute used as the aggregator to group related findings for the
+#' insight.
 #'
 #' @section Request syntax:
 #' ```
@@ -903,12 +951,29 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 }
 .securityhub$operations$create_insight <- securityhub_create_insight
 
-#' Creates Security Hub member accounts associated with the account used
-#' for this action, which becomes the Security Hub Master account
+#' Creates a member association in Security Hub between the specified
+#' accounts and the account used to make the request, which is the master
+#' account
 #'
-#' Creates Security Hub member accounts associated with the account used
-#' for this action, which becomes the Security Hub Master account. Security
-#' Hub must be enabled in the account used to make this request.
+#' Creates a member association in Security Hub between the specified
+#' accounts and the account used to make the request, which is the master
+#' account. To successfully create a member, you must use this action from
+#' an account that already has Security Hub enabled. You can use the
+#' EnableSecurityHub to enable Security Hub.
+#' 
+#' After you use `CreateMembers` to create member account associations in
+#' Security Hub, you need to use the InviteMembers action, which invites
+#' the accounts to enable Security Hub and become member accounts in
+#' Security Hub. If the invitation is accepted by the account owner, the
+#' account becomes a member account in Security Hub, and a permission
+#' policy is added that permits the master account to view the findings
+#' generated in the member account. When Security Hub is enabled in the
+#' invited account, findings start being sent to both the member and master
+#' accounts.
+#' 
+#' You can remove the association between the master and member accounts by
+#' using the DisassociateFromMasterAccount or DisassociateMembers
+#' operation.
 #'
 #' @usage
 #' securityhub_create_members(AccountDetails)
@@ -947,19 +1012,15 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 }
 .securityhub$operations$create_members <- securityhub_create_members
 
-#' Declines invitations that are sent to this AWS account (invitee) from
-#' the AWS accounts (inviters) that are specified by the provided
-#' AccountIds
+#' Declines invitations to become a member account
 #'
-#' Declines invitations that are sent to this AWS account (invitee) from
-#' the AWS accounts (inviters) that are specified by the provided
-#' `AccountIds`.
+#' Declines invitations to become a member account.
 #'
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
 #'
-#' @param AccountIds A list of account IDs that specify the accounts from which invitations
-#' to Security Hub are declined.
+#' @param AccountIds A list of account IDs that specify the accounts that invitations to
+#' Security Hub are declined from.
 #'
 #' @section Request syntax:
 #' ```
@@ -988,6 +1049,43 @@ securityhub_decline_invitations <- function(AccountIds = NULL) {
   return(response)
 }
 .securityhub$operations$decline_invitations <- securityhub_decline_invitations
+
+#' Deletes a custom action target from Security Hub
+#'
+#' Deletes a custom action target from Security Hub. Deleting a custom
+#' action target doesn\'t affect any findings or insights that were already
+#' sent to Amazon CloudWatch Events using the custom action.
+#'
+#' @usage
+#' securityhub_delete_action_target(ActionTargetArn)
+#'
+#' @param ActionTargetArn &#91;required&#93; The ARN of the custom action target to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_action_target(
+#'   ActionTargetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_action_target
+securityhub_delete_action_target <- function(ActionTargetArn) {
+  op <- new_operation(
+    name = "DeleteActionTarget",
+    http_method = "DELETE",
+    http_path = "/actionTargets/{ActionTargetArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$delete_action_target_input(ActionTargetArn = ActionTargetArn)
+  output <- .securityhub$delete_action_target_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_action_target <- securityhub_delete_action_target
 
 #' Deletes the insight specified by the InsightArn
 #'
@@ -1024,17 +1122,16 @@ securityhub_delete_insight <- function(InsightArn) {
 }
 .securityhub$operations$delete_insight <- securityhub_delete_insight
 
-#' Deletes invitations that were sent to theis AWS account (invitee) by the
-#' AWS accounts (inviters) that are specified by their account IDs
+#' Deletes invitations received by the AWS account to become a member
+#' account
 #'
-#' Deletes invitations that were sent to theis AWS account (invitee) by the
-#' AWS accounts (inviters) that are specified by their account IDs.
+#' Deletes invitations received by the AWS account to become a member
+#' account.
 #'
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
 #'
-#' @param AccountIds A list of account IDs that specify accounts whose invitations to
-#' Security Hub you want to delete.
+#' @param AccountIds A list of the account IDs that sent the invitations to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1064,15 +1161,14 @@ securityhub_delete_invitations <- function(AccountIds = NULL) {
 }
 .securityhub$operations$delete_invitations <- securityhub_delete_invitations
 
-#' Deletes the Security Hub member accounts that the account IDs specify
+#' Deletes the specified member accounts from Security Hub
 #'
-#' Deletes the Security Hub member accounts that the account IDs specify.
+#' Deletes the specified member accounts from Security Hub.
 #'
 #' @usage
 #' securityhub_delete_members(AccountIds)
 #'
-#' @param AccountIds A list of account IDs of the Security Hub member accounts that you want
-#' to delete.
+#' @param AccountIds A list of account IDs of the member accounts to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1102,11 +1198,93 @@ securityhub_delete_members <- function(AccountIds = NULL) {
 }
 .securityhub$operations$delete_members <- securityhub_delete_members
 
+#' Returns a list of the custom action targets in Security Hub in your
+#' account
+#'
+#' Returns a list of the custom action targets in Security Hub in your
+#' account.
+#'
+#' @usage
+#' securityhub_describe_action_targets(ActionTargetArns, NextToken,
+#'   MaxResults)
+#'
+#' @param ActionTargetArns A list of custom action target ARNs for the custom action targets to
+#' retrieve.
+#' @param NextToken The token that is required for pagination.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_action_targets(
+#'   ActionTargetArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_action_targets
+securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeActionTargets",
+    http_method = "POST",
+    http_path = "/actionTargets/get",
+    paginator = list()
+  )
+  input <- .securityhub$describe_action_targets_input(ActionTargetArns = ActionTargetArns, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$describe_action_targets_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_action_targets <- securityhub_describe_action_targets
+
+#' Returns details about the Hub resource in your account, including the
+#' HubArn and the time when you enabled Security Hub
+#'
+#' Returns details about the Hub resource in your account, including the
+#' `HubArn` and the time when you enabled Security Hub.
+#'
+#' @usage
+#' securityhub_describe_hub(HubArn)
+#'
+#' @param HubArn The ARN of the Hub resource to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_hub(
+#'   HubArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_hub
+securityhub_describe_hub <- function(HubArn = NULL) {
+  op <- new_operation(
+    name = "DescribeHub",
+    http_method = "GET",
+    http_path = "/accounts",
+    paginator = list()
+  )
+  input <- .securityhub$describe_hub_input(HubArn = HubArn)
+  output <- .securityhub$describe_hub_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_hub <- securityhub_describe_hub
+
 #' Returns information about the products available that you can subscribe
-#' to
+#' to and integrate with Security Hub to consolidate findings
 #'
 #' Returns information about the products available that you can subscribe
-#' to.
+#' to and integrate with Security Hub to consolidate findings.
 #'
 #' @usage
 #' securityhub_describe_products(NextToken, MaxResults)
@@ -1141,17 +1319,16 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .securityhub$operations$describe_products <- securityhub_describe_products
 
-#' Cancels the subscription that allows a findings-generating solution
-#' (product) to import its findings into Security Hub
+#' Disables the integration of the specified product with Security Hub
 #'
-#' Cancels the subscription that allows a findings-generating solution
-#' (product) to import its findings into Security Hub.
+#' Disables the integration of the specified product with Security Hub.
+#' Findings from that product are no longer sent to Security Hub after the
+#' integration is disabled.
 #'
 #' @usage
 #' securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 #'
-#' @param ProductSubscriptionArn &#91;required&#93; The ARN of a resource that represents your subscription to a supported
-#' product.
+#' @param ProductSubscriptionArn &#91;required&#93; The ARN of the integrated product to disable the integration for.
 #'
 #' @section Request syntax:
 #' ```
@@ -1179,9 +1356,20 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 }
 .securityhub$operations$disable_import_findings_for_product <- securityhub_disable_import_findings_for_product
 
-#' Disables the Security Hub service
+#' Disables Security Hub in your account only in the current Region
 #'
-#' Disables the Security Hub service.
+#' Disables Security Hub in your account only in the current Region. To
+#' disable Security Hub in all Regions, you must submit one request per
+#' Region where you have enabled Security Hub. When you disable Security
+#' Hub for a master account, it doesn\'t disable Security Hub for any
+#' associated member accounts.
+#' 
+#' When you disable Security Hub, your existing findings and insights and
+#' any Security Hub configuration settings are deleted after 90 days and
+#' can\'t be recovered. Any standards that were enabled are disabled, and
+#' your master and member account associations are removed. If you want to
+#' save your existing findings, you must export them before you disable
+#' Security Hub.
 #'
 #' @usage
 #' securityhub_disable_security_hub()
@@ -1210,11 +1398,11 @@ securityhub_disable_security_hub <- function() {
 }
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
 
-#' Disassociates the current Security Hub member account from its master
-#' account
+#' Disassociates the current Security Hub member account from the
+#' associated master account
 #'
-#' Disassociates the current Security Hub member account from its master
-#' account.
+#' Disassociates the current Security Hub member account from the
+#' associated master account.
 #'
 #' @usage
 #' securityhub_disassociate_from_master_account()
@@ -1243,17 +1431,17 @@ securityhub_disassociate_from_master_account <- function() {
 }
 .securityhub$operations$disassociate_from_master_account <- securityhub_disassociate_from_master_account
 
-#' Disassociates the Security Hub member accounts that are specified by the
-#' account IDs from their master account
+#' Disassociates the specified member accounts from the associated master
+#' account
 #'
-#' Disassociates the Security Hub member accounts that are specified by the
-#' account IDs from their master account.
+#' Disassociates the specified member accounts from the associated master
+#' account.
 #'
 #' @usage
 #' securityhub_disassociate_members(AccountIds)
 #'
-#' @param AccountIds The account IDs of the member accounts that you want to disassociate
-#' from the master account.
+#' @param AccountIds The account IDs of the member accounts to disassociate from the master
+#' account.
 #'
 #' @section Request syntax:
 #' ```
@@ -1283,17 +1471,17 @@ securityhub_disassociate_members <- function(AccountIds = NULL) {
 }
 .securityhub$operations$disassociate_members <- securityhub_disassociate_members
 
-#' Sets up the subscription that enables a findings-generating solution
-#' (product) to import its findings into Security Hub
+#' Enables the integration of a partner product with Security Hub
 #'
-#' Sets up the subscription that enables a findings-generating solution
-#' (product) to import its findings into Security Hub.
+#' Enables the integration of a partner product with Security Hub.
+#' Integrated products send findings to Security Hub. When you enable a
+#' product integration, a permission policy that grants permission for the
+#' product to send findings to Security Hub is applied.
 #'
 #' @usage
 #' securityhub_enable_import_findings_for_product(ProductArn)
 #'
-#' @param ProductArn &#91;required&#93; The ARN of the product that generates findings that you want to import
-#' into Security Hub.
+#' @param ProductArn &#91;required&#93; The ARN of the product to enable the integration for.
 #'
 #' @section Request syntax:
 #' ```
@@ -1321,29 +1509,41 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 }
 .securityhub$operations$enable_import_findings_for_product <- securityhub_enable_import_findings_for_product
 
-#' Enables the Security Hub service
+#' Enables Security Hub for your account in the current Region or the
+#' Region you specify in the request
 #'
-#' Enables the Security Hub service.
+#' Enables Security Hub for your account in the current Region or the
+#' Region you specify in the request. When you enable Security Hub, you
+#' grant to Security Hub the permissions necessary to gather findings from
+#' AWS Config, Amazon GuardDuty, Amazon Inspector, and Amazon Macie. To
+#' learn more, see [Setting Up AWS Security
+#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html).
 #'
 #' @usage
-#' securityhub_enable_security_hub()
+#' securityhub_enable_security_hub(Tags)
+#'
+#' @param Tags The tags to add to the Hub resource when you enable Security Hub.
 #'
 #' @section Request syntax:
 #' ```
-#' svc$enable_security_hub()
+#' svc$enable_security_hub(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_security_hub
-securityhub_enable_security_hub <- function() {
+securityhub_enable_security_hub <- function(Tags = NULL) {
   op <- new_operation(
     name = "EnableSecurityHub",
     http_method = "POST",
     http_path = "/accounts",
     paginator = list()
   )
-  input <- .securityhub$enable_security_hub_input()
+  input <- .securityhub$enable_security_hub_input(Tags = Tags)
   output <- .securityhub$enable_security_hub_output()
   svc <- .securityhub$service()
   request <- new_request(svc, op, input, output)
@@ -1352,21 +1552,20 @@ securityhub_enable_security_hub <- function() {
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
-#' Lists and describes enabled standards
+#' Returns a list of the standards that are currently enabled
 #'
-#' Lists and describes enabled standards.
+#' Returns a list of the standards that are currently enabled.
 #'
 #' @usage
 #' securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
 #'   MaxResults)
 #'
-#' @param StandardsSubscriptionArns The list of standards subscription ARNS that you want to list and
-#' describe.
+#' @param StandardsSubscriptionArns A list of the standards subscription ARNs for the standards to retrieve.
 #' @param NextToken Paginates results. On your first call to the `GetEnabledStandards`
 #' operation, set the value of this parameter to `NULL`. For subsequent
 #' calls to the operation, fill `nextToken` in the request with the value
 #' of `nextToken` from the previous response to continue listing data.
-#' @param MaxResults The maximum number of items that you want in the response.
+#' @param MaxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1398,22 +1597,21 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 }
 .securityhub$operations$get_enabled_standards <- securityhub_get_enabled_standards
 
-#' Lists and describes Security Hub-aggregated findings that filter
-#' attributes specify
+#' Returns a list of findings that match the specified criteria
 #'
-#' Lists and describes Security Hub-aggregated findings that filter
-#' attributes specify.
+#' Returns a list of findings that match the specified criteria.
 #'
 #' @usage
 #' securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
 #'
-#' @param Filters A collection of attributes that is used for querying findings.
-#' @param SortCriteria A collection of attributes used for sorting findings.
+#' @param Filters The findings attributes used to define a condition to filter the
+#' findings returned.
+#' @param SortCriteria Findings attributes used to sort the list of findings returned.
 #' @param NextToken Paginates results. On your first call to the `GetFindings` operation,
 #' set the value of this parameter to `NULL`. For subsequent calls to the
 #' operation, fill `nextToken` in the request with the value of `nextToken`
 #' from the previous response to continue listing data.
-#' @param MaxResults Indicates the maximum number of items that you want in the response.
+#' @param MaxResults The maximum number of findings to return.
 #'
 #' @section Request syntax:
 #' ```
@@ -2186,13 +2384,16 @@ securityhub_get_members <- function(AccountIds) {
 }
 .securityhub$operations$get_members <- securityhub_get_members
 
-#' Invites other AWS accounts to enable Security Hub and become Security
-#' Hub member accounts
+#' Invites other AWS accounts to become member accounts for the Security
+#' Hub master account that the invitation is sent from
 #'
-#' Invites other AWS accounts to enable Security Hub and become Security
-#' Hub member accounts. When an account accepts the invitation and becomes
-#' a member account, the master account can view Security Hub findings of
-#' the member account.
+#' Invites other AWS accounts to become member accounts for the Security
+#' Hub master account that the invitation is sent from. Before you can use
+#' this action to invite a member, you must first create the member account
+#' in Security Hub by using the CreateMembers action. When the account
+#' owner accepts the invitation to become a member account and enables
+#' Security Hub, the master account can view the findings generated from
+#' member account.
 #'
 #' @usage
 #' securityhub_invite_members(AccountIds)
@@ -2362,44 +2563,159 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 }
 .securityhub$operations$list_members <- securityhub_list_members
 
-#' Returns a list of account IDs that are subscribed to the product
+#' Returns a list of tags associated with a resource
 #'
-#' Returns a list of account IDs that are subscribed to the product.
+#' Returns a list of tags associated with a resource.
 #'
 #' @usage
-#' securityhub_list_product_subscribers(ProductArn, NextToken, MaxResults)
+#' securityhub_list_tags_for_resource(ResourceArn)
 #'
-#' @param ProductArn The ARN of the product.
-#' @param NextToken The token that is required for pagination.
-#' @param MaxResults The maximum number of results to return.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource to retrieve tags for.
 #'
 #' @section Request syntax:
 #' ```
-#' svc$list_product_subscribers(
-#'   ProductArn = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
-#' @rdname securityhub_list_product_subscribers
-securityhub_list_product_subscribers <- function(ProductArn = NULL, NextToken = NULL, MaxResults = NULL) {
+#' @rdname securityhub_list_tags_for_resource
+securityhub_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
-    name = "ListProductSubscribers",
+    name = "ListTagsForResource",
     http_method = "GET",
-    http_path = "/productSubscribers/",
+    http_path = "/tags/{ResourceArn}",
     paginator = list()
   )
-  input <- .securityhub$list_product_subscribers_input(ProductArn = ProductArn, NextToken = NextToken, MaxResults = MaxResults)
-  output <- .securityhub$list_product_subscribers_output()
+  input <- .securityhub$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .securityhub$list_tags_for_resource_output()
   svc <- .securityhub$service()
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.securityhub$operations$list_product_subscribers <- securityhub_list_product_subscribers
+.securityhub$operations$list_tags_for_resource <- securityhub_list_tags_for_resource
+
+#' Adds one or more tags to a resource
+#'
+#' Adds one or more tags to a resource.
+#'
+#' @usage
+#' securityhub_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the resource to apply the tags to.
+#' @param Tags &#91;required&#93; The tags to add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_tag_resource
+securityhub_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .securityhub$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .securityhub$tag_resource_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$tag_resource <- securityhub_tag_resource
+
+#' Removes one or more tags from a resource
+#'
+#' Removes one or more tags from a resource.
+#'
+#' @usage
+#' securityhub_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the resource to remove the tags from.
+#' @param TagKeys &#91;required&#93; The tag keys associated with the tags to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_untag_resource
+securityhub_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .securityhub$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .securityhub$untag_resource_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$untag_resource <- securityhub_untag_resource
+
+#' Updates the name and description of a custom action target in Security
+#' Hub
+#'
+#' Updates the name and description of a custom action target in Security
+#' Hub.
+#'
+#' @usage
+#' securityhub_update_action_target(ActionTargetArn, Name, Description)
+#'
+#' @param ActionTargetArn &#91;required&#93; The ARN of the custom action target to update.
+#' @param Name The updated name of the custom action target.
+#' @param Description The updated description for the custom action target.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_action_target(
+#'   ActionTargetArn = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_action_target
+securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateActionTarget",
+    http_method = "PATCH",
+    http_path = "/actionTargets/{ActionTargetArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$update_action_target_input(ActionTargetArn = ActionTargetArn, Name = Name, Description = Description)
+  output <- .securityhub$update_action_target_output()
+  svc <- .securityhub$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_action_target <- securityhub_update_action_target
 
 #' Updates the Note and RecordState of the Security Hub-aggregated findings
 #' that the filter attributes specify

@@ -26,8 +26,8 @@ resource that were already removed. Note the following:
 \itemize{
 \item To remove tags from a resource, you need the necessary permissions
 for the service that the resource belongs to as well as permissions
-for removing tags. For more information, see \href{http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
-in the \emph{AWS Resource Groups and Tag Editor User Guide}.
+for removing tags. For more information, see \href{http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html}{Obtaining Permissions for Tagging}
+in the \emph{AWS Resource Groups User Guide}.
 \item You can only tag resources that are located in the specified region
 for the AWS account.
 }

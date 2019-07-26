@@ -2,17 +2,17 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_transact_write_items}
 \alias{dynamodb_transact_write_items}
-\title{TransactWriteItems is a synchronous write operation that groups up to 10
+\title{TransactWriteItems is a synchronous write operation that groups up to 25
 action requests}
 \usage{
 dynamodb_transact_write_items(TransactItems, ReturnConsumedCapacity,
   ReturnItemCollectionMetrics, ClientRequestToken)
 }
 \arguments{
-\item{TransactItems}{[required] An ordered array of up to 10 \code{TransactWriteItem} objects, each of which
+\item{TransactItems}{[required] An ordered array of up to 25 \code{TransactWriteItem} objects, each of which
 contains a \code{ConditionCheck}, \code{Put}, \code{Update}, or \code{Delete} object. These
 can operate on items in different tables, but the tables must reside in
-the same AWS account and region, and no two of them can operate on the
+the same AWS account and Region, and no two of them can operate on the
 same item.}
 
 \item{ReturnConsumedCapacity}{}
@@ -28,30 +28,41 @@ as one single call.
 
 Although multiple identical calls using the same client request token
 produce the same result on the server (no side effects), the responses
-to the calls may not be the same. If the \code{ReturnConsumedCapacity&gt;}
+to the calls might not be the same. If the \code{ReturnConsumedCapacity&gt;}
 parameter is set, then the initial \code{TransactWriteItems} call returns the
-amount of write capacity units consumed in making the changes, and
-subsequent \code{TransactWriteItems} calls with the same client token return
-the amount of read capacity units consumed in reading the item.
+amount of write capacity units consumed in making the changes.
+Subsequent \code{TransactWriteItems} calls with the same client token return
+the number of read capacity units consumed in reading the item.
 
 A client request token is valid for 10 minutes after the first request
-that uses it completes. After 10 minutes, any request with the same
+that uses it is completed. After 10 minutes, any request with the same
 client token is treated as a new request. Do not resubmit the same
-request with the same client token for more than 10 minutes or the
-result may not be idempotent.
+request with the same client token for more than 10 minutes, or the
+result might not be idempotent.
 
 If you submit a request with the same client token but a change in other
-parameters within the 10 minute idempotency window, DynamoDB returns an
+parameters within the 10-minute idempotency window, DynamoDB returns an
 \code{IdempotentParameterMismatch} exception.}
 }
 \description{
 \code{TransactWriteItems} is a synchronous write operation that groups up to
-10 action requests. These actions can target items in different tables,
-but not in different AWS accounts or regions, and no two actions can
+25 action requests. These actions can target items in different tables,
+but not in different AWS accounts or Regions, and no two actions can
 target the same item. For example, you cannot both \code{ConditionCheck} and
-\code{Update} the same item.
+\code{Update} the same item. The aggregate size of the items in the
+transaction cannot exceed 4 MB.
 }
 \details{
+All AWS Regions and AWS GovCloud (US) support up to 25 items per
+transaction with up to 4 MB of data, except the following AWS Regions:
+\itemize{
+\item China (Beijing)
+\item China (Ningxia)
+}
+
+The China (Beijing) and China (Ningxia) Regions support up to 10 items
+per transaction with up to 4 MB of data.
+
 The actions are completed atomically so that either all of them succeed,
 or all of them fail. They are defined by the following objects:
 \itemize{
@@ -59,39 +70,40 @@ or all of them fail. They are defined by the following objects:
 This structure specifies the primary key of the item to be written,
 the name of the table to write it in, an optional condition
 expression that must be satisfied for the write to succeed, a list
-of the item's attributes, and a field indicating whether or not to
+of the item's attributes, and a field indicating whether to
 retrieve the item's attributes if the condition is not met.
 \item \code{Update} Â --- Â  Initiates an \code{UpdateItem} operation to update an
 existing item. This structure specifies the primary key of the item
 to be updated, the name of the table where it resides, an optional
 condition expression that must be satisfied for the update to
 succeed, an expression that defines one or more attributes to be
-updated, and a field indicating whether or not to retrieve the
-item's attributes if the condition is not met.
+updated, and a field indicating whether to retrieve the item's
+attributes if the condition is not met.
 \item \code{Delete} Â --- Â  Initiates a \code{DeleteItem} operation to delete an
 existing item. This structure specifies the primary key of the item
 to be deleted, the name of the table where it resides, an optional
 condition expression that must be satisfied for the deletion to
-succeed, and a field indicating whether or not to retrieve the
-item's attributes if the condition is not met.
+succeed, and a field indicating whether to retrieve the item's
+attributes if the condition is not met.
 \item \code{ConditionCheck} Â --- Â  Applies a condition to an item that is not
 being modified by the transaction. This structure specifies the
 primary key of the item to be checked, the name of the table where
 it resides, a condition expression that must be satisfied for the
-transaction to succeed, and a field indicating whether or not to
-retrieve the item's attributes if the condition is not met.
+transaction to succeed, and a field indicating whether to retrieve
+the item's attributes if the condition is not met.
 }
 
 DynamoDB rejects the entire \code{TransactWriteItems} request if any of the
 following is true:
 \itemize{
 \item A condition in one of the condition expressions is not met.
-\item A conflicting operation is in the process of updating the same item.
+\item An ongoing operation is in the process of updating the same item.
 \item There is insufficient provisioned capacity for the transaction to be
 completed.
-\item An item size becomes too large (bigger than 400 KB), a Local
-Secondary Index (LSI) becomes too large, or a similar validation
+\item An item size becomes too large (bigger than 400 KB), a local
+secondary index (LSI) becomes too large, or a similar validation
 error occurs because of changes made by the transaction.
+\item The aggregate size of the items in the transaction exceeds 4 MB.
 \item There is a user error, such as an invalid data format.
 }
 }

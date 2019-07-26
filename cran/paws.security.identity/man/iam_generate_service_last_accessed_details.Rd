@@ -2,9 +2,9 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_generate_service_last_accessed_details}
 \alias{iam_generate_service_last_accessed_details}
-\title{Generates a request for a report that includes details about when an IAM
-resource (user, group, role, or policy) was last used in an attempt to
-access AWS services}
+\title{Generates a report that includes details about when an IAM resource
+(user, group, role, or policy) was last used in an attempt to access AWS
+services}
 \usage{
 iam_generate_service_last_accessed_details(Arn)
 }
@@ -14,12 +14,11 @@ to generate information about when the resource was last used in an
 attempt to access an AWS service.}
 }
 \description{
-Generates a request for a report that includes details about when an IAM
-resource (user, group, role, or policy) was last used in an attempt to
-access AWS services. Recent activity usually appears within four hours.
-IAM reports activity for the last 365 days, or less if your Region began
-supporting this feature within the last year. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
+Generates a report that includes details about when an IAM resource
+(user, group, role, or policy) was last used in an attempt to access AWS
+services. Recent activity usually appears within four hours. IAM reports
+activity for the last 365 days, or less if your Region began supporting
+this feature within the last year. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
 }
 \details{
 The service last accessed data includesÂ allÂ attempts to access an AWS

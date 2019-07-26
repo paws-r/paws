@@ -35,7 +35,13 @@ Region.
     customerAddress = "string",
     addressFamily = "ipv4"|"ipv6",
     virtualGatewayId = "string",
-    directConnectGatewayId = "string"
+    directConnectGatewayId = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
   )
 )
 }

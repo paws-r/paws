@@ -3,17 +3,17 @@
 \name{shield_associate_drt_log_bucket}
 \alias{shield_associate_drt_log_bucket}
 \title{Authorizes the DDoS Response team (DRT) to access the specified Amazon
-S3 bucket containing your flow logs}
+S3 bucket containing your AWS WAF logs}
 \usage{
 shield_associate_drt_log_bucket(LogBucket)
 }
 \arguments{
-\item{LogBucket}{[required] The Amazon S3 bucket that contains your flow logs.}
+\item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
 \description{
 Authorizes the DDoS Response team (DRT) to access the specified Amazon
-S3 bucket containing your flow logs. You can associate up to 10 Amazon
-S3 buckets with your subscription.
+S3 bucket containing your AWS WAF logs. You can associate up to 10
+Amazon S3 buckets with your subscription.
 }
 \details{
 To use the services of the DRT and make an \code{AssociateDRTLogBucket}

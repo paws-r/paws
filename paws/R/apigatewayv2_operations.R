@@ -10,7 +10,7 @@ NULL
 #' @usage
 #' apigatewayv2_create_api(ApiKeySelectionExpression, Description,
 #'   DisableSchemaValidation, Name, ProtocolType, RouteSelectionExpression,
-#'   Version)
+#'   Version, Tags)
 #'
 #' @param ApiKeySelectionExpression An API key selection expression. See [API Key Selection
 #' Expressions](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
@@ -20,6 +20,9 @@ NULL
 #' @param ProtocolType &#91;required&#93; The API protocol: Currently only WEBSOCKET is supported.
 #' @param RouteSelectionExpression &#91;required&#93; The route selection expression for the API.
 #' @param Version A version identifier for the API.
+#' @param Tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with aws:. The tag value can be up to 256 characters..
 #'
 #' @section Request syntax:
 #' ```
@@ -30,21 +33,24 @@ NULL
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET",
 #'   RouteSelectionExpression = "string",
-#'   Version = "string"
+#'   Version = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_api
-apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, Description = NULL, DisableSchemaValidation = NULL, Name, ProtocolType, RouteSelectionExpression, Version = NULL) {
+apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, Description = NULL, DisableSchemaValidation = NULL, Name, ProtocolType, RouteSelectionExpression, Version = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApi",
     http_method = "POST",
     http_path = "/v2/apis",
     paginator = list()
   )
-  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, ProtocolType = ProtocolType, RouteSelectionExpression = RouteSelectionExpression, Version = Version)
+  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, Description = Description, DisableSchemaValidation = DisableSchemaValidation, Name = Name, ProtocolType = ProtocolType, RouteSelectionExpression = RouteSelectionExpression, Version = Version, Tags = Tags)
   output <- .apigatewayv2$create_api_output()
   svc <- .apigatewayv2$service()
   request <- new_request(svc, op, input, output)
@@ -226,10 +232,14 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' Creates a domain name.
 #'
 #' @usage
-#' apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations)
+#' apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
+#'   Tags)
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
+#' @param Tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with aws:. The tag value can be up to 256 characters..
 #'
 #' @section Request syntax:
 #' ```
@@ -244,8 +254,14 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'         "2015-01-01"
 #'       ),
 #'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string"
+#'       HostedZoneId = "string",
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -253,14 +269,14 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_domain_name
-apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL) {
+apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/v2/domainnames",
     paginator = list()
   )
-  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations)
+  input <- .apigatewayv2$create_domain_name_input(DomainName = DomainName, DomainNameConfigurations = DomainNameConfigurations, Tags = Tags)
   output <- .apigatewayv2$create_domain_name_output()
   svc <- .apigatewayv2$service()
   request <- new_request(svc, op, input, output)
@@ -655,7 +671,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @usage
 #' apigatewayv2_create_stage(AccessLogSettings, ApiId, ClientCertificateId,
 #'   DefaultRouteSettings, DeploymentId, Description, RouteSettings,
-#'   StageName, StageVariables)
+#'   StageName, StageVariables, Tags)
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
@@ -668,6 +684,9 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
 #' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
+#' @param Tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with aws:. The tag value can be up to 256 characters..
 #'
 #' @section Request syntax:
 #' ```
@@ -699,6 +718,9 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #'   StageName = "string",
 #'   StageVariables = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -706,14 +728,14 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_stage
-apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL) {
+apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStage",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/stages",
     paginator = list()
   )
-  input <- .apigatewayv2$create_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables)
+  input <- .apigatewayv2$create_stage_input(AccessLogSettings = AccessLogSettings, ApiId = ApiId, ClientCertificateId = ClientCertificateId, DefaultRouteSettings = DefaultRouteSettings, DeploymentId = DeploymentId, Description = Description, RouteSettings = RouteSettings, StageName = StageName, StageVariables = StageVariables, Tags = Tags)
   output <- .apigatewayv2$create_stage_output()
   svc <- .apigatewayv2$service()
   request <- new_request(svc, op, input, output)
@@ -2016,6 +2038,121 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 }
 .apigatewayv2$operations$get_stages <- apigatewayv2_get_stages
 
+#' Gets the Tags for an API
+#'
+#' Gets the Tags for an API.
+#'
+#' @usage
+#' apigatewayv2_get_tags(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_tags(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_tags
+apigatewayv2_get_tags <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetTags",
+    http_method = "GET",
+    http_path = "/v2/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$get_tags_input(ResourceArn = ResourceArn)
+  output <- .apigatewayv2$get_tags_output()
+  svc <- .apigatewayv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_tags <- apigatewayv2_get_tags
+
+#' Tag an APIGW resource
+#'
+#' Tag an APIGW resource
+#'
+#' @usage
+#' apigatewayv2_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; AWS resource arn
+#' @param Tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' start with aws:. The tag value can be up to 256 characters..
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_tag_resource
+apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v2/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .apigatewayv2$tag_resource_output()
+  svc <- .apigatewayv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$tag_resource <- apigatewayv2_tag_resource
+
+#' Untag an APIGW resource
+#'
+#' Untag an APIGW resource
+#'
+#' @usage
+#' apigatewayv2_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; AWS resource arn
+#' @param TagKeys &#91;required&#93; The Tag keys to delete
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_untag_resource
+apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v2/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .apigatewayv2$untag_resource_output()
+  svc <- .apigatewayv2$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$untag_resource <- apigatewayv2_untag_resource
+
 #' Updates an Api resource
 #'
 #' Updates an Api resource.
@@ -2262,7 +2399,10 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'         "2015-01-01"
 #'       ),
 #'       EndpointType = "REGIONAL"|"EDGE",
-#'       HostedZoneId = "string"
+#'       HostedZoneId = "string",
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string"
 #'     )
 #'   )
 #' )

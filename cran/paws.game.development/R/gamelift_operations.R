@@ -25,11 +25,21 @@ NULL
 #' If any player rejects the match, or if acceptances are not received
 #' before a specified timeout, the proposed match is dropped. The
 #' matchmaking tickets are then handled in one of two ways: For tickets
-#' where all players accepted the match, the ticket status is returned to
-#' `SEARCHING` to find a new match. For tickets where one or more players
-#' failed to accept the match, the ticket status is set to `FAILED`, and
-#' processing is terminated. A new matchmaking request for these players
-#' can be submitted as needed.
+#' where one or more players rejected the match, the ticket status is
+#' returned to `SEARCHING` to find a new match. For tickets where one or
+#' more players failed to respond, the ticket status is set to `CANCELLED`,
+#' and processing is terminated. A new matchmaking request for these
+#' players can be submitted as needed.
+#' 
+#' **Learn more**
+#' 
+#' [Add FlexMatch to a Game
+#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' 
+#' [FlexMatch Events
+#' Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html)
+#' 
+#' **Related operations**
 #' 
 #' -   StartMatchmaking
 #' 
@@ -784,23 +794,24 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' placing a new game session for the match; and the maximum time allowed
 #' for a matchmaking attempt.
 #' 
-#' **Player acceptance** \\-- In each configuration, you have the option to
-#' require that all players accept participation in a proposed match. To
-#' enable this feature, set *AcceptanceRequired* to true and specify a time
-#' limit for player acceptance. Players have the option to accept or reject
-#' a proposed match, and a match does not move ahead to game session
-#' placement unless all matched players accept.
+#' There are two ways to track the progress of matchmaking tickets: (1)
+#' polling ticket status with DescribeMatchmaking; or (2) receiving
+#' notifications with Amazon Simple Notification Service (SNS). To use
+#' notifications, you first need to set up an SNS topic to receive the
+#' notifications, and provide the topic ARN in the matchmaking
+#' configuration. Since notifications promise only \"best effort\"
+#' delivery, we recommend calling `DescribeMatchmaking` if no notifications
+#' are received within 30 seconds.
 #' 
-#' **Matchmaking status notification** \\-- There are two ways to track the
-#' progress of matchmaking tickets: (1) polling ticket status with
-#' DescribeMatchmaking; or (2) receiving notifications with Amazon Simple
-#' Notification Service (SNS). To use notifications, you first need to set
-#' up an SNS topic to receive the notifications, and provide the topic ARN
-#' in the matchmaking configuration (see [Setting up Notifications for
-#' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)).
-#' Since notifications promise only \"best effort\" delivery, we recommend
-#' calling `DescribeMatchmaking` if no notifications are received within 30
-#' seconds.
+#' **Learn more**
+#' 
+#' [Design a FlexMatch
+#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#' 
+#' [Setting up Notifications for
+#' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -822,7 +833,8 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' gamelift_create_matchmaking_configuration(Name, Description,
 #'   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
 #'   AcceptanceRequired, RuleSetName, NotificationTarget,
-#'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData)
+#'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
+#'   BackfillMode)
 #'
 #' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration. This name is used to
 #' identify the configuration associated with a matchmaking request or
@@ -832,17 +844,17 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 #' that is assigned to a game session queue and uniquely identifies it.
 #' Format is
-#' `arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`.
+#' `arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;`.
 #' These queues are used when placing game sessions for matches that are
 #' created with this matchmaking configuration. Queues can be located in
 #' any region.
 #' @param RequestTimeoutSeconds &#91;required&#93; Maximum duration, in seconds, that a matchmaking ticket can remain in
-#' process before timing out. Requests that time out can be resubmitted as
-#' needed.
+#' process before timing out. Requests that fail due to timing out can be
+#' resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed
 #' match. If any player rejects the match or fails to accept before the
 #' timeout, the ticket continues to look for an acceptable match.
-#' @param AcceptanceRequired &#91;required&#93; Flag that determines whether or not a match that was created with this
+#' @param AcceptanceRequired &#91;required&#93; Flag that determines whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
 #' acceptance, set to TRUE.
 #' @param RuleSetName &#91;required&#93; Unique identifier for a matchmaking rule set to use with this
@@ -853,7 +865,7 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' example, if the configuration\'s rule set specifies a match for a single
 #' 12-person team, and the additional player count is set to 2, only 10
 #' players are selected for the match.
-#' @param CustomEventData Information to attached to all events related to the matchmaking
+#' @param CustomEventData Information to be added to all events related to this matchmaking
 #' configuration.
 #' @param GameProperties Set of custom properties for a game session, formatted as key:value
 #' pairs. These properties are passed to a game server process in the
@@ -868,6 +880,13 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
+#' @param BackfillMode Method used to backfill game sessions created with this matchmaking
+#' configuration. Specify MANUAL when your game manages backfill requests
+#' manually or does not use the match backfill feature. Specify AUTOMATIC
+#' to have GameLift create a StartMatchBackfill request whenever a game
+#' session has one or more open slots. Learn more about manual and
+#' automatic backfill in [Backfill Existing Games with
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -890,21 +909,22 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'       Value = "string"
 #'     )
 #'   ),
-#'   GameSessionData = "string"
+#'   GameSessionData = "string",
+#'   BackfillMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_create_matchmaking_configuration
-gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL) {
+gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL) {
   op <- new_operation(
     name = "CreateMatchmakingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData)
+  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode)
   output <- .gamelift$create_matchmaking_configuration_output()
   svc <- .gamelift$service()
   request <- new_request(svc, op, input, output)
@@ -923,7 +943,7 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' 
 #' To create a matchmaking rule set, provide unique rule set name and the
 #' rule set body in JSON format. Rule sets must be defined in the same
-#' region as the matchmaking configuration they will be used with.
+#' region as the matchmaking configuration they are used with.
 #' 
 #' Since matchmaking rule sets cannot be edited, it is a good idea to check
 #' the rule set syntax using ValidateMatchmakingRuleSet before creating a
@@ -965,9 +985,8 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' configuration identifies the rule set it uses by this name value. (Note:
 #' The rule set name is different from the optional \"name\" field in the
 #' rule set body.)
-#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules, formatted as a JSON string. Note that
-#' comments are not allowed in JSON, but most elements support a
-#' description field.
+#' @param RuleSetBody &#91;required&#93; Collection of matchmaking rules, formatted as a JSON string. Comments
+#' are not allowed in JSON, but most elements support a description field.
 #'
 #' @section Request syntax:
 #' ```
@@ -1532,6 +1551,12 @@ gamelift_delete_build <- function(BuildId) {
 #' Deletes everything related to a fleet. Before deleting a fleet, you must
 #' set the fleet\'s desired capacity to zero. See UpdateFleetCapacity.
 #' 
+#' If the fleet being deleted has a VPC peering connection, you first need
+#' to get a valid authorization (good for 24 hours) by calling
+#' CreateVpcPeeringAuthorization. You do not need to explicitly delete the
+#' VPC peering connection\\--this is done as part of the delete fleet
+#' process.
+#' 
 #' This action removes the fleet\'s resources and the fleet record. Once a
 #' fleet is deleted, you can no longer use that fleet.
 #' 
@@ -1662,6 +1687,8 @@ gamelift_delete_game_session_queue <- function(Name) {
 #' Permanently removes a FlexMatch matchmaking configuration. To delete,
 #' specify the configuration name. A matchmaking configuration cannot be
 #' deleted if it is being used in any active matchmaking tickets.
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -1899,8 +1926,8 @@ gamelift_delete_script <- function(ScriptId) {
 #' Cancels a pending VPC peering authorization for the specified VPC
 #'
 #' Cancels a pending VPC peering authorization for the specified VPC. If
-#' the authorization has already been used to create a peering connection,
-#' call DeleteVpcPeeringConnection to remove the connection.
+#' you need to delete an existing VPC peering connection, call
+#' DeleteVpcPeeringConnection.
 #' 
 #' -   CreateVpcPeeringAuthorization
 #' 
@@ -3079,6 +3106,16 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #' If the request is successful, a ticket object is returned for each
 #' requested ID that currently exists.
 #' 
+#' **Learn more**
+#' 
+#' [Add FlexMatch to a Game
+#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' 
+#' [Set Up FlexMatch Event
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguidematch-notification.html)
+#' 
+#' **Related operations**
+#' 
 #' -   StartMatchmaking
 #' 
 #' -   DescribeMatchmaking
@@ -3125,7 +3162,7 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 
 #' Retrieves the details of FlexMatch matchmaking configurations
 #'
-#' Retrieves the details of FlexMatch matchmaking configurations. with this
+#' Retrieves the details of FlexMatch matchmaking configurations. With this
 #' operation, you have the following options: (1) retrieve all existing
 #' configurations, (2) provide the names of one or more configurations to
 #' retrieve, or (3) retrieve all configurations that use a specified rule
@@ -3133,6 +3170,13 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 #' to retrieve results as a set of sequential pages. If successful, a
 #' configuration is returned for each requested name. When specifying a
 #' list of names, only configurations that currently exist are returned.
+#' 
+#' **Learn more**
+#' 
+#' [Setting Up FlexMatch
+#' Matchmakers](https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -4898,9 +4942,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' describes all current players in the game session. If successful, a
 #' match backfill ticket is created and returned with status set to QUEUED.
 #' The ticket is placed in the matchmaker\'s ticket pool and processed.
-#' Track the status of the ticket to respond as needed. For more detail how
-#' to set up backfilling, see [Backfill Existing Games with
-#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+#' Track the status of the ticket to respond as needed.
 #' 
 #' The process of finding backfill matches is essentially identical to the
 #' initial matchmaking process. The matchmaker searches the pool and groups
@@ -4911,7 +4953,17 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' GameSession object is updated to include matchmaker data on the new
 #' players. For more detail on how match backfill requests are processed,
 #' see [How Amazon GameLift FlexMatch
-#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html).
+#' 
+#' **Learn more**
+#' 
+#' [Backfill Existing Games with
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html)
+#' 
+#' [How GameLift FlexMatch
+#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+#' 
+#' **Related operations**
 #' 
 #' -   StartMatchmaking
 #' 
@@ -5018,9 +5070,7 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #' a single player or a group of players who want to play together.
 #' FlexMatch finds additional players as needed to fill the match. Match
 #' type, rules, and the queue used to place a new game session are defined
-#' in a `MatchmakingConfiguration`. For complete information on setting up
-#' and using FlexMatch, see the topic [Adding FlexMatch to Your
-#' Game](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html).
+#' in a `MatchmakingConfiguration`.
 #' 
 #' To start matchmaking, provide a unique ticket ID, specify a matchmaking
 #' configuration, and include the players to be matched. You must also
@@ -5075,6 +5125,22 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #'     session endpoint and player session) is added to the matchmaking
 #'     tickets. Matched players can use the connection information to join
 #'     the game.
+#' 
+#' **Learn more**
+#' 
+#' [Add FlexMatch to a Game
+#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' 
+#' [Set Up FlexMatch Event
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' 
+#' [FlexMatch Integration
+#' Roadmap](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html)
+#' 
+#' [How GameLift FlexMatch
+#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+#' 
+#' **Related operations**
 #' 
 #' -   StartMatchmaking
 #' 
@@ -5301,11 +5367,29 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 }
 .gamelift$operations$stop_game_session_placement <- gamelift_stop_game_session_placement
 
-#' Cancels a matchmaking ticket that is currently being processed
+#' Cancels a matchmaking ticket or match backfill ticket that is currently
+#' being processed
 #'
-#' Cancels a matchmaking ticket that is currently being processed. To stop
-#' the matchmaking operation, specify the ticket ID. If successful, work on
-#' the ticket is stopped, and the ticket status is changed to `CANCELLED`.
+#' Cancels a matchmaking ticket or match backfill ticket that is currently
+#' being processed. To stop the matchmaking operation, specify the ticket
+#' ID. If successful, work on the ticket is stopped, and the ticket status
+#' is changed to `CANCELLED`.
+#' 
+#' This call is also used to turn off automatic backfill for an individual
+#' game session. This is for game sessions that are created with a
+#' matchmaking configuration that has automatic backfill enabled. The
+#' ticket ID is included in the `MatchmakerData` of an updated game session
+#' object, which is provided to the game server.
+#' 
+#' If the action is successful, the service sends back an empty JSON struct
+#' with the HTTP 200 response (not an empty HTTP body).
+#' 
+#' **Learn more**
+#' 
+#' [Add FlexMatch to a Game
+#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' 
+#' **Related operations**
 #' 
 #' -   StartMatchmaking
 #' 
@@ -5954,9 +6038,17 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 
 #' Updates settings for a FlexMatch matchmaking configuration
 #'
-#' Updates settings for a FlexMatch matchmaking configuration. To update
-#' settings, specify the configuration name to be updated and provide the
-#' new settings.
+#' Updates settings for a FlexMatch matchmaking configuration. These
+#' changes affect all matches and game sessions that are created after the
+#' update. To update settings, specify the configuration name to be updated
+#' and provide the new settings.
+#' 
+#' **Learn more**
+#' 
+#' [Design a FlexMatch
+#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#' 
+#' **Related operations**
 #' 
 #' -   CreateMatchmakingConfiguration
 #' 
@@ -5978,7 +6070,8 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' gamelift_update_matchmaking_configuration(Name, Description,
 #'   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
 #'   AcceptanceRequired, RuleSetName, NotificationTarget,
-#'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData)
+#'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
+#'   BackfillMode)
 #'
 #' @param Name &#91;required&#93; Unique identifier for a matchmaking configuration to update.
 #' @param Description Descriptive label that is associated with matchmaking configuration.
@@ -5986,17 +6079,17 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 #' that is assigned to a game session queue and uniquely identifies it.
 #' Format is
-#' `arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912`.
+#' `arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;`.
 #' These queues are used when placing game sessions for matches that are
 #' created with this matchmaking configuration. Queues can be located in
 #' any region.
 #' @param RequestTimeoutSeconds Maximum duration, in seconds, that a matchmaking ticket can remain in
-#' process before timing out. Requests that time out can be resubmitted as
-#' needed.
+#' process before timing out. Requests that fail due to timing out can be
+#' resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds Length of time (in seconds) to wait for players to accept a proposed
 #' match. If any player rejects the match or fails to accept before the
 #' timeout, the ticket continues to look for an acceptable match.
-#' @param AcceptanceRequired Flag that determines whether or not a match that was created with this
+#' @param AcceptanceRequired Flag that determines whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
 #' acceptance, set to TRUE.
 #' @param RuleSetName Unique identifier for a matchmaking rule set to use with this
@@ -6010,7 +6103,7 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' example, if the configuration\'s rule set specifies a match for a single
 #' 12-person team, and the additional player count is set to 2, only 10
 #' players are selected for the match.
-#' @param CustomEventData Information to attached to all events related to the matchmaking
+#' @param CustomEventData Information to add to all events related to the matchmaking
 #' configuration.
 #' @param GameProperties Set of custom properties for a game session, formatted as key:value
 #' pairs. These properties are passed to a game server process in the
@@ -6025,6 +6118,13 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
 #' for a successful match.
+#' @param BackfillMode Method used to backfill game sessions created with this matchmaking
+#' configuration. Specify MANUAL when your game manages backfill requests
+#' manually or does not use the match backfill feature. Specify AUTOMATIC
+#' to have GameLift create a StartMatchBackfill request whenever a game
+#' session has one or more open slots. Learn more about manual and
+#' automatic backfill in [Backfill Existing Games with
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -6047,21 +6147,22 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'       Value = "string"
 #'     )
 #'   ),
-#'   GameSessionData = "string"
+#'   GameSessionData = "string",
+#'   BackfillMode = "AUTOMATIC"|"MANUAL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_update_matchmaking_configuration
-gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns = NULL, RequestTimeoutSeconds = NULL, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired = NULL, RuleSetName = NULL, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL) {
+gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns = NULL, RequestTimeoutSeconds = NULL, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired = NULL, RuleSetName = NULL, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL) {
   op <- new_operation(
     name = "UpdateMatchmakingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$update_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData)
+  input <- .gamelift$update_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode)
   output <- .gamelift$update_matchmaking_configuration_output()
   svc <- .gamelift$service()
   request <- new_request(svc, op, input, output)

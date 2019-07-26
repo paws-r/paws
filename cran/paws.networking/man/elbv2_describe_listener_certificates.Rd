@@ -2,7 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_describe_listener_certificates}
 \alias{elbv2_describe_listener_certificates}
-\title{Describes the certificates for the specified HTTPS listener}
+\title{Describes the default certificate and the certificate list for the
+specified HTTPS listener}
 \usage{
 elbv2_describe_listener_certificates(ListenerArn, Marker, PageSize)
 }
@@ -15,7 +16,16 @@ previous call.)}
 \item{PageSize}{The maximum number of results to return with this call.}
 }
 \description{
-Describes the certificates for the specified HTTPS listener.
+Describes the default certificate and the certificate list for the
+specified HTTPS listener.
+}
+\details{
+If the default certificate is also in the certificate list, it appears
+twice in the results (once with \code{IsDefault} set to true and once with
+\code{IsDefault} set to false).
+
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL Certificates}
+in the \emph{Application Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_listener_certificates(

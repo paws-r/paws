@@ -27,7 +27,8 @@ default message will be used.}
 
 \item{keepEmptyFolders}{If the commit contains deletions, whether to keep a folder or folder
 structure if the changes leave the folders empty. If this is specified
-as true, a .gitkeep file will be created for empty folders.}
+as true, a .gitkeep file will be created for empty folders. The default
+is false.}
 
 \item{putFiles}{The files to add or update in this commit.}
 

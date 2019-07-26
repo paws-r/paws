@@ -135,12 +135,13 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #'     expressions of the specified request parameters. When the
 #'     authorization caching is not enabled, this property is optional.
 #' @param identityValidationExpression A validation expression for the incoming identity token. For `TOKEN`
-#' authorizers, this value is a regular expression. API Gateway will match
-#' the `aud` field of the incoming token from the client against the
-#' specified regular expression. It will invoke the authorizer\'s Lambda
-#' function when there is a match. Otherwise, it will return a 401
-#' Unauthorized response without calling the Lambda function. The
-#' validation expression does not apply to the `REQUEST` authorizer.
+#' authorizers, this value is a regular expression. For
+#' `COGNITO_USER_POOLS` authorizers, API Gateway will match the `aud` field
+#' of the incoming token from the client against the specified regular
+#' expression. It will invoke the authorizer\'s Lambda function when there
+#' is a match. Otherwise, it will return a 401 Unauthorized response
+#' without calling the Lambda function. The validation expression does not
+#' apply to the `REQUEST` authorizer.
 #' @param authorizerResultTtlInSeconds The TTL in seconds of cached authorizer results. If it equals 0,
 #' authorization caching is disabled. If it is greater than 0, API Gateway
 #' will cache authorizer responses. If this field is not set, the default
@@ -194,11 +195,11 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to create.
 #' @param basePath The base path name that callers of the API must provide as part of the
 #' URL after the domain name. This value must be unique for all of the
-#' mappings across a single API. Leave this blank if you do not want
+#' mappings across a single API. Specify \'(none)\' if you do not want
 #' callers to specify a base path name after the domain name.
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param stage The name of the API\'s stage that you want to use for this mapping.
-#' Leave this blank if you do not want callers to explicitly specify the
+#' Specify \'(none)\' if you do not want callers to explicitly specify the
 #' stage name after any base path name.
 #'
 #' @section Request syntax:
@@ -397,7 +398,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' apigateway_create_domain_name(domainName, certificateName,
 #'   certificateBody, certificatePrivateKey, certificateChain,
 #'   certificateArn, regionalCertificateName, regionalCertificateArn,
-#'   endpointConfiguration, tags)
+#'   endpointConfiguration, tags, securityPolicy)
 #'
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
@@ -427,6 +428,8 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
+#' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
 #'
 #' @section Request syntax:
 #' ```
@@ -446,21 +449,22 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   ),
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/domainnames",
     paginator = list()
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy)
   output <- .apigateway$create_domain_name_output()
   svc <- .apigateway$service()
   request <- new_request(svc, op, input, output)
@@ -689,7 +693,9 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #'   canarySettings, tracingEnabled, tags)
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name for the Stage resource.
+#' @param stageName &#91;required&#93; \[Required\] The name for the Stage resource. Stage names can only
+#' contain alphanumeric characters, hyphens, and underscores. Maximum
+#' length is 128 characters.
 #' @param deploymentId &#91;required&#93; \[Required\] The identifier of the Deployment resource for the Stage
 #' resource.
 #' @param description The description of the Stage resource.
@@ -1005,6 +1011,8 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to delete.
 #' @param basePath &#91;required&#93; \[Required\] The base path name of the BasePathMapping resource to
 #' delete.
+#' 
+#' To specify an empty base path, set this parameter to `'(none)'`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2069,8 +2077,8 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' described.
 #' @param basePath &#91;required&#93; \[Required\] The base path name that callers of the API must provide as
 #' part of the URL after the domain name. This value must be unique for all
-#' of the mappings across a single API. Leave this blank if you do not want
-#' callers to specify any base path name after the domain name.
+#' of the mappings across a single API. Specify \'(none)\' if you do not
+#' want callers to specify any base path name after the domain name.
 #'
 #' @section Request syntax:
 #' ```
@@ -3446,7 +3454,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' apigateway_get_tags(resourceArn, position, limit)
 #'
 #' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded. At present, Stage is the only taggable resource.
+#' must be URL-encoded.
 #' @param position (Not currently supported) The current pagination position in the paged
 #' result set.
 #' @param limit (Not currently supported) The maximum number of returned results per
@@ -3881,8 +3889,8 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' `endpointConfigurationTypes=PRIVATE`. The default endpoint type is
 #' `EDGE`.
 #' 
-#' To handle imported `basePath`, set `parameters` as `basePath=ignore`,
-#' `basePath=prepend` or `basePath=split`.
+#' To handle imported `basepath`, set `parameters` as `basepath=ignore`,
+#' `basepath=prepend` or `basepath=split`.
 #' 
 #' For example, the AWS CLI command to exclude documentation from the
 #' imported API is:
@@ -4082,8 +4090,8 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'     content types mapped to templates. However if there is at least one
 #'     content type defined, unmapped content types will be rejected with
 #'     the same 415 response.
-#' @param cacheNamespace Specifies a put integration input\'s cache namespace.
-#' @param cacheKeyParameters Specifies a put integration input\'s cache key parameters.
+#' @param cacheNamespace A list of request parameters whose values are to be cached.
+#' @param cacheKeyParameters An API-specific tag group of related cached parameters.
 #' @param contentHandling Specifies how to handle request payload content type conversions.
 #' Supported values are `CONVERT_TO_BINARY` and `CONVERT_TO_TEXT`, with the
 #' following behaviors:
@@ -4096,7 +4104,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' 
 #' If this property is not defined, the request payload will be passed
 #' through from the method request to integration request without
-#' modification, provided that the `passthroughBehaviors` is configured to
+#' modification, provided that the `passthroughBehavior` is configured to
 #' support payload pass-through.
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
 #' 29,000 milliseconds or 29 seconds.
@@ -4251,7 +4259,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @param apiKeyRequired Specifies whether the method required a valid ApiKey.
 #' @param operationName A human-friendly operation identifier for the method. For example, you
 #' can assign the `operationName` of `ListPets` for the `GET /pets` method
-#' in PetStore example.
+#' in the `PetStore` example.
 #' @param requestParameters A key-value map defining required or optional method request parameters
 #' that can be accepted by API Gateway. A key defines a method request
 #' parameter name matching the pattern of
@@ -4446,7 +4454,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #' apigateway_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded. At present, Stage is the only taggable resource.
+#' must be URL-encoded.
 #' @param tags &#91;required&#93; \[Required\] The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -4487,8 +4495,10 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' parameters, and an incoming request body.
 #' 
 #' ::: \{.seeAlso\}
-#' [Enable custom
-#' authorizers](https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html)
+#' [Use Lambda Function as
+#' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
+#' [Use Cognito User Pool as
+#' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
 #' :::
 #'
 #' @usage
@@ -4634,7 +4644,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' apigateway_untag_resource(resourceArn, tagKeys)
 #'
 #' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded. At present, Stage is the only taggable resource.
+#' must be URL-encoded.
 #' @param tagKeys &#91;required&#93; \[Required\] The Tag keys to delete.
 #'
 #' @section Request syntax:
@@ -4816,6 +4826,8 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #'
 #' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to change.
 #' @param basePath &#91;required&#93; \[Required\] The base path of the BasePathMapping resource to change.
+#' 
+#' To specify an empty base path, set this parameter to `'(none)'`.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'

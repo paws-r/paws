@@ -2,15 +2,18 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_get_sms_channel}
 \alias{pinpoint_get_sms_channel}
-\title{Get an SMS channel}
+\title{Retrieves information about the status and settings of the SMS channel
+for an application}
 \usage{
 pinpoint_get_sms_channel(ApplicationId)
 }
 \arguments{
-\item{ApplicationId}{[required] The unique ID of your Amazon Pinpoint application.}
+\item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
+as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
 \description{
-Get an SMS channel.
+Retrieves information about the status and settings of the SMS channel
+for an application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_sms_channel(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_distributions}
 \alias{cloudfront_list_distributions}
-\title{List distributions}
+\title{List CloudFront distributions}
 \usage{
 cloudfront_list_distributions(Marker, MaxItems)
 }
@@ -16,7 +16,7 @@ response (which is also the ID of the last distribution on that page).}
 \item{MaxItems}{The maximum number of distributions you want in the response body.}
 }
 \description{
-List distributions.
+List CloudFront distributions.
 }
 \section{Request syntax}{
 \preformatted{svc$list_distributions(

@@ -23,7 +23,7 @@ To access a queue that belongs to another AWS account, use the
 \code{QueueOwnerAWSAccountId} parameter to specify the account ID of the
 queue's owner. The queue's owner must grant you permission to access
 the queue. For more information about shared queue access, see
-\code{<a>AddPermission</a>} or see \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
+\code{<a>AddPermission</a>} or see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

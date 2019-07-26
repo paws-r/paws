@@ -10,7 +10,9 @@ apigateway_delete_base_path_mapping(domainName, basePath)
 \item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to delete.}
 
 \item{basePath}{[required] [Required] The base path name of the BasePathMapping resource to
-delete.}
+delete.
+
+To specify an empty base path, set this parameter to \code{'(none)'}.}
 }
 \description{
 Deletes the BasePathMapping resource.

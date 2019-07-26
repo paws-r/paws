@@ -130,7 +130,8 @@ NULL
 #'  \link[=iam_detach_user_policy]{detach_user_policy} \tab Removes the specified managed policy from the specified user \cr
 #'  \link[=iam_enable_mfa_device]{enable_mfa_device} \tab Enables the specified MFA device and associates it with the specified IAM user \cr
 #'  \link[=iam_generate_credential_report]{generate_credential_report} \tab Generates a credential report for the AWS account \cr
-#'  \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a request for a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access AWS services \cr
+#'  \link[=iam_generate_organizations_access_report]{generate_organizations_access_report} \tab Generates a report for service last accessed data for AWS Organizations \cr
+#'  \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access AWS services \cr
 #'  \link[=iam_get_access_key_last_used]{get_access_key_last_used} \tab Retrieves information about when the specified access key was last used \cr
 #'  \link[=iam_get_account_authorization_details]{get_account_authorization_details} \tab Retrieves information about all IAM users, groups, roles, and policies in your AWS account, including their relationships to one another \cr
 #'  \link[=iam_get_account_password_policy]{get_account_password_policy} \tab Retrieves the password policy for the AWS account \cr
@@ -143,6 +144,7 @@ NULL
 #'  \link[=iam_get_instance_profile]{get_instance_profile} \tab Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role \cr
 #'  \link[=iam_get_login_profile]{get_login_profile} \tab Retrieves the user name and password-creation date for the specified IAM user \cr
 #'  \link[=iam_get_open_id_connect_provider]{get_open_id_connect_provider} \tab Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM \cr
+#'  \link[=iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for AWS Organizations that was previously generated using the GenerateOrganizationsAccessReport operation \cr
 #'  \link[=iam_get_policy]{get_policy} \tab Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached\cr
 #'  \link[=iam_get_policy_version]{get_policy_version} \tab Retrieves information about the specified version of the specified managed policy, including the policy document \cr
 #'  \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role \cr
@@ -150,7 +152,7 @@ NULL
 #'  \link[=iam_get_saml_provider]{get_saml_provider} \tab Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated \cr
 #'  \link[=iam_get_ssh_public_key]{get_ssh_public_key} \tab Retrieves the specified SSH public key, including metadata about the key \cr
 #'  \link[=iam_get_server_certificate]{get_server_certificate} \tab Retrieves information about the specified server certificate stored in IAM \cr
-#'  \link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details} \tab After you generate a user, group, role, or policy report using the GenerateServiceLastAccessedDetails operation, you can use the JobId parameter in GetServiceLastAccessedDetails \cr
+#'  \link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details} \tab Retrieves a service last accessed report that was created using the GenerateServiceLastAccessedDetails operation \cr
 #'  \link[=iam_get_service_last_accessed_details_with_entities]{get_service_last_accessed_details_with_entities} \tab After you generate a group or policy report using the GenerateServiceLastAccessedDetails operation, you can use the JobId parameter in GetServiceLastAccessedDetailsWithEntities \cr
 #'  \link[=iam_get_service_linked_role_deletion_status]{get_service_linked_role_deletion_status} \tab Retrieves the status of your service-linked role deletion \cr
 #'  \link[=iam_get_user]{get_user} \tab Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN \cr

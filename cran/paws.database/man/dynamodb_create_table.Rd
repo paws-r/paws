@@ -30,7 +30,7 @@ Each \code{KeySchemaElement} in the array is composed of:
 }
 
 The partition key of an item is also known as its \emph{hash attribute}. The
-term "hash attribute" derives from DynamoDB' usage of an internal
+term "hash attribute" derives from the DynamoDB usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
@@ -47,7 +47,7 @@ provide exactly two elements, in this order: The first element must have
 a \code{KeyType} of \code{HASH}, and the second element must have a \code{KeyType} of
 \code{RANGE}.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key}{Specifying the Primary Key}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key}{Working with Tables}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{LocalSecondaryIndexes}{One or more local secondary indexes (the maximum is 5) to be created on
@@ -73,7 +73,7 @@ projected. Each attribute specification is composed of:
 into the index.
 \item \code{INCLUDE} - Only the specified table attributes are
 projected into the index. The list of projected attributes
-are in \code{NonKeyAttributes}.
+is in \code{NonKeyAttributes}.
 \item \code{ALL} - All of the table attributes are projected into the
 index.
 }
@@ -105,7 +105,7 @@ projected. Each attribute specification is composed of:
 into the index.
 \item \code{INCLUDE} - Only the specified table attributes are
 projected into the index. The list of projected attributes
-are in \code{NonKeyAttributes}.
+is in \code{NonKeyAttributes}.
 \item \code{ALL} - All of the table attributes are projected into the
 index.
 }
@@ -144,8 +144,8 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist
 of:
 \itemize{
-\item \code{StreamEnabled} - Indicates whether Streams is to be enabled (true)
-or disabled (false).
+\item \code{StreamEnabled} - Indicates whether DynamoDB Streams is to be
+enabled (true) or disabled (false).
 \item \code{StreamViewType} - When an item in the table is modified,
 \code{StreamViewType} determines what information is written to the
 table's stream. Valid values for \code{StreamViewType} are:
@@ -168,9 +168,9 @@ the item are written to the stream.
 }
 \description{
 The \code{CreateTable} operation adds a new table to your account. In an AWS
-account, table names must be unique within each region. That is, you can
+account, table names must be unique within each Region. That is, you can
 have two tables with same name if you create the tables in different
-regions.
+Regions.
 }
 \details{
 \code{CreateTable} is an asynchronous operation. Upon receiving a

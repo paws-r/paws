@@ -56,7 +56,7 @@ includes only a DNS server that we provide (AmazonProvidedDNS). If you
 create a set of options, and if your VPC has an internet gateway, make
 sure to set the \code{domain-name-servers} option either to
 \code{AmazonProvidedDNS} or to a domain name server of your choice. For more
-information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html}{DHCP Options Sets}
+information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html}{DHCP Options Sets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

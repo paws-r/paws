@@ -23,7 +23,7 @@ Amazon QuickSight.
 \link[=quicksight_delete_group]{delete_group} \tab Removes a user group from Amazon QuickSight \cr
 \link[=quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group \cr
 \link[=quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call\cr
-\link[=quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user after locating the user by its principal ID \cr
+\link[=quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user identified by its principal ID \cr
 \link[=quicksight_describe_group]{describe_group} \tab Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN) \cr
 \link[=quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name \cr
 \link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a server-side embeddable URL and authorization code \cr

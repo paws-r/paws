@@ -14,11 +14,6 @@ hosted queue for storing messages as they travel between applications or
 microservices. Amazon SQS moves data between distributed application
 components and helps you decouple these components.
 
-\href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html}{Standard queues}
-are available in all regions. \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO queues}
-are available in the US East (N. Virginia), US East (Ohio), US West
-(Oregon), and EU (Ireland) regions.
-
 You can use \href{http://aws.amazon.com/tools/#sdk}{AWS SDKs} to access
 Amazon SQS using your favorite programming language. The SDKs perform
 tasks such as the following automatically:
@@ -33,14 +28,14 @@ tasks such as the following automatically:
 \item \href{http://aws.amazon.com/sqs/}{Amazon SQS Product Page}
 \item \emph{Amazon Simple Queue Service Developer Guide}
 \itemize{
-\item \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html}{Making API Requests}
-\item \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
-\item \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
+\item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html}{Making API Requests}
+\item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
+\item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
 \item \href{http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the AWS CLI CommandReference}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
-\item \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}
+\item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}
 }
 }
 }

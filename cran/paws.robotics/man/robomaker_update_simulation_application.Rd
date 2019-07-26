@@ -40,7 +40,7 @@ Updates a simulation application.
   ),
   robotSoftwareSuite = list(
     name = "ROS",
-    version = "Kinetic"
+    version = "Kinetic"|"Melodic"
   ),
   renderingEngine = list(
     name = "OGRE",

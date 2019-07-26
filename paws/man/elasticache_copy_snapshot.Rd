@@ -85,7 +85,7 @@ S3 bucket and use this same value for \code{TargetSnapshotName}.
 }
 
 \strong{Solution:} Add List and Read permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} ElastiCache has not been granted WRITE
@@ -93,7 +93,7 @@ permissions \%s on the S3 Bucket.
 }
 
 \strong{Solution:} Add Upload/Delete permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 \itemize{
 \item \strong{Error Message:} ElastiCache has not been granted READ\_ACP
@@ -101,7 +101,7 @@ permissions \%s on the S3 Bucket.
 }
 
 \strong{Solution:} Add View Permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
 }
 \section{Request syntax}{

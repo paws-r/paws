@@ -22,7 +22,7 @@ Constraints:
 Example: \code{mydbinstance}}
 
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance; for example,
-\code{db.m4.large}.}
+\code{db.r5.large}.}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
 

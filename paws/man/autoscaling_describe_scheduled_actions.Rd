@@ -3,7 +3,7 @@
 \name{autoscaling_describe_scheduled_actions}
 \alias{autoscaling_describe_scheduled_actions}
 \title{Describes the actions scheduled for your Auto Scaling group that haven't
-run}
+run or that have not reached their end time}
 \usage{
 autoscaling_describe_scheduled_actions(AutoScalingGroupName,
   ScheduledActionNames, StartTime, EndTime, NextToken, MaxRecords)
@@ -30,8 +30,8 @@ is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the actions scheduled for your Auto Scaling group that
-haven't run. To describe the actions that have already run, use
-DescribeScalingActivities.
+haven't run or that have not reached their end time. To describe the
+actions that have already run, use DescribeScalingActivities.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_actions(
