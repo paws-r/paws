@@ -17,6 +17,7 @@ make_cran <- function(sdk_dir, out_dir, categories = NULL) {
 # Make the package which collects all the category packages.
 make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
   package <- "paws"
+  version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
   write_skeleton_category(package_dir)
   write_description_category(
@@ -24,7 +25,7 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
     package,
     title = get_title(sdk_dir),
     description = get_description(sdk_dir),
-    version = get_version(sdk_dir),
+    version = version,
     imports = c()
   )
   if (only_cran) {
@@ -33,7 +34,7 @@ make_collection <- function(sdk_dir, out_dir, categories, only_cran = TRUE) {
   }
   write_source_collection(sdk_dir, package_dir, categories)
   write_documentation(package_dir)
-  write_imports_collection(package_dir, get_category_packages(categories))
+  write_imports_collection(package_dir, version, get_category_packages(categories))
 }
 
 # Write the R source files for the collection package, which import and
@@ -55,9 +56,10 @@ write_source_collection <- function(sdk_dir, out_dir, categories) {
 # This is done separately since `write_documentation` will fail if
 # the imports are not already installed, which should not be a requirement to
 # generate the package.
-write_imports_collection <- function(path, imports) {
+write_imports_collection <- function(path, version, imports) {
+  packages <- sprintf("%s (>= %s)", imports, version)
   desc::desc_set(
-    Imports = paste0(imports, collapse = ","),
+    Imports = paste0(packages, collapse = ","),
     file = file.path(path, "DESCRIPTION"),
     normalize = TRUE
   )

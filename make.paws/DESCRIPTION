@@ -1,7 +1,7 @@
 Package: make.paws
 Type: Package
 Title: Generate Paws AWS SDKs for R
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person("David", "Kretch", email = "david.kretch@gmail.com", role = c("aut", "cre")),
     person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -49,4 +49,3 @@ Collate:
     'tests.R'
     'text.R'
     'utils.R'
-paws.compute,paws.storage,paws.database,paws.migration,paws.networking,paws.developer.tools,paws.robotics,paws.blockchain,paws.satellite,paws.management,paws.media.services,paws.machine.learning,paws.analytics,paws.security.identity,paws.mobile,paws.ar.vr,paws.application.integration,paws.cost.management,paws.customer.engagement,paws.business.applications,paws.end.user.computing,paws.internet.of.things,paws.game.development: ../cran/paws/DESCRIPTION
