@@ -265,7 +265,7 @@ clean_html_code <- function(node) {
 # Check that links are valid, and if not replace them with the link text.
 clean_html_a <- function(node) {
   url <- xml2::xml_attr(node, "href")
-  if (length(url) == 0 || is.na(url) || url == "") return()
+  if (length(url) == 0 || is.na(url)) return()
 
   if (startsWith(url, "mailto:")) return()
 

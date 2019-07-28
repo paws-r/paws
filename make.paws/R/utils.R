@@ -46,6 +46,9 @@ quietly <- function(expr) {
 
 # Returns whether a URL points to a page that still exists -- not 404.
 url_ok <- function(url, tries = 3) {
+  if (url == "") {
+    return(FALSE)
+  }
   try <- 0
   while (try < tries) {
     resp <- tryCatch(
@@ -55,5 +58,5 @@ url_ok <- function(url, tries = 3) {
     if (!is.na(resp) && resp != 404) return(TRUE)
     try <- try + 1
   }
-  FALSE
+  return(FALSE)
 }
