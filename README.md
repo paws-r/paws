@@ -1,12 +1,9 @@
 
-# Paws, an AWS SDK for R <img src="docs/logo.png" align="right" height="150" />
+# Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](docs/fact_sheet.pdf)
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
-[![Build
-Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
+[![CRAN status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
+[![Build Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/master?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/master)
 [![codecov](https://codecov.io/gh/paws-r/paws/branch/master/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://github.com/paws-r/paws/tree/master/examples)
 
@@ -120,4 +117,6 @@ Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
 files and API documentation from the [AWS SDK for
 JavaScript](https://github.com/aws/aws-sdk-js).
 
-Logo by [Hsinyi Chen](https://www.starfolioart.com/).
+[Logo](docs/logo.png) by [Hsinyi Chen](https://www.starfolioart.com/).
+
+[Fact sheet](docs/fact_sheet.pdf) by Mara Ursu.
