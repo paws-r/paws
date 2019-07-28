@@ -404,7 +404,7 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' results.
 #' 
 #' The token expires after 5 minutes from the time it is created.
-#' Subsequent requests that use the [NextToken]() must use the same request
+#' Subsequent requests that use the NextToken must use the same request
 #' parameters as the request that generated the token.
 #' @param MaxResults `MaxResults` indicates the maximum number of results to return per page
 #' in the response, between 1 and 100.
