@@ -424,6 +424,10 @@ test_that("convert", {
   expected <- c("foo")
   expect_equal(convert(text), expected)
 
+  text <- "<a href=''>foo</a>"
+  expected <- c("foo")
+  expect_equal(convert(text), expected)
+
   text <- "<a href='acm/'>foo</a>"
   expected <- c("[foo](https://docs.aws.amazon.com/acm/)")
   expect_equal(convert(text), expected)
