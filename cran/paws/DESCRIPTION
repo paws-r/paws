@@ -18,17 +18,17 @@ Description: Interface to Amazon Web Services <https://aws.amazon.com>,
     functions-as-a-service.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.compute,
-    paws.storage,
-    paws.database,
-    paws.networking,
-    paws.management,
-    paws.machine.learning,
-    paws.analytics,
-    paws.security.identity,
-    paws.application.integration,
-    paws.cost.management,
-    paws.customer.engagement
+    paws.compute (>= 0.1.3),
+    paws.storage (>= 0.1.3),
+    paws.database (>= 0.1.3),
+    paws.networking (>= 0.1.3),
+    paws.management (>= 0.1.3),
+    paws.machine.learning (>= 0.1.3),
+    paws.analytics (>= 0.1.3),
+    paws.security.identity (>= 0.1.3),
+    paws.application.integration (>= 0.1.3),
+    paws.cost.management (>= 0.1.3),
+    paws.customer.engagement (>= 0.1.3)
 Suggests: 
     testthat
 Encoding: UTF-8
