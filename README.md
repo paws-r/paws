@@ -112,10 +112,8 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 
 ## Credits
 
-Paws is based on the design of the [AWS SDK for
-Go](https://github.com/aws/aws-sdk-go) and it uses AWS’s API definition
-files and API documentation from the [AWS SDK for
-JavaScript](https://github.com/aws/aws-sdk-js).
+API specifications from [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js);
+design based on [AWS SDK for Go](https://github.com/aws/aws-sdk-go).
 
 [Logo](docs/logo.png) by [Hsinyi Chen](https://www.starfolioart.com/).
 
