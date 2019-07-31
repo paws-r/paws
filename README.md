@@ -1,5 +1,5 @@
 
-# Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](docs/fact_sheet.pdf)
+# Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](docs/cheat_sheet.pdf)
 
 [![CRAN status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
 [![Build Status](https://travis-ci.com/paws-r/paws.svg?branch=master)](https://travis-ci.com/paws-r/paws)
@@ -11,6 +11,8 @@
 
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices in R. Paws provides
 access to the full suite of AWS services from within R.
+
+[Click here](docs/cheat_sheet.pdf) to view our Paws cheat sheet.
 
 Disclaimer: Paws is not a product of or supported by Amazon Web Services.
 
@@ -117,4 +119,4 @@ design based on [AWS SDK for Go](https://github.com/aws/aws-sdk-go).
 
 [Logo](docs/logo.png) by [Hsinyi Chen](https://www.starfolioart.com/).
 
-[Fact sheet](docs/fact_sheet.pdf) by Mara Ursu.
+[Cheat sheet](docs/cheat_sheet.pdf) by Mara Ursu.
