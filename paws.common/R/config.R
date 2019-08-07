@@ -60,7 +60,7 @@ get_iam_role <- function() {
 
   if (is.null(iam_role_response)) return(NULL)
 
-  iam_role_response_body <- jsonlite::fromJSON(iam_role_response$body)
+  iam_role_response_body <- jsonlite::fromJSON(rawToChar(iam_role_response$body))
   iam_instance_prof_arn <- iam_role_response_body$InstanceProfileArn
 
   iam_role <- basename(iam_instance_prof_arn)

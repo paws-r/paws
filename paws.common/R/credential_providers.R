@@ -80,7 +80,7 @@ iam_credentials_provider <- function() {
 
   if (is.null(credentials_response)) return(NULL)
 
-  credentials_response_body <- jsonlite::fromJSON(credentials_response$body)
+  credentials_response_body <- jsonlite::fromJSON(rawToChar(credentials_response$body))
 
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey
