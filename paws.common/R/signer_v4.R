@@ -129,9 +129,11 @@ sign_with_body <- function(signer, request, body, service, region,
     unsigned_payload = signer$unsigned_payload
   )
 
-  # TODO: Fix.
-  sort_list <- function(x) x[sort(names(x))]
-  if (!is.null(ctx$query)) {
+  sort_list <- function(x) {
+    if (length(x) == 0) return(x)
+    x[sort(names(x))]
+  }
+  if (!is.null(ctx$query) && length(ctx$query) > 0) {
     ctx$query <- sort_list(ctx$query)
   }
 
