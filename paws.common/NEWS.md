@@ -1,3 +1,7 @@
+# paws.common 0.1.2
+
+* Fix the EC2 IAM role credential provider.
+
 # paws.common 0.1.1
 
 * Add service customizations into paws.common to work with services like
