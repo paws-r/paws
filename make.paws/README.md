@@ -1,5 +1,10 @@
 # make.paws
 
+## Pandoc
+
+You must install Pandoc for `make.paws` to work. On Windows, download it from
+pandoc.org.
+
 ## Roxygen
 
 Roxygen documentation is turned off for the `make.paws` package. `make.paws`
