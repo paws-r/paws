@@ -87,7 +87,7 @@ elasticache <- function() {
 
 .elasticache$metadata <- list(
   service_name = "elasticache",
-  endpoints = list("*" = "elasticache.{region}.amazonaws.com", "cn-*" = "elasticache.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elasticache.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticache.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ElastiCache",
   api_version = "2015-02-02",
   signing_name = NULL,

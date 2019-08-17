@@ -82,7 +82,7 @@ cloud9 <- function() {
 
 .cloud9$metadata <- list(
   service_name = "cloud9",
-  endpoints = list("*" = "cloud9.{region}.amazonaws.com", "cn-*" = "cloud9.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Cloud9",
   api_version = "2017-09-23",
   signing_name = NULL,

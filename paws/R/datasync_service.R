@@ -61,7 +61,7 @@ datasync <- function() {
 
 .datasync$metadata <- list(
   service_name = "datasync",
-  endpoints = list("*" = "datasync.{region}.amazonaws.com", "cn-*" = "datasync.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "datasync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datasync.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "DataSync",
   api_version = "2018-11-09",
   signing_name = "datasync",

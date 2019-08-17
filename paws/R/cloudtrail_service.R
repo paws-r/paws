@@ -66,7 +66,7 @@ cloudtrail <- function() {
 
 .cloudtrail$metadata <- list(
   service_name = "cloudtrail",
-  endpoints = list("*" = "cloudtrail.{region}.amazonaws.com", "cn-*" = "cloudtrail.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CloudTrail",
   api_version = "2013-11-01",
   signing_name = NULL,

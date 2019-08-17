@@ -97,7 +97,7 @@ databasemigrationservice <- function() {
 
 .databasemigrationservice$metadata <- list(
   service_name = "dms",
-  endpoints = list("*" = "dms.{region}.amazonaws.com", "cn-*" = "dms.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "dms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dms.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Database Migration Service",
   api_version = "2016-01-01",
   signing_name = NULL,

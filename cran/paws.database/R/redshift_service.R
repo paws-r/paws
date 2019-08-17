@@ -138,7 +138,7 @@ redshift <- function() {
 
 .redshift$metadata <- list(
   service_name = "redshift",
-  endpoints = list("*" = "redshift.{region}.amazonaws.com", "cn-*" = "redshift.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "redshift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Redshift",
   api_version = "2012-12-01",
   signing_name = NULL,

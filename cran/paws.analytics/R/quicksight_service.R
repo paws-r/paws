@@ -52,7 +52,7 @@ quicksight <- function() {
 
 .quicksight$metadata <- list(
   service_name = "quicksight",
-  endpoints = list("*" = "quicksight.{region}.amazonaws.com", "cn-*" = "quicksight.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "quicksight.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "quicksight.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "QuickSight",
   api_version = "2018-04-01",
   signing_name = NULL,

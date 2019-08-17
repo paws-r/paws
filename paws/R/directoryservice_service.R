@@ -95,7 +95,7 @@ directoryservice <- function() {
 
 .directoryservice$metadata <- list(
   service_name = "ds",
-  endpoints = list("*" = "ds.{region}.amazonaws.com", "cn-*" = "ds.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ds.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Directory Service",
   api_version = "2015-04-16",
   signing_name = NULL,

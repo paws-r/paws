@@ -402,7 +402,7 @@ ec2 <- function() {
 
 .ec2$metadata <- list(
   service_name = "ec2",
-  endpoints = list("*" = "ec2.{region}.amazonaws.com", "cn-*" = "ec2.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ec2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EC2",
   api_version = "2016-11-15",
   signing_name = NULL,

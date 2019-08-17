@@ -45,7 +45,7 @@ cloudhsmv2 <- function() {
 
 .cloudhsmv2$metadata <- list(
   service_name = "cloudhsmv2",
-  endpoints = list("*" = "cloudhsmv2.{region}.amazonaws.com", "cn-*" = "cloudhsmv2.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CloudHSM V2",
   api_version = "2017-04-28",
   signing_name = "cloudhsm",

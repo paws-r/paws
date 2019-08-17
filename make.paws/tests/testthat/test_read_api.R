@@ -24,7 +24,7 @@ test_that("read_api", {
   api <- read_api("foo", path)
 
   expect_equal(api$name, "foo")
-  expect_equal(api$region_config$`*`, "bar")
+  expect_equal(api$region_config$`*`, list(endpoint = "bar", global = FALSE))
 
   expect_error(read_api("bar", api_path))
 })

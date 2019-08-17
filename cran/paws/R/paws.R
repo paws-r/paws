@@ -6997,7 +6997,7 @@ quicksight <- function() {
 #' You can use ACM to manage SSL/TLS certificates for your AWS-based
 #' websites and applications. For general information about using ACM, see
 #' the [*AWS Certificate Manager User
-#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/).
+#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/) .
 #'
 #' @examples
 #' \donttest{svc <- acm()
@@ -8034,7 +8034,7 @@ inspector <- function() {
 #' web service. This guide describes the AWS KMS operations that you can
 #' call programmatically. For general information about AWS KMS, see the
 #' [*AWS Key Management Service Developer
-#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/).
+#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms (Java, Ruby, .Net, macOS, Android,

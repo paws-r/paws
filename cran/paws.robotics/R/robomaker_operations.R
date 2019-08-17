@@ -1575,7 +1575,8 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 #' 
 #' To remove a tag, specify the tag key. To change the tag value of an
 #' existing tag key, use
-#' [`TagResource`](https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html).
+#' [`TagResource`](https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html)
+#' .
 #'
 #' @usage
 #' robomaker_untag_resource(resourceArn, tagKeys)

@@ -62,7 +62,7 @@ test-codegen: codegen
 
 deps:
 	@echo "get project dependencies"
-	@Rscript -e "install.packages('devtools', repos = 'https://cran.rstudio.com')"
+	@Rscript -e "if (!require(devtools)) install.packages('devtools', repos = 'https://cran.rstudio.com')"
 	@Rscript -e "devtools::install_dev_deps('make.paws')"
 	@Rscript -e "devtools::install_dev_deps('paws.common')"
 	@if [ ! -x "$(command -v pandoc)" ]; then echo "Please install Pandoc. See https://pandoc.org."; fi

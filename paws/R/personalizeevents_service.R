@@ -30,7 +30,7 @@ personalizeevents <- function() {
 
 .personalizeevents$metadata <- list(
   service_name = "personalizeevents",
-  endpoints = list("*" = "personalizeevents.{region}.amazonaws.com", "cn-*" = "personalizeevents.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "personalizeevents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalizeevents.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Personalize Events",
   api_version = "2018-03-22",
   signing_name = "personalize",

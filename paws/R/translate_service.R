@@ -36,7 +36,7 @@ translate <- function() {
 
 .translate$metadata <- list(
   service_name = "translate",
-  endpoints = list("*" = "translate.{region}.amazonaws.com", "cn-*" = "translate.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "translate.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "translate.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Translate",
   api_version = "2017-07-01",
   signing_name = "translate",

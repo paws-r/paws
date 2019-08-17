@@ -81,7 +81,7 @@ eventbridge <- function() {
 
 .eventbridge$metadata <- list(
   service_name = "eventbridge",
-  endpoints = list("*" = "eventbridge.{region}.amazonaws.com", "cn-*" = "eventbridge.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "eventbridge.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eventbridge.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EventBridge",
   api_version = "2015-10-07",
   signing_name = NULL,

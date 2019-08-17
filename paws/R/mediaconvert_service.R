@@ -55,7 +55,7 @@ mediaconvert <- function() {
 
 .mediaconvert$metadata <- list(
   service_name = "mediaconvert",
-  endpoints = list("*" = "mediaconvert.{region}.amazonaws.com", "cn-*" = "mediaconvert.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "mediaconvert.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediaconvert.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "MediaConvert",
   api_version = "2017-08-29",
   signing_name = "mediaconvert",

@@ -65,7 +65,7 @@ batch <- function() {
 
 .batch$metadata <- list(
   service_name = "batch",
-  endpoints = list("*" = "batch.{region}.amazonaws.com", "cn-*" = "batch.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Batch",
   api_version = "2016-08-10",
   signing_name = NULL,

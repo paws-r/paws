@@ -203,7 +203,7 @@ organizations <- function() {
 
 .organizations$metadata <- list(
   service_name = "organizations",
-  endpoints = list("*" = "organizations.{region}.amazonaws.com", "cn-*" = "organizations.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Organizations",
   api_version = "2016-11-28",
   signing_name = NULL,

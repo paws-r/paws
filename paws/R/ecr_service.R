@@ -68,7 +68,7 @@ ecr <- function() {
 
 .ecr$metadata <- list(
   service_name = "ecr",
-  endpoints = list("*" = "ecr.{region}.amazonaws.com", "cn-*" = "ecr.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ecr.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecr.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ECR",
   api_version = "2015-09-21",
   signing_name = "ecr",

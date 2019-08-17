@@ -55,7 +55,7 @@ route53domains <- function() {
 
 .route53domains$metadata <- list(
   service_name = "route53domains",
-  endpoints = list("*" = "route53domains.{region}.amazonaws.com", "cn-*" = "route53domains.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "route53domains.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53domains.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Route 53 Domains",
   api_version = "2014-05-15",
   signing_name = NULL,

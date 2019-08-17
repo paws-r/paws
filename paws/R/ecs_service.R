@@ -96,7 +96,7 @@ ecs <- function() {
 
 .ecs$metadata <- list(
   service_name = "ecs",
-  endpoints = list("*" = "ecs.{region}.amazonaws.com", "cn-*" = "ecs.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
   signing_name = NULL,

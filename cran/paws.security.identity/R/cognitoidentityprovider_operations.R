@@ -2012,10 +2012,12 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' your Lambda function.
 #' 
 #' For more information on using the Lambda API to add permission, see
-#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html).
+#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html)
+#' .
 #' 
 #' For adding permission using the AWS CLI, see
-#' [add-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html).
+#' [add-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html)
+#' .
 #' @param AutoVerifiedAttributes The attributes to be auto-verified. Possible values: **email**,
 #' **phone\\_number**.
 #' @param AliasAttributes Attributes supported as an alias for this user pool. Possible values:

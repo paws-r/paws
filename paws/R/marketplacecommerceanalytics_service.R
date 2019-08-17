@@ -32,7 +32,7 @@ marketplacecommerceanalytics <- function() {
 
 .marketplacecommerceanalytics$metadata <- list(
   service_name = "marketplacecommerceanalytics",
-  endpoints = list("*" = "marketplacecommerceanalytics.{region}.amazonaws.com", "cn-*" = "marketplacecommerceanalytics.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Marketplace Commerce Analytics",
   api_version = "2015-07-01",
   signing_name = "marketplacecommerceanalytics",

@@ -114,7 +114,7 @@ ses <- function() {
 
 .ses$metadata <- list(
   service_name = "email",
-  endpoints = list("*" = "email.{region}.amazonaws.com", "cn-*" = "email.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SES",
   api_version = "2010-12-01",
   signing_name = "ses",

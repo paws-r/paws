@@ -10,7 +10,7 @@ NULL
 #' You can use ACM to manage SSL/TLS certificates for your AWS-based
 #' websites and applications. For general information about using ACM, see
 #' the [*AWS Certificate Manager User
-#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/).
+#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/) .
 #'
 #' @examples
 #' \donttest{svc <- acm()
@@ -48,7 +48,7 @@ acm <- function() {
 
 .acm$metadata <- list(
   service_name = "acm",
-  endpoints = list("*" = "acm.{region}.amazonaws.com", "cn-*" = "acm.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "acm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ACM",
   api_version = "2015-12-08",
   signing_name = NULL,

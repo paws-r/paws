@@ -26,10 +26,12 @@ make an extra call to add permission for these event sources to invoke
 your Lambda function.
 
 For more information on using the Lambda API to add permission, see
-\href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission}
+.
 
 For adding permission using the AWS CLI, see
-\href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission}.}
+\href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission}
+.}
 
 \item{AutoVerifiedAttributes}{The attributes to be auto-verified. Possible values: \strong{email},
 \strong{phone\_number}.}

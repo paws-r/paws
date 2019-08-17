@@ -30,7 +30,7 @@ kinesisvideomedia <- function() {
 
 .kinesisvideomedia$metadata <- list(
   service_name = "kinesisvideo",
-  endpoints = list("*" = "kinesisvideo.{region}.amazonaws.com", "cn-*" = "kinesisvideo.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Kinesis Video Media",
   api_version = "2017-09-30",
   signing_name = NULL,

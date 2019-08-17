@@ -10,7 +10,7 @@ kms()
 AWS Key Management Service (AWS KMS) is an encryption and key management
 web service. This guide describes the AWS KMS operations that you can
 call programmatically. For general information about AWS KMS, see the
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/}{AWS Key Management Service DeveloperGuide}.
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/}{AWS Key Management Service DeveloperGuide} .
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, macOS, Android,

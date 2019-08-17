@@ -71,7 +71,7 @@ cognitoidentity <- function() {
 
 .cognitoidentity$metadata <- list(
   service_name = "cognito-identity",
-  endpoints = list("*" = "cognito-identity.{region}.amazonaws.com", "cn-*" = "cognito-identity.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Cognito Identity",
   api_version = "2014-06-30",
   signing_name = NULL,

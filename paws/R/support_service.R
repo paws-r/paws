@@ -101,7 +101,7 @@ support <- function() {
 
 .support$metadata <- list(
   service_name = "support",
-  endpoints = list("*" = "support.{region}.amazonaws.com", "cn-*" = "support.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "support.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Support",
   api_version = "2013-04-15",
   signing_name = NULL,

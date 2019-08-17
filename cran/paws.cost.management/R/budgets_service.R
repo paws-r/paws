@@ -88,7 +88,7 @@ budgets <- function() {
 
 .budgets$metadata <- list(
   service_name = "budgets",
-  endpoints = list("*" = "https://budgets.amazonaws.com"),
+  endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Budgets",
   api_version = "2016-10-20",
   signing_name = NULL,

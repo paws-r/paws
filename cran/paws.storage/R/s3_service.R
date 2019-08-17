@@ -120,7 +120,7 @@ s3 <- function() {
 
 .s3$metadata <- list(
   service_name = "s3",
-  endpoints = list("us-gov-west-1" = "s3.{region}.amazonaws.com", "us-west-1" = "s3.{region}.amazonaws.com", "us-west-2" = "s3.{region}.amazonaws.com", "eu-west-1" = "s3.{region}.amazonaws.com", "ap-southeast-1" = "s3.{region}.amazonaws.com", "ap-southeast-2" = "s3.{region}.amazonaws.com", "ap-northeast-1" = "s3.{region}.amazonaws.com", "sa-east-1" = "s3.{region}.amazonaws.com", "us-east-1" = "s3.amazonaws.com"),
+  endpoints = list("us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE), "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "S3",
   api_version = "2006-03-01",
   signing_name = NULL,

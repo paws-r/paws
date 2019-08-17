@@ -51,7 +51,7 @@ xray <- function() {
 
 .xray$metadata <- list(
   service_name = "xray",
-  endpoints = list("*" = "xray.{region}.amazonaws.com", "cn-*" = "xray.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "xray.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "xray.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "XRay",
   api_version = "2016-04-12",
   signing_name = NULL,

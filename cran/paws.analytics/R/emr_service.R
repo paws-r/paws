@@ -61,7 +61,7 @@ emr <- function() {
 
 .emr$metadata <- list(
   service_name = "elasticmapreduce",
-  endpoints = list("*" = "elasticmapreduce.{region}.amazonaws.com", "cn-*" = "elasticmapreduce.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EMR",
   api_version = "2009-03-31",
   signing_name = NULL,

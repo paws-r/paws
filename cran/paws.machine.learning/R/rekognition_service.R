@@ -78,7 +78,7 @@ rekognition <- function() {
 
 .rekognition$metadata <- list(
   service_name = "rekognition",
-  endpoints = list("*" = "rekognition.{region}.amazonaws.com", "cn-*" = "rekognition.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Rekognition",
   api_version = "2016-06-27",
   signing_name = NULL,

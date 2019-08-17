@@ -68,7 +68,7 @@ cloudwatch <- function() {
 
 .cloudwatch$metadata <- list(
   service_name = "monitoring",
-  endpoints = list("*" = "monitoring.{region}.amazonaws.com", "cn-*" = "monitoring.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CloudWatch",
   api_version = "2010-08-01",
   signing_name = NULL,

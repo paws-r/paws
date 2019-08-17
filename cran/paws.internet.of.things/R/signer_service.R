@@ -47,7 +47,7 @@ signer <- function() {
 
 .signer$metadata <- list(
   service_name = "signer",
-  endpoints = list("*" = "signer.{region}.amazonaws.com", "cn-*" = "signer.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "signer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "signer.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "signer",
   api_version = "2017-08-25",
   signing_name = "signer",

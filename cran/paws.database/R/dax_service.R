@@ -57,7 +57,7 @@ dax <- function() {
 
 .dax$metadata <- list(
   service_name = "dax",
-  endpoints = list("*" = "dax.{region}.amazonaws.com", "cn-*" = "dax.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "dax.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dax.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "DAX",
   api_version = "2017-04-19",
   signing_name = NULL,

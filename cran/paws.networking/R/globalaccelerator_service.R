@@ -133,7 +133,7 @@ globalaccelerator <- function() {
 
 .globalaccelerator$metadata <- list(
   service_name = "globalaccelerator",
-  endpoints = list("*" = "globalaccelerator.{region}.amazonaws.com", "cn-*" = "globalaccelerator.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Global Accelerator",
   api_version = "2018-08-08",
   signing_name = "globalaccelerator",

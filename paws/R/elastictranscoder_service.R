@@ -49,7 +49,7 @@ elastictranscoder <- function() {
 
 .elastictranscoder$metadata <- list(
   service_name = "elastictranscoder",
-  endpoints = list("*" = "elastictranscoder.{region}.amazonaws.com", "cn-*" = "elastictranscoder.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Elastic Transcoder",
   api_version = "2012-09-25",
   signing_name = NULL,

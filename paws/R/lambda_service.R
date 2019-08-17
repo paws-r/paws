@@ -83,7 +83,7 @@ lambda <- function() {
 
 .lambda$metadata <- list(
   service_name = "lambda",
-  endpoints = list("*" = "lambda.{region}.amazonaws.com", "cn-*" = "lambda.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Lambda",
   api_version = "2015-03-31",
   signing_name = NULL,

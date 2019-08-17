@@ -76,7 +76,7 @@ backup <- function() {
 
 .backup$metadata <- list(
   service_name = "backup",
-  endpoints = list("*" = "backup.{region}.amazonaws.com", "cn-*" = "backup.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "backup.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "backup.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Backup",
   api_version = "2018-11-15",
   signing_name = NULL,

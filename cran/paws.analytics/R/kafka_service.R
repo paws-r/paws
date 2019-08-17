@@ -47,7 +47,7 @@ kafka <- function() {
 
 .kafka$metadata <- list(
   service_name = "kafka",
-  endpoints = list("*" = "kafka.{region}.amazonaws.com", "cn-*" = "kafka.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "kafka.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kafka.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Kafka",
   api_version = "2018-11-14",
   signing_name = "kafka",

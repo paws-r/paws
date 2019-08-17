@@ -266,7 +266,7 @@ codecommit <- function() {
 
 .codecommit$metadata <- list(
   service_name = "codecommit",
-  endpoints = list("*" = "codecommit.{region}.amazonaws.com", "cn-*" = "codecommit.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CodeCommit",
   api_version = "2015-04-13",
   signing_name = NULL,

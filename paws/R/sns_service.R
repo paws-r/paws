@@ -78,7 +78,7 @@ sns <- function() {
 
 .sns$metadata <- list(
   service_name = "sns",
-  endpoints = list("*" = "sns.{region}.amazonaws.com", "cn-*" = "sns.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SNS",
   api_version = "2010-03-31",
   signing_name = NULL,

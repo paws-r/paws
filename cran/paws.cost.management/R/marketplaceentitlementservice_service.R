@@ -42,7 +42,7 @@ marketplaceentitlementservice <- function() {
 
 .marketplaceentitlementservice$metadata <- list(
   service_name = "entitlement.marketplace",
-  endpoints = list("*" = "entitlement.marketplace.{region}.amazonaws.com", "cn-*" = "entitlement.marketplace.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Marketplace Entitlement Service",
   api_version = "2017-01-11",
   signing_name = "aws-marketplace",

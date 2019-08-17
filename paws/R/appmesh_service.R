@@ -75,7 +75,7 @@ appmesh <- function() {
 
 .appmesh$metadata <- list(
   service_name = "appmesh",
-  endpoints = list("*" = "appmesh.{region}.amazonaws.com", "cn-*" = "appmesh.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "appmesh.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appmesh.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "App Mesh",
   api_version = "2019-01-25",
   signing_name = "appmesh",

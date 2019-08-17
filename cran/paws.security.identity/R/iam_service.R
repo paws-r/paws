@@ -235,7 +235,7 @@ iam <- function() {
 
 .iam$metadata <- list(
   service_name = "iam",
-  endpoints = list("*" = "https://iam.amazonaws.com", "us-gov-*" = "iam.us-gov.amazonaws.com"),
+  endpoints = list("*" = list(endpoint = "https://iam.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "iam.us-gov.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iam.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "IAM",
   api_version = "2010-05-08",
   signing_name = NULL,

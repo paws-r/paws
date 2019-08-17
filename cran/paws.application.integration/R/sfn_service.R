@@ -72,7 +72,7 @@ sfn <- function() {
 
 .sfn$metadata <- list(
   service_name = "states",
-  endpoints = list("*" = "states.{region}.amazonaws.com", "cn-*" = "states.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "states.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "states.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SFN",
   api_version = "2016-11-23",
   signing_name = NULL,

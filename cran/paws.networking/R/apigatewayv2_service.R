@@ -89,7 +89,7 @@ apigatewayv2 <- function() {
 
 .apigatewayv2$metadata <- list(
   service_name = "apigatewayv2",
-  endpoints = list("*" = "apigatewayv2.{region}.amazonaws.com", "cn-*" = "apigatewayv2.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "apigatewayv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigatewayv2.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ApiGatewayV2",
   api_version = "2018-11-29",
   signing_name = "apigateway",

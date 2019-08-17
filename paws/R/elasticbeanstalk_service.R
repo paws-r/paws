@@ -94,7 +94,7 @@ elasticbeanstalk <- function() {
 
 .elasticbeanstalk$metadata <- list(
   service_name = "elasticbeanstalk",
-  endpoints = list("*" = "elasticbeanstalk.{region}.amazonaws.com", "cn-*" = "elasticbeanstalk.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Elastic Beanstalk",
   api_version = "2010-12-01",
   signing_name = NULL,

@@ -173,7 +173,7 @@ storagegateway <- function() {
 
 .storagegateway$metadata <- list(
   service_name = "storagegateway",
-  endpoints = list("*" = "storagegateway.{region}.amazonaws.com", "cn-*" = "storagegateway.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Storage Gateway",
   api_version = "2013-06-30",
   signing_name = NULL,

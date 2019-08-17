@@ -57,7 +57,7 @@ snowball <- function() {
 
 .snowball$metadata <- list(
   service_name = "snowball",
-  endpoints = list("*" = "snowball.{region}.amazonaws.com", "cn-*" = "snowball.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "snowball.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "snowball.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Snowball",
   api_version = "2016-06-30",
   signing_name = NULL,

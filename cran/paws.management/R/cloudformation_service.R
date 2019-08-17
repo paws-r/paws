@@ -95,7 +95,7 @@ cloudformation <- function() {
 
 .cloudformation$metadata <- list(
   service_name = "cloudformation",
-  endpoints = list("*" = "cloudformation.{region}.amazonaws.com", "cn-*" = "cloudformation.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cloudformation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudformation.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CloudFormation",
   api_version = "2010-05-15",
   signing_name = NULL,

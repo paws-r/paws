@@ -107,7 +107,7 @@ neptune <- function() {
 
 .neptune$metadata <- list(
   service_name = "rds",
-  endpoints = list("*" = "rds.{region}.amazonaws.com", "cn-*" = "rds.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Neptune",
   api_version = "2014-10-31",
   signing_name = "rds",

@@ -116,7 +116,7 @@ waf <- function() {
 
 .waf$metadata <- list(
   service_name = "waf",
-  endpoints = list("*" = "https://waf.amazonaws.com"),
+  endpoints = list("*" = list(endpoint = "https://waf.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "waf.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "WAF",
   api_version = "2015-08-24",
   signing_name = NULL,

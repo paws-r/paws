@@ -88,7 +88,7 @@ sqs <- function() {
 
 .sqs$metadata <- list(
   service_name = "sqs",
-  endpoints = list("*" = "sqs.{region}.amazonaws.com", "cn-*" = "sqs.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "sqs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sqs.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SQS",
   api_version = "2012-11-05",
   signing_name = NULL,

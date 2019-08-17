@@ -52,7 +52,7 @@ costexplorer <- function() {
 
 .costexplorer$metadata <- list(
   service_name = "ce",
-  endpoints = list("*" = "ce.{region}.amazonaws.com", "cn-*" = "ce.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ce.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Cost Explorer",
   api_version = "2017-10-25",
   signing_name = "ce",

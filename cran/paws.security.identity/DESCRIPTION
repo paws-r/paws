@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: Amazon Web Services Security, Identity, & Compliance APIs
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,10 +12,10 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services security, identity, and
-    compliance APIs, including the 'Identity & Access Management' ('IAM')
-    service for managing access to services and resources, and more
-    <https://aws.amazon.com/>.
+Description: Interface to Amazon Web Services security,
+    identity, and compliance APIs, including the 'Identity & Access
+    Management' ('IAM') service for managing access to services and
+    resources, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
     paws.common
@@ -23,7 +23,8 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
 RoxygenNote: 6.1.1
 Collate: 
     'acm_service.R'

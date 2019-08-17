@@ -40,7 +40,7 @@ simpledb <- function() {
 
 .simpledb$metadata <- list(
   service_name = "sdb",
-  endpoints = list("us-east-1" = "sdb.amazonaws.com", "*" = "sdb.{region}.amazonaws.com"),
+  endpoints = list("us-east-1" = list(endpoint = "sdb.amazonaws.com", global = FALSE), "*" = list(endpoint = "sdb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sdb.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SimpleDB",
   api_version = "2009-04-15",
   signing_name = NULL,

@@ -103,7 +103,7 @@ workdocs <- function() {
 
 .workdocs$metadata <- list(
   service_name = "workdocs",
-  endpoints = list("*" = "workdocs.{region}.amazonaws.com", "cn-*" = "workdocs.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "workdocs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workdocs.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "WorkDocs",
   api_version = "2016-05-01",
   signing_name = NULL,

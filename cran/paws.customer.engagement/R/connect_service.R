@@ -68,7 +68,7 @@ connect <- function() {
 
 .connect$metadata <- list(
   service_name = "connect",
-  endpoints = list("*" = "connect.{region}.amazonaws.com", "cn-*" = "connect.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Connect",
   api_version = "2017-08-08",
   signing_name = "connect",

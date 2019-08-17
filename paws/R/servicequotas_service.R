@@ -59,7 +59,7 @@ servicequotas <- function() {
 
 .servicequotas$metadata <- list(
   service_name = "servicequotas",
-  endpoints = list("*" = "servicequotas.{region}.amazonaws.com", "cn-*" = "servicequotas.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Service Quotas",
   api_version = "2019-06-24",
   signing_name = NULL,

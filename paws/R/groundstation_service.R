@@ -59,7 +59,7 @@ groundstation <- function() {
 
 .groundstation$metadata <- list(
   service_name = "groundstation",
-  endpoints = list("*" = "groundstation.{region}.amazonaws.com", "cn-*" = "groundstation.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "groundstation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "groundstation.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "GroundStation",
   api_version = "2019-05-23",
   signing_name = "groundstation",

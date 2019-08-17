@@ -39,7 +39,7 @@ ec2instanceconnect <- function() {
 
 .ec2instanceconnect$metadata <- list(
   service_name = "ec2instanceconnect",
-  endpoints = list("*" = "ec2instanceconnect.{region}.amazonaws.com", "cn-*" = "ec2instanceconnect.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ec2instanceconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2instanceconnect.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EC2 Instance Connect",
   api_version = "2018-04-02",
   signing_name = NULL,

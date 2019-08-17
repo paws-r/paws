@@ -68,7 +68,7 @@ athena <- function() {
 
 .athena$metadata <- list(
   service_name = "athena",
-  endpoints = list("*" = "athena.{region}.amazonaws.com", "cn-*" = "athena.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "athena.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "athena.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Athena",
   api_version = "2017-05-18",
   signing_name = NULL,

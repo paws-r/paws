@@ -58,7 +58,7 @@ machinelearning <- function() {
 
 .machinelearning$metadata <- list(
   service_name = "machinelearning",
-  endpoints = list("*" = "machinelearning.{region}.amazonaws.com", "cn-*" = "machinelearning.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "machinelearning.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "machinelearning.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Machine Learning",
   api_version = "2014-12-12",
   signing_name = NULL,

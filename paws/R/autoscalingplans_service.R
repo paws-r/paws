@@ -50,7 +50,7 @@ autoscalingplans <- function() {
 
 .autoscalingplans$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = "autoscaling.{region}.amazonaws.com", "cn-*" = "autoscaling.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Auto Scaling Plans",
   api_version = "2018-01-06",
   signing_name = "autoscaling-plans",

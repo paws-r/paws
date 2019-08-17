@@ -53,7 +53,7 @@ licensemanager <- function() {
 
 .licensemanager$metadata <- list(
   service_name = "licensemanager",
-  endpoints = list("*" = "licensemanager.{region}.amazonaws.com", "cn-*" = "licensemanager.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "licensemanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "licensemanager.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "License Manager",
   api_version = "2018-08-01",
   signing_name = NULL,

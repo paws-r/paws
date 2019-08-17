@@ -64,7 +64,8 @@ response. Alternatively, you can use one of the AWS SDKs to access an
 API that is tailored to the programming language or platform that
 you're using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 
-This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application DiscoveryService UserGuide}.
+This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application DiscoveryService UserGuide}
+.
 }
 \section{Operations}{
 

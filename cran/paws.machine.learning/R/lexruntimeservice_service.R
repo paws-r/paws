@@ -43,7 +43,7 @@ lexruntimeservice <- function() {
 
 .lexruntimeservice$metadata <- list(
   service_name = "runtime.lex",
-  endpoints = list("*" = "runtime.lex.{region}.amazonaws.com", "cn-*" = "runtime.lex.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "runtime.lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime.lex.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Lex Runtime Service",
   api_version = "2016-11-28",
   signing_name = "lex",

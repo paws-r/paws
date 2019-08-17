@@ -52,7 +52,7 @@ mq <- function() {
 
 .mq$metadata <- list(
   service_name = "mq",
-  endpoints = list("*" = "mq.{region}.amazonaws.com", "cn-*" = "mq.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mq.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "mq",
   api_version = "2017-11-27",
   signing_name = "mq",

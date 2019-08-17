@@ -61,7 +61,7 @@ medialive <- function() {
 
 .medialive$metadata <- list(
   service_name = "medialive",
-  endpoints = list("*" = "medialive.{region}.amazonaws.com", "cn-*" = "medialive.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "medialive.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "medialive.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "MediaLive",
   api_version = "2017-10-14",
   signing_name = "medialive",

@@ -92,7 +92,7 @@ directconnect <- function() {
 
 .directconnect$metadata <- list(
   service_name = "directconnect",
-  endpoints = list("*" = "directconnect.{region}.amazonaws.com", "cn-*" = "directconnect.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "directconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "directconnect.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Direct Connect",
   api_version = "2012-10-25",
   signing_name = NULL,
