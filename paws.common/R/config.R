@@ -56,16 +56,13 @@ get_instance_metadata <- function(query_path = "") {
 # Get the name of the IAM Role from the instance meta-data
 get_iam_role <- function() {
 
-  iam_role_response <- get_instance_metadata("iam/info")
+  iam_role_response <-  get_instance_metadata("iam/security-credentials")
 
   if (is.null(iam_role_response)) return(NULL)
 
-  iam_role_response_body <- jsonlite::fromJSON(rawToChar(iam_role_response$body))
-  iam_instance_prof_arn <- iam_role_response_body$InstanceProfileArn
+  iam_role_name <- rawToChar(iam_role_response$body)
 
-  iam_role <- basename(iam_instance_prof_arn)
-
-  return(iam_role)
+  return(iam_role_name)
 }
 
 # Tries to get the region from the R environment
