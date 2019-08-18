@@ -80,27 +80,36 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }
-  endpoint <- endpoints[[get_region_pattern(region, endpoints)]]
-  endpoint <- gsub("{service}", service, endpoint, fixed = TRUE)
+  e <- endpoints[[get_region_pattern(region, endpoints)]]
+  endpoint <- gsub("{service}", service, e$endpoint, fixed = TRUE)
   endpoint <- gsub("{region}", region, endpoint, fixed = TRUE)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
-  return(endpoint)
+  signing_region <- ifelse(e$global, "us-east-1", region)
+  return(list(
+    endpoint = endpoint,
+    signing_region = signing_region
+  ))
 }
+
+
 
 # client_config returns a ClientConfig configured for the service.
 client_config <- function(service_name, endpoints) {
   s <- new_session()
   region <- s$config$region
   if (s$config$endpoint != "") {
-    url <- sprintf("https://%s", s$config$endpoint)
+    endpoint <- sprintf("https://%s", s$config$endpoint)
+    signing_region <- region
   } else {
-    url <- resolver_endpoint(service_name, region, endpoints)
+    e <- resolver_endpoint(service_name, region, endpoints)
+    endpoint <- e$endpoint
+    signing_region <- e$signing_region
   }
   c <- ClientConfig(
     config = s$config,
     handlers = s$handlers,
-    endpoint = url,
-    signing_region = region,
+    endpoint = endpoint,
+    signing_region = signing_region,
     signing_name = service_name
   )
   return(c)
