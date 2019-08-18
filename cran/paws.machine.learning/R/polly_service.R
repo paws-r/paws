@@ -46,7 +46,7 @@ polly <- function() {
 
 .polly$metadata <- list(
   service_name = "polly",
-  endpoints = list("*" = "polly.{region}.amazonaws.com", "cn-*" = "polly.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "polly.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "polly.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Polly",
   api_version = "2016-06-10",
   signing_name = NULL,

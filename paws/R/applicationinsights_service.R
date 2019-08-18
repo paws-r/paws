@@ -63,7 +63,7 @@ applicationinsights <- function() {
 
 .applicationinsights$metadata <- list(
   service_name = "applicationinsights",
-  endpoints = list("*" = "applicationinsights.{region}.amazonaws.com", "cn-*" = "applicationinsights.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "applicationinsights.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "applicationinsights.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Application Insights",
   api_version = "2018-11-25",
   signing_name = "applicationinsights",

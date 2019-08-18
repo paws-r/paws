@@ -50,7 +50,7 @@ fms <- function() {
 
 .fms$metadata <- list(
   service_name = "fms",
-  endpoints = list("*" = "fms.{region}.amazonaws.com", "cn-*" = "fms.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "fms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fms.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "FMS",
   api_version = "2018-01-01",
   signing_name = NULL,

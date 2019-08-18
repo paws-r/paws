@@ -53,7 +53,7 @@ managedblockchain <- function() {
 
 .managedblockchain$metadata <- list(
   service_name = "managedblockchain",
-  endpoints = list("*" = "managedblockchain.{region}.amazonaws.com", "cn-*" = "managedblockchain.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "managedblockchain.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "managedblockchain.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ManagedBlockchain",
   api_version = "2018-09-24",
   signing_name = "managedblockchain",

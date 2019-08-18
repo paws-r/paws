@@ -122,7 +122,7 @@ secretsmanager <- function() {
 
 .secretsmanager$metadata <- list(
   service_name = "secretsmanager",
-  endpoints = list("*" = "secretsmanager.{region}.amazonaws.com", "cn-*" = "secretsmanager.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "secretsmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "secretsmanager.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Secrets Manager",
   api_version = "2017-10-17",
   signing_name = "secretsmanager",

@@ -65,7 +65,7 @@ acmpca <- function() {
 
 .acmpca$metadata <- list(
   service_name = "acm-pca",
-  endpoints = list("*" = "acm-pca.{region}.amazonaws.com", "cn-*" = "acm-pca.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ACM PCA",
   api_version = "2017-08-22",
   signing_name = NULL,

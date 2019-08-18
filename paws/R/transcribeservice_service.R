@@ -39,7 +39,7 @@ transcribeservice <- function() {
 
 .transcribeservice$metadata <- list(
   service_name = "transcribe",
-  endpoints = list("*" = "transcribe.{region}.amazonaws.com", "cn-*" = "transcribe.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "transcribe.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transcribe.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Transcribe",
   api_version = "2017-10-26",
   signing_name = "transcribe",

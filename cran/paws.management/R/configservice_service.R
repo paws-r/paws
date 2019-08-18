@@ -113,7 +113,7 @@ configservice <- function() {
 
 .configservice$metadata <- list(
   service_name = "config",
-  endpoints = list("*" = "config.{region}.amazonaws.com", "cn-*" = "config.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Config Service",
   api_version = "2014-11-12",
   signing_name = NULL,

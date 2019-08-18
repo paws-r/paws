@@ -77,7 +77,7 @@ sms <- function() {
 
 .sms$metadata <- list(
   service_name = "sms",
-  endpoints = list("*" = "sms.{region}.amazonaws.com", "cn-*" = "sms.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "sms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SMS",
   api_version = "2016-10-24",
   signing_name = NULL,

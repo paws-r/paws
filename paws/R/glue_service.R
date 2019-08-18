@@ -139,7 +139,7 @@ glue <- function() {
 
 .glue$metadata <- list(
   service_name = "glue",
-  endpoints = list("*" = "glue.{region}.amazonaws.com", "cn-*" = "glue.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "glue.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "glue.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Glue",
   api_version = "2017-03-31",
   signing_name = NULL,

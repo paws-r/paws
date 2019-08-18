@@ -89,7 +89,7 @@ securityhub <- function() {
 
 .securityhub$metadata <- list(
   service_name = "securityhub",
-  endpoints = list("*" = "securityhub.{region}.amazonaws.com", "cn-*" = "securityhub.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "securityhub.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "securityhub.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SecurityHub",
   api_version = "2018-10-26",
   signing_name = "securityhub",

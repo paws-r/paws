@@ -42,7 +42,7 @@ mediapackagevod <- function() {
 
 .mediapackagevod$metadata <- list(
   service_name = "mediapackagevod",
-  endpoints = list("*" = "mediapackagevod.{region}.amazonaws.com", "cn-*" = "mediapackagevod.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "mediapackagevod.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediapackagevod.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "MediaPackage Vod",
   api_version = "2018-11-07",
   signing_name = "mediapackage-vod",

@@ -71,7 +71,7 @@ datapipeline <- function() {
 
 .datapipeline$metadata <- list(
   service_name = "datapipeline",
-  endpoints = list("*" = "datapipeline.{region}.amazonaws.com", "cn-*" = "datapipeline.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "datapipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datapipeline.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Data Pipeline",
   api_version = "2012-10-29",
   signing_name = NULL,

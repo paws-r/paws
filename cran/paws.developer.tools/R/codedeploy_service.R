@@ -154,7 +154,7 @@ codedeploy <- function() {
 
 .codedeploy$metadata <- list(
   service_name = "codedeploy",
-  endpoints = list("*" = "codedeploy.{region}.amazonaws.com", "cn-*" = "codedeploy.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CodeDeploy",
   api_version = "2014-10-06",
   signing_name = NULL,

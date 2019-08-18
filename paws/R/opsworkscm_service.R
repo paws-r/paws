@@ -112,7 +112,7 @@ opsworkscm <- function() {
 
 .opsworkscm$metadata <- list(
   service_name = "opsworks-cm",
-  endpoints = list("*" = "opsworks-cm.{region}.amazonaws.com", "cn-*" = "opsworks-cm.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "OpsWorksCM",
   api_version = "2016-11-01",
   signing_name = "opsworks-cm",

@@ -91,7 +91,7 @@ guardduty <- function() {
 
 .guardduty$metadata <- list(
   service_name = "guardduty",
-  endpoints = list("*" = "guardduty.{region}.amazonaws.com", "cn-*" = "guardduty.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "guardduty.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "guardduty.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "GuardDuty",
   api_version = "2017-11-28",
   signing_name = "guardduty",

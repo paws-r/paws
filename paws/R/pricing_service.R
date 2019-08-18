@@ -60,7 +60,7 @@ pricing <- function() {
 
 .pricing$metadata <- list(
   service_name = "api.pricing",
-  endpoints = list("*" = "api.pricing.{region}.amazonaws.com", "cn-*" = "api.pricing.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "api.pricing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.pricing.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Pricing",
   api_version = "2017-10-15",
   signing_name = "pricing",

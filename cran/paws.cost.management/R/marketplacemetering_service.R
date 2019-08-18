@@ -78,7 +78,7 @@ marketplacemetering <- function() {
 
 .marketplacemetering$metadata <- list(
   service_name = "metering.marketplace",
-  endpoints = list("*" = "metering.marketplace.{region}.amazonaws.com", "cn-*" = "metering.marketplace.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Marketplace Metering",
   api_version = "2016-01-14",
   signing_name = "aws-marketplace",

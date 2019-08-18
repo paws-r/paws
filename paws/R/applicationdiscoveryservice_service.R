@@ -67,7 +67,8 @@ NULL
 #' 
 #' This guide is intended for use with the [*AWS Application Discovery
 #' Service User
-#' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/).
+#' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/)
+#' .
 #'
 #' @examples
 #' \donttest{svc <- applicationdiscoveryservice()
@@ -117,7 +118,7 @@ applicationdiscoveryservice <- function() {
 
 .applicationdiscoveryservice$metadata <- list(
   service_name = "discovery",
-  endpoints = list("*" = "discovery.{region}.amazonaws.com", "cn-*" = "discovery.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "discovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "discovery.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Application Discovery Service",
   api_version = "2015-11-01",
   signing_name = NULL,

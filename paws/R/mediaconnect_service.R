@@ -47,7 +47,7 @@ mediaconnect <- function() {
 
 .mediaconnect$metadata <- list(
   service_name = "mediaconnect",
-  endpoints = list("*" = "mediaconnect.{region}.amazonaws.com", "cn-*" = "mediaconnect.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "mediaconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediaconnect.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "MediaConnect",
   api_version = "2018-11-14",
   signing_name = "mediaconnect",

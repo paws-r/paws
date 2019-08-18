@@ -145,7 +145,7 @@ lightsail <- function() {
 
 .lightsail$metadata <- list(
   service_name = "lightsail",
-  endpoints = list("*" = "lightsail.{region}.amazonaws.com", "cn-*" = "lightsail.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "lightsail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lightsail.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Lightsail",
   api_version = "2016-11-28",
   signing_name = NULL,

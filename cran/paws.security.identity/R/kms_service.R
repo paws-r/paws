@@ -9,7 +9,7 @@ NULL
 #' web service. This guide describes the AWS KMS operations that you can
 #' call programmatically. For general information about AWS KMS, see the
 #' [*AWS Key Management Service Developer
-#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/).
+#' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms (Java, Ruby, .Net, macOS, Android,
@@ -152,7 +152,7 @@ kms <- function() {
 
 .kms$metadata <- list(
   service_name = "kms",
-  endpoints = list("*" = "kms.{region}.amazonaws.com", "cn-*" = "kms.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "KMS",
   api_version = "2014-11-01",
   signing_name = NULL,

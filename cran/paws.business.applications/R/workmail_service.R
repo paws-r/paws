@@ -97,7 +97,7 @@ workmail <- function() {
 
 .workmail$metadata <- list(
   service_name = "workmail",
-  endpoints = list("*" = "workmail.{region}.amazonaws.com", "cn-*" = "workmail.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "workmail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmail.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "WorkMail",
   api_version = "2017-10-01",
   signing_name = NULL,

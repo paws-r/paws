@@ -158,8 +158,9 @@ AAC) or A\_MS/ACM (for G.711).
 \item Data retention must be greater than 0.
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
-format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+format. For more information, see MPEG-4 specification ISO/IEC
+14496-15. For information about adapting stream data to a given
+format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }

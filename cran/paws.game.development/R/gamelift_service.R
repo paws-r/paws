@@ -140,7 +140,7 @@ gamelift <- function() {
 
 .gamelift$metadata <- list(
   service_name = "gamelift",
-  endpoints = list("*" = "gamelift.{region}.amazonaws.com", "cn-*" = "gamelift.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "gamelift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "gamelift.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "GameLift",
   api_version = "2015-10-01",
   signing_name = NULL,

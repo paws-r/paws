@@ -25,7 +25,7 @@ test_that("new_handlers", {
 test_that("new_service", {
   metadata <- list(
     service_name = "foo",
-    endpoints = list("region" = "endpoint"),
+    endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
     service_id = "bar",
     api_version = "1",
     signing_name = "foobar",
@@ -49,7 +49,7 @@ test_that("new_service", {
 test_that("new_service adds customizations", {
   metadata <- list(
     service_name = "dynamodb",
-    endpoints = list("*" = "dynamodb.{region}.amazonaws.com"),
+    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE)),
     service_id = "DynamoDB",
     api_version = "2012-08-10",
     signing_name = NULL,

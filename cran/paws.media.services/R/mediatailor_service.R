@@ -47,7 +47,7 @@ mediatailor <- function() {
 
 .mediatailor$metadata <- list(
   service_name = "api.mediatailor",
-  endpoints = list("*" = "api.mediatailor.{region}.amazonaws.com", "cn-*" = "api.mediatailor.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "MediaTailor",
   api_version = "2018-04-23",
   signing_name = "mediatailor",

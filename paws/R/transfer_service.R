@@ -58,7 +58,7 @@ transfer <- function() {
 
 .transfer$metadata <- list(
   service_name = "transfer",
-  endpoints = list("*" = "transfer.{region}.amazonaws.com", "cn-*" = "transfer.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "transfer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transfer.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Transfer",
   api_version = "2018-11-05",
   signing_name = "transfer",

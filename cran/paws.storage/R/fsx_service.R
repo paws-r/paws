@@ -49,7 +49,7 @@ fsx <- function() {
 
 .fsx$metadata <- list(
   service_name = "fsx",
-  endpoints = list("*" = "fsx.{region}.amazonaws.com", "cn-*" = "fsx.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "fsx.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fsx.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "FSx",
   api_version = "2018-03-01",
   signing_name = NULL,

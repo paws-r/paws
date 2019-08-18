@@ -124,7 +124,7 @@ codebuild <- function() {
 
 .codebuild$metadata <- list(
   service_name = "codebuild",
-  endpoints = list("*" = "codebuild.{region}.amazonaws.com", "cn-*" = "codebuild.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CodeBuild",
   api_version = "2016-10-06",
   signing_name = NULL,

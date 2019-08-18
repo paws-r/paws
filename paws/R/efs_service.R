@@ -58,7 +58,7 @@ efs <- function() {
 
 .efs$metadata <- list(
   service_name = "elasticfilesystem",
-  endpoints = list("*" = "elasticfilesystem.{region}.amazonaws.com", "cn-*" = "elasticfilesystem.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EFS",
   api_version = "2015-02-01",
   signing_name = NULL,

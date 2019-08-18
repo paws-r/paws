@@ -38,7 +38,7 @@ textract <- function() {
 
 .textract$metadata <- list(
   service_name = "textract",
-  endpoints = list("*" = "textract.{region}.amazonaws.com", "cn-*" = "textract.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "textract.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "textract.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Textract",
   api_version = "2018-06-27",
   signing_name = NULL,

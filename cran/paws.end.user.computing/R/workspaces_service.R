@@ -66,7 +66,7 @@ workspaces <- function() {
 
 .workspaces$metadata <- list(
   service_name = "workspaces",
-  endpoints = list("*" = "workspaces.{region}.amazonaws.com", "cn-*" = "workspaces.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "WorkSpaces",
   api_version = "2015-04-08",
   signing_name = NULL,

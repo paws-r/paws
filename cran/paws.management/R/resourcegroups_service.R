@@ -77,7 +77,7 @@ resourcegroups <- function() {
 
 .resourcegroups$metadata <- list(
   service_name = "resource-groups",
-  endpoints = list("*" = "resource-groups.{region}.amazonaws.com", "cn-*" = "resource-groups.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "resource-groups.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-groups.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Resource Groups",
   api_version = "2017-11-27",
   signing_name = "resource-groups",

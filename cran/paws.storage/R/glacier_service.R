@@ -101,7 +101,7 @@ glacier <- function() {
 
 .glacier$metadata <- list(
   service_name = "glacier",
-  endpoints = list("*" = "glacier.{region}.amazonaws.com", "cn-*" = "glacier.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "glacier.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "glacier.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Glacier",
   api_version = "2012-06-01",
   signing_name = NULL,

@@ -64,7 +64,7 @@ ram <- function() {
 
 .ram$metadata <- list(
   service_name = "ram",
-  endpoints = list("*" = "ram.{region}.amazonaws.com", "cn-*" = "ram.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "ram.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ram.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "RAM",
   api_version = "2018-01-04",
   signing_name = NULL,

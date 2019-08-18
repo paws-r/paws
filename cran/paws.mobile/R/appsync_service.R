@@ -67,7 +67,7 @@ appsync <- function() {
 
 .appsync$metadata <- list(
   service_name = "appsync",
-  endpoints = list("*" = "appsync.{region}.amazonaws.com", "cn-*" = "appsync.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "appsync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appsync.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "AppSync",
   api_version = "2017-07-25",
   signing_name = "appsync",

@@ -31,7 +31,7 @@ sagemakerruntime <- function() {
 
 .sagemakerruntime$metadata <- list(
   service_name = "runtime.sagemaker",
-  endpoints = list("*" = "runtime.sagemaker.{region}.amazonaws.com", "cn-*" = "runtime.sagemaker.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SageMaker Runtime",
   api_version = "2017-05-13",
   signing_name = "sagemaker",

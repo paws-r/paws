@@ -80,7 +80,7 @@ inspector <- function() {
 
 .inspector$metadata <- list(
   service_name = "inspector",
-  endpoints = list("*" = "inspector.{region}.amazonaws.com", "cn-*" = "inspector.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "inspector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "inspector.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Inspector",
   api_version = "2016-02-16",
   signing_name = NULL,

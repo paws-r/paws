@@ -137,7 +137,7 @@ sts <- function() {
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("*" = "https://sts.amazonaws.com", "us-gov-*" = "sts.{region}.amazonaws.com"),
+  endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "STS",
   api_version = "2011-06-15",
   signing_name = NULL,

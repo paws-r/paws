@@ -107,7 +107,7 @@ pinpoint <- function() {
 
 .pinpoint$metadata <- list(
   service_name = "pinpoint",
-  endpoints = list("*" = "pinpoint.{region}.amazonaws.com", "cn-*" = "pinpoint.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "pinpoint.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pinpoint.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Pinpoint",
   api_version = "2016-12-01",
   signing_name = "mobiletargeting",

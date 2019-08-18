@@ -75,7 +75,7 @@ serverlessapplicationrepository <- function() {
 
 .serverlessapplicationrepository$metadata <- list(
   service_name = "serverlessrepo",
-  endpoints = list("*" = "serverlessrepo.{region}.amazonaws.com", "cn-*" = "serverlessrepo.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ServerlessApplicationRepository",
   api_version = "2017-09-08",
   signing_name = "serverlessrepo",

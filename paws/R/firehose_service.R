@@ -47,7 +47,7 @@ firehose <- function() {
 
 .firehose$metadata <- list(
   service_name = "firehose",
-  endpoints = list("*" = "firehose.{region}.amazonaws.com", "cn-*" = "firehose.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Firehose",
   api_version = "2015-08-04",
   signing_name = NULL,

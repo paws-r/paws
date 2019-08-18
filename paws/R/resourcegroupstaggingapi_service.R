@@ -231,7 +231,7 @@ resourcegroupstaggingapi <- function() {
 
 .resourcegroupstaggingapi$metadata <- list(
   service_name = "tagging",
-  endpoints = list("*" = "tagging.{region}.amazonaws.com", "cn-*" = "tagging.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Resource Groups Tagging API",
   api_version = "2017-01-26",
   signing_name = NULL,

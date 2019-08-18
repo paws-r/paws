@@ -33,7 +33,7 @@ comprehendmedical <- function() {
 
 .comprehendmedical$metadata <- list(
   service_name = "comprehendmedical",
-  endpoints = list("*" = "comprehendmedical.{region}.amazonaws.com", "cn-*" = "comprehendmedical.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ComprehendMedical",
   api_version = "2018-10-30",
   signing_name = "comprehendmedical",

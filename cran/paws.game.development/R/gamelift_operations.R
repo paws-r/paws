@@ -298,9 +298,10 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' 
 #' When creating a Realtime Servers fleet, we recommend using a minimal
 #' version of the Realtime script (see this [working code
-#' example](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples)).
-#' This will make it much easier to troubleshoot any fleet creation issues.
-#' Once the fleet is active, you can update your Realtime script as needed.
+#' example](https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples)
+#' ). This will make it much easier to troubleshoot any fleet creation
+#' issues. Once the fleet is active, you can update your Realtime script as
+#' needed.
 #' 
 #' If the `CreateFleet` call is successful, Amazon GameLift performs the
 #' following tasks. You can track the process of a fleet by checking the

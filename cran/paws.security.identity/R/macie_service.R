@@ -43,7 +43,7 @@ macie <- function() {
 
 .macie$metadata <- list(
   service_name = "macie",
-  endpoints = list("*" = "macie.{region}.amazonaws.com", "cn-*" = "macie.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "macie.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "macie.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Macie",
   api_version = "2017-12-19",
   signing_name = NULL,

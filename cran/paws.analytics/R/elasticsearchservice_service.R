@@ -61,7 +61,7 @@ elasticsearchservice <- function() {
 
 .elasticsearchservice$metadata <- list(
   service_name = "es",
-  endpoints = list("*" = "es.{region}.amazonaws.com", "cn-*" = "es.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Elasticsearch Service",
   api_version = "2015-01-01",
   signing_name = NULL,

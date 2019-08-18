@@ -202,7 +202,7 @@ codepipeline <- function() {
 
 .codepipeline$metadata <- list(
   service_name = "codepipeline",
-  endpoints = list("*" = "codepipeline.{region}.amazonaws.com", "cn-*" = "codepipeline.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "CodePipeline",
   api_version = "2015-07-09",
   signing_name = NULL,

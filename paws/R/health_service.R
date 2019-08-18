@@ -79,7 +79,7 @@ health <- function() {
 
 .health$metadata <- list(
   service_name = "health",
-  endpoints = list("*" = "health.{region}.amazonaws.com", "cn-*" = "health.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "health.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "health.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Health",
   api_version = "2016-08-04",
   signing_name = NULL,

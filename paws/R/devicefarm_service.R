@@ -104,7 +104,7 @@ devicefarm <- function() {
 
 .devicefarm$metadata <- list(
   service_name = "devicefarm",
-  endpoints = list("*" = "devicefarm.{region}.amazonaws.com", "cn-*" = "devicefarm.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "devicefarm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "devicefarm.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Device Farm",
   api_version = "2015-06-23",
   signing_name = NULL,

@@ -56,7 +56,7 @@ shield <- function() {
 
 .shield$metadata <- list(
   service_name = "shield",
-  endpoints = list("*" = "shield.{region}.amazonaws.com", "cn-*" = "shield.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "shield.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "shield.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Shield",
   api_version = "2016-06-02",
   signing_name = NULL,

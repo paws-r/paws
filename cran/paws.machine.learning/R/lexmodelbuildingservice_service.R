@@ -72,7 +72,7 @@ lexmodelbuildingservice <- function() {
 
 .lexmodelbuildingservice$metadata <- list(
   service_name = "models.lex",
-  endpoints = list("*" = "models.lex.{region}.amazonaws.com", "cn-*" = "models.lex.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "models.lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "models.lex.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Lex Model Building Service",
   api_version = "2017-04-19",
   signing_name = "lex",

@@ -61,7 +61,7 @@ amplify <- function() {
 
 .amplify$metadata <- list(
   service_name = "amplify",
-  endpoints = list("*" = "amplify.{region}.amazonaws.com", "cn-*" = "amplify.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "amplify.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "amplify.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Amplify",
   api_version = "2017-07-25",
   signing_name = "amplify",

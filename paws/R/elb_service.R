@@ -98,7 +98,7 @@ elb <- function() {
 
 .elb$metadata <- list(
   service_name = "elasticloadbalancing",
-  endpoints = list("*" = "elasticloadbalancing.{region}.amazonaws.com", "cn-*" = "elasticloadbalancing.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Elastic Load Balancing",
   api_version = "2012-06-01",
   signing_name = NULL,

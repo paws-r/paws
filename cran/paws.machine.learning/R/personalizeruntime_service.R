@@ -31,7 +31,7 @@ personalizeruntime <- function() {
 
 .personalizeruntime$metadata <- list(
   service_name = "personalizeruntime",
-  endpoints = list("*" = "personalizeruntime.{region}.amazonaws.com", "cn-*" = "personalizeruntime.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "personalizeruntime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalizeruntime.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Personalize Runtime",
   api_version = "2018-05-22",
   signing_name = "personalize",

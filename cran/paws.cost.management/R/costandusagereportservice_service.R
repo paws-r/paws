@@ -48,7 +48,7 @@ costandusagereportservice <- function() {
 
 .costandusagereportservice$metadata <- list(
   service_name = "cur",
-  endpoints = list("*" = "cur.{region}.amazonaws.com", "cn-*" = "cur.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "cur.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cur.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Cost and Usage Report Service",
   api_version = "2017-01-06",
   signing_name = "cur",

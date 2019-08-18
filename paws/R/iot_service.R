@@ -210,7 +210,7 @@ iot <- function() {
 
 .iot$metadata <- list(
   service_name = "iot",
-  endpoints = list("*" = "iot.{region}.amazonaws.com", "cn-*" = "iot.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iot.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "IoT",
   api_version = "2015-05-28",
   signing_name = "execute-api",

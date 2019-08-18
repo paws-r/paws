@@ -91,7 +91,7 @@ pinpointemail <- function() {
 
 .pinpointemail$metadata <- list(
   service_name = "pinpointemail",
-  endpoints = list("*" = "pinpointemail.{region}.amazonaws.com", "cn-*" = "pinpointemail.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "pinpointemail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pinpointemail.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Pinpoint Email",
   api_version = "2018-07-26",
   signing_name = "ses",

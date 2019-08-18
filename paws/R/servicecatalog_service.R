@@ -118,7 +118,7 @@ servicecatalog <- function() {
 
 .servicecatalog$metadata <- list(
   service_name = "servicecatalog",
-  endpoints = list("*" = "servicecatalog.{region}.amazonaws.com", "cn-*" = "servicecatalog.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "servicecatalog.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Service Catalog",
   api_version = "2015-12-10",
   signing_name = NULL,

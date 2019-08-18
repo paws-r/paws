@@ -120,7 +120,7 @@ greengrass <- function() {
 
 .greengrass$metadata <- list(
   service_name = "greengrass",
-  endpoints = list("*" = "greengrass.{region}.amazonaws.com", "cn-*" = "greengrass.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "greengrass.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "greengrass.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Greengrass",
   api_version = "2017-06-07",
   signing_name = "greengrass",

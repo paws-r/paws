@@ -63,7 +63,7 @@ eks <- function() {
 
 .eks$metadata <- list(
   service_name = "eks",
-  endpoints = list("*" = "eks.{region}.amazonaws.com", "cn-*" = "eks.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "eks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eks.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "EKS",
   api_version = "2017-11-01",
   signing_name = "eks",

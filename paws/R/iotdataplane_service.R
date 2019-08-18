@@ -42,7 +42,7 @@ iotdataplane <- function() {
 
 .iotdataplane$metadata <- list(
   service_name = "data.iot",
-  endpoints = list("*" = "data.iot.{region}.amazonaws.com", "cn-*" = "data.iot.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "data.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.iot.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "IoT Data Plane",
   api_version = "2015-05-28",
   signing_name = "iotdata",

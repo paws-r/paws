@@ -60,7 +60,7 @@ kinesis <- function() {
 
 .kinesis$metadata <- list(
   service_name = "kinesis",
-  endpoints = list("*" = "kinesis.{region}.amazonaws.com", "cn-*" = "kinesis.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "Kinesis",
   api_version = "2013-12-02",
   signing_name = NULL,

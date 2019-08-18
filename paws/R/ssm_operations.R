@@ -3198,7 +3198,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' 
 #' :   Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' UBUNTU 
+#' UBUNTU
 #' 
 #' :   Valid properties: PRODUCT, PRIORITY
 #' 

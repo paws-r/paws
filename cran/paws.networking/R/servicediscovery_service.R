@@ -57,7 +57,7 @@ servicediscovery <- function() {
 
 .servicediscovery$metadata <- list(
   service_name = "servicediscovery",
-  endpoints = list("*" = "servicediscovery.{region}.amazonaws.com", "cn-*" = "servicediscovery.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "servicediscovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicediscovery.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "ServiceDiscovery",
   api_version = "2017-03-14",
   signing_name = NULL,

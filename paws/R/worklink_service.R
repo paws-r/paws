@@ -68,7 +68,7 @@ worklink <- function() {
 
 .worklink$metadata <- list(
   service_name = "worklink",
-  endpoints = list("*" = "worklink.{region}.amazonaws.com", "cn-*" = "worklink.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "worklink.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "worklink.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "WorkLink",
   api_version = "2018-09-25",
   signing_name = "worklink",

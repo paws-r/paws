@@ -123,9 +123,10 @@ build ID for your game build or script ID if using Realtime Servers, and
 on each instance in the fleet.
 
 When creating a Realtime Servers fleet, we recommend using a minimal
-version of the Realtime script (see this \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples}{working code example}).
-This will make it much easier to troubleshoot any fleet creation issues.
-Once the fleet is active, you can update your Realtime script as needed.
+version of the Realtime script (see this \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-script.html#realtime-script-examples}{working code example}
+). This will make it much easier to troubleshoot any fleet creation
+issues. Once the fleet is active, you can update your Realtime script as
+needed.
 
 If the \code{CreateFleet} call is successful, Amazon GameLift performs the
 following tasks. You can track the process of a fleet by checking the

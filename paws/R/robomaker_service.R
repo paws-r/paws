@@ -67,7 +67,7 @@ robomaker <- function() {
 
 .robomaker$metadata <- list(
   service_name = "robomaker",
-  endpoints = list("*" = "robomaker.{region}.amazonaws.com", "cn-*" = "robomaker.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "robomaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "robomaker.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "RoboMaker",
   api_version = "2018-06-29",
   signing_name = "robomaker",

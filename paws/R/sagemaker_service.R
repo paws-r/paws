@@ -105,7 +105,7 @@ sagemaker <- function() {
 
 .sagemaker$metadata <- list(
   service_name = "sagemaker",
-  endpoints = list("*" = "sagemaker.{region}.amazonaws.com", "cn-*" = "sagemaker.{region}.amazonaws.com.cn"),
+  endpoints = list("*" = list(endpoint = "sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sagemaker.{region}.amazonaws.com.cn", global = FALSE)),
   service_id = "SageMaker",
   api_version = "2017-07-24",
   signing_name = "sagemaker",
