@@ -14,7 +14,7 @@ make_category <- function(category, sdk_dir, out_dir) {
   services <- category$services
   title <- category$title
   description <- category$description
-  imports <- "paws.common"
+  imports <- "paws.common (>= 0.1.3)"
   version <- get_version(sdk_dir)
 
   if (is.null(name) || is.null(title) || is.null(description)) {
