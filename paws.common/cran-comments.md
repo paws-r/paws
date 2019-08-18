@@ -1,11 +1,13 @@
 ## Test environments
-* local Windows install, R 3.5.1
-* Windows (on AppVeyor), R 3.5.2
+* local Windows install, R 3.6.1
 * R-hub (devel and release)
+* win-devel
 
 ## R CMD check results
 There were no ERRORs, WARNINGs, or NOTEs.
 
 ## Downstream dependencies
 
-Ran R CMD check for all reverse dependencies; all packages passed.
+This version of paws.common has an API change that will cause its downstream
+dependencies to fail. All downstream dependencies are also being updated to
+handle the API change.
