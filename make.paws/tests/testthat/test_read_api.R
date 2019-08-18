@@ -19,12 +19,15 @@ test_that("read_api", {
 
   region_path <- file.path(path, "lib")
   dir.create(region_path)
-  write_json(list(rules = list("*/*" = list(endpoint = "bar"))), file.path(region_path, "region_config_data.json"))
+  write_json(
+    list(rules = list("*/*" = list(endpoint = "bar"), "*/foo" = list(endpoint = "baz", globalEndpoint = TRUE))),
+    file.path(region_path, "region_config_data.json")
+  )
 
   api <- read_api("foo", path)
 
   expect_equal(api$name, "foo")
-  expect_equal(api$region_config$`*`, list(endpoint = "bar", global = FALSE))
+  expect_equal(api$region_config$`*`, list(endpoint = "baz", global = TRUE))
 
   expect_error(read_api("bar", api_path))
 })
