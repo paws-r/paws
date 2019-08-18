@@ -9,7 +9,7 @@ new_service(metadata, handlers)
 \arguments{
 \item{metadata}{A named list of API metadata. It should look like:\preformatted{list(
   service_name = "string",
-  endpoints = list("region" = "endpoint"),
+  endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
   service_id = "string",
   api_version = "string",
   signing_name = "string"|NULL,
@@ -48,7 +48,7 @@ API requests.
 \donttest{# Metadata for the S3 API.
 metadata <- list(
   service_name = "s3",
-  endpoints = list("us-east-1" = "s3.amazonaws.com"),
+  endpoints = list("us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
   service_id = "S3",
   api_version = "2006-03-01",
   signing_name = NULL,
