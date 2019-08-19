@@ -81,6 +81,10 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
     return(match)
   }
   e <- endpoints[[get_region_pattern(region, endpoints)]]
+  # TODO: Delete old endpoint format handling once all packages are updated.
+  if (is.character(e)) {
+    e <- list(endpoint = e, global = FALSE)
+  }
   endpoint <- gsub("{service}", service, e$endpoint, fixed = TRUE)
   endpoint <- gsub("{region}", region, endpoint, fixed = TRUE)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
