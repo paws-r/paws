@@ -1,6 +1,8 @@
 ## Test environments
-* local Windows install, R 3.5.1
+
+* local Windows install, R 3.6.1
 * R-hub (devel and release)
+* win-devel
 
 ## R CMD check results
 
