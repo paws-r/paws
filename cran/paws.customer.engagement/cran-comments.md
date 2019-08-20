@@ -1,12 +1,8 @@
-## Resubmission.
-
-This is a resubmission. In this submission, I have changed:
-
-* An invalid link was removed.
-
 ## Test environments
-* local Windows install, R 3.5.1
+
+* local Windows install, R 3.6.1
 * R-hub (devel and release)
+* win-devel
 
 ## R CMD check results
 
