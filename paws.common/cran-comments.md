@@ -2,7 +2,6 @@
 
 * local Windows install, R 3.6.1
 * R-hub (devel and release)
-* win-devel
 
 ## R CMD check results
 
