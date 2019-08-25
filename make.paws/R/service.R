@@ -17,12 +17,17 @@ service_file_template <- template(
   #'
   #' @rdname ${service}
   #' @export
-  ${service} <- function() {
+  ${service} <- function(config = NULL) {
+
+    .${service}$service <- function() {
+      new_service(.${service}$metadata, .${service}$handlers, config)
+    }
+
     .${service}$operations
   }
 
   # Private API objects: metadata, handlers, interfaces, etc.
-  .${service} <- list()
+  .${service} <- new.env()
 
   .${service}$operations <- list()
 
@@ -37,10 +42,6 @@ service_file_template <- template(
   )
 
   .${service}$handlers <- new_handlers(${protocol}, ${signer})
-
-  .${service}$service <- function() {
-    new_service(.${service}$metadata, .${service}$handlers)
-  }
   `
 )
 
