@@ -31,3 +31,16 @@ test_that("resolver_endpoint old endpoint format handling", {
   expect_equal(r$endpoint, "https://service.region.amazonaws.com")
   expect_equal(r$signing_region, "region")
 })
+
+test_that("client_config uses custom endpoint", {
+  cfgs <- list(endpoint = "https://test.us-west-2.amazonaws.com")
+  client_cfg <- client_config(
+    service_name = "dynamodb",
+    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com",
+                                global = FALSE)
+                     ),
+    cfgs = cfgs
+  )
+  expect_equal("https://test.us-west-2.amazonaws.com",
+               client_cfg$endpoint)
+})
