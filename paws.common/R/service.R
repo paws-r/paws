@@ -106,7 +106,7 @@ new_handlers <- function(protocol, signer) {
 #' service <- new_service(metadata, handlers)}
 #'
 #' @export
-new_service <- function(metadata, handlers, cfgs) {
+new_service <- function(metadata, handlers, cfgs = NULL) {
   cfg <- client_config(
     service_name = metadata$service_name,
     endpoints = metadata$endpoints,
