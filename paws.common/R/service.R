@@ -82,7 +82,15 @@ new_handlers <- function(protocol, signer) {
 #'   target_prefix = "string"
 #' )
 #' ```
+#'
 #' @param handlers A set of handlers, e.g. from `new_handlers`.
+#'
+#' @param cfgs A list of custom configurations, e.g. a custom endpoint.
+#' ```
+#' list(
+#'   endpoint = "string",
+#' )
+#' ```
 #'
 #' @family API request functions
 #'

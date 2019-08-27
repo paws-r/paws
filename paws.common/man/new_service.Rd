@@ -19,6 +19,11 @@ new_service(metadata, handlers, cfgs = NULL)
 }}
 
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
+
+\item{cfgs}{A list of custom configurations, e.g. a custom endpoint.\preformatted{list(
+  endpoint = "string",
+)
+}}
 }
 \description{
 Return an API service object with information and handlers needed to make
