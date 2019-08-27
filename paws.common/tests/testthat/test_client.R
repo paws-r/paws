@@ -33,6 +33,7 @@ test_that("resolver_endpoint old endpoint format handling", {
 })
 
 test_that("client_config uses custom endpoint", {
+  Sys.setenv("AWS_REGION" = "region")
   cfgs <- list(endpoint = "https://test.us-west-2.amazonaws.com")
   client_cfg <- client_config(
     service_name = "dynamodb",
