@@ -11,6 +11,10 @@ service_file_template <- template(
   #'
   #' ${description}
   #'
+  #' ${arguments}
+  #'
+  #' ${service_syntax}
+  #'
   #' ${example}
   #'
   #' ${operations}
@@ -52,6 +56,8 @@ make_service <- function(api) {
     service_file_template,
     title = service_title(api),
     description = service_description(api),
+    arguments = service_arguments(),
+    service_syntax = service_syntax(api),
     example = service_example(api),
     operations = service_operations(api),
     service = package_name(api),
@@ -84,6 +90,36 @@ service_description <- function(api) {
   }
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@description", desc, sep = "\n")
+}
+
+# Return the Arguments.
+service_arguments <- function() {
+  argument <- "config"
+  argument <- comment(paste(argument, collapse = "\n"), "#'")
+  desc <- "An optional list of custom configurations for the service. Currently
+           supports adding a custom endpoint."
+  desc <- comment(paste(desc, collapse = "\n"), "#'")
+  paste("@param", argument, desc, sep = "\n")
+}
+
+# Return the Service Syntax.
+service_syntax <- function(api) {
+  section <- "@section Service Syntax:"
+  service <- package_name(api)
+  syntax <- sprintf(
+    '```
+    Svc <- %s(
+      config = list(
+        endpoint = list(
+          "string"
+        )
+      )
+    )
+    ```',
+    service)
+  syntax <- gsub("\n\\s{4}", "\n", syntax)
+  syntax <- comment(paste(syntax, collapse = "\n"), "#'")
+  paste(section, syntax, sep = "\n")
 }
 
 # Returns an example showing how to use the service.
