@@ -102,17 +102,15 @@ service_arguments <- function() {
   paste("@param", argument, desc, sep = "\n")
 }
 
-# Return the Service Syntax.
+# Return the Service syntax.
 service_syntax <- function(api) {
-  section <- "@section Service Syntax:"
+  section <- "@section Service syntax:"
   service <- package_name(api)
   syntax <- sprintf(
     '```
-    Svc <- %s(
+    svc <- %s(
       config = list(
-        endpoint = list(
-          "string"
-        )
+        endpoint = "string"
       )
     )
     ```',
