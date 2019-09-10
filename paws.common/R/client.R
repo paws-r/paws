@@ -64,13 +64,65 @@ Client <- struct(
 
 #-------------------------------------------------------------------------------
 
-# new_session returns a Session with default configuration.
+# Populate config
+merge_in_config <- function(dst, other){
+  if (is.null(other)){
+    return(dst)
+  }
+  # Populate credentials
+  if (!is.null(other$credentials)){
+    if (!is.null(other$credentials$creds$access_key_id)){
+      dst$credentials$creds$access_key_id <-
+        other$credentials$creds$access_key_id
+    }
+    if (!is.null(other$credentials$creds$secret_access_key)){
+      dst$credentials$creds$secret_access_key <-
+        other$credentials$creds$secret_access_key
+    }
+    if (!is.null(other$credentials$creds$session_token)){
+      dst$credentials$creds$session_token <-
+        other$credentials$creds$session_token
+    }
+    if (!is.null(other$credentials$creds$provider_name)){
+      dst$credentials$creds$provider_name <-
+        other$credentials$creds$provider_name
+    }
+  }
+  # Populate endpoint
+  if (!is.null(other$endpoint)){
+    dst$endpoint <- other$endpoint
+  }
+  # Populate region
+  if (!is.null(other$region)){
+    dst$region <- other$region
+  }
+  return(dst)
+}
+
+# new_session returns a Session with user configuration.
 new_session <- function(cfgs = NULL) {
   s <- Session()
-  if (is.character(cfgs$endpoint)){
-    s$config$endpoint <- cfgs$endpoint
+  cfg <- Config()
+  handlers <- Handlers()
+  # Fill in Config with any user defined values
+  cfg <- merge_in_config(cfg, cfgs)
+  # If region not defined, set it
+  if (nchar(cfg$region) == 0) {
+    cfg$region <- get_region()
   }
-  s$config$region <- get_region()
+  # If credentials passed in, use those credentials
+  if (!is.null(cfgs) && !is.null(cfgs$credentials)){
+    cfg$credentials$provider <- c(
+      eval(
+        substitute(function() {creds},
+                   list(creds = cfg$credentials$creds)
+                   )
+      ),
+      cfg$credentials$provider
+    )
+  }
+  s$config <- cfg
+  s$handlers <- handlers
   return(s)
 }
 
