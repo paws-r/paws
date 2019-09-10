@@ -85,10 +85,20 @@ new_handlers <- function(protocol, signer) {
 #'
 #' @param handlers A set of handlers, e.g. from `new_handlers`.
 #'
-#' @param cfgs A list of custom configurations, e.g. a custom endpoint.
+#' @param cfgs A list of custom configurations for credentials, endpoint, and
+#' region.
 #' ```
 #' list(
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string",
+#'       provider_name = "string"
+#'     )
+#'   ),
 #'   endpoint = "string",
+#'   region = "string",
 #' )
 #' ```
 #'

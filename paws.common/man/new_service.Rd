@@ -20,8 +20,18 @@ new_service(metadata, handlers, cfgs = NULL)
 
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
 
-\item{cfgs}{A list of custom configurations, e.g. a custom endpoint.\preformatted{list(
+\item{cfgs}{A list of custom configurations for credentials, endpoint, and
+region.\preformatted{list(
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string",
+      provider_name = "string"
+    )
+  ),
   endpoint = "string",
+  region = "string",
 )
 }}
 }

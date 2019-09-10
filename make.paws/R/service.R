@@ -97,7 +97,7 @@ service_arguments <- function() {
   argument <- "config"
   argument <- comment(paste(argument, collapse = "\n"), "#'")
   desc <- "An optional list of custom configurations for the service. Currently
-           supports adding a custom endpoint."
+           supports adding custom credentials, endpoint, and region."
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@param", argument, desc, sep = "\n")
 }
@@ -110,7 +110,16 @@ service_syntax <- function(api) {
     '```
     svc <- %s(
       config = list(
-        endpoint = "string"
+        credentials = list(
+          creds = list(
+            access_key_id = "string",
+            secret_access_key = "string",
+            session_token = "string",
+            provider_name = "string"
+          )
+        ),
+        endpoint = "string",
+        region = "string"
       )
     )
     ```',
