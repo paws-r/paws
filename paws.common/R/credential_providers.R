@@ -5,11 +5,12 @@ NULL
 r_env_provider <- function() {
   access_key_id <- Sys.getenv("AWS_ACCESS_KEY_ID")
   secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
-  if (access_key_id != "" && secret_access_key != "") {
+  session_token <- Sys.getenv("AWS_SESSION_TOKEN")
+  if (access_key_id != "" || secret_access_key != "" || session_token != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
@@ -23,12 +24,13 @@ os_env_provider <- function() {
 
   access_key_id <- get_os_env_variable("AWS_ACCESS_KEY_ID")
   secret_access_key <- get_os_env_variable("AWS_SECRET_ACCESS_KEY")
+  session_token <- get_os_env_variable("AWS_SESSION_TOKEN")
 
-  if (access_key_id != "" && secret_access_key != "") {
+  if (access_key_id != "" || secret_access_key != "" || session_token != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
@@ -38,13 +40,13 @@ os_env_provider <- function() {
 }
 
 # Retrieve credentials stored in credentials file.
-credentials_file_provider <- function() {
+credentials_file_provider <- function(aws_profile = "") {
 
   credentials_path <- file.path(get_aws_path(), "credentials")
 
   if (!file.exists(credentials_path)) return(NULL)
 
-  aws_profile <- get_profile_name()
+  aws_profile <- get_profile_name(aws_profile)
 
   credentials <- ini::read.ini(credentials_path)
 
@@ -102,6 +104,40 @@ iam_credentials_provider <- function() {
   }
   return(creds)
 
+}
+
+# Retrieve temporary credentials from an assumed role
+assume_role_provider <- function() {
+  
+  assumed_creds <- check_config_file_assume_role()
+  
+  if (is.null(assumed_creds) || is.null(assumed_creds$role_arn)) return(NULL)
+  
+  creds <- credentials_file_provider(assumed_creds$source_profile)
+  region <- check_config_file_region(assumed_creds$source_profile)
+  
+  config <- list(
+    credentials = list(
+      creds = list(
+        access_key_id = creds$access_key_id,
+        secret_access_key = creds$secret_access_key
+      )
+    ),
+    region = region
+  )
+  
+  assumed_creds <- sts_assume_role(
+      assumed_creds$role_arn,
+      assumed_creds$role_session_name,
+      config
+  )
+  
+  creds <- list(access_key_id = assumed_creds$Credentials$AccessKeyId,
+                secret_access_key = assumed_creds$Credentials$SecretAccessKey,
+                session_token = assumed_creds$Credentials$SessionToken
+  )
+                
+  return(creds)
 }
 
 no_credentials <- function() {

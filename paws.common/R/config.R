@@ -23,8 +23,10 @@ get_os_env_variable <- function(var) {
 }
 
 # Get the AWS profile to use. If none, return "default".
-get_profile_name <- function() {
+get_profile_name <- function(aws_profile = "") {
 
+  if (aws_profile != "") return(aws_profile)
+  
   aws_profile <- Sys.getenv("AWS_PROFILE")
 
   if (aws_profile == "") aws_profile <- get_os_env_variable("AWS_PROFILE")
@@ -48,7 +50,8 @@ get_instance_metadata <- function(query_path = "") {
     NULL
   })
 
-  if (metadata_response$status_code != 200) return(NULL)
+  if (is.null(metadata_response) || metadata_response$status_code != 200) 
+    return(NULL)
 
   return(metadata_response)
 }
@@ -78,13 +81,13 @@ check_os_region <- function() {
 }
 
 # Tries to get the region from the config file
-check_config_file_region <- function() {
+check_config_file_region <- function(aws_profile = "") {
 
   config_path <- file.path(get_aws_path(), "config")
 
   if (!file.exists(config_path)) return(NULL)
 
-  aws_profile <- get_profile_name()
+  aws_profile <- get_profile_name(aws_profile)
 
   config_values <- ini::read.ini(config_path)
 
@@ -93,6 +96,41 @@ check_config_file_region <- function() {
   region <- config_values[[aws_profile]]$region
 
   return(region)
+}
+
+# Tries to get the region from the config file
+check_config_file_assume_role <- function() {
+
+  config_path <- file.path(get_aws_path(), "config")
+
+  if (!file.exists(config_path)) return(NULL)
+  
+  aws_profile <- get_profile_name()
+
+  config_values <- ini::read.ini(config_path)
+
+  if (is.null(config_values[[aws_profile]])) {
+    aws_profile <- paste("profile", aws_profile)
+    config_values <- ini::read.ini(config_path)
+    if (is.null(config_values[[aws_profile]])) return(NULL)
+  }
+
+  role_arn <- config_values[[aws_profile]]$role_arn
+  source_profile <- config_values[[aws_profile]]$source_profile
+  role_session_name <- config_values[[aws_profile]]$role_session_name
+  
+  if (is.null(role_session_name)) {
+    role_session_name <- paste0(sample(LETTERS, 15, replace = TRUE),
+                                collapse = "")
+  } 
+
+  assumed_role <- list(
+    role_arn = role_arn,
+    source_profile = source_profile,
+    role_session_name = role_session_name
+    )
+  
+  return(assumed_role)
 }
 
 # Get the AWS region.
