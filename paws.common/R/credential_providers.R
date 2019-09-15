@@ -2,7 +2,7 @@
 NULL
 
 # Retrieve credentials stored in R environment variables.
-r_env_provider <- function() {
+r_env_provider <- function(aws_profile = "") {
   access_key_id <- Sys.getenv("AWS_ACCESS_KEY_ID")
   secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
   session_token <- Sys.getenv("AWS_SESSION_TOKEN")
@@ -20,7 +20,7 @@ r_env_provider <- function() {
 }
 
 # Retrieve credentials stored in OS environment variables.
-os_env_provider <- function() {
+os_env_provider <- function(aws_profile = "") {
 
   access_key_id <- get_os_env_variable("AWS_ACCESS_KEY_ID")
   secret_access_key <- get_os_env_variable("AWS_SECRET_ACCESS_KEY")
@@ -71,7 +71,7 @@ credentials_file_provider <- function(aws_profile = "") {
 }
 
 # Retrieve credentials for EC2 IAM Role
-iam_credentials_provider <- function() {
+iam_credentials_provider <- function(aws_profile = "") {
 
   iam_role <- get_iam_role()
   if(is.null(iam_role)) return(NULL)
@@ -106,40 +106,56 @@ iam_credentials_provider <- function() {
 
 }
 
+# Get creds from source profile
+source_profile_credentials_provider <- function(aws_profile = "") {
+
+  source_profile <- check_config_file_source_profile(aws_profile)
+
+  if (source_profile == "") return(NULL)
+
+  creds <- credentials_file_provider(source_profile)
+
+  return(creds)
+}
+  
 # Retrieve temporary credentials from an assumed role
-assume_role_provider <- function() {
-  
-  assumed_creds <- check_config_file_assume_role()
-  
-  if (is.null(assumed_creds) || is.null(assumed_creds$role_arn)) return(NULL)
-  
-  creds <- credentials_file_provider(assumed_creds$source_profile)
-  region <- check_config_file_region(assumed_creds$source_profile)
-  
+assume_role_provider <- function(credentials) {
+
+  assumed_creds <- check_config_file_assume_role(credentials$profile)
+
+  if (is.null(assumed_creds) || is.null(assumed_creds$role_arn)) {
+    return(credentials$creds)
+  }
+
+  source_credentials <- credentials
+  source_credentials$profile <-
+    check_config_file_source_profile(credentials$profile)
+
+  # STS is global so we set region to us-east-1
+  region <- "us-east-1"
+
   config <- list(
-    credentials = list(
-      creds = list(
-        access_key_id = creds$access_key_id,
-        secret_access_key = creds$secret_access_key
-      )
-    ),
+    credentials = source_credentials,
     region = region
   )
-  
+
   assumed_creds <- sts_assume_role(
       assumed_creds$role_arn,
       assumed_creds$role_session_name,
       config
   )
-  
-  creds <- list(access_key_id = assumed_creds$Credentials$AccessKeyId,
-                secret_access_key = assumed_creds$Credentials$SecretAccessKey,
-                session_token = assumed_creds$Credentials$SessionToken
+
+  if (is.null(assumed_creds)) return(creds)
+
+  assumed_creds <- list(
+    access_key_id = assumed_creds$Credentials$AccessKeyId,
+    secret_access_key = assumed_creds$Credentials$SecretAccessKey,
+    session_token = assumed_creds$Credentials$SessionToken
   )
-                
-  return(creds)
+
+  return(assumed_creds)
 }
 
-no_credentials <- function() {
+no_credentials <- function(aws_profile = "") {
   stop("No credentials provided")
 }

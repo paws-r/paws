@@ -95,7 +95,8 @@ new_handlers <- function(protocol, signer) {
 #'       secret_access_key = "string",
 #'       session_token = "string",
 #'       provider_name = "string"
-#'     )
+#'     ),
+#'     profile = "string"
 #'   ),
 #'   endpoint = "string",
 #'   region = "string",
