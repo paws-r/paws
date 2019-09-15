@@ -67,7 +67,8 @@ test_that("client_config uses custom credentials", {
       creds = list(
         access_key_id = "test_key",
         secret_access_key = "test_secret"
-      )
+      ),
+      profile  = "test_profile"
     )
   )
   client_cfg <- client_config(
@@ -81,4 +82,6 @@ test_that("client_config uses custom credentials", {
                client_cfg$config$credentials$creds$access_key_id)
   expect_equal("test_secret",
                client_cfg$config$credentials$creds$secret_access_key)
+  expect_equal("test_profile",
+               client_cfg$config$credentials$profile)
 })
