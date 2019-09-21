@@ -8,30 +8,6 @@ NULL
 #' Amazon FSx is a fully managed service that makes it easy for storage and
 #' application administrators to launch and use shared file storage.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- fsx(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # This operation creates a new backup.
 #' \donttest{svc <- fsx()
@@ -62,15 +38,12 @@ NULL
 #'
 #' @rdname fsx
 #' @export
-fsx <- function(config = NULL) {
-  .fsx$service <- function() {
-    new_service(.fsx$metadata, .fsx$handlers, config)
-  }
+fsx <- function() {
   .fsx$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.fsx <- new.env()
+.fsx <- list()
 
 .fsx$operations <- list()
 
@@ -85,3 +58,7 @@ fsx <- function(config = NULL) {
 )
 
 .fsx$handlers <- new_handlers("jsonrpc", "v4")
+
+.fsx$service <- function() {
+  new_service(.fsx$metadata, .fsx$handlers)
+}

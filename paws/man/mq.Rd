@@ -4,34 +4,11 @@
 \alias{mq}
 \title{AmazonMQ}
 \usage{
-mq(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+mq()
 }
 \description{
 Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
 }
-\section{Service syntax}{
-\preformatted{svc <- mq(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

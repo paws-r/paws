@@ -9,30 +9,6 @@ NULL
 #' into machine-readable text. This is the API reference documentation for
 #' Amazon Textract.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- textract(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- textract()
 #' svc$analyze_document(
@@ -51,15 +27,12 @@ NULL
 #'
 #' @rdname textract
 #' @export
-textract <- function(config = NULL) {
-  .textract$service <- function() {
-    new_service(.textract$metadata, .textract$handlers, config)
-  }
+textract <- function() {
   .textract$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.textract <- new.env()
+.textract <- list()
 
 .textract$operations <- list()
 
@@ -74,3 +47,7 @@ textract <- function(config = NULL) {
 )
 
 .textract$handlers <- new_handlers("jsonrpc", "v4")
+
+.textract$service <- function() {
+  new_service(.textract$metadata, .textract$handlers)
+}

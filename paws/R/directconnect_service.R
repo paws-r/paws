@@ -16,30 +16,6 @@ NULL
 #' Regions can only be accessed through locations associated with those
 #' Regions.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- directconnect(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- directconnect()
 #' svc$accept_direct_connect_gateway_association_proposal(
@@ -105,15 +81,12 @@ NULL
 #'
 #' @rdname directconnect
 #' @export
-directconnect <- function(config = NULL) {
-  .directconnect$service <- function() {
-    new_service(.directconnect$metadata, .directconnect$handlers, config)
-  }
+directconnect <- function() {
   .directconnect$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.directconnect <- new.env()
+.directconnect <- list()
 
 .directconnect$operations <- list()
 
@@ -128,3 +101,7 @@ directconnect <- function(config = NULL) {
 )
 
 .directconnect$handlers <- new_handlers("jsonrpc", "v4")
+
+.directconnect$service <- function() {
+  new_service(.directconnect$metadata, .directconnect$handlers)
+}

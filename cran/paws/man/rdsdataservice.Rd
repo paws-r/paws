@@ -6,10 +6,6 @@
 \usage{
 rdsdataservice()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon RDS Data Service
 
@@ -20,25 +16,6 @@ Data Service API.
 For more information about the Data Service API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
 }
-\section{Service syntax}{
-\preformatted{svc <- rdsdataservice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

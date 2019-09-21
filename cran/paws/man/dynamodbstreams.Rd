@@ -6,10 +6,6 @@
 \usage{
 dynamodbstreams()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon DynamoDB
 
@@ -18,25 +14,6 @@ processing stream records. To learn more about application development
 with Streams, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html}{Capturing Table Activity with DynamoDB Streams}
 in the Amazon DynamoDB Developer Guide.
 }
-\section{Service syntax}{
-\preformatted{svc <- dynamodbstreams(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

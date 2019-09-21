@@ -6,30 +6,6 @@ NULL
 #'
 #' 
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- personalizeevents(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- personalizeevents()
 #' svc$put_events(
@@ -43,15 +19,12 @@ NULL
 #'
 #' @rdname personalizeevents
 #' @export
-personalizeevents <- function(config = NULL) {
-  .personalizeevents$service <- function() {
-    new_service(.personalizeevents$metadata, .personalizeevents$handlers, config)
-  }
+personalizeevents <- function() {
   .personalizeevents$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.personalizeevents <- new.env()
+.personalizeevents <- list()
 
 .personalizeevents$operations <- list()
 
@@ -66,3 +39,7 @@ personalizeevents <- function(config = NULL) {
 )
 
 .personalizeevents$handlers <- new_handlers("restjson", "v4")
+
+.personalizeevents$service <- function() {
+  new_service(.personalizeevents$metadata, .personalizeevents$handlers)
+}

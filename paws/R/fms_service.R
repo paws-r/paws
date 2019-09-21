@@ -13,30 +13,6 @@ NULL
 #' Firewall Manager features, see the [AWS Firewall Manager Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- fms(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- fms()
 #' svc$associate_admin_account(
@@ -63,15 +39,12 @@ NULL
 #'
 #' @rdname fms
 #' @export
-fms <- function(config = NULL) {
-  .fms$service <- function() {
-    new_service(.fms$metadata, .fms$handlers, config)
-  }
+fms <- function() {
   .fms$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.fms <- new.env()
+.fms <- list()
 
 .fms$operations <- list()
 
@@ -86,3 +59,7 @@ fms <- function(config = NULL) {
 )
 
 .fms$handlers <- new_handlers("jsonrpc", "v4")
+
+.fms$service <- function() {
+  new_service(.fms$metadata, .fms$handlers)
+}

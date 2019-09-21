@@ -8,30 +8,6 @@ NULL
 #' Amazon Route 53 API actions let you register domain names and perform
 #' related operations.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- route53domains(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- route53domains()
 #' svc$check_domain_availability(
@@ -68,15 +44,12 @@ NULL
 #'
 #' @rdname route53domains
 #' @export
-route53domains <- function(config = NULL) {
-  .route53domains$service <- function() {
-    new_service(.route53domains$metadata, .route53domains$handlers, config)
-  }
+route53domains <- function() {
   .route53domains$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.route53domains <- new.env()
+.route53domains <- list()
 
 .route53domains$operations <- list()
 
@@ -91,3 +64,7 @@ route53domains <- function(config = NULL) {
 )
 
 .route53domains$handlers <- new_handlers("jsonrpc", "v4")
+
+.route53domains$service <- function() {
+  new_service(.route53domains$metadata, .route53domains$handlers)
+}

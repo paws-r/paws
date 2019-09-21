@@ -4,11 +4,7 @@
 \alias{serverlessapplicationrepository}
 \title{AWSServerlessApplicationRepository}
 \usage{
-serverlessapplicationrepository(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+serverlessapplicationrepository()
 }
 \description{
 The AWS Serverless Application Repository makes it easy for developers
@@ -46,25 +42,6 @@ them available to other developers, and publish new versions of
 applications.
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- serverlessapplicationrepository(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

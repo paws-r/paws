@@ -143,30 +143,6 @@ NULL
 #' -   PutThirdPartyJobSuccessResult, which provides details of a job
 #'     success.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- codepipeline(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- codepipeline()
 #' svc$acknowledge_job(
@@ -215,15 +191,12 @@ NULL
 #'
 #' @rdname codepipeline
 #' @export
-codepipeline <- function(config = NULL) {
-  .codepipeline$service <- function() {
-    new_service(.codepipeline$metadata, .codepipeline$handlers, config)
-  }
+codepipeline <- function() {
   .codepipeline$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.codepipeline <- new.env()
+.codepipeline <- list()
 
 .codepipeline$operations <- list()
 
@@ -238,3 +211,7 @@ codepipeline <- function(config = NULL) {
 )
 
 .codepipeline$handlers <- new_handlers("jsonrpc", "v4")
+
+.codepipeline$service <- function() {
+  new_service(.codepipeline$metadata, .codepipeline$handlers)
+}

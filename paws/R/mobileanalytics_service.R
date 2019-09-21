@@ -8,30 +8,6 @@ NULL
 #' Amazon Mobile Analytics is a service for collecting, visualizing, and
 #' understanding app usage data at scale.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mobileanalytics(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mobileanalytics()
 #' svc$put_events(
@@ -45,15 +21,12 @@ NULL
 #'
 #' @rdname mobileanalytics
 #' @export
-mobileanalytics <- function(config = NULL) {
-  .mobileanalytics$service <- function() {
-    new_service(.mobileanalytics$metadata, .mobileanalytics$handlers, config)
-  }
+mobileanalytics <- function() {
   .mobileanalytics$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mobileanalytics <- new.env()
+.mobileanalytics <- list()
 
 .mobileanalytics$operations <- list()
 
@@ -68,3 +41,7 @@ mobileanalytics <- function(config = NULL) {
 )
 
 .mobileanalytics$handlers <- new_handlers("restjson", "v4")
+
+.mobileanalytics$service <- function() {
+  new_service(.mobileanalytics$metadata, .mobileanalytics$handlers)
+}

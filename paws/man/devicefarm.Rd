@@ -4,36 +4,13 @@
 \alias{devicefarm}
 \title{AWS Device Farm}
 \usage{
-devicefarm(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+devicefarm()
 }
 \description{
 AWS Device Farm is a service that enables mobile app developers to test
 Android, iOS, and Fire OS apps on physical phones, tablets, and other
 devices in the cloud.
 }
-\section{Service syntax}{
-\preformatted{svc <- devicefarm(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

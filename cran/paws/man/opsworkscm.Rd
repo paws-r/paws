@@ -6,10 +6,6 @@
 \usage{
 opsworkscm()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 AWS OpsWorks CM
 
@@ -69,25 +65,6 @@ accessed or managed within the endpoint in which they are created.
 All API operations allow for five requests per second with a burst of 10
 requests per second.
 }
-\section{Service syntax}{
-\preformatted{svc <- opsworkscm(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

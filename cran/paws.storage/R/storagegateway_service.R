@@ -70,30 +70,6 @@ NULL
 #' Gateway volume and snapshot IDs coming in
 #' 2016](https://forums.aws.amazon.com/ann.jspa?annID=3557).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- storagegateway(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # Activates the gateway you previously deployed on your host.
 #' \donttest{svc <- storagegateway()
@@ -186,15 +162,12 @@ NULL
 #'
 #' @rdname storagegateway
 #' @export
-storagegateway <- function(config = NULL) {
-  .storagegateway$service <- function() {
-    new_service(.storagegateway$metadata, .storagegateway$handlers, config)
-  }
+storagegateway <- function() {
   .storagegateway$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.storagegateway <- new.env()
+.storagegateway <- list()
 
 .storagegateway$operations <- list()
 
@@ -209,3 +182,7 @@ storagegateway <- function(config = NULL) {
 )
 
 .storagegateway$handlers <- new_handlers("jsonrpc", "v4")
+
+.storagegateway$service <- function() {
+  new_service(.storagegateway$metadata, .storagegateway$handlers)
+}

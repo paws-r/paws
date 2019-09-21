@@ -4,11 +4,7 @@
 \alias{iotdataplane}
 \title{AWS IoT Data Plane}
 \usage{
-iotdataplane(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+iotdataplane()
 }
 \description{
 AWS IoT
@@ -21,25 +17,6 @@ retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
 }
-\section{Service syntax}{
-\preformatted{svc <- iotdataplane(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

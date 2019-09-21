@@ -10,30 +10,6 @@ NULL
 #' your documents, the topics they discuss, the predominant sentiment
 #' expressed in them, the predominant language used, and more.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- comprehend(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- comprehend()
 #' svc$batch_detect_dominant_language(
@@ -91,15 +67,12 @@ NULL
 #'
 #' @rdname comprehend
 #' @export
-comprehend <- function(config = NULL) {
-  .comprehend$service <- function() {
-    new_service(.comprehend$metadata, .comprehend$handlers, config)
-  }
+comprehend <- function() {
   .comprehend$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.comprehend <- new.env()
+.comprehend <- list()
 
 .comprehend$operations <- list()
 
@@ -114,3 +87,7 @@ comprehend <- function(config = NULL) {
 )
 
 .comprehend$handlers <- new_handlers("jsonrpc", "v4")
+
+.comprehend$service <- function() {
+  new_service(.comprehend$metadata, .comprehend$handlers)
+}

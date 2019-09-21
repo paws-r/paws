@@ -27,30 +27,6 @@ NULL
 #' For more information see [Amazon Cognito Federated
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cognitoidentity(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cognitoidentity()
 #' svc$create_identity_pool(
@@ -84,15 +60,12 @@ NULL
 #'
 #' @rdname cognitoidentity
 #' @export
-cognitoidentity <- function(config = NULL) {
-  .cognitoidentity$service <- function() {
-    new_service(.cognitoidentity$metadata, .cognitoidentity$handlers, config)
-  }
+cognitoidentity <- function() {
   .cognitoidentity$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cognitoidentity <- new.env()
+.cognitoidentity <- list()
 
 .cognitoidentity$operations <- list()
 
@@ -107,3 +80,7 @@ cognitoidentity <- function(config = NULL) {
 )
 
 .cognitoidentity$handlers <- new_handlers("jsonrpc", "v4")
+
+.cognitoidentity$service <- function() {
+  new_service(.cognitoidentity$metadata, .cognitoidentity$handlers)
+}

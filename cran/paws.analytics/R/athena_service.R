@@ -26,30 +26,6 @@ NULL
 #' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- athena(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- athena()
 #' svc$batch_get_named_query(
@@ -81,15 +57,12 @@ NULL
 #'
 #' @rdname athena
 #' @export
-athena <- function(config = NULL) {
-  .athena$service <- function() {
-    new_service(.athena$metadata, .athena$handlers, config)
-  }
+athena <- function() {
   .athena$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.athena <- new.env()
+.athena <- list()
 
 .athena$operations <- list()
 
@@ -104,3 +77,7 @@ athena <- function(config = NULL) {
 )
 
 .athena$handlers <- new_handlers("jsonrpc", "v4")
+
+.athena$service <- function() {
+  new_service(.athena$metadata, .athena$handlers)
+}

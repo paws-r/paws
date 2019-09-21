@@ -58,30 +58,6 @@ NULL
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- elbv2(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # This example adds the specified tags to the specified load balancer.
 #' \donttest{svc <- elbv2()
@@ -141,15 +117,12 @@ NULL
 #'
 #' @rdname elbv2
 #' @export
-elbv2 <- function(config = NULL) {
-  .elbv2$service <- function() {
-    new_service(.elbv2$metadata, .elbv2$handlers, config)
-  }
+elbv2 <- function() {
   .elbv2$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elbv2 <- new.env()
+.elbv2 <- list()
 
 .elbv2$operations <- list()
 
@@ -164,3 +137,7 @@ elbv2 <- function(config = NULL) {
 )
 
 .elbv2$handlers <- new_handlers("query", "v4")
+
+.elbv2$service <- function() {
+  new_service(.elbv2$metadata, .elbv2$handlers)
+}

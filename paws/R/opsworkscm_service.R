@@ -73,30 +73,6 @@ NULL
 #' All API operations allow for five requests per second with a burst of 10
 #' requests per second.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- opsworkscm(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- opsworkscm()
 #' svc$associate_node(
@@ -125,15 +101,12 @@ NULL
 #'
 #' @rdname opsworkscm
 #' @export
-opsworkscm <- function(config = NULL) {
-  .opsworkscm$service <- function() {
-    new_service(.opsworkscm$metadata, .opsworkscm$handlers, config)
-  }
+opsworkscm <- function() {
   .opsworkscm$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.opsworkscm <- new.env()
+.opsworkscm <- list()
 
 .opsworkscm$operations <- list()
 
@@ -148,3 +121,7 @@ opsworkscm <- function(config = NULL) {
 )
 
 .opsworkscm$handlers <- new_handlers("jsonrpc", "v4")
+
+.opsworkscm$service <- function() {
+  new_service(.opsworkscm$metadata, .opsworkscm$handlers)
+}

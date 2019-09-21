@@ -15,30 +15,6 @@ NULL
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- shield(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- shield()
 #' svc$associate_drt_log_bucket(
@@ -69,15 +45,12 @@ NULL
 #'
 #' @rdname shield
 #' @export
-shield <- function(config = NULL) {
-  .shield$service <- function() {
-    new_service(.shield$metadata, .shield$handlers, config)
-  }
+shield <- function() {
   .shield$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.shield <- new.env()
+.shield <- list()
 
 .shield$operations <- list()
 
@@ -92,3 +65,7 @@ shield <- function(config = NULL) {
 )
 
 .shield$handlers <- new_handlers("jsonrpc", "v4")
+
+.shield$service <- function() {
+  new_service(.shield$metadata, .shield$handlers)
+}

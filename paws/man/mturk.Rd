@@ -4,34 +4,11 @@
 \alias{mturk}
 \title{Amazon Mechanical Turk}
 \usage{
-mturk(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+mturk()
 }
 \description{
 Amazon Mechanical Turk API Reference
 }
-\section{Service syntax}{
-\preformatted{svc <- mturk(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

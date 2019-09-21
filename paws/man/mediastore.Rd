@@ -4,36 +4,13 @@
 \alias{mediastore}
 \title{AWS Elemental MediaStore}
 \usage{
-mediastore(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+mediastore()
 }
 \description{
 An AWS Elemental MediaStore container is a namespace that holds folders
 and objects. You use a container endpoint to create, read, and delete
 objects.
 }
-\section{Service syntax}{
-\preformatted{svc <- mediastore(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

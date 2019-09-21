@@ -13,30 +13,6 @@ NULL
 #' your application can begin taking advantage of the DAX cluster and
 #' realize significant improvements in read performance.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- dax(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- dax()
 #' svc$create_cluster(
@@ -70,15 +46,12 @@ NULL
 #'
 #' @rdname dax
 #' @export
-dax <- function(config = NULL) {
-  .dax$service <- function() {
-    new_service(.dax$metadata, .dax$handlers, config)
-  }
+dax <- function() {
   .dax$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.dax <- new.env()
+.dax <- list()
 
 .dax$operations <- list()
 
@@ -93,3 +66,7 @@ dax <- function(config = NULL) {
 )
 
 .dax$handlers <- new_handlers("jsonrpc", "v4")
+
+.dax$service <- function() {
+  new_service(.dax$metadata, .dax$handlers)
+}

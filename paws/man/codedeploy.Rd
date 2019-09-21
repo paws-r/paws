@@ -4,11 +4,7 @@
 \alias{codedeploy}
 \title{AWS CodeDeploy}
 \usage{
-codedeploy(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+codedeploy()
 }
 \description{
 AWS CodeDeploy is a deployment service that automates application
@@ -82,25 +78,6 @@ deployment, and to get details about Amazon ECS service deployments.
 \item \href{https://forums.aws.amazon.com/forum.jspa?forumID=179}{AWS CodeDeploy Developer Forum}
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- codedeploy(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

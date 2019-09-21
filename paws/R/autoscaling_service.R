@@ -17,30 +17,6 @@ NULL
 #' [Amazon EC2 Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- autoscaling(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # This example attaches the specified instance to the specified Auto
 #' # Scaling group.
@@ -112,15 +88,12 @@ NULL
 #'
 #' @rdname autoscaling
 #' @export
-autoscaling <- function(config = NULL) {
-  .autoscaling$service <- function() {
-    new_service(.autoscaling$metadata, .autoscaling$handlers, config)
-  }
+autoscaling <- function() {
   .autoscaling$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.autoscaling <- new.env()
+.autoscaling <- list()
 
 .autoscaling$operations <- list()
 
@@ -135,3 +108,7 @@ autoscaling <- function(config = NULL) {
 )
 
 .autoscaling$handlers <- new_handlers("query", "v4")
+
+.autoscaling$service <- function() {
+  new_service(.autoscaling$metadata, .autoscaling$handlers)
+}

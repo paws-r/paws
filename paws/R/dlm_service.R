@@ -15,30 +15,6 @@ NULL
 #' Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- dlm(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- dlm()
 #' svc$create_lifecycle_policy(
@@ -56,15 +32,12 @@ NULL
 #'
 #' @rdname dlm
 #' @export
-dlm <- function(config = NULL) {
-  .dlm$service <- function() {
-    new_service(.dlm$metadata, .dlm$handlers, config)
-  }
+dlm <- function() {
   .dlm$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.dlm <- new.env()
+.dlm <- list()
 
 .dlm$operations <- list()
 
@@ -79,3 +52,7 @@ dlm <- function(config = NULL) {
 )
 
 .dlm$handlers <- new_handlers("restjson", "v4")
+
+.dlm$service <- function() {
+  new_service(.dlm$metadata, .dlm$handlers)
+}

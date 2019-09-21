@@ -56,30 +56,6 @@ NULL
 #'     Query
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- rds(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- rds()
 #' svc$add_role_to_db_cluster(
@@ -203,15 +179,12 @@ NULL
 #'
 #' @rdname rds
 #' @export
-rds <- function(config = NULL) {
-  .rds$service <- function() {
-    new_service(.rds$metadata, .rds$handlers, config)
-  }
+rds <- function() {
   .rds$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.rds <- new.env()
+.rds <- list()
 
 .rds$operations <- list()
 
@@ -226,3 +199,7 @@ rds <- function(config = NULL) {
 )
 
 .rds$handlers <- new_handlers("query", "v4")
+
+.rds$service <- function() {
+  new_service(.rds$metadata, .rds$handlers)
+}

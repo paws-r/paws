@@ -6,10 +6,6 @@
 \usage{
 sqs()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Welcome to the \emph{Amazon Simple Queue Service API Reference}.
 
@@ -43,25 +39,6 @@ tasks such as the following automatically:
 }
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- sqs(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

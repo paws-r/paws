@@ -4,11 +4,7 @@
 \alias{applicationdiscoveryservice}
 \title{AWS Application Discovery Service}
 \usage{
-applicationdiscoveryservice(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+applicationdiscoveryservice()
 }
 \description{
 AWS Application Discovery Service helps you plan application migration
@@ -71,25 +67,6 @@ you're using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}
 This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application DiscoveryService UserGuide}
 .
 }
-\section{Service syntax}{
-\preformatted{svc <- applicationdiscoveryservice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

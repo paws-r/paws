@@ -13,30 +13,6 @@ NULL
 #' documentation for a programming interface that you can use to manage
 #' Amazon QuickSight.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- quicksight(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- quicksight()
 #' svc$create_group(
@@ -65,15 +41,12 @@ NULL
 #'
 #' @rdname quicksight
 #' @export
-quicksight <- function(config = NULL) {
-  .quicksight$service <- function() {
-    new_service(.quicksight$metadata, .quicksight$handlers, config)
-  }
+quicksight <- function() {
   .quicksight$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.quicksight <- new.env()
+.quicksight <- list()
 
 .quicksight$operations <- list()
 
@@ -88,3 +61,7 @@ quicksight <- function(config = NULL) {
 )
 
 .quicksight$handlers <- new_handlers("restjson", "v4")
+
+.quicksight$service <- function() {
+  new_service(.quicksight$metadata, .quicksight$handlers)
+}

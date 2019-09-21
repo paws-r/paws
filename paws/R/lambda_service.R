@@ -14,30 +14,6 @@ NULL
 #' Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
 #' in the **AWS Lambda Developer Guide**.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- lambda(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
 #' # function.
@@ -96,15 +72,12 @@ NULL
 #'
 #' @rdname lambda
 #' @export
-lambda <- function(config = NULL) {
-  .lambda$service <- function() {
-    new_service(.lambda$metadata, .lambda$handlers, config)
-  }
+lambda <- function() {
   .lambda$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.lambda <- new.env()
+.lambda <- list()
 
 .lambda$operations <- list()
 
@@ -119,3 +92,7 @@ lambda <- function(config = NULL) {
 )
 
 .lambda$handlers <- new_handlers("restjson", "v4")
+
+.lambda$service <- function() {
+  new_service(.lambda$metadata, .lambda$handlers)
+}

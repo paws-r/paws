@@ -17,30 +17,6 @@ NULL
 #' Directory Developer
 #' Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- clouddirectory(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- clouddirectory()
 #' svc$add_facet_to_object(
@@ -119,15 +95,12 @@ NULL
 #'
 #' @rdname clouddirectory
 #' @export
-clouddirectory <- function(config = NULL) {
-  .clouddirectory$service <- function() {
-    new_service(.clouddirectory$metadata, .clouddirectory$handlers, config)
-  }
+clouddirectory <- function() {
   .clouddirectory$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.clouddirectory <- new.env()
+.clouddirectory <- list()
 
 .clouddirectory$operations <- list()
 
@@ -142,3 +115,7 @@ clouddirectory <- function(config = NULL) {
 )
 
 .clouddirectory$handlers <- new_handlers("restjson", "v4")
+
+.clouddirectory$service <- function() {
+  new_service(.clouddirectory$metadata, .clouddirectory$handlers)
+}

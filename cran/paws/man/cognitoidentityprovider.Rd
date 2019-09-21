@@ -6,10 +6,6 @@
 \usage{
 cognitoidentityprovider()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Using the Amazon Cognito User Pools API, you can create a user pool to
 manage directories and users. You can authenticate a user to obtain
@@ -20,25 +16,6 @@ Cognito User Pools.
 
 For more information, see the Amazon Cognito Documentation.
 }
-\section{Service syntax}{
-\preformatted{svc <- cognitoidentityprovider(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

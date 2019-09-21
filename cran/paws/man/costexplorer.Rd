@@ -6,10 +6,6 @@
 \usage{
 costexplorer()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 The Cost Explorer API enables you to programmatically query your cost
 and usage data. You can query for aggregated data such as total monthly
@@ -27,25 +23,6 @@ The Cost Explorer API provides the following endpoint:
 For information about costs associated with the Cost Explorer API, see
 \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
-\section{Service syntax}{
-\preformatted{svc <- costexplorer(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

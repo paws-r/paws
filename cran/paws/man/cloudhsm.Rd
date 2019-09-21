@@ -6,10 +6,6 @@
 \usage{
 cloudhsm()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 AWS CloudHSM Service
 
@@ -20,25 +16,6 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 \strong{For information about the current version of AWS CloudHSM}, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
 \href{http://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
 }
-\section{Service syntax}{
-\preformatted{svc <- cloudhsm(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

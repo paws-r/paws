@@ -4,11 +4,7 @@
 \alias{appstream}
 \title{Amazon AppStream}
 \usage{
-appstream(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+appstream()
 }
 \description{
 Amazon AppStream 2.0
@@ -27,25 +23,6 @@ To learn more about AppStream 2.0, see the following resources:
 \item \href{http://aws.amazon.com/documentation/appstream2}{Amazon AppStream 2.0 documentation}
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- appstream(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

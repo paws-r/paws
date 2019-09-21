@@ -4,11 +4,7 @@
 \alias{worklink}
 \title{Amazon WorkLink}
 \usage{
-worklink(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+worklink()
 }
 \description{
 Amazon WorkLink is a cloud-based service that provides secure access to
@@ -21,25 +17,6 @@ authorized internal web content in a secure rendering service in the AWS
 cloud. Amazon WorkLink doesn't download or store any internal web
 content on mobile devices.
 }
-\section{Service syntax}{
-\preformatted{svc <- worklink(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

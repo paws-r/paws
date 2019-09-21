@@ -41,30 +41,6 @@ NULL
 #' the scenarios listed above, as well as give users the ability to grant
 #' access on a selective basis using the IAM model.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- workmail(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- workmail()
 #' svc$associate_delegate_to_resource(
@@ -110,15 +86,12 @@ NULL
 #'
 #' @rdname workmail
 #' @export
-workmail <- function(config = NULL) {
-  .workmail$service <- function() {
-    new_service(.workmail$metadata, .workmail$handlers, config)
-  }
+workmail <- function() {
   .workmail$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.workmail <- new.env()
+.workmail <- list()
 
 .workmail$operations <- list()
 
@@ -133,3 +106,7 @@ workmail <- function(config = NULL) {
 )
 
 .workmail$handlers <- new_handlers("jsonrpc", "v4")
+
+.workmail$service <- function() {
+  new_service(.workmail$metadata, .workmail$handlers)
+}

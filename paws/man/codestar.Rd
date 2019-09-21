@@ -4,11 +4,7 @@
 \alias{codestar}
 \title{AWS CodeStar}
 \usage{
-codestar(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+codestar()
 }
 \description{
 This is the API reference for AWS CodeStar. This reference provides
@@ -55,25 +51,6 @@ across all projects.
 \item \code{UpdateUserProfile}, which updates the profile for a user.
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- codestar(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

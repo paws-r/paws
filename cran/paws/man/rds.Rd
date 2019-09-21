@@ -6,10 +6,6 @@
 \usage{
 rds()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
@@ -53,25 +49,6 @@ some related topics from the user guide.
 \item For more information about how to use the Query API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html}{Using the Query API}.
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- rds(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -7,30 +7,6 @@ NULL
 #' @description
 #' AWS Elemental MediaConvert
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mediaconvert(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mediaconvert()
 #' svc$associate_certificate(
@@ -68,15 +44,12 @@ NULL
 #'
 #' @rdname mediaconvert
 #' @export
-mediaconvert <- function(config = NULL) {
-  .mediaconvert$service <- function() {
-    new_service(.mediaconvert$metadata, .mediaconvert$handlers, config)
-  }
+mediaconvert <- function() {
   .mediaconvert$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediaconvert <- new.env()
+.mediaconvert <- list()
 
 .mediaconvert$operations <- list()
 
@@ -91,3 +64,7 @@ mediaconvert <- function(config = NULL) {
 )
 
 .mediaconvert$handlers <- new_handlers("restjson", "v4")
+
+.mediaconvert$service <- function() {
+  new_service(.mediaconvert$metadata, .mediaconvert$handlers)
+}

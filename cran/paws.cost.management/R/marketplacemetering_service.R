@@ -51,30 +51,6 @@ NULL
 #' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
 #' .
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- marketplacemetering(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- marketplacemetering()
 #' svc$batch_meter_usage(
@@ -91,15 +67,12 @@ NULL
 #'
 #' @rdname marketplacemetering
 #' @export
-marketplacemetering <- function(config = NULL) {
-  .marketplacemetering$service <- function() {
-    new_service(.marketplacemetering$metadata, .marketplacemetering$handlers, config)
-  }
+marketplacemetering <- function() {
   .marketplacemetering$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.marketplacemetering <- new.env()
+.marketplacemetering <- list()
 
 .marketplacemetering$operations <- list()
 
@@ -114,3 +87,7 @@ marketplacemetering <- function(config = NULL) {
 )
 
 .marketplacemetering$handlers <- new_handlers("jsonrpc", "v4")
+
+.marketplacemetering$service <- function() {
+  new_service(.marketplacemetering$metadata, .marketplacemetering$handlers)
+}

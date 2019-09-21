@@ -4,35 +4,12 @@
 \alias{robomaker}
 \title{AWS RoboMaker}
 \usage{
-robomaker(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+robomaker()
 }
 \description{
 This section provides documentation for the AWS RoboMaker API
 operations.
 }
-\section{Service syntax}{
-\preformatted{svc <- robomaker(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

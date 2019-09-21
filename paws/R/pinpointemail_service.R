@@ -26,30 +26,6 @@ NULL
 #' available in each Region, see [AWS Global
 #' Infrastructure](http://aws.amazon.com/about-aws/global-infrastructure/).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- pinpointemail(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- pinpointemail()
 #' svc$create_configuration_set(
@@ -104,15 +80,12 @@ NULL
 #'
 #' @rdname pinpointemail
 #' @export
-pinpointemail <- function(config = NULL) {
-  .pinpointemail$service <- function() {
-    new_service(.pinpointemail$metadata, .pinpointemail$handlers, config)
-  }
+pinpointemail <- function() {
   .pinpointemail$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.pinpointemail <- new.env()
+.pinpointemail <- list()
 
 .pinpointemail$operations <- list()
 
@@ -127,3 +100,7 @@ pinpointemail <- function(config = NULL) {
 )
 
 .pinpointemail$handlers <- new_handlers("restjson", "v4")
+
+.pinpointemail$service <- function() {
+  new_service(.pinpointemail$metadata, .pinpointemail$handlers)
+}

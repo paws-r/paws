@@ -8,30 +8,6 @@ NULL
 #' Amazon Route 53 is a highly available and scalable Domain Name System
 #' (DNS) web service.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- route53(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the
 #' # hosted zone with ID Z3M3LMPEXAMPLE.
@@ -107,15 +83,12 @@ NULL
 #'
 #' @rdname route53
 #' @export
-route53 <- function(config = NULL) {
-  .route53$service <- function() {
-    new_service(.route53$metadata, .route53$handlers, config)
-  }
+route53 <- function() {
   .route53$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.route53 <- new.env()
+.route53 <- list()
 
 .route53$operations <- list()
 
@@ -130,3 +103,7 @@ route53 <- function(config = NULL) {
 )
 
 .route53$handlers <- new_handlers("restxml", "v4")
+
+.route53$service <- function() {
+  new_service(.route53$metadata, .route53$handlers)
+}

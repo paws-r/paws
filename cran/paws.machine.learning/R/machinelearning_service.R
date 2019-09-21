@@ -7,30 +7,6 @@ NULL
 #' @description
 #' Definition of the public APIs exposed by Amazon Machine Learning
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- machinelearning(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- machinelearning()
 #' svc$add_tags(
@@ -71,15 +47,12 @@ NULL
 #'
 #' @rdname machinelearning
 #' @export
-machinelearning <- function(config = NULL) {
-  .machinelearning$service <- function() {
-    new_service(.machinelearning$metadata, .machinelearning$handlers, config)
-  }
+machinelearning <- function() {
   .machinelearning$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.machinelearning <- new.env()
+.machinelearning <- list()
 
 .machinelearning$operations <- list()
 
@@ -94,3 +67,7 @@ machinelearning <- function(config = NULL) {
 )
 
 .machinelearning$handlers <- new_handlers("jsonrpc", "v4")
+
+.machinelearning$service <- function() {
+  new_service(.machinelearning$metadata, .machinelearning$handlers)
+}

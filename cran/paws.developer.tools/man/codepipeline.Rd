@@ -4,11 +4,7 @@
 \alias{codepipeline}
 \title{AWS CodePipeline}
 \usage{
-codepipeline(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+codepipeline()
 }
 \description{
 \strong{Overview}
@@ -129,25 +125,6 @@ failure, and
 success.
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- codepipeline(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,11 +4,7 @@
 \alias{codebuild}
 \title{AWS CodeBuild}
 \usage{
-codebuild(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+codebuild()
 }
 \description{
 AWS CodeBuild is a fully managed build service in the cloud. AWS
@@ -67,25 +63,6 @@ authentication type, token ARN, and type of source provider for one
 set of credentials.
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- codebuild(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

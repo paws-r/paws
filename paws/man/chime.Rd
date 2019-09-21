@@ -4,11 +4,7 @@
 \alias{chime}
 \title{Amazon Chime}
 \usage{
-chime(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+chime()
 }
 \description{
 The Amazon Chime API (application programming interface) is designed for
@@ -50,25 +46,6 @@ Administrative permissions are controlled using AWS Identity and Access
 Management (IAM). For more information, see \href{https://docs.aws.amazon.com/chime/latest/ag/control-access.html}{Control Access to the Amazon Chime Console}
 in the \emph{Amazon Chime Administration Guide}.
 }
-\section{Service syntax}{
-\preformatted{svc <- chime(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

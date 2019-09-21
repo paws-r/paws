@@ -9,30 +9,6 @@ NULL
 #' and objects. You use a container endpoint to create, read, and delete
 #' objects.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mediastore(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mediastore()
 #' svc$create_container(
@@ -63,15 +39,12 @@ NULL
 #'
 #' @rdname mediastore
 #' @export
-mediastore <- function(config = NULL) {
-  .mediastore$service <- function() {
-    new_service(.mediastore$metadata, .mediastore$handlers, config)
-  }
+mediastore <- function() {
   .mediastore$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediastore <- new.env()
+.mediastore <- list()
 
 .mediastore$operations <- list()
 
@@ -86,3 +59,7 @@ mediastore <- function(config = NULL) {
 )
 
 .mediastore$handlers <- new_handlers("jsonrpc", "v4")
+
+.mediastore$service <- function() {
+  new_service(.mediastore$metadata, .mediastore$handlers)
+}

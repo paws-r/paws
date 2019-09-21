@@ -25,30 +25,6 @@ NULL
 #' replicated across multiple Availability Zones in an AWS region,
 #' providing built-in high availability and data durability.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- dynamodb(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # This example reads multiple items from the Music table using a batch of
 #' # three GetItem requests.  Only the AlbumTitle attribute is returned.
@@ -129,15 +105,12 @@ NULL
 #'
 #' @rdname dynamodb
 #' @export
-dynamodb <- function(config = NULL) {
-  .dynamodb$service <- function() {
-    new_service(.dynamodb$metadata, .dynamodb$handlers, config)
-  }
+dynamodb <- function() {
   .dynamodb$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.dynamodb <- new.env()
+.dynamodb <- list()
 
 .dynamodb$operations <- list()
 
@@ -152,3 +125,7 @@ dynamodb <- function(config = NULL) {
 )
 
 .dynamodb$handlers <- new_handlers("jsonrpc", "v4")
+
+.dynamodb$service <- function() {
+  new_service(.dynamodb$metadata, .dynamodb$handlers)
+}

@@ -4,11 +4,7 @@
 \alias{support}
 \title{AWS Support}
 \usage{
-support(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+support()
 }
 \description{
 The AWS Support API reference is intended for programmers who need
@@ -62,25 +58,6 @@ the \emph{AWS Support User Guide} for information about how to use this
 service to create and manage your support cases, and how to call Trusted
 Advisor for results of checks on your resources.
 }
-\section{Service syntax}{
-\preformatted{svc <- support(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

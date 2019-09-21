@@ -28,30 +28,6 @@ NULL
 #' Security Hub must be enabled for the member account in the same Region
 #' that the invite was sent from.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- securityhub(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- securityhub()
 #' svc$accept_invitation(
@@ -102,15 +78,12 @@ NULL
 #'
 #' @rdname securityhub
 #' @export
-securityhub <- function(config = NULL) {
-  .securityhub$service <- function() {
-    new_service(.securityhub$metadata, .securityhub$handlers, config)
-  }
+securityhub <- function() {
   .securityhub$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.securityhub <- new.env()
+.securityhub <- list()
 
 .securityhub$operations <- list()
 
@@ -125,3 +98,7 @@ securityhub <- function(config = NULL) {
 )
 
 .securityhub$handlers <- new_handlers("restjson", "v4")
+
+.securityhub$service <- function() {
+  new_service(.securityhub$metadata, .securityhub$handlers)
+}

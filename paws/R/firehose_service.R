@@ -12,30 +12,6 @@ NULL
 #' Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 #' Redshift, and Splunk.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- firehose(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- firehose()
 #' svc$create_delivery_stream(
@@ -60,15 +36,12 @@ NULL
 #'
 #' @rdname firehose
 #' @export
-firehose <- function(config = NULL) {
-  .firehose$service <- function() {
-    new_service(.firehose$metadata, .firehose$handlers, config)
-  }
+firehose <- function() {
   .firehose$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.firehose <- new.env()
+.firehose <- list()
 
 .firehose$operations <- list()
 
@@ -83,3 +56,7 @@ firehose <- function(config = NULL) {
 )
 
 .firehose$handlers <- new_handlers("jsonrpc", "v4")
+
+.firehose$service <- function() {
+  new_service(.firehose$metadata, .firehose$handlers)
+}

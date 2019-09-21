@@ -17,30 +17,6 @@ NULL
 #' insertion behavior and mapping information for the origin server and the
 #' ad decision server (ADS).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mediatailor(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mediatailor()
 #' svc$delete_playback_configuration(
@@ -60,15 +36,12 @@ NULL
 #'
 #' @rdname mediatailor
 #' @export
-mediatailor <- function(config = NULL) {
-  .mediatailor$service <- function() {
-    new_service(.mediatailor$metadata, .mediatailor$handlers, config)
-  }
+mediatailor <- function() {
   .mediatailor$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediatailor <- new.env()
+.mediatailor <- list()
 
 .mediatailor$operations <- list()
 
@@ -83,3 +56,7 @@ mediatailor <- function(config = NULL) {
 )
 
 .mediatailor$handlers <- new_handlers("restjson", "v4")
+
+.mediatailor$service <- function() {
+  new_service(.mediatailor$metadata, .mediatailor$handlers)
+}

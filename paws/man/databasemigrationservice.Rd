@@ -4,11 +4,7 @@
 \alias{databasemigrationservice}
 \title{AWS Database Migration Service}
 \usage{
-databasemigrationservice(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+databasemigrationservice()
 }
 \description{
 AWS Database Migration Service (AWS DMS) can migrate your data to and
@@ -22,25 +18,6 @@ such as Oracle to MySQL or SQL Server to PostgreSQL.
 For more information about AWS DMS, see \href{https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html}{What Is AWS Database Migration Service?}
 in the \emph{AWS Database Migration User Guide.}
 }
-\section{Service syntax}{
-\preformatted{svc <- databasemigrationservice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

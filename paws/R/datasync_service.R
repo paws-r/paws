@@ -13,30 +13,6 @@ NULL
 #' This API interface reference for AWS DataSync contains documentation for
 #' a programming interface that you can use to manage AWS DataSync.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- datasync(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- datasync()
 #' svc$cancel_task_execution(
@@ -74,15 +50,12 @@ NULL
 #'
 #' @rdname datasync
 #' @export
-datasync <- function(config = NULL) {
-  .datasync$service <- function() {
-    new_service(.datasync$metadata, .datasync$handlers, config)
-  }
+datasync <- function() {
   .datasync$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.datasync <- new.env()
+.datasync <- list()
 
 .datasync$operations <- list()
 
@@ -97,3 +70,7 @@ datasync <- function(config = NULL) {
 )
 
 .datasync$handlers <- new_handlers("jsonrpc", "v4")
+
+.datasync$service <- function() {
+  new_service(.datasync$metadata, .datasync$handlers)
+}

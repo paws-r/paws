@@ -77,30 +77,6 @@ NULL
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- secretsmanager(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example shows how to cancel rotation for a secret. The
 #' # operation sets the RotationEnabled field to false and cancels all
@@ -135,15 +111,12 @@ NULL
 #'
 #' @rdname secretsmanager
 #' @export
-secretsmanager <- function(config = NULL) {
-  .secretsmanager$service <- function() {
-    new_service(.secretsmanager$metadata, .secretsmanager$handlers, config)
-  }
+secretsmanager <- function() {
   .secretsmanager$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.secretsmanager <- new.env()
+.secretsmanager <- list()
 
 .secretsmanager$operations <- list()
 
@@ -158,3 +131,7 @@ secretsmanager <- function(config = NULL) {
 )
 
 .secretsmanager$handlers <- new_handlers("jsonrpc", "v4")
+
+.secretsmanager$service <- function() {
+  new_service(.secretsmanager$metadata, .secretsmanager$handlers)
+}

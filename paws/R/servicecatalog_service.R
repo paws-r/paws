@@ -12,30 +12,6 @@ NULL
 #' Catalog
 #' Concepts](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- servicecatalog(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- servicecatalog()
 #' svc$accept_portfolio_share(
@@ -131,15 +107,12 @@ NULL
 #'
 #' @rdname servicecatalog
 #' @export
-servicecatalog <- function(config = NULL) {
-  .servicecatalog$service <- function() {
-    new_service(.servicecatalog$metadata, .servicecatalog$handlers, config)
-  }
+servicecatalog <- function() {
   .servicecatalog$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.servicecatalog <- new.env()
+.servicecatalog <- list()
 
 .servicecatalog$operations <- list()
 
@@ -154,3 +127,7 @@ servicecatalog <- function(config = NULL) {
 )
 
 .servicecatalog$handlers <- new_handlers("jsonrpc", "v4")
+
+.servicecatalog$service <- function() {
+  new_service(.servicecatalog$metadata, .servicecatalog$handlers)
+}

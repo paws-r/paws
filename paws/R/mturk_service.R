@@ -7,30 +7,6 @@ NULL
 #' @description
 #' Amazon Mechanical Turk API Reference
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mturk(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mturk()
 #' svc$accept_qualification_request(
@@ -82,15 +58,12 @@ NULL
 #'
 #' @rdname mturk
 #' @export
-mturk <- function(config = NULL) {
-  .mturk$service <- function() {
-    new_service(.mturk$metadata, .mturk$handlers, config)
-  }
+mturk <- function() {
   .mturk$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mturk <- new.env()
+.mturk <- list()
 
 .mturk$operations <- list()
 
@@ -105,3 +78,7 @@ mturk <- function(config = NULL) {
 )
 
 .mturk$handlers <- new_handlers("jsonrpc", "v4")
+
+.mturk$service <- function() {
+  new_service(.mturk$metadata, .mturk$handlers)
+}
