@@ -28,30 +28,6 @@ NULL
 #' and the [Developer Guide for
 #' iOS](http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cognitosync(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cognitosync()
 #' svc$bulk_publish(
@@ -81,15 +57,12 @@ NULL
 #'
 #' @rdname cognitosync
 #' @export
-cognitosync <- function(config = NULL) {
-  .cognitosync$service <- function() {
-    new_service(.cognitosync$metadata, .cognitosync$handlers, config)
-  }
+cognitosync <- function() {
   .cognitosync$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cognitosync <- new.env()
+.cognitosync <- list()
 
 .cognitosync$operations <- list()
 
@@ -104,3 +77,7 @@ cognitosync <- function(config = NULL) {
 )
 
 .cognitosync$handlers <- new_handlers("restjson", "v4")
+
+.cognitosync$service <- function() {
+  new_service(.cognitosync$metadata, .cognitosync$handlers)
+}

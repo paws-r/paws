@@ -6,30 +6,6 @@ NULL
 #'
 #' 
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- kinesisvideomedia(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- kinesisvideomedia()
 #' svc$get_media(
@@ -43,15 +19,12 @@ NULL
 #'
 #' @rdname kinesisvideomedia
 #' @export
-kinesisvideomedia <- function(config = NULL) {
-  .kinesisvideomedia$service <- function() {
-    new_service(.kinesisvideomedia$metadata, .kinesisvideomedia$handlers, config)
-  }
+kinesisvideomedia <- function() {
   .kinesisvideomedia$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.kinesisvideomedia <- new.env()
+.kinesisvideomedia <- list()
 
 .kinesisvideomedia$operations <- list()
 
@@ -66,3 +39,7 @@ kinesisvideomedia <- function(config = NULL) {
 )
 
 .kinesisvideomedia$handlers <- new_handlers("restjson", "v4")
+
+.kinesisvideomedia$service <- function() {
+  new_service(.kinesisvideomedia$metadata, .kinesisvideomedia$handlers)
+}

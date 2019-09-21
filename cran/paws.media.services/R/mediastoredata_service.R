@@ -9,30 +9,6 @@ NULL
 #' the Amazon S3 service. Objects are the fundamental entities that are
 #' stored in AWS Elemental MediaStore.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- mediastoredata(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- mediastoredata()
 #' svc$delete_object(
@@ -50,15 +26,12 @@ NULL
 #'
 #' @rdname mediastoredata
 #' @export
-mediastoredata <- function(config = NULL) {
-  .mediastoredata$service <- function() {
-    new_service(.mediastoredata$metadata, .mediastoredata$handlers, config)
-  }
+mediastoredata <- function() {
   .mediastoredata$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediastoredata <- new.env()
+.mediastoredata <- list()
 
 .mediastoredata$operations <- list()
 
@@ -73,3 +46,7 @@ mediastoredata <- function(config = NULL) {
 )
 
 .mediastoredata$handlers <- new_handlers("restjson", "v4")
+
+.mediastoredata$service <- function() {
+  new_service(.mediastoredata$metadata, .mediastoredata$handlers)
+}

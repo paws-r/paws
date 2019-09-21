@@ -4,11 +4,7 @@
 \alias{ecs}
 \title{Amazon EC2 Container Service}
 \usage{
-ecs(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+ecs()
 }
 \description{
 Amazon Elastic Container Service
@@ -33,25 +29,6 @@ availability requirements. Amazon ECS eliminates the need for you to
 operate your own cluster management and configuration management systems
 or worry about scaling your management infrastructure.
 }
-\section{Service syntax}{
-\preformatted{svc <- ecs(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

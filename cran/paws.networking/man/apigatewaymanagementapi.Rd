@@ -4,11 +4,7 @@
 \alias{apigatewaymanagementapi}
 \title{AmazonApiGatewayManagementApi}
 \usage{
-apigatewaymanagementapi(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+apigatewaymanagementapi()
 }
 \description{
 The Amazon API Gateway Management API allows you to directly manage
@@ -19,25 +15,6 @@ https://{api-id}.execute-api.{region}.amazonaws.com/{stage}, or will be
 the endpoint corresponding to your API's custom domain and base path,
 if applicable.
 }
-\section{Service syntax}{
-\preformatted{svc <- apigatewaymanagementapi(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

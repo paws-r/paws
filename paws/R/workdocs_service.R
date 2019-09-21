@@ -39,30 +39,6 @@ NULL
 #' above, as well as give users the ability to grant access on a selective
 #' basis using the IAM model.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- workdocs(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- workdocs()
 #' svc$abort_document_version_upload(
@@ -116,15 +92,12 @@ NULL
 #'
 #' @rdname workdocs
 #' @export
-workdocs <- function(config = NULL) {
-  .workdocs$service <- function() {
-    new_service(.workdocs$metadata, .workdocs$handlers, config)
-  }
+workdocs <- function() {
   .workdocs$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.workdocs <- new.env()
+.workdocs <- list()
 
 .workdocs$operations <- list()
 
@@ -139,3 +112,7 @@ workdocs <- function(config = NULL) {
 )
 
 .workdocs$handlers <- new_handlers("restjson", "v4")
+
+.workdocs$service <- function() {
+  new_service(.workdocs$metadata, .workdocs$handlers)
+}

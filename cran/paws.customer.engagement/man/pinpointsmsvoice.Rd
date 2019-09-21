@@ -4,34 +4,11 @@
 \alias{pinpointsmsvoice}
 \title{Amazon Pinpoint SMS and Voice Service}
 \usage{
-pinpointsmsvoice(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+pinpointsmsvoice()
 }
 \description{
 Pinpoint SMS and Voice Messaging public facing APIs
 }
-\section{Service syntax}{
-\preformatted{svc <- pinpointsmsvoice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

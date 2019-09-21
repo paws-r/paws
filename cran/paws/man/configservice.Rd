@@ -6,10 +6,6 @@
 \usage{
 configservice()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 AWS Config provides a way to keep track of the configurations of all the
 AWS resources associated with your AWS account. You can use AWS Config
@@ -32,25 +28,6 @@ actions or commands, as well as how to work with AWS Management Console,
 see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is AWS Config}
 in the \emph{AWS Config Developer Guide}.
 }
-\section{Service syntax}{
-\preformatted{svc <- configservice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

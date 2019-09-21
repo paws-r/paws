@@ -9,30 +9,6 @@ NULL
 #' migration status and integrate your resource-specific migration tool by
 #' providing a programmatic interface to Migration Hub.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- migrationhub(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- migrationhub()
 #' svc$associate_created_artifact(
@@ -61,15 +37,12 @@ NULL
 #'
 #' @rdname migrationhub
 #' @export
-migrationhub <- function(config = NULL) {
-  .migrationhub$service <- function() {
-    new_service(.migrationhub$metadata, .migrationhub$handlers, config)
-  }
+migrationhub <- function() {
   .migrationhub$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.migrationhub <- new.env()
+.migrationhub <- list()
 
 .migrationhub$operations <- list()
 
@@ -84,3 +57,7 @@ migrationhub <- function(config = NULL) {
 )
 
 .migrationhub$handlers <- new_handlers("jsonrpc", "v4")
+
+.migrationhub$service <- function() {
+  new_service(.migrationhub$metadata, .migrationhub$handlers)
+}

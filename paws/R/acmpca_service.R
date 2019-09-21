@@ -22,30 +22,6 @@ NULL
 #' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
 #' in the ACM Private CA user guide.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- acmpca(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- acmpca()
 #' svc$create_certificate_authority(
@@ -78,15 +54,12 @@ NULL
 #'
 #' @rdname acmpca
 #' @export
-acmpca <- function(config = NULL) {
-  .acmpca$service <- function() {
-    new_service(.acmpca$metadata, .acmpca$handlers, config)
-  }
+acmpca <- function() {
   .acmpca$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.acmpca <- new.env()
+.acmpca <- list()
 
 .acmpca$operations <- list()
 
@@ -101,3 +74,7 @@ acmpca <- function(config = NULL) {
 )
 
 .acmpca$handlers <- new_handlers("jsonrpc", "v4")
+
+.acmpca$service <- function() {
+  new_service(.acmpca$metadata, .acmpca$handlers)
+}

@@ -4,11 +4,7 @@
 \alias{gamelift}
 \title{Amazon GameLift}
 \usage{
-gamelift(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+gamelift()
 }
 \description{
 Amazon GameLift Service
@@ -48,25 +44,6 @@ retrieve game logs, and get hosting and game metrics.
 
 \strong{\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html}{Task-based list of API actions}}
 }
-\section{Service syntax}{
-\preformatted{svc <- gamelift(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

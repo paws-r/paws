@@ -29,30 +29,6 @@ NULL
 #' for information about the data that is included with each AWS API call
 #' listed in the log files.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cloudtrail(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cloudtrail()
 #' svc$add_tags(
@@ -79,15 +55,12 @@ NULL
 #'
 #' @rdname cloudtrail
 #' @export
-cloudtrail <- function(config = NULL) {
-  .cloudtrail$service <- function() {
-    new_service(.cloudtrail$metadata, .cloudtrail$handlers, config)
-  }
+cloudtrail <- function() {
   .cloudtrail$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudtrail <- new.env()
+.cloudtrail <- list()
 
 .cloudtrail$operations <- list()
 
@@ -102,3 +75,7 @@ cloudtrail <- function(config = NULL) {
 )
 
 .cloudtrail$handlers <- new_handlers("jsonrpc", "v4")
+
+.cloudtrail$service <- function() {
+  new_service(.cloudtrail$metadata, .cloudtrail$handlers)
+}

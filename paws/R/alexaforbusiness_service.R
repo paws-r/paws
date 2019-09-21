@@ -17,30 +17,6 @@ NULL
 #' register their products with Alexa for Business, and manage them as
 #' shared devices in their organization.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- alexaforbusiness(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- alexaforbusiness()
 #' svc$approve_skill(
@@ -146,15 +122,12 @@ NULL
 #'
 #' @rdname alexaforbusiness
 #' @export
-alexaforbusiness <- function(config = NULL) {
-  .alexaforbusiness$service <- function() {
-    new_service(.alexaforbusiness$metadata, .alexaforbusiness$handlers, config)
-  }
+alexaforbusiness <- function() {
   .alexaforbusiness$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.alexaforbusiness <- new.env()
+.alexaforbusiness <- list()
 
 .alexaforbusiness$operations <- list()
 
@@ -169,3 +142,7 @@ alexaforbusiness <- function(config = NULL) {
 )
 
 .alexaforbusiness$handlers <- new_handlers("jsonrpc", "v4")
+
+.alexaforbusiness$service <- function() {
+  new_service(.alexaforbusiness$metadata, .alexaforbusiness$handlers)
+}

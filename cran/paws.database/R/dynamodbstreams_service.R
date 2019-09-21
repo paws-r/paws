@@ -13,30 +13,6 @@ NULL
 #' Streams](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 #' in the Amazon DynamoDB Developer Guide.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- dynamodbstreams(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example describes a stream with a given stream ARN.
 #' \donttest{svc <- dynamodbstreams()
@@ -54,15 +30,12 @@ NULL
 #'
 #' @rdname dynamodbstreams
 #' @export
-dynamodbstreams <- function(config = NULL) {
-  .dynamodbstreams$service <- function() {
-    new_service(.dynamodbstreams$metadata, .dynamodbstreams$handlers, config)
-  }
+dynamodbstreams <- function() {
   .dynamodbstreams$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.dynamodbstreams <- new.env()
+.dynamodbstreams <- list()
 
 .dynamodbstreams$operations <- list()
 
@@ -77,3 +50,7 @@ dynamodbstreams <- function(config = NULL) {
 )
 
 .dynamodbstreams$handlers <- new_handlers("jsonrpc", "v4")
+
+.dynamodbstreams$service <- function() {
+  new_service(.dynamodbstreams$metadata, .dynamodbstreams$handlers)
+}

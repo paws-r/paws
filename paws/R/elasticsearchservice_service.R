@@ -15,30 +15,6 @@ NULL
 #' a current list of supported regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- elasticsearchservice(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- elasticsearchservice()
 #' svc$add_tags(
@@ -74,15 +50,12 @@ NULL
 #'
 #' @rdname elasticsearchservice
 #' @export
-elasticsearchservice <- function(config = NULL) {
-  .elasticsearchservice$service <- function() {
-    new_service(.elasticsearchservice$metadata, .elasticsearchservice$handlers, config)
-  }
+elasticsearchservice <- function() {
   .elasticsearchservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elasticsearchservice <- new.env()
+.elasticsearchservice <- list()
 
 .elasticsearchservice$operations <- list()
 
@@ -97,3 +70,7 @@ elasticsearchservice <- function(config = NULL) {
 )
 
 .elasticsearchservice$handlers <- new_handlers("restjson", "v4")
+
+.elasticsearchservice$service <- function() {
+  new_service(.elasticsearchservice$metadata, .elasticsearchservice$handlers)
+}

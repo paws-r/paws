@@ -26,30 +26,6 @@ NULL
 #' -   [AWS Sever Migration Service User
 #'     Guide](https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- sms(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- sms()
 #' svc$create_app(
@@ -90,15 +66,12 @@ NULL
 #'
 #' @rdname sms
 #' @export
-sms <- function(config = NULL) {
-  .sms$service <- function() {
-    new_service(.sms$metadata, .sms$handlers, config)
-  }
+sms <- function() {
   .sms$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sms <- new.env()
+.sms <- list()
 
 .sms$operations <- list()
 
@@ -113,3 +86,7 @@ sms <- function(config = NULL) {
 )
 
 .sms$handlers <- new_handlers("jsonrpc", "v4")
+
+.sms$service <- function() {
+  new_service(.sms$metadata, .sms$handlers)
+}

@@ -4,11 +4,7 @@
 \alias{ram}
 \title{AWS Resource Access Manager}
 \usage{
-ram(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+ram()
 }
 \description{
 Use AWS Resource Access Manager to share AWS resources between AWS
@@ -30,25 +26,6 @@ resources in the resource share. An administrator of the specified
 account can use IAM policies to restrict access resources in the
 resource share.
 }
-\section{Service syntax}{
-\preformatted{svc <- ram(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

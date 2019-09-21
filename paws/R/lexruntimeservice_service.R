@@ -18,30 +18,6 @@ NULL
 #' create and manage your Amazon Lex bot. For a list of build-time
 #' operations, see the build-time API, .
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- lexruntimeservice(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- lexruntimeservice()
 #' svc$post_content(
@@ -56,15 +32,12 @@ NULL
 #'
 #' @rdname lexruntimeservice
 #' @export
-lexruntimeservice <- function(config = NULL) {
-  .lexruntimeservice$service <- function() {
-    new_service(.lexruntimeservice$metadata, .lexruntimeservice$handlers, config)
-  }
+lexruntimeservice <- function() {
   .lexruntimeservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.lexruntimeservice <- new.env()
+.lexruntimeservice <- list()
 
 .lexruntimeservice$operations <- list()
 
@@ -79,3 +52,7 @@ lexruntimeservice <- function(config = NULL) {
 )
 
 .lexruntimeservice$handlers <- new_handlers("restjson", "v4")
+
+.lexruntimeservice$service <- function() {
+  new_service(.lexruntimeservice$metadata, .lexruntimeservice$handlers)
+}

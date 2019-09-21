@@ -4,11 +4,7 @@
 \alias{servicecatalog}
 \title{AWS Service Catalog}
 \usage{
-servicecatalog(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+servicecatalog()
 }
 \description{
 \href{https://aws.amazon.com/servicecatalog/}{AWS Service Catalog} enables
@@ -16,25 +12,6 @@ organizations to create and manage catalogs of IT services that are
 approved for use on AWS. To get the most out of this documentation, you
 should be familiar with the terminology discussed in \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html}{AWS Service Catalog Concepts}.
 }
-\section{Service syntax}{
-\preformatted{svc <- servicecatalog(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -24,30 +24,6 @@ NULL
 #' database is occurring. It bases this analysis on impactful metrics and
 #' log errors.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- applicationinsights(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- applicationinsights()
 #' svc$create_application(
@@ -76,15 +52,12 @@ NULL
 #'
 #' @rdname applicationinsights
 #' @export
-applicationinsights <- function(config = NULL) {
-  .applicationinsights$service <- function() {
-    new_service(.applicationinsights$metadata, .applicationinsights$handlers, config)
-  }
+applicationinsights <- function() {
   .applicationinsights$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.applicationinsights <- new.env()
+.applicationinsights <- list()
 
 .applicationinsights$operations <- list()
 
@@ -99,3 +72,7 @@ applicationinsights <- function(config = NULL) {
 )
 
 .applicationinsights$handlers <- new_handlers("jsonrpc", "v4")
+
+.applicationinsights$service <- function() {
+  new_service(.applicationinsights$metadata, .applicationinsights$handlers)
+}

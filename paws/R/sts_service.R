@@ -102,30 +102,6 @@ NULL
 #' your log files, see the [AWS CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- sts(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # 
 #' \donttest{svc <- sts()
@@ -150,15 +126,12 @@ NULL
 #'
 #' @rdname sts
 #' @export
-sts <- function(config = NULL) {
-  .sts$service <- function() {
-    new_service(.sts$metadata, .sts$handlers, config)
-  }
+sts <- function() {
   .sts$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sts <- new.env()
+.sts <- list()
 
 .sts$operations <- list()
 
@@ -173,3 +146,7 @@ sts <- function(config = NULL) {
 )
 
 .sts$handlers <- new_handlers("query", "v4")
+
+.sts$service <- function() {
+  new_service(.sts$metadata, .sts$handlers)
+}

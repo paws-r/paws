@@ -21,30 +21,6 @@ NULL
 #' [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- costexplorer(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- costexplorer()
 #' svc$get_cost_and_usage(
@@ -65,15 +41,12 @@ NULL
 #'
 #' @rdname costexplorer
 #' @export
-costexplorer <- function(config = NULL) {
-  .costexplorer$service <- function() {
-    new_service(.costexplorer$metadata, .costexplorer$handlers, config)
-  }
+costexplorer <- function() {
   .costexplorer$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.costexplorer <- new.env()
+.costexplorer <- list()
 
 .costexplorer$operations <- list()
 
@@ -88,3 +61,7 @@ costexplorer <- function(config = NULL) {
 )
 
 .costexplorer$handlers <- new_handlers("jsonrpc", "v4")
+
+.costexplorer$service <- function() {
+  new_service(.costexplorer$metadata, .costexplorer$handlers)
+}

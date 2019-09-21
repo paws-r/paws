@@ -9,30 +9,6 @@ NULL
 #' Android, iOS, and Fire OS apps on physical phones, tablets, and other
 #' devices in the cloud.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- devicefarm(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example creates a new device pool named MyDevicePool
 #' # inside an existing project.
@@ -117,15 +93,12 @@ NULL
 #'
 #' @rdname devicefarm
 #' @export
-devicefarm <- function(config = NULL) {
-  .devicefarm$service <- function() {
-    new_service(.devicefarm$metadata, .devicefarm$handlers, config)
-  }
+devicefarm <- function() {
   .devicefarm$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.devicefarm <- new.env()
+.devicefarm <- list()
 
 .devicefarm$operations <- list()
 
@@ -140,3 +113,7 @@ devicefarm <- function(config = NULL) {
 )
 
 .devicefarm$handlers <- new_handlers("jsonrpc", "v4")
+
+.devicefarm$service <- function() {
+  new_service(.devicefarm$metadata, .devicefarm$handlers)
+}

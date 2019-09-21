@@ -93,30 +93,6 @@ NULL
 #'     traffic to route to each one. This can be useful, for example, to do
 #'     performance testing within a Region.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- globalaccelerator(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- globalaccelerator()
 #' svc$create_accelerator(
@@ -146,15 +122,12 @@ NULL
 #'
 #' @rdname globalaccelerator
 #' @export
-globalaccelerator <- function(config = NULL) {
-  .globalaccelerator$service <- function() {
-    new_service(.globalaccelerator$metadata, .globalaccelerator$handlers, config)
-  }
+globalaccelerator <- function() {
   .globalaccelerator$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.globalaccelerator <- new.env()
+.globalaccelerator <- list()
 
 .globalaccelerator$operations <- list()
 
@@ -169,3 +142,7 @@ globalaccelerator <- function(config = NULL) {
 )
 
 .globalaccelerator$handlers <- new_handlers("jsonrpc", "v4")
+
+.globalaccelerator$service <- function() {
+  new_service(.globalaccelerator$metadata, .globalaccelerator$handlers)
+}

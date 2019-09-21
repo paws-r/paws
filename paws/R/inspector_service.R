@@ -10,30 +10,6 @@ NULL
 #' information, see [Amazon Inspector User
 #' Guide](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- inspector(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # Assigns attributes (key and value pairs) to the findings that are
 #' # specified by the ARNs of the findings.
@@ -93,15 +69,12 @@ NULL
 #'
 #' @rdname inspector
 #' @export
-inspector <- function(config = NULL) {
-  .inspector$service <- function() {
-    new_service(.inspector$metadata, .inspector$handlers, config)
-  }
+inspector <- function() {
   .inspector$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.inspector <- new.env()
+.inspector <- list()
 
 .inspector$operations <- list()
 
@@ -116,3 +89,7 @@ inspector <- function(config = NULL) {
 )
 
 .inspector$handlers <- new_handlers("jsonrpc", "v4")
+
+.inspector$service <- function() {
+  new_service(.inspector$metadata, .inspector$handlers)
+}

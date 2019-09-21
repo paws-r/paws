@@ -6,10 +6,6 @@
 \usage{
 eks()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that
 makes it easy for you to run Kubernetes on AWS without needing to stand
@@ -25,25 +21,6 @@ environment, whether running in on-premises data centers or public
 clouds. This means that you can easily migrate any standard Kubernetes
 application to Amazon EKS without any code modification required.
 }
-\section{Service syntax}{
-\preformatted{svc <- eks(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

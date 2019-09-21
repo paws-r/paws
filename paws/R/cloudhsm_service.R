@@ -21,30 +21,6 @@ NULL
 #' [AWS CloudHSM API
 #' Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cloudhsm(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cloudhsm()
 #' svc$add_tags_to_resource(
@@ -77,15 +53,12 @@ NULL
 #'
 #' @rdname cloudhsm
 #' @export
-cloudhsm <- function(config = NULL) {
-  .cloudhsm$service <- function() {
-    new_service(.cloudhsm$metadata, .cloudhsm$handlers, config)
-  }
+cloudhsm <- function() {
   .cloudhsm$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudhsm <- new.env()
+.cloudhsm <- list()
 
 .cloudhsm$operations <- list()
 
@@ -100,3 +73,7 @@ cloudhsm <- function(config = NULL) {
 )
 
 .cloudhsm$handlers <- new_handlers("jsonrpc", "v4")
+
+.cloudhsm$service <- function() {
+  new_service(.cloudhsm$metadata, .cloudhsm$handlers)
+}

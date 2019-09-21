@@ -18,30 +18,6 @@ NULL
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cloudsearchdomain(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cloudsearchdomain()
 #' svc$search(
@@ -57,15 +33,12 @@ NULL
 #'
 #' @rdname cloudsearchdomain
 #' @export
-cloudsearchdomain <- function(config = NULL) {
-  .cloudsearchdomain$service <- function() {
-    new_service(.cloudsearchdomain$metadata, .cloudsearchdomain$handlers, config)
-  }
+cloudsearchdomain <- function() {
   .cloudsearchdomain$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudsearchdomain <- new.env()
+.cloudsearchdomain <- list()
 
 .cloudsearchdomain$operations <- list()
 
@@ -80,3 +53,7 @@ cloudsearchdomain <- function(config = NULL) {
 )
 
 .cloudsearchdomain$handlers <- new_handlers("restjson", "v4")
+
+.cloudsearchdomain$service <- function() {
+  new_service(.cloudsearchdomain$metadata, .cloudsearchdomain$handlers)
+}

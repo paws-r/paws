@@ -6,30 +6,6 @@ NULL
 #'
 #' 
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- s3(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example aborts a multipart upload.
 #' \donttest{svc <- s3()
@@ -133,15 +109,12 @@ NULL
 #'
 #' @rdname s3
 #' @export
-s3 <- function(config = NULL) {
-  .s3$service <- function() {
-    new_service(.s3$metadata, .s3$handlers, config)
-  }
+s3 <- function() {
   .s3$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.s3 <- new.env()
+.s3 <- list()
 
 .s3$operations <- list()
 
@@ -156,3 +129,7 @@ s3 <- function(config = NULL) {
 )
 
 .s3$handlers <- new_handlers("restxml", "s3")
+
+.s3$service <- function() {
+  new_service(.s3$metadata, .s3$handlers)
+}

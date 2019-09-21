@@ -10,30 +10,6 @@ NULL
 #' Amazon Kinesis Data Streams is a managed service that scales elastically
 #' for real-time processing of streaming big data.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- kinesis(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- kinesis()
 #' svc$add_tags_to_stream(
@@ -73,15 +49,12 @@ NULL
 #'
 #' @rdname kinesis
 #' @export
-kinesis <- function(config = NULL) {
-  .kinesis$service <- function() {
-    new_service(.kinesis$metadata, .kinesis$handlers, config)
-  }
+kinesis <- function() {
   .kinesis$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.kinesis <- new.env()
+.kinesis <- list()
 
 .kinesis$operations <- list()
 
@@ -96,3 +69,7 @@ kinesis <- function(config = NULL) {
 )
 
 .kinesis$handlers <- new_handlers("jsonrpc", "v4")
+
+.kinesis$service <- function() {
+  new_service(.kinesis$metadata, .kinesis$handlers)
+}

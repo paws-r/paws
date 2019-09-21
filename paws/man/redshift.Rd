@@ -4,11 +4,7 @@
 \alias{redshift}
 \title{Amazon Redshift}
 \usage{
-redshift(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+redshift()
 }
 \description{
 \strong{Overview}
@@ -36,25 +32,6 @@ If you are a database developer, the \href{https://docs.aws.amazon.com/redshift/
 explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 }
-\section{Service syntax}{
-\preformatted{svc <- redshift(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

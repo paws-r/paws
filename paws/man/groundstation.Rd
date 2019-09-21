@@ -4,11 +4,7 @@
 \alias{groundstation}
 \title{AWS Ground Station}
 \usage{
-groundstation(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+groundstation()
 }
 \description{
 Welcome to the AWS Ground Station API Reference. AWS Ground Station is a
@@ -17,25 +13,6 @@ communications, downlink and process satellite data, and scale your
 satellite operations efficiently and cost-effectively without having to
 build or manage your own ground station infrastructure.
 }
-\section{Service syntax}{
-\preformatted{svc <- groundstation(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

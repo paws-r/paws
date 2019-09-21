@@ -6,10 +6,6 @@
 \usage{
 cloudwatch()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and
 the applications you run on AWS in real time. You can use CloudWatch to
@@ -28,25 +24,6 @@ can monitor your own custom metrics. With CloudWatch, you gain
 system-wide visibility into resource utilization, application
 performance, and operational health.
 }
-\section{Service syntax}{
-\preformatted{svc <- cloudwatch(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -15,30 +15,6 @@ NULL
 #' see the [Code Signing for Amazon FreeRTOS Developer
 #' Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- signer(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- signer()
 #' svc$cancel_signing_profile(
@@ -60,15 +36,12 @@ NULL
 #'
 #' @rdname signer
 #' @export
-signer <- function(config = NULL) {
-  .signer$service <- function() {
-    new_service(.signer$metadata, .signer$handlers, config)
-  }
+signer <- function() {
   .signer$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.signer <- new.env()
+.signer <- list()
 
 .signer$operations <- list()
 
@@ -83,3 +56,7 @@ signer <- function(config = NULL) {
 )
 
 .signer$handlers <- new_handlers("restjson", "v4")
+
+.signer$service <- function() {
+  new_service(.signer$metadata, .signer$handlers)
+}

@@ -8,30 +8,6 @@ NULL
 #' Provides translation between one source language and another of the same
 #' set of languages.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- translate(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- translate()
 #' svc$delete_terminology(
@@ -49,15 +25,12 @@ NULL
 #'
 #' @rdname translate
 #' @export
-translate <- function(config = NULL) {
-  .translate$service <- function() {
-    new_service(.translate$metadata, .translate$handlers, config)
-  }
+translate <- function() {
   .translate$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.translate <- new.env()
+.translate <- list()
 
 .translate$operations <- list()
 
@@ -72,3 +45,7 @@ translate <- function(config = NULL) {
 )
 
 .translate$handlers <- new_handlers("jsonrpc", "v4")
+
+.translate$service <- function() {
+  new_service(.translate$metadata, .translate$handlers)
+}

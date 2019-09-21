@@ -87,30 +87,6 @@ NULL
 #' 
 #' -   GenerateDataKeyWithoutPlaintext
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- kms(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following example cancels deletion of the specified CMK.
 #' \donttest{svc <- kms()
@@ -165,15 +141,12 @@ NULL
 #'
 #' @rdname kms
 #' @export
-kms <- function(config = NULL) {
-  .kms$service <- function() {
-    new_service(.kms$metadata, .kms$handlers, config)
-  }
+kms <- function() {
   .kms$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.kms <- new.env()
+.kms <- list()
 
 .kms$operations <- list()
 
@@ -188,3 +161,7 @@ kms <- function(config = NULL) {
 )
 
 .kms$handlers <- new_handlers("jsonrpc", "v4")
+
+.kms$service <- function() {
+  new_service(.kms$metadata, .kms$handlers)
+}

@@ -85,30 +85,6 @@ NULL
 #' -   [AWS CodeDeploy Developer
 #'     Forum](https://forums.aws.amazon.com/forum.jspa?forumID=179)
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- codedeploy(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- codedeploy()
 #' svc$add_tags_to_on_premises_instances(
@@ -167,15 +143,12 @@ NULL
 #'
 #' @rdname codedeploy
 #' @export
-codedeploy <- function(config = NULL) {
-  .codedeploy$service <- function() {
-    new_service(.codedeploy$metadata, .codedeploy$handlers, config)
-  }
+codedeploy <- function() {
   .codedeploy$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.codedeploy <- new.env()
+.codedeploy <- list()
 
 .codedeploy$operations <- list()
 
@@ -190,3 +163,7 @@ codedeploy <- function(config = NULL) {
 )
 
 .codedeploy$handlers <- new_handlers("jsonrpc", "v4")
+
+.codedeploy$service <- function() {
+  new_service(.codedeploy$metadata, .codedeploy$handlers)
+}

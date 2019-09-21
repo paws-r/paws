@@ -21,30 +21,6 @@ NULL
 #' see the [AWS Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- autoscalingplans(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- autoscalingplans()
 #' svc$create_scaling_plan(
@@ -63,15 +39,12 @@ NULL
 #'
 #' @rdname autoscalingplans
 #' @export
-autoscalingplans <- function(config = NULL) {
-  .autoscalingplans$service <- function() {
-    new_service(.autoscalingplans$metadata, .autoscalingplans$handlers, config)
-  }
+autoscalingplans <- function() {
   .autoscalingplans$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.autoscalingplans <- new.env()
+.autoscalingplans <- list()
 
 .autoscalingplans$operations <- list()
 
@@ -86,3 +59,7 @@ autoscalingplans <- function(config = NULL) {
 )
 
 .autoscalingplans$handlers <- new_handlers("jsonrpc", "v4")
+
+.autoscalingplans$service <- function() {
+  new_service(.autoscalingplans$metadata, .autoscalingplans$handlers)
+}

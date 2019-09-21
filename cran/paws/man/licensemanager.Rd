@@ -6,10 +6,6 @@
 \usage{
 licensemanager()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 \emph{This is the AWS License Manager API Reference.} It provides
 descriptions, syntax, and usage examples for each of the actions and
@@ -21,25 +17,6 @@ Alternatively, you can use one of the AWS SDKs to access an API that's
 tailored to the programming language or platform that you're using. For
 more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 }
-\section{Service syntax}{
-\preformatted{svc <- licensemanager(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

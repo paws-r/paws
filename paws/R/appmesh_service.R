@@ -24,30 +24,6 @@ NULL
 #' Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 #' in the Kubernetes documentation.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- appmesh(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- appmesh()
 #' svc$create_mesh(
@@ -88,15 +64,12 @@ NULL
 #'
 #' @rdname appmesh
 #' @export
-appmesh <- function(config = NULL) {
-  .appmesh$service <- function() {
-    new_service(.appmesh$metadata, .appmesh$handlers, config)
-  }
+appmesh <- function() {
   .appmesh$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.appmesh <- new.env()
+.appmesh <- list()
 
 .appmesh$operations <- list()
 
@@ -111,3 +84,7 @@ appmesh <- function(config = NULL) {
 )
 
 .appmesh$handlers <- new_handlers("restjson", "v4")
+
+.appmesh$service <- function() {
+  new_service(.appmesh$metadata, .appmesh$handlers)
+}

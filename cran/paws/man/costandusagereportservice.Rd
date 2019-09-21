@@ -6,10 +6,6 @@
 \usage{
 costandusagereportservice()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 The AWS Cost and Usage Report API enables you to programmatically
 create, query, and delete AWS Cost and Usage report definitions.
@@ -27,25 +23,6 @@ The AWS Cost and Usage Report API provides the following endpoint:
 \item cur.us-east-1.amazonaws.com
 }
 }
-\section{Service syntax}{
-\preformatted{svc <- costandusagereportservice(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

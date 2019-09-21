@@ -6,10 +6,6 @@
 \usage{
 acm()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Welcome to the AWS Certificate Manager (ACM) API documentation.
 
@@ -17,25 +13,6 @@ You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
 the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{AWS Certificate Manager UserGuide} .
 }
-\section{Service syntax}{
-\preformatted{svc <- acm(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

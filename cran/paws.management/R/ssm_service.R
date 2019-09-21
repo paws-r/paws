@@ -30,30 +30,6 @@ NULL
 #' information about how to use a Query API, see [Making API
 #' Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- ssm(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- ssm()
 #' svc$add_tags_to_resource(
@@ -186,15 +162,12 @@ NULL
 #'
 #' @rdname ssm
 #' @export
-ssm <- function(config = NULL) {
-  .ssm$service <- function() {
-    new_service(.ssm$metadata, .ssm$handlers, config)
-  }
+ssm <- function() {
   .ssm$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ssm <- new.env()
+.ssm <- list()
 
 .ssm$operations <- list()
 
@@ -209,3 +182,7 @@ ssm <- function(config = NULL) {
 )
 
 .ssm$handlers <- new_handlers("jsonrpc", "v4")
+
+.ssm$service <- function() {
+  new_service(.ssm$metadata, .ssm$handlers)
+}

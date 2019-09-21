@@ -19,30 +19,6 @@ NULL
 #' regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- cloudsearch(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- cloudsearch()
 #' svc$build_suggesters(
@@ -79,15 +55,12 @@ NULL
 #'
 #' @rdname cloudsearch
 #' @export
-cloudsearch <- function(config = NULL) {
-  .cloudsearch$service <- function() {
-    new_service(.cloudsearch$metadata, .cloudsearch$handlers, config)
-  }
+cloudsearch <- function() {
   .cloudsearch$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudsearch <- new.env()
+.cloudsearch <- list()
 
 .cloudsearch$operations <- list()
 
@@ -102,3 +75,7 @@ cloudsearch <- function(config = NULL) {
 )
 
 .cloudsearch$handlers <- new_handlers("query", "v4")
+
+.cloudsearch$service <- function() {
+  new_service(.cloudsearch$metadata, .cloudsearch$handlers)
+}

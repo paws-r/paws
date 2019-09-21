@@ -17,30 +17,6 @@ NULL
 #' Service?](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
 #' in the *AWS Database Migration User Guide.*
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- databasemigrationservice(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # Adds metadata tags to an AWS DMS resource, including replication
 #' # instance, endpoint, security group, and migration task. These tags can
@@ -110,15 +86,12 @@ NULL
 #'
 #' @rdname databasemigrationservice
 #' @export
-databasemigrationservice <- function(config = NULL) {
-  .databasemigrationservice$service <- function() {
-    new_service(.databasemigrationservice$metadata, .databasemigrationservice$handlers, config)
-  }
+databasemigrationservice <- function() {
   .databasemigrationservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.databasemigrationservice <- new.env()
+.databasemigrationservice <- list()
 
 .databasemigrationservice$operations <- list()
 
@@ -133,3 +106,7 @@ databasemigrationservice <- function(config = NULL) {
 )
 
 .databasemigrationservice$handlers <- new_handlers("jsonrpc", "v4")
+
+.databasemigrationservice$service <- function() {
+  new_service(.databasemigrationservice$metadata, .databasemigrationservice$handlers)
+}

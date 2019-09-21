@@ -4,11 +4,7 @@
 \alias{appmesh}
 \title{AWS App Mesh}
 \usage{
-appmesh(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+appmesh()
 }
 \description{
 AWS App Mesh is a service mesh based on the Envoy proxy that makes it
@@ -27,25 +23,6 @@ in the \emph{Amazon Elastic Container Service Developer Guide}. Kubernetes
 \code{kube-dns} and \code{coredns} are supported. For more information, see \href{https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/}{DNS for Services and Pods}
 in the Kubernetes documentation.
 }
-\section{Service syntax}{
-\preformatted{svc <- appmesh(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

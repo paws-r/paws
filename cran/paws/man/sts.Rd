@@ -6,10 +6,6 @@
 \usage{
 sts()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 The AWS Security Token Service (STS) is a web service that enables you
 to request temporary, limited-privilege credentials for AWS Identity and
@@ -95,25 +91,6 @@ and calls to sts.eu-central-1.amazonaws.com are published to the EU
 To learn more about CloudTrail, including how to turn it on and find
 your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
-\section{Service syntax}{
-\preformatted{svc <- sts(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

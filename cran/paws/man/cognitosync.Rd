@@ -6,10 +6,6 @@
 \usage{
 cognitosync()
 }
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
-}
 \description{
 Amazon Cognito Sync provides an AWS service and client library that
 enable cross-device syncing of application-related user data. High-level
@@ -31,25 +27,6 @@ will probably want to make API calls via the AWS Mobile SDK. To learn
 more, see the \href{http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html}{Developer Guide for Android}
 and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html}{Developer Guide for iOS}.
 }
-\section{Service syntax}{
-\preformatted{svc <- cognitosync(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -11,30 +11,6 @@ NULL
 #' satellite operations efficiently and cost-effectively without having to
 #' build or manage your own ground station infrastructure.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- groundstation(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- groundstation()
 #' svc$cancel_contact(
@@ -72,15 +48,12 @@ NULL
 #'
 #' @rdname groundstation
 #' @export
-groundstation <- function(config = NULL) {
-  .groundstation$service <- function() {
-    new_service(.groundstation$metadata, .groundstation$handlers, config)
-  }
+groundstation <- function() {
   .groundstation$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.groundstation <- new.env()
+.groundstation <- list()
 
 .groundstation$operations <- list()
 
@@ -95,3 +68,7 @@ groundstation <- function(config = NULL) {
 )
 
 .groundstation$handlers <- new_handlers("restjson", "v4")
+
+.groundstation$service <- function() {
+  new_service(.groundstation$metadata, .groundstation$handlers)
+}

@@ -4,11 +4,7 @@
 \alias{securityhub}
 \title{AWS SecurityHub}
 \usage{
-securityhub(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+securityhub()
 }
 \description{
 Security Hub provides you with a comprehensive view of the security
@@ -33,25 +29,6 @@ with the master account is created only in the us-west-2 Region.
 Security Hub must be enabled for the member account in the same Region
 that the invite was sent from.
 }
-\section{Service syntax}{
-\preformatted{svc <- securityhub(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

@@ -68,30 +68,6 @@ NULL
 #'     This set of topics walk you through the process of signing a request
 #'     using an access key ID and secret access key.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- iam(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' # The following add-client-id-to-open-id-connect-provider command adds the
 #' # client ID my-application-ID to the OIDC provider named
@@ -248,15 +224,12 @@ NULL
 #'
 #' @rdname iam
 #' @export
-iam <- function(config = NULL) {
-  .iam$service <- function() {
-    new_service(.iam$metadata, .iam$handlers, config)
-  }
+iam <- function() {
   .iam$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iam <- new.env()
+.iam <- list()
 
 .iam$operations <- list()
 
@@ -271,3 +244,7 @@ iam <- function(config = NULL) {
 )
 
 .iam$handlers <- new_handlers("query", "v4")
+
+.iam$service <- function() {
+  new_service(.iam$metadata, .iam$handlers)
+}

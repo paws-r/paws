@@ -4,36 +4,13 @@
 \alias{mediastoredata}
 \title{AWS Elemental MediaStore Data Plane}
 \usage{
-mediastoredata(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+mediastoredata()
 }
 \description{
 An AWS Elemental MediaStore asset is an object, similar to an object in
 the Amazon S3 service. Objects are the fundamental entities that are
 stored in AWS Elemental MediaStore.
 }
-\section{Service syntax}{
-\preformatted{svc <- mediastoredata(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{

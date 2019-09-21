@@ -11,30 +11,6 @@ NULL
 #' file analysis, machine learning, scientific simulation, and data
 #' warehousing.
 #'
-#' @param
-#' config
-#' An optional list of custom configurations for the service. Currently
-#'            supports adding custom credentials, endpoint, and region.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- emr(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string",
-#'         provider_name = "string"
-#'       ),
-#'       profile = "string"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @examples
 #' \donttest{svc <- emr()
 #' svc$add_instance_fleet(
@@ -74,15 +50,12 @@ NULL
 #'
 #' @rdname emr
 #' @export
-emr <- function(config = NULL) {
-  .emr$service <- function() {
-    new_service(.emr$metadata, .emr$handlers, config)
-  }
+emr <- function() {
   .emr$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.emr <- new.env()
+.emr <- list()
 
 .emr$operations <- list()
 
@@ -97,3 +70,7 @@ emr <- function(config = NULL) {
 )
 
 .emr$handlers <- new_handlers("jsonrpc", "v4")
+
+.emr$service <- function() {
+  new_service(.emr$metadata, .emr$handlers)
+}

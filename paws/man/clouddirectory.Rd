@@ -4,11 +4,7 @@
 \alias{clouddirectory}
 \title{Amazon CloudDirectory}
 \usage{
-clouddirectory(config = NULL)
-}
-\arguments{
-\item{config}{An optional list of custom configurations for the service. Currently
-supports adding custom credentials, endpoint, and region.}
+clouddirectory()
 }
 \description{
 Amazon Cloud Directory
@@ -20,25 +16,6 @@ operations that you can call programmatically and includes detailed
 information on data types and errors. For information about Cloud
 Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Directory Service} and the \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html}{Amazon Cloud Directory Developer Guide}.
 }
-\section{Service syntax}{
-\preformatted{svc <- clouddirectory(
-  config = list(
-    credentials = list(
-      creds = list(
-        access_key_id = "string",
-        secret_access_key = "string",
-        session_token = "string",
-        provider_name = "string"
-      ),
-      profile = "string"
-    ),
-    endpoint = "string",
-    region = "string"
-  )
-)
-}
-}
-
 \section{Operations}{
 
 \tabular{ll}{
