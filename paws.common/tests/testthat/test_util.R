@@ -22,16 +22,3 @@ test_that("is_empty", {
   expect_equal(is_empty(list(1)), FALSE)
   expect_equal(is_empty(list(list(list(),list(1)))), FALSE)
 })
-
-test_that("call_with_args", {
-  data <- list(foo = 1, bar = 2, baz = 3)
-
-  f <- function(foo) {foo}
-  expect_equal(call_with_args(f, data), 1)
-
-  g <- function(foo, baz) {foo + baz}
-  expect_equal(call_with_args(g, data), 4)
-
-  h <- function(qux) {qux}
-  expect_error(call_with_args(h, data))
-})

@@ -20,11 +20,7 @@ Return an API request object with everything needed to make a request.
 }
 \examples{
 # Make a request object for the S3 ListBuckets operation.
-\donttest{metadata <- list(
-  endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
-  service_name = "s3"
-)
-client <- new_service(metadata, new_handlers("restxml", "s3"))
+\donttest{client <- function() {new_service(metadata, handlers)}
 op <- new_operation("ListBuckets", "GET", "/", list())
 params <- list()
 data <- tag_add(list(Buckets = list()), list(type = "structure"))

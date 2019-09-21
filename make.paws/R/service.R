@@ -11,25 +11,18 @@ service_file_template <- template(
   #'
   #' ${description}
   #'
-  #' ${arguments}
-  #'
-  #' ${service_syntax}
-  #'
   #' ${example}
   #'
   #' ${operations}
   #'
   #' @rdname ${service}
   #' @export
-  ${service} <- function(config = NULL) {
-    .${service}$service <- function() {
-      new_service(.${service}$metadata, .${service}$handlers, config)
-    }
+  ${service} <- function() {
     .${service}$operations
   }
 
   # Private API objects: metadata, handlers, interfaces, etc.
-  .${service} <- new.env()
+  .${service} <- list()
 
   .${service}$operations <- list()
 
@@ -44,18 +37,20 @@ service_file_template <- template(
   )
 
   .${service}$handlers <- new_handlers(${protocol}, ${signer})
+
+  .${service}$service <- function() {
+    new_service(.${service}$metadata, .${service}$handlers)
+  }
   `
 )
 
-# Returns the service file, which sets up the objects needed to make requests
-# to a specific AWS API, e.g. the request handlers and request signer.
+# Returns the service file which sets up the objects needed to make requests to
+# a specific AWS API, e.g. the request handlers and request signer.
 make_service <- function(api) {
   render(
     service_file_template,
     title = service_title(api),
     description = service_description(api),
-    arguments = service_arguments(),
-    service_syntax = service_syntax(api),
     example = service_example(api),
     operations = service_operations(api),
     service = package_name(api),
@@ -88,44 +83,6 @@ service_description <- function(api) {
   }
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   paste("@description", desc, sep = "\n")
-}
-
-# Return the documentation for the arguments to the service function.
-service_arguments <- function() {
-  argument <- "config"
-  argument <- comment(paste(argument, collapse = "\n"), "#'")
-  desc <- "An optional list of custom configurations for the service. Currently
-           supports adding custom credentials, endpoint, and region."
-  desc <- comment(paste(desc, collapse = "\n"), "#'")
-  paste("@param", argument, desc, sep = "\n")
-}
-
-# Return the documentation for the service syntax.
-service_syntax <- function(api) {
-  section <- "@section Service syntax:"
-  service <- package_name(api)
-  syntax <- sprintf(
-    '```
-    svc <- %s(
-      config = list(
-        credentials = list(
-          creds = list(
-            access_key_id = "string",
-            secret_access_key = "string",
-            session_token = "string",
-            provider_name = "string"
-          ),
-          profile = "string"
-        ),
-        endpoint = "string",
-        region = "string"
-      )
-    )
-    ```',
-    service)
-  syntax <- gsub("\n\\s{4}", "\n", syntax)
-  syntax <- comment(paste(syntax, collapse = "\n"), "#'")
-  paste(section, syntax, sep = "\n")
 }
 
 # Returns an example showing how to use the service.
