@@ -37,3 +37,9 @@ test_that("struct replacement", {
 
   expect_error(bar$c <- 3)
 })
+
+test_that("convert to list", {
+  Foo <- struct(a = "1", b = NULL)
+  bar <- Foo()
+  expect_type(as.list(bar), "list")
+})

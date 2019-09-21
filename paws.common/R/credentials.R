@@ -35,23 +35,6 @@ get_credentials <- function(credentials) {
   return(credentials)
 }
 
-# Call a function `f` with arguments taken from elements in `data`, including
-# only those data elements that correspond to parameters.
-# For example:
-# f <- function(a) {}
-# data <- list(a = "1", b = "2")
-# call_with_args(f, data) == f("1")
-call_with_args <- function(f, data) {
-  args <- formalArgs(f)
-  if (is.null(args)) {
-    return(f())
-  }
-  if (!all(args %in% names(data))) {
-    stop("A parameter has no corresponding element in `data`.")
-  }
-  return(do.call(f, as.list(data)[args]))
-}
-
 # Return whether a creds object has at least the minimum data needed to
 # authenticate.
 is_credentials_provided <- function(creds){
