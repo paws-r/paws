@@ -39,6 +39,30 @@ NULL
 #'     them available to other developers, and publish new versions of
 #'     applications.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- serverlessapplicationrepository(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- serverlessapplicationrepository()
 #' svc$create_application(
@@ -64,12 +88,15 @@ NULL
 #'
 #' @rdname serverlessapplicationrepository
 #' @export
-serverlessapplicationrepository <- function() {
+serverlessapplicationrepository <- function(config = NULL) {
+  .serverlessapplicationrepository$service <- function() {
+    new_service(.serverlessapplicationrepository$metadata, .serverlessapplicationrepository$handlers, config)
+  }
   .serverlessapplicationrepository$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.serverlessapplicationrepository <- list()
+.serverlessapplicationrepository <- new.env()
 
 .serverlessapplicationrepository$operations <- list()
 
@@ -84,7 +111,3 @@ serverlessapplicationrepository <- function() {
 )
 
 .serverlessapplicationrepository$handlers <- new_handlers("restjson", "v4")
-
-.serverlessapplicationrepository$service <- function() {
-  new_service(.serverlessapplicationrepository$metadata, .serverlessapplicationrepository$handlers)
-}

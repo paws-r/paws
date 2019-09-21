@@ -41,6 +41,30 @@ NULL
 #'     creating a vault, uploading archives, creating jobs to download
 #'     archives, retrieving the job output, and deleting archives.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- glacier(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The example deletes an in-progress multipart upload to a vault named
 #' # my-vault:
@@ -90,12 +114,15 @@ NULL
 #'
 #' @rdname glacier
 #' @export
-glacier <- function() {
+glacier <- function(config = NULL) {
+  .glacier$service <- function() {
+    new_service(.glacier$metadata, .glacier$handlers, config)
+  }
   .glacier$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.glacier <- list()
+.glacier <- new.env()
 
 .glacier$operations <- list()
 
@@ -110,7 +137,3 @@ glacier <- function() {
 )
 
 .glacier$handlers <- new_handlers("restjson", "v4")
-
-.glacier$service <- function() {
-  new_service(.glacier$metadata, .glacier$handlers)
-}

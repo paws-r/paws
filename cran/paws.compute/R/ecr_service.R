@@ -13,6 +13,30 @@ NULL
 #' EC2 instances can access repositories and images. Developers can use the
 #' Docker CLI to author and manage images.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ecr(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example deletes images with the tags precise and trusty in a
 #' # repository called ubuntu in the default registry for an account.
@@ -57,12 +81,15 @@ NULL
 #'
 #' @rdname ecr
 #' @export
-ecr <- function() {
+ecr <- function(config = NULL) {
+  .ecr$service <- function() {
+    new_service(.ecr$metadata, .ecr$handlers, config)
+  }
   .ecr$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ecr <- list()
+.ecr <- new.env()
 
 .ecr$operations <- list()
 
@@ -77,7 +104,3 @@ ecr <- function() {
 )
 
 .ecr$handlers <- new_handlers("jsonrpc", "v4")
-
-.ecr$service <- function() {
-  new_service(.ecr$metadata, .ecr$handlers)
-}

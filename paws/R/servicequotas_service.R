@@ -20,6 +20,30 @@ NULL
 #' including how to download and install them, see the Tools for Amazon Web
 #' Services page.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- servicequotas(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- servicequotas()
 #' svc$associate_service_quota_template(
@@ -48,12 +72,15 @@ NULL
 #'
 #' @rdname servicequotas
 #' @export
-servicequotas <- function() {
+servicequotas <- function(config = NULL) {
+  .servicequotas$service <- function() {
+    new_service(.servicequotas$metadata, .servicequotas$handlers, config)
+  }
   .servicequotas$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.servicequotas <- list()
+.servicequotas <- new.env()
 
 .servicequotas$operations <- list()
 
@@ -68,7 +95,3 @@ servicequotas <- function() {
 )
 
 .servicequotas$handlers <- new_handlers("jsonrpc", "v4")
-
-.servicequotas$service <- function() {
-  new_service(.servicequotas$metadata, .servicequotas$handlers)
-}

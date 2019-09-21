@@ -14,6 +14,30 @@ NULL
 #' queries, or HTTP requests, for the service receive an answer that
 #' contains up to eight healthy records.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- servicediscovery(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- servicediscovery()
 #' svc$create_http_namespace(
@@ -46,12 +70,15 @@ NULL
 #'
 #' @rdname servicediscovery
 #' @export
-servicediscovery <- function() {
+servicediscovery <- function(config = NULL) {
+  .servicediscovery$service <- function() {
+    new_service(.servicediscovery$metadata, .servicediscovery$handlers, config)
+  }
   .servicediscovery$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.servicediscovery <- list()
+.servicediscovery <- new.env()
 
 .servicediscovery$operations <- list()
 
@@ -66,7 +93,3 @@ servicediscovery <- function() {
 )
 
 .servicediscovery$handlers <- new_handlers("jsonrpc", "v4")
-
-.servicediscovery$service <- function() {
-  new_service(.servicediscovery$metadata, .servicediscovery$handlers)
-}

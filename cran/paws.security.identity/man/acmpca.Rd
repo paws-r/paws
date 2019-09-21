@@ -4,7 +4,11 @@
 \alias{acmpca}
 \title{AWS Certificate Manager Private Certificate Authority}
 \usage{
-acmpca()
+acmpca(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 This is the \emph{ACM Private CA API Reference}. It provides descriptions,
@@ -22,6 +26,25 @@ the number of times the action can be called per second. For more
 information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api}{API Rate Limits in ACM Private CA}
 in the ACM Private CA user guide.
 }
+\section{Service syntax}{
+\preformatted{svc <- acmpca(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,11 @@
 \alias{ses}
 \title{Amazon Simple Email Service}
 \usage{
-ses()
+ses(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 This document contains reference information for the \href{https://aws.amazon.com/ses/}{Amazon Simple Email Service} (Amazon SES) API, version
@@ -14,6 +18,25 @@ For a list of Amazon SES endpoints to use in service requests, see
 \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html}{Regions and Amazon SES}
 in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html}{Amazon SES Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- ses(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

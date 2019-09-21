@@ -6,6 +6,10 @@
 \usage{
 apigateway()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon API Gateway helps developers deliver robust, secure, and scalable
 mobile and web application back ends. API Gateway allows developers to
@@ -13,6 +17,25 @@ securely connect mobile and web applications to APIs that run on AWS
 Lambda, Amazon EC2, or other publicly addressable web services that are
 hosted outside of AWS.
 }
+\section{Service syntax}{
+\preformatted{svc <- apigateway(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

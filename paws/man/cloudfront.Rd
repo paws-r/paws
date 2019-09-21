@@ -4,7 +4,11 @@
 \alias{cloudfront}
 \title{Amazon CloudFront}
 \usage{
-cloudfront()
+cloudfront(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 This is the \emph{Amazon CloudFront API Reference}. This guide is for
@@ -12,6 +16,25 @@ developers who need detailed information about CloudFront API actions,
 data types, and errors. For detailed information about CloudFront
 features, see the \emph{Amazon CloudFront Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudfront(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

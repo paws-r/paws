@@ -15,6 +15,30 @@ NULL
 #' This is the *Amazon Kinesis Analytics v1 API Reference*. The Amazon
 #' Kinesis Analytics Developer Guide provides additional information.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kinesisanalytics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- kinesisanalytics()
 #' svc$add_application_cloud_watch_logging_option(
@@ -47,12 +71,15 @@ NULL
 #'
 #' @rdname kinesisanalytics
 #' @export
-kinesisanalytics <- function() {
+kinesisanalytics <- function(config = NULL) {
+  .kinesisanalytics$service <- function() {
+    new_service(.kinesisanalytics$metadata, .kinesisanalytics$handlers, config)
+  }
   .kinesisanalytics$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.kinesisanalytics <- list()
+.kinesisanalytics <- new.env()
 
 .kinesisanalytics$operations <- list()
 
@@ -67,7 +94,3 @@ kinesisanalytics <- function() {
 )
 
 .kinesisanalytics$handlers <- new_handlers("jsonrpc", "v4")
-
-.kinesisanalytics$service <- function() {
-  new_service(.kinesisanalytics$metadata, .kinesisanalytics$handlers)
-}

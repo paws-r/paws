@@ -13,6 +13,30 @@ NULL
 #' (SSML), along with managing pronunciations lexicons that enable you to
 #' get the best results for your application domain.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- polly(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
 #' \donttest{svc <- polly()
@@ -35,12 +59,15 @@ NULL
 #'
 #' @rdname polly
 #' @export
-polly <- function() {
+polly <- function(config = NULL) {
+  .polly$service <- function() {
+    new_service(.polly$metadata, .polly$handlers, config)
+  }
   .polly$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.polly <- list()
+.polly <- new.env()
 
 .polly$operations <- list()
 
@@ -55,7 +82,3 @@ polly <- function() {
 )
 
 .polly$handlers <- new_handlers("restjson", "v4")
-
-.polly$service <- function() {
-  new_service(.polly$metadata, .polly$handlers)
-}

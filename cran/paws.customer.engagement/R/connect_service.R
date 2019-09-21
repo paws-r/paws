@@ -24,6 +24,30 @@ NULL
 #' form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
 #' You must be signed in to your AWS account to access the form.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- connect(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- connect()
 #' svc$create_user(
@@ -57,12 +81,15 @@ NULL
 #'
 #' @rdname connect
 #' @export
-connect <- function() {
+connect <- function(config = NULL) {
+  .connect$service <- function() {
+    new_service(.connect$metadata, .connect$handlers, config)
+  }
   .connect$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.connect <- list()
+.connect <- new.env()
 
 .connect$operations <- list()
 
@@ -77,7 +104,3 @@ connect <- function() {
 )
 
 .connect$handlers <- new_handlers("restjson", "v4")
-
-.connect$service <- function() {
-  new_service(.connect$metadata, .connect$handlers)
-}

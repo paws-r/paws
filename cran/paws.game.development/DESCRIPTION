@@ -1,6 +1,6 @@
 Package: paws.game.development
 Title: Amazon Web Services Game Development APIs
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,8 +12,8 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services game development
-    APIs, including 'GameLift' game server hosting
+Description: Interface to Amazon Web Services game development APIs,
+    including 'GameLift' game server hosting
     <https://aws.amazon.com/gametech/>.
 License: Apache License (>= 2.0)
 Imports: 
@@ -22,8 +22,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
-    "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.1.1
 Collate: 
     'gamelift_service.R'

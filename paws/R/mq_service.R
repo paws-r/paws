@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mq(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- mq()
 #' svc$create_broker(
@@ -41,12 +65,15 @@ NULL
 #'
 #' @rdname mq
 #' @export
-mq <- function() {
+mq <- function(config = NULL) {
+  .mq$service <- function() {
+    new_service(.mq$metadata, .mq$handlers, config)
+  }
   .mq$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mq <- list()
+.mq <- new.env()
 
 .mq$operations <- list()
 
@@ -61,7 +88,3 @@ mq <- function() {
 )
 
 .mq$handlers <- new_handlers("restjson", "v4")
-
-.mq$service <- function() {
-  new_service(.mq$metadata, .mq$handlers)
-}

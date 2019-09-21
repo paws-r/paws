@@ -6,6 +6,10 @@
 \usage{
 datapipeline()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Data Pipeline configures and manages a data-driven workflow called a
 pipeline. AWS Data Pipeline handles the details of scheduling and
@@ -31,6 +35,25 @@ progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
 }
+\section{Service syntax}{
+\preformatted{svc <- datapipeline(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

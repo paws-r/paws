@@ -60,6 +60,30 @@ NULL
 #' 
 #' -   `UpdateUserProfile`, which updates the profile for a user.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codestar(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- codestar()
 #' svc$associate_team_member(
@@ -90,12 +114,15 @@ NULL
 #'
 #' @rdname codestar
 #' @export
-codestar <- function() {
+codestar <- function(config = NULL) {
+  .codestar$service <- function() {
+    new_service(.codestar$metadata, .codestar$handlers, config)
+  }
   .codestar$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.codestar <- list()
+.codestar <- new.env()
 
 .codestar$operations <- list()
 
@@ -110,7 +137,3 @@ codestar <- function() {
 )
 
 .codestar$handlers <- new_handlers("jsonrpc", "v4")
-
-.codestar$service <- function() {
-  new_service(.codestar$metadata, .codestar$handlers)
-}

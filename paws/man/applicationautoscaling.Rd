@@ -4,7 +4,11 @@
 \alias{applicationautoscaling}
 \title{Application Auto Scaling}
 \usage{
-applicationautoscaling()
+applicationautoscaling(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 With Application Auto Scaling, you can configure automatic scaling for
@@ -42,6 +46,25 @@ To learn more about Application Auto Scaling, including information
 about granting IAM users required permissions for Application Auto
 Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- applicationautoscaling(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

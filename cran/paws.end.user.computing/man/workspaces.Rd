@@ -4,7 +4,11 @@
 \alias{workspaces}
 \title{Amazon WorkSpaces}
 \usage{
-workspaces()
+workspaces(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon WorkSpaces Service
@@ -12,6 +16,25 @@ Amazon WorkSpaces Service
 Amazon WorkSpaces enables you to provision virtual, cloud-based
 Microsoft Windows and Amazon Linux desktops for your users.
 }
+\section{Service syntax}{
+\preformatted{svc <- workspaces(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

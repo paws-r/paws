@@ -6,6 +6,10 @@
 \usage{
 iam()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Identity and Access Management (IAM) is a web service that you can
 use to manage users and user permissions under your AWS account. This
@@ -60,6 +64,25 @@ This set of topics walk you through the process of signing a request
 using an access key ID and secret access key.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- iam(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

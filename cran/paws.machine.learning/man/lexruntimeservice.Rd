@@ -4,7 +4,11 @@
 \alias{lexruntimeservice}
 \title{Amazon Lex Runtime Service}
 \usage{
-lexruntimeservice()
+lexruntimeservice(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Lex provides both build and runtime endpoints. Each endpoint
@@ -20,6 +24,25 @@ you configured when you created the bot). You use the build-time API to
 create and manage your Amazon Lex bot. For a list of build-time
 operations, see the build-time API, .
 }
+\section{Service syntax}{
+\preformatted{svc <- lexruntimeservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

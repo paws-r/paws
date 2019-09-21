@@ -24,6 +24,30 @@ NULL
 #' progress of a job on a specific target and for all the targets of the
 #' job
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iotjobsdataplane(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iotjobsdataplane()
 #' svc$describe_job_execution(
@@ -40,12 +64,15 @@ NULL
 #'
 #' @rdname iotjobsdataplane
 #' @export
-iotjobsdataplane <- function() {
+iotjobsdataplane <- function(config = NULL) {
+  .iotjobsdataplane$service <- function() {
+    new_service(.iotjobsdataplane$metadata, .iotjobsdataplane$handlers, config)
+  }
   .iotjobsdataplane$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iotjobsdataplane <- list()
+.iotjobsdataplane <- new.env()
 
 .iotjobsdataplane$operations <- list()
 
@@ -60,7 +87,3 @@ iotjobsdataplane <- function() {
 )
 
 .iotjobsdataplane$handlers <- new_handlers("restjson", "v4")
-
-.iotjobsdataplane$service <- function() {
-  new_service(.iotjobsdataplane$metadata, .iotjobsdataplane$handlers)
-}

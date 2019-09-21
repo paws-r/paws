@@ -4,7 +4,11 @@
 \alias{workdocs}
 \title{Amazon WorkDocs}
 \usage{
-workdocs()
+workdocs(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 The WorkDocs API is designed for the following use cases:
@@ -40,6 +44,25 @@ to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 }
+\section{Service syntax}{
+\preformatted{svc <- workdocs(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

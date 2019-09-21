@@ -4,7 +4,11 @@
 \alias{cloudformation}
 \title{AWS CloudFormation}
 \usage{
-cloudformation()
+cloudformation(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS CloudFormation allows you to create and manage AWS infrastructure
@@ -28,6 +32,25 @@ additional technical information about a specific AWS product, you can
 find the product's technical documentation at
 \href{https://docs.aws.amazon.com/}{docs.aws.amazon.com}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudformation(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

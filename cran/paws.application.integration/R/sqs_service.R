@@ -45,6 +45,30 @@ NULL
 #'     -   [Regions and
 #'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sqs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sqs()
 #' svc$add_permission(
@@ -77,12 +101,15 @@ NULL
 #'
 #' @rdname sqs
 #' @export
-sqs <- function() {
+sqs <- function(config = NULL) {
+  .sqs$service <- function() {
+    new_service(.sqs$metadata, .sqs$handlers, config)
+  }
   .sqs$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sqs <- list()
+.sqs <- new.env()
 
 .sqs$operations <- list()
 
@@ -97,7 +124,3 @@ sqs <- function() {
 )
 
 .sqs$handlers <- new_handlers("query", "v4")
-
-.sqs$service <- function() {
-  new_service(.sqs$metadata, .sqs$handlers)
-}

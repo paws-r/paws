@@ -15,6 +15,30 @@ NULL
 #' persistent representation of your things and their state in the AWS
 #' cloud.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iotdataplane(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iotdataplane()
 #' svc$delete_thing_shadow(
@@ -31,12 +55,15 @@ NULL
 #'
 #' @rdname iotdataplane
 #' @export
-iotdataplane <- function() {
+iotdataplane <- function(config = NULL) {
+  .iotdataplane$service <- function() {
+    new_service(.iotdataplane$metadata, .iotdataplane$handlers, config)
+  }
   .iotdataplane$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iotdataplane <- list()
+.iotdataplane <- new.env()
 
 .iotdataplane$operations <- list()
 
@@ -51,7 +78,3 @@ iotdataplane <- function() {
 )
 
 .iotdataplane$handlers <- new_handlers("restjson", "v4")
-
-.iotdataplane$service <- function() {
-  new_service(.iotdataplane$metadata, .iotdataplane$handlers)
-}

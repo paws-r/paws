@@ -7,6 +7,30 @@ NULL
 #' @description
 #' The Amazon SageMaker runtime API.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemakerruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sagemakerruntime()
 #' svc$invoke_endpoint(
@@ -20,12 +44,15 @@ NULL
 #'
 #' @rdname sagemakerruntime
 #' @export
-sagemakerruntime <- function() {
+sagemakerruntime <- function(config = NULL) {
+  .sagemakerruntime$service <- function() {
+    new_service(.sagemakerruntime$metadata, .sagemakerruntime$handlers, config)
+  }
   .sagemakerruntime$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sagemakerruntime <- list()
+.sagemakerruntime <- new.env()
 
 .sagemakerruntime$operations <- list()
 
@@ -40,7 +67,3 @@ sagemakerruntime <- function() {
 )
 
 .sagemakerruntime$handlers <- new_handlers("restjson", "v4")
-
-.sagemakerruntime$service <- function() {
-  new_service(.sagemakerruntime$metadata, .sagemakerruntime$handlers)
-}

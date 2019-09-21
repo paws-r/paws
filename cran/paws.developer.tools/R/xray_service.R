@@ -8,6 +8,30 @@ NULL
 #' AWS X-Ray provides APIs for managing debug traces and retrieving service
 #' maps and other data created by processing those traces.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- xray(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- xray()
 #' svc$batch_get_traces(
@@ -40,12 +64,15 @@ NULL
 #'
 #' @rdname xray
 #' @export
-xray <- function() {
+xray <- function(config = NULL) {
+  .xray$service <- function() {
+    new_service(.xray$metadata, .xray$handlers, config)
+  }
   .xray$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.xray <- list()
+.xray <- new.env()
 
 .xray$operations <- list()
 
@@ -60,7 +87,3 @@ xray <- function() {
 )
 
 .xray$handlers <- new_handlers("restjson", "v4")
-
-.xray$service <- function() {
-  new_service(.xray$metadata, .xray$handlers)
-}

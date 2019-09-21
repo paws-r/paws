@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Pinpoint SMS and Voice Messaging public facing APIs
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpointsmsvoice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pinpointsmsvoice()
 #' svc$create_configuration_set(
@@ -27,12 +51,15 @@ NULL
 #'
 #' @rdname pinpointsmsvoice
 #' @export
-pinpointsmsvoice <- function() {
+pinpointsmsvoice <- function(config = NULL) {
+  .pinpointsmsvoice$service <- function() {
+    new_service(.pinpointsmsvoice$metadata, .pinpointsmsvoice$handlers, config)
+  }
   .pinpointsmsvoice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.pinpointsmsvoice <- list()
+.pinpointsmsvoice <- new.env()
 
 .pinpointsmsvoice$operations <- list()
 
@@ -47,7 +74,3 @@ pinpointsmsvoice <- function() {
 )
 
 .pinpointsmsvoice$handlers <- new_handlers("restjson", "v4")
-
-.pinpointsmsvoice$service <- function() {
-  new_service(.pinpointsmsvoice$metadata, .pinpointsmsvoice$handlers)
-}

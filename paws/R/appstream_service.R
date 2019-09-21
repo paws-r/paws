@@ -23,6 +23,30 @@ NULL
 #' -   [Amazon AppStream 2.0
 #'     documentation](http://aws.amazon.com/documentation/appstream2)
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- appstream(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- appstream()
 #' svc$associate_fleet(
@@ -82,12 +106,15 @@ NULL
 #'
 #' @rdname appstream
 #' @export
-appstream <- function() {
+appstream <- function(config = NULL) {
+  .appstream$service <- function() {
+    new_service(.appstream$metadata, .appstream$handlers, config)
+  }
   .appstream$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.appstream <- list()
+.appstream <- new.env()
 
 .appstream$operations <- list()
 
@@ -102,7 +129,3 @@ appstream <- function() {
 )
 
 .appstream$handlers <- new_handlers("jsonrpc", "v4")
-
-.appstream$service <- function() {
-  new_service(.appstream$metadata, .appstream$handlers)
-}

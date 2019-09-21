@@ -4,12 +4,35 @@
 \alias{appsync}
 \title{AWS AppSync}
 \usage{
-appsync()
+appsync(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS AppSync provides API actions for creating and interacting with data
 sources using GraphQL from your application.
 }
+\section{Service syntax}{
+\preformatted{svc <- appsync(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

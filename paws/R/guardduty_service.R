@@ -23,6 +23,30 @@ NULL
 #' information, see [Amazon GuardDuty User
 #' Guide](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- guardduty(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- guardduty()
 #' svc$accept_invitation(
@@ -80,12 +104,15 @@ NULL
 #'
 #' @rdname guardduty
 #' @export
-guardduty <- function() {
+guardduty <- function(config = NULL) {
+  .guardduty$service <- function() {
+    new_service(.guardduty$metadata, .guardduty$handlers, config)
+  }
   .guardduty$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.guardduty <- list()
+.guardduty <- new.env()
 
 .guardduty$operations <- list()
 
@@ -100,7 +127,3 @@ guardduty <- function() {
 )
 
 .guardduty$handlers <- new_handlers("restjson", "v4")
-
-.guardduty$service <- function() {
-  new_service(.guardduty$metadata, .guardduty$handlers)
-}

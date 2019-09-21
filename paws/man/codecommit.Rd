@@ -4,7 +4,11 @@
 \alias{codecommit}
 \title{AWS CodeCommit}
 \usage{
-codecommit()
+codecommit(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 This is the \emph{AWS CodeCommit API Reference}. This reference provides
@@ -155,6 +159,25 @@ repository trigger by sending data to the trigger target.
 
 For information about how to use AWS CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- codecommit(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

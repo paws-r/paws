@@ -8,6 +8,30 @@ NULL
 #' AWS AppSync provides API actions for creating and interacting with data
 #' sources using GraphQL from your application.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- appsync(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- appsync()
 #' svc$create_api_key(
@@ -56,12 +80,15 @@ NULL
 #'
 #' @rdname appsync
 #' @export
-appsync <- function() {
+appsync <- function(config = NULL) {
+  .appsync$service <- function() {
+    new_service(.appsync$metadata, .appsync$handlers, config)
+  }
   .appsync$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.appsync <- list()
+.appsync <- new.env()
 
 .appsync$operations <- list()
 
@@ -76,7 +103,3 @@ appsync <- function() {
 )
 
 .appsync$handlers <- new_handlers("restjson", "v4")
-
-.appsync$service <- function() {
-  new_service(.appsync$metadata, .appsync$handlers)
-}

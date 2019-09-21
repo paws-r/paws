@@ -50,6 +50,30 @@ NULL
 #' 
 #' -   https://health.us-east-1.amazonaws.com
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- health(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- health()
 #' svc$describe_affected_entities(
@@ -68,12 +92,15 @@ NULL
 #'
 #' @rdname health
 #' @export
-health <- function() {
+health <- function(config = NULL) {
+  .health$service <- function() {
+    new_service(.health$metadata, .health$handlers, config)
+  }
   .health$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.health <- list()
+.health <- new.env()
 
 .health$operations <- list()
 
@@ -88,7 +115,3 @@ health <- function() {
 )
 
 .health$handlers <- new_handlers("jsonrpc", "v4")
-
-.health$service <- function() {
-  new_service(.health$metadata, .health$handlers)
-}

@@ -20,6 +20,30 @@ NULL
 #' 
 #' -   cur.us-east-1.amazonaws.com
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- costandusagereportservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
@@ -37,12 +61,15 @@ NULL
 #'
 #' @rdname costandusagereportservice
 #' @export
-costandusagereportservice <- function() {
+costandusagereportservice <- function(config = NULL) {
+  .costandusagereportservice$service <- function() {
+    new_service(.costandusagereportservice$metadata, .costandusagereportservice$handlers, config)
+  }
   .costandusagereportservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.costandusagereportservice <- list()
+.costandusagereportservice <- new.env()
 
 .costandusagereportservice$operations <- list()
 
@@ -57,7 +84,3 @@ costandusagereportservice <- function() {
 )
 
 .costandusagereportservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.costandusagereportservice$service <- function() {
-  new_service(.costandusagereportservice$metadata, .costandusagereportservice$handlers)
-}

@@ -4,7 +4,11 @@
 \alias{kinesisanalytics}
 \title{Amazon Kinesis Analytics}
 \usage{
-kinesisanalytics()
+kinesisanalytics(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 \strong{Overview}
@@ -17,6 +21,25 @@ Amazon Kinesis Data Analytics API V2 Documentation.
 This is the \emph{Amazon Kinesis Analytics v1 API Reference}. The Amazon
 Kinesis Analytics Developer Guide provides additional information.
 }
+\section{Service syntax}{
+\preformatted{svc <- kinesisanalytics(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

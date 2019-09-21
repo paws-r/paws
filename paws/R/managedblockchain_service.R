@@ -12,6 +12,30 @@ NULL
 #' trusted, central authority. Currently, Managed Blockchain supports the
 #' Hyperledger Fabric open source framework.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- managedblockchain(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- managedblockchain()
 #' svc$create_member(
@@ -42,12 +66,15 @@ NULL
 #'
 #' @rdname managedblockchain
 #' @export
-managedblockchain <- function() {
+managedblockchain <- function(config = NULL) {
+  .managedblockchain$service <- function() {
+    new_service(.managedblockchain$metadata, .managedblockchain$handlers, config)
+  }
   .managedblockchain$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.managedblockchain <- list()
+.managedblockchain <- new.env()
 
 .managedblockchain$operations <- list()
 
@@ -62,7 +89,3 @@ managedblockchain <- function() {
 )
 
 .managedblockchain$handlers <- new_handlers("restjson", "v4")
-
-.managedblockchain$service <- function() {
-  new_service(.managedblockchain$metadata, .managedblockchain$handlers)
-}

@@ -51,6 +51,30 @@ NULL
 #' Console](https://docs.aws.amazon.com/chime/latest/ag/control-access.html)
 #' in the *Amazon Chime Administration Guide*.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- chime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- chime()
 #' svc$associate_phone_number_with_user(
@@ -121,12 +145,15 @@ NULL
 #'
 #' @rdname chime
 #' @export
-chime <- function() {
+chime <- function(config = NULL) {
+  .chime$service <- function() {
+    new_service(.chime$metadata, .chime$handlers, config)
+  }
   .chime$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.chime <- list()
+.chime <- new.env()
 
 .chime$operations <- list()
 
@@ -141,7 +168,3 @@ chime <- function() {
 )
 
 .chime$handlers <- new_handlers("restjson", "v4")
-
-.chime$service <- function() {
-  new_service(.chime$metadata, .chime$handlers)
-}

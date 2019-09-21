@@ -29,6 +29,30 @@ NULL
 #' Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 #' in the *AWS Config Developer Guide*.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- configservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- configservice()
 #' svc$batch_get_aggregate_resource_config(
@@ -102,12 +126,15 @@ NULL
 #'
 #' @rdname configservice
 #' @export
-configservice <- function() {
+configservice <- function(config = NULL) {
+  .configservice$service <- function() {
+    new_service(.configservice$metadata, .configservice$handlers, config)
+  }
   .configservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.configservice <- list()
+.configservice <- new.env()
 
 .configservice$operations <- list()
 
@@ -122,7 +149,3 @@ configservice <- function() {
 )
 
 .configservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.configservice$service <- function() {
-  new_service(.configservice$metadata, .configservice$handlers)
-}

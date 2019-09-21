@@ -6,6 +6,10 @@
 \usage{
 storagegateway()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Storage Gateway Service
 
@@ -61,6 +65,25 @@ A snapshot ID with the longer ID format looks like the following:
 
 For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up -- Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
 }
+\section{Service syntax}{
+\preformatted{svc <- storagegateway(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

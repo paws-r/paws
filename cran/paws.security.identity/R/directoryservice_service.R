@@ -22,6 +22,30 @@ NULL
 #' about the AWS SDKs, including how to download and install them, see
 #' [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- directoryservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- directoryservice()
 #' svc$accept_shared_directory(
@@ -84,12 +108,15 @@ NULL
 #'
 #' @rdname directoryservice
 #' @export
-directoryservice <- function() {
+directoryservice <- function(config = NULL) {
+  .directoryservice$service <- function() {
+    new_service(.directoryservice$metadata, .directoryservice$handlers, config)
+  }
   .directoryservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.directoryservice <- list()
+.directoryservice <- new.env()
 
 .directoryservice$operations <- list()
 
@@ -104,7 +131,3 @@ directoryservice <- function() {
 )
 
 .directoryservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.directoryservice$service <- function() {
-  new_service(.directoryservice$metadata, .directoryservice$handlers)
-}

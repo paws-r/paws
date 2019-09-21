@@ -8,6 +8,30 @@ NULL
 #' Comprehend Medical extracts structured information from unstructured
 #' clinical text. Use these actions to gain insight in your documents.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- comprehendmedical(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- comprehendmedical()
 #' svc$detect_entities(
@@ -22,12 +46,15 @@ NULL
 #'
 #' @rdname comprehendmedical
 #' @export
-comprehendmedical <- function() {
+comprehendmedical <- function(config = NULL) {
+  .comprehendmedical$service <- function() {
+    new_service(.comprehendmedical$metadata, .comprehendmedical$handlers, config)
+  }
   .comprehendmedical$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.comprehendmedical <- list()
+.comprehendmedical <- new.env()
 
 .comprehendmedical$operations <- list()
 
@@ -42,7 +69,3 @@ comprehendmedical <- function() {
 )
 
 .comprehendmedical$handlers <- new_handlers("jsonrpc", "v4")
-
-.comprehendmedical$service <- function() {
-  new_service(.comprehendmedical$metadata, .comprehendmedical$handlers)
-}

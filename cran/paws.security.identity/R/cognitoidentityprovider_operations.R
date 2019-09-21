@@ -2201,8 +2201,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -2219,8 +2218,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -5099,8 +5097,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -5117,8 +5114,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://tools.ietf.org/html/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.

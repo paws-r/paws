@@ -17,6 +17,30 @@ NULL
 #' with AWS Transfer for SFTP (AWS SFTP) is easy; there is no
 #' infrastructure to buy and setup.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- transfer(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- transfer()
 #' svc$create_server(
@@ -47,12 +71,15 @@ NULL
 #'
 #' @rdname transfer
 #' @export
-transfer <- function() {
+transfer <- function(config = NULL) {
+  .transfer$service <- function() {
+    new_service(.transfer$metadata, .transfer$handlers, config)
+  }
   .transfer$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.transfer <- list()
+.transfer <- new.env()
 
 .transfer$operations <- list()
 
@@ -67,7 +94,3 @@ transfer <- function() {
 )
 
 .transfer$handlers <- new_handlers("jsonrpc", "v4")
-
-.transfer$service <- function() {
-  new_service(.transfer$metadata, .transfer$handlers)
-}

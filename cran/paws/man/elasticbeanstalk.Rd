@@ -6,6 +6,10 @@
 \usage{
 elasticbeanstalk()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Elastic Beanstalk makes it easy for you to create, deploy, and
 manage scalable, fault-tolerant applications running on the Amazon Web
@@ -24,6 +28,25 @@ For a list of region-specific endpoints that AWS Elastic Beanstalk
 supports, go to \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region}{Regions and Endpoints}
 in the \emph{Amazon Web Services Glossary}.
 }
+\section{Service syntax}{
+\preformatted{svc <- elasticbeanstalk(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,11 @@
 \alias{directconnect}
 \title{AWS Direct Connect}
 \usage{
-directconnect()
+directconnect(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Direct Connect links your internal network to an AWS Direct Connect
@@ -18,6 +22,25 @@ path. A connection provides access to all AWS Regions except the China
 Regions can only be accessed through locations associated with those
 Regions.
 }
+\section{Service syntax}{
+\preformatted{svc <- directconnect(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -13,6 +13,30 @@ NULL
 #' the endpoint corresponding to your API\'s custom domain and base path,
 #' if applicable.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigatewaymanagementapi(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- apigatewaymanagementapi()
 #' svc$post_to_connection(
@@ -26,12 +50,15 @@ NULL
 #'
 #' @rdname apigatewaymanagementapi
 #' @export
-apigatewaymanagementapi <- function() {
+apigatewaymanagementapi <- function(config = NULL) {
+  .apigatewaymanagementapi$service <- function() {
+    new_service(.apigatewaymanagementapi$metadata, .apigatewaymanagementapi$handlers, config)
+  }
   .apigatewaymanagementapi$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.apigatewaymanagementapi <- list()
+.apigatewaymanagementapi <- new.env()
 
 .apigatewaymanagementapi$operations <- list()
 
@@ -46,7 +73,3 @@ apigatewaymanagementapi <- function() {
 )
 
 .apigatewaymanagementapi$handlers <- new_handlers("restjson", "v4")
-
-.apigatewaymanagementapi$service <- function() {
-  new_service(.apigatewaymanagementapi$metadata, .apigatewaymanagementapi$handlers)
-}

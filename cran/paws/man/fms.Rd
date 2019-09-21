@@ -6,6 +6,10 @@
 \usage{
 fms()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Firewall Manager
 
@@ -14,6 +18,25 @@ developers who need detailed information about the AWS Firewall Manager
 API actions, data types, and errors. For detailed information about AWS
 Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{AWS Firewall Manager Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- fms(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

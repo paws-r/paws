@@ -25,6 +25,30 @@ NULL
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 #' in the *Amazon Web Services Glossary*.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elasticbeanstalk(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following code aborts a running application version deployment for
 #' # an environment named my-env:
@@ -83,12 +107,15 @@ NULL
 #'
 #' @rdname elasticbeanstalk
 #' @export
-elasticbeanstalk <- function() {
+elasticbeanstalk <- function(config = NULL) {
+  .elasticbeanstalk$service <- function() {
+    new_service(.elasticbeanstalk$metadata, .elasticbeanstalk$handlers, config)
+  }
   .elasticbeanstalk$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elasticbeanstalk <- list()
+.elasticbeanstalk <- new.env()
 
 .elasticbeanstalk$operations <- list()
 
@@ -103,7 +130,3 @@ elasticbeanstalk <- function() {
 )
 
 .elasticbeanstalk$handlers <- new_handlers("query", "v4")
-
-.elasticbeanstalk$service <- function() {
-  new_service(.elasticbeanstalk$metadata, .elasticbeanstalk$handlers)
-}

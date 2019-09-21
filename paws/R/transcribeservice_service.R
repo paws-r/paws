@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Operations and objects for transcribing speech to text.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- transcribeservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- transcribeservice()
 #' svc$create_vocabulary(
@@ -28,12 +52,15 @@ NULL
 #'
 #' @rdname transcribeservice
 #' @export
-transcribeservice <- function() {
+transcribeservice <- function(config = NULL) {
+  .transcribeservice$service <- function() {
+    new_service(.transcribeservice$metadata, .transcribeservice$handlers, config)
+  }
   .transcribeservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.transcribeservice <- list()
+.transcribeservice <- new.env()
 
 .transcribeservice$operations <- list()
 
@@ -48,7 +75,3 @@ transcribeservice <- function() {
 )
 
 .transcribeservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.transcribeservice$service <- function() {
-  new_service(.transcribeservice$metadata, .transcribeservice$handlers)
-}

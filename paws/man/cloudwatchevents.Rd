@@ -4,7 +4,11 @@
 \alias{cloudwatchevents}
 \title{Amazon CloudWatch Events}
 \usage{
-cloudwatchevents()
+cloudwatchevents(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon EventBridge helps you to respond to state changes in your AWS
@@ -27,6 +31,25 @@ Amazon EBS volume
 For more information about the features of Amazon EventBridge, see the
 \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Amazon EventBridge User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudwatchevents(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

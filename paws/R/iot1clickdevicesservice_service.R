@@ -9,6 +9,30 @@ NULL
 #' the service. Also provides sample requests, responses, and errors for
 #' the supported web services protocols.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iot1clickdevicesservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iot1clickdevicesservice()
 #' svc$claim_devices_by_claim_code(
@@ -34,12 +58,15 @@ NULL
 #'
 #' @rdname iot1clickdevicesservice
 #' @export
-iot1clickdevicesservice <- function() {
+iot1clickdevicesservice <- function(config = NULL) {
+  .iot1clickdevicesservice$service <- function() {
+    new_service(.iot1clickdevicesservice$metadata, .iot1clickdevicesservice$handlers, config)
+  }
   .iot1clickdevicesservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iot1clickdevicesservice <- list()
+.iot1clickdevicesservice <- new.env()
 
 .iot1clickdevicesservice$operations <- list()
 
@@ -54,7 +81,3 @@ iot1clickdevicesservice <- function() {
 )
 
 .iot1clickdevicesservice$handlers <- new_handlers("restjson", "v4")
-
-.iot1clickdevicesservice$service <- function() {
-  new_service(.iot1clickdevicesservice$metadata, .iot1clickdevicesservice$handlers)
-}

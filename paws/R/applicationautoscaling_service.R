@@ -62,6 +62,30 @@ NULL
 #' Scaling actions, see the [Application Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- applicationautoscaling(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
@@ -89,12 +113,15 @@ NULL
 #'
 #' @rdname applicationautoscaling
 #' @export
-applicationautoscaling <- function() {
+applicationautoscaling <- function(config = NULL) {
+  .applicationautoscaling$service <- function() {
+    new_service(.applicationautoscaling$metadata, .applicationautoscaling$handlers, config)
+  }
   .applicationautoscaling$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.applicationautoscaling <- list()
+.applicationautoscaling <- new.env()
 
 .applicationautoscaling$operations <- list()
 
@@ -109,7 +136,3 @@ applicationautoscaling <- function() {
 )
 
 .applicationautoscaling$handlers <- new_handlers("jsonrpc", "v4")
-
-.applicationautoscaling$service <- function() {
-  new_service(.applicationautoscaling$metadata, .applicationautoscaling$handlers)
-}

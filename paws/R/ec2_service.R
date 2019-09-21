@@ -25,6 +25,30 @@ NULL
 #' -   AWS VPN: [AWS VPN product page](http://aws.amazon.com/vpn), AWS VPN
 #'     documentation
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ec2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example allocates an Elastic IP address to use with an instance in
 #' # a VPC.
@@ -391,12 +415,15 @@ NULL
 #'
 #' @rdname ec2
 #' @export
-ec2 <- function() {
+ec2 <- function(config = NULL) {
+  .ec2$service <- function() {
+    new_service(.ec2$metadata, .ec2$handlers, config)
+  }
   .ec2$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ec2 <- list()
+.ec2 <- new.env()
 
 .ec2$operations <- list()
 
@@ -411,7 +438,3 @@ ec2 <- function() {
 )
 
 .ec2$handlers <- new_handlers("ec2query", "v4")
-
-.ec2$service <- function() {
-  new_service(.ec2$metadata, .ec2$handlers)
-}

@@ -33,8 +33,8 @@ NULL
 #'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
-#'     private data in the AAC format ([AAC specification ISO/IEC
-#'     13818-7](https://www.iso.org/standard/43345.html)) or the [MS Wave
+#'     private data in the AAC format (AAC specification ISO/IEC 13818-7)
+#'     or the [MS Wave
 #'     format](http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html).
 #' 
 #' The following procedure shows how to use MPEG-DASH with Kinesis Video

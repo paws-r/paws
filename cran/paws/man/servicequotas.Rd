@@ -6,6 +6,10 @@
 \usage{
 servicequotas()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Service Quotas is a web service that you can use to manage many of your
 AWS service quotas. Quotas, also referred to as limits, are the maximum
@@ -21,6 +25,25 @@ access to Service Quotas and AWS. For information about the AWS SDKs,
 including how to download and install them, see the Tools for Amazon Web
 Services page.
 }
+\section{Service syntax}{
+\preformatted{svc <- servicequotas(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

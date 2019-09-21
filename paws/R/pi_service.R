@@ -25,6 +25,30 @@ NULL
 #' dimensions, such as SQL, Wait-event, User or Host, measured at that time
 #' point.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pi(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pi()
 #' svc$describe_dimension_keys(
@@ -39,12 +63,15 @@ NULL
 #'
 #' @rdname pi
 #' @export
-pi <- function() {
+pi <- function(config = NULL) {
+  .pi$service <- function() {
+    new_service(.pi$metadata, .pi$handlers, config)
+  }
   .pi$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.pi <- list()
+.pi <- new.env()
 
 .pi$operations <- list()
 
@@ -59,7 +86,3 @@ pi <- function() {
 )
 
 .pi$handlers <- new_handlers("jsonrpc", "v4")
-
-.pi$service <- function() {
-  new_service(.pi$metadata, .pi$handlers)
-}

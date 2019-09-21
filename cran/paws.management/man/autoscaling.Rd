@@ -4,7 +4,11 @@
 \alias{autoscaling}
 \title{Auto Scaling}
 \usage{
-autoscaling()
+autoscaling(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon EC2 Auto Scaling
@@ -18,6 +22,25 @@ For more information, including information about granting IAM users
 required permissions for Amazon EC2 Auto Scaling actions, see the
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- autoscaling(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

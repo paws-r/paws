@@ -11,6 +11,30 @@ NULL
 #' Lambda, Amazon EC2, or other publicly addressable web services that are
 #' hosted outside of AWS.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigateway(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- apigateway()
 #' svc$create_api_key(
@@ -143,12 +167,15 @@ NULL
 #'
 #' @rdname apigateway
 #' @export
-apigateway <- function() {
+apigateway <- function(config = NULL) {
+  .apigateway$service <- function() {
+    new_service(.apigateway$metadata, .apigateway$handlers, config)
+  }
   .apigateway$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.apigateway <- list()
+.apigateway <- new.env()
 
 .apigateway$operations <- list()
 
@@ -163,7 +190,3 @@ apigateway <- function() {
 )
 
 .apigateway$handlers <- new_handlers("restjson", "v4")
-
-.apigateway$service <- function() {
-  new_service(.apigateway$metadata, .apigateway$handlers)
-}

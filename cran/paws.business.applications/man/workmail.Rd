@@ -4,7 +4,11 @@
 \alias{workmail}
 \title{Amazon WorkMail}
 \usage{
-workmail()
+workmail(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon WorkMail is a secure, managed business email and calendaring
@@ -44,6 +48,25 @@ delete users, groups, and resources. This allows developers to perform
 the scenarios listed above, as well as give users the ability to grant
 access on a selective basis using the IAM model.
 }
+\section{Service syntax}{
+\preformatted{svc <- workmail(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

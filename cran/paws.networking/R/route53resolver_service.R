@@ -39,6 +39,30 @@ NULL
 #' 
 #' `delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]`
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- route53resolver(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- route53resolver()
 #' svc$associate_resolver_endpoint_ip_address(
@@ -73,12 +97,15 @@ NULL
 #'
 #' @rdname route53resolver
 #' @export
-route53resolver <- function() {
+route53resolver <- function(config = NULL) {
+  .route53resolver$service <- function() {
+    new_service(.route53resolver$metadata, .route53resolver$handlers, config)
+  }
   .route53resolver$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.route53resolver <- list()
+.route53resolver <- new.env()
 
 .route53resolver$operations <- list()
 
@@ -93,7 +120,3 @@ route53resolver <- function() {
 )
 
 .route53resolver$handlers <- new_handlers("jsonrpc", "v4")
-
-.route53resolver$service <- function() {
-  new_service(.route53resolver$metadata, .route53resolver$handlers)
-}

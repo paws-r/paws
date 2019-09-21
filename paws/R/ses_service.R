@@ -17,6 +17,30 @@ NULL
 #' in the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ses(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example creates a receipt rule set by cloning an existing
 #' # one:
@@ -103,12 +127,15 @@ NULL
 #'
 #' @rdname ses
 #' @export
-ses <- function() {
+ses <- function(config = NULL) {
+  .ses$service <- function() {
+    new_service(.ses$metadata, .ses$handlers, config)
+  }
   .ses$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ses <- list()
+.ses <- new.env()
 
 .ses$operations <- list()
 
@@ -123,7 +150,3 @@ ses <- function() {
 )
 
 .ses$handlers <- new_handlers("query", "v4")
-
-.ses$service <- function() {
-  new_service(.ses$metadata, .ses$handlers)
-}

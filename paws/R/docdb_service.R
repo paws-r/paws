@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Amazon DocumentDB API documentation
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- docdb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- docdb()
 #' svc$add_tags_to_resource(
@@ -60,12 +84,15 @@ NULL
 #'
 #' @rdname docdb
 #' @export
-docdb <- function() {
+docdb <- function(config = NULL) {
+  .docdb$service <- function() {
+    new_service(.docdb$metadata, .docdb$handlers, config)
+  }
   .docdb$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.docdb <- list()
+.docdb <- new.env()
 
 .docdb$operations <- list()
 
@@ -80,7 +107,3 @@ docdb <- function() {
 )
 
 .docdb$handlers <- new_handlers("query", "v4")
-
-.docdb$service <- function() {
-  new_service(.docdb$metadata, .docdb$handlers)
-}

@@ -70,6 +70,30 @@ NULL
 #' Guide*](http://docs.aws.amazon.com/application-discovery/latest/userguide/)
 #' .
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- applicationdiscoveryservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- applicationdiscoveryservice()
 #' svc$associate_configuration_items_to_application(
@@ -107,12 +131,15 @@ NULL
 #'
 #' @rdname applicationdiscoveryservice
 #' @export
-applicationdiscoveryservice <- function() {
+applicationdiscoveryservice <- function(config = NULL) {
+  .applicationdiscoveryservice$service <- function() {
+    new_service(.applicationdiscoveryservice$metadata, .applicationdiscoveryservice$handlers, config)
+  }
   .applicationdiscoveryservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.applicationdiscoveryservice <- list()
+.applicationdiscoveryservice <- new.env()
 
 .applicationdiscoveryservice$operations <- list()
 
@@ -127,7 +154,3 @@ applicationdiscoveryservice <- function() {
 )
 
 .applicationdiscoveryservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.applicationdiscoveryservice$service <- function() {
-  new_service(.applicationdiscoveryservice$metadata, .applicationdiscoveryservice$handlers)
-}

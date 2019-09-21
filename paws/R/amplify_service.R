@@ -8,6 +8,30 @@ NULL
 #' Amplify is a fully managed continuous deployment and hosting service for
 #' modern web apps.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- amplify(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- amplify()
 #' svc$create_app(
@@ -50,12 +74,15 @@ NULL
 #'
 #' @rdname amplify
 #' @export
-amplify <- function() {
+amplify <- function(config = NULL) {
+  .amplify$service <- function() {
+    new_service(.amplify$metadata, .amplify$handlers, config)
+  }
   .amplify$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.amplify <- list()
+.amplify <- new.env()
 
 .amplify$operations <- list()
 
@@ -70,7 +97,3 @@ amplify <- function() {
 )
 
 .amplify$handlers <- new_handlers("restjson", "v4")
-
-.amplify$service <- function() {
-  new_service(.amplify$metadata, .amplify$handlers)
-}

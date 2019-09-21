@@ -6,6 +6,10 @@
 \usage{
 neptune()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon Neptune is a fast, reliable, fully-managed graph database service
 that makes it easy to build and run applications that work with highly
@@ -29,6 +33,25 @@ applied immediately, on the next instance reboot, or during the
 maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
 }
+\section{Service syntax}{
+\preformatted{svc <- neptune(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

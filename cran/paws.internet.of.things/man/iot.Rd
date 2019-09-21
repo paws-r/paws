@@ -4,7 +4,11 @@
 \alias{iot}
 \title{AWS IoT}
 \usage{
-iot()
+iot(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS IoT provides secure, bi-directional communication between
@@ -20,6 +24,25 @@ For more information about how AWS IoT works, see the \href{https://docs.aws.ama
 For information about how to use the credentials provider for AWS IoT,
 see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html}{Authorizing Direct Calls to AWS Services}.
 }
+\section{Service syntax}{
+\preformatted{svc <- iot(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
