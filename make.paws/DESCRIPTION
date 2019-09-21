@@ -33,18 +33,18 @@ SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
 RoxygenNote: 6.1.1
 Collate: 
+    'docs.R'
     'templates.R'
-    'service.R'
+    'interfaces.R'
     'package.R'
+    'make_sdk.R'
     'cran_category.R'
     'cran_collection.R'
-    'docs.R'
-    'interfaces.R'
-    'make_sdk.R'
     'names.R'
     'operations.R'
     'process_api.R'
     'read_api.R'
+    'service.R'
     'tests_config.R'
     'tests.R'
     'text.R'
