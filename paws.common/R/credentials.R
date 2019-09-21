@@ -20,9 +20,9 @@ Credentials <- struct(
   )
 )
 
-# Get credentials using the first set of credentials found by the list of
-# credential providers in the AWS credential provider chain. If no credentials 
-# are found, return the original credentials object.
+# Get credentials using the first set of credentials found by the AWS
+# credential provider chain. If no credentials are found, return the
+# original credentials object.
 get_credentials <- function(credentials) {
   for (provider in credentials$provider) {
     # Use `call_with_args` to call providers with only the arguments they use.
@@ -49,22 +49,18 @@ call_with_args <- function(f, data) {
   if (!all(args %in% names(data))) {
     stop("A parameter has no corresponding element in `data`.")
   }
-  return(do.call(f, data[args]))
+  return(do.call(f, as.list(data)[args]))
 }
 
 # Return whether a creds object has at least the minimum data needed to
 # authenticate.
 is_credentials_provided <- function(creds){
   if (is.null(creds)) return(FALSE)
-  
   if (is.null(creds$access_key_id) || creds$access_key_id == "") {
     return(FALSE)
   }
-  
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
     return(FALSE)
   }
-  
-  return(TRUE) 
-  
+  return(TRUE)
 }

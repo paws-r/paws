@@ -51,3 +51,8 @@ struct <- function(...) {
 }
 
 `$<-.struct` <- `[<-.struct`
+
+as.list.struct <- function(x) {
+  class(x) <- "list"
+  return(x)
+}
