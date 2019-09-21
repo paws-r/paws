@@ -49,8 +49,8 @@ service_file_template <- template(
   `
 )
 
-# Returns the service file which sets up the objects needed to make requests to
-# a specific AWS API, e.g. the request handlers and request signer.
+# Returns the service file, which sets up the objects needed to make requests
+# to a specific AWS API, e.g. the request handlers and request signer.
 make_service <- function(api) {
   render(
     service_file_template,
@@ -92,7 +92,7 @@ service_description <- function(api) {
   paste("@description", desc, sep = "\n")
 }
 
-# Return the Arguments.
+# Return the documentation for the arguments to the service function.
 service_arguments <- function() {
   argument <- "config"
   argument <- comment(paste(argument, collapse = "\n"), "#'")
@@ -102,7 +102,7 @@ service_arguments <- function() {
   paste("@param", argument, desc, sep = "\n")
 }
 
-# Return the Service syntax.
+# Return the documentation for the service syntax.
 service_syntax <- function(api) {
   section <- "@section Service syntax:"
   service <- package_name(api)

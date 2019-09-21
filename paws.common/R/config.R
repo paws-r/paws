@@ -23,17 +23,17 @@ get_os_env_variable <- function(var) {
 }
 
 # Get the AWS profile to use. If none, return "default".
-get_profile_name <- function(aws_profile = "") {
+get_profile_name <- function(profile = "") {
 
-  if (aws_profile != "") return(aws_profile)
+  if (profile != "") return(profile)
   
-  aws_profile <- Sys.getenv("AWS_PROFILE")
+  profile <- Sys.getenv("AWS_PROFILE")
 
-  if (aws_profile == "") aws_profile <- get_os_env_variable("AWS_PROFILE")
+  if (profile == "") profile <- get_os_env_variable("AWS_PROFILE")
 
-  if (aws_profile == "") aws_profile <- "default"
+  if (profile == "") profile <- "default"
 
-  return(aws_profile)
+  return(profile)
 }
 
 # Gets the instance metadata by making an http request
@@ -81,81 +81,25 @@ check_os_region <- function() {
 }
 
 # Tries to get the region from the config file
-check_config_file_region <- function(aws_profile = "") {
+check_config_file_region <- function(profile = "") {
 
   config_path <- file.path(get_aws_path(), "config")
 
   if (!file.exists(config_path)) return(NULL)
 
-  aws_profile <- get_profile_name(aws_profile)
+  profile <- get_profile_name(profile)
 
   config_values <- ini::read.ini(config_path)
 
-  if (is.null(config_values[[aws_profile]])) return(NULL)
+  if (is.null(config_values[[profile]])) return(NULL)
 
-  region <- config_values[[aws_profile]]$region
+  region <- config_values[[profile]]$region
 
   return(region)
 }
 
-# Looks for a source profile
-check_config_file_source_profile <- function(aws_profile = "") {
-  config_path <- file.path(get_aws_path(), "config")
-
-  if (!file.exists(config_path)) return("")
-  
-  aws_profile <- get_profile_name(aws_profile)
-
-  config_values <- ini::read.ini(config_path)
-
-  if (is.null(config_values[[aws_profile]])) {
-    aws_profile <- paste("profile", aws_profile)
-    config_values <- ini::read.ini(config_path)
-    if (is.null(config_values[[aws_profile]])) return("")
-  }
-
-  source_profile <- config_values[[aws_profile]]$source_profile
-  
-  return(source_profile)
-}
-
-# Tries to get the assumed role info from the config file
-check_config_file_assume_role <- function(aws_profile) {
-
-  config_path <- file.path(get_aws_path(), "config")
-
-  if (!file.exists(config_path)) return(NULL)
-  
-  aws_profile <- get_profile_name(aws_profile)
-
-  config_values <- ini::read.ini(config_path)
-
-  # Check if it should be profile PROFILE_NAME
-  if (is.null(config_values[[aws_profile]])) {
-    aws_profile <- paste("profile", aws_profile)
-    config_values <- ini::read.ini(config_path)
-    if (is.null(config_values[[aws_profile]])) return(NULL)
-  }
-
-  role_arn <- config_values[[aws_profile]]$role_arn
-  role_session_name <- config_values[[aws_profile]]$role_session_name
-  
-  # Role session name is required so one will be generated if not provided
-  if (is.null(role_session_name)) {
-    role_session_name <- paste0(sample(LETTERS, 15, replace = TRUE),
-                                collapse = "")
-  } 
-
-  assumed_role <- list(
-    role_arn = role_arn,
-    role_session_name = role_session_name
-    )
-  
-  return(assumed_role)
-}
-
 # Get the AWS region.
-get_region <- function(aws_profile = "") {
+get_region <- function(profile = "") {
 
   region <- check_r_env_region()
   if (region != "") return(region)
@@ -163,7 +107,7 @@ get_region <- function(aws_profile = "") {
   region <- check_os_region()
   if (region != "") return(region)
 
-  region <- check_config_file_region(aws_profile)
+  region <- check_config_file_region(profile)
   if (is.null(region)) stop("No region provided")
 
   return(region)
