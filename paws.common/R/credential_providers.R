@@ -5,11 +5,12 @@ NULL
 r_env_provider <- function() {
   access_key_id <- Sys.getenv("AWS_ACCESS_KEY_ID")
   secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
+  session_token <- Sys.getenv("AWS_SESSION_TOKEN")
   if (access_key_id != "" && secret_access_key != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
@@ -23,12 +24,13 @@ os_env_provider <- function() {
 
   access_key_id <- get_os_env_variable("AWS_ACCESS_KEY_ID")
   secret_access_key <- get_os_env_variable("AWS_SECRET_ACCESS_KEY")
+  session_token <- get_os_env_variable("AWS_SESSION_TOKEN")
 
   if (access_key_id != "" && secret_access_key != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
