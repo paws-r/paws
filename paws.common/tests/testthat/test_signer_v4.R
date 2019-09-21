@@ -14,7 +14,7 @@ test_creds <- Credentials(
   )
 )
 
-test_that("sign", {
+test_that("v4_sign_request_handler", {
   metadata <- list(
     endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
     service_name = "s3"
