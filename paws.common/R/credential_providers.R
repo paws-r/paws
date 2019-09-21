@@ -5,11 +5,12 @@ NULL
 r_env_provider <- function() {
   access_key_id <- Sys.getenv("AWS_ACCESS_KEY_ID")
   secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
+  session_token <- Sys.getenv("AWS_SESSION_TOKEN")
   if (access_key_id != "" && secret_access_key != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
@@ -23,12 +24,13 @@ os_env_provider <- function() {
 
   access_key_id <- get_os_env_variable("AWS_ACCESS_KEY_ID")
   secret_access_key <- get_os_env_variable("AWS_SECRET_ACCESS_KEY")
+  session_token <- get_os_env_variable("AWS_SESSION_TOKEN")
 
   if (access_key_id != "" && secret_access_key != "") {
     creds <- list(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
-      session_token = "",
+      session_token = session_token,
       provider_name = ""
     )
   } else {
@@ -38,20 +40,20 @@ os_env_provider <- function() {
 }
 
 # Retrieve credentials stored in credentials file.
-credentials_file_provider <- function() {
+credentials_file_provider <- function(profile = "") {
 
   credentials_path <- file.path(get_aws_path(), "credentials")
 
   if (!file.exists(credentials_path)) return(NULL)
 
-  aws_profile <- get_profile_name()
+  profile <- get_profile_name(profile)
 
   credentials <- ini::read.ini(credentials_path)
 
-  if (is.null(credentials[[aws_profile]])) return(NULL)
+  if (is.null(credentials[[profile]])) return(NULL)
 
-  access_key_id <- credentials[[aws_profile]]$aws_access_key_id
-  secret_access_key <- credentials[[aws_profile]]$aws_secret_access_key
+  access_key_id <- credentials[[profile]]$aws_access_key_id
+  secret_access_key <- credentials[[profile]]$aws_secret_access_key
 
   if (is.null(access_key_id) || is.null(secret_access_key)) return(NULL)
 
@@ -101,7 +103,6 @@ iam_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
-
 }
 
 no_credentials <- function() {

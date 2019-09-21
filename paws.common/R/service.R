@@ -82,7 +82,26 @@ new_handlers <- function(protocol, signer) {
 #'   target_prefix = "string"
 #' )
 #' ```
+#'
 #' @param handlers A set of handlers, e.g. from `new_handlers`.
+#'
+#' @param cfgs An optional list with custom configuration of credentials,
+#'             endpoint, and region.
+#' ```
+#' list(
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string",
+#'       provider_name = "string"
+#'     ),
+#'     profile = "string"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string",
+#' )
+#' ```
 #'
 #' @family API request functions
 #'
@@ -106,10 +125,11 @@ new_handlers <- function(protocol, signer) {
 #' service <- new_service(metadata, handlers)}
 #'
 #' @export
-new_service <- function(metadata, handlers) {
+new_service <- function(metadata, handlers, cfgs = NULL) {
   cfg <- client_config(
     service_name = metadata$service_name,
-    endpoints = metadata$endpoints
+    endpoints = metadata$endpoints,
+    cfgs = cfgs
   )
 
   signing_name <- metadata$signing_name
