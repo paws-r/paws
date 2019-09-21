@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Amazon API Gateway V2
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigatewayv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- apigatewayv2()
 #' svc$create_api(
@@ -78,12 +102,15 @@ NULL
 #'
 #' @rdname apigatewayv2
 #' @export
-apigatewayv2 <- function() {
+apigatewayv2 <- function(config = NULL) {
+  .apigatewayv2$service <- function() {
+    new_service(.apigatewayv2$metadata, .apigatewayv2$handlers, config)
+  }
   .apigatewayv2$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.apigatewayv2 <- list()
+.apigatewayv2 <- new.env()
 
 .apigatewayv2$operations <- list()
 
@@ -98,7 +125,3 @@ apigatewayv2 <- function() {
 )
 
 .apigatewayv2$handlers <- new_handlers("restjson", "v4")
-
-.apigatewayv2$service <- function() {
-  new_service(.apigatewayv2$metadata, .apigatewayv2$handlers)
-}

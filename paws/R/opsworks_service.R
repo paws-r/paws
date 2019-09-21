@@ -90,6 +90,30 @@ NULL
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as
 #' possible.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- opsworks(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- opsworks()
 #' svc$assign_instance(
@@ -176,12 +200,15 @@ NULL
 #'
 #' @rdname opsworks
 #' @export
-opsworks <- function() {
+opsworks <- function(config = NULL) {
+  .opsworks$service <- function() {
+    new_service(.opsworks$metadata, .opsworks$handlers, config)
+  }
   .opsworks$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.opsworks <- list()
+.opsworks <- new.env()
 
 .opsworks$operations <- list()
 
@@ -196,7 +223,3 @@ opsworks <- function() {
 )
 
 .opsworks$handlers <- new_handlers("jsonrpc", "v4")
-
-.opsworks$service <- function() {
-  new_service(.opsworks$metadata, .opsworks$handlers)
-}

@@ -4,7 +4,11 @@
 \alias{lightsail}
 \title{Amazon Lightsail}
 \usage{
-lightsail()
+lightsail(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Lightsail is the easiest way to get started with AWS for
@@ -22,6 +26,25 @@ To use the Lightsail API or the CLI, you will need to use AWS Identity
 and Access Management (IAM) to generate access keys. For details about
 how to set this up, see the \href{http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli}{Lightsail Dev Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- lightsail(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

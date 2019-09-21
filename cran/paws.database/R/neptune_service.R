@@ -27,6 +27,30 @@ NULL
 #' maintenance window. The reference structure is as follows, and we list
 #' following some related topics from the user guide.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- neptune(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- neptune()
 #' svc$add_role_to_db_cluster(
@@ -96,12 +120,15 @@ NULL
 #'
 #' @rdname neptune
 #' @export
-neptune <- function() {
+neptune <- function(config = NULL) {
+  .neptune$service <- function() {
+    new_service(.neptune$metadata, .neptune$handlers, config)
+  }
   .neptune$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.neptune <- list()
+.neptune <- new.env()
 
 .neptune$operations <- list()
 
@@ -116,7 +143,3 @@ neptune <- function() {
 )
 
 .neptune$handlers <- new_handlers("query", "v4")
-
-.neptune$service <- function() {
-  new_service(.neptune$metadata, .neptune$handlers)
-}

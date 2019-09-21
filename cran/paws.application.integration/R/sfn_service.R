@@ -27,6 +27,30 @@ NULL
 #' Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)*
 #' .
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sfn(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sfn()
 #' svc$create_activity(
@@ -61,12 +85,15 @@ NULL
 #'
 #' @rdname sfn
 #' @export
-sfn <- function() {
+sfn <- function(config = NULL) {
+  .sfn$service <- function() {
+    new_service(.sfn$metadata, .sfn$handlers, config)
+  }
   .sfn$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sfn <- list()
+.sfn <- new.env()
 
 .sfn$operations <- list()
 
@@ -81,7 +108,3 @@ sfn <- function() {
 )
 
 .sfn$handlers <- new_handlers("jsonrpc", "v4")
-
-.sfn$service <- function() {
-  new_service(.sfn$metadata, .sfn$handlers)
-}

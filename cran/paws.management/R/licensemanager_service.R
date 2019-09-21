@@ -15,6 +15,30 @@ NULL
 #' tailored to the programming language or platform that you\'re using. For
 #' more information, see [AWS SDKs](http://aws.amazon.com/tools/#SDKs).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- licensemanager(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- licensemanager()
 #' svc$create_license_configuration(
@@ -42,12 +66,15 @@ NULL
 #'
 #' @rdname licensemanager
 #' @export
-licensemanager <- function() {
+licensemanager <- function(config = NULL) {
+  .licensemanager$service <- function() {
+    new_service(.licensemanager$metadata, .licensemanager$handlers, config)
+  }
   .licensemanager$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.licensemanager <- list()
+.licensemanager <- new.env()
 
 .licensemanager$operations <- list()
 
@@ -62,7 +89,3 @@ licensemanager <- function() {
 )
 
 .licensemanager$handlers <- new_handlers("jsonrpc", "v4")
-
-.licensemanager$service <- function() {
-  new_service(.licensemanager$metadata, .licensemanager$handlers)
-}

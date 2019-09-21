@@ -10,6 +10,30 @@ NULL
 #' data types, and errors. For detailed information about CloudFront
 #' features, see the *Amazon CloudFront Developer Guide*.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudfront(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudfront()
 #' svc$create_cloud_front_origin_access_identity(
@@ -67,12 +91,15 @@ NULL
 #'
 #' @rdname cloudfront
 #' @export
-cloudfront <- function() {
+cloudfront <- function(config = NULL) {
+  .cloudfront$service <- function() {
+    new_service(.cloudfront$metadata, .cloudfront$handlers, config)
+  }
   .cloudfront$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudfront <- list()
+.cloudfront <- new.env()
 
 .cloudfront$operations <- list()
 
@@ -87,7 +114,3 @@ cloudfront <- function() {
 )
 
 .cloudfront$handlers <- new_handlers("restxml", "v4")
-
-.cloudfront$service <- function() {
-  new_service(.cloudfront$metadata, .cloudfront$handlers)
-}

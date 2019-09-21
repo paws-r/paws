@@ -7,6 +7,30 @@ NULL
 #' @description
 #' AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act locally on the data they generate, while still using the cloud for management, analytics, and durable storage. AWS IoT Greengrass ensures your devices can respond quickly to local events and operate with intermittent connectivity. AWS IoT Greengrass minimizes the cost of transmitting data to the cloud by allowing you to author AWS Lambda functions that execute locally.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- greengrass(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- greengrass()
 #' svc$associate_role_to_group(
@@ -109,12 +133,15 @@ NULL
 #'
 #' @rdname greengrass
 #' @export
-greengrass <- function() {
+greengrass <- function(config = NULL) {
+  .greengrass$service <- function() {
+    new_service(.greengrass$metadata, .greengrass$handlers, config)
+  }
   .greengrass$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.greengrass <- list()
+.greengrass <- new.env()
 
 .greengrass$operations <- list()
 
@@ -129,7 +156,3 @@ greengrass <- function() {
 )
 
 .greengrass$handlers <- new_handlers("restjson", "v4")
-
-.greengrass$service <- function() {
-  new_service(.greengrass$metadata, .greengrass$handlers)
-}

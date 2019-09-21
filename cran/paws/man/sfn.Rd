@@ -6,6 +6,10 @@
 \usage{
 sfn()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Step Functions is a service that lets you coordinate the components
 of distributed applications and microservices using visual workflows.
@@ -27,6 +31,25 @@ access and use Step Functions using the console, the AWS SDKs, or an
 HTTP API. For more information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{AWS Step Functions Developer Guide}}
 .
 }
+\section{Service syntax}{
+\preformatted{svc <- sfn(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

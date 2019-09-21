@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Provides AWS Marketplace business intelligence data on-demand.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- marketplacecommerceanalytics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- marketplacecommerceanalytics()
 #' svc$generate_data_set(
@@ -21,12 +45,15 @@ NULL
 #'
 #' @rdname marketplacecommerceanalytics
 #' @export
-marketplacecommerceanalytics <- function() {
+marketplacecommerceanalytics <- function(config = NULL) {
+  .marketplacecommerceanalytics$service <- function() {
+    new_service(.marketplacecommerceanalytics$metadata, .marketplacecommerceanalytics$handlers, config)
+  }
   .marketplacecommerceanalytics$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.marketplacecommerceanalytics <- list()
+.marketplacecommerceanalytics <- new.env()
 
 .marketplacecommerceanalytics$operations <- list()
 
@@ -41,7 +68,3 @@ marketplacecommerceanalytics <- function() {
 )
 
 .marketplacecommerceanalytics$handlers <- new_handlers("jsonrpc", "v4")
-
-.marketplacecommerceanalytics$service <- function() {
-  new_service(.marketplacecommerceanalytics$metadata, .marketplacecommerceanalytics$handlers)
-}

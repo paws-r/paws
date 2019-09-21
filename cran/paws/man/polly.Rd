@@ -6,6 +6,10 @@
 \usage{
 polly()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon Polly is a web service that makes it easy to synthesize speech
 from text.
@@ -15,6 +19,25 @@ high-quality speech from plain text and Speech Synthesis Markup Language
 (SSML), along with managing pronunciations lexicons that enable you to
 get the best results for your application domain.
 }
+\section{Service syntax}{
+\preformatted{svc <- polly(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -15,6 +15,30 @@ NULL
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- waf(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
 #' \donttest{svc <- waf()
@@ -105,12 +129,15 @@ NULL
 #'
 #' @rdname waf
 #' @export
-waf <- function() {
+waf <- function(config = NULL) {
+  .waf$service <- function() {
+    new_service(.waf$metadata, .waf$handlers, config)
+  }
   .waf$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.waf <- list()
+.waf <- new.env()
 
 .waf$operations <- list()
 
@@ -125,7 +152,3 @@ waf <- function() {
 )
 
 .waf$handlers <- new_handlers("jsonrpc", "v4")
-
-.waf$service <- function() {
-  new_service(.waf$metadata, .waf$handlers)
-}

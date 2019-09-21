@@ -18,6 +18,30 @@ NULL
 #' 
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- marketplaceentitlementservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- marketplaceentitlementservice()
 #' svc$get_entitlements(
@@ -31,12 +55,15 @@ NULL
 #'
 #' @rdname marketplaceentitlementservice
 #' @export
-marketplaceentitlementservice <- function() {
+marketplaceentitlementservice <- function(config = NULL) {
+  .marketplaceentitlementservice$service <- function() {
+    new_service(.marketplaceentitlementservice$metadata, .marketplaceentitlementservice$handlers, config)
+  }
   .marketplaceentitlementservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.marketplaceentitlementservice <- list()
+.marketplaceentitlementservice <- new.env()
 
 .marketplaceentitlementservice$operations <- list()
 
@@ -51,7 +78,3 @@ marketplaceentitlementservice <- function() {
 )
 
 .marketplaceentitlementservice$handlers <- new_handlers("jsonrpc", "v4")
-
-.marketplaceentitlementservice$service <- function() {
-  new_service(.marketplaceentitlementservice$metadata, .marketplaceentitlementservice$handlers)
-}

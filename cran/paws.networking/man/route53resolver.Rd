@@ -4,7 +4,11 @@
 \alias{route53resolver}
 \title{Amazon Route 53 Resolver}
 \usage{
-route53resolver()
+route53resolver(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Here's how you set up to query an Amazon Route 53 private hosted zone
@@ -39,6 +43,25 @@ To delete an endpoint, use the following AWS CLI command:
 
 \code{delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]}
 }
+\section{Service syntax}{
+\preformatted{svc <- route53resolver(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

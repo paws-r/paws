@@ -4,7 +4,11 @@
 \alias{health}
 \title{AWS Health APIs and Notifications}
 \usage{
-health()
+health(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Health
@@ -46,6 +50,25 @@ The HTTP endpoint for the AWS Health API is:
 \item https://health.us-east-1.amazonaws.com
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- health(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,12 +4,35 @@
 \alias{route53}
 \title{Amazon Route 53}
 \usage{
-route53()
+route53(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Route 53 is a highly available and scalable Domain Name System
 (DNS) web service.
 }
+\section{Service syntax}{
+\preformatted{svc <- route53(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

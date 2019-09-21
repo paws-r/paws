@@ -6,6 +6,10 @@
 \usage{
 waf()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 This is the \emph{AWS WAF API Reference} for using AWS WAF with Amazon
 CloudFront. The AWS WAF actions and data types listed in the reference
@@ -16,6 +20,25 @@ WAF API actions, data types, and errors. For detailed information about
 AWS WAF features and an overview of how to use the AWS WAF API, see the
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- waf(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

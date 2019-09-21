@@ -4,7 +4,11 @@
 \alias{kinesisanalyticsv2}
 \title{Amazon Kinesis Analytics}
 \usage{
-kinesisanalyticsv2()
+kinesisanalyticsv2(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Kinesis Data Analytics is a fully managed service that you can
@@ -13,6 +17,25 @@ enables you to quickly author and run SQL or Java code against streaming
 sources to perform time series analytics, feed real-time dashboards, and
 create real-time metrics.
 }
+\section{Service syntax}{
+\preformatted{svc <- kinesisanalyticsv2(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

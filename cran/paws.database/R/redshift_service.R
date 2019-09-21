@@ -34,6 +34,30 @@ NULL
 #' explains how to design, build, query, and maintain the databases that
 #' make up your data warehouse.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- redshift(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- redshift()
 #' svc$accept_reserved_node_exchange(
@@ -127,12 +151,15 @@ NULL
 #'
 #' @rdname redshift
 #' @export
-redshift <- function() {
+redshift <- function(config = NULL) {
+  .redshift$service <- function() {
+    new_service(.redshift$metadata, .redshift$handlers, config)
+  }
   .redshift$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.redshift <- list()
+.redshift <- new.env()
 
 .redshift$operations <- list()
 
@@ -147,7 +174,3 @@ redshift <- function() {
 )
 
 .redshift$handlers <- new_handlers("query", "v4")
-
-.redshift$service <- function() {
-  new_service(.redshift$metadata, .redshift$handlers)
-}

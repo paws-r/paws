@@ -4,12 +4,35 @@
 \alias{comprehendmedical}
 \title{AWS Comprehend Medical}
 \usage{
-comprehendmedical()
+comprehendmedical(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Comprehend Medical extracts structured information from unstructured
 clinical text. Use these actions to gain insight in your documents.
 }
+\section{Service syntax}{
+\preformatted{svc <- comprehendmedical(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

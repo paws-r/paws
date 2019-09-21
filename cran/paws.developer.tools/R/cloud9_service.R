@@ -43,6 +43,30 @@ NULL
 #' -   `UpdateEnvironmentMembership`: Changes the settings of an existing
 #'     environment member for an environment.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloud9(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # 
 #' \donttest{svc <- cloud9()
@@ -71,12 +95,15 @@ NULL
 #'
 #' @rdname cloud9
 #' @export
-cloud9 <- function() {
+cloud9 <- function(config = NULL) {
+  .cloud9$service <- function() {
+    new_service(.cloud9$metadata, .cloud9$handlers, config)
+  }
   .cloud9$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloud9 <- list()
+.cloud9 <- new.env()
 
 .cloud9$operations <- list()
 
@@ -91,7 +118,3 @@ cloud9 <- function() {
 )
 
 .cloud9$handlers <- new_handlers("jsonrpc", "v4")
-
-.cloud9$service <- function() {
-  new_service(.cloud9$metadata, .cloud9$handlers)
-}

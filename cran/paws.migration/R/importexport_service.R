@@ -13,6 +13,30 @@ NULL
 #' often faster than Internet transfer and more cost effective than
 #' upgrading your connectivity.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- importexport(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- importexport()
 #' svc$cancel_job(
@@ -31,12 +55,15 @@ NULL
 #'
 #' @rdname importexport
 #' @export
-importexport <- function() {
+importexport <- function(config = NULL) {
+  .importexport$service <- function() {
+    new_service(.importexport$metadata, .importexport$handlers, config)
+  }
   .importexport$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.importexport <- list()
+.importexport <- new.env()
 
 .importexport$operations <- list()
 
@@ -51,7 +78,3 @@ importexport <- function() {
 )
 
 .importexport$handlers <- new_handlers("query", "v2")
-
-.importexport$service <- function() {
-  new_service(.importexport$metadata, .importexport$handlers)
-}

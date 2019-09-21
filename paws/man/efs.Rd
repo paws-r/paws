@@ -4,7 +4,11 @@
 \alias{efs}
 \title{Amazon Elastic File System}
 \usage{
-efs()
+efs(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Elastic File System (Amazon EFS) provides simple, scalable file
@@ -13,6 +17,25 @@ EFS, storage capacity is elastic, growing and shrinking automatically as
 you add and remove files, so your applications have the storage they
 need, when they need it. For more information, see the \href{https://docs.aws.amazon.com/efs/latest/ug/api-reference.html}{User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- efs(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

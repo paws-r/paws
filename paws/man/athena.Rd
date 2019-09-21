@@ -4,7 +4,11 @@
 \alias{athena}
 \title{Amazon Athena}
 \usage{
-athena()
+athena(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Athena is an interactive query service that lets you use standard
@@ -25,6 +29,25 @@ see \href{https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html}{A
 For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- athena(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -20,6 +20,30 @@ NULL
 #' see [Authorizing Direct Calls to AWS
 #' Services](https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iot(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iot()
 #' svc$accept_certificate_transfer(
@@ -199,12 +223,15 @@ NULL
 #'
 #' @rdname iot
 #' @export
-iot <- function() {
+iot <- function(config = NULL) {
+  .iot$service <- function() {
+    new_service(.iot$metadata, .iot$handlers, config)
+  }
   .iot$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iot <- list()
+.iot <- new.env()
 
 .iot$operations <- list()
 
@@ -219,7 +246,3 @@ iot <- function() {
 )
 
 .iot$handlers <- new_handlers("restjson", "v4")
-
-.iot$service <- function() {
-  new_service(.iot$metadata, .iot$handlers)
-}

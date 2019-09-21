@@ -7,6 +7,30 @@ NULL
 #' @description
 #' AWS Elemental MediaPackage
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mediapackage(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- mediapackage()
 #' svc$create_channel(
@@ -34,12 +58,15 @@ NULL
 #'
 #' @rdname mediapackage
 #' @export
-mediapackage <- function() {
+mediapackage <- function(config = NULL) {
+  .mediapackage$service <- function() {
+    new_service(.mediapackage$metadata, .mediapackage$handlers, config)
+  }
   .mediapackage$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediapackage <- list()
+.mediapackage <- new.env()
 
 .mediapackage$operations <- list()
 
@@ -54,7 +81,3 @@ mediapackage <- function() {
 )
 
 .mediapackage$handlers <- new_handlers("restjson", "v4")
-
-.mediapackage$service <- function() {
-  new_service(.mediapackage$metadata, .mediapackage$handlers)
-}

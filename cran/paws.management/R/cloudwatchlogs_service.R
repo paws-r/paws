@@ -39,6 +39,30 @@ NULL
 #'     into the log service. You can then access the raw log data when you
 #'     need it.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchlogs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudwatchlogs()
 #' svc$associate_kms_key(
@@ -90,12 +114,15 @@ NULL
 #'
 #' @rdname cloudwatchlogs
 #' @export
-cloudwatchlogs <- function() {
+cloudwatchlogs <- function(config = NULL) {
+  .cloudwatchlogs$service <- function() {
+    new_service(.cloudwatchlogs$metadata, .cloudwatchlogs$handlers, config)
+  }
   .cloudwatchlogs$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudwatchlogs <- list()
+.cloudwatchlogs <- new.env()
 
 .cloudwatchlogs$operations <- list()
 
@@ -110,7 +137,3 @@ cloudwatchlogs <- function() {
 )
 
 .cloudwatchlogs$handlers <- new_handlers("jsonrpc", "v4")
-
-.cloudwatchlogs$service <- function() {
-  new_service(.cloudwatchlogs$metadata, .cloudwatchlogs$handlers)
-}

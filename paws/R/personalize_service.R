@@ -8,6 +8,30 @@ NULL
 #' Amazon Personalize is a machine learning service that makes it easy to
 #' add individualized recommendations to customers.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- personalize(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- personalize()
 #' svc$create_campaign(
@@ -56,12 +80,15 @@ NULL
 #'
 #' @rdname personalize
 #' @export
-personalize <- function() {
+personalize <- function(config = NULL) {
+  .personalize$service <- function() {
+    new_service(.personalize$metadata, .personalize$handlers, config)
+  }
   .personalize$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.personalize <- list()
+.personalize <- new.env()
 
 .personalize$operations <- list()
 
@@ -76,7 +103,3 @@ personalize <- function() {
 )
 
 .personalize$handlers <- new_handlers("jsonrpc", "v4")
-
-.personalize$service <- function() {
-  new_service(.personalize$metadata, .personalize$handlers)
-}

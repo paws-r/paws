@@ -10,6 +10,30 @@ NULL
 #' Amazon WorkSpaces enables you to provision virtual, cloud-based
 #' Microsoft Windows and Amazon Linux desktops for your users.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- workspaces(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- workspaces()
 #' svc$associate_ip_groups(
@@ -55,12 +79,15 @@ NULL
 #'
 #' @rdname workspaces
 #' @export
-workspaces <- function() {
+workspaces <- function(config = NULL) {
+  .workspaces$service <- function() {
+    new_service(.workspaces$metadata, .workspaces$handlers, config)
+  }
   .workspaces$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.workspaces <- list()
+.workspaces <- new.env()
 
 .workspaces$operations <- list()
 
@@ -75,7 +102,3 @@ workspaces <- function() {
 )
 
 .workspaces$handlers <- new_handlers("jsonrpc", "v4")
-
-.workspaces$service <- function() {
-  new_service(.workspaces$metadata, .workspaces$handlers)
-}

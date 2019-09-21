@@ -12,6 +12,30 @@ NULL
 #' need, when they need it. For more information, see the [User
 #' Guide](https://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- efs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This operation creates a new file system with the default generalpurpose
 #' # performance mode.
@@ -47,12 +71,15 @@ NULL
 #'
 #' @rdname efs
 #' @export
-efs <- function() {
+efs <- function(config = NULL) {
+  .efs$service <- function() {
+    new_service(.efs$metadata, .efs$handlers, config)
+  }
   .efs$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.efs <- list()
+.efs <- new.env()
 
 .efs$operations <- list()
 
@@ -67,7 +94,3 @@ efs <- function() {
 )
 
 .efs$handlers <- new_handlers("restjson", "v4")
-
-.efs$service <- function() {
-  new_service(.efs$metadata, .efs$handlers)
-}

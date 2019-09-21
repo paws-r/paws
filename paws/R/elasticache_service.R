@@ -18,6 +18,30 @@ NULL
 #' enhanced visibility into the key performance statistics associated with
 #' their cache and can receive alarms if a part of their cache runs hot.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elasticache(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- elasticache()
 #' svc$add_tags_to_resource(
@@ -76,12 +100,15 @@ NULL
 #'
 #' @rdname elasticache
 #' @export
-elasticache <- function() {
+elasticache <- function(config = NULL) {
+  .elasticache$service <- function() {
+    new_service(.elasticache$metadata, .elasticache$handlers, config)
+  }
   .elasticache$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elasticache <- list()
+.elasticache <- new.env()
 
 .elasticache$operations <- list()
 
@@ -96,7 +123,3 @@ elasticache <- function() {
 )
 
 .elasticache$handlers <- new_handlers("query", "v4")
-
-.elasticache$service <- function() {
-  new_service(.elasticache$metadata, .elasticache$handlers)
-}

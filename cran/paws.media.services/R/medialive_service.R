@@ -7,6 +7,30 @@ NULL
 #' @description
 #' API for AWS Elemental MediaLive
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- medialive(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- medialive()
 #' svc$batch_update_schedule(
@@ -50,12 +74,15 @@ NULL
 #'
 #' @rdname medialive
 #' @export
-medialive <- function() {
+medialive <- function(config = NULL) {
+  .medialive$service <- function() {
+    new_service(.medialive$metadata, .medialive$handlers, config)
+  }
   .medialive$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.medialive <- list()
+.medialive <- new.env()
 
 .medialive$operations <- list()
 
@@ -70,7 +97,3 @@ medialive <- function() {
 )
 
 .medialive$handlers <- new_handlers("restjson", "v4")
-
-.medialive$service <- function() {
-  new_service(.medialive$metadata, .medialive$handlers)
-}

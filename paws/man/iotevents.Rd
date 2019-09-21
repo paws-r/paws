@@ -4,7 +4,11 @@
 \alias{iotevents}
 \title{AWS IoT Events}
 \usage{
-iotevents()
+iotevents(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS IoT Events monitors your equipment or device fleets for failures or
@@ -12,6 +16,25 @@ changes in operation, and triggers actions when such events occur. AWS
 IoT Events API commands enable you to create, read, update and delete
 inputs and detector models, and to list their versions.
 }
+\section{Service syntax}{
+\preformatted{svc <- iotevents(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

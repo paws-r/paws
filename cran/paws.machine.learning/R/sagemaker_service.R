@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Provides APIs for creating and managing Amazon SageMaker resources.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemaker(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sagemaker()
 #' svc$add_tags(
@@ -94,12 +118,15 @@ NULL
 #'
 #' @rdname sagemaker
 #' @export
-sagemaker <- function() {
+sagemaker <- function(config = NULL) {
+  .sagemaker$service <- function() {
+    new_service(.sagemaker$metadata, .sagemaker$handlers, config)
+  }
   .sagemaker$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sagemaker <- list()
+.sagemaker <- new.env()
 
 .sagemaker$operations <- list()
 
@@ -114,7 +141,3 @@ sagemaker <- function() {
 )
 
 .sagemaker$handlers <- new_handlers("jsonrpc", "v4")
-
-.sagemaker$service <- function() {
-  new_service(.sagemaker$metadata, .sagemaker$handlers)
-}

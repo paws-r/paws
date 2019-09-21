@@ -9,6 +9,30 @@ NULL
 #' 
 #' The AWS Elastic Transcoder Service.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elastictranscoder(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- elastictranscoder()
 #' svc$cancel_job(
@@ -38,12 +62,15 @@ NULL
 #'
 #' @rdname elastictranscoder
 #' @export
-elastictranscoder <- function() {
+elastictranscoder <- function(config = NULL) {
+  .elastictranscoder$service <- function() {
+    new_service(.elastictranscoder$metadata, .elastictranscoder$handlers, config)
+  }
   .elastictranscoder$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elastictranscoder <- list()
+.elastictranscoder <- new.env()
 
 .elastictranscoder$operations <- list()
 
@@ -58,7 +85,3 @@ elastictranscoder <- function() {
 )
 
 .elastictranscoder$handlers <- new_handlers("restjson", "v4")
-
-.elastictranscoder$service <- function() {
-  new_service(.elastictranscoder$metadata, .elastictranscoder$handlers)
-}

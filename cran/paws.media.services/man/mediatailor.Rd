@@ -4,7 +4,11 @@
 \alias{mediatailor}
 \title{AWS MediaTailor}
 \usage{
-mediatailor()
+mediatailor(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Use the AWS Elemental MediaTailor SDK to configure scalable ad insertion
@@ -19,6 +23,25 @@ same as you do through the console. For example, you specify ad
 insertion behavior and mapping information for the origin server and the
 ad decision server (ADS).
 }
+\section{Service syntax}{
+\preformatted{svc <- mediatailor(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

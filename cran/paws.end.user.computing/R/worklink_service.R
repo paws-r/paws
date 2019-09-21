@@ -15,6 +15,30 @@ NULL
 #' cloud. Amazon WorkLink doesn\'t download or store any internal web
 #' content on mobile devices.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- worklink(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- worklink()
 #' svc$associate_domain(
@@ -57,12 +81,15 @@ NULL
 #'
 #' @rdname worklink
 #' @export
-worklink <- function() {
+worklink <- function(config = NULL) {
+  .worklink$service <- function() {
+    new_service(.worklink$metadata, .worklink$handlers, config)
+  }
   .worklink$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.worklink <- list()
+.worklink <- new.env()
 
 .worklink$operations <- list()
 
@@ -77,7 +104,3 @@ worklink <- function() {
 )
 
 .worklink$handlers <- new_handlers("restjson", "v4")
-
-.worklink$service <- function() {
-  new_service(.worklink$metadata, .worklink$handlers)
-}

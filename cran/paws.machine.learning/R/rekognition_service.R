@@ -7,6 +7,30 @@ NULL
 #' @description
 #' This is the Amazon Rekognition API reference.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- rekognition(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This operation compares the largest face detected in the source image
 #' # with each face detected in the target image.
@@ -67,12 +91,15 @@ NULL
 #'
 #' @rdname rekognition
 #' @export
-rekognition <- function() {
+rekognition <- function(config = NULL) {
+  .rekognition$service <- function() {
+    new_service(.rekognition$metadata, .rekognition$handlers, config)
+  }
   .rekognition$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.rekognition <- list()
+.rekognition <- new.env()
 
 .rekognition$operations <- list()
 
@@ -87,7 +114,3 @@ rekognition <- function() {
 )
 
 .rekognition$handlers <- new_handlers("jsonrpc", "v4")
-
-.rekognition$service <- function() {
-  new_service(.rekognition$metadata, .rekognition$handlers)
-}

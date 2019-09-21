@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development. <p> A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning. Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they use. </p> <p> Visit <a href="http://aws.amazon.com/simpledb/">http://aws.amazon.com/simpledb/</a> for more information. </p>
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- simpledb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- simpledb()
 #' svc$batch_delete_attributes(
@@ -29,12 +53,15 @@ NULL
 #'
 #' @rdname simpledb
 #' @export
-simpledb <- function() {
+simpledb <- function(config = NULL) {
+  .simpledb$service <- function() {
+    new_service(.simpledb$metadata, .simpledb$handlers, config)
+  }
   .simpledb$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.simpledb <- list()
+.simpledb <- new.env()
 
 .simpledb$operations <- list()
 
@@ -49,7 +76,3 @@ simpledb <- function() {
 )
 
 .simpledb$handlers <- new_handlers("query", "v2")
-
-.simpledb$service <- function() {
-  new_service(.simpledb$metadata, .simpledb$handlers)
-}

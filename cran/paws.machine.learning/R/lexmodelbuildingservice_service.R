@@ -11,6 +11,30 @@ NULL
 #' interfaces. Use these actions to create, update, and delete
 #' conversational bots for new and existing client applications.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lexmodelbuildingservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example shows how to get configuration information for a bot.
 #' \donttest{svc <- lexmodelbuildingservice()
@@ -61,12 +85,15 @@ NULL
 #'
 #' @rdname lexmodelbuildingservice
 #' @export
-lexmodelbuildingservice <- function() {
+lexmodelbuildingservice <- function(config = NULL) {
+  .lexmodelbuildingservice$service <- function() {
+    new_service(.lexmodelbuildingservice$metadata, .lexmodelbuildingservice$handlers, config)
+  }
   .lexmodelbuildingservice$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.lexmodelbuildingservice <- list()
+.lexmodelbuildingservice <- new.env()
 
 .lexmodelbuildingservice$operations <- list()
 
@@ -81,7 +108,3 @@ lexmodelbuildingservice <- function() {
 )
 
 .lexmodelbuildingservice$handlers <- new_handlers("restjson", "v4")
-
-.lexmodelbuildingservice$service <- function() {
-  new_service(.lexmodelbuildingservice$metadata, .lexmodelbuildingservice$handlers)
-}

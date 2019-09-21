@@ -24,6 +24,30 @@ NULL
 #' which makes it easy for developers, scientists, and engineers to run
 #' their batch jobs in the AWS Cloud.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- batch(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example cancels a job with the specified job ID.
 #' \donttest{svc <- batch()
@@ -54,12 +78,15 @@ NULL
 #'
 #' @rdname batch
 #' @export
-batch <- function() {
+batch <- function(config = NULL) {
+  .batch$service <- function() {
+    new_service(.batch$metadata, .batch$handlers, config)
+  }
   .batch$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.batch <- list()
+.batch <- new.env()
 
 .batch$operations <- list()
 
@@ -74,7 +101,3 @@ batch <- function() {
 )
 
 .batch$handlers <- new_handlers("restjson", "v4")
-
-.batch$service <- function() {
-  new_service(.batch$metadata, .batch$handlers)
-}

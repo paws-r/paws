@@ -19,6 +19,30 @@ NULL
 #' clouds. This means that you can easily migrate any standard Kubernetes
 #' application to Amazon EKS without any code modification required.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- eks(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
 #' \donttest{svc <- eks()
@@ -52,12 +76,15 @@ NULL
 #'
 #' @rdname eks
 #' @export
-eks <- function() {
+eks <- function(config = NULL) {
+  .eks$service <- function() {
+    new_service(.eks$metadata, .eks$handlers, config)
+  }
   .eks$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.eks <- list()
+.eks <- new.env()
 
 .eks$operations <- list()
 
@@ -72,7 +99,3 @@ eks <- function() {
 )
 
 .eks$handlers <- new_handlers("restjson", "v4")
-
-.eks$service <- function() {
-  new_service(.eks$metadata, .eks$handlers)
-}

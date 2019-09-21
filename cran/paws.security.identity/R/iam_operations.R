@@ -5396,8 +5396,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #'
 #' @param GroupName &#91;required&#93; The name of the group to list policies for.
 #' 
-#' This parameter allows (through its [regex
-#' pattern](http://wikipedia.org/wiki/regex)) a string of characters
+#' This parameter allows (through its regex pattern) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@-
 #' @param Marker Use this parameter only when paginating results and only after you

@@ -4,7 +4,11 @@
 \alias{secretsmanager}
 \title{AWS Secrets Manager}
 \usage{
-secretsmanager()
+secretsmanager(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Secrets Manager API Reference
@@ -70,6 +74,25 @@ Secrets Manager and its support for AWS CloudTrail, see \href{http://docs.aws.am
 in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- secretsmanager(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

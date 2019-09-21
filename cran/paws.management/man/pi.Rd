@@ -4,7 +4,11 @@
 \alias{pi}
 \title{AWS Performance Insights}
 \usage{
-pi()
+pi(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Performance Insights enables you to monitor and explore different
@@ -26,6 +30,25 @@ each time point decomposes overall load in relation to the requested
 dimensions, such as SQL, Wait-event, User or Host, measured at that time
 point.
 }
+\section{Service syntax}{
+\preformatted{svc <- pi(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

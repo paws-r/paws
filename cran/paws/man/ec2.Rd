@@ -6,6 +6,10 @@
 \usage{
 ec2()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
 computing capacity in the AWS cloud. Using Amazon EC2 eliminates the
@@ -24,6 +28,25 @@ To learn more, see the following resources:
 documentation
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- ec2(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -33,6 +33,30 @@ NULL
 #' they complete at most one time. If you repeat an operation, it succeeds
 #' with a 200 OK response code.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example adds two tags to the specified load balancer.
 #' \donttest{svc <- elb()
@@ -87,12 +111,15 @@ NULL
 #'
 #' @rdname elb
 #' @export
-elb <- function() {
+elb <- function(config = NULL) {
+  .elb$service <- function() {
+    new_service(.elb$metadata, .elb$handlers, config)
+  }
   .elb$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.elb <- list()
+.elb <- new.env()
 
 .elb$operations <- list()
 
@@ -107,7 +134,3 @@ elb <- function() {
 )
 
 .elb$handlers <- new_handlers("query", "v4")
-
-.elb$service <- function() {
-  new_service(.elb$metadata, .elb$handlers)
-}

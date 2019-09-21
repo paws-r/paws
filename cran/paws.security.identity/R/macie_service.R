@@ -13,6 +13,30 @@ NULL
 #' accessed or moved. For more information, see the [Macie User
 #' Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- macie(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- macie()
 #' svc$associate_member_account(
@@ -32,12 +56,15 @@ NULL
 #'
 #' @rdname macie
 #' @export
-macie <- function() {
+macie <- function(config = NULL) {
+  .macie$service <- function() {
+    new_service(.macie$metadata, .macie$handlers, config)
+  }
   .macie$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.macie <- list()
+.macie <- new.env()
 
 .macie$operations <- list()
 
@@ -52,7 +79,3 @@ macie <- function() {
 )
 
 .macie$handlers <- new_handlers("jsonrpc", "v4")
-
-.macie$service <- function() {
-  new_service(.macie$metadata, .macie$handlers)
-}

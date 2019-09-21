@@ -27,6 +27,30 @@ NULL
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchevents(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudwatchevents()
 #' svc$activate_event_source(
@@ -70,12 +94,15 @@ NULL
 #'
 #' @rdname cloudwatchevents
 #' @export
-cloudwatchevents <- function() {
+cloudwatchevents <- function(config = NULL) {
+  .cloudwatchevents$service <- function() {
+    new_service(.cloudwatchevents$metadata, .cloudwatchevents$handlers, config)
+  }
   .cloudwatchevents$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudwatchevents <- list()
+.cloudwatchevents <- new.env()
 
 .cloudwatchevents$operations <- list()
 
@@ -90,7 +117,3 @@ cloudwatchevents <- function() {
 )
 
 .cloudwatchevents$handlers <- new_handlers("jsonrpc", "v4")
-
-.cloudwatchevents$service <- function() {
-  new_service(.cloudwatchevents$metadata, .cloudwatchevents$handlers)
-}

@@ -4,7 +4,11 @@
 \alias{cognitoidentity}
 \title{Amazon Cognito Identity}
 \usage{
-cognitoidentity()
+cognitoidentity(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 Amazon Cognito Federated Identities
@@ -27,6 +31,25 @@ Developer Guide see \href{https://docs.aws.amazon.com/cognito/latest/developergu
 
 For more information see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html}{Amazon Cognito Federated Identities}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cognitoidentity(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

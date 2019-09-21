@@ -44,6 +44,30 @@ NULL
 #' **[Task-based list of API
 #' actions](https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html)**
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- gamelift(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- gamelift()
 #' svc$accept_match(
@@ -129,12 +153,15 @@ NULL
 #'
 #' @rdname gamelift
 #' @export
-gamelift <- function() {
+gamelift <- function(config = NULL) {
+  .gamelift$service <- function() {
+    new_service(.gamelift$metadata, .gamelift$handlers, config)
+  }
   .gamelift$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.gamelift <- list()
+.gamelift <- new.env()
 
 .gamelift$operations <- list()
 
@@ -149,7 +176,3 @@ gamelift <- function() {
 )
 
 .gamelift$handlers <- new_handlers("jsonrpc", "v4")
-
-.gamelift$service <- function() {
-  new_service(.gamelift$metadata, .gamelift$handlers)
-}

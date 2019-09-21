@@ -14,6 +14,30 @@ NULL
 #' transfer data locally with a device, you\'ll need to use the Snowball
 #' client or the Amazon S3 API adapter for Snowball.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- snowball(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This operation cancels a cluster job. You can only cancel a cluster job
 #' # while it's in the AwaitingQuorum status.
@@ -46,12 +70,15 @@ NULL
 #'
 #' @rdname snowball
 #' @export
-snowball <- function() {
+snowball <- function(config = NULL) {
+  .snowball$service <- function() {
+    new_service(.snowball$metadata, .snowball$handlers, config)
+  }
   .snowball$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.snowball <- list()
+.snowball <- new.env()
 
 .snowball$operations <- list()
 
@@ -66,7 +93,3 @@ snowball <- function() {
 )
 
 .snowball$handlers <- new_handlers("jsonrpc", "v4")
-
-.snowball$service <- function() {
-  new_service(.snowball$metadata, .snowball$handlers)
-}

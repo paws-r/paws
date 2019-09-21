@@ -21,6 +21,30 @@ NULL
 #' the Amazon SWF programming model, see the *[Amazon SWF Developer
 #' Guide](https://docs.aws.amazon.com/amazonswf/latest/developerguide/)* .
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- swf(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- swf()
 #' svc$count_closed_workflow_executions(
@@ -70,12 +94,15 @@ NULL
 #'
 #' @rdname swf
 #' @export
-swf <- function() {
+swf <- function(config = NULL) {
+  .swf$service <- function() {
+    new_service(.swf$metadata, .swf$handlers, config)
+  }
   .swf$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.swf <- list()
+.swf <- new.env()
 
 .swf$operations <- list()
 
@@ -90,7 +117,3 @@ swf <- function() {
 )
 
 .swf$handlers <- new_handlers("jsonrpc", "v4")
-
-.swf$service <- function() {
-  new_service(.swf$metadata, .swf$handlers)
-}

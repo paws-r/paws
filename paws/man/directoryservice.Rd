@@ -4,7 +4,11 @@
 \alias{directoryservice}
 \title{AWS Directory Service}
 \usage{
-directoryservice()
+directoryservice(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Directory Service is a web service that makes it easy for you to
@@ -21,6 +25,25 @@ to AWS Directory Service and other AWS services. For more information
 about the AWS SDKs, including how to download and install them, see
 \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
+\section{Service syntax}{
+\preformatted{svc <- directoryservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

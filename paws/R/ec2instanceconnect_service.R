@@ -10,6 +10,30 @@ NULL
 #' establish connections to their instances without leaving a permanent
 #' authentication option.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ec2instanceconnect(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example pushes a sample SSH public key to the EC2 instance
 #' # i-abcd1234 in AZ us-west-2b for use by the instance OS user ec2-user.
@@ -28,12 +52,15 @@ NULL
 #'
 #' @rdname ec2instanceconnect
 #' @export
-ec2instanceconnect <- function() {
+ec2instanceconnect <- function(config = NULL) {
+  .ec2instanceconnect$service <- function() {
+    new_service(.ec2instanceconnect$metadata, .ec2instanceconnect$handlers, config)
+  }
   .ec2instanceconnect$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ec2instanceconnect <- list()
+.ec2instanceconnect <- new.env()
 
 .ec2instanceconnect$operations <- list()
 
@@ -48,7 +75,3 @@ ec2instanceconnect <- function() {
 )
 
 .ec2instanceconnect$handlers <- new_handlers("jsonrpc", "v4")
-
-.ec2instanceconnect$service <- function() {
-  new_service(.ec2instanceconnect$metadata, .ec2instanceconnect$handlers)
-}

@@ -15,6 +15,30 @@ NULL
 #' For more information about how AWS IoT Things Graph works, see the [User
 #' Guide](https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iotthingsgraph(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iotthingsgraph()
 #' svc$associate_entity_to_thing(
@@ -62,12 +86,15 @@ NULL
 #'
 #' @rdname iotthingsgraph
 #' @export
-iotthingsgraph <- function() {
+iotthingsgraph <- function(config = NULL) {
+  .iotthingsgraph$service <- function() {
+    new_service(.iotthingsgraph$metadata, .iotthingsgraph$handlers, config)
+  }
   .iotthingsgraph$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iotthingsgraph <- list()
+.iotthingsgraph <- new.env()
 
 .iotthingsgraph$operations <- list()
 
@@ -82,7 +109,3 @@ iotthingsgraph <- function() {
 )
 
 .iotthingsgraph$handlers <- new_handlers("jsonrpc", "v4")
-
-.iotthingsgraph$service <- function() {
-  new_service(.iotthingsgraph$metadata, .iotthingsgraph$handlers)
-}

@@ -4,7 +4,11 @@
 \alias{snowball}
 \title{Amazon Import/Export Snowball}
 \usage{
-snowball()
+snowball(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Snowball is a petabyte-scale data transport solution that uses
@@ -16,6 +20,25 @@ you to create and manage jobs for Snowball and Snowball Edge devices. To
 transfer data locally with a device, you'll need to use the Snowball
 client or the Amazon S3 API adapter for Snowball.
 }
+\section{Service syntax}{
+\preformatted{svc <- snowball(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

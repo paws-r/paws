@@ -4,7 +4,11 @@
 \alias{importexport}
 \title{AWS Import/Export}
 \usage{
-importexport()
+importexport(config = NULL)
+}
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
 }
 \description{
 AWS Import/Export Service AWS Import/Export accelerates transferring
@@ -15,6 +19,25 @@ and bypassing the Internet. For large data sets, AWS Import/Export is
 often faster than Internet transfer and more cost effective than
 upgrading your connectivity.
 }
+\section{Service syntax}{
+\preformatted{svc <- importexport(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

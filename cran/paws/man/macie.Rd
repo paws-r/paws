@@ -6,6 +6,10 @@
 \usage{
 macie()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon Macie is a security service that uses machine learning to
 automatically discover, classify, and protect sensitive data in AWS.
@@ -14,6 +18,25 @@ information (PII) or intellectual property, and provides you with
 dashboards and alerts that give visibility into how this data is being
 accessed or moved. For more information, see the \href{https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html}{Macie User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- macie(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

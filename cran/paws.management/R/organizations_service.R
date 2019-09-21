@@ -130,6 +130,30 @@ NULL
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- organizations(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # Bill is the owner of an organization, and he invites Juan's account
 #' # (222222222222) to join his organization. The following example shows
@@ -192,12 +216,15 @@ NULL
 #'
 #' @rdname organizations
 #' @export
-organizations <- function() {
+organizations <- function(config = NULL) {
+  .organizations$service <- function() {
+    new_service(.organizations$metadata, .organizations$handlers, config)
+  }
   .organizations$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.organizations <- list()
+.organizations <- new.env()
 
 .organizations$operations <- list()
 
@@ -212,7 +239,3 @@ organizations <- function() {
 )
 
 .organizations$handlers <- new_handlers("jsonrpc", "v4")
-
-.organizations$service <- function() {
-  new_service(.organizations$metadata, .organizations$handlers)
-}

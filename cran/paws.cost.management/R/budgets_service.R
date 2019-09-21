@@ -51,6 +51,30 @@ NULL
 #' API, see [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- budgets(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- budgets()
 #' svc$create_budget(
@@ -77,12 +101,15 @@ NULL
 #'
 #' @rdname budgets
 #' @export
-budgets <- function() {
+budgets <- function(config = NULL) {
+  .budgets$service <- function() {
+    new_service(.budgets$metadata, .budgets$handlers, config)
+  }
   .budgets$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.budgets <- list()
+.budgets <- new.env()
 
 .budgets$operations <- list()
 
@@ -97,7 +124,3 @@ budgets <- function() {
 )
 
 .budgets$handlers <- new_handlers("jsonrpc", "v4")
-
-.budgets$service <- function() {
-  new_service(.budgets$metadata, .budgets$handlers)
-}

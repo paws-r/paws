@@ -21,6 +21,30 @@ NULL
 #' how to set this up, see the [Lightsail Dev
 #' Guide](http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lightsail(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- lightsail()
 #' svc$allocate_static_ip(
@@ -134,12 +158,15 @@ NULL
 #'
 #' @rdname lightsail
 #' @export
-lightsail <- function() {
+lightsail <- function(config = NULL) {
+  .lightsail$service <- function() {
+    new_service(.lightsail$metadata, .lightsail$handlers, config)
+  }
   .lightsail$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.lightsail <- list()
+.lightsail <- new.env()
 
 .lightsail$operations <- list()
 
@@ -154,7 +181,3 @@ lightsail <- function() {
 )
 
 .lightsail$handlers <- new_handlers("jsonrpc", "v4")
-
-.lightsail$service <- function() {
-  new_service(.lightsail$metadata, .lightsail$handlers)
-}

@@ -7,6 +7,30 @@ NULL
 #' @description
 #' Doc Engage API - Amazon Pinpoint API
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpoint(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pinpoint()
 #' svc$create_app(
@@ -96,12 +120,15 @@ NULL
 #'
 #' @rdname pinpoint
 #' @export
-pinpoint <- function() {
+pinpoint <- function(config = NULL) {
+  .pinpoint$service <- function() {
+    new_service(.pinpoint$metadata, .pinpoint$handlers, config)
+  }
   .pinpoint$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.pinpoint <- list()
+.pinpoint <- new.env()
 
 .pinpoint$operations <- list()
 
@@ -116,7 +143,3 @@ pinpoint <- function() {
 )
 
 .pinpoint$handlers <- new_handlers("restjson", "v4")
-
-.pinpoint$service <- function() {
-  new_service(.pinpoint$metadata, .pinpoint$handlers)
-}

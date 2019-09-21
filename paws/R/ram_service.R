@@ -25,6 +25,30 @@ NULL
 #' account can use IAM policies to restrict access resources in the
 #' resource share.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ram(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- ram()
 #' svc$accept_resource_share_invitation(
@@ -53,12 +77,15 @@ NULL
 #'
 #' @rdname ram
 #' @export
-ram <- function() {
+ram <- function(config = NULL) {
+  .ram$service <- function() {
+    new_service(.ram$metadata, .ram$handlers, config)
+  }
   .ram$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ram <- list()
+.ram <- new.env()
 
 .ram$operations <- list()
 
@@ -73,7 +100,3 @@ ram <- function() {
 )
 
 .ram$handlers <- new_handlers("restjson", "v4")
-
-.ram$service <- function() {
-  new_service(.ram$metadata, .ram$handlers)
-}

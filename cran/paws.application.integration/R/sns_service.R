@@ -22,6 +22,30 @@ NULL
 #' For a list of available SDKs, go to [Tools for Amazon Web
 #' Services](http://aws.amazon.com/tools/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sns(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sns()
 #' svc$add_permission(
@@ -67,12 +91,15 @@ NULL
 #'
 #' @rdname sns
 #' @export
-sns <- function() {
+sns <- function(config = NULL) {
+  .sns$service <- function() {
+    new_service(.sns$metadata, .sns$handlers, config)
+  }
   .sns$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.sns <- list()
+.sns <- new.env()
 
 .sns$operations <- list()
 
@@ -87,7 +114,3 @@ sns <- function() {
 )
 
 .sns$handlers <- new_handlers("query", "v4")
-
-.sns$service <- function() {
-  new_service(.sns$metadata, .sns$handlers)
-}

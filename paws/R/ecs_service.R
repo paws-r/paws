@@ -28,6 +28,30 @@ NULL
 #' operate your own cluster management and configuration management systems
 #' or worry about scaling your management infrastructure.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ecs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example creates a cluster in your default region.
 #' \donttest{svc <- ecs()
@@ -85,12 +109,15 @@ NULL
 #'
 #' @rdname ecs
 #' @export
-ecs <- function() {
+ecs <- function(config = NULL) {
+  .ecs$service <- function() {
+    new_service(.ecs$metadata, .ecs$handlers, config)
+  }
   .ecs$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.ecs <- list()
+.ecs <- new.env()
 
 .ecs$operations <- list()
 
@@ -105,7 +132,3 @@ ecs <- function() {
 )
 
 .ecs$handlers <- new_handlers("jsonrpc", "v4")
-
-.ecs$service <- function() {
-  new_service(.ecs$metadata, .ecs$handlers)
-}

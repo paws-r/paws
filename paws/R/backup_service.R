@@ -10,6 +10,30 @@ NULL
 #' migration, restoration, and deletion of backups, while also providing
 #' reporting and auditing.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- backup(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- backup()
 #' svc$create_backup_plan(
@@ -65,12 +89,15 @@ NULL
 #'
 #' @rdname backup
 #' @export
-backup <- function() {
+backup <- function(config = NULL) {
+  .backup$service <- function() {
+    new_service(.backup$metadata, .backup$handlers, config)
+  }
   .backup$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.backup <- list()
+.backup <- new.env()
 
 .backup$operations <- list()
 
@@ -85,7 +112,3 @@ backup <- function() {
 )
 
 .backup$handlers <- new_handlers("restjson", "v4")
-
-.backup$service <- function() {
-  new_service(.backup$metadata, .backup$handlers)
-}

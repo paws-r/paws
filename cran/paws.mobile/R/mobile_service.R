@@ -10,6 +10,30 @@ NULL
 #' developer desktop projects with the necessary SDKs, constants, tools and
 #' samples to make use of those resources.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mobile(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- mobile()
 #' svc$create_project(
@@ -31,12 +55,15 @@ NULL
 #'
 #' @rdname mobile
 #' @export
-mobile <- function() {
+mobile <- function(config = NULL) {
+  .mobile$service <- function() {
+    new_service(.mobile$metadata, .mobile$handlers, config)
+  }
   .mobile$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mobile <- list()
+.mobile <- new.env()
 
 .mobile$operations <- list()
 
@@ -51,7 +78,3 @@ mobile <- function() {
 )
 
 .mobile$handlers <- new_handlers("restjson", "v4")
-
-.mobile$service <- function() {
-  new_service(.mobile$metadata, .mobile$handlers)
-}

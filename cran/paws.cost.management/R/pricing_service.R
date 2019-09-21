@@ -32,6 +32,30 @@ NULL
 #' 
 #' -   https://api.pricing.ap-south-1.amazonaws.com
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pricing(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pricing()
 #' svc$describe_services(
@@ -49,12 +73,15 @@ NULL
 #'
 #' @rdname pricing
 #' @export
-pricing <- function() {
+pricing <- function(config = NULL) {
+  .pricing$service <- function() {
+    new_service(.pricing$metadata, .pricing$handlers, config)
+  }
   .pricing$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.pricing <- list()
+.pricing <- new.env()
 
 .pricing$operations <- list()
 
@@ -69,7 +96,3 @@ pricing <- function() {
 )
 
 .pricing$handlers <- new_handlers("jsonrpc", "v4")
-
-.pricing$service <- function() {
-  new_service(.pricing$metadata, .pricing$handlers)
-}

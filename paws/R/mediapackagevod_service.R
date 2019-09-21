@@ -7,6 +7,30 @@ NULL
 #' @description
 #' AWS Elemental MediaPackage VOD
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mediapackagevod(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- mediapackagevod()
 #' svc$create_asset(
@@ -31,12 +55,15 @@ NULL
 #'
 #' @rdname mediapackagevod
 #' @export
-mediapackagevod <- function() {
+mediapackagevod <- function(config = NULL) {
+  .mediapackagevod$service <- function() {
+    new_service(.mediapackagevod$metadata, .mediapackagevod$handlers, config)
+  }
   .mediapackagevod$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.mediapackagevod <- list()
+.mediapackagevod <- new.env()
 
 .mediapackagevod$operations <- list()
 
@@ -51,7 +78,3 @@ mediapackagevod <- function() {
 )
 
 .mediapackagevod$handlers <- new_handlers("restjson", "v4")
-
-.mediapackagevod$service <- function() {
-  new_service(.mediapackagevod$metadata, .mediapackagevod$handlers)
-}

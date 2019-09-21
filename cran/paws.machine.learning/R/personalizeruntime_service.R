@@ -6,6 +6,30 @@ NULL
 #'
 #' 
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- personalizeruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- personalizeruntime()
 #' svc$get_personalized_ranking(
@@ -20,12 +44,15 @@ NULL
 #'
 #' @rdname personalizeruntime
 #' @export
-personalizeruntime <- function() {
+personalizeruntime <- function(config = NULL) {
+  .personalizeruntime$service <- function() {
+    new_service(.personalizeruntime$metadata, .personalizeruntime$handlers, config)
+  }
   .personalizeruntime$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.personalizeruntime <- list()
+.personalizeruntime <- new.env()
 
 .personalizeruntime$operations <- list()
 
@@ -40,7 +67,3 @@ personalizeruntime <- function() {
 )
 
 .personalizeruntime$handlers <- new_handlers("restjson", "v4")
-
-.personalizeruntime$service <- function() {
-  new_service(.personalizeruntime$metadata, .personalizeruntime$handlers)
-}

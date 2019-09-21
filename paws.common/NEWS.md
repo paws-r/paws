@@ -1,3 +1,10 @@
+# paws.common 0.2.1
+
+* Support session tokens for temporary security credentials in the 
+  AWS_SESSION_TOKEN environment variable.
+* Support custom configuration for credentials, region, and endpoint, as
+  in `paws::s3(config = list(region = "us-east-2"))`.
+  
 # paws.common 0.2.0
 
 * Use the global signing region (us-east-1) for services with global endpoints,

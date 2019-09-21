@@ -7,6 +7,30 @@ NULL
 #' @description
 #' AWS S3 Control provides access to Amazon S3 control plane operations.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- s3control(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- s3control()
 #' svc$create_job(
@@ -27,12 +51,15 @@ NULL
 #'
 #' @rdname s3control
 #' @export
-s3control <- function() {
+s3control <- function(config = NULL) {
+  .s3control$service <- function() {
+    new_service(.s3control$metadata, .s3control$handlers, config)
+  }
   .s3control$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.s3control <- list()
+.s3control <- new.env()
 
 .s3control$operations <- list()
 
@@ -47,7 +74,3 @@ s3control <- function() {
 )
 
 .s3control$handlers <- new_handlers("restxml", "s3v4")
-
-.s3control$service <- function() {
-  new_service(.s3control$metadata, .s3control$handlers)
-}

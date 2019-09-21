@@ -9,6 +9,30 @@ NULL
 #' CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
 #' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudhsmv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudhsmv2()
 #' svc$copy_backup_to_region(
@@ -34,12 +58,15 @@ NULL
 #'
 #' @rdname cloudhsmv2
 #' @export
-cloudhsmv2 <- function() {
+cloudhsmv2 <- function(config = NULL) {
+  .cloudhsmv2$service <- function() {
+    new_service(.cloudhsmv2$metadata, .cloudhsmv2$handlers, config)
+  }
   .cloudhsmv2$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.cloudhsmv2 <- list()
+.cloudhsmv2 <- new.env()
 
 .cloudhsmv2$operations <- list()
 
@@ -54,7 +81,3 @@ cloudhsmv2 <- function() {
 )
 
 .cloudhsmv2$handlers <- new_handlers("jsonrpc", "v4")
-
-.cloudhsmv2$service <- function() {
-  new_service(.cloudhsmv2$metadata, .cloudhsmv2$handlers)
-}

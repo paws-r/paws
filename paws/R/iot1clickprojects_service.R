@@ -7,6 +7,30 @@ NULL
 #' @description
 #' The AWS IoT 1-Click Projects API Reference
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iot1clickprojects(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iot1clickprojects()
 #' svc$associate_device_with_placement(
@@ -35,12 +59,15 @@ NULL
 #'
 #' @rdname iot1clickprojects
 #' @export
-iot1clickprojects <- function() {
+iot1clickprojects <- function(config = NULL) {
+  .iot1clickprojects$service <- function() {
+    new_service(.iot1clickprojects$metadata, .iot1clickprojects$handlers, config)
+  }
   .iot1clickprojects$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iot1clickprojects <- list()
+.iot1clickprojects <- new.env()
 
 .iot1clickprojects$operations <- list()
 
@@ -55,7 +82,3 @@ iot1clickprojects <- function() {
 )
 
 .iot1clickprojects$handlers <- new_handlers("restjson", "v4")
-
-.iot1clickprojects$service <- function() {
-  new_service(.iot1clickprojects$metadata, .iot1clickprojects$handlers)
-}

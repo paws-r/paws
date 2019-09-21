@@ -6,6 +6,10 @@
 \usage{
 firehose()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 Amazon Kinesis Data Firehose API Reference
 
@@ -14,6 +18,25 @@ real-time streaming data to destinations such as Amazon Simple Storage
 Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 Redshift, and Splunk.
 }
+\section{Service syntax}{
+\preformatted{svc <- firehose(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

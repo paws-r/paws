@@ -10,6 +10,30 @@ NULL
 #' IoT Events API commands enable you to create, read, update and delete
 #' inputs and detector models, and to list their versions.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iotevents(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- iotevents()
 #' svc$create_detector_model(
@@ -38,12 +62,15 @@ NULL
 #'
 #' @rdname iotevents
 #' @export
-iotevents <- function() {
+iotevents <- function(config = NULL) {
+  .iotevents$service <- function() {
+    new_service(.iotevents$metadata, .iotevents$handlers, config)
+  }
   .iotevents$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.iotevents <- list()
+.iotevents <- new.env()
 
 .iotevents$operations <- list()
 
@@ -58,7 +85,3 @@ iotevents <- function() {
 )
 
 .iotevents$handlers <- new_handlers("restjson", "v4")
-
-.iotevents$service <- function() {
-  new_service(.iotevents$metadata, .iotevents$handlers)
-}

@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -12,10 +12,10 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services
-    <https://aws.amazon.com>, including storage, database, and compute
-    services, such as 'Simple Storage Service' ('S3'), 'DynamoDB' 'NoSQL'
-    database, and 'Lambda' functions-as-a-service.
+Description: Interface to Amazon Web Services <https://aws.amazon.com>,
+    including storage, database, and compute services, such as 'Simple
+    Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda'
+    functions-as-a-service.
 License: Apache License (>= 2.0)
 Imports: 
     paws.compute (>= 0.1.4),
@@ -33,6 +33,5 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
-    "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.1.1

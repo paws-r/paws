@@ -6,12 +6,35 @@
 \usage{
 backup()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Backup is a unified backup service designed to protect AWS services
 and their associated data. AWS Backup simplifies the creation,
 migration, restoration, and deletion of backups, while also providing
 reporting and auditing.
 }
+\section{Service syntax}{
+\preformatted{svc <- backup(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

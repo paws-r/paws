@@ -6,6 +6,10 @@
 \usage{
 servicediscovery()
 }
+\arguments{
+\item{config}{An optional list of custom configurations for the service. Currently
+supports adding custom credentials, endpoint, and region.}
+}
 \description{
 AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
 namespaces that your microservice applications run in. When an instance
@@ -16,6 +20,25 @@ optional health check. Clients that submit public or private DNS
 queries, or HTTP requests, for the service receive an answer that
 contains up to eight healthy records.
 }
+\section{Service syntax}{
+\preformatted{svc <- servicediscovery(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string",
+        provider_name = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

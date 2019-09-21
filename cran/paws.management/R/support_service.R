@@ -64,6 +64,30 @@ NULL
 #' service to create and manage your support cases, and how to call Trusted
 #' Advisor for results of checks on your resources.
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- support(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- support()
 #' svc$add_attachments_to_set(
@@ -90,12 +114,15 @@ NULL
 #'
 #' @rdname support
 #' @export
-support <- function() {
+support <- function(config = NULL) {
+  .support$service <- function() {
+    new_service(.support$metadata, .support$handlers, config)
+  }
   .support$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.support <- list()
+.support <- new.env()
 
 .support$operations <- list()
 
@@ -110,7 +137,3 @@ support <- function() {
 )
 
 .support$handlers <- new_handlers("jsonrpc", "v4")
-
-.support$service <- function() {
-  new_service(.support$metadata, .support$handlers)
-}

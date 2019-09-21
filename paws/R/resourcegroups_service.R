@@ -42,6 +42,30 @@ NULL
 #' 
 #' -   Searching AWS resources based on a resource query
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- resourcegroups(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- resourcegroups()
 #' svc$create_group(
@@ -66,12 +90,15 @@ NULL
 #'
 #' @rdname resourcegroups
 #' @export
-resourcegroups <- function() {
+resourcegroups <- function(config = NULL) {
+  .resourcegroups$service <- function() {
+    new_service(.resourcegroups$metadata, .resourcegroups$handlers, config)
+  }
   .resourcegroups$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.resourcegroups <- list()
+.resourcegroups <- new.env()
 
 .resourcegroups$operations <- list()
 
@@ -86,7 +113,3 @@ resourcegroups <- function() {
 )
 
 .resourcegroups$handlers <- new_handlers("restjson", "v4")
-
-.resourcegroups$service <- function() {
-  new_service(.resourcegroups$metadata, .resourcegroups$handlers)
-}

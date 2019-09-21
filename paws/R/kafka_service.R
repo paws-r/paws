@@ -6,6 +6,30 @@ NULL
 #'
 #' 
 #'
+#' @param
+#' config
+#' An optional list of custom configurations for the service. Currently
+#'            supports adding custom credentials, endpoint, and region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kafka(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string",
+#'         provider_name = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- kafka()
 #' svc$create_cluster(
@@ -36,12 +60,15 @@ NULL
 #'
 #' @rdname kafka
 #' @export
-kafka <- function() {
+kafka <- function(config = NULL) {
+  .kafka$service <- function() {
+    new_service(.kafka$metadata, .kafka$handlers, config)
+  }
   .kafka$operations
 }
 
 # Private API objects: metadata, handlers, interfaces, etc.
-.kafka <- list()
+.kafka <- new.env()
 
 .kafka$operations <- list()
 
@@ -56,7 +83,3 @@ kafka <- function() {
 )
 
 .kafka$handlers <- new_handlers("restjson", "v4")
-
-.kafka$service <- function() {
-  new_service(.kafka$metadata, .kafka$handlers)
-}
