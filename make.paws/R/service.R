@@ -22,11 +22,9 @@ service_file_template <- template(
   #' @rdname ${service}
   #' @export
   ${service} <- function(config = NULL) {
-
     .${service}$service <- function() {
       new_service(.${service}$metadata, .${service}$handlers, config)
     }
-
     .${service}$operations
   }
 
