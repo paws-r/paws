@@ -26,6 +26,9 @@ Sys.setenv(AWS_ACCESS_KEY_ID = "accessKeyID")
 Sys.setenv(AWS_SECRET_ACCESS_KEY = "secretAccessKey")
 ```
 
+If you have a session token from temporary security credentials, you
+can set that in environment variable `AWS_SESSION_TOKEN`.
+
 ## Setting Credentials with System Environment Variables
 
 On Mac or Linux you can use the command line to set the credentials with
@@ -35,6 +38,9 @@ the following command:
 export AWS_ACCESS_KEY_ID="accessKeyID"
 export AWS_SECRET_ACCESS_KEY="secretAccessKey"
 ```
+
+If you have a session token from temporary security credentials, you
+can set that in environment variable `AWS_SESSION_TOKEN`.
 
 Paws currently does not support setting the credentials using a system
 variable on Windows.

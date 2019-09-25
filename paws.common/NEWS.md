@@ -1,3 +1,7 @@
+# paws.common 0.2.1
+
+* Support session tokens stored in the AWS_SESSION_TOKEN environment variable.
+
 # paws.common 0.2.0
 
 * Use the global signing region (us-east-1) for services with global endpoints,
