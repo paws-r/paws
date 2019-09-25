@@ -27,7 +27,17 @@ service_file_template <- template(
       new_service(.${service}$metadata, .${service}$handlers, config)
     }
 
-    .${service}$operations
+    operations <- .${service}$operations
+
+    ops_with_service <- list()
+
+    for (op_name in names(operations)) {
+      op <- operations[[op_name]]
+      formals(op) <- c(formals(op), .svc = .${service}$service)
+      ops_with_service[[op_name]] <- op
+    }
+
+    return(ops_with_service)
   }
 
   # Private API objects: metadata, handlers, interfaces, etc.

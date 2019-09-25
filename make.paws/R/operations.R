@@ -35,7 +35,7 @@ operation_template <- template(
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
-    svc <- .${service}$service()
+    svc <- .svc()
     request <- new_request(svc, op, input, output)
     response <- send_request(request)
     return(response)
