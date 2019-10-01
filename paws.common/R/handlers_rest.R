@@ -219,15 +219,19 @@ rest_unmarshal_header_map <- function(values, prefix, type) {
 #-------------------------------------------------------------------------------
 
 # Return a URL with duplicate "/" characters removed.
-# TODO: Implement.
 clean_path <- function(url) {
+  url$path <- gsub("/+", "/", url$path)
+  url$raw_path <- gsub("/+", "/", url$raw_path)
   return(url)
 }
 
 # Return a string with special characters escaped, e.g. " " -> "%20".
-# TODO: Implement.
 escape_path <- function(string, encode_sep) {
-  return(string)
+  path <- URLencode(string, TRUE)
+  if (!encode_sep) {
+    path <- gsub("%2F", "/", path)
+  }
+  return(path)
 }
 
 # Return the type of a payload if there is one, otherwise return "".
