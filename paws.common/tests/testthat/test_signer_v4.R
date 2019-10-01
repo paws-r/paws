@@ -3,7 +3,7 @@ context("Signer - V4")
 # Returns a credentials object with a test credential provider.
 test_creds <- Credentials(
   provider = list(
-    function(aws_profile = "") {
+    function() {
       list(
         access_key_id = "AKID",
         secret_access_key = "SECRET",
