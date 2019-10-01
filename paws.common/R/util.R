@@ -49,7 +49,7 @@ is_empty.default <- function(x) {
 # data <- list(a = "1", b = "2")
 # call_with_args(f, data) == f("1")
 call_with_args <- function(f, data) {
-  args <- formalArgs(f)
+  args <- methods::formalArgs(f)
   if (is.null(args)) {
     return(f())
   }
