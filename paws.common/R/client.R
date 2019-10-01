@@ -64,45 +64,6 @@ Client <- struct(
 
 #-------------------------------------------------------------------------------
 
-# Populate config
-merge_in_config <- function(existing, other){
-  if (is.null(other)){
-    return(existing)
-  }
-  # Populate profile
-  if (!is.null(other$credentials$profile)){
-    existing$credentials$profile <- other$credentials$profile
-  }
-  # Populate credentials
-  if (!is.null(other$credentials$creds)){
-    
-    # Set null values to an empty string
-    if (is.null(other$credentials$creds$access_key_id)){
-      other$credentials$creds$access_key_id <- ""
-    }
-    if (is.null(other$credentials$creds$secret_access_key)){
-      other$credentials$creds$secret_access_key <- ""
-    }
-    if (is.null(other$credentials$creds$session_token)){
-      other$credentials$creds$session_token <- ""
-    }
-    if (is.null(other$credentials$creds$provider_name)){
-      other$credentials$creds$provider_name <- ""
-    }
-    
-    existing$credentials$creds <- other$credentials$creds
-  }
-  # Populate endpoint
-  if (!is.null(other$endpoint)){
-    existing$endpoint <- other$endpoint
-  }
-  # Populate region
-  if (!is.null(other$region)){
-    existing$region <- other$region
-  }
-  return(existing)
-}
-
 # new_session returns a Session with user configuration.
 new_session <- function(cfgs = NULL) {
   s <- Session()
@@ -165,4 +126,37 @@ client_config <- function(service_name, endpoints, cfgs = NULL) {
     signing_name = service_name
   )
   return(c)
+}
+
+# Merge configuration of credentials, endpoint, and region (e.g. user-supplied)
+# into a configuration object.
+merge_in_config <- function(existing, other){
+  if (is.null(other)){
+    return(existing)
+  }
+  if (!is.null(other$credentials$profile)){
+    existing$credentials$profile <- other$credentials$profile
+  }
+  if (!is.null(other$credentials$creds)){
+    if (is.null(other$credentials$creds$access_key_id)){
+      other$credentials$creds$access_key_id <- ""
+    }
+    if (is.null(other$credentials$creds$secret_access_key)){
+      other$credentials$creds$secret_access_key <- ""
+    }
+    if (is.null(other$credentials$creds$session_token)){
+      other$credentials$creds$session_token <- ""
+    }
+    if (is.null(other$credentials$creds$provider_name)){
+      other$credentials$creds$provider_name <- ""
+    }
+    existing$credentials$creds <- other$credentials$creds
+  }
+  if (!is.null(other$endpoint)){
+    existing$endpoint <- other$endpoint
+  }
+  if (!is.null(other$region)){
+    existing$region <- other$region
+  }
+  return(existing)
 }

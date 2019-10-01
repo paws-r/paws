@@ -3,7 +3,7 @@ context("Signer - V4")
 # Returns a credentials object with a test credential provider.
 test_creds <- Credentials(
   provider = list(
-    function(aws_profile = "") {
+    function() {
       list(
         access_key_id = "AKID",
         secret_access_key = "SECRET",
@@ -13,6 +13,26 @@ test_creds <- Credentials(
     }
   )
 )
+
+test_that("v4_sign_request_handler", {
+  metadata <- list(
+    endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
+    service_name = "s3"
+  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"))
+  client$config$credentials <- test_creds
+  client$client_info$signing_region <- "us-east-1"
+
+  op <- new_operation("ListBuckets", "GET", "/", list())
+  params <- list()
+  data <- tag_add(list(Buckets = list()), list(type = "structure"))
+  req <- new_request(client, op, params, data)
+  res <- v4_sign_request_handler(req)
+
+  actual <- res$http_request$header[["Authorization"]]
+  expected <- "AWS4-HMAC-SHA256 Credential=AKID/\\d{8}/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=[0-9a-f]{64}"
+  expect_match(actual, expected)
+})
 
 test_that("sign with custom URI escape", {
   expected <- "AWS4-HMAC-SHA256 Credential=AKID/19700101/us-east-1/es/aws4_request, SignedHeaders=host;x-amz-date;x-amz-security-token, Signature=6601e883cc6d23871fd6c2a394c5677ea2b8c82b04a6446786d64cd74f520967"
