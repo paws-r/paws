@@ -227,7 +227,7 @@ clean_path <- function(url) {
 
 # Return a string with special characters escaped, e.g. " " -> "%20".
 escape_path <- function(string, encode_sep) {
-  path <- URLencode(string, TRUE)
+  path <- utils::URLencode(string, TRUE)
   if (!encode_sep) {
     path <- gsub("%2F", "/", path)
   }
