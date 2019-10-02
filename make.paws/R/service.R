@@ -33,8 +33,17 @@ service_file_template <- template(
 
     for (op_name in names(operations)) {
       op <- operations[[op_name]]
-      formals(op) <- c(formals(op), .svc = .${service}$service)
-      ops_with_service[[op_name]] <- op
+      op_w_service <- op
+      formals(op_w_service) <- c(formals(op), .svc = .${service}$service)
+      new_op <- evalq(
+        function() {
+          inputs <- as.list(environment(), all.names = TRUE)
+          do.call(func, inputs)
+        },
+        list(func = op_w_service)
+        )
+      formals(new_op) <- formals(op)
+      ops_with_service[[op_name]] <- new_op
     }
 
     return(ops_with_service)
