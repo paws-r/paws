@@ -136,6 +136,7 @@ xml_build_scalar <- function(params) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(params)
+  if (length(data) == 0) return(NULL)
   t <- tag_get(params, "type")
   convert <- switch(
     t,
