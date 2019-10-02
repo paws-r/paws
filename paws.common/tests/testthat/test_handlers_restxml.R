@@ -13,7 +13,7 @@ svc$handlers$build <- HandlerList(restxml_build)
 
 #-------------------------------------------------------------------------------
 
-# Rest tests
+# REST tests
 
 test_that("no parameters", {
   op1 <- Operation(
@@ -237,7 +237,7 @@ test_that("Basic XML Case1", {
     Description = "bar",
     Name = "foo"
   )
-  
+
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
@@ -433,7 +433,7 @@ test_that("List of Structures Case1", {
           list(Element = "three")
       )
   )
-  
+
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
@@ -462,6 +462,28 @@ test_that("Blob Case1", {
   r <- req$body
   expect_equal(r, '<OperationRequest xmlns="https://foo/"><StructureParam xmlns="https://foo/"><b xmlns="https://foo/">Zm9v</b></StructureParam></OperationRequest>')
 })
+
+test_that("skip empty argument", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(Description, Name = NULL) {
+    args <- list(Description = Description, Name = Name)
+    interface <- Structure(
+      Description = Scalar(type = "string"),
+      Name = Scalar(type = "string"),
+      .tags = list(locationName = "OperationRequest", xmlURI = "https://foo/")
+    )
+    return(populate(args, interface))
+  }
+  input <- op_input_test(
+    Description = "bar"
+  )
+
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">bar</Description></OperationRequest>')
+})
+
 
 #-------------------------------------------------------------------------------
 
