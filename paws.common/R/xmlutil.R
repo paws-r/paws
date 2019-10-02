@@ -95,7 +95,7 @@ xml_build_structure <- function(params) {
 
     parsed <- xml_build(child)
 
-    if (!is.null(parsed)) {
+    if (length(parsed) > 0) {
       location_name <- tag_get(child, "locationName")
       if (location_name == "") location_name <- name
 
@@ -136,6 +136,7 @@ xml_build_scalar <- function(params) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(params)
+  if (length(data) == 0) return(NULL)
   t <- tag_get(params, "type")
   convert <- switch(
     t,
