@@ -1,3 +1,9 @@
+# paws.common 0.2.2
+
+* Escape URIs, e.g. when uploading files to S3 with non-alphanumeric keys.
+* Fix XML request handling (e.g. used by S3) to correctly support requests
+  with skipped optional arguments.
+
 # paws.common 0.2.1
 
 * Support session tokens stored in the AWS_SESSION_TOKEN environment variable.
