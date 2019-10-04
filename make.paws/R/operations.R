@@ -8,6 +8,8 @@ operation_file_template <- template(
   #' @include ${service}_service.R
   NULL
 
+  utils::globalVariables(".svc")
+
   ${operations}
   `
 )

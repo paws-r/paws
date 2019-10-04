@@ -7,6 +7,8 @@ service_file_template <- template(
   #' @importFrom paws.common new_handlers new_service
   NULL
 
+  utils::globalVariables("func")
+
   #' ${title}
   #'
   #' ${description}
