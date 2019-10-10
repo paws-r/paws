@@ -119,8 +119,7 @@ service_syntax <- function(api) {
           creds = list(
             access_key_id = "string",
             secret_access_key = "string",
-            session_token = "string",
-            provider_name = "string"
+            session_token = "string"
           ),
           profile = "string"
         ),

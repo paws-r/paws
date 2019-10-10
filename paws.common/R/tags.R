@@ -114,3 +114,24 @@ type <- function(object) {
   }
   return(t)
 }
+
+#-------------------------------------------------------------------------------
+
+# Add type tags to an existing object, so it can be used in `populate`.
+tag_annotate <- function(x) {
+  if (is.null(x)) {
+    return(tag_add(logical(0), list(type = "scalar")))
+  }
+  if (is.null(names(x))) {
+    if (length(x) == 1) {
+      return(tag_add(x, list(type = "scalar")))
+    }
+    x <- tag_add(x, list(type = "list"))
+  } else {
+    x <- tag_add(x, list(type = "structure"))
+  }
+  for (i in seq_along(x)) {
+    x[[i]] <- tag_annotate(x[[i]])
+  }
+  return(x)
+}
