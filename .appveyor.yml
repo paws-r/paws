@@ -23,6 +23,14 @@ environment:
     - TEST_DIR: paws.common
     - TEST_DIR: make.paws
 
+for:
+  - 
+    matrix:
+      only:
+        - TEST_DIR: make.paws
+    build_script:
+      - Rscript -e "library(devtools); install('../paws.common')"
+
 before_build:
   - cp ../travis-tool.sh travis-tool.sh
   - cp travis-tool.sh.cmd %TEST_DIR%/travis-tool.sh.cmd
