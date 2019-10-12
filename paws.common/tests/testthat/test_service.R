@@ -33,9 +33,10 @@ test_that("new_service", {
     target_prefix = "baz"
   )
   handlers <- new_handlers("restxml", "v4")
+  cfgs <- Config()
   # new_service needs a region.
   Sys.setenv("AWS_REGION" = "region")
-  service <- new_service(metadata, handlers)
+  service <- new_service(metadata, handlers, cfgs)
 
   expect_equal(names(service$client_info), names(ClientInfo()))
   expect_equal(names(service$config), names(Config()))
@@ -57,7 +58,8 @@ test_that("new_service adds customizations", {
     target_prefix = "DynamoDB_20120810"
   )
   handlers <- new_handlers("jsonrpc", "v4")
-  service <- new_service(metadata, handlers)
+  cfgs <- Config()
+  service <- new_service(metadata, handlers, cfgs)
   handler_names <- sapply(service$handlers$build$list, function(x) x$name)
   expect_true("disable_compression" %in% handler_names)
 })

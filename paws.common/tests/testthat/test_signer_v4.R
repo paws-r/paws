@@ -19,7 +19,7 @@ test_that("v4_sign_request_handler", {
     endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
     service_name = "s3"
   )
-  client <- new_service(metadata, new_handlers("restxml", "s3"))
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
   client$config$credentials <- test_creds
   client$client_info$signing_region <- "us-east-1"
 
