@@ -77,7 +77,9 @@ check_os_region <- function() {
   return(region)
 }
 
-# Tries to get the region from the config file
+# Get region from the config file.
+# For profiles other than default, the profile name is prefaced by "profile".
+# See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 check_config_file_region <- function() {
 
   config_path <- file.path(get_aws_path(), "config")
@@ -85,6 +87,7 @@ check_config_file_region <- function() {
   if (!file.exists(config_path)) return(NULL)
 
   aws_profile <- get_profile_name()
+  if (aws_profile != "default") aws_profile <- paste("profile", aws_profile)
 
   config_values <- ini::read.ini(config_path)
 

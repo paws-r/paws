@@ -123,7 +123,7 @@ below the default:
     [default]
     region=region-1
     
-    [other_profile]
+    [profile other_profile]
     region=region-2
 
 ## AWS Profile
