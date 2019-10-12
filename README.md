@@ -32,9 +32,8 @@ See [docs/credentials.md](docs/credentials.md) for more info.
 
 In the example below, we set them with R environment variables.
 
-Warning: Do not save your credentials in your code. In doing so you
-risk revealing them to people who should not have access to them. Use
-one of the other methods above instead. See also
+Warning: Do not save your credentials in your code, which could reveal
+them to others. Use one of the other methods above instead. See also
 [RStudio's best practices for securing credentials](https://db.rstudio.com/best-practices/managing-credentials/#encrypt-credentials-with-keyring).
 
 ``` r
