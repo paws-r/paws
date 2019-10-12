@@ -50,7 +50,7 @@ common:
 
 test-common: common
 	@echo "run unit tests for common functions"
-	@Rscript -e "devtools::test('paws.common')"
+	@Rscript -e "devtools::test('paws.common'); devtools::check('paws.common')"
 
 codegen: common
 	@echo "build and install the code generator"
