@@ -143,7 +143,10 @@ sign_with_body <- function(signer, request, body, service, region,
     ctx <- handle_presign_removal(ctx)
   }
 
-  credentials <- get_credentials(signer$credentials)
+  credentials <- signer$credentials
+  if (!is_credentials_provided(signer$credentials$creds)) {
+    credentials <- get_credentials(signer$credentials)
+  }
   ctx$cred_values <- credentials$creds
 
   ctx$request <- sanitize_host_for_header(ctx$request)
