@@ -22,3 +22,18 @@ test_that("is_empty", {
   expect_equal(is_empty(list(1)), FALSE)
   expect_equal(is_empty(list(list(list(),list(1)))), FALSE)
 })
+
+test_that("call_with_args", {
+  foo <- function(a){a}
+  args <- list(a = 1, b = 2)
+  expect_equal(call_with_args(foo, args), 1)
+
+  foo <- function(a, b){a + b}
+  args <- list(a = 1, b = 2)
+  expect_equal(call_with_args(foo, args), 3)
+
+  foo <- function(a, b, c){a + b}
+  args <- list(a = 1, b = 2)
+  expect_error(call_with_args(foo, args),
+               "A parameter has no corresponding element in.*")
+})
