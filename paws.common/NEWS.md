@@ -1,3 +1,7 @@
+# paws.common 0.2.3
+
+* Fix support for non-default profiles in shared config files.
+
 # paws.common 0.2.2
 
 * Escape URIs, e.g. when uploading files to S3 with non-alphanumeric keys.
