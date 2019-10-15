@@ -4,7 +4,7 @@
 \alias{new_service}
 \title{Return an AWS API service object}
 \usage{
-new_service(metadata, handlers, cfgs)
+new_service(metadata, handlers, cfgs = NULL)
 }
 \arguments{
 \item{metadata}{A named list of API metadata. It should look like:\preformatted{list(
@@ -20,7 +20,7 @@ new_service(metadata, handlers, cfgs)
 
 \item{handlers}{A set of handlers, e.g. from \code{new_handlers}.}
 
-\item{cfgs}{A config defined by the service}
+\item{cfgs}{A config defined by the service. Defaults to null.}
 }
 \description{
 Return an API service object with information and handlers needed to make

@@ -65,13 +65,8 @@ Client <- struct(
 #-------------------------------------------------------------------------------
 
 # new_session returns a Session with default configuration.
-new_session <- function(cfgs) {
+new_session <- function() {
   s <- Session()
-  # If region not defined, set it
-  if (nchar(cfgs$region) == 0) {
-    cfgs$region <- get_region(cfgs$credentials$profile)
-  }
-  s$config <- cfgs
   return(s)
 }
 
@@ -103,7 +98,14 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
 
 # client_config returns a ClientConfig configured for the service.
 client_config <- function(service_name, endpoints, cfgs) {
-  s <- new_session(cfgs)
+  s <- new_session()
+  if (!is.null(cfgs)) {
+    s$config <- cfgs
+  }
+  # If region not defined, set it
+  if (nchar(s$config$region) == 0) {
+    s$config$region <- get_region(cfgs$credentials$profile)
+  }
   region <- s$config$region
   if (s$config$endpoint != "") {
     endpoint <- s$config$endpoint
