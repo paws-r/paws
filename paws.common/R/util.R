@@ -41,3 +41,20 @@ is_empty.list <- function(x) {
 is_empty.default <- function(x) {
   return(is.na(x))
 }
+
+# Call a function `f` with arguments taken from elements in `data`, including
+# only those data elements that correspond to parameters.
+# For example:
+# f <- function(a) {}
+# data <- list(a = "1", b = "2")
+# call_with_args(f, data) == f("1")
+call_with_args <- function(f, data) {
+  args <- methods::formalArgs(f)
+  if (is.null(args)) {
+    return(f())
+  }
+  if (!all(args %in% names(data))) {
+    stop("A parameter has no corresponding element in `data`.")
+  }
+  return(do.call(f, as.list(data)[args]))
+}

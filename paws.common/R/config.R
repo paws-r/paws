@@ -1,3 +1,78 @@
+#' Get the service configuration from the service object.
+#'
+#' Look up the service configuration from the service object, e.g. when
+#' calling `svc$operation()`, `get_config()` will look up `svc`, then get
+#' any configuration stored in it, as if the operation function were
+#' a method and the service object were a class instance.
+#'
+#' `get_config` must be called directly by the operation function and
+#' assigned immediately, not provided as an argument to another function.
+#'
+#' We look up the service object then fetch its data so we can both support
+#' documentation tooltips in RStudio and also have class-object-like
+#' behavior. Alternatives that do not support documentation tooltips in
+#' RStudio include reference classes (RC), R6 classes, and any modification of
+#' the functions at run-time, e.g. inserting the configuration into the
+#' function definition for each operation in a particular service object.
+#'
+#' @export
+get_config <- function() {
+  calling_env <- parent.frame(2)
+  call <- sys.call(-1)[[1]]
+  if (is.name(call)) {
+    return(Config())
+  }
+  object <- eval(call[[2]], envir = calling_env)
+  config <- object$.internal$config
+  if (is.null(config)) return(Config())
+  return(config)
+}
+
+#' Add configuration settings to a service object.
+#'
+#' @param svc A service object containing service operations.
+#' @param cfgs A list of optional configuration settings.
+#'
+#' @details
+#' The optional configuration settings can include the following:
+#' ```
+#' list(
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' # Create a config object with custom credentials and endpoint.
+#' config <- set_config(
+#'   svc = list(),
+#'   cfgs = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "abc",
+#'         secret_access_key = "123"
+#'       )
+#'     ),
+#'     endpoint = "https://foo.com"
+#'   )
+#' )
+#'
+#' @export
+set_config <- function(svc, cfgs = list()) {
+  shape <- tag_annotate(Config())
+  config <- populate(cfgs, shape)
+  svc$.internal <- list(config = config)
+  return(svc)
+}
+
 # Get the path to the .aws folder.
 get_aws_path <- function() {
   if (.Platform$OS.type == "unix") {
@@ -23,15 +98,17 @@ get_os_env_variable <- function(var) {
 }
 
 # Get the AWS profile to use. If none, return "default".
-get_profile_name <- function() {
+get_profile_name <- function(profile = "") {
 
-  aws_profile <- Sys.getenv("AWS_PROFILE")
+  if (profile != "") return(profile)
 
-  if (aws_profile == "") aws_profile <- get_os_env_variable("AWS_PROFILE")
+  profile <- Sys.getenv("AWS_PROFILE")
 
-  if (aws_profile == "") aws_profile <- "default"
+  if (profile == "") profile <- get_os_env_variable("AWS_PROFILE")
 
-  return(aws_profile)
+  if (profile == "") profile <- "default"
+
+  return(profile)
 }
 
 # Gets the instance metadata by making an http request
@@ -48,7 +125,9 @@ get_instance_metadata <- function(query_path = "") {
     NULL
   })
 
-  if (metadata_response$status_code != 200) return(NULL)
+  if (is.null(metadata_response) || metadata_response$status_code != 200) {
+    return(NULL)
+  }
 
   return(metadata_response)
 }
@@ -80,26 +159,26 @@ check_os_region <- function() {
 # Get region from the config file.
 # For profiles other than default, the profile name is prefaced by "profile".
 # See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-check_config_file_region <- function() {
+check_config_file_region <- function(profile = "") {
 
   config_path <- file.path(get_aws_path(), "config")
 
   if (!file.exists(config_path)) return(NULL)
 
-  aws_profile <- get_profile_name()
-  if (aws_profile != "default") aws_profile <- paste("profile", aws_profile)
+  profile <- get_profile_name(profile)
+  if (profile != "default") profile <- paste("profile", profile)
 
   config_values <- ini::read.ini(config_path)
 
-  if (is.null(config_values[[aws_profile]])) return(NULL)
+  if (is.null(config_values[[profile]])) return(NULL)
 
-  region <- config_values[[aws_profile]]$region
+  region <- config_values[[profile]]$region
 
   return(region)
 }
 
 # Get the AWS region.
-get_region <- function() {
+get_region <- function(profile = "") {
 
   region <- check_r_env_region()
   if (region != "") return(region)
@@ -107,7 +186,8 @@ get_region <- function() {
   region <- check_os_region()
   if (region != "") return(region)
 
-  region <- check_config_file_region()
+  region <- check_config_file_region(profile)
+
   if (is.null(region)) stop("No region provided")
 
   return(region)

@@ -37,3 +37,13 @@ test_that("struct replacement", {
 
   expect_error(bar$c <- 3)
 })
+
+test_that("struct as list", {
+  Foo <- struct(a = "1", b = "2")
+  bar <- Foo()
+  foobar <- as.list(bar)
+
+  expect_equal(foobar$a, "1")
+  expect_equal(foobar$b, "2")
+  expect_equal(class(foobar), "list")
+})

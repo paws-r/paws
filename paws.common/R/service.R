@@ -84,6 +84,8 @@ new_handlers <- function(protocol, signer) {
 #' ```
 #' @param handlers A set of handlers, e.g. from `new_handlers`.
 #'
+#' @param cfgs A config defined by the service. Defaults to null.
+#'
 #' @family API request functions
 #'
 #' @examples
@@ -106,10 +108,11 @@ new_handlers <- function(protocol, signer) {
 #' service <- new_service(metadata, handlers)}
 #'
 #' @export
-new_service <- function(metadata, handlers) {
+new_service <- function(metadata, handlers, cfgs = NULL) {
   cfg <- client_config(
     service_name = metadata$service_name,
-    endpoints = metadata$endpoints
+    endpoints = metadata$endpoints,
+    cfgs = cfgs
   )
 
   signing_name <- metadata$signing_name

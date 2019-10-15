@@ -33,9 +33,10 @@ test_that("new_service", {
     target_prefix = "baz"
   )
   handlers <- new_handlers("restxml", "v4")
+  cfgs <- Config()
   # new_service needs a region.
   Sys.setenv("AWS_REGION" = "region")
-  service <- new_service(metadata, handlers)
+  service <- new_service(metadata, handlers, cfgs)
 
   expect_equal(names(service$client_info), names(ClientInfo()))
   expect_equal(names(service$config), names(Config()))
@@ -44,6 +45,26 @@ test_that("new_service", {
   expect_equal(service$client_info$service_name, metadata$service_name)
   expect_equal(service$client_info$service_id, metadata$service_id)
   expect_equal(service$client_info$signing_name, metadata$signing_name)
+})
+
+test_that("new_service null cfgs", {
+  metadata <- list(
+    service_name = "foo",
+    endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
+    service_id = "bar",
+    api_version = "1",
+    signing_name = "foobar",
+    json_version = "2",
+    target_prefix = "baz"
+  )
+  handlers <- new_handlers("restxml", "v4")
+  # new_service needs a region.
+  Sys.setenv("AWS_REGION" = "region")
+  service <- new_service(metadata, handlers)
+
+  expect_equal(names(service$config), names(Config()))
+  expect_equal(service$config$region, "region")
+
 })
 
 test_that("new_service adds customizations", {
@@ -57,7 +78,41 @@ test_that("new_service adds customizations", {
     target_prefix = "DynamoDB_20120810"
   )
   handlers <- new_handlers("jsonrpc", "v4")
-  service <- new_service(metadata, handlers)
+  cfgs <- Config()
+  service <- new_service(metadata, handlers, cfgs)
   handler_names <- sapply(service$handlers$build$list, function(x) x$name)
   expect_true("disable_compression" %in% handler_names)
+})
+
+test_that("test custom config credentials take priority", {
+  metadata <- list(
+    service_name = "foo",
+    endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
+    service_id = "bar",
+    api_version = "1",
+    signing_name = "foobar",
+    json_version = "2",
+    target_prefix = "baz"
+  )
+  handlers <- new_handlers("restxml", "v4")
+  # Set env variables
+  Sys.setenv("AWS_REGION" = "env_region")
+  Sys.setenv("AWS_ACCESS_KEY_ID" = "env_key")
+  Sys.setenv("AWS_SECRET_ACCESS_KEY" = "env_secret")
+  Sys.setenv("AWS_PROFILE" = "env_profile")
+
+  # Set custom config
+  cfgs <- Config()
+  cfgs$region <- "cfgs_region"
+  cfgs$credentials$creds$access_key_id <- "cfgs_key"
+  cfgs$credentials$creds$secret_access_key <- "cfgs_secret"
+  cfgs$credentials$profile <- "cfgs_profile"
+  service <- new_service(metadata, handlers, cfgs)
+
+  expect_equal(service$config$region, "cfgs_region")
+  expect_equal(service$config$credentials$creds$access_key_id, "cfgs_key")
+  expect_equal(service$config$credentials$creds$secret_access_key,
+               "cfgs_secret")
+  expect_equal(service$config$credentials$profile, "cfgs_profile")
+
 })
