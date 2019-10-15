@@ -5,17 +5,41 @@
 In order to use a Paws package, you must provide it with your
 credentials.
 
-Credentials can be set in the following four ways, and Paws will look
+Credentials can be set in the following five ways, and Paws will look
 for them in this order.
 
-1.  R environment variables.
-2.  System environment variables (Mac and Linux Only).
-3.  AWS credentials file.
-4.  IAM role.
+1.  Custom service config.
+2.  R environment variables.
+3.  System environment variables (Mac and Linux Only).
+4.  AWS credentials file.
+5.  IAM role.
 
 If you are running the package on an instance with an appropriate IAM
 role, Paws will use it automatically and you don’t need to do anything
 extra.
+
+## Setting Credentials with Custom Service Config
+
+Pass in the credentials directly for a given service with the following
+command:
+
+``` r
+svc <- paws::svc(
+    config = list(
+        credentials = list(
+            creds = list(
+                access_key_id = "accessKeyID",
+                secret_access_key = "secretAccessKey"
+            )
+        )
+    )
+)
+```
+
+If you have a session token from temporary security credentials, you
+can add that to creds as `session_token`.
+
+Paws supports having multiple service objects with different credentials.
 
 ## Setting Credentials with R Environment Variables
 
@@ -77,11 +101,25 @@ below the default:
 
 In order to use a Paws package, you must also set your AWS region.
 
-Paws will look for the region in the following three places, in order:
+Paws will look for the region in the following four places, in order:
 
-1.  `AWS_REGION` R environment variable.
-2.  `AWS_REGION` system environment variable (Mac and Linux Only).
-3.  AWS config file.
+1.  Custom service config.
+2.  `AWS_REGION` R environment variable.
+3.  `AWS_REGION` system environment variable (Mac and Linux Only).
+4.  AWS config file.
+
+## Setting Region with Custom Service Config
+
+Pass in the region directly for a given service with the following
+command:
+
+``` r
+svc <- paws::svc(
+    config = list(
+        region = "us-east-1"
+    )
+)
+```
 
 ## Setting Region with R Environment Variable
 
@@ -134,8 +172,24 @@ profile.
 However, you may want to use another profile, which you can choose in
 the following ways:
 
-1.  `AWS_PROFILE` R environment variable.
-2.  `AWS_PROFILE` system environment variable - (Mac and Linux Only)
+1.  Custom service config.
+2.  `AWS_PROFILE` R environment variable.
+3.  `AWS_PROFILE` system environment variable - (Mac and Linux Only)
+
+## Setting Profile with Custom Service Config
+
+Pass in the profile directly for a given service with the following
+command:
+
+``` r
+svc <- paws::svc(
+    config = list(
+        credentials = list(
+            profile = "nameOfProfile"
+        )
+    )
+)
+```
 
 ## Setting Profile with R Environment Variable
 
