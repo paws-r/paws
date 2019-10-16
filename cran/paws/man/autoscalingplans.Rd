@@ -4,7 +4,10 @@
 \alias{autoscalingplans}
 \title{AWS Auto Scaling Plans}
 \usage{
-autoscalingplans()
+autoscalingplans(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Auto Scaling
@@ -22,6 +25,24 @@ For more information about AWS Auto Scaling, including information about
 granting IAM users required permissions for AWS Auto Scaling actions,
 see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html}{AWS Auto Scaling User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- autoscalingplans(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

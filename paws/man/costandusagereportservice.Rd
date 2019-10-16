@@ -4,7 +4,10 @@
 \alias{costandusagereportservice}
 \title{AWS Cost and Usage Report Service}
 \usage{
-costandusagereportservice()
+costandusagereportservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The AWS Cost and Usage Report API enables you to programmatically
@@ -23,6 +26,24 @@ The AWS Cost and Usage Report API provides the following endpoint:
 \item cur.us-east-1.amazonaws.com
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- costandusagereportservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{cloudsearch}
 \title{Amazon CloudSearch}
 \usage{
-cloudsearch()
+cloudsearch(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon CloudSearch Configuration Service
@@ -20,6 +23,24 @@ cloudsearch.\emph{region}.amazonaws.com. For example,
 cloudsearch.us-east-1.amazonaws.com. For a current list of supported
 regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region}{Regions and Endpoints}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudsearch(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

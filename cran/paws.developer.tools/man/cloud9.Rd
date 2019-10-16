@@ -4,7 +4,10 @@
 \alias{cloud9}
 \title{AWS Cloud9}
 \usage{
-cloud9()
+cloud9(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Cloud9 is a collection of tools that you can use to code, build,
@@ -36,6 +39,24 @@ environment.
 environment member for an environment.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- cloud9(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{connect}
 \title{Amazon Connect Service}
 \usage{
-connect()
+connect(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The Amazon Connect API Reference provides descriptions, syntax, and
@@ -25,6 +28,24 @@ You can request an increase to the throttling limits by submitting a
 \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase}{Amazon Connect service limits increase form}.
 You must be signed in to your AWS account to access the form.
 }
+\section{Service syntax}{
+\preformatted{svc <- connect(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

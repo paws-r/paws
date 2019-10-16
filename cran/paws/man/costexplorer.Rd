@@ -4,7 +4,10 @@
 \alias{costexplorer}
 \title{AWS Cost Explorer Service}
 \usage{
-costexplorer()
+costexplorer(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The Cost Explorer API enables you to programmatically query your cost
@@ -23,6 +26,24 @@ The Cost Explorer API provides the following endpoint:
 For information about costs associated with the Cost Explorer API, see
 \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
+\section{Service syntax}{
+\preformatted{svc <- costexplorer(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

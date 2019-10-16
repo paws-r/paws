@@ -4,7 +4,10 @@
 \alias{marketplacemetering}
 \title{AWSMarketplace Metering}
 \usage{
-marketplacemetering()
+marketplacemetering(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Marketplace Metering Service
@@ -53,6 +56,24 @@ You can also use CloudTrail to audit records over time. For more
 information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}}
 .
 }
+\section{Service syntax}{
+\preformatted{svc <- marketplacemetering(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

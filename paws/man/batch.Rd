@@ -4,7 +4,10 @@
 \alias{batch}
 \title{AWS Batch}
 \usage{
-batch()
+batch(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Batch enables you to run batch computing workloads on the AWS Cloud.
@@ -26,6 +29,24 @@ Batch reduces operational complexities, saves time, and reduces costs,
 which makes it easy for developers, scientists, and engineers to run
 their batch jobs in the AWS Cloud.
 }
+\section{Service syntax}{
+\preformatted{svc <- batch(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

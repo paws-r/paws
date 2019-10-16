@@ -4,7 +4,10 @@
 \alias{ssm}
 \title{Amazon Simple Systems Manager (SSM)}
 \usage{
-ssm()
+ssm(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Systems Manager
@@ -28,6 +31,24 @@ For information about other API actions you can perform on Amazon EC2
 instances, see the \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}. For
 information about how to use a Query API, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API Requests}.
 }
+\section{Service syntax}{
+\preformatted{svc <- ssm(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

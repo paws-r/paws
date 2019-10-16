@@ -20,6 +20,28 @@
 #' which makes it easy for developers, scientists, and engineers to run
 #' their batch jobs in the AWS Cloud.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- batch(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example cancels a job with the specified job ID.
 #' \donttest{svc <- batch()
@@ -50,8 +72,8 @@
 #'
 #' @rdname batch
 #' @export
-batch <- function() {
-  paws.compute::batch()
+batch <- function(config = list()) {
+  paws.compute::batch(config)
 }
 
 #' Amazon Elastic Compute Cloud
@@ -76,6 +98,28 @@ batch <- function() {
 #' 
 #' -   AWS VPN: [AWS VPN product page](http://aws.amazon.com/vpn), AWS VPN
 #'     documentation
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ec2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example allocates an Elastic IP address to use with an instance in
@@ -443,8 +487,8 @@ batch <- function() {
 #'
 #' @rdname ec2
 #' @export
-ec2 <- function() {
-  paws.compute::ec2()
+ec2 <- function(config = list()) {
+  paws.compute::ec2(config)
 }
 
 #' AWS EC2 Instance Connect
@@ -454,6 +498,28 @@ ec2 <- function() {
 #' to publish temporary SSH keys to their EC2 instances in order to
 #' establish connections to their instances without leaving a permanent
 #' authentication option.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ec2instanceconnect(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example pushes a sample SSH public key to the EC2 instance
@@ -473,8 +539,8 @@ ec2 <- function() {
 #'
 #' @rdname ec2instanceconnect
 #' @export
-ec2instanceconnect <- function() {
-  paws.compute::ec2instanceconnect()
+ec2instanceconnect <- function(config = list()) {
+  paws.compute::ec2instanceconnect(config)
 }
 
 #' Amazon EC2 Container Registry
@@ -487,6 +553,28 @@ ec2instanceconnect <- function() {
 #' resource-based permissions using IAM so that specific users or Amazon
 #' EC2 instances can access repositories and images. Developers can use the
 #' Docker CLI to author and manage images.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ecr(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example deletes images with the tags precise and trusty in a
@@ -532,8 +620,8 @@ ec2instanceconnect <- function() {
 #'
 #' @rdname ecr
 #' @export
-ecr <- function() {
-  paws.compute::ecr()
+ecr <- function(config = list()) {
+  paws.compute::ecr(config)
 }
 
 #' Amazon EC2 Container Service
@@ -561,6 +649,28 @@ ecr <- function() {
 #' availability requirements. Amazon ECS eliminates the need for you to
 #' operate your own cluster management and configuration management systems
 #' or worry about scaling your management infrastructure.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ecs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example creates a cluster in your default region.
@@ -619,8 +729,8 @@ ecr <- function() {
 #'
 #' @rdname ecs
 #' @export
-ecs <- function() {
-  paws.compute::ecs()
+ecs <- function(config = list()) {
+  paws.compute::ecs(config)
 }
 
 #' Amazon Elastic Kubernetes Service
@@ -639,6 +749,28 @@ ecs <- function() {
 #' environment, whether running in on-premises data centers or public
 #' clouds. This means that you can easily migrate any standard Kubernetes
 #' application to Amazon EKS without any code modification required.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- eks(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example creates an Amazon EKS cluster called prod.
@@ -673,8 +805,8 @@ ecs <- function() {
 #'
 #' @rdname eks
 #' @export
-eks <- function() {
-  paws.compute::eks()
+eks <- function(config = list()) {
+  paws.compute::eks(config)
 }
 
 #' AWS Elastic Beanstalk
@@ -699,6 +831,28 @@ eks <- function() {
 #' supports, go to [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
 #' in the *Amazon Web Services Glossary*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elasticbeanstalk(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following code aborts a running application version deployment for
@@ -758,8 +912,8 @@ eks <- function() {
 #'
 #' @rdname elasticbeanstalk
 #' @export
-elasticbeanstalk <- function() {
-  paws.compute::elasticbeanstalk()
+elasticbeanstalk <- function(config = list()) {
+  paws.compute::elasticbeanstalk(config)
 }
 
 #' AWS Lambda
@@ -773,6 +927,28 @@ elasticbeanstalk <- function() {
 #' and for information about how the service works, see [AWS Lambda: How it
 #' Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
 #' in the **AWS Lambda Developer Guide**.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lambda(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example adds a permission for an S3 bucket to invoke a Lambda
@@ -832,8 +1008,8 @@ elasticbeanstalk <- function() {
 #'
 #' @rdname lambda
 #' @export
-lambda <- function() {
-  paws.compute::lambda()
+lambda <- function(config = list()) {
+  paws.compute::lambda(config)
 }
 
 #' Amazon Lightsail
@@ -854,6 +1030,28 @@ lambda <- function() {
 #' and Access Management (IAM) to generate access keys. For details about
 #' how to set this up, see the [Lightsail Dev
 #' Guide](http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lightsail(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- lightsail()
@@ -968,8 +1166,8 @@ lambda <- function() {
 #'
 #' @rdname lightsail
 #' @export
-lightsail <- function() {
-  paws.compute::lightsail()
+lightsail <- function(config = list()) {
+  paws.compute::lightsail(config)
 }
 
 #' AWSServerlessApplicationRepository
@@ -1009,6 +1207,28 @@ lightsail <- function() {
 #'     them available to other developers, and publish new versions of
 #'     applications.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- serverlessapplicationrepository(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- serverlessapplicationrepository()
 #' svc$create_application(
@@ -1034,8 +1254,8 @@ lightsail <- function() {
 #'
 #' @rdname serverlessapplicationrepository
 #' @export
-serverlessapplicationrepository <- function() {
-  paws.compute::serverlessapplicationrepository()
+serverlessapplicationrepository <- function(config = list()) {
+  paws.compute::serverlessapplicationrepository(config)
 }
 
 #' AWS Backup
@@ -1045,6 +1265,28 @@ serverlessapplicationrepository <- function() {
 #' and their associated data. AWS Backup simplifies the creation,
 #' migration, restoration, and deletion of backups, while also providing
 #' reporting and auditing.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- backup(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- backup()
@@ -1101,8 +1343,8 @@ serverlessapplicationrepository <- function() {
 #'
 #' @rdname backup
 #' @export
-backup <- function() {
-  paws.storage::backup()
+backup <- function(config = list()) {
+  paws.storage::backup(config)
 }
 
 #' Amazon Data Lifecycle Manager
@@ -1117,6 +1359,28 @@ backup <- function() {
 #' Snapshot
 #' Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- dlm(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- dlm()
@@ -1135,8 +1399,8 @@ backup <- function() {
 #'
 #' @rdname dlm
 #' @export
-dlm <- function() {
-  paws.storage::dlm()
+dlm <- function(config = list()) {
+  paws.storage::dlm(config)
 }
 
 #' Amazon Elastic File System
@@ -1148,6 +1412,28 @@ dlm <- function() {
 #' you add and remove files, so your applications have the storage they
 #' need, when they need it. For more information, see the [User
 #' Guide](https://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- efs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This operation creates a new file system with the default generalpurpose
@@ -1184,8 +1470,8 @@ dlm <- function() {
 #'
 #' @rdname efs
 #' @export
-efs <- function() {
-  paws.storage::efs()
+efs <- function(config = list()) {
+  paws.storage::efs(config)
 }
 
 #' Amazon FSx
@@ -1193,6 +1479,28 @@ efs <- function() {
 #' @description
 #' Amazon FSx is a fully managed service that makes it easy for storage and
 #' application administrators to launch and use shared file storage.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- fsx(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This operation creates a new backup.
@@ -1224,8 +1532,8 @@ efs <- function() {
 #'
 #' @rdname fsx
 #' @export
-fsx <- function() {
-  paws.storage::fsx()
+fsx <- function(config = list()) {
+  paws.storage::fsx(config)
 }
 
 #' Amazon Glacier
@@ -1266,6 +1574,28 @@ fsx <- function() {
 #'     The Getting Started section walks you through the process of
 #'     creating a vault, uploading archives, creating jobs to download
 #'     archives, retrieving the job output, and deleting archives.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- glacier(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The example deletes an in-progress multipart upload to a vault named
@@ -1316,13 +1646,35 @@ fsx <- function() {
 #'
 #' @rdname glacier
 #' @export
-glacier <- function() {
-  paws.storage::glacier()
+glacier <- function(config = list()) {
+  paws.storage::glacier(config)
 }
 
 #' Amazon Simple Storage Service
 #'
 #' 
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- s3(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example aborts a multipart upload.
@@ -1427,14 +1779,36 @@ glacier <- function() {
 #'
 #' @rdname s3
 #' @export
-s3 <- function() {
-  paws.storage::s3()
+s3 <- function(config = list()) {
+  paws.storage::s3(config)
 }
 
 #' AWS S3 Control
 #'
 #' @description
 #' AWS S3 Control provides access to Amazon S3 control plane operations.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- s3control(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- s3control()
@@ -1456,8 +1830,8 @@ s3 <- function() {
 #'
 #' @rdname s3control
 #' @export
-s3control <- function() {
-  paws.storage::s3control()
+s3control <- function(config = list()) {
+  paws.storage::s3control(config)
 }
 
 #' AWS Storage Gateway
@@ -1527,6 +1901,28 @@ s3control <- function() {
 #' For more information, see [Announcement: Heads-up -- Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
 #' 2016](https://forums.aws.amazon.com/ann.jspa?annID=3557).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- storagegateway(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # Activates the gateway you previously deployed on your host.
@@ -1620,8 +2016,8 @@ s3control <- function() {
 #'
 #' @rdname storagegateway
 #' @export
-storagegateway <- function() {
-  paws.storage::storagegateway()
+storagegateway <- function(config = list()) {
+  paws.storage::storagegateway(config)
 }
 
 #' Amazon DynamoDB Accelerator (DAX)
@@ -1634,6 +2030,28 @@ storagegateway <- function() {
 #' AWS Management Console. With a few simple modifications to your code,
 #' your application can begin taking advantage of the DAX cluster and
 #' realize significant improvements in read performance.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- dax(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- dax()
@@ -1668,14 +2086,36 @@ storagegateway <- function() {
 #'
 #' @rdname dax
 #' @export
-dax <- function() {
-  paws.database::dax()
+dax <- function(config = list()) {
+  paws.database::dax(config)
 }
 
 #' Amazon DocumentDB with MongoDB compatibility
 #'
 #' @description
 #' Amazon DocumentDB API documentation
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- docdb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- docdb()
@@ -1730,8 +2170,8 @@ dax <- function() {
 #'
 #' @rdname docdb
 #' @export
-docdb <- function() {
-  paws.database::docdb()
+docdb <- function(config = list()) {
+  paws.database::docdb(config)
 }
 
 #' Amazon DynamoDB
@@ -1756,6 +2196,28 @@ docdb <- function() {
 #' your data is stored on solid state disks (SSDs) and automatically
 #' replicated across multiple Availability Zones in an AWS region,
 #' providing built-in high availability and data durability.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- dynamodb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example reads multiple items from the Music table using a batch of
@@ -1837,8 +2299,8 @@ docdb <- function() {
 #'
 #' @rdname dynamodb
 #' @export
-dynamodb <- function() {
-  paws.database::dynamodb()
+dynamodb <- function(config = list()) {
+  paws.database::dynamodb(config)
 }
 
 #' Amazon DynamoDB Streams
@@ -1851,6 +2313,28 @@ dynamodb <- function() {
 #' with Streams, see [Capturing Table Activity with DynamoDB
 #' Streams](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
 #' in the Amazon DynamoDB Developer Guide.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- dynamodbstreams(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example describes a stream with a given stream ARN.
@@ -1869,8 +2353,8 @@ dynamodb <- function() {
 #'
 #' @rdname dynamodbstreams
 #' @export
-dynamodbstreams <- function() {
-  paws.database::dynamodbstreams()
+dynamodbstreams <- function(config = list()) {
+  paws.database::dynamodbstreams(config)
 }
 
 #' Amazon ElastiCache
@@ -1888,6 +2372,28 @@ dynamodbstreams <- function() {
 #' In addition, through integration with Amazon CloudWatch, customers get
 #' enhanced visibility into the key performance statistics associated with
 #' their cache and can receive alarms if a part of their cache runs hot.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elasticache(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- elasticache()
@@ -1947,8 +2453,8 @@ dynamodbstreams <- function() {
 #'
 #' @rdname elasticache
 #' @export
-elasticache <- function() {
-  paws.database::elasticache()
+elasticache <- function(config = list()) {
+  paws.database::elasticache(config)
 }
 
 #' Amazon Neptune
@@ -1975,6 +2481,28 @@ elasticache <- function() {
 #' applied immediately, on the next instance reboot, or during the
 #' maintenance window. The reference structure is as follows, and we list
 #' following some related topics from the user guide.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- neptune(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- neptune()
@@ -2045,8 +2573,8 @@ elasticache <- function() {
 #'
 #' @rdname neptune
 #' @export
-neptune <- function() {
-  paws.database::neptune()
+neptune <- function(config = list()) {
+  paws.database::neptune(config)
 }
 
 #' Amazon Relational Database Service
@@ -2102,6 +2630,28 @@ neptune <- function() {
 #' -   For more information about how to use the Query API, see [Using the
 #'     Query
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- rds(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- rds()
@@ -2226,8 +2776,8 @@ neptune <- function() {
 #'
 #' @rdname rds
 #' @export
-rds <- function() {
-  paws.database::rds()
+rds <- function(config = list()) {
+  paws.database::rds(config)
 }
 
 #' AWS RDS DataService
@@ -2243,6 +2793,28 @@ rds <- function() {
 #' for Aurora
 #' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- rdsdataservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- rdsdataservice()
@@ -2262,8 +2834,8 @@ rds <- function() {
 #'
 #' @rdname rdsdataservice
 #' @export
-rdsdataservice <- function() {
-  paws.database::rdsdataservice()
+rdsdataservice <- function(config = list()) {
+  paws.database::rdsdataservice(config)
 }
 
 #' Amazon Redshift
@@ -2297,6 +2869,28 @@ rdsdataservice <- function() {
 #' Guide](https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 #' explains how to design, build, query, and maintain the databases that
 #' make up your data warehouse.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- redshift(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- redshift()
@@ -2391,14 +2985,36 @@ rdsdataservice <- function() {
 #'
 #' @rdname redshift
 #' @export
-redshift <- function() {
-  paws.database::redshift()
+redshift <- function(config = list()) {
+  paws.database::redshift(config)
 }
 
 #' Amazon SimpleDB
 #'
 #' @description
 #' Amazon SimpleDB is a web service providing the core database functions of data indexing and querying in the cloud. By offloading the time and effort associated with building and operating a web-scale database, SimpleDB provides developers the freedom to focus on application development. <p> A traditional, clustered relational database requires a sizable upfront capital outlay, is complex to design, and often requires extensive and repetitive database administration. Amazon SimpleDB is dramatically simpler, requiring no schema, automatically indexing your data and providing a simple API for storage and access. This approach eliminates the administrative burden of data modeling, index maintenance, and performance tuning. Developers gain access to this functionality within Amazon's proven computing environment, are able to scale instantly, and pay only for what they use. </p> <p> Visit <a href="http://aws.amazon.com/simpledb/">http://aws.amazon.com/simpledb/</a> for more information. </p>
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- simpledb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- simpledb()
@@ -2422,8 +3038,8 @@ redshift <- function() {
 #'
 #' @rdname simpledb
 #' @export
-simpledb <- function() {
-  paws.database::simpledb()
+simpledb <- function(config = list()) {
+  paws.database::simpledb(config)
 }
 
 #' Amazon API Gateway
@@ -2434,6 +3050,28 @@ simpledb <- function() {
 #' securely connect mobile and web applications to APIs that run on AWS
 #' Lambda, Amazon EC2, or other publicly addressable web services that are
 #' hosted outside of AWS.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigateway(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- apigateway()
@@ -2567,8 +3205,8 @@ simpledb <- function() {
 #'
 #' @rdname apigateway
 #' @export
-apigateway <- function() {
-  paws.networking::apigateway()
+apigateway <- function(config = list()) {
+  paws.networking::apigateway(config)
 }
 
 #' AmazonApiGatewayManagementApi
@@ -2581,6 +3219,28 @@ apigateway <- function() {
 #' https://\{api-id\}.execute-api.\{region\}.amazonaws.com/\{stage\}, or will be
 #' the endpoint corresponding to your API\'s custom domain and base path,
 #' if applicable.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigatewaymanagementapi(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- apigatewaymanagementapi()
@@ -2595,14 +3255,36 @@ apigateway <- function() {
 #'
 #' @rdname apigatewaymanagementapi
 #' @export
-apigatewaymanagementapi <- function() {
-  paws.networking::apigatewaymanagementapi()
+apigatewaymanagementapi <- function(config = list()) {
+  paws.networking::apigatewaymanagementapi(config)
 }
 
 #' AmazonApiGatewayV2
 #'
 #' @description
 #' Amazon API Gateway V2
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- apigatewayv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- apigatewayv2()
@@ -2675,8 +3357,8 @@ apigatewaymanagementapi <- function() {
 #'
 #' @rdname apigatewayv2
 #' @export
-apigatewayv2 <- function() {
-  paws.networking::apigatewayv2()
+apigatewayv2 <- function(config = list()) {
+  paws.networking::apigatewayv2(config)
 }
 
 #' AWS App Mesh
@@ -2700,6 +3382,28 @@ apigatewayv2 <- function() {
 #' for Services and
 #' Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 #' in the Kubernetes documentation.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- appmesh(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- appmesh()
@@ -2741,8 +3445,8 @@ apigatewayv2 <- function() {
 #'
 #' @rdname appmesh
 #' @export
-appmesh <- function() {
-  paws.networking::appmesh()
+appmesh <- function(config = list()) {
+  paws.networking::appmesh(config)
 }
 
 #' Amazon CloudFront
@@ -2752,6 +3456,28 @@ appmesh <- function() {
 #' developers who need detailed information about CloudFront API actions,
 #' data types, and errors. For detailed information about CloudFront
 #' features, see the *Amazon CloudFront Developer Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudfront(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudfront()
@@ -2810,8 +3536,8 @@ appmesh <- function() {
 #'
 #' @rdname cloudfront
 #' @export
-cloudfront <- function() {
-  paws.networking::cloudfront()
+cloudfront <- function(config = list()) {
+  paws.networking::cloudfront(config)
 }
 
 #' AWS Direct Connect
@@ -2827,6 +3553,28 @@ cloudfront <- function() {
 #' (Beijing) and (China) Ningxia Regions. AWS resources in the China
 #' Regions can only be accessed through locations associated with those
 #' Regions.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- directconnect(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- directconnect()
@@ -2893,8 +3641,8 @@ cloudfront <- function() {
 #'
 #' @rdname directconnect
 #' @export
-directconnect <- function() {
-  paws.networking::directconnect()
+directconnect <- function(config = list()) {
+  paws.networking::directconnect(config)
 }
 
 #' Elastic Load Balancing
@@ -2927,6 +3675,28 @@ directconnect <- function() {
 #' All Elastic Load Balancing operations are *idempotent*, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds
 #' with a 200 OK response code.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elb(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example adds two tags to the specified load balancer.
@@ -2982,8 +3752,8 @@ directconnect <- function() {
 #'
 #' @rdname elb
 #' @export
-elb <- function() {
-  paws.networking::elb()
+elb <- function(config = list()) {
+  paws.networking::elb(config)
 }
 
 #' Elastic Load Balancing
@@ -3041,6 +3811,28 @@ elb <- function() {
 #' 
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elbv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example adds the specified tags to the specified load balancer.
@@ -3101,8 +3893,8 @@ elb <- function() {
 #'
 #' @rdname elbv2
 #' @export
-elbv2 <- function() {
-  paws.networking::elbv2()
+elbv2 <- function(config = list()) {
+  paws.networking::elbv2(config)
 }
 
 #' AWS Global Accelerator
@@ -3196,6 +3988,28 @@ elbv2 <- function() {
 #'     traffic to route to each one. This can be useful, for example, to do
 #'     performance testing within a Region.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- globalaccelerator(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- globalaccelerator()
 #' svc$create_accelerator(
@@ -3225,8 +4039,8 @@ elbv2 <- function() {
 #'
 #' @rdname globalaccelerator
 #' @export
-globalaccelerator <- function() {
-  paws.networking::globalaccelerator()
+globalaccelerator <- function(config = list()) {
+  paws.networking::globalaccelerator(config)
 }
 
 #' Amazon Route 53
@@ -3234,6 +4048,28 @@ globalaccelerator <- function() {
 #' @description
 #' Amazon Route 53 is a highly available and scalable Domain Name System
 #' (DNS) web service.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- route53(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example associates the VPC with ID vpc-1a2b3c4d with the
@@ -3310,8 +4146,8 @@ globalaccelerator <- function() {
 #'
 #' @rdname route53
 #' @export
-route53 <- function() {
-  paws.networking::route53()
+route53 <- function(config = list()) {
+  paws.networking::route53(config)
 }
 
 #' Amazon Route 53 Domains
@@ -3319,6 +4155,28 @@ route53 <- function() {
 #' @description
 #' Amazon Route 53 API actions let you register domain names and perform
 #' related operations.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- route53domains(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- route53domains()
@@ -3356,8 +4214,8 @@ route53 <- function() {
 #'
 #' @rdname route53domains
 #' @export
-route53domains <- function() {
-  paws.networking::route53domains()
+route53domains <- function(config = list()) {
+  paws.networking::route53domains(config)
 }
 
 #' Amazon Route 53 Resolver
@@ -3397,6 +4255,28 @@ route53domains <- function() {
 #' 
 #' `delete-resolver-endpoint --resolver-endpoint-id \\[resolver_endpoint_id\\]`
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- route53resolver(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- route53resolver()
 #' svc$associate_resolver_endpoint_ip_address(
@@ -3431,8 +4311,8 @@ route53domains <- function() {
 #'
 #' @rdname route53resolver
 #' @export
-route53resolver <- function() {
-  paws.networking::route53resolver()
+route53resolver <- function(config = list()) {
+  paws.networking::route53resolver(config)
 }
 
 #' AWS Cloud Map
@@ -3446,6 +4326,28 @@ route53resolver <- function() {
 #' optional health check. Clients that submit public or private DNS
 #' queries, or HTTP requests, for the service receive an answer that
 #' contains up to eight healthy records.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- servicediscovery(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- servicediscovery()
@@ -3479,8 +4381,8 @@ route53resolver <- function() {
 #'
 #' @rdname servicediscovery
 #' @export
-servicediscovery <- function() {
-  paws.networking::servicediscovery()
+servicediscovery <- function(config = list()) {
+  paws.networking::servicediscovery(config)
 }
 
 #' Application Auto Scaling
@@ -3543,6 +4445,28 @@ servicediscovery <- function() {
 #' Scaling actions, see the [Application Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- applicationautoscaling(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
@@ -3570,8 +4494,8 @@ servicediscovery <- function() {
 #'
 #' @rdname applicationautoscaling
 #' @export
-applicationautoscaling <- function() {
-  paws.management::applicationautoscaling()
+applicationautoscaling <- function(config = list()) {
+  paws.management::applicationautoscaling(config)
 }
 
 #' Amazon CloudWatch Application Insights
@@ -3595,6 +4519,28 @@ applicationautoscaling <- function() {
 #' Insights informs you that a memory pressure problem with your SQL Server
 #' database is occurring. It bases this analysis on impactful metrics and
 #' log errors.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- applicationinsights(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- applicationinsights()
@@ -3624,8 +4570,8 @@ applicationautoscaling <- function() {
 #'
 #' @rdname applicationinsights
 #' @export
-applicationinsights <- function() {
-  paws.management::applicationinsights()
+applicationinsights <- function(config = list()) {
+  paws.management::applicationinsights(config)
 }
 
 #' Auto Scaling
@@ -3642,6 +4588,28 @@ applicationinsights <- function() {
 #' required permissions for Amazon EC2 Auto Scaling actions, see the
 #' [Amazon EC2 Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- autoscaling(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example attaches the specified instance to the specified Auto
@@ -3714,8 +4682,8 @@ applicationinsights <- function() {
 #'
 #' @rdname autoscaling
 #' @export
-autoscaling <- function() {
-  paws.management::autoscaling()
+autoscaling <- function(config = list()) {
+  paws.management::autoscaling(config)
 }
 
 #' AWS Auto Scaling Plans
@@ -3737,6 +4705,28 @@ autoscaling <- function() {
 #' see the [AWS Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- autoscalingplans(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- autoscalingplans()
 #' svc$create_scaling_plan(
@@ -3755,8 +4745,8 @@ autoscaling <- function() {
 #'
 #' @rdname autoscalingplans
 #' @export
-autoscalingplans <- function() {
-  paws.management::autoscalingplans()
+autoscalingplans <- function(config = list()) {
+  paws.management::autoscalingplans(config)
 }
 
 #' AWS CloudFormation
@@ -3783,6 +4773,28 @@ autoscalingplans <- function() {
 #' additional technical information about a specific AWS product, you can
 #' find the product\'s technical documentation at
 #' [docs.aws.amazon.com](https://docs.aws.amazon.com/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudformation(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudformation()
@@ -3841,8 +4853,8 @@ autoscalingplans <- function() {
 #'
 #' @rdname cloudformation
 #' @export
-cloudformation <- function() {
-  paws.management::cloudformation()
+cloudformation <- function(config = list()) {
+  paws.management::cloudformation(config)
 }
 
 #' AWS CloudTrail
@@ -3872,6 +4884,28 @@ cloudformation <- function() {
 #' for information about the data that is included with each AWS API call
 #' listed in the log files.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudtrail(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudtrail()
 #' svc$add_tags(
@@ -3898,8 +4932,8 @@ cloudformation <- function() {
 #'
 #' @rdname cloudtrail
 #' @export
-cloudtrail <- function() {
-  paws.management::cloudtrail()
+cloudtrail <- function(config = list()) {
+  paws.management::cloudtrail(config)
 }
 
 #' Amazon CloudWatch
@@ -3921,6 +4955,28 @@ cloudtrail <- function() {
 #' can monitor your own custom metrics. With CloudWatch, you gain
 #' system-wide visibility into resource utilization, application
 #' performance, and operational health.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatch(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudwatch()
@@ -3957,8 +5013,8 @@ cloudtrail <- function() {
 #'
 #' @rdname cloudwatch
 #' @export
-cloudwatch <- function() {
-  paws.management::cloudwatch()
+cloudwatch <- function(config = list()) {
+  paws.management::cloudwatch(config)
 }
 
 #' Amazon CloudWatch Events
@@ -3985,6 +5041,28 @@ cloudwatch <- function() {
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchevents(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudwatchevents()
@@ -4029,8 +5107,8 @@ cloudwatch <- function() {
 #'
 #' @rdname cloudwatchevents
 #' @export
-cloudwatchevents <- function() {
-  paws.management::cloudwatchevents()
+cloudwatchevents <- function(config = list()) {
+  paws.management::cloudwatchevents(config)
 }
 
 #' Amazon CloudWatch Logs
@@ -4069,6 +5147,28 @@ cloudwatchevents <- function() {
 #'     quickly send both rotated and non-rotated log data off of a host and
 #'     into the log service. You can then access the raw log data when you
 #'     need it.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchlogs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudwatchlogs()
@@ -4121,8 +5221,8 @@ cloudwatchevents <- function() {
 #'
 #' @rdname cloudwatchlogs
 #' @export
-cloudwatchlogs <- function() {
-  paws.management::cloudwatchlogs()
+cloudwatchlogs <- function(config = list()) {
+  paws.management::cloudwatchlogs(config)
 }
 
 #' AWS Config
@@ -4151,6 +5251,28 @@ cloudwatchlogs <- function() {
 #' see [What Is AWS
 #' Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
 #' in the *AWS Config Developer Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- configservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- configservice()
@@ -4225,8 +5347,8 @@ cloudwatchlogs <- function() {
 #'
 #' @rdname configservice
 #' @export
-configservice <- function() {
-  paws.management::configservice()
+configservice <- function(config = list()) {
+  paws.management::configservice(config)
 }
 
 #' AWS Health APIs and Notifications
@@ -4277,6 +5399,28 @@ configservice <- function() {
 #' 
 #' -   https://health.us-east-1.amazonaws.com
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- health(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- health()
 #' svc$describe_affected_entities(
@@ -4295,8 +5439,8 @@ configservice <- function() {
 #'
 #' @rdname health
 #' @export
-health <- function() {
-  paws.management::health()
+health <- function(config = list()) {
+  paws.management::health(config)
 }
 
 #' AWS License Manager
@@ -4311,6 +5455,28 @@ health <- function() {
 #' Alternatively, you can use one of the AWS SDKs to access an API that\'s
 #' tailored to the programming language or platform that you\'re using. For
 #' more information, see [AWS SDKs](http://aws.amazon.com/tools/#SDKs).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- licensemanager(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- licensemanager()
@@ -4339,8 +5505,8 @@ health <- function() {
 #'
 #' @rdname licensemanager
 #' @export
-licensemanager <- function() {
-  paws.management::licensemanager()
+licensemanager <- function(config = list()) {
+  paws.management::licensemanager(config)
 }
 
 #' AWS OpsWorks
@@ -4431,6 +5597,28 @@ licensemanager <- function() {
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as
 #' possible.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- opsworks(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- opsworks()
 #' svc$assign_instance(
@@ -4517,8 +5705,8 @@ licensemanager <- function() {
 #'
 #' @rdname opsworks
 #' @export
-opsworks <- function() {
-  paws.management::opsworks()
+opsworks <- function(config = list()) {
+  paws.management::opsworks(config)
 }
 
 #' AWS OpsWorks for Chef Automate
@@ -4592,6 +5780,28 @@ opsworks <- function() {
 #' All API operations allow for five requests per second with a burst of 10
 #' requests per second.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- opsworkscm(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- opsworkscm()
 #' svc$associate_node(
@@ -4620,8 +5830,8 @@ opsworks <- function() {
 #'
 #' @rdname opsworkscm
 #' @export
-opsworkscm <- function() {
-  paws.management::opsworkscm()
+opsworkscm <- function(config = list()) {
+  paws.management::opsworkscm(config)
 }
 
 #' AWS Organizations
@@ -4752,6 +5962,28 @@ opsworkscm <- function() {
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- organizations(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # Bill is the owner of an organization, and he invites Juan's account
 #' # (222222222222) to join his organization. The following example shows
@@ -4814,8 +6046,8 @@ opsworkscm <- function() {
 #'
 #' @rdname organizations
 #' @export
-organizations <- function() {
-  paws.management::organizations()
+organizations <- function(config = list()) {
+  paws.management::organizations(config)
 }
 
 #' AWS Performance Insights
@@ -4841,6 +6073,28 @@ organizations <- function() {
 #' dimensions, such as SQL, Wait-event, User or Host, measured at that time
 #' point.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pi(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pi()
 #' svc$describe_dimension_keys(
@@ -4855,8 +6109,8 @@ organizations <- function() {
 #'
 #' @rdname pi
 #' @export
-pi <- function() {
-  paws.management::pi()
+pi <- function(config = list()) {
+  paws.management::pi(config)
 }
 
 #' AWS Resource Groups
@@ -4899,6 +6153,28 @@ pi <- function() {
 #' 
 #' -   Searching AWS resources based on a resource query
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- resourcegroups(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- resourcegroups()
 #' svc$create_group(
@@ -4923,8 +6199,8 @@ pi <- function() {
 #'
 #' @rdname resourcegroups
 #' @export
-resourcegroups <- function() {
-  paws.management::resourcegroups()
+resourcegroups <- function(config = list()) {
+  paws.management::resourcegroups(config)
 }
 
 #' AWS Resource Groups Tagging API
@@ -5128,6 +6404,28 @@ resourcegroups <- function() {
 #' 
 #' -   Amazon WorkSpaces
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- resourcegroupstaggingapi(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- resourcegroupstaggingapi()
 #' svc$get_resources(
@@ -5145,8 +6443,8 @@ resourcegroups <- function() {
 #'
 #' @rdname resourcegroupstaggingapi
 #' @export
-resourcegroupstaggingapi <- function() {
-  paws.management::resourcegroupstaggingapi()
+resourcegroupstaggingapi <- function(config = list()) {
+  paws.management::resourcegroupstaggingapi(config)
 }
 
 #' AWS Service Catalog
@@ -5158,6 +6456,28 @@ resourcegroupstaggingapi <- function() {
 #' should be familiar with the terminology discussed in [AWS Service
 #' Catalog
 #' Concepts](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- servicecatalog(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- servicecatalog()
@@ -5254,8 +6574,8 @@ resourcegroupstaggingapi <- function() {
 #'
 #' @rdname servicecatalog
 #' @export
-servicecatalog <- function() {
-  paws.management::servicecatalog()
+servicecatalog <- function(config = list()) {
+  paws.management::servicecatalog(config)
 }
 
 #' Service Quotas
@@ -5275,6 +6595,28 @@ servicecatalog <- function() {
 #' access to Service Quotas and AWS. For information about the AWS SDKs,
 #' including how to download and install them, see the Tools for Amazon Web
 #' Services page.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- servicequotas(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- servicequotas()
@@ -5304,8 +6646,8 @@ servicecatalog <- function() {
 #'
 #' @rdname servicequotas
 #' @export
-servicequotas <- function() {
-  paws.management::servicequotas()
+servicequotas <- function(config = list()) {
+  paws.management::servicequotas(config)
 }
 
 #' Amazon Simple Systems Manager (SSM)
@@ -5335,6 +6677,28 @@ servicequotas <- function() {
 #' Reference](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/). For
 #' information about how to use a Query API, see [Making API
 #' Requests](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ssm(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- ssm()
@@ -5468,8 +6832,8 @@ servicequotas <- function() {
 #'
 #' @rdname ssm
 #' @export
-ssm <- function() {
-  paws.management::ssm()
+ssm <- function(config = list()) {
+  paws.management::ssm(config)
 }
 
 #' AWS Support
@@ -5534,6 +6898,28 @@ ssm <- function() {
 #' service to create and manage your support cases, and how to call Trusted
 #' Advisor for results of checks on your resources.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- support(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- support()
 #' svc$add_attachments_to_set(
@@ -5560,8 +6946,8 @@ ssm <- function() {
 #'
 #' @rdname support
 #' @export
-support <- function() {
-  paws.management::support()
+support <- function(config = list()) {
+  paws.management::support(config)
 }
 
 #' Amazon Comprehend
@@ -5571,6 +6957,28 @@ support <- function() {
 #' of documents. Use these actions to determine the topics contained in
 #' your documents, the topics they discuss, the predominant sentiment
 #' expressed in them, the predominant language used, and more.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- comprehend(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- comprehend()
@@ -5629,8 +7037,8 @@ support <- function() {
 #'
 #' @rdname comprehend
 #' @export
-comprehend <- function() {
-  paws.machine.learning::comprehend()
+comprehend <- function(config = list()) {
+  paws.machine.learning::comprehend(config)
 }
 
 #' AWS Comprehend Medical
@@ -5638,6 +7046,28 @@ comprehend <- function() {
 #' @description
 #' Comprehend Medical extracts structured information from unstructured
 #' clinical text. Use these actions to gain insight in your documents.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- comprehendmedical(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- comprehendmedical()
@@ -5653,8 +7083,8 @@ comprehend <- function() {
 #'
 #' @rdname comprehendmedical
 #' @export
-comprehendmedical <- function() {
-  paws.machine.learning::comprehendmedical()
+comprehendmedical <- function(config = list()) {
+  paws.machine.learning::comprehendmedical(config)
 }
 
 #' Amazon Lex Model Building Service
@@ -5665,6 +7095,28 @@ comprehendmedical <- function() {
 #' Amazon Lex is an AWS service for building conversational voice and text
 #' interfaces. Use these actions to create, update, and delete
 #' conversational bots for new and existing client applications.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lexmodelbuildingservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This example shows how to get configuration information for a bot.
@@ -5716,8 +7168,8 @@ comprehendmedical <- function() {
 #'
 #' @rdname lexmodelbuildingservice
 #' @export
-lexmodelbuildingservice <- function() {
-  paws.machine.learning::lexmodelbuildingservice()
+lexmodelbuildingservice <- function(config = list()) {
+  paws.machine.learning::lexmodelbuildingservice(config)
 }
 
 #' Amazon Lex Runtime Service
@@ -5736,6 +7188,28 @@ lexmodelbuildingservice <- function() {
 #' create and manage your Amazon Lex bot. For a list of build-time
 #' operations, see the build-time API, .
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- lexruntimeservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- lexruntimeservice()
 #' svc$post_content(
@@ -5750,14 +7224,36 @@ lexmodelbuildingservice <- function() {
 #'
 #' @rdname lexruntimeservice
 #' @export
-lexruntimeservice <- function() {
-  paws.machine.learning::lexruntimeservice()
+lexruntimeservice <- function(config = list()) {
+  paws.machine.learning::lexruntimeservice(config)
 }
 
 #' Amazon Machine Learning
 #'
 #' @description
 #' Definition of the public APIs exposed by Amazon Machine Learning
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- machinelearning(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- machinelearning()
@@ -5799,8 +7295,8 @@ lexruntimeservice <- function() {
 #'
 #' @rdname machinelearning
 #' @export
-machinelearning <- function() {
-  paws.machine.learning::machinelearning()
+machinelearning <- function(config = list()) {
+  paws.machine.learning::machinelearning(config)
 }
 
 #' Amazon Personalize
@@ -5808,6 +7304,28 @@ machinelearning <- function() {
 #' @description
 #' Amazon Personalize is a machine learning service that makes it easy to
 #' add individualized recommendations to customers.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- personalize(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- personalize()
@@ -5857,13 +7375,35 @@ machinelearning <- function() {
 #'
 #' @rdname personalize
 #' @export
-personalize <- function() {
-  paws.machine.learning::personalize()
+personalize <- function(config = list()) {
+  paws.machine.learning::personalize(config)
 }
 
 #' Amazon Personalize Events
 #'
 #' 
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- personalizeevents(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- personalizeevents()
@@ -5878,13 +7418,35 @@ personalize <- function() {
 #'
 #' @rdname personalizeevents
 #' @export
-personalizeevents <- function() {
-  paws.machine.learning::personalizeevents()
+personalizeevents <- function(config = list()) {
+  paws.machine.learning::personalizeevents(config)
 }
 
 #' Amazon Personalize Runtime
 #'
 #' 
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- personalizeruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- personalizeruntime()
@@ -5900,8 +7462,8 @@ personalizeevents <- function() {
 #'
 #' @rdname personalizeruntime
 #' @export
-personalizeruntime <- function() {
-  paws.machine.learning::personalizeruntime()
+personalizeruntime <- function(config = list()) {
+  paws.machine.learning::personalizeruntime(config)
 }
 
 #' Amazon Polly
@@ -5914,6 +7476,28 @@ personalizeruntime <- function() {
 #' high-quality speech from plain text and Speech Synthesis Markup Language
 #' (SSML), along with managing pronunciations lexicons that enable you to
 #' get the best results for your application domain.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- polly(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # Deletes a specified pronunciation lexicon stored in an AWS Region.
@@ -5937,14 +7521,36 @@ personalizeruntime <- function() {
 #'
 #' @rdname polly
 #' @export
-polly <- function() {
-  paws.machine.learning::polly()
+polly <- function(config = list()) {
+  paws.machine.learning::polly(config)
 }
 
 #' Amazon Rekognition
 #'
 #' @description
 #' This is the Amazon Rekognition API reference.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- rekognition(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # This operation compares the largest face detected in the source image
@@ -6006,14 +7612,36 @@ polly <- function() {
 #'
 #' @rdname rekognition
 #' @export
-rekognition <- function() {
-  paws.machine.learning::rekognition()
+rekognition <- function(config = list()) {
+  paws.machine.learning::rekognition(config)
 }
 
 #' Amazon SageMaker Service
 #'
 #' @description
 #' Provides APIs for creating and managing Amazon SageMaker resources.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemaker(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- sagemaker()
@@ -6102,14 +7730,36 @@ rekognition <- function() {
 #'
 #' @rdname sagemaker
 #' @export
-sagemaker <- function() {
-  paws.machine.learning::sagemaker()
+sagemaker <- function(config = list()) {
+  paws.machine.learning::sagemaker(config)
 }
 
 #' Amazon SageMaker Runtime
 #'
 #' @description
 #' The Amazon SageMaker runtime API.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemakerruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- sagemakerruntime()
@@ -6124,8 +7774,8 @@ sagemaker <- function() {
 #'
 #' @rdname sagemakerruntime
 #' @export
-sagemakerruntime <- function() {
-  paws.machine.learning::sagemakerruntime()
+sagemakerruntime <- function(config = list()) {
+  paws.machine.learning::sagemakerruntime(config)
 }
 
 #' Amazon Textract
@@ -6134,6 +7784,28 @@ sagemakerruntime <- function() {
 #' Amazon Textract detects and analyzes text in documents and converts it
 #' into machine-readable text. This is the API reference documentation for
 #' Amazon Textract.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- textract(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- textract()
@@ -6153,14 +7825,36 @@ sagemakerruntime <- function() {
 #'
 #' @rdname textract
 #' @export
-textract <- function() {
-  paws.machine.learning::textract()
+textract <- function(config = list()) {
+  paws.machine.learning::textract(config)
 }
 
 #' Amazon Transcribe Service
 #'
 #' @description
 #' Operations and objects for transcribing speech to text.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- transcribeservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- transcribeservice()
@@ -6183,8 +7877,8 @@ textract <- function() {
 #'
 #' @rdname transcribeservice
 #' @export
-transcribeservice <- function() {
-  paws.machine.learning::transcribeservice()
+transcribeservice <- function(config = list()) {
+  paws.machine.learning::transcribeservice(config)
 }
 
 #' Amazon Translate
@@ -6192,6 +7886,28 @@ transcribeservice <- function() {
 #' @description
 #' Provides translation between one source language and another of the same
 #' set of languages.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- translate(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- translate()
@@ -6210,8 +7926,8 @@ transcribeservice <- function() {
 #'
 #' @rdname translate
 #' @export
-translate <- function() {
-  paws.machine.learning::translate()
+translate <- function(config = list()) {
+  paws.machine.learning::translate(config)
 }
 
 #' Amazon Athena
@@ -6237,6 +7953,28 @@ translate <- function() {
 #' For code samples using the AWS SDK for Java, see [Examples and Code
 #' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- athena(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- athena()
@@ -6269,8 +8007,8 @@ translate <- function() {
 #'
 #' @rdname athena
 #' @export
-athena <- function() {
-  paws.analytics::athena()
+athena <- function(config = list()) {
+  paws.analytics::athena(config)
 }
 
 #' Amazon CloudSearch
@@ -6289,6 +8027,28 @@ athena <- function() {
 #' cloudsearch.us-east-1.amazonaws.com. For a current list of supported
 #' regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudsearch(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudsearch()
@@ -6326,8 +8086,8 @@ athena <- function() {
 #'
 #' @rdname cloudsearch
 #' @export
-cloudsearch <- function() {
-  paws.analytics::cloudsearch()
+cloudsearch <- function(config = list()) {
+  paws.analytics::cloudsearch(config)
 }
 
 #' Amazon CloudSearch Domain
@@ -6346,6 +8106,28 @@ cloudsearch <- function() {
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudsearchdomain(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- cloudsearchdomain()
 #' svc$search(
@@ -6361,8 +8143,8 @@ cloudsearch <- function() {
 #'
 #' @rdname cloudsearchdomain
 #' @export
-cloudsearchdomain <- function() {
-  paws.analytics::cloudsearchdomain()
+cloudsearchdomain <- function(config = list()) {
+  paws.analytics::cloudsearchdomain(config)
 }
 
 #' AWS Data Pipeline
@@ -6391,6 +8173,28 @@ cloudsearchdomain <- function() {
 #' progress to the web service as it does so. When the task is done, the
 #' task runner reports the final success or failure of the task to the web
 #' service.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- datapipeline(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- datapipeline()
@@ -6423,8 +8227,8 @@ cloudsearchdomain <- function() {
 #'
 #' @rdname datapipeline
 #' @export
-datapipeline <- function() {
-  paws.analytics::datapipeline()
+datapipeline <- function(config = list()) {
+  paws.analytics::datapipeline(config)
 }
 
 #' Amazon Elasticsearch Service
@@ -6439,6 +8243,28 @@ datapipeline <- function() {
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 #' a current list of supported regions and endpoints, see [Regions and
 #' Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- elasticsearchservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- elasticsearchservice()
@@ -6475,8 +8301,8 @@ datapipeline <- function() {
 #'
 #' @rdname elasticsearchservice
 #' @export
-elasticsearchservice <- function() {
-  paws.analytics::elasticsearchservice()
+elasticsearchservice <- function(config = list()) {
+  paws.analytics::elasticsearchservice(config)
 }
 
 #' Amazon Elastic MapReduce
@@ -6487,6 +8313,28 @@ elasticsearchservice <- function() {
 #' several AWS products to do tasks such as web indexing, data mining, log
 #' file analysis, machine learning, scientific simulation, and data
 #' warehousing.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- emr(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- emr()
@@ -6527,8 +8375,8 @@ elasticsearchservice <- function() {
 #'
 #' @rdname emr
 #' @export
-emr <- function() {
-  paws.analytics::emr()
+emr <- function(config = list()) {
+  paws.analytics::emr(config)
 }
 
 #' Amazon Kinesis Firehose
@@ -6540,6 +8388,28 @@ emr <- function() {
 #' real-time streaming data to destinations such as Amazon Simple Storage
 #' Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 #' Redshift, and Splunk.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- firehose(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- firehose()
@@ -6565,14 +8435,36 @@ emr <- function() {
 #'
 #' @rdname firehose
 #' @export
-firehose <- function() {
-  paws.analytics::firehose()
+firehose <- function(config = list()) {
+  paws.analytics::firehose(config)
 }
 
 #' AWS Glue
 #'
 #' @description
 #' Defines the public endpoint for the AWS Glue service.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- glue(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- glue()
@@ -6695,13 +8587,35 @@ firehose <- function() {
 #'
 #' @rdname glue
 #' @export
-glue <- function() {
-  paws.analytics::glue()
+glue <- function(config = list()) {
+  paws.analytics::glue(config)
 }
 
 #' Managed Streaming for Kafka
 #'
 #' 
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kafka(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- kafka()
@@ -6733,8 +8647,8 @@ glue <- function() {
 #'
 #' @rdname kafka
 #' @export
-kafka <- function() {
-  paws.analytics::kafka()
+kafka <- function(config = list()) {
+  paws.analytics::kafka(config)
 }
 
 #' Amazon Kinesis
@@ -6744,6 +8658,28 @@ kafka <- function() {
 #' 
 #' Amazon Kinesis Data Streams is a managed service that scales elastically
 #' for real-time processing of streaming big data.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kinesis(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- kinesis()
@@ -6784,8 +8720,8 @@ kafka <- function() {
 #'
 #' @rdname kinesis
 #' @export
-kinesis <- function() {
-  paws.analytics::kinesis()
+kinesis <- function(config = list()) {
+  paws.analytics::kinesis(config)
 }
 
 #' Amazon Kinesis Analytics
@@ -6800,6 +8736,28 @@ kinesis <- function() {
 #' 
 #' This is the *Amazon Kinesis Analytics v1 API Reference*. The Amazon
 #' Kinesis Analytics Developer Guide provides additional information.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kinesisanalytics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- kinesisanalytics()
@@ -6833,8 +8791,8 @@ kinesis <- function() {
 #'
 #' @rdname kinesisanalytics
 #' @export
-kinesisanalytics <- function() {
-  paws.analytics::kinesisanalytics()
+kinesisanalytics <- function(config = list()) {
+  paws.analytics::kinesisanalytics(config)
 }
 
 #' Amazon Kinesis Analytics
@@ -6845,6 +8803,28 @@ kinesisanalytics <- function() {
 #' enables you to quickly author and run SQL or Java code against streaming
 #' sources to perform time series analytics, feed real-time dashboards, and
 #' create real-time metrics.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kinesisanalyticsv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- kinesisanalyticsv2()
@@ -6882,14 +8862,36 @@ kinesisanalytics <- function() {
 #'
 #' @rdname kinesisanalyticsv2
 #' @export
-kinesisanalyticsv2 <- function() {
-  paws.analytics::kinesisanalyticsv2()
+kinesisanalyticsv2 <- function(config = list()) {
+  paws.analytics::kinesisanalyticsv2(config)
 }
 
 #' Amazon Mechanical Turk
 #'
 #' @description
 #' Amazon Mechanical Turk API Reference
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mturk(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- mturk()
@@ -6942,8 +8944,8 @@ kinesisanalyticsv2 <- function() {
 #'
 #' @rdname mturk
 #' @export
-mturk <- function() {
-  paws.analytics::mturk()
+mturk <- function(config = list()) {
+  paws.analytics::mturk(config)
 }
 
 #' Amazon QuickSight
@@ -6956,6 +8958,28 @@ mturk <- function() {
 #' every user in your organization. This API interface reference contains
 #' documentation for a programming interface that you can use to manage
 #' Amazon QuickSight.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- quicksight(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- quicksight()
@@ -6985,8 +9009,8 @@ mturk <- function() {
 #'
 #' @rdname quicksight
 #' @export
-quicksight <- function() {
-  paws.analytics::quicksight()
+quicksight <- function(config = list()) {
+  paws.analytics::quicksight(config)
 }
 
 #' AWS Certificate Manager
@@ -6998,6 +9022,28 @@ quicksight <- function() {
 #' websites and applications. For general information about using ACM, see
 #' the [*AWS Certificate Manager User
 #' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/) .
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- acm(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- acm()
@@ -7024,8 +9070,8 @@ quicksight <- function() {
 #'
 #' @rdname acm
 #' @export
-acm <- function() {
-  paws.security.identity::acm()
+acm <- function(config = list()) {
+  paws.security.identity::acm(config)
 }
 
 #' AWS Certificate Manager Private Certificate Authority
@@ -7047,6 +9093,28 @@ acm <- function() {
 #' information, see [API Rate Limits in ACM Private
 #' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
 #' in the ACM Private CA user guide.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- acmpca(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- acmpca()
@@ -7080,8 +9148,8 @@ acm <- function() {
 #'
 #' @rdname acmpca
 #' @export
-acmpca <- function() {
-  paws.security.identity::acmpca()
+acmpca <- function(config = list()) {
+  paws.security.identity::acmpca(config)
 }
 
 #' Amazon CloudDirectory
@@ -7098,6 +9166,28 @@ acmpca <- function() {
 #' Service](https://aws.amazon.com/directoryservice/) and the [Amazon Cloud
 #' Directory Developer
 #' Guide](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/what_is_cloud_directory.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- clouddirectory(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- clouddirectory()
@@ -7177,8 +9267,8 @@ acmpca <- function() {
 #'
 #' @rdname clouddirectory
 #' @export
-clouddirectory <- function() {
-  paws.security.identity::clouddirectory()
+clouddirectory <- function(config = list()) {
+  paws.security.identity::clouddirectory(config)
 }
 
 #' Amazon CloudHSM
@@ -7199,6 +9289,28 @@ clouddirectory <- function() {
 #' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
 #' [AWS CloudHSM API
 #' Reference](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudhsm(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudhsm()
@@ -7232,8 +9344,8 @@ clouddirectory <- function() {
 #'
 #' @rdname cloudhsm
 #' @export
-cloudhsm <- function() {
-  paws.security.identity::cloudhsm()
+cloudhsm <- function(config = list()) {
+  paws.security.identity::cloudhsm(config)
 }
 
 #' AWS CloudHSM V2
@@ -7242,6 +9354,28 @@ cloudhsm <- function() {
 #' For more information about AWS CloudHSM, see [AWS
 #' CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
 #' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudhsmv2(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cloudhsmv2()
@@ -7268,8 +9402,8 @@ cloudhsm <- function() {
 #'
 #' @rdname cloudhsmv2
 #' @export
-cloudhsmv2 <- function() {
-  paws.security.identity::cloudhsmv2()
+cloudhsmv2 <- function(config = list()) {
+  paws.security.identity::cloudhsmv2(config)
 }
 
 #' Amazon Cognito Identity
@@ -7296,6 +9430,28 @@ cloudhsmv2 <- function() {
 #' 
 #' For more information see [Amazon Cognito Federated
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cognitoidentity(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cognitoidentity()
@@ -7330,8 +9486,8 @@ cloudhsmv2 <- function() {
 #'
 #' @rdname cognitoidentity
 #' @export
-cognitoidentity <- function() {
-  paws.security.identity::cognitoidentity()
+cognitoidentity <- function(config = list()) {
+  paws.security.identity::cognitoidentity(config)
 }
 
 #' Amazon Cognito Identity Provider
@@ -7345,6 +9501,28 @@ cognitoidentity <- function() {
 #' Cognito User Pools.
 #' 
 #' For more information, see the Amazon Cognito Documentation.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cognitoidentityprovider(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cognitoidentityprovider()
@@ -7458,8 +9636,8 @@ cognitoidentity <- function() {
 #'
 #' @rdname cognitoidentityprovider
 #' @export
-cognitoidentityprovider <- function() {
-  paws.security.identity::cognitoidentityprovider()
+cognitoidentityprovider <- function(config = list()) {
+  paws.security.identity::cognitoidentityprovider(config)
 }
 
 #' Amazon Cognito Sync
@@ -7487,6 +9665,28 @@ cognitoidentityprovider <- function() {
 #' Android](http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html)
 #' and the [Developer Guide for
 #' iOS](http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cognitosync(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- cognitosync()
@@ -7517,8 +9717,8 @@ cognitoidentityprovider <- function() {
 #'
 #' @rdname cognitosync
 #' @export
-cognitosync <- function() {
-  paws.security.identity::cognitosync()
+cognitosync <- function(config = list()) {
+  paws.security.identity::cognitosync(config)
 }
 
 #' AWS Directory Service
@@ -7540,6 +9740,28 @@ cognitosync <- function() {
 #' to AWS Directory Service and other AWS services. For more information
 #' about the AWS SDKs, including how to download and install them, see
 #' [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- directoryservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- directoryservice()
@@ -7603,8 +9825,8 @@ cognitosync <- function() {
 #'
 #' @rdname directoryservice
 #' @export
-directoryservice <- function() {
-  paws.security.identity::directoryservice()
+directoryservice <- function(config = list()) {
+  paws.security.identity::directoryservice(config)
 }
 
 #' Firewall Management Service
@@ -7617,6 +9839,28 @@ directoryservice <- function() {
 #' API actions, data types, and errors. For detailed information about AWS
 #' Firewall Manager features, see the [AWS Firewall Manager Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- fms(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- fms()
@@ -7644,8 +9888,8 @@ directoryservice <- function() {
 #'
 #' @rdname fms
 #' @export
-fms <- function() {
-  paws.security.identity::fms()
+fms <- function(config = list()) {
+  paws.security.identity::fms(config)
 }
 
 #' Amazon GuardDuty
@@ -7668,6 +9912,28 @@ fms <- function() {
 #' GuardDuty console or through Amazon CloudWatch events. For more
 #' information, see [Amazon GuardDuty User
 #' Guide](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- guardduty(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- guardduty()
@@ -7726,8 +9992,8 @@ fms <- function() {
 #'
 #' @rdname guardduty
 #' @export
-guardduty <- function() {
-  paws.security.identity::guardduty()
+guardduty <- function(config = list()) {
+  paws.security.identity::guardduty(config)
 }
 
 #' AWS Identity and Access Management
@@ -7795,6 +10061,28 @@ guardduty <- function() {
 #'     Requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html).
 #'     This set of topics walk you through the process of signing a request
 #'     using an access key ID and secret access key.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- iam(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following add-client-id-to-open-id-connect-provider command adds the
@@ -7952,8 +10240,8 @@ guardduty <- function() {
 #'
 #' @rdname iam
 #' @export
-iam <- function() {
-  paws.security.identity::iam()
+iam <- function(config = list()) {
+  paws.security.identity::iam(config)
 }
 
 #' Amazon Inspector
@@ -7963,6 +10251,28 @@ iam <- function() {
 #' resources and to identify potential security issues. For more
 #' information, see [Amazon Inspector User
 #' Guide](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- inspector(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # Assigns attributes (key and value pairs) to the findings that are
@@ -8023,8 +10333,8 @@ iam <- function() {
 #'
 #' @rdname inspector
 #' @export
-inspector <- function() {
-  paws.security.identity::inspector()
+inspector <- function(config = list()) {
+  paws.security.identity::inspector(config)
 }
 
 #' AWS Key Management Service
@@ -8112,6 +10422,28 @@ inspector <- function() {
 #' 
 #' -   GenerateDataKeyWithoutPlaintext
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kms(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example cancels deletion of the specified CMK.
 #' \donttest{svc <- kms()
@@ -8166,8 +10498,8 @@ inspector <- function() {
 #'
 #' @rdname kms
 #' @export
-kms <- function() {
-  paws.security.identity::kms()
+kms <- function(config = list()) {
+  paws.security.identity::kms(config)
 }
 
 #' Amazon Macie
@@ -8180,6 +10512,28 @@ kms <- function() {
 #' dashboards and alerts that give visibility into how this data is being
 #' accessed or moved. For more information, see the [Macie User
 #' Guide](https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- macie(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- macie()
@@ -8200,8 +10554,8 @@ kms <- function() {
 #'
 #' @rdname macie
 #' @export
-macie <- function() {
-  paws.security.identity::macie()
+macie <- function(config = list()) {
+  paws.security.identity::macie(config)
 }
 
 #' AWS Resource Access Manager
@@ -8226,6 +10580,28 @@ macie <- function() {
 #' resources in the resource share. An administrator of the specified
 #' account can use IAM policies to restrict access resources in the
 #' resource share.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ram(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- ram()
@@ -8255,8 +10631,8 @@ macie <- function() {
 #'
 #' @rdname ram
 #' @export
-ram <- function() {
-  paws.security.identity::ram()
+ram <- function(config = list()) {
+  paws.security.identity::ram(config)
 }
 
 #' AWS Secrets Manager
@@ -8334,6 +10710,28 @@ ram <- function() {
 #' CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- secretsmanager(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example shows how to cancel rotation for a secret. The
 #' # operation sets the RotationEnabled field to false and cancels all
@@ -8368,8 +10766,8 @@ ram <- function() {
 #'
 #' @rdname secretsmanager
 #' @export
-secretsmanager <- function() {
-  paws.security.identity::secretsmanager()
+secretsmanager <- function(config = list()) {
+  paws.security.identity::secretsmanager(config)
 }
 
 #' AWS SecurityHub
@@ -8397,6 +10795,28 @@ secretsmanager <- function() {
 #' with the master account is created only in the us-west-2 Region.
 #' Security Hub must be enabled for the member account in the same Region
 #' that the invite was sent from.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- securityhub(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- securityhub()
@@ -8448,8 +10868,8 @@ secretsmanager <- function() {
 #'
 #' @rdname securityhub
 #' @export
-securityhub <- function() {
-  paws.security.identity::securityhub()
+securityhub <- function(config = list()) {
+  paws.security.identity::securityhub(config)
 }
 
 #' AWS Shield
@@ -8464,6 +10884,28 @@ securityhub <- function() {
 #' AWS WAF and AWS Shield Advanced APIs, see the [AWS WAF and AWS Shield
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- shield(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- shield()
@@ -8495,8 +10937,8 @@ securityhub <- function() {
 #'
 #' @rdname shield
 #' @export
-shield <- function() {
-  paws.security.identity::shield()
+shield <- function(config = list()) {
+  paws.security.identity::shield(config)
 }
 
 #' AWS Security Token Service
@@ -8599,6 +11041,28 @@ shield <- function() {
 #' your log files, see the [AWS CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sts(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # 
 #' \donttest{svc <- sts()
@@ -8623,8 +11087,8 @@ shield <- function() {
 #'
 #' @rdname sts
 #' @export
-sts <- function() {
-  paws.security.identity::sts()
+sts <- function(config = list()) {
+  paws.security.identity::sts(config)
 }
 
 #' AWS WAF
@@ -8639,6 +11103,28 @@ sts <- function() {
 #' AWS WAF features and an overview of how to use the AWS WAF API, see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- waf(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
@@ -8730,8 +11216,8 @@ sts <- function() {
 #'
 #' @rdname waf
 #' @export
-waf <- function() {
-  paws.security.identity::waf()
+waf <- function(config = list()) {
+  paws.security.identity::waf(config)
 }
 
 #' AWS WAF Regional
@@ -8748,6 +11234,28 @@ waf <- function() {
 #' AWS WAF features and an overview of how to use the AWS WAF API, see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- wafregional(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example creates an IP match set named MyIPSetFriendlyName.
@@ -8843,8 +11351,8 @@ waf <- function() {
 #'
 #' @rdname wafregional
 #' @export
-wafregional <- function() {
-  paws.security.identity::wafregional()
+wafregional <- function(config = list()) {
+  paws.security.identity::wafregional(config)
 }
 
 #' Amazon EventBridge
@@ -8871,6 +11379,28 @@ wafregional <- function() {
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- eventbridge(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- eventbridge()
@@ -8915,14 +11445,36 @@ wafregional <- function() {
 #'
 #' @rdname eventbridge
 #' @export
-eventbridge <- function() {
-  paws.application.integration::eventbridge()
+eventbridge <- function(config = list()) {
+  paws.application.integration::eventbridge(config)
 }
 
 #' AmazonMQ
 #'
 #' @description
 #' Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it easy to set up and operate message brokers in the cloud. A message broker allows software applications and components to communicate using various programming languages, operating systems, and formal messaging protocols.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- mq(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- mq()
@@ -8958,8 +11510,8 @@ eventbridge <- function() {
 #'
 #' @rdname mq
 #' @export
-mq <- function() {
-  paws.application.integration::mq()
+mq <- function(config = list()) {
+  paws.application.integration::mq(config)
 }
 
 #' AWS Step Functions
@@ -8986,6 +11538,28 @@ mq <- function() {
 #' Functions Developer
 #' Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)*
 #' .
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sfn(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- sfn()
@@ -9021,8 +11595,8 @@ mq <- function() {
 #'
 #' @rdname sfn
 #' @export
-sfn <- function() {
-  paws.application.integration::sfn()
+sfn <- function(config = list()) {
+  paws.application.integration::sfn(config)
 }
 
 #' Amazon Simple Notification Service
@@ -9044,6 +11618,28 @@ sfn <- function() {
 #' your service requests, retrying requests, and handling error responses.
 #' For a list of available SDKs, go to [Tools for Amazon Web
 #' Services](http://aws.amazon.com/tools/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sns(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- sns()
@@ -9090,8 +11686,8 @@ sfn <- function() {
 #'
 #' @rdname sns
 #' @export
-sns <- function() {
-  paws.application.integration::sns()
+sns <- function(config = list()) {
+  paws.application.integration::sns(config)
 }
 
 #' Amazon Simple Queue Service
@@ -9137,6 +11733,28 @@ sns <- function() {
 #'     -   [Regions and
 #'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sqs(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- sqs()
 #' svc$add_permission(
@@ -9169,8 +11787,8 @@ sns <- function() {
 #'
 #' @rdname sqs
 #' @export
-sqs <- function() {
-  paws.application.integration::sqs()
+sqs <- function(config = list()) {
+  paws.application.integration::sqs(config)
 }
 
 #' Amazon Simple Workflow Service
@@ -9191,6 +11809,28 @@ sqs <- function() {
 #' This documentation serves as reference only. For a broader overview of
 #' the Amazon SWF programming model, see the *[Amazon SWF Developer
 #' Guide](https://docs.aws.amazon.com/amazonswf/latest/developerguide/)* .
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- swf(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- swf()
@@ -9241,8 +11881,8 @@ sqs <- function() {
 #'
 #' @rdname swf
 #' @export
-swf <- function() {
-  paws.application.integration::swf()
+swf <- function(config = list()) {
+  paws.application.integration::swf(config)
 }
 
 #' AWS Budgets
@@ -9294,6 +11934,28 @@ swf <- function() {
 #' API, see [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- budgets(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- budgets()
 #' svc$create_budget(
@@ -9320,8 +11982,8 @@ swf <- function() {
 #'
 #' @rdname budgets
 #' @export
-budgets <- function() {
-  paws.cost.management::budgets()
+budgets <- function(config = list()) {
+  paws.cost.management::budgets(config)
 }
 
 #' AWS Cost and Usage Report Service
@@ -9342,6 +12004,28 @@ budgets <- function() {
 #' 
 #' -   cur.us-east-1.amazonaws.com
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- costandusagereportservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' # The following example deletes the AWS Cost and Usage report named
 #' # ExampleReport.
@@ -9359,8 +12043,8 @@ budgets <- function() {
 #'
 #' @rdname costandusagereportservice
 #' @export
-costandusagereportservice <- function() {
-  paws.cost.management::costandusagereportservice()
+costandusagereportservice <- function(config = list()) {
+  paws.cost.management::costandusagereportservice(config)
 }
 
 #' AWS Cost Explorer Service
@@ -9382,6 +12066,28 @@ costandusagereportservice <- function() {
 #' [AWS Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- costexplorer(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- costexplorer()
 #' svc$get_cost_and_usage(
@@ -9402,14 +12108,36 @@ costandusagereportservice <- function() {
 #'
 #' @rdname costexplorer
 #' @export
-costexplorer <- function() {
-  paws.cost.management::costexplorer()
+costexplorer <- function(config = list()) {
+  paws.cost.management::costexplorer(config)
 }
 
 #' AWS Marketplace Commerce Analytics
 #'
 #' @description
 #' Provides AWS Marketplace business intelligence data on-demand.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- marketplacecommerceanalytics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- marketplacecommerceanalytics()
@@ -9425,8 +12153,8 @@ costexplorer <- function() {
 #'
 #' @rdname marketplacecommerceanalytics
 #' @export
-marketplacecommerceanalytics <- function() {
-  paws.cost.management::marketplacecommerceanalytics()
+marketplacecommerceanalytics <- function(config = list()) {
+  paws.cost.management::marketplacecommerceanalytics(config)
 }
 
 #' AWS Marketplace Entitlement Service
@@ -9445,6 +12173,28 @@ marketplacecommerceanalytics <- function() {
 #' 
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- marketplaceentitlementservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- marketplaceentitlementservice()
 #' svc$get_entitlements(
@@ -9458,8 +12208,8 @@ marketplacecommerceanalytics <- function() {
 #'
 #' @rdname marketplaceentitlementservice
 #' @export
-marketplaceentitlementservice <- function() {
-  paws.cost.management::marketplaceentitlementservice()
+marketplaceentitlementservice <- function(config = list()) {
+  paws.cost.management::marketplaceentitlementservice(config)
 }
 
 #' AWSMarketplace Metering
@@ -9511,6 +12261,28 @@ marketplaceentitlementservice <- function() {
 #' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
 #' .
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- marketplacemetering(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- marketplacemetering()
 #' svc$batch_meter_usage(
@@ -9527,8 +12299,8 @@ marketplaceentitlementservice <- function() {
 #'
 #' @rdname marketplacemetering
 #' @export
-marketplacemetering <- function() {
-  paws.cost.management::marketplacemetering()
+marketplacemetering <- function(config = list()) {
+  paws.cost.management::marketplacemetering(config)
 }
 
 #' AWS Price List Service
@@ -9561,6 +12333,28 @@ marketplacemetering <- function() {
 #' 
 #' -   https://api.pricing.ap-south-1.amazonaws.com
 #'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pricing(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @examples
 #' \donttest{svc <- pricing()
 #' svc$describe_services(
@@ -9578,8 +12372,8 @@ marketplacemetering <- function() {
 #'
 #' @rdname pricing
 #' @export
-pricing <- function() {
-  paws.cost.management::pricing()
+pricing <- function(config = list()) {
+  paws.cost.management::pricing(config)
 }
 
 #' Amazon Connect Service
@@ -9603,6 +12397,28 @@ pricing <- function() {
 #' [Amazon Connect service limits increase
 #' form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase).
 #' You must be signed in to your AWS account to access the form.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- connect(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- connect()
@@ -9637,14 +12453,36 @@ pricing <- function() {
 #'
 #' @rdname connect
 #' @export
-connect <- function() {
-  paws.customer.engagement::connect()
+connect <- function(config = list()) {
+  paws.customer.engagement::connect(config)
 }
 
 #' Amazon Pinpoint
 #'
 #' @description
 #' Doc Engage API - Amazon Pinpoint API
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpoint(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- pinpoint()
@@ -9735,8 +12573,8 @@ connect <- function() {
 #'
 #' @rdname pinpoint
 #' @export
-pinpoint <- function() {
-  paws.customer.engagement::pinpoint()
+pinpoint <- function(config = list()) {
+  paws.customer.engagement::pinpoint(config)
 }
 
 #' Amazon Pinpoint Email Service
@@ -9762,6 +12600,28 @@ pinpoint <- function() {
 #' latency. To learn more about the number of Availability Zones that are
 #' available in each Region, see [AWS Global
 #' Infrastructure](http://aws.amazon.com/about-aws/global-infrastructure/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpointemail(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- pinpointemail()
@@ -9817,14 +12677,36 @@ pinpoint <- function() {
 #'
 #' @rdname pinpointemail
 #' @export
-pinpointemail <- function() {
-  paws.customer.engagement::pinpointemail()
+pinpointemail <- function(config = list()) {
+  paws.customer.engagement::pinpointemail(config)
 }
 
 #' Amazon Pinpoint SMS and Voice Service
 #'
 #' @description
 #' Pinpoint SMS and Voice Messaging public facing APIs
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpointsmsvoice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' \donttest{svc <- pinpointsmsvoice()
@@ -9846,8 +12728,8 @@ pinpointemail <- function() {
 #'
 #' @rdname pinpointsmsvoice
 #' @export
-pinpointsmsvoice <- function() {
-  paws.customer.engagement::pinpointsmsvoice()
+pinpointsmsvoice <- function(config = list()) {
+  paws.customer.engagement::pinpointsmsvoice(config)
 }
 
 #' Amazon Simple Email Service
@@ -9864,6 +12746,28 @@ pinpointsmsvoice <- function() {
 #' SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html)
 #' in the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ses(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @examples
 #' # The following example creates a receipt rule set by cloning an existing
@@ -9951,6 +12855,6 @@ pinpointsmsvoice <- function() {
 #'
 #' @rdname ses
 #' @export
-ses <- function() {
-  paws.customer.engagement::ses()
+ses <- function(config = list()) {
+  paws.customer.engagement::ses(config)
 }

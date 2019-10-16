@@ -4,11 +4,32 @@
 \alias{s3}
 \title{Amazon Simple Storage Service}
 \usage{
-s3()
+s3(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Simple Storage Service
 }
+\section{Service syntax}{
+\preformatted{svc <- s3(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

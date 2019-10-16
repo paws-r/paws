@@ -4,11 +4,32 @@
 \alias{cloudhsmv2}
 \title{AWS CloudHSM V2}
 \usage{
-cloudhsmv2()
+cloudhsmv2(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 For more information about AWS CloudHSM, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudhsmv2(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

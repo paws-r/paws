@@ -4,12 +4,33 @@
 \alias{amplify}
 \title{AWS Amplify}
 \usage{
-amplify()
+amplify(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amplify is a fully managed continuous deployment and hosting service for
 modern web apps.
 }
+\section{Service syntax}{
+\preformatted{svc <- amplify(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -26,11 +26,11 @@ Retrieves information about the specified version of the specified
 managed policy, including the policy document.
 }
 \details{
-Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
-method to convert the policy back to plain JSON text. For example, if
-you use Java, you can use the \code{decode} method of the
-\code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
-SDKs provide similar functionality.
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the \code{decode} method
+of the \code{java.net.URLDecoder} utility class in the Java SDK. Other
+languages and SDKs provide similar functionality.
 
 To list the available versions for a policy, use ListPolicyVersions.
 

@@ -4,13 +4,34 @@
 \alias{iot1clickdevicesservice}
 \title{AWS IoT 1-Click Devices Service}
 \usage{
-iot1clickdevicesservice()
+iot1clickdevicesservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Describes all of the AWS IoT 1-Click device-related API operations for
 the service. Also provides sample requests, responses, and errors for
 the supported web services protocols.
 }
+\section{Service syntax}{
+\preformatted{svc <- iot1clickdevicesservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

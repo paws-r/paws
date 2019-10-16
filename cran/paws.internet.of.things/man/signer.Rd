@@ -4,7 +4,10 @@
 \alias{signer}
 \title{AWS Signer}
 \usage{
-signer()
+signer(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 You can use Code Signing for Amazon FreeRTOS (AWS Signer) to sign code
@@ -16,6 +19,24 @@ microcontrollers. You can use ACM to import third-party certificates to
 be used by AWS Signer. For general information about using AWS Signer,
 see the \href{http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html}{Code Signing for Amazon FreeRTOS Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- signer(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

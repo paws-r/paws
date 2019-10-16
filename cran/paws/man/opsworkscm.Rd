@@ -4,7 +4,10 @@
 \alias{opsworkscm}
 \title{AWS OpsWorks for Chef Automate}
 \usage{
-opsworkscm()
+opsworkscm(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS OpsWorks CM
@@ -65,6 +68,24 @@ accessed or managed within the endpoint in which they are created.
 All API operations allow for five requests per second with a burst of 10
 requests per second.
 }
+\section{Service syntax}{
+\preformatted{svc <- opsworkscm(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{resourcegroups}
 \title{AWS Resource Groups}
 \usage{
-resourcegroups()
+resourcegroups(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Resource Groups lets you organize AWS resources such as Amazon EC2
@@ -39,6 +42,24 @@ search results
 \item Searching AWS resources based on a resource query
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- resourcegroups(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

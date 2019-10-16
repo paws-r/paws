@@ -4,7 +4,10 @@
 \alias{budgets}
 \title{AWS Budgets}
 \usage{
-budgets()
+budgets(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The AWS Budgets API enables you to use AWS Budgets to plan your service
@@ -49,6 +52,24 @@ The AWS Budgets API provides the following endpoint:
 For information about costs that are associated with the AWS Budgets
 API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Management Pricing}.
 }
+\section{Service syntax}{
+\preformatted{svc <- budgets(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

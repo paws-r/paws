@@ -4,12 +4,33 @@
 \alias{fsx}
 \title{Amazon FSx}
 \usage{
-fsx()
+fsx(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon FSx is a fully managed service that makes it easy for storage and
 application administrators to launch and use shared file storage.
 }
+\section{Service syntax}{
+\preformatted{svc <- fsx(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

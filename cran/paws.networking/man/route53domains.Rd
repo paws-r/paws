@@ -4,12 +4,33 @@
 \alias{route53domains}
 \title{Amazon Route 53 Domains}
 \usage{
-route53domains()
+route53domains(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Route 53 API actions let you register domain names and perform
 related operations.
 }
+\section{Service syntax}{
+\preformatted{svc <- route53domains(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

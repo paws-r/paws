@@ -4,7 +4,10 @@
 \alias{cloudsearchdomain}
 \title{Amazon CloudSearch Domain}
 \usage{
-cloudsearchdomain()
+cloudsearchdomain(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 You use the AmazonCloudSearch2013 API to upload documents to a search
@@ -19,6 +22,24 @@ endpoint.
 
 For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide}{Amazon CloudSearch Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudsearchdomain(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

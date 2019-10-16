@@ -4,7 +4,10 @@
 \alias{pinpointemail}
 \title{Amazon Pinpoint Email Service}
 \usage{
-pinpointemail()
+pinpointemail(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 This document contains reference information for the \href{https://aws.amazon.com/pinpoint}{Amazon Pinpoint} Email API, version 1.0. This
@@ -23,6 +26,24 @@ high levels of availability and redundancy, while also minimizing
 latency. To learn more about the number of Availability Zones that are
 available in each Region, see \href{http://aws.amazon.com/about-aws/global-infrastructure/}{AWS Global Infrastructure}.
 }
+\section{Service syntax}{
+\preformatted{svc <- pinpointemail(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

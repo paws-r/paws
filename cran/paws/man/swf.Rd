@@ -4,7 +4,10 @@
 \alias{swf}
 \title{Amazon Simple Workflow Service}
 \usage{
-swf()
+swf(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
@@ -22,6 +25,24 @@ tracking their progress and maintaining their state.
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
 }
+\section{Service syntax}{
+\preformatted{svc <- swf(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{neptune}
 \title{Amazon Neptune}
 \usage{
-neptune()
+neptune(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Neptune is a fast, reliable, fully-managed graph database service
@@ -29,6 +32,24 @@ applied immediately, on the next instance reboot, or during the
 maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
 }
+\section{Service syntax}{
+\preformatted{svc <- neptune(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

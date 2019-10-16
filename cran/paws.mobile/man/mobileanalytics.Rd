@@ -4,12 +4,33 @@
 \alias{mobileanalytics}
 \title{Amazon Mobile Analytics}
 \usage{
-mobileanalytics()
+mobileanalytics(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Mobile Analytics is a service for collecting, visualizing, and
 understanding app usage data at scale.
 }
+\section{Service syntax}{
+\preformatted{svc <- mobileanalytics(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

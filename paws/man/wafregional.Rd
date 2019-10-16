@@ -4,7 +4,10 @@
 \alias{wafregional}
 \title{AWS WAF Regional}
 \usage{
-wafregional()
+wafregional(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 This is the \emph{AWS WAF Regional API Reference} for using AWS WAF with
@@ -17,6 +20,24 @@ WAF API actions, data types, and errors. For detailed information about
 AWS WAF features and an overview of how to use the AWS WAF API, see the
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- wafregional(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

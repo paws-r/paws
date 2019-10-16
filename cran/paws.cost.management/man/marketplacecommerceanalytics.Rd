@@ -4,11 +4,32 @@
 \alias{marketplacecommerceanalytics}
 \title{AWS Marketplace Commerce Analytics}
 \usage{
-marketplacecommerceanalytics()
+marketplacecommerceanalytics(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Provides AWS Marketplace business intelligence data on-demand.
 }
+\section{Service syntax}{
+\preformatted{svc <- marketplacecommerceanalytics(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

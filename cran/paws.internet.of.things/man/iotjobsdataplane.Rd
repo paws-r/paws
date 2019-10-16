@@ -4,7 +4,10 @@
 \alias{iotjobsdataplane}
 \title{AWS IoT Jobs Data Plane}
 \usage{
-iotjobsdataplane()
+iotjobsdataplane(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS IoT Jobs is a service that allows you to define a set of jobs ---
@@ -26,6 +29,24 @@ progress to AWS IoT. The Jobs service provides commands to track the
 progress of a job on a specific target and for all the targets of the
 job
 }
+\section{Service syntax}{
+\preformatted{svc <- iotjobsdataplane(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

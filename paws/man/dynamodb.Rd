@@ -4,7 +4,10 @@
 \alias{dynamodb}
 \title{Amazon DynamoDB}
 \usage{
-dynamodb()
+dynamodb(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon DynamoDB is a fully managed NoSQL database service that provides
@@ -27,6 +30,24 @@ your data is stored on solid state disks (SSDs) and automatically
 replicated across multiple Availability Zones in an AWS region,
 providing built-in high availability and data durability.
 }
+\section{Service syntax}{
+\preformatted{svc <- dynamodb(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

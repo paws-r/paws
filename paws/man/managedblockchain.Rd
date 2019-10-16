@@ -4,7 +4,10 @@
 \alias{managedblockchain}
 \title{Amazon Managed Blockchain}
 \usage{
-managedblockchain()
+managedblockchain(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Managed Blockchain is a fully managed service for creating and
@@ -14,6 +17,24 @@ transparently run transactions and share data without the need for a
 trusted, central authority. Currently, Managed Blockchain supports the
 Hyperledger Fabric open source framework.
 }
+\section{Service syntax}{
+\preformatted{svc <- managedblockchain(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{lambda}
 \title{AWS Lambda}
 \usage{
-lambda()
+lambda(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 \strong{Overview}
@@ -14,6 +17,24 @@ provides additional information. For the service overview, see \href{https://doc
 and for information about how the service works, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html}{AWS Lambda: How it Works}
 in the \strong{AWS Lambda Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- lambda(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

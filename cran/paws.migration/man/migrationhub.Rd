@@ -4,13 +4,34 @@
 \alias{migrationhub}
 \title{AWS Migration Hub}
 \usage{
-migrationhub()
+migrationhub(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The AWS Migration Hub API methods help to obtain server and application
 migration status and integrate your resource-specific migration tool by
 providing a programmatic interface to Migration Hub.
 }
+\section{Service syntax}{
+\preformatted{svc <- migrationhub(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{elbv2}
 \title{Elastic Load Balancing}
 \usage{
-elbv2()
+elbv2(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 A load balancer distributes incoming traffic across targets, such as
@@ -57,6 +60,24 @@ following tasks:
 All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it succeeds.
 }
+\section{Service syntax}{
+\preformatted{svc <- elbv2(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

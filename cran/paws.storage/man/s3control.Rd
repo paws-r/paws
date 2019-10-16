@@ -4,11 +4,32 @@
 \alias{s3control}
 \title{AWS S3 Control}
 \usage{
-s3control()
+s3control(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS S3 Control provides access to Amazon S3 control plane operations.
 }
+\section{Service syntax}{
+\preformatted{svc <- s3control(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

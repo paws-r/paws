@@ -4,7 +4,10 @@
 \alias{mobile}
 \title{AWS Mobile}
 \usage{
-mobile()
+mobile(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Mobile Service provides mobile app and website developers with
@@ -12,6 +15,24 @@ capabilities required to configure AWS resources and bootstrap their
 developer desktop projects with the necessary SDKs, constants, tools and
 samples to make use of those resources.
 }
+\section{Service syntax}{
+\preformatted{svc <- mobile(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

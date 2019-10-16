@@ -4,7 +4,10 @@
 \alias{datasync}
 \title{AWS DataSync}
 \usage{
-datasync()
+datasync(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS DataSync is a managed data transfer service that makes it simpler
@@ -15,6 +18,24 @@ EFS).
 This API interface reference for AWS DataSync contains documentation for
 a programming interface that you can use to manage AWS DataSync.
 }
+\section{Service syntax}{
+\preformatted{svc <- datasync(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{globalaccelerator}
 \title{AWS Global Accelerator}
 \usage{
-globalaccelerator()
+globalaccelerator(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 This is the \emph{AWS Global Accelerator API Reference}. This guide is for
@@ -94,6 +97,24 @@ which are numbers that you can use to specify the proportion of
 traffic to route to each one. This can be useful, for example, to do
 performance testing within a Region.
 }
+\section{Service syntax}{
+\preformatted{svc <- globalaccelerator(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{shield}
 \title{AWS Shield}
 \usage{
-shield()
+shield(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Shield Advanced
@@ -15,6 +18,24 @@ API actions, data types, and errors. For detailed information about AWS
 WAF and AWS Shield Advanced features and an overview of how to use the
 AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- shield(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

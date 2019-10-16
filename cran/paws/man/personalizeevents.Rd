@@ -4,11 +4,32 @@
 \alias{personalizeevents}
 \title{Amazon Personalize Events}
 \usage{
-personalizeevents()
+personalizeevents(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Personalize Events
 }
+\section{Service syntax}{
+\preformatted{svc <- personalizeevents(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

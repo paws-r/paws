@@ -4,7 +4,10 @@
 \alias{resourcegroupstaggingapi}
 \title{AWS Resource Groups Tagging API}
 \usage{
-resourcegroupstaggingapi()
+resourcegroupstaggingapi(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Resource Groups Tagging API
@@ -123,6 +126,24 @@ following AWS services.
 \item Amazon WorkSpaces
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- resourcegroupstaggingapi(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{elasticache}
 \title{Amazon ElastiCache}
 \usage{
-elasticache()
+elasticache(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon ElastiCache is a web service that makes it easier to set up,
@@ -20,6 +23,24 @@ In addition, through integration with Amazon CloudWatch, customers get
 enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
 }
+\section{Service syntax}{
+\preformatted{svc <- elasticache(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
