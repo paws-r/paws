@@ -4,13 +4,34 @@
 \alias{inspector}
 \title{Amazon Inspector}
 \usage{
-inspector()
+inspector(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Inspector enables you to analyze the behavior of your AWS
 resources and to identify potential security issues. For more
 information, see \href{https://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html}{Amazon Inspector User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- inspector(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{iam}
 \title{AWS Identity and Access Management}
 \usage{
-iam()
+iam(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Identity and Access Management (IAM) is a web service that you can
@@ -60,6 +63,24 @@ This set of topics walk you through the process of signing a request
 using an access key ID and secret access key.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- iam(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

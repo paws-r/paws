@@ -4,7 +4,10 @@
 \alias{organizations}
 \title{AWS Organizations}
 \usage{
-organizations()
+organizations(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Organizations API Reference
@@ -120,6 +123,24 @@ Organizations and its support for AWS CloudTrail, see \href{https://docs.aws.ama
 in the \emph{AWS Organizations User Guide}. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- organizations(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

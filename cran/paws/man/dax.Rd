@@ -4,7 +4,10 @@
 \alias{dax}
 \title{Amazon DynamoDB Accelerator (DAX)}
 \usage{
-dax()
+dax(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 DAX is a managed caching service engineered for Amazon DynamoDB. DAX
@@ -15,6 +18,24 @@ AWS Management Console. With a few simple modifications to your code,
 your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
 }
+\section{Service syntax}{
+\preformatted{svc <- dax(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

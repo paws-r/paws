@@ -4,7 +4,10 @@
 \alias{cognitosync}
 \title{Amazon Cognito Sync}
 \usage{
-cognitosync()
+cognitosync(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Cognito Sync provides an AWS service and client library that
@@ -27,6 +30,24 @@ will probably want to make API calls via the AWS Mobile SDK. To learn
 more, see the \href{http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html}{Developer Guide for Android}
 and the \href{http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html}{Developer Guide for iOS}.
 }
+\section{Service syntax}{
+\preformatted{svc <- cognitosync(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

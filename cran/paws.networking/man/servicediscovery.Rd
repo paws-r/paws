@@ -4,7 +4,10 @@
 \alias{servicediscovery}
 \title{AWS Cloud Map}
 \usage{
-servicediscovery()
+servicediscovery(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
@@ -16,6 +19,24 @@ optional health check. Clients that submit public or private DNS
 queries, or HTTP requests, for the service receive an answer that
 contains up to eight healthy records.
 }
+\section{Service syntax}{
+\preformatted{svc <- servicediscovery(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

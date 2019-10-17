@@ -4,7 +4,10 @@
 \alias{ec2}
 \title{Amazon Elastic Compute Cloud}
 \usage{
-ec2()
+ec2(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
@@ -24,6 +27,24 @@ To learn more, see the following resources:
 documentation
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- ec2(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

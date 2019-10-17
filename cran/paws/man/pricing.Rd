@@ -4,7 +4,10 @@
 \alias{pricing}
 \title{AWS Price List Service}
 \usage{
-pricing()
+pricing(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Price List Service API (AWS Price List Service) is a centralized and
@@ -34,6 +37,24 @@ AWS Price List Service API provides the following two endpoints:
 \item https://api.pricing.ap-south-1.amazonaws.com
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- pricing(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{sms}
 \title{AWS Server Migration Service}
 \usage{
-sms()
+sms(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AAWS Sever Migration Service
@@ -26,6 +29,24 @@ resources:
 \item \href{https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html}{AWS Sever Migration Service User Guide}
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- sms(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{ecr}
 \title{Amazon EC2 Container Registry}
 \usage{
-ecr()
+ecr(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
@@ -15,6 +18,24 @@ resource-based permissions using IAM so that specific users or Amazon
 EC2 instances can access repositories and images. Developers can use the
 Docker CLI to author and manage images.
 }
+\section{Service syntax}{
+\preformatted{svc <- ecr(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

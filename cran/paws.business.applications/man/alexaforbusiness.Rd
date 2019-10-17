@@ -4,7 +4,10 @@
 \alias{alexaforbusiness}
 \title{Alexa For Business}
 \usage{
-alexaforbusiness()
+alexaforbusiness(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Alexa for Business helps you use Alexa in your organization. Alexa for
@@ -19,6 +22,24 @@ Alexa Voice Service (AVS) can create fully integrated solutions,
 register their products with Alexa for Business, and manage them as
 shared devices in their organization.
 }
+\section{Service syntax}{
+\preformatted{svc <- alexaforbusiness(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

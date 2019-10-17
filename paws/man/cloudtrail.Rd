@@ -4,7 +4,10 @@
 \alias{cloudtrail}
 \title{AWS CloudTrail}
 \usage{
-cloudtrail()
+cloudtrail(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 This is the CloudTrail API Reference. It provides descriptions of
@@ -30,6 +33,24 @@ See the \href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtra
 for information about the data that is included with each AWS API call
 listed in the log files.
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudtrail(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

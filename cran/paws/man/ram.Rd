@@ -4,7 +4,10 @@
 \alias{ram}
 \title{AWS Resource Access Manager}
 \usage{
-ram()
+ram(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Use AWS Resource Access Manager to share AWS resources between AWS
@@ -26,6 +29,24 @@ resources in the resource share. An administrator of the specified
 account can use IAM policies to restrict access resources in the
 resource share.
 }
+\section{Service syntax}{
+\preformatted{svc <- ram(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

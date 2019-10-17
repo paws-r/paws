@@ -4,7 +4,10 @@
 \alias{quicksight}
 \title{Amazon QuickSight}
 \usage{
-quicksight()
+quicksight(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon QuickSight API Reference
@@ -15,6 +18,24 @@ every user in your organization. This API interface reference contains
 documentation for a programming interface that you can use to manage
 Amazon QuickSight.
 }
+\section{Service syntax}{
+\preformatted{svc <- quicksight(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,11 +4,32 @@
 \alias{medialive}
 \title{AWS Elemental MediaLive}
 \usage{
-medialive()
+medialive(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 API for AWS Elemental MediaLive
 }
+\section{Service syntax}{
+\preformatted{svc <- medialive(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

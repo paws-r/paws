@@ -4,7 +4,10 @@
 \alias{elasticsearchservice}
 \title{Amazon Elasticsearch Service}
 \usage{
-elasticsearchservice()
+elasticsearchservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Elasticsearch Configuration Service
@@ -16,6 +19,24 @@ The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 a current list of supported regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions}{Regions and Endpoints}.
 }
+\section{Service syntax}{
+\preformatted{svc <- elasticsearchservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

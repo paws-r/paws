@@ -4,7 +4,10 @@
 \alias{iotanalytics}
 \title{AWS IoT Analytics}
 \usage{
-iotanalytics()
+iotanalytics(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS IoT Analytics allows you to collect large amounts of device data,
@@ -34,6 +37,24 @@ common IoT use cases so you can answer questions like which devices are
 about to fail or which customers are at risk of abandoning their
 wearable devices.
 }
+\section{Service syntax}{
+\preformatted{svc <- iotanalytics(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

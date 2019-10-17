@@ -4,7 +4,10 @@
 \alias{configservice}
 \title{AWS Config}
 \usage{
-configservice()
+configservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Config provides a way to keep track of the configurations of all the
@@ -28,6 +31,24 @@ actions or commands, as well as how to work with AWS Management Console,
 see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is AWS Config}
 in the \emph{AWS Config Developer Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- configservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

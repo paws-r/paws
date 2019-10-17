@@ -4,7 +4,10 @@
 \alias{sns}
 \title{Amazon Simple Notification Service}
 \usage{
-sns()
+sns(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Simple Notification Service (Amazon SNS) is a web service that
@@ -22,6 +25,24 @@ automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
 For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
+\section{Service syntax}{
+\preformatted{svc <- sns(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

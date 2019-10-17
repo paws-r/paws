@@ -4,7 +4,10 @@
 \alias{elb}
 \title{Elastic Load Balancing}
 \usage{
-elb()
+elb(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 A load balancer can distribute incoming traffic across your EC2
@@ -34,6 +37,24 @@ All Elastic Load Balancing operations are \emph{idempotent}, which means that
 they complete at most one time. If you repeat an operation, it succeeds
 with a 200 OK response code.
 }
+\section{Service syntax}{
+\preformatted{svc <- elb(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,11 +4,32 @@
 \alias{glue}
 \title{AWS Glue}
 \usage{
-glue()
+glue(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Defines the public endpoint for the AWS Glue service.
 }
+\section{Service syntax}{
+\preformatted{svc <- glue(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

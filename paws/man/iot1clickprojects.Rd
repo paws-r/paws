@@ -4,11 +4,32 @@
 \alias{iot1clickprojects}
 \title{AWS IoT 1-Click Projects Service}
 \usage{
-iot1clickprojects()
+iot1clickprojects(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 The AWS IoT 1-Click Projects API Reference
 }
+\section{Service syntax}{
+\preformatted{svc <- iot1clickprojects(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

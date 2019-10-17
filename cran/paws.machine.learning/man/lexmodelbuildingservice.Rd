@@ -4,7 +4,10 @@
 \alias{lexmodelbuildingservice}
 \title{Amazon Lex Model Building Service}
 \usage{
-lexmodelbuildingservice()
+lexmodelbuildingservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Lex Build-Time Actions
@@ -13,6 +16,24 @@ Amazon Lex is an AWS service for building conversational voice and text
 interfaces. Use these actions to create, update, and delete
 conversational bots for new and existing client applications.
 }
+\section{Service syntax}{
+\preformatted{svc <- lexmodelbuildingservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

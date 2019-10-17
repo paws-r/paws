@@ -4,7 +4,10 @@
 \alias{eks}
 \title{Amazon Elastic Kubernetes Service}
 \usage{
-eks()
+eks(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that
@@ -21,6 +24,24 @@ environment, whether running in on-premises data centers or public
 clouds. This means that you can easily migrate any standard Kubernetes
 application to Amazon EKS without any code modification required.
 }
+\section{Service syntax}{
+\preformatted{svc <- eks(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{iotthingsgraph}
 \title{AWS IoT Things Graph}
 \usage{
-iotthingsgraph()
+iotthingsgraph(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS IoT Things Graph provides an integrated set of tools that enable
@@ -16,6 +19,24 @@ abstract level.
 
 For more information about how AWS IoT Things Graph works, see the \href{https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-whatis.html}{User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- iotthingsgraph(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

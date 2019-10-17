@@ -4,7 +4,10 @@
 \alias{sqs}
 \title{Amazon Simple Queue Service}
 \usage{
-sqs()
+sqs(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Welcome to the \emph{Amazon Simple Queue Service API Reference}.
@@ -39,6 +42,24 @@ tasks such as the following automatically:
 }
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- sqs(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

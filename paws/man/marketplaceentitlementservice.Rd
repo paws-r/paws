@@ -4,7 +4,10 @@
 \alias{marketplaceentitlementservice}
 \title{AWS Marketplace Entitlement Service}
 \usage{
-marketplaceentitlementservice()
+marketplaceentitlementservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 This reference provides descriptions of the AWS Marketplace Entitlement
@@ -21,6 +24,24 @@ capacity in a multi-tenant database.
 \item \emph{GetEntitlements}- Gets the entitlements for a Marketplace product.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- marketplaceentitlementservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

@@ -4,7 +4,10 @@
 \alias{dlm}
 \title{Amazon Data Lifecycle Manager}
 \usage{
-dlm()
+dlm(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
@@ -15,6 +18,24 @@ Amazon DLM supports Amazon EBS volumes and snapshots. For information
 about using Amazon DLM with Amazon EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Automating the Amazon EBS Snapshot Lifecycle}
 in the \emph{Amazon EC2 User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- dlm(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

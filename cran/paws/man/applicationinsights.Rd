@@ -4,7 +4,10 @@
 \alias{applicationinsights}
 \title{Amazon CloudWatch Application Insights}
 \usage{
-applicationinsights()
+applicationinsights(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon CloudWatch Application Insights for .NET and SQL Server
@@ -26,6 +29,24 @@ Insights informs you that a memory pressure problem with your SQL Server
 database is occurring. It bases this analysis on impactful metrics and
 log errors.
 }
+\section{Service syntax}{
+\preformatted{svc <- applicationinsights(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

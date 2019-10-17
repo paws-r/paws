@@ -4,7 +4,10 @@
 \alias{datapipeline}
 \title{AWS Data Pipeline}
 \usage{
-datapipeline()
+datapipeline(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS Data Pipeline configures and manages a data-driven workflow called a
@@ -31,6 +34,24 @@ progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
 }
+\section{Service syntax}{
+\preformatted{svc <- datapipeline(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

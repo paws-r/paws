@@ -4,12 +4,33 @@
 \alias{personalize}
 \title{Amazon Personalize}
 \usage{
-personalize()
+personalize(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon Personalize is a machine learning service that makes it easy to
 add individualized recommendations to customers.
 }
+\section{Service syntax}{
+\preformatted{svc <- personalize(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

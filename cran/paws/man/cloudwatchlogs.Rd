@@ -4,7 +4,10 @@
 \alias{cloudwatchlogs}
 \title{Amazon CloudWatch Logs}
 \usage{
-cloudwatchlogs()
+cloudwatchlogs(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 You can use Amazon CloudWatch Logs to monitor, store, and access your
@@ -40,6 +43,24 @@ into the log service. You can then access the raw log data when you
 need it.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- cloudwatchlogs(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

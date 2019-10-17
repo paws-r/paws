@@ -4,11 +4,32 @@
 \alias{kafka}
 \title{Managed Streaming for Kafka}
 \usage{
-kafka()
+kafka(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Managed Streaming for Kafka
 }
+\section{Service syntax}{
+\preformatted{svc <- kafka(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

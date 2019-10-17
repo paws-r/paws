@@ -4,7 +4,10 @@
 \alias{ec2instanceconnect}
 \title{AWS EC2 Instance Connect}
 \usage{
-ec2instanceconnect()
+ec2instanceconnect(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 AWS EC2 Connect Service is a service that enables system administrators
@@ -12,6 +15,24 @@ to publish temporary SSH keys to their EC2 instances in order to
 establish connections to their instances without leaving a permanent
 authentication option.
 }
+\section{Service syntax}{
+\preformatted{svc <- ec2instanceconnect(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

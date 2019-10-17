@@ -4,7 +4,10 @@
 \alias{opsworks}
 \title{AWS OpsWorks}
 \usage{
-opsworks()
+opsworks(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Welcome to the \emph{AWS OpsWorks Stacks API Reference}. This guide provides
@@ -66,6 +69,24 @@ You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as
 possible.
 }
+\section{Service syntax}{
+\preformatted{svc <- opsworks(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

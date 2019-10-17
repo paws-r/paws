@@ -4,7 +4,10 @@
 \alias{glacier}
 \title{Amazon Glacier}
 \usage{
-glacier()
+glacier(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
@@ -40,6 +43,24 @@ creating a vault, uploading archives, creating jobs to download
 archives, retrieving the job output, and deleting archives.
 }
 }
+\section{Service syntax}{
+\preformatted{svc <- glacier(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

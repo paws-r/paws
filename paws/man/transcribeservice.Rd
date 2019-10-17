@@ -4,11 +4,32 @@
 \alias{transcribeservice}
 \title{Amazon Transcribe Service}
 \usage{
-transcribeservice()
+transcribeservice(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Operations and objects for transcribing speech to text.
 }
+\section{Service syntax}{
+\preformatted{svc <- transcribeservice(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{

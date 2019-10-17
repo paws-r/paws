@@ -4,7 +4,10 @@
 \alias{guardduty}
 \title{Amazon GuardDuty}
 \usage{
-guardduty()
+guardduty(config = list())
+}
+\arguments{
+\item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
 Amazon GuardDuty is a continuous security monitoring service that
@@ -24,6 +27,24 @@ AWS environment by producing security findings that you can view in the
 GuardDuty console or through Amazon CloudWatch events. For more
 information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}.
 }
+\section{Service syntax}{
+\preformatted{svc <- guardduty(
+  config = list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string"
+    ),
+    endpoint = "string",
+    region = "string"
+  )
+)
+}
+}
+
 \section{Operations}{
 
 \tabular{ll}{
