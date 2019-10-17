@@ -18,7 +18,7 @@ Description: Interface to Amazon Web Services machine learning APIs,
     <https://aws.amazon.com/machine-learning/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.3)
+    paws.common (>= 0.2.4)
 Suggests: 
     testthat
 Encoding: UTF-8

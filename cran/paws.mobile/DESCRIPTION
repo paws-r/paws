@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services mobile APIs, including the
     mobile applications, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.3)
+    paws.common (>= 0.2.4)
 Suggests: 
     testthat
 Encoding: UTF-8
