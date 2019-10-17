@@ -146,6 +146,8 @@ make_doc_example <- function(example, op_name) {
 
   call <- paste0("\\donttest{", call, "}")
   desc <- comment(break_lines(example$description))
+  # Replace double backticks with single backtick
+  desc <- gsub('``', '`', desc)
   result <- paste(desc, call, sep = "\n")
   return(result)
 }
