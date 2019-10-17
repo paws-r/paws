@@ -59,3 +59,10 @@ test_that("get_region", {
   expect_equal(get_region(), "foo")
   expect_equal(get_region(NULL), "foo")
 })
+
+test_that("get_profile_name", {
+  Sys.setenv(AWS_PROFILE = "bar")
+  expect_equal(get_profile_name(), "bar")
+  expect_equal(get_profile_name(NULL), "bar")
+  expect_equal(get_profile_name("foo"), "foo")
+})
