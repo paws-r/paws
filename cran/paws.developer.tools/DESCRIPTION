@@ -17,7 +17,7 @@ Description: Interface to Amazon Web Services developer tools APIs,
     more <https://aws.amazon.com/products/developer-tools/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.3)
+    paws.common (>= 0.2.4)
 Suggests: 
     testthat
 Encoding: UTF-8

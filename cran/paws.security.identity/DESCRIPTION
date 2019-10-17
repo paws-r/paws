@@ -18,7 +18,7 @@ Description: Interface to Amazon Web Services security, identity, and
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
 Imports: 
-    paws.common (>= 0.2.3)
+    paws.common (>= 0.2.4)
 Suggests: 
     testthat
 Encoding: UTF-8

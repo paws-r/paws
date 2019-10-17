@@ -1,3 +1,8 @@
+# paws.common 0.2.4
+
+* Add support for custom configuration per service, e.g.
+  `svc <- paws::svc(config = list(region = "us-west-1"))`.
+
 # paws.common 0.2.3
 
 * Fix support for non-default profiles in shared config files.
