@@ -53,3 +53,9 @@ test_that("set_config", {
 
   expect_error(set_config(list(), list(foo = 123)))
 })
+
+test_that("get_region", {
+  Sys.setenv(AWS_REGION = "foo")
+  expect_equal(get_region(), "foo")
+  expect_equal(get_region(NULL), "foo")
+})

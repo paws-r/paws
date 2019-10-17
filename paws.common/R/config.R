@@ -100,7 +100,7 @@ get_os_env_variable <- function(var) {
 # Get the AWS profile to use. If none, return "default".
 get_profile_name <- function(profile = "") {
 
-  if (profile != "") return(profile)
+  if (!is.null(profile) && profile != "") return(profile)
 
   profile <- Sys.getenv("AWS_PROFILE")
 
