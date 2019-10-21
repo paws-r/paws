@@ -9,4 +9,4 @@ There were no NOTEs, ERRORs, or WARNINGs.
 
 ## Downstream dependencies
 
-None.
+All downstream dependencies pass R CMD check.
