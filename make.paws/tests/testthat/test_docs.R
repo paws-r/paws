@@ -351,6 +351,34 @@ test_that("make_doc_examples", {
     sep = "\n"
   )
   expect_equal(actual, expected)
+
+  operation <- list(
+    name = "Operation",
+    examples = list(
+      list(
+        input = list(
+          "Foo" = "bar",
+          "Baz" = list(
+            "Qux" = 123
+          )
+        ),
+        description = "Description with inline ```code```"
+      )
+    )
+  )
+  actual <- make_doc_examples(operation, api)
+  expected <- paste(
+    "#' @examples",
+    "#' # Description with inline ```code```",
+    "#' \\donttest{svc$operation(",
+    "#'   Foo = \"bar\",",
+    "#'   Baz = list(",
+    "#'     Qux = 123",
+    "#'   )",
+    "#' )}",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
 })
 
 test_that("clean_markdown", {
