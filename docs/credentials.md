@@ -8,7 +8,7 @@ credentials.
 Credentials can be set in the following five ways, and Paws will look
 for them in this order.
 
-1.  Custom service config. (NOT YET AVAILABLE ON CRAN)
+1.  Custom service config.
 2.  R environment variables.
 3.  System environment variables (Mac and Linux Only).
 4.  AWS credentials file.
@@ -18,9 +18,7 @@ If you are running the package on an instance with an appropriate IAM
 role, Paws will use it automatically and you don’t need to do anything
 extra.
 
-## Setting Credentials with Custom Service Config*
-
-\* Option not yet available on CRAN
+## Setting Credentials with Custom Service Config
 
 Pass in the credentials directly for a given service with the following
 command:
@@ -105,14 +103,12 @@ In order to use a Paws package, you must also set your AWS region.
 
 Paws will look for the region in the following four places, in order:
 
-1.  Custom service config. (NOT YET AVAILABLE ON CRAN)
+1.  Custom service config.
 2.  `AWS_REGION` R environment variable.
 3.  `AWS_REGION` system environment variable (Mac and Linux Only).
 4.  AWS config file.
 
-## Setting Region with Custom Service Config*
-
-\* Option not yet available on CRAN
+## Setting Region with Custom Service Config
 
 Pass in the region directly for a given service with the following
 command:
@@ -176,13 +172,11 @@ profile.
 However, you may want to use another profile, which you can choose in
 the following ways:
 
-1.  Custom service config. (NOT YET AVAILABLE ON CRAN)
+1.  Custom service config.
 2.  `AWS_PROFILE` R environment variable.
 3.  `AWS_PROFILE` system environment variable - (Mac and Linux Only)
 
-## Setting Profile with Custom Service Config*
-
-\* Option not yet available on CRAN
+## Setting Profile with Custom Service Config
 
 Pass in the profile directly for a given service with the following
 command:
