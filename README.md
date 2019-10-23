@@ -24,11 +24,17 @@ Install Paws using:
 install.packages("paws")
 ```
 
+If you are using Linux, you will need to install the following OS packages:
+
+* Debian/Ubuntu: `libcurl4-openssl-dev libssl-dev libxml2-dev`
+* CentOS/Fedora/Red Hat: `libcurl-devel libxml2-devel openssl-devel`
+
 ## Credentials
 
-You'll need to set up your AWS credentials and region. Paws supports R
-and OS environment variables, AWS credential files, and IAM roles.
-See [docs/credentials.md](docs/credentials.md) for more info.
+You'll need to set up your AWS credentials and region. Paws supports setting 
+these per-service, or using R and OS environment variables, AWS credential
+files, and IAM roles. See [docs/credentials.md](docs/credentials.md) for more
+info.
 
 In the example below, we set them with R environment variables.
 
@@ -116,6 +122,6 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 API specifications from [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js);
 design based on [AWS SDK for Go](https://github.com/aws/aws-sdk-go).
 
-[Logo](docs/logo.png) by [Hsinyi Chen](https://www.starfolioart.com/).
+[Logo](docs/logo.png) by [Hsinyi Chen](https://linktr.ee/starfolio).
 
 [Home page design](https://paws-r.github.io) and [cheat sheet](docs/cheat_sheet.pdf) by Mara Ursu.
