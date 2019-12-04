@@ -87,9 +87,7 @@ test_that("standalone sign with port", {
   }
 })
 
-# TODO: Finish presign code.
 test_that("standalone presign with port", {
-  skip("skip")
   cases <- list(
     list(
       description = "default HTTPS port",
@@ -116,7 +114,8 @@ test_that("standalone presign with port", {
     signer <- Signer(test_creds)
     req <- new_http_request("GET", case$url, NULL)
     req <- sign_with_body(signer, req, NULL, "es", "us-east-1", 5 * 60, TRUE, unix_time(0, 0))
-    actual <- req$query["X-Amz-Signature"]
+    query_params <- parse_query_string(req$url$raw_query)
+    actual <- query_params[["X-Amz-Signature"]]
     expect_equal(actual, case$expected)
   }
 })
