@@ -9,7 +9,7 @@ rest_build <- function(request) {
 
 rest_build_location_elements <- function(request, values, build_get_query) {
 
-  query <- parse_query(request$http_request$url$raw_query)
+  query <- parse_query_string(request$http_request$url$raw_query)
 
   request$http_request$url$raw_path <- request$http_request$url$path
 
@@ -48,7 +48,7 @@ rest_build_location_elements <- function(request, values, build_get_query) {
     }
   }
 
-  request$http_request$url$raw_query <- encode(query)
+  request$http_request$url$raw_query <- build_query_string(query)
   if (!request$config$disable_rest_protocol_uri_cleaning) {
     request$http_request$url <- clean_path(request$http_request$url)
   }

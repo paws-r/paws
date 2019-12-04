@@ -119,7 +119,7 @@ sign_with_body <- function(signer, request, body, service, region,
   ctx <- SigningContext(
     request = request,
     body = body,
-    query = parse_query(request$url$raw_query),
+    query = parse_query_string(request$url$raw_query),
     time = signing_time,
     expire_time = expire_time,
     is_presigned = is_presigned,
@@ -187,7 +187,7 @@ handle_presign_removal <- function(ctx) {
     return(ctx)
   } else {
     ctx <- remove_presign(ctx)
-    ctx$request$url$raw_query <- encode(ctx$query)
+    ctx$request$url$raw_query <- build_query_string(ctx$query)
     return(ctx)
   }
 }
@@ -257,7 +257,8 @@ build_time <- function(ctx) {
   ctx$formatted_time <- format(ctx$time, tz = "UTC", format = TIME_FORMAT)
   ctx$formatted_short_time <- format(ctx$time, tz = "UTC", format = SHORT_TIME_FORMAT)
   if (ctx$is_presigned) {
-    # TODO: Implement.
+    ctx$query[["X-Amz-Date"]] <- ctx$formatted_time
+    ctx$query[["X-Amz-Expires"]] <- as.character(as.integer(ctx$expire_time))
   } else {
     ctx$request$header["X-Amz-Date"] <- ctx$formatted_time
   }
@@ -345,7 +346,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
 
 build_canonical_string <- function(ctx) {
   if (!is.null(ctx$query)) {
-    ctx$request$url$raw_query <- gsub("\\+", "%20", encode(ctx$query))
+    ctx$request$url$raw_query <- gsub("\\+", "%20", build_query_string(ctx$query))
   }
 
   uri <- get_uri_path(ctx$request$url)

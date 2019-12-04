@@ -27,7 +27,7 @@ parse_url <- function(url) {
     scheme = p$scheme,
     host = p$host,
     path = p$path,
-    raw_query = encode(p$query),
+    raw_query = build_query_string(p$query),
   )
   return(u)
 }
@@ -48,12 +48,12 @@ build_url <- function(url) {
 
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
-encode <- function(body) {
+build_query_string <- function(params) {
   string = ""
-  if (is.null(body) || length(body) == 0) return(string)
-  for (key in sort(names(body))) {
+  if (is.null(params) || length(params) == 0) return(string)
+  for (key in sort(names(params))) {
     k <- query_escape(key)
-    values <- body[[key]]
+    values <- params[[key]]
     for (value in values) {
       v <- query_escape(query_convert(value))
       el <- paste0(k, "=", v)
@@ -67,8 +67,8 @@ encode <- function(body) {
 }
 
 # Decode a query string into a list.
-# e.g. "bar=baz&foo=qux" -> `list(bar = "baz", foo = "qux")`.
-parse_query <- function(query) {
+# e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
+parse_query_string <- function(query) {
   result <- list()
   for (el in strsplit(query, "&")[[1]]) {
     pair <- strsplit(el, "=")[[1]]
@@ -77,6 +77,18 @@ parse_query <- function(query) {
     result[[key]] <- c(result[[key]], query_unescape(value))
   }
   return(result)
+}
+
+# Add the key/value pairs in `params` to a query string in `query_string`,
+# and return a new query string. Keys in the query string that are also in
+# params will be overwritten with the new value from params.
+# e.g. `update_query_string("a=1&b=2", list(b = 3, c = 4))` -> "a=1&b=3&c=4"
+update_query_string <- function(query_string, params) {
+  result <- parse_query_string(query_string)
+  for (key in names(params)) {
+    result[[key]] <- params[[key]]
+  }
+  return(build_query_string(result))
 }
 
 # Escape strings so they can be safely included in a URL query.
